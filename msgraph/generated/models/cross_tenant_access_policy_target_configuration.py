@@ -1,25 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import cross_tenant_access_policy_target, cross_tenant_access_policy_target_configuration_access_type
+cross_tenant_access_policy_target = lazy_import('msgraph.generated.models.cross_tenant_access_policy_target')
+cross_tenant_access_policy_target_configuration_access_type = lazy_import('msgraph.generated.models.cross_tenant_access_policy_target_configuration_access_type')
 
 class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new crossTenantAccessPolicyTargetConfiguration and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Defines whether access is allowed or blocked. The possible values are: allowed, blocked, unknownFutureValue.
-        self._access_type: Optional[cross_tenant_access_policy_target_configuration_access_type.CrossTenantAccessPolicyTargetConfigurationAccessType] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Specifies whether to target users, groups, or applications with this rule.
-        self._targets: Optional[List[cross_tenant_access_policy_target.CrossTenantAccessPolicyTarget]] = None
-    
     @property
     def access_type(self,) -> Optional[cross_tenant_access_policy_target_configuration_access_type.CrossTenantAccessPolicyTargetConfigurationAccessType]:
         """
@@ -54,6 +41,20 @@ class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, Parsable)
         """
         self._additional_data = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new crossTenantAccessPolicyTargetConfiguration and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Defines whether access is allowed or blocked. The possible values are: allowed, blocked, unknownFutureValue.
+        self._access_type: Optional[cross_tenant_access_policy_target_configuration_access_type.CrossTenantAccessPolicyTargetConfigurationAccessType] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Specifies whether to target users, groups, or applications with this rule.
+        self._targets: Optional[List[cross_tenant_access_policy_target.CrossTenantAccessPolicyTarget]] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicyTargetConfiguration:
         """
@@ -71,9 +72,7 @@ class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, Parsable)
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import cross_tenant_access_policy_target, cross_tenant_access_policy_target_configuration_access_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "accessType": lambda n : setattr(self, 'access_type', n.get_enum_value(cross_tenant_access_policy_target_configuration_access_type.CrossTenantAccessPolicyTargetConfigurationAccessType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "targets": lambda n : setattr(self, 'targets', n.get_collection_of_object_values(cross_tenant_access_policy_target.CrossTenantAccessPolicyTarget)),

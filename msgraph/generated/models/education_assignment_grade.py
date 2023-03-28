@@ -1,26 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import education_assignment_points_grade, identity_set
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new educationAssignmentGrade and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # User who did the grading.
-        self._graded_by: Optional[identity_set.IdentitySet] = None
-        # Moment in time when the grade was applied to this submission object. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._graded_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,6 +24,20 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
         """
         self._additional_data = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new educationAssignmentGrade and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # User who did the grading.
+        self._graded_by: Optional[identity_set.IdentitySet] = None
+        # Moment in time when the grade was applied to this submission object. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._graded_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationAssignmentGrade:
         """
@@ -48,13 +48,6 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.educationAssignmentPointsGrade":
-                from . import education_assignment_points_grade
-
-                return education_assignment_points_grade.EducationAssignmentPointsGrade()
         return EducationAssignmentGrade()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -62,9 +55,7 @@ class EducationAssignmentGrade(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_assignment_points_grade, identity_set
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "gradedBy": lambda n : setattr(self, 'graded_by', n.get_object_value(identity_set.IdentitySet)),
             "gradedDateTime": lambda n : setattr(self, 'graded_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

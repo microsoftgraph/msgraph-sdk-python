@@ -1,16 +1,24 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import authentication_method, email_authentication_method, entity, fido2_authentication_method, long_running_operation, microsoft_authenticator_authentication_method, password_authentication_method, phone_authentication_method, software_oath_authentication_method, temporary_access_pass_authentication_method, windows_hello_for_business_authentication_method
-
-from . import entity
+authentication_method = lazy_import('msgraph.generated.models.authentication_method')
+email_authentication_method = lazy_import('msgraph.generated.models.email_authentication_method')
+entity = lazy_import('msgraph.generated.models.entity')
+fido2_authentication_method = lazy_import('msgraph.generated.models.fido2_authentication_method')
+long_running_operation = lazy_import('msgraph.generated.models.long_running_operation')
+microsoft_authenticator_authentication_method = lazy_import('msgraph.generated.models.microsoft_authenticator_authentication_method')
+password_authentication_method = lazy_import('msgraph.generated.models.password_authentication_method')
+phone_authentication_method = lazy_import('msgraph.generated.models.phone_authentication_method')
+software_oath_authentication_method = lazy_import('msgraph.generated.models.software_oath_authentication_method')
+temporary_access_pass_authentication_method = lazy_import('msgraph.generated.models.temporary_access_pass_authentication_method')
+windows_hello_for_business_authentication_method = lazy_import('msgraph.generated.models.windows_hello_for_business_authentication_method')
 
 class Authentication(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new authentication and sets the default values.
+        Instantiates a new Authentication and sets the default values.
         """
         super().__init__()
         # The email address registered to a user for authentication.
@@ -87,9 +95,7 @@ class Authentication(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method, email_authentication_method, entity, fido2_authentication_method, long_running_operation, microsoft_authenticator_authentication_method, password_authentication_method, phone_authentication_method, software_oath_authentication_method, temporary_access_pass_authentication_method, windows_hello_for_business_authentication_method
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "emailMethods": lambda n : setattr(self, 'email_methods', n.get_collection_of_object_values(email_authentication_method.EmailAuthenticationMethod)),
             "fido2Methods": lambda n : setattr(self, 'fido2_methods', n.get_collection_of_object_values(fido2_authentication_method.Fido2AuthenticationMethod)),
             "methods": lambda n : setattr(self, 'methods', n.get_collection_of_object_values(authentication_method.AuthenticationMethod)),

@@ -1,13 +1,30 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import attendance_interval, entity, identity
-
-from . import entity
+attendance_interval = lazy_import('msgraph.generated.models.attendance_interval')
+entity = lazy_import('msgraph.generated.models.entity')
+identity = lazy_import('msgraph.generated.models.identity')
 
 class AttendanceRecord(entity.Entity):
+    @property
+    def attendance_intervals(self,) -> Optional[List[attendance_interval.AttendanceInterval]]:
+        """
+        Gets the attendanceIntervals property value. List of time periods between joining and leaving a meeting.
+        Returns: Optional[List[attendance_interval.AttendanceInterval]]
+        """
+        return self._attendance_intervals
+    
+    @attendance_intervals.setter
+    def attendance_intervals(self,value: Optional[List[attendance_interval.AttendanceInterval]] = None) -> None:
+        """
+        Sets the attendanceIntervals property value. List of time periods between joining and leaving a meeting.
+        Args:
+            value: Value to set for the attendance_intervals property.
+        """
+        self._attendance_intervals = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new attendanceRecord and sets the default values.
@@ -25,23 +42,6 @@ class AttendanceRecord(entity.Entity):
         self._role: Optional[str] = None
         # Total duration of the attendances in seconds.
         self._total_attendance_in_seconds: Optional[int] = None
-    
-    @property
-    def attendance_intervals(self,) -> Optional[List[attendance_interval.AttendanceInterval]]:
-        """
-        Gets the attendanceIntervals property value. List of time periods between joining and leaving a meeting.
-        Returns: Optional[List[attendance_interval.AttendanceInterval]]
-        """
-        return self._attendance_intervals
-    
-    @attendance_intervals.setter
-    def attendance_intervals(self,value: Optional[List[attendance_interval.AttendanceInterval]] = None) -> None:
-        """
-        Sets the attendanceIntervals property value. List of time periods between joining and leaving a meeting.
-        Args:
-            value: Value to set for the attendance_intervals property.
-        """
-        self._attendance_intervals = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttendanceRecord:
@@ -77,9 +77,7 @@ class AttendanceRecord(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attendance_interval, entity, identity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "attendanceIntervals": lambda n : setattr(self, 'attendance_intervals', n.get_collection_of_object_values(attendance_interval.AttendanceInterval)),
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(identity.Identity)),

@@ -1,29 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from .....models import incoming_call_options, media_config, modality
+incoming_call_options = lazy_import('msgraph.generated.models.incoming_call_options')
+media_config = lazy_import('msgraph.generated.models.media_config')
+modality = lazy_import('msgraph.generated.models.modality')
 
 class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new answerPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The acceptedModalities property
-        self._accepted_modalities: Optional[List[modality.Modality]] = None
-        # The callOptions property
-        self._call_options: Optional[incoming_call_options.IncomingCallOptions] = None
-        # The callbackUri property
-        self._callback_uri: Optional[str] = None
-        # The mediaConfig property
-        self._media_config: Optional[media_config.MediaConfig] = None
-        # The participantCapacity property
-        self._participant_capacity: Optional[int] = None
-    
     @property
     def accepted_modalities(self,) -> Optional[List[modality.Modality]]:
         """
@@ -92,6 +76,24 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
         """
         self._callback_uri = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new answerPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The acceptedModalities property
+        self._accepted_modalities: Optional[List[modality.Modality]] = None
+        # The callOptions property
+        self._call_options: Optional[incoming_call_options.IncomingCallOptions] = None
+        # The callbackUri property
+        self._callback_uri: Optional[str] = None
+        # The mediaConfig property
+        self._media_config: Optional[media_config.MediaConfig] = None
+        # The participantCapacity property
+        self._participant_capacity: Optional[int] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AnswerPostRequestBody:
         """
@@ -109,9 +111,7 @@ class AnswerPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import incoming_call_options, media_config, modality
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "acceptedModalities": lambda n : setattr(self, 'accepted_modalities', n.get_collection_of_enum_values(modality.Modality)),
             "callbackUri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
             "callOptions": lambda n : setattr(self, 'call_options', n.get_object_value(incoming_call_options.IncomingCallOptions)),

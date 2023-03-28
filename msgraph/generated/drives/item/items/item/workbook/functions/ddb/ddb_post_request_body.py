@@ -1,11 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ........models import json
+json = lazy_import('msgraph.generated.models.json')
 
 class DdbPostRequestBody(AdditionalDataHolder, Parsable):
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new ddbPostRequestBody and sets the default values.
@@ -23,23 +40,6 @@ class DdbPostRequestBody(AdditionalDataHolder, Parsable):
         self._period: Optional[json.Json] = None
         # The salvage property
         self._salvage: Optional[json.Json] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
     
     @property
     def cost(self,) -> Optional[json.Json]:
@@ -92,9 +92,7 @@ class DdbPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "cost": lambda n : setattr(self, 'cost', n.get_object_value(json.Json)),
             "factor": lambda n : setattr(self, 'factor', n.get_object_value(json.Json)),
             "life": lambda n : setattr(self, 'life', n.get_object_value(json.Json)),

@@ -1,30 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import answer_input_type, entity
-
-from . import entity
+answer_input_type = lazy_import('msgraph.generated.models.answer_input_type')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class BookingCustomQuestion(entity.Entity):
     """
     Represents a custom question of the business.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new bookingCustomQuestion and sets the default values.
-        """
-        super().__init__()
-        # The expected answer type. The possible values are: text, radioButton, unknownFutureValue.
-        self._answer_input_type: Optional[answer_input_type.AnswerInputType] = None
-        # List of possible answer values.
-        self._answer_options: Optional[List[str]] = None
-        # The question.
-        self._display_name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
     @property
     def answer_input_type(self,) -> Optional[answer_input_type.AnswerInputType]:
         """
@@ -58,6 +43,20 @@ class BookingCustomQuestion(entity.Entity):
             value: Value to set for the answer_options property.
         """
         self._answer_options = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new bookingCustomQuestion and sets the default values.
+        """
+        super().__init__()
+        # The expected answer type. The possible values are: text, radioButton, unknownFutureValue.
+        self._answer_input_type: Optional[answer_input_type.AnswerInputType] = None
+        # List of possible answer values.
+        self._answer_options: Optional[List[str]] = None
+        # The question.
+        self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingCustomQuestion:
@@ -93,9 +92,7 @@ class BookingCustomQuestion(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import answer_input_type, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "answerInputType": lambda n : setattr(self, 'answer_input_type', n.get_enum_value(answer_input_type.AnswerInputType)),
             "answerOptions": lambda n : setattr(self, 'answer_options', n.get_collection_of_primitive_values(str)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

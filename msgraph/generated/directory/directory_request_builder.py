@@ -7,24 +7,65 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ..models import directory
-    from ..models.o_data_errors import o_data_error
-    from .administrative_units import administrative_units_request_builder
-    from .administrative_units.item import administrative_unit_item_request_builder
-    from .deleted_items import deleted_items_request_builder
-    from .deleted_items.item import directory_object_item_request_builder
-    from .federation_configurations import federation_configurations_request_builder
-    from .federation_configurations.item import identity_provider_base_item_request_builder
-    from .on_premises_synchronization import on_premises_synchronization_request_builder
-    from .on_premises_synchronization.item import on_premises_directory_synchronization_item_request_builder
+administrative_units_request_builder = lazy_import('msgraph.generated.directory.administrative_units.administrative_units_request_builder')
+administrative_unit_item_request_builder = lazy_import('msgraph.generated.directory.administrative_units.item.administrative_unit_item_request_builder')
+deleted_items_request_builder = lazy_import('msgraph.generated.directory.deleted_items.deleted_items_request_builder')
+directory_object_item_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.directory_object_item_request_builder')
+federation_configurations_request_builder = lazy_import('msgraph.generated.directory.federation_configurations.federation_configurations_request_builder')
+identity_provider_base_item_request_builder = lazy_import('msgraph.generated.directory.federation_configurations.item.identity_provider_base_item_request_builder')
+on_premises_synchronization_request_builder = lazy_import('msgraph.generated.directory.on_premises_synchronization.on_premises_synchronization_request_builder')
+on_premises_directory_synchronization_item_request_builder = lazy_import('msgraph.generated.directory.on_premises_synchronization.item.on_premises_directory_synchronization_item_request_builder')
+directory = lazy_import('msgraph.generated.models.directory')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class DirectoryRequestBuilder():
     """
     Provides operations to manage the directory singleton.
     """
+    @property
+    def administrative_units(self) -> administrative_units_request_builder.AdministrativeUnitsRequestBuilder:
+        """
+        Provides operations to manage the administrativeUnits property of the microsoft.graph.directory entity.
+        """
+        return administrative_units_request_builder.AdministrativeUnitsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def deleted_items(self) -> deleted_items_request_builder.DeletedItemsRequestBuilder:
+        """
+        Provides operations to manage the deletedItems property of the microsoft.graph.directory entity.
+        """
+        return deleted_items_request_builder.DeletedItemsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def federation_configurations(self) -> federation_configurations_request_builder.FederationConfigurationsRequestBuilder:
+        """
+        Provides operations to manage the federationConfigurations property of the microsoft.graph.directory entity.
+        """
+        return federation_configurations_request_builder.FederationConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def on_premises_synchronization(self) -> on_premises_synchronization_request_builder.OnPremisesSynchronizationRequestBuilder:
+        """
+        Provides operations to manage the onPremisesSynchronization property of the microsoft.graph.directory entity.
+        """
+        return on_premises_synchronization_request_builder.OnPremisesSynchronizationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def administrative_units_by_id(self,id: str) -> administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder:
+        """
+        Provides operations to manage the administrativeUnits property of the microsoft.graph.directory entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["administrativeUnit%2Did"] = id
+        return administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DirectoryRequestBuilder and sets the default values.
@@ -43,21 +84,6 @@ class DirectoryRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def administrative_units_by_id(self,id: str) -> administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder:
-        """
-        Provides operations to manage the administrativeUnits property of the microsoft.graph.directory entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .administrative_units.item import administrative_unit_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["administrativeUnit%2Did"] = id
-        return administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def deleted_items_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
         """
         Provides operations to manage the deletedItems property of the microsoft.graph.directory entity.
@@ -67,8 +93,6 @@ class DirectoryRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .deleted_items.item import directory_object_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -82,8 +106,6 @@ class DirectoryRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .federation_configurations.item import identity_provider_base_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["identityProviderBase%2Did"] = id
         return identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -98,16 +120,12 @@ class DirectoryRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import directory
-
         return await self.request_adapter.send_async(request_info, directory.Directory, error_mapping)
     
     def on_premises_synchronization_by_id(self,id: str) -> on_premises_directory_synchronization_item_request_builder.OnPremisesDirectorySynchronizationItemRequestBuilder:
@@ -119,8 +137,6 @@ class DirectoryRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .on_premises_synchronization.item import on_premises_directory_synchronization_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["onPremisesDirectorySynchronization%2Did"] = id
         return on_premises_directory_synchronization_item_request_builder.OnPremisesDirectorySynchronizationItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -138,16 +154,12 @@ class DirectoryRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import directory
-
         return await self.request_adapter.send_async(request_info, directory.Directory, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DirectoryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -189,47 +201,17 @@ class DirectoryRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def administrative_units(self) -> administrative_units_request_builder.AdministrativeUnitsRequestBuilder:
-        """
-        Provides operations to manage the administrativeUnits property of the microsoft.graph.directory entity.
-        """
-        from .administrative_units import administrative_units_request_builder
-
-        return administrative_units_request_builder.AdministrativeUnitsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def deleted_items(self) -> deleted_items_request_builder.DeletedItemsRequestBuilder:
-        """
-        Provides operations to manage the deletedItems property of the microsoft.graph.directory entity.
-        """
-        from .deleted_items import deleted_items_request_builder
-
-        return deleted_items_request_builder.DeletedItemsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def federation_configurations(self) -> federation_configurations_request_builder.FederationConfigurationsRequestBuilder:
-        """
-        Provides operations to manage the federationConfigurations property of the microsoft.graph.directory entity.
-        """
-        from .federation_configurations import federation_configurations_request_builder
-
-        return federation_configurations_request_builder.FederationConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def on_premises_synchronization(self) -> on_premises_synchronization_request_builder.OnPremisesSynchronizationRequestBuilder:
-        """
-        Provides operations to manage the onPremisesSynchronization property of the microsoft.graph.directory entity.
-        """
-        from .on_premises_synchronization import on_premises_synchronization_request_builder
-
-        return on_premises_synchronization_request_builder.OnPremisesSynchronizationRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class DirectoryRequestBuilderGetQueryParameters():
         """
         Get directory
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -245,12 +227,6 @@ class DirectoryRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class DirectoryRequestBuilderGetRequestConfiguration():

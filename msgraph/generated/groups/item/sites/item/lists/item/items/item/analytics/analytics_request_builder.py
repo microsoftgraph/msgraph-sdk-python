@@ -7,11 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ..........models import item_analytics
-    from ..........models.o_data_errors import o_data_error
+item_analytics = lazy_import('msgraph.generated.models.item_analytics')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AnalyticsRequestBuilder():
     """
@@ -45,16 +45,12 @@ class AnalyticsRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import item_analytics
-
         return await self.request_adapter.send_async(request_info, item_analytics.ItemAnalytics, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AnalyticsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -80,6 +76,12 @@ class AnalyticsRequestBuilder():
         """
         Analytics about the view activities that took place on this item.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -95,12 +97,6 @@ class AnalyticsRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class AnalyticsRequestBuilderGetRequestConfiguration():

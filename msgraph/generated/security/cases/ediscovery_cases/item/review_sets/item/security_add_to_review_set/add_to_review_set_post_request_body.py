@@ -1,23 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ........models.security import additional_data_options, ediscovery_search
+additional_data_options = lazy_import('msgraph.generated.models.security.additional_data_options')
+ediscovery_search = lazy_import('msgraph.generated.models.security.ediscovery_search')
 
 class AddToReviewSetPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new addToReviewSetPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The additionalDataOptions property
-        self._additional_data_options: Optional[additional_data_options.AdditionalDataOptions] = None
-        # The search property
-        self._search: Optional[ediscovery_search.EdiscoverySearch] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -52,6 +41,18 @@ class AddToReviewSetPostRequestBody(AdditionalDataHolder, Parsable):
         """
         self._additional_data_options = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new addToReviewSetPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The additionalDataOptions property
+        self._additional_data_options: Optional[additional_data_options.AdditionalDataOptions] = None
+        # The search property
+        self._search: Optional[ediscovery_search.EdiscoverySearch] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddToReviewSetPostRequestBody:
         """
@@ -69,9 +70,7 @@ class AddToReviewSetPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models.security import additional_data_options, ediscovery_search
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "additionalDataOptions": lambda n : setattr(self, 'additional_data_options', n.get_enum_value(additional_data_options.AdditionalDataOptions)),
             "search": lambda n : setattr(self, 'search', n.get_object_value(ediscovery_search.EdiscoverySearch)),
         }

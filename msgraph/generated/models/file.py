@@ -1,27 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import hashes
+hashes = lazy_import('msgraph.generated.models.hashes')
 
 class File(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new file and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Hashes of the file's binary content, if available. Read-only.
-        self._hashes: Optional[hashes.Hashes] = None
-        # The MIME type for the file. This is determined by logic on the server and might not be the value provided when the file was uploaded. Read-only.
-        self._mime_type: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The processingMetadata property
-        self._processing_metadata: Optional[bool] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,6 +22,22 @@ class File(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new file and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Hashes of the file's binary content, if available. Read-only.
+        self._hashes: Optional[hashes.Hashes] = None
+        # The MIME type for the file. This is determined by logic on the server and might not be the value provided when the file was uploaded. Read-only.
+        self._mime_type: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The processingMetadata property
+        self._processing_metadata: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> File:
@@ -56,9 +56,7 @@ class File(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import hashes
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "hashes": lambda n : setattr(self, 'hashes', n.get_object_value(hashes.Hashes)),
             "mimeType": lambda n : setattr(self, 'mime_type', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

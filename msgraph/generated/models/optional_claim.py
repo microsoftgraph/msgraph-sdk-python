@@ -1,26 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class OptionalClaim(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new optionalClaim and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Additional properties of the claim. If a property exists in this collection, it modifies the behavior of the optional claim specified in the name property.
-        self._additional_properties: Optional[List[str]] = None
-        # If the value is true, the claim specified by the client is necessary to ensure a smooth authorization experience for the specific task requested by the end user. The default value is false.
-        self._essential: Optional[bool] = None
-        # The name of the optional claim.
-        self._name: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The source (directory object) of the claim. There are predefined claims and user-defined claims from extension properties. If the source value is null, the claim is a predefined optional claim. If the source value is user, the value in the name property is the extension property from the user object.
-        self._source: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -54,6 +37,24 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
             value: Value to set for the additional_properties property.
         """
         self._additional_properties = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new optionalClaim and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Additional properties of the claim. If a property exists in this collection, it modifies the behavior of the optional claim specified in the name property.
+        self._additional_properties: Optional[List[str]] = None
+        # If the value is true, the claim specified by the client is necessary to ensure a smooth authorization experience for the specific task requested by the end user. The default value is false.
+        self._essential: Optional[bool] = None
+        # The name of the optional claim.
+        self._name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The source (directory object) of the claim. There are predefined claims and user-defined claims from extension properties. If the source value is null, the claim is a predefined optional claim. If the source value is user, the value in the name property is the extension property from the user object.
+        self._source: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OptionalClaim:
@@ -89,7 +90,7 @@ class OptionalClaim(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "additionalProperties": lambda n : setattr(self, 'additional_properties', n.get_collection_of_primitive_values(str)),
             "essential": lambda n : setattr(self, 'essential', n.get_bool_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),

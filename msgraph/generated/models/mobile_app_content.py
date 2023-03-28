@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, mobile_app_content_file, mobile_contained_app
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+mobile_app_content_file = lazy_import('msgraph.generated.models.mobile_app_content_file')
+mobile_contained_app = lazy_import('msgraph.generated.models.mobile_contained_app')
 
 class MobileAppContent(entity.Entity):
     """
@@ -74,9 +74,7 @@ class MobileAppContent(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, mobile_app_content_file, mobile_contained_app
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "containedApps": lambda n : setattr(self, 'contained_apps', n.get_collection_of_object_values(mobile_contained_app.MobileContainedApp)),
             "files": lambda n : setattr(self, 'files', n.get_collection_of_object_values(mobile_app_content_file.MobileAppContentFile)),
         }

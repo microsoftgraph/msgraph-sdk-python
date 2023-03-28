@@ -1,22 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class ParentalControlSettings(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new parentalControlSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Specifies the two-letter ISO country codes. Access to the application will be blocked for minors from the countries specified in this list.
-        self._countries_blocked_for_minors: Optional[List[str]] = None
-        # Specifies the legal age group rule that applies to users of the app. Can be set to one of the following values: ValueDescriptionAllowDefault. Enforces the legal minimum. This means parental consent is required for minors in the European Union and Korea.RequireConsentForPrivacyServicesEnforces the user to specify date of birth to comply with COPPA rules. RequireConsentForMinorsRequires parental consent for ages below 18, regardless of country minor rules.RequireConsentForKidsRequires parental consent for ages below 14, regardless of country minor rules.BlockMinorsBlocks minors from using the app.
-        self._legal_age_group_rule: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -33,6 +20,20 @@ class ParentalControlSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new parentalControlSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Specifies the two-letter ISO country codes. Access to the application will be blocked for minors from the countries specified in this list.
+        self._countries_blocked_for_minors: Optional[List[str]] = None
+        # Specifies the legal age group rule that applies to users of the app. Can be set to one of the following values: ValueDescriptionAllowDefault. Enforces the legal minimum. This means parental consent is required for minors in the European Union and Korea.RequireConsentForPrivacyServicesEnforces the user to specify date of birth to comply with COPPA rules. RequireConsentForMinorsRequires parental consent for ages below 18, regardless of country minor rules.RequireConsentForKidsRequires parental consent for ages below 14, regardless of country minor rules.BlockMinorsBlocks minors from using the app.
+        self._legal_age_group_rule: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
     
     @property
     def countries_blocked_for_minors(self,) -> Optional[List[str]]:
@@ -68,7 +69,7 @@ class ParentalControlSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "countriesBlockedForMinors": lambda n : setattr(self, 'countries_blocked_for_minors', n.get_collection_of_primitive_values(str)),
             "legalAgeGroupRule": lambda n : setattr(self, 'legal_age_group_rule', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

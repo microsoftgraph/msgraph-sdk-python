@@ -1,13 +1,53 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import managed_app_policy, mdm_windows_information_protection_policy, targeted_managed_app_policy_assignment, windows_information_protection_app, windows_information_protection_app_locker_file, windows_information_protection_data_recovery_certificate, windows_information_protection_enforcement_level, windows_information_protection_i_p_range_collection, windows_information_protection_policy, windows_information_protection_proxied_domain_collection, windows_information_protection_resource_collection
-
-from . import managed_app_policy
+managed_app_policy = lazy_import('msgraph.generated.models.managed_app_policy')
+targeted_managed_app_policy_assignment = lazy_import('msgraph.generated.models.targeted_managed_app_policy_assignment')
+windows_information_protection_app = lazy_import('msgraph.generated.models.windows_information_protection_app')
+windows_information_protection_app_locker_file = lazy_import('msgraph.generated.models.windows_information_protection_app_locker_file')
+windows_information_protection_data_recovery_certificate = lazy_import('msgraph.generated.models.windows_information_protection_data_recovery_certificate')
+windows_information_protection_enforcement_level = lazy_import('msgraph.generated.models.windows_information_protection_enforcement_level')
+windows_information_protection_i_p_range_collection = lazy_import('msgraph.generated.models.windows_information_protection_i_p_range_collection')
+windows_information_protection_proxied_domain_collection = lazy_import('msgraph.generated.models.windows_information_protection_proxied_domain_collection')
+windows_information_protection_resource_collection = lazy_import('msgraph.generated.models.windows_information_protection_resource_collection')
 
 class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
+    @property
+    def assignments(self,) -> Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]]:
+        """
+        Gets the assignments property value. Navigation property to list of security groups targeted for policy.
+        Returns: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]]
+        """
+        return self._assignments
+    
+    @assignments.setter
+    def assignments(self,value: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]] = None) -> None:
+        """
+        Sets the assignments property value. Navigation property to list of security groups targeted for policy.
+        Args:
+            value: Value to set for the assignments property.
+        """
+        self._assignments = value
+    
+    @property
+    def azure_rights_management_services_allowed(self,) -> Optional[bool]:
+        """
+        Gets the azureRightsManagementServicesAllowed property value. Specifies whether to allow Azure RMS encryption for WIP
+        Returns: Optional[bool]
+        """
+        return self._azure_rights_management_services_allowed
+    
+    @azure_rights_management_services_allowed.setter
+    def azure_rights_management_services_allowed(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the azureRightsManagementServicesAllowed property value. Specifies whether to allow Azure RMS encryption for WIP
+        Args:
+            value: Value to set for the azure_rights_management_services_allowed property.
+        """
+        self._azure_rights_management_services_allowed = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new WindowsInformationProtection and sets the default values.
@@ -65,40 +105,6 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         # Specifies a list of file extensions, so that files with these extensions are encrypted when copying from an SMB share within the corporate boundary
         self._smb_auto_encrypted_file_extensions: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]] = None
     
-    @property
-    def assignments(self,) -> Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]]:
-        """
-        Gets the assignments property value. Navigation property to list of security groups targeted for policy.
-        Returns: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]]
-        """
-        return self._assignments
-    
-    @assignments.setter
-    def assignments(self,value: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]] = None) -> None:
-        """
-        Sets the assignments property value. Navigation property to list of security groups targeted for policy.
-        Args:
-            value: Value to set for the assignments property.
-        """
-        self._assignments = value
-    
-    @property
-    def azure_rights_management_services_allowed(self,) -> Optional[bool]:
-        """
-        Gets the azureRightsManagementServicesAllowed property value. Specifies whether to allow Azure RMS encryption for WIP
-        Returns: Optional[bool]
-        """
-        return self._azure_rights_management_services_allowed
-    
-    @azure_rights_management_services_allowed.setter
-    def azure_rights_management_services_allowed(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the azureRightsManagementServicesAllowed property value. Specifies whether to allow Azure RMS encryption for WIP
-        Args:
-            value: Value to set for the azure_rights_management_services_allowed property.
-        """
-        self._azure_rights_management_services_allowed = value
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtection:
         """
@@ -109,17 +115,6 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.mdmWindowsInformationProtectionPolicy":
-                from . import mdm_windows_information_protection_policy
-
-                return mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy()
-            if mapping_value == "#microsoft.graph.windowsInformationProtectionPolicy":
-                from . import windows_information_protection_policy
-
-                return windows_information_protection_policy.WindowsInformationProtectionPolicy()
         return WindowsInformationProtection()
     
     @property
@@ -348,9 +343,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import managed_app_policy, mdm_windows_information_protection_policy, targeted_managed_app_policy_assignment, windows_information_protection_app, windows_information_protection_app_locker_file, windows_information_protection_data_recovery_certificate, windows_information_protection_enforcement_level, windows_information_protection_i_p_range_collection, windows_information_protection_policy, windows_information_protection_proxied_domain_collection, windows_information_protection_resource_collection
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment)),
             "azureRightsManagementServicesAllowed": lambda n : setattr(self, 'azure_rights_management_services_allowed', n.get_bool_value()),
             "dataRecoveryCertificate": lambda n : setattr(self, 'data_recovery_certificate', n.get_object_value(windows_information_protection_data_recovery_certificate.WindowsInformationProtectionDataRecoveryCertificate)),

@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import identity, identity_set, share_point_identity
-
-from . import identity_set
+identity = lazy_import('msgraph.generated.models.identity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+share_point_identity = lazy_import('msgraph.generated.models.share_point_identity')
 
 class SharePointIdentitySet(identity_set.IdentitySet):
     def __init__(self,) -> None:
@@ -38,9 +38,7 @@ class SharePointIdentitySet(identity_set.IdentitySet):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity, identity_set, share_point_identity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "group": lambda n : setattr(self, 'group', n.get_object_value(identity.Identity)),
             "siteGroup": lambda n : setattr(self, 'site_group', n.get_object_value(share_point_identity.SharePointIdentity)),
             "siteUser": lambda n : setattr(self, 'site_user', n.get_object_value(share_point_identity.SharePointIdentity)),

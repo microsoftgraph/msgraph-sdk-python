@@ -1,68 +1,21 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import applied_conditional_access_policy, conditional_access_status, device_detail, entity, risk_detail, risk_event_type, risk_level, risk_state, sign_in_location, sign_in_status
-
-from . import entity
+applied_conditional_access_policy = lazy_import('msgraph.generated.models.applied_conditional_access_policy')
+conditional_access_status = lazy_import('msgraph.generated.models.conditional_access_status')
+device_detail = lazy_import('msgraph.generated.models.device_detail')
+entity = lazy_import('msgraph.generated.models.entity')
+risk_detail = lazy_import('msgraph.generated.models.risk_detail')
+risk_event_type = lazy_import('msgraph.generated.models.risk_event_type')
+risk_level = lazy_import('msgraph.generated.models.risk_level')
+risk_state = lazy_import('msgraph.generated.models.risk_state')
+sign_in_location = lazy_import('msgraph.generated.models.sign_in_location')
+sign_in_status = lazy_import('msgraph.generated.models.sign_in_status')
 
 class SignIn(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new signIn and sets the default values.
-        """
-        super().__init__()
-        # App name displayed in the Azure Portal. Supports $filter (eq and startsWith operators only).
-        self._app_display_name: Optional[str] = None
-        # Unique GUID representing the app ID in the Azure Active Directory. Supports $filter (eq operator only).
-        self._app_id: Optional[str] = None
-        # Provides a list of conditional access policies that are triggered by the corresponding sign-in activity.
-        self._applied_conditional_access_policies: Optional[List[applied_conditional_access_policy.AppliedConditionalAccessPolicy]] = None
-        # Identifies the client used for the sign-in activity. Modern authentication clients include Browser and modern clients. Legacy authentication clients include Exchange ActiveSync, IMAP, MAPI, SMTP, POP, and other clients. Supports $filter (eq operator only).
-        self._client_app_used: Optional[str] = None
-        # Reports status of an activated conditional access policy. Possible values are: success, failure, notApplied, and unknownFutureValue. Supports $filter (eq operator only).
-        self._conditional_access_status: Optional[conditional_access_status.ConditionalAccessStatus] = None
-        # The request ID sent from the client when the sign-in is initiated; used to troubleshoot sign-in activity. Supports $filter (eq operator only).
-        self._correlation_id: Optional[str] = None
-        # Date and time (UTC) the sign-in was initiated. Example: midnight on Jan 1, 2014 is reported as 2014-01-01T00:00:00Z. Supports $orderby and $filter (eq, le, and ge operators only).
-        self._created_date_time: Optional[datetime] = None
-        # Device information from where the sign-in occurred; includes device ID, operating system, and browser. Supports $filter (eq and startsWith operators only) on browser and operatingSytem properties.
-        self._device_detail: Optional[device_detail.DeviceDetail] = None
-        # IP address of the client used to sign in. Supports $filter (eq and startsWith operators only).
-        self._ip_address: Optional[str] = None
-        # Indicates if a sign-in is interactive or not.
-        self._is_interactive: Optional[bool] = None
-        # Provides the city, state, and country code where the sign-in originated. Supports $filter (eq and startsWith operators only) on city, state, and countryOrRegion properties.
-        self._location: Optional[sign_in_location.SignInLocation] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Name of the resource the user signed into. Supports $filter (eq operator only).
-        self._resource_display_name: Optional[str] = None
-        # ID of the resource that the user signed into. Supports $filter (eq operator only).
-        self._resource_id: Optional[str] = None
-        # Provides the 'reason' behind a specific state of a risky user, sign-in or a risk event. The possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, unknownFutureValue. The value none means that no action has been performed on the user or sign-in so far.  Supports $filter (eq operator only).Note: Details for this property require an Azure AD Premium P2 license. Other licenses return the value hidden.
-        self._risk_detail: Optional[risk_detail.RiskDetail] = None
-        # Risk event types associated with the sign-in. The possible values are: unlikelyTravel, anonymizedIPAddress, maliciousIPAddress, unfamiliarFeatures, malwareInfectedIPAddress, suspiciousIPAddress, leakedCredentials, investigationsThreatIntelligence,  generic, and unknownFutureValue. Supports $filter (eq operator only).
-        self._risk_event_types: Optional[List[risk_event_type.RiskEventType]] = None
-        # The list of risk event types associated with the sign-in. Possible values: unlikelyTravel, anonymizedIPAddress, maliciousIPAddress, unfamiliarFeatures, malwareInfectedIPAddress, suspiciousIPAddress, leakedCredentials, investigationsThreatIntelligence,  generic, or unknownFutureValue. Supports $filter (eq and startsWith operators only).
-        self._risk_event_types_v2: Optional[List[str]] = None
-        # Aggregated risk level. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in was not enabled for Azure AD Identity Protection. Supports $filter (eq operator only).  Note: Details for this property are only available for Azure AD Premium P2 customers. All other customers will be returned hidden.
-        self._risk_level_aggregated: Optional[risk_level.RiskLevel] = None
-        # Risk level during sign-in. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in was not enabled for Azure AD Identity Protection.  Supports $filter (eq operator only). Note: Details for this property are only available for Azure AD Premium P2 customers. All other customers will be returned hidden.
-        self._risk_level_during_sign_in: Optional[risk_level.RiskLevel] = None
-        # Reports status of the risky user, sign-in, or a risk event. The possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue. Supports $filter (eq operator only).
-        self._risk_state: Optional[risk_state.RiskState] = None
-        # Sign-in status. Includes the error code and description of the error (in case of a sign-in failure). Supports $filter (eq operator only) on errorCode property.
-        self._status: Optional[sign_in_status.SignInStatus] = None
-        # Display name of the user that initiated the sign-in. Supports $filter (eq and startsWith operators only).
-        self._user_display_name: Optional[str] = None
-        # ID of the user that initiated the sign-in. Supports $filter (eq operator only).
-        self._user_id: Optional[str] = None
-        # User principal name of the user that initiated the sign-in. Supports $filter (eq and startsWith operators only).
-        self._user_principal_name: Optional[str] = None
-    
     @property
     def app_display_name(self,) -> Optional[str]:
         """
@@ -148,6 +101,60 @@ class SignIn(entity.Entity):
         """
         self._conditional_access_status = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new signIn and sets the default values.
+        """
+        super().__init__()
+        # App name displayed in the Azure Portal. Supports $filter (eq and startsWith operators only).
+        self._app_display_name: Optional[str] = None
+        # Unique GUID representing the app ID in the Azure Active Directory. Supports $filter (eq operator only).
+        self._app_id: Optional[str] = None
+        # Provides a list of conditional access policies that are triggered by the corresponding sign-in activity.
+        self._applied_conditional_access_policies: Optional[List[applied_conditional_access_policy.AppliedConditionalAccessPolicy]] = None
+        # Identifies the client used for the sign-in activity. Modern authentication clients include Browser and modern clients. Legacy authentication clients include Exchange ActiveSync, IMAP, MAPI, SMTP, POP, and other clients. Supports $filter (eq operator only).
+        self._client_app_used: Optional[str] = None
+        # Reports status of an activated conditional access policy. Possible values are: success, failure, notApplied, and unknownFutureValue. Supports $filter (eq operator only).
+        self._conditional_access_status: Optional[conditional_access_status.ConditionalAccessStatus] = None
+        # The request ID sent from the client when the sign-in is initiated; used to troubleshoot sign-in activity. Supports $filter (eq operator only).
+        self._correlation_id: Optional[str] = None
+        # Date and time (UTC) the sign-in was initiated. Example: midnight on Jan 1, 2014 is reported as 2014-01-01T00:00:00Z. Supports $orderby and $filter (eq, le, and ge operators only).
+        self._created_date_time: Optional[datetime] = None
+        # Device information from where the sign-in occurred; includes device ID, operating system, and browser. Supports $filter (eq and startsWith operators only) on browser and operatingSytem properties.
+        self._device_detail: Optional[device_detail.DeviceDetail] = None
+        # IP address of the client used to sign in. Supports $filter (eq and startsWith operators only).
+        self._ip_address: Optional[str] = None
+        # Indicates if a sign-in is interactive or not.
+        self._is_interactive: Optional[bool] = None
+        # Provides the city, state, and country code where the sign-in originated. Supports $filter (eq and startsWith operators only) on city, state, and countryOrRegion properties.
+        self._location: Optional[sign_in_location.SignInLocation] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Name of the resource the user signed into. Supports $filter (eq operator only).
+        self._resource_display_name: Optional[str] = None
+        # ID of the resource that the user signed into. Supports $filter (eq operator only).
+        self._resource_id: Optional[str] = None
+        # Provides the 'reason' behind a specific state of a risky user, sign-in or a risk event. The possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, unknownFutureValue. The value none means that no action has been performed on the user or sign-in so far.  Supports $filter (eq operator only).Note: Details for this property require an Azure AD Premium P2 license. Other licenses return the value hidden.
+        self._risk_detail: Optional[risk_detail.RiskDetail] = None
+        # Risk event types associated with the sign-in. The possible values are: unlikelyTravel, anonymizedIPAddress, maliciousIPAddress, unfamiliarFeatures, malwareInfectedIPAddress, suspiciousIPAddress, leakedCredentials, investigationsThreatIntelligence,  generic, and unknownFutureValue. Supports $filter (eq operator only).
+        self._risk_event_types: Optional[List[risk_event_type.RiskEventType]] = None
+        # The list of risk event types associated with the sign-in. Possible values: unlikelyTravel, anonymizedIPAddress, maliciousIPAddress, unfamiliarFeatures, malwareInfectedIPAddress, suspiciousIPAddress, leakedCredentials, investigationsThreatIntelligence,  generic, or unknownFutureValue. Supports $filter (eq and startsWith operators only).
+        self._risk_event_types_v2: Optional[List[str]] = None
+        # Aggregated risk level. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in was not enabled for Azure AD Identity Protection. Supports $filter (eq operator only).  Note: Details for this property are only available for Azure AD Premium P2 customers. All other customers will be returned hidden.
+        self._risk_level_aggregated: Optional[risk_level.RiskLevel] = None
+        # Risk level during sign-in. The possible values are: none, low, medium, high, hidden, and unknownFutureValue. The value hidden means the user or sign-in was not enabled for Azure AD Identity Protection.  Supports $filter (eq operator only). Note: Details for this property are only available for Azure AD Premium P2 customers. All other customers will be returned hidden.
+        self._risk_level_during_sign_in: Optional[risk_level.RiskLevel] = None
+        # Reports status of the risky user, sign-in, or a risk event. The possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue. Supports $filter (eq operator only).
+        self._risk_state: Optional[risk_state.RiskState] = None
+        # Sign-in status. Includes the error code and description of the error (in case of a sign-in failure). Supports $filter (eq operator only) on errorCode property.
+        self._status: Optional[sign_in_status.SignInStatus] = None
+        # Display name of the user that initiated the sign-in. Supports $filter (eq and startsWith operators only).
+        self._user_display_name: Optional[str] = None
+        # ID of the user that initiated the sign-in. Supports $filter (eq operator only).
+        self._user_id: Optional[str] = None
+        # User principal name of the user that initiated the sign-in. Supports $filter (eq and startsWith operators only).
+        self._user_principal_name: Optional[str] = None
+    
     @property
     def correlation_id(self,) -> Optional[str]:
         """
@@ -216,9 +223,7 @@ class SignIn(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import applied_conditional_access_policy, conditional_access_status, device_detail, entity, risk_detail, risk_event_type, risk_level, risk_state, sign_in_location, sign_in_status
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "appliedConditionalAccessPolicies": lambda n : setattr(self, 'applied_conditional_access_policies', n.get_collection_of_object_values(applied_conditional_access_policy.AppliedConditionalAccessPolicy)),
             "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),

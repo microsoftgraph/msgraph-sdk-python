@@ -1,31 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import application_enforced_restrictions_session_control, cloud_app_security_session_control, persistent_browser_session_control, sign_in_frequency_session_control
+application_enforced_restrictions_session_control = lazy_import('msgraph.generated.models.application_enforced_restrictions_session_control')
+cloud_app_security_session_control = lazy_import('msgraph.generated.models.cloud_app_security_session_control')
+persistent_browser_session_control = lazy_import('msgraph.generated.models.persistent_browser_session_control')
+sign_in_frequency_session_control = lazy_import('msgraph.generated.models.sign_in_frequency_session_control')
 
 class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new conditionalAccessSessionControls and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Session control to enforce application restrictions. Only Exchange Online and Sharepoint Online support this session control.
-        self._application_enforced_restrictions: Optional[application_enforced_restrictions_session_control.ApplicationEnforcedRestrictionsSessionControl] = None
-        # Session control to apply cloud app security.
-        self._cloud_app_security: Optional[cloud_app_security_session_control.CloudAppSecuritySessionControl] = None
-        # Session control that determines whether it is acceptable for Azure AD to extend existing sessions based on information collected prior to an outage or not.
-        self._disable_resilience_defaults: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Session control to define whether to persist cookies or not. All apps should be selected for this session control to work correctly.
-        self._persistent_browser: Optional[persistent_browser_session_control.PersistentBrowserSessionControl] = None
-        # Session control to enforce signin frequency.
-        self._sign_in_frequency: Optional[sign_in_frequency_session_control.SignInFrequencySessionControl] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -77,6 +60,26 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
         """
         self._cloud_app_security = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new conditionalAccessSessionControls and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Session control to enforce application restrictions. Only Exchange Online and Sharepoint Online support this session control.
+        self._application_enforced_restrictions: Optional[application_enforced_restrictions_session_control.ApplicationEnforcedRestrictionsSessionControl] = None
+        # Session control to apply cloud app security.
+        self._cloud_app_security: Optional[cloud_app_security_session_control.CloudAppSecuritySessionControl] = None
+        # Session control that determines whether it is acceptable for Azure AD to extend existing sessions based on information collected prior to an outage or not.
+        self._disable_resilience_defaults: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Session control to define whether to persist cookies or not. All apps should be selected for this session control to work correctly.
+        self._persistent_browser: Optional[persistent_browser_session_control.PersistentBrowserSessionControl] = None
+        # Session control to enforce signin frequency.
+        self._sign_in_frequency: Optional[sign_in_frequency_session_control.SignInFrequencySessionControl] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessSessionControls:
         """
@@ -111,9 +114,7 @@ class ConditionalAccessSessionControls(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import application_enforced_restrictions_session_control, cloud_app_security_session_control, persistent_browser_session_control, sign_in_frequency_session_control
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "applicationEnforcedRestrictions": lambda n : setattr(self, 'application_enforced_restrictions', n.get_object_value(application_enforced_restrictions_session_control.ApplicationEnforcedRestrictionsSessionControl)),
             "cloudAppSecurity": lambda n : setattr(self, 'cloud_app_security', n.get_object_value(cloud_app_security_session_control.CloudAppSecuritySessionControl)),
             "disableResilienceDefaults": lambda n : setattr(self, 'disable_resilience_defaults', n.get_bool_value()),

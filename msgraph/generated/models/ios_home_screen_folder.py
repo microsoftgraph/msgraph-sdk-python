@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import ios_home_screen_folder_page, ios_home_screen_item
-
-from . import ios_home_screen_item
+ios_home_screen_folder_page = lazy_import('msgraph.generated.models.ios_home_screen_folder_page')
+ios_home_screen_item = lazy_import('msgraph.generated.models.ios_home_screen_item')
 
 class IosHomeScreenFolder(ios_home_screen_item.IosHomeScreenItem):
     def __init__(self,) -> None:
@@ -34,9 +33,7 @@ class IosHomeScreenFolder(ios_home_screen_item.IosHomeScreenItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ios_home_screen_folder_page, ios_home_screen_item
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "pages": lambda n : setattr(self, 'pages', n.get_collection_of_object_values(ios_home_screen_folder_page.IosHomeScreenFolderPage)),
         }
         super_fields = super().get_field_deserializers()

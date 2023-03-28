@@ -1,23 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import search_content
+search_content = lazy_import('msgraph.generated.models.search_content')
 
 class SharePointOneDriveOptions(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new sharePointOneDriveOptions and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The type of search content. The possible values are: sharedContent, privateContent, unknownFutureValue. Read-only.
-        self._include_content: Optional[search_content.SearchContent] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -34,6 +22,18 @@ class SharePointOneDriveOptions(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new sharePointOneDriveOptions and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The type of search content. The possible values are: sharedContent, privateContent, unknownFutureValue. Read-only.
+        self._include_content: Optional[search_content.SearchContent] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharePointOneDriveOptions:
@@ -52,9 +52,7 @@ class SharePointOneDriveOptions(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import search_content
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "includeContent": lambda n : setattr(self, 'include_content', n.get_enum_value(search_content.SearchContent)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

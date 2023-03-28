@@ -1,11 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, shared_insight, trending, used_insight
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+shared_insight = lazy_import('msgraph.generated.models.shared_insight')
+trending = lazy_import('msgraph.generated.models.trending')
+used_insight = lazy_import('msgraph.generated.models.used_insight')
 
 class OfficeGraphInsights(entity.Entity):
     def __init__(self,) -> None:
@@ -39,9 +40,7 @@ class OfficeGraphInsights(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, shared_insight, trending, used_insight
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "shared": lambda n : setattr(self, 'shared', n.get_collection_of_object_values(shared_insight.SharedInsight)),
             "trending": lambda n : setattr(self, 'trending', n.get_collection_of_object_values(trending.Trending)),
             "used": lambda n : setattr(self, 'used', n.get_collection_of_object_values(used_insight.UsedInsight)),

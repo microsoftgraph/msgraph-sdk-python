@@ -1,12 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import drive, drive_item, entity, identity_set, item_reference, list, list_item, shared_drive_item, site, user
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+item_reference = lazy_import('msgraph.generated.models.item_reference')
+user = lazy_import('msgraph.generated.models.user')
 
 class BaseItem(entity.Entity):
     def __init__(self,) -> None:
@@ -100,33 +101,6 @@ class BaseItem(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.drive":
-                from . import drive
-
-                return drive.Drive()
-            if mapping_value == "#microsoft.graph.driveItem":
-                from . import drive_item
-
-                return drive_item.DriveItem()
-            if mapping_value == "#microsoft.graph.list":
-                from . import list
-
-                return list.List()
-            if mapping_value == "#microsoft.graph.listItem":
-                from . import list_item
-
-                return list_item.ListItem()
-            if mapping_value == "#microsoft.graph.sharedDriveItem":
-                from . import shared_drive_item
-
-                return shared_drive_item.SharedDriveItem()
-            if mapping_value == "#microsoft.graph.site":
-                from . import site
-
-                return site.Site()
         return BaseItem()
     
     @property
@@ -168,9 +142,7 @@ class BaseItem(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import drive, drive_item, entity, identity_set, item_reference, list, list_item, shared_drive_item, site, user
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
             "createdByUser": lambda n : setattr(self, 'created_by_user', n.get_object_value(user.User)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),

@@ -1,27 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import chat_message_mentioned_identity_set
+chat_message_mentioned_identity_set = lazy_import('msgraph.generated.models.chat_message_mentioned_identity_set')
 
 class ChatMessageMention(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new chatMessageMention and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Index of an entity being mentioned in the specified chatMessage. Matches the {index} value in the corresponding <at id='{index}'> tag in the message body.
-        self._id: Optional[int] = None
-        # String used to represent the mention. For example, a user's display name, a team name.
-        self._mention_text: Optional[str] = None
-        # The entity (user, application, team, or channel) that was @mentioned.
-        self._mentioned: Optional[chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,6 +22,22 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new chatMessageMention and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Index of an entity being mentioned in the specified chatMessage. Matches the {index} value in the corresponding <at id='{index}'> tag in the message body.
+        self._id: Optional[int] = None
+        # String used to represent the mention. For example, a user's display name, a team name.
+        self._mention_text: Optional[str] = None
+        # The entity (user, application, team, or channel) that was @mentioned.
+        self._mentioned: Optional[chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessageMention:
@@ -56,9 +56,7 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import chat_message_mentioned_identity_set
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "id": lambda n : setattr(self, 'id', n.get_int_value()),
             "mentioned": lambda n : setattr(self, 'mentioned', n.get_object_value(chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet)),
             "mentionText": lambda n : setattr(self, 'mention_text', n.get_str_value()),

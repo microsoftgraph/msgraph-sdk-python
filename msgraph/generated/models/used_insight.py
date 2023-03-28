@@ -1,11 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, resource_reference, resource_visualization, usage_details
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+resource_reference = lazy_import('msgraph.generated.models.resource_reference')
+resource_visualization = lazy_import('msgraph.generated.models.resource_visualization')
+usage_details = lazy_import('msgraph.generated.models.usage_details')
 
 class UsedInsight(entity.Entity):
     def __init__(self,) -> None:
@@ -41,9 +42,7 @@ class UsedInsight(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, resource_reference, resource_visualization, usage_details
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "lastUsed": lambda n : setattr(self, 'last_used', n.get_object_value(usage_details.UsageDetails)),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(entity.Entity)),
             "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(resource_reference.ResourceReference)),

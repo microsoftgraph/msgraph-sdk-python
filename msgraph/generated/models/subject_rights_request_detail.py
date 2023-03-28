@@ -1,11 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import key_value_pair
+key_value_pair = lazy_import('msgraph.generated.models.key_value_pair')
 
 class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new subjectRightsRequestDetail and sets the default values.
@@ -29,23 +46,6 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         self._signed_off_item_count: Optional[int] = None
         # Total item size in bytes.
         self._total_item_size: Optional[int] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SubjectRightsRequestDetail:
@@ -81,9 +81,7 @@ class SubjectRightsRequestDetail(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import key_value_pair
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "excludedItemCount": lambda n : setattr(self, 'excluded_item_count', n.get_int_value()),
             "insightCounts": lambda n : setattr(self, 'insight_counts', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
             "itemCount": lambda n : setattr(self, 'item_count', n.get_int_value()),

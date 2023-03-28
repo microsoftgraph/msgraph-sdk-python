@@ -1,282 +1,26 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import app_list_item, app_list_type, device_configuration, ios_network_usage_rule, media_content_rating_australia, media_content_rating_canada, media_content_rating_france, media_content_rating_germany, media_content_rating_ireland, media_content_rating_japan, media_content_rating_new_zealand, media_content_rating_united_kingdom, media_content_rating_united_states, rating_apps_type, required_password_type, web_browser_cookie_settings
-
-from . import device_configuration
+app_list_item = lazy_import('msgraph.generated.models.app_list_item')
+app_list_type = lazy_import('msgraph.generated.models.app_list_type')
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+ios_network_usage_rule = lazy_import('msgraph.generated.models.ios_network_usage_rule')
+media_content_rating_australia = lazy_import('msgraph.generated.models.media_content_rating_australia')
+media_content_rating_canada = lazy_import('msgraph.generated.models.media_content_rating_canada')
+media_content_rating_france = lazy_import('msgraph.generated.models.media_content_rating_france')
+media_content_rating_germany = lazy_import('msgraph.generated.models.media_content_rating_germany')
+media_content_rating_ireland = lazy_import('msgraph.generated.models.media_content_rating_ireland')
+media_content_rating_japan = lazy_import('msgraph.generated.models.media_content_rating_japan')
+media_content_rating_new_zealand = lazy_import('msgraph.generated.models.media_content_rating_new_zealand')
+media_content_rating_united_kingdom = lazy_import('msgraph.generated.models.media_content_rating_united_kingdom')
+media_content_rating_united_states = lazy_import('msgraph.generated.models.media_content_rating_united_states')
+rating_apps_type = lazy_import('msgraph.generated.models.rating_apps_type')
+required_password_type = lazy_import('msgraph.generated.models.required_password_type')
+web_browser_cookie_settings = lazy_import('msgraph.generated.models.web_browser_cookie_settings')
 
 class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IosGeneralDeviceConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.iosGeneralDeviceConfiguration"
-        # Indicates whether or not to allow account modification when the device is in supervised mode.
-        self._account_block_modification: Optional[bool] = None
-        # Indicates whether or not to allow activation lock when the device is in the supervised mode.
-        self._activation_lock_allow_when_supervised: Optional[bool] = None
-        # Indicates whether or not to allow AirDrop when the device is in supervised mode.
-        self._air_drop_blocked: Optional[bool] = None
-        # Indicates whether or not to cause AirDrop to be considered an unmanaged drop target (iOS 9.0 and later).
-        self._air_drop_force_unmanaged_drop_target: Optional[bool] = None
-        # Indicates whether or not to enforce all devices receiving AirPlay requests from this device to use a pairing password.
-        self._air_play_force_pairing_password_for_outgoing_requests: Optional[bool] = None
-        # Indicates whether or not to block the automatic downloading of apps purchased on other devices when the device is in supervised mode (iOS 9.0 and later).
-        self._app_store_block_automatic_downloads: Optional[bool] = None
-        # Indicates whether or not to block the user from making in app purchases.
-        self._app_store_block_in_app_purchases: Optional[bool] = None
-        # Indicates whether or not to block the App Store app, not restricting installation through Host apps. Applies to supervised mode only (iOS 9.0 and later).
-        self._app_store_block_u_i_app_installation: Optional[bool] = None
-        # Indicates whether or not to block the user from using the App Store. Requires a supervised device for iOS 13 and later.
-        self._app_store_blocked: Optional[bool] = None
-        # Indicates whether or not to require a password when using the app store.
-        self._app_store_require_password: Optional[bool] = None
-        # Indicates whether or not to block the user from using News when the device is in supervised mode (iOS 9.0 and later).
-        self._apple_news_blocked: Optional[bool] = None
-        # Indicates whether or not to allow Apple Watch pairing when the device is in supervised mode (iOS 9.0 and later).
-        self._apple_watch_block_pairing: Optional[bool] = None
-        # Indicates whether or not to force a paired Apple Watch to use Wrist Detection (iOS 8.2 and later).
-        self._apple_watch_force_wrist_detection: Optional[bool] = None
-        # Gets or sets the list of iOS apps allowed to autonomously enter Single App Mode. Supervised only. iOS 7.0 and later. This collection can contain a maximum of 500 elements.
-        self._apps_single_app_mode_list: Optional[List[app_list_item.AppListItem]] = None
-        # List of apps in the visibility list (either visible/launchable apps list or hidden/unlaunchable apps list, controlled by AppsVisibilityListType) (iOS 9.3 and later). This collection can contain a maximum of 10000 elements.
-        self._apps_visibility_list: Optional[List[app_list_item.AppListItem]] = None
-        # Possible values of the compliance app list.
-        self._apps_visibility_list_type: Optional[app_list_type.AppListType] = None
-        # Indicates whether or not to allow modification of Bluetooth settings when the device is in supervised mode (iOS 10.0 and later).
-        self._bluetooth_block_modification: Optional[bool] = None
-        # Indicates whether or not to block the user from accessing the camera of the device. Requires a supervised device for iOS 13 and later.
-        self._camera_blocked: Optional[bool] = None
-        # Indicates whether or not to block data roaming.
-        self._cellular_block_data_roaming: Optional[bool] = None
-        # Indicates whether or not to block global background fetch while roaming.
-        self._cellular_block_global_background_fetch_while_roaming: Optional[bool] = None
-        # Indicates whether or not to allow changes to cellular app data usage settings when the device is in supervised mode.
-        self._cellular_block_per_app_data_modification: Optional[bool] = None
-        # Indicates whether or not to block Personal Hotspot.
-        self._cellular_block_personal_hotspot: Optional[bool] = None
-        # Indicates whether or not to block voice roaming.
-        self._cellular_block_voice_roaming: Optional[bool] = None
-        # Indicates whether or not to block untrusted TLS certificates.
-        self._certificates_block_untrusted_tls_certificates: Optional[bool] = None
-        # Indicates whether or not to allow remote screen observation by Classroom app when the device is in supervised mode (iOS 9.3 and later).
-        self._classroom_app_block_remote_screen_observation: Optional[bool] = None
-        # Indicates whether or not to automatically give permission to the teacher of a managed course on the Classroom app to view a student's screen without prompting when the device is in supervised mode.
-        self._classroom_app_force_unprompted_screen_observation: Optional[bool] = None
-        # Possible values of the compliance app list.
-        self._compliant_app_list_type: Optional[app_list_type.AppListType] = None
-        # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
-        self._compliant_apps_list: Optional[List[app_list_item.AppListItem]] = None
-        # Indicates whether or not to block the user from installing configuration profiles and certificates interactively when the device is in supervised mode.
-        self._configuration_profile_block_changes: Optional[bool] = None
-        # Indicates whether or not to block definition lookup when the device is in supervised mode (iOS 8.1.3 and later ).
-        self._definition_lookup_blocked: Optional[bool] = None
-        # Indicates whether or not to allow the user to enables restrictions in the device settings when the device is in supervised mode.
-        self._device_block_enable_restrictions: Optional[bool] = None
-        # Indicates whether or not to allow the use of the 'Erase all content and settings' option on the device when the device is in supervised mode.
-        self._device_block_erase_content_and_settings: Optional[bool] = None
-        # Indicates whether or not to allow device name modification when the device is in supervised mode (iOS 9.0 and later).
-        self._device_block_name_modification: Optional[bool] = None
-        # Indicates whether or not to block diagnostic data submission.
-        self._diagnostic_data_block_submission: Optional[bool] = None
-        # Indicates whether or not to allow diagnostics submission settings modification when the device is in supervised mode (iOS 9.3.2 and later).
-        self._diagnostic_data_block_submission_modification: Optional[bool] = None
-        # Indicates whether or not to block the user from viewing managed documents in unmanaged apps.
-        self._documents_block_managed_documents_in_unmanaged_apps: Optional[bool] = None
-        # Indicates whether or not to block the user from viewing unmanaged documents in managed apps.
-        self._documents_block_unmanaged_documents_in_managed_apps: Optional[bool] = None
-        # An email address lacking a suffix that matches any of these strings will be considered out-of-domain.
-        self._email_in_domain_suffixes: Optional[List[str]] = None
-        # Indicates whether or not to block the user from trusting an enterprise app.
-        self._enterprise_app_block_trust: Optional[bool] = None
-        # [Deprecated] Configuring this setting and setting the value to 'true' has no effect on the device.
-        self._enterprise_app_block_trust_modification: Optional[bool] = None
-        # Indicates whether or not to block the user from using FaceTime. Requires a supervised device for iOS 13 and later.
-        self._face_time_blocked: Optional[bool] = None
-        # Indicates whether or not to block changes to Find My Friends when the device is in supervised mode.
-        self._find_my_friends_blocked: Optional[bool] = None
-        # Indicates whether or not to block the user from using Game Center when the device is in supervised mode.
-        self._game_center_blocked: Optional[bool] = None
-        # Indicates whether or not to block the user from having friends in Game Center. Requires a supervised device for iOS 13 and later.
-        self._gaming_block_game_center_friends: Optional[bool] = None
-        # Indicates whether or not to block the user from using multiplayer gaming. Requires a supervised device for iOS 13 and later.
-        self._gaming_block_multiplayer: Optional[bool] = None
-        # indicates whether or not to allow host pairing to control the devices an iOS device can pair with when the iOS device is in supervised mode.
-        self._host_pairing_blocked: Optional[bool] = None
-        # Indicates whether or not to block the user from downloading media from the iBookstore that has been tagged as erotica.
-        self._i_books_store_block_erotica: Optional[bool] = None
-        # Indicates whether or not to block the user from using the iBooks Store when the device is in supervised mode.
-        self._i_books_store_blocked: Optional[bool] = None
-        # Indicates whether or not to block the user from continuing work they started on iOS device to another iOS or macOS device.
-        self._i_cloud_block_activity_continuation: Optional[bool] = None
-        # Indicates whether or not to block iCloud backup. Requires a supervised device for iOS 13 and later.
-        self._i_cloud_block_backup: Optional[bool] = None
-        # Indicates whether or not to block iCloud document sync. Requires a supervised device for iOS 13 and later.
-        self._i_cloud_block_document_sync: Optional[bool] = None
-        # Indicates whether or not to block Managed Apps Cloud Sync.
-        self._i_cloud_block_managed_apps_sync: Optional[bool] = None
-        # Indicates whether or not to block iCloud Photo Library.
-        self._i_cloud_block_photo_library: Optional[bool] = None
-        # Indicates whether or not to block iCloud Photo Stream Sync.
-        self._i_cloud_block_photo_stream_sync: Optional[bool] = None
-        # Indicates whether or not to block Shared Photo Stream.
-        self._i_cloud_block_shared_photo_stream: Optional[bool] = None
-        # Indicates whether or not to require backups to iCloud be encrypted.
-        self._i_cloud_require_encrypted_backup: Optional[bool] = None
-        # Indicates whether or not to block the user from accessing explicit content in iTunes and the App Store. Requires a supervised device for iOS 13 and later.
-        self._i_tunes_block_explicit_content: Optional[bool] = None
-        # Indicates whether or not to block Music service and revert Music app to classic mode when the device is in supervised mode (iOS 9.3 and later and macOS 10.12 and later).
-        self._i_tunes_block_music_service: Optional[bool] = None
-        # Indicates whether or not to block the user from using iTunes Radio when the device is in supervised mode (iOS 9.3 and later).
-        self._i_tunes_block_radio: Optional[bool] = None
-        # Indicates whether or not to block keyboard auto-correction when the device is in supervised mode (iOS 8.1.3 and later).
-        self._keyboard_block_auto_correct: Optional[bool] = None
-        # Indicates whether or not to block the user from using dictation input when the device is in supervised mode.
-        self._keyboard_block_dictation: Optional[bool] = None
-        # Indicates whether or not to block predictive keyboards when device is in supervised mode (iOS 8.1.3 and later).
-        self._keyboard_block_predictive: Optional[bool] = None
-        # Indicates whether or not to block keyboard shortcuts when the device is in supervised mode (iOS 9.0 and later).
-        self._keyboard_block_shortcuts: Optional[bool] = None
-        # Indicates whether or not to block keyboard spell-checking when the device is in supervised mode (iOS 8.1.3 and later).
-        self._keyboard_block_spell_check: Optional[bool] = None
-        # Indicates whether or not to allow assistive speak while in kiosk mode.
-        self._kiosk_mode_allow_assistive_speak: Optional[bool] = None
-        # Indicates whether or not to allow access to the Assistive Touch Settings while in kiosk mode.
-        self._kiosk_mode_allow_assistive_touch_settings: Optional[bool] = None
-        # Indicates whether or not to allow device auto lock while in kiosk mode. This property's functionality is redundant with the OS default and is deprecated. Use KioskModeBlockAutoLock instead.
-        self._kiosk_mode_allow_auto_lock: Optional[bool] = None
-        # Indicates whether or not to allow access to the Color Inversion Settings while in kiosk mode.
-        self._kiosk_mode_allow_color_inversion_settings: Optional[bool] = None
-        # Indicates whether or not to allow use of the ringer switch while in kiosk mode. This property's functionality is redundant with the OS default and is deprecated. Use KioskModeBlockRingerSwitch instead.
-        self._kiosk_mode_allow_ringer_switch: Optional[bool] = None
-        # Indicates whether or not to allow screen rotation while in kiosk mode. This property's functionality is redundant with the OS default and is deprecated. Use KioskModeBlockScreenRotation instead.
-        self._kiosk_mode_allow_screen_rotation: Optional[bool] = None
-        # Indicates whether or not to allow use of the sleep button while in kiosk mode. This property's functionality is redundant with the OS default and is deprecated. Use KioskModeBlockSleepButton instead.
-        self._kiosk_mode_allow_sleep_button: Optional[bool] = None
-        # Indicates whether or not to allow use of the touchscreen while in kiosk mode. This property's functionality is redundant with the OS default and is deprecated. Use KioskModeBlockTouchscreen instead.
-        self._kiosk_mode_allow_touchscreen: Optional[bool] = None
-        # Indicates whether or not to allow access to the voice over settings while in kiosk mode.
-        self._kiosk_mode_allow_voice_over_settings: Optional[bool] = None
-        # Indicates whether or not to allow use of the volume buttons while in kiosk mode. This property's functionality is redundant with the OS default and is deprecated. Use KioskModeBlockVolumeButtons instead.
-        self._kiosk_mode_allow_volume_buttons: Optional[bool] = None
-        # Indicates whether or not to allow access to the zoom settings while in kiosk mode.
-        self._kiosk_mode_allow_zoom_settings: Optional[bool] = None
-        # URL in the app store to the app to use for kiosk mode. Use if KioskModeManagedAppId is not known.
-        self._kiosk_mode_app_store_url: Optional[str] = None
-        # ID for built-in apps to use for kiosk mode. Used when KioskModeManagedAppId and KioskModeAppStoreUrl are not set.
-        self._kiosk_mode_built_in_app_id: Optional[str] = None
-        # Managed app id of the app to use for kiosk mode. If KioskModeManagedAppId is specified then KioskModeAppStoreUrl will be ignored.
-        self._kiosk_mode_managed_app_id: Optional[str] = None
-        # Indicates whether or not to require assistive touch while in kiosk mode.
-        self._kiosk_mode_require_assistive_touch: Optional[bool] = None
-        # Indicates whether or not to require color inversion while in kiosk mode.
-        self._kiosk_mode_require_color_inversion: Optional[bool] = None
-        # Indicates whether or not to require mono audio while in kiosk mode.
-        self._kiosk_mode_require_mono_audio: Optional[bool] = None
-        # Indicates whether or not to require voice over while in kiosk mode.
-        self._kiosk_mode_require_voice_over: Optional[bool] = None
-        # Indicates whether or not to require zoom while in kiosk mode.
-        self._kiosk_mode_require_zoom: Optional[bool] = None
-        # Indicates whether or not to block the user from using control center on the lock screen.
-        self._lock_screen_block_control_center: Optional[bool] = None
-        # Indicates whether or not to block the user from using the notification view on the lock screen.
-        self._lock_screen_block_notification_view: Optional[bool] = None
-        # Indicates whether or not to block the user from using passbook when the device is locked.
-        self._lock_screen_block_passbook: Optional[bool] = None
-        # Indicates whether or not to block the user from using the Today View on the lock screen.
-        self._lock_screen_block_today_view: Optional[bool] = None
-        # Apps rating as in media content
-        self._media_content_rating_apps: Optional[rating_apps_type.RatingAppsType] = None
-        # Media content rating settings for Australia
-        self._media_content_rating_australia: Optional[media_content_rating_australia.MediaContentRatingAustralia] = None
-        # Media content rating settings for Canada
-        self._media_content_rating_canada: Optional[media_content_rating_canada.MediaContentRatingCanada] = None
-        # Media content rating settings for France
-        self._media_content_rating_france: Optional[media_content_rating_france.MediaContentRatingFrance] = None
-        # Media content rating settings for Germany
-        self._media_content_rating_germany: Optional[media_content_rating_germany.MediaContentRatingGermany] = None
-        # Media content rating settings for Ireland
-        self._media_content_rating_ireland: Optional[media_content_rating_ireland.MediaContentRatingIreland] = None
-        # Media content rating settings for Japan
-        self._media_content_rating_japan: Optional[media_content_rating_japan.MediaContentRatingJapan] = None
-        # Media content rating settings for New Zealand
-        self._media_content_rating_new_zealand: Optional[media_content_rating_new_zealand.MediaContentRatingNewZealand] = None
-        # Media content rating settings for United Kingdom
-        self._media_content_rating_united_kingdom: Optional[media_content_rating_united_kingdom.MediaContentRatingUnitedKingdom] = None
-        # Media content rating settings for United States
-        self._media_content_rating_united_states: Optional[media_content_rating_united_states.MediaContentRatingUnitedStates] = None
-        # Indicates whether or not to block the user from using the Messages app on the supervised device.
-        self._messages_blocked: Optional[bool] = None
-        # List of managed apps and the network rules that applies to them. This collection can contain a maximum of 1000 elements.
-        self._network_usage_rules: Optional[List[ios_network_usage_rule.IosNetworkUsageRule]] = None
-        # Indicates whether or not to allow notifications settings modification (iOS 9.3 and later).
-        self._notifications_block_settings_modification: Optional[bool] = None
-        # Block modification of registered Touch ID fingerprints when in supervised mode.
-        self._passcode_block_fingerprint_modification: Optional[bool] = None
-        # Indicates whether or not to block fingerprint unlock.
-        self._passcode_block_fingerprint_unlock: Optional[bool] = None
-        # Indicates whether or not to allow passcode modification on the supervised device (iOS 9.0 and later).
-        self._passcode_block_modification: Optional[bool] = None
-        # Indicates whether or not to block simple passcodes.
-        self._passcode_block_simple: Optional[bool] = None
-        # Number of days before the passcode expires. Valid values 1 to 65535
-        self._passcode_expiration_days: Optional[int] = None
-        # Number of character sets a passcode must contain. Valid values 0 to 4
-        self._passcode_minimum_character_set_count: Optional[int] = None
-        # Minimum length of passcode. Valid values 4 to 14
-        self._passcode_minimum_length: Optional[int] = None
-        # Minutes of inactivity before a passcode is required.
-        self._passcode_minutes_of_inactivity_before_lock: Optional[int] = None
-        # Minutes of inactivity before the screen times out.
-        self._passcode_minutes_of_inactivity_before_screen_timeout: Optional[int] = None
-        # Number of previous passcodes to block. Valid values 1 to 24
-        self._passcode_previous_passcode_block_count: Optional[int] = None
-        # Indicates whether or not to require a passcode.
-        self._passcode_required: Optional[bool] = None
-        # Possible values of required passwords.
-        self._passcode_required_type: Optional[required_password_type.RequiredPasswordType] = None
-        # Number of sign in failures allowed before wiping the device. Valid values 2 to 11
-        self._passcode_sign_in_failure_count_before_wipe: Optional[int] = None
-        # Indicates whether or not to block the user from using podcasts on the supervised device (iOS 8.0 and later).
-        self._podcasts_blocked: Optional[bool] = None
-        # Indicates whether or not to block the user from using Auto fill in Safari. Requires a supervised device for iOS 13 and later.
-        self._safari_block_autofill: Optional[bool] = None
-        # Indicates whether or not to block JavaScript in Safari.
-        self._safari_block_java_script: Optional[bool] = None
-        # Indicates whether or not to block popups in Safari.
-        self._safari_block_popups: Optional[bool] = None
-        # Indicates whether or not to block the user from using Safari. Requires a supervised device for iOS 13 and later.
-        self._safari_blocked: Optional[bool] = None
-        # Web Browser Cookie Settings.
-        self._safari_cookie_settings: Optional[web_browser_cookie_settings.WebBrowserCookieSettings] = None
-        # URLs matching the patterns listed here will be considered managed.
-        self._safari_managed_domains: Optional[List[str]] = None
-        # Users can save passwords in Safari only from URLs matching the patterns listed here. Applies to devices in supervised mode (iOS 9.3 and later).
-        self._safari_password_auto_fill_domains: Optional[List[str]] = None
-        # Indicates whether or not to require fraud warning in Safari.
-        self._safari_require_fraud_warning: Optional[bool] = None
-        # Indicates whether or not to block the user from taking Screenshots.
-        self._screen_capture_blocked: Optional[bool] = None
-        # Indicates whether or not to block Siri from querying user-generated content when used on a supervised device.
-        self._siri_block_user_generated_content: Optional[bool] = None
-        # Indicates whether or not to block the user from using Siri.
-        self._siri_blocked: Optional[bool] = None
-        # Indicates whether or not to block the user from using Siri when locked.
-        self._siri_blocked_when_locked: Optional[bool] = None
-        # Indicates whether or not to prevent Siri from dictating, or speaking profane language on supervised device.
-        self._siri_require_profanity_filter: Optional[bool] = None
-        # Indicates whether or not to block Spotlight search from returning internet results on supervised device.
-        self._spotlight_block_internet_results: Optional[bool] = None
-        # Indicates whether or not to block voice dialing.
-        self._voice_dialing_blocked: Optional[bool] = None
-        # Indicates whether or not to allow wallpaper modification on supervised device (iOS 9.0 and later) .
-        self._wallpaper_block_modification: Optional[bool] = None
-        # Indicates whether or not to force the device to use only Wi-Fi networks from configuration profiles when the device is in supervised mode. Available for devices running iOS and iPadOS versions 14.4 and earlier. Devices running 14.5+ should use the setting, 'WiFiConnectToAllowedNetworksOnlyForced.
-        self._wi_fi_connect_only_to_configured_networks: Optional[bool] = None
-    
     @property
     def account_block_modification(self,) -> Optional[bool]:
         """
@@ -770,6 +514,275 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         """
         self._configuration_profile_block_changes = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new IosGeneralDeviceConfiguration and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.iosGeneralDeviceConfiguration"
+        # Indicates whether or not to allow account modification when the device is in supervised mode.
+        self._account_block_modification: Optional[bool] = None
+        # Indicates whether or not to allow activation lock when the device is in the supervised mode.
+        self._activation_lock_allow_when_supervised: Optional[bool] = None
+        # Indicates whether or not to allow AirDrop when the device is in supervised mode.
+        self._air_drop_blocked: Optional[bool] = None
+        # Indicates whether or not to cause AirDrop to be considered an unmanaged drop target (iOS 9.0 and later).
+        self._air_drop_force_unmanaged_drop_target: Optional[bool] = None
+        # Indicates whether or not to enforce all devices receiving AirPlay requests from this device to use a pairing password.
+        self._air_play_force_pairing_password_for_outgoing_requests: Optional[bool] = None
+        # Indicates whether or not to block the automatic downloading of apps purchased on other devices when the device is in supervised mode (iOS 9.0 and later).
+        self._app_store_block_automatic_downloads: Optional[bool] = None
+        # Indicates whether or not to block the user from making in app purchases.
+        self._app_store_block_in_app_purchases: Optional[bool] = None
+        # Indicates whether or not to block the App Store app, not restricting installation through Host apps. Applies to supervised mode only (iOS 9.0 and later).
+        self._app_store_block_u_i_app_installation: Optional[bool] = None
+        # Indicates whether or not to block the user from using the App Store. Requires a supervised device for iOS 13 and later.
+        self._app_store_blocked: Optional[bool] = None
+        # Indicates whether or not to require a password when using the app store.
+        self._app_store_require_password: Optional[bool] = None
+        # Indicates whether or not to block the user from using News when the device is in supervised mode (iOS 9.0 and later).
+        self._apple_news_blocked: Optional[bool] = None
+        # Indicates whether or not to allow Apple Watch pairing when the device is in supervised mode (iOS 9.0 and later).
+        self._apple_watch_block_pairing: Optional[bool] = None
+        # Indicates whether or not to force a paired Apple Watch to use Wrist Detection (iOS 8.2 and later).
+        self._apple_watch_force_wrist_detection: Optional[bool] = None
+        # Gets or sets the list of iOS apps allowed to autonomously enter Single App Mode. Supervised only. iOS 7.0 and later. This collection can contain a maximum of 500 elements.
+        self._apps_single_app_mode_list: Optional[List[app_list_item.AppListItem]] = None
+        # List of apps in the visibility list (either visible/launchable apps list or hidden/unlaunchable apps list, controlled by AppsVisibilityListType) (iOS 9.3 and later). This collection can contain a maximum of 10000 elements.
+        self._apps_visibility_list: Optional[List[app_list_item.AppListItem]] = None
+        # Possible values of the compliance app list.
+        self._apps_visibility_list_type: Optional[app_list_type.AppListType] = None
+        # Indicates whether or not to allow modification of Bluetooth settings when the device is in supervised mode (iOS 10.0 and later).
+        self._bluetooth_block_modification: Optional[bool] = None
+        # Indicates whether or not to block the user from accessing the camera of the device. Requires a supervised device for iOS 13 and later.
+        self._camera_blocked: Optional[bool] = None
+        # Indicates whether or not to block data roaming.
+        self._cellular_block_data_roaming: Optional[bool] = None
+        # Indicates whether or not to block global background fetch while roaming.
+        self._cellular_block_global_background_fetch_while_roaming: Optional[bool] = None
+        # Indicates whether or not to allow changes to cellular app data usage settings when the device is in supervised mode.
+        self._cellular_block_per_app_data_modification: Optional[bool] = None
+        # Indicates whether or not to block Personal Hotspot.
+        self._cellular_block_personal_hotspot: Optional[bool] = None
+        # Indicates whether or not to block voice roaming.
+        self._cellular_block_voice_roaming: Optional[bool] = None
+        # Indicates whether or not to block untrusted TLS certificates.
+        self._certificates_block_untrusted_tls_certificates: Optional[bool] = None
+        # Indicates whether or not to allow remote screen observation by Classroom app when the device is in supervised mode (iOS 9.3 and later).
+        self._classroom_app_block_remote_screen_observation: Optional[bool] = None
+        # Indicates whether or not to automatically give permission to the teacher of a managed course on the Classroom app to view a student's screen without prompting when the device is in supervised mode.
+        self._classroom_app_force_unprompted_screen_observation: Optional[bool] = None
+        # Possible values of the compliance app list.
+        self._compliant_app_list_type: Optional[app_list_type.AppListType] = None
+        # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
+        self._compliant_apps_list: Optional[List[app_list_item.AppListItem]] = None
+        # Indicates whether or not to block the user from installing configuration profiles and certificates interactively when the device is in supervised mode.
+        self._configuration_profile_block_changes: Optional[bool] = None
+        # Indicates whether or not to block definition lookup when the device is in supervised mode (iOS 8.1.3 and later ).
+        self._definition_lookup_blocked: Optional[bool] = None
+        # Indicates whether or not to allow the user to enables restrictions in the device settings when the device is in supervised mode.
+        self._device_block_enable_restrictions: Optional[bool] = None
+        # Indicates whether or not to allow the use of the 'Erase all content and settings' option on the device when the device is in supervised mode.
+        self._device_block_erase_content_and_settings: Optional[bool] = None
+        # Indicates whether or not to allow device name modification when the device is in supervised mode (iOS 9.0 and later).
+        self._device_block_name_modification: Optional[bool] = None
+        # Indicates whether or not to block diagnostic data submission.
+        self._diagnostic_data_block_submission: Optional[bool] = None
+        # Indicates whether or not to allow diagnostics submission settings modification when the device is in supervised mode (iOS 9.3.2 and later).
+        self._diagnostic_data_block_submission_modification: Optional[bool] = None
+        # Indicates whether or not to block the user from viewing managed documents in unmanaged apps.
+        self._documents_block_managed_documents_in_unmanaged_apps: Optional[bool] = None
+        # Indicates whether or not to block the user from viewing unmanaged documents in managed apps.
+        self._documents_block_unmanaged_documents_in_managed_apps: Optional[bool] = None
+        # An email address lacking a suffix that matches any of these strings will be considered out-of-domain.
+        self._email_in_domain_suffixes: Optional[List[str]] = None
+        # Indicates whether or not to block the user from trusting an enterprise app.
+        self._enterprise_app_block_trust: Optional[bool] = None
+        # [Deprecated] Configuring this setting and setting the value to 'true' has no effect on the device.
+        self._enterprise_app_block_trust_modification: Optional[bool] = None
+        # Indicates whether or not to block the user from using FaceTime. Requires a supervised device for iOS 13 and later.
+        self._face_time_blocked: Optional[bool] = None
+        # Indicates whether or not to block changes to Find My Friends when the device is in supervised mode.
+        self._find_my_friends_blocked: Optional[bool] = None
+        # Indicates whether or not to block the user from using Game Center when the device is in supervised mode.
+        self._game_center_blocked: Optional[bool] = None
+        # Indicates whether or not to block the user from having friends in Game Center. Requires a supervised device for iOS 13 and later.
+        self._gaming_block_game_center_friends: Optional[bool] = None
+        # Indicates whether or not to block the user from using multiplayer gaming. Requires a supervised device for iOS 13 and later.
+        self._gaming_block_multiplayer: Optional[bool] = None
+        # indicates whether or not to allow host pairing to control the devices an iOS device can pair with when the iOS device is in supervised mode.
+        self._host_pairing_blocked: Optional[bool] = None
+        # Indicates whether or not to block the user from downloading media from the iBookstore that has been tagged as erotica.
+        self._i_books_store_block_erotica: Optional[bool] = None
+        # Indicates whether or not to block the user from using the iBooks Store when the device is in supervised mode.
+        self._i_books_store_blocked: Optional[bool] = None
+        # Indicates whether or not to block the user from continuing work they started on iOS device to another iOS or macOS device.
+        self._i_cloud_block_activity_continuation: Optional[bool] = None
+        # Indicates whether or not to block iCloud backup. Requires a supervised device for iOS 13 and later.
+        self._i_cloud_block_backup: Optional[bool] = None
+        # Indicates whether or not to block iCloud document sync. Requires a supervised device for iOS 13 and later.
+        self._i_cloud_block_document_sync: Optional[bool] = None
+        # Indicates whether or not to block Managed Apps Cloud Sync.
+        self._i_cloud_block_managed_apps_sync: Optional[bool] = None
+        # Indicates whether or not to block iCloud Photo Library.
+        self._i_cloud_block_photo_library: Optional[bool] = None
+        # Indicates whether or not to block iCloud Photo Stream Sync.
+        self._i_cloud_block_photo_stream_sync: Optional[bool] = None
+        # Indicates whether or not to block Shared Photo Stream.
+        self._i_cloud_block_shared_photo_stream: Optional[bool] = None
+        # Indicates whether or not to require backups to iCloud be encrypted.
+        self._i_cloud_require_encrypted_backup: Optional[bool] = None
+        # Indicates whether or not to block the user from accessing explicit content in iTunes and the App Store. Requires a supervised device for iOS 13 and later.
+        self._i_tunes_block_explicit_content: Optional[bool] = None
+        # Indicates whether or not to block Music service and revert Music app to classic mode when the device is in supervised mode (iOS 9.3 and later and macOS 10.12 and later).
+        self._i_tunes_block_music_service: Optional[bool] = None
+        # Indicates whether or not to block the user from using iTunes Radio when the device is in supervised mode (iOS 9.3 and later).
+        self._i_tunes_block_radio: Optional[bool] = None
+        # Indicates whether or not to block keyboard auto-correction when the device is in supervised mode (iOS 8.1.3 and later).
+        self._keyboard_block_auto_correct: Optional[bool] = None
+        # Indicates whether or not to block the user from using dictation input when the device is in supervised mode.
+        self._keyboard_block_dictation: Optional[bool] = None
+        # Indicates whether or not to block predictive keyboards when device is in supervised mode (iOS 8.1.3 and later).
+        self._keyboard_block_predictive: Optional[bool] = None
+        # Indicates whether or not to block keyboard shortcuts when the device is in supervised mode (iOS 9.0 and later).
+        self._keyboard_block_shortcuts: Optional[bool] = None
+        # Indicates whether or not to block keyboard spell-checking when the device is in supervised mode (iOS 8.1.3 and later).
+        self._keyboard_block_spell_check: Optional[bool] = None
+        # Indicates whether or not to allow assistive speak while in kiosk mode.
+        self._kiosk_mode_allow_assistive_speak: Optional[bool] = None
+        # Indicates whether or not to allow access to the Assistive Touch Settings while in kiosk mode.
+        self._kiosk_mode_allow_assistive_touch_settings: Optional[bool] = None
+        # Indicates whether or not to allow device auto lock while in kiosk mode. This property's functionality is redundant with the OS default and is deprecated. Use KioskModeBlockAutoLock instead.
+        self._kiosk_mode_allow_auto_lock: Optional[bool] = None
+        # Indicates whether or not to allow access to the Color Inversion Settings while in kiosk mode.
+        self._kiosk_mode_allow_color_inversion_settings: Optional[bool] = None
+        # Indicates whether or not to allow use of the ringer switch while in kiosk mode. This property's functionality is redundant with the OS default and is deprecated. Use KioskModeBlockRingerSwitch instead.
+        self._kiosk_mode_allow_ringer_switch: Optional[bool] = None
+        # Indicates whether or not to allow screen rotation while in kiosk mode. This property's functionality is redundant with the OS default and is deprecated. Use KioskModeBlockScreenRotation instead.
+        self._kiosk_mode_allow_screen_rotation: Optional[bool] = None
+        # Indicates whether or not to allow use of the sleep button while in kiosk mode. This property's functionality is redundant with the OS default and is deprecated. Use KioskModeBlockSleepButton instead.
+        self._kiosk_mode_allow_sleep_button: Optional[bool] = None
+        # Indicates whether or not to allow use of the touchscreen while in kiosk mode. This property's functionality is redundant with the OS default and is deprecated. Use KioskModeBlockTouchscreen instead.
+        self._kiosk_mode_allow_touchscreen: Optional[bool] = None
+        # Indicates whether or not to allow access to the voice over settings while in kiosk mode.
+        self._kiosk_mode_allow_voice_over_settings: Optional[bool] = None
+        # Indicates whether or not to allow use of the volume buttons while in kiosk mode. This property's functionality is redundant with the OS default and is deprecated. Use KioskModeBlockVolumeButtons instead.
+        self._kiosk_mode_allow_volume_buttons: Optional[bool] = None
+        # Indicates whether or not to allow access to the zoom settings while in kiosk mode.
+        self._kiosk_mode_allow_zoom_settings: Optional[bool] = None
+        # URL in the app store to the app to use for kiosk mode. Use if KioskModeManagedAppId is not known.
+        self._kiosk_mode_app_store_url: Optional[str] = None
+        # ID for built-in apps to use for kiosk mode. Used when KioskModeManagedAppId and KioskModeAppStoreUrl are not set.
+        self._kiosk_mode_built_in_app_id: Optional[str] = None
+        # Managed app id of the app to use for kiosk mode. If KioskModeManagedAppId is specified then KioskModeAppStoreUrl will be ignored.
+        self._kiosk_mode_managed_app_id: Optional[str] = None
+        # Indicates whether or not to require assistive touch while in kiosk mode.
+        self._kiosk_mode_require_assistive_touch: Optional[bool] = None
+        # Indicates whether or not to require color inversion while in kiosk mode.
+        self._kiosk_mode_require_color_inversion: Optional[bool] = None
+        # Indicates whether or not to require mono audio while in kiosk mode.
+        self._kiosk_mode_require_mono_audio: Optional[bool] = None
+        # Indicates whether or not to require voice over while in kiosk mode.
+        self._kiosk_mode_require_voice_over: Optional[bool] = None
+        # Indicates whether or not to require zoom while in kiosk mode.
+        self._kiosk_mode_require_zoom: Optional[bool] = None
+        # Indicates whether or not to block the user from using control center on the lock screen.
+        self._lock_screen_block_control_center: Optional[bool] = None
+        # Indicates whether or not to block the user from using the notification view on the lock screen.
+        self._lock_screen_block_notification_view: Optional[bool] = None
+        # Indicates whether or not to block the user from using passbook when the device is locked.
+        self._lock_screen_block_passbook: Optional[bool] = None
+        # Indicates whether or not to block the user from using the Today View on the lock screen.
+        self._lock_screen_block_today_view: Optional[bool] = None
+        # Apps rating as in media content
+        self._media_content_rating_apps: Optional[rating_apps_type.RatingAppsType] = None
+        # Media content rating settings for Australia
+        self._media_content_rating_australia: Optional[media_content_rating_australia.MediaContentRatingAustralia] = None
+        # Media content rating settings for Canada
+        self._media_content_rating_canada: Optional[media_content_rating_canada.MediaContentRatingCanada] = None
+        # Media content rating settings for France
+        self._media_content_rating_france: Optional[media_content_rating_france.MediaContentRatingFrance] = None
+        # Media content rating settings for Germany
+        self._media_content_rating_germany: Optional[media_content_rating_germany.MediaContentRatingGermany] = None
+        # Media content rating settings for Ireland
+        self._media_content_rating_ireland: Optional[media_content_rating_ireland.MediaContentRatingIreland] = None
+        # Media content rating settings for Japan
+        self._media_content_rating_japan: Optional[media_content_rating_japan.MediaContentRatingJapan] = None
+        # Media content rating settings for New Zealand
+        self._media_content_rating_new_zealand: Optional[media_content_rating_new_zealand.MediaContentRatingNewZealand] = None
+        # Media content rating settings for United Kingdom
+        self._media_content_rating_united_kingdom: Optional[media_content_rating_united_kingdom.MediaContentRatingUnitedKingdom] = None
+        # Media content rating settings for United States
+        self._media_content_rating_united_states: Optional[media_content_rating_united_states.MediaContentRatingUnitedStates] = None
+        # Indicates whether or not to block the user from using the Messages app on the supervised device.
+        self._messages_blocked: Optional[bool] = None
+        # List of managed apps and the network rules that applies to them. This collection can contain a maximum of 1000 elements.
+        self._network_usage_rules: Optional[List[ios_network_usage_rule.IosNetworkUsageRule]] = None
+        # Indicates whether or not to allow notifications settings modification (iOS 9.3 and later).
+        self._notifications_block_settings_modification: Optional[bool] = None
+        # Block modification of registered Touch ID fingerprints when in supervised mode.
+        self._passcode_block_fingerprint_modification: Optional[bool] = None
+        # Indicates whether or not to block fingerprint unlock.
+        self._passcode_block_fingerprint_unlock: Optional[bool] = None
+        # Indicates whether or not to allow passcode modification on the supervised device (iOS 9.0 and later).
+        self._passcode_block_modification: Optional[bool] = None
+        # Indicates whether or not to block simple passcodes.
+        self._passcode_block_simple: Optional[bool] = None
+        # Number of days before the passcode expires. Valid values 1 to 65535
+        self._passcode_expiration_days: Optional[int] = None
+        # Number of character sets a passcode must contain. Valid values 0 to 4
+        self._passcode_minimum_character_set_count: Optional[int] = None
+        # Minimum length of passcode. Valid values 4 to 14
+        self._passcode_minimum_length: Optional[int] = None
+        # Minutes of inactivity before a passcode is required.
+        self._passcode_minutes_of_inactivity_before_lock: Optional[int] = None
+        # Minutes of inactivity before the screen times out.
+        self._passcode_minutes_of_inactivity_before_screen_timeout: Optional[int] = None
+        # Number of previous passcodes to block. Valid values 1 to 24
+        self._passcode_previous_passcode_block_count: Optional[int] = None
+        # Indicates whether or not to require a passcode.
+        self._passcode_required: Optional[bool] = None
+        # Possible values of required passwords.
+        self._passcode_required_type: Optional[required_password_type.RequiredPasswordType] = None
+        # Number of sign in failures allowed before wiping the device. Valid values 2 to 11
+        self._passcode_sign_in_failure_count_before_wipe: Optional[int] = None
+        # Indicates whether or not to block the user from using podcasts on the supervised device (iOS 8.0 and later).
+        self._podcasts_blocked: Optional[bool] = None
+        # Indicates whether or not to block the user from using Auto fill in Safari. Requires a supervised device for iOS 13 and later.
+        self._safari_block_autofill: Optional[bool] = None
+        # Indicates whether or not to block JavaScript in Safari.
+        self._safari_block_java_script: Optional[bool] = None
+        # Indicates whether or not to block popups in Safari.
+        self._safari_block_popups: Optional[bool] = None
+        # Indicates whether or not to block the user from using Safari. Requires a supervised device for iOS 13 and later.
+        self._safari_blocked: Optional[bool] = None
+        # Web Browser Cookie Settings.
+        self._safari_cookie_settings: Optional[web_browser_cookie_settings.WebBrowserCookieSettings] = None
+        # URLs matching the patterns listed here will be considered managed.
+        self._safari_managed_domains: Optional[List[str]] = None
+        # Users can save passwords in Safari only from URLs matching the patterns listed here. Applies to devices in supervised mode (iOS 9.3 and later).
+        self._safari_password_auto_fill_domains: Optional[List[str]] = None
+        # Indicates whether or not to require fraud warning in Safari.
+        self._safari_require_fraud_warning: Optional[bool] = None
+        # Indicates whether or not to block the user from taking Screenshots.
+        self._screen_capture_blocked: Optional[bool] = None
+        # Indicates whether or not to block Siri from querying user-generated content when used on a supervised device.
+        self._siri_block_user_generated_content: Optional[bool] = None
+        # Indicates whether or not to block the user from using Siri.
+        self._siri_blocked: Optional[bool] = None
+        # Indicates whether or not to block the user from using Siri when locked.
+        self._siri_blocked_when_locked: Optional[bool] = None
+        # Indicates whether or not to prevent Siri from dictating, or speaking profane language on supervised device.
+        self._siri_require_profanity_filter: Optional[bool] = None
+        # Indicates whether or not to block Spotlight search from returning internet results on supervised device.
+        self._spotlight_block_internet_results: Optional[bool] = None
+        # Indicates whether or not to block voice dialing.
+        self._voice_dialing_blocked: Optional[bool] = None
+        # Indicates whether or not to allow wallpaper modification on supervised device (iOS 9.0 and later) .
+        self._wallpaper_block_modification: Optional[bool] = None
+        # Indicates whether or not to force the device to use only Wi-Fi networks from configuration profiles when the device is in supervised mode. Available for devices running iOS and iPadOS versions 14.4 and earlier. Devices running 14.5+ should use the setting, 'WiFiConnectToAllowedNetworksOnlyForced.
+        self._wi_fi_connect_only_to_configured_networks: Optional[bool] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosGeneralDeviceConfiguration:
         """
@@ -1059,9 +1072,7 @@ class IosGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_list_item, app_list_type, device_configuration, ios_network_usage_rule, media_content_rating_australia, media_content_rating_canada, media_content_rating_france, media_content_rating_germany, media_content_rating_ireland, media_content_rating_japan, media_content_rating_new_zealand, media_content_rating_united_kingdom, media_content_rating_united_states, rating_apps_type, required_password_type, web_browser_cookie_settings
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "accountBlockModification": lambda n : setattr(self, 'account_block_modification', n.get_bool_value()),
             "activationLockAllowWhenSupervised": lambda n : setattr(self, 'activation_lock_allow_when_supervised', n.get_bool_value()),
             "airDropBlocked": lambda n : setattr(self, 'air_drop_blocked', n.get_bool_value()),

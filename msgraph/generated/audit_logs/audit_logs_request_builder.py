@@ -7,22 +7,43 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ..models import audit_log_root
-    from ..models.o_data_errors import o_data_error
-    from .directory_audits import directory_audits_request_builder
-    from .directory_audits.item import directory_audit_item_request_builder
-    from .provisioning import provisioning_request_builder
-    from .provisioning.item import provisioning_object_summary_item_request_builder
-    from .sign_ins import sign_ins_request_builder
-    from .sign_ins.item import sign_in_item_request_builder
+directory_audits_request_builder = lazy_import('msgraph.generated.audit_logs.directory_audits.directory_audits_request_builder')
+directory_audit_item_request_builder = lazy_import('msgraph.generated.audit_logs.directory_audits.item.directory_audit_item_request_builder')
+provisioning_request_builder = lazy_import('msgraph.generated.audit_logs.provisioning.provisioning_request_builder')
+provisioning_object_summary_item_request_builder = lazy_import('msgraph.generated.audit_logs.provisioning.item.provisioning_object_summary_item_request_builder')
+sign_ins_request_builder = lazy_import('msgraph.generated.audit_logs.sign_ins.sign_ins_request_builder')
+sign_in_item_request_builder = lazy_import('msgraph.generated.audit_logs.sign_ins.item.sign_in_item_request_builder')
+audit_log_root = lazy_import('msgraph.generated.models.audit_log_root')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AuditLogsRequestBuilder():
     """
     Provides operations to manage the auditLogRoot singleton.
     """
+    @property
+    def directory_audits(self) -> directory_audits_request_builder.DirectoryAuditsRequestBuilder:
+        """
+        Provides operations to manage the directoryAudits property of the microsoft.graph.auditLogRoot entity.
+        """
+        return directory_audits_request_builder.DirectoryAuditsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def provisioning(self) -> provisioning_request_builder.ProvisioningRequestBuilder:
+        """
+        Provides operations to manage the provisioning property of the microsoft.graph.auditLogRoot entity.
+        """
+        return provisioning_request_builder.ProvisioningRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def sign_ins(self) -> sign_ins_request_builder.SignInsRequestBuilder:
+        """
+        Provides operations to manage the signIns property of the microsoft.graph.auditLogRoot entity.
+        """
+        return sign_ins_request_builder.SignInsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AuditLogsRequestBuilder and sets the default values.
@@ -50,8 +71,6 @@ class AuditLogsRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .directory_audits.item import directory_audit_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryAudit%2Did"] = id
         return directory_audit_item_request_builder.DirectoryAuditItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -66,16 +85,12 @@ class AuditLogsRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import audit_log_root
-
         return await self.request_adapter.send_async(request_info, audit_log_root.AuditLogRoot, error_mapping)
     
     async def patch(self,body: Optional[audit_log_root.AuditLogRoot] = None, request_configuration: Optional[AuditLogsRequestBuilderPatchRequestConfiguration] = None) -> Optional[audit_log_root.AuditLogRoot]:
@@ -91,16 +106,12 @@ class AuditLogsRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import audit_log_root
-
         return await self.request_adapter.send_async(request_info, audit_log_root.AuditLogRoot, error_mapping)
     
     def provisioning_by_id(self,id: str) -> provisioning_object_summary_item_request_builder.ProvisioningObjectSummaryItemRequestBuilder:
@@ -112,8 +123,6 @@ class AuditLogsRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .provisioning.item import provisioning_object_summary_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["provisioningObjectSummary%2Did"] = id
         return provisioning_object_summary_item_request_builder.ProvisioningObjectSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -127,8 +136,6 @@ class AuditLogsRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .sign_ins.item import sign_in_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["signIn%2Did"] = id
         return sign_in_item_request_builder.SignInItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -172,38 +179,17 @@ class AuditLogsRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def directory_audits(self) -> directory_audits_request_builder.DirectoryAuditsRequestBuilder:
-        """
-        Provides operations to manage the directoryAudits property of the microsoft.graph.auditLogRoot entity.
-        """
-        from .directory_audits import directory_audits_request_builder
-
-        return directory_audits_request_builder.DirectoryAuditsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def provisioning(self) -> provisioning_request_builder.ProvisioningRequestBuilder:
-        """
-        Provides operations to manage the provisioning property of the microsoft.graph.auditLogRoot entity.
-        """
-        from .provisioning import provisioning_request_builder
-
-        return provisioning_request_builder.ProvisioningRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def sign_ins(self) -> sign_ins_request_builder.SignInsRequestBuilder:
-        """
-        Provides operations to manage the signIns property of the microsoft.graph.auditLogRoot entity.
-        """
-        from .sign_ins import sign_ins_request_builder
-
-        return sign_ins_request_builder.SignInsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class AuditLogsRequestBuilderGetQueryParameters():
         """
         Get auditLogs
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -219,12 +205,6 @@ class AuditLogsRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class AuditLogsRequestBuilderGetRequestConfiguration():

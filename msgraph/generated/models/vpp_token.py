@@ -1,47 +1,18 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, vpp_token_account_type, vpp_token_state, vpp_token_sync_status
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+vpp_token_account_type = lazy_import('msgraph.generated.models.vpp_token_account_type')
+vpp_token_state = lazy_import('msgraph.generated.models.vpp_token_state')
+vpp_token_sync_status = lazy_import('msgraph.generated.models.vpp_token_sync_status')
 
 class VppToken(entity.Entity):
     """
     You purchase multiple licenses for iOS apps through the Apple Volume Purchase Program for Business or Education. This involves setting up an Apple VPP account from the Apple website and uploading the Apple VPP Business or Education token to Intune. You can then synchronize your volume purchase information with Intune and track your volume-purchased app use. You can upload multiple Apple VPP Business or Education tokens.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new vppToken and sets the default values.
-        """
-        super().__init__()
-        # The apple Id associated with the given Apple Volume Purchase Program Token.
-        self._apple_id: Optional[str] = None
-        # Whether or not apps for the VPP token will be automatically updated.
-        self._automatically_update_apps: Optional[bool] = None
-        # Whether or not apps for the VPP token will be automatically updated.
-        self._country_or_region: Optional[str] = None
-        # The expiration date time of the Apple Volume Purchase Program Token.
-        self._expiration_date_time: Optional[datetime] = None
-        # Last modification date time associated with the Apple Volume Purchase Program Token.
-        self._last_modified_date_time: Optional[datetime] = None
-        # The last time when an application sync was done with the Apple volume purchase program service using the the Apple Volume Purchase Program Token.
-        self._last_sync_date_time: Optional[datetime] = None
-        # Possible sync statuses associated with an Apple Volume Purchase Program token.
-        self._last_sync_status: Optional[vpp_token_sync_status.VppTokenSyncStatus] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The organization associated with the Apple Volume Purchase Program Token
-        self._organization_name: Optional[str] = None
-        # Possible states associated with an Apple Volume Purchase Program token.
-        self._state: Optional[vpp_token_state.VppTokenState] = None
-        # The Apple Volume Purchase Program Token string downloaded from the Apple Volume Purchase Program.
-        self._token: Optional[str] = None
-        # Possible types of an Apple Volume Purchase Program token.
-        self._vpp_token_account_type: Optional[vpp_token_account_type.VppTokenAccountType] = None
-    
     @property
     def apple_id(self,) -> Optional[str]:
         """
@@ -75,6 +46,36 @@ class VppToken(entity.Entity):
             value: Value to set for the automatically_update_apps property.
         """
         self._automatically_update_apps = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new vppToken and sets the default values.
+        """
+        super().__init__()
+        # The apple Id associated with the given Apple Volume Purchase Program Token.
+        self._apple_id: Optional[str] = None
+        # Whether or not apps for the VPP token will be automatically updated.
+        self._automatically_update_apps: Optional[bool] = None
+        # Whether or not apps for the VPP token will be automatically updated.
+        self._country_or_region: Optional[str] = None
+        # The expiration date time of the Apple Volume Purchase Program Token.
+        self._expiration_date_time: Optional[datetime] = None
+        # Last modification date time associated with the Apple Volume Purchase Program Token.
+        self._last_modified_date_time: Optional[datetime] = None
+        # The last time when an application sync was done with the Apple volume purchase program service using the the Apple Volume Purchase Program Token.
+        self._last_sync_date_time: Optional[datetime] = None
+        # Possible sync statuses associated with an Apple Volume Purchase Program token.
+        self._last_sync_status: Optional[vpp_token_sync_status.VppTokenSyncStatus] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The organization associated with the Apple Volume Purchase Program Token
+        self._organization_name: Optional[str] = None
+        # Possible states associated with an Apple Volume Purchase Program token.
+        self._state: Optional[vpp_token_state.VppTokenState] = None
+        # The Apple Volume Purchase Program Token string downloaded from the Apple Volume Purchase Program.
+        self._token: Optional[str] = None
+        # Possible types of an Apple Volume Purchase Program token.
+        self._vpp_token_account_type: Optional[vpp_token_account_type.VppTokenAccountType] = None
     
     @property
     def country_or_region(self,) -> Optional[str]:
@@ -127,9 +128,7 @@ class VppToken(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, vpp_token_account_type, vpp_token_state, vpp_token_sync_status
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "appleId": lambda n : setattr(self, 'apple_id', n.get_str_value()),
             "automaticallyUpdateApps": lambda n : setattr(self, 'automatically_update_apps', n.get_bool_value()),
             "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),

@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import device_configuration, oma_setting
-
-from . import device_configuration
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+oma_setting = lazy_import('msgraph.generated.models.oma_setting')
 
 class AndroidWorkProfileCustomConfiguration(device_configuration.DeviceConfiguration):
     def __init__(self,) -> None:
@@ -34,9 +33,7 @@ class AndroidWorkProfileCustomConfiguration(device_configuration.DeviceConfigura
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_configuration, oma_setting
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "omaSettings": lambda n : setattr(self, 'oma_settings', n.get_collection_of_object_values(oma_setting.OmaSetting)),
         }
         super_fields = super().get_field_deserializers()

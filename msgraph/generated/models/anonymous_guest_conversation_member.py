@@ -1,22 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import conversation_member
-
-from . import conversation_member
+conversation_member = lazy_import('msgraph.generated.models.conversation_member')
 
 class AnonymousGuestConversationMember(conversation_member.ConversationMember):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AnonymousGuestConversationMember and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.anonymousGuestConversationMember"
-        # Unique ID that represents the user. Note: This ID can change if the user leaves and rejoins the meeting, or joins from a different device.
-        self._anonymous_guest_id: Optional[str] = None
-    
     @property
     def anonymous_guest_id(self,) -> Optional[str]:
         """
@@ -33,6 +22,15 @@ class AnonymousGuestConversationMember(conversation_member.ConversationMember):
             value: Value to set for the anonymous_guest_id property.
         """
         self._anonymous_guest_id = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new AnonymousGuestConversationMember and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.anonymousGuestConversationMember"
+        # Unique ID that represents the user. Note: This ID can change if the user leaves and rejoins the meeting, or joins from a different device.
+        self._anonymous_guest_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AnonymousGuestConversationMember:
@@ -51,9 +49,7 @@ class AnonymousGuestConversationMember(conversation_member.ConversationMember):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conversation_member
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "anonymousGuestId": lambda n : setattr(self, 'anonymous_guest_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

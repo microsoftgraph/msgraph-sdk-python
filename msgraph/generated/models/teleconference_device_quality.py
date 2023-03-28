@@ -1,41 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import teleconference_device_media_quality
+teleconference_device_media_quality = lazy_import('msgraph.generated.models.teleconference_device_media_quality')
 
 class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new teleconferenceDeviceQuality and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # A unique identifier for all  the participant calls in a conference or a unique identifier for two participant calls in P2P call. This needs to be copied over from Microsoft.Graph.Call.CallChainId.
-        self._call_chain_id: Optional[Guid] = None
-        # A geo-region where the service is deployed, such as ProdNoam.
-        self._cloud_service_deployment_environment: Optional[str] = None
-        # A unique deployment identifier assigned by Azure.
-        self._cloud_service_deployment_id: Optional[str] = None
-        # The Azure deployed cloud service instance name, such as FrontEnd_IN_3.
-        self._cloud_service_instance_name: Optional[str] = None
-        # The Azure deployed cloud service name, such as contoso.cloudapp.net.
-        self._cloud_service_name: Optional[str] = None
-        # Any additional description, such as VTC Bldg 30/21.
-        self._device_description: Optional[str] = None
-        # The user media agent name, such as Cisco SX80.
-        self._device_name: Optional[str] = None
-        # A unique identifier for a specific media leg of a participant in a conference.  One participant can have multiple media leg identifiers if retargeting happens. CVI partner assigns this value.
-        self._media_leg_id: Optional[Guid] = None
-        # The list of media qualities in a media session (call), such as audio quality, video quality, and/or screen sharing quality.
-        self._media_quality_list: Optional[List[teleconference_device_media_quality.TeleconferenceDeviceMediaQuality]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # A unique identifier for a specific participant in a conference. The CVI partner needs to copy over Call.MyParticipantId to this property.
-        self._participant_id: Optional[Guid] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -138,6 +108,36 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         """
         self._cloud_service_name = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new teleconferenceDeviceQuality and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # A unique identifier for all  the participant calls in a conference or a unique identifier for two participant calls in P2P call. This needs to be copied over from Microsoft.Graph.Call.CallChainId.
+        self._call_chain_id: Optional[Guid] = None
+        # A geo-region where the service is deployed, such as ProdNoam.
+        self._cloud_service_deployment_environment: Optional[str] = None
+        # A unique deployment identifier assigned by Azure.
+        self._cloud_service_deployment_id: Optional[str] = None
+        # The Azure deployed cloud service instance name, such as FrontEnd_IN_3.
+        self._cloud_service_instance_name: Optional[str] = None
+        # The Azure deployed cloud service name, such as contoso.cloudapp.net.
+        self._cloud_service_name: Optional[str] = None
+        # Any additional description, such as VTC Bldg 30/21.
+        self._device_description: Optional[str] = None
+        # The user media agent name, such as Cisco SX80.
+        self._device_name: Optional[str] = None
+        # A unique identifier for a specific media leg of a participant in a conference.  One participant can have multiple media leg identifiers if retargeting happens. CVI partner assigns this value.
+        self._media_leg_id: Optional[Guid] = None
+        # The list of media qualities in a media session (call), such as audio quality, video quality, and/or screen sharing quality.
+        self._media_quality_list: Optional[List[teleconference_device_media_quality.TeleconferenceDeviceMediaQuality]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # A unique identifier for a specific participant in a conference. The CVI partner needs to copy over Call.MyParticipantId to this property.
+        self._participant_id: Optional[Guid] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeleconferenceDeviceQuality:
         """
@@ -189,9 +189,7 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import teleconference_device_media_quality
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "callChainId": lambda n : setattr(self, 'call_chain_id', n.get_object_value(Guid)),
             "cloudServiceDeploymentEnvironment": lambda n : setattr(self, 'cloud_service_deployment_environment', n.get_str_value()),
             "cloudServiceDeploymentId": lambda n : setattr(self, 'cloud_service_deployment_id', n.get_str_value()),

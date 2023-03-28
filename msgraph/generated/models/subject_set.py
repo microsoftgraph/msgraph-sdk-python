@@ -1,21 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
-
-if TYPE_CHECKING:
-    from . import attribute_rule_members, connected_organization_members, external_sponsors, group_members, internal_sponsors, requestor_manager, single_service_principal, single_user, target_application_owners, target_manager
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class SubjectSet(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new subjectSet and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -33,6 +21,16 @@ class SubjectSet(AdditionalDataHolder, Parsable):
         """
         self._additional_data = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new subjectSet and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SubjectSet:
         """
@@ -43,49 +41,6 @@ class SubjectSet(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.attributeRuleMembers":
-                from . import attribute_rule_members
-
-                return attribute_rule_members.AttributeRuleMembers()
-            if mapping_value == "#microsoft.graph.connectedOrganizationMembers":
-                from . import connected_organization_members
-
-                return connected_organization_members.ConnectedOrganizationMembers()
-            if mapping_value == "#microsoft.graph.externalSponsors":
-                from . import external_sponsors
-
-                return external_sponsors.ExternalSponsors()
-            if mapping_value == "#microsoft.graph.groupMembers":
-                from . import group_members
-
-                return group_members.GroupMembers()
-            if mapping_value == "#microsoft.graph.internalSponsors":
-                from . import internal_sponsors
-
-                return internal_sponsors.InternalSponsors()
-            if mapping_value == "#microsoft.graph.requestorManager":
-                from . import requestor_manager
-
-                return requestor_manager.RequestorManager()
-            if mapping_value == "#microsoft.graph.singleServicePrincipal":
-                from . import single_service_principal
-
-                return single_service_principal.SingleServicePrincipal()
-            if mapping_value == "#microsoft.graph.singleUser":
-                from . import single_user
-
-                return single_user.SingleUser()
-            if mapping_value == "#microsoft.graph.targetApplicationOwners":
-                from . import target_application_owners
-
-                return target_application_owners.TargetApplicationOwners()
-            if mapping_value == "#microsoft.graph.targetManager":
-                from . import target_manager
-
-                return target_manager.TargetManager()
         return SubjectSet()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -93,9 +48,7 @@ class SubjectSet(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attribute_rule_members, connected_organization_members, external_sponsors, group_members, internal_sponsors, requestor_manager, single_service_principal, single_user, target_application_owners, target_manager
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

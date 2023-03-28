@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import authentication_methods_registration_campaign_include_target, base_collection_pagination_count_response
-
-from . import base_collection_pagination_count_response
+authentication_methods_registration_campaign_include_target = lazy_import('msgraph.generated.models.authentication_methods_registration_campaign_include_target')
+base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
 
 class AuthenticationMethodsRegistrationCampaignIncludeTargetCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
     def __init__(self,) -> None:
@@ -33,9 +32,7 @@ class AuthenticationMethodsRegistrationCampaignIncludeTargetCollectionResponse(b
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_methods_registration_campaign_include_target, base_collection_pagination_count_response
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget)),
         }
         super_fields = super().get_field_deserializers()

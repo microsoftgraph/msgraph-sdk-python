@@ -1,11 +1,30 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import alteration_response, result_template_dictionary, search_hits_container
+alteration_response = lazy_import('msgraph.generated.models.alteration_response')
+result_template_dictionary = lazy_import('msgraph.generated.models.result_template_dictionary')
+search_hits_container = lazy_import('msgraph.generated.models.search_hits_container')
 
 class SearchResponse(AdditionalDataHolder, Parsable):
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new searchResponse and sets the default values.
@@ -24,23 +43,6 @@ class SearchResponse(AdditionalDataHolder, Parsable):
         # Contains the search terms sent in the initial search query.
         self._search_terms: Optional[List[str]] = None
     
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SearchResponse:
         """
@@ -58,9 +60,7 @@ class SearchResponse(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alteration_response, result_template_dictionary, search_hits_container
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "hitsContainers": lambda n : setattr(self, 'hits_containers', n.get_collection_of_object_values(search_hits_container.SearchHitsContainer)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "queryAlterationResponse": lambda n : setattr(self, 'query_alteration_response', n.get_object_value(alteration_response.AlterationResponse)),

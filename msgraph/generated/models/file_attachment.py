@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import attachment
-
-from . import attachment
+attachment = lazy_import('msgraph.generated.models.attachment')
 
 class FileAttachment(attachment.Attachment):
     def __init__(self,) -> None:
@@ -89,9 +87,7 @@ class FileAttachment(attachment.Attachment):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attachment
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "contentBytes": lambda n : setattr(self, 'content_bytes', n.get_bytes_value()),
             "contentId": lambda n : setattr(self, 'content_id', n.get_str_value()),
             "contentLocation": lambda n : setattr(self, 'content_location', n.get_str_value()),

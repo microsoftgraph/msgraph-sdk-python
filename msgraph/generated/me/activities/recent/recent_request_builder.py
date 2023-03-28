@@ -7,11 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import recent_response
-    from ....models.o_data_errors import o_data_error
+recent_response = lazy_import('msgraph.generated.me.activities.recent.recent_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class RecentRequestBuilder():
     """
@@ -45,16 +45,12 @@ class RecentRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import recent_response
-
         return await self.request_adapter.send_async(request_info, recent_response.RecentResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RecentRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -80,6 +76,27 @@ class RecentRequestBuilder():
         """
         Get recent activities for a given user. This OData function has some default behaviors included to make it operate like a 'most recently used' API. The service will query for the most recent historyItems, and then pull those related activities. Activities will be sorted according to the most recent **lastModified** on the **historyItem**. This means that activities without **historyItems** will not be included in the response. The UserActivity.ReadWrite.CreatedByApp permission will also apply extra filtering to the response, so that only activities created by your application are returned. This server-side filtering might result in empty pages if the user is particularly active and other applications have created more recent activities. To get your application's activities, use the **nextLink** property to paginate.
         """
+        # Include count of items
+        count: Optional[bool] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -105,27 +122,6 @@ class RecentRequestBuilder():
                 return "%24top"
             return original_name
         
-        # Include count of items
-        count: Optional[bool] = None
-
-        # Filter items by property values
-        filter: Optional[str] = None
-
-        # Order items by property values
-        orderby: Optional[List[str]] = None
-
-        # Search items by search phrases
-        search: Optional[str] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
-        # Skip the first n items
-        skip: Optional[int] = None
-
-        # Show only the first n items
-        top: Optional[int] = None
-
     
     @dataclass
     class RecentRequestBuilderGetRequestConfiguration():

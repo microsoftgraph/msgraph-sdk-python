@@ -7,18 +7,25 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ..models import privacy
-    from ..models.o_data_errors import o_data_error
-    from .subject_rights_requests import subject_rights_requests_request_builder
-    from .subject_rights_requests.item import subject_rights_request_item_request_builder
+privacy = lazy_import('msgraph.generated.models.privacy')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+subject_rights_requests_request_builder = lazy_import('msgraph.generated.privacy.subject_rights_requests.subject_rights_requests_request_builder')
+subject_rights_request_item_request_builder = lazy_import('msgraph.generated.privacy.subject_rights_requests.item.subject_rights_request_item_request_builder')
 
 class PrivacyRequestBuilder():
     """
     Provides operations to manage the privacy singleton.
     """
+    @property
+    def subject_rights_requests(self) -> subject_rights_requests_request_builder.SubjectRightsRequestsRequestBuilder:
+        """
+        Provides operations to manage the subjectRightsRequests property of the microsoft.graph.privacy entity.
+        """
+        return subject_rights_requests_request_builder.SubjectRightsRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PrivacyRequestBuilder and sets the default values.
@@ -47,16 +54,12 @@ class PrivacyRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import privacy
-
         return await self.request_adapter.send_async(request_info, privacy.Privacy, error_mapping)
     
     async def patch(self,body: Optional[privacy.Privacy] = None, request_configuration: Optional[PrivacyRequestBuilderPatchRequestConfiguration] = None) -> Optional[privacy.Privacy]:
@@ -72,16 +75,12 @@ class PrivacyRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import privacy
-
         return await self.request_adapter.send_async(request_info, privacy.Privacy, error_mapping)
     
     def subject_rights_requests_by_id(self,id: str) -> subject_rights_request_item_request_builder.SubjectRightsRequestItemRequestBuilder:
@@ -93,8 +92,6 @@ class PrivacyRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .subject_rights_requests.item import subject_rights_request_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["subjectRightsRequest%2Did"] = id
         return subject_rights_request_item_request_builder.SubjectRightsRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -138,20 +135,17 @@ class PrivacyRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def subject_rights_requests(self) -> subject_rights_requests_request_builder.SubjectRightsRequestsRequestBuilder:
-        """
-        Provides operations to manage the subjectRightsRequests property of the microsoft.graph.privacy entity.
-        """
-        from .subject_rights_requests import subject_rights_requests_request_builder
-
-        return subject_rights_requests_request_builder.SubjectRightsRequestsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class PrivacyRequestBuilderGetQueryParameters():
         """
         Get privacy
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -167,12 +161,6 @@ class PrivacyRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class PrivacyRequestBuilderGetRequestConfiguration():

@@ -7,22 +7,43 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import administrative_unit
-    from ....models.o_data_errors import o_data_error
-    from .extensions import extensions_request_builder
-    from .extensions.item import extension_item_request_builder
-    from .members import members_request_builder
-    from .members.item import directory_object_item_request_builder
-    from .scoped_role_members import scoped_role_members_request_builder
-    from .scoped_role_members.item import scoped_role_membership_item_request_builder
+extensions_request_builder = lazy_import('msgraph.generated.directory.administrative_units.item.extensions.extensions_request_builder')
+extension_item_request_builder = lazy_import('msgraph.generated.directory.administrative_units.item.extensions.item.extension_item_request_builder')
+members_request_builder = lazy_import('msgraph.generated.directory.administrative_units.item.members.members_request_builder')
+directory_object_item_request_builder = lazy_import('msgraph.generated.directory.administrative_units.item.members.item.directory_object_item_request_builder')
+scoped_role_members_request_builder = lazy_import('msgraph.generated.directory.administrative_units.item.scoped_role_members.scoped_role_members_request_builder')
+scoped_role_membership_item_request_builder = lazy_import('msgraph.generated.directory.administrative_units.item.scoped_role_members.item.scoped_role_membership_item_request_builder')
+administrative_unit = lazy_import('msgraph.generated.models.administrative_unit')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AdministrativeUnitItemRequestBuilder():
     """
     Provides operations to manage the administrativeUnits property of the microsoft.graph.directory entity.
     """
+    @property
+    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
+        """
+        Provides operations to manage the extensions property of the microsoft.graph.administrativeUnit entity.
+        """
+        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def members(self) -> members_request_builder.MembersRequestBuilder:
+        """
+        Provides operations to manage the members property of the microsoft.graph.administrativeUnit entity.
+        """
+        return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def scoped_role_members(self) -> scoped_role_members_request_builder.ScopedRoleMembersRequestBuilder:
+        """
+        Provides operations to manage the scopedRoleMembers property of the microsoft.graph.administrativeUnit entity.
+        """
+        return scoped_role_members_request_builder.ScopedRoleMembersRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AdministrativeUnitItemRequestBuilder and sets the default values.
@@ -50,8 +71,6 @@ class AdministrativeUnitItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -69,8 +88,6 @@ class AdministrativeUnitItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .extensions.item import extension_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["extension%2Did"] = id
         return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -85,16 +102,12 @@ class AdministrativeUnitItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import administrative_unit
-
         return await self.request_adapter.send_async(request_info, administrative_unit.AdministrativeUnit, error_mapping)
     
     def members_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
@@ -106,8 +119,6 @@ class AdministrativeUnitItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .members.item import directory_object_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -125,16 +136,12 @@ class AdministrativeUnitItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import administrative_unit
-
         return await self.request_adapter.send_async(request_info, administrative_unit.AdministrativeUnit, error_mapping)
     
     def scoped_role_members_by_id(self,id: str) -> scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder:
@@ -146,8 +153,6 @@ class AdministrativeUnitItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .scoped_role_members.item import scoped_role_membership_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["scopedRoleMembership%2Did"] = id
         return scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -207,33 +212,6 @@ class AdministrativeUnitItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
-        """
-        Provides operations to manage the extensions property of the microsoft.graph.administrativeUnit entity.
-        """
-        from .extensions import extensions_request_builder
-
-        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def members(self) -> members_request_builder.MembersRequestBuilder:
-        """
-        Provides operations to manage the members property of the microsoft.graph.administrativeUnit entity.
-        """
-        from .members import members_request_builder
-
-        return members_request_builder.MembersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def scoped_role_members(self) -> scoped_role_members_request_builder.ScopedRoleMembersRequestBuilder:
-        """
-        Provides operations to manage the scopedRoleMembers property of the microsoft.graph.administrativeUnit entity.
-        """
-        from .scoped_role_members import scoped_role_members_request_builder
-
-        return scoped_role_members_request_builder.ScopedRoleMembersRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class AdministrativeUnitItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -251,6 +229,12 @@ class AdministrativeUnitItemRequestBuilder():
         """
         Conceptual container for user and group directory objects.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -266,12 +250,6 @@ class AdministrativeUnitItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class AdministrativeUnitItemRequestBuilderGetRequestConfiguration():

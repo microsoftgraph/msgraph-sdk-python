@@ -1,14 +1,33 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import chat_message_from_identity_set, chat_message_type, entity, event_message_detail, item_body
-
-from . import entity
+chat_message_from_identity_set = lazy_import('msgraph.generated.models.chat_message_from_identity_set')
+chat_message_type = lazy_import('msgraph.generated.models.chat_message_type')
+entity = lazy_import('msgraph.generated.models.entity')
+event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
+item_body = lazy_import('msgraph.generated.models.item_body')
 
 class ChatMessageInfo(entity.Entity):
+    @property
+    def body(self,) -> Optional[item_body.ItemBody]:
+        """
+        Gets the body property value. Body of the chatMessage. This will still contain markers for @mentions and attachments even though the object does not return @mentions and attachments.
+        Returns: Optional[item_body.ItemBody]
+        """
+        return self._body
+    
+    @body.setter
+    def body(self,value: Optional[item_body.ItemBody] = None) -> None:
+        """
+        Sets the body property value. Body of the chatMessage. This will still contain markers for @mentions and attachments even though the object does not return @mentions and attachments.
+        Args:
+            value: Value to set for the body property.
+        """
+        self._body = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new chatMessageInfo and sets the default values.
@@ -28,23 +47,6 @@ class ChatMessageInfo(entity.Entity):
         self._message_type: Optional[chat_message_type.ChatMessageType] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-    
-    @property
-    def body(self,) -> Optional[item_body.ItemBody]:
-        """
-        Gets the body property value. Body of the chatMessage. This will still contain markers for @mentions and attachments even though the object does not return @mentions and attachments.
-        Returns: Optional[item_body.ItemBody]
-        """
-        return self._body
-    
-    @body.setter
-    def body(self,value: Optional[item_body.ItemBody] = None) -> None:
-        """
-        Sets the body property value. Body of the chatMessage. This will still contain markers for @mentions and attachments even though the object does not return @mentions and attachments.
-        Args:
-            value: Value to set for the body property.
-        """
-        self._body = value
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -114,9 +116,7 @@ class ChatMessageInfo(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import chat_message_from_identity_set, chat_message_type, entity, event_message_detail, item_body
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "body": lambda n : setattr(self, 'body', n.get_object_value(item_body.ItemBody)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "eventDetail": lambda n : setattr(self, 'event_detail', n.get_object_value(event_message_detail.EventMessageDetail)),

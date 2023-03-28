@@ -7,17 +7,24 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ...models import application_template
-    from ...models.o_data_errors import o_data_error
-    from .instantiate import instantiate_request_builder
+instantiate_request_builder = lazy_import('msgraph.generated.application_templates.item.instantiate.instantiate_request_builder')
+application_template = lazy_import('msgraph.generated.models.application_template')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ApplicationTemplateItemRequestBuilder():
     """
     Provides operations to manage the collection of applicationTemplate entities.
     """
+    @property
+    def instantiate(self) -> instantiate_request_builder.InstantiateRequestBuilder:
+        """
+        Provides operations to call the instantiate method.
+        """
+        return instantiate_request_builder.InstantiateRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ApplicationTemplateItemRequestBuilder and sets the default values.
@@ -46,16 +53,12 @@ class ApplicationTemplateItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import application_template
-
         return await self.request_adapter.send_async(request_info, application_template.ApplicationTemplate, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ApplicationTemplateItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -76,20 +79,17 @@ class ApplicationTemplateItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    @property
-    def instantiate(self) -> instantiate_request_builder.InstantiateRequestBuilder:
-        """
-        Provides operations to call the instantiate method.
-        """
-        from .instantiate import instantiate_request_builder
-
-        return instantiate_request_builder.InstantiateRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class ApplicationTemplateItemRequestBuilderGetQueryParameters():
         """
         Retrieve the properties of an applicationTemplate object.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -105,12 +105,6 @@ class ApplicationTemplateItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class ApplicationTemplateItemRequestBuilderGetRequestConfiguration():

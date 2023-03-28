@@ -1,12 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import education_outcome, education_submission_recipient, education_submission_resource, education_submission_status, entity, identity_set
-
-from . import entity
+education_outcome = lazy_import('msgraph.generated.models.education_outcome')
+education_submission_recipient = lazy_import('msgraph.generated.models.education_submission_recipient')
+education_submission_resource = lazy_import('msgraph.generated.models.education_submission_resource')
+education_submission_status = lazy_import('msgraph.generated.models.education_submission_status')
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class EducationSubmission(entity.Entity):
     def __init__(self,) -> None:
@@ -62,9 +65,7 @@ class EducationSubmission(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_outcome, education_submission_recipient, education_submission_resource, education_submission_status, entity, identity_set
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "outcomes": lambda n : setattr(self, 'outcomes', n.get_collection_of_object_values(education_outcome.EducationOutcome)),
             "reassignedBy": lambda n : setattr(self, 'reassigned_by', n.get_object_value(identity_set.IdentitySet)),
             "reassignedDateTime": lambda n : setattr(self, 'reassigned_date_time', n.get_datetime_value()),

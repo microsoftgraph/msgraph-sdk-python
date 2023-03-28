@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import education_outcome, rubric_quality_feedback_model, rubric_quality_selected_column_model
-
-from . import education_outcome
+education_outcome = lazy_import('msgraph.generated.models.education_outcome')
+rubric_quality_feedback_model = lazy_import('msgraph.generated.models.rubric_quality_feedback_model')
+rubric_quality_selected_column_model = lazy_import('msgraph.generated.models.rubric_quality_selected_column_model')
 
 class EducationRubricOutcome(education_outcome.EducationOutcome):
     def __init__(self,) -> None:
@@ -40,9 +40,7 @@ class EducationRubricOutcome(education_outcome.EducationOutcome):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_outcome, rubric_quality_feedback_model, rubric_quality_selected_column_model
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "publishedRubricQualityFeedback": lambda n : setattr(self, 'published_rubric_quality_feedback', n.get_collection_of_object_values(rubric_quality_feedback_model.RubricQualityFeedbackModel)),
             "publishedRubricQualitySelectedLevels": lambda n : setattr(self, 'published_rubric_quality_selected_levels', n.get_collection_of_object_values(rubric_quality_selected_column_model.RubricQualitySelectedColumnModel)),
             "rubricQualityFeedback": lambda n : setattr(self, 'rubric_quality_feedback', n.get_collection_of_object_values(rubric_quality_feedback_model.RubricQualityFeedbackModel)),

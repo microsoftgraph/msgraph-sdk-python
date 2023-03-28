@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import data_set, ediscovery_review_set_query
-
-from . import data_set
+data_set = lazy_import('msgraph.generated.models.security.data_set')
+ediscovery_review_set_query = lazy_import('msgraph.generated.models.security.ediscovery_review_set_query')
 
 class EdiscoveryReviewSet(data_set.DataSet):
     def __init__(self,) -> None:
@@ -34,9 +33,7 @@ class EdiscoveryReviewSet(data_set.DataSet):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import data_set, ediscovery_review_set_query
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "queries": lambda n : setattr(self, 'queries', n.get_collection_of_object_values(ediscovery_review_set_query.EdiscoveryReviewSetQuery)),
         }
         super_fields = super().get_field_deserializers()

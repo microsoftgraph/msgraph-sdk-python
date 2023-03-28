@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, planner_order_hints_by_assignee
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+planner_order_hints_by_assignee = lazy_import('msgraph.generated.models.planner_order_hints_by_assignee')
 
 class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
     def __init__(self,) -> None:
@@ -37,9 +36,7 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, planner_order_hints_by_assignee
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "orderHintsByAssignee": lambda n : setattr(self, 'order_hints_by_assignee', n.get_object_value(planner_order_hints_by_assignee.PlannerOrderHintsByAssignee)),
             "unassignedOrderHint": lambda n : setattr(self, 'unassigned_order_hint', n.get_str_value()),
         }

@@ -1,22 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class OperationError(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new operationError and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Operation error code.
-        self._code: Optional[str] = None
-        # Operation error message.
-        self._message: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -51,6 +38,20 @@ class OperationError(AdditionalDataHolder, Parsable):
         """
         self._code = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new operationError and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Operation error code.
+        self._code: Optional[str] = None
+        # Operation error message.
+        self._message: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OperationError:
         """
@@ -68,7 +69,7 @@ class OperationError(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "code": lambda n : setattr(self, 'code', n.get_str_value()),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

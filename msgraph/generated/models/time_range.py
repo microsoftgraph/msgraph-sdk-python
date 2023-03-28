@@ -1,23 +1,10 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class TimeRange(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new timeRange and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # End time for the time range.
-        self._end_time: Optional[Time] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Start time for the time range.
-        self._start_time: Optional[Time] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -34,6 +21,20 @@ class TimeRange(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new timeRange and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # End time for the time range.
+        self._end_time: Optional[Time] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Start time for the time range.
+        self._start_time: Optional[Time] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TimeRange:
@@ -69,7 +70,7 @@ class TimeRange(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "endTime": lambda n : setattr(self, 'end_time', n.get_object_value(Time)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "startTime": lambda n : setattr(self, 'start_time', n.get_object_value(Time)),

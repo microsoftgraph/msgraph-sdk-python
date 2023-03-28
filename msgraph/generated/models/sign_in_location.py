@@ -1,29 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import geo_coordinates
+geo_coordinates = lazy_import('msgraph.generated.models.geo_coordinates')
 
 class SignInLocation(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new signInLocation and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Provides the city where the sign-in originated. This is calculated using latitude/longitude information from the sign-in activity.
-        self._city: Optional[str] = None
-        # Provides the country code info (2 letter code) where the sign-in originated.  This is calculated using latitude/longitude information from the sign-in activity.
-        self._country_or_region: Optional[str] = None
-        # Provides the latitude, longitude and altitude where the sign-in originated.
-        self._geo_coordinates: Optional[geo_coordinates.GeoCoordinates] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Provides the State where the sign-in originated. This is calculated using latitude/longitude information from the sign-in activity.
-        self._state: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -57,6 +39,24 @@ class SignInLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the city property.
         """
         self._city = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new signInLocation and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Provides the city where the sign-in originated. This is calculated using latitude/longitude information from the sign-in activity.
+        self._city: Optional[str] = None
+        # Provides the country code info (2 letter code) where the sign-in originated.  This is calculated using latitude/longitude information from the sign-in activity.
+        self._country_or_region: Optional[str] = None
+        # Provides the latitude, longitude and altitude where the sign-in originated.
+        self._geo_coordinates: Optional[geo_coordinates.GeoCoordinates] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Provides the State where the sign-in originated. This is calculated using latitude/longitude information from the sign-in activity.
+        self._state: Optional[str] = None
     
     @property
     def country_or_region(self,) -> Optional[str]:
@@ -109,9 +109,7 @@ class SignInLocation(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import geo_coordinates
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "city": lambda n : setattr(self, 'city', n.get_str_value()),
             "countryOrRegion": lambda n : setattr(self, 'country_or_region', n.get_str_value()),
             "geoCoordinates": lambda n : setattr(self, 'geo_coordinates', n.get_object_value(geo_coordinates.GeoCoordinates)),

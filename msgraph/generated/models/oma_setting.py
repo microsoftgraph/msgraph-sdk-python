@@ -1,30 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
-
-if TYPE_CHECKING:
-    from . import oma_setting_base64, oma_setting_boolean, oma_setting_date_time, oma_setting_floating_point, oma_setting_integer, oma_setting_string, oma_setting_string_xml
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class OmaSetting(AdditionalDataHolder, Parsable):
     """
     OMA Settings definition.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new omaSetting and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Description.
-        self._description: Optional[str] = None
-        # Display Name.
-        self._display_name: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # OMA.
-        self._oma_uri: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -42,6 +24,22 @@ class OmaSetting(AdditionalDataHolder, Parsable):
         """
         self._additional_data = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new omaSetting and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Description.
+        self._description: Optional[str] = None
+        # Display Name.
+        self._display_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # OMA.
+        self._oma_uri: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OmaSetting:
         """
@@ -52,37 +50,6 @@ class OmaSetting(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.omaSettingBase64":
-                from . import oma_setting_base64
-
-                return oma_setting_base64.OmaSettingBase64()
-            if mapping_value == "#microsoft.graph.omaSettingBoolean":
-                from . import oma_setting_boolean
-
-                return oma_setting_boolean.OmaSettingBoolean()
-            if mapping_value == "#microsoft.graph.omaSettingDateTime":
-                from . import oma_setting_date_time
-
-                return oma_setting_date_time.OmaSettingDateTime()
-            if mapping_value == "#microsoft.graph.omaSettingFloatingPoint":
-                from . import oma_setting_floating_point
-
-                return oma_setting_floating_point.OmaSettingFloatingPoint()
-            if mapping_value == "#microsoft.graph.omaSettingInteger":
-                from . import oma_setting_integer
-
-                return oma_setting_integer.OmaSettingInteger()
-            if mapping_value == "#microsoft.graph.omaSettingString":
-                from . import oma_setting_string
-
-                return oma_setting_string.OmaSettingString()
-            if mapping_value == "#microsoft.graph.omaSettingStringXml":
-                from . import oma_setting_string_xml
-
-                return oma_setting_string_xml.OmaSettingStringXml()
         return OmaSetting()
     
     @property
@@ -124,9 +91,7 @@ class OmaSetting(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import oma_setting_base64, oma_setting_boolean, oma_setting_date_time, oma_setting_floating_point, oma_setting_integer, oma_setting_string, oma_setting_string_xml
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

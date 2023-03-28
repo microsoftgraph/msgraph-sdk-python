@@ -7,21 +7,56 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ..........models import workbook_table_column
-    from ..........models.o_data_errors import o_data_error
-    from .data_body_range import data_body_range_request_builder
-    from .filter import filter_request_builder
-    from .header_row_range import header_row_range_request_builder
-    from .range import range_request_builder
-    from .total_row_range import total_row_range_request_builder
+data_body_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.data_body_range.data_body_range_request_builder')
+filter_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.filter.filter_request_builder')
+header_row_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.header_row_range.header_row_range_request_builder')
+range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.range.range_request_builder')
+total_row_range_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.columns.item.total_row_range.total_row_range_request_builder')
+workbook_table_column = lazy_import('msgraph.generated.models.workbook_table_column')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class WorkbookTableColumnItemRequestBuilder():
     """
     Provides operations to manage the columns property of the microsoft.graph.workbookTable entity.
     """
+    @property
+    def data_body_range(self) -> data_body_range_request_builder.DataBodyRangeRequestBuilder:
+        """
+        Provides operations to call the dataBodyRange method.
+        """
+        return data_body_range_request_builder.DataBodyRangeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def filter(self) -> filter_request_builder.FilterRequestBuilder:
+        """
+        Provides operations to manage the filter property of the microsoft.graph.workbookTableColumn entity.
+        """
+        return filter_request_builder.FilterRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def header_row_range(self) -> header_row_range_request_builder.HeaderRowRangeRequestBuilder:
+        """
+        Provides operations to call the headerRowRange method.
+        """
+        return header_row_range_request_builder.HeaderRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def range(self) -> range_request_builder.RangeRequestBuilder:
+        """
+        Provides operations to call the range method.
+        """
+        return range_request_builder.RangeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def total_row_range(self) -> total_row_range_request_builder.TotalRowRangeRequestBuilder:
+        """
+        Provides operations to call the totalRowRange method.
+        """
+        return total_row_range_request_builder.TotalRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WorkbookTableColumnItemRequestBuilder and sets the default values.
@@ -49,8 +84,6 @@ class WorkbookTableColumnItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -69,16 +102,12 @@ class WorkbookTableColumnItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import workbook_table_column
-
         return await self.request_adapter.send_async(request_info, workbook_table_column.WorkbookTableColumn, error_mapping)
     
     async def patch(self,body: Optional[workbook_table_column.WorkbookTableColumn] = None, request_configuration: Optional[WorkbookTableColumnItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_table_column.WorkbookTableColumn]:
@@ -94,16 +123,12 @@ class WorkbookTableColumnItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import workbook_table_column
-
         return await self.request_adapter.send_async(request_info, workbook_table_column.WorkbookTableColumn, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookTableColumnItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -161,51 +186,6 @@ class WorkbookTableColumnItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def data_body_range(self) -> data_body_range_request_builder.DataBodyRangeRequestBuilder:
-        """
-        Provides operations to call the dataBodyRange method.
-        """
-        from .data_body_range import data_body_range_request_builder
-
-        return data_body_range_request_builder.DataBodyRangeRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def filter(self) -> filter_request_builder.FilterRequestBuilder:
-        """
-        Provides operations to manage the filter property of the microsoft.graph.workbookTableColumn entity.
-        """
-        from .filter import filter_request_builder
-
-        return filter_request_builder.FilterRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def header_row_range(self) -> header_row_range_request_builder.HeaderRowRangeRequestBuilder:
-        """
-        Provides operations to call the headerRowRange method.
-        """
-        from .header_row_range import header_row_range_request_builder
-
-        return header_row_range_request_builder.HeaderRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def range(self) -> range_request_builder.RangeRequestBuilder:
-        """
-        Provides operations to call the range method.
-        """
-        from .range import range_request_builder
-
-        return range_request_builder.RangeRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def total_row_range(self) -> total_row_range_request_builder.TotalRowRangeRequestBuilder:
-        """
-        Provides operations to call the totalRowRange method.
-        """
-        from .total_row_range import total_row_range_request_builder
-
-        return total_row_range_request_builder.TotalRowRangeRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class WorkbookTableColumnItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -223,6 +203,12 @@ class WorkbookTableColumnItemRequestBuilder():
         """
         Represents a collection of all the columns in the table. Read-only.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -238,12 +224,6 @@ class WorkbookTableColumnItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class WorkbookTableColumnItemRequestBuilderGetRequestConfiguration():

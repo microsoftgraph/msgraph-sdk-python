@@ -7,11 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ...models import device_configuration_device_state_summary
-    from ...models.o_data_errors import o_data_error
+device_configuration_device_state_summary = lazy_import('msgraph.generated.models.device_configuration_device_state_summary')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class DeviceConfigurationDeviceStateSummariesRequestBuilder():
     """
@@ -44,8 +44,6 @@ class DeviceConfigurationDeviceStateSummariesRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -64,16 +62,12 @@ class DeviceConfigurationDeviceStateSummariesRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import device_configuration_device_state_summary
-
         return await self.request_adapter.send_async(request_info, device_configuration_device_state_summary.DeviceConfigurationDeviceStateSummary, error_mapping)
     
     async def patch(self,body: Optional[device_configuration_device_state_summary.DeviceConfigurationDeviceStateSummary] = None, request_configuration: Optional[DeviceConfigurationDeviceStateSummariesRequestBuilderPatchRequestConfiguration] = None) -> Optional[device_configuration_device_state_summary.DeviceConfigurationDeviceStateSummary]:
@@ -89,16 +83,12 @@ class DeviceConfigurationDeviceStateSummariesRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import device_configuration_device_state_summary
-
         return await self.request_adapter.send_async(request_info, device_configuration_device_state_summary.DeviceConfigurationDeviceStateSummary, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceConfigurationDeviceStateSummariesRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -173,6 +163,12 @@ class DeviceConfigurationDeviceStateSummariesRequestBuilder():
         """
         The device configuration device state summary for this account.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -188,12 +184,6 @@ class DeviceConfigurationDeviceStateSummariesRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class DeviceConfigurationDeviceStateSummariesRequestBuilderGetRequestConfiguration():

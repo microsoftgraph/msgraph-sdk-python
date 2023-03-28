@@ -1,25 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from .....models import invitation_participant_info
+invitation_participant_info = lazy_import('msgraph.generated.models.invitation_participant_info')
 
 class RedirectPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new redirectPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The callbackUri property
-        self._callback_uri: Optional[str] = None
-        # The targets property
-        self._targets: Optional[List[invitation_participant_info.InvitationParticipantInfo]] = None
-        # The timeout property
-        self._timeout: Optional[int] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -54,6 +40,20 @@ class RedirectPostRequestBody(AdditionalDataHolder, Parsable):
         """
         self._callback_uri = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new redirectPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The callbackUri property
+        self._callback_uri: Optional[str] = None
+        # The targets property
+        self._targets: Optional[List[invitation_participant_info.InvitationParticipantInfo]] = None
+        # The timeout property
+        self._timeout: Optional[int] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RedirectPostRequestBody:
         """
@@ -71,9 +71,7 @@ class RedirectPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import invitation_participant_info
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "callbackUri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
             "targets": lambda n : setattr(self, 'targets', n.get_collection_of_object_values(invitation_participant_info.InvitationParticipantInfo)),
             "timeout": lambda n : setattr(self, 'timeout', n.get_int_value()),

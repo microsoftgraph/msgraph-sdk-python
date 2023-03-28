@@ -1,30 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import directory_object
-
-from . import directory_object
+directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class Endpoint(directory_object.DirectoryObject):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new endpoint and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.endpoint"
-        # The capability property
-        self._capability: Optional[str] = None
-        # The providerId property
-        self._provider_id: Optional[str] = None
-        # The providerName property
-        self._provider_name: Optional[str] = None
-        # The providerResourceId property
-        self._provider_resource_id: Optional[str] = None
-        # The uri property
-        self._uri: Optional[str] = None
-    
     @property
     def capability(self,) -> Optional[str]:
         """
@@ -41,6 +22,23 @@ class Endpoint(directory_object.DirectoryObject):
             value: Value to set for the capability property.
         """
         self._capability = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new endpoint and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.endpoint"
+        # The capability property
+        self._capability: Optional[str] = None
+        # The providerId property
+        self._provider_id: Optional[str] = None
+        # The providerName property
+        self._provider_name: Optional[str] = None
+        # The providerResourceId property
+        self._provider_resource_id: Optional[str] = None
+        # The uri property
+        self._uri: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Endpoint:
@@ -59,9 +57,7 @@ class Endpoint(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_object
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "capability": lambda n : setattr(self, 'capability', n.get_str_value()),
             "providerId": lambda n : setattr(self, 'provider_id', n.get_str_value()),
             "providerName": lambda n : setattr(self, 'provider_name', n.get_str_value()),

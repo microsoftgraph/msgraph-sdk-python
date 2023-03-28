@@ -1,13 +1,35 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import base_item, content_type_info, document_set_version, drive_item, field_value_set, item_analytics, list_item_version, sharepoint_ids
-
-from . import base_item
+base_item = lazy_import('msgraph.generated.models.base_item')
+content_type_info = lazy_import('msgraph.generated.models.content_type_info')
+document_set_version = lazy_import('msgraph.generated.models.document_set_version')
+drive_item = lazy_import('msgraph.generated.models.drive_item')
+field_value_set = lazy_import('msgraph.generated.models.field_value_set')
+item_analytics = lazy_import('msgraph.generated.models.item_analytics')
+list_item_version = lazy_import('msgraph.generated.models.list_item_version')
+sharepoint_ids = lazy_import('msgraph.generated.models.sharepoint_ids')
 
 class ListItem(base_item.BaseItem):
+    @property
+    def analytics(self,) -> Optional[item_analytics.ItemAnalytics]:
+        """
+        Gets the analytics property value. Analytics about the view activities that took place on this item.
+        Returns: Optional[item_analytics.ItemAnalytics]
+        """
+        return self._analytics
+    
+    @analytics.setter
+    def analytics(self,value: Optional[item_analytics.ItemAnalytics] = None) -> None:
+        """
+        Sets the analytics property value. Analytics about the view activities that took place on this item.
+        Args:
+            value: Value to set for the analytics property.
+        """
+        self._analytics = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new listItem and sets the default values.
@@ -28,23 +50,6 @@ class ListItem(base_item.BaseItem):
         self._sharepoint_ids: Optional[sharepoint_ids.SharepointIds] = None
         # The list of previous versions of the list item.
         self._versions: Optional[List[list_item_version.ListItemVersion]] = None
-    
-    @property
-    def analytics(self,) -> Optional[item_analytics.ItemAnalytics]:
-        """
-        Gets the analytics property value. Analytics about the view activities that took place on this item.
-        Returns: Optional[item_analytics.ItemAnalytics]
-        """
-        return self._analytics
-    
-    @analytics.setter
-    def analytics(self,value: Optional[item_analytics.ItemAnalytics] = None) -> None:
-        """
-        Sets the analytics property value. Analytics about the view activities that took place on this item.
-        Args:
-            value: Value to set for the analytics property.
-        """
-        self._analytics = value
     
     @property
     def content_type(self,) -> Optional[content_type_info.ContentTypeInfo]:
@@ -131,9 +136,7 @@ class ListItem(base_item.BaseItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_item, content_type_info, document_set_version, drive_item, field_value_set, item_analytics, list_item_version, sharepoint_ids
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "analytics": lambda n : setattr(self, 'analytics', n.get_object_value(item_analytics.ItemAnalytics)),
             "contentType": lambda n : setattr(self, 'content_type', n.get_object_value(content_type_info.ContentTypeInfo)),
             "documentSetVersions": lambda n : setattr(self, 'document_set_versions', n.get_collection_of_object_values(document_set_version.DocumentSetVersion)),

@@ -1,27 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_type, acl_type
+access_type = lazy_import('msgraph.generated.models.external_connectors.access_type')
+acl_type = lazy_import('msgraph.generated.models.external_connectors.acl_type')
 
 class Acl(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new acl and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The accessType property
-        self._access_type: Optional[access_type.AccessType] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The type property
-        self._type: Optional[acl_type.AclType] = None
-        # The unique identifer of the identity. In case of Azure Active Directory identities, value is set to the object identifier of the user, group or tenant for types user, group and everyone (and everyoneExceptGuests) respectively. In case of external groups value is set to the ID of the externalGroup
-        self._value: Optional[str] = None
-    
     @property
     def access_type(self,) -> Optional[access_type.AccessType]:
         """
@@ -56,6 +41,22 @@ class Acl(AdditionalDataHolder, Parsable):
         """
         self._additional_data = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new acl and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The accessType property
+        self._access_type: Optional[access_type.AccessType] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The type property
+        self._type: Optional[acl_type.AclType] = None
+        # The unique identifer of the identity. In case of Azure Active Directory identities, value is set to the object identifier of the user, group or tenant for types user, group and everyone (and everyoneExceptGuests) respectively. In case of external groups value is set to the ID of the externalGroup
+        self._value: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Acl:
         """
@@ -73,9 +74,7 @@ class Acl(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_type, acl_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "accessType": lambda n : setattr(self, 'access_type', n.get_enum_value(access_type.AccessType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(acl_type.AclType)),

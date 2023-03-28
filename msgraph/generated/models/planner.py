@@ -1,27 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, planner_bucket, planner_plan, planner_task
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+planner_bucket = lazy_import('msgraph.generated.models.planner_bucket')
+planner_plan = lazy_import('msgraph.generated.models.planner_plan')
+planner_task = lazy_import('msgraph.generated.models.planner_task')
 
 class Planner(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Planner and sets the default values.
-        """
-        super().__init__()
-        # Read-only. Nullable. Returns a collection of the specified buckets
-        self._buckets: Optional[List[planner_bucket.PlannerBucket]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Read-only. Nullable. Returns a collection of the specified plans
-        self._plans: Optional[List[planner_plan.PlannerPlan]] = None
-        # Read-only. Nullable. Returns a collection of the specified tasks
-        self._tasks: Optional[List[planner_task.PlannerTask]] = None
-    
     @property
     def buckets(self,) -> Optional[List[planner_bucket.PlannerBucket]]:
         """
@@ -38,6 +25,20 @@ class Planner(entity.Entity):
             value: Value to set for the buckets property.
         """
         self._buckets = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Planner and sets the default values.
+        """
+        super().__init__()
+        # Read-only. Nullable. Returns a collection of the specified buckets
+        self._buckets: Optional[List[planner_bucket.PlannerBucket]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Read-only. Nullable. Returns a collection of the specified plans
+        self._plans: Optional[List[planner_plan.PlannerPlan]] = None
+        # Read-only. Nullable. Returns a collection of the specified tasks
+        self._tasks: Optional[List[planner_task.PlannerTask]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Planner:
@@ -56,9 +57,7 @@ class Planner(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, planner_bucket, planner_plan, planner_task
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "buckets": lambda n : setattr(self, 'buckets', n.get_collection_of_object_values(planner_bucket.PlannerBucket)),
             "plans": lambda n : setattr(self, 'plans', n.get_collection_of_object_values(planner_plan.PlannerPlan)),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(planner_task.PlannerTask)),

@@ -1,37 +1,16 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import case_action, case_operation_status, ediscovery_add_to_review_set_operation, ediscovery_estimate_operation, ediscovery_hold_operation, ediscovery_index_operation, ediscovery_purge_data_operation, ediscovery_tag_operation
-    from .. import entity, identity_set, result_info
-
-from .. import entity
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+result_info = lazy_import('msgraph.generated.models.result_info')
+case_action = lazy_import('msgraph.generated.models.security.case_action')
+case_operation_status = lazy_import('msgraph.generated.models.security.case_operation_status')
 
 class CaseOperation(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new caseOperation and sets the default values.
-        """
-        super().__init__()
-        # The type of action the operation represents. Possible values are: addToReviewSet,applyTags,contentExport,convertToPdf,estimateStatistics, purgeData
-        self._action: Optional[case_action.CaseAction] = None
-        # The date and time the operation was completed.
-        self._completed_date_time: Optional[datetime] = None
-        # The user that created the operation.
-        self._created_by: Optional[identity_set.IdentitySet] = None
-        # The date and time the operation was created.
-        self._created_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The progress of the operation.
-        self._percent_progress: Optional[int] = None
-        # Contains success and failure-specific result information.
-        self._result_info: Optional[result_info.ResultInfo] = None
-        # The status of the case operation. Possible values are: notStarted, submissionFailed, running, succeeded, partiallySucceeded, failed.
-        self._status: Optional[case_operation_status.CaseOperationStatus] = None
-    
     @property
     def action(self,) -> Optional[case_action.CaseAction]:
         """
@@ -65,6 +44,28 @@ class CaseOperation(entity.Entity):
             value: Value to set for the completed_date_time property.
         """
         self._completed_date_time = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new caseOperation and sets the default values.
+        """
+        super().__init__()
+        # The type of action the operation represents. Possible values are: addToReviewSet,applyTags,contentExport,convertToPdf,estimateStatistics, purgeData
+        self._action: Optional[case_action.CaseAction] = None
+        # The date and time the operation was completed.
+        self._completed_date_time: Optional[datetime] = None
+        # The user that created the operation.
+        self._created_by: Optional[identity_set.IdentitySet] = None
+        # The date and time the operation was created.
+        self._created_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The progress of the operation.
+        self._percent_progress: Optional[int] = None
+        # Contains success and failure-specific result information.
+        self._result_info: Optional[result_info.ResultInfo] = None
+        # The status of the case operation. Possible values are: notStarted, submissionFailed, running, succeeded, partiallySucceeded, failed.
+        self._status: Optional[case_operation_status.CaseOperationStatus] = None
     
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
@@ -110,33 +111,6 @@ class CaseOperation(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.security.ediscoveryAddToReviewSetOperation":
-                from . import ediscovery_add_to_review_set_operation
-
-                return ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation()
-            if mapping_value == "#microsoft.graph.security.ediscoveryEstimateOperation":
-                from . import ediscovery_estimate_operation
-
-                return ediscovery_estimate_operation.EdiscoveryEstimateOperation()
-            if mapping_value == "#microsoft.graph.security.ediscoveryHoldOperation":
-                from . import ediscovery_hold_operation
-
-                return ediscovery_hold_operation.EdiscoveryHoldOperation()
-            if mapping_value == "#microsoft.graph.security.ediscoveryIndexOperation":
-                from . import ediscovery_index_operation
-
-                return ediscovery_index_operation.EdiscoveryIndexOperation()
-            if mapping_value == "#microsoft.graph.security.ediscoveryPurgeDataOperation":
-                from . import ediscovery_purge_data_operation
-
-                return ediscovery_purge_data_operation.EdiscoveryPurgeDataOperation()
-            if mapping_value == "#microsoft.graph.security.ediscoveryTagOperation":
-                from . import ediscovery_tag_operation
-
-                return ediscovery_tag_operation.EdiscoveryTagOperation()
         return CaseOperation()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -144,10 +118,7 @@ class CaseOperation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import case_action, case_operation_status, ediscovery_add_to_review_set_operation, ediscovery_estimate_operation, ediscovery_hold_operation, ediscovery_index_operation, ediscovery_purge_data_operation, ediscovery_tag_operation
-        from .. import entity, identity_set, result_info
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(case_action.CaseAction)),
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),

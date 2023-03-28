@@ -1,33 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import phone
+phone = lazy_import('msgraph.generated.models.phone')
 
 class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new onlineMeetingInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The ID of the conference.
-        self._conference_id: Optional[str] = None
-        # The external link that launches the online meeting. This is a URL that clients will launch into a browser and will redirect the user to join the meeting.
-        self._join_url: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # All of the phone numbers associated with this conference.
-        self._phones: Optional[List[phone.Phone]] = None
-        # The pre-formatted quickdial for this call.
-        self._quick_dial: Optional[str] = None
-        # The toll free numbers that can be used to join the conference.
-        self._toll_free_numbers: Optional[List[str]] = None
-        # The toll number that can be used to join the conference.
-        self._toll_number: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -62,6 +40,28 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         """
         self._conference_id = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new onlineMeetingInfo and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The ID of the conference.
+        self._conference_id: Optional[str] = None
+        # The external link that launches the online meeting. This is a URL that clients will launch into a browser and will redirect the user to join the meeting.
+        self._join_url: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # All of the phone numbers associated with this conference.
+        self._phones: Optional[List[phone.Phone]] = None
+        # The pre-formatted quickdial for this call.
+        self._quick_dial: Optional[str] = None
+        # The toll free numbers that can be used to join the conference.
+        self._toll_free_numbers: Optional[List[str]] = None
+        # The toll number that can be used to join the conference.
+        self._toll_number: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnlineMeetingInfo:
         """
@@ -79,9 +79,7 @@ class OnlineMeetingInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import phone
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "conferenceId": lambda n : setattr(self, 'conference_id', n.get_str_value()),
             "joinUrl": lambda n : setattr(self, 'join_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

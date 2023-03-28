@@ -7,18 +7,32 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ................models import workbook_chart_fill
-    from ................models.o_data_errors import o_data_error
-    from .clear import clear_request_builder
-    from .set_solid_color import set_solid_color_request_builder
+clear_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.series.item.points.item.format.fill.clear.clear_request_builder')
+set_solid_color_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.series.item.points.item.format.fill.set_solid_color.set_solid_color_request_builder')
+workbook_chart_fill = lazy_import('msgraph.generated.models.workbook_chart_fill')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class FillRequestBuilder():
     """
     Provides operations to manage the fill property of the microsoft.graph.workbookChartPointFormat entity.
     """
+    @property
+    def clear(self) -> clear_request_builder.ClearRequestBuilder:
+        """
+        Provides operations to call the clear method.
+        """
+        return clear_request_builder.ClearRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def set_solid_color(self) -> set_solid_color_request_builder.SetSolidColorRequestBuilder:
+        """
+        Provides operations to call the setSolidColor method.
+        """
+        return set_solid_color_request_builder.SetSolidColorRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new FillRequestBuilder and sets the default values.
@@ -46,8 +60,6 @@ class FillRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ................models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -66,16 +78,12 @@ class FillRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ................models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ................models import workbook_chart_fill
-
         return await self.request_adapter.send_async(request_info, workbook_chart_fill.WorkbookChartFill, error_mapping)
     
     async def patch(self,body: Optional[workbook_chart_fill.WorkbookChartFill] = None, request_configuration: Optional[FillRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart_fill.WorkbookChartFill]:
@@ -91,16 +99,12 @@ class FillRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ................models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ................models import workbook_chart_fill
-
         return await self.request_adapter.send_async(request_info, workbook_chart_fill.WorkbookChartFill, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[FillRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -158,24 +162,6 @@ class FillRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def clear(self) -> clear_request_builder.ClearRequestBuilder:
-        """
-        Provides operations to call the clear method.
-        """
-        from .clear import clear_request_builder
-
-        return clear_request_builder.ClearRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def set_solid_color(self) -> set_solid_color_request_builder.SetSolidColorRequestBuilder:
-        """
-        Provides operations to call the setSolidColor method.
-        """
-        from .set_solid_color import set_solid_color_request_builder
-
-        return set_solid_color_request_builder.SetSolidColorRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class FillRequestBuilderDeleteRequestConfiguration():
         """
@@ -193,6 +179,12 @@ class FillRequestBuilder():
         """
         Represents the fill format of a chart, which includes background formating information. Read-only.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -208,12 +200,6 @@ class FillRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class FillRequestBuilderGetRequestConfiguration():

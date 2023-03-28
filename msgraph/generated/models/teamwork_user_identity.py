@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import identity, teamwork_user_identity_type
-
-from . import identity
+identity = lazy_import('msgraph.generated.models.identity')
+teamwork_user_identity_type = lazy_import('msgraph.generated.models.teamwork_user_identity_type')
 
 class TeamworkUserIdentity(identity.Identity):
     def __init__(self,) -> None:
@@ -34,9 +33,7 @@ class TeamworkUserIdentity(identity.Identity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity, teamwork_user_identity_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "userIdentityType": lambda n : setattr(self, 'user_identity_type', n.get_enum_value(teamwork_user_identity_type.TeamworkUserIdentityType)),
         }
         super_fields = super().get_field_deserializers()

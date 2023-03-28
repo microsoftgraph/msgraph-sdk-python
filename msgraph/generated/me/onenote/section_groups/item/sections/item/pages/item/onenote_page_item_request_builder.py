@@ -7,22 +7,64 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from .........models import onenote_page
-    from .........models.o_data_errors import o_data_error
-    from .content import content_request_builder
-    from .copy_to_section import copy_to_section_request_builder
-    from .onenote_patch_content import onenote_patch_content_request_builder
-    from .parent_notebook import parent_notebook_request_builder
-    from .parent_section import parent_section_request_builder
-    from .preview import preview_request_builder
+content_request_builder = lazy_import('msgraph.generated.me.onenote.section_groups.item.sections.item.pages.item.content.content_request_builder')
+copy_to_section_request_builder = lazy_import('msgraph.generated.me.onenote.section_groups.item.sections.item.pages.item.copy_to_section.copy_to_section_request_builder')
+onenote_patch_content_request_builder = lazy_import('msgraph.generated.me.onenote.section_groups.item.sections.item.pages.item.onenote_patch_content.onenote_patch_content_request_builder')
+parent_notebook_request_builder = lazy_import('msgraph.generated.me.onenote.section_groups.item.sections.item.pages.item.parent_notebook.parent_notebook_request_builder')
+parent_section_request_builder = lazy_import('msgraph.generated.me.onenote.section_groups.item.sections.item.pages.item.parent_section.parent_section_request_builder')
+preview_request_builder = lazy_import('msgraph.generated.me.onenote.section_groups.item.sections.item.pages.item.preview.preview_request_builder')
+onenote_page = lazy_import('msgraph.generated.models.onenote_page')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class OnenotePageItemRequestBuilder():
     """
     Provides operations to manage the pages property of the microsoft.graph.onenoteSection entity.
     """
+    @property
+    def content(self) -> content_request_builder.ContentRequestBuilder:
+        """
+        Provides operations to manage the media for the user entity.
+        """
+        return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def copy_to_section(self) -> copy_to_section_request_builder.CopyToSectionRequestBuilder:
+        """
+        Provides operations to call the copyToSection method.
+        """
+        return copy_to_section_request_builder.CopyToSectionRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def onenote_patch_content(self) -> onenote_patch_content_request_builder.OnenotePatchContentRequestBuilder:
+        """
+        Provides operations to call the onenotePatchContent method.
+        """
+        return onenote_patch_content_request_builder.OnenotePatchContentRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def parent_notebook(self) -> parent_notebook_request_builder.ParentNotebookRequestBuilder:
+        """
+        Provides operations to manage the parentNotebook property of the microsoft.graph.onenotePage entity.
+        """
+        return parent_notebook_request_builder.ParentNotebookRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def parent_section(self) -> parent_section_request_builder.ParentSectionRequestBuilder:
+        """
+        Provides operations to manage the parentSection property of the microsoft.graph.onenotePage entity.
+        """
+        return parent_section_request_builder.ParentSectionRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def preview(self) -> preview_request_builder.PreviewRequestBuilder:
+        """
+        Provides operations to call the preview method.
+        """
+        return preview_request_builder.PreviewRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new OnenotePageItemRequestBuilder and sets the default values.
@@ -50,8 +92,6 @@ class OnenotePageItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -70,16 +110,12 @@ class OnenotePageItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import onenote_page
-
         return await self.request_adapter.send_async(request_info, onenote_page.OnenotePage, error_mapping)
     
     async def patch(self,body: Optional[onenote_page.OnenotePage] = None, request_configuration: Optional[OnenotePageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[onenote_page.OnenotePage]:
@@ -95,16 +131,12 @@ class OnenotePageItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import onenote_page
-
         return await self.request_adapter.send_async(request_info, onenote_page.OnenotePage, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[OnenotePageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -162,60 +194,6 @@ class OnenotePageItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def content(self) -> content_request_builder.ContentRequestBuilder:
-        """
-        Provides operations to manage the media for the user entity.
-        """
-        from .content import content_request_builder
-
-        return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def copy_to_section(self) -> copy_to_section_request_builder.CopyToSectionRequestBuilder:
-        """
-        Provides operations to call the copyToSection method.
-        """
-        from .copy_to_section import copy_to_section_request_builder
-
-        return copy_to_section_request_builder.CopyToSectionRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def onenote_patch_content(self) -> onenote_patch_content_request_builder.OnenotePatchContentRequestBuilder:
-        """
-        Provides operations to call the onenotePatchContent method.
-        """
-        from .onenote_patch_content import onenote_patch_content_request_builder
-
-        return onenote_patch_content_request_builder.OnenotePatchContentRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def parent_notebook(self) -> parent_notebook_request_builder.ParentNotebookRequestBuilder:
-        """
-        Provides operations to manage the parentNotebook property of the microsoft.graph.onenotePage entity.
-        """
-        from .parent_notebook import parent_notebook_request_builder
-
-        return parent_notebook_request_builder.ParentNotebookRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def parent_section(self) -> parent_section_request_builder.ParentSectionRequestBuilder:
-        """
-        Provides operations to manage the parentSection property of the microsoft.graph.onenotePage entity.
-        """
-        from .parent_section import parent_section_request_builder
-
-        return parent_section_request_builder.ParentSectionRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def preview(self) -> preview_request_builder.PreviewRequestBuilder:
-        """
-        Provides operations to call the preview method.
-        """
-        from .preview import preview_request_builder
-
-        return preview_request_builder.PreviewRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class OnenotePageItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -233,6 +211,12 @@ class OnenotePageItemRequestBuilder():
         """
         The collection of pages in the section.  Read-only. Nullable.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -248,12 +232,6 @@ class OnenotePageItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class OnenotePageItemRequestBuilderGetRequestConfiguration():

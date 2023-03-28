@@ -1,17 +1,53 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import android_lob_app, android_store_app, entity, iosi_pad_o_s_web_clip, ios_lob_app, ios_store_app, ios_vpp_app, mac_o_s_lob_app, mac_o_s_microsoft_edge_app, mac_o_s_office_suite_app, managed_android_lob_app, managed_android_store_app, managed_app, managed_i_o_s_lob_app, managed_i_o_s_store_app, managed_mobile_lob_app, microsoft_store_for_business_app, mime_content, mobile_app_assignment, mobile_app_category, mobile_app_publishing_state, mobile_lob_app, web_app, win32_lob_app, windows_microsoft_edge_app, windows_mobile_m_s_i, windows_universal_app_x, windows_web_app
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+mime_content = lazy_import('msgraph.generated.models.mime_content')
+mobile_app_assignment = lazy_import('msgraph.generated.models.mobile_app_assignment')
+mobile_app_category = lazy_import('msgraph.generated.models.mobile_app_category')
+mobile_app_publishing_state = lazy_import('msgraph.generated.models.mobile_app_publishing_state')
 
 class MobileApp(entity.Entity):
     """
     An abstract class containing the base properties for Intune mobile apps.
     """
+    @property
+    def assignments(self,) -> Optional[List[mobile_app_assignment.MobileAppAssignment]]:
+        """
+        Gets the assignments property value. The list of group assignments for this mobile app.
+        Returns: Optional[List[mobile_app_assignment.MobileAppAssignment]]
+        """
+        return self._assignments
+    
+    @assignments.setter
+    def assignments(self,value: Optional[List[mobile_app_assignment.MobileAppAssignment]] = None) -> None:
+        """
+        Sets the assignments property value. The list of group assignments for this mobile app.
+        Args:
+            value: Value to set for the assignments property.
+        """
+        self._assignments = value
+    
+    @property
+    def categories(self,) -> Optional[List[mobile_app_category.MobileAppCategory]]:
+        """
+        Gets the categories property value. The list of categories for this app.
+        Returns: Optional[List[mobile_app_category.MobileAppCategory]]
+        """
+        return self._categories
+    
+    @categories.setter
+    def categories(self,value: Optional[List[mobile_app_category.MobileAppCategory]] = None) -> None:
+        """
+        Sets the categories property value. The list of categories for this app.
+        Args:
+            value: Value to set for the categories property.
+        """
+        self._categories = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new mobileApp and sets the default values.
@@ -51,40 +87,6 @@ class MobileApp(entity.Entity):
         self._publishing_state: Optional[mobile_app_publishing_state.MobileAppPublishingState] = None
     
     @property
-    def assignments(self,) -> Optional[List[mobile_app_assignment.MobileAppAssignment]]:
-        """
-        Gets the assignments property value. The list of group assignments for this mobile app.
-        Returns: Optional[List[mobile_app_assignment.MobileAppAssignment]]
-        """
-        return self._assignments
-    
-    @assignments.setter
-    def assignments(self,value: Optional[List[mobile_app_assignment.MobileAppAssignment]] = None) -> None:
-        """
-        Sets the assignments property value. The list of group assignments for this mobile app.
-        Args:
-            value: Value to set for the assignments property.
-        """
-        self._assignments = value
-    
-    @property
-    def categories(self,) -> Optional[List[mobile_app_category.MobileAppCategory]]:
-        """
-        Gets the categories property value. The list of categories for this app.
-        Returns: Optional[List[mobile_app_category.MobileAppCategory]]
-        """
-        return self._categories
-    
-    @categories.setter
-    def categories(self,value: Optional[List[mobile_app_category.MobileAppCategory]] = None) -> None:
-        """
-        Sets the categories property value. The list of categories for this app.
-        Args:
-            value: Value to set for the categories property.
-        """
-        self._categories = value
-    
-    @property
     def created_date_time(self,) -> Optional[datetime]:
         """
         Gets the createdDateTime property value. The date and time the app was created.
@@ -111,101 +113,6 @@ class MobileApp(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.androidLobApp":
-                from . import android_lob_app
-
-                return android_lob_app.AndroidLobApp()
-            if mapping_value == "#microsoft.graph.androidStoreApp":
-                from . import android_store_app
-
-                return android_store_app.AndroidStoreApp()
-            if mapping_value == "#microsoft.graph.iosiPadOSWebClip":
-                from . import iosi_pad_o_s_web_clip
-
-                return iosi_pad_o_s_web_clip.IosiPadOSWebClip()
-            if mapping_value == "#microsoft.graph.iosLobApp":
-                from . import ios_lob_app
-
-                return ios_lob_app.IosLobApp()
-            if mapping_value == "#microsoft.graph.iosStoreApp":
-                from . import ios_store_app
-
-                return ios_store_app.IosStoreApp()
-            if mapping_value == "#microsoft.graph.iosVppApp":
-                from . import ios_vpp_app
-
-                return ios_vpp_app.IosVppApp()
-            if mapping_value == "#microsoft.graph.macOSLobApp":
-                from . import mac_o_s_lob_app
-
-                return mac_o_s_lob_app.MacOSLobApp()
-            if mapping_value == "#microsoft.graph.macOSMicrosoftEdgeApp":
-                from . import mac_o_s_microsoft_edge_app
-
-                return mac_o_s_microsoft_edge_app.MacOSMicrosoftEdgeApp()
-            if mapping_value == "#microsoft.graph.macOSOfficeSuiteApp":
-                from . import mac_o_s_office_suite_app
-
-                return mac_o_s_office_suite_app.MacOSOfficeSuiteApp()
-            if mapping_value == "#microsoft.graph.managedAndroidLobApp":
-                from . import managed_android_lob_app
-
-                return managed_android_lob_app.ManagedAndroidLobApp()
-            if mapping_value == "#microsoft.graph.managedAndroidStoreApp":
-                from . import managed_android_store_app
-
-                return managed_android_store_app.ManagedAndroidStoreApp()
-            if mapping_value == "#microsoft.graph.managedApp":
-                from . import managed_app
-
-                return managed_app.ManagedApp()
-            if mapping_value == "#microsoft.graph.managedIOSLobApp":
-                from . import managed_i_o_s_lob_app
-
-                return managed_i_o_s_lob_app.ManagedIOSLobApp()
-            if mapping_value == "#microsoft.graph.managedIOSStoreApp":
-                from . import managed_i_o_s_store_app
-
-                return managed_i_o_s_store_app.ManagedIOSStoreApp()
-            if mapping_value == "#microsoft.graph.managedMobileLobApp":
-                from . import managed_mobile_lob_app
-
-                return managed_mobile_lob_app.ManagedMobileLobApp()
-            if mapping_value == "#microsoft.graph.microsoftStoreForBusinessApp":
-                from . import microsoft_store_for_business_app
-
-                return microsoft_store_for_business_app.MicrosoftStoreForBusinessApp()
-            if mapping_value == "#microsoft.graph.mobileLobApp":
-                from . import mobile_lob_app
-
-                return mobile_lob_app.MobileLobApp()
-            if mapping_value == "#microsoft.graph.webApp":
-                from . import web_app
-
-                return web_app.WebApp()
-            if mapping_value == "#microsoft.graph.win32LobApp":
-                from . import win32_lob_app
-
-                return win32_lob_app.Win32LobApp()
-            if mapping_value == "#microsoft.graph.windowsMicrosoftEdgeApp":
-                from . import windows_microsoft_edge_app
-
-                return windows_microsoft_edge_app.WindowsMicrosoftEdgeApp()
-            if mapping_value == "#microsoft.graph.windowsMobileMSI":
-                from . import windows_mobile_m_s_i
-
-                return windows_mobile_m_s_i.WindowsMobileMSI()
-            if mapping_value == "#microsoft.graph.windowsUniversalAppX":
-                from . import windows_universal_app_x
-
-                return windows_universal_app_x.WindowsUniversalAppX()
-            if mapping_value == "#microsoft.graph.windowsWebApp":
-                from . import windows_web_app
-
-                return windows_web_app.WindowsWebApp()
         return MobileApp()
     
     @property
@@ -264,9 +171,7 @@ class MobileApp(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_lob_app, android_store_app, entity, iosi_pad_o_s_web_clip, ios_lob_app, ios_store_app, ios_vpp_app, mac_o_s_lob_app, mac_o_s_microsoft_edge_app, mac_o_s_office_suite_app, managed_android_lob_app, managed_android_store_app, managed_app, managed_i_o_s_lob_app, managed_i_o_s_store_app, managed_mobile_lob_app, microsoft_store_for_business_app, mime_content, mobile_app_assignment, mobile_app_category, mobile_app_publishing_state, mobile_lob_app, web_app, win32_lob_app, windows_microsoft_edge_app, windows_mobile_m_s_i, windows_universal_app_x, windows_web_app
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(mobile_app_assignment.MobileAppAssignment)),
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_object_values(mobile_app_category.MobileAppCategory)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),

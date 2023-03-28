@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import device_install_state, entity
-
-from . import entity
+device_install_state = lazy_import('msgraph.generated.models.device_install_state')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class UserInstallStateSummary(entity.Entity):
     """
@@ -80,9 +79,7 @@ class UserInstallStateSummary(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_install_state, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "deviceStates": lambda n : setattr(self, 'device_states', n.get_collection_of_object_values(device_install_state.DeviceInstallState)),
             "failedDeviceCount": lambda n : setattr(self, 'failed_device_count', n.get_int_value()),
             "installedDeviceCount": lambda n : setattr(self, 'installed_device_count', n.get_int_value()),

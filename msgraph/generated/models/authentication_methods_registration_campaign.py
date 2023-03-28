@@ -1,11 +1,30 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import advanced_config_state, authentication_methods_registration_campaign_include_target, exclude_target
+advanced_config_state = lazy_import('msgraph.generated.models.advanced_config_state')
+authentication_methods_registration_campaign_include_target = lazy_import('msgraph.generated.models.authentication_methods_registration_campaign_include_target')
+exclude_target = lazy_import('msgraph.generated.models.exclude_target')
 
 class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new authenticationMethodsRegistrationCampaign and sets the default values.
@@ -23,23 +42,6 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         self._snooze_duration_in_days: Optional[int] = None
         # The state property
         self._state: Optional[advanced_config_state.AdvancedConfigState] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodsRegistrationCampaign:
@@ -75,9 +77,7 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import advanced_config_state, authentication_methods_registration_campaign_include_target, exclude_target
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "excludeTargets": lambda n : setattr(self, 'exclude_targets', n.get_collection_of_object_values(exclude_target.ExcludeTarget)),
             "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

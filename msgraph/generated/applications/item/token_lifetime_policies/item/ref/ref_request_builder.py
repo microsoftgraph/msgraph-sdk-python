@@ -7,10 +7,10 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ......models.o_data_errors import o_data_error
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class RefRequestBuilder():
     """
@@ -43,8 +43,6 @@ class RefRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -75,6 +73,9 @@ class RefRequestBuilder():
         """
         Delete ref of navigation property tokenLifetimePolicies for applications
         """
+        # Delete Uri
+        id: Optional[str] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -88,9 +89,6 @@ class RefRequestBuilder():
                 return "%40id"
             return original_name
         
-        # Delete Uri
-        id: Optional[str] = None
-
     
     @dataclass
     class RefRequestBuilderDeleteRequestConfiguration():

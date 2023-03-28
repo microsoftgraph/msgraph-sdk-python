@@ -7,23 +7,72 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import directory_object_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .graph_application import graph_application_request_builder
-    from .graph_device import graph_device_request_builder
-    from .graph_group import graph_group_request_builder
-    from .graph_org_contact import graph_org_contact_request_builder
-    from .graph_service_principal import graph_service_principal_request_builder
-    from .graph_user import graph_user_request_builder
+count_request_builder = lazy_import('msgraph.generated.groups.item.transitive_members.count.count_request_builder')
+graph_application_request_builder = lazy_import('msgraph.generated.groups.item.transitive_members.graph_application.graph_application_request_builder')
+graph_device_request_builder = lazy_import('msgraph.generated.groups.item.transitive_members.graph_device.graph_device_request_builder')
+graph_group_request_builder = lazy_import('msgraph.generated.groups.item.transitive_members.graph_group.graph_group_request_builder')
+graph_org_contact_request_builder = lazy_import('msgraph.generated.groups.item.transitive_members.graph_org_contact.graph_org_contact_request_builder')
+graph_service_principal_request_builder = lazy_import('msgraph.generated.groups.item.transitive_members.graph_service_principal.graph_service_principal_request_builder')
+graph_user_request_builder = lazy_import('msgraph.generated.groups.item.transitive_members.graph_user.graph_user_request_builder')
+directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class TransitiveMembersRequestBuilder():
     """
     Provides operations to manage the transitiveMembers property of the microsoft.graph.group entity.
     """
+    @property
+    def count(self) -> count_request_builder.CountRequestBuilder:
+        """
+        Provides operations to count the resources in the collection.
+        """
+        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_application(self) -> graph_application_request_builder.GraphApplicationRequestBuilder:
+        """
+        Casts the previous resource to application.
+        """
+        return graph_application_request_builder.GraphApplicationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_device(self) -> graph_device_request_builder.GraphDeviceRequestBuilder:
+        """
+        Casts the previous resource to device.
+        """
+        return graph_device_request_builder.GraphDeviceRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_group(self) -> graph_group_request_builder.GraphGroupRequestBuilder:
+        """
+        Casts the previous resource to group.
+        """
+        return graph_group_request_builder.GraphGroupRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_org_contact(self) -> graph_org_contact_request_builder.GraphOrgContactRequestBuilder:
+        """
+        Casts the previous resource to orgContact.
+        """
+        return graph_org_contact_request_builder.GraphOrgContactRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_service_principal(self) -> graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder:
+        """
+        Casts the previous resource to servicePrincipal.
+        """
+        return graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_user(self) -> graph_user_request_builder.GraphUserRequestBuilder:
+        """
+        Casts the previous resource to user.
+        """
+        return graph_user_request_builder.GraphUserRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TransitiveMembersRequestBuilder and sets the default values.
@@ -52,16 +101,12 @@ class TransitiveMembersRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import directory_object_collection_response
-
         return await self.request_adapter.send_async(request_info, directory_object_collection_response.DirectoryObjectCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TransitiveMembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -82,74 +127,35 @@ class TransitiveMembersRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count import count_request_builder
-
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def graph_application(self) -> graph_application_request_builder.GraphApplicationRequestBuilder:
-        """
-        Casts the previous resource to application.
-        """
-        from .graph_application import graph_application_request_builder
-
-        return graph_application_request_builder.GraphApplicationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def graph_device(self) -> graph_device_request_builder.GraphDeviceRequestBuilder:
-        """
-        Casts the previous resource to device.
-        """
-        from .graph_device import graph_device_request_builder
-
-        return graph_device_request_builder.GraphDeviceRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def graph_group(self) -> graph_group_request_builder.GraphGroupRequestBuilder:
-        """
-        Casts the previous resource to group.
-        """
-        from .graph_group import graph_group_request_builder
-
-        return graph_group_request_builder.GraphGroupRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def graph_org_contact(self) -> graph_org_contact_request_builder.GraphOrgContactRequestBuilder:
-        """
-        Casts the previous resource to orgContact.
-        """
-        from .graph_org_contact import graph_org_contact_request_builder
-
-        return graph_org_contact_request_builder.GraphOrgContactRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def graph_service_principal(self) -> graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder:
-        """
-        Casts the previous resource to servicePrincipal.
-        """
-        from .graph_service_principal import graph_service_principal_request_builder
-
-        return graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def graph_user(self) -> graph_user_request_builder.GraphUserRequestBuilder:
-        """
-        Casts the previous resource to user.
-        """
-        from .graph_user import graph_user_request_builder
-
-        return graph_user_request_builder.GraphUserRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class TransitiveMembersRequestBuilderGetQueryParameters():
         """
         The direct and transitive members of a group. Nullable.
         """
+        # Include count of items
+        count: Optional[bool] = None
+
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -177,30 +183,6 @@ class TransitiveMembersRequestBuilder():
                 return "%24top"
             return original_name
         
-        # Include count of items
-        count: Optional[bool] = None
-
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Filter items by property values
-        filter: Optional[str] = None
-
-        # Order items by property values
-        orderby: Optional[List[str]] = None
-
-        # Search items by search phrases
-        search: Optional[str] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
-        # Skip the first n items
-        skip: Optional[int] = None
-
-        # Show only the first n items
-        top: Optional[int] = None
-
     
     @dataclass
     class TransitiveMembersRequestBuilderGetRequestConfiguration():

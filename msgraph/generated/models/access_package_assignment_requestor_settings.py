@@ -1,37 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import subject_set
+subject_set = lazy_import('msgraph.generated.models.subject_set')
 
 class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new accessPackageAssignmentRequestorSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # If false, the requestor is not permitted to include a schedule in their request.
-        self._allow_custom_assignment_schedule: Optional[bool] = None
-        # If true, allows on-behalf-of requestors to create a request to add access for another principal.
-        self._enable_on_behalf_requestors_to_add_access: Optional[bool] = None
-        # If true, allows on-behalf-of requestors to create a request to remove access for another principal.
-        self._enable_on_behalf_requestors_to_remove_access: Optional[bool] = None
-        # If true, allows on-behalf-of requestors to create a request to update access for another principal.
-        self._enable_on_behalf_requestors_to_update_access: Optional[bool] = None
-        # If true, allows requestors to create a request to add access for themselves.
-        self._enable_targets_to_self_add_access: Optional[bool] = None
-        # If true, allows requestors to create a request to remove their access.
-        self._enable_targets_to_self_remove_access: Optional[bool] = None
-        # If true, allows requestors to create a request to update their access.
-        self._enable_targets_to_self_update_access: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The principals who can request on-behalf-of others.
-        self._on_behalf_requestors: Optional[List[subject_set.SubjectSet]] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -65,6 +39,32 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the allow_custom_assignment_schedule property.
         """
         self._allow_custom_assignment_schedule = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new accessPackageAssignmentRequestorSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # If false, the requestor is not permitted to include a schedule in their request.
+        self._allow_custom_assignment_schedule: Optional[bool] = None
+        # If true, allows on-behalf-of requestors to create a request to add access for another principal.
+        self._enable_on_behalf_requestors_to_add_access: Optional[bool] = None
+        # If true, allows on-behalf-of requestors to create a request to remove access for another principal.
+        self._enable_on_behalf_requestors_to_remove_access: Optional[bool] = None
+        # If true, allows on-behalf-of requestors to create a request to update access for another principal.
+        self._enable_on_behalf_requestors_to_update_access: Optional[bool] = None
+        # If true, allows requestors to create a request to add access for themselves.
+        self._enable_targets_to_self_add_access: Optional[bool] = None
+        # If true, allows requestors to create a request to remove their access.
+        self._enable_targets_to_self_remove_access: Optional[bool] = None
+        # If true, allows requestors to create a request to update their access.
+        self._enable_targets_to_self_update_access: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The principals who can request on-behalf-of others.
+        self._on_behalf_requestors: Optional[List[subject_set.SubjectSet]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignmentRequestorSettings:
@@ -185,9 +185,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import subject_set
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "allowCustomAssignmentSchedule": lambda n : setattr(self, 'allow_custom_assignment_schedule', n.get_bool_value()),
             "enableOnBehalfRequestorsToAddAccess": lambda n : setattr(self, 'enable_on_behalf_requestors_to_add_access', n.get_bool_value()),
             "enableOnBehalfRequestorsToRemoveAccess": lambda n : setattr(self, 'enable_on_behalf_requestors_to_remove_access', n.get_bool_value()),

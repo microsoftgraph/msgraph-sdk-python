@@ -7,18 +7,38 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ...models import authentication_methods_policy
-    from ...models.o_data_errors import o_data_error
-    from .authentication_method_configurations import authentication_method_configurations_request_builder
-    from .authentication_method_configurations.item import authentication_method_configuration_item_request_builder
+authentication_methods_policy = lazy_import('msgraph.generated.models.authentication_methods_policy')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+authentication_method_configurations_request_builder = lazy_import('msgraph.generated.policies.authentication_methods_policy.authentication_method_configurations.authentication_method_configurations_request_builder')
+authentication_method_configuration_item_request_builder = lazy_import('msgraph.generated.policies.authentication_methods_policy.authentication_method_configurations.item.authentication_method_configuration_item_request_builder')
 
 class AuthenticationMethodsPolicyRequestBuilder():
     """
     Provides operations to manage the authenticationMethodsPolicy property of the microsoft.graph.policyRoot entity.
     """
+    @property
+    def authentication_method_configurations(self) -> authentication_method_configurations_request_builder.AuthenticationMethodConfigurationsRequestBuilder:
+        """
+        Provides operations to manage the authenticationMethodConfigurations property of the microsoft.graph.authenticationMethodsPolicy entity.
+        """
+        return authentication_method_configurations_request_builder.AuthenticationMethodConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def authentication_method_configurations_by_id(self,id: str) -> authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder:
+        """
+        Provides operations to manage the authenticationMethodConfigurations property of the microsoft.graph.authenticationMethodsPolicy entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["authenticationMethodConfiguration%2Did"] = id
+        return authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AuthenticationMethodsPolicyRequestBuilder and sets the default values.
@@ -37,21 +57,6 @@ class AuthenticationMethodsPolicyRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def authentication_method_configurations_by_id(self,id: str) -> authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder:
-        """
-        Provides operations to manage the authenticationMethodConfigurations property of the microsoft.graph.authenticationMethodsPolicy entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .authentication_method_configurations.item import authentication_method_configuration_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["authenticationMethodConfiguration%2Did"] = id
-        return authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def delete(self,request_configuration: Optional[AuthenticationMethodsPolicyRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property authenticationMethodsPolicy for policies
@@ -61,8 +66,6 @@ class AuthenticationMethodsPolicyRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -81,16 +84,12 @@ class AuthenticationMethodsPolicyRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import authentication_methods_policy
-
         return await self.request_adapter.send_async(request_info, authentication_methods_policy.AuthenticationMethodsPolicy, error_mapping)
     
     async def patch(self,body: Optional[authentication_methods_policy.AuthenticationMethodsPolicy] = None, request_configuration: Optional[AuthenticationMethodsPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[authentication_methods_policy.AuthenticationMethodsPolicy]:
@@ -106,16 +105,12 @@ class AuthenticationMethodsPolicyRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import authentication_methods_policy
-
         return await self.request_adapter.send_async(request_info, authentication_methods_policy.AuthenticationMethodsPolicy, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AuthenticationMethodsPolicyRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -173,15 +168,6 @@ class AuthenticationMethodsPolicyRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def authentication_method_configurations(self) -> authentication_method_configurations_request_builder.AuthenticationMethodConfigurationsRequestBuilder:
-        """
-        Provides operations to manage the authenticationMethodConfigurations property of the microsoft.graph.authenticationMethodsPolicy entity.
-        """
-        from .authentication_method_configurations import authentication_method_configurations_request_builder
-
-        return authentication_method_configurations_request_builder.AuthenticationMethodConfigurationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class AuthenticationMethodsPolicyRequestBuilderDeleteRequestConfiguration():
         """
@@ -199,6 +185,12 @@ class AuthenticationMethodsPolicyRequestBuilder():
         """
         Read the properties and relationships of an authenticationMethodsPolicy object.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -214,12 +206,6 @@ class AuthenticationMethodsPolicyRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class AuthenticationMethodsPolicyRequestBuilderGetRequestConfiguration():

@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import ip_range, named_location
-
-from . import named_location
+ip_range = lazy_import('msgraph.generated.models.ip_range')
+named_location = lazy_import('msgraph.generated.models.named_location')
 
 class IpNamedLocation(named_location.NamedLocation):
     def __init__(self,) -> None:
@@ -37,9 +36,7 @@ class IpNamedLocation(named_location.NamedLocation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ip_range, named_location
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "ipRanges": lambda n : setattr(self, 'ip_ranges', n.get_collection_of_object_values(ip_range.IpRange)),
             "isTrusted": lambda n : setattr(self, 'is_trusted', n.get_bool_value()),
         }

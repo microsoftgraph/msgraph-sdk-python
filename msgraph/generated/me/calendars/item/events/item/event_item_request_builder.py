@@ -7,34 +7,138 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ......models import event
-    from ......models.o_data_errors import o_data_error
-    from .accept import accept_request_builder
-    from .attachments import attachments_request_builder
-    from .attachments.item import attachment_item_request_builder
-    from .calendar import calendar_request_builder
-    from .cancel import cancel_request_builder
-    from .decline import decline_request_builder
-    from .dismiss_reminder import dismiss_reminder_request_builder
-    from .extensions import extensions_request_builder
-    from .extensions.item import extension_item_request_builder
-    from .forward import forward_request_builder
-    from .instances import instances_request_builder
-    from .instances.item import event_item_request_builder
-    from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-    from .multi_value_extended_properties.item import multi_value_legacy_extended_property_item_request_builder
-    from .single_value_extended_properties import single_value_extended_properties_request_builder
-    from .single_value_extended_properties.item import single_value_legacy_extended_property_item_request_builder
-    from .snooze_reminder import snooze_reminder_request_builder
-    from .tentatively_accept import tentatively_accept_request_builder
+accept_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.accept.accept_request_builder')
+attachments_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.attachments.attachments_request_builder')
+attachment_item_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.attachments.item.attachment_item_request_builder')
+calendar_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.calendar.calendar_request_builder')
+cancel_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.cancel.cancel_request_builder')
+decline_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.decline.decline_request_builder')
+dismiss_reminder_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.dismiss_reminder.dismiss_reminder_request_builder')
+extensions_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.extensions.extensions_request_builder')
+extension_item_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.extensions.item.extension_item_request_builder')
+forward_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.forward.forward_request_builder')
+instances_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.instances.instances_request_builder')
+event_item_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.instances.item.event_item_request_builder')
+multi_value_extended_properties_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.multi_value_extended_properties.multi_value_extended_properties_request_builder')
+multi_value_legacy_extended_property_item_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.multi_value_extended_properties.item.multi_value_legacy_extended_property_item_request_builder')
+single_value_extended_properties_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.single_value_extended_properties.single_value_extended_properties_request_builder')
+single_value_legacy_extended_property_item_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.single_value_extended_properties.item.single_value_legacy_extended_property_item_request_builder')
+snooze_reminder_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.snooze_reminder.snooze_reminder_request_builder')
+tentatively_accept_request_builder = lazy_import('msgraph.generated.me.calendars.item.events.item.tentatively_accept.tentatively_accept_request_builder')
+event = lazy_import('msgraph.generated.models.event')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class EventItemRequestBuilder():
     """
     Provides operations to manage the events property of the microsoft.graph.calendar entity.
     """
+    @property
+    def accept(self) -> accept_request_builder.AcceptRequestBuilder:
+        """
+        Provides operations to call the accept method.
+        """
+        return accept_request_builder.AcceptRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def attachments(self) -> attachments_request_builder.AttachmentsRequestBuilder:
+        """
+        Provides operations to manage the attachments property of the microsoft.graph.event entity.
+        """
+        return attachments_request_builder.AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def calendar(self) -> calendar_request_builder.CalendarRequestBuilder:
+        """
+        Provides operations to manage the calendar property of the microsoft.graph.event entity.
+        """
+        return calendar_request_builder.CalendarRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def cancel(self) -> cancel_request_builder.CancelRequestBuilder:
+        """
+        Provides operations to call the cancel method.
+        """
+        return cancel_request_builder.CancelRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def decline(self) -> decline_request_builder.DeclineRequestBuilder:
+        """
+        Provides operations to call the decline method.
+        """
+        return decline_request_builder.DeclineRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def dismiss_reminder(self) -> dismiss_reminder_request_builder.DismissReminderRequestBuilder:
+        """
+        Provides operations to call the dismissReminder method.
+        """
+        return dismiss_reminder_request_builder.DismissReminderRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
+        """
+        Provides operations to manage the extensions property of the microsoft.graph.event entity.
+        """
+        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def forward(self) -> forward_request_builder.ForwardRequestBuilder:
+        """
+        Provides operations to call the forward method.
+        """
+        return forward_request_builder.ForwardRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def instances(self) -> instances_request_builder.InstancesRequestBuilder:
+        """
+        Provides operations to manage the instances property of the microsoft.graph.event entity.
+        """
+        return instances_request_builder.InstancesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
+        """
+        Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.event entity.
+        """
+        return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
+        """
+        Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.event entity.
+        """
+        return single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def snooze_reminder(self) -> snooze_reminder_request_builder.SnoozeReminderRequestBuilder:
+        """
+        Provides operations to call the snoozeReminder method.
+        """
+        return snooze_reminder_request_builder.SnoozeReminderRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def tentatively_accept(self) -> tentatively_accept_request_builder.TentativelyAcceptRequestBuilder:
+        """
+        Provides operations to call the tentativelyAccept method.
+        """
+        return tentatively_accept_request_builder.TentativelyAcceptRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def attachments_by_id(self,id: str) -> attachment_item_request_builder.AttachmentItemRequestBuilder:
+        """
+        Provides operations to manage the attachments property of the microsoft.graph.event entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: attachment_item_request_builder.AttachmentItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["attachment%2Did"] = id
+        return attachment_item_request_builder.AttachmentItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EventItemRequestBuilder and sets the default values.
@@ -47,26 +151,11 @@ class EventItemRequestBuilder():
         if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/me/calendars/{calendar%2Did}/events/{event%2Did}{?%24select,%24expand}"
+        self.url_template: str = "{+baseurl}/me/calendars/{calendar%2Did}/events/{event%2Did}{?%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def attachments_by_id(self,id: str) -> attachment_item_request_builder.AttachmentItemRequestBuilder:
-        """
-        Provides operations to manage the attachments property of the microsoft.graph.event entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: attachment_item_request_builder.AttachmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .attachments.item import attachment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["attachment%2Did"] = id
-        return attachment_item_request_builder.AttachmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[EventItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -77,8 +166,6 @@ class EventItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -96,8 +183,6 @@ class EventItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .extensions.item import extension_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["extension%2Did"] = id
         return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -112,16 +197,12 @@ class EventItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import event
-
         return await self.request_adapter.send_async(request_info, event.Event, error_mapping)
     
     def instances_by_id(self,id: str) -> EventItemRequestBuilder:
@@ -133,8 +214,6 @@ class EventItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .instances.item import event_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["event%2Did1"] = id
         return EventItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -148,8 +227,6 @@ class EventItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .multi_value_extended_properties.item import multi_value_legacy_extended_property_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["multiValueLegacyExtendedProperty%2Did"] = id
         return multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -167,16 +244,12 @@ class EventItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import event
-
         return await self.request_adapter.send_async(request_info, event.Event, error_mapping)
     
     def single_value_extended_properties_by_id(self,id: str) -> single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder:
@@ -188,8 +261,6 @@ class EventItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .single_value_extended_properties.item import single_value_legacy_extended_property_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["singleValueLegacyExtendedProperty%2Did"] = id
         return single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -249,123 +320,6 @@ class EventItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def accept(self) -> accept_request_builder.AcceptRequestBuilder:
-        """
-        Provides operations to call the accept method.
-        """
-        from .accept import accept_request_builder
-
-        return accept_request_builder.AcceptRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def attachments(self) -> attachments_request_builder.AttachmentsRequestBuilder:
-        """
-        Provides operations to manage the attachments property of the microsoft.graph.event entity.
-        """
-        from .attachments import attachments_request_builder
-
-        return attachments_request_builder.AttachmentsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def calendar(self) -> calendar_request_builder.CalendarRequestBuilder:
-        """
-        Provides operations to manage the calendar property of the microsoft.graph.event entity.
-        """
-        from .calendar import calendar_request_builder
-
-        return calendar_request_builder.CalendarRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def cancel(self) -> cancel_request_builder.CancelRequestBuilder:
-        """
-        Provides operations to call the cancel method.
-        """
-        from .cancel import cancel_request_builder
-
-        return cancel_request_builder.CancelRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def decline(self) -> decline_request_builder.DeclineRequestBuilder:
-        """
-        Provides operations to call the decline method.
-        """
-        from .decline import decline_request_builder
-
-        return decline_request_builder.DeclineRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def dismiss_reminder(self) -> dismiss_reminder_request_builder.DismissReminderRequestBuilder:
-        """
-        Provides operations to call the dismissReminder method.
-        """
-        from .dismiss_reminder import dismiss_reminder_request_builder
-
-        return dismiss_reminder_request_builder.DismissReminderRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
-        """
-        Provides operations to manage the extensions property of the microsoft.graph.event entity.
-        """
-        from .extensions import extensions_request_builder
-
-        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def forward(self) -> forward_request_builder.ForwardRequestBuilder:
-        """
-        Provides operations to call the forward method.
-        """
-        from .forward import forward_request_builder
-
-        return forward_request_builder.ForwardRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def instances(self) -> instances_request_builder.InstancesRequestBuilder:
-        """
-        Provides operations to manage the instances property of the microsoft.graph.event entity.
-        """
-        from .instances import instances_request_builder
-
-        return instances_request_builder.InstancesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
-        """
-        Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.event entity.
-        """
-        from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-
-        return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
-        """
-        Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.event entity.
-        """
-        from .single_value_extended_properties import single_value_extended_properties_request_builder
-
-        return single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def snooze_reminder(self) -> snooze_reminder_request_builder.SnoozeReminderRequestBuilder:
-        """
-        Provides operations to call the snoozeReminder method.
-        """
-        from .snooze_reminder import snooze_reminder_request_builder
-
-        return snooze_reminder_request_builder.SnoozeReminderRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def tentatively_accept(self) -> tentatively_accept_request_builder.TentativelyAcceptRequestBuilder:
-        """
-        Provides operations to call the tentativelyAccept method.
-        """
-        from .tentatively_accept import tentatively_accept_request_builder
-
-        return tentatively_accept_request_builder.TentativelyAcceptRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class EventItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -383,6 +337,9 @@ class EventItemRequestBuilder():
         """
         The events in the calendar. Navigation property. Read-only.
         """
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -392,18 +349,10 @@ class EventItemRequestBuilder():
             """
             if original_name is None:
                 raise Exception("original_name cannot be undefined")
-            if original_name == "expand":
-                return "%24expand"
             if original_name == "select":
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class EventItemRequestBuilderGetRequestConfiguration():

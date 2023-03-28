@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import authentication_method_configuration, microsoft_authenticator_authentication_method_target, microsoft_authenticator_feature_settings
-
-from . import authentication_method_configuration
+authentication_method_configuration = lazy_import('msgraph.generated.models.authentication_method_configuration')
+microsoft_authenticator_authentication_method_target = lazy_import('msgraph.generated.models.microsoft_authenticator_authentication_method_target')
+microsoft_authenticator_feature_settings = lazy_import('msgraph.generated.models.microsoft_authenticator_feature_settings')
 
 class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
     def __init__(self,) -> None:
@@ -18,8 +18,6 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         self._feature_settings: Optional[microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings] = None
         # A collection of groups that are enabled to use the authentication method. Expanded by default.
         self._include_targets: Optional[List[microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget]] = None
-        # The isSoftwareOathEnabled property
-        self._is_software_oath_enabled: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MicrosoftAuthenticatorAuthenticationMethodConfiguration:
@@ -55,12 +53,9 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_configuration, microsoft_authenticator_authentication_method_target, microsoft_authenticator_feature_settings
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "featureSettings": lambda n : setattr(self, 'feature_settings', n.get_object_value(microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings)),
             "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget)),
-            "isSoftwareOathEnabled": lambda n : setattr(self, 'is_software_oath_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -83,23 +78,6 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         """
         self._include_targets = value
     
-    @property
-    def is_software_oath_enabled(self,) -> Optional[bool]:
-        """
-        Gets the isSoftwareOathEnabled property value. The isSoftwareOathEnabled property
-        Returns: Optional[bool]
-        """
-        return self._is_software_oath_enabled
-    
-    @is_software_oath_enabled.setter
-    def is_software_oath_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isSoftwareOathEnabled property value. The isSoftwareOathEnabled property
-        Args:
-            value: Value to set for the is_software_oath_enabled property.
-        """
-        self._is_software_oath_enabled = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -111,6 +89,5 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         super().serialize(writer)
         writer.write_object_value("featureSettings", self.feature_settings)
         writer.write_collection_of_object_values("includeTargets", self.include_targets)
-        writer.write_bool_value("isSoftwareOathEnabled", self.is_software_oath_enabled)
     
 

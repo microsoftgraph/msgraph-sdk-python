@@ -1,12 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import endpoint, user_feedback
-    from .. import identity_set
-
-from . import endpoint
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+endpoint = lazy_import('msgraph.generated.models.call_records.endpoint')
+user_feedback = lazy_import('msgraph.generated.models.call_records.user_feedback')
 
 class ParticipantEndpoint(endpoint.Endpoint):
     def __init__(self,) -> None:
@@ -54,10 +53,7 @@ class ParticipantEndpoint(endpoint.Endpoint):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import endpoint, user_feedback
-        from .. import identity_set
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "feedback": lambda n : setattr(self, 'feedback', n.get_object_value(user_feedback.UserFeedback)),
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(identity_set.IdentitySet)),
         }

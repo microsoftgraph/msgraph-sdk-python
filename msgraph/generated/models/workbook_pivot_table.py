@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, workbook_worksheet
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_worksheet = lazy_import('msgraph.generated.models.workbook_worksheet')
 
 class WorkbookPivotTable(entity.Entity):
     def __init__(self,) -> None:
@@ -37,9 +36,7 @@ class WorkbookPivotTable(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_worksheet
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "worksheet": lambda n : setattr(self, 'worksheet', n.get_object_value(workbook_worksheet.WorkbookWorksheet)),
         }

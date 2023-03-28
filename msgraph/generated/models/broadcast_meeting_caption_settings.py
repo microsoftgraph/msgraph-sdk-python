@@ -1,24 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class BroadcastMeetingCaptionSettings(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new broadcastMeetingCaptionSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Indicates whether captions are enabled for this Teams live event.
-        self._is_caption_enabled: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The spoken language.
-        self._spoken_language: Optional[str] = None
-        # The translation languages (choose up to 6).
-        self._translation_languages: Optional[List[str]] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -35,6 +20,22 @@ class BroadcastMeetingCaptionSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new broadcastMeetingCaptionSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Indicates whether captions are enabled for this Teams live event.
+        self._is_caption_enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The spoken language.
+        self._spoken_language: Optional[str] = None
+        # The translation languages (choose up to 6).
+        self._translation_languages: Optional[List[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BroadcastMeetingCaptionSettings:
@@ -53,7 +54,7 @@ class BroadcastMeetingCaptionSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "isCaptionEnabled": lambda n : setattr(self, 'is_caption_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "spokenLanguage": lambda n : setattr(self, 'spoken_language', n.get_str_value()),

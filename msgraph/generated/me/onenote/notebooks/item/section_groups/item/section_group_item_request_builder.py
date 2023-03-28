@@ -7,22 +7,50 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from .......models import section_group
-    from .......models.o_data_errors import o_data_error
-    from .parent_notebook import parent_notebook_request_builder
-    from .parent_section_group import parent_section_group_request_builder
-    from .section_groups import section_groups_request_builder
-    from .section_groups.item import section_group_item_request_builder
-    from .sections import sections_request_builder
-    from .sections.item import onenote_section_item_request_builder
+parent_notebook_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.section_groups.item.parent_notebook.parent_notebook_request_builder')
+parent_section_group_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.section_groups.item.parent_section_group.parent_section_group_request_builder')
+section_groups_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.section_groups.item.section_groups.section_groups_request_builder')
+section_group_item_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.section_groups.item.section_groups.item.section_group_item_request_builder')
+sections_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.section_groups.item.sections.sections_request_builder')
+onenote_section_item_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.section_groups.item.sections.item.onenote_section_item_request_builder')
+section_group = lazy_import('msgraph.generated.models.section_group')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class SectionGroupItemRequestBuilder():
     """
     Provides operations to manage the sectionGroups property of the microsoft.graph.notebook entity.
     """
+    @property
+    def parent_notebook(self) -> parent_notebook_request_builder.ParentNotebookRequestBuilder:
+        """
+        Provides operations to manage the parentNotebook property of the microsoft.graph.sectionGroup entity.
+        """
+        return parent_notebook_request_builder.ParentNotebookRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def parent_section_group(self) -> parent_section_group_request_builder.ParentSectionGroupRequestBuilder:
+        """
+        Provides operations to manage the parentSectionGroup property of the microsoft.graph.sectionGroup entity.
+        """
+        return parent_section_group_request_builder.ParentSectionGroupRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def section_groups(self) -> section_groups_request_builder.SectionGroupsRequestBuilder:
+        """
+        Provides operations to manage the sectionGroups property of the microsoft.graph.sectionGroup entity.
+        """
+        return section_groups_request_builder.SectionGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def sections(self) -> sections_request_builder.SectionsRequestBuilder:
+        """
+        Provides operations to manage the sections property of the microsoft.graph.sectionGroup entity.
+        """
+        return sections_request_builder.SectionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SectionGroupItemRequestBuilder and sets the default values.
@@ -50,8 +78,6 @@ class SectionGroupItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -70,16 +96,12 @@ class SectionGroupItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import section_group
-
         return await self.request_adapter.send_async(request_info, section_group.SectionGroup, error_mapping)
     
     async def patch(self,body: Optional[section_group.SectionGroup] = None, request_configuration: Optional[SectionGroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[section_group.SectionGroup]:
@@ -95,16 +117,12 @@ class SectionGroupItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .......models import section_group
-
         return await self.request_adapter.send_async(request_info, section_group.SectionGroup, error_mapping)
     
     def section_groups_by_id(self,id: str) -> SectionGroupItemRequestBuilder:
@@ -116,8 +134,6 @@ class SectionGroupItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .section_groups.item import section_group_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["sectionGroup%2Did1"] = id
         return SectionGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -131,8 +147,6 @@ class SectionGroupItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .sections.item import onenote_section_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["onenoteSection%2Did"] = id
         return onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -192,42 +206,6 @@ class SectionGroupItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def parent_notebook(self) -> parent_notebook_request_builder.ParentNotebookRequestBuilder:
-        """
-        Provides operations to manage the parentNotebook property of the microsoft.graph.sectionGroup entity.
-        """
-        from .parent_notebook import parent_notebook_request_builder
-
-        return parent_notebook_request_builder.ParentNotebookRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def parent_section_group(self) -> parent_section_group_request_builder.ParentSectionGroupRequestBuilder:
-        """
-        Provides operations to manage the parentSectionGroup property of the microsoft.graph.sectionGroup entity.
-        """
-        from .parent_section_group import parent_section_group_request_builder
-
-        return parent_section_group_request_builder.ParentSectionGroupRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def section_groups(self) -> section_groups_request_builder.SectionGroupsRequestBuilder:
-        """
-        Provides operations to manage the sectionGroups property of the microsoft.graph.sectionGroup entity.
-        """
-        from .section_groups import section_groups_request_builder
-
-        return section_groups_request_builder.SectionGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def sections(self) -> sections_request_builder.SectionsRequestBuilder:
-        """
-        Provides operations to manage the sections property of the microsoft.graph.sectionGroup entity.
-        """
-        from .sections import sections_request_builder
-
-        return sections_request_builder.SectionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class SectionGroupItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -245,6 +223,12 @@ class SectionGroupItemRequestBuilder():
         """
         The section groups in the notebook. Read-only. Nullable.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -260,12 +244,6 @@ class SectionGroupItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class SectionGroupItemRequestBuilderGetRequestConfiguration():

@@ -1,32 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import shared_p_c_account_deletion_policy_type
+shared_p_c_account_deletion_policy_type = lazy_import('msgraph.generated.models.shared_p_c_account_deletion_policy_type')
 
 class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
     """
     SharedPC Account Manager Policy. Only applies when the account manager is enabled.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new sharedPCAccountManagerPolicy and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Possible values for when accounts are deleted on a shared PC.
-        self._account_deletion_policy: Optional[shared_p_c_account_deletion_policy_type.SharedPCAccountDeletionPolicyType] = None
-        # Sets the percentage of available disk space a PC should have before it stops deleting cached shared PC accounts. Only applies when AccountDeletionPolicy is DiskSpaceThreshold or DiskSpaceThresholdOrInactiveThreshold. Valid values 0 to 100
-        self._cache_accounts_above_disk_free_percentage: Optional[int] = None
-        # Specifies when the accounts will start being deleted when they have not been logged on during the specified period, given as number of days. Only applies when AccountDeletionPolicy is DiskSpaceThreshold or DiskSpaceThresholdOrInactiveThreshold.
-        self._inactive_threshold_days: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Sets the percentage of disk space remaining on a PC before cached accounts will be deleted to free disk space. Accounts that have been inactive the longest will be deleted first. Only applies when AccountDeletionPolicy is DiskSpaceThresholdOrInactiveThreshold. Valid values 0 to 100
-        self._remove_accounts_below_disk_free_percentage: Optional[int] = None
-    
     @property
     def account_deletion_policy(self,) -> Optional[shared_p_c_account_deletion_policy_type.SharedPCAccountDeletionPolicyType]:
         """
@@ -78,6 +60,24 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         """
         self._cache_accounts_above_disk_free_percentage = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new sharedPCAccountManagerPolicy and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Possible values for when accounts are deleted on a shared PC.
+        self._account_deletion_policy: Optional[shared_p_c_account_deletion_policy_type.SharedPCAccountDeletionPolicyType] = None
+        # Sets the percentage of available disk space a PC should have before it stops deleting cached shared PC accounts. Only applies when AccountDeletionPolicy is DiskSpaceThreshold or DiskSpaceThresholdOrInactiveThreshold. Valid values 0 to 100
+        self._cache_accounts_above_disk_free_percentage: Optional[int] = None
+        # Specifies when the accounts will start being deleted when they have not been logged on during the specified period, given as number of days. Only applies when AccountDeletionPolicy is DiskSpaceThreshold or DiskSpaceThresholdOrInactiveThreshold.
+        self._inactive_threshold_days: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Sets the percentage of disk space remaining on a PC before cached accounts will be deleted to free disk space. Accounts that have been inactive the longest will be deleted first. Only applies when AccountDeletionPolicy is DiskSpaceThresholdOrInactiveThreshold. Valid values 0 to 100
+        self._remove_accounts_below_disk_free_percentage: Optional[int] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharedPCAccountManagerPolicy:
         """
@@ -95,9 +95,7 @@ class SharedPCAccountManagerPolicy(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import shared_p_c_account_deletion_policy_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "accountDeletionPolicy": lambda n : setattr(self, 'account_deletion_policy', n.get_enum_value(shared_p_c_account_deletion_policy_type.SharedPCAccountDeletionPolicyType)),
             "cacheAccountsAboveDiskFreePercentage": lambda n : setattr(self, 'cache_accounts_above_disk_free_percentage', n.get_int_value()),
             "inactiveThresholdDays": lambda n : setattr(self, 'inactive_threshold_days', n.get_int_value()),

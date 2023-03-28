@@ -7,31 +7,178 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ...models import entitlement_management
-    from ...models.o_data_errors import o_data_error
-    from .access_package_assignment_approvals import access_package_assignment_approvals_request_builder
-    from .access_package_assignment_approvals.item import approval_item_request_builder
-    from .access_packages import access_packages_request_builder
-    from .access_packages.item import access_package_item_request_builder
-    from .assignment_policies import assignment_policies_request_builder
-    from .assignment_policies.item import access_package_assignment_policy_item_request_builder
-    from .assignment_requests import assignment_requests_request_builder
-    from .assignment_requests.item import access_package_assignment_request_item_request_builder
-    from .assignments import assignments_request_builder
-    from .assignments.item import access_package_assignment_item_request_builder
-    from .catalogs import catalogs_request_builder
-    from .catalogs.item import access_package_catalog_item_request_builder
-    from .connected_organizations import connected_organizations_request_builder
-    from .connected_organizations.item import connected_organization_item_request_builder
-    from .settings import settings_request_builder
+access_package_assignment_approvals_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_package_assignment_approvals.access_package_assignment_approvals_request_builder')
+approval_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_package_assignment_approvals.item.approval_item_request_builder')
+access_packages_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_packages.access_packages_request_builder')
+access_package_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_packages.item.access_package_item_request_builder')
+assignment_policies_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_policies.assignment_policies_request_builder')
+access_package_assignment_policy_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_policies.item.access_package_assignment_policy_item_request_builder')
+assignment_requests_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.assignment_requests_request_builder')
+access_package_assignment_request_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.access_package_assignment_request_item_request_builder')
+assignments_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.assignments_request_builder')
+access_package_assignment_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignments.item.access_package_assignment_item_request_builder')
+catalogs_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.catalogs.catalogs_request_builder')
+access_package_catalog_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.catalogs.item.access_package_catalog_item_request_builder')
+connected_organizations_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.connected_organizations_request_builder')
+connected_organization_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.connected_organization_item_request_builder')
+settings_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.settings.settings_request_builder')
+entitlement_management = lazy_import('msgraph.generated.models.entitlement_management')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class EntitlementManagementRequestBuilder():
     """
     Provides operations to manage the entitlementManagement property of the microsoft.graph.identityGovernance entity.
     """
+    @property
+    def access_package_assignment_approvals(self) -> access_package_assignment_approvals_request_builder.AccessPackageAssignmentApprovalsRequestBuilder:
+        """
+        Provides operations to manage the accessPackageAssignmentApprovals property of the microsoft.graph.entitlementManagement entity.
+        """
+        return access_package_assignment_approvals_request_builder.AccessPackageAssignmentApprovalsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def access_packages(self) -> access_packages_request_builder.AccessPackagesRequestBuilder:
+        """
+        Provides operations to manage the accessPackages property of the microsoft.graph.entitlementManagement entity.
+        """
+        return access_packages_request_builder.AccessPackagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def assignment_policies(self) -> assignment_policies_request_builder.AssignmentPoliciesRequestBuilder:
+        """
+        Provides operations to manage the assignmentPolicies property of the microsoft.graph.entitlementManagement entity.
+        """
+        return assignment_policies_request_builder.AssignmentPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def assignment_requests(self) -> assignment_requests_request_builder.AssignmentRequestsRequestBuilder:
+        """
+        Provides operations to manage the assignmentRequests property of the microsoft.graph.entitlementManagement entity.
+        """
+        return assignment_requests_request_builder.AssignmentRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
+        """
+        Provides operations to manage the assignments property of the microsoft.graph.entitlementManagement entity.
+        """
+        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def catalogs(self) -> catalogs_request_builder.CatalogsRequestBuilder:
+        """
+        Provides operations to manage the catalogs property of the microsoft.graph.entitlementManagement entity.
+        """
+        return catalogs_request_builder.CatalogsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def connected_organizations(self) -> connected_organizations_request_builder.ConnectedOrganizationsRequestBuilder:
+        """
+        Provides operations to manage the connectedOrganizations property of the microsoft.graph.entitlementManagement entity.
+        """
+        return connected_organizations_request_builder.ConnectedOrganizationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def settings(self) -> settings_request_builder.SettingsRequestBuilder:
+        """
+        Provides operations to manage the settings property of the microsoft.graph.entitlementManagement entity.
+        """
+        return settings_request_builder.SettingsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def access_package_assignment_approvals_by_id(self,id: str) -> approval_item_request_builder.ApprovalItemRequestBuilder:
+        """
+        Provides operations to manage the accessPackageAssignmentApprovals property of the microsoft.graph.entitlementManagement entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: approval_item_request_builder.ApprovalItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["approval%2Did"] = id
+        return approval_item_request_builder.ApprovalItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def access_packages_by_id(self,id: str) -> access_package_item_request_builder.AccessPackageItemRequestBuilder:
+        """
+        Provides operations to manage the accessPackages property of the microsoft.graph.entitlementManagement entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: access_package_item_request_builder.AccessPackageItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["accessPackage%2Did"] = id
+        return access_package_item_request_builder.AccessPackageItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def assignment_policies_by_id(self,id: str) -> access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder:
+        """
+        Provides operations to manage the assignmentPolicies property of the microsoft.graph.entitlementManagement entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["accessPackageAssignmentPolicy%2Did"] = id
+        return access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def assignment_requests_by_id(self,id: str) -> access_package_assignment_request_item_request_builder.AccessPackageAssignmentRequestItemRequestBuilder:
+        """
+        Provides operations to manage the assignmentRequests property of the microsoft.graph.entitlementManagement entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: access_package_assignment_request_item_request_builder.AccessPackageAssignmentRequestItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["accessPackageAssignmentRequest%2Did"] = id
+        return access_package_assignment_request_item_request_builder.AccessPackageAssignmentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def assignments_by_id(self,id: str) -> access_package_assignment_item_request_builder.AccessPackageAssignmentItemRequestBuilder:
+        """
+        Provides operations to manage the assignments property of the microsoft.graph.entitlementManagement entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: access_package_assignment_item_request_builder.AccessPackageAssignmentItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["accessPackageAssignment%2Did"] = id
+        return access_package_assignment_item_request_builder.AccessPackageAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def catalogs_by_id(self,id: str) -> access_package_catalog_item_request_builder.AccessPackageCatalogItemRequestBuilder:
+        """
+        Provides operations to manage the catalogs property of the microsoft.graph.entitlementManagement entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: access_package_catalog_item_request_builder.AccessPackageCatalogItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["accessPackageCatalog%2Did"] = id
+        return access_package_catalog_item_request_builder.AccessPackageCatalogItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def connected_organizations_by_id(self,id: str) -> connected_organization_item_request_builder.ConnectedOrganizationItemRequestBuilder:
+        """
+        Provides operations to manage the connectedOrganizations property of the microsoft.graph.entitlementManagement entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: connected_organization_item_request_builder.ConnectedOrganizationItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["connectedOrganization%2Did"] = id
+        return connected_organization_item_request_builder.ConnectedOrganizationItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EntitlementManagementRequestBuilder and sets the default values.
@@ -50,111 +197,6 @@ class EntitlementManagementRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def access_package_assignment_approvals_by_id(self,id: str) -> approval_item_request_builder.ApprovalItemRequestBuilder:
-        """
-        Provides operations to manage the accessPackageAssignmentApprovals property of the microsoft.graph.entitlementManagement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: approval_item_request_builder.ApprovalItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .access_package_assignment_approvals.item import approval_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["approval%2Did"] = id
-        return approval_item_request_builder.ApprovalItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def access_packages_by_id(self,id: str) -> access_package_item_request_builder.AccessPackageItemRequestBuilder:
-        """
-        Provides operations to manage the accessPackages property of the microsoft.graph.entitlementManagement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_package_item_request_builder.AccessPackageItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .access_packages.item import access_package_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessPackage%2Did"] = id
-        return access_package_item_request_builder.AccessPackageItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def assignment_policies_by_id(self,id: str) -> access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder:
-        """
-        Provides operations to manage the assignmentPolicies property of the microsoft.graph.entitlementManagement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .assignment_policies.item import access_package_assignment_policy_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessPackageAssignmentPolicy%2Did"] = id
-        return access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def assignment_requests_by_id(self,id: str) -> access_package_assignment_request_item_request_builder.AccessPackageAssignmentRequestItemRequestBuilder:
-        """
-        Provides operations to manage the assignmentRequests property of the microsoft.graph.entitlementManagement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_package_assignment_request_item_request_builder.AccessPackageAssignmentRequestItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .assignment_requests.item import access_package_assignment_request_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessPackageAssignmentRequest%2Did"] = id
-        return access_package_assignment_request_item_request_builder.AccessPackageAssignmentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def assignments_by_id(self,id: str) -> access_package_assignment_item_request_builder.AccessPackageAssignmentItemRequestBuilder:
-        """
-        Provides operations to manage the assignments property of the microsoft.graph.entitlementManagement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_package_assignment_item_request_builder.AccessPackageAssignmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .assignments.item import access_package_assignment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessPackageAssignment%2Did"] = id
-        return access_package_assignment_item_request_builder.AccessPackageAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def catalogs_by_id(self,id: str) -> access_package_catalog_item_request_builder.AccessPackageCatalogItemRequestBuilder:
-        """
-        Provides operations to manage the catalogs property of the microsoft.graph.entitlementManagement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_package_catalog_item_request_builder.AccessPackageCatalogItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .catalogs.item import access_package_catalog_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessPackageCatalog%2Did"] = id
-        return access_package_catalog_item_request_builder.AccessPackageCatalogItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def connected_organizations_by_id(self,id: str) -> connected_organization_item_request_builder.ConnectedOrganizationItemRequestBuilder:
-        """
-        Provides operations to manage the connectedOrganizations property of the microsoft.graph.entitlementManagement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: connected_organization_item_request_builder.ConnectedOrganizationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .connected_organizations.item import connected_organization_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["connectedOrganization%2Did"] = id
-        return connected_organization_item_request_builder.ConnectedOrganizationItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def delete(self,request_configuration: Optional[EntitlementManagementRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property entitlementManagement for identityGovernance
@@ -164,8 +206,6 @@ class EntitlementManagementRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -184,16 +224,12 @@ class EntitlementManagementRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import entitlement_management
-
         return await self.request_adapter.send_async(request_info, entitlement_management.EntitlementManagement, error_mapping)
     
     async def patch(self,body: Optional[entitlement_management.EntitlementManagement] = None, request_configuration: Optional[EntitlementManagementRequestBuilderPatchRequestConfiguration] = None) -> Optional[entitlement_management.EntitlementManagement]:
@@ -209,16 +245,12 @@ class EntitlementManagementRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import entitlement_management
-
         return await self.request_adapter.send_async(request_info, entitlement_management.EntitlementManagement, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EntitlementManagementRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -276,78 +308,6 @@ class EntitlementManagementRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def access_package_assignment_approvals(self) -> access_package_assignment_approvals_request_builder.AccessPackageAssignmentApprovalsRequestBuilder:
-        """
-        Provides operations to manage the accessPackageAssignmentApprovals property of the microsoft.graph.entitlementManagement entity.
-        """
-        from .access_package_assignment_approvals import access_package_assignment_approvals_request_builder
-
-        return access_package_assignment_approvals_request_builder.AccessPackageAssignmentApprovalsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def access_packages(self) -> access_packages_request_builder.AccessPackagesRequestBuilder:
-        """
-        Provides operations to manage the accessPackages property of the microsoft.graph.entitlementManagement entity.
-        """
-        from .access_packages import access_packages_request_builder
-
-        return access_packages_request_builder.AccessPackagesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def assignment_policies(self) -> assignment_policies_request_builder.AssignmentPoliciesRequestBuilder:
-        """
-        Provides operations to manage the assignmentPolicies property of the microsoft.graph.entitlementManagement entity.
-        """
-        from .assignment_policies import assignment_policies_request_builder
-
-        return assignment_policies_request_builder.AssignmentPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def assignment_requests(self) -> assignment_requests_request_builder.AssignmentRequestsRequestBuilder:
-        """
-        Provides operations to manage the assignmentRequests property of the microsoft.graph.entitlementManagement entity.
-        """
-        from .assignment_requests import assignment_requests_request_builder
-
-        return assignment_requests_request_builder.AssignmentRequestsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
-        """
-        Provides operations to manage the assignments property of the microsoft.graph.entitlementManagement entity.
-        """
-        from .assignments import assignments_request_builder
-
-        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def catalogs(self) -> catalogs_request_builder.CatalogsRequestBuilder:
-        """
-        Provides operations to manage the catalogs property of the microsoft.graph.entitlementManagement entity.
-        """
-        from .catalogs import catalogs_request_builder
-
-        return catalogs_request_builder.CatalogsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def connected_organizations(self) -> connected_organizations_request_builder.ConnectedOrganizationsRequestBuilder:
-        """
-        Provides operations to manage the connectedOrganizations property of the microsoft.graph.entitlementManagement entity.
-        """
-        from .connected_organizations import connected_organizations_request_builder
-
-        return connected_organizations_request_builder.ConnectedOrganizationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def settings(self) -> settings_request_builder.SettingsRequestBuilder:
-        """
-        Provides operations to manage the settings property of the microsoft.graph.entitlementManagement entity.
-        """
-        from .settings import settings_request_builder
-
-        return settings_request_builder.SettingsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class EntitlementManagementRequestBuilderDeleteRequestConfiguration():
         """
@@ -365,6 +325,12 @@ class EntitlementManagementRequestBuilder():
         """
         Get entitlementManagement from identityGovernance
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -380,12 +346,6 @@ class EntitlementManagementRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class EntitlementManagementRequestBuilderGetRequestConfiguration():

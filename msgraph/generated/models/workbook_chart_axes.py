@@ -1,27 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, workbook_chart_axis
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+workbook_chart_axis = lazy_import('msgraph.generated.models.workbook_chart_axis')
 
 class WorkbookChartAxes(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookChartAxes and sets the default values.
-        """
-        super().__init__()
-        # Represents the category axis in a chart. Read-only.
-        self._category_axis: Optional[workbook_chart_axis.WorkbookChartAxis] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Represents the series axis of a 3-dimensional chart. Read-only.
-        self._series_axis: Optional[workbook_chart_axis.WorkbookChartAxis] = None
-        # Represents the value axis in an axis. Read-only.
-        self._value_axis: Optional[workbook_chart_axis.WorkbookChartAxis] = None
-    
     @property
     def category_axis(self,) -> Optional[workbook_chart_axis.WorkbookChartAxis]:
         """
@@ -38,6 +23,20 @@ class WorkbookChartAxes(entity.Entity):
             value: Value to set for the category_axis property.
         """
         self._category_axis = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new workbookChartAxes and sets the default values.
+        """
+        super().__init__()
+        # Represents the category axis in a chart. Read-only.
+        self._category_axis: Optional[workbook_chart_axis.WorkbookChartAxis] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Represents the series axis of a 3-dimensional chart. Read-only.
+        self._series_axis: Optional[workbook_chart_axis.WorkbookChartAxis] = None
+        # Represents the value axis in an axis. Read-only.
+        self._value_axis: Optional[workbook_chart_axis.WorkbookChartAxis] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartAxes:
@@ -56,9 +55,7 @@ class WorkbookChartAxes(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, workbook_chart_axis
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "categoryAxis": lambda n : setattr(self, 'category_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
             "seriesAxis": lambda n : setattr(self, 'series_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),
             "valueAxis": lambda n : setattr(self, 'value_axis', n.get_object_value(workbook_chart_axis.WorkbookChartAxis)),

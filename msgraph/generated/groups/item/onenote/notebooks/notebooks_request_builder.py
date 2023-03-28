@@ -7,19 +7,34 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from .....models import notebook, notebook_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .get_notebook_from_web_url import get_notebook_from_web_url_request_builder
-    from .get_recent_notebooks_with_include_personal_notebooks import get_recent_notebooks_with_include_personal_notebooks_request_builder
+count_request_builder = lazy_import('msgraph.generated.groups.item.onenote.notebooks.count.count_request_builder')
+get_notebook_from_web_url_request_builder = lazy_import('msgraph.generated.groups.item.onenote.notebooks.get_notebook_from_web_url.get_notebook_from_web_url_request_builder')
+get_recent_notebooks_with_include_personal_notebooks_request_builder = lazy_import('msgraph.generated.groups.item.onenote.notebooks.get_recent_notebooks_with_include_personal_notebooks.get_recent_notebooks_with_include_personal_notebooks_request_builder')
+notebook = lazy_import('msgraph.generated.models.notebook')
+notebook_collection_response = lazy_import('msgraph.generated.models.notebook_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class NotebooksRequestBuilder():
     """
     Provides operations to manage the notebooks property of the microsoft.graph.onenote entity.
     """
+    @property
+    def count(self) -> count_request_builder.CountRequestBuilder:
+        """
+        Provides operations to count the resources in the collection.
+        """
+        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_notebook_from_web_url(self) -> get_notebook_from_web_url_request_builder.GetNotebookFromWebUrlRequestBuilder:
+        """
+        Provides operations to call the getNotebookFromWebUrl method.
+        """
+        return get_notebook_from_web_url_request_builder.GetNotebookFromWebUrlRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new NotebooksRequestBuilder and sets the default values.
@@ -48,16 +63,12 @@ class NotebooksRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import notebook_collection_response
-
         return await self.request_adapter.send_async(request_info, notebook_collection_response.NotebookCollectionResponse, error_mapping)
     
     def get_recent_notebooks_with_include_personal_notebooks(self,include_personal_notebooks: Optional[bool] = None) -> get_recent_notebooks_with_include_personal_notebooks_request_builder.GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder:
@@ -69,9 +80,7 @@ class NotebooksRequestBuilder():
         """
         if include_personal_notebooks is None:
             raise Exception("include_personal_notebooks cannot be undefined")
-        from .get_recent_notebooks_with_include_personal_notebooks import get_recent_notebooks_with_include_personal_notebooks_request_builder
-
-        return get_recent_notebooks_with_include_personal_notebooks_request_builder.GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(self.request_adapter, self.path_parameters, include_personal_notebooks)
+        return get_recent_notebooks_with_include_personal_notebooks_request_builder.GetRecentNotebooksWithIncludePersonalNotebooksRequestBuilder(self.request_adapter, self.path_parameters, includePersonalNotebooks)
     
     async def post(self,body: Optional[notebook.Notebook] = None, request_configuration: Optional[NotebooksRequestBuilderPostRequestConfiguration] = None) -> Optional[notebook.Notebook]:
         """
@@ -86,16 +95,12 @@ class NotebooksRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import notebook
-
         return await self.request_adapter.send_async(request_info, notebook.Notebook, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[NotebooksRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -137,29 +142,35 @@ class NotebooksRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count import count_request_builder
-
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_notebook_from_web_url(self) -> get_notebook_from_web_url_request_builder.GetNotebookFromWebUrlRequestBuilder:
-        """
-        Provides operations to call the getNotebookFromWebUrl method.
-        """
-        from .get_notebook_from_web_url import get_notebook_from_web_url_request_builder
-
-        return get_notebook_from_web_url_request_builder.GetNotebookFromWebUrlRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class NotebooksRequestBuilderGetQueryParameters():
         """
         Retrieve a list of notebook objects.
         """
+        # Include count of items
+        count: Optional[bool] = None
+
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -187,30 +198,6 @@ class NotebooksRequestBuilder():
                 return "%24top"
             return original_name
         
-        # Include count of items
-        count: Optional[bool] = None
-
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Filter items by property values
-        filter: Optional[str] = None
-
-        # Order items by property values
-        orderby: Optional[List[str]] = None
-
-        # Search items by search phrases
-        search: Optional[str] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
-        # Skip the first n items
-        skip: Optional[int] = None
-
-        # Show only the first n items
-        top: Optional[int] = None
-
     
     @dataclass
     class NotebooksRequestBuilderGetRequestConfiguration():

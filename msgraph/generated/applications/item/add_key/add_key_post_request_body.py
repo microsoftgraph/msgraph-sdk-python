@@ -1,25 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import key_credential, password_credential
+key_credential = lazy_import('msgraph.generated.models.key_credential')
+password_credential = lazy_import('msgraph.generated.models.password_credential')
 
 class AddKeyPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new addKeyPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The keyCredential property
-        self._key_credential: Optional[key_credential.KeyCredential] = None
-        # The passwordCredential property
-        self._password_credential: Optional[password_credential.PasswordCredential] = None
-        # The proof property
-        self._proof: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -36,6 +23,20 @@ class AddKeyPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new addKeyPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The keyCredential property
+        self._key_credential: Optional[key_credential.KeyCredential] = None
+        # The passwordCredential property
+        self._password_credential: Optional[password_credential.PasswordCredential] = None
+        # The proof property
+        self._proof: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddKeyPostRequestBody:
@@ -54,9 +55,7 @@ class AddKeyPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ....models import key_credential, password_credential
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "keyCredential": lambda n : setattr(self, 'key_credential', n.get_object_value(key_credential.KeyCredential)),
             "passwordCredential": lambda n : setattr(self, 'password_credential', n.get_object_value(password_credential.PasswordCredential)),
             "proof": lambda n : setattr(self, 'proof', n.get_str_value()),

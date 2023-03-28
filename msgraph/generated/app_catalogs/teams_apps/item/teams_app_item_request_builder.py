@@ -7,18 +7,38 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import teams_app
-    from ....models.o_data_errors import o_data_error
-    from .app_definitions import app_definitions_request_builder
-    from .app_definitions.item import teams_app_definition_item_request_builder
+app_definitions_request_builder = lazy_import('msgraph.generated.app_catalogs.teams_apps.item.app_definitions.app_definitions_request_builder')
+teams_app_definition_item_request_builder = lazy_import('msgraph.generated.app_catalogs.teams_apps.item.app_definitions.item.teams_app_definition_item_request_builder')
+teams_app = lazy_import('msgraph.generated.models.teams_app')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class TeamsAppItemRequestBuilder():
     """
     Provides operations to manage the teamsApps property of the microsoft.graph.appCatalogs entity.
     """
+    @property
+    def app_definitions(self) -> app_definitions_request_builder.AppDefinitionsRequestBuilder:
+        """
+        Provides operations to manage the appDefinitions property of the microsoft.graph.teamsApp entity.
+        """
+        return app_definitions_request_builder.AppDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def app_definitions_by_id(self,id: str) -> teams_app_definition_item_request_builder.TeamsAppDefinitionItemRequestBuilder:
+        """
+        Provides operations to manage the appDefinitions property of the microsoft.graph.teamsApp entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: teams_app_definition_item_request_builder.TeamsAppDefinitionItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["teamsAppDefinition%2Did"] = id
+        return teams_app_definition_item_request_builder.TeamsAppDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TeamsAppItemRequestBuilder and sets the default values.
@@ -37,21 +57,6 @@ class TeamsAppItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def app_definitions_by_id(self,id: str) -> teams_app_definition_item_request_builder.TeamsAppDefinitionItemRequestBuilder:
-        """
-        Provides operations to manage the appDefinitions property of the microsoft.graph.teamsApp entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: teams_app_definition_item_request_builder.TeamsAppDefinitionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .app_definitions.item import teams_app_definition_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["teamsAppDefinition%2Did"] = id
-        return teams_app_definition_item_request_builder.TeamsAppDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def delete(self,request_configuration: Optional[TeamsAppItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property teamsApps for appCatalogs
@@ -61,8 +66,6 @@ class TeamsAppItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -81,16 +84,12 @@ class TeamsAppItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import teams_app
-
         return await self.request_adapter.send_async(request_info, teams_app.TeamsApp, error_mapping)
     
     async def patch(self,body: Optional[teams_app.TeamsApp] = None, request_configuration: Optional[TeamsAppItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[teams_app.TeamsApp]:
@@ -106,16 +105,12 @@ class TeamsAppItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import teams_app
-
         return await self.request_adapter.send_async(request_info, teams_app.TeamsApp, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TeamsAppItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -173,15 +168,6 @@ class TeamsAppItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def app_definitions(self) -> app_definitions_request_builder.AppDefinitionsRequestBuilder:
-        """
-        Provides operations to manage the appDefinitions property of the microsoft.graph.teamsApp entity.
-        """
-        from .app_definitions import app_definitions_request_builder
-
-        return app_definitions_request_builder.AppDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class TeamsAppItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -199,6 +185,12 @@ class TeamsAppItemRequestBuilder():
         """
         Get teamsApps from appCatalogs
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -214,12 +206,6 @@ class TeamsAppItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class TeamsAppItemRequestBuilderGetRequestConfiguration():

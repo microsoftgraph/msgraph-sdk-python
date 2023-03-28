@@ -1,92 +1,19 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import application_guard_block_clipboard_sharing_type, application_guard_block_file_transfer_type, app_locker_application_control_type, bit_locker_removable_drive_policy, device_configuration, firewall_certificate_revocation_list_check_method_type, firewall_packet_queueing_method_type, firewall_pre_shared_key_encoding_method_type, windows_firewall_network_profile
-
-from . import device_configuration
+app_locker_application_control_type = lazy_import('msgraph.generated.models.app_locker_application_control_type')
+application_guard_block_clipboard_sharing_type = lazy_import('msgraph.generated.models.application_guard_block_clipboard_sharing_type')
+application_guard_block_file_transfer_type = lazy_import('msgraph.generated.models.application_guard_block_file_transfer_type')
+bit_locker_removable_drive_policy = lazy_import('msgraph.generated.models.bit_locker_removable_drive_policy')
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+firewall_certificate_revocation_list_check_method_type = lazy_import('msgraph.generated.models.firewall_certificate_revocation_list_check_method_type')
+firewall_packet_queueing_method_type = lazy_import('msgraph.generated.models.firewall_packet_queueing_method_type')
+firewall_pre_shared_key_encoding_method_type = lazy_import('msgraph.generated.models.firewall_pre_shared_key_encoding_method_type')
+windows_firewall_network_profile = lazy_import('msgraph.generated.models.windows_firewall_network_profile')
 
 class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Windows10EndpointProtectionConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windows10EndpointProtectionConfiguration"
-        # Possible values of AppLocker Application Control Types
-        self._app_locker_application_control: Optional[app_locker_application_control_type.AppLockerApplicationControlType] = None
-        # Allow persisting user generated data inside the App Guard Containter (favorites, cookies, web passwords, etc.)
-        self._application_guard_allow_persistence: Optional[bool] = None
-        # Allow printing to Local Printers from Container
-        self._application_guard_allow_print_to_local_printers: Optional[bool] = None
-        # Allow printing to Network Printers from Container
-        self._application_guard_allow_print_to_network_printers: Optional[bool] = None
-        # Allow printing to PDF from Container
-        self._application_guard_allow_print_to_p_d_f: Optional[bool] = None
-        # Allow printing to XPS from Container
-        self._application_guard_allow_print_to_x_p_s: Optional[bool] = None
-        # Possible values for applicationGuardBlockClipboardSharingType
-        self._application_guard_block_clipboard_sharing: Optional[application_guard_block_clipboard_sharing_type.ApplicationGuardBlockClipboardSharingType] = None
-        # Possible values for applicationGuardBlockFileTransfer
-        self._application_guard_block_file_transfer: Optional[application_guard_block_file_transfer_type.ApplicationGuardBlockFileTransferType] = None
-        # Block enterprise sites to load non-enterprise content, such as third party plug-ins
-        self._application_guard_block_non_enterprise_content: Optional[bool] = None
-        # Enable Windows Defender Application Guard
-        self._application_guard_enabled: Optional[bool] = None
-        # Force auditing will persist Windows logs and events to meet security/compliance criteria (sample events are user login-logoff, use of privilege rights, software installation, system changes, etc.)
-        self._application_guard_force_auditing: Optional[bool] = None
-        # Allows the Admin to disable the warning prompt for other disk encryption on the user machines.
-        self._bit_locker_disable_warning_for_other_disk_encryption: Optional[bool] = None
-        # Allows the admin to require encryption to be turned on using BitLocker. This policy is valid only for a mobile SKU.
-        self._bit_locker_enable_storage_card_encryption_on_mobile: Optional[bool] = None
-        # Allows the admin to require encryption to be turned on using BitLocker.
-        self._bit_locker_encrypt_device: Optional[bool] = None
-        # BitLocker Removable Drive Policy.
-        self._bit_locker_removable_drive_policy: Optional[bit_locker_removable_drive_policy.BitLockerRemovableDrivePolicy] = None
-        # List of folder paths to be added to the list of protected folders
-        self._defender_additional_guarded_folders: Optional[List[str]] = None
-        # List of exe files and folders to be excluded from attack surface reduction rules
-        self._defender_attack_surface_reduction_excluded_paths: Optional[List[str]] = None
-        # Xml content containing information regarding exploit protection details.
-        self._defender_exploit_protection_xml: Optional[bytes] = None
-        # Name of the file from which DefenderExploitProtectionXml was obtained.
-        self._defender_exploit_protection_xml_file_name: Optional[str] = None
-        # List of paths to exe that are allowed to access protected folders
-        self._defender_guarded_folders_allowed_app_paths: Optional[List[str]] = None
-        # Indicates whether or not to block user from overriding Exploit Protection settings.
-        self._defender_security_center_block_exploit_protection_override: Optional[bool] = None
-        # Blocks stateful FTP connections to the device
-        self._firewall_block_stateful_f_t_p: Optional[bool] = None
-        # Possible values for firewallCertificateRevocationListCheckMethod
-        self._firewall_certificate_revocation_list_check_method: Optional[firewall_certificate_revocation_list_check_method_type.FirewallCertificateRevocationListCheckMethodType] = None
-        # Configures IPSec exemptions to allow both IPv4 and IPv6 DHCP traffic
-        self._firewall_i_p_sec_exemptions_allow_d_h_c_p: Optional[bool] = None
-        # Configures IPSec exemptions to allow ICMP
-        self._firewall_i_p_sec_exemptions_allow_i_c_m_p: Optional[bool] = None
-        # Configures IPSec exemptions to allow neighbor discovery IPv6 ICMP type-codes
-        self._firewall_i_p_sec_exemptions_allow_neighbor_discovery: Optional[bool] = None
-        # Configures IPSec exemptions to allow router discovery IPv6 ICMP type-codes
-        self._firewall_i_p_sec_exemptions_allow_router_discovery: Optional[bool] = None
-        # Configures the idle timeout for security associations, in seconds, from 300 to 3600 inclusive. This is the period after which security associations will expire and be deleted. Valid values 300 to 3600
-        self._firewall_idle_timeout_for_security_association_in_seconds: Optional[int] = None
-        # If an authentication set is not fully supported by a keying module, direct the module to ignore only unsupported authentication suites rather than the entire set
-        self._firewall_merge_keying_module_settings: Optional[bool] = None
-        # Possible values for firewallPacketQueueingMethod
-        self._firewall_packet_queueing_method: Optional[firewall_packet_queueing_method_type.FirewallPacketQueueingMethodType] = None
-        # Possible values for firewallPreSharedKeyEncodingMethod
-        self._firewall_pre_shared_key_encoding_method: Optional[firewall_pre_shared_key_encoding_method_type.FirewallPreSharedKeyEncodingMethodType] = None
-        # Configures the firewall profile settings for domain networks
-        self._firewall_profile_domain: Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile] = None
-        # Configures the firewall profile settings for private networks
-        self._firewall_profile_private: Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile] = None
-        # Configures the firewall profile settings for public networks
-        self._firewall_profile_public: Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile] = None
-        # Allows IT Admins to control whether users can can ignore SmartScreen warnings and run malicious files.
-        self._smart_screen_block_override_for_files: Optional[bool] = None
-        # Allows IT Admins to configure SmartScreen for Windows.
-        self._smart_screen_enable_in_shell: Optional[bool] = None
-    
     @property
     def app_locker_application_control(self,) -> Optional[app_locker_application_control_type.AppLockerApplicationControlType]:
         """
@@ -341,6 +268,85 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
             value: Value to set for the bit_locker_removable_drive_policy property.
         """
         self._bit_locker_removable_drive_policy = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Windows10EndpointProtectionConfiguration and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.windows10EndpointProtectionConfiguration"
+        # Possible values of AppLocker Application Control Types
+        self._app_locker_application_control: Optional[app_locker_application_control_type.AppLockerApplicationControlType] = None
+        # Allow persisting user generated data inside the App Guard Containter (favorites, cookies, web passwords, etc.)
+        self._application_guard_allow_persistence: Optional[bool] = None
+        # Allow printing to Local Printers from Container
+        self._application_guard_allow_print_to_local_printers: Optional[bool] = None
+        # Allow printing to Network Printers from Container
+        self._application_guard_allow_print_to_network_printers: Optional[bool] = None
+        # Allow printing to PDF from Container
+        self._application_guard_allow_print_to_p_d_f: Optional[bool] = None
+        # Allow printing to XPS from Container
+        self._application_guard_allow_print_to_x_p_s: Optional[bool] = None
+        # Possible values for applicationGuardBlockClipboardSharingType
+        self._application_guard_block_clipboard_sharing: Optional[application_guard_block_clipboard_sharing_type.ApplicationGuardBlockClipboardSharingType] = None
+        # Possible values for applicationGuardBlockFileTransfer
+        self._application_guard_block_file_transfer: Optional[application_guard_block_file_transfer_type.ApplicationGuardBlockFileTransferType] = None
+        # Block enterprise sites to load non-enterprise content, such as third party plug-ins
+        self._application_guard_block_non_enterprise_content: Optional[bool] = None
+        # Enable Windows Defender Application Guard
+        self._application_guard_enabled: Optional[bool] = None
+        # Force auditing will persist Windows logs and events to meet security/compliance criteria (sample events are user login-logoff, use of privilege rights, software installation, system changes, etc.)
+        self._application_guard_force_auditing: Optional[bool] = None
+        # Allows the Admin to disable the warning prompt for other disk encryption on the user machines.
+        self._bit_locker_disable_warning_for_other_disk_encryption: Optional[bool] = None
+        # Allows the admin to require encryption to be turned on using BitLocker. This policy is valid only for a mobile SKU.
+        self._bit_locker_enable_storage_card_encryption_on_mobile: Optional[bool] = None
+        # Allows the admin to require encryption to be turned on using BitLocker.
+        self._bit_locker_encrypt_device: Optional[bool] = None
+        # BitLocker Removable Drive Policy.
+        self._bit_locker_removable_drive_policy: Optional[bit_locker_removable_drive_policy.BitLockerRemovableDrivePolicy] = None
+        # List of folder paths to be added to the list of protected folders
+        self._defender_additional_guarded_folders: Optional[List[str]] = None
+        # List of exe files and folders to be excluded from attack surface reduction rules
+        self._defender_attack_surface_reduction_excluded_paths: Optional[List[str]] = None
+        # Xml content containing information regarding exploit protection details.
+        self._defender_exploit_protection_xml: Optional[bytes] = None
+        # Name of the file from which DefenderExploitProtectionXml was obtained.
+        self._defender_exploit_protection_xml_file_name: Optional[str] = None
+        # List of paths to exe that are allowed to access protected folders
+        self._defender_guarded_folders_allowed_app_paths: Optional[List[str]] = None
+        # Indicates whether or not to block user from overriding Exploit Protection settings.
+        self._defender_security_center_block_exploit_protection_override: Optional[bool] = None
+        # Blocks stateful FTP connections to the device
+        self._firewall_block_stateful_f_t_p: Optional[bool] = None
+        # Possible values for firewallCertificateRevocationListCheckMethod
+        self._firewall_certificate_revocation_list_check_method: Optional[firewall_certificate_revocation_list_check_method_type.FirewallCertificateRevocationListCheckMethodType] = None
+        # Configures IPSec exemptions to allow both IPv4 and IPv6 DHCP traffic
+        self._firewall_i_p_sec_exemptions_allow_d_h_c_p: Optional[bool] = None
+        # Configures IPSec exemptions to allow ICMP
+        self._firewall_i_p_sec_exemptions_allow_i_c_m_p: Optional[bool] = None
+        # Configures IPSec exemptions to allow neighbor discovery IPv6 ICMP type-codes
+        self._firewall_i_p_sec_exemptions_allow_neighbor_discovery: Optional[bool] = None
+        # Configures IPSec exemptions to allow router discovery IPv6 ICMP type-codes
+        self._firewall_i_p_sec_exemptions_allow_router_discovery: Optional[bool] = None
+        # Configures the idle timeout for security associations, in seconds, from 300 to 3600 inclusive. This is the period after which security associations will expire and be deleted. Valid values 300 to 3600
+        self._firewall_idle_timeout_for_security_association_in_seconds: Optional[int] = None
+        # If an authentication set is not fully supported by a keying module, direct the module to ignore only unsupported authentication suites rather than the entire set
+        self._firewall_merge_keying_module_settings: Optional[bool] = None
+        # Possible values for firewallPacketQueueingMethod
+        self._firewall_packet_queueing_method: Optional[firewall_packet_queueing_method_type.FirewallPacketQueueingMethodType] = None
+        # Possible values for firewallPreSharedKeyEncodingMethod
+        self._firewall_pre_shared_key_encoding_method: Optional[firewall_pre_shared_key_encoding_method_type.FirewallPreSharedKeyEncodingMethodType] = None
+        # Configures the firewall profile settings for domain networks
+        self._firewall_profile_domain: Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile] = None
+        # Configures the firewall profile settings for private networks
+        self._firewall_profile_private: Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile] = None
+        # Configures the firewall profile settings for public networks
+        self._firewall_profile_public: Optional[windows_firewall_network_profile.WindowsFirewallNetworkProfile] = None
+        # Allows IT Admins to control whether users can can ignore SmartScreen warnings and run malicious files.
+        self._smart_screen_block_override_for_files: Optional[bool] = None
+        # Allows IT Admins to configure SmartScreen for Windows.
+        self._smart_screen_enable_in_shell: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10EndpointProtectionConfiguration:
@@ -682,9 +688,7 @@ class Windows10EndpointProtectionConfiguration(device_configuration.DeviceConfig
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import application_guard_block_clipboard_sharing_type, application_guard_block_file_transfer_type, app_locker_application_control_type, bit_locker_removable_drive_policy, device_configuration, firewall_certificate_revocation_list_check_method_type, firewall_packet_queueing_method_type, firewall_pre_shared_key_encoding_method_type, windows_firewall_network_profile
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "applicationGuardAllowPersistence": lambda n : setattr(self, 'application_guard_allow_persistence', n.get_bool_value()),
             "applicationGuardAllowPrintToLocalPrinters": lambda n : setattr(self, 'application_guard_allow_print_to_local_printers', n.get_bool_value()),
             "applicationGuardAllowPrintToNetworkPrinters": lambda n : setattr(self, 'application_guard_allow_print_to_network_printers', n.get_bool_value()),

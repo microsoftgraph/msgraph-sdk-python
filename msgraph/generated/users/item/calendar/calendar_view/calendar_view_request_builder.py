@@ -7,18 +7,32 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from .....models import event_collection_response
-    from .....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .delta import delta_request_builder
+event_collection_response = lazy_import('msgraph.generated.models.event_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+count_request_builder = lazy_import('msgraph.generated.users.item.calendar.calendar_view.count.count_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.users.item.calendar.calendar_view.delta.delta_request_builder')
 
 class CalendarViewRequestBuilder():
     """
     Provides operations to manage the calendarView property of the microsoft.graph.calendar entity.
     """
+    @property
+    def count(self) -> count_request_builder.CountRequestBuilder:
+        """
+        Provides operations to count the resources in the collection.
+        """
+        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CalendarViewRequestBuilder and sets the default values.
@@ -47,16 +61,12 @@ class CalendarViewRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import event_collection_response
-
         return await self.request_adapter.send_async(request_info, event_collection_response.EventCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -77,52 +87,11 @@ class CalendarViewRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count import count_request_builder
-
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
-        """
-        Provides operations to call the delta method.
-        """
-        from .delta import delta_request_builder
-
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class CalendarViewRequestBuilderGetQueryParameters():
         """
         The calendar view for the calendar. Navigation property. Read-only.
         """
-        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
-            """
-            Maps the query parameters names to their encoded names for the URI template parsing.
-            Args:
-                originalName: The original query parameter name in the class.
-            Returns: str
-            """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
-            if original_name == "count":
-                return "%24count"
-            if original_name == "filter":
-                return "%24filter"
-            if original_name == "orderby":
-                return "%24orderby"
-            if original_name == "select":
-                return "%24select"
-            if original_name == "skip":
-                return "%24skip"
-            if original_name == "top":
-                return "%24top"
-            return original_name
-        
         # Include count of items
         count: Optional[bool] = None
 
@@ -147,6 +116,29 @@ class CalendarViewRequestBuilder():
         # Show only the first n items
         top: Optional[int] = None
 
+        def get_query_parameter(self,original_name: Optional[str] = None) -> str:
+            """
+            Maps the query parameters names to their encoded names for the URI template parsing.
+            Args:
+                originalName: The original query parameter name in the class.
+            Returns: str
+            """
+            if original_name is None:
+                raise Exception("original_name cannot be undefined")
+            if original_name == "count":
+                return "%24count"
+            if original_name == "filter":
+                return "%24filter"
+            if original_name == "orderby":
+                return "%24orderby"
+            if original_name == "select":
+                return "%24select"
+            if original_name == "skip":
+                return "%24skip"
+            if original_name == "top":
+                return "%24top"
+            return original_name
+        
     
     @dataclass
     class CalendarViewRequestBuilderGetRequestConfiguration():

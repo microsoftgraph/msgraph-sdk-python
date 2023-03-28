@@ -1,13 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import managed_e_book
-
-from . import managed_e_book
+managed_e_book = lazy_import('msgraph.generated.models.managed_e_book')
 
 class IosVppEBook(managed_e_book.ManagedEBook):
+    @property
+    def apple_id(self,) -> Optional[str]:
+        """
+        Gets the appleId property value. The Apple ID associated with Vpp token.
+        Returns: Optional[str]
+        """
+        return self._apple_id
+    
+    @apple_id.setter
+    def apple_id(self,value: Optional[str] = None) -> None:
+        """
+        Sets the appleId property value. The Apple ID associated with Vpp token.
+        Args:
+            value: Value to set for the apple_id property.
+        """
+        self._apple_id = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new IosVppEBook and sets the default values.
@@ -30,23 +45,6 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         self._vpp_organization_name: Optional[str] = None
         # The Vpp token ID.
         self._vpp_token_id: Optional[Guid] = None
-    
-    @property
-    def apple_id(self,) -> Optional[str]:
-        """
-        Gets the appleId property value. The Apple ID associated with Vpp token.
-        Returns: Optional[str]
-        """
-        return self._apple_id
-    
-    @apple_id.setter
-    def apple_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the appleId property value. The Apple ID associated with Vpp token.
-        Args:
-            value: Value to set for the apple_id property.
-        """
-        self._apple_id = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosVppEBook:
@@ -82,9 +80,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import managed_e_book
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "appleId": lambda n : setattr(self, 'apple_id', n.get_str_value()),
             "genres": lambda n : setattr(self, 'genres', n.get_collection_of_primitive_values(str)),
             "language": lambda n : setattr(self, 'language', n.get_str_value()),

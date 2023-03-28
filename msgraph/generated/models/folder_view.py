@@ -1,24 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class FolderView(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new folderView and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The method by which the folder should be sorted.
-        self._sort_by: Optional[str] = None
-        # If true, indicates that items should be sorted in descending order. Otherwise, items should be sorted ascending.
-        self._sort_order: Optional[str] = None
-        # The type of view that should be used to represent the folder.
-        self._view_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -35,6 +20,22 @@ class FolderView(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new folderView and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The method by which the folder should be sorted.
+        self._sort_by: Optional[str] = None
+        # If true, indicates that items should be sorted in descending order. Otherwise, items should be sorted ascending.
+        self._sort_order: Optional[str] = None
+        # The type of view that should be used to represent the folder.
+        self._view_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FolderView:
@@ -53,7 +54,7 @@ class FolderView(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sortBy": lambda n : setattr(self, 'sort_by', n.get_str_value()),
             "sortOrder": lambda n : setattr(self, 'sort_order', n.get_str_value()),

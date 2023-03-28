@@ -1,14 +1,29 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceConfigurationDeviceOverview(entity.Entity):
+    @property
+    def configuration_version(self,) -> Optional[int]:
+        """
+        Gets the configurationVersion property value. Version of the policy for that overview
+        Returns: Optional[int]
+        """
+        return self._configuration_version
+    
+    @configuration_version.setter
+    def configuration_version(self,value: Optional[int] = None) -> None:
+        """
+        Sets the configurationVersion property value. Version of the policy for that overview
+        Args:
+            value: Value to set for the configuration_version property.
+        """
+        self._configuration_version = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceConfigurationDeviceOverview and sets the default values.
@@ -30,23 +45,6 @@ class DeviceConfigurationDeviceOverview(entity.Entity):
         self._pending_count: Optional[int] = None
         # Number of succeeded devices
         self._success_count: Optional[int] = None
-    
-    @property
-    def configuration_version(self,) -> Optional[int]:
-        """
-        Gets the configurationVersion property value. Version of the policy for that overview
-        Returns: Optional[int]
-        """
-        return self._configuration_version
-    
-    @configuration_version.setter
-    def configuration_version(self,value: Optional[int] = None) -> None:
-        """
-        Sets the configurationVersion property value. Version of the policy for that overview
-        Args:
-            value: Value to set for the configuration_version property.
-        """
-        self._configuration_version = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceConfigurationDeviceOverview:
@@ -99,9 +97,7 @@ class DeviceConfigurationDeviceOverview(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "configurationVersion": lambda n : setattr(self, 'configuration_version', n.get_int_value()),
             "errorCount": lambda n : setattr(self, 'error_count', n.get_int_value()),
             "failedCount": lambda n : setattr(self, 'failed_count', n.get_int_value()),

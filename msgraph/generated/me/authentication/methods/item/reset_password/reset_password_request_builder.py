@@ -7,12 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import reset_password_post_request_body
-    from ......models import password_reset_response
-    from ......models.o_data_errors import o_data_error
+reset_password_post_request_body = lazy_import('msgraph.generated.me.authentication.methods.item.reset_password.reset_password_post_request_body')
+password_reset_response = lazy_import('msgraph.generated.models.password_reset_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ResetPasswordRequestBuilder():
     """
@@ -38,7 +38,7 @@ class ResetPasswordRequestBuilder():
     
     async def post(self,body: Optional[reset_password_post_request_body.ResetPasswordPostRequestBody] = None, request_configuration: Optional[ResetPasswordRequestBuilderPostRequestConfiguration] = None) -> Optional[password_reset_response.PasswordResetResponse]:
         """
-        Reset a user's password, represented by a password authentication method object. This can only be done by an administrator with appropriate permissions and cannot be performed on a user's own account. This flow writes the new password to Azure Active Directory and pushes it to on-premises Active Directory if configured using password writeback. The admin can either provide a new password or have the system generate one. The user is prompted to change their password on their next sign in. This reset is a long-running operation and will return a **Location** header with a link where the caller can periodically check for the status of the reset operation.
+        Invoke action resetPassword
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -49,21 +49,17 @@ class ResetPasswordRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import password_reset_response
-
         return await self.request_adapter.send_async(request_info, password_reset_response.PasswordResetResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[reset_password_post_request_body.ResetPasswordPostRequestBody] = None, request_configuration: Optional[ResetPasswordRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Reset a user's password, represented by a password authentication method object. This can only be done by an administrator with appropriate permissions and cannot be performed on a user's own account. This flow writes the new password to Azure Active Directory and pushes it to on-premises Active Directory if configured using password writeback. The admin can either provide a new password or have the system generate one. The user is prompted to change their password on their next sign in. This reset is a long-running operation and will return a **Location** header with a link where the caller can periodically check for the status of the reset operation.
+        Invoke action resetPassword
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

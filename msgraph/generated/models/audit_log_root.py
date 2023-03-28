@@ -1,11 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import directory_audit, entity, provisioning_object_summary, sign_in
-
-from . import entity
+directory_audit = lazy_import('msgraph.generated.models.directory_audit')
+entity = lazy_import('msgraph.generated.models.entity')
+provisioning_object_summary = lazy_import('msgraph.generated.models.provisioning_object_summary')
+sign_in = lazy_import('msgraph.generated.models.sign_in')
 
 class AuditLogRoot(entity.Entity):
     def __init__(self,) -> None:
@@ -56,9 +57,7 @@ class AuditLogRoot(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_audit, entity, provisioning_object_summary, sign_in
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "directoryAudits": lambda n : setattr(self, 'directory_audits', n.get_collection_of_object_values(directory_audit.DirectoryAudit)),
             "provisioning": lambda n : setattr(self, 'provisioning', n.get_collection_of_object_values(provisioning_object_summary.ProvisioningObjectSummary)),
             "signIns": lambda n : setattr(self, 'sign_ins', n.get_collection_of_object_values(sign_in.SignIn)),

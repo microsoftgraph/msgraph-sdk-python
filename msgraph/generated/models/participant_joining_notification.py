@@ -1,23 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import call, entity
-
-from . import entity
+call = lazy_import('msgraph.generated.models.call')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class ParticipantJoiningNotification(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ParticipantJoiningNotification and sets the default values.
-        """
-        super().__init__()
-        # The call property
-        self._call: Optional[call.Call] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
     @property
     def call(self,) -> Optional[call.Call]:
         """
@@ -34,6 +23,16 @@ class ParticipantJoiningNotification(entity.Entity):
             value: Value to set for the call property.
         """
         self._call = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ParticipantJoiningNotification and sets the default values.
+        """
+        super().__init__()
+        # The call property
+        self._call: Optional[call.Call] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ParticipantJoiningNotification:
@@ -52,9 +51,7 @@ class ParticipantJoiningNotification(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import call, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "call": lambda n : setattr(self, 'call', n.get_object_value(call.Call)),
         }
         super_fields = super().get_field_deserializers()

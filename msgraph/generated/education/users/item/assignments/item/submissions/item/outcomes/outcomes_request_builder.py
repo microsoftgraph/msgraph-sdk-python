@@ -7,17 +7,25 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from .........models import education_outcome, education_outcome_collection_response
-    from .........models.o_data_errors import o_data_error
-    from .count import count_request_builder
+count_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.submissions.item.outcomes.count.count_request_builder')
+education_outcome = lazy_import('msgraph.generated.models.education_outcome')
+education_outcome_collection_response = lazy_import('msgraph.generated.models.education_outcome_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class OutcomesRequestBuilder():
     """
     Provides operations to manage the outcomes property of the microsoft.graph.educationSubmission entity.
     """
+    @property
+    def count(self) -> count_request_builder.CountRequestBuilder:
+        """
+        Provides operations to count the resources in the collection.
+        """
+        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new OutcomesRequestBuilder and sets the default values.
@@ -46,16 +54,12 @@ class OutcomesRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import education_outcome_collection_response
-
         return await self.request_adapter.send_async(request_info, education_outcome_collection_response.EducationOutcomeCollectionResponse, error_mapping)
     
     async def post(self,body: Optional[education_outcome.EducationOutcome] = None, request_configuration: Optional[OutcomesRequestBuilderPostRequestConfiguration] = None) -> Optional[education_outcome.EducationOutcome]:
@@ -71,16 +75,12 @@ class OutcomesRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import education_outcome
-
         return await self.request_adapter.send_async(request_info, education_outcome.EducationOutcome, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[OutcomesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -122,20 +122,35 @@ class OutcomesRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count import count_request_builder
-
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class OutcomesRequestBuilderGetQueryParameters():
         """
         Retrieve a list of educationOutcome objects. There are four types of outcomes: **educationPointsOutcome**, **educationFeedbackOutcome**, **educationRubricOutcome**, and **educationFeedbackResourceOutcome**. Only teachers, students, and applications with application permissions can perform this operation. A submission for a credit assignment (one that has no point value and no rubric) will have an educationFeedbackOutcome. (It might also return an educationPointsOutcome, but that outcome is ignored.) A submission for a points assignment (one that has a point value assigned) will have both an educationFeedbackOutcome and an educationPointsOutcome. A submission for an assignment with an attached rubric, if the rubric is a credit rubric (no points), will have an educationFeedbackOutcome and an educationRubricOutcome. (It might also return an educationPointsOutcome, but that outcome is ignored.) A submission for an assignment with an attached rubric, if the rubric is a points rubric, will have an educationFeedbackOutcome, an educationPointsOutcome, and an educationRubricOutcome. A submission for a feedback resource will have an educationFeedbackResourceOutcome. All outcome types have a regular and a published property appropriate to that type of outcome; for example, **points** and **publishedPoints**, **feedback** and **publishedFeedback**. The regular property is the most recent value updated by the teacher; the published property is the most recent value returned to the student.
         """
+        # Include count of items
+        count: Optional[bool] = None
+
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -163,30 +178,6 @@ class OutcomesRequestBuilder():
                 return "%24top"
             return original_name
         
-        # Include count of items
-        count: Optional[bool] = None
-
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Filter items by property values
-        filter: Optional[str] = None
-
-        # Order items by property values
-        orderby: Optional[List[str]] = None
-
-        # Search items by search phrases
-        search: Optional[str] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
-        # Skip the first n items
-        skip: Optional[int] = None
-
-        # Show only the first n items
-        top: Optional[int] = None
-
     
     @dataclass
     class OutcomesRequestBuilderGetRequestConfiguration():

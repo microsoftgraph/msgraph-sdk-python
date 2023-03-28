@@ -1,25 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import approval, request
-
-from . import request
+approval = lazy_import('msgraph.generated.models.approval')
+request = lazy_import('msgraph.generated.models.request')
 
 class UserConsentRequest(request.Request):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new UserConsentRequest and sets the default values.
-        """
-        super().__init__()
-        # Approval decisions associated with a request.
-        self._approval: Optional[approval.Approval] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The user's justification for requiring access to the app. Supports $filter (eq only) and $orderby.
-        self._reason: Optional[str] = None
-    
     @property
     def approval(self,) -> Optional[approval.Approval]:
         """
@@ -36,6 +23,18 @@ class UserConsentRequest(request.Request):
             value: Value to set for the approval property.
         """
         self._approval = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new UserConsentRequest and sets the default values.
+        """
+        super().__init__()
+        # Approval decisions associated with a request.
+        self._approval: Optional[approval.Approval] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The user's justification for requiring access to the app. Supports $filter (eq only) and $orderby.
+        self._reason: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserConsentRequest:
@@ -54,9 +53,7 @@ class UserConsentRequest(request.Request):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import approval, request
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "approval": lambda n : setattr(self, 'approval', n.get_object_value(approval.Approval)),
             "reason": lambda n : setattr(self, 'reason', n.get_str_value()),
         }

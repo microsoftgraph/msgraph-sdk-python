@@ -1,13 +1,31 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import contact, entity, multi_value_legacy_extended_property, single_value_legacy_extended_property
-
-from . import entity
+contact = lazy_import('msgraph.generated.models.contact')
+entity = lazy_import('msgraph.generated.models.entity')
+multi_value_legacy_extended_property = lazy_import('msgraph.generated.models.multi_value_legacy_extended_property')
+single_value_legacy_extended_property = lazy_import('msgraph.generated.models.single_value_legacy_extended_property')
 
 class ContactFolder(entity.Entity):
+    @property
+    def child_folders(self,) -> Optional[List[ContactFolder]]:
+        """
+        Gets the childFolders property value. The collection of child folders in the folder. Navigation property. Read-only. Nullable.
+        Returns: Optional[List[ContactFolder]]
+        """
+        return self._child_folders
+    
+    @child_folders.setter
+    def child_folders(self,value: Optional[List[ContactFolder]] = None) -> None:
+        """
+        Sets the childFolders property value. The collection of child folders in the folder. Navigation property. Read-only. Nullable.
+        Args:
+            value: Value to set for the child_folders property.
+        """
+        self._child_folders = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new contactFolder and sets the default values.
@@ -27,23 +45,6 @@ class ContactFolder(entity.Entity):
         self._parent_folder_id: Optional[str] = None
         # The collection of single-value extended properties defined for the contactFolder. Read-only. Nullable.
         self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
-    
-    @property
-    def child_folders(self,) -> Optional[List[ContactFolder]]:
-        """
-        Gets the childFolders property value. The collection of child folders in the folder. Navigation property. Read-only. Nullable.
-        Returns: Optional[List[ContactFolder]]
-        """
-        return self._child_folders
-    
-    @child_folders.setter
-    def child_folders(self,value: Optional[List[ContactFolder]] = None) -> None:
-        """
-        Sets the childFolders property value. The collection of child folders in the folder. Navigation property. Read-only. Nullable.
-        Args:
-            value: Value to set for the child_folders property.
-        """
-        self._child_folders = value
     
     @property
     def contacts(self,) -> Optional[List[contact.Contact]]:
@@ -96,9 +97,7 @@ class ContactFolder(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import contact, entity, multi_value_legacy_extended_property, single_value_legacy_extended_property
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "childFolders": lambda n : setattr(self, 'child_folders', n.get_collection_of_object_values(ContactFolder)),
             "contacts": lambda n : setattr(self, 'contacts', n.get_collection_of_object_values(contact.Contact)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

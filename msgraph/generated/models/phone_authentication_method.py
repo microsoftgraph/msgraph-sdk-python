@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import authentication_method, authentication_method_sign_in_state, authentication_phone_type
-
-from . import authentication_method
+authentication_method = lazy_import('msgraph.generated.models.authentication_method')
+authentication_method_sign_in_state = lazy_import('msgraph.generated.models.authentication_method_sign_in_state')
+authentication_phone_type = lazy_import('msgraph.generated.models.authentication_phone_type')
 
 class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
     def __init__(self,) -> None:
@@ -38,9 +38,7 @@ class PhoneAuthenticationMethod(authentication_method.AuthenticationMethod):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method, authentication_method_sign_in_state, authentication_phone_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "phoneNumber": lambda n : setattr(self, 'phone_number', n.get_str_value()),
             "phoneType": lambda n : setattr(self, 'phone_type', n.get_enum_value(authentication_phone_type.AuthenticationPhoneType)),
             "smsSignInState": lambda n : setattr(self, 'sms_sign_in_state', n.get_enum_value(authentication_method_sign_in_state.AuthenticationMethodSignInState)),

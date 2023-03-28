@@ -1,11 +1,29 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import date_time_time_zone, free_busy_status
+date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
+free_busy_status = lazy_import('msgraph.generated.models.free_busy_status')
 
 class ScheduleItem(AdditionalDataHolder, Parsable):
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new scheduleItem and sets the default values.
@@ -27,23 +45,6 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         self._status: Optional[free_busy_status.FreeBusyStatus] = None
         # The corresponding event's subject line. Optional.
         self._subject: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScheduleItem:
@@ -79,9 +80,7 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import date_time_time_zone, free_busy_status
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "end": lambda n : setattr(self, 'end', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "isPrivate": lambda n : setattr(self, 'is_private', n.get_bool_value()),
             "location": lambda n : setattr(self, 'location', n.get_str_value()),

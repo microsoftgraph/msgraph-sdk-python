@@ -1,12 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import identity_set, notebook, onenote_entity_schema_object_model, onenote_section, section_group
-
-from . import onenote_entity_schema_object_model
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+onenote_entity_schema_object_model = lazy_import('msgraph.generated.models.onenote_entity_schema_object_model')
 
 class OnenoteEntityHierarchyModel(onenote_entity_schema_object_model.OnenoteEntitySchemaObjectModel):
     def __init__(self,) -> None:
@@ -51,21 +50,6 @@ class OnenoteEntityHierarchyModel(onenote_entity_schema_object_model.OnenoteEnti
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.notebook":
-                from . import notebook
-
-                return notebook.Notebook()
-            if mapping_value == "#microsoft.graph.onenoteSection":
-                from . import onenote_section
-
-                return onenote_section.OnenoteSection()
-            if mapping_value == "#microsoft.graph.sectionGroup":
-                from . import section_group
-
-                return section_group.SectionGroup()
         return OnenoteEntityHierarchyModel()
     
     @property
@@ -90,9 +74,7 @@ class OnenoteEntityHierarchyModel(onenote_entity_schema_object_model.OnenoteEnti
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set, notebook, onenote_entity_schema_object_model, onenote_section, section_group
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),

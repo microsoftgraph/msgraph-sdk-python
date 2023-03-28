@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_package_localized_text, access_package_multiple_choice_question, access_package_text_input_question, entity
-
-from . import entity
+access_package_localized_text = lazy_import('msgraph.generated.models.access_package_localized_text')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessPackageQuestion(entity.Entity):
     def __init__(self,) -> None:
@@ -36,17 +35,6 @@ class AccessPackageQuestion(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.accessPackageMultipleChoiceQuestion":
-                from . import access_package_multiple_choice_question
-
-                return access_package_multiple_choice_question.AccessPackageMultipleChoiceQuestion()
-            if mapping_value == "#microsoft.graph.accessPackageTextInputQuestion":
-                from . import access_package_text_input_question
-
-                return access_package_text_input_question.AccessPackageTextInputQuestion()
         return AccessPackageQuestion()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -54,9 +42,7 @@ class AccessPackageQuestion(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_localized_text, access_package_multiple_choice_question, access_package_text_input_question, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "isAnswerEditable": lambda n : setattr(self, 'is_answer_editable', n.get_bool_value()),
             "isRequired": lambda n : setattr(self, 'is_required', n.get_bool_value()),
             "localizations": lambda n : setattr(self, 'localizations', n.get_collection_of_object_values(access_package_localized_text.AccessPackageLocalizedText)),

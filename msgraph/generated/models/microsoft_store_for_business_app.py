@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import microsoft_store_for_business_license_type, mobile_app
-
-from . import mobile_app
+microsoft_store_for_business_license_type = lazy_import('msgraph.generated.models.microsoft_store_for_business_license_type')
+mobile_app = lazy_import('msgraph.generated.models.mobile_app')
 
 class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
     def __init__(self,) -> None:
@@ -42,9 +41,7 @@ class MicrosoftStoreForBusinessApp(mobile_app.MobileApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import microsoft_store_for_business_license_type, mobile_app
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "licenseType": lambda n : setattr(self, 'license_type', n.get_enum_value(microsoft_store_for_business_license_type.MicrosoftStoreForBusinessLicenseType)),
             "packageIdentityName": lambda n : setattr(self, 'package_identity_name', n.get_str_value()),
             "productKey": lambda n : setattr(self, 'product_key', n.get_str_value()),

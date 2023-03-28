@@ -1,13 +1,33 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import mobile_lob_app, win32_lob_app_install_experience, win32_lob_app_msi_information, win32_lob_app_return_code, win32_lob_app_rule, windows_architecture
-
-from . import mobile_lob_app
+mobile_lob_app = lazy_import('msgraph.generated.models.mobile_lob_app')
+win32_lob_app_install_experience = lazy_import('msgraph.generated.models.win32_lob_app_install_experience')
+win32_lob_app_msi_information = lazy_import('msgraph.generated.models.win32_lob_app_msi_information')
+win32_lob_app_return_code = lazy_import('msgraph.generated.models.win32_lob_app_return_code')
+win32_lob_app_rule = lazy_import('msgraph.generated.models.win32_lob_app_rule')
+windows_architecture = lazy_import('msgraph.generated.models.windows_architecture')
 
 class Win32LobApp(mobile_lob_app.MobileLobApp):
+    @property
+    def applicable_architectures(self,) -> Optional[windows_architecture.WindowsArchitecture]:
+        """
+        Gets the applicableArchitectures property value. Contains properties for Windows architecture.
+        Returns: Optional[windows_architecture.WindowsArchitecture]
+        """
+        return self._applicable_architectures
+    
+    @applicable_architectures.setter
+    def applicable_architectures(self,value: Optional[windows_architecture.WindowsArchitecture] = None) -> None:
+        """
+        Sets the applicableArchitectures property value. Contains properties for Windows architecture.
+        Args:
+            value: Value to set for the applicable_architectures property.
+        """
+        self._applicable_architectures = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Win32LobApp and sets the default values.
@@ -41,23 +61,6 @@ class Win32LobApp(mobile_lob_app.MobileLobApp):
         # The command line to uninstall this app
         self._uninstall_command_line: Optional[str] = None
     
-    @property
-    def applicable_architectures(self,) -> Optional[windows_architecture.WindowsArchitecture]:
-        """
-        Gets the applicableArchitectures property value. Contains properties for Windows architecture.
-        Returns: Optional[windows_architecture.WindowsArchitecture]
-        """
-        return self._applicable_architectures
-    
-    @applicable_architectures.setter
-    def applicable_architectures(self,value: Optional[windows_architecture.WindowsArchitecture] = None) -> None:
-        """
-        Sets the applicableArchitectures property value. Contains properties for Windows architecture.
-        Args:
-            value: Value to set for the applicable_architectures property.
-        """
-        self._applicable_architectures = value
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobApp:
         """
@@ -75,9 +78,7 @@ class Win32LobApp(mobile_lob_app.MobileLobApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_lob_app, win32_lob_app_install_experience, win32_lob_app_msi_information, win32_lob_app_return_code, win32_lob_app_rule, windows_architecture
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(windows_architecture.WindowsArchitecture)),
             "installCommandLine": lambda n : setattr(self, 'install_command_line', n.get_str_value()),
             "installExperience": lambda n : setattr(self, 'install_experience', n.get_object_value(win32_lob_app_install_experience.Win32LobAppInstallExperience)),

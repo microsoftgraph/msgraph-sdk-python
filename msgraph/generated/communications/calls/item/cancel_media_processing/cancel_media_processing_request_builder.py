@@ -7,12 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import cancel_media_processing_post_request_body
-    from .....models import cancel_media_processing_operation
-    from .....models.o_data_errors import o_data_error
+cancel_media_processing_post_request_body = lazy_import('msgraph.generated.communications.calls.item.cancel_media_processing.cancel_media_processing_post_request_body')
+cancel_media_processing_operation = lazy_import('msgraph.generated.models.cancel_media_processing_operation')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class CancelMediaProcessingRequestBuilder():
     """
@@ -49,16 +49,12 @@ class CancelMediaProcessingRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import cancel_media_processing_operation
-
         return await self.request_adapter.send_async(request_info, cancel_media_processing_operation.CancelMediaProcessingOperation, error_mapping)
     
     def to_post_request_information(self,body: Optional[cancel_media_processing_post_request_body.CancelMediaProcessingPostRequestBody] = None, request_configuration: Optional[CancelMediaProcessingRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:

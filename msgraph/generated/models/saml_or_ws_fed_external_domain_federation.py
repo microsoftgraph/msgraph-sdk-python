@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import external_domain_name, saml_or_ws_fed_provider
-
-from . import saml_or_ws_fed_provider
+external_domain_name = lazy_import('msgraph.generated.models.external_domain_name')
+saml_or_ws_fed_provider = lazy_import('msgraph.generated.models.saml_or_ws_fed_provider')
 
 class SamlOrWsFedExternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
     def __init__(self,) -> None:
@@ -51,9 +50,7 @@ class SamlOrWsFedExternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedPro
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import external_domain_name, saml_or_ws_fed_provider
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "domains": lambda n : setattr(self, 'domains', n.get_collection_of_object_values(external_domain_name.ExternalDomainName)),
         }
         super_fields = super().get_field_deserializers()

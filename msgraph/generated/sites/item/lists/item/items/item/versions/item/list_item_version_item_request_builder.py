@@ -7,18 +7,32 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from .........models import list_item_version
-    from .........models.o_data_errors import o_data_error
-    from .fields import fields_request_builder
-    from .restore_version import restore_version_request_builder
+list_item_version = lazy_import('msgraph.generated.models.list_item_version')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+fields_request_builder = lazy_import('msgraph.generated.sites.item.lists.item.items.item.versions.item.fields.fields_request_builder')
+restore_version_request_builder = lazy_import('msgraph.generated.sites.item.lists.item.items.item.versions.item.restore_version.restore_version_request_builder')
 
 class ListItemVersionItemRequestBuilder():
     """
     Provides operations to manage the versions property of the microsoft.graph.listItem entity.
     """
+    @property
+    def fields(self) -> fields_request_builder.FieldsRequestBuilder:
+        """
+        Provides operations to manage the fields property of the microsoft.graph.listItemVersion entity.
+        """
+        return fields_request_builder.FieldsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def restore_version(self) -> restore_version_request_builder.RestoreVersionRequestBuilder:
+        """
+        Provides operations to call the restoreVersion method.
+        """
+        return restore_version_request_builder.RestoreVersionRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ListItemVersionItemRequestBuilder and sets the default values.
@@ -46,8 +60,6 @@ class ListItemVersionItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -66,16 +78,12 @@ class ListItemVersionItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import list_item_version
-
         return await self.request_adapter.send_async(request_info, list_item_version.ListItemVersion, error_mapping)
     
     async def patch(self,body: Optional[list_item_version.ListItemVersion] = None, request_configuration: Optional[ListItemVersionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[list_item_version.ListItemVersion]:
@@ -91,16 +99,12 @@ class ListItemVersionItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import list_item_version
-
         return await self.request_adapter.send_async(request_info, list_item_version.ListItemVersion, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ListItemVersionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -158,24 +162,6 @@ class ListItemVersionItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def fields(self) -> fields_request_builder.FieldsRequestBuilder:
-        """
-        Provides operations to manage the fields property of the microsoft.graph.listItemVersion entity.
-        """
-        from .fields import fields_request_builder
-
-        return fields_request_builder.FieldsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def restore_version(self) -> restore_version_request_builder.RestoreVersionRequestBuilder:
-        """
-        Provides operations to call the restoreVersion method.
-        """
-        from .restore_version import restore_version_request_builder
-
-        return restore_version_request_builder.RestoreVersionRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class ListItemVersionItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -193,6 +179,12 @@ class ListItemVersionItemRequestBuilder():
         """
         The list of previous versions of the list item.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -208,12 +200,6 @@ class ListItemVersionItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class ListItemVersionItemRequestBuilderGetRequestConfiguration():

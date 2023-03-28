@@ -1,25 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
-
-if TYPE_CHECKING:
-    from . import client_user_agent, service_user_agent
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class UserAgent(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new userAgent and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Identifies the version of application software used by this endpoint.
-        self._application_version: Optional[str] = None
-        # User-agent header value reported by this endpoint.
-        self._header_value: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -54,6 +38,20 @@ class UserAgent(AdditionalDataHolder, Parsable):
         """
         self._application_version = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new userAgent and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Identifies the version of application software used by this endpoint.
+        self._application_version: Optional[str] = None
+        # User-agent header value reported by this endpoint.
+        self._header_value: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserAgent:
         """
@@ -64,17 +62,6 @@ class UserAgent(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.callRecords.clientUserAgent":
-                from . import client_user_agent
-
-                return client_user_agent.ClientUserAgent()
-            if mapping_value == "#microsoft.graph.callRecords.serviceUserAgent":
-                from . import service_user_agent
-
-                return service_user_agent.ServiceUserAgent()
         return UserAgent()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -82,9 +69,7 @@ class UserAgent(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import client_user_agent, service_user_agent
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "applicationVersion": lambda n : setattr(self, 'application_version', n.get_str_value()),
             "headerValue": lambda n : setattr(self, 'header_value', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

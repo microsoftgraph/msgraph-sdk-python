@@ -7,18 +7,32 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ..models import role_management
-    from ..models.o_data_errors import o_data_error
-    from .directory import directory_request_builder
-    from .entitlement_management import entitlement_management_request_builder
+role_management = lazy_import('msgraph.generated.models.role_management')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+directory_request_builder = lazy_import('msgraph.generated.role_management.directory.directory_request_builder')
+entitlement_management_request_builder = lazy_import('msgraph.generated.role_management.entitlement_management.entitlement_management_request_builder')
 
 class RoleManagementRequestBuilder():
     """
     Provides operations to manage the roleManagement singleton.
     """
+    @property
+    def directory(self) -> directory_request_builder.DirectoryRequestBuilder:
+        """
+        Provides operations to manage the directory property of the microsoft.graph.roleManagement entity.
+        """
+        return directory_request_builder.DirectoryRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def entitlement_management(self) -> entitlement_management_request_builder.EntitlementManagementRequestBuilder:
+        """
+        Provides operations to manage the entitlementManagement property of the microsoft.graph.roleManagement entity.
+        """
+        return entitlement_management_request_builder.EntitlementManagementRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new RoleManagementRequestBuilder and sets the default values.
@@ -47,16 +61,12 @@ class RoleManagementRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import role_management
-
         return await self.request_adapter.send_async(request_info, role_management.RoleManagement, error_mapping)
     
     async def patch(self,body: Optional[role_management.RoleManagement] = None, request_configuration: Optional[RoleManagementRequestBuilderPatchRequestConfiguration] = None) -> Optional[role_management.RoleManagement]:
@@ -72,16 +82,12 @@ class RoleManagementRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import role_management
-
         return await self.request_adapter.send_async(request_info, role_management.RoleManagement, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[RoleManagementRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -123,29 +129,17 @@ class RoleManagementRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def directory(self) -> directory_request_builder.DirectoryRequestBuilder:
-        """
-        Provides operations to manage the directory property of the microsoft.graph.roleManagement entity.
-        """
-        from .directory import directory_request_builder
-
-        return directory_request_builder.DirectoryRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def entitlement_management(self) -> entitlement_management_request_builder.EntitlementManagementRequestBuilder:
-        """
-        Provides operations to manage the entitlementManagement property of the microsoft.graph.roleManagement entity.
-        """
-        from .entitlement_management import entitlement_management_request_builder
-
-        return entitlement_management_request_builder.EntitlementManagementRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class RoleManagementRequestBuilderGetQueryParameters():
         """
         Get roleManagement
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -161,12 +155,6 @@ class RoleManagementRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class RoleManagementRequestBuilderGetRequestConfiguration():

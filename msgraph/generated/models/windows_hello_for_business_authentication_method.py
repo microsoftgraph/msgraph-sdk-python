@@ -1,12 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import authentication_method, authentication_method_key_strength, device
-
-from . import authentication_method
+authentication_method = lazy_import('msgraph.generated.models.authentication_method')
+authentication_method_key_strength = lazy_import('msgraph.generated.models.authentication_method_key_strength')
+device = lazy_import('msgraph.generated.models.device')
 
 class WindowsHelloForBusinessAuthenticationMethod(authentication_method.AuthenticationMethod):
     def __init__(self,) -> None:
@@ -92,9 +92,7 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method, authentication_method_key_strength, device
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "device": lambda n : setattr(self, 'device', n.get_object_value(device.Device)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

@@ -1,61 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, json, workbook_range_format, workbook_range_sort, workbook_worksheet
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+json = lazy_import('msgraph.generated.models.json')
+workbook_range_format = lazy_import('msgraph.generated.models.workbook_range_format')
+workbook_range_sort = lazy_import('msgraph.generated.models.workbook_range_sort')
+workbook_worksheet = lazy_import('msgraph.generated.models.workbook_worksheet')
 
 class WorkbookRange(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WorkbookRange and sets the default values.
-        """
-        super().__init__()
-        # Represents the range reference in A1-style. Address value will contain the Sheet reference (e.g. Sheet1!A1:B4). Read-only.
-        self._address: Optional[str] = None
-        # Represents range reference for the specified range in the language of the user. Read-only.
-        self._address_local: Optional[str] = None
-        # Number of cells in the range. Read-only.
-        self._cell_count: Optional[int] = None
-        # Represents the total number of columns in the range. Read-only.
-        self._column_count: Optional[int] = None
-        # Represents if all columns of the current range are hidden.
-        self._column_hidden: Optional[bool] = None
-        # Represents the column number of the first cell in the range. Zero-indexed. Read-only.
-        self._column_index: Optional[int] = None
-        # Returns a format object, encapsulating the range's font, fill, borders, alignment, and other properties. Read-only.
-        self._format: Optional[workbook_range_format.WorkbookRangeFormat] = None
-        # Represents the formula in A1-style notation.
-        self._formulas: Optional[json.Json] = None
-        # Represents the formula in A1-style notation, in the user's language and number-formatting locale.  For example, the English '=SUM(A1, 1.5)' formula would become '=SUMME(A1; 1,5)' in German.
-        self._formulas_local: Optional[json.Json] = None
-        # Represents the formula in R1C1-style notation.
-        self._formulas_r1_c1: Optional[json.Json] = None
-        # Represents if all cells of the current range are hidden. Read-only.
-        self._hidden: Optional[bool] = None
-        # Represents Excel's number format code for the given cell.
-        self._number_format: Optional[json.Json] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Returns the total number of rows in the range. Read-only.
-        self._row_count: Optional[int] = None
-        # Represents if all rows of the current range are hidden.
-        self._row_hidden: Optional[bool] = None
-        # Returns the row number of the first cell in the range. Zero-indexed. Read-only.
-        self._row_index: Optional[int] = None
-        # The worksheet containing the current range. Read-only.
-        self._sort: Optional[workbook_range_sort.WorkbookRangeSort] = None
-        # Text values of the specified range. The Text value will not depend on the cell width. The # sign substitution that happens in Excel UI will not affect the text value returned by the API. Read-only.
-        self._text: Optional[json.Json] = None
-        # Represents the type of data of each cell. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error. Read-only.
-        self._value_types: Optional[json.Json] = None
-        # Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
-        self._values: Optional[json.Json] = None
-        # The worksheet containing the current range. Read-only.
-        self._worksheet: Optional[workbook_worksheet.WorkbookWorksheet] = None
-    
     @property
     def address(self,) -> Optional[str]:
         """
@@ -158,6 +112,54 @@ class WorkbookRange(entity.Entity):
         """
         self._column_index = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new WorkbookRange and sets the default values.
+        """
+        super().__init__()
+        # Represents the range reference in A1-style. Address value will contain the Sheet reference (e.g. Sheet1!A1:B4). Read-only.
+        self._address: Optional[str] = None
+        # Represents range reference for the specified range in the language of the user. Read-only.
+        self._address_local: Optional[str] = None
+        # Number of cells in the range. Read-only.
+        self._cell_count: Optional[int] = None
+        # Represents the total number of columns in the range. Read-only.
+        self._column_count: Optional[int] = None
+        # Represents if all columns of the current range are hidden.
+        self._column_hidden: Optional[bool] = None
+        # Represents the column number of the first cell in the range. Zero-indexed. Read-only.
+        self._column_index: Optional[int] = None
+        # Returns a format object, encapsulating the range's font, fill, borders, alignment, and other properties. Read-only.
+        self._format: Optional[workbook_range_format.WorkbookRangeFormat] = None
+        # Represents the formula in A1-style notation.
+        self._formulas: Optional[json.Json] = None
+        # Represents the formula in A1-style notation, in the user's language and number-formatting locale.  For example, the English '=SUM(A1, 1.5)' formula would become '=SUMME(A1; 1,5)' in German.
+        self._formulas_local: Optional[json.Json] = None
+        # Represents the formula in R1C1-style notation.
+        self._formulas_r1_c1: Optional[json.Json] = None
+        # Represents if all cells of the current range are hidden. Read-only.
+        self._hidden: Optional[bool] = None
+        # Represents Excel's number format code for the given cell.
+        self._number_format: Optional[json.Json] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Returns the total number of rows in the range. Read-only.
+        self._row_count: Optional[int] = None
+        # Represents if all rows of the current range are hidden.
+        self._row_hidden: Optional[bool] = None
+        # Returns the row number of the first cell in the range. Zero-indexed. Read-only.
+        self._row_index: Optional[int] = None
+        # The worksheet containing the current range. Read-only.
+        self._sort: Optional[workbook_range_sort.WorkbookRangeSort] = None
+        # Text values of the specified range. The Text value will not depend on the cell width. The # sign substitution that happens in Excel UI will not affect the text value returned by the API. Read-only.
+        self._text: Optional[json.Json] = None
+        # Represents the type of data of each cell. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error. Read-only.
+        self._value_types: Optional[json.Json] = None
+        # Represents the raw values of the specified range. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
+        self._values: Optional[json.Json] = None
+        # The worksheet containing the current range. Read-only.
+        self._worksheet: Optional[workbook_worksheet.WorkbookWorksheet] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookRange:
         """
@@ -243,9 +245,7 @@ class WorkbookRange(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, json, workbook_range_format, workbook_range_sort, workbook_worksheet
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
             "addressLocal": lambda n : setattr(self, 'address_local', n.get_str_value()),
             "cellCount": lambda n : setattr(self, 'cell_count', n.get_int_value()),

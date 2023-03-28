@@ -1,14 +1,79 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import channel, conversation_member, entity, group, profile_photo, schedule, teams_app_installation, teams_async_operation, teams_template, teamwork_tag, team_fun_settings, team_guest_settings, team_member_settings, team_messaging_settings, team_specialization, team_summary, team_visibility_type
-
-from . import entity
+channel = lazy_import('msgraph.generated.models.channel')
+conversation_member = lazy_import('msgraph.generated.models.conversation_member')
+entity = lazy_import('msgraph.generated.models.entity')
+group = lazy_import('msgraph.generated.models.group')
+profile_photo = lazy_import('msgraph.generated.models.profile_photo')
+schedule = lazy_import('msgraph.generated.models.schedule')
+team_fun_settings = lazy_import('msgraph.generated.models.team_fun_settings')
+team_guest_settings = lazy_import('msgraph.generated.models.team_guest_settings')
+team_member_settings = lazy_import('msgraph.generated.models.team_member_settings')
+team_messaging_settings = lazy_import('msgraph.generated.models.team_messaging_settings')
+team_specialization = lazy_import('msgraph.generated.models.team_specialization')
+team_summary = lazy_import('msgraph.generated.models.team_summary')
+team_visibility_type = lazy_import('msgraph.generated.models.team_visibility_type')
+teams_app_installation = lazy_import('msgraph.generated.models.teams_app_installation')
+teams_async_operation = lazy_import('msgraph.generated.models.teams_async_operation')
+teams_template = lazy_import('msgraph.generated.models.teams_template')
+teamwork_tag = lazy_import('msgraph.generated.models.teamwork_tag')
 
 class Team(entity.Entity):
+    @property
+    def all_channels(self,) -> Optional[List[channel.Channel]]:
+        """
+        Gets the allChannels property value. List of channels either hosted in or shared with the team (incoming channels).
+        Returns: Optional[List[channel.Channel]]
+        """
+        return self._all_channels
+    
+    @all_channels.setter
+    def all_channels(self,value: Optional[List[channel.Channel]] = None) -> None:
+        """
+        Sets the allChannels property value. List of channels either hosted in or shared with the team (incoming channels).
+        Args:
+            value: Value to set for the all_channels property.
+        """
+        self._all_channels = value
+    
+    @property
+    def channels(self,) -> Optional[List[channel.Channel]]:
+        """
+        Gets the channels property value. The collection of channels and messages associated with the team.
+        Returns: Optional[List[channel.Channel]]
+        """
+        return self._channels
+    
+    @channels.setter
+    def channels(self,value: Optional[List[channel.Channel]] = None) -> None:
+        """
+        Sets the channels property value. The collection of channels and messages associated with the team.
+        Args:
+            value: Value to set for the channels property.
+        """
+        self._channels = value
+    
+    @property
+    def classification(self,) -> Optional[str]:
+        """
+        Gets the classification property value. An optional label. Typically describes the data or business sensitivity of the team. Must match one of a pre-configured set in the tenant's directory.
+        Returns: Optional[str]
+        """
+        return self._classification
+    
+    @classification.setter
+    def classification(self,value: Optional[str] = None) -> None:
+        """
+        Sets the classification property value. An optional label. Typically describes the data or business sensitivity of the team. Must match one of a pre-configured set in the tenant's directory.
+        Args:
+            value: Value to set for the classification property.
+        """
+        self._classification = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new team and sets the default values.
@@ -70,57 +135,6 @@ class Team(entity.Entity):
         self._visibility: Optional[team_visibility_type.TeamVisibilityType] = None
         # A hyperlink that will go to the team in the Microsoft Teams client. This is the URL that you get when you right-click a team in the Microsoft Teams client and select Get link to team. This URL should be treated as an opaque blob, and not parsed.
         self._web_url: Optional[str] = None
-    
-    @property
-    def all_channels(self,) -> Optional[List[channel.Channel]]:
-        """
-        Gets the allChannels property value. List of channels either hosted in or shared with the team (incoming channels).
-        Returns: Optional[List[channel.Channel]]
-        """
-        return self._all_channels
-    
-    @all_channels.setter
-    def all_channels(self,value: Optional[List[channel.Channel]] = None) -> None:
-        """
-        Sets the allChannels property value. List of channels either hosted in or shared with the team (incoming channels).
-        Args:
-            value: Value to set for the all_channels property.
-        """
-        self._all_channels = value
-    
-    @property
-    def channels(self,) -> Optional[List[channel.Channel]]:
-        """
-        Gets the channels property value. The collection of channels and messages associated with the team.
-        Returns: Optional[List[channel.Channel]]
-        """
-        return self._channels
-    
-    @channels.setter
-    def channels(self,value: Optional[List[channel.Channel]] = None) -> None:
-        """
-        Sets the channels property value. The collection of channels and messages associated with the team.
-        Args:
-            value: Value to set for the channels property.
-        """
-        self._channels = value
-    
-    @property
-    def classification(self,) -> Optional[str]:
-        """
-        Gets the classification property value. An optional label. Typically describes the data or business sensitivity of the team. Must match one of a pre-configured set in the tenant's directory.
-        Returns: Optional[str]
-        """
-        return self._classification
-    
-    @classification.setter
-    def classification(self,value: Optional[str] = None) -> None:
-        """
-        Sets the classification property value. An optional label. Typically describes the data or business sensitivity of the team. Must match one of a pre-configured set in the tenant's directory.
-        Args:
-            value: Value to set for the classification property.
-        """
-        self._classification = value
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -207,9 +221,7 @@ class Team(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import channel, conversation_member, entity, group, profile_photo, schedule, teams_app_installation, teams_async_operation, teams_template, teamwork_tag, team_fun_settings, team_guest_settings, team_member_settings, team_messaging_settings, team_specialization, team_summary, team_visibility_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "allChannels": lambda n : setattr(self, 'all_channels', n.get_collection_of_object_values(channel.Channel)),
             "channels": lambda n : setattr(self, 'channels', n.get_collection_of_object_values(channel.Channel)),
             "classification": lambda n : setattr(self, 'classification', n.get_str_value()),

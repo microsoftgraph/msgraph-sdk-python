@@ -1,13 +1,31 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import date_time_time_zone, event_message, location, meeting_request_type
-
-from . import event_message
+date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
+event_message = lazy_import('msgraph.generated.models.event_message')
+location = lazy_import('msgraph.generated.models.location')
+meeting_request_type = lazy_import('msgraph.generated.models.meeting_request_type')
 
 class EventMessageRequest(event_message.EventMessage):
+    @property
+    def allow_new_time_proposals(self,) -> Optional[bool]:
+        """
+        Gets the allowNewTimeProposals property value. True if the meeting organizer allows invitees to propose a new time when responding, false otherwise. Optional. Default is true.
+        Returns: Optional[bool]
+        """
+        return self._allow_new_time_proposals
+    
+    @allow_new_time_proposals.setter
+    def allow_new_time_proposals(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the allowNewTimeProposals property value. True if the meeting organizer allows invitees to propose a new time when responding, false otherwise. Optional. Default is true.
+        Args:
+            value: Value to set for the allow_new_time_proposals property.
+        """
+        self._allow_new_time_proposals = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new EventMessageRequest and sets the default values.
@@ -27,23 +45,6 @@ class EventMessageRequest(event_message.EventMessage):
         # Set to true if the sender would like the invitee to send a response to the requested meeting.
         self._response_requested: Optional[bool] = None
     
-    @property
-    def allow_new_time_proposals(self,) -> Optional[bool]:
-        """
-        Gets the allowNewTimeProposals property value. True if the meeting organizer allows invitees to propose a new time when responding, false otherwise. Optional. Default is true.
-        Returns: Optional[bool]
-        """
-        return self._allow_new_time_proposals
-    
-    @allow_new_time_proposals.setter
-    def allow_new_time_proposals(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowNewTimeProposals property value. True if the meeting organizer allows invitees to propose a new time when responding, false otherwise. Optional. Default is true.
-        Args:
-            value: Value to set for the allow_new_time_proposals property.
-        """
-        self._allow_new_time_proposals = value
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EventMessageRequest:
         """
@@ -61,9 +62,7 @@ class EventMessageRequest(event_message.EventMessage):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import date_time_time_zone, event_message, location, meeting_request_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "allowNewTimeProposals": lambda n : setattr(self, 'allow_new_time_proposals', n.get_bool_value()),
             "meetingRequestType": lambda n : setattr(self, 'meeting_request_type', n.get_enum_value(meeting_request_type.MeetingRequestType)),
             "previousEndDateTime": lambda n : setattr(self, 'previous_end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),

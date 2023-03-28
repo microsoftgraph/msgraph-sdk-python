@@ -1,12 +1,29 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import subject_set
+subject_set = lazy_import('msgraph.generated.models.subject_set')
 
 class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new accessPackageApprovalStage and sets the default values.
@@ -32,23 +49,6 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The subjects, typically users, who will be asked to approve requests. A collection of singleUser, groupMembers, requestorManager, internalSponsors or externalSponsors.
         self._primary_approvers: Optional[List[subject_set.SubjectSet]] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageApprovalStage:
@@ -152,9 +152,7 @@ class AccessPackageApprovalStage(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import subject_set
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "durationBeforeAutomaticDenial": lambda n : setattr(self, 'duration_before_automatic_denial', n.get_object_value(Timedelta)),
             "durationBeforeEscalation": lambda n : setattr(self, 'duration_before_escalation', n.get_object_value(Timedelta)),
             "escalationApprovers": lambda n : setattr(self, 'escalation_approvers', n.get_collection_of_object_values(subject_set.SubjectSet)),

@@ -1,36 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import alert_feedback, alert_status
+alert_feedback = lazy_import('msgraph.generated.models.alert_feedback')
+alert_status = lazy_import('msgraph.generated.models.alert_status')
 
 class AlertHistoryState(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new alertHistoryState and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The appId property
-        self._app_id: Optional[str] = None
-        # The assignedTo property
-        self._assigned_to: Optional[str] = None
-        # The comments property
-        self._comments: Optional[List[str]] = None
-        # The feedback property
-        self._feedback: Optional[alert_feedback.AlertFeedback] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The status property
-        self._status: Optional[alert_status.AlertStatus] = None
-        # The updatedDateTime property
-        self._updated_date_time: Optional[datetime] = None
-        # The user property
-        self._user: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -99,6 +76,30 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
         """
         self._comments = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new alertHistoryState and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The appId property
+        self._app_id: Optional[str] = None
+        # The assignedTo property
+        self._assigned_to: Optional[str] = None
+        # The comments property
+        self._comments: Optional[List[str]] = None
+        # The feedback property
+        self._feedback: Optional[alert_feedback.AlertFeedback] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The status property
+        self._status: Optional[alert_status.AlertStatus] = None
+        # The updatedDateTime property
+        self._updated_date_time: Optional[datetime] = None
+        # The user property
+        self._user: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AlertHistoryState:
         """
@@ -133,9 +134,7 @@ class AlertHistoryState(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alert_feedback, alert_status
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "comments": lambda n : setattr(self, 'comments', n.get_collection_of_primitive_values(str)),

@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import deleted_team, entity, workforce_integration
-
-from . import entity
+deleted_team = lazy_import('msgraph.generated.models.deleted_team')
+entity = lazy_import('msgraph.generated.models.entity')
+workforce_integration = lazy_import('msgraph.generated.models.workforce_integration')
 
 class Teamwork(entity.Entity):
     def __init__(self,) -> None:
@@ -13,7 +13,7 @@ class Teamwork(entity.Entity):
         Instantiates a new Teamwork and sets the default values.
         """
         super().__init__()
-        # The deleted team.
+        # The deletedTeams property
         self._deleted_teams: Optional[List[deleted_team.DeletedTeam]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
@@ -35,7 +35,7 @@ class Teamwork(entity.Entity):
     @property
     def deleted_teams(self,) -> Optional[List[deleted_team.DeletedTeam]]:
         """
-        Gets the deletedTeams property value. The deleted team.
+        Gets the deletedTeams property value. The deletedTeams property
         Returns: Optional[List[deleted_team.DeletedTeam]]
         """
         return self._deleted_teams
@@ -43,7 +43,7 @@ class Teamwork(entity.Entity):
     @deleted_teams.setter
     def deleted_teams(self,value: Optional[List[deleted_team.DeletedTeam]] = None) -> None:
         """
-        Sets the deletedTeams property value. The deleted team.
+        Sets the deletedTeams property value. The deletedTeams property
         Args:
             value: Value to set for the deleted_teams property.
         """
@@ -54,9 +54,7 @@ class Teamwork(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import deleted_team, entity, workforce_integration
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "deletedTeams": lambda n : setattr(self, 'deleted_teams', n.get_collection_of_object_values(deleted_team.DeletedTeam)),
             "workforceIntegrations": lambda n : setattr(self, 'workforce_integrations', n.get_collection_of_object_values(workforce_integration.WorkforceIntegration)),
         }

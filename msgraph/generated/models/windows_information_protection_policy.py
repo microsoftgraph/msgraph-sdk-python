@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import windows_information_protection, windows_information_protection_pin_character_requirements
-
-from . import windows_information_protection
+windows_information_protection = lazy_import('msgraph.generated.models.windows_information_protection')
+windows_information_protection_pin_character_requirements = lazy_import('msgraph.generated.models.windows_information_protection_pin_character_requirements')
 
 class WindowsInformationProtectionPolicy(windows_information_protection.WindowsInformationProtection):
     def __init__(self,) -> None:
@@ -73,9 +72,7 @@ class WindowsInformationProtectionPolicy(windows_information_protection.WindowsI
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import windows_information_protection, windows_information_protection_pin_character_requirements
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "daysWithoutContactBeforeUnenroll": lambda n : setattr(self, 'days_without_contact_before_unenroll', n.get_int_value()),
             "mdmEnrollmentUrl": lambda n : setattr(self, 'mdm_enrollment_url', n.get_str_value()),
             "minutesOfInactivityBeforeDeviceLock": lambda n : setattr(self, 'minutes_of_inactivity_before_device_lock', n.get_int_value()),

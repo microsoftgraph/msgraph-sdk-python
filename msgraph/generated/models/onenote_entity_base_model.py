@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, notebook, onenote_entity_hierarchy_model, onenote_entity_schema_object_model, onenote_page, onenote_resource, onenote_section, section_group
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class OnenoteEntityBaseModel(entity.Entity):
     def __init__(self,) -> None:
@@ -28,37 +26,6 @@ class OnenoteEntityBaseModel(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.notebook":
-                from . import notebook
-
-                return notebook.Notebook()
-            if mapping_value == "#microsoft.graph.onenoteEntityHierarchyModel":
-                from . import onenote_entity_hierarchy_model
-
-                return onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel()
-            if mapping_value == "#microsoft.graph.onenoteEntitySchemaObjectModel":
-                from . import onenote_entity_schema_object_model
-
-                return onenote_entity_schema_object_model.OnenoteEntitySchemaObjectModel()
-            if mapping_value == "#microsoft.graph.onenotePage":
-                from . import onenote_page
-
-                return onenote_page.OnenotePage()
-            if mapping_value == "#microsoft.graph.onenoteResource":
-                from . import onenote_resource
-
-                return onenote_resource.OnenoteResource()
-            if mapping_value == "#microsoft.graph.onenoteSection":
-                from . import onenote_section
-
-                return onenote_section.OnenoteSection()
-            if mapping_value == "#microsoft.graph.sectionGroup":
-                from . import section_group
-
-                return section_group.SectionGroup()
         return OnenoteEntityBaseModel()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -66,9 +33,7 @@ class OnenoteEntityBaseModel(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, notebook, onenote_entity_hierarchy_model, onenote_entity_schema_object_model, onenote_page, onenote_resource, onenote_section, section_group
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "self": lambda n : setattr(self, 'self', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

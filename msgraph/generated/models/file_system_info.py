@@ -1,25 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class FileSystemInfo(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new fileSystemInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The UTC date and time the file was created on a client.
-        self._created_date_time: Optional[datetime] = None
-        # The UTC date and time the file was last accessed. Available for the recent file list only.
-        self._last_accessed_date_time: Optional[datetime] = None
-        # The UTC date and time the file was last modified on a client.
-        self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -36,6 +21,22 @@ class FileSystemInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new fileSystemInfo and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The UTC date and time the file was created on a client.
+        self._created_date_time: Optional[datetime] = None
+        # The UTC date and time the file was last accessed. Available for the recent file list only.
+        self._last_accessed_date_time: Optional[datetime] = None
+        # The UTC date and time the file was last modified on a client.
+        self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -71,7 +72,7 @@ class FileSystemInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "lastAccessedDateTime": lambda n : setattr(self, 'last_accessed_date_time', n.get_datetime_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),

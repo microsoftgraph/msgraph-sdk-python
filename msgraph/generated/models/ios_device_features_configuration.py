@@ -1,30 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import apple_device_features_configuration_base, ios_home_screen_item, ios_home_screen_page, ios_notification_settings
-
-from . import apple_device_features_configuration_base
+apple_device_features_configuration_base = lazy_import('msgraph.generated.models.apple_device_features_configuration_base')
+ios_home_screen_item = lazy_import('msgraph.generated.models.ios_home_screen_item')
+ios_home_screen_page = lazy_import('msgraph.generated.models.ios_home_screen_page')
+ios_notification_settings = lazy_import('msgraph.generated.models.ios_notification_settings')
 
 class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.AppleDeviceFeaturesConfigurationBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IosDeviceFeaturesConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.iosDeviceFeaturesConfiguration"
-        # Asset tag information for the device, displayed on the login window and lock screen.
-        self._asset_tag_template: Optional[str] = None
-        # A list of app and folders to appear on the Home Screen Dock. This collection can contain a maximum of 500 elements.
-        self._home_screen_dock_icons: Optional[List[ios_home_screen_item.IosHomeScreenItem]] = None
-        # A list of pages on the Home Screen. This collection can contain a maximum of 500 elements.
-        self._home_screen_pages: Optional[List[ios_home_screen_page.IosHomeScreenPage]] = None
-        # A footnote displayed on the login window and lock screen. Available in iOS 9.3.1 and later.
-        self._lock_screen_footnote: Optional[str] = None
-        # Notification settings for each bundle id. Applicable to devices in supervised mode only (iOS 9.3 and later). This collection can contain a maximum of 500 elements.
-        self._notification_settings: Optional[List[ios_notification_settings.IosNotificationSettings]] = None
-    
     @property
     def asset_tag_template(self,) -> Optional[str]:
         """
@@ -41,6 +25,23 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
             value: Value to set for the asset_tag_template property.
         """
         self._asset_tag_template = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new IosDeviceFeaturesConfiguration and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.iosDeviceFeaturesConfiguration"
+        # Asset tag information for the device, displayed on the login window and lock screen.
+        self._asset_tag_template: Optional[str] = None
+        # A list of app and folders to appear on the Home Screen Dock. This collection can contain a maximum of 500 elements.
+        self._home_screen_dock_icons: Optional[List[ios_home_screen_item.IosHomeScreenItem]] = None
+        # A list of pages on the Home Screen. This collection can contain a maximum of 500 elements.
+        self._home_screen_pages: Optional[List[ios_home_screen_page.IosHomeScreenPage]] = None
+        # A footnote displayed on the login window and lock screen. Available in iOS 9.3.1 and later.
+        self._lock_screen_footnote: Optional[str] = None
+        # Notification settings for each bundle id. Applicable to devices in supervised mode only (iOS 9.3 and later). This collection can contain a maximum of 500 elements.
+        self._notification_settings: Optional[List[ios_notification_settings.IosNotificationSettings]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosDeviceFeaturesConfiguration:
@@ -59,9 +60,7 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import apple_device_features_configuration_base, ios_home_screen_item, ios_home_screen_page, ios_notification_settings
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "assetTagTemplate": lambda n : setattr(self, 'asset_tag_template', n.get_str_value()),
             "homeScreenDockIcons": lambda n : setattr(self, 'home_screen_dock_icons', n.get_collection_of_object_values(ios_home_screen_item.IosHomeScreenItem)),
             "homeScreenPages": lambda n : setattr(self, 'home_screen_pages', n.get_collection_of_object_values(ios_home_screen_page.IosHomeScreenPage)),

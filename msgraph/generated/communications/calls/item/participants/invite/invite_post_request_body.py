@@ -1,23 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ......models import invitation_participant_info
+invitation_participant_info = lazy_import('msgraph.generated.models.invitation_participant_info')
 
 class InvitePostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new invitePostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The clientContext property
-        self._client_context: Optional[str] = None
-        # The participants property
-        self._participants: Optional[List[invitation_participant_info.InvitationParticipantInfo]] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -52,6 +40,18 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         """
         self._client_context = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new invitePostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The clientContext property
+        self._client_context: Optional[str] = None
+        # The participants property
+        self._participants: Optional[List[invitation_participant_info.InvitationParticipantInfo]] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InvitePostRequestBody:
         """
@@ -69,9 +69,7 @@ class InvitePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ......models import invitation_participant_info
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
             "participants": lambda n : setattr(self, 'participants', n.get_collection_of_object_values(invitation_participant_info.InvitationParticipantInfo)),
         }

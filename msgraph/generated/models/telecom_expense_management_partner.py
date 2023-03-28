@@ -1,17 +1,32 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class TelecomExpenseManagementPartner(entity.Entity):
     """
     telecomExpenseManagementPartner resources represent the metadata and status of a given TEM service. Once your organization has onboarded with a partner, the partner can be enabled or disabled to switch TEM functionality on or off.
     """
+    @property
+    def app_authorized(self,) -> Optional[bool]:
+        """
+        Gets the appAuthorized property value. Whether the partner's AAD app has been authorized to access Intune.
+        Returns: Optional[bool]
+        """
+        return self._app_authorized
+    
+    @app_authorized.setter
+    def app_authorized(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the appAuthorized property value. Whether the partner's AAD app has been authorized to access Intune.
+        Args:
+            value: Value to set for the app_authorized property.
+        """
+        self._app_authorized = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new telecomExpenseManagementPartner and sets the default values.
@@ -29,23 +44,6 @@ class TelecomExpenseManagementPartner(entity.Entity):
         self.odata_type: Optional[str] = None
         # URL of the TEM partner's administrative control panel, where an administrator can configure their TEM service.
         self._url: Optional[str] = None
-    
-    @property
-    def app_authorized(self,) -> Optional[bool]:
-        """
-        Gets the appAuthorized property value. Whether the partner's AAD app has been authorized to access Intune.
-        Returns: Optional[bool]
-        """
-        return self._app_authorized
-    
-    @app_authorized.setter
-    def app_authorized(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the appAuthorized property value. Whether the partner's AAD app has been authorized to access Intune.
-        Args:
-            value: Value to set for the app_authorized property.
-        """
-        self._app_authorized = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TelecomExpenseManagementPartner:
@@ -98,9 +96,7 @@ class TelecomExpenseManagementPartner(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "appAuthorized": lambda n : setattr(self, 'app_authorized', n.get_bool_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),

@@ -1,25 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ........models import json
+json = lazy_import('msgraph.generated.models.json')
 
 class DproductPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new dproductPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The criteria property
-        self._criteria: Optional[json.Json] = None
-        # The database property
-        self._database: Optional[json.Json] = None
-        # The field property
-        self._field: Optional[json.Json] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -36,6 +22,20 @@ class DproductPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new dproductPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The criteria property
+        self._criteria: Optional[json.Json] = None
+        # The database property
+        self._database: Optional[json.Json] = None
+        # The field property
+        self._field: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DproductPostRequestBody:
@@ -105,9 +105,7 @@ class DproductPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "criteria": lambda n : setattr(self, 'criteria', n.get_object_value(json.Json)),
             "database": lambda n : setattr(self, 'database', n.get_object_value(json.Json)),
             "field": lambda n : setattr(self, 'field', n.get_object_value(json.Json)),

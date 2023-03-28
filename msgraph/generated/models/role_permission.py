@@ -1,26 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import resource_action
+resource_action = lazy_import('msgraph.generated.models.resource_action')
 
 class RolePermission(AdditionalDataHolder, Parsable):
     """
     Contains the set of ResourceActions determining the allowed and not allowed permissions for each role.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new rolePermission and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Resource Actions each containing a set of allowed and not allowed permissions.
-        self._resource_actions: Optional[List[resource_action.ResourceAction]] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -37,6 +25,18 @@ class RolePermission(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new rolePermission and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Resource Actions each containing a set of allowed and not allowed permissions.
+        self._resource_actions: Optional[List[resource_action.ResourceAction]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RolePermission:
@@ -55,9 +55,7 @@ class RolePermission(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import resource_action
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "resourceActions": lambda n : setattr(self, 'resource_actions', n.get_collection_of_object_values(resource_action.ResourceAction)),
         }

@@ -1,23 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ........models import json
+json = lazy_import('msgraph.generated.models.json')
 
 class BitandPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new bitandPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The number1 property
-        self._number1: Optional[json.Json] = None
-        # The number2 property
-        self._number2: Optional[json.Json] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -34,6 +22,18 @@ class BitandPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new bitandPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The number1 property
+        self._number1: Optional[json.Json] = None
+        # The number2 property
+        self._number2: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BitandPostRequestBody:
@@ -52,9 +52,7 @@ class BitandPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "number1": lambda n : setattr(self, 'number1', n.get_object_value(json.Json)),
             "number2": lambda n : setattr(self, 'number2', n.get_object_value(json.Json)),
         }

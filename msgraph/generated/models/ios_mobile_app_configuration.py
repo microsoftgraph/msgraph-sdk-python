@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import app_configuration_setting_item, managed_device_mobile_app_configuration
-
-from . import managed_device_mobile_app_configuration
+app_configuration_setting_item = lazy_import('msgraph.generated.models.app_configuration_setting_item')
+managed_device_mobile_app_configuration = lazy_import('msgraph.generated.models.managed_device_mobile_app_configuration')
 
 class IosMobileAppConfiguration(managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration):
     def __init__(self,) -> None:
@@ -53,9 +52,7 @@ class IosMobileAppConfiguration(managed_device_mobile_app_configuration.ManagedD
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_configuration_setting_item, managed_device_mobile_app_configuration
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "encodedSettingXml": lambda n : setattr(self, 'encoded_setting_xml', n.get_bytes_value()),
             "settings": lambda n : setattr(self, 'settings', n.get_collection_of_object_values(app_configuration_setting_item.AppConfigurationSettingItem)),
         }

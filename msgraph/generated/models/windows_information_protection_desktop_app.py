@@ -1,26 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import windows_information_protection_app
-
-from . import windows_information_protection_app
+windows_information_protection_app = lazy_import('msgraph.generated.models.windows_information_protection_app')
 
 class WindowsInformationProtectionDesktopApp(windows_information_protection_app.WindowsInformationProtectionApp):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsInformationProtectionDesktopApp and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsInformationProtectionDesktopApp"
-        # The binary name.
-        self._binary_name: Optional[str] = None
-        # The high binary version.
-        self._binary_version_high: Optional[str] = None
-        # The lower binary version.
-        self._binary_version_low: Optional[str] = None
-    
     @property
     def binary_name(self,) -> Optional[str]:
         """
@@ -72,6 +57,19 @@ class WindowsInformationProtectionDesktopApp(windows_information_protection_app.
         """
         self._binary_version_low = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new WindowsInformationProtectionDesktopApp and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.windowsInformationProtectionDesktopApp"
+        # The binary name.
+        self._binary_name: Optional[str] = None
+        # The high binary version.
+        self._binary_version_high: Optional[str] = None
+        # The lower binary version.
+        self._binary_version_low: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionDesktopApp:
         """
@@ -89,9 +87,7 @@ class WindowsInformationProtectionDesktopApp(windows_information_protection_app.
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import windows_information_protection_app
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "binaryName": lambda n : setattr(self, 'binary_name', n.get_str_value()),
             "binaryVersionHigh": lambda n : setattr(self, 'binary_version_high', n.get_str_value()),
             "binaryVersionLow": lambda n : setattr(self, 'binary_version_low', n.get_str_value()),

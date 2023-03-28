@@ -1,25 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import app_identity, user_identity
+app_identity = lazy_import('msgraph.generated.models.app_identity')
+user_identity = lazy_import('msgraph.generated.models.user_identity')
 
 class AuditActivityInitiator(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new auditActivityInitiator and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # If the resource initiating the activity is an app, this property indicates all the app related information like appId, Name, servicePrincipalId, Name.
-        self._app: Optional[app_identity.AppIdentity] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # If the resource initiating the activity is a user, this property Indicates all the user related information like userId, Name, UserPrinicpalName.
-        self._user: Optional[user_identity.UserIdentity] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -54,6 +41,20 @@ class AuditActivityInitiator(AdditionalDataHolder, Parsable):
         """
         self._app = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new auditActivityInitiator and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # If the resource initiating the activity is an app, this property indicates all the app related information like appId, Name, servicePrincipalId, Name.
+        self._app: Optional[app_identity.AppIdentity] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # If the resource initiating the activity is a user, this property Indicates all the user related information like userId, Name, UserPrinicpalName.
+        self._user: Optional[user_identity.UserIdentity] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuditActivityInitiator:
         """
@@ -71,9 +72,7 @@ class AuditActivityInitiator(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_identity, user_identity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "app": lambda n : setattr(self, 'app', n.get_object_value(app_identity.AppIdentity)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "user": lambda n : setattr(self, 'user', n.get_object_value(user_identity.UserIdentity)),

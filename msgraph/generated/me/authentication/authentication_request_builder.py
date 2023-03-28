@@ -7,36 +7,106 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ...models import authentication
-    from ...models.o_data_errors import o_data_error
-    from .email_methods import email_methods_request_builder
-    from .email_methods.item import email_authentication_method_item_request_builder
-    from .fido2_methods import fido2_methods_request_builder
-    from .fido2_methods.item import fido2_authentication_method_item_request_builder
-    from .methods import methods_request_builder
-    from .methods.item import authentication_method_item_request_builder
-    from .microsoft_authenticator_methods import microsoft_authenticator_methods_request_builder
-    from .microsoft_authenticator_methods.item import microsoft_authenticator_authentication_method_item_request_builder
-    from .operations import operations_request_builder
-    from .operations.item import long_running_operation_item_request_builder
-    from .password_methods import password_methods_request_builder
-    from .password_methods.item import password_authentication_method_item_request_builder
-    from .phone_methods import phone_methods_request_builder
-    from .phone_methods.item import phone_authentication_method_item_request_builder
-    from .software_oath_methods import software_oath_methods_request_builder
-    from .software_oath_methods.item import software_oath_authentication_method_item_request_builder
-    from .temporary_access_pass_methods import temporary_access_pass_methods_request_builder
-    from .temporary_access_pass_methods.item import temporary_access_pass_authentication_method_item_request_builder
-    from .windows_hello_for_business_methods import windows_hello_for_business_methods_request_builder
-    from .windows_hello_for_business_methods.item import windows_hello_for_business_authentication_method_item_request_builder
+email_methods_request_builder = lazy_import('msgraph.generated.me.authentication.email_methods.email_methods_request_builder')
+email_authentication_method_item_request_builder = lazy_import('msgraph.generated.me.authentication.email_methods.item.email_authentication_method_item_request_builder')
+fido2_methods_request_builder = lazy_import('msgraph.generated.me.authentication.fido2_methods.fido2_methods_request_builder')
+fido2_authentication_method_item_request_builder = lazy_import('msgraph.generated.me.authentication.fido2_methods.item.fido2_authentication_method_item_request_builder')
+methods_request_builder = lazy_import('msgraph.generated.me.authentication.methods.methods_request_builder')
+authentication_method_item_request_builder = lazy_import('msgraph.generated.me.authentication.methods.item.authentication_method_item_request_builder')
+microsoft_authenticator_methods_request_builder = lazy_import('msgraph.generated.me.authentication.microsoft_authenticator_methods.microsoft_authenticator_methods_request_builder')
+microsoft_authenticator_authentication_method_item_request_builder = lazy_import('msgraph.generated.me.authentication.microsoft_authenticator_methods.item.microsoft_authenticator_authentication_method_item_request_builder')
+operations_request_builder = lazy_import('msgraph.generated.me.authentication.operations.operations_request_builder')
+long_running_operation_item_request_builder = lazy_import('msgraph.generated.me.authentication.operations.item.long_running_operation_item_request_builder')
+password_methods_request_builder = lazy_import('msgraph.generated.me.authentication.password_methods.password_methods_request_builder')
+password_authentication_method_item_request_builder = lazy_import('msgraph.generated.me.authentication.password_methods.item.password_authentication_method_item_request_builder')
+phone_methods_request_builder = lazy_import('msgraph.generated.me.authentication.phone_methods.phone_methods_request_builder')
+phone_authentication_method_item_request_builder = lazy_import('msgraph.generated.me.authentication.phone_methods.item.phone_authentication_method_item_request_builder')
+software_oath_methods_request_builder = lazy_import('msgraph.generated.me.authentication.software_oath_methods.software_oath_methods_request_builder')
+software_oath_authentication_method_item_request_builder = lazy_import('msgraph.generated.me.authentication.software_oath_methods.item.software_oath_authentication_method_item_request_builder')
+temporary_access_pass_methods_request_builder = lazy_import('msgraph.generated.me.authentication.temporary_access_pass_methods.temporary_access_pass_methods_request_builder')
+temporary_access_pass_authentication_method_item_request_builder = lazy_import('msgraph.generated.me.authentication.temporary_access_pass_methods.item.temporary_access_pass_authentication_method_item_request_builder')
+windows_hello_for_business_methods_request_builder = lazy_import('msgraph.generated.me.authentication.windows_hello_for_business_methods.windows_hello_for_business_methods_request_builder')
+windows_hello_for_business_authentication_method_item_request_builder = lazy_import('msgraph.generated.me.authentication.windows_hello_for_business_methods.item.windows_hello_for_business_authentication_method_item_request_builder')
+authentication = lazy_import('msgraph.generated.models.authentication')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AuthenticationRequestBuilder():
     """
     Provides operations to manage the authentication property of the microsoft.graph.user entity.
     """
+    @property
+    def email_methods(self) -> email_methods_request_builder.EmailMethodsRequestBuilder:
+        """
+        Provides operations to manage the emailMethods property of the microsoft.graph.authentication entity.
+        """
+        return email_methods_request_builder.EmailMethodsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def fido2_methods(self) -> fido2_methods_request_builder.Fido2MethodsRequestBuilder:
+        """
+        Provides operations to manage the fido2Methods property of the microsoft.graph.authentication entity.
+        """
+        return fido2_methods_request_builder.Fido2MethodsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def methods(self) -> methods_request_builder.MethodsRequestBuilder:
+        """
+        Provides operations to manage the methods property of the microsoft.graph.authentication entity.
+        """
+        return methods_request_builder.MethodsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_authenticator_methods(self) -> microsoft_authenticator_methods_request_builder.MicrosoftAuthenticatorMethodsRequestBuilder:
+        """
+        Provides operations to manage the microsoftAuthenticatorMethods property of the microsoft.graph.authentication entity.
+        """
+        return microsoft_authenticator_methods_request_builder.MicrosoftAuthenticatorMethodsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
+        """
+        Provides operations to manage the operations property of the microsoft.graph.authentication entity.
+        """
+        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def password_methods(self) -> password_methods_request_builder.PasswordMethodsRequestBuilder:
+        """
+        Provides operations to manage the passwordMethods property of the microsoft.graph.authentication entity.
+        """
+        return password_methods_request_builder.PasswordMethodsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def phone_methods(self) -> phone_methods_request_builder.PhoneMethodsRequestBuilder:
+        """
+        Provides operations to manage the phoneMethods property of the microsoft.graph.authentication entity.
+        """
+        return phone_methods_request_builder.PhoneMethodsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def software_oath_methods(self) -> software_oath_methods_request_builder.SoftwareOathMethodsRequestBuilder:
+        """
+        Provides operations to manage the softwareOathMethods property of the microsoft.graph.authentication entity.
+        """
+        return software_oath_methods_request_builder.SoftwareOathMethodsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def temporary_access_pass_methods(self) -> temporary_access_pass_methods_request_builder.TemporaryAccessPassMethodsRequestBuilder:
+        """
+        Provides operations to manage the temporaryAccessPassMethods property of the microsoft.graph.authentication entity.
+        """
+        return temporary_access_pass_methods_request_builder.TemporaryAccessPassMethodsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def windows_hello_for_business_methods(self) -> windows_hello_for_business_methods_request_builder.WindowsHelloForBusinessMethodsRequestBuilder:
+        """
+        Provides operations to manage the windowsHelloForBusinessMethods property of the microsoft.graph.authentication entity.
+        """
+        return windows_hello_for_business_methods_request_builder.WindowsHelloForBusinessMethodsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AuthenticationRequestBuilder and sets the default values.
@@ -64,8 +134,6 @@ class AuthenticationRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -83,8 +151,6 @@ class AuthenticationRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .email_methods.item import email_authentication_method_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["emailAuthenticationMethod%2Did"] = id
         return email_authentication_method_item_request_builder.EmailAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -98,8 +164,6 @@ class AuthenticationRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .fido2_methods.item import fido2_authentication_method_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["fido2AuthenticationMethod%2Did"] = id
         return fido2_authentication_method_item_request_builder.Fido2AuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -114,16 +178,12 @@ class AuthenticationRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import authentication
-
         return await self.request_adapter.send_async(request_info, authentication.Authentication, error_mapping)
     
     def methods_by_id(self,id: str) -> authentication_method_item_request_builder.AuthenticationMethodItemRequestBuilder:
@@ -135,8 +195,6 @@ class AuthenticationRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .methods.item import authentication_method_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["authenticationMethod%2Did"] = id
         return authentication_method_item_request_builder.AuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -150,8 +208,6 @@ class AuthenticationRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .microsoft_authenticator_methods.item import microsoft_authenticator_authentication_method_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["microsoftAuthenticatorAuthenticationMethod%2Did"] = id
         return microsoft_authenticator_authentication_method_item_request_builder.MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -165,8 +221,6 @@ class AuthenticationRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .operations.item import long_running_operation_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["longRunningOperation%2Did"] = id
         return long_running_operation_item_request_builder.LongRunningOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -180,8 +234,6 @@ class AuthenticationRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .password_methods.item import password_authentication_method_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["passwordAuthenticationMethod%2Did"] = id
         return password_authentication_method_item_request_builder.PasswordAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -199,16 +251,12 @@ class AuthenticationRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import authentication
-
         return await self.request_adapter.send_async(request_info, authentication.Authentication, error_mapping)
     
     def phone_methods_by_id(self,id: str) -> phone_authentication_method_item_request_builder.PhoneAuthenticationMethodItemRequestBuilder:
@@ -220,8 +268,6 @@ class AuthenticationRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .phone_methods.item import phone_authentication_method_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["phoneAuthenticationMethod%2Did"] = id
         return phone_authentication_method_item_request_builder.PhoneAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -235,8 +281,6 @@ class AuthenticationRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .software_oath_methods.item import software_oath_authentication_method_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["softwareOathAuthenticationMethod%2Did"] = id
         return software_oath_authentication_method_item_request_builder.SoftwareOathAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -250,8 +294,6 @@ class AuthenticationRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .temporary_access_pass_methods.item import temporary_access_pass_authentication_method_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["temporaryAccessPassAuthenticationMethod%2Did"] = id
         return temporary_access_pass_authentication_method_item_request_builder.TemporaryAccessPassAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -320,101 +362,9 @@ class AuthenticationRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .windows_hello_for_business_methods.item import windows_hello_for_business_authentication_method_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["windowsHelloForBusinessAuthenticationMethod%2Did"] = id
         return windows_hello_for_business_authentication_method_item_request_builder.WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    @property
-    def email_methods(self) -> email_methods_request_builder.EmailMethodsRequestBuilder:
-        """
-        Provides operations to manage the emailMethods property of the microsoft.graph.authentication entity.
-        """
-        from .email_methods import email_methods_request_builder
-
-        return email_methods_request_builder.EmailMethodsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def fido2_methods(self) -> fido2_methods_request_builder.Fido2MethodsRequestBuilder:
-        """
-        Provides operations to manage the fido2Methods property of the microsoft.graph.authentication entity.
-        """
-        from .fido2_methods import fido2_methods_request_builder
-
-        return fido2_methods_request_builder.Fido2MethodsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def methods(self) -> methods_request_builder.MethodsRequestBuilder:
-        """
-        Provides operations to manage the methods property of the microsoft.graph.authentication entity.
-        """
-        from .methods import methods_request_builder
-
-        return methods_request_builder.MethodsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def microsoft_authenticator_methods(self) -> microsoft_authenticator_methods_request_builder.MicrosoftAuthenticatorMethodsRequestBuilder:
-        """
-        Provides operations to manage the microsoftAuthenticatorMethods property of the microsoft.graph.authentication entity.
-        """
-        from .microsoft_authenticator_methods import microsoft_authenticator_methods_request_builder
-
-        return microsoft_authenticator_methods_request_builder.MicrosoftAuthenticatorMethodsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
-        """
-        Provides operations to manage the operations property of the microsoft.graph.authentication entity.
-        """
-        from .operations import operations_request_builder
-
-        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def password_methods(self) -> password_methods_request_builder.PasswordMethodsRequestBuilder:
-        """
-        Provides operations to manage the passwordMethods property of the microsoft.graph.authentication entity.
-        """
-        from .password_methods import password_methods_request_builder
-
-        return password_methods_request_builder.PasswordMethodsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def phone_methods(self) -> phone_methods_request_builder.PhoneMethodsRequestBuilder:
-        """
-        Provides operations to manage the phoneMethods property of the microsoft.graph.authentication entity.
-        """
-        from .phone_methods import phone_methods_request_builder
-
-        return phone_methods_request_builder.PhoneMethodsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def software_oath_methods(self) -> software_oath_methods_request_builder.SoftwareOathMethodsRequestBuilder:
-        """
-        Provides operations to manage the softwareOathMethods property of the microsoft.graph.authentication entity.
-        """
-        from .software_oath_methods import software_oath_methods_request_builder
-
-        return software_oath_methods_request_builder.SoftwareOathMethodsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def temporary_access_pass_methods(self) -> temporary_access_pass_methods_request_builder.TemporaryAccessPassMethodsRequestBuilder:
-        """
-        Provides operations to manage the temporaryAccessPassMethods property of the microsoft.graph.authentication entity.
-        """
-        from .temporary_access_pass_methods import temporary_access_pass_methods_request_builder
-
-        return temporary_access_pass_methods_request_builder.TemporaryAccessPassMethodsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def windows_hello_for_business_methods(self) -> windows_hello_for_business_methods_request_builder.WindowsHelloForBusinessMethodsRequestBuilder:
-        """
-        Provides operations to manage the windowsHelloForBusinessMethods property of the microsoft.graph.authentication entity.
-        """
-        from .windows_hello_for_business_methods import windows_hello_for_business_methods_request_builder
-
-        return windows_hello_for_business_methods_request_builder.WindowsHelloForBusinessMethodsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AuthenticationRequestBuilderDeleteRequestConfiguration():
@@ -433,6 +383,12 @@ class AuthenticationRequestBuilder():
         """
         The authentication methods that are supported for the user.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -448,12 +404,6 @@ class AuthenticationRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class AuthenticationRequestBuilderGetRequestConfiguration():

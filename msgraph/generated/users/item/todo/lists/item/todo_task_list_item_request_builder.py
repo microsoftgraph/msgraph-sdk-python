@@ -7,20 +7,34 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ......models import todo_task_list
-    from ......models.o_data_errors import o_data_error
-    from .extensions import extensions_request_builder
-    from .extensions.item import extension_item_request_builder
-    from .tasks import tasks_request_builder
-    from .tasks.item import todo_task_item_request_builder
+todo_task_list = lazy_import('msgraph.generated.models.todo_task_list')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+extensions_request_builder = lazy_import('msgraph.generated.users.item.todo.lists.item.extensions.extensions_request_builder')
+extension_item_request_builder = lazy_import('msgraph.generated.users.item.todo.lists.item.extensions.item.extension_item_request_builder')
+tasks_request_builder = lazy_import('msgraph.generated.users.item.todo.lists.item.tasks.tasks_request_builder')
+todo_task_item_request_builder = lazy_import('msgraph.generated.users.item.todo.lists.item.tasks.item.todo_task_item_request_builder')
 
 class TodoTaskListItemRequestBuilder():
     """
     Provides operations to manage the lists property of the microsoft.graph.todo entity.
     """
+    @property
+    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
+        """
+        Provides operations to manage the extensions property of the microsoft.graph.todoTaskList entity.
+        """
+        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def tasks(self) -> tasks_request_builder.TasksRequestBuilder:
+        """
+        Provides operations to manage the tasks property of the microsoft.graph.todoTaskList entity.
+        """
+        return tasks_request_builder.TasksRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TodoTaskListItemRequestBuilder and sets the default values.
@@ -48,8 +62,6 @@ class TodoTaskListItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -67,8 +79,6 @@ class TodoTaskListItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .extensions.item import extension_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["extension%2Did"] = id
         return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -83,16 +93,12 @@ class TodoTaskListItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import todo_task_list
-
         return await self.request_adapter.send_async(request_info, todo_task_list.TodoTaskList, error_mapping)
     
     async def patch(self,body: Optional[todo_task_list.TodoTaskList] = None, request_configuration: Optional[TodoTaskListItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[todo_task_list.TodoTaskList]:
@@ -108,16 +114,12 @@ class TodoTaskListItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import todo_task_list
-
         return await self.request_adapter.send_async(request_info, todo_task_list.TodoTaskList, error_mapping)
     
     def tasks_by_id(self,id: str) -> todo_task_item_request_builder.TodoTaskItemRequestBuilder:
@@ -129,8 +131,6 @@ class TodoTaskListItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .tasks.item import todo_task_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["todoTask%2Did"] = id
         return todo_task_item_request_builder.TodoTaskItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -190,24 +190,6 @@ class TodoTaskListItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
-        """
-        Provides operations to manage the extensions property of the microsoft.graph.todoTaskList entity.
-        """
-        from .extensions import extensions_request_builder
-
-        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def tasks(self) -> tasks_request_builder.TasksRequestBuilder:
-        """
-        Provides operations to manage the tasks property of the microsoft.graph.todoTaskList entity.
-        """
-        from .tasks import tasks_request_builder
-
-        return tasks_request_builder.TasksRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class TodoTaskListItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -225,6 +207,12 @@ class TodoTaskListItemRequestBuilder():
         """
         The task lists in the users mailbox.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -240,12 +228,6 @@ class TodoTaskListItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class TodoTaskListItemRequestBuilderGetRequestConfiguration():

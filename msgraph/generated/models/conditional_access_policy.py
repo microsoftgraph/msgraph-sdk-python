@@ -1,14 +1,33 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import conditional_access_condition_set, conditional_access_grant_controls, conditional_access_policy_state, conditional_access_session_controls, entity
-
-from . import entity
+conditional_access_condition_set = lazy_import('msgraph.generated.models.conditional_access_condition_set')
+conditional_access_grant_controls = lazy_import('msgraph.generated.models.conditional_access_grant_controls')
+conditional_access_policy_state = lazy_import('msgraph.generated.models.conditional_access_policy_state')
+conditional_access_session_controls = lazy_import('msgraph.generated.models.conditional_access_session_controls')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class ConditionalAccessPolicy(entity.Entity):
+    @property
+    def conditions(self,) -> Optional[conditional_access_condition_set.ConditionalAccessConditionSet]:
+        """
+        Gets the conditions property value. The conditions property
+        Returns: Optional[conditional_access_condition_set.ConditionalAccessConditionSet]
+        """
+        return self._conditions
+    
+    @conditions.setter
+    def conditions(self,value: Optional[conditional_access_condition_set.ConditionalAccessConditionSet] = None) -> None:
+        """
+        Sets the conditions property value. The conditions property
+        Args:
+            value: Value to set for the conditions property.
+        """
+        self._conditions = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new conditionalAccessPolicy and sets the default values.
@@ -32,23 +51,6 @@ class ConditionalAccessPolicy(entity.Entity):
         self._session_controls: Optional[conditional_access_session_controls.ConditionalAccessSessionControls] = None
         # The state property
         self._state: Optional[conditional_access_policy_state.ConditionalAccessPolicyState] = None
-    
-    @property
-    def conditions(self,) -> Optional[conditional_access_condition_set.ConditionalAccessConditionSet]:
-        """
-        Gets the conditions property value. The conditions property
-        Returns: Optional[conditional_access_condition_set.ConditionalAccessConditionSet]
-        """
-        return self._conditions
-    
-    @conditions.setter
-    def conditions(self,value: Optional[conditional_access_condition_set.ConditionalAccessConditionSet] = None) -> None:
-        """
-        Sets the conditions property value. The conditions property
-        Args:
-            value: Value to set for the conditions property.
-        """
-        self._conditions = value
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -118,9 +120,7 @@ class ConditionalAccessPolicy(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_condition_set, conditional_access_grant_controls, conditional_access_policy_state, conditional_access_session_controls, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "conditions": lambda n : setattr(self, 'conditions', n.get_object_value(conditional_access_condition_set.ConditionalAccessConditionSet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),

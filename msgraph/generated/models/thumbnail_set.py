@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, thumbnail
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+thumbnail = lazy_import('msgraph.generated.models.thumbnail')
 
 class ThumbnailSet(entity.Entity):
     def __init__(self,) -> None:
@@ -41,9 +40,7 @@ class ThumbnailSet(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, thumbnail
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "large": lambda n : setattr(self, 'large', n.get_object_value(thumbnail.Thumbnail)),
             "medium": lambda n : setattr(self, 'medium', n.get_object_value(thumbnail.Thumbnail)),
             "small": lambda n : setattr(self, 'small', n.get_object_value(thumbnail.Thumbnail)),

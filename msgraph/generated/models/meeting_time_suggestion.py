@@ -1,35 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import attendee_availability, free_busy_status, location, time_slot
+attendee_availability = lazy_import('msgraph.generated.models.attendee_availability')
+free_busy_status = lazy_import('msgraph.generated.models.free_busy_status')
+location = lazy_import('msgraph.generated.models.location')
+time_slot = lazy_import('msgraph.generated.models.time_slot')
 
 class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new meetingTimeSuggestion and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # An array that shows the availability status of each attendee for this meeting suggestion.
-        self._attendee_availability: Optional[List[attendee_availability.AttendeeAvailability]] = None
-        # A percentage that represents the likelhood of all the attendees attending.
-        self._confidence: Optional[float] = None
-        # An array that specifies the name and geographic location of each meeting location for this meeting suggestion.
-        self._locations: Optional[List[location.Location]] = None
-        # A time period suggested for the meeting.
-        self._meeting_time_slot: Optional[time_slot.TimeSlot] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Order of meeting time suggestions sorted by their computed confidence value from high to low, then by chronology if there are suggestions with the same confidence.
-        self._order: Optional[int] = None
-        # Availability of the meeting organizer for this meeting suggestion. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
-        self._organizer_availability: Optional[free_busy_status.FreeBusyStatus] = None
-        # Reason for suggesting the meeting time.
-        self._suggestion_reason: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -81,6 +60,30 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         """
         self._confidence = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new meetingTimeSuggestion and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # An array that shows the availability status of each attendee for this meeting suggestion.
+        self._attendee_availability: Optional[List[attendee_availability.AttendeeAvailability]] = None
+        # A percentage that represents the likelhood of all the attendees attending.
+        self._confidence: Optional[float] = None
+        # An array that specifies the name and geographic location of each meeting location for this meeting suggestion.
+        self._locations: Optional[List[location.Location]] = None
+        # A time period suggested for the meeting.
+        self._meeting_time_slot: Optional[time_slot.TimeSlot] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Order of meeting time suggestions sorted by their computed confidence value from high to low, then by chronology if there are suggestions with the same confidence.
+        self._order: Optional[int] = None
+        # Availability of the meeting organizer for this meeting suggestion. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
+        self._organizer_availability: Optional[free_busy_status.FreeBusyStatus] = None
+        # Reason for suggesting the meeting time.
+        self._suggestion_reason: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MeetingTimeSuggestion:
         """
@@ -98,9 +101,7 @@ class MeetingTimeSuggestion(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attendee_availability, free_busy_status, location, time_slot
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "attendeeAvailability": lambda n : setattr(self, 'attendee_availability', n.get_collection_of_object_values(attendee_availability.AttendeeAvailability)),
             "confidence": lambda n : setattr(self, 'confidence', n.get_float_value()),
             "locations": lambda n : setattr(self, 'locations', n.get_collection_of_object_values(location.Location)),

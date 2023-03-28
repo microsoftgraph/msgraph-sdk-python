@@ -7,21 +7,42 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from .....models import notebook
-    from .....models.o_data_errors import o_data_error
-    from .copy_notebook import copy_notebook_request_builder
-    from .section_groups import section_groups_request_builder
-    from .section_groups.item import section_group_item_request_builder
-    from .sections import sections_request_builder
-    from .sections.item import onenote_section_item_request_builder
+copy_notebook_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.copy_notebook.copy_notebook_request_builder')
+section_groups_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.section_groups.section_groups_request_builder')
+section_group_item_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.section_groups.item.section_group_item_request_builder')
+sections_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.sections.sections_request_builder')
+onenote_section_item_request_builder = lazy_import('msgraph.generated.me.onenote.notebooks.item.sections.item.onenote_section_item_request_builder')
+notebook = lazy_import('msgraph.generated.models.notebook')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class NotebookItemRequestBuilder():
     """
     Provides operations to manage the notebooks property of the microsoft.graph.onenote entity.
     """
+    @property
+    def copy_notebook(self) -> copy_notebook_request_builder.CopyNotebookRequestBuilder:
+        """
+        Provides operations to call the copyNotebook method.
+        """
+        return copy_notebook_request_builder.CopyNotebookRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def section_groups(self) -> section_groups_request_builder.SectionGroupsRequestBuilder:
+        """
+        Provides operations to manage the sectionGroups property of the microsoft.graph.notebook entity.
+        """
+        return section_groups_request_builder.SectionGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def sections(self) -> sections_request_builder.SectionsRequestBuilder:
+        """
+        Provides operations to manage the sections property of the microsoft.graph.notebook entity.
+        """
+        return sections_request_builder.SectionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new NotebookItemRequestBuilder and sets the default values.
@@ -49,8 +70,6 @@ class NotebookItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -69,16 +88,12 @@ class NotebookItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import notebook
-
         return await self.request_adapter.send_async(request_info, notebook.Notebook, error_mapping)
     
     async def patch(self,body: Optional[notebook.Notebook] = None, request_configuration: Optional[NotebookItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[notebook.Notebook]:
@@ -94,16 +109,12 @@ class NotebookItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import notebook
-
         return await self.request_adapter.send_async(request_info, notebook.Notebook, error_mapping)
     
     def section_groups_by_id(self,id: str) -> section_group_item_request_builder.SectionGroupItemRequestBuilder:
@@ -115,8 +126,6 @@ class NotebookItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .section_groups.item import section_group_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["sectionGroup%2Did"] = id
         return section_group_item_request_builder.SectionGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -130,8 +139,6 @@ class NotebookItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .sections.item import onenote_section_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["onenoteSection%2Did"] = id
         return onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -191,33 +198,6 @@ class NotebookItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def copy_notebook(self) -> copy_notebook_request_builder.CopyNotebookRequestBuilder:
-        """
-        Provides operations to call the copyNotebook method.
-        """
-        from .copy_notebook import copy_notebook_request_builder
-
-        return copy_notebook_request_builder.CopyNotebookRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def section_groups(self) -> section_groups_request_builder.SectionGroupsRequestBuilder:
-        """
-        Provides operations to manage the sectionGroups property of the microsoft.graph.notebook entity.
-        """
-        from .section_groups import section_groups_request_builder
-
-        return section_groups_request_builder.SectionGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def sections(self) -> sections_request_builder.SectionsRequestBuilder:
-        """
-        Provides operations to manage the sections property of the microsoft.graph.notebook entity.
-        """
-        from .sections import sections_request_builder
-
-        return sections_request_builder.SectionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class NotebookItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -235,6 +215,12 @@ class NotebookItemRequestBuilder():
         """
         The collection of OneNote notebooks that are owned by the user or group. Read-only. Nullable.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -250,12 +236,6 @@ class NotebookItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class NotebookItemRequestBuilderGetRequestConfiguration():

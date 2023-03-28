@@ -1,35 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from .....models import prompt
+prompt = lazy_import('msgraph.generated.models.prompt')
 
 class RecordResponsePostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new recordResponsePostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The bargeInAllowed property
-        self._barge_in_allowed: Optional[bool] = None
-        # The clientContext property
-        self._client_context: Optional[str] = None
-        # The initialSilenceTimeoutInSeconds property
-        self._initial_silence_timeout_in_seconds: Optional[int] = None
-        # The maxRecordDurationInSeconds property
-        self._max_record_duration_in_seconds: Optional[int] = None
-        # The maxSilenceTimeoutInSeconds property
-        self._max_silence_timeout_in_seconds: Optional[int] = None
-        # The playBeep property
-        self._play_beep: Optional[bool] = None
-        # The prompts property
-        self._prompts: Optional[List[prompt.Prompt]] = None
-        # The stopTones property
-        self._stop_tones: Optional[List[str]] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -81,6 +57,30 @@ class RecordResponsePostRequestBody(AdditionalDataHolder, Parsable):
         """
         self._client_context = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new recordResponsePostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The bargeInAllowed property
+        self._barge_in_allowed: Optional[bool] = None
+        # The clientContext property
+        self._client_context: Optional[str] = None
+        # The initialSilenceTimeoutInSeconds property
+        self._initial_silence_timeout_in_seconds: Optional[int] = None
+        # The maxRecordDurationInSeconds property
+        self._max_record_duration_in_seconds: Optional[int] = None
+        # The maxSilenceTimeoutInSeconds property
+        self._max_silence_timeout_in_seconds: Optional[int] = None
+        # The playBeep property
+        self._play_beep: Optional[bool] = None
+        # The prompts property
+        self._prompts: Optional[List[prompt.Prompt]] = None
+        # The stopTones property
+        self._stop_tones: Optional[List[str]] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecordResponsePostRequestBody:
         """
@@ -98,9 +98,7 @@ class RecordResponsePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import prompt
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "bargeInAllowed": lambda n : setattr(self, 'barge_in_allowed', n.get_bool_value()),
             "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
             "initialSilenceTimeoutInSeconds": lambda n : setattr(self, 'initial_silence_timeout_in_seconds', n.get_int_value()),

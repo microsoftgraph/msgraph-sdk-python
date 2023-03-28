@@ -1,30 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class TeamMemberSettings(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new teamMemberSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # If set to true, members can add and remove apps.
-        self._allow_add_remove_apps: Optional[bool] = None
-        # If set to true, members can add and update private channels.
-        self._allow_create_private_channels: Optional[bool] = None
-        # If set to true, members can add and update channels.
-        self._allow_create_update_channels: Optional[bool] = None
-        # If set to true, members can add, update, and remove connectors.
-        self._allow_create_update_remove_connectors: Optional[bool] = None
-        # If set to true, members can add, update, and remove tabs.
-        self._allow_create_update_remove_tabs: Optional[bool] = None
-        # If set to true, members can delete channels.
-        self._allow_delete_channels: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -144,6 +123,28 @@ class TeamMemberSettings(AdditionalDataHolder, Parsable):
         """
         self._allow_delete_channels = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new teamMemberSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # If set to true, members can add and remove apps.
+        self._allow_add_remove_apps: Optional[bool] = None
+        # If set to true, members can add and update private channels.
+        self._allow_create_private_channels: Optional[bool] = None
+        # If set to true, members can add and update channels.
+        self._allow_create_update_channels: Optional[bool] = None
+        # If set to true, members can add, update, and remove connectors.
+        self._allow_create_update_remove_connectors: Optional[bool] = None
+        # If set to true, members can add, update, and remove tabs.
+        self._allow_create_update_remove_tabs: Optional[bool] = None
+        # If set to true, members can delete channels.
+        self._allow_delete_channels: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamMemberSettings:
         """
@@ -161,7 +162,7 @@ class TeamMemberSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "allowAddRemoveApps": lambda n : setattr(self, 'allow_add_remove_apps', n.get_bool_value()),
             "allowCreatePrivateChannels": lambda n : setattr(self, 'allow_create_private_channels', n.get_bool_value()),
             "allowCreateUpdateChannels": lambda n : setattr(self, 'allow_create_update_channels', n.get_bool_value()),

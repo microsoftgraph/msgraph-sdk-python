@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, planner_plan, planner_task
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+planner_plan = lazy_import('msgraph.generated.models.planner_plan')
+planner_task = lazy_import('msgraph.generated.models.planner_task')
 
 class PlannerUser(entity.Entity):
     def __init__(self,) -> None:
@@ -37,9 +37,7 @@ class PlannerUser(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, planner_plan, planner_task
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "plans": lambda n : setattr(self, 'plans', n.get_collection_of_object_values(planner_plan.PlannerPlan)),
             "tasks": lambda n : setattr(self, 'tasks', n.get_collection_of_object_values(planner_task.PlannerTask)),
         }

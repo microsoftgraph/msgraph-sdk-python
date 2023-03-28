@@ -1,17 +1,34 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, localized_notification_message, notification_template_branding_options
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+localized_notification_message = lazy_import('msgraph.generated.models.localized_notification_message')
+notification_template_branding_options = lazy_import('msgraph.generated.models.notification_template_branding_options')
 
 class NotificationMessageTemplate(entity.Entity):
     """
     Notification messages are messages that are sent to end users who are determined to be not-compliant with the compliance policies defined by the administrator. Administrators choose notifications and configure them in the Intune Admin Console using the compliance policy creation page under the “Actions for non-compliance” section. Use the notificationMessageTemplate object to create your own custom notifications for administrators to choose while configuring actions for non-compliance.
     """
+    @property
+    def branding_options(self,) -> Optional[notification_template_branding_options.NotificationTemplateBrandingOptions]:
+        """
+        Gets the brandingOptions property value. Branding Options for the Message Template. Branding is defined in the Intune Admin Console.
+        Returns: Optional[notification_template_branding_options.NotificationTemplateBrandingOptions]
+        """
+        return self._branding_options
+    
+    @branding_options.setter
+    def branding_options(self,value: Optional[notification_template_branding_options.NotificationTemplateBrandingOptions] = None) -> None:
+        """
+        Sets the brandingOptions property value. Branding Options for the Message Template. Branding is defined in the Intune Admin Console.
+        Args:
+            value: Value to set for the branding_options property.
+        """
+        self._branding_options = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new notificationMessageTemplate and sets the default values.
@@ -31,23 +48,6 @@ class NotificationMessageTemplate(entity.Entity):
         self.odata_type: Optional[str] = None
         # List of Scope Tags for this Entity instance.
         self._role_scope_tag_ids: Optional[List[str]] = None
-    
-    @property
-    def branding_options(self,) -> Optional[notification_template_branding_options.NotificationTemplateBrandingOptions]:
-        """
-        Gets the brandingOptions property value. Branding Options for the Message Template. Branding is defined in the Intune Admin Console.
-        Returns: Optional[notification_template_branding_options.NotificationTemplateBrandingOptions]
-        """
-        return self._branding_options
-    
-    @branding_options.setter
-    def branding_options(self,value: Optional[notification_template_branding_options.NotificationTemplateBrandingOptions] = None) -> None:
-        """
-        Sets the brandingOptions property value. Branding Options for the Message Template. Branding is defined in the Intune Admin Console.
-        Args:
-            value: Value to set for the branding_options property.
-        """
-        self._branding_options = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> NotificationMessageTemplate:
@@ -100,9 +100,7 @@ class NotificationMessageTemplate(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, localized_notification_message, notification_template_branding_options
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "brandingOptions": lambda n : setattr(self, 'branding_options', n.get_enum_value(notification_template_branding_options.NotificationTemplateBrandingOptions)),
             "defaultLocale": lambda n : setattr(self, 'default_locale', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

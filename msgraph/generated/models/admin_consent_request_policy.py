@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_review_reviewer_scope, entity
-
-from . import entity
+access_review_reviewer_scope = lazy_import('msgraph.generated.models.access_review_reviewer_scope')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AdminConsentRequestPolicy(entity.Entity):
     def __init__(self,) -> None:
@@ -45,9 +44,7 @@ class AdminConsentRequestPolicy(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_reviewer_scope, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "notifyReviewers": lambda n : setattr(self, 'notify_reviewers', n.get_bool_value()),
             "remindersEnabled": lambda n : setattr(self, 'reminders_enabled', n.get_bool_value()),

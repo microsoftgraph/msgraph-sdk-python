@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import delegated_admin_service_management_detail, entity
-
-from . import entity
+delegated_admin_service_management_detail = lazy_import('msgraph.generated.models.delegated_admin_service_management_detail')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DelegatedAdminCustomer(entity.Entity):
     def __init__(self,) -> None:
@@ -56,9 +55,7 @@ class DelegatedAdminCustomer(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import delegated_admin_service_management_detail, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "serviceManagementDetails": lambda n : setattr(self, 'service_management_details', n.get_collection_of_object_values(delegated_admin_service_management_detail.DelegatedAdminServiceManagementDetail)),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),

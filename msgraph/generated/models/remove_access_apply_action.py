@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_review_apply_action
-
-from . import access_review_apply_action
+access_review_apply_action = lazy_import('msgraph.generated.models.access_review_apply_action')
 
 class RemoveAccessApplyAction(access_review_apply_action.AccessReviewApplyAction):
     def __init__(self,) -> None:
@@ -32,9 +30,7 @@ class RemoveAccessApplyAction(access_review_apply_action.AccessReviewApplyAction
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_apply_action
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

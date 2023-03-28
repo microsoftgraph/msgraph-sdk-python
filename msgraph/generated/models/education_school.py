@@ -1,48 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import administrative_unit, education_class, education_organization, education_user, identity_set, physical_address
-
-from . import education_organization
+administrative_unit = lazy_import('msgraph.generated.models.administrative_unit')
+education_class = lazy_import('msgraph.generated.models.education_class')
+education_organization = lazy_import('msgraph.generated.models.education_organization')
+education_user = lazy_import('msgraph.generated.models.education_user')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+physical_address = lazy_import('msgraph.generated.models.physical_address')
 
 class EducationSchool(education_organization.EducationOrganization):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EducationSchool and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.educationSchool"
-        # Address of the school.
-        self._address: Optional[physical_address.PhysicalAddress] = None
-        # The underlying administrativeUnit for this school.
-        self._administrative_unit: Optional[administrative_unit.AdministrativeUnit] = None
-        # Classes taught at the school. Nullable.
-        self._classes: Optional[List[education_class.EducationClass]] = None
-        # Entity who created the school.
-        self._created_by: Optional[identity_set.IdentitySet] = None
-        # ID of school in syncing system.
-        self._external_id: Optional[str] = None
-        # ID of principal in syncing system.
-        self._external_principal_id: Optional[str] = None
-        # The fax property
-        self._fax: Optional[str] = None
-        # Highest grade taught.
-        self._highest_grade: Optional[str] = None
-        # Lowest grade taught.
-        self._lowest_grade: Optional[str] = None
-        # Phone number of school.
-        self._phone: Optional[str] = None
-        # Email address of the principal.
-        self._principal_email: Optional[str] = None
-        # Name of the principal.
-        self._principal_name: Optional[str] = None
-        # School Number.
-        self._school_number: Optional[str] = None
-        # Users in the school. Nullable.
-        self._users: Optional[List[education_user.EducationUser]] = None
-    
     @property
     def address(self,) -> Optional[physical_address.PhysicalAddress]:
         """
@@ -93,6 +61,41 @@ class EducationSchool(education_organization.EducationOrganization):
             value: Value to set for the classes property.
         """
         self._classes = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new EducationSchool and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.educationSchool"
+        # Address of the school.
+        self._address: Optional[physical_address.PhysicalAddress] = None
+        # The underlying administrativeUnit for this school.
+        self._administrative_unit: Optional[administrative_unit.AdministrativeUnit] = None
+        # Classes taught at the school. Nullable.
+        self._classes: Optional[List[education_class.EducationClass]] = None
+        # Entity who created the school.
+        self._created_by: Optional[identity_set.IdentitySet] = None
+        # ID of school in syncing system.
+        self._external_id: Optional[str] = None
+        # ID of principal in syncing system.
+        self._external_principal_id: Optional[str] = None
+        # The fax property
+        self._fax: Optional[str] = None
+        # Highest grade taught.
+        self._highest_grade: Optional[str] = None
+        # Lowest grade taught.
+        self._lowest_grade: Optional[str] = None
+        # Phone number of school.
+        self._phone: Optional[str] = None
+        # Email address of the principal.
+        self._principal_email: Optional[str] = None
+        # Name of the principal.
+        self._principal_name: Optional[str] = None
+        # School Number.
+        self._school_number: Optional[str] = None
+        # Users in the school. Nullable.
+        self._users: Optional[List[education_user.EducationUser]] = None
     
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
@@ -179,9 +182,7 @@ class EducationSchool(education_organization.EducationOrganization):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import administrative_unit, education_class, education_organization, education_user, identity_set, physical_address
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "address": lambda n : setattr(self, 'address', n.get_object_value(physical_address.PhysicalAddress)),
             "administrativeUnit": lambda n : setattr(self, 'administrative_unit', n.get_object_value(administrative_unit.AdministrativeUnit)),
             "classes": lambda n : setattr(self, 'classes', n.get_collection_of_object_values(education_class.EducationClass)),

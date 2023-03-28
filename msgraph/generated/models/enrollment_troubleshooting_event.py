@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import device_enrollment_failure_reason, device_enrollment_type, device_management_troubleshooting_event
-
-from . import device_management_troubleshooting_event
+device_enrollment_failure_reason = lazy_import('msgraph.generated.models.device_enrollment_failure_reason')
+device_enrollment_type = lazy_import('msgraph.generated.models.device_enrollment_type')
+device_management_troubleshooting_event = lazy_import('msgraph.generated.models.device_management_troubleshooting_event')
 
 class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent):
     def __init__(self,) -> None:
@@ -117,9 +117,7 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_enrollment_failure_reason, device_enrollment_type, device_management_troubleshooting_event
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
             "enrollmentType": lambda n : setattr(self, 'enrollment_type', n.get_enum_value(device_enrollment_type.DeviceEnrollmentType)),
             "failureCategory": lambda n : setattr(self, 'failure_category', n.get_enum_value(device_enrollment_failure_reason.DeviceEnrollmentFailureReason)),

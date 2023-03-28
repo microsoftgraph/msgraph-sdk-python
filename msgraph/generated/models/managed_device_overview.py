@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import device_exchange_access_state_summary, device_operating_system_summary, entity
-
-from . import entity
+device_exchange_access_state_summary = lazy_import('msgraph.generated.models.device_exchange_access_state_summary')
+device_operating_system_summary = lazy_import('msgraph.generated.models.device_operating_system_summary')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class ManagedDeviceOverview(entity.Entity):
     def __init__(self,) -> None:
@@ -111,9 +111,7 @@ class ManagedDeviceOverview(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_exchange_access_state_summary, device_operating_system_summary, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "deviceExchangeAccessStateSummary": lambda n : setattr(self, 'device_exchange_access_state_summary', n.get_object_value(device_exchange_access_state_summary.DeviceExchangeAccessStateSummary)),
             "deviceOperatingSystemSummary": lambda n : setattr(self, 'device_operating_system_summary', n.get_object_value(device_operating_system_summary.DeviceOperatingSystemSummary)),
             "dualEnrolledDeviceCount": lambda n : setattr(self, 'dual_enrolled_device_count', n.get_int_value()),

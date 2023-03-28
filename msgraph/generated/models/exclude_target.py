@@ -1,25 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import authentication_method_target_type
+authentication_method_target_type = lazy_import('msgraph.generated.models.authentication_method_target_type')
 
 class ExcludeTarget(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new excludeTarget and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The object identifier of an Azure Active Directory user or group.
-        self._id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The targetType property
-        self._target_type: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -36,6 +22,20 @@ class ExcludeTarget(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new excludeTarget and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The object identifier of an Azure Active Directory user or group.
+        self._id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The targetType property
+        self._target_type: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExcludeTarget:
@@ -54,9 +54,7 @@ class ExcludeTarget(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_target_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "id": lambda n : setattr(self, 'id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "targetType": lambda n : setattr(self, 'target_type', n.get_enum_value(authentication_method_target_type.AuthenticationMethodTargetType)),

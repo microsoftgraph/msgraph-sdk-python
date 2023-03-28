@@ -1,11 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import device_and_app_management_assignment_target, entity, install_intent, mobile_app_assignment_settings
-
-from . import entity
+device_and_app_management_assignment_target = lazy_import('msgraph.generated.models.device_and_app_management_assignment_target')
+entity = lazy_import('msgraph.generated.models.entity')
+install_intent = lazy_import('msgraph.generated.models.install_intent')
+mobile_app_assignment_settings = lazy_import('msgraph.generated.models.mobile_app_assignment_settings')
 
 class MobileAppAssignment(entity.Entity):
     """
@@ -42,9 +43,7 @@ class MobileAppAssignment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_and_app_management_assignment_target, entity, install_intent, mobile_app_assignment_settings
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "intent": lambda n : setattr(self, 'intent', n.get_enum_value(install_intent.InstallIntent)),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(mobile_app_assignment_settings.MobileAppAssignmentSettings)),
             "target": lambda n : setattr(self, 'target', n.get_object_value(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget)),

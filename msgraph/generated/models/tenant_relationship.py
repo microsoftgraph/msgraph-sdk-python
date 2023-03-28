@@ -1,25 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import delegated_admin_customer, delegated_admin_relationship
+delegated_admin_customer = lazy_import('msgraph.generated.models.delegated_admin_customer')
+delegated_admin_relationship = lazy_import('msgraph.generated.models.delegated_admin_relationship')
 
 class TenantRelationship(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new TenantRelationship and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The customer who has a delegated admin relationship with a Microsoft partner.
-        self._delegated_admin_customers: Optional[List[delegated_admin_customer.DelegatedAdminCustomer]] = None
-        # The details of the delegated administrative privileges that a Microsoft partner has in a customer tenant.
-        self._delegated_admin_relationships: Optional[List[delegated_admin_relationship.DelegatedAdminRelationship]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -36,6 +23,20 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new TenantRelationship and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The customer who has a delegated admin relationship with a Microsoft partner.
+        self._delegated_admin_customers: Optional[List[delegated_admin_customer.DelegatedAdminCustomer]] = None
+        # The details of the delegated administrative privileges that a Microsoft partner has in a customer tenant.
+        self._delegated_admin_relationships: Optional[List[delegated_admin_relationship.DelegatedAdminRelationship]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TenantRelationship:
@@ -88,9 +89,7 @@ class TenantRelationship(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import delegated_admin_customer, delegated_admin_relationship
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "delegatedAdminCustomers": lambda n : setattr(self, 'delegated_admin_customers', n.get_collection_of_object_values(delegated_admin_customer.DelegatedAdminCustomer)),
             "delegatedAdminRelationships": lambda n : setattr(self, 'delegated_admin_relationships', n.get_collection_of_object_values(delegated_admin_relationship.DelegatedAdminRelationship)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

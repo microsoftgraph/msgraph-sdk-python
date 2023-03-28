@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import edge_search_engine_base
-
-from . import edge_search_engine_base
+edge_search_engine_base = lazy_import('msgraph.generated.models.edge_search_engine_base')
 
 class EdgeSearchEngineCustom(edge_search_engine_base.EdgeSearchEngineBase):
     def __init__(self,) -> None:
@@ -51,9 +49,7 @@ class EdgeSearchEngineCustom(edge_search_engine_base.EdgeSearchEngineBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import edge_search_engine_base
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "edgeSearchEngineOpenSearchXmlUrl": lambda n : setattr(self, 'edge_search_engine_open_search_xml_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

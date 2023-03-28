@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import directory_object
-
-from . import directory_object
+directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class DirectoryObjectPartnerReference(directory_object.DirectoryObject):
     def __init__(self,) -> None:
@@ -91,9 +89,7 @@ class DirectoryObjectPartnerReference(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_object
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "externalPartnerTenantId": lambda n : setattr(self, 'external_partner_tenant_id', n.get_object_value(Guid)),

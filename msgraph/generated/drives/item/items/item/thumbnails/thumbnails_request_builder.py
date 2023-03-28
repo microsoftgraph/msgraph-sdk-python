@@ -7,17 +7,25 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ......models import thumbnail_set, thumbnail_set_collection_response
-    from ......models.o_data_errors import o_data_error
-    from .count import count_request_builder
+count_request_builder = lazy_import('msgraph.generated.drives.item.items.item.thumbnails.count.count_request_builder')
+thumbnail_set = lazy_import('msgraph.generated.models.thumbnail_set')
+thumbnail_set_collection_response = lazy_import('msgraph.generated.models.thumbnail_set_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ThumbnailsRequestBuilder():
     """
     Provides operations to manage the thumbnails property of the microsoft.graph.driveItem entity.
     """
+    @property
+    def count(self) -> count_request_builder.CountRequestBuilder:
+        """
+        Provides operations to count the resources in the collection.
+        """
+        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ThumbnailsRequestBuilder and sets the default values.
@@ -46,16 +54,12 @@ class ThumbnailsRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import thumbnail_set_collection_response
-
         return await self.request_adapter.send_async(request_info, thumbnail_set_collection_response.ThumbnailSetCollectionResponse, error_mapping)
     
     async def post(self,body: Optional[thumbnail_set.ThumbnailSet] = None, request_configuration: Optional[ThumbnailsRequestBuilderPostRequestConfiguration] = None) -> Optional[thumbnail_set.ThumbnailSet]:
@@ -71,16 +75,12 @@ class ThumbnailsRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import thumbnail_set
-
         return await self.request_adapter.send_async(request_info, thumbnail_set.ThumbnailSet, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ThumbnailsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -122,20 +122,35 @@ class ThumbnailsRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count import count_request_builder
-
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class ThumbnailsRequestBuilderGetQueryParameters():
         """
         Retrieve a collection of ThumbnailSet resources for a DriveItem resource. A DriveItem can be represented by zero or more ThumbnailSet resources.Each **thumbnailSet** can have one or more **thumbnail** objects, which are images that represent the item.For example, a **thumbnailSet** may include **thumbnail** objects, such as common ones including `small`, `medium`, or `large`. There are many ways to work with thumbnails on OneDrive.Here are the most common ones:
         """
+        # Include count of items
+        count: Optional[bool] = None
+
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -163,30 +178,6 @@ class ThumbnailsRequestBuilder():
                 return "%24top"
             return original_name
         
-        # Include count of items
-        count: Optional[bool] = None
-
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Filter items by property values
-        filter: Optional[str] = None
-
-        # Order items by property values
-        orderby: Optional[List[str]] = None
-
-        # Search items by search phrases
-        search: Optional[str] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
-        # Skip the first n items
-        skip: Optional[int] = None
-
-        # Show only the first n items
-        top: Optional[int] = None
-
     
     @dataclass
     class ThumbnailsRequestBuilderGetRequestConfiguration():

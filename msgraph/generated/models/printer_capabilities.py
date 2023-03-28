@@ -1,71 +1,19 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import integer_range, printer_feed_orientation, print_color_mode, print_duplex_mode, print_finishing, print_multipage_layout, print_orientation, print_quality, print_scaling
+integer_range = lazy_import('msgraph.generated.models.integer_range')
+print_color_mode = lazy_import('msgraph.generated.models.print_color_mode')
+print_duplex_mode = lazy_import('msgraph.generated.models.print_duplex_mode')
+print_finishing = lazy_import('msgraph.generated.models.print_finishing')
+print_multipage_layout = lazy_import('msgraph.generated.models.print_multipage_layout')
+print_orientation = lazy_import('msgraph.generated.models.print_orientation')
+print_quality = lazy_import('msgraph.generated.models.print_quality')
+print_scaling = lazy_import('msgraph.generated.models.print_scaling')
+printer_feed_orientation = lazy_import('msgraph.generated.models.printer_feed_orientation')
 
 class PrinterCapabilities(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new printerCapabilities and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # A list of supported bottom margins(in microns) for the printer.
-        self._bottom_margins: Optional[List[int]] = None
-        # True if the printer supports collating when printing muliple copies of a multi-page document; false otherwise.
-        self._collation: Optional[bool] = None
-        # The color modes supported by the printer. Valid values are described in the following table.
-        self._color_modes: Optional[List[print_color_mode.PrintColorMode]] = None
-        # A list of supported content (MIME) types that the printer supports. It is not guaranteed that the Universal Print service supports printing all of these MIME types.
-        self._content_types: Optional[List[str]] = None
-        # The range of copies per job supported by the printer.
-        self._copies_per_job: Optional[integer_range.IntegerRange] = None
-        # The list of print resolutions in DPI that are supported by the printer.
-        self._dpis: Optional[List[int]] = None
-        # The list of duplex modes that are supported by the printer. Valid values are described in the following table.
-        self._duplex_modes: Optional[List[print_duplex_mode.PrintDuplexMode]] = None
-        # The list of feed orientations that are supported by the printer.
-        self._feed_orientations: Optional[List[printer_feed_orientation.PrinterFeedOrientation]] = None
-        # Finishing processes the printer supports for a printed document.
-        self._finishings: Optional[List[print_finishing.PrintFinishing]] = None
-        # Supported input bins for the printer.
-        self._input_bins: Optional[List[str]] = None
-        # True if color printing is supported by the printer; false otherwise. Read-only.
-        self._is_color_printing_supported: Optional[bool] = None
-        # True if the printer supports printing by page ranges; false otherwise.
-        self._is_page_range_supported: Optional[bool] = None
-        # A list of supported left margins(in microns) for the printer.
-        self._left_margins: Optional[List[int]] = None
-        # The media (i.e., paper) colors supported by the printer.
-        self._media_colors: Optional[List[str]] = None
-        # The media sizes supported by the printer. Supports standard size names for ISO and ANSI media sizes. Valid values are in the following table.
-        self._media_sizes: Optional[List[str]] = None
-        # The media types supported by the printer.
-        self._media_types: Optional[List[str]] = None
-        # The presentation directions supported by the printer. Supported values are described in the following table.
-        self._multipage_layouts: Optional[List[print_multipage_layout.PrintMultipageLayout]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The print orientations supported by the printer. Valid values are described in the following table.
-        self._orientations: Optional[List[print_orientation.PrintOrientation]] = None
-        # The printer's supported output bins (trays).
-        self._output_bins: Optional[List[str]] = None
-        # Supported number of Input Pages to impose upon a single Impression.
-        self._pages_per_sheet: Optional[List[int]] = None
-        # The print qualities supported by the printer.
-        self._qualities: Optional[List[print_quality.PrintQuality]] = None
-        # A list of supported right margins(in microns) for the printer.
-        self._right_margins: Optional[List[int]] = None
-        # Supported print scalings.
-        self._scalings: Optional[List[print_scaling.PrintScaling]] = None
-        # True if the printer supports scaling PDF pages to match the print media size; false otherwise.
-        self._supports_fit_pdf_to_page: Optional[bool] = None
-        # A list of supported top margins(in microns) for the printer.
-        self._top_margins: Optional[List[int]] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -133,6 +81,66 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
             value: Value to set for the color_modes property.
         """
         self._color_modes = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new printerCapabilities and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # A list of supported bottom margins(in microns) for the printer.
+        self._bottom_margins: Optional[List[int]] = None
+        # True if the printer supports collating when printing muliple copies of a multi-page document; false otherwise.
+        self._collation: Optional[bool] = None
+        # The color modes supported by the printer. Valid values are described in the following table.
+        self._color_modes: Optional[List[print_color_mode.PrintColorMode]] = None
+        # A list of supported content (MIME) types that the printer supports. It is not guaranteed that the Universal Print service supports printing all of these MIME types.
+        self._content_types: Optional[List[str]] = None
+        # The range of copies per job supported by the printer.
+        self._copies_per_job: Optional[integer_range.IntegerRange] = None
+        # The list of print resolutions in DPI that are supported by the printer.
+        self._dpis: Optional[List[int]] = None
+        # The list of duplex modes that are supported by the printer. Valid values are described in the following table.
+        self._duplex_modes: Optional[List[print_duplex_mode.PrintDuplexMode]] = None
+        # The list of feed orientations that are supported by the printer.
+        self._feed_orientations: Optional[List[printer_feed_orientation.PrinterFeedOrientation]] = None
+        # Finishing processes the printer supports for a printed document.
+        self._finishings: Optional[List[print_finishing.PrintFinishing]] = None
+        # Supported input bins for the printer.
+        self._input_bins: Optional[List[str]] = None
+        # True if color printing is supported by the printer; false otherwise. Read-only.
+        self._is_color_printing_supported: Optional[bool] = None
+        # True if the printer supports printing by page ranges; false otherwise.
+        self._is_page_range_supported: Optional[bool] = None
+        # A list of supported left margins(in microns) for the printer.
+        self._left_margins: Optional[List[int]] = None
+        # The media (i.e., paper) colors supported by the printer.
+        self._media_colors: Optional[List[str]] = None
+        # The media sizes supported by the printer. Supports standard size names for ISO and ANSI media sizes. Valid values are in the following table.
+        self._media_sizes: Optional[List[str]] = None
+        # The media types supported by the printer.
+        self._media_types: Optional[List[str]] = None
+        # The presentation directions supported by the printer. Supported values are described in the following table.
+        self._multipage_layouts: Optional[List[print_multipage_layout.PrintMultipageLayout]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The print orientations supported by the printer. Valid values are described in the following table.
+        self._orientations: Optional[List[print_orientation.PrintOrientation]] = None
+        # The printer's supported output bins (trays).
+        self._output_bins: Optional[List[str]] = None
+        # Supported number of Input Pages to impose upon a single Impression.
+        self._pages_per_sheet: Optional[List[int]] = None
+        # The print qualities supported by the printer.
+        self._qualities: Optional[List[print_quality.PrintQuality]] = None
+        # A list of supported right margins(in microns) for the printer.
+        self._right_margins: Optional[List[int]] = None
+        # Supported print scalings.
+        self._scalings: Optional[List[print_scaling.PrintScaling]] = None
+        # True if the printer supports scaling PDF pages to match the print media size; false otherwise.
+        self._supports_fit_pdf_to_page: Optional[bool] = None
+        # A list of supported top margins(in microns) for the printer.
+        self._top_margins: Optional[List[int]] = None
     
     @property
     def content_types(self,) -> Optional[List[str]]:
@@ -253,9 +261,7 @@ class PrinterCapabilities(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import integer_range, printer_feed_orientation, print_color_mode, print_duplex_mode, print_finishing, print_multipage_layout, print_orientation, print_quality, print_scaling
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "bottomMargins": lambda n : setattr(self, 'bottom_margins', n.get_collection_of_primitive_values(int)),
             "collation": lambda n : setattr(self, 'collation', n.get_bool_value()),
             "colorModes": lambda n : setattr(self, 'color_modes', n.get_collection_of_enum_values(print_color_mode.PrintColorMode)),

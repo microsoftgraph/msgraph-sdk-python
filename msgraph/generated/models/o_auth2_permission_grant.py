@@ -1,31 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class OAuth2PermissionGrant(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new oAuth2PermissionGrant and sets the default values.
-        """
-        super().__init__()
-        # The id of the client service principal for the application which is authorized to act on behalf of a signed-in user when accessing an API. Required. Supports $filter (eq only).
-        self._client_id: Optional[str] = None
-        # Indicates if authorization is granted for the client application to impersonate all users or only a specific user. AllPrincipals indicates authorization to impersonate all users. Principal indicates authorization to impersonate a specific user. Consent on behalf of all users can be granted by an administrator. Non-admin users may be authorized to consent on behalf of themselves in some cases, for some delegated permissions. Required. Supports $filter (eq only).
-        self._consent_type: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The id of the user on behalf of whom the client is authorized to access the resource, when consentType is Principal. If consentType is AllPrincipals this value is null. Required when consentType is Principal. Supports $filter (eq only).
-        self._principal_id: Optional[str] = None
-        # The id of the resource service principal to which access is authorized. This identifies the API which the client is authorized to attempt to call on behalf of a signed-in user. Supports $filter (eq only).
-        self._resource_id: Optional[str] = None
-        # A space-separated list of the claim values for delegated permissions which should be included in access tokens for the resource application (the API). For example, openid User.Read GroupMember.Read.All. Each claim value should match the value field of one of the delegated permissions defined by the API, listed in the oauth2PermissionScopes property of the resource service principal. Must not exceed 3850 characters in length.
-        self._scope: Optional[str] = None
-    
     @property
     def client_id(self,) -> Optional[str]:
         """
@@ -60,6 +40,24 @@ class OAuth2PermissionGrant(entity.Entity):
         """
         self._consent_type = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new oAuth2PermissionGrant and sets the default values.
+        """
+        super().__init__()
+        # The id of the client service principal for the application which is authorized to act on behalf of a signed-in user when accessing an API. Required. Supports $filter (eq only).
+        self._client_id: Optional[str] = None
+        # Indicates if authorization is granted for the client application to impersonate all users or only a specific user. AllPrincipals indicates authorization to impersonate all users. Principal indicates authorization to impersonate a specific user. Consent on behalf of all users can be granted by an administrator. Non-admin users may be authorized to consent on behalf of themselves in some cases, for some delegated permissions. Required. Supports $filter (eq only).
+        self._consent_type: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The id of the user on behalf of whom the client is authorized to access the resource, when consentType is Principal. If consentType is AllPrincipals this value is null. Required when consentType is Principal. Supports $filter (eq only).
+        self._principal_id: Optional[str] = None
+        # The id of the resource service principal to which access is authorized. This identifies the API which the client is authorized to attempt to call on behalf of a signed-in user. Supports $filter (eq only).
+        self._resource_id: Optional[str] = None
+        # A space-separated list of the claim values for delegated permissions which should be included in access tokens for the resource application (the API). For example, openid User.Read GroupMember.Read.All. Each claim value should match the value field of one of the delegated permissions defined by the API, listed in the oauth2PermissionScopes property of the resource service principal. Must not exceed 3850 characters in length.
+        self._scope: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OAuth2PermissionGrant:
         """
@@ -77,9 +75,7 @@ class OAuth2PermissionGrant(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "clientId": lambda n : setattr(self, 'client_id', n.get_str_value()),
             "consentType": lambda n : setattr(self, 'consent_type', n.get_str_value()),
             "principalId": lambda n : setattr(self, 'principal_id', n.get_str_value()),

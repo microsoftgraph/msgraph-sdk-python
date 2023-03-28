@@ -1,26 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import android_minimum_operating_system, mobile_app
-
-from . import mobile_app
+android_minimum_operating_system = lazy_import('msgraph.generated.models.android_minimum_operating_system')
+mobile_app = lazy_import('msgraph.generated.models.mobile_app')
 
 class AndroidStoreApp(mobile_app.MobileApp):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AndroidStoreApp and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.androidStoreApp"
-        # The Android app store URL.
-        self._app_store_url: Optional[str] = None
-        # The value for the minimum applicable operating system.
-        self._minimum_supported_operating_system: Optional[android_minimum_operating_system.AndroidMinimumOperatingSystem] = None
-        # The package identifier.
-        self._package_id: Optional[str] = None
-    
     @property
     def app_store_url(self,) -> Optional[str]:
         """
@@ -37,6 +23,19 @@ class AndroidStoreApp(mobile_app.MobileApp):
             value: Value to set for the app_store_url property.
         """
         self._app_store_url = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new AndroidStoreApp and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.androidStoreApp"
+        # The Android app store URL.
+        self._app_store_url: Optional[str] = None
+        # The value for the minimum applicable operating system.
+        self._minimum_supported_operating_system: Optional[android_minimum_operating_system.AndroidMinimumOperatingSystem] = None
+        # The package identifier.
+        self._package_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AndroidStoreApp:
@@ -55,9 +54,7 @@ class AndroidStoreApp(mobile_app.MobileApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_minimum_operating_system, mobile_app
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "appStoreUrl": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
             "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(android_minimum_operating_system.AndroidMinimumOperatingSystem)),
             "packageId": lambda n : setattr(self, 'package_id', n.get_str_value()),

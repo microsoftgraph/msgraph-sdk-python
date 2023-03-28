@@ -1,29 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import selection_likelihood_info
+selection_likelihood_info = lazy_import('msgraph.generated.models.selection_likelihood_info')
 
 class ScoredEmailAddress(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new scoredEmailAddress and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The email address.
-        self._address: Optional[str] = None
-        # The itemId property
-        self._item_id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The relevance score of the email address. A relevance score is used as a sort key, in relation to the other returned results. A higher relevance score value corresponds to a more relevant result. Relevance is determined by the user’s communication and collaboration patterns and business relationships.
-        self._relevance_score: Optional[float] = None
-        # The selectionLikelihood property
-        self._selection_likelihood: Optional[selection_likelihood_info.SelectionLikelihoodInfo] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -58,6 +40,24 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         """
         self._address = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new scoredEmailAddress and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The email address.
+        self._address: Optional[str] = None
+        # The itemId property
+        self._item_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The relevance score of the email address. A relevance score is used as a sort key, in relation to the other returned results. A higher relevance score value corresponds to a more relevant result. Relevance is determined by the user’s communication and collaboration patterns and business relationships.
+        self._relevance_score: Optional[float] = None
+        # The selectionLikelihood property
+        self._selection_likelihood: Optional[selection_likelihood_info.SelectionLikelihoodInfo] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScoredEmailAddress:
         """
@@ -75,9 +75,7 @@ class ScoredEmailAddress(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import selection_likelihood_info
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "address": lambda n : setattr(self, 'address', n.get_str_value()),
             "itemId": lambda n : setattr(self, 'item_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

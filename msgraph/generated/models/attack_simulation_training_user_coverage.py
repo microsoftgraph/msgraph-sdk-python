@@ -1,25 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import attack_simulation_user, user_training_status_info
+attack_simulation_user = lazy_import('msgraph.generated.models.attack_simulation_user')
+user_training_status_info = lazy_import('msgraph.generated.models.user_training_status_info')
 
 class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new attackSimulationTrainingUserCoverage and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # User in an attack simulation and training campaign.
-        self._attack_simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # List of assigned trainings and their statuses for the user.
-        self._user_trainings: Optional[List[user_training_status_info.UserTrainingStatusInfo]] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -54,6 +41,20 @@ class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, Parsable):
         """
         self._attack_simulation_user = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new attackSimulationTrainingUserCoverage and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # User in an attack simulation and training campaign.
+        self._attack_simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # List of assigned trainings and their statuses for the user.
+        self._user_trainings: Optional[List[user_training_status_info.UserTrainingStatusInfo]] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttackSimulationTrainingUserCoverage:
         """
@@ -71,9 +72,7 @@ class AttackSimulationTrainingUserCoverage(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attack_simulation_user, user_training_status_info
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "attackSimulationUser": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "userTrainings": lambda n : setattr(self, 'user_trainings', n.get_collection_of_object_values(user_training_status_info.UserTrainingStatusInfo)),

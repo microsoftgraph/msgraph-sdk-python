@@ -1,12 +1,29 @@
 from __future__ import annotations
 from datetime import date
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import recurrence_range_type
+recurrence_range_type = lazy_import('msgraph.generated.models.recurrence_range_type')
 
 class RecurrenceRange(AdditionalDataHolder, Parsable):
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new recurrenceRange and sets the default values.
@@ -26,23 +43,6 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         self._start_date: Optional[Date] = None
         # The recurrence range. The possible values are: endDate, noEnd, numbered. Required.
         self._type: Optional[recurrence_range_type.RecurrenceRangeType] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecurrenceRange:
@@ -78,9 +78,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import recurrence_range_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "endDate": lambda n : setattr(self, 'end_date', n.get_object_value(Date)),
             "numberOfOccurrences": lambda n : setattr(self, 'number_of_occurrences', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

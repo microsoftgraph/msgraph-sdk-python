@@ -1,28 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import expiration_pattern, patterned_recurrence
+expiration_pattern = lazy_import('msgraph.generated.models.expiration_pattern')
+patterned_recurrence = lazy_import('msgraph.generated.models.patterned_recurrence')
 
 class RequestSchedule(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new requestSchedule and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # When the eligible or active assignment expires.
-        self._expiration: Optional[expiration_pattern.ExpirationPattern] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The frequency of the  eligible or active assignment. This property is currently unsupported in PIM.
-        self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
-        # When the  eligible or active assignment becomes active.
-        self._start_date_time: Optional[datetime] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -39,6 +24,22 @@ class RequestSchedule(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new requestSchedule and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # When the eligible or active assignment expires.
+        self._expiration: Optional[expiration_pattern.ExpirationPattern] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The frequency of the  eligible or active assignment. This property is currently unsupported in PIM.
+        self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
+        # When the  eligible or active assignment becomes active.
+        self._start_date_time: Optional[datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RequestSchedule:
@@ -74,9 +75,7 @@ class RequestSchedule(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import expiration_pattern, patterned_recurrence
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "expiration": lambda n : setattr(self, 'expiration', n.get_object_value(expiration_pattern.ExpirationPattern)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),

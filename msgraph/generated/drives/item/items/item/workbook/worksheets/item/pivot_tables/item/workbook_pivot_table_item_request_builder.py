@@ -7,18 +7,32 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ..........models import workbook_pivot_table
-    from ..........models.o_data_errors import o_data_error
-    from .refresh import refresh_request_builder
-    from .worksheet import worksheet_request_builder
+refresh_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.pivot_tables.item.refresh.refresh_request_builder')
+worksheet_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.pivot_tables.item.worksheet.worksheet_request_builder')
+workbook_pivot_table = lazy_import('msgraph.generated.models.workbook_pivot_table')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class WorkbookPivotTableItemRequestBuilder():
     """
     Provides operations to manage the pivotTables property of the microsoft.graph.workbookWorksheet entity.
     """
+    @property
+    def refresh(self) -> refresh_request_builder.RefreshRequestBuilder:
+        """
+        Provides operations to call the refresh method.
+        """
+        return refresh_request_builder.RefreshRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def worksheet(self) -> worksheet_request_builder.WorksheetRequestBuilder:
+        """
+        Provides operations to manage the worksheet property of the microsoft.graph.workbookPivotTable entity.
+        """
+        return worksheet_request_builder.WorksheetRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WorkbookPivotTableItemRequestBuilder and sets the default values.
@@ -46,8 +60,6 @@ class WorkbookPivotTableItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -66,16 +78,12 @@ class WorkbookPivotTableItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import workbook_pivot_table
-
         return await self.request_adapter.send_async(request_info, workbook_pivot_table.WorkbookPivotTable, error_mapping)
     
     async def patch(self,body: Optional[workbook_pivot_table.WorkbookPivotTable] = None, request_configuration: Optional[WorkbookPivotTableItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_pivot_table.WorkbookPivotTable]:
@@ -91,16 +99,12 @@ class WorkbookPivotTableItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import workbook_pivot_table
-
         return await self.request_adapter.send_async(request_info, workbook_pivot_table.WorkbookPivotTable, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookPivotTableItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -158,24 +162,6 @@ class WorkbookPivotTableItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def refresh(self) -> refresh_request_builder.RefreshRequestBuilder:
-        """
-        Provides operations to call the refresh method.
-        """
-        from .refresh import refresh_request_builder
-
-        return refresh_request_builder.RefreshRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def worksheet(self) -> worksheet_request_builder.WorksheetRequestBuilder:
-        """
-        Provides operations to manage the worksheet property of the microsoft.graph.workbookPivotTable entity.
-        """
-        from .worksheet import worksheet_request_builder
-
-        return worksheet_request_builder.WorksheetRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class WorkbookPivotTableItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -193,6 +179,12 @@ class WorkbookPivotTableItemRequestBuilder():
         """
         Collection of PivotTables that are part of the worksheet.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -208,12 +200,6 @@ class WorkbookPivotTableItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class WorkbookPivotTableItemRequestBuilderGetRequestConfiguration():

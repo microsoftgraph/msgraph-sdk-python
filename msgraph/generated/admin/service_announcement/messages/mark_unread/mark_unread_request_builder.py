@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import mark_unread_post_request_body, mark_unread_response
-    from .....models.o_data_errors import o_data_error
+mark_unread_post_request_body = lazy_import('msgraph.generated.admin.service_announcement.messages.mark_unread.mark_unread_post_request_body')
+mark_unread_response = lazy_import('msgraph.generated.admin.service_announcement.messages.mark_unread.mark_unread_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class MarkUnreadRequestBuilder():
     """
@@ -48,16 +49,12 @@ class MarkUnreadRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import mark_unread_response
-
         return await self.request_adapter.send_async(request_info, mark_unread_response.MarkUnreadResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[mark_unread_post_request_body.MarkUnreadPostRequestBody] = None, request_configuration: Optional[MarkUnreadRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:

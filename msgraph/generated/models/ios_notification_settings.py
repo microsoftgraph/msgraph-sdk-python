@@ -1,42 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import ios_notification_alert_type
+ios_notification_alert_type = lazy_import('msgraph.generated.models.ios_notification_alert_type')
 
 class IosNotificationSettings(AdditionalDataHolder, Parsable):
     """
     An item describing notification setting.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new iosNotificationSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Notification Settings Alert Type.
-        self._alert_type: Optional[ios_notification_alert_type.IosNotificationAlertType] = None
-        # Application name to be associated with the bundleID.
-        self._app_name: Optional[str] = None
-        # Indicates whether badges are allowed for this app.
-        self._badges_enabled: Optional[bool] = None
-        # Bundle id of app to which to apply these notification settings.
-        self._bundle_i_d: Optional[str] = None
-        # Indicates whether notifications are allowed for this app.
-        self._enabled: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Publisher to be associated with the bundleID.
-        self._publisher: Optional[str] = None
-        # Indicates whether notifications can be shown in notification center.
-        self._show_in_notification_center: Optional[bool] = None
-        # Indicates whether notifications can be shown on the lock screen.
-        self._show_on_lock_screen: Optional[bool] = None
-        # Indicates whether sounds are allowed for this app.
-        self._sounds_enabled: Optional[bool] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -122,6 +94,34 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         """
         self._bundle_i_d = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new iosNotificationSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Notification Settings Alert Type.
+        self._alert_type: Optional[ios_notification_alert_type.IosNotificationAlertType] = None
+        # Application name to be associated with the bundleID.
+        self._app_name: Optional[str] = None
+        # Indicates whether badges are allowed for this app.
+        self._badges_enabled: Optional[bool] = None
+        # Bundle id of app to which to apply these notification settings.
+        self._bundle_i_d: Optional[str] = None
+        # Indicates whether notifications are allowed for this app.
+        self._enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Publisher to be associated with the bundleID.
+        self._publisher: Optional[str] = None
+        # Indicates whether notifications can be shown in notification center.
+        self._show_in_notification_center: Optional[bool] = None
+        # Indicates whether notifications can be shown on the lock screen.
+        self._show_on_lock_screen: Optional[bool] = None
+        # Indicates whether sounds are allowed for this app.
+        self._sounds_enabled: Optional[bool] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosNotificationSettings:
         """
@@ -156,9 +156,7 @@ class IosNotificationSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ios_notification_alert_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "alertType": lambda n : setattr(self, 'alert_type', n.get_enum_value(ios_notification_alert_type.IosNotificationAlertType)),
             "appName": lambda n : setattr(self, 'app_name', n.get_str_value()),
             "badgesEnabled": lambda n : setattr(self, 'badges_enabled', n.get_bool_value()),

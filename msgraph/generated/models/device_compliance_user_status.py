@@ -1,12 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import compliance_status, entity
-
-from . import entity
+compliance_status = lazy_import('msgraph.generated.models.compliance_status')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceComplianceUserStatus(entity.Entity):
     def __init__(self,) -> None:
@@ -61,9 +60,7 @@ class DeviceComplianceUserStatus(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import compliance_status, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "devicesCount": lambda n : setattr(self, 'devices_count', n.get_int_value()),
             "lastReportedDateTime": lambda n : setattr(self, 'last_reported_date_time', n.get_datetime_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(compliance_status.ComplianceStatus)),

@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import get_member_groups_post_request_body, get_member_groups_response
-    from ......models.o_data_errors import o_data_error
+get_member_groups_post_request_body = lazy_import('msgraph.generated.groups.item.permission_grants.item.get_member_groups.get_member_groups_post_request_body')
+get_member_groups_response = lazy_import('msgraph.generated.groups.item.permission_grants.item.get_member_groups.get_member_groups_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class GetMemberGroupsRequestBuilder():
     """
@@ -48,16 +49,12 @@ class GetMemberGroupsRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import get_member_groups_response
-
         return await self.request_adapter.send_async(request_info, get_member_groups_response.GetMemberGroupsResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[get_member_groups_post_request_body.GetMemberGroupsPostRequestBody] = None, request_configuration: Optional[GetMemberGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:

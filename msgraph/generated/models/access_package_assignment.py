@@ -1,36 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_package, access_package_assignment_policy, access_package_assignment_state, access_package_subject, entitlement_management_schedule, entity
-
-from . import entity
+access_package = lazy_import('msgraph.generated.models.access_package')
+access_package_assignment_policy = lazy_import('msgraph.generated.models.access_package_assignment_policy')
+access_package_assignment_state = lazy_import('msgraph.generated.models.access_package_assignment_state')
+access_package_subject = lazy_import('msgraph.generated.models.access_package_subject')
+entitlement_management_schedule = lazy_import('msgraph.generated.models.entitlement_management_schedule')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessPackageAssignment(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new accessPackageAssignment and sets the default values.
-        """
-        super().__init__()
-        # Read-only. Nullable. Supports $filter (eq) on the id property and $expand query parameters.
-        self._access_package: Optional[access_package.AccessPackage] = None
-        # Read-only. Supports $filter (eq) on the id property and $expand query parameters.
-        self._assignment_policy: Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy] = None
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-        self._expired_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # When the access assignment is to be in place. Read-only.
-        self._schedule: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None
-        # The state of the access package assignment. The possible values are: delivering, partiallyDelivered, delivered, expired, deliveryFailed, unknownFutureValue. Read-only. Supports $filter (eq).
-        self._state: Optional[access_package_assignment_state.AccessPackageAssignmentState] = None
-        # More information about the assignment lifecycle.  Possible values include Delivering, Delivered, NearExpiry1DayNotificationTriggered, or ExpiredNotificationTriggered.  Read-only.
-        self._status: Optional[str] = None
-        # The subject of the access package assignment. Read-only. Nullable. Supports $expand. Supports $filter (eq) on objectId.
-        self._target: Optional[access_package_subject.AccessPackageSubject] = None
-    
     @property
     def access_package(self,) -> Optional[access_package.AccessPackage]:
         """
@@ -64,6 +45,28 @@ class AccessPackageAssignment(entity.Entity):
             value: Value to set for the assignment_policy property.
         """
         self._assignment_policy = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new accessPackageAssignment and sets the default values.
+        """
+        super().__init__()
+        # Read-only. Nullable. Supports $filter (eq) on the id property and $expand query parameters.
+        self._access_package: Optional[access_package.AccessPackage] = None
+        # Read-only. Supports $filter (eq) on the id property and $expand query parameters.
+        self._assignment_policy: Optional[access_package_assignment_policy.AccessPackageAssignmentPolicy] = None
+        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+        self._expired_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # When the access assignment is to be in place. Read-only.
+        self._schedule: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None
+        # The state of the access package assignment. The possible values are: delivering, partiallyDelivered, delivered, expired, deliveryFailed, unknownFutureValue. Read-only. Supports $filter (eq).
+        self._state: Optional[access_package_assignment_state.AccessPackageAssignmentState] = None
+        # More information about the assignment lifecycle.  Possible values include Delivering, Delivered, NearExpiry1DayNotificationTriggered, or ExpiredNotificationTriggered.  Read-only.
+        self._status: Optional[str] = None
+        # The subject of the access package assignment. Read-only. Nullable. Supports $expand. Supports $filter (eq) on objectId.
+        self._target: Optional[access_package_subject.AccessPackageSubject] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignment:
@@ -99,9 +102,7 @@ class AccessPackageAssignment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package, access_package_assignment_policy, access_package_assignment_state, access_package_subject, entitlement_management_schedule, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
             "assignmentPolicy": lambda n : setattr(self, 'assignment_policy', n.get_object_value(access_package_assignment_policy.AccessPackageAssignmentPolicy)),
             "expiredDateTime": lambda n : setattr(self, 'expired_date_time', n.get_datetime_value()),

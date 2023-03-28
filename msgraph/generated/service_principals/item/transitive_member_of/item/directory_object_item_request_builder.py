@@ -7,18 +7,24 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from .....models import directory_object
-    from .....models.o_data_errors import o_data_error
-    from .graph_administrative_unit import graph_administrative_unit_request_builder
-    from .graph_group import graph_group_request_builder
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+graph_group_request_builder = lazy_import('msgraph.generated.service_principals.item.transitive_member_of.item.graph_group.graph_group_request_builder')
 
 class DirectoryObjectItemRequestBuilder():
     """
     Provides operations to manage the transitiveMemberOf property of the microsoft.graph.servicePrincipal entity.
     """
+    @property
+    def graph_group(self) -> graph_group_request_builder.GraphGroupRequestBuilder:
+        """
+        Casts the previous resource to group.
+        """
+        return graph_group_request_builder.GraphGroupRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DirectoryObjectItemRequestBuilder and sets the default values.
@@ -47,16 +53,12 @@ class DirectoryObjectItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import directory_object
-
         return await self.request_adapter.send_async(request_info, directory_object.DirectoryObject, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -77,29 +79,17 @@ class DirectoryObjectItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    @property
-    def graph_administrative_unit(self) -> graph_administrative_unit_request_builder.GraphAdministrativeUnitRequestBuilder:
-        """
-        Casts the previous resource to administrativeUnit.
-        """
-        from .graph_administrative_unit import graph_administrative_unit_request_builder
-
-        return graph_administrative_unit_request_builder.GraphAdministrativeUnitRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def graph_group(self) -> graph_group_request_builder.GraphGroupRequestBuilder:
-        """
-        Casts the previous resource to group.
-        """
-        from .graph_group import graph_group_request_builder
-
-        return graph_group_request_builder.GraphGroupRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class DirectoryObjectItemRequestBuilderGetQueryParameters():
         """
         Get transitiveMemberOf from servicePrincipals
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -115,12 +105,6 @@ class DirectoryObjectItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class DirectoryObjectItemRequestBuilderGetRequestConfiguration():

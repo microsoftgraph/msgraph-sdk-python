@@ -1,95 +1,18 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import email_address, extension, multi_value_legacy_extended_property, outlook_item, physical_address, profile_photo, single_value_legacy_extended_property
-
-from . import outlook_item
+email_address = lazy_import('msgraph.generated.models.email_address')
+extension = lazy_import('msgraph.generated.models.extension')
+multi_value_legacy_extended_property = lazy_import('msgraph.generated.models.multi_value_legacy_extended_property')
+outlook_item = lazy_import('msgraph.generated.models.outlook_item')
+physical_address = lazy_import('msgraph.generated.models.physical_address')
+profile_photo = lazy_import('msgraph.generated.models.profile_photo')
+single_value_legacy_extended_property = lazy_import('msgraph.generated.models.single_value_legacy_extended_property')
 
 class Contact(outlook_item.OutlookItem):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Contact and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.contact"
-        # The name of the contact's assistant.
-        self._assistant_name: Optional[str] = None
-        # The contact's birthday. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._birthday: Optional[datetime] = None
-        # The contact's business address.
-        self._business_address: Optional[physical_address.PhysicalAddress] = None
-        # The business home page of the contact.
-        self._business_home_page: Optional[str] = None
-        # The contact's business phone numbers.
-        self._business_phones: Optional[List[str]] = None
-        # The names of the contact's children.
-        self._children: Optional[List[str]] = None
-        # The name of the contact's company.
-        self._company_name: Optional[str] = None
-        # The contact's department.
-        self._department: Optional[str] = None
-        # The contact's display name. You can specify the display name in a create or update operation. Note that later updates to other properties may cause an automatically generated value to overwrite the displayName value you have specified. To preserve a pre-existing value, always include it as displayName in an update operation.
-        self._display_name: Optional[str] = None
-        # The contact's email addresses.
-        self._email_addresses: Optional[List[email_address.EmailAddress]] = None
-        # The collection of open extensions defined for the contact. Read-only. Nullable.
-        self._extensions: Optional[List[extension.Extension]] = None
-        # The name the contact is filed under.
-        self._file_as: Optional[str] = None
-        # The contact's generation.
-        self._generation: Optional[str] = None
-        # The contact's given name.
-        self._given_name: Optional[str] = None
-        # The contact's home address.
-        self._home_address: Optional[physical_address.PhysicalAddress] = None
-        # The contact's home phone numbers.
-        self._home_phones: Optional[List[str]] = None
-        # The imAddresses property
-        self._im_addresses: Optional[List[str]] = None
-        # The initials property
-        self._initials: Optional[str] = None
-        # The jobTitle property
-        self._job_title: Optional[str] = None
-        # The manager property
-        self._manager: Optional[str] = None
-        # The middleName property
-        self._middle_name: Optional[str] = None
-        # The mobilePhone property
-        self._mobile_phone: Optional[str] = None
-        # The collection of multi-value extended properties defined for the contact. Read-only. Nullable.
-        self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
-        # The nickName property
-        self._nick_name: Optional[str] = None
-        # The officeLocation property
-        self._office_location: Optional[str] = None
-        # The otherAddress property
-        self._other_address: Optional[physical_address.PhysicalAddress] = None
-        # The parentFolderId property
-        self._parent_folder_id: Optional[str] = None
-        # The personalNotes property
-        self._personal_notes: Optional[str] = None
-        # Optional contact picture. You can get or set a photo for a contact.
-        self._photo: Optional[profile_photo.ProfilePhoto] = None
-        # The profession property
-        self._profession: Optional[str] = None
-        # The collection of single-value extended properties defined for the contact. Read-only. Nullable.
-        self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
-        # The spouseName property
-        self._spouse_name: Optional[str] = None
-        # The surname property
-        self._surname: Optional[str] = None
-        # The title property
-        self._title: Optional[str] = None
-        # The yomiCompanyName property
-        self._yomi_company_name: Optional[str] = None
-        # The yomiGivenName property
-        self._yomi_given_name: Optional[str] = None
-        # The yomiSurname property
-        self._yomi_surname: Optional[str] = None
-    
     @property
     def assistant_name(self,) -> Optional[str]:
         """
@@ -208,6 +131,87 @@ class Contact(outlook_item.OutlookItem):
             value: Value to set for the company_name property.
         """
         self._company_name = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Contact and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.contact"
+        # The name of the contact's assistant.
+        self._assistant_name: Optional[str] = None
+        # The contact's birthday. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._birthday: Optional[datetime] = None
+        # The contact's business address.
+        self._business_address: Optional[physical_address.PhysicalAddress] = None
+        # The business home page of the contact.
+        self._business_home_page: Optional[str] = None
+        # The contact's business phone numbers.
+        self._business_phones: Optional[List[str]] = None
+        # The names of the contact's children.
+        self._children: Optional[List[str]] = None
+        # The name of the contact's company.
+        self._company_name: Optional[str] = None
+        # The contact's department.
+        self._department: Optional[str] = None
+        # The contact's display name. You can specify the display name in a create or update operation. Note that later updates to other properties may cause an automatically generated value to overwrite the displayName value you have specified. To preserve a pre-existing value, always include it as displayName in an update operation.
+        self._display_name: Optional[str] = None
+        # The contact's email addresses.
+        self._email_addresses: Optional[List[email_address.EmailAddress]] = None
+        # The collection of open extensions defined for the contact. Read-only. Nullable.
+        self._extensions: Optional[List[extension.Extension]] = None
+        # The name the contact is filed under.
+        self._file_as: Optional[str] = None
+        # The contact's generation.
+        self._generation: Optional[str] = None
+        # The contact's given name.
+        self._given_name: Optional[str] = None
+        # The contact's home address.
+        self._home_address: Optional[physical_address.PhysicalAddress] = None
+        # The contact's home phone numbers.
+        self._home_phones: Optional[List[str]] = None
+        # The imAddresses property
+        self._im_addresses: Optional[List[str]] = None
+        # The initials property
+        self._initials: Optional[str] = None
+        # The jobTitle property
+        self._job_title: Optional[str] = None
+        # The manager property
+        self._manager: Optional[str] = None
+        # The middleName property
+        self._middle_name: Optional[str] = None
+        # The mobilePhone property
+        self._mobile_phone: Optional[str] = None
+        # The collection of multi-value extended properties defined for the contact. Read-only. Nullable.
+        self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
+        # The nickName property
+        self._nick_name: Optional[str] = None
+        # The officeLocation property
+        self._office_location: Optional[str] = None
+        # The otherAddress property
+        self._other_address: Optional[physical_address.PhysicalAddress] = None
+        # The parentFolderId property
+        self._parent_folder_id: Optional[str] = None
+        # The personalNotes property
+        self._personal_notes: Optional[str] = None
+        # Optional contact picture. You can get or set a photo for a contact.
+        self._photo: Optional[profile_photo.ProfilePhoto] = None
+        # The profession property
+        self._profession: Optional[str] = None
+        # The collection of single-value extended properties defined for the contact. Read-only. Nullable.
+        self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
+        # The spouseName property
+        self._spouse_name: Optional[str] = None
+        # The surname property
+        self._surname: Optional[str] = None
+        # The title property
+        self._title: Optional[str] = None
+        # The yomiCompanyName property
+        self._yomi_company_name: Optional[str] = None
+        # The yomiGivenName property
+        self._yomi_given_name: Optional[str] = None
+        # The yomiSurname property
+        self._yomi_surname: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Contact:
@@ -328,9 +332,7 @@ class Contact(outlook_item.OutlookItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import email_address, extension, multi_value_legacy_extended_property, outlook_item, physical_address, profile_photo, single_value_legacy_extended_property
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "assistantName": lambda n : setattr(self, 'assistant_name', n.get_str_value()),
             "birthday": lambda n : setattr(self, 'birthday', n.get_datetime_value()),
             "businessAddress": lambda n : setattr(self, 'business_address', n.get_object_value(physical_address.PhysicalAddress)),

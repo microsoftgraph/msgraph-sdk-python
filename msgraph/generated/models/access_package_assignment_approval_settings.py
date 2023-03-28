@@ -1,27 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_package_approval_stage
+access_package_approval_stage = lazy_import('msgraph.generated.models.access_package_approval_stage')
 
 class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new accessPackageAssignmentApprovalSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # If false, then approval is not required for new requests in this policy.
-        self._is_approval_required_for_add: Optional[bool] = None
-        # If false, then approval is not required for updates to requests in this policy.
-        self._is_approval_required_for_update: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # If approval is required, the one, two or three elements of this collection define each of the stages of approval. An empty array is present if no approval is required.
-        self._stages: Optional[List[access_package_approval_stage.AccessPackageApprovalStage]] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,6 +22,22 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new accessPackageAssignmentApprovalSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # If false, then approval is not required for new requests in this policy.
+        self._is_approval_required_for_add: Optional[bool] = None
+        # If false, then approval is not required for updates to requests in this policy.
+        self._is_approval_required_for_update: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # If approval is required, the one, two or three elements of this collection define each of the stages of approval. An empty array is present if no approval is required.
+        self._stages: Optional[List[access_package_approval_stage.AccessPackageApprovalStage]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignmentApprovalSettings:
@@ -56,9 +56,7 @@ class AccessPackageAssignmentApprovalSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_approval_stage
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "isApprovalRequiredForAdd": lambda n : setattr(self, 'is_approval_required_for_add', n.get_bool_value()),
             "isApprovalRequiredForUpdate": lambda n : setattr(self, 'is_approval_required_for_update', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

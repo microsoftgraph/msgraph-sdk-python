@@ -1,12 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class MobileAppCategory(entity.Entity):
     """
@@ -58,9 +56,7 @@ class MobileAppCategory(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
         }

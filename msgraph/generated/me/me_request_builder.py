@@ -7,116 +7,669 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ..models import user
-    from ..models.o_data_errors import o_data_error
-    from .activities import activities_request_builder
-    from .activities.item import user_activity_item_request_builder
-    from .agreement_acceptances import agreement_acceptances_request_builder
-    from .agreement_acceptances.item import agreement_acceptance_item_request_builder
-    from .app_role_assignments import app_role_assignments_request_builder
-    from .app_role_assignments.item import app_role_assignment_item_request_builder
-    from .assign_license import assign_license_request_builder
-    from .authentication import authentication_request_builder
-    from .calendar import calendar_request_builder
-    from .calendar_groups import calendar_groups_request_builder
-    from .calendar_groups.item import calendar_group_item_request_builder
-    from .calendars import calendars_request_builder
-    from .calendars.item import calendar_item_request_builder
-    from .calendar_view import calendar_view_request_builder
-    from .calendar_view.item import event_item_request_builder
-    from .change_password import change_password_request_builder
-    from .chats import chats_request_builder
-    from .chats.item import chat_item_request_builder
-    from .check_member_groups import check_member_groups_request_builder
-    from .check_member_objects import check_member_objects_request_builder
-    from .contact_folders import contact_folders_request_builder
-    from .contact_folders.item import contact_folder_item_request_builder
-    from .contacts import contacts_request_builder
-    from .contacts.item import contact_item_request_builder
-    from .created_objects import created_objects_request_builder
-    from .created_objects.item import directory_object_item_request_builder
-    from .device_management_troubleshooting_events import device_management_troubleshooting_events_request_builder
-    from .device_management_troubleshooting_events.item import device_management_troubleshooting_event_item_request_builder
-    from .direct_reports import direct_reports_request_builder
-    from .direct_reports.item import directory_object_item_request_builder
-    from .drive import drive_request_builder
-    from .drives import drives_request_builder
-    from .drives.item import drive_item_request_builder
-    from .events import events_request_builder
-    from .events.item import event_item_request_builder
-    from .export_device_and_app_management_data import export_device_and_app_management_data_request_builder
-    from .export_device_and_app_management_data_with_skip_with_top import export_device_and_app_management_data_with_skip_with_top_request_builder
-    from .export_personal_data import export_personal_data_request_builder
-    from .extensions import extensions_request_builder
-    from .extensions.item import extension_item_request_builder
-    from .find_meeting_times import find_meeting_times_request_builder
-    from .followed_sites import followed_sites_request_builder
-    from .followed_sites.item import site_item_request_builder
-    from .get_mail_tips import get_mail_tips_request_builder
-    from .get_managed_app_diagnostic_statuses import get_managed_app_diagnostic_statuses_request_builder
-    from .get_managed_app_policies import get_managed_app_policies_request_builder
-    from .get_managed_devices_with_app_failures import get_managed_devices_with_app_failures_request_builder
-    from .get_member_groups import get_member_groups_request_builder
-    from .get_member_objects import get_member_objects_request_builder
-    from .inference_classification import inference_classification_request_builder
-    from .insights import insights_request_builder
-    from .joined_teams import joined_teams_request_builder
-    from .joined_teams.item import team_item_request_builder
-    from .license_details import license_details_request_builder
-    from .license_details.item import license_details_item_request_builder
-    from .mail_folders import mail_folders_request_builder
-    from .mail_folders.item import mail_folder_item_request_builder
-    from .managed_app_registrations import managed_app_registrations_request_builder
-    from .managed_app_registrations.item import managed_app_registration_item_request_builder
-    from .managed_devices import managed_devices_request_builder
-    from .managed_devices.item import managed_device_item_request_builder
-    from .manager import manager_request_builder
-    from .member_of import member_of_request_builder
-    from .member_of.item import directory_object_item_request_builder
-    from .messages import messages_request_builder
-    from .messages.item import message_item_request_builder
-    from .oauth2_permission_grants import oauth2_permission_grants_request_builder
-    from .oauth2_permission_grants.item import o_auth2_permission_grant_item_request_builder
-    from .onenote import onenote_request_builder
-    from .online_meetings import online_meetings_request_builder
-    from .online_meetings.item import online_meeting_item_request_builder
-    from .outlook import outlook_request_builder
-    from .owned_devices import owned_devices_request_builder
-    from .owned_devices.item import directory_object_item_request_builder
-    from .owned_objects import owned_objects_request_builder
-    from .owned_objects.item import directory_object_item_request_builder
-    from .people import people_request_builder
-    from .people.item import person_item_request_builder
-    from .photo import photo_request_builder
-    from .photos import photos_request_builder
-    from .photos.item import profile_photo_item_request_builder
-    from .planner import planner_request_builder
-    from .presence import presence_request_builder
-    from .registered_devices import registered_devices_request_builder
-    from .registered_devices.item import directory_object_item_request_builder
-    from .reminder_view_with_start_date_time_with_end_date_time import reminder_view_with_start_date_time_with_end_date_time_request_builder
-    from .remove_all_devices_from_management import remove_all_devices_from_management_request_builder
-    from .reprocess_license_assignment import reprocess_license_assignment_request_builder
-    from .restore import restore_request_builder
-    from .revoke_sign_in_sessions import revoke_sign_in_sessions_request_builder
-    from .scoped_role_member_of import scoped_role_member_of_request_builder
-    from .scoped_role_member_of.item import scoped_role_membership_item_request_builder
-    from .send_mail import send_mail_request_builder
-    from .settings import settings_request_builder
-    from .teamwork import teamwork_request_builder
-    from .todo import todo_request_builder
-    from .transitive_member_of import transitive_member_of_request_builder
-    from .transitive_member_of.item import directory_object_item_request_builder
-    from .translate_exchange_ids import translate_exchange_ids_request_builder
-    from .wipe_managed_app_registrations_by_device_tag import wipe_managed_app_registrations_by_device_tag_request_builder
+activities_request_builder = lazy_import('msgraph.generated.me.activities.activities_request_builder')
+user_activity_item_request_builder = lazy_import('msgraph.generated.me.activities.item.user_activity_item_request_builder')
+agreement_acceptances_request_builder = lazy_import('msgraph.generated.me.agreement_acceptances.agreement_acceptances_request_builder')
+agreement_acceptance_item_request_builder = lazy_import('msgraph.generated.me.agreement_acceptances.item.agreement_acceptance_item_request_builder')
+app_role_assignments_request_builder = lazy_import('msgraph.generated.me.app_role_assignments.app_role_assignments_request_builder')
+app_role_assignment_item_request_builder = lazy_import('msgraph.generated.me.app_role_assignments.item.app_role_assignment_item_request_builder')
+assign_license_request_builder = lazy_import('msgraph.generated.me.assign_license.assign_license_request_builder')
+authentication_request_builder = lazy_import('msgraph.generated.me.authentication.authentication_request_builder')
+calendar_request_builder = lazy_import('msgraph.generated.me.calendar.calendar_request_builder')
+calendar_groups_request_builder = lazy_import('msgraph.generated.me.calendar_groups.calendar_groups_request_builder')
+calendar_group_item_request_builder = lazy_import('msgraph.generated.me.calendar_groups.item.calendar_group_item_request_builder')
+calendars_request_builder = lazy_import('msgraph.generated.me.calendars.calendars_request_builder')
+calendar_item_request_builder = lazy_import('msgraph.generated.me.calendars.item.calendar_item_request_builder')
+calendar_view_request_builder = lazy_import('msgraph.generated.me.calendar_view.calendar_view_request_builder')
+event_item_request_builder = lazy_import('msgraph.generated.me.calendar_view.item.event_item_request_builder')
+change_password_request_builder = lazy_import('msgraph.generated.me.change_password.change_password_request_builder')
+chats_request_builder = lazy_import('msgraph.generated.me.chats.chats_request_builder')
+chat_item_request_builder = lazy_import('msgraph.generated.me.chats.item.chat_item_request_builder')
+check_member_groups_request_builder = lazy_import('msgraph.generated.me.check_member_groups.check_member_groups_request_builder')
+check_member_objects_request_builder = lazy_import('msgraph.generated.me.check_member_objects.check_member_objects_request_builder')
+contact_folders_request_builder = lazy_import('msgraph.generated.me.contact_folders.contact_folders_request_builder')
+contact_folder_item_request_builder = lazy_import('msgraph.generated.me.contact_folders.item.contact_folder_item_request_builder')
+contacts_request_builder = lazy_import('msgraph.generated.me.contacts.contacts_request_builder')
+contact_item_request_builder = lazy_import('msgraph.generated.me.contacts.item.contact_item_request_builder')
+created_objects_request_builder = lazy_import('msgraph.generated.me.created_objects.created_objects_request_builder')
+directory_object_item_request_builder = lazy_import('msgraph.generated.me.created_objects.item.directory_object_item_request_builder')
+device_management_troubleshooting_events_request_builder = lazy_import('msgraph.generated.me.device_management_troubleshooting_events.device_management_troubleshooting_events_request_builder')
+device_management_troubleshooting_event_item_request_builder = lazy_import('msgraph.generated.me.device_management_troubleshooting_events.item.device_management_troubleshooting_event_item_request_builder')
+direct_reports_request_builder = lazy_import('msgraph.generated.me.direct_reports.direct_reports_request_builder')
+directory_object_item_request_builder = lazy_import('msgraph.generated.me.direct_reports.item.directory_object_item_request_builder')
+drive_request_builder = lazy_import('msgraph.generated.me.drive.drive_request_builder')
+drives_request_builder = lazy_import('msgraph.generated.me.drives.drives_request_builder')
+drive_item_request_builder = lazy_import('msgraph.generated.me.drives.item.drive_item_request_builder')
+events_request_builder = lazy_import('msgraph.generated.me.events.events_request_builder')
+event_item_request_builder = lazy_import('msgraph.generated.me.events.item.event_item_request_builder')
+export_device_and_app_management_data_request_builder = lazy_import('msgraph.generated.me.export_device_and_app_management_data.export_device_and_app_management_data_request_builder')
+export_device_and_app_management_data_with_skip_with_top_request_builder = lazy_import('msgraph.generated.me.export_device_and_app_management_data_with_skip_with_top.export_device_and_app_management_data_with_skip_with_top_request_builder')
+export_personal_data_request_builder = lazy_import('msgraph.generated.me.export_personal_data.export_personal_data_request_builder')
+extensions_request_builder = lazy_import('msgraph.generated.me.extensions.extensions_request_builder')
+extension_item_request_builder = lazy_import('msgraph.generated.me.extensions.item.extension_item_request_builder')
+find_meeting_times_request_builder = lazy_import('msgraph.generated.me.find_meeting_times.find_meeting_times_request_builder')
+followed_sites_request_builder = lazy_import('msgraph.generated.me.followed_sites.followed_sites_request_builder')
+site_item_request_builder = lazy_import('msgraph.generated.me.followed_sites.item.site_item_request_builder')
+get_mail_tips_request_builder = lazy_import('msgraph.generated.me.get_mail_tips.get_mail_tips_request_builder')
+get_managed_app_diagnostic_statuses_request_builder = lazy_import('msgraph.generated.me.get_managed_app_diagnostic_statuses.get_managed_app_diagnostic_statuses_request_builder')
+get_managed_app_policies_request_builder = lazy_import('msgraph.generated.me.get_managed_app_policies.get_managed_app_policies_request_builder')
+get_managed_devices_with_app_failures_request_builder = lazy_import('msgraph.generated.me.get_managed_devices_with_app_failures.get_managed_devices_with_app_failures_request_builder')
+get_member_groups_request_builder = lazy_import('msgraph.generated.me.get_member_groups.get_member_groups_request_builder')
+get_member_objects_request_builder = lazy_import('msgraph.generated.me.get_member_objects.get_member_objects_request_builder')
+inference_classification_request_builder = lazy_import('msgraph.generated.me.inference_classification.inference_classification_request_builder')
+insights_request_builder = lazy_import('msgraph.generated.me.insights.insights_request_builder')
+joined_teams_request_builder = lazy_import('msgraph.generated.me.joined_teams.joined_teams_request_builder')
+team_item_request_builder = lazy_import('msgraph.generated.me.joined_teams.item.team_item_request_builder')
+license_details_request_builder = lazy_import('msgraph.generated.me.license_details.license_details_request_builder')
+license_details_item_request_builder = lazy_import('msgraph.generated.me.license_details.item.license_details_item_request_builder')
+mail_folders_request_builder = lazy_import('msgraph.generated.me.mail_folders.mail_folders_request_builder')
+mail_folder_item_request_builder = lazy_import('msgraph.generated.me.mail_folders.item.mail_folder_item_request_builder')
+managed_app_registrations_request_builder = lazy_import('msgraph.generated.me.managed_app_registrations.managed_app_registrations_request_builder')
+managed_app_registration_item_request_builder = lazy_import('msgraph.generated.me.managed_app_registrations.item.managed_app_registration_item_request_builder')
+managed_devices_request_builder = lazy_import('msgraph.generated.me.managed_devices.managed_devices_request_builder')
+managed_device_item_request_builder = lazy_import('msgraph.generated.me.managed_devices.item.managed_device_item_request_builder')
+manager_request_builder = lazy_import('msgraph.generated.me.manager.manager_request_builder')
+member_of_request_builder = lazy_import('msgraph.generated.me.member_of.member_of_request_builder')
+directory_object_item_request_builder = lazy_import('msgraph.generated.me.member_of.item.directory_object_item_request_builder')
+messages_request_builder = lazy_import('msgraph.generated.me.messages.messages_request_builder')
+message_item_request_builder = lazy_import('msgraph.generated.me.messages.item.message_item_request_builder')
+oauth2_permission_grants_request_builder = lazy_import('msgraph.generated.me.oauth2_permission_grants.oauth2_permission_grants_request_builder')
+o_auth2_permission_grant_item_request_builder = lazy_import('msgraph.generated.me.oauth2_permission_grants.item.o_auth2_permission_grant_item_request_builder')
+onenote_request_builder = lazy_import('msgraph.generated.me.onenote.onenote_request_builder')
+online_meetings_request_builder = lazy_import('msgraph.generated.me.online_meetings.online_meetings_request_builder')
+online_meeting_item_request_builder = lazy_import('msgraph.generated.me.online_meetings.item.online_meeting_item_request_builder')
+outlook_request_builder = lazy_import('msgraph.generated.me.outlook.outlook_request_builder')
+owned_devices_request_builder = lazy_import('msgraph.generated.me.owned_devices.owned_devices_request_builder')
+directory_object_item_request_builder = lazy_import('msgraph.generated.me.owned_devices.item.directory_object_item_request_builder')
+owned_objects_request_builder = lazy_import('msgraph.generated.me.owned_objects.owned_objects_request_builder')
+directory_object_item_request_builder = lazy_import('msgraph.generated.me.owned_objects.item.directory_object_item_request_builder')
+people_request_builder = lazy_import('msgraph.generated.me.people.people_request_builder')
+person_item_request_builder = lazy_import('msgraph.generated.me.people.item.person_item_request_builder')
+photo_request_builder = lazy_import('msgraph.generated.me.photo.photo_request_builder')
+photos_request_builder = lazy_import('msgraph.generated.me.photos.photos_request_builder')
+profile_photo_item_request_builder = lazy_import('msgraph.generated.me.photos.item.profile_photo_item_request_builder')
+planner_request_builder = lazy_import('msgraph.generated.me.planner.planner_request_builder')
+presence_request_builder = lazy_import('msgraph.generated.me.presence.presence_request_builder')
+registered_devices_request_builder = lazy_import('msgraph.generated.me.registered_devices.registered_devices_request_builder')
+directory_object_item_request_builder = lazy_import('msgraph.generated.me.registered_devices.item.directory_object_item_request_builder')
+reminder_view_with_start_date_time_with_end_date_time_request_builder = lazy_import('msgraph.generated.me.reminder_view_with_start_date_time_with_end_date_time.reminder_view_with_start_date_time_with_end_date_time_request_builder')
+remove_all_devices_from_management_request_builder = lazy_import('msgraph.generated.me.remove_all_devices_from_management.remove_all_devices_from_management_request_builder')
+reprocess_license_assignment_request_builder = lazy_import('msgraph.generated.me.reprocess_license_assignment.reprocess_license_assignment_request_builder')
+restore_request_builder = lazy_import('msgraph.generated.me.restore.restore_request_builder')
+revoke_sign_in_sessions_request_builder = lazy_import('msgraph.generated.me.revoke_sign_in_sessions.revoke_sign_in_sessions_request_builder')
+scoped_role_member_of_request_builder = lazy_import('msgraph.generated.me.scoped_role_member_of.scoped_role_member_of_request_builder')
+scoped_role_membership_item_request_builder = lazy_import('msgraph.generated.me.scoped_role_member_of.item.scoped_role_membership_item_request_builder')
+send_mail_request_builder = lazy_import('msgraph.generated.me.send_mail.send_mail_request_builder')
+settings_request_builder = lazy_import('msgraph.generated.me.settings.settings_request_builder')
+teamwork_request_builder = lazy_import('msgraph.generated.me.teamwork.teamwork_request_builder')
+todo_request_builder = lazy_import('msgraph.generated.me.todo.todo_request_builder')
+transitive_member_of_request_builder = lazy_import('msgraph.generated.me.transitive_member_of.transitive_member_of_request_builder')
+directory_object_item_request_builder = lazy_import('msgraph.generated.me.transitive_member_of.item.directory_object_item_request_builder')
+translate_exchange_ids_request_builder = lazy_import('msgraph.generated.me.translate_exchange_ids.translate_exchange_ids_request_builder')
+wipe_managed_app_registrations_by_device_tag_request_builder = lazy_import('msgraph.generated.me.wipe_managed_app_registrations_by_device_tag.wipe_managed_app_registrations_by_device_tag_request_builder')
+user = lazy_import('msgraph.generated.models.user')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class MeRequestBuilder():
     """
     Provides operations to manage the user singleton.
     """
+    @property
+    def activities(self) -> activities_request_builder.ActivitiesRequestBuilder:
+        """
+        Provides operations to manage the activities property of the microsoft.graph.user entity.
+        """
+        return activities_request_builder.ActivitiesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def agreement_acceptances(self) -> agreement_acceptances_request_builder.AgreementAcceptancesRequestBuilder:
+        """
+        Provides operations to manage the agreementAcceptances property of the microsoft.graph.user entity.
+        """
+        return agreement_acceptances_request_builder.AgreementAcceptancesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def app_role_assignments(self) -> app_role_assignments_request_builder.AppRoleAssignmentsRequestBuilder:
+        """
+        Provides operations to manage the appRoleAssignments property of the microsoft.graph.user entity.
+        """
+        return app_role_assignments_request_builder.AppRoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def assign_license(self) -> assign_license_request_builder.AssignLicenseRequestBuilder:
+        """
+        Provides operations to call the assignLicense method.
+        """
+        return assign_license_request_builder.AssignLicenseRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def authentication(self) -> authentication_request_builder.AuthenticationRequestBuilder:
+        """
+        Provides operations to manage the authentication property of the microsoft.graph.user entity.
+        """
+        return authentication_request_builder.AuthenticationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def calendar(self) -> calendar_request_builder.CalendarRequestBuilder:
+        """
+        Provides operations to manage the calendar property of the microsoft.graph.user entity.
+        """
+        return calendar_request_builder.CalendarRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def calendar_groups(self) -> calendar_groups_request_builder.CalendarGroupsRequestBuilder:
+        """
+        Provides operations to manage the calendarGroups property of the microsoft.graph.user entity.
+        """
+        return calendar_groups_request_builder.CalendarGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def calendars(self) -> calendars_request_builder.CalendarsRequestBuilder:
+        """
+        Provides operations to manage the calendars property of the microsoft.graph.user entity.
+        """
+        return calendars_request_builder.CalendarsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def calendar_view(self) -> calendar_view_request_builder.CalendarViewRequestBuilder:
+        """
+        Provides operations to manage the calendarView property of the microsoft.graph.user entity.
+        """
+        return calendar_view_request_builder.CalendarViewRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def change_password(self) -> change_password_request_builder.ChangePasswordRequestBuilder:
+        """
+        Provides operations to call the changePassword method.
+        """
+        return change_password_request_builder.ChangePasswordRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def chats(self) -> chats_request_builder.ChatsRequestBuilder:
+        """
+        Provides operations to manage the chats property of the microsoft.graph.user entity.
+        """
+        return chats_request_builder.ChatsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
+        """
+        Provides operations to call the checkMemberGroups method.
+        """
+        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
+        """
+        Provides operations to call the checkMemberObjects method.
+        """
+        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def contact_folders(self) -> contact_folders_request_builder.ContactFoldersRequestBuilder:
+        """
+        Provides operations to manage the contactFolders property of the microsoft.graph.user entity.
+        """
+        return contact_folders_request_builder.ContactFoldersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def contacts(self) -> contacts_request_builder.ContactsRequestBuilder:
+        """
+        Provides operations to manage the contacts property of the microsoft.graph.user entity.
+        """
+        return contacts_request_builder.ContactsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def created_objects(self) -> created_objects_request_builder.CreatedObjectsRequestBuilder:
+        """
+        Provides operations to manage the createdObjects property of the microsoft.graph.user entity.
+        """
+        return created_objects_request_builder.CreatedObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def device_management_troubleshooting_events(self) -> device_management_troubleshooting_events_request_builder.DeviceManagementTroubleshootingEventsRequestBuilder:
+        """
+        Provides operations to manage the deviceManagementTroubleshootingEvents property of the microsoft.graph.user entity.
+        """
+        return device_management_troubleshooting_events_request_builder.DeviceManagementTroubleshootingEventsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def direct_reports(self) -> direct_reports_request_builder.DirectReportsRequestBuilder:
+        """
+        Provides operations to manage the directReports property of the microsoft.graph.user entity.
+        """
+        return direct_reports_request_builder.DirectReportsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def drive(self) -> drive_request_builder.DriveRequestBuilder:
+        """
+        Provides operations to manage the drive property of the microsoft.graph.user entity.
+        """
+        return drive_request_builder.DriveRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def drives(self) -> drives_request_builder.DrivesRequestBuilder:
+        """
+        Provides operations to manage the drives property of the microsoft.graph.user entity.
+        """
+        return drives_request_builder.DrivesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def events(self) -> events_request_builder.EventsRequestBuilder:
+        """
+        Provides operations to manage the events property of the microsoft.graph.user entity.
+        """
+        return events_request_builder.EventsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def export_device_and_app_management_data(self) -> export_device_and_app_management_data_request_builder.ExportDeviceAndAppManagementDataRequestBuilder:
+        """
+        Provides operations to call the exportDeviceAndAppManagementData method.
+        """
+        return export_device_and_app_management_data_request_builder.ExportDeviceAndAppManagementDataRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def export_personal_data(self) -> export_personal_data_request_builder.ExportPersonalDataRequestBuilder:
+        """
+        Provides operations to call the exportPersonalData method.
+        """
+        return export_personal_data_request_builder.ExportPersonalDataRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
+        """
+        Provides operations to manage the extensions property of the microsoft.graph.user entity.
+        """
+        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def find_meeting_times(self) -> find_meeting_times_request_builder.FindMeetingTimesRequestBuilder:
+        """
+        Provides operations to call the findMeetingTimes method.
+        """
+        return find_meeting_times_request_builder.FindMeetingTimesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def followed_sites(self) -> followed_sites_request_builder.FollowedSitesRequestBuilder:
+        """
+        Provides operations to manage the followedSites property of the microsoft.graph.user entity.
+        """
+        return followed_sites_request_builder.FollowedSitesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_mail_tips(self) -> get_mail_tips_request_builder.GetMailTipsRequestBuilder:
+        """
+        Provides operations to call the getMailTips method.
+        """
+        return get_mail_tips_request_builder.GetMailTipsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_managed_app_diagnostic_statuses(self) -> get_managed_app_diagnostic_statuses_request_builder.GetManagedAppDiagnosticStatusesRequestBuilder:
+        """
+        Provides operations to call the getManagedAppDiagnosticStatuses method.
+        """
+        return get_managed_app_diagnostic_statuses_request_builder.GetManagedAppDiagnosticStatusesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_managed_app_policies(self) -> get_managed_app_policies_request_builder.GetManagedAppPoliciesRequestBuilder:
+        """
+        Provides operations to call the getManagedAppPolicies method.
+        """
+        return get_managed_app_policies_request_builder.GetManagedAppPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_managed_devices_with_app_failures(self) -> get_managed_devices_with_app_failures_request_builder.GetManagedDevicesWithAppFailuresRequestBuilder:
+        """
+        Provides operations to call the getManagedDevicesWithAppFailures method.
+        """
+        return get_managed_devices_with_app_failures_request_builder.GetManagedDevicesWithAppFailuresRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
+        """
+        Provides operations to call the getMemberGroups method.
+        """
+        return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
+        """
+        Provides operations to call the getMemberObjects method.
+        """
+        return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def inference_classification(self) -> inference_classification_request_builder.InferenceClassificationRequestBuilder:
+        """
+        Provides operations to manage the inferenceClassification property of the microsoft.graph.user entity.
+        """
+        return inference_classification_request_builder.InferenceClassificationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def insights(self) -> insights_request_builder.InsightsRequestBuilder:
+        """
+        Provides operations to manage the insights property of the microsoft.graph.user entity.
+        """
+        return insights_request_builder.InsightsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def joined_teams(self) -> joined_teams_request_builder.JoinedTeamsRequestBuilder:
+        """
+        Provides operations to manage the joinedTeams property of the microsoft.graph.user entity.
+        """
+        return joined_teams_request_builder.JoinedTeamsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def license_details(self) -> license_details_request_builder.LicenseDetailsRequestBuilder:
+        """
+        Provides operations to manage the licenseDetails property of the microsoft.graph.user entity.
+        """
+        return license_details_request_builder.LicenseDetailsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def mail_folders(self) -> mail_folders_request_builder.MailFoldersRequestBuilder:
+        """
+        Provides operations to manage the mailFolders property of the microsoft.graph.user entity.
+        """
+        return mail_folders_request_builder.MailFoldersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def managed_app_registrations(self) -> managed_app_registrations_request_builder.ManagedAppRegistrationsRequestBuilder:
+        """
+        Provides operations to manage the managedAppRegistrations property of the microsoft.graph.user entity.
+        """
+        return managed_app_registrations_request_builder.ManagedAppRegistrationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def managed_devices(self) -> managed_devices_request_builder.ManagedDevicesRequestBuilder:
+        """
+        Provides operations to manage the managedDevices property of the microsoft.graph.user entity.
+        """
+        return managed_devices_request_builder.ManagedDevicesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def manager(self) -> manager_request_builder.ManagerRequestBuilder:
+        """
+        Provides operations to manage the manager property of the microsoft.graph.user entity.
+        """
+        return manager_request_builder.ManagerRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def member_of(self) -> member_of_request_builder.MemberOfRequestBuilder:
+        """
+        Provides operations to manage the memberOf property of the microsoft.graph.user entity.
+        """
+        return member_of_request_builder.MemberOfRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def messages(self) -> messages_request_builder.MessagesRequestBuilder:
+        """
+        Provides operations to manage the messages property of the microsoft.graph.user entity.
+        """
+        return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def oauth2_permission_grants(self) -> oauth2_permission_grants_request_builder.Oauth2PermissionGrantsRequestBuilder:
+        """
+        Provides operations to manage the oauth2PermissionGrants property of the microsoft.graph.user entity.
+        """
+        return oauth2_permission_grants_request_builder.Oauth2PermissionGrantsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def onenote(self) -> onenote_request_builder.OnenoteRequestBuilder:
+        """
+        Provides operations to manage the onenote property of the microsoft.graph.user entity.
+        """
+        return onenote_request_builder.OnenoteRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def online_meetings(self) -> online_meetings_request_builder.OnlineMeetingsRequestBuilder:
+        """
+        Provides operations to manage the onlineMeetings property of the microsoft.graph.user entity.
+        """
+        return online_meetings_request_builder.OnlineMeetingsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def outlook(self) -> outlook_request_builder.OutlookRequestBuilder:
+        """
+        Provides operations to manage the outlook property of the microsoft.graph.user entity.
+        """
+        return outlook_request_builder.OutlookRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def owned_devices(self) -> owned_devices_request_builder.OwnedDevicesRequestBuilder:
+        """
+        Provides operations to manage the ownedDevices property of the microsoft.graph.user entity.
+        """
+        return owned_devices_request_builder.OwnedDevicesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def owned_objects(self) -> owned_objects_request_builder.OwnedObjectsRequestBuilder:
+        """
+        Provides operations to manage the ownedObjects property of the microsoft.graph.user entity.
+        """
+        return owned_objects_request_builder.OwnedObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def people(self) -> people_request_builder.PeopleRequestBuilder:
+        """
+        Provides operations to manage the people property of the microsoft.graph.user entity.
+        """
+        return people_request_builder.PeopleRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def photo(self) -> photo_request_builder.PhotoRequestBuilder:
+        """
+        Provides operations to manage the photo property of the microsoft.graph.user entity.
+        """
+        return photo_request_builder.PhotoRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def photos(self) -> photos_request_builder.PhotosRequestBuilder:
+        """
+        Provides operations to manage the photos property of the microsoft.graph.user entity.
+        """
+        return photos_request_builder.PhotosRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def planner(self) -> planner_request_builder.PlannerRequestBuilder:
+        """
+        Provides operations to manage the planner property of the microsoft.graph.user entity.
+        """
+        return planner_request_builder.PlannerRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def presence(self) -> presence_request_builder.PresenceRequestBuilder:
+        """
+        Provides operations to manage the presence property of the microsoft.graph.user entity.
+        """
+        return presence_request_builder.PresenceRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def registered_devices(self) -> registered_devices_request_builder.RegisteredDevicesRequestBuilder:
+        """
+        Provides operations to manage the registeredDevices property of the microsoft.graph.user entity.
+        """
+        return registered_devices_request_builder.RegisteredDevicesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def remove_all_devices_from_management(self) -> remove_all_devices_from_management_request_builder.RemoveAllDevicesFromManagementRequestBuilder:
+        """
+        Provides operations to call the removeAllDevicesFromManagement method.
+        """
+        return remove_all_devices_from_management_request_builder.RemoveAllDevicesFromManagementRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def reprocess_license_assignment(self) -> reprocess_license_assignment_request_builder.ReprocessLicenseAssignmentRequestBuilder:
+        """
+        Provides operations to call the reprocessLicenseAssignment method.
+        """
+        return reprocess_license_assignment_request_builder.ReprocessLicenseAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
+        """
+        Provides operations to call the restore method.
+        """
+        return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def revoke_sign_in_sessions(self) -> revoke_sign_in_sessions_request_builder.RevokeSignInSessionsRequestBuilder:
+        """
+        Provides operations to call the revokeSignInSessions method.
+        """
+        return revoke_sign_in_sessions_request_builder.RevokeSignInSessionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def scoped_role_member_of(self) -> scoped_role_member_of_request_builder.ScopedRoleMemberOfRequestBuilder:
+        """
+        Provides operations to manage the scopedRoleMemberOf property of the microsoft.graph.user entity.
+        """
+        return scoped_role_member_of_request_builder.ScopedRoleMemberOfRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def send_mail(self) -> send_mail_request_builder.SendMailRequestBuilder:
+        """
+        Provides operations to call the sendMail method.
+        """
+        return send_mail_request_builder.SendMailRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def settings(self) -> settings_request_builder.SettingsRequestBuilder:
+        """
+        Provides operations to manage the settings property of the microsoft.graph.user entity.
+        """
+        return settings_request_builder.SettingsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def teamwork(self) -> teamwork_request_builder.TeamworkRequestBuilder:
+        """
+        Provides operations to manage the teamwork property of the microsoft.graph.user entity.
+        """
+        return teamwork_request_builder.TeamworkRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def todo(self) -> todo_request_builder.TodoRequestBuilder:
+        """
+        Provides operations to manage the todo property of the microsoft.graph.user entity.
+        """
+        return todo_request_builder.TodoRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def transitive_member_of(self) -> transitive_member_of_request_builder.TransitiveMemberOfRequestBuilder:
+        """
+        Provides operations to manage the transitiveMemberOf property of the microsoft.graph.user entity.
+        """
+        return transitive_member_of_request_builder.TransitiveMemberOfRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def translate_exchange_ids(self) -> translate_exchange_ids_request_builder.TranslateExchangeIdsRequestBuilder:
+        """
+        Provides operations to call the translateExchangeIds method.
+        """
+        return translate_exchange_ids_request_builder.TranslateExchangeIdsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def wipe_managed_app_registrations_by_device_tag(self) -> wipe_managed_app_registrations_by_device_tag_request_builder.WipeManagedAppRegistrationsByDeviceTagRequestBuilder:
+        """
+        Provides operations to call the wipeManagedAppRegistrationsByDeviceTag method.
+        """
+        return wipe_managed_app_registrations_by_device_tag_request_builder.WipeManagedAppRegistrationsByDeviceTagRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def activities_by_id(self,id: str) -> user_activity_item_request_builder.UserActivityItemRequestBuilder:
+        """
+        Provides operations to manage the activities property of the microsoft.graph.user entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: user_activity_item_request_builder.UserActivityItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["userActivity%2Did"] = id
+        return user_activity_item_request_builder.UserActivityItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def agreement_acceptances_by_id(self,id: str) -> agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder:
+        """
+        Provides operations to manage the agreementAcceptances property of the microsoft.graph.user entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["agreementAcceptance%2Did"] = id
+        return agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def app_role_assignments_by_id(self,id: str) -> app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder:
+        """
+        Provides operations to manage the appRoleAssignments property of the microsoft.graph.user entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["appRoleAssignment%2Did"] = id
+        return app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def calendar_groups_by_id(self,id: str) -> calendar_group_item_request_builder.CalendarGroupItemRequestBuilder:
+        """
+        Provides operations to manage the calendarGroups property of the microsoft.graph.user entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: calendar_group_item_request_builder.CalendarGroupItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["calendarGroup%2Did"] = id
+        return calendar_group_item_request_builder.CalendarGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def calendars_by_id(self,id: str) -> calendar_item_request_builder.CalendarItemRequestBuilder:
+        """
+        Provides operations to manage the calendars property of the microsoft.graph.user entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: calendar_item_request_builder.CalendarItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["calendar%2Did"] = id
+        return calendar_item_request_builder.CalendarItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def calendar_view_by_id(self,id: str) -> event_item_request_builder.EventItemRequestBuilder:
+        """
+        Provides operations to manage the calendarView property of the microsoft.graph.user entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: event_item_request_builder.EventItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["event%2Did"] = id
+        return event_item_request_builder.EventItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def chats_by_id(self,id: str) -> chat_item_request_builder.ChatItemRequestBuilder:
+        """
+        Provides operations to manage the chats property of the microsoft.graph.user entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: chat_item_request_builder.ChatItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["chat%2Did"] = id
+        return chat_item_request_builder.ChatItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new MeRequestBuilder and sets the default values.
@@ -135,112 +688,6 @@ class MeRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def activities_by_id(self,id: str) -> user_activity_item_request_builder.UserActivityItemRequestBuilder:
-        """
-        Provides operations to manage the activities property of the microsoft.graph.user entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: user_activity_item_request_builder.UserActivityItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .activities.item import user_activity_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["userActivity%2Did"] = id
-        return user_activity_item_request_builder.UserActivityItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def agreement_acceptances_by_id(self,id: str) -> agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder:
-        """
-        Provides operations to manage the agreementAcceptances property of the microsoft.graph.user entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .agreement_acceptances.item import agreement_acceptance_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["agreementAcceptance%2Did"] = id
-        return agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def app_role_assignments_by_id(self,id: str) -> app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder:
-        """
-        Provides operations to manage the appRoleAssignments property of the microsoft.graph.user entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .app_role_assignments.item import app_role_assignment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["appRoleAssignment%2Did"] = id
-        return app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def calendar_groups_by_id(self,id: str) -> calendar_group_item_request_builder.CalendarGroupItemRequestBuilder:
-        """
-        Provides operations to manage the calendarGroups property of the microsoft.graph.user entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: calendar_group_item_request_builder.CalendarGroupItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .calendar_groups.item import calendar_group_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["calendarGroup%2Did"] = id
-        return calendar_group_item_request_builder.CalendarGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def calendars_by_id(self,id: str) -> calendar_item_request_builder.CalendarItemRequestBuilder:
-        """
-        Provides operations to manage the calendars property of the microsoft.graph.user entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: calendar_item_request_builder.CalendarItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .calendars.item import calendar_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["calendar%2Did"] = id
-        return calendar_item_request_builder.CalendarItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def calendar_view_by_id(self,id: str) -> event_item_request_builder.EventItemRequestBuilder:
-        """
-        Provides operations to manage the calendarView property of the microsoft.graph.user entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: event_item_request_builder.EventItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .calendar_view.item import event_item_request_builder
-        from .events.item import event_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["event%2Did"] = id
-        return event_item_request_builder.EventItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def chats_by_id(self,id: str) -> chat_item_request_builder.ChatItemRequestBuilder:
-        """
-        Provides operations to manage the chats property of the microsoft.graph.user entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: chat_item_request_builder.ChatItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .chats.item import chat_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["chat%2Did"] = id
-        return chat_item_request_builder.ChatItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def contact_folders_by_id(self,id: str) -> contact_folder_item_request_builder.ContactFolderItemRequestBuilder:
         """
         Provides operations to manage the contactFolders property of the microsoft.graph.user entity.
@@ -250,8 +697,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .contact_folders.item import contact_folder_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["contactFolder%2Did"] = id
         return contact_folder_item_request_builder.ContactFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -265,8 +710,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .contacts.item import contact_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["contact%2Did"] = id
         return contact_item_request_builder.ContactItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -280,14 +723,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .created_objects.item import directory_object_item_request_builder
-        from .direct_reports.item import directory_object_item_request_builder
-        from .member_of.item import directory_object_item_request_builder
-        from .owned_devices.item import directory_object_item_request_builder
-        from .owned_objects.item import directory_object_item_request_builder
-        from .registered_devices.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -301,8 +736,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .device_management_troubleshooting_events.item import device_management_troubleshooting_event_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceManagementTroubleshootingEvent%2Did"] = id
         return device_management_troubleshooting_event_item_request_builder.DeviceManagementTroubleshootingEventItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -316,14 +749,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .created_objects.item import directory_object_item_request_builder
-        from .direct_reports.item import directory_object_item_request_builder
-        from .member_of.item import directory_object_item_request_builder
-        from .owned_devices.item import directory_object_item_request_builder
-        from .owned_objects.item import directory_object_item_request_builder
-        from .registered_devices.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -337,8 +762,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .drives.item import drive_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["drive%2Did"] = id
         return drive_item_request_builder.DriveItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -352,9 +775,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .calendar_view.item import event_item_request_builder
-        from .events.item import event_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["event%2Did"] = id
         return event_item_request_builder.EventItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -371,8 +791,6 @@ class MeRequestBuilder():
             raise Exception("skip cannot be undefined")
         if top is None:
             raise Exception("top cannot be undefined")
-        from .export_device_and_app_management_data_with_skip_with_top import export_device_and_app_management_data_with_skip_with_top_request_builder
-
         return export_device_and_app_management_data_with_skip_with_top_request_builder.ExportDeviceAndAppManagementDataWithSkipWithTopRequestBuilder(self.request_adapter, self.path_parameters, skip, top)
     
     def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
@@ -384,8 +802,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .extensions.item import extension_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["extension%2Did"] = id
         return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -399,8 +815,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .followed_sites.item import site_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["site%2Did"] = id
         return site_item_request_builder.SiteItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -415,16 +829,12 @@ class MeRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import user
-
         return await self.request_adapter.send_async(request_info, user.User, error_mapping)
     
     def joined_teams_by_id(self,id: str) -> team_item_request_builder.TeamItemRequestBuilder:
@@ -436,8 +846,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .joined_teams.item import team_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["team%2Did"] = id
         return team_item_request_builder.TeamItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -451,8 +859,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .license_details.item import license_details_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["licenseDetails%2Did"] = id
         return license_details_item_request_builder.LicenseDetailsItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -466,8 +872,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .mail_folders.item import mail_folder_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["mailFolder%2Did"] = id
         return mail_folder_item_request_builder.MailFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -481,8 +885,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .managed_app_registrations.item import managed_app_registration_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["managedAppRegistration%2Did"] = id
         return managed_app_registration_item_request_builder.ManagedAppRegistrationItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -496,8 +898,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .managed_devices.item import managed_device_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["managedDevice%2Did"] = id
         return managed_device_item_request_builder.ManagedDeviceItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -511,14 +911,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .created_objects.item import directory_object_item_request_builder
-        from .direct_reports.item import directory_object_item_request_builder
-        from .member_of.item import directory_object_item_request_builder
-        from .owned_devices.item import directory_object_item_request_builder
-        from .owned_objects.item import directory_object_item_request_builder
-        from .registered_devices.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -532,8 +924,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .messages.item import message_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["message%2Did"] = id
         return message_item_request_builder.MessageItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -547,8 +937,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .oauth2_permission_grants.item import o_auth2_permission_grant_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["oAuth2PermissionGrant%2Did"] = id
         return o_auth2_permission_grant_item_request_builder.OAuth2PermissionGrantItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -562,8 +950,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .online_meetings.item import online_meeting_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["onlineMeeting%2Did"] = id
         return online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -577,14 +963,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .created_objects.item import directory_object_item_request_builder
-        from .direct_reports.item import directory_object_item_request_builder
-        from .member_of.item import directory_object_item_request_builder
-        from .owned_devices.item import directory_object_item_request_builder
-        from .owned_objects.item import directory_object_item_request_builder
-        from .registered_devices.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -598,14 +976,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .created_objects.item import directory_object_item_request_builder
-        from .direct_reports.item import directory_object_item_request_builder
-        from .member_of.item import directory_object_item_request_builder
-        from .owned_devices.item import directory_object_item_request_builder
-        from .owned_objects.item import directory_object_item_request_builder
-        from .registered_devices.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -623,16 +993,12 @@ class MeRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import user
-
         return await self.request_adapter.send_async(request_info, user.User, error_mapping)
     
     def people_by_id(self,id: str) -> person_item_request_builder.PersonItemRequestBuilder:
@@ -644,8 +1010,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .people.item import person_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["person%2Did"] = id
         return person_item_request_builder.PersonItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -659,8 +1023,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .photos.item import profile_photo_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["profilePhoto%2Did"] = id
         return profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -674,14 +1036,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .created_objects.item import directory_object_item_request_builder
-        from .direct_reports.item import directory_object_item_request_builder
-        from .member_of.item import directory_object_item_request_builder
-        from .owned_devices.item import directory_object_item_request_builder
-        from .owned_objects.item import directory_object_item_request_builder
-        from .registered_devices.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -698,9 +1052,7 @@ class MeRequestBuilder():
             raise Exception("end_date_time cannot be undefined")
         if start_date_time is None:
             raise Exception("start_date_time cannot be undefined")
-        from .reminder_view_with_start_date_time_with_end_date_time import reminder_view_with_start_date_time_with_end_date_time_request_builder
-
-        return reminder_view_with_start_date_time_with_end_date_time_request_builder.ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, start_date_time)
+        return reminder_view_with_start_date_time_with_end_date_time_request_builder.ReminderViewWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, EndDateTime, StartDateTime)
     
     def scoped_role_member_of_by_id(self,id: str) -> scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder:
         """
@@ -711,8 +1063,6 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .scoped_role_member_of.item import scoped_role_membership_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["scopedRoleMembership%2Did"] = id
         return scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -765,617 +1115,21 @@ class MeRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .created_objects.item import directory_object_item_request_builder
-        from .direct_reports.item import directory_object_item_request_builder
-        from .member_of.item import directory_object_item_request_builder
-        from .owned_devices.item import directory_object_item_request_builder
-        from .owned_objects.item import directory_object_item_request_builder
-        from .registered_devices.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    @property
-    def activities(self) -> activities_request_builder.ActivitiesRequestBuilder:
-        """
-        Provides operations to manage the activities property of the microsoft.graph.user entity.
-        """
-        from .activities import activities_request_builder
-
-        return activities_request_builder.ActivitiesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def agreement_acceptances(self) -> agreement_acceptances_request_builder.AgreementAcceptancesRequestBuilder:
-        """
-        Provides operations to manage the agreementAcceptances property of the microsoft.graph.user entity.
-        """
-        from .agreement_acceptances import agreement_acceptances_request_builder
-
-        return agreement_acceptances_request_builder.AgreementAcceptancesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def app_role_assignments(self) -> app_role_assignments_request_builder.AppRoleAssignmentsRequestBuilder:
-        """
-        Provides operations to manage the appRoleAssignments property of the microsoft.graph.user entity.
-        """
-        from .app_role_assignments import app_role_assignments_request_builder
-
-        return app_role_assignments_request_builder.AppRoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def assign_license(self) -> assign_license_request_builder.AssignLicenseRequestBuilder:
-        """
-        Provides operations to call the assignLicense method.
-        """
-        from .assign_license import assign_license_request_builder
-
-        return assign_license_request_builder.AssignLicenseRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def authentication(self) -> authentication_request_builder.AuthenticationRequestBuilder:
-        """
-        Provides operations to manage the authentication property of the microsoft.graph.user entity.
-        """
-        from .authentication import authentication_request_builder
-
-        return authentication_request_builder.AuthenticationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def calendar(self) -> calendar_request_builder.CalendarRequestBuilder:
-        """
-        Provides operations to manage the calendar property of the microsoft.graph.user entity.
-        """
-        from .calendar import calendar_request_builder
-
-        return calendar_request_builder.CalendarRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def calendar_groups(self) -> calendar_groups_request_builder.CalendarGroupsRequestBuilder:
-        """
-        Provides operations to manage the calendarGroups property of the microsoft.graph.user entity.
-        """
-        from .calendar_groups import calendar_groups_request_builder
-
-        return calendar_groups_request_builder.CalendarGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def calendars(self) -> calendars_request_builder.CalendarsRequestBuilder:
-        """
-        Provides operations to manage the calendars property of the microsoft.graph.user entity.
-        """
-        from .calendars import calendars_request_builder
-
-        return calendars_request_builder.CalendarsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def calendar_view(self) -> calendar_view_request_builder.CalendarViewRequestBuilder:
-        """
-        Provides operations to manage the calendarView property of the microsoft.graph.user entity.
-        """
-        from .calendar_view import calendar_view_request_builder
-
-        return calendar_view_request_builder.CalendarViewRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def change_password(self) -> change_password_request_builder.ChangePasswordRequestBuilder:
-        """
-        Provides operations to call the changePassword method.
-        """
-        from .change_password import change_password_request_builder
-
-        return change_password_request_builder.ChangePasswordRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def chats(self) -> chats_request_builder.ChatsRequestBuilder:
-        """
-        Provides operations to manage the chats property of the microsoft.graph.user entity.
-        """
-        from .chats import chats_request_builder
-
-        return chats_request_builder.ChatsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
-        """
-        Provides operations to call the checkMemberGroups method.
-        """
-        from .check_member_groups import check_member_groups_request_builder
-
-        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
-        """
-        Provides operations to call the checkMemberObjects method.
-        """
-        from .check_member_objects import check_member_objects_request_builder
-
-        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def contact_folders(self) -> contact_folders_request_builder.ContactFoldersRequestBuilder:
-        """
-        Provides operations to manage the contactFolders property of the microsoft.graph.user entity.
-        """
-        from .contact_folders import contact_folders_request_builder
-
-        return contact_folders_request_builder.ContactFoldersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def contacts(self) -> contacts_request_builder.ContactsRequestBuilder:
-        """
-        Provides operations to manage the contacts property of the microsoft.graph.user entity.
-        """
-        from .contacts import contacts_request_builder
-
-        return contacts_request_builder.ContactsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def created_objects(self) -> created_objects_request_builder.CreatedObjectsRequestBuilder:
-        """
-        Provides operations to manage the createdObjects property of the microsoft.graph.user entity.
-        """
-        from .created_objects import created_objects_request_builder
-
-        return created_objects_request_builder.CreatedObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def device_management_troubleshooting_events(self) -> device_management_troubleshooting_events_request_builder.DeviceManagementTroubleshootingEventsRequestBuilder:
-        """
-        Provides operations to manage the deviceManagementTroubleshootingEvents property of the microsoft.graph.user entity.
-        """
-        from .device_management_troubleshooting_events import device_management_troubleshooting_events_request_builder
-
-        return device_management_troubleshooting_events_request_builder.DeviceManagementTroubleshootingEventsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def direct_reports(self) -> direct_reports_request_builder.DirectReportsRequestBuilder:
-        """
-        Provides operations to manage the directReports property of the microsoft.graph.user entity.
-        """
-        from .direct_reports import direct_reports_request_builder
-
-        return direct_reports_request_builder.DirectReportsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def drive(self) -> drive_request_builder.DriveRequestBuilder:
-        """
-        Provides operations to manage the drive property of the microsoft.graph.user entity.
-        """
-        from .drive import drive_request_builder
-
-        return drive_request_builder.DriveRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def drives(self) -> drives_request_builder.DrivesRequestBuilder:
-        """
-        Provides operations to manage the drives property of the microsoft.graph.user entity.
-        """
-        from .drives import drives_request_builder
-
-        return drives_request_builder.DrivesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def events(self) -> events_request_builder.EventsRequestBuilder:
-        """
-        Provides operations to manage the events property of the microsoft.graph.user entity.
-        """
-        from .events import events_request_builder
-
-        return events_request_builder.EventsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def export_device_and_app_management_data(self) -> export_device_and_app_management_data_request_builder.ExportDeviceAndAppManagementDataRequestBuilder:
-        """
-        Provides operations to call the exportDeviceAndAppManagementData method.
-        """
-        from .export_device_and_app_management_data import export_device_and_app_management_data_request_builder
-
-        return export_device_and_app_management_data_request_builder.ExportDeviceAndAppManagementDataRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def export_personal_data(self) -> export_personal_data_request_builder.ExportPersonalDataRequestBuilder:
-        """
-        Provides operations to call the exportPersonalData method.
-        """
-        from .export_personal_data import export_personal_data_request_builder
-
-        return export_personal_data_request_builder.ExportPersonalDataRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def extensions(self) -> extensions_request_builder.ExtensionsRequestBuilder:
-        """
-        Provides operations to manage the extensions property of the microsoft.graph.user entity.
-        """
-        from .extensions import extensions_request_builder
-
-        return extensions_request_builder.ExtensionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def find_meeting_times(self) -> find_meeting_times_request_builder.FindMeetingTimesRequestBuilder:
-        """
-        Provides operations to call the findMeetingTimes method.
-        """
-        from .find_meeting_times import find_meeting_times_request_builder
-
-        return find_meeting_times_request_builder.FindMeetingTimesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def followed_sites(self) -> followed_sites_request_builder.FollowedSitesRequestBuilder:
-        """
-        Provides operations to manage the followedSites property of the microsoft.graph.user entity.
-        """
-        from .followed_sites import followed_sites_request_builder
-
-        return followed_sites_request_builder.FollowedSitesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_mail_tips(self) -> get_mail_tips_request_builder.GetMailTipsRequestBuilder:
-        """
-        Provides operations to call the getMailTips method.
-        """
-        from .get_mail_tips import get_mail_tips_request_builder
-
-        return get_mail_tips_request_builder.GetMailTipsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_managed_app_diagnostic_statuses(self) -> get_managed_app_diagnostic_statuses_request_builder.GetManagedAppDiagnosticStatusesRequestBuilder:
-        """
-        Provides operations to call the getManagedAppDiagnosticStatuses method.
-        """
-        from .get_managed_app_diagnostic_statuses import get_managed_app_diagnostic_statuses_request_builder
-
-        return get_managed_app_diagnostic_statuses_request_builder.GetManagedAppDiagnosticStatusesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_managed_app_policies(self) -> get_managed_app_policies_request_builder.GetManagedAppPoliciesRequestBuilder:
-        """
-        Provides operations to call the getManagedAppPolicies method.
-        """
-        from .get_managed_app_policies import get_managed_app_policies_request_builder
-
-        return get_managed_app_policies_request_builder.GetManagedAppPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_managed_devices_with_app_failures(self) -> get_managed_devices_with_app_failures_request_builder.GetManagedDevicesWithAppFailuresRequestBuilder:
-        """
-        Provides operations to call the getManagedDevicesWithAppFailures method.
-        """
-        from .get_managed_devices_with_app_failures import get_managed_devices_with_app_failures_request_builder
-
-        return get_managed_devices_with_app_failures_request_builder.GetManagedDevicesWithAppFailuresRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
-        """
-        Provides operations to call the getMemberGroups method.
-        """
-        from .get_member_groups import get_member_groups_request_builder
-
-        return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
-        """
-        Provides operations to call the getMemberObjects method.
-        """
-        from .get_member_objects import get_member_objects_request_builder
-
-        return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def inference_classification(self) -> inference_classification_request_builder.InferenceClassificationRequestBuilder:
-        """
-        Provides operations to manage the inferenceClassification property of the microsoft.graph.user entity.
-        """
-        from .inference_classification import inference_classification_request_builder
-
-        return inference_classification_request_builder.InferenceClassificationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def insights(self) -> insights_request_builder.InsightsRequestBuilder:
-        """
-        Provides operations to manage the insights property of the microsoft.graph.user entity.
-        """
-        from .insights import insights_request_builder
-
-        return insights_request_builder.InsightsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def joined_teams(self) -> joined_teams_request_builder.JoinedTeamsRequestBuilder:
-        """
-        Provides operations to manage the joinedTeams property of the microsoft.graph.user entity.
-        """
-        from .joined_teams import joined_teams_request_builder
-
-        return joined_teams_request_builder.JoinedTeamsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def license_details(self) -> license_details_request_builder.LicenseDetailsRequestBuilder:
-        """
-        Provides operations to manage the licenseDetails property of the microsoft.graph.user entity.
-        """
-        from .license_details import license_details_request_builder
-
-        return license_details_request_builder.LicenseDetailsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def mail_folders(self) -> mail_folders_request_builder.MailFoldersRequestBuilder:
-        """
-        Provides operations to manage the mailFolders property of the microsoft.graph.user entity.
-        """
-        from .mail_folders import mail_folders_request_builder
-
-        return mail_folders_request_builder.MailFoldersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def managed_app_registrations(self) -> managed_app_registrations_request_builder.ManagedAppRegistrationsRequestBuilder:
-        """
-        Provides operations to manage the managedAppRegistrations property of the microsoft.graph.user entity.
-        """
-        from .managed_app_registrations import managed_app_registrations_request_builder
-
-        return managed_app_registrations_request_builder.ManagedAppRegistrationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def managed_devices(self) -> managed_devices_request_builder.ManagedDevicesRequestBuilder:
-        """
-        Provides operations to manage the managedDevices property of the microsoft.graph.user entity.
-        """
-        from .managed_devices import managed_devices_request_builder
-
-        return managed_devices_request_builder.ManagedDevicesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def manager(self) -> manager_request_builder.ManagerRequestBuilder:
-        """
-        Provides operations to manage the manager property of the microsoft.graph.user entity.
-        """
-        from .manager import manager_request_builder
-
-        return manager_request_builder.ManagerRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def member_of(self) -> member_of_request_builder.MemberOfRequestBuilder:
-        """
-        Provides operations to manage the memberOf property of the microsoft.graph.user entity.
-        """
-        from .member_of import member_of_request_builder
-
-        return member_of_request_builder.MemberOfRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def messages(self) -> messages_request_builder.MessagesRequestBuilder:
-        """
-        Provides operations to manage the messages property of the microsoft.graph.user entity.
-        """
-        from .messages import messages_request_builder
-
-        return messages_request_builder.MessagesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def oauth2_permission_grants(self) -> oauth2_permission_grants_request_builder.Oauth2PermissionGrantsRequestBuilder:
-        """
-        Provides operations to manage the oauth2PermissionGrants property of the microsoft.graph.user entity.
-        """
-        from .oauth2_permission_grants import oauth2_permission_grants_request_builder
-
-        return oauth2_permission_grants_request_builder.Oauth2PermissionGrantsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def onenote(self) -> onenote_request_builder.OnenoteRequestBuilder:
-        """
-        Provides operations to manage the onenote property of the microsoft.graph.user entity.
-        """
-        from .onenote import onenote_request_builder
-
-        return onenote_request_builder.OnenoteRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def online_meetings(self) -> online_meetings_request_builder.OnlineMeetingsRequestBuilder:
-        """
-        Provides operations to manage the onlineMeetings property of the microsoft.graph.user entity.
-        """
-        from .online_meetings import online_meetings_request_builder
-
-        return online_meetings_request_builder.OnlineMeetingsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def outlook(self) -> outlook_request_builder.OutlookRequestBuilder:
-        """
-        Provides operations to manage the outlook property of the microsoft.graph.user entity.
-        """
-        from .outlook import outlook_request_builder
-
-        return outlook_request_builder.OutlookRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def owned_devices(self) -> owned_devices_request_builder.OwnedDevicesRequestBuilder:
-        """
-        Provides operations to manage the ownedDevices property of the microsoft.graph.user entity.
-        """
-        from .owned_devices import owned_devices_request_builder
-
-        return owned_devices_request_builder.OwnedDevicesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def owned_objects(self) -> owned_objects_request_builder.OwnedObjectsRequestBuilder:
-        """
-        Provides operations to manage the ownedObjects property of the microsoft.graph.user entity.
-        """
-        from .owned_objects import owned_objects_request_builder
-
-        return owned_objects_request_builder.OwnedObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def people(self) -> people_request_builder.PeopleRequestBuilder:
-        """
-        Provides operations to manage the people property of the microsoft.graph.user entity.
-        """
-        from .people import people_request_builder
-
-        return people_request_builder.PeopleRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def photo(self) -> photo_request_builder.PhotoRequestBuilder:
-        """
-        Provides operations to manage the photo property of the microsoft.graph.user entity.
-        """
-        from .photo import photo_request_builder
-
-        return photo_request_builder.PhotoRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def photos(self) -> photos_request_builder.PhotosRequestBuilder:
-        """
-        Provides operations to manage the photos property of the microsoft.graph.user entity.
-        """
-        from .photos import photos_request_builder
-
-        return photos_request_builder.PhotosRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def planner(self) -> planner_request_builder.PlannerRequestBuilder:
-        """
-        Provides operations to manage the planner property of the microsoft.graph.user entity.
-        """
-        from .planner import planner_request_builder
-
-        return planner_request_builder.PlannerRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def presence(self) -> presence_request_builder.PresenceRequestBuilder:
-        """
-        Provides operations to manage the presence property of the microsoft.graph.user entity.
-        """
-        from .presence import presence_request_builder
-
-        return presence_request_builder.PresenceRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def registered_devices(self) -> registered_devices_request_builder.RegisteredDevicesRequestBuilder:
-        """
-        Provides operations to manage the registeredDevices property of the microsoft.graph.user entity.
-        """
-        from .registered_devices import registered_devices_request_builder
-
-        return registered_devices_request_builder.RegisteredDevicesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def remove_all_devices_from_management(self) -> remove_all_devices_from_management_request_builder.RemoveAllDevicesFromManagementRequestBuilder:
-        """
-        Provides operations to call the removeAllDevicesFromManagement method.
-        """
-        from .remove_all_devices_from_management import remove_all_devices_from_management_request_builder
-
-        return remove_all_devices_from_management_request_builder.RemoveAllDevicesFromManagementRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def reprocess_license_assignment(self) -> reprocess_license_assignment_request_builder.ReprocessLicenseAssignmentRequestBuilder:
-        """
-        Provides operations to call the reprocessLicenseAssignment method.
-        """
-        from .reprocess_license_assignment import reprocess_license_assignment_request_builder
-
-        return reprocess_license_assignment_request_builder.ReprocessLicenseAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
-        """
-        Provides operations to call the restore method.
-        """
-        from .restore import restore_request_builder
-
-        return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def revoke_sign_in_sessions(self) -> revoke_sign_in_sessions_request_builder.RevokeSignInSessionsRequestBuilder:
-        """
-        Provides operations to call the revokeSignInSessions method.
-        """
-        from .revoke_sign_in_sessions import revoke_sign_in_sessions_request_builder
-
-        return revoke_sign_in_sessions_request_builder.RevokeSignInSessionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def scoped_role_member_of(self) -> scoped_role_member_of_request_builder.ScopedRoleMemberOfRequestBuilder:
-        """
-        Provides operations to manage the scopedRoleMemberOf property of the microsoft.graph.user entity.
-        """
-        from .scoped_role_member_of import scoped_role_member_of_request_builder
-
-        return scoped_role_member_of_request_builder.ScopedRoleMemberOfRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def send_mail(self) -> send_mail_request_builder.SendMailRequestBuilder:
-        """
-        Provides operations to call the sendMail method.
-        """
-        from .send_mail import send_mail_request_builder
-
-        return send_mail_request_builder.SendMailRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def settings(self) -> settings_request_builder.SettingsRequestBuilder:
-        """
-        Provides operations to manage the settings property of the microsoft.graph.user entity.
-        """
-        from .settings import settings_request_builder
-
-        return settings_request_builder.SettingsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def teamwork(self) -> teamwork_request_builder.TeamworkRequestBuilder:
-        """
-        Provides operations to manage the teamwork property of the microsoft.graph.user entity.
-        """
-        from .teamwork import teamwork_request_builder
-
-        return teamwork_request_builder.TeamworkRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def todo(self) -> todo_request_builder.TodoRequestBuilder:
-        """
-        Provides operations to manage the todo property of the microsoft.graph.user entity.
-        """
-        from .todo import todo_request_builder
-
-        return todo_request_builder.TodoRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def transitive_member_of(self) -> transitive_member_of_request_builder.TransitiveMemberOfRequestBuilder:
-        """
-        Provides operations to manage the transitiveMemberOf property of the microsoft.graph.user entity.
-        """
-        from .transitive_member_of import transitive_member_of_request_builder
-
-        return transitive_member_of_request_builder.TransitiveMemberOfRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def translate_exchange_ids(self) -> translate_exchange_ids_request_builder.TranslateExchangeIdsRequestBuilder:
-        """
-        Provides operations to call the translateExchangeIds method.
-        """
-        from .translate_exchange_ids import translate_exchange_ids_request_builder
-
-        return translate_exchange_ids_request_builder.TranslateExchangeIdsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def wipe_managed_app_registrations_by_device_tag(self) -> wipe_managed_app_registrations_by_device_tag_request_builder.WipeManagedAppRegistrationsByDeviceTagRequestBuilder:
-        """
-        Provides operations to call the wipeManagedAppRegistrationsByDeviceTag method.
-        """
-        from .wipe_managed_app_registrations_by_device_tag import wipe_managed_app_registrations_by_device_tag_request_builder
-
-        return wipe_managed_app_registrations_by_device_tag_request_builder.WipeManagedAppRegistrationsByDeviceTagRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class MeRequestBuilderGetQueryParameters():
         """
         Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -1391,12 +1145,6 @@ class MeRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class MeRequestBuilderGetRequestConfiguration():

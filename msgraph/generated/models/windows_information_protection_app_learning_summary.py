@@ -1,30 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import application_type, entity
-
-from . import entity
+application_type = lazy_import('msgraph.generated.models.application_type')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class WindowsInformationProtectionAppLearningSummary(entity.Entity):
     """
     Windows Information Protection AppLearning Summary entity.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new windowsInformationProtectionAppLearningSummary and sets the default values.
-        """
-        super().__init__()
-        # Application Name
-        self._application_name: Optional[str] = None
-        # Possible types of Application
-        self._application_type: Optional[application_type.ApplicationType] = None
-        # Device Count
-        self._device_count: Optional[int] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
     @property
     def application_name(self,) -> Optional[str]:
         """
@@ -58,6 +43,20 @@ class WindowsInformationProtectionAppLearningSummary(entity.Entity):
             value: Value to set for the application_type property.
         """
         self._application_type = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new windowsInformationProtectionAppLearningSummary and sets the default values.
+        """
+        super().__init__()
+        # Application Name
+        self._application_name: Optional[str] = None
+        # Possible types of Application
+        self._application_type: Optional[application_type.ApplicationType] = None
+        # Device Count
+        self._device_count: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionAppLearningSummary:
@@ -93,9 +92,7 @@ class WindowsInformationProtectionAppLearningSummary(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import application_type, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "applicationName": lambda n : setattr(self, 'application_name', n.get_str_value()),
             "applicationType": lambda n : setattr(self, 'application_type', n.get_enum_value(application_type.ApplicationType)),
             "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),

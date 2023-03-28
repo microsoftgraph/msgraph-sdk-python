@@ -1,17 +1,38 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import android_custom_configuration, android_general_device_configuration, android_work_profile_custom_configuration, android_work_profile_general_device_configuration, apple_device_features_configuration_base, device_configuration_assignment, device_configuration_device_overview, device_configuration_device_status, device_configuration_user_overview, device_configuration_user_status, edition_upgrade_configuration, entity, ios_certificate_profile, ios_custom_configuration, ios_device_features_configuration, ios_general_device_configuration, ios_update_configuration, mac_o_s_custom_configuration, mac_o_s_device_features_configuration, mac_o_s_general_device_configuration, setting_state_device_summary, shared_p_c_configuration, windows10_custom_configuration, windows10_endpoint_protection_configuration, windows10_enterprise_modern_app_management_configuration, windows10_general_configuration, windows10_secure_assessment_configuration, windows10_team_general_configuration, windows81_general_configuration, windows_defender_advanced_threat_protection_configuration, windows_phone81_custom_configuration, windows_phone81_general_configuration, windows_update_for_business_configuration
-
-from . import entity
+device_configuration_assignment = lazy_import('msgraph.generated.models.device_configuration_assignment')
+device_configuration_device_overview = lazy_import('msgraph.generated.models.device_configuration_device_overview')
+device_configuration_device_status = lazy_import('msgraph.generated.models.device_configuration_device_status')
+device_configuration_user_overview = lazy_import('msgraph.generated.models.device_configuration_user_overview')
+device_configuration_user_status = lazy_import('msgraph.generated.models.device_configuration_user_status')
+entity = lazy_import('msgraph.generated.models.entity')
+setting_state_device_summary = lazy_import('msgraph.generated.models.setting_state_device_summary')
 
 class DeviceConfiguration(entity.Entity):
     """
     Device Configuration.
     """
+    @property
+    def assignments(self,) -> Optional[List[device_configuration_assignment.DeviceConfigurationAssignment]]:
+        """
+        Gets the assignments property value. The list of assignments for the device configuration profile.
+        Returns: Optional[List[device_configuration_assignment.DeviceConfigurationAssignment]]
+        """
+        return self._assignments
+    
+    @assignments.setter
+    def assignments(self,value: Optional[List[device_configuration_assignment.DeviceConfigurationAssignment]] = None) -> None:
+        """
+        Sets the assignments property value. The list of assignments for the device configuration profile.
+        Args:
+            value: Value to set for the assignments property.
+        """
+        self._assignments = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceConfiguration and sets the default values.
@@ -43,23 +64,6 @@ class DeviceConfiguration(entity.Entity):
         self._version: Optional[int] = None
     
     @property
-    def assignments(self,) -> Optional[List[device_configuration_assignment.DeviceConfigurationAssignment]]:
-        """
-        Gets the assignments property value. The list of assignments for the device configuration profile.
-        Returns: Optional[List[device_configuration_assignment.DeviceConfigurationAssignment]]
-        """
-        return self._assignments
-    
-    @assignments.setter
-    def assignments(self,value: Optional[List[device_configuration_assignment.DeviceConfigurationAssignment]] = None) -> None:
-        """
-        Sets the assignments property value. The list of assignments for the device configuration profile.
-        Args:
-            value: Value to set for the assignments property.
-        """
-        self._assignments = value
-    
-    @property
     def created_date_time(self,) -> Optional[datetime]:
         """
         Gets the createdDateTime property value. DateTime the object was created.
@@ -86,113 +90,6 @@ class DeviceConfiguration(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.androidCustomConfiguration":
-                from . import android_custom_configuration
-
-                return android_custom_configuration.AndroidCustomConfiguration()
-            if mapping_value == "#microsoft.graph.androidGeneralDeviceConfiguration":
-                from . import android_general_device_configuration
-
-                return android_general_device_configuration.AndroidGeneralDeviceConfiguration()
-            if mapping_value == "#microsoft.graph.androidWorkProfileCustomConfiguration":
-                from . import android_work_profile_custom_configuration
-
-                return android_work_profile_custom_configuration.AndroidWorkProfileCustomConfiguration()
-            if mapping_value == "#microsoft.graph.androidWorkProfileGeneralDeviceConfiguration":
-                from . import android_work_profile_general_device_configuration
-
-                return android_work_profile_general_device_configuration.AndroidWorkProfileGeneralDeviceConfiguration()
-            if mapping_value == "#microsoft.graph.appleDeviceFeaturesConfigurationBase":
-                from . import apple_device_features_configuration_base
-
-                return apple_device_features_configuration_base.AppleDeviceFeaturesConfigurationBase()
-            if mapping_value == "#microsoft.graph.editionUpgradeConfiguration":
-                from . import edition_upgrade_configuration
-
-                return edition_upgrade_configuration.EditionUpgradeConfiguration()
-            if mapping_value == "#microsoft.graph.iosCertificateProfile":
-                from . import ios_certificate_profile
-
-                return ios_certificate_profile.IosCertificateProfile()
-            if mapping_value == "#microsoft.graph.iosCustomConfiguration":
-                from . import ios_custom_configuration
-
-                return ios_custom_configuration.IosCustomConfiguration()
-            if mapping_value == "#microsoft.graph.iosDeviceFeaturesConfiguration":
-                from . import ios_device_features_configuration
-
-                return ios_device_features_configuration.IosDeviceFeaturesConfiguration()
-            if mapping_value == "#microsoft.graph.iosGeneralDeviceConfiguration":
-                from . import ios_general_device_configuration
-
-                return ios_general_device_configuration.IosGeneralDeviceConfiguration()
-            if mapping_value == "#microsoft.graph.iosUpdateConfiguration":
-                from . import ios_update_configuration
-
-                return ios_update_configuration.IosUpdateConfiguration()
-            if mapping_value == "#microsoft.graph.macOSCustomConfiguration":
-                from . import mac_o_s_custom_configuration
-
-                return mac_o_s_custom_configuration.MacOSCustomConfiguration()
-            if mapping_value == "#microsoft.graph.macOSDeviceFeaturesConfiguration":
-                from . import mac_o_s_device_features_configuration
-
-                return mac_o_s_device_features_configuration.MacOSDeviceFeaturesConfiguration()
-            if mapping_value == "#microsoft.graph.macOSGeneralDeviceConfiguration":
-                from . import mac_o_s_general_device_configuration
-
-                return mac_o_s_general_device_configuration.MacOSGeneralDeviceConfiguration()
-            if mapping_value == "#microsoft.graph.sharedPCConfiguration":
-                from . import shared_p_c_configuration
-
-                return shared_p_c_configuration.SharedPCConfiguration()
-            if mapping_value == "#microsoft.graph.windows10CustomConfiguration":
-                from . import windows10_custom_configuration
-
-                return windows10_custom_configuration.Windows10CustomConfiguration()
-            if mapping_value == "#microsoft.graph.windows10EndpointProtectionConfiguration":
-                from . import windows10_endpoint_protection_configuration
-
-                return windows10_endpoint_protection_configuration.Windows10EndpointProtectionConfiguration()
-            if mapping_value == "#microsoft.graph.windows10EnterpriseModernAppManagementConfiguration":
-                from . import windows10_enterprise_modern_app_management_configuration
-
-                return windows10_enterprise_modern_app_management_configuration.Windows10EnterpriseModernAppManagementConfiguration()
-            if mapping_value == "#microsoft.graph.windows10GeneralConfiguration":
-                from . import windows10_general_configuration
-
-                return windows10_general_configuration.Windows10GeneralConfiguration()
-            if mapping_value == "#microsoft.graph.windows10SecureAssessmentConfiguration":
-                from . import windows10_secure_assessment_configuration
-
-                return windows10_secure_assessment_configuration.Windows10SecureAssessmentConfiguration()
-            if mapping_value == "#microsoft.graph.windows10TeamGeneralConfiguration":
-                from . import windows10_team_general_configuration
-
-                return windows10_team_general_configuration.Windows10TeamGeneralConfiguration()
-            if mapping_value == "#microsoft.graph.windows81GeneralConfiguration":
-                from . import windows81_general_configuration
-
-                return windows81_general_configuration.Windows81GeneralConfiguration()
-            if mapping_value == "#microsoft.graph.windowsDefenderAdvancedThreatProtectionConfiguration":
-                from . import windows_defender_advanced_threat_protection_configuration
-
-                return windows_defender_advanced_threat_protection_configuration.WindowsDefenderAdvancedThreatProtectionConfiguration()
-            if mapping_value == "#microsoft.graph.windowsPhone81CustomConfiguration":
-                from . import windows_phone81_custom_configuration
-
-                return windows_phone81_custom_configuration.WindowsPhone81CustomConfiguration()
-            if mapping_value == "#microsoft.graph.windowsPhone81GeneralConfiguration":
-                from . import windows_phone81_general_configuration
-
-                return windows_phone81_general_configuration.WindowsPhone81GeneralConfiguration()
-            if mapping_value == "#microsoft.graph.windowsUpdateForBusinessConfiguration":
-                from . import windows_update_for_business_configuration
-
-                return windows_update_for_business_configuration.WindowsUpdateForBusinessConfiguration()
         return DeviceConfiguration()
     
     @property
@@ -285,9 +182,7 @@ class DeviceConfiguration(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_custom_configuration, android_general_device_configuration, android_work_profile_custom_configuration, android_work_profile_general_device_configuration, apple_device_features_configuration_base, device_configuration_assignment, device_configuration_device_overview, device_configuration_device_status, device_configuration_user_overview, device_configuration_user_status, edition_upgrade_configuration, entity, ios_certificate_profile, ios_custom_configuration, ios_device_features_configuration, ios_general_device_configuration, ios_update_configuration, mac_o_s_custom_configuration, mac_o_s_device_features_configuration, mac_o_s_general_device_configuration, setting_state_device_summary, shared_p_c_configuration, windows10_custom_configuration, windows10_endpoint_protection_configuration, windows10_enterprise_modern_app_management_configuration, windows10_general_configuration, windows10_secure_assessment_configuration, windows10_team_general_configuration, windows81_general_configuration, windows_defender_advanced_threat_protection_configuration, windows_phone81_custom_configuration, windows_phone81_general_configuration, windows_update_for_business_configuration
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(device_configuration_assignment.DeviceConfigurationAssignment)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),

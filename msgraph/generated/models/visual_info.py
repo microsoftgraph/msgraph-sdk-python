@@ -1,31 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import image_info, json
+image_info = lazy_import('msgraph.generated.models.image_info')
+json = lazy_import('msgraph.generated.models.json')
 
 class VisualInfo(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new visualInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Optional. JSON object used to represent an icon which represents the application used to generate the activity
-        self._attribution: Optional[image_info.ImageInfo] = None
-        # Optional. Background color used to render the activity in the UI - brand color for the application source of the activity. Must be a valid hex color
-        self._background_color: Optional[str] = None
-        # Optional. Custom piece of data - JSON object used to provide custom content to render the activity in the Windows Shell UI
-        self._content: Optional[json.Json] = None
-        # Optional. Longer text description of the user's unique activity (example: document name, first sentence, and/or metadata)
-        self._description: Optional[str] = None
-        # Required. Short text description of the user's unique activity (for example, document name in cases where an activity refers to document creation)
-        self._display_text: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -76,6 +57,26 @@ class VisualInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the background_color property.
         """
         self._background_color = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new visualInfo and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Optional. JSON object used to represent an icon which represents the application used to generate the activity
+        self._attribution: Optional[image_info.ImageInfo] = None
+        # Optional. Background color used to render the activity in the UI - brand color for the application source of the activity. Must be a valid hex color
+        self._background_color: Optional[str] = None
+        # Optional. Custom piece of data - JSON object used to provide custom content to render the activity in the Windows Shell UI
+        self._content: Optional[json.Json] = None
+        # Optional. Longer text description of the user's unique activity (example: document name, first sentence, and/or metadata)
+        self._description: Optional[str] = None
+        # Required. Short text description of the user's unique activity (for example, document name in cases where an activity refers to document creation)
+        self._display_text: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
     
     @property
     def content(self,) -> Optional[json.Json]:
@@ -145,9 +146,7 @@ class VisualInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import image_info, json
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "attribution": lambda n : setattr(self, 'attribution', n.get_object_value(image_info.ImageInfo)),
             "backgroundColor": lambda n : setattr(self, 'background_color', n.get_str_value()),
             "content": lambda n : setattr(self, 'content', n.get_object_value(json.Json)),

@@ -1,28 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import identity_provider_base
-
-from . import identity_provider_base
+identity_provider_base = lazy_import('msgraph.generated.models.identity_provider_base')
 
 class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AppleManagedIdentityProvider and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.appleManagedIdentityProvider"
-        # The certificate data, which is a long string of text from the certificate. Can be null.
-        self._certificate_data: Optional[str] = None
-        # The Apple developer identifier. Required.
-        self._developer_id: Optional[str] = None
-        # The Apple key identifier. Required.
-        self._key_id: Optional[str] = None
-        # The Apple service identifier. Required.
-        self._service_id: Optional[str] = None
-    
     @property
     def certificate_data(self,) -> Optional[str]:
         """
@@ -39,6 +22,21 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
             value: Value to set for the certificate_data property.
         """
         self._certificate_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new AppleManagedIdentityProvider and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.appleManagedIdentityProvider"
+        # The certificate data, which is a long string of text from the certificate. Can be null.
+        self._certificate_data: Optional[str] = None
+        # The Apple developer identifier. Required.
+        self._developer_id: Optional[str] = None
+        # The Apple key identifier. Required.
+        self._key_id: Optional[str] = None
+        # The Apple service identifier. Required.
+        self._service_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppleManagedIdentityProvider:
@@ -74,9 +72,7 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_provider_base
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "certificateData": lambda n : setattr(self, 'certificate_data', n.get_str_value()),
             "developerId": lambda n : setattr(self, 'developer_id', n.get_str_value()),
             "keyId": lambda n : setattr(self, 'key_id', n.get_str_value()),

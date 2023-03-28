@@ -1,38 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import mobile_contained_app, mobile_lob_app, windows_architecture, windows_device_type, windows_minimum_operating_system
-
-from . import mobile_lob_app
+mobile_contained_app = lazy_import('msgraph.generated.models.mobile_contained_app')
+mobile_lob_app = lazy_import('msgraph.generated.models.mobile_lob_app')
+windows_architecture = lazy_import('msgraph.generated.models.windows_architecture')
+windows_device_type = lazy_import('msgraph.generated.models.windows_device_type')
+windows_minimum_operating_system = lazy_import('msgraph.generated.models.windows_minimum_operating_system')
 
 class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsUniversalAppX and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsUniversalAppX"
-        # Contains properties for Windows architecture.
-        self._applicable_architectures: Optional[windows_architecture.WindowsArchitecture] = None
-        # Contains properties for Windows device type.
-        self._applicable_device_types: Optional[windows_device_type.WindowsDeviceType] = None
-        # The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
-        self._committed_contained_apps: Optional[List[mobile_contained_app.MobileContainedApp]] = None
-        # The Identity Name.
-        self._identity_name: Optional[str] = None
-        # The Identity Publisher Hash.
-        self._identity_publisher_hash: Optional[str] = None
-        # The Identity Resource Identifier.
-        self._identity_resource_identifier: Optional[str] = None
-        # The identity version.
-        self._identity_version: Optional[str] = None
-        # Whether or not the app is a bundle.
-        self._is_bundle: Optional[bool] = None
-        # The minimum operating system required for a Windows mobile app.
-        self._minimum_supported_operating_system: Optional[windows_minimum_operating_system.WindowsMinimumOperatingSystem] = None
-    
     @property
     def applicable_architectures(self,) -> Optional[windows_architecture.WindowsArchitecture]:
         """
@@ -84,6 +61,31 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         """
         self._committed_contained_apps = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new WindowsUniversalAppX and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.windowsUniversalAppX"
+        # Contains properties for Windows architecture.
+        self._applicable_architectures: Optional[windows_architecture.WindowsArchitecture] = None
+        # Contains properties for Windows device type.
+        self._applicable_device_types: Optional[windows_device_type.WindowsDeviceType] = None
+        # The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
+        self._committed_contained_apps: Optional[List[mobile_contained_app.MobileContainedApp]] = None
+        # The Identity Name.
+        self._identity_name: Optional[str] = None
+        # The Identity Publisher Hash.
+        self._identity_publisher_hash: Optional[str] = None
+        # The Identity Resource Identifier.
+        self._identity_resource_identifier: Optional[str] = None
+        # The identity version.
+        self._identity_version: Optional[str] = None
+        # Whether or not the app is a bundle.
+        self._is_bundle: Optional[bool] = None
+        # The minimum operating system required for a Windows mobile app.
+        self._minimum_supported_operating_system: Optional[windows_minimum_operating_system.WindowsMinimumOperatingSystem] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsUniversalAppX:
         """
@@ -101,9 +103,7 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_contained_app, mobile_lob_app, windows_architecture, windows_device_type, windows_minimum_operating_system
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "applicableArchitectures": lambda n : setattr(self, 'applicable_architectures', n.get_enum_value(windows_architecture.WindowsArchitecture)),
             "applicableDeviceTypes": lambda n : setattr(self, 'applicable_device_types', n.get_enum_value(windows_device_type.WindowsDeviceType)),
             "committedContainedApps": lambda n : setattr(self, 'committed_contained_apps', n.get_collection_of_object_values(mobile_contained_app.MobileContainedApp)),

@@ -1,12 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import device_management_partner_app_type, device_management_partner_assignment, device_management_partner_tenant_state, entity
-
-from . import entity
+device_management_partner_app_type = lazy_import('msgraph.generated.models.device_management_partner_app_type')
+device_management_partner_assignment = lazy_import('msgraph.generated.models.device_management_partner_assignment')
+device_management_partner_tenant_state = lazy_import('msgraph.generated.models.device_management_partner_tenant_state')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceManagementPartner(entity.Entity):
     """
@@ -72,9 +73,7 @@ class DeviceManagementPartner(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_management_partner_app_type, device_management_partner_assignment, device_management_partner_tenant_state, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "groupsRequiringPartnerEnrollment": lambda n : setattr(self, 'groups_requiring_partner_enrollment', n.get_collection_of_object_values(device_management_partner_assignment.DeviceManagementPartnerAssignment)),
             "isConfigured": lambda n : setattr(self, 'is_configured', n.get_bool_value()),

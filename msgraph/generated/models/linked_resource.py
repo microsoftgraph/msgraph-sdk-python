@@ -1,33 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class LinkedResource(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new linkedResource and sets the default values.
-        """
-        super().__init__()
-        # The app name of the source that sends the linkedResource.
-        self._application_name: Optional[str] = None
-        # The title of the linkedResource.
-        self._display_name: Optional[str] = None
-        # ID of the object that is associated with this task on the third-party/partner system.
-        self._external_id: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Deep link to the linkedResource.
-        self._web_url: Optional[str] = None
-    
     @property
     def application_name(self,) -> Optional[str]:
         """
-        Gets the applicationName property value. The app name of the source that sends the linkedResource.
+        Gets the applicationName property value. Field indicating the app name of the source that is sending the linkedResource.
         Returns: Optional[str]
         """
         return self._application_name
@@ -35,11 +17,27 @@ class LinkedResource(entity.Entity):
     @application_name.setter
     def application_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the applicationName property value. The app name of the source that sends the linkedResource.
+        Sets the applicationName property value. Field indicating the app name of the source that is sending the linkedResource.
         Args:
             value: Value to set for the application_name property.
         """
         self._application_name = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new linkedResource and sets the default values.
+        """
+        super().__init__()
+        # Field indicating the app name of the source that is sending the linkedResource.
+        self._application_name: Optional[str] = None
+        # Field indicating the title of the linkedResource.
+        self._display_name: Optional[str] = None
+        # Id of the object that is associated with this task on the third-party/partner system.
+        self._external_id: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Deep link to the linkedResource.
+        self._web_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LinkedResource:
@@ -56,7 +54,7 @@ class LinkedResource(entity.Entity):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The title of the linkedResource.
+        Gets the displayName property value. Field indicating the title of the linkedResource.
         Returns: Optional[str]
         """
         return self._display_name
@@ -64,7 +62,7 @@ class LinkedResource(entity.Entity):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The title of the linkedResource.
+        Sets the displayName property value. Field indicating the title of the linkedResource.
         Args:
             value: Value to set for the display_name property.
         """
@@ -73,7 +71,7 @@ class LinkedResource(entity.Entity):
     @property
     def external_id(self,) -> Optional[str]:
         """
-        Gets the externalId property value. ID of the object that is associated with this task on the third-party/partner system.
+        Gets the externalId property value. Id of the object that is associated with this task on the third-party/partner system.
         Returns: Optional[str]
         """
         return self._external_id
@@ -81,7 +79,7 @@ class LinkedResource(entity.Entity):
     @external_id.setter
     def external_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the externalId property value. ID of the object that is associated with this task on the third-party/partner system.
+        Sets the externalId property value. Id of the object that is associated with this task on the third-party/partner system.
         Args:
             value: Value to set for the external_id property.
         """
@@ -92,9 +90,7 @@ class LinkedResource(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "applicationName": lambda n : setattr(self, 'application_name', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),

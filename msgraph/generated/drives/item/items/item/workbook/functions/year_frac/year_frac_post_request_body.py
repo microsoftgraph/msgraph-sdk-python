@@ -1,25 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ........models import json
+json = lazy_import('msgraph.generated.models.json')
 
 class YearFracPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new yearFracPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The basis property
-        self._basis: Optional[json.Json] = None
-        # The endDate property
-        self._end_date: Optional[json.Json] = None
-        # The startDate property
-        self._start_date: Optional[json.Json] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -53,6 +39,20 @@ class YearFracPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the basis property.
         """
         self._basis = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new yearFracPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The basis property
+        self._basis: Optional[json.Json] = None
+        # The endDate property
+        self._end_date: Optional[json.Json] = None
+        # The startDate property
+        self._start_date: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> YearFracPostRequestBody:
@@ -88,9 +88,7 @@ class YearFracPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "basis": lambda n : setattr(self, 'basis', n.get_object_value(json.Json)),
             "endDate": lambda n : setattr(self, 'end_date', n.get_object_value(json.Json)),
             "startDate": lambda n : setattr(self, 'start_date', n.get_object_value(json.Json)),

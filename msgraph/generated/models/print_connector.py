@@ -1,34 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, printer_location
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+printer_location = lazy_import('msgraph.generated.models.printer_location')
 
 class PrintConnector(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new PrintConnector and sets the default values.
-        """
-        super().__init__()
-        # The connector's version.
-        self._app_version: Optional[str] = None
-        # The name of the connector.
-        self._display_name: Optional[str] = None
-        # The connector machine's hostname.
-        self._fully_qualified_domain_name: Optional[str] = None
-        # The physical and/or organizational location of the connector.
-        self._location: Optional[printer_location.PrinterLocation] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The connector machine's operating system version.
-        self._operating_system: Optional[str] = None
-        # The DateTimeOffset when the connector was registered.
-        self._registered_date_time: Optional[datetime] = None
-    
     @property
     def app_version(self,) -> Optional[str]:
         """
@@ -45,6 +24,26 @@ class PrintConnector(entity.Entity):
             value: Value to set for the app_version property.
         """
         self._app_version = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new printConnector and sets the default values.
+        """
+        super().__init__()
+        # The connector's version.
+        self._app_version: Optional[str] = None
+        # The name of the connector.
+        self._display_name: Optional[str] = None
+        # The connector machine's hostname.
+        self._fully_qualified_domain_name: Optional[str] = None
+        # The physical and/or organizational location of the connector.
+        self._location: Optional[printer_location.PrinterLocation] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The connector machine's operating system version.
+        self._operating_system: Optional[str] = None
+        # The DateTimeOffset when the connector was registered.
+        self._registered_date_time: Optional[datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintConnector:
@@ -97,9 +96,7 @@ class PrintConnector(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, printer_location
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "appVersion": lambda n : setattr(self, 'app_version', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "fullyQualifiedDomainName": lambda n : setattr(self, 'fully_qualified_domain_name', n.get_str_value()),

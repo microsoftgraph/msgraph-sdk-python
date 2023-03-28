@@ -7,20 +7,48 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from .....models import unified_role_assignment
-    from .....models.o_data_errors import o_data_error
-    from .app_scope import app_scope_request_builder
-    from .directory_scope import directory_scope_request_builder
-    from .principal import principal_request_builder
-    from .role_definition import role_definition_request_builder
+unified_role_assignment = lazy_import('msgraph.generated.models.unified_role_assignment')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+app_scope_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignments.item.app_scope.app_scope_request_builder')
+directory_scope_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignments.item.directory_scope.directory_scope_request_builder')
+principal_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignments.item.principal.principal_request_builder')
+role_definition_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignments.item.role_definition.role_definition_request_builder')
 
 class UnifiedRoleAssignmentItemRequestBuilder():
     """
     Provides operations to manage the roleAssignments property of the microsoft.graph.rbacApplication entity.
     """
+    @property
+    def app_scope(self) -> app_scope_request_builder.AppScopeRequestBuilder:
+        """
+        Provides operations to manage the appScope property of the microsoft.graph.unifiedRoleAssignment entity.
+        """
+        return app_scope_request_builder.AppScopeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def directory_scope(self) -> directory_scope_request_builder.DirectoryScopeRequestBuilder:
+        """
+        Provides operations to manage the directoryScope property of the microsoft.graph.unifiedRoleAssignment entity.
+        """
+        return directory_scope_request_builder.DirectoryScopeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def principal(self) -> principal_request_builder.PrincipalRequestBuilder:
+        """
+        Provides operations to manage the principal property of the microsoft.graph.unifiedRoleAssignment entity.
+        """
+        return principal_request_builder.PrincipalRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def role_definition(self) -> role_definition_request_builder.RoleDefinitionRequestBuilder:
+        """
+        Provides operations to manage the roleDefinition property of the microsoft.graph.unifiedRoleAssignment entity.
+        """
+        return role_definition_request_builder.RoleDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new UnifiedRoleAssignmentItemRequestBuilder and sets the default values.
@@ -48,8 +76,6 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -68,16 +94,12 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import unified_role_assignment
-
         return await self.request_adapter.send_async(request_info, unified_role_assignment.UnifiedRoleAssignment, error_mapping)
     
     async def patch(self,body: Optional[unified_role_assignment.UnifiedRoleAssignment] = None, request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[unified_role_assignment.UnifiedRoleAssignment]:
@@ -93,16 +115,12 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import unified_role_assignment
-
         return await self.request_adapter.send_async(request_info, unified_role_assignment.UnifiedRoleAssignment, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -160,42 +178,6 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def app_scope(self) -> app_scope_request_builder.AppScopeRequestBuilder:
-        """
-        Provides operations to manage the appScope property of the microsoft.graph.unifiedRoleAssignment entity.
-        """
-        from .app_scope import app_scope_request_builder
-
-        return app_scope_request_builder.AppScopeRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def directory_scope(self) -> directory_scope_request_builder.DirectoryScopeRequestBuilder:
-        """
-        Provides operations to manage the directoryScope property of the microsoft.graph.unifiedRoleAssignment entity.
-        """
-        from .directory_scope import directory_scope_request_builder
-
-        return directory_scope_request_builder.DirectoryScopeRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def principal(self) -> principal_request_builder.PrincipalRequestBuilder:
-        """
-        Provides operations to manage the principal property of the microsoft.graph.unifiedRoleAssignment entity.
-        """
-        from .principal import principal_request_builder
-
-        return principal_request_builder.PrincipalRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def role_definition(self) -> role_definition_request_builder.RoleDefinitionRequestBuilder:
-        """
-        Provides operations to manage the roleDefinition property of the microsoft.graph.unifiedRoleAssignment entity.
-        """
-        from .role_definition import role_definition_request_builder
-
-        return role_definition_request_builder.RoleDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class UnifiedRoleAssignmentItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -213,6 +195,12 @@ class UnifiedRoleAssignmentItemRequestBuilder():
         """
         Resource to grant access to users or groups.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -228,12 +216,6 @@ class UnifiedRoleAssignmentItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class UnifiedRoleAssignmentItemRequestBuilderGetRequestConfiguration():

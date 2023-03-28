@@ -1,24 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class UnifiedRolePermission(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new unifiedRolePermission and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Set of tasks that can be performed on a resource. Required.
-        self._allowed_resource_actions: Optional[List[str]] = None
-        # Optional constraints that must be met for the permission to be effective. Not supported for custom roles.
-        self._condition: Optional[str] = None
-        # Set of tasks that may not be performed on a resource. Not yet supported.
-        self._excluded_resource_actions: Optional[List[str]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -70,6 +55,22 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
         """
         self._condition = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new unifiedRolePermission and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Set of tasks that can be performed on a resource. Required.
+        self._allowed_resource_actions: Optional[List[str]] = None
+        # Optional constraints that must be met for the permission to be effective. Not supported for custom roles.
+        self._condition: Optional[str] = None
+        # Set of tasks that may not be performed on a resource. Not yet supported.
+        self._excluded_resource_actions: Optional[List[str]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRolePermission:
         """
@@ -104,7 +105,7 @@ class UnifiedRolePermission(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "allowedResourceActions": lambda n : setattr(self, 'allowed_resource_actions', n.get_collection_of_primitive_values(str)),
             "condition": lambda n : setattr(self, 'condition', n.get_str_value()),
             "excludedResourceActions": lambda n : setattr(self, 'excluded_resource_actions', n.get_collection_of_primitive_values(str)),

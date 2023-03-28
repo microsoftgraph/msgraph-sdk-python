@@ -1,17 +1,34 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import device_management_exchange_connector_status, device_management_exchange_connector_type, entity
-
-from . import entity
+device_management_exchange_connector_status = lazy_import('msgraph.generated.models.device_management_exchange_connector_status')
+device_management_exchange_connector_type = lazy_import('msgraph.generated.models.device_management_exchange_connector_type')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceManagementExchangeConnector(entity.Entity):
     """
     Entity which represents a connection to an Exchange environment.
     """
+    @property
+    def connector_server_name(self,) -> Optional[str]:
+        """
+        Gets the connectorServerName property value. The name of the server hosting the Exchange Connector.
+        Returns: Optional[str]
+        """
+        return self._connector_server_name
+    
+    @connector_server_name.setter
+    def connector_server_name(self,value: Optional[str] = None) -> None:
+        """
+        Sets the connectorServerName property value. The name of the server hosting the Exchange Connector.
+        Args:
+            value: Value to set for the connector_server_name property.
+        """
+        self._connector_server_name = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceManagementExchangeConnector and sets the default values.
@@ -37,23 +54,6 @@ class DeviceManagementExchangeConnector(entity.Entity):
         self._status: Optional[device_management_exchange_connector_status.DeviceManagementExchangeConnectorStatus] = None
         # The version of the ExchangeConnectorAgent
         self._version: Optional[str] = None
-    
-    @property
-    def connector_server_name(self,) -> Optional[str]:
-        """
-        Gets the connectorServerName property value. The name of the server hosting the Exchange Connector.
-        Returns: Optional[str]
-        """
-        return self._connector_server_name
-    
-    @connector_server_name.setter
-    def connector_server_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the connectorServerName property value. The name of the server hosting the Exchange Connector.
-        Args:
-            value: Value to set for the connector_server_name property.
-        """
-        self._connector_server_name = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceManagementExchangeConnector:
@@ -123,9 +123,7 @@ class DeviceManagementExchangeConnector(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_management_exchange_connector_status, device_management_exchange_connector_type, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "connectorServerName": lambda n : setattr(self, 'connector_server_name', n.get_str_value()),
             "exchangeAlias": lambda n : setattr(self, 'exchange_alias', n.get_str_value()),
             "exchangeConnectorType": lambda n : setattr(self, 'exchange_connector_type', n.get_enum_value(device_management_exchange_connector_type.DeviceManagementExchangeConnectorType)),

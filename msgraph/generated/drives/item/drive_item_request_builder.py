@@ -7,29 +7,98 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ...models import drive
-    from ...models.o_data_errors import o_data_error
-    from .bundles import bundles_request_builder
-    from .bundles.item import drive_item_item_request_builder
-    from .following import following_request_builder
-    from .following.item import drive_item_item_request_builder
-    from .items import items_request_builder
-    from .items.item import drive_item_item_request_builder
-    from .list import list_request_builder
-    from .recent import recent_request_builder
-    from .root import root_request_builder
-    from .search_with_q import search_with_q_request_builder
-    from .shared_with_me import shared_with_me_request_builder
-    from .special import special_request_builder
-    from .special.item import drive_item_item_request_builder
+bundles_request_builder = lazy_import('msgraph.generated.drives.item.bundles.bundles_request_builder')
+drive_item_item_request_builder = lazy_import('msgraph.generated.drives.item.bundles.item.drive_item_item_request_builder')
+following_request_builder = lazy_import('msgraph.generated.drives.item.following.following_request_builder')
+drive_item_item_request_builder = lazy_import('msgraph.generated.drives.item.following.item.drive_item_item_request_builder')
+items_request_builder = lazy_import('msgraph.generated.drives.item.items.items_request_builder')
+drive_item_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.drive_item_item_request_builder')
+list_request_builder = lazy_import('msgraph.generated.drives.item.list.list_request_builder')
+recent_request_builder = lazy_import('msgraph.generated.drives.item.recent.recent_request_builder')
+root_request_builder = lazy_import('msgraph.generated.drives.item.root.root_request_builder')
+search_with_q_request_builder = lazy_import('msgraph.generated.drives.item.search_with_q.search_with_q_request_builder')
+shared_with_me_request_builder = lazy_import('msgraph.generated.drives.item.shared_with_me.shared_with_me_request_builder')
+special_request_builder = lazy_import('msgraph.generated.drives.item.special.special_request_builder')
+drive_item_item_request_builder = lazy_import('msgraph.generated.drives.item.special.item.drive_item_item_request_builder')
+drive = lazy_import('msgraph.generated.models.drive')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class DriveItemRequestBuilder():
     """
     Provides operations to manage the collection of drive entities.
     """
+    @property
+    def bundles(self) -> bundles_request_builder.BundlesRequestBuilder:
+        """
+        Provides operations to manage the bundles property of the microsoft.graph.drive entity.
+        """
+        return bundles_request_builder.BundlesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def following(self) -> following_request_builder.FollowingRequestBuilder:
+        """
+        Provides operations to manage the following property of the microsoft.graph.drive entity.
+        """
+        return following_request_builder.FollowingRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def items(self) -> items_request_builder.ItemsRequestBuilder:
+        """
+        Provides operations to manage the items property of the microsoft.graph.drive entity.
+        """
+        return items_request_builder.ItemsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def list(self) -> list_request_builder.ListRequestBuilder:
+        """
+        Provides operations to manage the list property of the microsoft.graph.drive entity.
+        """
+        return list_request_builder.ListRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def recent(self) -> recent_request_builder.RecentRequestBuilder:
+        """
+        Provides operations to call the recent method.
+        """
+        return recent_request_builder.RecentRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def root(self) -> root_request_builder.RootRequestBuilder:
+        """
+        Provides operations to manage the root property of the microsoft.graph.drive entity.
+        """
+        return root_request_builder.RootRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def shared_with_me(self) -> shared_with_me_request_builder.SharedWithMeRequestBuilder:
+        """
+        Provides operations to call the sharedWithMe method.
+        """
+        return shared_with_me_request_builder.SharedWithMeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def special(self) -> special_request_builder.SpecialRequestBuilder:
+        """
+        Provides operations to manage the special property of the microsoft.graph.drive entity.
+        """
+        return special_request_builder.SpecialRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def bundles_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
+        """
+        Provides operations to manage the bundles property of the microsoft.graph.drive entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: drive_item_item_request_builder.DriveItemItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["driveItem%2Did"] = id
+        return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DriveItemRequestBuilder and sets the default values.
@@ -48,24 +117,6 @@ class DriveItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def bundles_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
-        """
-        Provides operations to manage the bundles property of the microsoft.graph.drive entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: drive_item_item_request_builder.DriveItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .bundles.item import drive_item_item_request_builder
-        from .following.item import drive_item_item_request_builder
-        from .items.item import drive_item_item_request_builder
-        from .special.item import drive_item_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["driveItem%2Did"] = id
-        return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def delete(self,request_configuration: Optional[DriveItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete entity from drives
@@ -75,8 +126,6 @@ class DriveItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -94,11 +143,6 @@ class DriveItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .bundles.item import drive_item_item_request_builder
-        from .following.item import drive_item_item_request_builder
-        from .items.item import drive_item_item_request_builder
-        from .special.item import drive_item_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["driveItem%2Did"] = id
         return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -113,16 +157,12 @@ class DriveItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import drive
-
         return await self.request_adapter.send_async(request_info, drive.Drive, error_mapping)
     
     def items_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
@@ -134,11 +174,6 @@ class DriveItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .bundles.item import drive_item_item_request_builder
-        from .following.item import drive_item_item_request_builder
-        from .items.item import drive_item_item_request_builder
-        from .special.item import drive_item_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["driveItem%2Did"] = id
         return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -156,16 +191,12 @@ class DriveItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import drive
-
         return await self.request_adapter.send_async(request_info, drive.Drive, error_mapping)
     
     def search_with_q(self,q: Optional[str] = None) -> search_with_q_request_builder.SearchWithQRequestBuilder:
@@ -177,8 +208,6 @@ class DriveItemRequestBuilder():
         """
         if q is None:
             raise Exception("q cannot be undefined")
-        from .search_with_q import search_with_q_request_builder
-
         return search_with_q_request_builder.SearchWithQRequestBuilder(self.request_adapter, self.path_parameters, q)
     
     def special_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
@@ -190,11 +219,6 @@ class DriveItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .bundles.item import drive_item_item_request_builder
-        from .following.item import drive_item_item_request_builder
-        from .items.item import drive_item_item_request_builder
-        from .special.item import drive_item_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["driveItem%2Did"] = id
         return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -254,78 +278,6 @@ class DriveItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def bundles(self) -> bundles_request_builder.BundlesRequestBuilder:
-        """
-        Provides operations to manage the bundles property of the microsoft.graph.drive entity.
-        """
-        from .bundles import bundles_request_builder
-
-        return bundles_request_builder.BundlesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def following(self) -> following_request_builder.FollowingRequestBuilder:
-        """
-        Provides operations to manage the following property of the microsoft.graph.drive entity.
-        """
-        from .following import following_request_builder
-
-        return following_request_builder.FollowingRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def items(self) -> items_request_builder.ItemsRequestBuilder:
-        """
-        Provides operations to manage the items property of the microsoft.graph.drive entity.
-        """
-        from .items import items_request_builder
-
-        return items_request_builder.ItemsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def list(self) -> list_request_builder.ListRequestBuilder:
-        """
-        Provides operations to manage the list property of the microsoft.graph.drive entity.
-        """
-        from .list import list_request_builder
-
-        return list_request_builder.ListRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def recent(self) -> recent_request_builder.RecentRequestBuilder:
-        """
-        Provides operations to call the recent method.
-        """
-        from .recent import recent_request_builder
-
-        return recent_request_builder.RecentRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def root(self) -> root_request_builder.RootRequestBuilder:
-        """
-        Provides operations to manage the root property of the microsoft.graph.drive entity.
-        """
-        from .root import root_request_builder
-
-        return root_request_builder.RootRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def shared_with_me(self) -> shared_with_me_request_builder.SharedWithMeRequestBuilder:
-        """
-        Provides operations to call the sharedWithMe method.
-        """
-        from .shared_with_me import shared_with_me_request_builder
-
-        return shared_with_me_request_builder.SharedWithMeRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def special(self) -> special_request_builder.SpecialRequestBuilder:
-        """
-        Provides operations to manage the special property of the microsoft.graph.drive entity.
-        """
-        from .special import special_request_builder
-
-        return special_request_builder.SpecialRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class DriveItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -343,6 +295,12 @@ class DriveItemRequestBuilder():
         """
         Retrieve the properties and relationships of a Drive resource. A Drive is the top-level container for a file system, such as OneDrive or SharePoint document libraries.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -358,12 +316,6 @@ class DriveItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class DriveItemRequestBuilderGetRequestConfiguration():

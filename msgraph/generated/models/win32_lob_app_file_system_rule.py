@@ -1,32 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import win32_lob_app_file_system_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
-
-from . import win32_lob_app_rule
+win32_lob_app_file_system_operation_type = lazy_import('msgraph.generated.models.win32_lob_app_file_system_operation_type')
+win32_lob_app_rule = lazy_import('msgraph.generated.models.win32_lob_app_rule')
+win32_lob_app_rule_operator = lazy_import('msgraph.generated.models.win32_lob_app_rule_operator')
 
 class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Win32LobAppFileSystemRule and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.win32LobAppFileSystemRule"
-        # A value indicating whether to expand environment variables in the 32-bit context on 64-bit systems.
-        self._check32_bit_on64_system: Optional[bool] = None
-        # The file or folder comparison value.
-        self._comparison_value: Optional[str] = None
-        # The file or folder name to look up.
-        self._file_or_folder_name: Optional[str] = None
-        # Contains all supported file system detection type.
-        self._operation_type: Optional[win32_lob_app_file_system_operation_type.Win32LobAppFileSystemOperationType] = None
-        # Contains properties for detection operator.
-        self._operator: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator] = None
-        # The file or folder path to look up.
-        self._path: Optional[str] = None
-    
     @property
     def check32_bit_on64_system(self,) -> Optional[bool]:
         """
@@ -60,6 +41,25 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
             value: Value to set for the comparison_value property.
         """
         self._comparison_value = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Win32LobAppFileSystemRule and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.win32LobAppFileSystemRule"
+        # A value indicating whether to expand environment variables in the 32-bit context on 64-bit systems.
+        self._check32_bit_on64_system: Optional[bool] = None
+        # The file or folder comparison value.
+        self._comparison_value: Optional[str] = None
+        # The file or folder name to look up.
+        self._file_or_folder_name: Optional[str] = None
+        # Contains all supported file system detection type.
+        self._operation_type: Optional[win32_lob_app_file_system_operation_type.Win32LobAppFileSystemOperationType] = None
+        # Contains properties for detection operator.
+        self._operator: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator] = None
+        # The file or folder path to look up.
+        self._path: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppFileSystemRule:
@@ -95,9 +95,7 @@ class Win32LobAppFileSystemRule(win32_lob_app_rule.Win32LobAppRule):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import win32_lob_app_file_system_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "check32BitOn64System": lambda n : setattr(self, 'check32_bit_on64_system', n.get_bool_value()),
             "comparisonValue": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
             "fileOrFolderName": lambda n : setattr(self, 'file_or_folder_name', n.get_str_value()),

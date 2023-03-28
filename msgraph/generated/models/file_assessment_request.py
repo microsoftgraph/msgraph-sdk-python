@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import threat_assessment_request
-
-from . import threat_assessment_request
+threat_assessment_request = lazy_import('msgraph.generated.models.threat_assessment_request')
 
 class FileAssessmentRequest(threat_assessment_request.ThreatAssessmentRequest):
     def __init__(self,) -> None:
@@ -70,9 +68,7 @@ class FileAssessmentRequest(threat_assessment_request.ThreatAssessmentRequest):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import threat_assessment_request
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "contentData": lambda n : setattr(self, 'content_data', n.get_str_value()),
             "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
         }

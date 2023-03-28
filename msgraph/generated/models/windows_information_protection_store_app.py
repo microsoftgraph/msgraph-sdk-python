@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import windows_information_protection_app
-
-from . import windows_information_protection_app
+windows_information_protection_app = lazy_import('msgraph.generated.models.windows_information_protection_app')
 
 class WindowsInformationProtectionStoreApp(windows_information_protection_app.WindowsInformationProtectionApp):
     def __init__(self,) -> None:
@@ -32,9 +30,7 @@ class WindowsInformationProtectionStoreApp(windows_information_protection_app.Wi
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import windows_information_protection_app
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

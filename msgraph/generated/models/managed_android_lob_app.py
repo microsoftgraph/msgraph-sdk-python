@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import android_minimum_operating_system, managed_mobile_lob_app
-
-from . import managed_mobile_lob_app
+android_minimum_operating_system = lazy_import('msgraph.generated.models.android_minimum_operating_system')
+managed_mobile_lob_app = lazy_import('msgraph.generated.models.managed_mobile_lob_app')
 
 class ManagedAndroidLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
     def __init__(self,) -> None:
@@ -40,9 +39,7 @@ class ManagedAndroidLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_minimum_operating_system, managed_mobile_lob_app
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "minimumSupportedOperatingSystem": lambda n : setattr(self, 'minimum_supported_operating_system', n.get_object_value(android_minimum_operating_system.AndroidMinimumOperatingSystem)),
             "packageId": lambda n : setattr(self, 'package_id', n.get_str_value()),
             "versionCode": lambda n : setattr(self, 'version_code', n.get_str_value()),

@@ -1,41 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import ios_device_type, mobile_app, vpp_licensing_type, vpp_token_account_type
-
-from . import mobile_app
+ios_device_type = lazy_import('msgraph.generated.models.ios_device_type')
+mobile_app = lazy_import('msgraph.generated.models.mobile_app')
+vpp_licensing_type = lazy_import('msgraph.generated.models.vpp_licensing_type')
+vpp_token_account_type = lazy_import('msgraph.generated.models.vpp_token_account_type')
 
 class IosVppApp(mobile_app.MobileApp):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IosVppApp and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.iosVppApp"
-        # The store URL.
-        self._app_store_url: Optional[str] = None
-        # The applicable iOS Device Type.
-        self._applicable_device_type: Optional[ios_device_type.IosDeviceType] = None
-        # The Identity Name.
-        self._bundle_id: Optional[str] = None
-        # The supported License Type.
-        self._licensing_type: Optional[vpp_licensing_type.VppLicensingType] = None
-        # The VPP application release date and time.
-        self._release_date_time: Optional[datetime] = None
-        # The total number of VPP licenses.
-        self._total_license_count: Optional[int] = None
-        # The number of VPP licenses in use.
-        self._used_license_count: Optional[int] = None
-        # Possible types of an Apple Volume Purchase Program token.
-        self._vpp_token_account_type: Optional[vpp_token_account_type.VppTokenAccountType] = None
-        # The Apple Id associated with the given Apple Volume Purchase Program Token.
-        self._vpp_token_apple_id: Optional[str] = None
-        # The organization associated with the Apple Volume Purchase Program Token
-        self._vpp_token_organization_name: Optional[str] = None
-    
     @property
     def app_store_url(self,) -> Optional[str]:
         """
@@ -87,6 +61,33 @@ class IosVppApp(mobile_app.MobileApp):
         """
         self._bundle_id = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new IosVppApp and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.iosVppApp"
+        # The store URL.
+        self._app_store_url: Optional[str] = None
+        # The applicable iOS Device Type.
+        self._applicable_device_type: Optional[ios_device_type.IosDeviceType] = None
+        # The Identity Name.
+        self._bundle_id: Optional[str] = None
+        # The supported License Type.
+        self._licensing_type: Optional[vpp_licensing_type.VppLicensingType] = None
+        # The VPP application release date and time.
+        self._release_date_time: Optional[datetime] = None
+        # The total number of VPP licenses.
+        self._total_license_count: Optional[int] = None
+        # The number of VPP licenses in use.
+        self._used_license_count: Optional[int] = None
+        # Possible types of an Apple Volume Purchase Program token.
+        self._vpp_token_account_type: Optional[vpp_token_account_type.VppTokenAccountType] = None
+        # The Apple Id associated with the given Apple Volume Purchase Program Token.
+        self._vpp_token_apple_id: Optional[str] = None
+        # The organization associated with the Apple Volume Purchase Program Token
+        self._vpp_token_organization_name: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosVppApp:
         """
@@ -104,9 +105,7 @@ class IosVppApp(mobile_app.MobileApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ios_device_type, mobile_app, vpp_licensing_type, vpp_token_account_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "applicableDeviceType": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(ios_device_type.IosDeviceType)),
             "appStoreUrl": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
             "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),

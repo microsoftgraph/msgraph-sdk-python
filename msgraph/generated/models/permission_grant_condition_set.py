@@ -1,37 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, permission_type
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+permission_type = lazy_import('msgraph.generated.models.permission_type')
 
 class PermissionGrantConditionSet(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new permissionGrantConditionSet and sets the default values.
-        """
-        super().__init__()
-        # A list of appId values for the client applications to match with, or a list with the single value all to match any client application. Default is the single value all.
-        self._client_application_ids: Optional[List[str]] = None
-        # A list of Microsoft Partner Network (MPN) IDs for verified publishers of the client application, or a list with the single value all to match with client apps from any publisher. Default is the single value all.
-        self._client_application_publisher_ids: Optional[List[str]] = None
-        # A list of Azure Active Directory tenant IDs in which the client application is registered, or a list with the single value all to match with client apps registered in any tenant. Default is the single value all.
-        self._client_application_tenant_ids: Optional[List[str]] = None
-        # Set to true to only match on client applications with a verified publisher. Set to false to match on any client app, even if it does not have a verified publisher. Default is false.
-        self._client_applications_from_verified_publisher_only: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The permission classification for the permission being granted, or all to match with any permission classification (including permissions which are not classified). Default is all.
-        self._permission_classification: Optional[str] = None
-        # The permission type of the permission being granted. Possible values: application for application permissions (e.g. app roles), or delegated for delegated permissions. The value delegatedUserConsentable indicates delegated permissions which have not been configured by the API publisher to require admin consent—this value may be used in built-in permission grant policies, but cannot be used in custom permission grant policies. Required.
-        self._permission_type: Optional[permission_type.PermissionType] = None
-        # The list of id values for the specific permissions to match with, or a list with the single value all to match with any permission. The id of delegated permissions can be found in the oauth2PermissionScopes property of the API's **servicePrincipal** object. The id of application permissions can be found in the appRoles property of the API's **servicePrincipal** object. The id of resource-specific application permissions can be found in the resourceSpecificApplicationPermissions property of the API's **servicePrincipal** object. Default is the single value all.
-        self._permissions: Optional[List[str]] = None
-        # The appId of the resource application (e.g. the API) for which a permission is being granted, or any to match with any resource application or API. Default is any.
-        self._resource_application: Optional[str] = None
-    
     @property
     def client_application_ids(self,) -> Optional[List[str]]:
         """
@@ -100,6 +75,30 @@ class PermissionGrantConditionSet(entity.Entity):
         """
         self._client_applications_from_verified_publisher_only = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new permissionGrantConditionSet and sets the default values.
+        """
+        super().__init__()
+        # A list of appId values for the client applications to match with, or a list with the single value all to match any client application. Default is the single value all.
+        self._client_application_ids: Optional[List[str]] = None
+        # A list of Microsoft Partner Network (MPN) IDs for verified publishers of the client application, or a list with the single value all to match with client apps from any publisher. Default is the single value all.
+        self._client_application_publisher_ids: Optional[List[str]] = None
+        # A list of Azure Active Directory tenant IDs in which the client application is registered, or a list with the single value all to match with client apps registered in any tenant. Default is the single value all.
+        self._client_application_tenant_ids: Optional[List[str]] = None
+        # Set to true to only match on client applications with a verified publisher. Set to false to match on any client app, even if it does not have a verified publisher. Default is false.
+        self._client_applications_from_verified_publisher_only: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The permission classification for the permission being granted, or all to match with any permission classification (including permissions which are not classified). Default is all.
+        self._permission_classification: Optional[str] = None
+        # The permission type of the permission being granted. Possible values: application for application permissions (e.g. app roles), or delegated for delegated permissions. The value delegatedUserConsentable indicates delegated permissions which have not been configured by the API publisher to require admin consent—this value may be used in built-in permission grant policies, but cannot be used in custom permission grant policies. Required.
+        self._permission_type: Optional[permission_type.PermissionType] = None
+        # The list of id values for the specific permissions to match with, or a list with the single value all to match with any permission. The id of delegated permissions can be found in the oauth2PermissionScopes property of the API's **servicePrincipal** object. The id of application permissions can be found in the appRoles property of the API's **servicePrincipal** object. The id of resource-specific application permissions can be found in the resourceSpecificApplicationPermissions property of the API's **servicePrincipal** object. Default is the single value all.
+        self._permissions: Optional[List[str]] = None
+        # The appId of the resource application (e.g. the API) for which a permission is being granted, or any to match with any resource application or API. Default is any.
+        self._resource_application: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PermissionGrantConditionSet:
         """
@@ -117,9 +116,7 @@ class PermissionGrantConditionSet(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, permission_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "clientApplicationsFromVerifiedPublisherOnly": lambda n : setattr(self, 'client_applications_from_verified_publisher_only', n.get_bool_value()),
             "clientApplicationIds": lambda n : setattr(self, 'client_application_ids', n.get_collection_of_primitive_values(str)),
             "clientApplicationPublisherIds": lambda n : setattr(self, 'client_application_publisher_ids', n.get_collection_of_primitive_values(str)),

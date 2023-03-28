@@ -7,18 +7,32 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import remote_assistance_partner
-    from ....models.o_data_errors import o_data_error
-    from .begin_onboarding import begin_onboarding_request_builder
-    from .disconnect import disconnect_request_builder
+begin_onboarding_request_builder = lazy_import('msgraph.generated.device_management.remote_assistance_partners.item.begin_onboarding.begin_onboarding_request_builder')
+disconnect_request_builder = lazy_import('msgraph.generated.device_management.remote_assistance_partners.item.disconnect.disconnect_request_builder')
+remote_assistance_partner = lazy_import('msgraph.generated.models.remote_assistance_partner')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class RemoteAssistancePartnerItemRequestBuilder():
     """
     Provides operations to manage the remoteAssistancePartners property of the microsoft.graph.deviceManagement entity.
     """
+    @property
+    def begin_onboarding(self) -> begin_onboarding_request_builder.BeginOnboardingRequestBuilder:
+        """
+        Provides operations to call the beginOnboarding method.
+        """
+        return begin_onboarding_request_builder.BeginOnboardingRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def disconnect(self) -> disconnect_request_builder.DisconnectRequestBuilder:
+        """
+        Provides operations to call the disconnect method.
+        """
+        return disconnect_request_builder.DisconnectRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new RemoteAssistancePartnerItemRequestBuilder and sets the default values.
@@ -46,8 +60,6 @@ class RemoteAssistancePartnerItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -66,16 +78,12 @@ class RemoteAssistancePartnerItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import remote_assistance_partner
-
         return await self.request_adapter.send_async(request_info, remote_assistance_partner.RemoteAssistancePartner, error_mapping)
     
     async def patch(self,body: Optional[remote_assistance_partner.RemoteAssistancePartner] = None, request_configuration: Optional[RemoteAssistancePartnerItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[remote_assistance_partner.RemoteAssistancePartner]:
@@ -91,16 +99,12 @@ class RemoteAssistancePartnerItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import remote_assistance_partner
-
         return await self.request_adapter.send_async(request_info, remote_assistance_partner.RemoteAssistancePartner, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[RemoteAssistancePartnerItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -158,24 +162,6 @@ class RemoteAssistancePartnerItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def begin_onboarding(self) -> begin_onboarding_request_builder.BeginOnboardingRequestBuilder:
-        """
-        Provides operations to call the beginOnboarding method.
-        """
-        from .begin_onboarding import begin_onboarding_request_builder
-
-        return begin_onboarding_request_builder.BeginOnboardingRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def disconnect(self) -> disconnect_request_builder.DisconnectRequestBuilder:
-        """
-        Provides operations to call the disconnect method.
-        """
-        from .disconnect import disconnect_request_builder
-
-        return disconnect_request_builder.DisconnectRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class RemoteAssistancePartnerItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -193,6 +179,12 @@ class RemoteAssistancePartnerItemRequestBuilder():
         """
         The remote assist partners.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -208,12 +200,6 @@ class RemoteAssistancePartnerItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class RemoteAssistancePartnerItemRequestBuilderGetRequestConfiguration():

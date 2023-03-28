@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import key_value_pair, managed_app_policy, targeted_managed_app_configuration
-
-from . import managed_app_policy
+key_value_pair = lazy_import('msgraph.generated.models.key_value_pair')
+managed_app_policy = lazy_import('msgraph.generated.models.managed_app_policy')
 
 class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
     def __init__(self,) -> None:
@@ -27,13 +26,6 @@ class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.targetedManagedAppConfiguration":
-                from . import targeted_managed_app_configuration
-
-                return targeted_managed_app_configuration.TargetedManagedAppConfiguration()
         return ManagedAppConfiguration()
     
     @property
@@ -58,9 +50,7 @@ class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import key_value_pair, managed_app_policy, targeted_managed_app_configuration
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "customSettings": lambda n : setattr(self, 'custom_settings', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
         }
         super_fields = super().get_field_deserializers()

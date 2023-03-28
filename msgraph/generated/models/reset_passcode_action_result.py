@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import device_action_result
-
-from . import device_action_result
+device_action_result = lazy_import('msgraph.generated.models.device_action_result')
 
 class ResetPasscodeActionResult(device_action_result.DeviceActionResult):
     def __init__(self,) -> None:
@@ -35,9 +33,7 @@ class ResetPasscodeActionResult(device_action_result.DeviceActionResult):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_action_result
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "passcode": lambda n : setattr(self, 'passcode', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

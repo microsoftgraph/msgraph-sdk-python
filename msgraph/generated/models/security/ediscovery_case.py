@@ -1,42 +1,20 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import case, case_operation, ediscovery_case_settings, ediscovery_custodian, ediscovery_noncustodial_data_source, ediscovery_review_set, ediscovery_review_tag, ediscovery_search
-    from .. import identity_set
-
-from . import case
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+case = lazy_import('msgraph.generated.models.security.case')
+case_operation = lazy_import('msgraph.generated.models.security.case_operation')
+ediscovery_case_settings = lazy_import('msgraph.generated.models.security.ediscovery_case_settings')
+ediscovery_custodian = lazy_import('msgraph.generated.models.security.ediscovery_custodian')
+ediscovery_noncustodial_data_source = lazy_import('msgraph.generated.models.security.ediscovery_noncustodial_data_source')
+ediscovery_review_set = lazy_import('msgraph.generated.models.security.ediscovery_review_set')
+ediscovery_review_tag = lazy_import('msgraph.generated.models.security.ediscovery_review_tag')
+ediscovery_search = lazy_import('msgraph.generated.models.security.ediscovery_search')
 
 class EdiscoveryCase(case.Case):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EdiscoveryCase and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.security.ediscoveryCase"
-        # The user who closed the case.
-        self._closed_by: Optional[identity_set.IdentitySet] = None
-        # The date and time when the case was closed. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._closed_date_time: Optional[datetime] = None
-        # Returns a list of case ediscoveryCustodian objects for this case.
-        self._custodians: Optional[List[ediscovery_custodian.EdiscoveryCustodian]] = None
-        # The external case number for customer reference.
-        self._external_id: Optional[str] = None
-        # Returns a list of case ediscoveryNoncustodialDataSource objects for this case.
-        self._noncustodial_data_sources: Optional[List[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]] = None
-        # Returns a list of case caseOperation objects for this case.
-        self._operations: Optional[List[case_operation.CaseOperation]] = None
-        # Returns a list of eDiscoveryReviewSet objects in the case.
-        self._review_sets: Optional[List[ediscovery_review_set.EdiscoveryReviewSet]] = None
-        # Returns a list of eDiscoverySearch objects associated with this case.
-        self._searches: Optional[List[ediscovery_search.EdiscoverySearch]] = None
-        # Returns a list of eDIscoverySettings objects in the case.
-        self._settings: Optional[ediscovery_case_settings.EdiscoveryCaseSettings] = None
-        # Returns a list of ediscoveryReviewTag objects associated to this case.
-        self._tags: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None
-    
     @property
     def closed_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -70,6 +48,33 @@ class EdiscoveryCase(case.Case):
             value: Value to set for the closed_date_time property.
         """
         self._closed_date_time = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new EdiscoveryCase and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.security.ediscoveryCase"
+        # The user who closed the case.
+        self._closed_by: Optional[identity_set.IdentitySet] = None
+        # The date and time when the case was closed. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._closed_date_time: Optional[datetime] = None
+        # Returns a list of case ediscoveryCustodian objects for this case.
+        self._custodians: Optional[List[ediscovery_custodian.EdiscoveryCustodian]] = None
+        # The external case number for customer reference.
+        self._external_id: Optional[str] = None
+        # Returns a list of case ediscoveryNoncustodialDataSource objects for this case.
+        self._noncustodial_data_sources: Optional[List[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]] = None
+        # Returns a list of case caseOperation objects for this case.
+        self._operations: Optional[List[case_operation.CaseOperation]] = None
+        # Returns a list of eDiscoveryReviewSet objects in the case.
+        self._review_sets: Optional[List[ediscovery_review_set.EdiscoveryReviewSet]] = None
+        # Returns a list of eDiscoverySearch objects associated with this case.
+        self._searches: Optional[List[ediscovery_search.EdiscoverySearch]] = None
+        # Returns a list of eDIscoverySettings objects in the case.
+        self._settings: Optional[ediscovery_case_settings.EdiscoveryCaseSettings] = None
+        # Returns a list of ediscoveryReviewTag objects associated to this case.
+        self._tags: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryCase:
@@ -122,10 +127,7 @@ class EdiscoveryCase(case.Case):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import case, case_operation, ediscovery_case_settings, ediscovery_custodian, ediscovery_noncustodial_data_source, ediscovery_review_set, ediscovery_review_tag, ediscovery_search
-        from .. import identity_set
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "closedBy": lambda n : setattr(self, 'closed_by', n.get_object_value(identity_set.IdentitySet)),
             "closedDateTime": lambda n : setattr(self, 'closed_date_time', n.get_datetime_value()),
             "custodians": lambda n : setattr(self, 'custodians', n.get_collection_of_object_values(ediscovery_custodian.EdiscoveryCustodian)),

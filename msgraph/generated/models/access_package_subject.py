@@ -1,13 +1,30 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_package_subject_type, connected_organization, entity
-
-from . import entity
+access_package_subject_type = lazy_import('msgraph.generated.models.access_package_subject_type')
+connected_organization = lazy_import('msgraph.generated.models.connected_organization')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessPackageSubject(entity.Entity):
+    @property
+    def connected_organization(self,) -> Optional[connected_organization.ConnectedOrganization]:
+        """
+        Gets the connectedOrganization property value. The connected organization of the subject. Read-only. Nullable.
+        Returns: Optional[connected_organization.ConnectedOrganization]
+        """
+        return self._connected_organization
+    
+    @connected_organization.setter
+    def connected_organization(self,value: Optional[connected_organization.ConnectedOrganization] = None) -> None:
+        """
+        Sets the connectedOrganization property value. The connected organization of the subject. Read-only. Nullable.
+        Args:
+            value: Value to set for the connected_organization property.
+        """
+        self._connected_organization = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new accessPackageSubject and sets the default values.
@@ -29,23 +46,6 @@ class AccessPackageSubject(entity.Entity):
         self._principal_name: Optional[str] = None
         # The resource type of the subject. The possible values are: notSpecified, user, servicePrincipal, unknownFutureValue.
         self._subject_type: Optional[access_package_subject_type.AccessPackageSubjectType] = None
-    
-    @property
-    def connected_organization(self,) -> Optional[connected_organization.ConnectedOrganization]:
-        """
-        Gets the connectedOrganization property value. The connected organization of the subject. Read-only. Nullable.
-        Returns: Optional[connected_organization.ConnectedOrganization]
-        """
-        return self._connected_organization
-    
-    @connected_organization.setter
-    def connected_organization(self,value: Optional[connected_organization.ConnectedOrganization] = None) -> None:
-        """
-        Sets the connectedOrganization property value. The connected organization of the subject. Read-only. Nullable.
-        Args:
-            value: Value to set for the connected_organization property.
-        """
-        self._connected_organization = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageSubject:
@@ -98,9 +98,7 @@ class AccessPackageSubject(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_subject_type, connected_organization, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "connectedOrganization": lambda n : setattr(self, 'connected_organization', n.get_object_value(connected_organization.ConnectedOrganization)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),

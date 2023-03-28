@@ -1,30 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import device_configuration
-
-from . import device_configuration
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
 
 class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Windows10SecureAssessmentConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windows10SecureAssessmentConfiguration"
-        # Indicates whether or not to allow the app from printing during the test.
-        self._allow_printing: Optional[bool] = None
-        # Indicates whether or not to allow screen capture capability during a test.
-        self._allow_screen_capture: Optional[bool] = None
-        # Indicates whether or not to allow text suggestions during the test.
-        self._allow_text_suggestion: Optional[bool] = None
-        # The account used to configure the Windows device for taking the test. The user can be a domain account (domain/user), an AAD account (username@tenant.com) or a local account (username).
-        self._configuration_account: Optional[str] = None
-        # Url link to an assessment that's automatically loaded when the secure assessment browser is launched. It has to be a valid Url (http[s]://msdn.microsoft.com/).
-        self._launch_uri: Optional[str] = None
-    
     @property
     def allow_printing(self,) -> Optional[bool]:
         """
@@ -93,6 +74,23 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
         """
         self._configuration_account = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Windows10SecureAssessmentConfiguration and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.windows10SecureAssessmentConfiguration"
+        # Indicates whether or not to allow the app from printing during the test.
+        self._allow_printing: Optional[bool] = None
+        # Indicates whether or not to allow screen capture capability during a test.
+        self._allow_screen_capture: Optional[bool] = None
+        # Indicates whether or not to allow text suggestions during the test.
+        self._allow_text_suggestion: Optional[bool] = None
+        # The account used to configure the Windows device for taking the test. The user can be a domain account (domain/user), an AAD account (username@tenant.com) or a local account (username).
+        self._configuration_account: Optional[str] = None
+        # Url link to an assessment that's automatically loaded when the secure assessment browser is launched. It has to be a valid Url (http[s]://msdn.microsoft.com/).
+        self._launch_uri: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10SecureAssessmentConfiguration:
         """
@@ -110,9 +108,7 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_configuration
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "allowPrinting": lambda n : setattr(self, 'allow_printing', n.get_bool_value()),
             "allowScreenCapture": lambda n : setattr(self, 'allow_screen_capture', n.get_bool_value()),
             "allowTextSuggestion": lambda n : setattr(self, 'allow_text_suggestion', n.get_bool_value()),

@@ -1,25 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import weak_algorithms
+weak_algorithms = lazy_import('msgraph.generated.models.weak_algorithms')
 
 class RequestSignatureVerification(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new requestSignatureVerification and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Specifies which weak algorithms are allowed.  The possible values are: rsaSha1, unknownFutureValue.
-        self._allowed_weak_algorithms: Optional[weak_algorithms.WeakAlgorithms] = None
-        # Specifies whether signed authentication requests for this application should be required.
-        self._is_signed_request_required: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -40,7 +26,7 @@ class RequestSignatureVerification(AdditionalDataHolder, Parsable):
     @property
     def allowed_weak_algorithms(self,) -> Optional[weak_algorithms.WeakAlgorithms]:
         """
-        Gets the allowedWeakAlgorithms property value. Specifies which weak algorithms are allowed.  The possible values are: rsaSha1, unknownFutureValue.
+        Gets the allowedWeakAlgorithms property value. The allowedWeakAlgorithms property
         Returns: Optional[weak_algorithms.WeakAlgorithms]
         """
         return self._allowed_weak_algorithms
@@ -48,11 +34,25 @@ class RequestSignatureVerification(AdditionalDataHolder, Parsable):
     @allowed_weak_algorithms.setter
     def allowed_weak_algorithms(self,value: Optional[weak_algorithms.WeakAlgorithms] = None) -> None:
         """
-        Sets the allowedWeakAlgorithms property value. Specifies which weak algorithms are allowed.  The possible values are: rsaSha1, unknownFutureValue.
+        Sets the allowedWeakAlgorithms property value. The allowedWeakAlgorithms property
         Args:
             value: Value to set for the allowed_weak_algorithms property.
         """
         self._allowed_weak_algorithms = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new requestSignatureVerification and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The allowedWeakAlgorithms property
+        self._allowed_weak_algorithms: Optional[weak_algorithms.WeakAlgorithms] = None
+        # The isSignedRequestRequired property
+        self._is_signed_request_required: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RequestSignatureVerification:
@@ -71,9 +71,7 @@ class RequestSignatureVerification(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import weak_algorithms
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "allowedWeakAlgorithms": lambda n : setattr(self, 'allowed_weak_algorithms', n.get_enum_value(weak_algorithms.WeakAlgorithms)),
             "isSignedRequestRequired": lambda n : setattr(self, 'is_signed_request_required', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -83,7 +81,7 @@ class RequestSignatureVerification(AdditionalDataHolder, Parsable):
     @property
     def is_signed_request_required(self,) -> Optional[bool]:
         """
-        Gets the isSignedRequestRequired property value. Specifies whether signed authentication requests for this application should be required.
+        Gets the isSignedRequestRequired property value. The isSignedRequestRequired property
         Returns: Optional[bool]
         """
         return self._is_signed_request_required
@@ -91,7 +89,7 @@ class RequestSignatureVerification(AdditionalDataHolder, Parsable):
     @is_signed_request_required.setter
     def is_signed_request_required(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isSignedRequestRequired property value. Specifies whether signed authentication requests for this application should be required.
+        Sets the isSignedRequestRequired property value. The isSignedRequestRequired property
         Args:
             value: Value to set for the is_signed_request_required property.
         """

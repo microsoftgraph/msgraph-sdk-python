@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import case_operation, ediscovery_search
-
-from . import case_operation
+case_operation = lazy_import('msgraph.generated.models.security.case_operation')
+ediscovery_search = lazy_import('msgraph.generated.models.security.ediscovery_search')
 
 class EdiscoveryEstimateOperation(case_operation.CaseOperation):
     def __init__(self,) -> None:
@@ -47,9 +46,7 @@ class EdiscoveryEstimateOperation(case_operation.CaseOperation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import case_operation, ediscovery_search
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "indexedItemsSize": lambda n : setattr(self, 'indexed_items_size', n.get_int_value()),
             "indexedItemCount": lambda n : setattr(self, 'indexed_item_count', n.get_int_value()),
             "mailboxCount": lambda n : setattr(self, 'mailbox_count', n.get_int_value()),

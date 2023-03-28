@@ -1,56 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new onPremisesDirectorySynchronizationFeature and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Used to block cloud object takeover via source anchor hard match if enabled.
-        self._block_cloud_object_takeover_through_hard_match_enabled: Optional[bool] = None
-        # Use to block soft match for all objects if enabled for the  tenant. Customers are encouraged to enable this feature and keep it enabled until soft matching is required again for their tenancy. This flag should be enabled again after any soft matching has been completed and is no longer needed.
-        self._block_soft_match_enabled: Optional[bool] = None
-        # When true, persists the values of Mobile and OtherMobile in on-premises AD during sync cycles instead of values of MobilePhone or AlternateMobilePhones in Azure AD.
-        self._bypass_dir_sync_overrides_enabled: Optional[bool] = None
-        # Used to indicate that cloud password policy applies to users whose passwords are synchronized from on-premises.
-        self._cloud_password_policy_for_password_synced_users_enabled: Optional[bool] = None
-        # Used to enable concurrent user credentials update in OrgId.
-        self._concurrent_credential_update_enabled: Optional[bool] = None
-        # Used to enable concurrent user creation in OrgId.
-        self._concurrent_org_id_provisioning_enabled: Optional[bool] = None
-        # Used to indicate that device write-back is enabled.
-        self._device_writeback_enabled: Optional[bool] = None
-        # Used to indicate that directory extensions are being synced from on-premises AD to Azure AD.
-        self._directory_extensions_enabled: Optional[bool] = None
-        # Used to indicate that for a Microsoft Forefront Online Protection for Exchange (FOPE) migrated tenant, the conflicting proxy address should be migrated over.
-        self._fope_conflict_resolution_enabled: Optional[bool] = None
-        # Used to enable object-level group writeback feature for additional group types.
-        self._group_write_back_enabled: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Used to indicate on-premise password synchronization is enabled.
-        self._password_sync_enabled: Optional[bool] = None
-        # Used to indicate that writeback of password resets from Azure AD to on-premises AD is enabled.
-        self._password_writeback_enabled: Optional[bool] = None
-        # Used to indicate that we should quarantine objects with conflicting proxy address.
-        self._quarantine_upon_proxy_addresses_conflict_enabled: Optional[bool] = None
-        # Used to indicate that we should quarantine objects conflicting with duplicate userPrincipalName.
-        self._quarantine_upon_upn_conflict_enabled: Optional[bool] = None
-        # Used to indicate that we should soft match objects based on userPrincipalName.
-        self._soft_match_on_upn_enabled: Optional[bool] = None
-        # Used to indicate that we should synchronize userPrincipalName objects for managed users with licenses.
-        self._synchronize_upn_for_managed_users_enabled: Optional[bool] = None
-        # Used to indicate that Microsoft 365 Group write-back is enabled.
-        self._unified_group_writeback_enabled: Optional[bool] = None
-        # Used to indicate that feature to force password change for a user on logon is enabled while synchronizing on-premise credentials.
-        self._user_force_password_change_on_logon_enabled: Optional[bool] = None
-        # Used to indicate that user writeback is enabled.
-        self._user_writeback_enabled: Optional[bool] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -170,6 +123,54 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, Parsable):
         """
         self._concurrent_org_id_provisioning_enabled = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new onPremisesDirectorySynchronizationFeature and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Used to block cloud object takeover via source anchor hard match if enabled.
+        self._block_cloud_object_takeover_through_hard_match_enabled: Optional[bool] = None
+        # Use to block soft match for all objects if enabled for the  tenant. Customers are encouraged to enable this feature and keep it enabled until soft matching is required again for their tenancy. This flag should be enabled again after any soft matching has been completed and is no longer needed.
+        self._block_soft_match_enabled: Optional[bool] = None
+        # When true, persists the values of Mobile and OtherMobile in on-premises AD during sync cycles instead of values of MobilePhone or AlternateMobilePhones in Azure AD.
+        self._bypass_dir_sync_overrides_enabled: Optional[bool] = None
+        # Used to indicate that cloud password policy applies to users whose passwords are synchronized from on-premises.
+        self._cloud_password_policy_for_password_synced_users_enabled: Optional[bool] = None
+        # Used to enable concurrent user credentials update in OrgId.
+        self._concurrent_credential_update_enabled: Optional[bool] = None
+        # Used to enable concurrent user creation in OrgId.
+        self._concurrent_org_id_provisioning_enabled: Optional[bool] = None
+        # Used to indicate that device write-back is enabled.
+        self._device_writeback_enabled: Optional[bool] = None
+        # Used to indicate that directory extensions are being synced from on-premises AD to Azure AD.
+        self._directory_extensions_enabled: Optional[bool] = None
+        # Used to indicate that for a Microsoft Forefront Online Protection for Exchange (FOPE) migrated tenant, the conflicting proxy address should be migrated over.
+        self._fope_conflict_resolution_enabled: Optional[bool] = None
+        # Used to enable object-level group writeback feature for additional group types.
+        self._group_write_back_enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Used to indicate on-premise password synchronization is enabled.
+        self._password_sync_enabled: Optional[bool] = None
+        # Used to indicate that writeback of password resets from Azure AD to on-premises AD is enabled.
+        self._password_writeback_enabled: Optional[bool] = None
+        # Used to indicate that we should quarantine objects with conflicting proxy address.
+        self._quarantine_upon_proxy_addresses_conflict_enabled: Optional[bool] = None
+        # Used to indicate that we should quarantine objects conflicting with duplicate userPrincipalName.
+        self._quarantine_upon_upn_conflict_enabled: Optional[bool] = None
+        # Used to indicate that we should soft match objects based on userPrincipalName.
+        self._soft_match_on_upn_enabled: Optional[bool] = None
+        # Used to indicate that we should synchronize userPrincipalName objects for managed users with licenses.
+        self._synchronize_upn_for_managed_users_enabled: Optional[bool] = None
+        # Used to indicate that Microsoft 365 Group write-back is enabled.
+        self._unified_group_writeback_enabled: Optional[bool] = None
+        # Used to indicate that feature to force password change for a user on logon is enabled while synchronizing on-premise credentials.
+        self._user_force_password_change_on_logon_enabled: Optional[bool] = None
+        # Used to indicate that user writeback is enabled.
+        self._user_writeback_enabled: Optional[bool] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnPremisesDirectorySynchronizationFeature:
         """
@@ -238,7 +239,7 @@ class OnPremisesDirectorySynchronizationFeature(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "blockCloudObjectTakeoverThroughHardMatchEnabled": lambda n : setattr(self, 'block_cloud_object_takeover_through_hard_match_enabled', n.get_bool_value()),
             "blockSoftMatchEnabled": lambda n : setattr(self, 'block_soft_match_enabled', n.get_bool_value()),
             "bypassDirSyncOverridesEnabled": lambda n : setattr(self, 'bypass_dir_sync_overrides_enabled', n.get_bool_value()),

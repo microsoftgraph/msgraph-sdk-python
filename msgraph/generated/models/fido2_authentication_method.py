@@ -1,33 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import attestation_level, authentication_method
-
-from . import authentication_method
+attestation_level = lazy_import('msgraph.generated.models.attestation_level')
+authentication_method = lazy_import('msgraph.generated.models.authentication_method')
 
 class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Fido2AuthenticationMethod and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.fido2AuthenticationMethod"
-        # Authenticator Attestation GUID, an identifier that indicates the type (e.g. make and model) of the authenticator.
-        self._aa_guid: Optional[str] = None
-        # The attestation certificate(s) attached to this security key.
-        self._attestation_certificates: Optional[List[str]] = None
-        # The attestation level of this FIDO2 security key. Possible values are: attested, or notAttested.
-        self._attestation_level: Optional[attestation_level.AttestationLevel] = None
-        # The timestamp when this key was registered to the user.
-        self._created_date_time: Optional[datetime] = None
-        # The display name of the key as given by the user.
-        self._display_name: Optional[str] = None
-        # The manufacturer-assigned model of the FIDO2 security key.
-        self._model: Optional[str] = None
-    
     @property
     def aa_guid(self,) -> Optional[str]:
         """
@@ -78,6 +58,25 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
             value: Value to set for the attestation_level property.
         """
         self._attestation_level = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Fido2AuthenticationMethod and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.fido2AuthenticationMethod"
+        # Authenticator Attestation GUID, an identifier that indicates the type (e.g. make and model) of the authenticator.
+        self._aa_guid: Optional[str] = None
+        # The attestation certificate(s) attached to this security key.
+        self._attestation_certificates: Optional[List[str]] = None
+        # The attestation level of this FIDO2 security key. Possible values are: attested, or notAttested.
+        self._attestation_level: Optional[attestation_level.AttestationLevel] = None
+        # The timestamp when this key was registered to the user.
+        self._created_date_time: Optional[datetime] = None
+        # The display name of the key as given by the user.
+        self._display_name: Optional[str] = None
+        # The manufacturer-assigned model of the FIDO2 security key.
+        self._model: Optional[str] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -130,9 +129,7 @@ class Fido2AuthenticationMethod(authentication_method.AuthenticationMethod):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attestation_level, authentication_method
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "aaGuid": lambda n : setattr(self, 'aa_guid', n.get_str_value()),
             "attestationCertificates": lambda n : setattr(self, 'attestation_certificates', n.get_collection_of_primitive_values(str)),
             "attestationLevel": lambda n : setattr(self, 'attestation_level', n.get_enum_value(attestation_level.AttestationLevel)),

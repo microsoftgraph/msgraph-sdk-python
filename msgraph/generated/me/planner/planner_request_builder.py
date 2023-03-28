@@ -7,20 +7,34 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ...models import planner_user
-    from ...models.o_data_errors import o_data_error
-    from .plans import plans_request_builder
-    from .plans.item import planner_plan_item_request_builder
-    from .tasks import tasks_request_builder
-    from .tasks.item import planner_task_item_request_builder
+plans_request_builder = lazy_import('msgraph.generated.me.planner.plans.plans_request_builder')
+planner_plan_item_request_builder = lazy_import('msgraph.generated.me.planner.plans.item.planner_plan_item_request_builder')
+tasks_request_builder = lazy_import('msgraph.generated.me.planner.tasks.tasks_request_builder')
+planner_task_item_request_builder = lazy_import('msgraph.generated.me.planner.tasks.item.planner_task_item_request_builder')
+planner_user = lazy_import('msgraph.generated.models.planner_user')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class PlannerRequestBuilder():
     """
     Provides operations to manage the planner property of the microsoft.graph.user entity.
     """
+    @property
+    def plans(self) -> plans_request_builder.PlansRequestBuilder:
+        """
+        Provides operations to manage the plans property of the microsoft.graph.plannerUser entity.
+        """
+        return plans_request_builder.PlansRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def tasks(self) -> tasks_request_builder.TasksRequestBuilder:
+        """
+        Provides operations to manage the tasks property of the microsoft.graph.plannerUser entity.
+        """
+        return tasks_request_builder.TasksRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PlannerRequestBuilder and sets the default values.
@@ -48,8 +62,6 @@ class PlannerRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -68,16 +80,12 @@ class PlannerRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import planner_user
-
         return await self.request_adapter.send_async(request_info, planner_user.PlannerUser, error_mapping)
     
     async def patch(self,body: Optional[planner_user.PlannerUser] = None, request_configuration: Optional[PlannerRequestBuilderPatchRequestConfiguration] = None) -> Optional[planner_user.PlannerUser]:
@@ -93,16 +101,12 @@ class PlannerRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import planner_user
-
         return await self.request_adapter.send_async(request_info, planner_user.PlannerUser, error_mapping)
     
     def plans_by_id(self,id: str) -> planner_plan_item_request_builder.PlannerPlanItemRequestBuilder:
@@ -114,8 +118,6 @@ class PlannerRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .plans.item import planner_plan_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["plannerPlan%2Did"] = id
         return planner_plan_item_request_builder.PlannerPlanItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -129,8 +131,6 @@ class PlannerRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .tasks.item import planner_task_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["plannerTask%2Did"] = id
         return planner_task_item_request_builder.PlannerTaskItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -190,24 +190,6 @@ class PlannerRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def plans(self) -> plans_request_builder.PlansRequestBuilder:
-        """
-        Provides operations to manage the plans property of the microsoft.graph.plannerUser entity.
-        """
-        from .plans import plans_request_builder
-
-        return plans_request_builder.PlansRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def tasks(self) -> tasks_request_builder.TasksRequestBuilder:
-        """
-        Provides operations to manage the tasks property of the microsoft.graph.plannerUser entity.
-        """
-        from .tasks import tasks_request_builder
-
-        return tasks_request_builder.TasksRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class PlannerRequestBuilderDeleteRequestConfiguration():
         """
@@ -225,6 +207,12 @@ class PlannerRequestBuilder():
         """
         Entry-point to the Planner resource that might exist for a user. Read-only.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -240,12 +228,6 @@ class PlannerRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class PlannerRequestBuilderGetRequestConfiguration():

@@ -1,13 +1,114 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import apple_push_notification_certificate, audit_event, compliance_management_partner, detected_app, device_and_app_management_role_assignment, device_category, device_compliance_policy, device_compliance_policy_device_state_summary, device_compliance_policy_setting_state_summary, device_configuration, device_configuration_device_state_summary, device_enrollment_configuration, device_management_exchange_connector, device_management_partner, device_management_reports, device_management_settings, device_management_subscription_state, device_management_troubleshooting_event, entity, imported_windows_autopilot_device_identity, intune_brand, ios_update_device_status, managed_device, managed_device_overview, mobile_threat_defense_connector, notification_message_template, on_premises_conditional_access_settings, remote_assistance_partner, resource_operation, role_definition, software_update_status_summary, telecom_expense_management_partner, terms_and_conditions, windows_autopilot_device_identity, windows_information_protection_app_learning_summary, windows_information_protection_network_learning_summary
-
-from . import entity
+apple_push_notification_certificate = lazy_import('msgraph.generated.models.apple_push_notification_certificate')
+audit_event = lazy_import('msgraph.generated.models.audit_event')
+compliance_management_partner = lazy_import('msgraph.generated.models.compliance_management_partner')
+detected_app = lazy_import('msgraph.generated.models.detected_app')
+device_and_app_management_role_assignment = lazy_import('msgraph.generated.models.device_and_app_management_role_assignment')
+device_category = lazy_import('msgraph.generated.models.device_category')
+device_compliance_policy = lazy_import('msgraph.generated.models.device_compliance_policy')
+device_compliance_policy_device_state_summary = lazy_import('msgraph.generated.models.device_compliance_policy_device_state_summary')
+device_compliance_policy_setting_state_summary = lazy_import('msgraph.generated.models.device_compliance_policy_setting_state_summary')
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+device_configuration_device_state_summary = lazy_import('msgraph.generated.models.device_configuration_device_state_summary')
+device_enrollment_configuration = lazy_import('msgraph.generated.models.device_enrollment_configuration')
+device_management_exchange_connector = lazy_import('msgraph.generated.models.device_management_exchange_connector')
+device_management_partner = lazy_import('msgraph.generated.models.device_management_partner')
+device_management_reports = lazy_import('msgraph.generated.models.device_management_reports')
+device_management_settings = lazy_import('msgraph.generated.models.device_management_settings')
+device_management_subscription_state = lazy_import('msgraph.generated.models.device_management_subscription_state')
+device_management_troubleshooting_event = lazy_import('msgraph.generated.models.device_management_troubleshooting_event')
+entity = lazy_import('msgraph.generated.models.entity')
+imported_windows_autopilot_device_identity = lazy_import('msgraph.generated.models.imported_windows_autopilot_device_identity')
+intune_brand = lazy_import('msgraph.generated.models.intune_brand')
+ios_update_device_status = lazy_import('msgraph.generated.models.ios_update_device_status')
+managed_device = lazy_import('msgraph.generated.models.managed_device')
+managed_device_overview = lazy_import('msgraph.generated.models.managed_device_overview')
+mobile_threat_defense_connector = lazy_import('msgraph.generated.models.mobile_threat_defense_connector')
+notification_message_template = lazy_import('msgraph.generated.models.notification_message_template')
+on_premises_conditional_access_settings = lazy_import('msgraph.generated.models.on_premises_conditional_access_settings')
+remote_assistance_partner = lazy_import('msgraph.generated.models.remote_assistance_partner')
+resource_operation = lazy_import('msgraph.generated.models.resource_operation')
+role_definition = lazy_import('msgraph.generated.models.role_definition')
+software_update_status_summary = lazy_import('msgraph.generated.models.software_update_status_summary')
+telecom_expense_management_partner = lazy_import('msgraph.generated.models.telecom_expense_management_partner')
+terms_and_conditions = lazy_import('msgraph.generated.models.terms_and_conditions')
+windows_autopilot_device_identity = lazy_import('msgraph.generated.models.windows_autopilot_device_identity')
+windows_information_protection_app_learning_summary = lazy_import('msgraph.generated.models.windows_information_protection_app_learning_summary')
+windows_information_protection_network_learning_summary = lazy_import('msgraph.generated.models.windows_information_protection_network_learning_summary')
 
 class DeviceManagement(entity.Entity):
+    @property
+    def apple_push_notification_certificate(self,) -> Optional[apple_push_notification_certificate.ApplePushNotificationCertificate]:
+        """
+        Gets the applePushNotificationCertificate property value. Apple push notification certificate.
+        Returns: Optional[apple_push_notification_certificate.ApplePushNotificationCertificate]
+        """
+        return self._apple_push_notification_certificate
+    
+    @apple_push_notification_certificate.setter
+    def apple_push_notification_certificate(self,value: Optional[apple_push_notification_certificate.ApplePushNotificationCertificate] = None) -> None:
+        """
+        Sets the applePushNotificationCertificate property value. Apple push notification certificate.
+        Args:
+            value: Value to set for the apple_push_notification_certificate property.
+        """
+        self._apple_push_notification_certificate = value
+    
+    @property
+    def audit_events(self,) -> Optional[List[audit_event.AuditEvent]]:
+        """
+        Gets the auditEvents property value. The Audit Events
+        Returns: Optional[List[audit_event.AuditEvent]]
+        """
+        return self._audit_events
+    
+    @audit_events.setter
+    def audit_events(self,value: Optional[List[audit_event.AuditEvent]] = None) -> None:
+        """
+        Sets the auditEvents property value. The Audit Events
+        Args:
+            value: Value to set for the audit_events property.
+        """
+        self._audit_events = value
+    
+    @property
+    def compliance_management_partners(self,) -> Optional[List[compliance_management_partner.ComplianceManagementPartner]]:
+        """
+        Gets the complianceManagementPartners property value. The list of Compliance Management Partners configured by the tenant.
+        Returns: Optional[List[compliance_management_partner.ComplianceManagementPartner]]
+        """
+        return self._compliance_management_partners
+    
+    @compliance_management_partners.setter
+    def compliance_management_partners(self,value: Optional[List[compliance_management_partner.ComplianceManagementPartner]] = None) -> None:
+        """
+        Sets the complianceManagementPartners property value. The list of Compliance Management Partners configured by the tenant.
+        Args:
+            value: Value to set for the compliance_management_partners property.
+        """
+        self._compliance_management_partners = value
+    
+    @property
+    def conditional_access_settings(self,) -> Optional[on_premises_conditional_access_settings.OnPremisesConditionalAccessSettings]:
+        """
+        Gets the conditionalAccessSettings property value. The Exchange on premises conditional access settings. On premises conditional access will require devices to be both enrolled and compliant for mail access
+        Returns: Optional[on_premises_conditional_access_settings.OnPremisesConditionalAccessSettings]
+        """
+        return self._conditional_access_settings
+    
+    @conditional_access_settings.setter
+    def conditional_access_settings(self,value: Optional[on_premises_conditional_access_settings.OnPremisesConditionalAccessSettings] = None) -> None:
+        """
+        Sets the conditionalAccessSettings property value. The Exchange on premises conditional access settings. On premises conditional access will require devices to be both enrolled and compliant for mail access
+        Args:
+            value: Value to set for the conditional_access_settings property.
+        """
+        self._conditional_access_settings = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new DeviceManagement and sets the default values.
@@ -87,74 +188,6 @@ class DeviceManagement(entity.Entity):
         self._windows_information_protection_app_learning_summaries: Optional[List[windows_information_protection_app_learning_summary.WindowsInformationProtectionAppLearningSummary]] = None
         # The windows information protection network learning summaries.
         self._windows_information_protection_network_learning_summaries: Optional[List[windows_information_protection_network_learning_summary.WindowsInformationProtectionNetworkLearningSummary]] = None
-    
-    @property
-    def apple_push_notification_certificate(self,) -> Optional[apple_push_notification_certificate.ApplePushNotificationCertificate]:
-        """
-        Gets the applePushNotificationCertificate property value. Apple push notification certificate.
-        Returns: Optional[apple_push_notification_certificate.ApplePushNotificationCertificate]
-        """
-        return self._apple_push_notification_certificate
-    
-    @apple_push_notification_certificate.setter
-    def apple_push_notification_certificate(self,value: Optional[apple_push_notification_certificate.ApplePushNotificationCertificate] = None) -> None:
-        """
-        Sets the applePushNotificationCertificate property value. Apple push notification certificate.
-        Args:
-            value: Value to set for the apple_push_notification_certificate property.
-        """
-        self._apple_push_notification_certificate = value
-    
-    @property
-    def audit_events(self,) -> Optional[List[audit_event.AuditEvent]]:
-        """
-        Gets the auditEvents property value. The Audit Events
-        Returns: Optional[List[audit_event.AuditEvent]]
-        """
-        return self._audit_events
-    
-    @audit_events.setter
-    def audit_events(self,value: Optional[List[audit_event.AuditEvent]] = None) -> None:
-        """
-        Sets the auditEvents property value. The Audit Events
-        Args:
-            value: Value to set for the audit_events property.
-        """
-        self._audit_events = value
-    
-    @property
-    def compliance_management_partners(self,) -> Optional[List[compliance_management_partner.ComplianceManagementPartner]]:
-        """
-        Gets the complianceManagementPartners property value. The list of Compliance Management Partners configured by the tenant.
-        Returns: Optional[List[compliance_management_partner.ComplianceManagementPartner]]
-        """
-        return self._compliance_management_partners
-    
-    @compliance_management_partners.setter
-    def compliance_management_partners(self,value: Optional[List[compliance_management_partner.ComplianceManagementPartner]] = None) -> None:
-        """
-        Sets the complianceManagementPartners property value. The list of Compliance Management Partners configured by the tenant.
-        Args:
-            value: Value to set for the compliance_management_partners property.
-        """
-        self._compliance_management_partners = value
-    
-    @property
-    def conditional_access_settings(self,) -> Optional[on_premises_conditional_access_settings.OnPremisesConditionalAccessSettings]:
-        """
-        Gets the conditionalAccessSettings property value. The Exchange on premises conditional access settings. On premises conditional access will require devices to be both enrolled and compliant for mail access
-        Returns: Optional[on_premises_conditional_access_settings.OnPremisesConditionalAccessSettings]
-        """
-        return self._conditional_access_settings
-    
-    @conditional_access_settings.setter
-    def conditional_access_settings(self,value: Optional[on_premises_conditional_access_settings.OnPremisesConditionalAccessSettings] = None) -> None:
-        """
-        Sets the conditionalAccessSettings property value. The Exchange on premises conditional access settings. On premises conditional access will require devices to be both enrolled and compliant for mail access
-        Args:
-            value: Value to set for the conditional_access_settings property.
-        """
-        self._conditional_access_settings = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceManagement:
@@ -343,9 +376,7 @@ class DeviceManagement(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import apple_push_notification_certificate, audit_event, compliance_management_partner, detected_app, device_and_app_management_role_assignment, device_category, device_compliance_policy, device_compliance_policy_device_state_summary, device_compliance_policy_setting_state_summary, device_configuration, device_configuration_device_state_summary, device_enrollment_configuration, device_management_exchange_connector, device_management_partner, device_management_reports, device_management_settings, device_management_subscription_state, device_management_troubleshooting_event, entity, imported_windows_autopilot_device_identity, intune_brand, ios_update_device_status, managed_device, managed_device_overview, mobile_threat_defense_connector, notification_message_template, on_premises_conditional_access_settings, remote_assistance_partner, resource_operation, role_definition, software_update_status_summary, telecom_expense_management_partner, terms_and_conditions, windows_autopilot_device_identity, windows_information_protection_app_learning_summary, windows_information_protection_network_learning_summary
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "applePushNotificationCertificate": lambda n : setattr(self, 'apple_push_notification_certificate', n.get_object_value(apple_push_notification_certificate.ApplePushNotificationCertificate)),
             "auditEvents": lambda n : setattr(self, 'audit_events', n.get_collection_of_object_values(audit_event.AuditEvent)),
             "complianceManagementPartners": lambda n : setattr(self, 'compliance_management_partners', n.get_collection_of_object_values(compliance_management_partner.ComplianceManagementPartner)),

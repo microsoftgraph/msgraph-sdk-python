@@ -1,39 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceCompliancePolicyDeviceStateSummary(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceCompliancePolicyDeviceStateSummary and sets the default values.
-        """
-        super().__init__()
-        # Number of compliant devices
-        self._compliant_device_count: Optional[int] = None
-        # Number of devices that have compliance managed by System Center Configuration Manager
-        self._config_manager_count: Optional[int] = None
-        # Number of conflict devices
-        self._conflict_device_count: Optional[int] = None
-        # Number of error devices
-        self._error_device_count: Optional[int] = None
-        # Number of devices that are in grace period
-        self._in_grace_period_count: Optional[int] = None
-        # Number of NonCompliant devices
-        self._non_compliant_device_count: Optional[int] = None
-        # Number of not applicable devices
-        self._not_applicable_device_count: Optional[int] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Number of remediated devices
-        self._remediated_device_count: Optional[int] = None
-        # Number of unknown devices
-        self._unknown_device_count: Optional[int] = None
-    
     @property
     def compliant_device_count(self,) -> Optional[int]:
         """
@@ -85,6 +57,32 @@ class DeviceCompliancePolicyDeviceStateSummary(entity.Entity):
         """
         self._conflict_device_count = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new deviceCompliancePolicyDeviceStateSummary and sets the default values.
+        """
+        super().__init__()
+        # Number of compliant devices
+        self._compliant_device_count: Optional[int] = None
+        # Number of devices that have compliance managed by System Center Configuration Manager
+        self._config_manager_count: Optional[int] = None
+        # Number of conflict devices
+        self._conflict_device_count: Optional[int] = None
+        # Number of error devices
+        self._error_device_count: Optional[int] = None
+        # Number of devices that are in grace period
+        self._in_grace_period_count: Optional[int] = None
+        # Number of NonCompliant devices
+        self._non_compliant_device_count: Optional[int] = None
+        # Number of not applicable devices
+        self._not_applicable_device_count: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Number of remediated devices
+        self._remediated_device_count: Optional[int] = None
+        # Number of unknown devices
+        self._unknown_device_count: Optional[int] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceCompliancePolicyDeviceStateSummary:
         """
@@ -119,9 +117,7 @@ class DeviceCompliancePolicyDeviceStateSummary(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "compliantDeviceCount": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
             "configManagerCount": lambda n : setattr(self, 'config_manager_count', n.get_int_value()),
             "conflictDeviceCount": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),

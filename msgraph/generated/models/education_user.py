@@ -1,98 +1,29 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import assigned_license, assigned_plan, education_assignment, education_class, education_external_source, education_on_premises_info, education_rubric, education_school, education_student, education_teacher, education_user_role, entity, identity_set, password_profile, physical_address, provisioned_plan, related_contact, user
-
-from . import entity
+assigned_license = lazy_import('msgraph.generated.models.assigned_license')
+assigned_plan = lazy_import('msgraph.generated.models.assigned_plan')
+education_assignment = lazy_import('msgraph.generated.models.education_assignment')
+education_class = lazy_import('msgraph.generated.models.education_class')
+education_external_source = lazy_import('msgraph.generated.models.education_external_source')
+education_on_premises_info = lazy_import('msgraph.generated.models.education_on_premises_info')
+education_rubric = lazy_import('msgraph.generated.models.education_rubric')
+education_school = lazy_import('msgraph.generated.models.education_school')
+education_student = lazy_import('msgraph.generated.models.education_student')
+education_teacher = lazy_import('msgraph.generated.models.education_teacher')
+education_user_role = lazy_import('msgraph.generated.models.education_user_role')
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+password_profile = lazy_import('msgraph.generated.models.password_profile')
+physical_address = lazy_import('msgraph.generated.models.physical_address')
+provisioned_plan = lazy_import('msgraph.generated.models.provisioned_plan')
+related_contact = lazy_import('msgraph.generated.models.related_contact')
+user = lazy_import('msgraph.generated.models.user')
 
 class EducationUser(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new educationUser and sets the default values.
-        """
-        super().__init__()
-        # True if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter.
-        self._account_enabled: Optional[bool] = None
-        # The licenses that are assigned to the user. Not nullable.
-        self._assigned_licenses: Optional[List[assigned_license.AssignedLicense]] = None
-        # The plans that are assigned to the user. Read-only. Not nullable.
-        self._assigned_plans: Optional[List[assigned_plan.AssignedPlan]] = None
-        # Assignments belonging to the user.
-        self._assignments: Optional[List[education_assignment.EducationAssignment]] = None
-        # The telephone numbers for the user. Note: Although this is a string collection, only one number can be set for this property.
-        self._business_phones: Optional[List[str]] = None
-        # Classes to which the user belongs. Nullable.
-        self._classes: Optional[List[education_class.EducationClass]] = None
-        # The entity who created the user.
-        self._created_by: Optional[identity_set.IdentitySet] = None
-        # The name for the department in which the user works. Supports $filter.
-        self._department: Optional[str] = None
-        # The name displayed in the address book for the user. This is usually the combination of the user's first name, middle initial, and last name. This property is required when a user is created and it cannot be cleared during updates. Supports $filter and $orderby.
-        self._display_name: Optional[str] = None
-        # Where this user was created from. Possible values are: sis, manual.
-        self._external_source: Optional[education_external_source.EducationExternalSource] = None
-        # The name of the external source this resource was generated from.
-        self._external_source_detail: Optional[str] = None
-        # The given name (first name) of the user. Supports $filter.
-        self._given_name: Optional[str] = None
-        # The SMTP address for the user, for example, jeff@contoso.onmicrosoft.com. Read-Only. Supports $filter.
-        self._mail: Optional[str] = None
-        # The mail alias for the user. This property must be specified when a user is created. Supports $filter.
-        self._mail_nickname: Optional[str] = None
-        # The mail address of the user.
-        self._mailing_address: Optional[physical_address.PhysicalAddress] = None
-        # The middle name of the user.
-        self._middle_name: Optional[str] = None
-        # The primary cellular telephone number for the user.
-        self._mobile_phone: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The officeLocation property
-        self._office_location: Optional[str] = None
-        # Additional information used to associate the Azure Active Directory user with its Active Directory counterpart.
-        self._on_premises_info: Optional[education_on_premises_info.EducationOnPremisesInfo] = None
-        # Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two can be specified together; for example: DisablePasswordExpiration, DisableStrongPassword.
-        self._password_policies: Optional[str] = None
-        # Specifies the password profile for the user. The profile contains the user's password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required.
-        self._password_profile: Optional[password_profile.PasswordProfile] = None
-        # The preferred language for the user that should follow the ISO 639-1 code, for example, en-US.
-        self._preferred_language: Optional[str] = None
-        # The primaryRole property
-        self._primary_role: Optional[education_user_role.EducationUserRole] = None
-        # The plans that are provisioned for the user. Read-only. Not nullable.
-        self._provisioned_plans: Optional[List[provisioned_plan.ProvisionedPlan]] = None
-        # The refreshTokensValidFromDateTime property
-        self._refresh_tokens_valid_from_date_time: Optional[datetime] = None
-        # Related records associated with the user. Read-only.
-        self._related_contacts: Optional[List[related_contact.RelatedContact]] = None
-        # The address where the user lives.
-        self._residence_address: Optional[physical_address.PhysicalAddress] = None
-        # When set, the grading rubric attached to the assignment.
-        self._rubrics: Optional[List[education_rubric.EducationRubric]] = None
-        # Schools to which the user belongs. Nullable.
-        self._schools: Optional[List[education_school.EducationSchool]] = None
-        # True if the Outlook Global Address List should contain this user; otherwise, false. If not set, this will be treated as true. For users invited through the invitation manager, this property will be set to false.
-        self._show_in_address_list: Optional[bool] = None
-        # If the primary role is student, this block will contain student specific data.
-        self._student: Optional[education_student.EducationStudent] = None
-        # The user's surname (family name or last name). Supports $filter.
-        self._surname: Optional[str] = None
-        # Classes for which the user is a teacher.
-        self._taught_classes: Optional[List[education_class.EducationClass]] = None
-        # If the primary role is teacher, this block will contain teacher specific data.
-        self._teacher: Optional[education_teacher.EducationTeacher] = None
-        # A two-letter country code (ISO standard 3166). Required for users who will be assigned licenses due to a legal requirement to check for availability of services in countries or regions. Examples include: US, JP, and GB. Not nullable. Supports $filter.
-        self._usage_location: Optional[str] = None
-        # The directory user that corresponds to this user.
-        self._user: Optional[user.User] = None
-        # The user principal name (UPN) of the user. The UPN is an internet-style login name for the user based on the internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where domain must be present in the tenant's collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of the organization. Supports $filter and $orderby.
-        self._user_principal_name: Optional[str] = None
-        # A string value that can be used to classify user types in your directory, such as Member and Guest. Supports $filter.
-        self._user_type: Optional[str] = None
-    
     @property
     def account_enabled(self,) -> Optional[bool]:
         """
@@ -194,6 +125,90 @@ class EducationUser(entity.Entity):
             value: Value to set for the classes property.
         """
         self._classes = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new educationUser and sets the default values.
+        """
+        super().__init__()
+        # True if the account is enabled; otherwise, false. This property is required when a user is created. Supports $filter.
+        self._account_enabled: Optional[bool] = None
+        # The licenses that are assigned to the user. Not nullable.
+        self._assigned_licenses: Optional[List[assigned_license.AssignedLicense]] = None
+        # The plans that are assigned to the user. Read-only. Not nullable.
+        self._assigned_plans: Optional[List[assigned_plan.AssignedPlan]] = None
+        # Assignments belonging to the user.
+        self._assignments: Optional[List[education_assignment.EducationAssignment]] = None
+        # The telephone numbers for the user. Note: Although this is a string collection, only one number can be set for this property.
+        self._business_phones: Optional[List[str]] = None
+        # Classes to which the user belongs. Nullable.
+        self._classes: Optional[List[education_class.EducationClass]] = None
+        # The entity who created the user.
+        self._created_by: Optional[identity_set.IdentitySet] = None
+        # The name for the department in which the user works. Supports $filter.
+        self._department: Optional[str] = None
+        # The name displayed in the address book for the user. This is usually the combination of the user's first name, middle initial, and last name. This property is required when a user is created and it cannot be cleared during updates. Supports $filter and $orderby.
+        self._display_name: Optional[str] = None
+        # Where this user was created from. Possible values are: sis, manual.
+        self._external_source: Optional[education_external_source.EducationExternalSource] = None
+        # The name of the external source this resource was generated from.
+        self._external_source_detail: Optional[str] = None
+        # The given name (first name) of the user. Supports $filter.
+        self._given_name: Optional[str] = None
+        # The SMTP address for the user, for example, jeff@contoso.onmicrosoft.com. Read-Only. Supports $filter.
+        self._mail: Optional[str] = None
+        # The mail alias for the user. This property must be specified when a user is created. Supports $filter.
+        self._mail_nickname: Optional[str] = None
+        # The mail address of the user.
+        self._mailing_address: Optional[physical_address.PhysicalAddress] = None
+        # The middle name of the user.
+        self._middle_name: Optional[str] = None
+        # The primary cellular telephone number for the user.
+        self._mobile_phone: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The officeLocation property
+        self._office_location: Optional[str] = None
+        # Additional information used to associate the Azure Active Directory user with its Active Directory counterpart.
+        self._on_premises_info: Optional[education_on_premises_info.EducationOnPremisesInfo] = None
+        # Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two can be specified together; for example: DisablePasswordExpiration, DisableStrongPassword.
+        self._password_policies: Optional[str] = None
+        # Specifies the password profile for the user. The profile contains the user's password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required.
+        self._password_profile: Optional[password_profile.PasswordProfile] = None
+        # The preferred language for the user that should follow the ISO 639-1 code, for example, en-US.
+        self._preferred_language: Optional[str] = None
+        # The primaryRole property
+        self._primary_role: Optional[education_user_role.EducationUserRole] = None
+        # The plans that are provisioned for the user. Read-only. Not nullable.
+        self._provisioned_plans: Optional[List[provisioned_plan.ProvisionedPlan]] = None
+        # The refreshTokensValidFromDateTime property
+        self._refresh_tokens_valid_from_date_time: Optional[datetime] = None
+        # Related records associated with the user. Read-only.
+        self._related_contacts: Optional[List[related_contact.RelatedContact]] = None
+        # The address where the user lives.
+        self._residence_address: Optional[physical_address.PhysicalAddress] = None
+        # When set, the grading rubric attached to the assignment.
+        self._rubrics: Optional[List[education_rubric.EducationRubric]] = None
+        # Schools to which the user belongs. Nullable.
+        self._schools: Optional[List[education_school.EducationSchool]] = None
+        # True if the Outlook Global Address List should contain this user; otherwise, false. If not set, this will be treated as true. For users invited through the invitation manager, this property will be set to false.
+        self._show_in_address_list: Optional[bool] = None
+        # If the primary role is student, this block will contain student specific data.
+        self._student: Optional[education_student.EducationStudent] = None
+        # The user's surname (family name or last name). Supports $filter.
+        self._surname: Optional[str] = None
+        # Classes for which the user is a teacher.
+        self._taught_classes: Optional[List[education_class.EducationClass]] = None
+        # If the primary role is teacher, this block will contain teacher specific data.
+        self._teacher: Optional[education_teacher.EducationTeacher] = None
+        # A two-letter country code (ISO standard 3166). Required for users who will be assigned licenses due to a legal requirement to check for availability of services in countries or regions. Examples include: US, JP, and GB. Not nullable. Supports $filter.
+        self._usage_location: Optional[str] = None
+        # The directory user that corresponds to this user.
+        self._user: Optional[user.User] = None
+        # The user principal name (UPN) of the user. The UPN is an internet-style login name for the user based on the internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where domain must be present in the tenant's collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of the organization. Supports $filter and $orderby.
+        self._user_principal_name: Optional[str] = None
+        # A string value that can be used to classify user types in your directory, such as Member and Guest. Supports $filter.
+        self._user_type: Optional[str] = None
     
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
@@ -297,9 +312,7 @@ class EducationUser(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import assigned_license, assigned_plan, education_assignment, education_class, education_external_source, education_on_premises_info, education_rubric, education_school, education_student, education_teacher, education_user_role, entity, identity_set, password_profile, physical_address, provisioned_plan, related_contact, user
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
             "assignedLicenses": lambda n : setattr(self, 'assigned_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
             "assignedPlans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(assigned_plan.AssignedPlan)),

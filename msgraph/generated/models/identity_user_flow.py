@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import b2x_identity_user_flow, entity, user_flow_type
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+user_flow_type = lazy_import('msgraph.generated.models.user_flow_type')
 
 class IdentityUserFlow(entity.Entity):
     def __init__(self,) -> None:
@@ -30,13 +29,6 @@ class IdentityUserFlow(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.b2xIdentityUserFlow":
-                from . import b2x_identity_user_flow
-
-                return b2x_identity_user_flow.B2xIdentityUserFlow()
         return IdentityUserFlow()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -44,9 +36,7 @@ class IdentityUserFlow(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import b2x_identity_user_flow, entity, user_flow_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "userFlowType": lambda n : setattr(self, 'user_flow_type', n.get_enum_value(user_flow_type.UserFlowType)),
             "userFlowTypeVersion": lambda n : setattr(self, 'user_flow_type_version', n.get_float_value()),
         }

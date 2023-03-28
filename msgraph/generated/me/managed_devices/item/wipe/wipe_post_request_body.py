@@ -1,24 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class WipePostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new wipePostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The keepEnrollmentData property
-        self._keep_enrollment_data: Optional[bool] = None
-        # The keepUserData property
-        self._keep_user_data: Optional[bool] = None
-        # The macOsUnlockCode property
-        self._mac_os_unlock_code: Optional[str] = None
-        # The persistEsimDataPlan property
-        self._persist_esim_data_plan: Optional[bool] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -35,6 +20,22 @@ class WipePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new wipePostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The keepEnrollmentData property
+        self._keep_enrollment_data: Optional[bool] = None
+        # The keepUserData property
+        self._keep_user_data: Optional[bool] = None
+        # The macOsUnlockCode property
+        self._mac_os_unlock_code: Optional[str] = None
+        # The persistEsimDataPlan property
+        self._persist_esim_data_plan: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WipePostRequestBody:
@@ -53,7 +54,7 @@ class WipePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "keepEnrollmentData": lambda n : setattr(self, 'keep_enrollment_data', n.get_bool_value()),
             "keepUserData": lambda n : setattr(self, 'keep_user_data', n.get_bool_value()),
             "macOsUnlockCode": lambda n : setattr(self, 'mac_os_unlock_code', n.get_str_value()),

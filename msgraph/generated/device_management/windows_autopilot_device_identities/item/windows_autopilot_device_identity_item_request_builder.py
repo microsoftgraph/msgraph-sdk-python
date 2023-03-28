@@ -7,19 +7,40 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import windows_autopilot_device_identity
-    from ....models.o_data_errors import o_data_error
-    from .assign_user_to_device import assign_user_to_device_request_builder
-    from .unassign_user_from_device import unassign_user_from_device_request_builder
-    from .update_device_properties import update_device_properties_request_builder
+assign_user_to_device_request_builder = lazy_import('msgraph.generated.device_management.windows_autopilot_device_identities.item.assign_user_to_device.assign_user_to_device_request_builder')
+unassign_user_from_device_request_builder = lazy_import('msgraph.generated.device_management.windows_autopilot_device_identities.item.unassign_user_from_device.unassign_user_from_device_request_builder')
+update_device_properties_request_builder = lazy_import('msgraph.generated.device_management.windows_autopilot_device_identities.item.update_device_properties.update_device_properties_request_builder')
+windows_autopilot_device_identity = lazy_import('msgraph.generated.models.windows_autopilot_device_identity')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class WindowsAutopilotDeviceIdentityItemRequestBuilder():
     """
     Provides operations to manage the windowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
     """
+    @property
+    def assign_user_to_device(self) -> assign_user_to_device_request_builder.AssignUserToDeviceRequestBuilder:
+        """
+        Provides operations to call the assignUserToDevice method.
+        """
+        return assign_user_to_device_request_builder.AssignUserToDeviceRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def unassign_user_from_device(self) -> unassign_user_from_device_request_builder.UnassignUserFromDeviceRequestBuilder:
+        """
+        Provides operations to call the unassignUserFromDevice method.
+        """
+        return unassign_user_from_device_request_builder.UnassignUserFromDeviceRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def update_device_properties(self) -> update_device_properties_request_builder.UpdateDevicePropertiesRequestBuilder:
+        """
+        Provides operations to call the updateDeviceProperties method.
+        """
+        return update_device_properties_request_builder.UpdateDevicePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WindowsAutopilotDeviceIdentityItemRequestBuilder and sets the default values.
@@ -47,8 +68,6 @@ class WindowsAutopilotDeviceIdentityItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -67,16 +86,12 @@ class WindowsAutopilotDeviceIdentityItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import windows_autopilot_device_identity
-
         return await self.request_adapter.send_async(request_info, windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity, error_mapping)
     
     async def patch(self,body: Optional[windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity] = None, request_configuration: Optional[WindowsAutopilotDeviceIdentityItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity]:
@@ -92,16 +107,12 @@ class WindowsAutopilotDeviceIdentityItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import windows_autopilot_device_identity
-
         return await self.request_adapter.send_async(request_info, windows_autopilot_device_identity.WindowsAutopilotDeviceIdentity, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[WindowsAutopilotDeviceIdentityItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -159,33 +170,6 @@ class WindowsAutopilotDeviceIdentityItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def assign_user_to_device(self) -> assign_user_to_device_request_builder.AssignUserToDeviceRequestBuilder:
-        """
-        Provides operations to call the assignUserToDevice method.
-        """
-        from .assign_user_to_device import assign_user_to_device_request_builder
-
-        return assign_user_to_device_request_builder.AssignUserToDeviceRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def unassign_user_from_device(self) -> unassign_user_from_device_request_builder.UnassignUserFromDeviceRequestBuilder:
-        """
-        Provides operations to call the unassignUserFromDevice method.
-        """
-        from .unassign_user_from_device import unassign_user_from_device_request_builder
-
-        return unassign_user_from_device_request_builder.UnassignUserFromDeviceRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def update_device_properties(self) -> update_device_properties_request_builder.UpdateDevicePropertiesRequestBuilder:
-        """
-        Provides operations to call the updateDeviceProperties method.
-        """
-        from .update_device_properties import update_device_properties_request_builder
-
-        return update_device_properties_request_builder.UpdateDevicePropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class WindowsAutopilotDeviceIdentityItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -203,6 +187,12 @@ class WindowsAutopilotDeviceIdentityItemRequestBuilder():
         """
         The Windows autopilot device identities contained collection.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -218,12 +208,6 @@ class WindowsAutopilotDeviceIdentityItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class WindowsAutopilotDeviceIdentityItemRequestBuilderGetRequestConfiguration():

@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import media_info, prompt
-
-from . import prompt
+media_info = lazy_import('msgraph.generated.models.media_info')
+prompt = lazy_import('msgraph.generated.models.prompt')
 
 class MediaPrompt(prompt.Prompt):
     def __init__(self,) -> None:
@@ -34,9 +33,7 @@ class MediaPrompt(prompt.Prompt):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import media_info, prompt
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "mediaInfo": lambda n : setattr(self, 'media_info', n.get_object_value(media_info.MediaInfo)),
         }
         super_fields = super().get_field_deserializers()

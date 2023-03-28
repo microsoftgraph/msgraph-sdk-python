@@ -1,23 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import external_connection
+external_connection = lazy_import('msgraph.generated.models.external_connectors.external_connection')
 
 class External(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new External and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The connections property
-        self._connections: Optional[List[external_connection.ExternalConnection]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -52,6 +40,18 @@ class External(AdditionalDataHolder, Parsable):
         """
         self._connections = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new External and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The connections property
+        self._connections: Optional[List[external_connection.ExternalConnection]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> External:
         """
@@ -69,9 +69,7 @@ class External(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import external_connection
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "connections": lambda n : setattr(self, 'connections', n.get_collection_of_object_values(external_connection.ExternalConnection)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

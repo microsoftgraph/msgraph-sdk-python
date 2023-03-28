@@ -1,17 +1,50 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import enrollment_state, entity
-
-from . import entity
+enrollment_state = lazy_import('msgraph.generated.models.enrollment_state')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class WindowsAutopilotDeviceIdentity(entity.Entity):
     """
     The windowsAutopilotDeviceIdentity resource represents a Windows Autopilot Device.
     """
+    @property
+    def addressable_user_name(self,) -> Optional[str]:
+        """
+        Gets the addressableUserName property value. Addressable user name.
+        Returns: Optional[str]
+        """
+        return self._addressable_user_name
+    
+    @addressable_user_name.setter
+    def addressable_user_name(self,value: Optional[str] = None) -> None:
+        """
+        Sets the addressableUserName property value. Addressable user name.
+        Args:
+            value: Value to set for the addressable_user_name property.
+        """
+        self._addressable_user_name = value
+    
+    @property
+    def azure_active_directory_device_id(self,) -> Optional[str]:
+        """
+        Gets the azureActiveDirectoryDeviceId property value. AAD Device ID - to be deprecated
+        Returns: Optional[str]
+        """
+        return self._azure_active_directory_device_id
+    
+    @azure_active_directory_device_id.setter
+    def azure_active_directory_device_id(self,value: Optional[str] = None) -> None:
+        """
+        Sets the azureActiveDirectoryDeviceId property value. AAD Device ID - to be deprecated
+        Args:
+            value: Value to set for the azure_active_directory_device_id property.
+        """
+        self._azure_active_directory_device_id = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new windowsAutopilotDeviceIdentity and sets the default values.
@@ -51,40 +84,6 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         self._system_family: Optional[str] = None
         # User Principal Name.
         self._user_principal_name: Optional[str] = None
-    
-    @property
-    def addressable_user_name(self,) -> Optional[str]:
-        """
-        Gets the addressableUserName property value. Addressable user name.
-        Returns: Optional[str]
-        """
-        return self._addressable_user_name
-    
-    @addressable_user_name.setter
-    def addressable_user_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the addressableUserName property value. Addressable user name.
-        Args:
-            value: Value to set for the addressable_user_name property.
-        """
-        self._addressable_user_name = value
-    
-    @property
-    def azure_active_directory_device_id(self,) -> Optional[str]:
-        """
-        Gets the azureActiveDirectoryDeviceId property value. AAD Device ID - to be deprecated
-        Returns: Optional[str]
-        """
-        return self._azure_active_directory_device_id
-    
-    @azure_active_directory_device_id.setter
-    def azure_active_directory_device_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the azureActiveDirectoryDeviceId property value. AAD Device ID - to be deprecated
-        Args:
-            value: Value to set for the azure_active_directory_device_id property.
-        """
-        self._azure_active_directory_device_id = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsAutopilotDeviceIdentity:
@@ -137,9 +136,7 @@ class WindowsAutopilotDeviceIdentity(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import enrollment_state, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "addressableUserName": lambda n : setattr(self, 'addressable_user_name', n.get_str_value()),
             "azureActiveDirectoryDeviceId": lambda n : setattr(self, 'azure_active_directory_device_id', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

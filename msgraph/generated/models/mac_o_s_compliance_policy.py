@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import device_compliance_policy, device_threat_protection_level, required_password_type
-
-from . import device_compliance_policy
+device_compliance_policy = lazy_import('msgraph.generated.models.device_compliance_policy')
+device_threat_protection_level = lazy_import('msgraph.generated.models.device_threat_protection_level')
+required_password_type = lazy_import('msgraph.generated.models.required_password_type')
 
 class MacOSCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
     def __init__(self,) -> None:
@@ -151,9 +151,7 @@ class MacOSCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_compliance_policy, device_threat_protection_level, required_password_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "deviceThreatProtectionEnabled": lambda n : setattr(self, 'device_threat_protection_enabled', n.get_bool_value()),
             "deviceThreatProtectionRequiredSecurityLevel": lambda n : setattr(self, 'device_threat_protection_required_security_level', n.get_enum_value(device_threat_protection_level.DeviceThreatProtectionLevel)),
             "firewallBlockAllIncoming": lambda n : setattr(self, 'firewall_block_all_incoming', n.get_bool_value()),

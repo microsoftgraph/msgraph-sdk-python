@@ -7,21 +7,56 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from .....models import access_package_assignment_request
-    from .....models.o_data_errors import o_data_error
-    from .access_package import access_package_request_builder
-    from .assignment import assignment_request_builder
-    from .cancel import cancel_request_builder
-    from .reprocess import reprocess_request_builder
-    from .requestor import requestor_request_builder
+access_package_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.access_package.access_package_request_builder')
+assignment_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.assignment.assignment_request_builder')
+cancel_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.cancel.cancel_request_builder')
+reprocess_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.reprocess.reprocess_request_builder')
+requestor_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.assignment_requests.item.requestor.requestor_request_builder')
+access_package_assignment_request = lazy_import('msgraph.generated.models.access_package_assignment_request')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AccessPackageAssignmentRequestItemRequestBuilder():
     """
     Provides operations to manage the assignmentRequests property of the microsoft.graph.entitlementManagement entity.
     """
+    @property
+    def access_package(self) -> access_package_request_builder.AccessPackageRequestBuilder:
+        """
+        Provides operations to manage the accessPackage property of the microsoft.graph.accessPackageAssignmentRequest entity.
+        """
+        return access_package_request_builder.AccessPackageRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def assignment(self) -> assignment_request_builder.AssignmentRequestBuilder:
+        """
+        Provides operations to manage the assignment property of the microsoft.graph.accessPackageAssignmentRequest entity.
+        """
+        return assignment_request_builder.AssignmentRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def cancel(self) -> cancel_request_builder.CancelRequestBuilder:
+        """
+        Provides operations to call the cancel method.
+        """
+        return cancel_request_builder.CancelRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def reprocess(self) -> reprocess_request_builder.ReprocessRequestBuilder:
+        """
+        Provides operations to call the reprocess method.
+        """
+        return reprocess_request_builder.ReprocessRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def requestor(self) -> requestor_request_builder.RequestorRequestBuilder:
+        """
+        Provides operations to manage the requestor property of the microsoft.graph.accessPackageAssignmentRequest entity.
+        """
+        return requestor_request_builder.RequestorRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessPackageAssignmentRequestItemRequestBuilder and sets the default values.
@@ -49,8 +84,6 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -69,16 +102,12 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import access_package_assignment_request
-
         return await self.request_adapter.send_async(request_info, access_package_assignment_request.AccessPackageAssignmentRequest, error_mapping)
     
     async def patch(self,body: Optional[access_package_assignment_request.AccessPackageAssignmentRequest] = None, request_configuration: Optional[AccessPackageAssignmentRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[access_package_assignment_request.AccessPackageAssignmentRequest]:
@@ -94,16 +123,12 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import access_package_assignment_request
-
         return await self.request_adapter.send_async(request_info, access_package_assignment_request.AccessPackageAssignmentRequest, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AccessPackageAssignmentRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -161,51 +186,6 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def access_package(self) -> access_package_request_builder.AccessPackageRequestBuilder:
-        """
-        Provides operations to manage the accessPackage property of the microsoft.graph.accessPackageAssignmentRequest entity.
-        """
-        from .access_package import access_package_request_builder
-
-        return access_package_request_builder.AccessPackageRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def assignment(self) -> assignment_request_builder.AssignmentRequestBuilder:
-        """
-        Provides operations to manage the assignment property of the microsoft.graph.accessPackageAssignmentRequest entity.
-        """
-        from .assignment import assignment_request_builder
-
-        return assignment_request_builder.AssignmentRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def cancel(self) -> cancel_request_builder.CancelRequestBuilder:
-        """
-        Provides operations to call the cancel method.
-        """
-        from .cancel import cancel_request_builder
-
-        return cancel_request_builder.CancelRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def reprocess(self) -> reprocess_request_builder.ReprocessRequestBuilder:
-        """
-        Provides operations to call the reprocess method.
-        """
-        from .reprocess import reprocess_request_builder
-
-        return reprocess_request_builder.ReprocessRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def requestor(self) -> requestor_request_builder.RequestorRequestBuilder:
-        """
-        Provides operations to manage the requestor property of the microsoft.graph.accessPackageAssignmentRequest entity.
-        """
-        from .requestor import requestor_request_builder
-
-        return requestor_request_builder.RequestorRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class AccessPackageAssignmentRequestItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -223,6 +203,12 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
         """
         Access package assignment requests created by or on behalf of a subject.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -238,12 +224,6 @@ class AccessPackageAssignmentRequestItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class AccessPackageAssignmentRequestItemRequestBuilderGetRequestConfiguration():

@@ -1,31 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import clonable_team_parts, team_visibility_type
+clonable_team_parts = lazy_import('msgraph.generated.models.clonable_team_parts')
+team_visibility_type = lazy_import('msgraph.generated.models.team_visibility_type')
 
 class ClonePostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new clonePostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The classification property
-        self._classification: Optional[str] = None
-        # The description property
-        self._description: Optional[str] = None
-        # The displayName property
-        self._display_name: Optional[str] = None
-        # The mailNickname property
-        self._mail_nickname: Optional[str] = None
-        # The partsToClone property
-        self._parts_to_clone: Optional[clonable_team_parts.ClonableTeamParts] = None
-        # The visibility property
-        self._visibility: Optional[team_visibility_type.TeamVisibilityType] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -59,6 +40,26 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the classification property.
         """
         self._classification = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new clonePostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The classification property
+        self._classification: Optional[str] = None
+        # The description property
+        self._description: Optional[str] = None
+        # The displayName property
+        self._display_name: Optional[str] = None
+        # The mailNickname property
+        self._mail_nickname: Optional[str] = None
+        # The partsToClone property
+        self._parts_to_clone: Optional[clonable_team_parts.ClonableTeamParts] = None
+        # The visibility property
+        self._visibility: Optional[team_visibility_type.TeamVisibilityType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ClonePostRequestBody:
@@ -111,9 +112,7 @@ class ClonePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ....models import clonable_team_parts, team_visibility_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "classification": lambda n : setattr(self, 'classification', n.get_str_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

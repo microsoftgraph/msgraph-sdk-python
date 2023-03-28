@@ -7,26 +7,88 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ......models import education_assignment
-    from ......models.o_data_errors import o_data_error
-    from .categories import categories_request_builder
-    from .categories.item import education_category_item_request_builder
-    from .publish import publish_request_builder
-    from .resources import resources_request_builder
-    from .resources.item import education_assignment_resource_item_request_builder
-    from .rubric import rubric_request_builder
-    from .set_up_feedback_resources_folder import set_up_feedback_resources_folder_request_builder
-    from .set_up_resources_folder import set_up_resources_folder_request_builder
-    from .submissions import submissions_request_builder
-    from .submissions.item import education_submission_item_request_builder
+categories_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.categories.categories_request_builder')
+education_category_item_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.categories.item.education_category_item_request_builder')
+publish_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.publish.publish_request_builder')
+resources_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.resources.resources_request_builder')
+education_assignment_resource_item_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.resources.item.education_assignment_resource_item_request_builder')
+rubric_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.rubric.rubric_request_builder')
+set_up_feedback_resources_folder_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.set_up_feedback_resources_folder.set_up_feedback_resources_folder_request_builder')
+set_up_resources_folder_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.set_up_resources_folder.set_up_resources_folder_request_builder')
+submissions_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.submissions.submissions_request_builder')
+education_submission_item_request_builder = lazy_import('msgraph.generated.education.users.item.assignments.item.submissions.item.education_submission_item_request_builder')
+education_assignment = lazy_import('msgraph.generated.models.education_assignment')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class EducationAssignmentItemRequestBuilder():
     """
     Provides operations to manage the assignments property of the microsoft.graph.educationUser entity.
     """
+    @property
+    def categories(self) -> categories_request_builder.CategoriesRequestBuilder:
+        """
+        Provides operations to manage the categories property of the microsoft.graph.educationAssignment entity.
+        """
+        return categories_request_builder.CategoriesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def publish(self) -> publish_request_builder.PublishRequestBuilder:
+        """
+        Provides operations to call the publish method.
+        """
+        return publish_request_builder.PublishRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def resources(self) -> resources_request_builder.ResourcesRequestBuilder:
+        """
+        Provides operations to manage the resources property of the microsoft.graph.educationAssignment entity.
+        """
+        return resources_request_builder.ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def rubric(self) -> rubric_request_builder.RubricRequestBuilder:
+        """
+        Provides operations to manage the rubric property of the microsoft.graph.educationAssignment entity.
+        """
+        return rubric_request_builder.RubricRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def set_up_feedback_resources_folder(self) -> set_up_feedback_resources_folder_request_builder.SetUpFeedbackResourcesFolderRequestBuilder:
+        """
+        Provides operations to call the setUpFeedbackResourcesFolder method.
+        """
+        return set_up_feedback_resources_folder_request_builder.SetUpFeedbackResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def set_up_resources_folder(self) -> set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder:
+        """
+        Provides operations to call the setUpResourcesFolder method.
+        """
+        return set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def submissions(self) -> submissions_request_builder.SubmissionsRequestBuilder:
+        """
+        Provides operations to manage the submissions property of the microsoft.graph.educationAssignment entity.
+        """
+        return submissions_request_builder.SubmissionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def categories_by_id(self,id: str) -> education_category_item_request_builder.EducationCategoryItemRequestBuilder:
+        """
+        Gets an item from the msgraph.generated.education.users.item.assignments.item.categories.item collection
+        Args:
+            id: Unique identifier of the item
+        Returns: education_category_item_request_builder.EducationCategoryItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["educationCategory%2Did"] = id
+        return education_category_item_request_builder.EducationCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EducationAssignmentItemRequestBuilder and sets the default values.
@@ -45,21 +107,6 @@ class EducationAssignmentItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def categories_by_id(self,id: str) -> education_category_item_request_builder.EducationCategoryItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.education.users.item.assignments.item.categories.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: education_category_item_request_builder.EducationCategoryItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .categories.item import education_category_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["educationCategory%2Did"] = id
-        return education_category_item_request_builder.EducationCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def delete(self,request_configuration: Optional[EducationAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property assignments for education
@@ -69,8 +116,6 @@ class EducationAssignmentItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -89,16 +134,12 @@ class EducationAssignmentItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import education_assignment
-
         return await self.request_adapter.send_async(request_info, education_assignment.EducationAssignment, error_mapping)
     
     async def patch(self,body: Optional[education_assignment.EducationAssignment] = None, request_configuration: Optional[EducationAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_assignment.EducationAssignment]:
@@ -114,16 +155,12 @@ class EducationAssignmentItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import education_assignment
-
         return await self.request_adapter.send_async(request_info, education_assignment.EducationAssignment, error_mapping)
     
     def resources_by_id(self,id: str) -> education_assignment_resource_item_request_builder.EducationAssignmentResourceItemRequestBuilder:
@@ -135,8 +172,6 @@ class EducationAssignmentItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .resources.item import education_assignment_resource_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["educationAssignmentResource%2Did"] = id
         return education_assignment_resource_item_request_builder.EducationAssignmentResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -150,8 +185,6 @@ class EducationAssignmentItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .submissions.item import education_submission_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["educationSubmission%2Did"] = id
         return education_submission_item_request_builder.EducationSubmissionItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -211,69 +244,6 @@ class EducationAssignmentItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def categories(self) -> categories_request_builder.CategoriesRequestBuilder:
-        """
-        Provides operations to manage the categories property of the microsoft.graph.educationAssignment entity.
-        """
-        from .categories import categories_request_builder
-
-        return categories_request_builder.CategoriesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def publish(self) -> publish_request_builder.PublishRequestBuilder:
-        """
-        Provides operations to call the publish method.
-        """
-        from .publish import publish_request_builder
-
-        return publish_request_builder.PublishRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def resources(self) -> resources_request_builder.ResourcesRequestBuilder:
-        """
-        Provides operations to manage the resources property of the microsoft.graph.educationAssignment entity.
-        """
-        from .resources import resources_request_builder
-
-        return resources_request_builder.ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def rubric(self) -> rubric_request_builder.RubricRequestBuilder:
-        """
-        Provides operations to manage the rubric property of the microsoft.graph.educationAssignment entity.
-        """
-        from .rubric import rubric_request_builder
-
-        return rubric_request_builder.RubricRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def set_up_feedback_resources_folder(self) -> set_up_feedback_resources_folder_request_builder.SetUpFeedbackResourcesFolderRequestBuilder:
-        """
-        Provides operations to call the setUpFeedbackResourcesFolder method.
-        """
-        from .set_up_feedback_resources_folder import set_up_feedback_resources_folder_request_builder
-
-        return set_up_feedback_resources_folder_request_builder.SetUpFeedbackResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def set_up_resources_folder(self) -> set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder:
-        """
-        Provides operations to call the setUpResourcesFolder method.
-        """
-        from .set_up_resources_folder import set_up_resources_folder_request_builder
-
-        return set_up_resources_folder_request_builder.SetUpResourcesFolderRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def submissions(self) -> submissions_request_builder.SubmissionsRequestBuilder:
-        """
-        Provides operations to manage the submissions property of the microsoft.graph.educationAssignment entity.
-        """
-        from .submissions import submissions_request_builder
-
-        return submissions_request_builder.SubmissionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class EducationAssignmentItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -291,6 +261,12 @@ class EducationAssignmentItemRequestBuilder():
         """
         Assignments belonging to the user.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -306,12 +282,6 @@ class EducationAssignmentItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class EducationAssignmentItemRequestBuilderGetRequestConfiguration():

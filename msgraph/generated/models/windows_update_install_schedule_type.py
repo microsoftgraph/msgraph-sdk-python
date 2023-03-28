@@ -1,21 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
-
-if TYPE_CHECKING:
-    from . import windows_update_active_hours_install, windows_update_scheduled_install
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class WindowsUpdateInstallScheduleType(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new windowsUpdateInstallScheduleType and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -33,6 +21,16 @@ class WindowsUpdateInstallScheduleType(AdditionalDataHolder, Parsable):
         """
         self._additional_data = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new windowsUpdateInstallScheduleType and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsUpdateInstallScheduleType:
         """
@@ -43,17 +41,6 @@ class WindowsUpdateInstallScheduleType(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.windowsUpdateActiveHoursInstall":
-                from . import windows_update_active_hours_install
-
-                return windows_update_active_hours_install.WindowsUpdateActiveHoursInstall()
-            if mapping_value == "#microsoft.graph.windowsUpdateScheduledInstall":
-                from . import windows_update_scheduled_install
-
-                return windows_update_scheduled_install.WindowsUpdateScheduledInstall()
         return WindowsUpdateInstallScheduleType()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -61,9 +48,7 @@ class WindowsUpdateInstallScheduleType(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import windows_update_active_hours_install, windows_update_scheduled_install
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields

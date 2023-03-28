@@ -1,32 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import audit_property
+audit_property = lazy_import('msgraph.generated.models.audit_property')
 
 class AuditResource(AdditionalDataHolder, Parsable):
     """
     A class containing the properties for Audit Resource.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new auditResource and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Audit resource's type.
-        self._audit_resource_type: Optional[str] = None
-        # Display name.
-        self._display_name: Optional[str] = None
-        # List of modified properties.
-        self._modified_properties: Optional[List[audit_property.AuditProperty]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Audit resource's Id.
-        self._resource_id: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -60,6 +42,24 @@ class AuditResource(AdditionalDataHolder, Parsable):
             value: Value to set for the audit_resource_type property.
         """
         self._audit_resource_type = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new auditResource and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Audit resource's type.
+        self._audit_resource_type: Optional[str] = None
+        # Display name.
+        self._display_name: Optional[str] = None
+        # List of modified properties.
+        self._modified_properties: Optional[List[audit_property.AuditProperty]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Audit resource's Id.
+        self._resource_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuditResource:
@@ -95,9 +95,7 @@ class AuditResource(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import audit_property
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "auditResourceType": lambda n : setattr(self, 'audit_resource_type', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "modifiedProperties": lambda n : setattr(self, 'modified_properties', n.get_collection_of_object_values(audit_property.AuditProperty)),

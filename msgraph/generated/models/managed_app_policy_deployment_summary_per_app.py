@@ -1,28 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import mobile_app_identifier
+mobile_app_identifier = lazy_import('msgraph.generated.models.mobile_app_identifier')
 
 class ManagedAppPolicyDeploymentSummaryPerApp(AdditionalDataHolder, Parsable):
     """
     Represents policy deployment summary per app.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new managedAppPolicyDeploymentSummaryPerApp and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Number of users the policy is applied.
-        self._configuration_applied_user_count: Optional[int] = None
-        # Deployment of an app.
-        self._mobile_app_identifier: Optional[mobile_app_identifier.MobileAppIdentifier] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -57,6 +43,20 @@ class ManagedAppPolicyDeploymentSummaryPerApp(AdditionalDataHolder, Parsable):
         """
         self._configuration_applied_user_count = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new managedAppPolicyDeploymentSummaryPerApp and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Number of users the policy is applied.
+        self._configuration_applied_user_count: Optional[int] = None
+        # Deployment of an app.
+        self._mobile_app_identifier: Optional[mobile_app_identifier.MobileAppIdentifier] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedAppPolicyDeploymentSummaryPerApp:
         """
@@ -74,9 +74,7 @@ class ManagedAppPolicyDeploymentSummaryPerApp(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_app_identifier
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "configurationAppliedUserCount": lambda n : setattr(self, 'configuration_applied_user_count', n.get_int_value()),
             "mobileAppIdentifier": lambda n : setattr(self, 'mobile_app_identifier', n.get_object_value(mobile_app_identifier.MobileAppIdentifier)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

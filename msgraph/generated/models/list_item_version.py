@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import base_item_version, document_set_version, field_value_set
-
-from . import base_item_version
+base_item_version = lazy_import('msgraph.generated.models.base_item_version')
+field_value_set = lazy_import('msgraph.generated.models.field_value_set')
 
 class ListItemVersion(base_item_version.BaseItemVersion):
     def __init__(self,) -> None:
@@ -27,13 +26,6 @@ class ListItemVersion(base_item_version.BaseItemVersion):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.documentSetVersion":
-                from . import document_set_version
-
-                return document_set_version.DocumentSetVersion()
         return ListItemVersion()
     
     @property
@@ -58,9 +50,7 @@ class ListItemVersion(base_item_version.BaseItemVersion):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_item_version, document_set_version, field_value_set
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "fields": lambda n : setattr(self, 'fields', n.get_object_value(field_value_set.FieldValueSet)),
         }
         super_fields = super().get_field_deserializers()

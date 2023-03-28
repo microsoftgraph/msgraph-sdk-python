@@ -1,14 +1,32 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import mime_content, rgb_color
+mime_content = lazy_import('msgraph.generated.models.mime_content')
+rgb_color = lazy_import('msgraph.generated.models.rgb_color')
 
 class IntuneBrand(AdditionalDataHolder, Parsable):
     """
     intuneBrand contains data which is used in customizing the appearance of the Company Portal applications as well as the end user web portal.
     """
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new intuneBrand and sets the default values.
@@ -46,23 +64,6 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         self._show_name_next_to_logo: Optional[bool] = None
         # Primary theme color used in the Company Portal applications and web portal.
         self._theme_color: Optional[rgb_color.RgbColor] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
     
     @property
     def contact_i_t_email_address(self,) -> Optional[str]:
@@ -183,9 +184,7 @@ class IntuneBrand(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mime_content, rgb_color
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "contactITEmailAddress": lambda n : setattr(self, 'contact_i_t_email_address', n.get_str_value()),
             "contactITName": lambda n : setattr(self, 'contact_i_t_name', n.get_str_value()),
             "contactITNotes": lambda n : setattr(self, 'contact_i_t_notes', n.get_str_value()),

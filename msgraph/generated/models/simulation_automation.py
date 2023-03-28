@@ -1,12 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import email_identity, entity, simulation_automation_run, simulation_automation_status
-
-from . import entity
+email_identity = lazy_import('msgraph.generated.models.email_identity')
+entity = lazy_import('msgraph.generated.models.entity')
+simulation_automation_run = lazy_import('msgraph.generated.models.simulation_automation_run')
+simulation_automation_status = lazy_import('msgraph.generated.models.simulation_automation_status')
 
 class SimulationAutomation(entity.Entity):
     def __init__(self,) -> None:
@@ -122,9 +123,7 @@ class SimulationAutomation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import email_identity, entity, simulation_automation_run, simulation_automation_status
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(email_identity.EmailIdentity)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),

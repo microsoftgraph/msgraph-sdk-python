@@ -1,14 +1,32 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, operation_error, teams_async_operation_status, teams_async_operation_type
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+operation_error = lazy_import('msgraph.generated.models.operation_error')
+teams_async_operation_status = lazy_import('msgraph.generated.models.teams_async_operation_status')
+teams_async_operation_type = lazy_import('msgraph.generated.models.teams_async_operation_type')
 
 class TeamsAsyncOperation(entity.Entity):
+    @property
+    def attempts_count(self,) -> Optional[int]:
+        """
+        Gets the attemptsCount property value. Number of times the operation was attempted before being marked successful or failed.
+        Returns: Optional[int]
+        """
+        return self._attempts_count
+    
+    @attempts_count.setter
+    def attempts_count(self,value: Optional[int] = None) -> None:
+        """
+        Sets the attemptsCount property value. Number of times the operation was attempted before being marked successful or failed.
+        Args:
+            value: Value to set for the attempts_count property.
+        """
+        self._attempts_count = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new teamsAsyncOperation and sets the default values.
@@ -32,23 +50,6 @@ class TeamsAsyncOperation(entity.Entity):
         self._target_resource_id: Optional[str] = None
         # The location of the object that's created or modified as result of this async operation. This URL should be treated as an opaque value and not parsed into its component paths.
         self._target_resource_location: Optional[str] = None
-    
-    @property
-    def attempts_count(self,) -> Optional[int]:
-        """
-        Gets the attemptsCount property value. Number of times the operation was attempted before being marked successful or failed.
-        Returns: Optional[int]
-        """
-        return self._attempts_count
-    
-    @attempts_count.setter
-    def attempts_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the attemptsCount property value. Number of times the operation was attempted before being marked successful or failed.
-        Args:
-            value: Value to set for the attempts_count property.
-        """
-        self._attempts_count = value
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -101,9 +102,7 @@ class TeamsAsyncOperation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, operation_error, teams_async_operation_status, teams_async_operation_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "attemptsCount": lambda n : setattr(self, 'attempts_count', n.get_int_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "error": lambda n : setattr(self, 'error', n.get_object_value(operation_error.OperationError)),

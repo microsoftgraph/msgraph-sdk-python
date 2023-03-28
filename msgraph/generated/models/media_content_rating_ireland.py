@@ -1,25 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import rating_ireland_movies_type, rating_ireland_television_type
+rating_ireland_movies_type = lazy_import('msgraph.generated.models.rating_ireland_movies_type')
+rating_ireland_television_type = lazy_import('msgraph.generated.models.rating_ireland_television_type')
 
 class MediaContentRatingIreland(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new mediaContentRatingIreland and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Movies rating labels in Ireland
-        self._movie_rating: Optional[rating_ireland_movies_type.RatingIrelandMoviesType] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # TV content rating labels in Ireland
-        self._tv_rating: Optional[rating_ireland_television_type.RatingIrelandTelevisionType] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -36,6 +23,20 @@ class MediaContentRatingIreland(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new mediaContentRatingIreland and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Movies rating labels in Ireland
+        self._movie_rating: Optional[rating_ireland_movies_type.RatingIrelandMoviesType] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # TV content rating labels in Ireland
+        self._tv_rating: Optional[rating_ireland_television_type.RatingIrelandTelevisionType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MediaContentRatingIreland:
@@ -54,9 +55,7 @@ class MediaContentRatingIreland(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import rating_ireland_movies_type, rating_ireland_television_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "movieRating": lambda n : setattr(self, 'movie_rating', n.get_enum_value(rating_ireland_movies_type.RatingIrelandMoviesType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "tvRating": lambda n : setattr(self, 'tv_rating', n.get_enum_value(rating_ireland_television_type.RatingIrelandTelevisionType)),

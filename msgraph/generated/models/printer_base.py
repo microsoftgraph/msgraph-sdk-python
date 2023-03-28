@@ -1,13 +1,33 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, printer, printer_capabilities, printer_defaults, printer_location, printer_share, printer_status, print_job
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+print_job = lazy_import('msgraph.generated.models.print_job')
+printer_capabilities = lazy_import('msgraph.generated.models.printer_capabilities')
+printer_defaults = lazy_import('msgraph.generated.models.printer_defaults')
+printer_location = lazy_import('msgraph.generated.models.printer_location')
+printer_status = lazy_import('msgraph.generated.models.printer_status')
 
 class PrinterBase(entity.Entity):
+    @property
+    def capabilities(self,) -> Optional[printer_capabilities.PrinterCapabilities]:
+        """
+        Gets the capabilities property value. The capabilities of the printer/printerShare.
+        Returns: Optional[printer_capabilities.PrinterCapabilities]
+        """
+        return self._capabilities
+    
+    @capabilities.setter
+    def capabilities(self,value: Optional[printer_capabilities.PrinterCapabilities] = None) -> None:
+        """
+        Sets the capabilities property value. The capabilities of the printer/printerShare.
+        Args:
+            value: Value to set for the capabilities property.
+        """
+        self._capabilities = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new printerBase and sets the default values.
@@ -34,23 +54,6 @@ class PrinterBase(entity.Entity):
         # The status property
         self._status: Optional[printer_status.PrinterStatus] = None
     
-    @property
-    def capabilities(self,) -> Optional[printer_capabilities.PrinterCapabilities]:
-        """
-        Gets the capabilities property value. The capabilities of the printer/printerShare.
-        Returns: Optional[printer_capabilities.PrinterCapabilities]
-        """
-        return self._capabilities
-    
-    @capabilities.setter
-    def capabilities(self,value: Optional[printer_capabilities.PrinterCapabilities] = None) -> None:
-        """
-        Sets the capabilities property value. The capabilities of the printer/printerShare.
-        Args:
-            value: Value to set for the capabilities property.
-        """
-        self._capabilities = value
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrinterBase:
         """
@@ -61,17 +64,6 @@ class PrinterBase(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.printer":
-                from . import printer
-
-                return printer.Printer()
-            if mapping_value == "#microsoft.graph.printerShare":
-                from . import printer_share
-
-                return printer_share.PrinterShare()
         return PrinterBase()
     
     @property
@@ -113,9 +105,7 @@ class PrinterBase(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, printer, printer_capabilities, printer_defaults, printer_location, printer_share, printer_status, print_job
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "capabilities": lambda n : setattr(self, 'capabilities', n.get_object_value(printer_capabilities.PrinterCapabilities)),
             "defaults": lambda n : setattr(self, 'defaults', n.get_object_value(printer_defaults.PrinterDefaults)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

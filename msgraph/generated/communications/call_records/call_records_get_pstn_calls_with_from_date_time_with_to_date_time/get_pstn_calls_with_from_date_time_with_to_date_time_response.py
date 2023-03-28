@@ -1,12 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import base_collection_pagination_count_response
-    from ....models.call_records import pstn_call_log_row
-
-from ....models import base_collection_pagination_count_response
+base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
+pstn_call_log_row = lazy_import('msgraph.generated.models.call_records.pstn_call_log_row')
 
 class GetPstnCallsWithFromDateTimeWithToDateTimeResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
     def __init__(self,) -> None:
@@ -34,10 +32,7 @@ class GetPstnCallsWithFromDateTimeWithToDateTimeResponse(base_collection_paginat
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ....models import base_collection_pagination_count_response
-        from ....models.call_records import pstn_call_log_row
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(pstn_call_log_row.PstnCallLogRow)),
         }
         super_fields = super().get_field_deserializers()

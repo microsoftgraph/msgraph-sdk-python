@@ -1,24 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new chatMessagePolicyViolationPolicyTip and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The URL a user can visit to read about the data loss prevention policies for the organization. (ie, policies about what users shouldn't say in chats)
-        self._compliance_url: Optional[str] = None
-        # Explanatory text shown to the sender of the message.
-        self._general_text: Optional[str] = None
-        # The list of improper data in the message that was detected by the data loss prevention app. Each DLP app defines its own conditions, examples include 'Credit Card Number' and 'Social Security Number'.
-        self._matched_condition_descriptions: Optional[List[str]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -52,6 +37,22 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, Parsable):
             value: Value to set for the compliance_url property.
         """
         self._compliance_url = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new chatMessagePolicyViolationPolicyTip and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The URL a user can visit to read about the data loss prevention policies for the organization. (ie, policies about what users shouldn't say in chats)
+        self._compliance_url: Optional[str] = None
+        # Explanatory text shown to the sender of the message.
+        self._general_text: Optional[str] = None
+        # The list of improper data in the message that was detected by the data loss prevention app. Each DLP app defines its own conditions, examples include 'Credit Card Number' and 'Social Security Number'.
+        self._matched_condition_descriptions: Optional[List[str]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessagePolicyViolationPolicyTip:
@@ -87,7 +88,7 @@ class ChatMessagePolicyViolationPolicyTip(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "complianceUrl": lambda n : setattr(self, 'compliance_url', n.get_str_value()),
             "generalText": lambda n : setattr(self, 'general_text', n.get_str_value()),
             "matchedConditionDescriptions": lambda n : setattr(self, 'matched_condition_descriptions', n.get_collection_of_primitive_values(str)),

@@ -7,23 +7,64 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ........models.o_data_errors import o_data_error
-    from ........models.term_store import set
-    from .children import children_request_builder
-    from .children.item import term_item_request_builder
-    from .parent_group import parent_group_request_builder
-    from .relations import relations_request_builder
-    from .relations.item import relation_item_request_builder
-    from .terms import terms_request_builder
-    from .terms.item import term_item_request_builder
+children_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.term_store.sets.item.children.children_request_builder')
+term_item_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.term_store.sets.item.children.item.term_item_request_builder')
+parent_group_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.term_store.sets.item.parent_group.parent_group_request_builder')
+relations_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.term_store.sets.item.relations.relations_request_builder')
+relation_item_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.term_store.sets.item.relations.item.relation_item_request_builder')
+terms_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.term_store.sets.item.terms.terms_request_builder')
+term_item_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.term_store.sets.item.terms.item.term_item_request_builder')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+set = lazy_import('msgraph.generated.models.term_store.set')
 
 class SetItemRequestBuilder():
     """
     Provides operations to manage the sets property of the microsoft.graph.termStore.store entity.
     """
+    @property
+    def children(self) -> children_request_builder.ChildrenRequestBuilder:
+        """
+        Provides operations to manage the children property of the microsoft.graph.termStore.set entity.
+        """
+        return children_request_builder.ChildrenRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def parent_group(self) -> parent_group_request_builder.ParentGroupRequestBuilder:
+        """
+        Provides operations to manage the parentGroup property of the microsoft.graph.termStore.set entity.
+        """
+        return parent_group_request_builder.ParentGroupRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def relations(self) -> relations_request_builder.RelationsRequestBuilder:
+        """
+        Provides operations to manage the relations property of the microsoft.graph.termStore.set entity.
+        """
+        return relations_request_builder.RelationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def terms(self) -> terms_request_builder.TermsRequestBuilder:
+        """
+        Provides operations to manage the terms property of the microsoft.graph.termStore.set entity.
+        """
+        return terms_request_builder.TermsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def children_by_id(self,id: str) -> term_item_request_builder.TermItemRequestBuilder:
+        """
+        Provides operations to manage the children property of the microsoft.graph.termStore.set entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: term_item_request_builder.TermItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["term%2Did"] = id
+        return term_item_request_builder.TermItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SetItemRequestBuilder and sets the default values.
@@ -42,22 +83,6 @@ class SetItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def children_by_id(self,id: str) -> term_item_request_builder.TermItemRequestBuilder:
-        """
-        Provides operations to manage the children property of the microsoft.graph.termStore.set entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: term_item_request_builder.TermItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .children.item import term_item_request_builder
-        from .terms.item import term_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["term%2Did"] = id
-        return term_item_request_builder.TermItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def delete(self,request_configuration: Optional[SetItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property sets for groups
@@ -67,8 +92,6 @@ class SetItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -87,16 +110,12 @@ class SetItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models.term_store import set
-
         return await self.request_adapter.send_async(request_info, set.Set, error_mapping)
     
     async def patch(self,body: Optional[set.Set] = None, request_configuration: Optional[SetItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[set.Set]:
@@ -112,16 +131,12 @@ class SetItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ........models.term_store import set
-
         return await self.request_adapter.send_async(request_info, set.Set, error_mapping)
     
     def relations_by_id(self,id: str) -> relation_item_request_builder.RelationItemRequestBuilder:
@@ -133,8 +148,6 @@ class SetItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .relations.item import relation_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["relation%2Did"] = id
         return relation_item_request_builder.RelationItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -148,9 +161,6 @@ class SetItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .children.item import term_item_request_builder
-        from .terms.item import term_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["term%2Did"] = id
         return term_item_request_builder.TermItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -210,42 +220,6 @@ class SetItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def children(self) -> children_request_builder.ChildrenRequestBuilder:
-        """
-        Provides operations to manage the children property of the microsoft.graph.termStore.set entity.
-        """
-        from .children import children_request_builder
-
-        return children_request_builder.ChildrenRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def parent_group(self) -> parent_group_request_builder.ParentGroupRequestBuilder:
-        """
-        Provides operations to manage the parentGroup property of the microsoft.graph.termStore.set entity.
-        """
-        from .parent_group import parent_group_request_builder
-
-        return parent_group_request_builder.ParentGroupRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def relations(self) -> relations_request_builder.RelationsRequestBuilder:
-        """
-        Provides operations to manage the relations property of the microsoft.graph.termStore.set entity.
-        """
-        from .relations import relations_request_builder
-
-        return relations_request_builder.RelationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def terms(self) -> terms_request_builder.TermsRequestBuilder:
-        """
-        Provides operations to manage the terms property of the microsoft.graph.termStore.set entity.
-        """
-        from .terms import terms_request_builder
-
-        return terms_request_builder.TermsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class SetItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -263,6 +237,12 @@ class SetItemRequestBuilder():
         """
         Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -278,12 +258,6 @@ class SetItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class SetItemRequestBuilderGetRequestConfiguration():

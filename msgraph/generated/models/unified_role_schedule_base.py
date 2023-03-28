@@ -1,46 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import app_scope, directory_object, entity, unified_role_assignment_schedule, unified_role_definition, unified_role_eligibility_schedule
-
-from . import entity
+app_scope = lazy_import('msgraph.generated.models.app_scope')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+entity = lazy_import('msgraph.generated.models.entity')
+unified_role_definition = lazy_import('msgraph.generated.models.unified_role_definition')
 
 class UnifiedRoleScheduleBase(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new unifiedRoleScheduleBase and sets the default values.
-        """
-        super().__init__()
-        # Read-only property with details of the app-specific scope when the role eligibility or assignment is scoped to an app. Nullable.
-        self._app_scope: Optional[app_scope.AppScope] = None
-        # Identifier of the app-specific scope when the assignment or eligibility is scoped to an app. The scope of an assignment or eligibility determines the set of resources for which the principal has been granted access. App scopes are scopes that are defined and understood by this application only. Use / for tenant-wide app scopes. Use directoryScopeId to limit the scope to particular directory objects, for example, administrative units.
-        self._app_scope_id: Optional[str] = None
-        # When the schedule was created.
-        self._created_date_time: Optional[datetime] = None
-        # Identifier of the object through which this schedule was created.
-        self._created_using: Optional[str] = None
-        # The directory object that is the scope of the role eligibility or assignment. Read-only.
-        self._directory_scope: Optional[directory_object.DirectoryObject] = None
-        # Identifier of the directory object representing the scope of the assignment or eligibility. The scope of an assignment or eligibility determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only.
-        self._directory_scope_id: Optional[str] = None
-        # When the schedule was last modified.
-        self._modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The principal that's getting a role assignment or that's eligible for a role through the request.
-        self._principal: Optional[directory_object.DirectoryObject] = None
-        # Identifier of the principal that has been granted the role assignment or eligibility.
-        self._principal_id: Optional[str] = None
-        # Detailed information for the roleDefinition object that is referenced through the roleDefinitionId property.
-        self._role_definition: Optional[unified_role_definition.UnifiedRoleDefinition] = None
-        # Identifier of the unifiedRoleDefinition object that is being assigned to the principal or that a principal is eligible for.
-        self._role_definition_id: Optional[str] = None
-        # The status of the role assignment or eligibility request.
-        self._status: Optional[str] = None
-    
     @property
     def app_scope(self,) -> Optional[app_scope.AppScope]:
         """
@@ -74,6 +43,38 @@ class UnifiedRoleScheduleBase(entity.Entity):
             value: Value to set for the app_scope_id property.
         """
         self._app_scope_id = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new unifiedRoleScheduleBase and sets the default values.
+        """
+        super().__init__()
+        # Read-only property with details of the app-specific scope when the role eligibility or assignment is scoped to an app. Nullable.
+        self._app_scope: Optional[app_scope.AppScope] = None
+        # Identifier of the app-specific scope when the assignment or eligibility is scoped to an app. The scope of an assignment or eligibility determines the set of resources for which the principal has been granted access. App scopes are scopes that are defined and understood by this application only. Use / for tenant-wide app scopes. Use directoryScopeId to limit the scope to particular directory objects, for example, administrative units.
+        self._app_scope_id: Optional[str] = None
+        # When the schedule was created.
+        self._created_date_time: Optional[datetime] = None
+        # Identifier of the object through which this schedule was created.
+        self._created_using: Optional[str] = None
+        # The directory object that is the scope of the role eligibility or assignment. Read-only.
+        self._directory_scope: Optional[directory_object.DirectoryObject] = None
+        # Identifier of the directory object representing the scope of the assignment or eligibility. The scope of an assignment or eligibility determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only.
+        self._directory_scope_id: Optional[str] = None
+        # When the schedule was last modified.
+        self._modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The principal that's getting a role assignment or that's eligible for a role through the request.
+        self._principal: Optional[directory_object.DirectoryObject] = None
+        # Identifier of the principal that has been granted the role assignment or eligibility.
+        self._principal_id: Optional[str] = None
+        # Detailed information for the roleDefinition object that is referenced through the roleDefinitionId property.
+        self._role_definition: Optional[unified_role_definition.UnifiedRoleDefinition] = None
+        # Identifier of the unifiedRoleDefinition object that is being assigned to the principal or that a principal is eligible for.
+        self._role_definition_id: Optional[str] = None
+        # The status of the role assignment or eligibility request.
+        self._status: Optional[str] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -119,17 +120,6 @@ class UnifiedRoleScheduleBase(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.unifiedRoleAssignmentSchedule":
-                from . import unified_role_assignment_schedule
-
-                return unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule()
-            if mapping_value == "#microsoft.graph.unifiedRoleEligibilitySchedule":
-                from . import unified_role_eligibility_schedule
-
-                return unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule()
         return UnifiedRoleScheduleBase()
     
     @property
@@ -171,9 +161,7 @@ class UnifiedRoleScheduleBase(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_scope, directory_object, entity, unified_role_assignment_schedule, unified_role_definition, unified_role_eligibility_schedule
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "appScope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
             "appScopeId": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),

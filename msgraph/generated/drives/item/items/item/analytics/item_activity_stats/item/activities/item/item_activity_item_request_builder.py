@@ -7,17 +7,24 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ..........models import item_activity
-    from ..........models.o_data_errors import o_data_error
-    from .drive_item import drive_item_request_builder
+drive_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.analytics.item_activity_stats.item.activities.item.drive_item.drive_item_request_builder')
+item_activity = lazy_import('msgraph.generated.models.item_activity')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ItemActivityItemRequestBuilder():
     """
     Provides operations to manage the activities property of the microsoft.graph.itemActivityStat entity.
     """
+    @property
+    def drive_item(self) -> drive_item_request_builder.DriveItemRequestBuilder:
+        """
+        Provides operations to manage the driveItem property of the microsoft.graph.itemActivity entity.
+        """
+        return drive_item_request_builder.DriveItemRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ItemActivityItemRequestBuilder and sets the default values.
@@ -45,8 +52,6 @@ class ItemActivityItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -65,16 +70,12 @@ class ItemActivityItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import item_activity
-
         return await self.request_adapter.send_async(request_info, item_activity.ItemActivity, error_mapping)
     
     async def patch(self,body: Optional[item_activity.ItemActivity] = None, request_configuration: Optional[ItemActivityItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[item_activity.ItemActivity]:
@@ -90,16 +91,12 @@ class ItemActivityItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import item_activity
-
         return await self.request_adapter.send_async(request_info, item_activity.ItemActivity, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ItemActivityItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -157,15 +154,6 @@ class ItemActivityItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def drive_item(self) -> drive_item_request_builder.DriveItemRequestBuilder:
-        """
-        Provides operations to manage the driveItem property of the microsoft.graph.itemActivity entity.
-        """
-        from .drive_item import drive_item_request_builder
-
-        return drive_item_request_builder.DriveItemRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class ItemActivityItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -183,6 +171,12 @@ class ItemActivityItemRequestBuilder():
         """
         Exposes the itemActivities represented in this itemActivityStat resource.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -198,12 +192,6 @@ class ItemActivityItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class ItemActivityItemRequestBuilderGetRequestConfiguration():

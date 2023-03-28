@@ -1,22 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import chat, teams_app_installation
-
-from . import teams_app_installation
+chat = lazy_import('msgraph.generated.models.chat')
+teams_app_installation = lazy_import('msgraph.generated.models.teams_app_installation')
 
 class UserScopeTeamsAppInstallation(teams_app_installation.TeamsAppInstallation):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new UserScopeTeamsAppInstallation and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.userScopeTeamsAppInstallation"
-        # The chat between the user and Teams app.
-        self._chat: Optional[chat.Chat] = None
-    
     @property
     def chat(self,) -> Optional[chat.Chat]:
         """
@@ -33,6 +23,15 @@ class UserScopeTeamsAppInstallation(teams_app_installation.TeamsAppInstallation)
             value: Value to set for the chat property.
         """
         self._chat = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new UserScopeTeamsAppInstallation and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.userScopeTeamsAppInstallation"
+        # The chat between the user and Teams app.
+        self._chat: Optional[chat.Chat] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserScopeTeamsAppInstallation:
@@ -51,9 +50,7 @@ class UserScopeTeamsAppInstallation(teams_app_installation.TeamsAppInstallation)
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import chat, teams_app_installation
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "chat": lambda n : setattr(self, 'chat', n.get_object_value(chat.Chat)),
         }
         super_fields = super().get_field_deserializers()

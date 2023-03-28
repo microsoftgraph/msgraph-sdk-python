@@ -1,17 +1,52 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import directory_object, on_premises_provisioning_error, phone, physical_office_address
-
-from . import directory_object
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+on_premises_provisioning_error = lazy_import('msgraph.generated.models.on_premises_provisioning_error')
+phone = lazy_import('msgraph.generated.models.phone')
+physical_office_address = lazy_import('msgraph.generated.models.physical_office_address')
 
 class OrgContact(directory_object.DirectoryObject):
+    @property
+    def addresses(self,) -> Optional[List[physical_office_address.PhysicalOfficeAddress]]:
+        """
+        Gets the addresses property value. The addresses property
+        Returns: Optional[List[physical_office_address.PhysicalOfficeAddress]]
+        """
+        return self._addresses
+    
+    @addresses.setter
+    def addresses(self,value: Optional[List[physical_office_address.PhysicalOfficeAddress]] = None) -> None:
+        """
+        Sets the addresses property value. The addresses property
+        Args:
+            value: Value to set for the addresses property.
+        """
+        self._addresses = value
+    
+    @property
+    def company_name(self,) -> Optional[str]:
+        """
+        Gets the companyName property value. The companyName property
+        Returns: Optional[str]
+        """
+        return self._company_name
+    
+    @company_name.setter
+    def company_name(self,value: Optional[str] = None) -> None:
+        """
+        Sets the companyName property value. The companyName property
+        Args:
+            value: Value to set for the company_name property.
+        """
+        self._company_name = value
+    
     def __init__(self,) -> None:
         """
-        Instantiates a new orgContact and sets the default values.
+        Instantiates a new OrgContact and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.orgContact"
@@ -51,40 +86,6 @@ class OrgContact(directory_object.DirectoryObject):
         self._surname: Optional[str] = None
         # The transitiveMemberOf property
         self._transitive_member_of: Optional[List[directory_object.DirectoryObject]] = None
-    
-    @property
-    def addresses(self,) -> Optional[List[physical_office_address.PhysicalOfficeAddress]]:
-        """
-        Gets the addresses property value. The addresses property
-        Returns: Optional[List[physical_office_address.PhysicalOfficeAddress]]
-        """
-        return self._addresses
-    
-    @addresses.setter
-    def addresses(self,value: Optional[List[physical_office_address.PhysicalOfficeAddress]] = None) -> None:
-        """
-        Sets the addresses property value. The addresses property
-        Args:
-            value: Value to set for the addresses property.
-        """
-        self._addresses = value
-    
-    @property
-    def company_name(self,) -> Optional[str]:
-        """
-        Gets the companyName property value. The companyName property
-        Returns: Optional[str]
-        """
-        return self._company_name
-    
-    @company_name.setter
-    def company_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the companyName property value. The companyName property
-        Args:
-            value: Value to set for the company_name property.
-        """
-        self._company_name = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OrgContact:
@@ -154,9 +155,7 @@ class OrgContact(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_object, on_premises_provisioning_error, phone, physical_office_address
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "addresses": lambda n : setattr(self, 'addresses', n.get_collection_of_object_values(physical_office_address.PhysicalOfficeAddress)),
             "companyName": lambda n : setattr(self, 'company_name', n.get_str_value()),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),

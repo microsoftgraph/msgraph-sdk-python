@@ -1,45 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, json
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+json = lazy_import('msgraph.generated.models.json')
 
 class WorkbookRangeView(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookRangeView and sets the default values.
-        """
-        super().__init__()
-        # Represents the cell addresses
-        self._cell_addresses: Optional[json.Json] = None
-        # Returns the number of visible columns. Read-only.
-        self._column_count: Optional[int] = None
-        # Represents the formula in A1-style notation.
-        self._formulas: Optional[json.Json] = None
-        # Represents the formula in A1-style notation, in the user's language and number-formatting locale. For example, the English '=SUM(A1, 1.5)' formula would become '=SUMME(A1; 1,5)' in German.
-        self._formulas_local: Optional[json.Json] = None
-        # Represents the formula in R1C1-style notation.
-        self._formulas_r1_c1: Optional[json.Json] = None
-        # Index of the range.
-        self._index: Optional[int] = None
-        # Represents Excel's number format code for the given cell. Read-only.
-        self._number_format: Optional[json.Json] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Returns the number of visible rows. Read-only.
-        self._row_count: Optional[int] = None
-        # Represents a collection of range views associated with the range. Read-only. Read-only.
-        self._rows: Optional[List[WorkbookRangeView]] = None
-        # Text values of the specified range. The Text value will not depend on the cell width. The # sign substitution that happens in Excel UI will not affect the text value returned by the API. Read-only.
-        self._text: Optional[json.Json] = None
-        # Represents the type of data of each cell. Read-only. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error.
-        self._value_types: Optional[json.Json] = None
-        # Represents the raw values of the specified range view. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
-        self._values: Optional[json.Json] = None
-    
     @property
     def cell_addresses(self,) -> Optional[json.Json]:
         """
@@ -73,6 +40,38 @@ class WorkbookRangeView(entity.Entity):
             value: Value to set for the column_count property.
         """
         self._column_count = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new WorkbookRangeView and sets the default values.
+        """
+        super().__init__()
+        # Represents the cell addresses
+        self._cell_addresses: Optional[json.Json] = None
+        # Returns the number of visible columns. Read-only.
+        self._column_count: Optional[int] = None
+        # Represents the formula in A1-style notation.
+        self._formulas: Optional[json.Json] = None
+        # Represents the formula in A1-style notation, in the user's language and number-formatting locale. For example, the English '=SUM(A1, 1.5)' formula would become '=SUMME(A1; 1,5)' in German.
+        self._formulas_local: Optional[json.Json] = None
+        # Represents the formula in R1C1-style notation.
+        self._formulas_r1_c1: Optional[json.Json] = None
+        # Index of the range.
+        self._index: Optional[int] = None
+        # Represents Excel's number format code for the given cell. Read-only.
+        self._number_format: Optional[json.Json] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Returns the number of visible rows. Read-only.
+        self._row_count: Optional[int] = None
+        # Represents a collection of range views associated with the range. Read-only. Read-only.
+        self._rows: Optional[List[workbook_range_view.WorkbookRangeView]] = None
+        # Text values of the specified range. The Text value will not depend on the cell width. The # sign substitution that happens in Excel UI will not affect the text value returned by the API. Read-only.
+        self._text: Optional[json.Json] = None
+        # Represents the type of data of each cell. Read-only. The possible values are: Unknown, Empty, String, Integer, Double, Boolean, Error.
+        self._value_types: Optional[json.Json] = None
+        # Represents the raw values of the specified range view. The data returned could be of type string, number, or a boolean. Cell that contain an error will return the error string.
+        self._values: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookRangeView:
@@ -142,9 +141,7 @@ class WorkbookRangeView(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, json
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "cellAddresses": lambda n : setattr(self, 'cell_addresses', n.get_object_value(json.Json)),
             "columnCount": lambda n : setattr(self, 'column_count', n.get_int_value()),
             "formulas": lambda n : setattr(self, 'formulas', n.get_object_value(json.Json)),
@@ -152,7 +149,7 @@ class WorkbookRangeView(entity.Entity):
             "formulasR1C1": lambda n : setattr(self, 'formulas_r1_c1', n.get_object_value(json.Json)),
             "index": lambda n : setattr(self, 'index', n.get_int_value()),
             "numberFormat": lambda n : setattr(self, 'number_format', n.get_object_value(json.Json)),
-            "rows": lambda n : setattr(self, 'rows', n.get_collection_of_object_values(WorkbookRangeView)),
+            "rows": lambda n : setattr(self, 'rows', n.get_collection_of_object_values(workbook_range_view.WorkbookRangeView)),
             "rowCount": lambda n : setattr(self, 'row_count', n.get_int_value()),
             "text": lambda n : setattr(self, 'text', n.get_object_value(json.Json)),
             "values": lambda n : setattr(self, 'values', n.get_object_value(json.Json)),
@@ -214,15 +211,15 @@ class WorkbookRangeView(entity.Entity):
         self._row_count = value
     
     @property
-    def rows(self,) -> Optional[List[WorkbookRangeView]]:
+    def rows(self,) -> Optional[List[workbook_range_view.WorkbookRangeView]]:
         """
         Gets the rows property value. Represents a collection of range views associated with the range. Read-only. Read-only.
-        Returns: Optional[List[WorkbookRangeView]]
+        Returns: Optional[List[workbook_range_view.WorkbookRangeView]]
         """
         return self._rows
     
     @rows.setter
-    def rows(self,value: Optional[List[WorkbookRangeView]] = None) -> None:
+    def rows(self,value: Optional[List[workbook_range_view.WorkbookRangeView]] = None) -> None:
         """
         Sets the rows property value. Represents a collection of range views associated with the range. Read-only. Read-only.
         Args:

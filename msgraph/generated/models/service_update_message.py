@@ -1,43 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import item_body, service_announcement_attachment, service_announcement_base, service_update_category, service_update_message_viewpoint, service_update_severity
-
-from . import service_announcement_base
+item_body = lazy_import('msgraph.generated.models.item_body')
+service_announcement_attachment = lazy_import('msgraph.generated.models.service_announcement_attachment')
+service_announcement_base = lazy_import('msgraph.generated.models.service_announcement_base')
+service_update_category = lazy_import('msgraph.generated.models.service_update_category')
+service_update_message_viewpoint = lazy_import('msgraph.generated.models.service_update_message_viewpoint')
+service_update_severity = lazy_import('msgraph.generated.models.service_update_severity')
 
 class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ServiceUpdateMessage and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.serviceUpdateMessage"
-        # The expected deadline of the action for the message.
-        self._action_required_by_date_time: Optional[datetime] = None
-        # A collection of serviceAnnouncementAttachments.
-        self._attachments: Optional[List[service_announcement_attachment.ServiceAnnouncementAttachment]] = None
-        # The zip file that contains all attachments for a message.
-        self._attachments_archive: Optional[bytes] = None
-        # The body property
-        self._body: Optional[item_body.ItemBody] = None
-        # The category property
-        self._category: Optional[service_update_category.ServiceUpdateCategory] = None
-        # Indicates whether the message has any attachment.
-        self._has_attachments: Optional[bool] = None
-        # Indicates whether the message describes a major update for the service.
-        self._is_major_change: Optional[bool] = None
-        # The affected services by the service message.
-        self._services: Optional[List[str]] = None
-        # The severity property
-        self._severity: Optional[service_update_severity.ServiceUpdateSeverity] = None
-        # A collection of tags for the service message. Tags are provided by the service team/support team who post the message to tell whether this message contains privacy data, or whether this message is for a service new feature update, and so on.
-        self._tags: Optional[List[str]] = None
-        # Represents user viewpoints data of the service message. This data includes message status such as whether the user has archived, read, or marked the message as favorite. This property is null when accessed with application permissions.
-        self._view_point: Optional[service_update_message_viewpoint.ServiceUpdateMessageViewpoint] = None
-    
     @property
     def action_required_by_date_time(self,) -> Optional[datetime]:
         """
@@ -123,6 +97,35 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         """
         self._category = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ServiceUpdateMessage and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.serviceUpdateMessage"
+        # The expected deadline of the action for the message.
+        self._action_required_by_date_time: Optional[datetime] = None
+        # A collection of serviceAnnouncementAttachments.
+        self._attachments: Optional[List[service_announcement_attachment.ServiceAnnouncementAttachment]] = None
+        # The zip file that contains all attachments for a message.
+        self._attachments_archive: Optional[bytes] = None
+        # The body property
+        self._body: Optional[item_body.ItemBody] = None
+        # The category property
+        self._category: Optional[service_update_category.ServiceUpdateCategory] = None
+        # Indicates whether the message has any attachment.
+        self._has_attachments: Optional[bool] = None
+        # Indicates whether the message describes a major update for the service.
+        self._is_major_change: Optional[bool] = None
+        # The affected services by the service message.
+        self._services: Optional[List[str]] = None
+        # The severity property
+        self._severity: Optional[service_update_severity.ServiceUpdateSeverity] = None
+        # A collection of tags for the service message. Tags are provided by the service team/support team who post the message to tell whether this message contains privacy data, or whether this message is for a service new feature update, and so on.
+        self._tags: Optional[List[str]] = None
+        # Represents user viewpoints data of the service message. This data includes message status such as whether the user has archived, read, or marked the message as favorite. This property is null when accessed with application permissions.
+        self._view_point: Optional[service_update_message_viewpoint.ServiceUpdateMessageViewpoint] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceUpdateMessage:
         """
@@ -140,9 +143,7 @@ class ServiceUpdateMessage(service_announcement_base.ServiceAnnouncementBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import item_body, service_announcement_attachment, service_announcement_base, service_update_category, service_update_message_viewpoint, service_update_severity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "actionRequiredByDateTime": lambda n : setattr(self, 'action_required_by_date_time', n.get_datetime_value()),
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(service_announcement_attachment.ServiceAnnouncementAttachment)),
             "attachmentsArchive": lambda n : setattr(self, 'attachments_archive', n.get_bytes_value()),

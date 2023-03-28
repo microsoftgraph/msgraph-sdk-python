@@ -1,13 +1,31 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import federated_idp_mfa_behavior, prompt_login_behavior, saml_or_ws_fed_provider, signing_certificate_update_status
-
-from . import saml_or_ws_fed_provider
+federated_idp_mfa_behavior = lazy_import('msgraph.generated.models.federated_idp_mfa_behavior')
+prompt_login_behavior = lazy_import('msgraph.generated.models.prompt_login_behavior')
+saml_or_ws_fed_provider = lazy_import('msgraph.generated.models.saml_or_ws_fed_provider')
+signing_certificate_update_status = lazy_import('msgraph.generated.models.signing_certificate_update_status')
 
 class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
+    @property
+    def active_sign_in_uri(self,) -> Optional[str]:
+        """
+        Gets the activeSignInUri property value. URL of the endpoint used by active clients when authenticating with federated domains set up for single sign-on in Azure Active Directory (Azure AD). Corresponds to the ActiveLogOnUri property of the Set-MsolDomainFederationSettings MSOnline v1 PowerShell cmdlet.
+        Returns: Optional[str]
+        """
+        return self._active_sign_in_uri
+    
+    @active_sign_in_uri.setter
+    def active_sign_in_uri(self,value: Optional[str] = None) -> None:
+        """
+        Sets the activeSignInUri property value. URL of the endpoint used by active clients when authenticating with federated domains set up for single sign-on in Azure Active Directory (Azure AD). Corresponds to the ActiveLogOnUri property of the Set-MsolDomainFederationSettings MSOnline v1 PowerShell cmdlet.
+        Args:
+            value: Value to set for the active_sign_in_uri property.
+        """
+        self._active_sign_in_uri = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new InternalDomainFederation and sets the default values.
@@ -28,23 +46,6 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         self._sign_out_uri: Optional[str] = None
         # Provides status and timestamp of the last update of the signing certificate.
         self._signing_certificate_update_status: Optional[signing_certificate_update_status.SigningCertificateUpdateStatus] = None
-    
-    @property
-    def active_sign_in_uri(self,) -> Optional[str]:
-        """
-        Gets the activeSignInUri property value. URL of the endpoint used by active clients when authenticating with federated domains set up for single sign-on in Azure Active Directory (Azure AD). Corresponds to the ActiveLogOnUri property of the Set-MsolDomainFederationSettings MSOnline v1 PowerShell cmdlet.
-        Returns: Optional[str]
-        """
-        return self._active_sign_in_uri
-    
-    @active_sign_in_uri.setter
-    def active_sign_in_uri(self,value: Optional[str] = None) -> None:
-        """
-        Sets the activeSignInUri property value. URL of the endpoint used by active clients when authenticating with federated domains set up for single sign-on in Azure Active Directory (Azure AD). Corresponds to the ActiveLogOnUri property of the Set-MsolDomainFederationSettings MSOnline v1 PowerShell cmdlet.
-        Args:
-            value: Value to set for the active_sign_in_uri property.
-        """
-        self._active_sign_in_uri = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InternalDomainFederation:
@@ -80,9 +81,7 @@ class InternalDomainFederation(saml_or_ws_fed_provider.SamlOrWsFedProvider):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import federated_idp_mfa_behavior, prompt_login_behavior, saml_or_ws_fed_provider, signing_certificate_update_status
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "activeSignInUri": lambda n : setattr(self, 'active_sign_in_uri', n.get_str_value()),
             "federatedIdpMfaBehavior": lambda n : setattr(self, 'federated_idp_mfa_behavior', n.get_enum_value(federated_idp_mfa_behavior.FederatedIdpMfaBehavior)),
             "isSignedAuthenticationRequestRequired": lambda n : setattr(self, 'is_signed_authentication_request_required', n.get_bool_value()),

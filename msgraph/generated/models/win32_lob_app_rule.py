@@ -1,26 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import win32_lob_app_file_system_rule, win32_lob_app_power_shell_script_rule, win32_lob_app_product_code_rule, win32_lob_app_registry_rule, win32_lob_app_rule_type
+win32_lob_app_rule_type = lazy_import('msgraph.generated.models.win32_lob_app_rule_type')
 
 class Win32LobAppRule(AdditionalDataHolder, Parsable):
     """
     A base complex type to store the detection or requirement rule data for a Win32 LOB app.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new win32LobAppRule and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Contains rule types for Win32 LOB apps.
-        self._rule_type: Optional[win32_lob_app_rule_type.Win32LobAppRuleType] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,6 +26,18 @@ class Win32LobAppRule(AdditionalDataHolder, Parsable):
         """
         self._additional_data = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new win32LobAppRule and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Contains rule types for Win32 LOB apps.
+        self._rule_type: Optional[win32_lob_app_rule_type.Win32LobAppRuleType] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppRule:
         """
@@ -48,25 +48,6 @@ class Win32LobAppRule(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.win32LobAppFileSystemRule":
-                from . import win32_lob_app_file_system_rule
-
-                return win32_lob_app_file_system_rule.Win32LobAppFileSystemRule()
-            if mapping_value == "#microsoft.graph.win32LobAppPowerShellScriptRule":
-                from . import win32_lob_app_power_shell_script_rule
-
-                return win32_lob_app_power_shell_script_rule.Win32LobAppPowerShellScriptRule()
-            if mapping_value == "#microsoft.graph.win32LobAppProductCodeRule":
-                from . import win32_lob_app_product_code_rule
-
-                return win32_lob_app_product_code_rule.Win32LobAppProductCodeRule()
-            if mapping_value == "#microsoft.graph.win32LobAppRegistryRule":
-                from . import win32_lob_app_registry_rule
-
-                return win32_lob_app_registry_rule.Win32LobAppRegistryRule()
         return Win32LobAppRule()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -74,9 +55,7 @@ class Win32LobAppRule(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import win32_lob_app_file_system_rule, win32_lob_app_power_shell_script_rule, win32_lob_app_product_code_rule, win32_lob_app_registry_rule, win32_lob_app_rule_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "ruleType": lambda n : setattr(self, 'rule_type', n.get_enum_value(win32_lob_app_rule_type.Win32LobAppRuleType)),
         }

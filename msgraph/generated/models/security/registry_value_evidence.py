@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import alert_evidence
-
-from . import alert_evidence
+alert_evidence = lazy_import('msgraph.generated.models.security.alert_evidence')
 
 class RegistryValueEvidence(alert_evidence.AlertEvidence):
     def __init__(self,) -> None:
@@ -43,9 +41,7 @@ class RegistryValueEvidence(alert_evidence.AlertEvidence):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alert_evidence
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "registryHive": lambda n : setattr(self, 'registry_hive', n.get_str_value()),
             "registryKey": lambda n : setattr(self, 'registry_key', n.get_str_value()),
             "registryValue": lambda n : setattr(self, 'registry_value', n.get_str_value()),

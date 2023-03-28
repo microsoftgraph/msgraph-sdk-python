@@ -1,35 +1,14 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import call_recording_status, event_message_detail, identity_set
-
-from . import event_message_detail
+call_recording_status = lazy_import('msgraph.generated.models.call_recording_status')
+event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new CallRecordingEventMessageDetail and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.callRecordingEventMessageDetail"
-        # Unique identifier of the call.
-        self._call_id: Optional[str] = None
-        # Display name for the call recording.
-        self._call_recording_display_name: Optional[str] = None
-        # Duration of the call recording.
-        self._call_recording_duration: Optional[Timedelta] = None
-        # Status of the call recording. Possible values are: success, failure, initial, chunkFinished, unknownFutureValue.
-        self._call_recording_status: Optional[call_recording_status.CallRecordingStatus] = None
-        # Call recording URL.
-        self._call_recording_url: Optional[str] = None
-        # Initiator of the event.
-        self._initiator: Optional[identity_set.IdentitySet] = None
-        # Organizer of the meeting.
-        self._meeting_organizer: Optional[identity_set.IdentitySet] = None
-    
     @property
     def call_id(self,) -> Optional[str]:
         """
@@ -115,6 +94,27 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         self._call_recording_url = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new CallRecordingEventMessageDetail and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.callRecordingEventMessageDetail"
+        # Unique identifier of the call.
+        self._call_id: Optional[str] = None
+        # Display name for the call recording.
+        self._call_recording_display_name: Optional[str] = None
+        # Duration of the call recording.
+        self._call_recording_duration: Optional[Timedelta] = None
+        # Status of the call recording. Possible values are: success, failure, initial, chunkFinished, unknownFutureValue.
+        self._call_recording_status: Optional[call_recording_status.CallRecordingStatus] = None
+        # Call recording URL.
+        self._call_recording_url: Optional[str] = None
+        # Initiator of the event.
+        self._initiator: Optional[identity_set.IdentitySet] = None
+        # Organizer of the meeting.
+        self._meeting_organizer: Optional[identity_set.IdentitySet] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallRecordingEventMessageDetail:
         """
@@ -132,9 +132,7 @@ class CallRecordingEventMessageDetail(event_message_detail.EventMessageDetail):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import call_recording_status, event_message_detail, identity_set
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
             "callRecordingDisplayName": lambda n : setattr(self, 'call_recording_display_name', n.get_str_value()),
             "callRecordingDuration": lambda n : setattr(self, 'call_recording_duration', n.get_object_value(Timedelta)),

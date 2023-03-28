@@ -1,12 +1,29 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import daylight_time_zone_offset, day_of_week
+day_of_week = lazy_import('msgraph.generated.models.day_of_week')
 
 class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new standardTimeZoneOffset and sets the default values.
@@ -27,23 +44,6 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         # Represents how frequently in terms of years the change from daylight saving time to standard time occurs. For example, a value of 0 means every year.
         self._year: Optional[int] = None
     
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> StandardTimeZoneOffset:
         """
@@ -54,13 +54,6 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.daylightTimeZoneOffset":
-                from . import daylight_time_zone_offset
-
-                return daylight_time_zone_offset.DaylightTimeZoneOffset()
         return StandardTimeZoneOffset()
     
     @property
@@ -102,9 +95,7 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import daylight_time_zone_offset, day_of_week
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "dayOccurrence": lambda n : setattr(self, 'day_occurrence', n.get_int_value()),
             "dayOfWeek": lambda n : setattr(self, 'day_of_week', n.get_enum_value(day_of_week.DayOfWeek)),
             "month": lambda n : setattr(self, 'month', n.get_int_value()),

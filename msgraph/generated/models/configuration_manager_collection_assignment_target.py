@@ -1,22 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import device_and_app_management_assignment_target
-
-from . import device_and_app_management_assignment_target
+device_and_app_management_assignment_target = lazy_import('msgraph.generated.models.device_and_app_management_assignment_target')
 
 class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ConfigurationManagerCollectionAssignmentTarget and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.configurationManagerCollectionAssignmentTarget"
-        # The collection Id that is the target of the assignment.
-        self._collection_id: Optional[str] = None
-    
     @property
     def collection_id(self,) -> Optional[str]:
         """
@@ -33,6 +22,15 @@ class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_a
             value: Value to set for the collection_id property.
         """
         self._collection_id = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ConfigurationManagerCollectionAssignmentTarget and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.configurationManagerCollectionAssignmentTarget"
+        # The collection Id that is the target of the assignment.
+        self._collection_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConfigurationManagerCollectionAssignmentTarget:
@@ -51,9 +49,7 @@ class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_a
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_and_app_management_assignment_target
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "collectionId": lambda n : setattr(self, 'collection_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

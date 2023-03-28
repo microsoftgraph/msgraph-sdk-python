@@ -1,38 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class DeviceGeoLocation(AdditionalDataHolder, Parsable):
     """
     Device location
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceGeoLocation and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Altitude, given in meters above sea level
-        self._altitude: Optional[float] = None
-        # Heading in degrees from true north
-        self._heading: Optional[float] = None
-        # Accuracy of longitude and latitude in meters
-        self._horizontal_accuracy: Optional[float] = None
-        # Time at which location was recorded, relative to UTC
-        self._last_collected_date_time: Optional[datetime] = None
-        # Latitude coordinate of the device's location
-        self._latitude: Optional[float] = None
-        # Longitude coordinate of the device's location
-        self._longitude: Optional[float] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Speed the device is traveling in meters per second
-        self._speed: Optional[float] = None
-        # Accuracy of altitude in meters
-        self._vertical_accuracy: Optional[float] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -67,6 +42,32 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         """
         self._altitude = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new deviceGeoLocation and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Altitude, given in meters above sea level
+        self._altitude: Optional[float] = None
+        # Heading in degrees from true north
+        self._heading: Optional[float] = None
+        # Accuracy of longitude and latitude in meters
+        self._horizontal_accuracy: Optional[float] = None
+        # Time at which location was recorded, relative to UTC
+        self._last_collected_date_time: Optional[datetime] = None
+        # Latitude coordinate of the device's location
+        self._latitude: Optional[float] = None
+        # Longitude coordinate of the device's location
+        self._longitude: Optional[float] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Speed the device is traveling in meters per second
+        self._speed: Optional[float] = None
+        # Accuracy of altitude in meters
+        self._vertical_accuracy: Optional[float] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceGeoLocation:
         """
@@ -84,7 +85,7 @@ class DeviceGeoLocation(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "altitude": lambda n : setattr(self, 'altitude', n.get_float_value()),
             "heading": lambda n : setattr(self, 'heading', n.get_float_value()),
             "horizontalAccuracy": lambda n : setattr(self, 'horizontal_accuracy', n.get_float_value()),

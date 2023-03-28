@@ -1,12 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import data_source, source_type
-    from .. import group
-
-from . import data_source
+group = lazy_import('msgraph.generated.models.group')
+data_source = lazy_import('msgraph.generated.models.security.data_source')
+source_type = lazy_import('msgraph.generated.models.security.source_type')
 
 class UnifiedGroupSource(data_source.DataSource):
     def __init__(self,) -> None:
@@ -37,10 +36,7 @@ class UnifiedGroupSource(data_source.DataSource):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import data_source, source_type
-        from .. import group
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "group": lambda n : setattr(self, 'group', n.get_object_value(group.Group)),
             "includedSources": lambda n : setattr(self, 'included_sources', n.get_enum_value(source_type.SourceType)),
         }

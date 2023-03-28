@@ -7,11 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ...models import tenant_app_management_policy
-    from ...models.o_data_errors import o_data_error
+tenant_app_management_policy = lazy_import('msgraph.generated.models.tenant_app_management_policy')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class DefaultAppManagementPolicyRequestBuilder():
     """
@@ -44,8 +44,6 @@ class DefaultAppManagementPolicyRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -56,7 +54,7 @@ class DefaultAppManagementPolicyRequestBuilder():
     
     async def get(self,request_configuration: Optional[DefaultAppManagementPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[tenant_app_management_policy.TenantAppManagementPolicy]:
         """
-        Read the properties of a tenantAppManagementPolicy object.
+        Get defaultAppManagementPolicy from policies
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[tenant_app_management_policy.TenantAppManagementPolicy]
@@ -64,21 +62,17 @@ class DefaultAppManagementPolicyRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import tenant_app_management_policy
-
         return await self.request_adapter.send_async(request_info, tenant_app_management_policy.TenantAppManagementPolicy, error_mapping)
     
     async def patch(self,body: Optional[tenant_app_management_policy.TenantAppManagementPolicy] = None, request_configuration: Optional[DefaultAppManagementPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[tenant_app_management_policy.TenantAppManagementPolicy]:
         """
-        Update the properties of a tenantAppManagementPolicy object.
+        Update the navigation property defaultAppManagementPolicy in policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -89,16 +83,12 @@ class DefaultAppManagementPolicyRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import tenant_app_management_policy
-
         return await self.request_adapter.send_async(request_info, tenant_app_management_policy.TenantAppManagementPolicy, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DefaultAppManagementPolicyRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -119,7 +109,7 @@ class DefaultAppManagementPolicyRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DefaultAppManagementPolicyRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties of a tenantAppManagementPolicy object.
+        Get defaultAppManagementPolicy from policies
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +127,7 @@ class DefaultAppManagementPolicyRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[tenant_app_management_policy.TenantAppManagementPolicy] = None, request_configuration: Optional[DefaultAppManagementPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a tenantAppManagementPolicy object.
+        Update the navigation property defaultAppManagementPolicy in policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,8 +161,14 @@ class DefaultAppManagementPolicyRequestBuilder():
     @dataclass
     class DefaultAppManagementPolicyRequestBuilderGetQueryParameters():
         """
-        Read the properties of a tenantAppManagementPolicy object.
+        Get defaultAppManagementPolicy from policies
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -188,12 +184,6 @@ class DefaultAppManagementPolicyRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class DefaultAppManagementPolicyRequestBuilderGetRequestConfiguration():

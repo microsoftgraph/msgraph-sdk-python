@@ -7,28 +7,70 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import onenote
-    from ....models.o_data_errors import o_data_error
-    from .notebooks import notebooks_request_builder
-    from .notebooks.item import notebook_item_request_builder
-    from .operations import operations_request_builder
-    from .operations.item import onenote_operation_item_request_builder
-    from .pages import pages_request_builder
-    from .pages.item import onenote_page_item_request_builder
-    from .resources import resources_request_builder
-    from .resources.item import onenote_resource_item_request_builder
-    from .section_groups import section_groups_request_builder
-    from .section_groups.item import section_group_item_request_builder
-    from .sections import sections_request_builder
-    from .sections.item import onenote_section_item_request_builder
+notebooks_request_builder = lazy_import('msgraph.generated.groups.item.onenote.notebooks.notebooks_request_builder')
+notebook_item_request_builder = lazy_import('msgraph.generated.groups.item.onenote.notebooks.item.notebook_item_request_builder')
+operations_request_builder = lazy_import('msgraph.generated.groups.item.onenote.operations.operations_request_builder')
+onenote_operation_item_request_builder = lazy_import('msgraph.generated.groups.item.onenote.operations.item.onenote_operation_item_request_builder')
+pages_request_builder = lazy_import('msgraph.generated.groups.item.onenote.pages.pages_request_builder')
+onenote_page_item_request_builder = lazy_import('msgraph.generated.groups.item.onenote.pages.item.onenote_page_item_request_builder')
+resources_request_builder = lazy_import('msgraph.generated.groups.item.onenote.resources.resources_request_builder')
+onenote_resource_item_request_builder = lazy_import('msgraph.generated.groups.item.onenote.resources.item.onenote_resource_item_request_builder')
+section_groups_request_builder = lazy_import('msgraph.generated.groups.item.onenote.section_groups.section_groups_request_builder')
+section_group_item_request_builder = lazy_import('msgraph.generated.groups.item.onenote.section_groups.item.section_group_item_request_builder')
+sections_request_builder = lazy_import('msgraph.generated.groups.item.onenote.sections.sections_request_builder')
+onenote_section_item_request_builder = lazy_import('msgraph.generated.groups.item.onenote.sections.item.onenote_section_item_request_builder')
+onenote = lazy_import('msgraph.generated.models.onenote')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class OnenoteRequestBuilder():
     """
     Provides operations to manage the onenote property of the microsoft.graph.group entity.
     """
+    @property
+    def notebooks(self) -> notebooks_request_builder.NotebooksRequestBuilder:
+        """
+        Provides operations to manage the notebooks property of the microsoft.graph.onenote entity.
+        """
+        return notebooks_request_builder.NotebooksRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
+        """
+        Provides operations to manage the operations property of the microsoft.graph.onenote entity.
+        """
+        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def pages(self) -> pages_request_builder.PagesRequestBuilder:
+        """
+        Provides operations to manage the pages property of the microsoft.graph.onenote entity.
+        """
+        return pages_request_builder.PagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def resources(self) -> resources_request_builder.ResourcesRequestBuilder:
+        """
+        Provides operations to manage the resources property of the microsoft.graph.onenote entity.
+        """
+        return resources_request_builder.ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def section_groups(self) -> section_groups_request_builder.SectionGroupsRequestBuilder:
+        """
+        Provides operations to manage the sectionGroups property of the microsoft.graph.onenote entity.
+        """
+        return section_groups_request_builder.SectionGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def sections(self) -> sections_request_builder.SectionsRequestBuilder:
+        """
+        Provides operations to manage the sections property of the microsoft.graph.onenote entity.
+        """
+        return sections_request_builder.SectionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new OnenoteRequestBuilder and sets the default values.
@@ -56,8 +98,6 @@ class OnenoteRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -76,16 +116,12 @@ class OnenoteRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import onenote
-
         return await self.request_adapter.send_async(request_info, onenote.Onenote, error_mapping)
     
     def notebooks_by_id(self,id: str) -> notebook_item_request_builder.NotebookItemRequestBuilder:
@@ -97,8 +133,6 @@ class OnenoteRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .notebooks.item import notebook_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["notebook%2Did"] = id
         return notebook_item_request_builder.NotebookItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -112,8 +146,6 @@ class OnenoteRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .operations.item import onenote_operation_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["onenoteOperation%2Did"] = id
         return onenote_operation_item_request_builder.OnenoteOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -127,8 +159,6 @@ class OnenoteRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .pages.item import onenote_page_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["onenotePage%2Did"] = id
         return onenote_page_item_request_builder.OnenotePageItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -146,16 +176,12 @@ class OnenoteRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import onenote
-
         return await self.request_adapter.send_async(request_info, onenote.Onenote, error_mapping)
     
     def resources_by_id(self,id: str) -> onenote_resource_item_request_builder.OnenoteResourceItemRequestBuilder:
@@ -167,8 +193,6 @@ class OnenoteRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .resources.item import onenote_resource_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["onenoteResource%2Did"] = id
         return onenote_resource_item_request_builder.OnenoteResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -182,8 +206,6 @@ class OnenoteRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .section_groups.item import section_group_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["sectionGroup%2Did"] = id
         return section_group_item_request_builder.SectionGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -197,8 +219,6 @@ class OnenoteRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .sections.item import onenote_section_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["onenoteSection%2Did"] = id
         return onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -258,60 +278,6 @@ class OnenoteRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def notebooks(self) -> notebooks_request_builder.NotebooksRequestBuilder:
-        """
-        Provides operations to manage the notebooks property of the microsoft.graph.onenote entity.
-        """
-        from .notebooks import notebooks_request_builder
-
-        return notebooks_request_builder.NotebooksRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
-        """
-        Provides operations to manage the operations property of the microsoft.graph.onenote entity.
-        """
-        from .operations import operations_request_builder
-
-        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def pages(self) -> pages_request_builder.PagesRequestBuilder:
-        """
-        Provides operations to manage the pages property of the microsoft.graph.onenote entity.
-        """
-        from .pages import pages_request_builder
-
-        return pages_request_builder.PagesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def resources(self) -> resources_request_builder.ResourcesRequestBuilder:
-        """
-        Provides operations to manage the resources property of the microsoft.graph.onenote entity.
-        """
-        from .resources import resources_request_builder
-
-        return resources_request_builder.ResourcesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def section_groups(self) -> section_groups_request_builder.SectionGroupsRequestBuilder:
-        """
-        Provides operations to manage the sectionGroups property of the microsoft.graph.onenote entity.
-        """
-        from .section_groups import section_groups_request_builder
-
-        return section_groups_request_builder.SectionGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def sections(self) -> sections_request_builder.SectionsRequestBuilder:
-        """
-        Provides operations to manage the sections property of the microsoft.graph.onenote entity.
-        """
-        from .sections import sections_request_builder
-
-        return sections_request_builder.SectionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class OnenoteRequestBuilderDeleteRequestConfiguration():
         """
@@ -329,6 +295,12 @@ class OnenoteRequestBuilder():
         """
         Get onenote from groups
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -344,12 +316,6 @@ class OnenoteRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class OnenoteRequestBuilderGetRequestConfiguration():

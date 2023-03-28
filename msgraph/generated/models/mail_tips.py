@@ -1,45 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import automatic_replies_mail_tips, email_address, mail_tips_error, recipient, recipient_scope_type
+automatic_replies_mail_tips = lazy_import('msgraph.generated.models.automatic_replies_mail_tips')
+email_address = lazy_import('msgraph.generated.models.email_address')
+mail_tips_error = lazy_import('msgraph.generated.models.mail_tips_error')
+recipient = lazy_import('msgraph.generated.models.recipient')
+recipient_scope_type = lazy_import('msgraph.generated.models.recipient_scope_type')
 
 class MailTips(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new mailTips and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Mail tips for automatic reply if it has been set up by the recipient.
-        self._automatic_replies: Optional[automatic_replies_mail_tips.AutomaticRepliesMailTips] = None
-        # A custom mail tip that can be set on the recipient's mailbox.
-        self._custom_mail_tip: Optional[str] = None
-        # Whether the recipient's mailbox is restricted, for example, accepting messages from only a predefined list of senders, rejecting messages from a predefined list of senders, or accepting messages from only authenticated senders.
-        self._delivery_restricted: Optional[bool] = None
-        # The email address of the recipient to get mailtips for.
-        self._email_address: Optional[email_address.EmailAddress] = None
-        # Errors that occur during the getMailTips action.
-        self._error: Optional[mail_tips_error.MailTipsError] = None
-        # The number of external members if the recipient is a distribution list.
-        self._external_member_count: Optional[int] = None
-        # Whether sending messages to the recipient requires approval. For example, if the recipient is a large distribution list and a moderator has been set up to approve messages sent to that distribution list, or if sending messages to a recipient requires approval of the recipient's manager.
-        self._is_moderated: Optional[bool] = None
-        # The mailbox full status of the recipient.
-        self._mailbox_full: Optional[bool] = None
-        # The maximum message size that has been configured for the recipient's organization or mailbox.
-        self._max_message_size: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The scope of the recipient. Possible values are: none, internal, external, externalPartner, externalNonParther. For example, an administrator can set another organization to be its 'partner'. The scope is useful if an administrator wants certain mailtips to be accessible to certain scopes. It's also useful to senders to inform them that their message may leave the organization, helping them make the correct decisions about wording, tone and content.
-        self._recipient_scope: Optional[recipient_scope_type.RecipientScopeType] = None
-        # Recipients suggested based on previous contexts where they appear in the same message.
-        self._recipient_suggestions: Optional[List[recipient.Recipient]] = None
-        # The number of members if the recipient is a distribution list.
-        self._total_member_count: Optional[int] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -73,6 +43,40 @@ class MailTips(AdditionalDataHolder, Parsable):
             value: Value to set for the automatic_replies property.
         """
         self._automatic_replies = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new mailTips and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Mail tips for automatic reply if it has been set up by the recipient.
+        self._automatic_replies: Optional[automatic_replies_mail_tips.AutomaticRepliesMailTips] = None
+        # A custom mail tip that can be set on the recipient's mailbox.
+        self._custom_mail_tip: Optional[str] = None
+        # Whether the recipient's mailbox is restricted, for example, accepting messages from only a predefined list of senders, rejecting messages from a predefined list of senders, or accepting messages from only authenticated senders.
+        self._delivery_restricted: Optional[bool] = None
+        # The email address of the recipient to get mailtips for.
+        self._email_address: Optional[email_address.EmailAddress] = None
+        # Errors that occur during the getMailTips action.
+        self._error: Optional[mail_tips_error.MailTipsError] = None
+        # The number of external members if the recipient is a distribution list.
+        self._external_member_count: Optional[int] = None
+        # Whether sending messages to the recipient requires approval. For example, if the recipient is a large distribution list and a moderator has been set up to approve messages sent to that distribution list, or if sending messages to a recipient requires approval of the recipient's manager.
+        self._is_moderated: Optional[bool] = None
+        # The mailbox full status of the recipient.
+        self._mailbox_full: Optional[bool] = None
+        # The maximum message size that has been configured for the recipient's organization or mailbox.
+        self._max_message_size: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The scope of the recipient. Possible values are: none, internal, external, externalPartner, externalNonParther. For example, an administrator can set another organization to be its 'partner'. The scope is useful if an administrator wants certain mailtips to be accessible to certain scopes. It's also useful to senders to inform them that their message may leave the organization, helping them make the correct decisions about wording, tone and content.
+        self._recipient_scope: Optional[recipient_scope_type.RecipientScopeType] = None
+        # Recipients suggested based on previous contexts where they appear in the same message.
+        self._recipient_suggestions: Optional[List[recipient.Recipient]] = None
+        # The number of members if the recipient is a distribution list.
+        self._total_member_count: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MailTips:
@@ -176,9 +180,7 @@ class MailTips(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import automatic_replies_mail_tips, email_address, mail_tips_error, recipient, recipient_scope_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "automaticReplies": lambda n : setattr(self, 'automatic_replies', n.get_object_value(automatic_replies_mail_tips.AutomaticRepliesMailTips)),
             "customMailTip": lambda n : setattr(self, 'custom_mail_tip', n.get_str_value()),
             "deliveryRestricted": lambda n : setattr(self, 'delivery_restricted', n.get_bool_value()),

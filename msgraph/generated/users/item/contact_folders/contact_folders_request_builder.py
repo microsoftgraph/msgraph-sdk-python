@@ -7,18 +7,33 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import contact_folder, contact_folder_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .delta import delta_request_builder
+contact_folder = lazy_import('msgraph.generated.models.contact_folder')
+contact_folder_collection_response = lazy_import('msgraph.generated.models.contact_folder_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+count_request_builder = lazy_import('msgraph.generated.users.item.contact_folders.count.count_request_builder')
+delta_request_builder = lazy_import('msgraph.generated.users.item.contact_folders.delta.delta_request_builder')
 
 class ContactFoldersRequestBuilder():
     """
     Provides operations to manage the contactFolders property of the microsoft.graph.user entity.
     """
+    @property
+    def count(self) -> count_request_builder.CountRequestBuilder:
+        """
+        Provides operations to count the resources in the collection.
+        """
+        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
+        """
+        Provides operations to call the delta method.
+        """
+        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ContactFoldersRequestBuilder and sets the default values.
@@ -47,16 +62,12 @@ class ContactFoldersRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import contact_folder_collection_response
-
         return await self.request_adapter.send_async(request_info, contact_folder_collection_response.ContactFolderCollectionResponse, error_mapping)
     
     async def post(self,body: Optional[contact_folder.ContactFolder] = None, request_configuration: Optional[ContactFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[contact_folder.ContactFolder]:
@@ -72,16 +83,12 @@ class ContactFoldersRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import contact_folder
-
         return await self.request_adapter.send_async(request_info, contact_folder.ContactFolder, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ContactFoldersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -123,29 +130,29 @@ class ContactFoldersRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count import count_request_builder
-
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def delta(self) -> delta_request_builder.DeltaRequestBuilder:
-        """
-        Provides operations to call the delta method.
-        """
-        from .delta import delta_request_builder
-
-        return delta_request_builder.DeltaRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class ContactFoldersRequestBuilderGetQueryParameters():
         """
         Get the contact folder collection in the default Contacts folder of the signed-in user.
         """
+        # Include count of items
+        count: Optional[bool] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -169,24 +176,6 @@ class ContactFoldersRequestBuilder():
                 return "%24top"
             return original_name
         
-        # Include count of items
-        count: Optional[bool] = None
-
-        # Filter items by property values
-        filter: Optional[str] = None
-
-        # Order items by property values
-        orderby: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
-        # Skip the first n items
-        skip: Optional[int] = None
-
-        # Show only the first n items
-        top: Optional[int] = None
-
     
     @dataclass
     class ContactFoldersRequestBuilderGetRequestConfiguration():

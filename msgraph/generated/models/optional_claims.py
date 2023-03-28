@@ -1,27 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import optional_claim
+optional_claim = lazy_import('msgraph.generated.models.optional_claim')
 
 class OptionalClaims(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new optionalClaims and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The optional claims returned in the JWT access token.
-        self._access_token: Optional[List[optional_claim.OptionalClaim]] = None
-        # The optional claims returned in the JWT ID token.
-        self._id_token: Optional[List[optional_claim.OptionalClaim]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The optional claims returned in the SAML token.
-        self._saml2_token: Optional[List[optional_claim.OptionalClaim]] = None
-    
     @property
     def access_token(self,) -> Optional[List[optional_claim.OptionalClaim]]:
         """
@@ -56,6 +40,22 @@ class OptionalClaims(AdditionalDataHolder, Parsable):
         """
         self._additional_data = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new optionalClaims and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The optional claims returned in the JWT access token.
+        self._access_token: Optional[List[optional_claim.OptionalClaim]] = None
+        # The optional claims returned in the JWT ID token.
+        self._id_token: Optional[List[optional_claim.OptionalClaim]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The optional claims returned in the SAML token.
+        self._saml2_token: Optional[List[optional_claim.OptionalClaim]] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OptionalClaims:
         """
@@ -73,9 +73,7 @@ class OptionalClaims(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import optional_claim
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "accessToken": lambda n : setattr(self, 'access_token', n.get_collection_of_object_values(optional_claim.OptionalClaim)),
             "idToken": lambda n : setattr(self, 'id_token', n.get_collection_of_object_values(optional_claim.OptionalClaim)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

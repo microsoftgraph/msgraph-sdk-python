@@ -1,43 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import importance, recipient
+importance = lazy_import('msgraph.generated.models.importance')
+recipient = lazy_import('msgraph.generated.models.recipient')
 
 class MessageRuleActions(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new messageRuleActions and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # A list of categories to be assigned to a message.
-        self._assign_categories: Optional[List[str]] = None
-        # The ID of a folder that a message is to be copied to.
-        self._copy_to_folder: Optional[str] = None
-        # Indicates whether a message should be moved to the Deleted Items folder.
-        self._delete: Optional[bool] = None
-        # The email addresses of the recipients to which a message should be forwarded as an attachment.
-        self._forward_as_attachment_to: Optional[List[recipient.Recipient]] = None
-        # The email addresses of the recipients to which a message should be forwarded.
-        self._forward_to: Optional[List[recipient.Recipient]] = None
-        # Indicates whether a message should be marked as read.
-        self._mark_as_read: Optional[bool] = None
-        # Sets the importance of the message, which can be: low, normal, high.
-        self._mark_importance: Optional[importance.Importance] = None
-        # The ID of the folder that a message will be moved to.
-        self._move_to_folder: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
-        self._permanent_delete: Optional[bool] = None
-        # The email addresses to which a message should be redirected.
-        self._redirect_to: Optional[List[recipient.Recipient]] = None
-        # Indicates whether subsequent rules should be evaluated.
-        self._stop_processing_rules: Optional[bool] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -71,6 +40,38 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
             value: Value to set for the assign_categories property.
         """
         self._assign_categories = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new messageRuleActions and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # A list of categories to be assigned to a message.
+        self._assign_categories: Optional[List[str]] = None
+        # The ID of a folder that a message is to be copied to.
+        self._copy_to_folder: Optional[str] = None
+        # Indicates whether a message should be moved to the Deleted Items folder.
+        self._delete: Optional[bool] = None
+        # The email addresses of the recipients to which a message should be forwarded as an attachment.
+        self._forward_as_attachment_to: Optional[List[recipient.Recipient]] = None
+        # The email addresses of the recipients to which a message should be forwarded.
+        self._forward_to: Optional[List[recipient.Recipient]] = None
+        # Indicates whether a message should be marked as read.
+        self._mark_as_read: Optional[bool] = None
+        # Sets the importance of the message, which can be: low, normal, high.
+        self._mark_importance: Optional[importance.Importance] = None
+        # The ID of the folder that a message will be moved to.
+        self._move_to_folder: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Indicates whether a message should be permanently deleted and not saved to the Deleted Items folder.
+        self._permanent_delete: Optional[bool] = None
+        # The email addresses to which a message should be redirected.
+        self._redirect_to: Optional[List[recipient.Recipient]] = None
+        # Indicates whether subsequent rules should be evaluated.
+        self._stop_processing_rules: Optional[bool] = None
     
     @property
     def copy_to_folder(self,) -> Optional[str]:
@@ -157,9 +158,7 @@ class MessageRuleActions(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import importance, recipient
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "assignCategories": lambda n : setattr(self, 'assign_categories', n.get_collection_of_primitive_values(str)),
             "copyToFolder": lambda n : setattr(self, 'copy_to_folder', n.get_str_value()),
             "delete": lambda n : setattr(self, 'delete', n.get_bool_value()),

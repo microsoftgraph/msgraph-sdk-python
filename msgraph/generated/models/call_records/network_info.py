@@ -1,73 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import network_connection_type, network_transport_protocol, trace_route_hop, wifi_band, wifi_radio_type
+network_connection_type = lazy_import('msgraph.generated.models.call_records.network_connection_type')
+network_transport_protocol = lazy_import('msgraph.generated.models.call_records.network_transport_protocol')
+trace_route_hop = lazy_import('msgraph.generated.models.call_records.trace_route_hop')
+wifi_band = lazy_import('msgraph.generated.models.call_records.wifi_band')
+wifi_radio_type = lazy_import('msgraph.generated.models.call_records.wifi_radio_type')
 
 class NetworkInfo(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new networkInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Fraction of the call that the media endpoint detected the available bandwidth or bandwidth policy was low enough to cause poor quality of the audio sent.
-        self._bandwidth_low_event_ratio: Optional[float] = None
-        # The wireless LAN basic service set identifier of the media endpoint used to connect to the network.
-        self._basic_service_set_identifier: Optional[str] = None
-        # The connectionType property
-        self._connection_type: Optional[network_connection_type.NetworkConnectionType] = None
-        # Fraction of the call that the media endpoint detected the network delay was significant enough to impact the ability to have real-time two-way communication.
-        self._delay_event_ratio: Optional[float] = None
-        # DNS suffix associated with the network adapter of the media endpoint.
-        self._dns_suffix: Optional[str] = None
-        # IP address of the media endpoint.
-        self._ip_address: Optional[str] = None
-        # Link speed in bits per second reported by the network adapter used by the media endpoint.
-        self._link_speed: Optional[int] = None
-        # The media access control (MAC) address of the media endpoint's network device.
-        self._mac_address: Optional[str] = None
-        # The networkTransportProtocol property
-        self._network_transport_protocol: Optional[network_transport_protocol.NetworkTransportProtocol] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Network port number used by media endpoint.
-        self._port: Optional[int] = None
-        # Fraction of the call that the media endpoint detected the network was causing poor quality of the audio received.
-        self._received_quality_event_ratio: Optional[float] = None
-        # IP address of the media endpoint as seen by the media relay server. This is typically the public internet IP address associated to the endpoint.
-        self._reflexive_i_p_address: Optional[str] = None
-        # IP address of the media relay server allocated by the media endpoint.
-        self._relay_i_p_address: Optional[str] = None
-        # Network port number allocated on the media relay server by the media endpoint.
-        self._relay_port: Optional[int] = None
-        # Fraction of the call that the media endpoint detected the network was causing poor quality of the audio sent.
-        self._sent_quality_event_ratio: Optional[float] = None
-        # Subnet used for media stream by the media endpoint.
-        self._subnet: Optional[str] = None
-        # List of network trace route hops collected for this media stream.*
-        self._trace_route_hops: Optional[List[trace_route_hop.TraceRouteHop]] = None
-        # The wifiBand property
-        self._wifi_band: Optional[wifi_band.WifiBand] = None
-        # Estimated remaining battery charge in percentage reported by the media endpoint.
-        self._wifi_battery_charge: Optional[int] = None
-        # WiFi channel used by the media endpoint.
-        self._wifi_channel: Optional[int] = None
-        # Name of the Microsoft WiFi driver used by the media endpoint. Value may be localized based on the language used by endpoint.
-        self._wifi_microsoft_driver: Optional[str] = None
-        # Version of the Microsoft WiFi driver used by the media endpoint.
-        self._wifi_microsoft_driver_version: Optional[str] = None
-        # The wifiRadioType property
-        self._wifi_radio_type: Optional[wifi_radio_type.WifiRadioType] = None
-        # WiFi signal strength in percentage reported by the media endpoint.
-        self._wifi_signal_strength: Optional[int] = None
-        # Name of the WiFi driver used by the media endpoint. Value may be localized based on the language used by endpoint.
-        self._wifi_vendor_driver: Optional[str] = None
-        # Version of the WiFi driver used by the media endpoint.
-        self._wifi_vendor_driver_version: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -136,6 +78,68 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         """
         self._connection_type = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new networkInfo and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Fraction of the call that the media endpoint detected the available bandwidth or bandwidth policy was low enough to cause poor quality of the audio sent.
+        self._bandwidth_low_event_ratio: Optional[float] = None
+        # The wireless LAN basic service set identifier of the media endpoint used to connect to the network.
+        self._basic_service_set_identifier: Optional[str] = None
+        # The connectionType property
+        self._connection_type: Optional[network_connection_type.NetworkConnectionType] = None
+        # Fraction of the call that the media endpoint detected the network delay was significant enough to impact the ability to have real-time two-way communication.
+        self._delay_event_ratio: Optional[float] = None
+        # DNS suffix associated with the network adapter of the media endpoint.
+        self._dns_suffix: Optional[str] = None
+        # IP address of the media endpoint.
+        self._ip_address: Optional[str] = None
+        # Link speed in bits per second reported by the network adapter used by the media endpoint.
+        self._link_speed: Optional[int] = None
+        # The media access control (MAC) address of the media endpoint's network device.
+        self._mac_address: Optional[str] = None
+        # The networkTransportProtocol property
+        self._network_transport_protocol: Optional[network_transport_protocol.NetworkTransportProtocol] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Network port number used by media endpoint.
+        self._port: Optional[int] = None
+        # Fraction of the call that the media endpoint detected the network was causing poor quality of the audio received.
+        self._received_quality_event_ratio: Optional[float] = None
+        # IP address of the media endpoint as seen by the media relay server. This is typically the public internet IP address associated to the endpoint.
+        self._reflexive_i_p_address: Optional[str] = None
+        # IP address of the media relay server allocated by the media endpoint.
+        self._relay_i_p_address: Optional[str] = None
+        # Network port number allocated on the media relay server by the media endpoint.
+        self._relay_port: Optional[int] = None
+        # Fraction of the call that the media endpoint detected the network was causing poor quality of the audio sent.
+        self._sent_quality_event_ratio: Optional[float] = None
+        # Subnet used for media stream by the media endpoint.
+        self._subnet: Optional[str] = None
+        # List of network trace route hops collected for this media stream.*
+        self._trace_route_hops: Optional[List[trace_route_hop.TraceRouteHop]] = None
+        # The wifiBand property
+        self._wifi_band: Optional[wifi_band.WifiBand] = None
+        # Estimated remaining battery charge in percentage reported by the media endpoint.
+        self._wifi_battery_charge: Optional[int] = None
+        # WiFi channel used by the media endpoint.
+        self._wifi_channel: Optional[int] = None
+        # Name of the Microsoft WiFi driver used by the media endpoint. Value may be localized based on the language used by endpoint.
+        self._wifi_microsoft_driver: Optional[str] = None
+        # Version of the Microsoft WiFi driver used by the media endpoint.
+        self._wifi_microsoft_driver_version: Optional[str] = None
+        # The wifiRadioType property
+        self._wifi_radio_type: Optional[wifi_radio_type.WifiRadioType] = None
+        # WiFi signal strength in percentage reported by the media endpoint.
+        self._wifi_signal_strength: Optional[int] = None
+        # Name of the WiFi driver used by the media endpoint. Value may be localized based on the language used by endpoint.
+        self._wifi_vendor_driver: Optional[str] = None
+        # Version of the WiFi driver used by the media endpoint.
+        self._wifi_vendor_driver_version: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> NetworkInfo:
         """
@@ -187,9 +191,7 @@ class NetworkInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import network_connection_type, network_transport_protocol, trace_route_hop, wifi_band, wifi_radio_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "bandwidthLowEventRatio": lambda n : setattr(self, 'bandwidth_low_event_ratio', n.get_float_value()),
             "basicServiceSetIdentifier": lambda n : setattr(self, 'basic_service_set_identifier', n.get_str_value()),
             "connectionType": lambda n : setattr(self, 'connection_type', n.get_enum_value(network_connection_type.NetworkConnectionType)),

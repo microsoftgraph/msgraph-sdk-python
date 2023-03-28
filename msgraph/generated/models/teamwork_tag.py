@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, teamwork_tag_member, teamwork_tag_type
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+teamwork_tag_member = lazy_import('msgraph.generated.models.teamwork_tag_member')
+teamwork_tag_type = lazy_import('msgraph.generated.models.teamwork_tag_type')
 
 class TeamworkTag(entity.Entity):
     def __init__(self,) -> None:
@@ -13,7 +13,7 @@ class TeamworkTag(entity.Entity):
         Instantiates a new teamworkTag and sets the default values.
         """
         super().__init__()
-        # The description of the tag as it will appear to the user in Microsoft Teams. A teamworkTag can't have more than 200 teamworkTagMembers.
+        # The description of the tag as it will appear to the user in Microsoft Teams.
         self._description: Optional[str] = None
         # The name of the tag as it will appear to the user in Microsoft Teams.
         self._display_name: Optional[str] = None
@@ -43,7 +43,7 @@ class TeamworkTag(entity.Entity):
     @property
     def description(self,) -> Optional[str]:
         """
-        Gets the description property value. The description of the tag as it will appear to the user in Microsoft Teams. A teamworkTag can't have more than 200 teamworkTagMembers.
+        Gets the description property value. The description of the tag as it will appear to the user in Microsoft Teams.
         Returns: Optional[str]
         """
         return self._description
@@ -51,7 +51,7 @@ class TeamworkTag(entity.Entity):
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
-        Sets the description property value. The description of the tag as it will appear to the user in Microsoft Teams. A teamworkTag can't have more than 200 teamworkTagMembers.
+        Sets the description property value. The description of the tag as it will appear to the user in Microsoft Teams.
         Args:
             value: Value to set for the description property.
         """
@@ -79,9 +79,7 @@ class TeamworkTag(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, teamwork_tag_member, teamwork_tag_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "members": lambda n : setattr(self, 'members', n.get_collection_of_object_values(teamwork_tag_member.TeamworkTagMember)),

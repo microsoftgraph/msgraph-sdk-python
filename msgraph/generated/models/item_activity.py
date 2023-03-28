@@ -1,30 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_action, drive_item, entity, identity_set
-
-from . import entity
+access_action = lazy_import('msgraph.generated.models.access_action')
+drive_item = lazy_import('msgraph.generated.models.drive_item')
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class ItemActivity(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new itemActivity and sets the default values.
-        """
-        super().__init__()
-        # An item was accessed.
-        self._access: Optional[access_action.AccessAction] = None
-        # Details about when the activity took place. Read-only.
-        self._activity_date_time: Optional[datetime] = None
-        # Identity of who performed the action. Read-only.
-        self._actor: Optional[identity_set.IdentitySet] = None
-        # Exposes the driveItem that was the target of this activity.
-        self._drive_item: Optional[drive_item.DriveItem] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
     @property
     def access(self,) -> Optional[access_action.AccessAction]:
         """
@@ -76,6 +61,22 @@ class ItemActivity(entity.Entity):
         """
         self._actor = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new itemActivity and sets the default values.
+        """
+        super().__init__()
+        # An item was accessed.
+        self._access: Optional[access_action.AccessAction] = None
+        # Details about when the activity took place. Read-only.
+        self._activity_date_time: Optional[datetime] = None
+        # Identity of who performed the action. Read-only.
+        self._actor: Optional[identity_set.IdentitySet] = None
+        # Exposes the driveItem that was the target of this activity.
+        self._drive_item: Optional[drive_item.DriveItem] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemActivity:
         """
@@ -110,9 +111,7 @@ class ItemActivity(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_action, drive_item, entity, identity_set
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "access": lambda n : setattr(self, 'access', n.get_object_value(access_action.AccessAction)),
             "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
             "actor": lambda n : setattr(self, 'actor', n.get_object_value(identity_set.IdentitySet)),

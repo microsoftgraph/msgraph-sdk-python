@@ -1,27 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_package_localized_text
+access_package_localized_text = lazy_import('msgraph.generated.models.access_package_localized_text')
 
 class AccessPackageAnswerChoice(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new accessPackageAnswerChoice and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The actual value of the selected choice. This is typically a string value which is understandable by applications. Required.
-        self._actual_value: Optional[str] = None
-        # The text of the answer choice represented in a format for a specific locale.
-        self._localizations: Optional[List[access_package_localized_text.AccessPackageLocalizedText]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The text property
-        self._text: Optional[str] = None
-    
     @property
     def actual_value(self,) -> Optional[str]:
         """
@@ -56,6 +40,22 @@ class AccessPackageAnswerChoice(AdditionalDataHolder, Parsable):
         """
         self._additional_data = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new accessPackageAnswerChoice and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The actual value of the selected choice. This is typically a string value which is understandable by applications. Required.
+        self._actual_value: Optional[str] = None
+        # The text of the answer choice represented in a format for a specific locale.
+        self._localizations: Optional[List[access_package_localized_text.AccessPackageLocalizedText]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The text property
+        self._text: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAnswerChoice:
         """
@@ -73,9 +73,7 @@ class AccessPackageAnswerChoice(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_localized_text
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "actualValue": lambda n : setattr(self, 'actual_value', n.get_str_value()),
             "localizations": lambda n : setattr(self, 'localizations', n.get_collection_of_object_values(access_package_localized_text.AccessPackageLocalizedText)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

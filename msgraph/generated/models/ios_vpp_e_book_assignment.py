@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import managed_e_book_assignment
-
-from . import managed_e_book_assignment
+managed_e_book_assignment = lazy_import('msgraph.generated.models.managed_e_book_assignment')
 
 class IosVppEBookAssignment(managed_e_book_assignment.ManagedEBookAssignment):
     def __init__(self,) -> None:
@@ -33,9 +31,7 @@ class IosVppEBookAssignment(managed_e_book_assignment.ManagedEBookAssignment):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import managed_e_book_assignment
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

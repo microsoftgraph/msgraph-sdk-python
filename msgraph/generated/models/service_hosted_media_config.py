@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import media_config, media_info
-
-from . import media_config
+media_config = lazy_import('msgraph.generated.models.media_config')
+media_info = lazy_import('msgraph.generated.models.media_info')
 
 class ServiceHostedMediaConfig(media_config.MediaConfig):
     def __init__(self,) -> None:
@@ -34,9 +33,7 @@ class ServiceHostedMediaConfig(media_config.MediaConfig):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import media_config, media_info
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "preFetchMedia": lambda n : setattr(self, 'pre_fetch_media', n.get_collection_of_object_values(media_info.MediaInfo)),
         }
         super_fields = super().get_field_deserializers()

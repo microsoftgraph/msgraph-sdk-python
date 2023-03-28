@@ -1,30 +1,14 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import education_added_student_action, education_add_to_calendar_options, entity
-
-from . import entity
+education_add_to_calendar_options = lazy_import('msgraph.generated.models.education_add_to_calendar_options')
+education_added_student_action = lazy_import('msgraph.generated.models.education_added_student_action')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class EducationAssignmentDefaults(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EducationAssignmentDefaults and sets the default values.
-        """
-        super().__init__()
-        # Optional field to control adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
-        self._add_to_calendar_action: Optional[education_add_to_calendar_options.EducationAddToCalendarOptions] = None
-        # Class-level default behavior for handling students who are added after the assignment is published. Possible values are: none, assignIfOpen.
-        self._added_student_action: Optional[education_added_student_action.EducationAddedStudentAction] = None
-        # Class-level default value for due time field. Default value is 23:59:00.
-        self._due_time: Optional[Time] = None
-        # Default Teams channel to which notifications will be sent. Default value is null.
-        self._notification_channel_url: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
     @property
     def add_to_calendar_action(self,) -> Optional[education_add_to_calendar_options.EducationAddToCalendarOptions]:
         """
@@ -58,6 +42,22 @@ class EducationAssignmentDefaults(entity.Entity):
             value: Value to set for the added_student_action property.
         """
         self._added_student_action = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new EducationAssignmentDefaults and sets the default values.
+        """
+        super().__init__()
+        # Optional field to control adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
+        self._add_to_calendar_action: Optional[education_add_to_calendar_options.EducationAddToCalendarOptions] = None
+        # Class-level default behavior for handling students who are added after the assignment is published. Possible values are: none, assignIfOpen.
+        self._added_student_action: Optional[education_added_student_action.EducationAddedStudentAction] = None
+        # Class-level default value for due time field. Default value is 23:59:00.
+        self._due_time: Optional[Time] = None
+        # Default Teams channel to which notifications will be sent. Default value is null.
+        self._notification_channel_url: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationAssignmentDefaults:
@@ -93,9 +93,7 @@ class EducationAssignmentDefaults(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_added_student_action, education_add_to_calendar_options, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "addedStudentAction": lambda n : setattr(self, 'added_student_action', n.get_enum_value(education_added_student_action.EducationAddedStudentAction)),
             "addToCalendarAction": lambda n : setattr(self, 'add_to_calendar_action', n.get_enum_value(education_add_to_calendar_options.EducationAddToCalendarOptions)),
             "dueTime": lambda n : setattr(self, 'due_time', n.get_object_value(Time)),

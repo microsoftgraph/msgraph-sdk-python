@@ -1,33 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import cross_tenant_access_policy_b2_b_setting, cross_tenant_access_policy_inbound_trust, entity
-
-from . import entity
+cross_tenant_access_policy_b2_b_setting = lazy_import('msgraph.generated.models.cross_tenant_access_policy_b2_b_setting')
+cross_tenant_access_policy_inbound_trust = lazy_import('msgraph.generated.models.cross_tenant_access_policy_inbound_trust')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new crossTenantAccessPolicyConfigurationDefault and sets the default values.
-        """
-        super().__init__()
-        # Defines your default configuration for users from other organizations accessing your resources via Azure AD B2B collaboration.
-        self._b2b_collaboration_inbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
-        # Defines your default configuration for users in your organization going outbound to access resources in another organization via Azure AD B2B collaboration.
-        self._b2b_collaboration_outbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
-        # Defines your default configuration for users from other organizations accessing your resources via Azure AD B2B direct connect.
-        self._b2b_direct_connect_inbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
-        # Defines your default configuration for users in your organization going outbound to access resources in another organization via Azure AD B2B direct connect.
-        self._b2b_direct_connect_outbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
-        # Determines the default configuration for trusting other Conditional Access claims from external Azure AD organizations.
-        self._inbound_trust: Optional[cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust] = None
-        # If true, the default configuration is set to the system default configuration. If false, the default settings have been customized.
-        self._is_service_default: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
     @property
     def b2b_collaboration_inbound(self,) -> Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting]:
         """
@@ -96,6 +76,26 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         """
         self._b2b_direct_connect_outbound = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new crossTenantAccessPolicyConfigurationDefault and sets the default values.
+        """
+        super().__init__()
+        # Defines your default configuration for users from other organizations accessing your resources via Azure AD B2B collaboration.
+        self._b2b_collaboration_inbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
+        # Defines your default configuration for users in your organization going outbound to access resources in another organization via Azure AD B2B collaboration.
+        self._b2b_collaboration_outbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
+        # Defines your default configuration for users from other organizations accessing your resources via Azure AD B2B direct connect.
+        self._b2b_direct_connect_inbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
+        # Defines your default configuration for users in your organization going outbound to access resources in another organization via Azure AD B2B direct connect.
+        self._b2b_direct_connect_outbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
+        # Determines the default configuration for trusting other Conditional Access claims from external Azure AD organizations.
+        self._inbound_trust: Optional[cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust] = None
+        # If true, the default configuration is set to the system default configuration. If false, the default settings have been customized.
+        self._is_service_default: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicyConfigurationDefault:
         """
@@ -113,9 +113,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import cross_tenant_access_policy_b2_b_setting, cross_tenant_access_policy_inbound_trust, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "b2bCollaborationInbound": lambda n : setattr(self, 'b2b_collaboration_inbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
             "b2bCollaborationOutbound": lambda n : setattr(self, 'b2b_collaboration_outbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
             "b2bDirectConnectInbound": lambda n : setattr(self, 'b2b_direct_connect_inbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),

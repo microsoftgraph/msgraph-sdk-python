@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, open_type_extension
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class Extension(entity.Entity):
     def __init__(self,) -> None:
@@ -26,13 +24,6 @@ class Extension(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.openTypeExtension":
-                from . import open_type_extension
-
-                return open_type_extension.OpenTypeExtension()
         return Extension()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -40,9 +31,7 @@ class Extension(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, open_type_extension
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

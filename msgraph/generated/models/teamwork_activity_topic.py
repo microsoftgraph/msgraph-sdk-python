@@ -1,27 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import teamwork_activity_topic_source
+teamwork_activity_topic_source = lazy_import('msgraph.generated.models.teamwork_activity_topic_source')
 
 class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new teamworkActivityTopic and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Type of source. Possible values are: entityUrl, text. For supported Microsoft Graph URLs, use entityUrl. For custom text, use text.
-        self._source: Optional[teamwork_activity_topic_source.TeamworkActivityTopicSource] = None
-        # The topic value. If the value of the source property is entityUrl, this must be a Microsoft Graph URL. If the vaule is text, this must be a plain text value.
-        self._value: Optional[str] = None
-        # The link the user clicks when they select the notification. Optional when source is entityUrl; required when source is text.
-        self._web_url: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,6 +22,22 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new teamworkActivityTopic and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Type of source. Possible values are: entityUrl, text. For supported Microsoft Graph URLs, use entityUrl. For custom text, use text.
+        self._source: Optional[teamwork_activity_topic_source.TeamworkActivityTopicSource] = None
+        # The topic value. If the value of the source property is entityUrl, this must be a Microsoft Graph URL. If the vaule is text, this must be a plain text value.
+        self._value: Optional[str] = None
+        # The link the user clicks when they select the notification. Optional when source is entityUrl; required when source is text.
+        self._web_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkActivityTopic:
@@ -56,9 +56,7 @@ class TeamworkActivityTopic(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import teamwork_activity_topic_source
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "source": lambda n : setattr(self, 'source', n.get_enum_value(teamwork_activity_topic_source.TeamworkActivityTopicSource)),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),

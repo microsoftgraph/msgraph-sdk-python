@@ -1,14 +1,284 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import defender_cloud_block_level_type, defender_detected_malware_actions, defender_monitor_file_activity, defender_prompt_for_sample_submission, defender_scan_type, device_configuration, diagnostic_data_submission_mode, edge_cookie_policy, edge_search_engine_base, required_password_type, safe_search_filter_type, state_management_setting, visibility_setting, weekly_schedule, windows10_network_proxy_server, windows_spotlight_enablement_settings, windows_start_menu_app_list_visibility_type, windows_start_menu_mode_type
-
-from . import device_configuration
+defender_cloud_block_level_type = lazy_import('msgraph.generated.models.defender_cloud_block_level_type')
+defender_detected_malware_actions = lazy_import('msgraph.generated.models.defender_detected_malware_actions')
+defender_monitor_file_activity = lazy_import('msgraph.generated.models.defender_monitor_file_activity')
+defender_prompt_for_sample_submission = lazy_import('msgraph.generated.models.defender_prompt_for_sample_submission')
+defender_scan_type = lazy_import('msgraph.generated.models.defender_scan_type')
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+diagnostic_data_submission_mode = lazy_import('msgraph.generated.models.diagnostic_data_submission_mode')
+edge_cookie_policy = lazy_import('msgraph.generated.models.edge_cookie_policy')
+edge_search_engine_base = lazy_import('msgraph.generated.models.edge_search_engine_base')
+required_password_type = lazy_import('msgraph.generated.models.required_password_type')
+safe_search_filter_type = lazy_import('msgraph.generated.models.safe_search_filter_type')
+state_management_setting = lazy_import('msgraph.generated.models.state_management_setting')
+visibility_setting = lazy_import('msgraph.generated.models.visibility_setting')
+weekly_schedule = lazy_import('msgraph.generated.models.weekly_schedule')
+windows_spotlight_enablement_settings = lazy_import('msgraph.generated.models.windows_spotlight_enablement_settings')
+windows_start_menu_app_list_visibility_type = lazy_import('msgraph.generated.models.windows_start_menu_app_list_visibility_type')
+windows_start_menu_mode_type = lazy_import('msgraph.generated.models.windows_start_menu_mode_type')
+windows10_network_proxy_server = lazy_import('msgraph.generated.models.windows10_network_proxy_server')
 
 class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
+    @property
+    def accounts_block_adding_non_microsoft_account_email(self,) -> Optional[bool]:
+        """
+        Gets the accountsBlockAddingNonMicrosoftAccountEmail property value. Indicates whether or not to Block the user from adding email accounts to the device that are not associated with a Microsoft account.
+        Returns: Optional[bool]
+        """
+        return self._accounts_block_adding_non_microsoft_account_email
+    
+    @accounts_block_adding_non_microsoft_account_email.setter
+    def accounts_block_adding_non_microsoft_account_email(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the accountsBlockAddingNonMicrosoftAccountEmail property value. Indicates whether or not to Block the user from adding email accounts to the device that are not associated with a Microsoft account.
+        Args:
+            value: Value to set for the accounts_block_adding_non_microsoft_account_email property.
+        """
+        self._accounts_block_adding_non_microsoft_account_email = value
+    
+    @property
+    def anti_theft_mode_blocked(self,) -> Optional[bool]:
+        """
+        Gets the antiTheftModeBlocked property value. Indicates whether or not to block the user from selecting an AntiTheft mode preference (Windows 10 Mobile only).
+        Returns: Optional[bool]
+        """
+        return self._anti_theft_mode_blocked
+    
+    @anti_theft_mode_blocked.setter
+    def anti_theft_mode_blocked(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the antiTheftModeBlocked property value. Indicates whether or not to block the user from selecting an AntiTheft mode preference (Windows 10 Mobile only).
+        Args:
+            value: Value to set for the anti_theft_mode_blocked property.
+        """
+        self._anti_theft_mode_blocked = value
+    
+    @property
+    def apps_allow_trusted_apps_sideloading(self,) -> Optional[state_management_setting.StateManagementSetting]:
+        """
+        Gets the appsAllowTrustedAppsSideloading property value. State Management Setting.
+        Returns: Optional[state_management_setting.StateManagementSetting]
+        """
+        return self._apps_allow_trusted_apps_sideloading
+    
+    @apps_allow_trusted_apps_sideloading.setter
+    def apps_allow_trusted_apps_sideloading(self,value: Optional[state_management_setting.StateManagementSetting] = None) -> None:
+        """
+        Sets the appsAllowTrustedAppsSideloading property value. State Management Setting.
+        Args:
+            value: Value to set for the apps_allow_trusted_apps_sideloading property.
+        """
+        self._apps_allow_trusted_apps_sideloading = value
+    
+    @property
+    def apps_block_windows_store_originated_apps(self,) -> Optional[bool]:
+        """
+        Gets the appsBlockWindowsStoreOriginatedApps property value. Indicates whether or not to disable the launch of all apps from Windows Store that came pre-installed or were downloaded.
+        Returns: Optional[bool]
+        """
+        return self._apps_block_windows_store_originated_apps
+    
+    @apps_block_windows_store_originated_apps.setter
+    def apps_block_windows_store_originated_apps(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the appsBlockWindowsStoreOriginatedApps property value. Indicates whether or not to disable the launch of all apps from Windows Store that came pre-installed or were downloaded.
+        Args:
+            value: Value to set for the apps_block_windows_store_originated_apps property.
+        """
+        self._apps_block_windows_store_originated_apps = value
+    
+    @property
+    def bluetooth_allowed_services(self,) -> Optional[List[str]]:
+        """
+        Gets the bluetoothAllowedServices property value. Specify a list of allowed Bluetooth services and profiles in hex formatted strings.
+        Returns: Optional[List[str]]
+        """
+        return self._bluetooth_allowed_services
+    
+    @bluetooth_allowed_services.setter
+    def bluetooth_allowed_services(self,value: Optional[List[str]] = None) -> None:
+        """
+        Sets the bluetoothAllowedServices property value. Specify a list of allowed Bluetooth services and profiles in hex formatted strings.
+        Args:
+            value: Value to set for the bluetooth_allowed_services property.
+        """
+        self._bluetooth_allowed_services = value
+    
+    @property
+    def bluetooth_block_advertising(self,) -> Optional[bool]:
+        """
+        Gets the bluetoothBlockAdvertising property value. Whether or not to Block the user from using bluetooth advertising.
+        Returns: Optional[bool]
+        """
+        return self._bluetooth_block_advertising
+    
+    @bluetooth_block_advertising.setter
+    def bluetooth_block_advertising(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the bluetoothBlockAdvertising property value. Whether or not to Block the user from using bluetooth advertising.
+        Args:
+            value: Value to set for the bluetooth_block_advertising property.
+        """
+        self._bluetooth_block_advertising = value
+    
+    @property
+    def bluetooth_block_discoverable_mode(self,) -> Optional[bool]:
+        """
+        Gets the bluetoothBlockDiscoverableMode property value. Whether or not to Block the user from using bluetooth discoverable mode.
+        Returns: Optional[bool]
+        """
+        return self._bluetooth_block_discoverable_mode
+    
+    @bluetooth_block_discoverable_mode.setter
+    def bluetooth_block_discoverable_mode(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the bluetoothBlockDiscoverableMode property value. Whether or not to Block the user from using bluetooth discoverable mode.
+        Args:
+            value: Value to set for the bluetooth_block_discoverable_mode property.
+        """
+        self._bluetooth_block_discoverable_mode = value
+    
+    @property
+    def bluetooth_block_pre_pairing(self,) -> Optional[bool]:
+        """
+        Gets the bluetoothBlockPrePairing property value. Whether or not to block specific bundled Bluetooth peripherals to automatically pair with the host device.
+        Returns: Optional[bool]
+        """
+        return self._bluetooth_block_pre_pairing
+    
+    @bluetooth_block_pre_pairing.setter
+    def bluetooth_block_pre_pairing(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the bluetoothBlockPrePairing property value. Whether or not to block specific bundled Bluetooth peripherals to automatically pair with the host device.
+        Args:
+            value: Value to set for the bluetooth_block_pre_pairing property.
+        """
+        self._bluetooth_block_pre_pairing = value
+    
+    @property
+    def bluetooth_blocked(self,) -> Optional[bool]:
+        """
+        Gets the bluetoothBlocked property value. Whether or not to Block the user from using bluetooth.
+        Returns: Optional[bool]
+        """
+        return self._bluetooth_blocked
+    
+    @bluetooth_blocked.setter
+    def bluetooth_blocked(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the bluetoothBlocked property value. Whether or not to Block the user from using bluetooth.
+        Args:
+            value: Value to set for the bluetooth_blocked property.
+        """
+        self._bluetooth_blocked = value
+    
+    @property
+    def camera_blocked(self,) -> Optional[bool]:
+        """
+        Gets the cameraBlocked property value. Whether or not to Block the user from accessing the camera of the device.
+        Returns: Optional[bool]
+        """
+        return self._camera_blocked
+    
+    @camera_blocked.setter
+    def camera_blocked(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the cameraBlocked property value. Whether or not to Block the user from accessing the camera of the device.
+        Args:
+            value: Value to set for the camera_blocked property.
+        """
+        self._camera_blocked = value
+    
+    @property
+    def cellular_block_data_when_roaming(self,) -> Optional[bool]:
+        """
+        Gets the cellularBlockDataWhenRoaming property value. Whether or not to Block the user from using data over cellular while roaming.
+        Returns: Optional[bool]
+        """
+        return self._cellular_block_data_when_roaming
+    
+    @cellular_block_data_when_roaming.setter
+    def cellular_block_data_when_roaming(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the cellularBlockDataWhenRoaming property value. Whether or not to Block the user from using data over cellular while roaming.
+        Args:
+            value: Value to set for the cellular_block_data_when_roaming property.
+        """
+        self._cellular_block_data_when_roaming = value
+    
+    @property
+    def cellular_block_vpn(self,) -> Optional[bool]:
+        """
+        Gets the cellularBlockVpn property value. Whether or not to Block the user from using VPN over cellular.
+        Returns: Optional[bool]
+        """
+        return self._cellular_block_vpn
+    
+    @cellular_block_vpn.setter
+    def cellular_block_vpn(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the cellularBlockVpn property value. Whether or not to Block the user from using VPN over cellular.
+        Args:
+            value: Value to set for the cellular_block_vpn property.
+        """
+        self._cellular_block_vpn = value
+    
+    @property
+    def cellular_block_vpn_when_roaming(self,) -> Optional[bool]:
+        """
+        Gets the cellularBlockVpnWhenRoaming property value. Whether or not to Block the user from using VPN when roaming over cellular.
+        Returns: Optional[bool]
+        """
+        return self._cellular_block_vpn_when_roaming
+    
+    @cellular_block_vpn_when_roaming.setter
+    def cellular_block_vpn_when_roaming(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the cellularBlockVpnWhenRoaming property value. Whether or not to Block the user from using VPN when roaming over cellular.
+        Args:
+            value: Value to set for the cellular_block_vpn_when_roaming property.
+        """
+        self._cellular_block_vpn_when_roaming = value
+    
+    @property
+    def certificates_block_manual_root_certificate_installation(self,) -> Optional[bool]:
+        """
+        Gets the certificatesBlockManualRootCertificateInstallation property value. Whether or not to Block the user from doing manual root certificate installation.
+        Returns: Optional[bool]
+        """
+        return self._certificates_block_manual_root_certificate_installation
+    
+    @certificates_block_manual_root_certificate_installation.setter
+    def certificates_block_manual_root_certificate_installation(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the certificatesBlockManualRootCertificateInstallation property value. Whether or not to Block the user from doing manual root certificate installation.
+        Args:
+            value: Value to set for the certificates_block_manual_root_certificate_installation property.
+        """
+        self._certificates_block_manual_root_certificate_installation = value
+    
+    @property
+    def connected_devices_service_blocked(self,) -> Optional[bool]:
+        """
+        Gets the connectedDevicesServiceBlocked property value. Whether or not to block Connected Devices Service which enables discovery and connection to other devices, remote messaging, remote app sessions and other cross-device experiences.
+        Returns: Optional[bool]
+        """
+        return self._connected_devices_service_blocked
+    
+    @connected_devices_service_blocked.setter
+    def connected_devices_service_blocked(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the connectedDevicesServiceBlocked property value. Whether or not to block Connected Devices Service which enables discovery and connection to other devices, remote messaging, remote app sessions and other cross-device experiences.
+        Args:
+            value: Value to set for the connected_devices_service_blocked property.
+        """
+        self._connected_devices_service_blocked = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Windows10GeneralConfiguration and sets the default values.
@@ -417,261 +687,6 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         self._wireless_display_block_user_input_from_receiver: Optional[bool] = None
         # Indicates whether or not to require a PIN for new devices to initiate pairing.
         self._wireless_display_require_pin_for_pairing: Optional[bool] = None
-    
-    @property
-    def accounts_block_adding_non_microsoft_account_email(self,) -> Optional[bool]:
-        """
-        Gets the accountsBlockAddingNonMicrosoftAccountEmail property value. Indicates whether or not to Block the user from adding email accounts to the device that are not associated with a Microsoft account.
-        Returns: Optional[bool]
-        """
-        return self._accounts_block_adding_non_microsoft_account_email
-    
-    @accounts_block_adding_non_microsoft_account_email.setter
-    def accounts_block_adding_non_microsoft_account_email(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the accountsBlockAddingNonMicrosoftAccountEmail property value. Indicates whether or not to Block the user from adding email accounts to the device that are not associated with a Microsoft account.
-        Args:
-            value: Value to set for the accounts_block_adding_non_microsoft_account_email property.
-        """
-        self._accounts_block_adding_non_microsoft_account_email = value
-    
-    @property
-    def anti_theft_mode_blocked(self,) -> Optional[bool]:
-        """
-        Gets the antiTheftModeBlocked property value. Indicates whether or not to block the user from selecting an AntiTheft mode preference (Windows 10 Mobile only).
-        Returns: Optional[bool]
-        """
-        return self._anti_theft_mode_blocked
-    
-    @anti_theft_mode_blocked.setter
-    def anti_theft_mode_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the antiTheftModeBlocked property value. Indicates whether or not to block the user from selecting an AntiTheft mode preference (Windows 10 Mobile only).
-        Args:
-            value: Value to set for the anti_theft_mode_blocked property.
-        """
-        self._anti_theft_mode_blocked = value
-    
-    @property
-    def apps_allow_trusted_apps_sideloading(self,) -> Optional[state_management_setting.StateManagementSetting]:
-        """
-        Gets the appsAllowTrustedAppsSideloading property value. State Management Setting.
-        Returns: Optional[state_management_setting.StateManagementSetting]
-        """
-        return self._apps_allow_trusted_apps_sideloading
-    
-    @apps_allow_trusted_apps_sideloading.setter
-    def apps_allow_trusted_apps_sideloading(self,value: Optional[state_management_setting.StateManagementSetting] = None) -> None:
-        """
-        Sets the appsAllowTrustedAppsSideloading property value. State Management Setting.
-        Args:
-            value: Value to set for the apps_allow_trusted_apps_sideloading property.
-        """
-        self._apps_allow_trusted_apps_sideloading = value
-    
-    @property
-    def apps_block_windows_store_originated_apps(self,) -> Optional[bool]:
-        """
-        Gets the appsBlockWindowsStoreOriginatedApps property value. Indicates whether or not to disable the launch of all apps from Windows Store that came pre-installed or were downloaded.
-        Returns: Optional[bool]
-        """
-        return self._apps_block_windows_store_originated_apps
-    
-    @apps_block_windows_store_originated_apps.setter
-    def apps_block_windows_store_originated_apps(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the appsBlockWindowsStoreOriginatedApps property value. Indicates whether or not to disable the launch of all apps from Windows Store that came pre-installed or were downloaded.
-        Args:
-            value: Value to set for the apps_block_windows_store_originated_apps property.
-        """
-        self._apps_block_windows_store_originated_apps = value
-    
-    @property
-    def bluetooth_allowed_services(self,) -> Optional[List[str]]:
-        """
-        Gets the bluetoothAllowedServices property value. Specify a list of allowed Bluetooth services and profiles in hex formatted strings.
-        Returns: Optional[List[str]]
-        """
-        return self._bluetooth_allowed_services
-    
-    @bluetooth_allowed_services.setter
-    def bluetooth_allowed_services(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the bluetoothAllowedServices property value. Specify a list of allowed Bluetooth services and profiles in hex formatted strings.
-        Args:
-            value: Value to set for the bluetooth_allowed_services property.
-        """
-        self._bluetooth_allowed_services = value
-    
-    @property
-    def bluetooth_block_advertising(self,) -> Optional[bool]:
-        """
-        Gets the bluetoothBlockAdvertising property value. Whether or not to Block the user from using bluetooth advertising.
-        Returns: Optional[bool]
-        """
-        return self._bluetooth_block_advertising
-    
-    @bluetooth_block_advertising.setter
-    def bluetooth_block_advertising(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the bluetoothBlockAdvertising property value. Whether or not to Block the user from using bluetooth advertising.
-        Args:
-            value: Value to set for the bluetooth_block_advertising property.
-        """
-        self._bluetooth_block_advertising = value
-    
-    @property
-    def bluetooth_block_discoverable_mode(self,) -> Optional[bool]:
-        """
-        Gets the bluetoothBlockDiscoverableMode property value. Whether or not to Block the user from using bluetooth discoverable mode.
-        Returns: Optional[bool]
-        """
-        return self._bluetooth_block_discoverable_mode
-    
-    @bluetooth_block_discoverable_mode.setter
-    def bluetooth_block_discoverable_mode(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the bluetoothBlockDiscoverableMode property value. Whether or not to Block the user from using bluetooth discoverable mode.
-        Args:
-            value: Value to set for the bluetooth_block_discoverable_mode property.
-        """
-        self._bluetooth_block_discoverable_mode = value
-    
-    @property
-    def bluetooth_block_pre_pairing(self,) -> Optional[bool]:
-        """
-        Gets the bluetoothBlockPrePairing property value. Whether or not to block specific bundled Bluetooth peripherals to automatically pair with the host device.
-        Returns: Optional[bool]
-        """
-        return self._bluetooth_block_pre_pairing
-    
-    @bluetooth_block_pre_pairing.setter
-    def bluetooth_block_pre_pairing(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the bluetoothBlockPrePairing property value. Whether or not to block specific bundled Bluetooth peripherals to automatically pair with the host device.
-        Args:
-            value: Value to set for the bluetooth_block_pre_pairing property.
-        """
-        self._bluetooth_block_pre_pairing = value
-    
-    @property
-    def bluetooth_blocked(self,) -> Optional[bool]:
-        """
-        Gets the bluetoothBlocked property value. Whether or not to Block the user from using bluetooth.
-        Returns: Optional[bool]
-        """
-        return self._bluetooth_blocked
-    
-    @bluetooth_blocked.setter
-    def bluetooth_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the bluetoothBlocked property value. Whether or not to Block the user from using bluetooth.
-        Args:
-            value: Value to set for the bluetooth_blocked property.
-        """
-        self._bluetooth_blocked = value
-    
-    @property
-    def camera_blocked(self,) -> Optional[bool]:
-        """
-        Gets the cameraBlocked property value. Whether or not to Block the user from accessing the camera of the device.
-        Returns: Optional[bool]
-        """
-        return self._camera_blocked
-    
-    @camera_blocked.setter
-    def camera_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the cameraBlocked property value. Whether or not to Block the user from accessing the camera of the device.
-        Args:
-            value: Value to set for the camera_blocked property.
-        """
-        self._camera_blocked = value
-    
-    @property
-    def cellular_block_data_when_roaming(self,) -> Optional[bool]:
-        """
-        Gets the cellularBlockDataWhenRoaming property value. Whether or not to Block the user from using data over cellular while roaming.
-        Returns: Optional[bool]
-        """
-        return self._cellular_block_data_when_roaming
-    
-    @cellular_block_data_when_roaming.setter
-    def cellular_block_data_when_roaming(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the cellularBlockDataWhenRoaming property value. Whether or not to Block the user from using data over cellular while roaming.
-        Args:
-            value: Value to set for the cellular_block_data_when_roaming property.
-        """
-        self._cellular_block_data_when_roaming = value
-    
-    @property
-    def cellular_block_vpn(self,) -> Optional[bool]:
-        """
-        Gets the cellularBlockVpn property value. Whether or not to Block the user from using VPN over cellular.
-        Returns: Optional[bool]
-        """
-        return self._cellular_block_vpn
-    
-    @cellular_block_vpn.setter
-    def cellular_block_vpn(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the cellularBlockVpn property value. Whether or not to Block the user from using VPN over cellular.
-        Args:
-            value: Value to set for the cellular_block_vpn property.
-        """
-        self._cellular_block_vpn = value
-    
-    @property
-    def cellular_block_vpn_when_roaming(self,) -> Optional[bool]:
-        """
-        Gets the cellularBlockVpnWhenRoaming property value. Whether or not to Block the user from using VPN when roaming over cellular.
-        Returns: Optional[bool]
-        """
-        return self._cellular_block_vpn_when_roaming
-    
-    @cellular_block_vpn_when_roaming.setter
-    def cellular_block_vpn_when_roaming(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the cellularBlockVpnWhenRoaming property value. Whether or not to Block the user from using VPN when roaming over cellular.
-        Args:
-            value: Value to set for the cellular_block_vpn_when_roaming property.
-        """
-        self._cellular_block_vpn_when_roaming = value
-    
-    @property
-    def certificates_block_manual_root_certificate_installation(self,) -> Optional[bool]:
-        """
-        Gets the certificatesBlockManualRootCertificateInstallation property value. Whether or not to Block the user from doing manual root certificate installation.
-        Returns: Optional[bool]
-        """
-        return self._certificates_block_manual_root_certificate_installation
-    
-    @certificates_block_manual_root_certificate_installation.setter
-    def certificates_block_manual_root_certificate_installation(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the certificatesBlockManualRootCertificateInstallation property value. Whether or not to Block the user from doing manual root certificate installation.
-        Args:
-            value: Value to set for the certificates_block_manual_root_certificate_installation property.
-        """
-        self._certificates_block_manual_root_certificate_installation = value
-    
-    @property
-    def connected_devices_service_blocked(self,) -> Optional[bool]:
-        """
-        Gets the connectedDevicesServiceBlocked property value. Whether or not to block Connected Devices Service which enables discovery and connection to other devices, remote messaging, remote app sessions and other cross-device experiences.
-        Returns: Optional[bool]
-        """
-        return self._connected_devices_service_blocked
-    
-    @connected_devices_service_blocked.setter
-    def connected_devices_service_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the connectedDevicesServiceBlocked property value. Whether or not to block Connected Devices Service which enables discovery and connection to other devices, remote messaging, remote app sessions and other cross-device experiences.
-        Args:
-            value: Value to set for the connected_devices_service_blocked property.
-        """
-        self._connected_devices_service_blocked = value
     
     @property
     def copy_paste_blocked(self,) -> Optional[bool]:
@@ -1846,9 +1861,7 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import defender_cloud_block_level_type, defender_detected_malware_actions, defender_monitor_file_activity, defender_prompt_for_sample_submission, defender_scan_type, device_configuration, diagnostic_data_submission_mode, edge_cookie_policy, edge_search_engine_base, required_password_type, safe_search_filter_type, state_management_setting, visibility_setting, weekly_schedule, windows10_network_proxy_server, windows_spotlight_enablement_settings, windows_start_menu_app_list_visibility_type, windows_start_menu_mode_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "accountsBlockAddingNonMicrosoftAccountEmail": lambda n : setattr(self, 'accounts_block_adding_non_microsoft_account_email', n.get_bool_value()),
             "antiTheftModeBlocked": lambda n : setattr(self, 'anti_theft_mode_blocked', n.get_bool_value()),
             "appsAllowTrustedAppsSideloading": lambda n : setattr(self, 'apps_allow_trusted_apps_sideloading', n.get_enum_value(state_management_setting.StateManagementSetting)),

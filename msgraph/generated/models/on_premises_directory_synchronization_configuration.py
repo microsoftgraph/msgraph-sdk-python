@@ -1,23 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import on_premises_accidental_deletion_prevention
+on_premises_accidental_deletion_prevention = lazy_import('msgraph.generated.models.on_premises_accidental_deletion_prevention')
 
 class OnPremisesDirectorySynchronizationConfiguration(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new onPremisesDirectorySynchronizationConfiguration and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Contains the accidental deletion prevention configuration for a tenant.
-        self._accidental_deletion_prevention: Optional[on_premises_accidental_deletion_prevention.OnPremisesAccidentalDeletionPrevention] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def accidental_deletion_prevention(self,) -> Optional[on_premises_accidental_deletion_prevention.OnPremisesAccidentalDeletionPrevention]:
         """
@@ -52,6 +40,18 @@ class OnPremisesDirectorySynchronizationConfiguration(AdditionalDataHolder, Pars
         """
         self._additional_data = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new onPremisesDirectorySynchronizationConfiguration and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Contains the accidental deletion prevention configuration for a tenant.
+        self._accidental_deletion_prevention: Optional[on_premises_accidental_deletion_prevention.OnPremisesAccidentalDeletionPrevention] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnPremisesDirectorySynchronizationConfiguration:
         """
@@ -69,9 +69,7 @@ class OnPremisesDirectorySynchronizationConfiguration(AdditionalDataHolder, Pars
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import on_premises_accidental_deletion_prevention
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "accidentalDeletionPrevention": lambda n : setattr(self, 'accidental_deletion_prevention', n.get_object_value(on_premises_accidental_deletion_prevention.OnPremisesAccidentalDeletionPrevention)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

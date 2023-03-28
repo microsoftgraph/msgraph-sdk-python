@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import change_tracked_entity, shift_item
-
-from . import change_tracked_entity
+change_tracked_entity = lazy_import('msgraph.generated.models.change_tracked_entity')
+shift_item = lazy_import('msgraph.generated.models.shift_item')
 
 class Shift(change_tracked_entity.ChangeTrackedEntity):
     def __init__(self,) -> None:
@@ -57,9 +56,7 @@ class Shift(change_tracked_entity.ChangeTrackedEntity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import change_tracked_entity, shift_item
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "draftShift": lambda n : setattr(self, 'draft_shift', n.get_object_value(shift_item.ShiftItem)),
             "schedulingGroupId": lambda n : setattr(self, 'scheduling_group_id', n.get_str_value()),
             "sharedShift": lambda n : setattr(self, 'shared_shift', n.get_object_value(shift_item.ShiftItem)),

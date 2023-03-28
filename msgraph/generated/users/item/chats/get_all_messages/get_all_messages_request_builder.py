@@ -7,11 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import get_all_messages_response
-    from .....models.o_data_errors import o_data_error
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+get_all_messages_response = lazy_import('msgraph.generated.users.item.chats.get_all_messages.get_all_messages_response')
 
 class GetAllMessagesRequestBuilder():
     """
@@ -45,16 +45,12 @@ class GetAllMessagesRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import get_all_messages_response
-
         return await self.request_adapter.send_async(request_info, get_all_messages_response.GetAllMessagesResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetAllMessagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -80,6 +76,27 @@ class GetAllMessagesRequestBuilder():
         """
         Invoke function getAllMessages
         """
+        # Include count of items
+        count: Optional[bool] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -105,27 +122,6 @@ class GetAllMessagesRequestBuilder():
                 return "%24top"
             return original_name
         
-        # Include count of items
-        count: Optional[bool] = None
-
-        # Filter items by property values
-        filter: Optional[str] = None
-
-        # Order items by property values
-        orderby: Optional[List[str]] = None
-
-        # Search items by search phrases
-        search: Optional[str] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
-        # Skip the first n items
-        skip: Optional[int] = None
-
-        # Show only the first n items
-        top: Optional[int] = None
-
     
     @dataclass
     class GetAllMessagesRequestBuilderGetRequestConfiguration():

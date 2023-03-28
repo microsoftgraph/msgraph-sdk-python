@@ -1,61 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import disk_type, entity, user_experience_analytics_health_state
-
-from . import entity
+disk_type = lazy_import('msgraph.generated.models.disk_type')
+entity = lazy_import('msgraph.generated.models.entity')
+user_experience_analytics_health_state = lazy_import('msgraph.generated.models.user_experience_analytics_health_state')
 
 class UserExperienceAnalyticsDevicePerformance(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new UserExperienceAnalyticsDevicePerformance and sets the default values.
-        """
-        super().__init__()
-        # Average (mean) number of Blue Screens per device in the last 30 days. Valid values 0 to 9999999
-        self._average_blue_screens: Optional[float] = None
-        # Average (mean) number of Restarts per device in the last 30 days. Valid values 0 to 9999999
-        self._average_restarts: Optional[float] = None
-        # Number of Blue Screens in the last 30 days. Valid values 0 to 9999999
-        self._blue_screen_count: Optional[int] = None
-        # The user experience analytics device boot score.
-        self._boot_score: Optional[int] = None
-        # The user experience analytics device core boot time in milliseconds.
-        self._core_boot_time_in_ms: Optional[int] = None
-        # The user experience analytics device core login time in milliseconds.
-        self._core_login_time_in_ms: Optional[int] = None
-        # User experience analytics summarized device count.
-        self._device_count: Optional[int] = None
-        # The user experience analytics device name.
-        self._device_name: Optional[str] = None
-        # The diskType property
-        self._disk_type: Optional[disk_type.DiskType] = None
-        # The user experience analytics device group policy boot time in milliseconds.
-        self._group_policy_boot_time_in_ms: Optional[int] = None
-        # The user experience analytics device group policy login time in milliseconds.
-        self._group_policy_login_time_in_ms: Optional[int] = None
-        # The healthStatus property
-        self._health_status: Optional[user_experience_analytics_health_state.UserExperienceAnalyticsHealthState] = None
-        # The user experience analytics device login score.
-        self._login_score: Optional[int] = None
-        # The user experience analytics device manufacturer.
-        self._manufacturer: Optional[str] = None
-        # The user experience analytics device model.
-        self._model: Optional[str] = None
-        # The user experience analytics model level startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-        self._model_startup_performance_score: Optional[float] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The user experience analytics device Operating System version.
-        self._operating_system_version: Optional[str] = None
-        # The user experience analytics responsive desktop time in milliseconds.
-        self._responsive_desktop_time_in_ms: Optional[int] = None
-        # Number of Restarts in the last 30 days. Valid values 0 to 9999999
-        self._restart_count: Optional[int] = None
-        # The user experience analytics device startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-        self._startup_performance_score: Optional[float] = None
-    
     @property
     def average_blue_screens(self,) -> Optional[float]:
         """
@@ -123,6 +75,54 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
             value: Value to set for the boot_score property.
         """
         self._boot_score = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new UserExperienceAnalyticsDevicePerformance and sets the default values.
+        """
+        super().__init__()
+        # Average (mean) number of Blue Screens per device in the last 30 days. Valid values 0 to 9999999
+        self._average_blue_screens: Optional[float] = None
+        # Average (mean) number of Restarts per device in the last 30 days. Valid values 0 to 9999999
+        self._average_restarts: Optional[float] = None
+        # Number of Blue Screens in the last 30 days. Valid values 0 to 9999999
+        self._blue_screen_count: Optional[int] = None
+        # The user experience analytics device boot score.
+        self._boot_score: Optional[int] = None
+        # The user experience analytics device core boot time in milliseconds.
+        self._core_boot_time_in_ms: Optional[int] = None
+        # The user experience analytics device core login time in milliseconds.
+        self._core_login_time_in_ms: Optional[int] = None
+        # User experience analytics summarized device count.
+        self._device_count: Optional[int] = None
+        # The user experience analytics device name.
+        self._device_name: Optional[str] = None
+        # The diskType property
+        self._disk_type: Optional[disk_type.DiskType] = None
+        # The user experience analytics device group policy boot time in milliseconds.
+        self._group_policy_boot_time_in_ms: Optional[int] = None
+        # The user experience analytics device group policy login time in milliseconds.
+        self._group_policy_login_time_in_ms: Optional[int] = None
+        # The healthStatus property
+        self._health_status: Optional[user_experience_analytics_health_state.UserExperienceAnalyticsHealthState] = None
+        # The user experience analytics device login score.
+        self._login_score: Optional[int] = None
+        # The user experience analytics device manufacturer.
+        self._manufacturer: Optional[str] = None
+        # The user experience analytics device model.
+        self._model: Optional[str] = None
+        # The user experience analytics model level startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
+        self._model_startup_performance_score: Optional[float] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The user experience analytics device Operating System version.
+        self._operating_system_version: Optional[str] = None
+        # The user experience analytics responsive desktop time in milliseconds.
+        self._responsive_desktop_time_in_ms: Optional[int] = None
+        # Number of Restarts in the last 30 days. Valid values 0 to 9999999
+        self._restart_count: Optional[int] = None
+        # The user experience analytics device startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
+        self._startup_performance_score: Optional[float] = None
     
     @property
     def core_boot_time_in_ms(self,) -> Optional[int]:
@@ -226,9 +226,7 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import disk_type, entity, user_experience_analytics_health_state
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "averageBlueScreens": lambda n : setattr(self, 'average_blue_screens', n.get_float_value()),
             "averageRestarts": lambda n : setattr(self, 'average_restarts', n.get_float_value()),
             "blueScreenCount": lambda n : setattr(self, 'blue_screen_count', n.get_int_value()),

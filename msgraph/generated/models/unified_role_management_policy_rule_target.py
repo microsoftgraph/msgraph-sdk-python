@@ -1,33 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import directory_object, unified_role_management_policy_rule_target_operations
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+unified_role_management_policy_rule_target_operations = lazy_import('msgraph.generated.models.unified_role_management_policy_rule_target_operations')
 
 class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new unifiedRoleManagementPolicyRuleTarget and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The type of caller that's the target of the policy rule. Allowed values are: None, Admin, EndUser.
-        self._caller: Optional[str] = None
-        # The list of role settings that are enforced and cannot be overridden by child scopes. Use All for all settings.
-        self._enforced_settings: Optional[List[str]] = None
-        # The list of role settings that can be inherited by child scopes. Use All for all settings.
-        self._inheritable_settings: Optional[List[str]] = None
-        # The role assignment type that's the target of policy rule. Allowed values are: Eligibility, Assignment.
-        self._level: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The role management operations that are the target of the policy rule. Allowed values are: All, Activate, Deactivate, Assign, Update, Remove, Extend, Renew.
-        self._operations: Optional[List[unified_role_management_policy_rule_target_operations.UnifiedRoleManagementPolicyRuleTargetOperations]] = None
-        # The targetObjects property
-        self._target_objects: Optional[List[directory_object.DirectoryObject]] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -61,6 +40,28 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
             value: Value to set for the caller property.
         """
         self._caller = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new unifiedRoleManagementPolicyRuleTarget and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The type of caller that's the target of the policy rule. Allowed values are: None, Admin, EndUser.
+        self._caller: Optional[str] = None
+        # The list of role settings that are enforced and cannot be overridden by child scopes. Use All for all settings.
+        self._enforced_settings: Optional[List[str]] = None
+        # The list of role settings that can be inherited by child scopes. Use All for all settings.
+        self._inheritable_settings: Optional[List[str]] = None
+        # The role assignment type that's the target of policy rule. Allowed values are: Eligibility, Assignment.
+        self._level: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The role management operations that are the target of the policy rule. Allowed values are: All, Activate, Deactivate, Assign, Update, Remove, Extend, Renew.
+        self._operations: Optional[List[unified_role_management_policy_rule_target_operations.UnifiedRoleManagementPolicyRuleTargetOperations]] = None
+        # The targetObjects property
+        self._target_objects: Optional[List[directory_object.DirectoryObject]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleManagementPolicyRuleTarget:
@@ -96,9 +97,7 @@ class UnifiedRoleManagementPolicyRuleTarget(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_object, unified_role_management_policy_rule_target_operations
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "caller": lambda n : setattr(self, 'caller', n.get_str_value()),
             "enforcedSettings": lambda n : setattr(self, 'enforced_settings', n.get_collection_of_primitive_values(str)),
             "inheritableSettings": lambda n : setattr(self, 'inheritable_settings', n.get_collection_of_primitive_values(str)),

@@ -1,27 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import identity_set, online_meeting_role
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+online_meeting_role = lazy_import('msgraph.generated.models.online_meeting_role')
 
 class MeetingParticipantInfo(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new meetingParticipantInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Identity information of the participant.
-        self._identity: Optional[identity_set.IdentitySet] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Specifies the participant's role in the meeting.
-        self._role: Optional[online_meeting_role.OnlineMeetingRole] = None
-        # User principal name of the participant.
-        self._upn: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,6 +23,22 @@ class MeetingParticipantInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new meetingParticipantInfo and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Identity information of the participant.
+        self._identity: Optional[identity_set.IdentitySet] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Specifies the participant's role in the meeting.
+        self._role: Optional[online_meeting_role.OnlineMeetingRole] = None
+        # User principal name of the participant.
+        self._upn: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MeetingParticipantInfo:
@@ -56,9 +57,7 @@ class MeetingParticipantInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set, online_meeting_role
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "identity": lambda n : setattr(self, 'identity', n.get_object_value(identity_set.IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "role": lambda n : setattr(self, 'role', n.get_enum_value(online_meeting_role.OnlineMeetingRole)),

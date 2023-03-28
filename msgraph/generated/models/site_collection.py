@@ -1,27 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import root
+root = lazy_import('msgraph.generated.models.root')
 
 class SiteCollection(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new siteCollection and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The geographic region code for where this site collection resides. Read-only.
-        self._data_location_code: Optional[str] = None
-        # The hostname for the site collection. Read-only.
-        self._hostname: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # If present, indicates that this is a root site collection in SharePoint. Read-only.
-        self._root: Optional[root.Root] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,6 +22,22 @@ class SiteCollection(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new siteCollection and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The geographic region code for where this site collection resides. Read-only.
+        self._data_location_code: Optional[str] = None
+        # The hostname for the site collection. Read-only.
+        self._hostname: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # If present, indicates that this is a root site collection in SharePoint. Read-only.
+        self._root: Optional[root.Root] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SiteCollection:
@@ -73,9 +73,7 @@ class SiteCollection(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import root
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "dataLocationCode": lambda n : setattr(self, 'data_location_code', n.get_str_value()),
             "hostname": lambda n : setattr(self, 'hostname', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

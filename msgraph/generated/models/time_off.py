@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import change_tracked_entity, time_off_item
-
-from . import change_tracked_entity
+change_tracked_entity = lazy_import('msgraph.generated.models.change_tracked_entity')
+time_off_item = lazy_import('msgraph.generated.models.time_off_item')
 
 class TimeOff(change_tracked_entity.ChangeTrackedEntity):
     def __init__(self,) -> None:
@@ -55,9 +54,7 @@ class TimeOff(change_tracked_entity.ChangeTrackedEntity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import change_tracked_entity, time_off_item
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "draftTimeOff": lambda n : setattr(self, 'draft_time_off', n.get_object_value(time_off_item.TimeOffItem)),
             "sharedTimeOff": lambda n : setattr(self, 'shared_time_off', n.get_object_value(time_off_item.TimeOffItem)),
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),

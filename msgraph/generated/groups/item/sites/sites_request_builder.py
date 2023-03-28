@@ -7,19 +7,40 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import site_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .add import add_request_builder
-    from .count import count_request_builder
-    from .remove import remove_request_builder
+add_request_builder = lazy_import('msgraph.generated.groups.item.sites.add.add_request_builder')
+count_request_builder = lazy_import('msgraph.generated.groups.item.sites.count.count_request_builder')
+remove_request_builder = lazy_import('msgraph.generated.groups.item.sites.remove.remove_request_builder')
+site_collection_response = lazy_import('msgraph.generated.models.site_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class SitesRequestBuilder():
     """
     Provides operations to manage the sites property of the microsoft.graph.group entity.
     """
+    @property
+    def add(self) -> add_request_builder.AddRequestBuilder:
+        """
+        Provides operations to call the add method.
+        """
+        return add_request_builder.AddRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def count(self) -> count_request_builder.CountRequestBuilder:
+        """
+        Provides operations to count the resources in the collection.
+        """
+        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def remove(self) -> remove_request_builder.RemoveRequestBuilder:
+        """
+        Provides operations to call the remove method.
+        """
+        return remove_request_builder.RemoveRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SitesRequestBuilder and sets the default values.
@@ -48,16 +69,12 @@ class SitesRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import site_collection_response
-
         return await self.request_adapter.send_async(request_info, site_collection_response.SiteCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -78,38 +95,35 @@ class SitesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    @property
-    def add(self) -> add_request_builder.AddRequestBuilder:
-        """
-        Provides operations to call the add method.
-        """
-        from .add import add_request_builder
-
-        return add_request_builder.AddRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count import count_request_builder
-
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def remove(self) -> remove_request_builder.RemoveRequestBuilder:
-        """
-        Provides operations to call the remove method.
-        """
-        from .remove import remove_request_builder
-
-        return remove_request_builder.RemoveRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class SitesRequestBuilderGetQueryParameters():
         """
         The list of SharePoint sites in this group. Access the default site with /sites/root.
         """
+        # Include count of items
+        count: Optional[bool] = None
+
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -137,30 +151,6 @@ class SitesRequestBuilder():
                 return "%24top"
             return original_name
         
-        # Include count of items
-        count: Optional[bool] = None
-
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Filter items by property values
-        filter: Optional[str] = None
-
-        # Order items by property values
-        orderby: Optional[List[str]] = None
-
-        # Search items by search phrases
-        search: Optional[str] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
-        # Skip the first n items
-        skip: Optional[int] = None
-
-        # Show only the first n items
-        top: Optional[int] = None
-
     
     @dataclass
     class SitesRequestBuilderGetRequestConfiguration():

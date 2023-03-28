@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import authentication_method_state, email_authentication_method_configuration, entity, exclude_target, fido2_authentication_method_configuration, microsoft_authenticator_authentication_method_configuration, sms_authentication_method_configuration, software_oath_authentication_method_configuration, temporary_access_pass_authentication_method_configuration, voice_authentication_method_configuration, x509_certificate_authentication_method_configuration
-
-from . import entity
+authentication_method_state = lazy_import('msgraph.generated.models.authentication_method_state')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AuthenticationMethodConfiguration(entity.Entity):
     def __init__(self,) -> None:
@@ -13,8 +12,6 @@ class AuthenticationMethodConfiguration(entity.Entity):
         Instantiates a new authenticationMethodConfiguration and sets the default values.
         """
         super().__init__()
-        # Groups of users that are excluded from a policy.
-        self._exclude_targets: Optional[List[exclude_target.ExcludeTarget]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
         # The state of the policy. Possible values are: enabled, disabled.
@@ -30,69 +27,14 @@ class AuthenticationMethodConfiguration(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.emailAuthenticationMethodConfiguration":
-                from . import email_authentication_method_configuration
-
-                return email_authentication_method_configuration.EmailAuthenticationMethodConfiguration()
-            if mapping_value == "#microsoft.graph.fido2AuthenticationMethodConfiguration":
-                from . import fido2_authentication_method_configuration
-
-                return fido2_authentication_method_configuration.Fido2AuthenticationMethodConfiguration()
-            if mapping_value == "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodConfiguration":
-                from . import microsoft_authenticator_authentication_method_configuration
-
-                return microsoft_authenticator_authentication_method_configuration.MicrosoftAuthenticatorAuthenticationMethodConfiguration()
-            if mapping_value == "#microsoft.graph.smsAuthenticationMethodConfiguration":
-                from . import sms_authentication_method_configuration
-
-                return sms_authentication_method_configuration.SmsAuthenticationMethodConfiguration()
-            if mapping_value == "#microsoft.graph.softwareOathAuthenticationMethodConfiguration":
-                from . import software_oath_authentication_method_configuration
-
-                return software_oath_authentication_method_configuration.SoftwareOathAuthenticationMethodConfiguration()
-            if mapping_value == "#microsoft.graph.temporaryAccessPassAuthenticationMethodConfiguration":
-                from . import temporary_access_pass_authentication_method_configuration
-
-                return temporary_access_pass_authentication_method_configuration.TemporaryAccessPassAuthenticationMethodConfiguration()
-            if mapping_value == "#microsoft.graph.voiceAuthenticationMethodConfiguration":
-                from . import voice_authentication_method_configuration
-
-                return voice_authentication_method_configuration.VoiceAuthenticationMethodConfiguration()
-            if mapping_value == "#microsoft.graph.x509CertificateAuthenticationMethodConfiguration":
-                from . import x509_certificate_authentication_method_configuration
-
-                return x509_certificate_authentication_method_configuration.X509CertificateAuthenticationMethodConfiguration()
         return AuthenticationMethodConfiguration()
-    
-    @property
-    def exclude_targets(self,) -> Optional[List[exclude_target.ExcludeTarget]]:
-        """
-        Gets the excludeTargets property value. Groups of users that are excluded from a policy.
-        Returns: Optional[List[exclude_target.ExcludeTarget]]
-        """
-        return self._exclude_targets
-    
-    @exclude_targets.setter
-    def exclude_targets(self,value: Optional[List[exclude_target.ExcludeTarget]] = None) -> None:
-        """
-        Sets the excludeTargets property value. Groups of users that are excluded from a policy.
-        Args:
-            value: Value to set for the exclude_targets property.
-        """
-        self._exclude_targets = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_state, email_authentication_method_configuration, entity, exclude_target, fido2_authentication_method_configuration, microsoft_authenticator_authentication_method_configuration, sms_authentication_method_configuration, software_oath_authentication_method_configuration, temporary_access_pass_authentication_method_configuration, voice_authentication_method_configuration, x509_certificate_authentication_method_configuration
-
-        fields: Dict[str, Callable[[Any], None]] = {
-            "excludeTargets": lambda n : setattr(self, 'exclude_targets', n.get_collection_of_object_values(exclude_target.ExcludeTarget)),
+        fields = {
             "state": lambda n : setattr(self, 'state', n.get_enum_value(authentication_method_state.AuthenticationMethodState)),
         }
         super_fields = super().get_field_deserializers()
@@ -108,7 +50,6 @@ class AuthenticationMethodConfiguration(entity.Entity):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-        writer.write_collection_of_object_values("excludeTargets", self.exclude_targets)
         writer.write_enum_value("state", self.state)
     
     @property

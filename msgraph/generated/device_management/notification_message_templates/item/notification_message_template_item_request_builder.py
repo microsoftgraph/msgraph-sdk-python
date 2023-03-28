@@ -7,19 +7,33 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import notification_message_template
-    from ....models.o_data_errors import o_data_error
-    from .localized_notification_messages import localized_notification_messages_request_builder
-    from .localized_notification_messages.item import localized_notification_message_item_request_builder
-    from .send_test_message import send_test_message_request_builder
+localized_notification_messages_request_builder = lazy_import('msgraph.generated.device_management.notification_message_templates.item.localized_notification_messages.localized_notification_messages_request_builder')
+localized_notification_message_item_request_builder = lazy_import('msgraph.generated.device_management.notification_message_templates.item.localized_notification_messages.item.localized_notification_message_item_request_builder')
+send_test_message_request_builder = lazy_import('msgraph.generated.device_management.notification_message_templates.item.send_test_message.send_test_message_request_builder')
+notification_message_template = lazy_import('msgraph.generated.models.notification_message_template')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class NotificationMessageTemplateItemRequestBuilder():
     """
     Provides operations to manage the notificationMessageTemplates property of the microsoft.graph.deviceManagement entity.
     """
+    @property
+    def localized_notification_messages(self) -> localized_notification_messages_request_builder.LocalizedNotificationMessagesRequestBuilder:
+        """
+        Provides operations to manage the localizedNotificationMessages property of the microsoft.graph.notificationMessageTemplate entity.
+        """
+        return localized_notification_messages_request_builder.LocalizedNotificationMessagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def send_test_message(self) -> send_test_message_request_builder.SendTestMessageRequestBuilder:
+        """
+        Provides operations to call the sendTestMessage method.
+        """
+        return send_test_message_request_builder.SendTestMessageRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new NotificationMessageTemplateItemRequestBuilder and sets the default values.
@@ -47,8 +61,6 @@ class NotificationMessageTemplateItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -67,16 +79,12 @@ class NotificationMessageTemplateItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import notification_message_template
-
         return await self.request_adapter.send_async(request_info, notification_message_template.NotificationMessageTemplate, error_mapping)
     
     def localized_notification_messages_by_id(self,id: str) -> localized_notification_message_item_request_builder.LocalizedNotificationMessageItemRequestBuilder:
@@ -88,8 +96,6 @@ class NotificationMessageTemplateItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .localized_notification_messages.item import localized_notification_message_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["localizedNotificationMessage%2Did"] = id
         return localized_notification_message_item_request_builder.LocalizedNotificationMessageItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -107,16 +113,12 @@ class NotificationMessageTemplateItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import notification_message_template
-
         return await self.request_adapter.send_async(request_info, notification_message_template.NotificationMessageTemplate, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[NotificationMessageTemplateItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -174,24 +176,6 @@ class NotificationMessageTemplateItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def localized_notification_messages(self) -> localized_notification_messages_request_builder.LocalizedNotificationMessagesRequestBuilder:
-        """
-        Provides operations to manage the localizedNotificationMessages property of the microsoft.graph.notificationMessageTemplate entity.
-        """
-        from .localized_notification_messages import localized_notification_messages_request_builder
-
-        return localized_notification_messages_request_builder.LocalizedNotificationMessagesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def send_test_message(self) -> send_test_message_request_builder.SendTestMessageRequestBuilder:
-        """
-        Provides operations to call the sendTestMessage method.
-        """
-        from .send_test_message import send_test_message_request_builder
-
-        return send_test_message_request_builder.SendTestMessageRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class NotificationMessageTemplateItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -209,6 +193,12 @@ class NotificationMessageTemplateItemRequestBuilder():
         """
         The Notification Message Templates.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -224,12 +214,6 @@ class NotificationMessageTemplateItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class NotificationMessageTemplateItemRequestBuilderGetRequestConfiguration():

@@ -1,12 +1,11 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_package_external_user_lifecycle_action, entity
-
-from . import entity
+access_package_external_user_lifecycle_action = lazy_import('msgraph.generated.models.access_package_external_user_lifecycle_action')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class EntitlementManagementSettings(entity.Entity):
     def __init__(self,) -> None:
@@ -72,9 +71,7 @@ class EntitlementManagementSettings(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_external_user_lifecycle_action, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "durationUntilExternalUserDeletedAfterBlocked": lambda n : setattr(self, 'duration_until_external_user_deleted_after_blocked', n.get_object_value(Timedelta)),
             "externalUserLifecycleAction": lambda n : setattr(self, 'external_user_lifecycle_action', n.get_enum_value(access_package_external_user_lifecycle_action.AccessPackageExternalUserLifecycleAction)),
         }

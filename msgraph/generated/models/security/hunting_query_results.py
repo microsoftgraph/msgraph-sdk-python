@@ -1,25 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import hunting_row_result, single_property_schema
+hunting_row_result = lazy_import('msgraph.generated.models.security.hunting_row_result')
+single_property_schema = lazy_import('msgraph.generated.models.security.single_property_schema')
 
 class HuntingQueryResults(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new huntingQueryResults and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The results of the hunting query.
-        self._results: Optional[List[hunting_row_result.HuntingRowResult]] = None
-        # The schema for the response.
-        self._schema: Optional[List[single_property_schema.SinglePropertySchema]] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -36,6 +23,20 @@ class HuntingQueryResults(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new huntingQueryResults and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The results of the hunting query.
+        self._results: Optional[List[hunting_row_result.HuntingRowResult]] = None
+        # The schema for the response.
+        self._schema: Optional[List[single_property_schema.SinglePropertySchema]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> HuntingQueryResults:
@@ -54,9 +55,7 @@ class HuntingQueryResults(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import hunting_row_result, single_property_schema
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "results": lambda n : setattr(self, 'results', n.get_collection_of_object_values(hunting_row_result.HuntingRowResult)),
             "schema": lambda n : setattr(self, 'schema', n.get_collection_of_object_values(single_property_schema.SinglePropertySchema)),

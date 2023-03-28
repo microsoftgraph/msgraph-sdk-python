@@ -7,19 +7,40 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from .........models import workbook_table_sort
-    from .........models.o_data_errors import o_data_error
-    from .apply import apply_request_builder
-    from .clear import clear_request_builder
-    from .reapply import reapply_request_builder
+apply_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.sort.apply.apply_request_builder')
+clear_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.sort.clear.clear_request_builder')
+reapply_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.sort.reapply.reapply_request_builder')
+workbook_table_sort = lazy_import('msgraph.generated.models.workbook_table_sort')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class SortRequestBuilder():
     """
     Provides operations to manage the sort property of the microsoft.graph.workbookTable entity.
     """
+    @property
+    def apply(self) -> apply_request_builder.ApplyRequestBuilder:
+        """
+        Provides operations to call the apply method.
+        """
+        return apply_request_builder.ApplyRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def clear(self) -> clear_request_builder.ClearRequestBuilder:
+        """
+        Provides operations to call the clear method.
+        """
+        return clear_request_builder.ClearRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def reapply(self) -> reapply_request_builder.ReapplyRequestBuilder:
+        """
+        Provides operations to call the reapply method.
+        """
+        return reapply_request_builder.ReapplyRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new SortRequestBuilder and sets the default values.
@@ -47,8 +68,6 @@ class SortRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -67,16 +86,12 @@ class SortRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import workbook_table_sort
-
         return await self.request_adapter.send_async(request_info, workbook_table_sort.WorkbookTableSort, error_mapping)
     
     async def patch(self,body: Optional[workbook_table_sort.WorkbookTableSort] = None, request_configuration: Optional[SortRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_table_sort.WorkbookTableSort]:
@@ -92,16 +107,12 @@ class SortRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from .........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .........models import workbook_table_sort
-
         return await self.request_adapter.send_async(request_info, workbook_table_sort.WorkbookTableSort, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[SortRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -159,33 +170,6 @@ class SortRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def apply(self) -> apply_request_builder.ApplyRequestBuilder:
-        """
-        Provides operations to call the apply method.
-        """
-        from .apply import apply_request_builder
-
-        return apply_request_builder.ApplyRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def clear(self) -> clear_request_builder.ClearRequestBuilder:
-        """
-        Provides operations to call the clear method.
-        """
-        from .clear import clear_request_builder
-
-        return clear_request_builder.ClearRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def reapply(self) -> reapply_request_builder.ReapplyRequestBuilder:
-        """
-        Provides operations to call the reapply method.
-        """
-        from .reapply import reapply_request_builder
-
-        return reapply_request_builder.ReapplyRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class SortRequestBuilderDeleteRequestConfiguration():
         """
@@ -203,6 +187,12 @@ class SortRequestBuilder():
         """
         Retrieve the properties and relationships of tablesort object.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -218,12 +208,6 @@ class SortRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class SortRequestBuilderGetRequestConfiguration():

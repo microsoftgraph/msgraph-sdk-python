@@ -1,14 +1,29 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import directory_object
-
-from . import directory_object
+directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class AppRoleAssignment(directory_object.DirectoryObject):
+    @property
+    def app_role_id(self,) -> Optional[Guid]:
+        """
+        Gets the appRoleId property value. The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
+        Returns: Optional[Guid]
+        """
+        return self._app_role_id
+    
+    @app_role_id.setter
+    def app_role_id(self,value: Optional[Guid] = None) -> None:
+        """
+        Sets the appRoleId property value. The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
+        Args:
+            value: Value to set for the app_role_id property.
+        """
+        self._app_role_id = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new appRoleAssignment and sets the default values.
@@ -29,23 +44,6 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         self._resource_display_name: Optional[str] = None
         # The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
         self._resource_id: Optional[Guid] = None
-    
-    @property
-    def app_role_id(self,) -> Optional[Guid]:
-        """
-        Gets the appRoleId property value. The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
-        Returns: Optional[Guid]
-        """
-        return self._app_role_id
-    
-    @app_role_id.setter
-    def app_role_id(self,value: Optional[Guid] = None) -> None:
-        """
-        Sets the appRoleId property value. The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
-        Args:
-            value: Value to set for the app_role_id property.
-        """
-        self._app_role_id = value
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -81,9 +79,7 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_object
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "appRoleId": lambda n : setattr(self, 'app_role_id', n.get_object_value(Guid)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "principalDisplayName": lambda n : setattr(self, 'principal_display_name', n.get_str_value()),

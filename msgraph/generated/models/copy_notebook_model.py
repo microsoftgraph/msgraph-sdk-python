@@ -1,12 +1,31 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import identity_set, notebook_links, onenote_user_role
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+notebook_links = lazy_import('msgraph.generated.models.notebook_links')
+onenote_user_role = lazy_import('msgraph.generated.models.onenote_user_role')
 
 class CopyNotebookModel(AdditionalDataHolder, Parsable):
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new CopyNotebookModel and sets the default values.
@@ -46,23 +65,6 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         self._self: Optional[str] = None
         # The userRole property
         self._user_role: Optional[onenote_user_role.OnenoteUserRole] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
     
     @property
     def created_by(self,) -> Optional[str]:
@@ -132,9 +134,7 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set, notebook_links, onenote_user_role
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_str_value()),
             "createdByIdentity": lambda n : setattr(self, 'created_by_identity', n.get_object_value(identity_set.IdentitySet)),
             "createdTime": lambda n : setattr(self, 'created_time', n.get_datetime_value()),

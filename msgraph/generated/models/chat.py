@@ -1,14 +1,38 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import chat_message, chat_message_info, chat_type, chat_viewpoint, conversation_member, entity, pinned_chat_message_info, teams_app_installation, teams_tab, teamwork_online_meeting_info
-
-from . import entity
+chat_message = lazy_import('msgraph.generated.models.chat_message')
+chat_message_info = lazy_import('msgraph.generated.models.chat_message_info')
+chat_type = lazy_import('msgraph.generated.models.chat_type')
+chat_viewpoint = lazy_import('msgraph.generated.models.chat_viewpoint')
+conversation_member = lazy_import('msgraph.generated.models.conversation_member')
+entity = lazy_import('msgraph.generated.models.entity')
+pinned_chat_message_info = lazy_import('msgraph.generated.models.pinned_chat_message_info')
+teams_app_installation = lazy_import('msgraph.generated.models.teams_app_installation')
+teams_tab = lazy_import('msgraph.generated.models.teams_tab')
+teamwork_online_meeting_info = lazy_import('msgraph.generated.models.teamwork_online_meeting_info')
 
 class Chat(entity.Entity):
+    @property
+    def chat_type(self,) -> Optional[chat_type.ChatType]:
+        """
+        Gets the chatType property value. The chatType property
+        Returns: Optional[chat_type.ChatType]
+        """
+        return self._chat_type
+    
+    @chat_type.setter
+    def chat_type(self,value: Optional[chat_type.ChatType] = None) -> None:
+        """
+        Sets the chatType property value. The chatType property
+        Args:
+            value: Value to set for the chat_type property.
+        """
+        self._chat_type = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new chat and sets the default values.
@@ -46,23 +70,6 @@ class Chat(entity.Entity):
         self._web_url: Optional[str] = None
     
     @property
-    def chat_type(self,) -> Optional[chat_type.ChatType]:
-        """
-        Gets the chatType property value. The chatType property
-        Returns: Optional[chat_type.ChatType]
-        """
-        return self._chat_type
-    
-    @chat_type.setter
-    def chat_type(self,value: Optional[chat_type.ChatType] = None) -> None:
-        """
-        Sets the chatType property value. The chatType property
-        Args:
-            value: Value to set for the chat_type property.
-        """
-        self._chat_type = value
-    
-    @property
     def created_date_time(self,) -> Optional[datetime]:
         """
         Gets the createdDateTime property value. Date and time at which the chat was created. Read-only.
@@ -96,9 +103,7 @@ class Chat(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import chat_message, chat_message_info, chat_type, chat_viewpoint, conversation_member, entity, pinned_chat_message_info, teams_app_installation, teams_tab, teamwork_online_meeting_info
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "chatType": lambda n : setattr(self, 'chat_type', n.get_enum_value(chat_type.ChatType)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "installedApps": lambda n : setattr(self, 'installed_apps', n.get_collection_of_object_values(teams_app_installation.TeamsAppInstallation)),

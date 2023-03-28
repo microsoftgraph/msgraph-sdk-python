@@ -1,11 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import imported_windows_autopilot_device_identity_import_status
+imported_windows_autopilot_device_identity_import_status = lazy_import('msgraph.generated.models.imported_windows_autopilot_device_identity_import_status')
 
 class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable):
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new importedWindowsAutopilotDeviceIdentityState and sets the default values.
@@ -23,23 +40,6 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         self._device_registration_id: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ImportedWindowsAutopilotDeviceIdentityState:
@@ -126,9 +126,7 @@ class ImportedWindowsAutopilotDeviceIdentityState(AdditionalDataHolder, Parsable
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import imported_windows_autopilot_device_identity_import_status
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "deviceErrorCode": lambda n : setattr(self, 'device_error_code', n.get_int_value()),
             "deviceErrorName": lambda n : setattr(self, 'device_error_name', n.get_str_value()),
             "deviceImportStatus": lambda n : setattr(self, 'device_import_status', n.get_enum_value(imported_windows_autopilot_device_identity_import_status.ImportedWindowsAutopilotDeviceIdentityImportStatus)),

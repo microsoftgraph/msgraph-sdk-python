@@ -1,31 +1,15 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import call_participant_info, event_message_detail, identity_set, teamwork_call_event_type
-
-from . import event_message_detail
+call_participant_info = lazy_import('msgraph.generated.models.call_participant_info')
+event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+teamwork_call_event_type = lazy_import('msgraph.generated.models.teamwork_call_event_type')
 
 class CallEndedEventMessageDetail(event_message_detail.EventMessageDetail):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new CallEndedEventMessageDetail and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.callEndedEventMessageDetail"
-        # Duration of the call.
-        self._call_duration: Optional[Timedelta] = None
-        # Represents the call event type. Possible values are: call, meeting, screenShare, unknownFutureValue.
-        self._call_event_type: Optional[teamwork_call_event_type.TeamworkCallEventType] = None
-        # Unique identifier of the call.
-        self._call_id: Optional[str] = None
-        # List of call participants.
-        self._call_participants: Optional[List[call_participant_info.CallParticipantInfo]] = None
-        # Initiator of the event.
-        self._initiator: Optional[identity_set.IdentitySet] = None
-    
     @property
     def call_duration(self,) -> Optional[Timedelta]:
         """
@@ -94,6 +78,23 @@ class CallEndedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         self._call_participants = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new CallEndedEventMessageDetail and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.callEndedEventMessageDetail"
+        # Duration of the call.
+        self._call_duration: Optional[Timedelta] = None
+        # Represents the call event type. Possible values are: call, meeting, screenShare, unknownFutureValue.
+        self._call_event_type: Optional[teamwork_call_event_type.TeamworkCallEventType] = None
+        # Unique identifier of the call.
+        self._call_id: Optional[str] = None
+        # List of call participants.
+        self._call_participants: Optional[List[call_participant_info.CallParticipantInfo]] = None
+        # Initiator of the event.
+        self._initiator: Optional[identity_set.IdentitySet] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallEndedEventMessageDetail:
         """
@@ -111,9 +112,7 @@ class CallEndedEventMessageDetail(event_message_detail.EventMessageDetail):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import call_participant_info, event_message_detail, identity_set, teamwork_call_event_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "callDuration": lambda n : setattr(self, 'call_duration', n.get_object_value(Timedelta)),
             "callEventType": lambda n : setattr(self, 'call_event_type', n.get_enum_value(teamwork_call_event_type.TeamworkCallEventType)),
             "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),

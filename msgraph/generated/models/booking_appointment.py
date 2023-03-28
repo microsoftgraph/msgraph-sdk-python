@@ -1,14 +1,51 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import booking_customer_information_base, booking_price_type, booking_reminder, date_time_time_zone, entity, location
-
-from . import entity
+booking_customer_information_base = lazy_import('msgraph.generated.models.booking_customer_information_base')
+booking_price_type = lazy_import('msgraph.generated.models.booking_price_type')
+booking_reminder = lazy_import('msgraph.generated.models.booking_reminder')
+date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
+entity = lazy_import('msgraph.generated.models.entity')
+location = lazy_import('msgraph.generated.models.location')
 
 class BookingAppointment(entity.Entity):
+    @property
+    def additional_information(self,) -> Optional[str]:
+        """
+        Gets the additionalInformation property value. Additional information that is sent to the customer when an appointment is confirmed.
+        Returns: Optional[str]
+        """
+        return self._additional_information
+    
+    @additional_information.setter
+    def additional_information(self,value: Optional[str] = None) -> None:
+        """
+        Sets the additionalInformation property value. Additional information that is sent to the customer when an appointment is confirmed.
+        Args:
+            value: Value to set for the additional_information property.
+        """
+        self._additional_information = value
+    
+    @property
+    def anonymous_join_web_url(self,) -> Optional[str]:
+        """
+        Gets the anonymousJoinWebUrl property value. The URL of the meeting to join anonymously.
+        Returns: Optional[str]
+        """
+        return self._anonymous_join_web_url
+    
+    @anonymous_join_web_url.setter
+    def anonymous_join_web_url(self,value: Optional[str] = None) -> None:
+        """
+        Sets the anonymousJoinWebUrl property value. The URL of the meeting to join anonymously.
+        Args:
+            value: Value to set for the anonymous_join_web_url property.
+        """
+        self._anonymous_join_web_url = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new BookingAppointment and sets the default values.
@@ -64,40 +101,6 @@ class BookingAppointment(entity.Entity):
         self._staff_member_ids: Optional[List[str]] = None
         # The startDateTime property
         self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-    
-    @property
-    def additional_information(self,) -> Optional[str]:
-        """
-        Gets the additionalInformation property value. Additional information that is sent to the customer when an appointment is confirmed.
-        Returns: Optional[str]
-        """
-        return self._additional_information
-    
-    @additional_information.setter
-    def additional_information(self,value: Optional[str] = None) -> None:
-        """
-        Sets the additionalInformation property value. Additional information that is sent to the customer when an appointment is confirmed.
-        Args:
-            value: Value to set for the additional_information property.
-        """
-        self._additional_information = value
-    
-    @property
-    def anonymous_join_web_url(self,) -> Optional[str]:
-        """
-        Gets the anonymousJoinWebUrl property value. The URL of the meeting to join anonymously.
-        Returns: Optional[str]
-        """
-        return self._anonymous_join_web_url
-    
-    @anonymous_join_web_url.setter
-    def anonymous_join_web_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the anonymousJoinWebUrl property value. The URL of the meeting to join anonymously.
-        Args:
-            value: Value to set for the anonymous_join_web_url property.
-        """
-        self._anonymous_join_web_url = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingAppointment:
@@ -201,9 +204,7 @@ class BookingAppointment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import booking_customer_information_base, booking_price_type, booking_reminder, date_time_time_zone, entity, location
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_str_value()),
             "anonymousJoinWebUrl": lambda n : setattr(self, 'anonymous_join_web_url', n.get_str_value()),
             "customers": lambda n : setattr(self, 'customers', n.get_collection_of_object_values(booking_customer_information_base.BookingCustomerInformationBase)),

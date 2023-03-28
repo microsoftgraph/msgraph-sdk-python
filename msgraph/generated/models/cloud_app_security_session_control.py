@@ -1,22 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import cloud_app_security_session_control_type, conditional_access_session_control
-
-from . import conditional_access_session_control
+cloud_app_security_session_control_type = lazy_import('msgraph.generated.models.cloud_app_security_session_control_type')
+conditional_access_session_control = lazy_import('msgraph.generated.models.conditional_access_session_control')
 
 class CloudAppSecuritySessionControl(conditional_access_session_control.ConditionalAccessSessionControl):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new CloudAppSecuritySessionControl and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.cloudAppSecuritySessionControl"
-        # Possible values are: mcasConfigured, monitorOnly, blockDownloads, unknownFutureValue. For more information, see Deploy Conditional Access App Control for featured apps.
-        self._cloud_app_security_type: Optional[cloud_app_security_session_control_type.CloudAppSecuritySessionControlType] = None
-    
     @property
     def cloud_app_security_type(self,) -> Optional[cloud_app_security_session_control_type.CloudAppSecuritySessionControlType]:
         """
@@ -33,6 +23,15 @@ class CloudAppSecuritySessionControl(conditional_access_session_control.Conditio
             value: Value to set for the cloud_app_security_type property.
         """
         self._cloud_app_security_type = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new CloudAppSecuritySessionControl and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.cloudAppSecuritySessionControl"
+        # Possible values are: mcasConfigured, monitorOnly, blockDownloads, unknownFutureValue. For more information, see Deploy Conditional Access App Control for featured apps.
+        self._cloud_app_security_type: Optional[cloud_app_security_session_control_type.CloudAppSecuritySessionControlType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CloudAppSecuritySessionControl:
@@ -51,9 +50,7 @@ class CloudAppSecuritySessionControl(conditional_access_session_control.Conditio
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import cloud_app_security_session_control_type, conditional_access_session_control
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "cloudAppSecurityType": lambda n : setattr(self, 'cloud_app_security_type', n.get_enum_value(cloud_app_security_session_control_type.CloudAppSecuritySessionControlType)),
         }
         super_fields = super().get_field_deserializers()

@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import education_feedback_resource_outcome_status, education_outcome, education_resource
-
-from . import education_outcome
+education_feedback_resource_outcome_status = lazy_import('msgraph.generated.models.education_feedback_resource_outcome_status')
+education_outcome = lazy_import('msgraph.generated.models.education_outcome')
+education_resource = lazy_import('msgraph.generated.models.education_resource')
 
 class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
     def __init__(self,) -> None:
@@ -53,9 +53,7 @@ class EducationFeedbackResourceOutcome(education_outcome.EducationOutcome):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_feedback_resource_outcome_status, education_outcome, education_resource
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "feedbackResource": lambda n : setattr(self, 'feedback_resource', n.get_object_value(education_resource.EducationResource)),
             "resourceStatus": lambda n : setattr(self, 'resource_status', n.get_enum_value(education_feedback_resource_outcome_status.EducationFeedbackResourceOutcomeStatus)),
         }

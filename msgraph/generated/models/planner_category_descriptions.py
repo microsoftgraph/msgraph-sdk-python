@@ -1,68 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class PlannerCategoryDescriptions(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new plannerCategoryDescriptions and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The label associated with Category 1
-        self._category1: Optional[str] = None
-        # The label associated with Category 10
-        self._category10: Optional[str] = None
-        # The label associated with Category 11
-        self._category11: Optional[str] = None
-        # The label associated with Category 12
-        self._category12: Optional[str] = None
-        # The label associated with Category 13
-        self._category13: Optional[str] = None
-        # The label associated with Category 14
-        self._category14: Optional[str] = None
-        # The label associated with Category 15
-        self._category15: Optional[str] = None
-        # The label associated with Category 16
-        self._category16: Optional[str] = None
-        # The label associated with Category 17
-        self._category17: Optional[str] = None
-        # The label associated with Category 18
-        self._category18: Optional[str] = None
-        # The label associated with Category 19
-        self._category19: Optional[str] = None
-        # The label associated with Category 2
-        self._category2: Optional[str] = None
-        # The label associated with Category 20
-        self._category20: Optional[str] = None
-        # The label associated with Category 21
-        self._category21: Optional[str] = None
-        # The label associated with Category 22
-        self._category22: Optional[str] = None
-        # The label associated with Category 23
-        self._category23: Optional[str] = None
-        # The label associated with Category 24
-        self._category24: Optional[str] = None
-        # The label associated with Category 25
-        self._category25: Optional[str] = None
-        # The label associated with Category 3
-        self._category3: Optional[str] = None
-        # The label associated with Category 4
-        self._category4: Optional[str] = None
-        # The label associated with Category 5
-        self._category5: Optional[str] = None
-        # The label associated with Category 6
-        self._category6: Optional[str] = None
-        # The label associated with Category 7
-        self._category7: Optional[str] = None
-        # The label associated with Category 8
-        self._category8: Optional[str] = None
-        # The label associated with Category 9
-        self._category9: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -505,6 +446,66 @@ class PlannerCategoryDescriptions(AdditionalDataHolder, Parsable):
         """
         self._category9 = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new plannerCategoryDescriptions and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The label associated with Category 1
+        self._category1: Optional[str] = None
+        # The label associated with Category 10
+        self._category10: Optional[str] = None
+        # The label associated with Category 11
+        self._category11: Optional[str] = None
+        # The label associated with Category 12
+        self._category12: Optional[str] = None
+        # The label associated with Category 13
+        self._category13: Optional[str] = None
+        # The label associated with Category 14
+        self._category14: Optional[str] = None
+        # The label associated with Category 15
+        self._category15: Optional[str] = None
+        # The label associated with Category 16
+        self._category16: Optional[str] = None
+        # The label associated with Category 17
+        self._category17: Optional[str] = None
+        # The label associated with Category 18
+        self._category18: Optional[str] = None
+        # The label associated with Category 19
+        self._category19: Optional[str] = None
+        # The label associated with Category 2
+        self._category2: Optional[str] = None
+        # The label associated with Category 20
+        self._category20: Optional[str] = None
+        # The label associated with Category 21
+        self._category21: Optional[str] = None
+        # The label associated with Category 22
+        self._category22: Optional[str] = None
+        # The label associated with Category 23
+        self._category23: Optional[str] = None
+        # The label associated with Category 24
+        self._category24: Optional[str] = None
+        # The label associated with Category 25
+        self._category25: Optional[str] = None
+        # The label associated with Category 3
+        self._category3: Optional[str] = None
+        # The label associated with Category 4
+        self._category4: Optional[str] = None
+        # The label associated with Category 5
+        self._category5: Optional[str] = None
+        # The label associated with Category 6
+        self._category6: Optional[str] = None
+        # The label associated with Category 7
+        self._category7: Optional[str] = None
+        # The label associated with Category 8
+        self._category8: Optional[str] = None
+        # The label associated with Category 9
+        self._category9: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerCategoryDescriptions:
         """
@@ -522,7 +523,7 @@ class PlannerCategoryDescriptions(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "category1": lambda n : setattr(self, 'category1', n.get_str_value()),
             "category10": lambda n : setattr(self, 'category10', n.get_str_value()),
             "category11": lambda n : setattr(self, 'category11', n.get_str_value()),

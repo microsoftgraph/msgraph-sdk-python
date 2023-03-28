@@ -1,29 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class Certification(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new certification and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # URL that shows certification details for the application.
-        self._certification_details_url: Optional[str] = None
-        # The timestamp when the current certification for the application will expire.
-        self._certification_expiration_date_time: Optional[datetime] = None
-        # Indicates whether the application is certified by Microsoft.
-        self._is_certified_by_microsoft: Optional[bool] = None
-        # Indicates whether the application has been self-attested by the application developer or the publisher.
-        self._is_publisher_attested: Optional[bool] = None
-        # The timestamp when the certification for the application was most recently added or updated.
-        self._last_certification_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -75,6 +56,26 @@ class Certification(AdditionalDataHolder, Parsable):
         """
         self._certification_expiration_date_time = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new certification and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # URL that shows certification details for the application.
+        self._certification_details_url: Optional[str] = None
+        # The timestamp when the current certification for the application will expire.
+        self._certification_expiration_date_time: Optional[datetime] = None
+        # Indicates whether the application is certified by Microsoft.
+        self._is_certified_by_microsoft: Optional[bool] = None
+        # Indicates whether the application has been self-attested by the application developer or the publisher.
+        self._is_publisher_attested: Optional[bool] = None
+        # The timestamp when the certification for the application was most recently added or updated.
+        self._last_certification_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Certification:
         """
@@ -92,7 +93,7 @@ class Certification(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "certificationDetailsUrl": lambda n : setattr(self, 'certification_details_url', n.get_str_value()),
             "certificationExpirationDateTime": lambda n : setattr(self, 'certification_expiration_date_time', n.get_datetime_value()),
             "isCertifiedByMicrosoft": lambda n : setattr(self, 'is_certified_by_microsoft', n.get_bool_value()),

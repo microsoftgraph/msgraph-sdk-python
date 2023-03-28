@@ -1,13 +1,30 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import managed_app_policy_deployment_summary, managed_mobile_app, targeted_managed_app_protection
-
-from . import targeted_managed_app_protection
+managed_app_policy_deployment_summary = lazy_import('msgraph.generated.models.managed_app_policy_deployment_summary')
+managed_mobile_app = lazy_import('msgraph.generated.models.managed_mobile_app')
+targeted_managed_app_protection = lazy_import('msgraph.generated.models.targeted_managed_app_protection')
 
 class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManagedAppProtection):
+    @property
+    def apps(self,) -> Optional[List[managed_mobile_app.ManagedMobileApp]]:
+        """
+        Gets the apps property value. List of apps to which the policy is deployed.
+        Returns: Optional[List[managed_mobile_app.ManagedMobileApp]]
+        """
+        return self._apps
+    
+    @apps.setter
+    def apps(self,value: Optional[List[managed_mobile_app.ManagedMobileApp]] = None) -> None:
+        """
+        Sets the apps property value. List of apps to which the policy is deployed.
+        Args:
+            value: Value to set for the apps property.
+        """
+        self._apps = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new AndroidManagedAppProtection and sets the default values.
@@ -34,23 +51,6 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         self._minimum_warning_patch_version: Optional[str] = None
         # Indicates whether a managed user can take screen captures of managed apps
         self._screen_capture_blocked: Optional[bool] = None
-    
-    @property
-    def apps(self,) -> Optional[List[managed_mobile_app.ManagedMobileApp]]:
-        """
-        Gets the apps property value. List of apps to which the policy is deployed.
-        Returns: Optional[List[managed_mobile_app.ManagedMobileApp]]
-        """
-        return self._apps
-    
-    @apps.setter
-    def apps(self,value: Optional[List[managed_mobile_app.ManagedMobileApp]] = None) -> None:
-        """
-        Sets the apps property value. List of apps to which the policy is deployed.
-        Args:
-            value: Value to set for the apps property.
-        """
-        self._apps = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AndroidManagedAppProtection:
@@ -171,9 +171,7 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import managed_app_policy_deployment_summary, managed_mobile_app, targeted_managed_app_protection
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "apps": lambda n : setattr(self, 'apps', n.get_collection_of_object_values(managed_mobile_app.ManagedMobileApp)),
             "customBrowserDisplayName": lambda n : setattr(self, 'custom_browser_display_name', n.get_str_value()),
             "customBrowserPackageId": lambda n : setattr(self, 'custom_browser_package_id', n.get_str_value()),

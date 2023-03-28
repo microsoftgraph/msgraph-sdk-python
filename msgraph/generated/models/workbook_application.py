@@ -1,23 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class WorkbookApplication(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookApplication and sets the default values.
-        """
-        super().__init__()
-        # Returns the calculation mode used in the workbook. Possible values are: Automatic, AutomaticExceptTables, Manual.
-        self._calculation_mode: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
     @property
     def calculation_mode(self,) -> Optional[str]:
         """
@@ -34,6 +22,16 @@ class WorkbookApplication(entity.Entity):
             value: Value to set for the calculation_mode property.
         """
         self._calculation_mode = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new workbookApplication and sets the default values.
+        """
+        super().__init__()
+        # Returns the calculation mode used in the workbook. Possible values are: Automatic, AutomaticExceptTables, Manual.
+        self._calculation_mode: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookApplication:
@@ -52,9 +50,7 @@ class WorkbookApplication(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "calculationMode": lambda n : setattr(self, 'calculation_mode', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

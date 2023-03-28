@@ -1,25 +1,10 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class OcrSettings(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ocrSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Indicates whether or not OCR is enabled for the case.
-        self._is_enabled: Optional[bool] = None
-        # Maximum image size that will be processed in KB).
-        self._max_image_size: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The timeout duration for the OCR engine. A longer timeout might increase success of OCR, but might add to the total processing time.
-        self._timeout: Optional[Timedelta] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -36,6 +21,22 @@ class OcrSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ocrSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Indicates whether or not OCR is enabled for the case.
+        self._is_enabled: Optional[bool] = None
+        # Maximum image size that will be processed in KB).
+        self._max_image_size: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The timeout duration for the OCR engine. A longer timeout might increase success of OCR, but might add to the total processing time.
+        self._timeout: Optional[Timedelta] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OcrSettings:
@@ -54,7 +55,7 @@ class OcrSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "maxImageSize": lambda n : setattr(self, 'max_image_size', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

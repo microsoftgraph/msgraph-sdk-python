@@ -1,22 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class ItemActionStat(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new itemActionStat and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The number of times the action took place. Read-only.
-        self._action_count: Optional[int] = None
-        # The number of distinct actors that performed the action. Read-only.
-        self._actor_count: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def action_count(self,) -> Optional[int]:
         """
@@ -68,6 +55,20 @@ class ItemActionStat(AdditionalDataHolder, Parsable):
         """
         self._additional_data = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new itemActionStat and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The number of times the action took place. Read-only.
+        self._action_count: Optional[int] = None
+        # The number of distinct actors that performed the action. Read-only.
+        self._actor_count: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemActionStat:
         """
@@ -85,7 +86,7 @@ class ItemActionStat(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "actionCount": lambda n : setattr(self, 'action_count', n.get_int_value()),
             "actorCount": lambda n : setattr(self, 'actor_count', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

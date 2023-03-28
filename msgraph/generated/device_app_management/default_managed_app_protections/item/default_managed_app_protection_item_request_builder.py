@@ -7,19 +7,46 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import default_managed_app_protection
-    from ....models.o_data_errors import o_data_error
-    from .apps import apps_request_builder
-    from .apps.item import managed_mobile_app_item_request_builder
-    from .deployment_summary import deployment_summary_request_builder
+apps_request_builder = lazy_import('msgraph.generated.device_app_management.default_managed_app_protections.item.apps.apps_request_builder')
+managed_mobile_app_item_request_builder = lazy_import('msgraph.generated.device_app_management.default_managed_app_protections.item.apps.item.managed_mobile_app_item_request_builder')
+deployment_summary_request_builder = lazy_import('msgraph.generated.device_app_management.default_managed_app_protections.item.deployment_summary.deployment_summary_request_builder')
+default_managed_app_protection = lazy_import('msgraph.generated.models.default_managed_app_protection')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class DefaultManagedAppProtectionItemRequestBuilder():
     """
     Provides operations to manage the defaultManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
     """
+    @property
+    def apps(self) -> apps_request_builder.AppsRequestBuilder:
+        """
+        Provides operations to manage the apps property of the microsoft.graph.defaultManagedAppProtection entity.
+        """
+        return apps_request_builder.AppsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def deployment_summary(self) -> deployment_summary_request_builder.DeploymentSummaryRequestBuilder:
+        """
+        Provides operations to manage the deploymentSummary property of the microsoft.graph.defaultManagedAppProtection entity.
+        """
+        return deployment_summary_request_builder.DeploymentSummaryRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def apps_by_id(self,id: str) -> managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder:
+        """
+        Provides operations to manage the apps property of the microsoft.graph.defaultManagedAppProtection entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["managedMobileApp%2Did"] = id
+        return managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DefaultManagedAppProtectionItemRequestBuilder and sets the default values.
@@ -38,21 +65,6 @@ class DefaultManagedAppProtectionItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def apps_by_id(self,id: str) -> managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder:
-        """
-        Provides operations to manage the apps property of the microsoft.graph.defaultManagedAppProtection entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .apps.item import managed_mobile_app_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["managedMobileApp%2Did"] = id
-        return managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def delete(self,request_configuration: Optional[DefaultManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property defaultManagedAppProtections for deviceAppManagement
@@ -62,8 +74,6 @@ class DefaultManagedAppProtectionItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -82,16 +92,12 @@ class DefaultManagedAppProtectionItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import default_managed_app_protection
-
         return await self.request_adapter.send_async(request_info, default_managed_app_protection.DefaultManagedAppProtection, error_mapping)
     
     async def patch(self,body: Optional[default_managed_app_protection.DefaultManagedAppProtection] = None, request_configuration: Optional[DefaultManagedAppProtectionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[default_managed_app_protection.DefaultManagedAppProtection]:
@@ -107,16 +113,12 @@ class DefaultManagedAppProtectionItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import default_managed_app_protection
-
         return await self.request_adapter.send_async(request_info, default_managed_app_protection.DefaultManagedAppProtection, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DefaultManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -174,24 +176,6 @@ class DefaultManagedAppProtectionItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def apps(self) -> apps_request_builder.AppsRequestBuilder:
-        """
-        Provides operations to manage the apps property of the microsoft.graph.defaultManagedAppProtection entity.
-        """
-        from .apps import apps_request_builder
-
-        return apps_request_builder.AppsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def deployment_summary(self) -> deployment_summary_request_builder.DeploymentSummaryRequestBuilder:
-        """
-        Provides operations to manage the deploymentSummary property of the microsoft.graph.defaultManagedAppProtection entity.
-        """
-        from .deployment_summary import deployment_summary_request_builder
-
-        return deployment_summary_request_builder.DeploymentSummaryRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class DefaultManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -209,6 +193,12 @@ class DefaultManagedAppProtectionItemRequestBuilder():
         """
         Default managed app policies.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -224,12 +214,6 @@ class DefaultManagedAppProtectionItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class DefaultManagedAppProtectionItemRequestBuilderGetRequestConfiguration():

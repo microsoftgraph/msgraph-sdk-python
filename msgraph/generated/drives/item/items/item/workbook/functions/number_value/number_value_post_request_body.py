@@ -1,25 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ........models import json
+json = lazy_import('msgraph.generated.models.json')
 
 class NumberValuePostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new numberValuePostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The decimalSeparator property
-        self._decimal_separator: Optional[json.Json] = None
-        # The groupSeparator property
-        self._group_separator: Optional[json.Json] = None
-        # The text property
-        self._text: Optional[json.Json] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -36,6 +22,20 @@ class NumberValuePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new numberValuePostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The decimalSeparator property
+        self._decimal_separator: Optional[json.Json] = None
+        # The groupSeparator property
+        self._group_separator: Optional[json.Json] = None
+        # The text property
+        self._text: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> NumberValuePostRequestBody:
@@ -71,9 +71,7 @@ class NumberValuePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "decimalSeparator": lambda n : setattr(self, 'decimal_separator', n.get_object_value(json.Json)),
             "groupSeparator": lambda n : setattr(self, 'group_separator', n.get_object_value(json.Json)),
             "text": lambda n : setattr(self, 'text', n.get_object_value(json.Json)),

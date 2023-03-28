@@ -1,12 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import ediscovery_case
-    from .. import entity
-
-from .. import entity
+entity = lazy_import('msgraph.generated.models.entity')
+ediscovery_case = lazy_import('msgraph.generated.models.security.ediscovery_case')
 
 class CasesRoot(entity.Entity):
     def __init__(self,) -> None:
@@ -53,10 +51,7 @@ class CasesRoot(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ediscovery_case
-        from .. import entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "ediscoveryCases": lambda n : setattr(self, 'ediscovery_cases', n.get_collection_of_object_values(ediscovery_case.EdiscoveryCase)),
         }
         super_fields = super().get_field_deserializers()

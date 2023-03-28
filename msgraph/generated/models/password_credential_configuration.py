@@ -1,28 +1,12 @@
 from __future__ import annotations
 from datetime import datetime, timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import app_credential_restriction_type
+app_credential_restriction_type = lazy_import('msgraph.generated.models.app_credential_restriction_type')
 
 class PasswordCredentialConfiguration(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new passwordCredentialConfiguration and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The maxLifetime property
-        self._max_lifetime: Optional[Timedelta] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Enforces the policy for an app created on or after the enforcement date. For existing applications, the enforcement date would be back dated. To apply to all applications, enforcement datetime would be null.
-        self._restrict_for_apps_created_after_date_time: Optional[datetime] = None
-        # The type of restriction being applied. The possible values are: passwordAddition, passwordLifetime, symmetricKeyAddition, symmetricKeyLifetime,customPasswordAddition, unknownFutureValue. Each value of restrictionType can be used only once per policy.
-        self._restriction_type: Optional[app_credential_restriction_type.AppCredentialRestrictionType] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -39,6 +23,22 @@ class PasswordCredentialConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new passwordCredentialConfiguration and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The maxLifetime property
+        self._max_lifetime: Optional[Timedelta] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The restrictForAppsCreatedAfterDateTime property
+        self._restrict_for_apps_created_after_date_time: Optional[datetime] = None
+        # The restrictionType property
+        self._restriction_type: Optional[app_credential_restriction_type.AppCredentialRestrictionType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PasswordCredentialConfiguration:
@@ -57,9 +57,7 @@ class PasswordCredentialConfiguration(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_credential_restriction_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "maxLifetime": lambda n : setattr(self, 'max_lifetime', n.get_object_value(Timedelta)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "restrictionType": lambda n : setattr(self, 'restriction_type', n.get_enum_value(app_credential_restriction_type.AppCredentialRestrictionType)),
@@ -104,7 +102,7 @@ class PasswordCredentialConfiguration(AdditionalDataHolder, Parsable):
     @property
     def restrict_for_apps_created_after_date_time(self,) -> Optional[datetime]:
         """
-        Gets the restrictForAppsCreatedAfterDateTime property value. Enforces the policy for an app created on or after the enforcement date. For existing applications, the enforcement date would be back dated. To apply to all applications, enforcement datetime would be null.
+        Gets the restrictForAppsCreatedAfterDateTime property value. The restrictForAppsCreatedAfterDateTime property
         Returns: Optional[datetime]
         """
         return self._restrict_for_apps_created_after_date_time
@@ -112,7 +110,7 @@ class PasswordCredentialConfiguration(AdditionalDataHolder, Parsable):
     @restrict_for_apps_created_after_date_time.setter
     def restrict_for_apps_created_after_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the restrictForAppsCreatedAfterDateTime property value. Enforces the policy for an app created on or after the enforcement date. For existing applications, the enforcement date would be back dated. To apply to all applications, enforcement datetime would be null.
+        Sets the restrictForAppsCreatedAfterDateTime property value. The restrictForAppsCreatedAfterDateTime property
         Args:
             value: Value to set for the restrict_for_apps_created_after_date_time property.
         """
@@ -121,7 +119,7 @@ class PasswordCredentialConfiguration(AdditionalDataHolder, Parsable):
     @property
     def restriction_type(self,) -> Optional[app_credential_restriction_type.AppCredentialRestrictionType]:
         """
-        Gets the restrictionType property value. The type of restriction being applied. The possible values are: passwordAddition, passwordLifetime, symmetricKeyAddition, symmetricKeyLifetime,customPasswordAddition, unknownFutureValue. Each value of restrictionType can be used only once per policy.
+        Gets the restrictionType property value. The restrictionType property
         Returns: Optional[app_credential_restriction_type.AppCredentialRestrictionType]
         """
         return self._restriction_type
@@ -129,7 +127,7 @@ class PasswordCredentialConfiguration(AdditionalDataHolder, Parsable):
     @restriction_type.setter
     def restriction_type(self,value: Optional[app_credential_restriction_type.AppCredentialRestrictionType] = None) -> None:
         """
-        Sets the restrictionType property value. The type of restriction being applied. The possible values are: passwordAddition, passwordLifetime, symmetricKeyAddition, symmetricKeyLifetime,customPasswordAddition, unknownFutureValue. Each value of restrictionType can be used only once per policy.
+        Sets the restrictionType property value. The restrictionType property
         Args:
             value: Value to set for the restriction_type property.
         """

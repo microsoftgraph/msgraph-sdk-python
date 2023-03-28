@@ -1,78 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import app_list_item, app_list_type, device_configuration, required_password_type
-
-from . import device_configuration
+app_list_item = lazy_import('msgraph.generated.models.app_list_item')
+app_list_type = lazy_import('msgraph.generated.models.app_list_type')
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+required_password_type = lazy_import('msgraph.generated.models.required_password_type')
 
 class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsPhone81GeneralConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsPhone81GeneralConfiguration"
-        # Value indicating whether this policy only applies to Windows Phone 8.1. This property is read-only.
-        self._apply_only_to_windows_phone81: Optional[bool] = None
-        # Indicates whether or not to block copy paste.
-        self._apps_block_copy_paste: Optional[bool] = None
-        # Indicates whether or not to block bluetooth.
-        self._bluetooth_blocked: Optional[bool] = None
-        # Indicates whether or not to block camera.
-        self._camera_blocked: Optional[bool] = None
-        # Indicates whether or not to block Wi-Fi tethering. Has no impact if Wi-Fi is blocked.
-        self._cellular_block_wifi_tethering: Optional[bool] = None
-        # Possible values of the compliance app list.
-        self._compliant_app_list_type: Optional[app_list_type.AppListType] = None
-        # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
-        self._compliant_apps_list: Optional[List[app_list_item.AppListItem]] = None
-        # Indicates whether or not to block diagnostic data submission.
-        self._diagnostic_data_block_submission: Optional[bool] = None
-        # Indicates whether or not to block custom email accounts.
-        self._email_block_adding_accounts: Optional[bool] = None
-        # Indicates whether or not to block location services.
-        self._location_services_blocked: Optional[bool] = None
-        # Indicates whether or not to block using a Microsoft Account.
-        self._microsoft_account_blocked: Optional[bool] = None
-        # Indicates whether or not to block Near-Field Communication.
-        self._nfc_blocked: Optional[bool] = None
-        # Indicates whether or not to block syncing the calendar.
-        self._password_block_simple: Optional[bool] = None
-        # Number of days before the password expires.
-        self._password_expiration_days: Optional[int] = None
-        # Number of character sets a password must contain.
-        self._password_minimum_character_set_count: Optional[int] = None
-        # Minimum length of passwords.
-        self._password_minimum_length: Optional[int] = None
-        # Minutes of inactivity before screen timeout.
-        self._password_minutes_of_inactivity_before_screen_timeout: Optional[int] = None
-        # Number of previous passwords to block. Valid values 0 to 24
-        self._password_previous_password_block_count: Optional[int] = None
-        # Indicates whether or not to require a password.
-        self._password_required: Optional[bool] = None
-        # Possible values of required passwords.
-        self._password_required_type: Optional[required_password_type.RequiredPasswordType] = None
-        # Number of sign in failures allowed before factory reset.
-        self._password_sign_in_failure_count_before_factory_reset: Optional[int] = None
-        # Indicates whether or not to block screenshots.
-        self._screen_capture_blocked: Optional[bool] = None
-        # Indicates whether or not to block removable storage.
-        self._storage_block_removable_storage: Optional[bool] = None
-        # Indicates whether or not to require encryption.
-        self._storage_require_encryption: Optional[bool] = None
-        # Indicates whether or not to block the web browser.
-        self._web_browser_blocked: Optional[bool] = None
-        # Indicates whether or not to block automatically connecting to Wi-Fi hotspots. Has no impact if Wi-Fi is blocked.
-        self._wifi_block_automatic_connect_hotspots: Optional[bool] = None
-        # Indicates whether or not to block Wi-Fi hotspot reporting. Has no impact if Wi-Fi is blocked.
-        self._wifi_block_hotspot_reporting: Optional[bool] = None
-        # Indicates whether or not to block Wi-Fi.
-        self._wifi_blocked: Optional[bool] = None
-        # Indicates whether or not to block the Windows Store.
-        self._windows_store_blocked: Optional[bool] = None
-    
     @property
     def apply_only_to_windows_phone81(self,) -> Optional[bool]:
         """
@@ -192,6 +128,71 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         """
         self._compliant_apps_list = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new WindowsPhone81GeneralConfiguration and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.windowsPhone81GeneralConfiguration"
+        # Value indicating whether this policy only applies to Windows Phone 8.1. This property is read-only.
+        self._apply_only_to_windows_phone81: Optional[bool] = None
+        # Indicates whether or not to block copy paste.
+        self._apps_block_copy_paste: Optional[bool] = None
+        # Indicates whether or not to block bluetooth.
+        self._bluetooth_blocked: Optional[bool] = None
+        # Indicates whether or not to block camera.
+        self._camera_blocked: Optional[bool] = None
+        # Indicates whether or not to block Wi-Fi tethering. Has no impact if Wi-Fi is blocked.
+        self._cellular_block_wifi_tethering: Optional[bool] = None
+        # Possible values of the compliance app list.
+        self._compliant_app_list_type: Optional[app_list_type.AppListType] = None
+        # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
+        self._compliant_apps_list: Optional[List[app_list_item.AppListItem]] = None
+        # Indicates whether or not to block diagnostic data submission.
+        self._diagnostic_data_block_submission: Optional[bool] = None
+        # Indicates whether or not to block custom email accounts.
+        self._email_block_adding_accounts: Optional[bool] = None
+        # Indicates whether or not to block location services.
+        self._location_services_blocked: Optional[bool] = None
+        # Indicates whether or not to block using a Microsoft Account.
+        self._microsoft_account_blocked: Optional[bool] = None
+        # Indicates whether or not to block Near-Field Communication.
+        self._nfc_blocked: Optional[bool] = None
+        # Indicates whether or not to block syncing the calendar.
+        self._password_block_simple: Optional[bool] = None
+        # Number of days before the password expires.
+        self._password_expiration_days: Optional[int] = None
+        # Number of character sets a password must contain.
+        self._password_minimum_character_set_count: Optional[int] = None
+        # Minimum length of passwords.
+        self._password_minimum_length: Optional[int] = None
+        # Minutes of inactivity before screen timeout.
+        self._password_minutes_of_inactivity_before_screen_timeout: Optional[int] = None
+        # Number of previous passwords to block. Valid values 0 to 24
+        self._password_previous_password_block_count: Optional[int] = None
+        # Indicates whether or not to require a password.
+        self._password_required: Optional[bool] = None
+        # Possible values of required passwords.
+        self._password_required_type: Optional[required_password_type.RequiredPasswordType] = None
+        # Number of sign in failures allowed before factory reset.
+        self._password_sign_in_failure_count_before_factory_reset: Optional[int] = None
+        # Indicates whether or not to block screenshots.
+        self._screen_capture_blocked: Optional[bool] = None
+        # Indicates whether or not to block removable storage.
+        self._storage_block_removable_storage: Optional[bool] = None
+        # Indicates whether or not to require encryption.
+        self._storage_require_encryption: Optional[bool] = None
+        # Indicates whether or not to block the web browser.
+        self._web_browser_blocked: Optional[bool] = None
+        # Indicates whether or not to block automatically connecting to Wi-Fi hotspots. Has no impact if Wi-Fi is blocked.
+        self._wifi_block_automatic_connect_hotspots: Optional[bool] = None
+        # Indicates whether or not to block Wi-Fi hotspot reporting. Has no impact if Wi-Fi is blocked.
+        self._wifi_block_hotspot_reporting: Optional[bool] = None
+        # Indicates whether or not to block Wi-Fi.
+        self._wifi_blocked: Optional[bool] = None
+        # Indicates whether or not to block the Windows Store.
+        self._windows_store_blocked: Optional[bool] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsPhone81GeneralConfiguration:
         """
@@ -243,9 +244,7 @@ class WindowsPhone81GeneralConfiguration(device_configuration.DeviceConfiguratio
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_list_item, app_list_type, device_configuration, required_password_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "applyOnlyToWindowsPhone81": lambda n : setattr(self, 'apply_only_to_windows_phone81', n.get_bool_value()),
             "appsBlockCopyPaste": lambda n : setattr(self, 'apps_block_copy_paste', n.get_bool_value()),
             "bluetoothBlocked": lambda n : setattr(self, 'bluetooth_blocked', n.get_bool_value()),

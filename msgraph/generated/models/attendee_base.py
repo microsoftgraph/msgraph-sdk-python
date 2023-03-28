@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import attendee, attendee_type, recipient
-
-from . import recipient
+attendee_type = lazy_import('msgraph.generated.models.attendee_type')
+recipient = lazy_import('msgraph.generated.models.recipient')
 
 class AttendeeBase(recipient.Recipient):
     def __init__(self,) -> None:
@@ -27,13 +26,6 @@ class AttendeeBase(recipient.Recipient):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.attendee":
-                from . import attendee
-
-                return attendee.Attendee()
         return AttendeeBase()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -41,9 +33,7 @@ class AttendeeBase(recipient.Recipient):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attendee, attendee_type, recipient
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "type": lambda n : setattr(self, 'type', n.get_enum_value(attendee_type.AttendeeType)),
         }
         super_fields = super().get_field_deserializers()

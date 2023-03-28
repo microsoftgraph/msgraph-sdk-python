@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import base_collection_pagination_count_response, managed_device_mobile_app_configuration_user_status
-
-from . import base_collection_pagination_count_response
+base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
+managed_device_mobile_app_configuration_user_status = lazy_import('msgraph.generated.models.managed_device_mobile_app_configuration_user_status')
 
 class ManagedDeviceMobileAppConfigurationUserStatusCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
     def __init__(self,) -> None:
@@ -33,9 +32,7 @@ class ManagedDeviceMobileAppConfigurationUserStatusCollectionResponse(base_colle
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_collection_pagination_count_response, managed_device_mobile_app_configuration_user_status
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(managed_device_mobile_app_configuration_user_status.ManagedDeviceMobileAppConfigurationUserStatus)),
         }
         super_fields = super().get_field_deserializers()

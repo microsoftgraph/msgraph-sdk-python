@@ -7,22 +7,43 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ...models import office_graph_insights
-    from ...models.o_data_errors import o_data_error
-    from .shared import shared_request_builder
-    from .shared.item import shared_insight_item_request_builder
-    from .trending import trending_request_builder
-    from .trending.item import trending_item_request_builder
-    from .used import used_request_builder
-    from .used.item import used_insight_item_request_builder
+shared_request_builder = lazy_import('msgraph.generated.me.insights.shared.shared_request_builder')
+shared_insight_item_request_builder = lazy_import('msgraph.generated.me.insights.shared.item.shared_insight_item_request_builder')
+trending_request_builder = lazy_import('msgraph.generated.me.insights.trending.trending_request_builder')
+trending_item_request_builder = lazy_import('msgraph.generated.me.insights.trending.item.trending_item_request_builder')
+used_request_builder = lazy_import('msgraph.generated.me.insights.used.used_request_builder')
+used_insight_item_request_builder = lazy_import('msgraph.generated.me.insights.used.item.used_insight_item_request_builder')
+office_graph_insights = lazy_import('msgraph.generated.models.office_graph_insights')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class InsightsRequestBuilder():
     """
     Provides operations to manage the insights property of the microsoft.graph.user entity.
     """
+    @property
+    def shared(self) -> shared_request_builder.SharedRequestBuilder:
+        """
+        Provides operations to manage the shared property of the microsoft.graph.officeGraphInsights entity.
+        """
+        return shared_request_builder.SharedRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def trending(self) -> trending_request_builder.TrendingRequestBuilder:
+        """
+        Provides operations to manage the trending property of the microsoft.graph.officeGraphInsights entity.
+        """
+        return trending_request_builder.TrendingRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def used(self) -> used_request_builder.UsedRequestBuilder:
+        """
+        Provides operations to manage the used property of the microsoft.graph.officeGraphInsights entity.
+        """
+        return used_request_builder.UsedRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new InsightsRequestBuilder and sets the default values.
@@ -50,8 +71,6 @@ class InsightsRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -70,16 +89,12 @@ class InsightsRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import office_graph_insights
-
         return await self.request_adapter.send_async(request_info, office_graph_insights.OfficeGraphInsights, error_mapping)
     
     async def patch(self,body: Optional[office_graph_insights.OfficeGraphInsights] = None, request_configuration: Optional[InsightsRequestBuilderPatchRequestConfiguration] = None) -> Optional[office_graph_insights.OfficeGraphInsights]:
@@ -95,16 +110,12 @@ class InsightsRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import office_graph_insights
-
         return await self.request_adapter.send_async(request_info, office_graph_insights.OfficeGraphInsights, error_mapping)
     
     def shared_by_id(self,id: str) -> shared_insight_item_request_builder.SharedInsightItemRequestBuilder:
@@ -116,8 +127,6 @@ class InsightsRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .shared.item import shared_insight_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["sharedInsight%2Did"] = id
         return shared_insight_item_request_builder.SharedInsightItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -186,8 +195,6 @@ class InsightsRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .trending.item import trending_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["trending%2Did"] = id
         return trending_item_request_builder.TrendingItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -201,38 +208,9 @@ class InsightsRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .used.item import used_insight_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["usedInsight%2Did"] = id
         return used_insight_item_request_builder.UsedInsightItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    @property
-    def shared(self) -> shared_request_builder.SharedRequestBuilder:
-        """
-        Provides operations to manage the shared property of the microsoft.graph.officeGraphInsights entity.
-        """
-        from .shared import shared_request_builder
-
-        return shared_request_builder.SharedRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def trending(self) -> trending_request_builder.TrendingRequestBuilder:
-        """
-        Provides operations to manage the trending property of the microsoft.graph.officeGraphInsights entity.
-        """
-        from .trending import trending_request_builder
-
-        return trending_request_builder.TrendingRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def used(self) -> used_request_builder.UsedRequestBuilder:
-        """
-        Provides operations to manage the used property of the microsoft.graph.officeGraphInsights entity.
-        """
-        from .used import used_request_builder
-
-        return used_request_builder.UsedRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class InsightsRequestBuilderDeleteRequestConfiguration():
@@ -251,6 +229,12 @@ class InsightsRequestBuilder():
         """
         Get insights from me
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -266,12 +250,6 @@ class InsightsRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class InsightsRequestBuilderGetRequestConfiguration():

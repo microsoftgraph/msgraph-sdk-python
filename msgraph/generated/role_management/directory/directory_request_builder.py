@@ -7,32 +7,88 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ...models import rbac_application
-    from ...models.o_data_errors import o_data_error
-    from .role_assignments import role_assignments_request_builder
-    from .role_assignments.item import unified_role_assignment_item_request_builder
-    from .role_assignment_schedule_instances import role_assignment_schedule_instances_request_builder
-    from .role_assignment_schedule_instances.item import unified_role_assignment_schedule_instance_item_request_builder
-    from .role_assignment_schedule_requests import role_assignment_schedule_requests_request_builder
-    from .role_assignment_schedule_requests.item import unified_role_assignment_schedule_request_item_request_builder
-    from .role_assignment_schedules import role_assignment_schedules_request_builder
-    from .role_assignment_schedules.item import unified_role_assignment_schedule_item_request_builder
-    from .role_definitions import role_definitions_request_builder
-    from .role_definitions.item import unified_role_definition_item_request_builder
-    from .role_eligibility_schedule_instances import role_eligibility_schedule_instances_request_builder
-    from .role_eligibility_schedule_instances.item import unified_role_eligibility_schedule_instance_item_request_builder
-    from .role_eligibility_schedule_requests import role_eligibility_schedule_requests_request_builder
-    from .role_eligibility_schedule_requests.item import unified_role_eligibility_schedule_request_item_request_builder
-    from .role_eligibility_schedules import role_eligibility_schedules_request_builder
-    from .role_eligibility_schedules.item import unified_role_eligibility_schedule_item_request_builder
+rbac_application = lazy_import('msgraph.generated.models.rbac_application')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+role_assignments_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignments.role_assignments_request_builder')
+unified_role_assignment_item_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignments.item.unified_role_assignment_item_request_builder')
+role_assignment_schedule_instances_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignment_schedule_instances.role_assignment_schedule_instances_request_builder')
+unified_role_assignment_schedule_instance_item_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignment_schedule_instances.item.unified_role_assignment_schedule_instance_item_request_builder')
+role_assignment_schedule_requests_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignment_schedule_requests.role_assignment_schedule_requests_request_builder')
+unified_role_assignment_schedule_request_item_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignment_schedule_requests.item.unified_role_assignment_schedule_request_item_request_builder')
+role_assignment_schedules_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignment_schedules.role_assignment_schedules_request_builder')
+unified_role_assignment_schedule_item_request_builder = lazy_import('msgraph.generated.role_management.directory.role_assignment_schedules.item.unified_role_assignment_schedule_item_request_builder')
+role_definitions_request_builder = lazy_import('msgraph.generated.role_management.directory.role_definitions.role_definitions_request_builder')
+unified_role_definition_item_request_builder = lazy_import('msgraph.generated.role_management.directory.role_definitions.item.unified_role_definition_item_request_builder')
+role_eligibility_schedule_instances_request_builder = lazy_import('msgraph.generated.role_management.directory.role_eligibility_schedule_instances.role_eligibility_schedule_instances_request_builder')
+unified_role_eligibility_schedule_instance_item_request_builder = lazy_import('msgraph.generated.role_management.directory.role_eligibility_schedule_instances.item.unified_role_eligibility_schedule_instance_item_request_builder')
+role_eligibility_schedule_requests_request_builder = lazy_import('msgraph.generated.role_management.directory.role_eligibility_schedule_requests.role_eligibility_schedule_requests_request_builder')
+unified_role_eligibility_schedule_request_item_request_builder = lazy_import('msgraph.generated.role_management.directory.role_eligibility_schedule_requests.item.unified_role_eligibility_schedule_request_item_request_builder')
+role_eligibility_schedules_request_builder = lazy_import('msgraph.generated.role_management.directory.role_eligibility_schedules.role_eligibility_schedules_request_builder')
+unified_role_eligibility_schedule_item_request_builder = lazy_import('msgraph.generated.role_management.directory.role_eligibility_schedules.item.unified_role_eligibility_schedule_item_request_builder')
 
 class DirectoryRequestBuilder():
     """
     Provides operations to manage the directory property of the microsoft.graph.roleManagement entity.
     """
+    @property
+    def role_assignments(self) -> role_assignments_request_builder.RoleAssignmentsRequestBuilder:
+        """
+        Provides operations to manage the roleAssignments property of the microsoft.graph.rbacApplication entity.
+        """
+        return role_assignments_request_builder.RoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def role_assignment_schedule_instances(self) -> role_assignment_schedule_instances_request_builder.RoleAssignmentScheduleInstancesRequestBuilder:
+        """
+        Provides operations to manage the roleAssignmentScheduleInstances property of the microsoft.graph.rbacApplication entity.
+        """
+        return role_assignment_schedule_instances_request_builder.RoleAssignmentScheduleInstancesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def role_assignment_schedule_requests(self) -> role_assignment_schedule_requests_request_builder.RoleAssignmentScheduleRequestsRequestBuilder:
+        """
+        Provides operations to manage the roleAssignmentScheduleRequests property of the microsoft.graph.rbacApplication entity.
+        """
+        return role_assignment_schedule_requests_request_builder.RoleAssignmentScheduleRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def role_assignment_schedules(self) -> role_assignment_schedules_request_builder.RoleAssignmentSchedulesRequestBuilder:
+        """
+        Provides operations to manage the roleAssignmentSchedules property of the microsoft.graph.rbacApplication entity.
+        """
+        return role_assignment_schedules_request_builder.RoleAssignmentSchedulesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def role_definitions(self) -> role_definitions_request_builder.RoleDefinitionsRequestBuilder:
+        """
+        Provides operations to manage the roleDefinitions property of the microsoft.graph.rbacApplication entity.
+        """
+        return role_definitions_request_builder.RoleDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def role_eligibility_schedule_instances(self) -> role_eligibility_schedule_instances_request_builder.RoleEligibilityScheduleInstancesRequestBuilder:
+        """
+        Provides operations to manage the roleEligibilityScheduleInstances property of the microsoft.graph.rbacApplication entity.
+        """
+        return role_eligibility_schedule_instances_request_builder.RoleEligibilityScheduleInstancesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def role_eligibility_schedule_requests(self) -> role_eligibility_schedule_requests_request_builder.RoleEligibilityScheduleRequestsRequestBuilder:
+        """
+        Provides operations to manage the roleEligibilityScheduleRequests property of the microsoft.graph.rbacApplication entity.
+        """
+        return role_eligibility_schedule_requests_request_builder.RoleEligibilityScheduleRequestsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def role_eligibility_schedules(self) -> role_eligibility_schedules_request_builder.RoleEligibilitySchedulesRequestBuilder:
+        """
+        Provides operations to manage the roleEligibilitySchedules property of the microsoft.graph.rbacApplication entity.
+        """
+        return role_eligibility_schedules_request_builder.RoleEligibilitySchedulesRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DirectoryRequestBuilder and sets the default values.
@@ -60,8 +116,6 @@ class DirectoryRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -80,16 +134,12 @@ class DirectoryRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import rbac_application
-
         return await self.request_adapter.send_async(request_info, rbac_application.RbacApplication, error_mapping)
     
     async def patch(self,body: Optional[rbac_application.RbacApplication] = None, request_configuration: Optional[DirectoryRequestBuilderPatchRequestConfiguration] = None) -> Optional[rbac_application.RbacApplication]:
@@ -105,16 +155,12 @@ class DirectoryRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import rbac_application
-
         return await self.request_adapter.send_async(request_info, rbac_application.RbacApplication, error_mapping)
     
     def role_assignments_by_id(self,id: str) -> unified_role_assignment_item_request_builder.UnifiedRoleAssignmentItemRequestBuilder:
@@ -126,8 +172,6 @@ class DirectoryRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .role_assignments.item import unified_role_assignment_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["unifiedRoleAssignment%2Did"] = id
         return unified_role_assignment_item_request_builder.UnifiedRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -141,8 +185,6 @@ class DirectoryRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .role_assignment_schedule_instances.item import unified_role_assignment_schedule_instance_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["unifiedRoleAssignmentScheduleInstance%2Did"] = id
         return unified_role_assignment_schedule_instance_item_request_builder.UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -156,8 +198,6 @@ class DirectoryRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .role_assignment_schedule_requests.item import unified_role_assignment_schedule_request_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["unifiedRoleAssignmentScheduleRequest%2Did"] = id
         return unified_role_assignment_schedule_request_item_request_builder.UnifiedRoleAssignmentScheduleRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -171,8 +211,6 @@ class DirectoryRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .role_assignment_schedules.item import unified_role_assignment_schedule_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["unifiedRoleAssignmentSchedule%2Did"] = id
         return unified_role_assignment_schedule_item_request_builder.UnifiedRoleAssignmentScheduleItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -186,8 +224,6 @@ class DirectoryRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .role_definitions.item import unified_role_definition_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["unifiedRoleDefinition%2Did"] = id
         return unified_role_definition_item_request_builder.UnifiedRoleDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -201,8 +237,6 @@ class DirectoryRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .role_eligibility_schedule_instances.item import unified_role_eligibility_schedule_instance_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["unifiedRoleEligibilityScheduleInstance%2Did"] = id
         return unified_role_eligibility_schedule_instance_item_request_builder.UnifiedRoleEligibilityScheduleInstanceItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -216,8 +250,6 @@ class DirectoryRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .role_eligibility_schedule_requests.item import unified_role_eligibility_schedule_request_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["unifiedRoleEligibilityScheduleRequest%2Did"] = id
         return unified_role_eligibility_schedule_request_item_request_builder.UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -231,8 +263,6 @@ class DirectoryRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .role_eligibility_schedules.item import unified_role_eligibility_schedule_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["unifiedRoleEligibilitySchedule%2Did"] = id
         return unified_role_eligibility_schedule_item_request_builder.UnifiedRoleEligibilityScheduleItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -292,78 +322,6 @@ class DirectoryRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def role_assignments(self) -> role_assignments_request_builder.RoleAssignmentsRequestBuilder:
-        """
-        Provides operations to manage the roleAssignments property of the microsoft.graph.rbacApplication entity.
-        """
-        from .role_assignments import role_assignments_request_builder
-
-        return role_assignments_request_builder.RoleAssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def role_assignment_schedule_instances(self) -> role_assignment_schedule_instances_request_builder.RoleAssignmentScheduleInstancesRequestBuilder:
-        """
-        Provides operations to manage the roleAssignmentScheduleInstances property of the microsoft.graph.rbacApplication entity.
-        """
-        from .role_assignment_schedule_instances import role_assignment_schedule_instances_request_builder
-
-        return role_assignment_schedule_instances_request_builder.RoleAssignmentScheduleInstancesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def role_assignment_schedule_requests(self) -> role_assignment_schedule_requests_request_builder.RoleAssignmentScheduleRequestsRequestBuilder:
-        """
-        Provides operations to manage the roleAssignmentScheduleRequests property of the microsoft.graph.rbacApplication entity.
-        """
-        from .role_assignment_schedule_requests import role_assignment_schedule_requests_request_builder
-
-        return role_assignment_schedule_requests_request_builder.RoleAssignmentScheduleRequestsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def role_assignment_schedules(self) -> role_assignment_schedules_request_builder.RoleAssignmentSchedulesRequestBuilder:
-        """
-        Provides operations to manage the roleAssignmentSchedules property of the microsoft.graph.rbacApplication entity.
-        """
-        from .role_assignment_schedules import role_assignment_schedules_request_builder
-
-        return role_assignment_schedules_request_builder.RoleAssignmentSchedulesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def role_definitions(self) -> role_definitions_request_builder.RoleDefinitionsRequestBuilder:
-        """
-        Provides operations to manage the roleDefinitions property of the microsoft.graph.rbacApplication entity.
-        """
-        from .role_definitions import role_definitions_request_builder
-
-        return role_definitions_request_builder.RoleDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def role_eligibility_schedule_instances(self) -> role_eligibility_schedule_instances_request_builder.RoleEligibilityScheduleInstancesRequestBuilder:
-        """
-        Provides operations to manage the roleEligibilityScheduleInstances property of the microsoft.graph.rbacApplication entity.
-        """
-        from .role_eligibility_schedule_instances import role_eligibility_schedule_instances_request_builder
-
-        return role_eligibility_schedule_instances_request_builder.RoleEligibilityScheduleInstancesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def role_eligibility_schedule_requests(self) -> role_eligibility_schedule_requests_request_builder.RoleEligibilityScheduleRequestsRequestBuilder:
-        """
-        Provides operations to manage the roleEligibilityScheduleRequests property of the microsoft.graph.rbacApplication entity.
-        """
-        from .role_eligibility_schedule_requests import role_eligibility_schedule_requests_request_builder
-
-        return role_eligibility_schedule_requests_request_builder.RoleEligibilityScheduleRequestsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def role_eligibility_schedules(self) -> role_eligibility_schedules_request_builder.RoleEligibilitySchedulesRequestBuilder:
-        """
-        Provides operations to manage the roleEligibilitySchedules property of the microsoft.graph.rbacApplication entity.
-        """
-        from .role_eligibility_schedules import role_eligibility_schedules_request_builder
-
-        return role_eligibility_schedules_request_builder.RoleEligibilitySchedulesRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class DirectoryRequestBuilderDeleteRequestConfiguration():
         """
@@ -381,6 +339,12 @@ class DirectoryRequestBuilder():
         """
         Get directory from roleManagement
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -396,12 +360,6 @@ class DirectoryRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class DirectoryRequestBuilderGetRequestConfiguration():

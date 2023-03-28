@@ -1,59 +1,20 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import integer_range, printer_feed_orientation, print_color_mode, print_duplex_mode, print_finishing, print_margin, print_multipage_layout, print_orientation, print_quality, print_scaling
+integer_range = lazy_import('msgraph.generated.models.integer_range')
+print_color_mode = lazy_import('msgraph.generated.models.print_color_mode')
+print_duplex_mode = lazy_import('msgraph.generated.models.print_duplex_mode')
+print_finishing = lazy_import('msgraph.generated.models.print_finishing')
+print_margin = lazy_import('msgraph.generated.models.print_margin')
+print_multipage_layout = lazy_import('msgraph.generated.models.print_multipage_layout')
+print_orientation = lazy_import('msgraph.generated.models.print_orientation')
+print_quality = lazy_import('msgraph.generated.models.print_quality')
+print_scaling = lazy_import('msgraph.generated.models.print_scaling')
+printer_feed_orientation = lazy_import('msgraph.generated.models.printer_feed_orientation')
 
 class PrintJobConfiguration(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new printJobConfiguration and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Whether the printer should collate pages wehen printing multiple copies of a multi-page document.
-        self._collate: Optional[bool] = None
-        # The color mode the printer should use to print the job. Valid values are described in the table below. Read-only.
-        self._color_mode: Optional[print_color_mode.PrintColorMode] = None
-        # The number of copies that should be printed. Read-only.
-        self._copies: Optional[int] = None
-        # The resolution to use when printing the job, expressed in dots per inch (DPI). Read-only.
-        self._dpi: Optional[int] = None
-        # The duplex mode the printer should use when printing the job. Valid values are described in the table below. Read-only.
-        self._duplex_mode: Optional[print_duplex_mode.PrintDuplexMode] = None
-        # The orientation to use when feeding media into the printer. Valid values are described in the following table. Read-only.
-        self._feed_orientation: Optional[printer_feed_orientation.PrinterFeedOrientation] = None
-        # Finishing processes to use when printing.
-        self._finishings: Optional[List[print_finishing.PrintFinishing]] = None
-        # The fitPdfToPage property
-        self._fit_pdf_to_page: Optional[bool] = None
-        # The input bin (tray) to use when printing. See the printer's capabilities for a list of supported input bins.
-        self._input_bin: Optional[str] = None
-        # The margin settings to use when printing.
-        self._margin: Optional[print_margin.PrintMargin] = None
-        # The media size to use when printing. Supports standard size names for ISO and ANSI media sizes.
-        self._media_size: Optional[str] = None
-        # The mediaType property
-        self._media_type: Optional[str] = None
-        # The multipageLayout property
-        self._multipage_layout: Optional[print_multipage_layout.PrintMultipageLayout] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The orientation property
-        self._orientation: Optional[print_orientation.PrintOrientation] = None
-        # The outputBin property
-        self._output_bin: Optional[str] = None
-        # The pageRanges property
-        self._page_ranges: Optional[List[integer_range.IntegerRange]] = None
-        # The pagesPerSheet property
-        self._pages_per_sheet: Optional[int] = None
-        # The quality property
-        self._quality: Optional[print_quality.PrintQuality] = None
-        # The scaling property
-        self._scaling: Optional[print_scaling.PrintScaling] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -104,6 +65,54 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the color_mode property.
         """
         self._color_mode = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new printJobConfiguration and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Whether the printer should collate pages wehen printing multiple copies of a multi-page document.
+        self._collate: Optional[bool] = None
+        # The color mode the printer should use to print the job. Valid values are described in the table below. Read-only.
+        self._color_mode: Optional[print_color_mode.PrintColorMode] = None
+        # The number of copies that should be printed. Read-only.
+        self._copies: Optional[int] = None
+        # The resolution to use when printing the job, expressed in dots per inch (DPI). Read-only.
+        self._dpi: Optional[int] = None
+        # The duplex mode the printer should use when printing the job. Valid values are described in the table below. Read-only.
+        self._duplex_mode: Optional[print_duplex_mode.PrintDuplexMode] = None
+        # The orientation to use when feeding media into the printer. Valid values are described in the following table. Read-only.
+        self._feed_orientation: Optional[printer_feed_orientation.PrinterFeedOrientation] = None
+        # Finishing processes to use when printing.
+        self._finishings: Optional[List[print_finishing.PrintFinishing]] = None
+        # The fitPdfToPage property
+        self._fit_pdf_to_page: Optional[bool] = None
+        # The input bin (tray) to use when printing. See the printer's capabilities for a list of supported input bins.
+        self._input_bin: Optional[str] = None
+        # The margin settings to use when printing.
+        self._margin: Optional[print_margin.PrintMargin] = None
+        # The media size to use when printing. Supports standard size names for ISO and ANSI media sizes.
+        self._media_size: Optional[str] = None
+        # The mediaType property
+        self._media_type: Optional[str] = None
+        # The multipageLayout property
+        self._multipage_layout: Optional[print_multipage_layout.PrintMultipageLayout] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The orientation property
+        self._orientation: Optional[print_orientation.PrintOrientation] = None
+        # The outputBin property
+        self._output_bin: Optional[str] = None
+        # The pageRanges property
+        self._page_ranges: Optional[List[integer_range.IntegerRange]] = None
+        # The pagesPerSheet property
+        self._pages_per_sheet: Optional[int] = None
+        # The quality property
+        self._quality: Optional[print_quality.PrintQuality] = None
+        # The scaling property
+        self._scaling: Optional[print_scaling.PrintScaling] = None
     
     @property
     def copies(self,) -> Optional[int]:
@@ -224,9 +233,7 @@ class PrintJobConfiguration(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import integer_range, printer_feed_orientation, print_color_mode, print_duplex_mode, print_finishing, print_margin, print_multipage_layout, print_orientation, print_quality, print_scaling
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "collate": lambda n : setattr(self, 'collate', n.get_bool_value()),
             "colorMode": lambda n : setattr(self, 'color_mode', n.get_enum_value(print_color_mode.PrintColorMode)),
             "copies": lambda n : setattr(self, 'copies', n.get_int_value()),

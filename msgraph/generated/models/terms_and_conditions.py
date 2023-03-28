@@ -1,42 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, terms_and_conditions_acceptance_status, terms_and_conditions_assignment
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+terms_and_conditions_acceptance_status = lazy_import('msgraph.generated.models.terms_and_conditions_acceptance_status')
+terms_and_conditions_assignment = lazy_import('msgraph.generated.models.terms_and_conditions_assignment')
 
 class TermsAndConditions(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new termsAndConditions and sets the default values.
-        """
-        super().__init__()
-        # Administrator-supplied explanation of the terms and conditions, typically describing what it means to accept the terms and conditions set out in the T&C policy. This is shown to the user on prompts to accept the T&C policy.
-        self._acceptance_statement: Optional[str] = None
-        # The list of acceptance statuses for this T&C policy.
-        self._acceptance_statuses: Optional[List[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]] = None
-        # The list of assignments for this T&C policy.
-        self._assignments: Optional[List[terms_and_conditions_assignment.TermsAndConditionsAssignment]] = None
-        # Administrator-supplied body text of the terms and conditions, typically the terms themselves. This is shown to the user on prompts to accept the T&C policy.
-        self._body_text: Optional[str] = None
-        # DateTime the object was created.
-        self._created_date_time: Optional[datetime] = None
-        # Administrator-supplied description of the T&C policy.
-        self._description: Optional[str] = None
-        # Administrator-supplied name for the T&C policy.
-        self._display_name: Optional[str] = None
-        # DateTime the object was last modified.
-        self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Administrator-supplied title of the terms and conditions. This is shown to the user on prompts to accept the T&C policy.
-        self._title: Optional[str] = None
-        # Integer indicating the current version of the terms. Incremented when an administrator makes a change to the terms and wishes to require users to re-accept the modified T&C policy.
-        self._version: Optional[int] = None
-    
+    """
+    A termsAndConditions entity represents the metadata and contents of a given Terms and Conditions (T&C) policy. T&C policies’ contents are presented to users upon their first attempt to enroll into Intune and subsequently upon edits where an administrator has required re-acceptance. They enable administrators to communicate the provisions to which a user must agree in order to have devices enrolled into Intune.
+    """
     @property
     def acceptance_statement(self,) -> Optional[str]:
         """
@@ -104,6 +79,34 @@ class TermsAndConditions(entity.Entity):
             value: Value to set for the body_text property.
         """
         self._body_text = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new termsAndConditions and sets the default values.
+        """
+        super().__init__()
+        # Administrator-supplied explanation of the terms and conditions, typically describing what it means to accept the terms and conditions set out in the T&C policy. This is shown to the user on prompts to accept the T&C policy.
+        self._acceptance_statement: Optional[str] = None
+        # The list of acceptance statuses for this T&C policy.
+        self._acceptance_statuses: Optional[List[terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus]] = None
+        # The list of assignments for this T&C policy.
+        self._assignments: Optional[List[terms_and_conditions_assignment.TermsAndConditionsAssignment]] = None
+        # Administrator-supplied body text of the terms and conditions, typically the terms themselves. This is shown to the user on prompts to accept the T&C policy.
+        self._body_text: Optional[str] = None
+        # DateTime the object was created.
+        self._created_date_time: Optional[datetime] = None
+        # Administrator-supplied description of the T&C policy.
+        self._description: Optional[str] = None
+        # Administrator-supplied name for the T&C policy.
+        self._display_name: Optional[str] = None
+        # DateTime the object was last modified.
+        self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Administrator-supplied title of the terms and conditions. This is shown to the user on prompts to accept the T&C policy.
+        self._title: Optional[str] = None
+        # Integer indicating the current version of the terms. Incremented when an administrator makes a change to the terms and wishes to require users to re-accept the modified T&C policy.
+        self._version: Optional[int] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -173,9 +176,7 @@ class TermsAndConditions(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, terms_and_conditions_acceptance_status, terms_and_conditions_assignment
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "acceptanceStatement": lambda n : setattr(self, 'acceptance_statement', n.get_str_value()),
             "acceptanceStatuses": lambda n : setattr(self, 'acceptance_statuses', n.get_collection_of_object_values(terms_and_conditions_acceptance_status.TermsAndConditionsAcceptanceStatus)),
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(terms_and_conditions_assignment.TermsAndConditionsAssignment)),

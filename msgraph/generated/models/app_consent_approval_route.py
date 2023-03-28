@@ -1,23 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import app_consent_request, entity
-
-from . import entity
+app_consent_request = lazy_import('msgraph.generated.models.app_consent_request')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AppConsentApprovalRoute(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AppConsentApprovalRoute and sets the default values.
-        """
-        super().__init__()
-        # A collection of userConsentRequest objects for a specific application.
-        self._app_consent_requests: Optional[List[app_consent_request.AppConsentRequest]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
     @property
     def app_consent_requests(self,) -> Optional[List[app_consent_request.AppConsentRequest]]:
         """
@@ -34,6 +23,16 @@ class AppConsentApprovalRoute(entity.Entity):
             value: Value to set for the app_consent_requests property.
         """
         self._app_consent_requests = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new AppConsentApprovalRoute and sets the default values.
+        """
+        super().__init__()
+        # A collection of userConsentRequest objects for a specific application.
+        self._app_consent_requests: Optional[List[app_consent_request.AppConsentRequest]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppConsentApprovalRoute:
@@ -52,9 +51,7 @@ class AppConsentApprovalRoute(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_consent_request, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "appConsentRequests": lambda n : setattr(self, 'app_consent_requests', n.get_collection_of_object_values(app_consent_request.AppConsentRequest)),
         }
         super_fields = super().get_field_deserializers()

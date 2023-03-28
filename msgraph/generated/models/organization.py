@@ -1,75 +1,21 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import assigned_plan, certificate_based_auth_configuration, directory_object, extension, mdm_authority, organizational_branding, partner_tenant_type, privacy_profile, provisioned_plan, verified_domain
-
-from . import directory_object
+assigned_plan = lazy_import('msgraph.generated.models.assigned_plan')
+certificate_based_auth_configuration = lazy_import('msgraph.generated.models.certificate_based_auth_configuration')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+extension = lazy_import('msgraph.generated.models.extension')
+mdm_authority = lazy_import('msgraph.generated.models.mdm_authority')
+organizational_branding = lazy_import('msgraph.generated.models.organizational_branding')
+partner_tenant_type = lazy_import('msgraph.generated.models.partner_tenant_type')
+privacy_profile = lazy_import('msgraph.generated.models.privacy_profile')
+provisioned_plan = lazy_import('msgraph.generated.models.provisioned_plan')
+verified_domain = lazy_import('msgraph.generated.models.verified_domain')
 
 class Organization(directory_object.DirectoryObject):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Organization and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.organization"
-        # The collection of service plans associated with the tenant. Not nullable.
-        self._assigned_plans: Optional[List[assigned_plan.AssignedPlan]] = None
-        # Branding for the organization. Nullable.
-        self._branding: Optional[organizational_branding.OrganizationalBranding] = None
-        # Telephone number for the organization. Although this is a string collection, only one number can be set for this property.
-        self._business_phones: Optional[List[str]] = None
-        # Navigation property to manage certificate-based authentication configuration. Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
-        self._certificate_based_auth_configuration: Optional[List[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]] = None
-        # City name of the address for the organization.
-        self._city: Optional[str] = None
-        # Country/region name of the address for the organization.
-        self._country: Optional[str] = None
-        # Country or region abbreviation for the organization in ISO 3166-2 format.
-        self._country_letter_code: Optional[str] = None
-        # Timestamp of when the organization was created. The value cannot be modified and is automatically populated when the organization is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-        self._created_date_time: Optional[datetime] = None
-        # Two-letter ISO 3166 country code indicating the default service usage location of an organization.
-        self._default_usage_location: Optional[str] = None
-        # The display name for the tenant.
-        self._display_name: Optional[str] = None
-        # The collection of open extensions defined for the organization. Read-only. Nullable.
-        self._extensions: Optional[List[extension.Extension]] = None
-        # Not nullable.
-        self._marketing_notification_emails: Optional[List[str]] = None
-        # Mobile device management authority.
-        self._mobile_device_management_authority: Optional[mdm_authority.MdmAuthority] = None
-        # The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-        self._on_premises_last_sync_date_time: Optional[datetime] = None
-        # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
-        self._on_premises_sync_enabled: Optional[bool] = None
-        # The type of partnership this tenant has with Microsoft. The possible values are: microsoftSupport, syndicatePartner, breadthPartner, breadthPartnerDelegatedAdmin, resellerPartnerDelegatedAdmin, valueAddedResellerPartnerDelegatedAdmin, unknownFutureValue. Nullable. For more information about the possible types, see partnerTenantType values.
-        self._partner_tenant_type: Optional[partner_tenant_type.PartnerTenantType] = None
-        # Postal code of the address for the organization.
-        self._postal_code: Optional[str] = None
-        # The preferred language for the organization. Should follow ISO 639-1 Code; for example, en.
-        self._preferred_language: Optional[str] = None
-        # The privacy profile of an organization.
-        self._privacy_profile: Optional[privacy_profile.PrivacyProfile] = None
-        # Not nullable.
-        self._provisioned_plans: Optional[List[provisioned_plan.ProvisionedPlan]] = None
-        # The securityComplianceNotificationMails property
-        self._security_compliance_notification_mails: Optional[List[str]] = None
-        # The securityComplianceNotificationPhones property
-        self._security_compliance_notification_phones: Optional[List[str]] = None
-        # State name of the address for the organization.
-        self._state: Optional[str] = None
-        # Street name of the address for organization.
-        self._street: Optional[str] = None
-        # Not nullable.
-        self._technical_notification_mails: Optional[List[str]] = None
-        # Not nullable. The tenant type option that was selected when the tenant was created. The possible values are:  AAD - An enterprise identity access management (IAM) service that serves business-to-employee and business-to-business (B2B) scenarios.  AAD B2C A customer identity access management (CIAM) service that serves business-to-consumer (B2C) scenarios.
-        self._tenant_type: Optional[str] = None
-        # The collection of domains associated with this tenant. Not nullable.
-        self._verified_domains: Optional[List[verified_domain.VerifiedDomain]] = None
-    
     @property
     def assigned_plans(self,) -> Optional[List[assigned_plan.AssignedPlan]]:
         """
@@ -154,6 +100,67 @@ class Organization(directory_object.DirectoryObject):
             value: Value to set for the city property.
         """
         self._city = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Organization and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.organization"
+        # The collection of service plans associated with the tenant. Not nullable.
+        self._assigned_plans: Optional[List[assigned_plan.AssignedPlan]] = None
+        # Branding for the organization. Nullable.
+        self._branding: Optional[organizational_branding.OrganizationalBranding] = None
+        # Telephone number for the organization. Although this is a string collection, only one number can be set for this property.
+        self._business_phones: Optional[List[str]] = None
+        # Navigation property to manage certificate-based authentication configuration. Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
+        self._certificate_based_auth_configuration: Optional[List[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]] = None
+        # City name of the address for the organization.
+        self._city: Optional[str] = None
+        # Country/region name of the address for the organization.
+        self._country: Optional[str] = None
+        # Country or region abbreviation for the organization in ISO 3166-2 format.
+        self._country_letter_code: Optional[str] = None
+        # Timestamp of when the organization was created. The value cannot be modified and is automatically populated when the organization is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+        self._created_date_time: Optional[datetime] = None
+        # Two-letter ISO 3166 country code indicating the default service usage location of an organization.
+        self._default_usage_location: Optional[str] = None
+        # The display name for the tenant.
+        self._display_name: Optional[str] = None
+        # The collection of open extensions defined for the organization. Read-only. Nullable.
+        self._extensions: Optional[List[extension.Extension]] = None
+        # Not nullable.
+        self._marketing_notification_emails: Optional[List[str]] = None
+        # Mobile device management authority.
+        self._mobile_device_management_authority: Optional[mdm_authority.MdmAuthority] = None
+        # The time and date at which the tenant was last synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+        self._on_premises_last_sync_date_time: Optional[datetime] = None
+        # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced. Nullable. null if this object has never been synced from an on-premises directory (default).
+        self._on_premises_sync_enabled: Optional[bool] = None
+        # The type of partnership this tenant has with Microsoft. The possible values are: microsoftSupport, syndicatePartner, breadthPartner, breadthPartnerDelegatedAdmin, resellerPartnerDelegatedAdmin, valueAddedResellerPartnerDelegatedAdmin, unknownFutureValue. Nullable. For more information about the possible types, see partnerTenantType values.
+        self._partner_tenant_type: Optional[partner_tenant_type.PartnerTenantType] = None
+        # Postal code of the address for the organization.
+        self._postal_code: Optional[str] = None
+        # The preferred language for the organization. Should follow ISO 639-1 Code; for example, en.
+        self._preferred_language: Optional[str] = None
+        # The privacy profile of an organization.
+        self._privacy_profile: Optional[privacy_profile.PrivacyProfile] = None
+        # Not nullable.
+        self._provisioned_plans: Optional[List[provisioned_plan.ProvisionedPlan]] = None
+        # The securityComplianceNotificationMails property
+        self._security_compliance_notification_mails: Optional[List[str]] = None
+        # The securityComplianceNotificationPhones property
+        self._security_compliance_notification_phones: Optional[List[str]] = None
+        # State name of the address for the organization.
+        self._state: Optional[str] = None
+        # Street name of the address for organization.
+        self._street: Optional[str] = None
+        # Not nullable.
+        self._technical_notification_mails: Optional[List[str]] = None
+        # Not nullable. The tenant type option that was selected when the tenant was created. The possible values are:  AAD - An enterprise identity access management (IAM) service that serves business-to-employee and business-to-business (B2B) scenarios.  AAD B2C A customer identity access management (CIAM) service that serves business-to-consumer (B2C) scenarios.
+        self._tenant_type: Optional[str] = None
+        # The collection of domains associated with this tenant. Not nullable.
+        self._verified_domains: Optional[List[verified_domain.VerifiedDomain]] = None
     
     @property
     def country(self,) -> Optional[str]:
@@ -274,9 +281,7 @@ class Organization(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import assigned_plan, certificate_based_auth_configuration, directory_object, extension, mdm_authority, organizational_branding, partner_tenant_type, privacy_profile, provisioned_plan, verified_domain
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "assignedPlans": lambda n : setattr(self, 'assigned_plans', n.get_collection_of_object_values(assigned_plan.AssignedPlan)),
             "branding": lambda n : setattr(self, 'branding', n.get_object_value(organizational_branding.OrganizationalBranding)),
             "businessPhones": lambda n : setattr(self, 'business_phones', n.get_collection_of_primitive_values(str)),

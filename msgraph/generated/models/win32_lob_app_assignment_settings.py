@@ -1,11 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import mobile_app_assignment_settings, mobile_app_install_time_settings, win32_lob_app_delivery_optimization_priority, win32_lob_app_notification, win32_lob_app_restart_settings
-
-from . import mobile_app_assignment_settings
+mobile_app_assignment_settings = lazy_import('msgraph.generated.models.mobile_app_assignment_settings')
+mobile_app_install_time_settings = lazy_import('msgraph.generated.models.mobile_app_install_time_settings')
+win32_lob_app_delivery_optimization_priority = lazy_import('msgraph.generated.models.win32_lob_app_delivery_optimization_priority')
+win32_lob_app_notification = lazy_import('msgraph.generated.models.win32_lob_app_notification')
+win32_lob_app_restart_settings = lazy_import('msgraph.generated.models.win32_lob_app_restart_settings')
 
 class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
     def __init__(self,) -> None:
@@ -57,9 +59,7 @@ class Win32LobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_app_assignment_settings, mobile_app_install_time_settings, win32_lob_app_delivery_optimization_priority, win32_lob_app_notification, win32_lob_app_restart_settings
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "deliveryOptimizationPriority": lambda n : setattr(self, 'delivery_optimization_priority', n.get_enum_value(win32_lob_app_delivery_optimization_priority.Win32LobAppDeliveryOptimizationPriority)),
             "installTimeSettings": lambda n : setattr(self, 'install_time_settings', n.get_object_value(mobile_app_install_time_settings.MobileAppInstallTimeSettings)),
             "notifications": lambda n : setattr(self, 'notifications', n.get_enum_value(win32_lob_app_notification.Win32LobAppNotification)),

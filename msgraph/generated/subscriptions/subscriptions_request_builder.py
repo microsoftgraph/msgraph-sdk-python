@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ..models import subscription, subscription_collection_response
-    from ..models.o_data_errors import o_data_error
+subscription = lazy_import('msgraph.generated.models.subscription')
+subscription_collection_response = lazy_import('msgraph.generated.models.subscription_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class SubscriptionsRequestBuilder():
     """
@@ -45,16 +46,12 @@ class SubscriptionsRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import subscription_collection_response
-
         return await self.request_adapter.send_async(request_info, subscription_collection_response.SubscriptionCollectionResponse, error_mapping)
     
     async def post(self,body: Optional[subscription.Subscription] = None, request_configuration: Optional[SubscriptionsRequestBuilderPostRequestConfiguration] = None) -> Optional[subscription.Subscription]:
@@ -70,16 +67,12 @@ class SubscriptionsRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import subscription
-
         return await self.request_adapter.send_async(request_info, subscription.Subscription, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SubscriptionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -126,6 +119,12 @@ class SubscriptionsRequestBuilder():
         """
         Retrieve the properties and relationships of webhook subscriptions, based on the app ID, the user, and the user's role with a tenant. The content of the response depends on the context in which the app is calling; for details, see the scenarios in the Permissions section.
         """
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -141,12 +140,6 @@ class SubscriptionsRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Search items by search phrases
-        search: Optional[str] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class SubscriptionsRequestBuilderGetRequestConfiguration():

@@ -7,17 +7,24 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ......models import teams_app_definition
-    from ......models.o_data_errors import o_data_error
-    from .bot import bot_request_builder
+bot_request_builder = lazy_import('msgraph.generated.app_catalogs.teams_apps.item.app_definitions.item.bot.bot_request_builder')
+teams_app_definition = lazy_import('msgraph.generated.models.teams_app_definition')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class TeamsAppDefinitionItemRequestBuilder():
     """
     Provides operations to manage the appDefinitions property of the microsoft.graph.teamsApp entity.
     """
+    @property
+    def bot(self) -> bot_request_builder.BotRequestBuilder:
+        """
+        Provides operations to manage the bot property of the microsoft.graph.teamsAppDefinition entity.
+        """
+        return bot_request_builder.BotRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TeamsAppDefinitionItemRequestBuilder and sets the default values.
@@ -45,8 +52,6 @@ class TeamsAppDefinitionItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -65,16 +70,12 @@ class TeamsAppDefinitionItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import teams_app_definition
-
         return await self.request_adapter.send_async(request_info, teams_app_definition.TeamsAppDefinition, error_mapping)
     
     async def patch(self,body: Optional[teams_app_definition.TeamsAppDefinition] = None, request_configuration: Optional[TeamsAppDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[teams_app_definition.TeamsAppDefinition]:
@@ -90,16 +91,12 @@ class TeamsAppDefinitionItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models import teams_app_definition
-
         return await self.request_adapter.send_async(request_info, teams_app_definition.TeamsAppDefinition, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TeamsAppDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -157,15 +154,6 @@ class TeamsAppDefinitionItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def bot(self) -> bot_request_builder.BotRequestBuilder:
-        """
-        Provides operations to manage the bot property of the microsoft.graph.teamsAppDefinition entity.
-        """
-        from .bot import bot_request_builder
-
-        return bot_request_builder.BotRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class TeamsAppDefinitionItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -183,6 +171,12 @@ class TeamsAppDefinitionItemRequestBuilder():
         """
         The details for each version of the app.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -198,12 +192,6 @@ class TeamsAppDefinitionItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class TeamsAppDefinitionItemRequestBuilderGetRequestConfiguration():

@@ -7,28 +7,83 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ..models import print
-    from ..models.o_data_errors import o_data_error
-    from .connectors import connectors_request_builder
-    from .connectors.item import print_connector_item_request_builder
-    from .operations import operations_request_builder
-    from .operations.item import print_operation_item_request_builder
-    from .printers import printers_request_builder
-    from .printers.item import printer_item_request_builder
-    from .services import services_request_builder
-    from .services.item import print_service_item_request_builder
-    from .shares import shares_request_builder
-    from .shares.item import printer_share_item_request_builder
-    from .task_definitions import task_definitions_request_builder
-    from .task_definitions.item import print_task_definition_item_request_builder
+print = lazy_import('msgraph.generated.models.print')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+connectors_request_builder = lazy_import('msgraph.generated.print.connectors.connectors_request_builder')
+print_connector_item_request_builder = lazy_import('msgraph.generated.print.connectors.item.print_connector_item_request_builder')
+operations_request_builder = lazy_import('msgraph.generated.print.operations.operations_request_builder')
+print_operation_item_request_builder = lazy_import('msgraph.generated.print.operations.item.print_operation_item_request_builder')
+printers_request_builder = lazy_import('msgraph.generated.print.printers.printers_request_builder')
+printer_item_request_builder = lazy_import('msgraph.generated.print.printers.item.printer_item_request_builder')
+services_request_builder = lazy_import('msgraph.generated.print.services.services_request_builder')
+print_service_item_request_builder = lazy_import('msgraph.generated.print.services.item.print_service_item_request_builder')
+shares_request_builder = lazy_import('msgraph.generated.print.shares.shares_request_builder')
+printer_share_item_request_builder = lazy_import('msgraph.generated.print.shares.item.printer_share_item_request_builder')
+task_definitions_request_builder = lazy_import('msgraph.generated.print.task_definitions.task_definitions_request_builder')
+print_task_definition_item_request_builder = lazy_import('msgraph.generated.print.task_definitions.item.print_task_definition_item_request_builder')
 
 class PrintRequestBuilder():
     """
     Provides operations to manage the print singleton.
     """
+    @property
+    def connectors(self) -> connectors_request_builder.ConnectorsRequestBuilder:
+        """
+        Provides operations to manage the connectors property of the microsoft.graph.print entity.
+        """
+        return connectors_request_builder.ConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
+        """
+        Provides operations to manage the operations property of the microsoft.graph.print entity.
+        """
+        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def printers(self) -> printers_request_builder.PrintersRequestBuilder:
+        """
+        Provides operations to manage the printers property of the microsoft.graph.print entity.
+        """
+        return printers_request_builder.PrintersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def services(self) -> services_request_builder.ServicesRequestBuilder:
+        """
+        Provides operations to manage the services property of the microsoft.graph.print entity.
+        """
+        return services_request_builder.ServicesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def shares(self) -> shares_request_builder.SharesRequestBuilder:
+        """
+        Provides operations to manage the shares property of the microsoft.graph.print entity.
+        """
+        return shares_request_builder.SharesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def task_definitions(self) -> task_definitions_request_builder.TaskDefinitionsRequestBuilder:
+        """
+        Provides operations to manage the taskDefinitions property of the microsoft.graph.print entity.
+        """
+        return task_definitions_request_builder.TaskDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def connectors_by_id(self,id: str) -> print_connector_item_request_builder.PrintConnectorItemRequestBuilder:
+        """
+        Provides operations to manage the connectors property of the microsoft.graph.print entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: print_connector_item_request_builder.PrintConnectorItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["printConnector%2Did"] = id
+        return print_connector_item_request_builder.PrintConnectorItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PrintRequestBuilder and sets the default values.
@@ -47,21 +102,6 @@ class PrintRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def connectors_by_id(self,id: str) -> print_connector_item_request_builder.PrintConnectorItemRequestBuilder:
-        """
-        Provides operations to manage the connectors property of the microsoft.graph.print entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: print_connector_item_request_builder.PrintConnectorItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .connectors.item import print_connector_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["printConnector%2Did"] = id
-        return print_connector_item_request_builder.PrintConnectorItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def get(self,request_configuration: Optional[PrintRequestBuilderGetRequestConfiguration] = None) -> Optional[print.Print]:
         """
         Get print
@@ -72,16 +112,12 @@ class PrintRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import print
-
         return await self.request_adapter.send_async(request_info, print.Print, error_mapping)
     
     def operations_by_id(self,id: str) -> print_operation_item_request_builder.PrintOperationItemRequestBuilder:
@@ -93,8 +129,6 @@ class PrintRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .operations.item import print_operation_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["printOperation%2Did"] = id
         return print_operation_item_request_builder.PrintOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -112,16 +146,12 @@ class PrintRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import print
-
         return await self.request_adapter.send_async(request_info, print.Print, error_mapping)
     
     def printers_by_id(self,id: str) -> printer_item_request_builder.PrinterItemRequestBuilder:
@@ -133,8 +163,6 @@ class PrintRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .printers.item import printer_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["printer%2Did"] = id
         return printer_item_request_builder.PrinterItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -148,8 +176,6 @@ class PrintRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .services.item import print_service_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["printService%2Did"] = id
         return print_service_item_request_builder.PrintServiceItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -163,8 +189,6 @@ class PrintRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .shares.item import printer_share_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["printerShare%2Did"] = id
         return printer_share_item_request_builder.PrinterShareItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -178,8 +202,6 @@ class PrintRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .task_definitions.item import print_task_definition_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["printTaskDefinition%2Did"] = id
         return print_task_definition_item_request_builder.PrintTaskDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -223,65 +245,17 @@ class PrintRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def connectors(self) -> connectors_request_builder.ConnectorsRequestBuilder:
-        """
-        Provides operations to manage the connectors property of the microsoft.graph.print entity.
-        """
-        from .connectors import connectors_request_builder
-
-        return connectors_request_builder.ConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
-        """
-        Provides operations to manage the operations property of the microsoft.graph.print entity.
-        """
-        from .operations import operations_request_builder
-
-        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def printers(self) -> printers_request_builder.PrintersRequestBuilder:
-        """
-        Provides operations to manage the printers property of the microsoft.graph.print entity.
-        """
-        from .printers import printers_request_builder
-
-        return printers_request_builder.PrintersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def services(self) -> services_request_builder.ServicesRequestBuilder:
-        """
-        Provides operations to manage the services property of the microsoft.graph.print entity.
-        """
-        from .services import services_request_builder
-
-        return services_request_builder.ServicesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def shares(self) -> shares_request_builder.SharesRequestBuilder:
-        """
-        Provides operations to manage the shares property of the microsoft.graph.print entity.
-        """
-        from .shares import shares_request_builder
-
-        return shares_request_builder.SharesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def task_definitions(self) -> task_definitions_request_builder.TaskDefinitionsRequestBuilder:
-        """
-        Provides operations to manage the taskDefinitions property of the microsoft.graph.print entity.
-        """
-        from .task_definitions import task_definitions_request_builder
-
-        return task_definitions_request_builder.TaskDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class PrintRequestBuilderGetQueryParameters():
         """
         Get print
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -297,12 +271,6 @@ class PrintRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class PrintRequestBuilderGetRequestConfiguration():

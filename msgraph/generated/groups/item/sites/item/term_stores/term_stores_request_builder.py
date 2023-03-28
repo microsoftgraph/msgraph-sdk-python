@@ -7,17 +7,25 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ......models.o_data_errors import o_data_error
-    from ......models.term_store import store, store_collection_response
-    from .count import count_request_builder
+count_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.term_stores.count.count_request_builder')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+store = lazy_import('msgraph.generated.models.term_store.store')
+store_collection_response = lazy_import('msgraph.generated.models.term_store.store_collection_response')
 
 class TermStoresRequestBuilder():
     """
     Provides operations to manage the termStores property of the microsoft.graph.site entity.
     """
+    @property
+    def count(self) -> count_request_builder.CountRequestBuilder:
+        """
+        Provides operations to count the resources in the collection.
+        """
+        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TermStoresRequestBuilder and sets the default values.
@@ -46,16 +54,12 @@ class TermStoresRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models.term_store import store_collection_response
-
         return await self.request_adapter.send_async(request_info, store_collection_response.StoreCollectionResponse, error_mapping)
     
     async def post(self,body: Optional[store.Store] = None, request_configuration: Optional[TermStoresRequestBuilderPostRequestConfiguration] = None) -> Optional[store.Store]:
@@ -71,16 +75,12 @@ class TermStoresRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ......models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ......models.term_store import store
-
         return await self.request_adapter.send_async(request_info, store.Store, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TermStoresRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -122,20 +122,35 @@ class TermStoresRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count import count_request_builder
-
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class TermStoresRequestBuilderGetQueryParameters():
         """
         The collection of termStores under this site.
         """
+        # Include count of items
+        count: Optional[bool] = None
+
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -163,30 +178,6 @@ class TermStoresRequestBuilder():
                 return "%24top"
             return original_name
         
-        # Include count of items
-        count: Optional[bool] = None
-
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Filter items by property values
-        filter: Optional[str] = None
-
-        # Order items by property values
-        orderby: Optional[List[str]] = None
-
-        # Search items by search phrases
-        search: Optional[str] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
-        # Skip the first n items
-        skip: Optional[int] = None
-
-        # Show only the first n items
-        top: Optional[int] = None
-
     
     @dataclass
     class TermStoresRequestBuilderGetRequestConfiguration():

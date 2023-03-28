@@ -7,11 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import promote_response
-    from ....models.o_data_errors import o_data_error
+promote_response = lazy_import('msgraph.generated.domains.item.promote.promote_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class PromoteRequestBuilder():
     """
@@ -45,16 +45,12 @@ class PromoteRequestBuilder():
         request_info = self.to_post_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import promote_response
-
         return await self.request_adapter.send_async(request_info, promote_response.PromoteResponse, error_mapping)
     
     def to_post_request_information(self,request_configuration: Optional[PromoteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:

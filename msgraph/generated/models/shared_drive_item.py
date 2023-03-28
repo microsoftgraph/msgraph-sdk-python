@@ -1,11 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import base_item, drive_item, identity_set, list, list_item, permission, site
-
-from . import base_item
+base_item = lazy_import('msgraph.generated.models.base_item')
+drive_item = lazy_import('msgraph.generated.models.drive_item')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+list = lazy_import('msgraph.generated.models.list')
+list_item = lazy_import('msgraph.generated.models.list_item')
+permission = lazy_import('msgraph.generated.models.permission')
+site = lazy_import('msgraph.generated.models.site')
 
 class SharedDriveItem(base_item.BaseItem):
     def __init__(self,) -> None:
@@ -65,9 +69,7 @@ class SharedDriveItem(base_item.BaseItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import base_item, drive_item, identity_set, list, list_item, permission, site
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "driveItem": lambda n : setattr(self, 'drive_item', n.get_object_value(drive_item.DriveItem)),
             "items": lambda n : setattr(self, 'items', n.get_collection_of_object_values(drive_item.DriveItem)),
             "list": lambda n : setattr(self, 'list', n.get_object_value(list.List)),

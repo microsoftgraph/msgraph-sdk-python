@@ -1,17 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import connection_operation_status
-    from .. import entity, public_error
-
-from .. import entity
+entity = lazy_import('msgraph.generated.models.entity')
+public_error = lazy_import('msgraph.generated.models.public_error')
+connection_operation_status = lazy_import('msgraph.generated.models.external_connectors.connection_operation_status')
 
 class ConnectionOperation(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new ConnectionOperation and sets the default values.
+        Instantiates a new connectionOperation and sets the default values.
         """
         super().__init__()
         # If status is failed, provides more information about the error that caused the failure.
@@ -55,10 +54,7 @@ class ConnectionOperation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import connection_operation_status
-        from .. import entity, public_error
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "error": lambda n : setattr(self, 'error', n.get_object_value(public_error.PublicError)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(connection_operation_status.ConnectionOperationStatus)),
         }

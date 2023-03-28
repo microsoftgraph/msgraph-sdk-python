@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_review_scope
-
-from . import access_review_scope
+access_review_scope = lazy_import('msgraph.generated.models.access_review_scope')
 
 class PrincipalResourceMembershipsScope(access_review_scope.AccessReviewScope):
     def __init__(self,) -> None:
@@ -36,9 +34,7 @@ class PrincipalResourceMembershipsScope(access_review_scope.AccessReviewScope):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_scope
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "principalScopes": lambda n : setattr(self, 'principal_scopes', n.get_collection_of_object_values(access_review_scope.AccessReviewScope)),
             "resourceScopes": lambda n : setattr(self, 'resource_scopes', n.get_collection_of_object_values(access_review_scope.AccessReviewScope)),
         }

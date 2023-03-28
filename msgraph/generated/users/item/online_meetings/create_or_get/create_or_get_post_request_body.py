@@ -1,32 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from .....models import chat_info, meeting_participants
+chat_info = lazy_import('msgraph.generated.models.chat_info')
+meeting_participants = lazy_import('msgraph.generated.models.meeting_participants')
 
 class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new createOrGetPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The chatInfo property
-        self._chat_info: Optional[chat_info.ChatInfo] = None
-        # The endDateTime property
-        self._end_date_time: Optional[datetime] = None
-        # The externalId property
-        self._external_id: Optional[str] = None
-        # The participants property
-        self._participants: Optional[meeting_participants.MeetingParticipants] = None
-        # The startDateTime property
-        self._start_date_time: Optional[datetime] = None
-        # The subject property
-        self._subject: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -60,6 +41,26 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the chat_info property.
         """
         self._chat_info = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new createOrGetPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The chatInfo property
+        self._chat_info: Optional[chat_info.ChatInfo] = None
+        # The endDateTime property
+        self._end_date_time: Optional[datetime] = None
+        # The externalId property
+        self._external_id: Optional[str] = None
+        # The participants property
+        self._participants: Optional[meeting_participants.MeetingParticipants] = None
+        # The startDateTime property
+        self._start_date_time: Optional[datetime] = None
+        # The subject property
+        self._subject: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CreateOrGetPostRequestBody:
@@ -112,9 +113,7 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import chat_info, meeting_participants
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "chatInfo": lambda n : setattr(self, 'chat_info', n.get_object_value(chat_info.ChatInfo)),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),

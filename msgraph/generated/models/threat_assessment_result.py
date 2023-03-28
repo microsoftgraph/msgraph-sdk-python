@@ -1,12 +1,11 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, threat_assessment_result_type
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+threat_assessment_result_type = lazy_import('msgraph.generated.models.threat_assessment_result_type')
 
 class ThreatAssessmentResult(entity.Entity):
     def __init__(self,) -> None:
@@ -57,9 +56,7 @@ class ThreatAssessmentResult(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, threat_assessment_result_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
             "resultType": lambda n : setattr(self, 'result_type', n.get_enum_value(threat_assessment_result_type.ThreatAssessmentResultType)),

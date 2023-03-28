@@ -1,107 +1,33 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import add_in, api_application, app_management_policy, app_role, certification, directory_object, extension_property, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, optional_claims, parental_control_settings, password_credential, public_client_application, request_signature_verification, required_resource_access, spa_application, token_issuance_policy, token_lifetime_policy, verified_publisher, web_application
-
-from . import directory_object
+add_in = lazy_import('msgraph.generated.models.add_in')
+api_application = lazy_import('msgraph.generated.models.api_application')
+app_management_policy = lazy_import('msgraph.generated.models.app_management_policy')
+app_role = lazy_import('msgraph.generated.models.app_role')
+certification = lazy_import('msgraph.generated.models.certification')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+extension_property = lazy_import('msgraph.generated.models.extension_property')
+federated_identity_credential = lazy_import('msgraph.generated.models.federated_identity_credential')
+home_realm_discovery_policy = lazy_import('msgraph.generated.models.home_realm_discovery_policy')
+informational_url = lazy_import('msgraph.generated.models.informational_url')
+key_credential = lazy_import('msgraph.generated.models.key_credential')
+optional_claims = lazy_import('msgraph.generated.models.optional_claims')
+parental_control_settings = lazy_import('msgraph.generated.models.parental_control_settings')
+password_credential = lazy_import('msgraph.generated.models.password_credential')
+public_client_application = lazy_import('msgraph.generated.models.public_client_application')
+request_signature_verification = lazy_import('msgraph.generated.models.request_signature_verification')
+required_resource_access = lazy_import('msgraph.generated.models.required_resource_access')
+spa_application = lazy_import('msgraph.generated.models.spa_application')
+token_issuance_policy = lazy_import('msgraph.generated.models.token_issuance_policy')
+token_lifetime_policy = lazy_import('msgraph.generated.models.token_lifetime_policy')
+verified_publisher = lazy_import('msgraph.generated.models.verified_publisher')
+web_application = lazy_import('msgraph.generated.models.web_application')
 
 class Application(directory_object.DirectoryObject):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new application and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.application"
-        # Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Office 365 call the application in the context of a document the user is working on.
-        self._add_ins: Optional[List[add_in.AddIn]] = None
-        # Specifies settings for an application that implements a web API.
-        self._api: Optional[api_application.ApiApplication] = None
-        # The unique identifier for the application that is assigned to an application by Azure AD. Not nullable. Read-only. Supports $filter (eq).
-        self._app_id: Optional[str] = None
-        # The appManagementPolicy applied to this application.
-        self._app_management_policies: Optional[List[app_management_policy.AppManagementPolicy]] = None
-        # The collection of roles defined for the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable.
-        self._app_roles: Optional[List[app_role.AppRole]] = None
-        # Unique identifier of the applicationTemplate. Supports $filter (eq, not, ne).
-        self._application_template_id: Optional[str] = None
-        # Specifies the certification status of the application.
-        self._certification: Optional[certification.Certification] = None
-        # The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, not, ge, le, in, and eq on null values) and $orderBy.
-        self._created_date_time: Optional[datetime] = None
-        # Supports $filter (/$count eq 0, /$count ne 0). Read-only.
-        self._created_on_behalf_of: Optional[directory_object.DirectoryObject] = None
-        # The defaultRedirectUri property
-        self._default_redirect_uri: Optional[str] = None
-        # Free text field to provide a description of the application object to end users. The maximum allowed size is 1024 characters. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
-        self._description: Optional[str] = None
-        # Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, not).
-        self._disabled_by_microsoft_status: Optional[str] = None
-        # The display name for the application. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
-        self._display_name: Optional[str] = None
-        # Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
-        self._extension_properties: Optional[List[extension_property.ExtensionProperty]] = None
-        # Federated identities for applications. Supports $expand and $filter (startsWith, /$count eq 0, /$count ne 0).
-        self._federated_identity_credentials: Optional[List[federated_identity_credential.FederatedIdentityCredential]] = None
-        # Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following valid string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all of the security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
-        self._group_membership_claims: Optional[str] = None
-        # The homeRealmDiscoveryPolicies property
-        self._home_realm_discovery_policies: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]] = None
-        # Also known as App ID URI, this value is set when an application is used as a resource app. The identifierUris acts as the prefix for the scopes you'll reference in your API's code, and it must be globally unique. You can use the default value provided, which is in the form api://<application-client-id>, or specify a more readable URI like https://contoso.com/api. For more information on valid identifierUris patterns and best practices, see Azure AD application registration security best practices. Not nullable. Supports $filter (eq, ne, ge, le, startsWith).
-        self._identifier_uris: Optional[List[str]] = None
-        # Basic profile information of the application such as  app's marketing, support, terms of service and privacy statement URLs. The terms of service and privacy statement are surfaced to users through the user consent experience. For more info, see How to: Add Terms of service and privacy statement for registered Azure AD apps. Supports $filter (eq, ne, not, ge, le, and eq on null values).
-        self._info: Optional[informational_url.InformationalUrl] = None
-        # Specifies whether this application supports device authentication without a user. The default is false.
-        self._is_device_only_auth_supported: Optional[bool] = None
-        # Specifies the fallback application type as public client, such as an installed application running on a mobile device. The default value is false which means the fallback application type is confidential client such as a web app. There are certain scenarios where Azure AD cannot determine the client application type. For example, the ROPC flow where it is configured without specifying a redirect URI. In those cases Azure AD interprets the application type based on the value of this property.
-        self._is_fallback_public_client: Optional[bool] = None
-        # The collection of key credentials associated with the application. Not nullable. Supports $filter (eq, not, ge, le).
-        self._key_credentials: Optional[List[key_credential.KeyCredential]] = None
-        # The main logo for the application. Not nullable.
-        self._logo: Optional[bytes] = None
-        # Notes relevant for the management of the application.
-        self._notes: Optional[str] = None
-        # The oauth2RequirePostResponse property
-        self._oauth2_require_post_response: Optional[bool] = None
-        # Application developers can configure optional claims in their Azure AD applications to specify the claims that are sent to their application by the Microsoft security token service. For more information, see How to: Provide optional claims to your app.
-        self._optional_claims: Optional[optional_claims.OptionalClaims] = None
-        # Directory objects that are owners of the application. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
-        self._owners: Optional[List[directory_object.DirectoryObject]] = None
-        # Specifies parental control settings for an application.
-        self._parental_control_settings: Optional[parental_control_settings.ParentalControlSettings] = None
-        # The collection of password credentials associated with the application. Not nullable.
-        self._password_credentials: Optional[List[password_credential.PasswordCredential]] = None
-        # Specifies settings for installed clients such as desktop or mobile devices.
-        self._public_client: Optional[public_client_application.PublicClientApplication] = None
-        # The verified publisher domain for the application. Read-only. For more information, see How to: Configure an application's publisher domain. Supports $filter (eq, ne, ge, le, startsWith).
-        self._publisher_domain: Optional[str] = None
-        # Specifies whether this application requires Azure AD to verify the signed authentication requests.
-        self._request_signature_verification: Optional[request_signature_verification.RequestSignatureVerification] = None
-        # Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. For more information, see Limits on requested permissions per app. Not nullable. Supports $filter (eq, not, ge, le).
-        self._required_resource_access: Optional[List[required_resource_access.RequiredResourceAccess]] = None
-        # The URL where the service exposes SAML metadata for federation. This property is valid only for single-tenant applications. Nullable.
-        self._saml_metadata_url: Optional[str] = None
-        # References application or service contact information from a Service or Asset Management database. Nullable.
-        self._service_management_reference: Optional[str] = None
-        # Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table. The value of this object also limits the number of permissions an app can request. For more information, see Limits on requested permissions per app. The value for this property has implications on other app object properties. As a result, if you change this property, you may need to change other properties first. For more information, see Validation differences for signInAudience.Supports $filter (eq, ne, not).
-        self._sign_in_audience: Optional[str] = None
-        # Specifies settings for a single-page application, including sign out URLs and redirect URIs for authorization codes and access tokens.
-        self._spa: Optional[spa_application.SpaApplication] = None
-        # Custom strings that can be used to categorize and identify the application. Not nullable. Supports $filter (eq, not, ge, le, startsWith).
-        self._tags: Optional[List[str]] = None
-        # Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD encrypts all the tokens it emits by using the key this property points to. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
-        self._token_encryption_key_id: Optional[Guid] = None
-        # The tokenIssuancePolicies property
-        self._token_issuance_policies: Optional[List[token_issuance_policy.TokenIssuancePolicy]] = None
-        # The tokenLifetimePolicies property
-        self._token_lifetime_policies: Optional[List[token_lifetime_policy.TokenLifetimePolicy]] = None
-        # Specifies the verified publisher of the application. For more information about how publisher verification helps support application security, trustworthiness, and compliance, see Publisher verification.
-        self._verified_publisher: Optional[verified_publisher.VerifiedPublisher] = None
-        # Specifies settings for a web application.
-        self._web: Optional[web_application.WebApplication] = None
-    
     @property
     def add_ins(self,) -> Optional[List[add_in.AddIn]]:
         """
@@ -156,7 +82,7 @@ class Application(directory_object.DirectoryObject):
     @property
     def app_management_policies(self,) -> Optional[List[app_management_policy.AppManagementPolicy]]:
         """
-        Gets the appManagementPolicies property value. The appManagementPolicy applied to this application.
+        Gets the appManagementPolicies property value. The appManagementPolicies property
         Returns: Optional[List[app_management_policy.AppManagementPolicy]]
         """
         return self._app_management_policies
@@ -164,7 +90,7 @@ class Application(directory_object.DirectoryObject):
     @app_management_policies.setter
     def app_management_policies(self,value: Optional[List[app_management_policy.AppManagementPolicy]] = None) -> None:
         """
-        Sets the appManagementPolicies property value. The appManagementPolicy applied to this application.
+        Sets the appManagementPolicies property value. The appManagementPolicies property
         Args:
             value: Value to set for the app_management_policies property.
         """
@@ -220,6 +146,99 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the certification property.
         """
         self._certification = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Application and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.application"
+        # Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Office 365 call the application in the context of a document the user is working on.
+        self._add_ins: Optional[List[add_in.AddIn]] = None
+        # Specifies settings for an application that implements a web API.
+        self._api: Optional[api_application.ApiApplication] = None
+        # The unique identifier for the application that is assigned to an application by Azure AD. Not nullable. Read-only. Supports $filter (eq).
+        self._app_id: Optional[str] = None
+        # The appManagementPolicies property
+        self._app_management_policies: Optional[List[app_management_policy.AppManagementPolicy]] = None
+        # The collection of roles defined for the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable.
+        self._app_roles: Optional[List[app_role.AppRole]] = None
+        # Unique identifier of the applicationTemplate. Supports $filter (eq, not, ne).
+        self._application_template_id: Optional[str] = None
+        # Specifies the certification status of the application.
+        self._certification: Optional[certification.Certification] = None
+        # The date and time the application was registered. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.  Supports $filter (eq, ne, not, ge, le, in, and eq on null values) and $orderBy.
+        self._created_date_time: Optional[datetime] = None
+        # Supports $filter (/$count eq 0, /$count ne 0). Read-only.
+        self._created_on_behalf_of: Optional[directory_object.DirectoryObject] = None
+        # The defaultRedirectUri property
+        self._default_redirect_uri: Optional[str] = None
+        # Free text field to provide a description of the application object to end users. The maximum allowed size is 1024 characters. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
+        self._description: Optional[str] = None
+        # Specifies whether Microsoft has disabled the registered application. Possible values are: null (default value), NotDisabled, and DisabledDueToViolationOfServicesAgreement (reasons may include suspicious, abusive, or malicious activity, or a violation of the Microsoft Services Agreement).  Supports $filter (eq, ne, not).
+        self._disabled_by_microsoft_status: Optional[str] = None
+        # The display name for the application. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+        self._display_name: Optional[str] = None
+        # Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
+        self._extension_properties: Optional[List[extension_property.ExtensionProperty]] = None
+        # Federated identities for applications. Supports $expand and $filter (startsWith, /$count eq 0, /$count ne 0).
+        self._federated_identity_credentials: Optional[List[federated_identity_credential.FederatedIdentityCredential]] = None
+        # Configures the groups claim issued in a user or OAuth 2.0 access token that the application expects. To set this attribute, use one of the following valid string values: None, SecurityGroup (for security groups and Azure AD roles), All (this gets all of the security groups, distribution groups, and Azure AD directory roles that the signed-in user is a member of).
+        self._group_membership_claims: Optional[str] = None
+        # The homeRealmDiscoveryPolicies property
+        self._home_realm_discovery_policies: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]] = None
+        # Also known as App ID URI, this value is set when an application is used as a resource app. The identifierUris acts as the prefix for the scopes you'll reference in your API's code, and it must be globally unique. You can use the default value provided, which is in the form api://<application-client-id>, or specify a more readable URI like https://contoso.com/api. For more information on valid identifierUris patterns and best practices, see Azure AD application registration security best practices. Not nullable. Supports $filter (eq, ne, ge, le, startsWith).
+        self._identifier_uris: Optional[List[str]] = None
+        # Basic profile information of the application such as  app's marketing, support, terms of service and privacy statement URLs. The terms of service and privacy statement are surfaced to users through the user consent experience. For more info, see How to: Add Terms of service and privacy statement for registered Azure AD apps. Supports $filter (eq, ne, not, ge, le, and eq on null values).
+        self._info: Optional[informational_url.InformationalUrl] = None
+        # Specifies whether this application supports device authentication without a user. The default is false.
+        self._is_device_only_auth_supported: Optional[bool] = None
+        # Specifies the fallback application type as public client, such as an installed application running on a mobile device. The default value is false which means the fallback application type is confidential client such as a web app. There are certain scenarios where Azure AD cannot determine the client application type. For example, the ROPC flow where it is configured without specifying a redirect URI. In those cases Azure AD interprets the application type based on the value of this property.
+        self._is_fallback_public_client: Optional[bool] = None
+        # The collection of key credentials associated with the application. Not nullable. Supports $filter (eq, not, ge, le).
+        self._key_credentials: Optional[List[key_credential.KeyCredential]] = None
+        # The main logo for the application. Not nullable.
+        self._logo: Optional[bytes] = None
+        # Notes relevant for the management of the application.
+        self._notes: Optional[str] = None
+        # The oauth2RequirePostResponse property
+        self._oauth2_require_post_response: Optional[bool] = None
+        # Application developers can configure optional claims in their Azure AD applications to specify the claims that are sent to their application by the Microsoft security token service. For more information, see How to: Provide optional claims to your app.
+        self._optional_claims: Optional[optional_claims.OptionalClaims] = None
+        # Directory objects that are owners of the application. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+        self._owners: Optional[List[directory_object.DirectoryObject]] = None
+        # Specifies parental control settings for an application.
+        self._parental_control_settings: Optional[parental_control_settings.ParentalControlSettings] = None
+        # The collection of password credentials associated with the application. Not nullable.
+        self._password_credentials: Optional[List[password_credential.PasswordCredential]] = None
+        # Specifies settings for installed clients such as desktop or mobile devices.
+        self._public_client: Optional[public_client_application.PublicClientApplication] = None
+        # The verified publisher domain for the application. Read-only. For more information, see How to: Configure an application's publisher domain. Supports $filter (eq, ne, ge, le, startsWith).
+        self._publisher_domain: Optional[str] = None
+        # The requestSignatureVerification property
+        self._request_signature_verification: Optional[request_signature_verification.RequestSignatureVerification] = None
+        # Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. For more information, see Limits on requested permissions per app. Not nullable. Supports $filter (eq, not, ge, le).
+        self._required_resource_access: Optional[List[required_resource_access.RequiredResourceAccess]] = None
+        # The URL where the service exposes SAML metadata for federation. This property is valid only for single-tenant applications. Nullable.
+        self._saml_metadata_url: Optional[str] = None
+        # References application or service contact information from a Service or Asset Management database. Nullable.
+        self._service_management_reference: Optional[str] = None
+        # Specifies the Microsoft accounts that are supported for the current application. The possible values are: AzureADMyOrg, AzureADMultipleOrgs, AzureADandPersonalMicrosoftAccount (default), and PersonalMicrosoftAccount. See more in the table. The value of this object also limits the number of permissions an app can request. For more information, see Limits on requested permissions per app. The value for this property has implications on other app object properties. As a result, if you change this property, you may need to change other properties first. For more information, see Validation differences for signInAudience.Supports $filter (eq, ne, not).
+        self._sign_in_audience: Optional[str] = None
+        # Specifies settings for a single-page application, including sign out URLs and redirect URIs for authorization codes and access tokens.
+        self._spa: Optional[spa_application.SpaApplication] = None
+        # Custom strings that can be used to categorize and identify the application. Not nullable. Supports $filter (eq, not, ge, le, startsWith).
+        self._tags: Optional[List[str]] = None
+        # Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD encrypts all the tokens it emits by using the key this property points to. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
+        self._token_encryption_key_id: Optional[Guid] = None
+        # The tokenIssuancePolicies property
+        self._token_issuance_policies: Optional[List[token_issuance_policy.TokenIssuancePolicy]] = None
+        # The tokenLifetimePolicies property
+        self._token_lifetime_policies: Optional[List[token_lifetime_policy.TokenLifetimePolicy]] = None
+        # Specifies the verified publisher of the application. For more information about how publisher verification helps support application security, trustworthiness, and compliance, see Publisher verification.
+        self._verified_publisher: Optional[verified_publisher.VerifiedPublisher] = None
+        # Specifies settings for a web application.
+        self._web: Optional[web_application.WebApplication] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -374,9 +393,7 @@ class Application(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import add_in, api_application, app_management_policy, app_role, certification, directory_object, extension_property, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, optional_claims, parental_control_settings, password_credential, public_client_application, request_signature_verification, required_resource_access, spa_application, token_issuance_policy, token_lifetime_policy, verified_publisher, web_application
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "addIns": lambda n : setattr(self, 'add_ins', n.get_collection_of_object_values(add_in.AddIn)),
             "api": lambda n : setattr(self, 'api', n.get_object_value(api_application.ApiApplication)),
             "applicationTemplateId": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
@@ -700,7 +717,7 @@ class Application(directory_object.DirectoryObject):
     @property
     def request_signature_verification(self,) -> Optional[request_signature_verification.RequestSignatureVerification]:
         """
-        Gets the requestSignatureVerification property value. Specifies whether this application requires Azure AD to verify the signed authentication requests.
+        Gets the requestSignatureVerification property value. The requestSignatureVerification property
         Returns: Optional[request_signature_verification.RequestSignatureVerification]
         """
         return self._request_signature_verification
@@ -708,7 +725,7 @@ class Application(directory_object.DirectoryObject):
     @request_signature_verification.setter
     def request_signature_verification(self,value: Optional[request_signature_verification.RequestSignatureVerification] = None) -> None:
         """
-        Sets the requestSignatureVerification property value. Specifies whether this application requires Azure AD to verify the signed authentication requests.
+        Sets the requestSignatureVerification property value. The requestSignatureVerification property
         Args:
             value: Value to set for the request_signature_verification property.
         """

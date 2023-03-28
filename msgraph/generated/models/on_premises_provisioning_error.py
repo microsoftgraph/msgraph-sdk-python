@@ -1,27 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new onPremisesProvisioningError and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Category of the provisioning error. Note: Currently, there is only one possible value. Possible value: PropertyConflict - indicates a property value is not unique. Other objects contain the same value for the property.
-        self._category: Optional[str] = None
-        # The date and time at which the error occurred.
-        self._occurred_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Name of the directory property causing the error. Current possible values: UserPrincipalName or ProxyAddress
-        self._property_causing_error: Optional[str] = None
-        # Value of the property causing the error.
-        self._value: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -56,6 +39,24 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         """
         self._category = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new onPremisesProvisioningError and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Category of the provisioning error. Note: Currently, there is only one possible value. Possible value: PropertyConflict - indicates a property value is not unique. Other objects contain the same value for the property.
+        self._category: Optional[str] = None
+        # The date and time at which the error occurred.
+        self._occurred_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Name of the directory property causing the error. Current possible values: UserPrincipalName or ProxyAddress
+        self._property_causing_error: Optional[str] = None
+        # Value of the property causing the error.
+        self._value: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnPremisesProvisioningError:
         """
@@ -73,7 +74,7 @@ class OnPremisesProvisioningError(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
             "occurredDateTime": lambda n : setattr(self, 'occurred_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

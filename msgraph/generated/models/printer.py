@@ -1,14 +1,32 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import printer_base, printer_share, print_connector, print_task_trigger
-
-from . import printer_base
+print_connector = lazy_import('msgraph.generated.models.print_connector')
+print_task_trigger = lazy_import('msgraph.generated.models.print_task_trigger')
+printer_base = lazy_import('msgraph.generated.models.printer_base')
+printer_share = lazy_import('msgraph.generated.models.printer_share')
 
 class Printer(printer_base.PrinterBase):
+    @property
+    def connectors(self,) -> Optional[List[print_connector.PrintConnector]]:
+        """
+        Gets the connectors property value. The connectors that are associated with the printer.
+        Returns: Optional[List[print_connector.PrintConnector]]
+        """
+        return self._connectors
+    
+    @connectors.setter
+    def connectors(self,value: Optional[List[print_connector.PrintConnector]] = None) -> None:
+        """
+        Sets the connectors property value. The connectors that are associated with the printer.
+        Args:
+            value: Value to set for the connectors property.
+        """
+        self._connectors = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new Printer and sets the default values.
@@ -30,23 +48,6 @@ class Printer(printer_base.PrinterBase):
         # A list of task triggers that are associated with the printer.
         self._task_triggers: Optional[List[print_task_trigger.PrintTaskTrigger]] = None
     
-    @property
-    def connectors(self,) -> Optional[List[print_connector.PrintConnector]]:
-        """
-        Gets the connectors property value. The connectors that are associated with the printer.
-        Returns: Optional[List[print_connector.PrintConnector]]
-        """
-        return self._connectors
-    
-    @connectors.setter
-    def connectors(self,value: Optional[List[print_connector.PrintConnector]] = None) -> None:
-        """
-        Sets the connectors property value. The connectors that are associated with the printer.
-        Args:
-            value: Value to set for the connectors property.
-        """
-        self._connectors = value
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Printer:
         """
@@ -64,9 +65,7 @@ class Printer(printer_base.PrinterBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import printer_base, printer_share, print_connector, print_task_trigger
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "connectors": lambda n : setattr(self, 'connectors', n.get_collection_of_object_values(print_connector.PrintConnector)),
             "hasPhysicalDevice": lambda n : setattr(self, 'has_physical_device', n.get_bool_value()),
             "isShared": lambda n : setattr(self, 'is_shared', n.get_bool_value()),

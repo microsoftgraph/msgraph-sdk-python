@@ -1,25 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class ResourceAction(AdditionalDataHolder, Parsable):
     """
     Set of allowed and not allowed actions for a resource.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new resourceAction and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Allowed Actions
-        self._allowed_resource_actions: Optional[List[str]] = None
-        # Not Allowed Actions.
-        self._not_allowed_resource_actions: Optional[List[str]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -54,6 +41,20 @@ class ResourceAction(AdditionalDataHolder, Parsable):
         """
         self._allowed_resource_actions = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new resourceAction and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Allowed Actions
+        self._allowed_resource_actions: Optional[List[str]] = None
+        # Not Allowed Actions.
+        self._not_allowed_resource_actions: Optional[List[str]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ResourceAction:
         """
@@ -71,7 +72,7 @@ class ResourceAction(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "allowedResourceActions": lambda n : setattr(self, 'allowed_resource_actions', n.get_collection_of_primitive_values(str)),
             "notAllowedResourceActions": lambda n : setattr(self, 'not_allowed_resource_actions', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

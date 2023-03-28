@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, json, workbook_chart_point_format
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+json = lazy_import('msgraph.generated.models.json')
+workbook_chart_point_format = lazy_import('msgraph.generated.models.workbook_chart_point_format')
 
 class WorkbookChartPoint(entity.Entity):
     def __init__(self,) -> None:
@@ -54,9 +54,7 @@ class WorkbookChartPoint(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, json, workbook_chart_point_format
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_point_format.WorkbookChartPointFormat)),
             "value": lambda n : setattr(self, 'value', n.get_object_value(json.Json)),
         }

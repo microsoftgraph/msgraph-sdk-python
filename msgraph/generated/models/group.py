@@ -1,151 +1,31 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import app_role_assignment, assigned_label, assigned_license, calendar, conversation, conversation_thread, directory_object, drive, event, extension, group_lifecycle_policy, group_setting, license_processing_state, onenote, on_premises_provisioning_error, planner_group, profile_photo, resource_specific_permission_grant, site, team
-
-from . import directory_object
+app_role_assignment = lazy_import('msgraph.generated.models.app_role_assignment')
+assigned_label = lazy_import('msgraph.generated.models.assigned_label')
+assigned_license = lazy_import('msgraph.generated.models.assigned_license')
+calendar = lazy_import('msgraph.generated.models.calendar')
+conversation = lazy_import('msgraph.generated.models.conversation')
+conversation_thread = lazy_import('msgraph.generated.models.conversation_thread')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+drive = lazy_import('msgraph.generated.models.drive')
+event = lazy_import('msgraph.generated.models.event')
+extension = lazy_import('msgraph.generated.models.extension')
+group_lifecycle_policy = lazy_import('msgraph.generated.models.group_lifecycle_policy')
+group_setting = lazy_import('msgraph.generated.models.group_setting')
+license_processing_state = lazy_import('msgraph.generated.models.license_processing_state')
+on_premises_provisioning_error = lazy_import('msgraph.generated.models.on_premises_provisioning_error')
+onenote = lazy_import('msgraph.generated.models.onenote')
+planner_group = lazy_import('msgraph.generated.models.planner_group')
+profile_photo = lazy_import('msgraph.generated.models.profile_photo')
+resource_specific_permission_grant = lazy_import('msgraph.generated.models.resource_specific_permission_grant')
+site = lazy_import('msgraph.generated.models.site')
+team = lazy_import('msgraph.generated.models.team')
 
 class Group(directory_object.DirectoryObject):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new group and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.group"
-        # The list of users or groups that are allowed to create post's or calendar events in this group. If this list is non-empty then only users or groups listed here are allowed to post.
-        self._accepted_senders: Optional[List[directory_object.DirectoryObject]] = None
-        # Indicates if people external to the organization can send messages to the group. Default value is false. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
-        self._allow_external_senders: Optional[bool] = None
-        # Represents the app roles a group has been granted for an application. Supports $expand.
-        self._app_role_assignments: Optional[List[app_role_assignment.AppRoleAssignment]] = None
-        # The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group. Returned only on $select.
-        self._assigned_labels: Optional[List[assigned_label.AssignedLabel]] = None
-        # The licenses that are assigned to the group. Returned only on $select. Supports $filter (eq).Read-only.
-        self._assigned_licenses: Optional[List[assigned_license.AssignedLicense]] = None
-        # Indicates if new members added to the group will be auto-subscribed to receive email notifications. You can set this property in a PATCH request for the group; do not set it in the initial POST request that creates the group. Default value is false. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
-        self._auto_subscribe_new_members: Optional[bool] = None
-        # The group's calendar. Read-only.
-        self._calendar: Optional[calendar.Calendar] = None
-        # The calendar view for the calendar. Read-only.
-        self._calendar_view: Optional[List[event.Event]] = None
-        # Describes a classification for the group (such as low, medium or high business impact). Valid values for this property are defined by creating a ClassificationList setting value, based on the template definition.Returned by default. Supports $filter (eq, ne, not, ge, le, startsWith).
-        self._classification: Optional[str] = None
-        # The group's conversations.
-        self._conversations: Optional[List[conversation.Conversation]] = None
-        # Timestamp of when the group was created. The value cannot be modified and is automatically populated when the group is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Read-only.
-        self._created_date_time: Optional[datetime] = None
-        # The user (or application) that created the group. NOTE: This is not set if the user is an administrator. Read-only.
-        self._created_on_behalf_of: Optional[directory_object.DirectoryObject] = None
-        # An optional description for the group. Returned by default. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
-        self._description: Optional[str] = None
-        # The display name for the group. This property is required when a group is created and cannot be cleared during updates. Maximum length is 256 characters. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
-        self._display_name: Optional[str] = None
-        # The group's default drive. Read-only.
-        self._drive: Optional[drive.Drive] = None
-        # The group's drives. Read-only.
-        self._drives: Optional[List[drive.Drive]] = None
-        # The group's calendar events.
-        self._events: Optional[List[event.Event]] = None
-        # Timestamp of when the group is set to expire. The value cannot be modified and is automatically populated when the group is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, not, ge, le, in). Read-only.
-        self._expiration_date_time: Optional[datetime] = None
-        # The collection of open extensions defined for the group. Read-only. Nullable.
-        self._extensions: Optional[List[extension.Extension]] = None
-        # The collection of lifecycle policies for this group. Read-only. Nullable.
-        self._group_lifecycle_policies: Optional[List[group_lifecycle_policy.GroupLifecyclePolicy]] = None
-        # Specifies the group type and its membership. If the collection contains Unified, the group is a Microsoft 365 group; otherwise, it's either a security group or distribution group. For details, see groups overview.If the collection includes DynamicMembership, the group has dynamic membership; otherwise, membership is static. Returned by default. Supports $filter (eq, not).
-        self._group_types: Optional[List[str]] = None
-        # Indicates whether there are members in this group that have license errors from its group-based license assignment. This property is never returned on a GET operation. You can use it as a $filter argument to get groups that have members with license errors (that is, filter for this property being true). See an example. Supports $filter (eq).
-        self._has_members_with_license_errors: Optional[bool] = None
-        # True if the group is not displayed in certain parts of the Outlook UI: the Address Book, address lists for selecting message recipients, and the Browse Groups dialog for searching groups; otherwise, false. Default value is false. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
-        self._hide_from_address_lists: Optional[bool] = None
-        # True if the group is not displayed in Outlook clients, such as Outlook for Windows and Outlook on the web; otherwise, false. Default value is false. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
-        self._hide_from_outlook_clients: Optional[bool] = None
-        # When a group is associated with a team this property determines whether the team is in read-only mode.To read this property, use the /group/{groupId}/team endpoint or the Get team API. To update this property, use the archiveTeam and unarchiveTeam APIs.
-        self._is_archived: Optional[bool] = None
-        # Indicates whether this group can be assigned to an Azure Active Directory role or not. Optional. This property can only be set while creating the group and is immutable. If set to true, the securityEnabled property must also be set to true, visibility must be Hidden, and the group cannot be a dynamic group (that is, groupTypes cannot contain DynamicMembership). Only callers in Global Administrator and Privileged Role Administrator roles can set this property. The caller must also be assigned the RoleManagement.ReadWrite.Directory permission to set this property or update the membership of such groups. For more, see Using a group to manage Azure AD role assignmentsUsing this feature requires a Azure AD Premium P1 license. Returned by default. Supports $filter (eq, ne, not).
-        self._is_assignable_to_role: Optional[bool] = None
-        # Indicates whether the signed-in user is subscribed to receive email conversations. Default value is true. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
-        self._is_subscribed_by_mail: Optional[bool] = None
-        # Indicates status of the group license assignment to all members of the group. Default value is false. Read-only. Possible values: QueuedForProcessing, ProcessingInProgress, and ProcessingComplete.Returned only on $select. Read-only.
-        self._license_processing_state: Optional[license_processing_state.LicenseProcessingState] = None
-        # The SMTP address for the group, for example, 'serviceadmins@contoso.onmicrosoft.com'. Returned by default. Read-only. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
-        self._mail: Optional[str] = None
-        # Specifies whether the group is mail-enabled. Required. Returned by default. Supports $filter (eq, ne, not).
-        self._mail_enabled: Optional[bool] = None
-        # The mail alias for the group, unique for Microsoft 365 groups in the organization. Maximum length is 64 characters. This property can contain only characters in the ASCII character set 0 - 127 except the following: @ () / [] ' ; : <> , SPACE. Required. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
-        self._mail_nickname: Optional[str] = None
-        # Groups that this group is a member of. HTTP Methods: GET (supported for all groups). Read-only. Nullable. Supports $expand.
-        self._member_of: Optional[List[directory_object.DirectoryObject]] = None
-        # The members of this group, who can be users, devices, other groups, or service principals. Supports the List members, Add member, and Remove member operations. Nullable. Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=members($select=id,userPrincipalName,displayName).
-        self._members: Optional[List[directory_object.DirectoryObject]] = None
-        # A list of group members with license errors from this group-based license assignment. Read-only.
-        self._members_with_license_errors: Optional[List[directory_object.DirectoryObject]] = None
-        # The rule that determines members for this group if the group is a dynamic group (groupTypes contains DynamicMembership). For more information about the syntax of the membership rule, see Membership Rules syntax. Returned by default. Supports $filter (eq, ne, not, ge, le, startsWith).
-        self._membership_rule: Optional[str] = None
-        # Indicates whether the dynamic membership processing is on or paused. Possible values are On or Paused. Returned by default. Supports $filter (eq, ne, not, in).
-        self._membership_rule_processing_state: Optional[str] = None
-        # The onPremisesDomainName property
-        self._on_premises_domain_name: Optional[str] = None
-        # Indicates the last time at which the group was synced with the on-premises directory.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Read-only. Supports $filter (eq, ne, not, ge, le, in).
-        self._on_premises_last_sync_date_time: Optional[datetime] = None
-        # The onPremisesNetBiosName property
-        self._on_premises_net_bios_name: Optional[str] = None
-        # Errors when using Microsoft synchronization product during provisioning. Returned by default. Supports $filter (eq, not).
-        self._on_premises_provisioning_errors: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]] = None
-        # Contains the on-premises SAM account name synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect.Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith). Read-only.
-        self._on_premises_sam_account_name: Optional[str] = None
-        # Contains the on-premises security identifier (SID) for the group that was synchronized from on-premises to the cloud. Returned by default. Supports $filter (eq including on null values). Read-only.
-        self._on_premises_security_identifier: Optional[str] = None
-        # true if this group is synced from an on-premises directory; false if this group was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Returned by default. Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
-        self._on_premises_sync_enabled: Optional[bool] = None
-        # The onenote property
-        self._onenote: Optional[onenote.Onenote] = None
-        # The owners of the group. Limited to 100 owners. Nullable. If this property is not specified when creating a Microsoft 365 group, the calling user is automatically assigned as the group owner.  Supports $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1). Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=owners($select=id,userPrincipalName,displayName).
-        self._owners: Optional[List[directory_object.DirectoryObject]] = None
-        # The permission that has been granted for a group to a specific application. Supports $expand.
-        self._permission_grants: Optional[List[resource_specific_permission_grant.ResourceSpecificPermissionGrant]] = None
-        # The group's profile photo
-        self._photo: Optional[profile_photo.ProfilePhoto] = None
-        # The profile photos owned by the group. Read-only. Nullable.
-        self._photos: Optional[List[profile_photo.ProfilePhoto]] = None
-        # Entry-point to Planner resource that might exist for a Unified Group.
-        self._planner: Optional[planner_group.PlannerGroup] = None
-        # The preferred data location for the Microsoft 365 group. By default, the group inherits the group creator's preferred data location. To set this property, the calling user must be assigned one of the following Azure AD roles:  Global Administrator  User Account Administrator Directory Writer  Exchange Administrator  SharePoint Administrator  For more information about this property, see OneDrive Online Multi-Geo. Nullable. Returned by default.
-        self._preferred_data_location: Optional[str] = None
-        # The preferred language for a Microsoft 365 group. Should follow ISO 639-1 Code; for example en-US. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
-        self._preferred_language: Optional[str] = None
-        # Email addresses for the group that direct to the same group mailbox. For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. The any operator is required to filter expressions on multi-valued properties. Returned by default. Read-only. Not nullable. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0).
-        self._proxy_addresses: Optional[List[str]] = None
-        # The list of users or groups that are not allowed to create posts or calendar events in this group. Nullable
-        self._rejected_senders: Optional[List[directory_object.DirectoryObject]] = None
-        # Timestamp of when the group was last renewed. This cannot be modified directly and is only updated via the renew service action. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, not, ge, le, in). Read-only.
-        self._renewed_date_time: Optional[datetime] = None
-        # Specifies whether the group is a security group. Required. Returned by default. Supports $filter (eq, ne, not, in).
-        self._security_enabled: Optional[bool] = None
-        # Security identifier of the group, used in Windows scenarios. Returned by default.
-        self._security_identifier: Optional[str] = None
-        # Settings that can govern this group's behavior, like whether members can invite guest users to the group. Nullable.
-        self._settings: Optional[List[group_setting.GroupSetting]] = None
-        # The list of SharePoint sites in this group. Access the default site with /sites/root.
-        self._sites: Optional[List[site.Site]] = None
-        # The team associated with this group.
-        self._team: Optional[team.Team] = None
-        # Specifies a Microsoft 365 group's color theme. Possible values are Teal, Purple, Green, Blue, Pink, Orange or Red. Returned by default.
-        self._theme: Optional[str] = None
-        # The group's conversation threads. Nullable.
-        self._threads: Optional[List[conversation_thread.ConversationThread]] = None
-        # The groups that a group is a member of, either directly and through nested membership. Nullable.
-        self._transitive_member_of: Optional[List[directory_object.DirectoryObject]] = None
-        # The direct and transitive members of a group. Nullable.
-        self._transitive_members: Optional[List[directory_object.DirectoryObject]] = None
-        # Count of conversations that have received new posts since the signed-in user last visited the group. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
-        self._unseen_count: Optional[int] = None
-        # Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or HiddenMembership. HiddenMembership can be set only for Microsoft 365 groups, when the groups are created. It can't be updated later. Other values of visibility can be updated after group creation. If visibility value is not specified during group creation on Microsoft Graph, a security group is created as Private by default and Microsoft 365 group is Public. Groups assignable to roles are always Private. See group visibility options to learn more. Returned by default. Nullable.
-        self._visibility: Optional[str] = None
-    
     @property
     def accepted_senders(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -298,6 +178,143 @@ class Group(directory_object.DirectoryObject):
             value: Value to set for the classification property.
         """
         self._classification = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Group and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.group"
+        # The list of users or groups that are allowed to create post's or calendar events in this group. If this list is non-empty then only users or groups listed here are allowed to post.
+        self._accepted_senders: Optional[List[directory_object.DirectoryObject]] = None
+        # Indicates if people external to the organization can send messages to the group. Default value is false. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
+        self._allow_external_senders: Optional[bool] = None
+        # Represents the app roles a group has been granted for an application. Supports $expand.
+        self._app_role_assignments: Optional[List[app_role_assignment.AppRoleAssignment]] = None
+        # The list of sensitivity label pairs (label ID, label name) associated with a Microsoft 365 group. Returned only on $select.
+        self._assigned_labels: Optional[List[assigned_label.AssignedLabel]] = None
+        # The licenses that are assigned to the group. Returned only on $select. Supports $filter (eq).Read-only.
+        self._assigned_licenses: Optional[List[assigned_license.AssignedLicense]] = None
+        # Indicates if new members added to the group will be auto-subscribed to receive email notifications. You can set this property in a PATCH request for the group; do not set it in the initial POST request that creates the group. Default value is false. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
+        self._auto_subscribe_new_members: Optional[bool] = None
+        # The group's calendar. Read-only.
+        self._calendar: Optional[calendar.Calendar] = None
+        # The calendar view for the calendar. Read-only.
+        self._calendar_view: Optional[List[event.Event]] = None
+        # Describes a classification for the group (such as low, medium or high business impact). Valid values for this property are defined by creating a ClassificationList setting value, based on the template definition.Returned by default. Supports $filter (eq, ne, not, ge, le, startsWith).
+        self._classification: Optional[str] = None
+        # The group's conversations.
+        self._conversations: Optional[List[conversation.Conversation]] = None
+        # Timestamp of when the group was created. The value cannot be modified and is automatically populated when the group is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Read-only.
+        self._created_date_time: Optional[datetime] = None
+        # The user (or application) that created the group. NOTE: This is not set if the user is an administrator. Read-only.
+        self._created_on_behalf_of: Optional[directory_object.DirectoryObject] = None
+        # An optional description for the group. Returned by default. Supports $filter (eq, ne, not, ge, le, startsWith) and $search.
+        self._description: Optional[str] = None
+        # The display name for the group. This property is required when a group is created and cannot be cleared during updates. Maximum length is 256 characters. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+        self._display_name: Optional[str] = None
+        # The group's default drive. Read-only.
+        self._drive: Optional[drive.Drive] = None
+        # The group's drives. Read-only.
+        self._drives: Optional[List[drive.Drive]] = None
+        # The group's calendar events.
+        self._events: Optional[List[event.Event]] = None
+        # Timestamp of when the group is set to expire. The value cannot be modified and is automatically populated when the group is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, not, ge, le, in). Read-only.
+        self._expiration_date_time: Optional[datetime] = None
+        # The collection of open extensions defined for the group. Read-only. Nullable.
+        self._extensions: Optional[List[extension.Extension]] = None
+        # The collection of lifecycle policies for this group. Read-only. Nullable.
+        self._group_lifecycle_policies: Optional[List[group_lifecycle_policy.GroupLifecyclePolicy]] = None
+        # Specifies the group type and its membership. If the collection contains Unified, the group is a Microsoft 365 group; otherwise, it's either a security group or distribution group. For details, see groups overview.If the collection includes DynamicMembership, the group has dynamic membership; otherwise, membership is static. Returned by default. Supports $filter (eq, not).
+        self._group_types: Optional[List[str]] = None
+        # Indicates whether there are members in this group that have license errors from its group-based license assignment. This property is never returned on a GET operation. You can use it as a $filter argument to get groups that have members with license errors (that is, filter for this property being true). See an example. Supports $filter (eq).
+        self._has_members_with_license_errors: Optional[bool] = None
+        # True if the group is not displayed in certain parts of the Outlook UI: the Address Book, address lists for selecting message recipients, and the Browse Groups dialog for searching groups; otherwise, false. Default value is false. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
+        self._hide_from_address_lists: Optional[bool] = None
+        # True if the group is not displayed in Outlook clients, such as Outlook for Windows and Outlook on the web; otherwise, false. Default value is false. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
+        self._hide_from_outlook_clients: Optional[bool] = None
+        # When a group is associated with a team this property determines whether the team is in read-only mode.To read this property, use the /group/{groupId}/team endpoint or the Get team API. To update this property, use the archiveTeam and unarchiveTeam APIs.
+        self._is_archived: Optional[bool] = None
+        # Indicates whether this group can be assigned to an Azure Active Directory role or not. Optional. This property can only be set while creating the group and is immutable. If set to true, the securityEnabled property must also be set to true, visibility must be Hidden, and the group cannot be a dynamic group (that is, groupTypes cannot contain DynamicMembership). Only callers in Global Administrator and Privileged Role Administrator roles can set this property. The caller must also be assigned the RoleManagement.ReadWrite.Directory permission to set this property or update the membership of such groups. For more, see Using a group to manage Azure AD role assignmentsUsing this feature requires a Azure AD Premium P1 license. Returned by default. Supports $filter (eq, ne, not).
+        self._is_assignable_to_role: Optional[bool] = None
+        # Indicates whether the signed-in user is subscribed to receive email conversations. Default value is true. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
+        self._is_subscribed_by_mail: Optional[bool] = None
+        # Indicates status of the group license assignment to all members of the group. Default value is false. Read-only. Possible values: QueuedForProcessing, ProcessingInProgress, and ProcessingComplete.Returned only on $select. Read-only.
+        self._license_processing_state: Optional[license_processing_state.LicenseProcessingState] = None
+        # The SMTP address for the group, for example, 'serviceadmins@contoso.onmicrosoft.com'. Returned by default. Read-only. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+        self._mail: Optional[str] = None
+        # Specifies whether the group is mail-enabled. Required. Returned by default. Supports $filter (eq, ne, not).
+        self._mail_enabled: Optional[bool] = None
+        # The mail alias for the group, unique for Microsoft 365 groups in the organization. Maximum length is 64 characters. This property can contain only characters in the ASCII character set 0 - 127 except the following: @ () / [] ' ; : <> , SPACE. Required. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+        self._mail_nickname: Optional[str] = None
+        # Groups that this group is a member of. HTTP Methods: GET (supported for all groups). Read-only. Nullable. Supports $expand.
+        self._member_of: Optional[List[directory_object.DirectoryObject]] = None
+        # The members of this group, who can be users, devices, other groups, or service principals. Supports the List members, Add member, and Remove member operations. Nullable. Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=members($select=id,userPrincipalName,displayName).
+        self._members: Optional[List[directory_object.DirectoryObject]] = None
+        # A list of group members with license errors from this group-based license assignment. Read-only.
+        self._members_with_license_errors: Optional[List[directory_object.DirectoryObject]] = None
+        # The rule that determines members for this group if the group is a dynamic group (groupTypes contains DynamicMembership). For more information about the syntax of the membership rule, see Membership Rules syntax. Returned by default. Supports $filter (eq, ne, not, ge, le, startsWith).
+        self._membership_rule: Optional[str] = None
+        # Indicates whether the dynamic membership processing is on or paused. Possible values are On or Paused. Returned by default. Supports $filter (eq, ne, not, in).
+        self._membership_rule_processing_state: Optional[str] = None
+        # The onPremisesDomainName property
+        self._on_premises_domain_name: Optional[str] = None
+        # Indicates the last time at which the group was synced with the on-premises directory.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Read-only. Supports $filter (eq, ne, not, ge, le, in).
+        self._on_premises_last_sync_date_time: Optional[datetime] = None
+        # The onPremisesNetBiosName property
+        self._on_premises_net_bios_name: Optional[str] = None
+        # Errors when using Microsoft synchronization product during provisioning. Returned by default. Supports $filter (eq, not).
+        self._on_premises_provisioning_errors: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]] = None
+        # Contains the on-premises SAM account name synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect.Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith). Read-only.
+        self._on_premises_sam_account_name: Optional[str] = None
+        # Contains the on-premises security identifier (SID) for the group that was synchronized from on-premises to the cloud. Returned by default. Supports $filter (eq including on null values). Read-only.
+        self._on_premises_security_identifier: Optional[str] = None
+        # true if this group is synced from an on-premises directory; false if this group was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Returned by default. Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
+        self._on_premises_sync_enabled: Optional[bool] = None
+        # The onenote property
+        self._onenote: Optional[onenote.Onenote] = None
+        # The owners of the group. Limited to 100 owners. Nullable. If this property is not specified when creating a Microsoft 365 group, the calling user is automatically assigned as the group owner.  Supports $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1). Supports $expand including nested $select. For example, /groups?$filter=startsWith(displayName,'Role')&$select=id,displayName&$expand=owners($select=id,userPrincipalName,displayName).
+        self._owners: Optional[List[directory_object.DirectoryObject]] = None
+        # The permission that has been granted for a group to a specific application. Supports $expand.
+        self._permission_grants: Optional[List[resource_specific_permission_grant.ResourceSpecificPermissionGrant]] = None
+        # The group's profile photo
+        self._photo: Optional[profile_photo.ProfilePhoto] = None
+        # The profile photos owned by the group. Read-only. Nullable.
+        self._photos: Optional[List[profile_photo.ProfilePhoto]] = None
+        # Entry-point to Planner resource that might exist for a Unified Group.
+        self._planner: Optional[planner_group.PlannerGroup] = None
+        # The preferred data location for the Microsoft 365 group. By default, the group inherits the group creator's preferred data location. To set this property, the calling user must be assigned one of the following Azure AD roles:  Global Administrator  User Account Administrator Directory Writer  Exchange Administrator  SharePoint Administrator  For more information about this property, see OneDrive Online Multi-Geo. Nullable. Returned by default.
+        self._preferred_data_location: Optional[str] = None
+        # The preferred language for a Microsoft 365 group. Should follow ISO 639-1 Code; for example en-US. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+        self._preferred_language: Optional[str] = None
+        # Email addresses for the group that direct to the same group mailbox. For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. The any operator is required to filter expressions on multi-valued properties. Returned by default. Read-only. Not nullable. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0).
+        self._proxy_addresses: Optional[List[str]] = None
+        # The list of users or groups that are not allowed to create posts or calendar events in this group. Nullable
+        self._rejected_senders: Optional[List[directory_object.DirectoryObject]] = None
+        # Timestamp of when the group was last renewed. This cannot be modified directly and is only updated via the renew service action. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, not, ge, le, in). Read-only.
+        self._renewed_date_time: Optional[datetime] = None
+        # Specifies whether the group is a security group. Required. Returned by default. Supports $filter (eq, ne, not, in).
+        self._security_enabled: Optional[bool] = None
+        # Security identifier of the group, used in Windows scenarios. Returned by default.
+        self._security_identifier: Optional[str] = None
+        # Settings that can govern this group's behavior, like whether members can invite guest users to the group. Nullable.
+        self._settings: Optional[List[group_setting.GroupSetting]] = None
+        # The list of SharePoint sites in this group. Access the default site with /sites/root.
+        self._sites: Optional[List[site.Site]] = None
+        # The team associated with this group.
+        self._team: Optional[team.Team] = None
+        # Specifies a Microsoft 365 group's color theme. Possible values are Teal, Purple, Green, Blue, Pink, Orange or Red. Returned by default.
+        self._theme: Optional[str] = None
+        # The group's conversation threads. Nullable.
+        self._threads: Optional[List[conversation_thread.ConversationThread]] = None
+        # The groups that a group is a member of, either directly and through nested membership. Nullable.
+        self._transitive_member_of: Optional[List[directory_object.DirectoryObject]] = None
+        # The direct and transitive members of a group. Nullable.
+        self._transitive_members: Optional[List[directory_object.DirectoryObject]] = None
+        # Count of conversations that have received new posts since the signed-in user last visited the group. Returned only on $select. Supported only on the Get group API (GET /groups/{ID}).
+        self._unseen_count: Optional[int] = None
+        # Specifies the group join policy and group content visibility for groups. Possible values are: Private, Public, or HiddenMembership. HiddenMembership can be set only for Microsoft 365 groups, when the groups are created. It can't be updated later. Other values of visibility can be updated after group creation. If visibility value is not specified during group creation on Microsoft Graph, a security group is created as Private by default and Microsoft 365 group is Public. Groups assignable to roles are always Private. See group visibility options to learn more. Returned by default. Nullable.
+        self._visibility: Optional[str] = None
     
     @property
     def conversations(self,) -> Optional[List[conversation.Conversation]]:
@@ -486,9 +503,7 @@ class Group(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_role_assignment, assigned_label, assigned_license, calendar, conversation, conversation_thread, directory_object, drive, event, extension, group_lifecycle_policy, group_setting, license_processing_state, onenote, on_premises_provisioning_error, planner_group, profile_photo, resource_specific_permission_grant, site, team
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "acceptedSenders": lambda n : setattr(self, 'accepted_senders', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "allowExternalSenders": lambda n : setattr(self, 'allow_external_senders', n.get_bool_value()),
             "appRoleAssignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),

@@ -1,26 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import event_message_detail, identity_set
-
-from . import event_message_detail
+event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new CallTranscriptEventMessageDetail and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.callTranscriptEventMessageDetail"
-        # Unique identifier of the call.
-        self._call_id: Optional[str] = None
-        # Unique identifier for a call transcript.
-        self._call_transcript_i_cal_uid: Optional[str] = None
-        # The organizer of the meeting.
-        self._meeting_organizer: Optional[identity_set.IdentitySet] = None
-    
     @property
     def call_id(self,) -> Optional[str]:
         """
@@ -55,6 +41,19 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         self._call_transcript_i_cal_uid = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new CallTranscriptEventMessageDetail and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.callTranscriptEventMessageDetail"
+        # Unique identifier of the call.
+        self._call_id: Optional[str] = None
+        # Unique identifier for a call transcript.
+        self._call_transcript_i_cal_uid: Optional[str] = None
+        # The organizer of the meeting.
+        self._meeting_organizer: Optional[identity_set.IdentitySet] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallTranscriptEventMessageDetail:
         """
@@ -72,9 +71,7 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import event_message_detail, identity_set
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
             "callTranscriptICalUid": lambda n : setattr(self, 'call_transcript_i_cal_uid', n.get_str_value()),
             "meetingOrganizer": lambda n : setattr(self, 'meeting_organizer', n.get_object_value(identity_set.IdentitySet)),

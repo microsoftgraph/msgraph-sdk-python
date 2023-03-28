@@ -1,30 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class CertificateAuthority(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new certificateAuthority and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Required. The base64 encoded string representing the public certificate.
-        self._certificate: Optional[bytes] = None
-        # The URL of the certificate revocation list.
-        self._certificate_revocation_list_url: Optional[str] = None
-        # The URL contains the list of all revoked certificates since the last time a full certificate revocaton list was created.
-        self._delta_certificate_revocation_list_url: Optional[str] = None
-        # Required. true if the trusted certificate is a root authority, false if the trusted certificate is an intermediate authority.
-        self._is_root_authority: Optional[bool] = None
-        # The issuer of the certificate, calculated from the certificate value. Read-only.
-        self._issuer: Optional[str] = None
-        # The subject key identifier of the certificate, calculated from the certificate value. Read-only.
-        self._issuer_ski: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -76,6 +55,28 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         """
         self._certificate_revocation_list_url = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new certificateAuthority and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Required. The base64 encoded string representing the public certificate.
+        self._certificate: Optional[bytes] = None
+        # The URL of the certificate revocation list.
+        self._certificate_revocation_list_url: Optional[str] = None
+        # The URL contains the list of all revoked certificates since the last time a full certificate revocaton list was created.
+        self._delta_certificate_revocation_list_url: Optional[str] = None
+        # Required. true if the trusted certificate is a root authority, false if the trusted certificate is an intermediate authority.
+        self._is_root_authority: Optional[bool] = None
+        # The issuer of the certificate, calculated from the certificate value. Read-only.
+        self._issuer: Optional[str] = None
+        # The subject key identifier of the certificate, calculated from the certificate value. Read-only.
+        self._issuer_ski: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CertificateAuthority:
         """
@@ -110,7 +111,7 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "certificate": lambda n : setattr(self, 'certificate', n.get_bytes_value()),
             "certificateRevocationListUrl": lambda n : setattr(self, 'certificate_revocation_list_url', n.get_str_value()),
             "deltaCertificateRevocationListUrl": lambda n : setattr(self, 'delta_certificate_revocation_list_url', n.get_str_value()),

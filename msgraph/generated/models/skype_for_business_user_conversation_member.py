@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import conversation_member
-
-from . import conversation_member
+conversation_member = lazy_import('msgraph.generated.models.conversation_member')
 
 class SkypeForBusinessUserConversationMember(conversation_member.ConversationMember):
     def __init__(self,) -> None:
@@ -36,9 +34,7 @@ class SkypeForBusinessUserConversationMember(conversation_member.ConversationMem
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conversation_member
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
             "userId": lambda n : setattr(self, 'user_id', n.get_str_value()),
         }

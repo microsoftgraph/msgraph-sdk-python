@@ -1,24 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_review_instance_decision_item_resource
-
-from . import access_review_instance_decision_item_resource
+access_review_instance_decision_item_resource = lazy_import('msgraph.generated.models.access_review_instance_decision_item_resource')
 
 class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.accessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource"
-        # Display name of the access package to which access has been granted.
-        self._access_package_display_name: Optional[str] = None
-        # Identifier of the access package to which access has been granted.
-        self._access_package_id: Optional[str] = None
-    
     @property
     def access_package_display_name(self,) -> Optional[str]:
         """
@@ -53,6 +40,17 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
         """
         self._access_package_id = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.accessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource"
+        # Display name of the access package to which access has been granted.
+        self._access_package_display_name: Optional[str] = None
+        # Identifier of the access package to which access has been granted.
+        self._access_package_id: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource:
         """
@@ -70,9 +68,7 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_instance_decision_item_resource
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "accessPackageDisplayName": lambda n : setattr(self, 'access_package_display_name', n.get_str_value()),
             "accessPackageId": lambda n : setattr(self, 'access_package_id', n.get_str_value()),
         }

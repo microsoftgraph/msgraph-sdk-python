@@ -1,24 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class DeviceManagementSettings(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceManagementSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The number of days a device is allowed to go without checking in to remain compliant.
-        self._device_compliance_checkin_threshold_days: Optional[int] = None
-        # Is feature enabled or not for scheduled action for rule.
-        self._is_scheduled_action_enabled: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Device should be noncompliant when there is no compliance policy targeted when this is true
-        self._secure_by_default: Optional[bool] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -35,6 +20,22 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new deviceManagementSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The number of days a device is allowed to go without checking in to remain compliant.
+        self._device_compliance_checkin_threshold_days: Optional[int] = None
+        # Is feature enabled or not for scheduled action for rule.
+        self._is_scheduled_action_enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Device should be noncompliant when there is no compliance policy targeted when this is true
+        self._secure_by_default: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceManagementSettings:
@@ -70,7 +71,7 @@ class DeviceManagementSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "deviceComplianceCheckinThresholdDays": lambda n : setattr(self, 'device_compliance_checkin_threshold_days', n.get_int_value()),
             "isScheduledActionEnabled": lambda n : setattr(self, 'is_scheduled_action_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

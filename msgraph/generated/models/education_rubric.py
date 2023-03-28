@@ -1,12 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import education_assignment_grade_type, education_item_body, entity, identity_set, rubric_level, rubric_quality
-
-from . import entity
+education_assignment_grade_type = lazy_import('msgraph.generated.models.education_assignment_grade_type')
+education_item_body = lazy_import('msgraph.generated.models.education_item_body')
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+rubric_level = lazy_import('msgraph.generated.models.rubric_level')
+rubric_quality = lazy_import('msgraph.generated.models.rubric_quality')
 
 class EducationRubric(entity.Entity):
     def __init__(self,) -> None:
@@ -120,9 +123,7 @@ class EducationRubric(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_assignment_grade_type, education_item_body, entity, identity_set, rubric_level, rubric_quality
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_object_value(education_item_body.EducationItemBody)),

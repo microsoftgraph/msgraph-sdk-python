@@ -1,33 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ...models import item_body, key_value_pair, teamwork_activity_topic, teamwork_notification_recipient
+item_body = lazy_import('msgraph.generated.models.item_body')
+key_value_pair = lazy_import('msgraph.generated.models.key_value_pair')
+teamwork_activity_topic = lazy_import('msgraph.generated.models.teamwork_activity_topic')
+teamwork_notification_recipient = lazy_import('msgraph.generated.models.teamwork_notification_recipient')
 
 class SendActivityNotificationToRecipientsPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new sendActivityNotificationToRecipientsPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The activityType property
-        self._activity_type: Optional[str] = None
-        # The chainId property
-        self._chain_id: Optional[int] = None
-        # The previewText property
-        self._preview_text: Optional[item_body.ItemBody] = None
-        # The recipients property
-        self._recipients: Optional[List[teamwork_notification_recipient.TeamworkNotificationRecipient]] = None
-        # The teamsAppId property
-        self._teams_app_id: Optional[str] = None
-        # The templateParameters property
-        self._template_parameters: Optional[List[key_value_pair.KeyValuePair]] = None
-        # The topic property
-        self._topic: Optional[teamwork_activity_topic.TeamworkActivityTopic] = None
-    
     @property
     def activity_type(self,) -> Optional[str]:
         """
@@ -79,6 +60,28 @@ class SendActivityNotificationToRecipientsPostRequestBody(AdditionalDataHolder, 
         """
         self._chain_id = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new sendActivityNotificationToRecipientsPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The activityType property
+        self._activity_type: Optional[str] = None
+        # The chainId property
+        self._chain_id: Optional[int] = None
+        # The previewText property
+        self._preview_text: Optional[item_body.ItemBody] = None
+        # The recipients property
+        self._recipients: Optional[List[teamwork_notification_recipient.TeamworkNotificationRecipient]] = None
+        # The teamsAppId property
+        self._teams_app_id: Optional[str] = None
+        # The templateParameters property
+        self._template_parameters: Optional[List[key_value_pair.KeyValuePair]] = None
+        # The topic property
+        self._topic: Optional[teamwork_activity_topic.TeamworkActivityTopic] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SendActivityNotificationToRecipientsPostRequestBody:
         """
@@ -96,9 +99,7 @@ class SendActivityNotificationToRecipientsPostRequestBody(AdditionalDataHolder, 
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ...models import item_body, key_value_pair, teamwork_activity_topic, teamwork_notification_recipient
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "activityType": lambda n : setattr(self, 'activity_type', n.get_str_value()),
             "chainId": lambda n : setattr(self, 'chain_id', n.get_int_value()),
             "previewText": lambda n : setattr(self, 'preview_text', n.get_object_value(item_body.ItemBody)),

@@ -7,19 +7,40 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ...........models import workbook_chart_axes
-    from ...........models.o_data_errors import o_data_error
-    from .category_axis import category_axis_request_builder
-    from .series_axis import series_axis_request_builder
-    from .value_axis import value_axis_request_builder
+category_axis_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.axes.category_axis.category_axis_request_builder')
+series_axis_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.axes.series_axis.series_axis_request_builder')
+value_axis_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.axes.value_axis.value_axis_request_builder')
+workbook_chart_axes = lazy_import('msgraph.generated.models.workbook_chart_axes')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AxesRequestBuilder():
     """
     Provides operations to manage the axes property of the microsoft.graph.workbookChart entity.
     """
+    @property
+    def category_axis(self) -> category_axis_request_builder.CategoryAxisRequestBuilder:
+        """
+        Provides operations to manage the categoryAxis property of the microsoft.graph.workbookChartAxes entity.
+        """
+        return category_axis_request_builder.CategoryAxisRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def series_axis(self) -> series_axis_request_builder.SeriesAxisRequestBuilder:
+        """
+        Provides operations to manage the seriesAxis property of the microsoft.graph.workbookChartAxes entity.
+        """
+        return series_axis_request_builder.SeriesAxisRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def value_axis(self) -> value_axis_request_builder.ValueAxisRequestBuilder:
+        """
+        Provides operations to manage the valueAxis property of the microsoft.graph.workbookChartAxes entity.
+        """
+        return value_axis_request_builder.ValueAxisRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AxesRequestBuilder and sets the default values.
@@ -47,8 +68,6 @@ class AxesRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -67,16 +86,12 @@ class AxesRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...........models import workbook_chart_axes
-
         return await self.request_adapter.send_async(request_info, workbook_chart_axes.WorkbookChartAxes, error_mapping)
     
     async def patch(self,body: Optional[workbook_chart_axes.WorkbookChartAxes] = None, request_configuration: Optional[AxesRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart_axes.WorkbookChartAxes]:
@@ -92,16 +107,12 @@ class AxesRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...........models import workbook_chart_axes
-
         return await self.request_adapter.send_async(request_info, workbook_chart_axes.WorkbookChartAxes, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AxesRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -159,33 +170,6 @@ class AxesRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def category_axis(self) -> category_axis_request_builder.CategoryAxisRequestBuilder:
-        """
-        Provides operations to manage the categoryAxis property of the microsoft.graph.workbookChartAxes entity.
-        """
-        from .category_axis import category_axis_request_builder
-
-        return category_axis_request_builder.CategoryAxisRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def series_axis(self) -> series_axis_request_builder.SeriesAxisRequestBuilder:
-        """
-        Provides operations to manage the seriesAxis property of the microsoft.graph.workbookChartAxes entity.
-        """
-        from .series_axis import series_axis_request_builder
-
-        return series_axis_request_builder.SeriesAxisRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def value_axis(self) -> value_axis_request_builder.ValueAxisRequestBuilder:
-        """
-        Provides operations to manage the valueAxis property of the microsoft.graph.workbookChartAxes entity.
-        """
-        from .value_axis import value_axis_request_builder
-
-        return value_axis_request_builder.ValueAxisRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class AxesRequestBuilderDeleteRequestConfiguration():
         """
@@ -203,6 +187,12 @@ class AxesRequestBuilder():
         """
         Represents chart axes. Read-only.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -218,12 +208,6 @@ class AxesRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class AxesRequestBuilderGetRequestConfiguration():

@@ -1,27 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import api_authentication_configuration_base, entity
-
-from . import entity
+api_authentication_configuration_base = lazy_import('msgraph.generated.models.api_authentication_configuration_base')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class IdentityApiConnector(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IdentityApiConnector and sets the default values.
-        """
-        super().__init__()
-        # The object which describes the authentication configuration details for calling the API. Basic and PKCS 12 client certificate are supported.
-        self._authentication_configuration: Optional[api_authentication_configuration_base.ApiAuthenticationConfigurationBase] = None
-        # The name of the API connector.
-        self._display_name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The URL of the API endpoint to call.
-        self._target_url: Optional[str] = None
-    
     @property
     def authentication_configuration(self,) -> Optional[api_authentication_configuration_base.ApiAuthenticationConfigurationBase]:
         """
@@ -38,6 +23,20 @@ class IdentityApiConnector(entity.Entity):
             value: Value to set for the authentication_configuration property.
         """
         self._authentication_configuration = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new IdentityApiConnector and sets the default values.
+        """
+        super().__init__()
+        # The object which describes the authentication configuration details for calling the API. Basic and PKCS 12 client certificate are supported.
+        self._authentication_configuration: Optional[api_authentication_configuration_base.ApiAuthenticationConfigurationBase] = None
+        # The name of the API connector.
+        self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The URL of the API endpoint to call.
+        self._target_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentityApiConnector:
@@ -73,9 +72,7 @@ class IdentityApiConnector(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import api_authentication_configuration_base, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "authenticationConfiguration": lambda n : setattr(self, 'authentication_configuration', n.get_object_value(api_authentication_configuration_base.ApiAuthenticationConfigurationBase)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "targetUrl": lambda n : setattr(self, 'target_url', n.get_str_value()),

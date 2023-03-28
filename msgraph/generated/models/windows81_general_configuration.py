@@ -1,86 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import device_configuration, internet_site_security_level, required_password_type, site_security_level, windows_user_account_control_settings
-
-from . import device_configuration
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+internet_site_security_level = lazy_import('msgraph.generated.models.internet_site_security_level')
+required_password_type = lazy_import('msgraph.generated.models.required_password_type')
+site_security_level = lazy_import('msgraph.generated.models.site_security_level')
+windows_user_account_control_settings = lazy_import('msgraph.generated.models.windows_user_account_control_settings')
 
 class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Windows81GeneralConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windows81GeneralConfiguration"
-        # Indicates whether or not to Block the user from adding email accounts to the device that are not associated with a Microsoft account.
-        self._accounts_block_adding_non_microsoft_account_email: Optional[bool] = None
-        # Value indicating whether this policy only applies to Windows 8.1. This property is read-only.
-        self._apply_only_to_windows81: Optional[bool] = None
-        # Indicates whether or not to block auto fill.
-        self._browser_block_autofill: Optional[bool] = None
-        # Indicates whether or not to block automatic detection of Intranet sites.
-        self._browser_block_automatic_detection_of_intranet_sites: Optional[bool] = None
-        # Indicates whether or not to block enterprise mode access.
-        self._browser_block_enterprise_mode_access: Optional[bool] = None
-        # Indicates whether or not to Block the user from using JavaScript.
-        self._browser_block_java_script: Optional[bool] = None
-        # Indicates whether or not to block plug-ins.
-        self._browser_block_plugins: Optional[bool] = None
-        # Indicates whether or not to block popups.
-        self._browser_block_popups: Optional[bool] = None
-        # Indicates whether or not to Block the user from sending the do not track header.
-        self._browser_block_sending_do_not_track_header: Optional[bool] = None
-        # Indicates whether or not to block a single word entry on Intranet sites.
-        self._browser_block_single_word_entry_on_intranet_sites: Optional[bool] = None
-        # The enterprise mode site list location. Could be a local file, local network or http location.
-        self._browser_enterprise_mode_site_list_location: Optional[str] = None
-        # Possible values for internet site security level.
-        self._browser_internet_security_level: Optional[internet_site_security_level.InternetSiteSecurityLevel] = None
-        # Possible values for site security level.
-        self._browser_intranet_security_level: Optional[site_security_level.SiteSecurityLevel] = None
-        # The logging report location.
-        self._browser_logging_report_location: Optional[str] = None
-        # Indicates whether or not to require a firewall.
-        self._browser_require_firewall: Optional[bool] = None
-        # Indicates whether or not to require fraud warning.
-        self._browser_require_fraud_warning: Optional[bool] = None
-        # Indicates whether or not to require high security for restricted sites.
-        self._browser_require_high_security_for_restricted_sites: Optional[bool] = None
-        # Indicates whether or not to require the user to use the smart screen filter.
-        self._browser_require_smart_screen: Optional[bool] = None
-        # Possible values for site security level.
-        self._browser_trusted_sites_security_level: Optional[site_security_level.SiteSecurityLevel] = None
-        # Indicates whether or not to block data roaming.
-        self._cellular_block_data_roaming: Optional[bool] = None
-        # Indicates whether or not to block diagnostic data submission.
-        self._diagnostics_block_data_submission: Optional[bool] = None
-        # Indicates whether or not to Block the user from using a pictures password and pin.
-        self._password_block_picture_password_and_pin: Optional[bool] = None
-        # Password expiration in days.
-        self._password_expiration_days: Optional[int] = None
-        # The number of character sets required in the password.
-        self._password_minimum_character_set_count: Optional[int] = None
-        # The minimum password length.
-        self._password_minimum_length: Optional[int] = None
-        # The minutes of inactivity before the screen times out.
-        self._password_minutes_of_inactivity_before_screen_timeout: Optional[int] = None
-        # The number of previous passwords to prevent re-use of. Valid values 0 to 24
-        self._password_previous_password_block_count: Optional[int] = None
-        # Possible values of required passwords.
-        self._password_required_type: Optional[required_password_type.RequiredPasswordType] = None
-        # The number of sign in failures before factory reset.
-        self._password_sign_in_failure_count_before_factory_reset: Optional[int] = None
-        # Indicates whether or not to require encryption on a mobile device.
-        self._storage_require_device_encryption: Optional[bool] = None
-        # Indicates whether or not to require automatic updates.
-        self._updates_require_automatic_updates: Optional[bool] = None
-        # Possible values for Windows user account control settings.
-        self._user_account_control_settings: Optional[windows_user_account_control_settings.WindowsUserAccountControlSettings] = None
-        # The work folders url.
-        self._work_folders_url: Optional[str] = None
-    
     @property
     def accounts_block_adding_non_microsoft_account_email(self,) -> Optional[bool]:
         """
@@ -421,6 +350,79 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         """
         self._cellular_block_data_roaming = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Windows81GeneralConfiguration and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.windows81GeneralConfiguration"
+        # Indicates whether or not to Block the user from adding email accounts to the device that are not associated with a Microsoft account.
+        self._accounts_block_adding_non_microsoft_account_email: Optional[bool] = None
+        # Value indicating whether this policy only applies to Windows 8.1. This property is read-only.
+        self._apply_only_to_windows81: Optional[bool] = None
+        # Indicates whether or not to block auto fill.
+        self._browser_block_autofill: Optional[bool] = None
+        # Indicates whether or not to block automatic detection of Intranet sites.
+        self._browser_block_automatic_detection_of_intranet_sites: Optional[bool] = None
+        # Indicates whether or not to block enterprise mode access.
+        self._browser_block_enterprise_mode_access: Optional[bool] = None
+        # Indicates whether or not to Block the user from using JavaScript.
+        self._browser_block_java_script: Optional[bool] = None
+        # Indicates whether or not to block plug-ins.
+        self._browser_block_plugins: Optional[bool] = None
+        # Indicates whether or not to block popups.
+        self._browser_block_popups: Optional[bool] = None
+        # Indicates whether or not to Block the user from sending the do not track header.
+        self._browser_block_sending_do_not_track_header: Optional[bool] = None
+        # Indicates whether or not to block a single word entry on Intranet sites.
+        self._browser_block_single_word_entry_on_intranet_sites: Optional[bool] = None
+        # The enterprise mode site list location. Could be a local file, local network or http location.
+        self._browser_enterprise_mode_site_list_location: Optional[str] = None
+        # Possible values for internet site security level.
+        self._browser_internet_security_level: Optional[internet_site_security_level.InternetSiteSecurityLevel] = None
+        # Possible values for site security level.
+        self._browser_intranet_security_level: Optional[site_security_level.SiteSecurityLevel] = None
+        # The logging report location.
+        self._browser_logging_report_location: Optional[str] = None
+        # Indicates whether or not to require a firewall.
+        self._browser_require_firewall: Optional[bool] = None
+        # Indicates whether or not to require fraud warning.
+        self._browser_require_fraud_warning: Optional[bool] = None
+        # Indicates whether or not to require high security for restricted sites.
+        self._browser_require_high_security_for_restricted_sites: Optional[bool] = None
+        # Indicates whether or not to require the user to use the smart screen filter.
+        self._browser_require_smart_screen: Optional[bool] = None
+        # Possible values for site security level.
+        self._browser_trusted_sites_security_level: Optional[site_security_level.SiteSecurityLevel] = None
+        # Indicates whether or not to block data roaming.
+        self._cellular_block_data_roaming: Optional[bool] = None
+        # Indicates whether or not to block diagnostic data submission.
+        self._diagnostics_block_data_submission: Optional[bool] = None
+        # Indicates whether or not to Block the user from using a pictures password and pin.
+        self._password_block_picture_password_and_pin: Optional[bool] = None
+        # Password expiration in days.
+        self._password_expiration_days: Optional[int] = None
+        # The number of character sets required in the password.
+        self._password_minimum_character_set_count: Optional[int] = None
+        # The minimum password length.
+        self._password_minimum_length: Optional[int] = None
+        # The minutes of inactivity before the screen times out.
+        self._password_minutes_of_inactivity_before_screen_timeout: Optional[int] = None
+        # The number of previous passwords to prevent re-use of. Valid values 0 to 24
+        self._password_previous_password_block_count: Optional[int] = None
+        # Possible values of required passwords.
+        self._password_required_type: Optional[required_password_type.RequiredPasswordType] = None
+        # The number of sign in failures before factory reset.
+        self._password_sign_in_failure_count_before_factory_reset: Optional[int] = None
+        # Indicates whether or not to require encryption on a mobile device.
+        self._storage_require_device_encryption: Optional[bool] = None
+        # Indicates whether or not to require automatic updates.
+        self._updates_require_automatic_updates: Optional[bool] = None
+        # Possible values for Windows user account control settings.
+        self._user_account_control_settings: Optional[windows_user_account_control_settings.WindowsUserAccountControlSettings] = None
+        # The work folders url.
+        self._work_folders_url: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows81GeneralConfiguration:
         """
@@ -455,9 +457,7 @@ class Windows81GeneralConfiguration(device_configuration.DeviceConfiguration):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_configuration, internet_site_security_level, required_password_type, site_security_level, windows_user_account_control_settings
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "accountsBlockAddingNonMicrosoftAccountEmail": lambda n : setattr(self, 'accounts_block_adding_non_microsoft_account_email', n.get_bool_value()),
             "applyOnlyToWindows81": lambda n : setattr(self, 'apply_only_to_windows81', n.get_bool_value()),
             "browserBlockAutofill": lambda n : setattr(self, 'browser_block_autofill', n.get_bool_value()),

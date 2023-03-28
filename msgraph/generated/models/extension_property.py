@@ -1,30 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import directory_object
-
-from . import directory_object
+directory_object = lazy_import('msgraph.generated.models.directory_object')
 
 class ExtensionProperty(directory_object.DirectoryObject):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new extensionProperty and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.extensionProperty"
-        # Display name of the application object on which this extension property is defined. Read-only.
-        self._app_display_name: Optional[str] = None
-        # Specifies the data type of the value the extension property can hold. Following values are supported. Not nullable. Binary - 256 bytes maximumBooleanDateTime - Must be specified in ISO 8601 format. Will be stored in UTC.Integer - 32-bit value.LargeInteger - 64-bit value.String - 256 characters maximum
-        self._data_type: Optional[str] = None
-        # Indicates if this extension property was synced from on-premises active directory using Azure AD Connect. Read-only.
-        self._is_synced_from_on_premises: Optional[bool] = None
-        # Name of the extension property. Not nullable. Supports $filter (eq).
-        self._name: Optional[str] = None
-        # Following values are supported. Not nullable. UserGroupAdministrativeUnitApplicationDeviceOrganization
-        self._target_objects: Optional[List[str]] = None
-    
     @property
     def app_display_name(self,) -> Optional[str]:
         """
@@ -41,6 +22,23 @@ class ExtensionProperty(directory_object.DirectoryObject):
             value: Value to set for the app_display_name property.
         """
         self._app_display_name = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new extensionProperty and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.extensionProperty"
+        # Display name of the application object on which this extension property is defined. Read-only.
+        self._app_display_name: Optional[str] = None
+        # Specifies the data type of the value the extension property can hold. Following values are supported. Not nullable. Binary - 256 bytes maximumBooleanDateTime - Must be specified in ISO 8601 format. Will be stored in UTC.Integer - 32-bit value.LargeInteger - 64-bit value.String - 256 characters maximum
+        self._data_type: Optional[str] = None
+        # Indicates if this extension property was synced from on-premises active directory using Azure AD Connect. Read-only.
+        self._is_synced_from_on_premises: Optional[bool] = None
+        # Name of the extension property. Not nullable. Supports $filter (eq).
+        self._name: Optional[str] = None
+        # Following values are supported. Not nullable. UserGroupAdministrativeUnitApplicationDeviceOrganization
+        self._target_objects: Optional[List[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExtensionProperty:
@@ -76,9 +74,7 @@ class ExtensionProperty(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import directory_object
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
             "dataType": lambda n : setattr(self, 'data_type', n.get_str_value()),
             "isSyncedFromOnPremises": lambda n : setattr(self, 'is_synced_from_on_premises', n.get_bool_value()),

@@ -1,23 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from .....models import reject_reason
+reject_reason = lazy_import('msgraph.generated.models.reject_reason')
 
 class RejectPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new rejectPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The callbackUri property
-        self._callback_uri: Optional[str] = None
-        # The reason property
-        self._reason: Optional[reject_reason.RejectReason] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -52,6 +40,18 @@ class RejectPostRequestBody(AdditionalDataHolder, Parsable):
         """
         self._callback_uri = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new rejectPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The callbackUri property
+        self._callback_uri: Optional[str] = None
+        # The reason property
+        self._reason: Optional[reject_reason.RejectReason] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RejectPostRequestBody:
         """
@@ -69,9 +69,7 @@ class RejectPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from .....models import reject_reason
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "callbackUri": lambda n : setattr(self, 'callback_uri', n.get_str_value()),
             "reason": lambda n : setattr(self, 'reason', n.get_enum_value(reject_reason.RejectReason)),
         }

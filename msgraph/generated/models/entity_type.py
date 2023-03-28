@@ -11,5 +11,4 @@ class EntityType(Enum):
     Drive = "drive",
     UnknownFutureValue = "unknownFutureValue",
     ChatMessage = "chatMessage",
-    Person = "person",
 

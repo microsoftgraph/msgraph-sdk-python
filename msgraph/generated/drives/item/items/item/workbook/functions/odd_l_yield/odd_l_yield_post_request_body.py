@@ -1,35 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ........models import json
+json = lazy_import('msgraph.generated.models.json')
 
 class OddLYieldPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new oddLYieldPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The basis property
-        self._basis: Optional[json.Json] = None
-        # The frequency property
-        self._frequency: Optional[json.Json] = None
-        # The lastInterest property
-        self._last_interest: Optional[json.Json] = None
-        # The maturity property
-        self._maturity: Optional[json.Json] = None
-        # The pr property
-        self._pr: Optional[json.Json] = None
-        # The rate property
-        self._rate: Optional[json.Json] = None
-        # The redemption property
-        self._redemption: Optional[json.Json] = None
-        # The settlement property
-        self._settlement: Optional[json.Json] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -63,6 +39,30 @@ class OddLYieldPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the basis property.
         """
         self._basis = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new oddLYieldPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The basis property
+        self._basis: Optional[json.Json] = None
+        # The frequency property
+        self._frequency: Optional[json.Json] = None
+        # The lastInterest property
+        self._last_interest: Optional[json.Json] = None
+        # The maturity property
+        self._maturity: Optional[json.Json] = None
+        # The pr property
+        self._pr: Optional[json.Json] = None
+        # The rate property
+        self._rate: Optional[json.Json] = None
+        # The redemption property
+        self._redemption: Optional[json.Json] = None
+        # The settlement property
+        self._settlement: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OddLYieldPostRequestBody:
@@ -98,9 +98,7 @@ class OddLYieldPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "basis": lambda n : setattr(self, 'basis', n.get_object_value(json.Json)),
             "frequency": lambda n : setattr(self, 'frequency', n.get_object_value(json.Json)),
             "lastInterest": lambda n : setattr(self, 'last_interest', n.get_object_value(json.Json)),

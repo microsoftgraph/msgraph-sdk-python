@@ -1,11 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import android_work_profile_cross_profile_data_sharing_type, android_work_profile_default_app_permission_policy_type, android_work_profile_required_password_type, device_configuration
-
-from . import device_configuration
+android_work_profile_cross_profile_data_sharing_type = lazy_import('msgraph.generated.models.android_work_profile_cross_profile_data_sharing_type')
+android_work_profile_default_app_permission_policy_type = lazy_import('msgraph.generated.models.android_work_profile_default_app_permission_policy_type')
+android_work_profile_required_password_type = lazy_import('msgraph.generated.models.android_work_profile_required_password_type')
+device_configuration = lazy_import('msgraph.generated.models.device_configuration')
 
 class AndroidWorkProfileGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
     def __init__(self,) -> None:
@@ -100,9 +101,7 @@ class AndroidWorkProfileGeneralDeviceConfiguration(device_configuration.DeviceCo
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_work_profile_cross_profile_data_sharing_type, android_work_profile_default_app_permission_policy_type, android_work_profile_required_password_type, device_configuration
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "passwordBlockFingerprintUnlock": lambda n : setattr(self, 'password_block_fingerprint_unlock', n.get_bool_value()),
             "passwordBlockTrustAgents": lambda n : setattr(self, 'password_block_trust_agents', n.get_bool_value()),
             "passwordExpirationDays": lambda n : setattr(self, 'password_expiration_days', n.get_int_value()),

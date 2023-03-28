@@ -1,14 +1,36 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_review_instance, access_review_notification_recipient_item, access_review_reviewer_scope, access_review_schedule_settings, access_review_scope, access_review_stage_settings, entity, user_identity
-
-from . import entity
+access_review_instance = lazy_import('msgraph.generated.models.access_review_instance')
+access_review_notification_recipient_item = lazy_import('msgraph.generated.models.access_review_notification_recipient_item')
+access_review_reviewer_scope = lazy_import('msgraph.generated.models.access_review_reviewer_scope')
+access_review_schedule_settings = lazy_import('msgraph.generated.models.access_review_schedule_settings')
+access_review_scope = lazy_import('msgraph.generated.models.access_review_scope')
+access_review_stage_settings = lazy_import('msgraph.generated.models.access_review_stage_settings')
+entity = lazy_import('msgraph.generated.models.entity')
+user_identity = lazy_import('msgraph.generated.models.user_identity')
 
 class AccessReviewScheduleDefinition(entity.Entity):
+    @property
+    def additional_notification_recipients(self,) -> Optional[List[access_review_notification_recipient_item.AccessReviewNotificationRecipientItem]]:
+        """
+        Gets the additionalNotificationRecipients property value. Defines the list of additional users or group members to be notified of the access review progress.
+        Returns: Optional[List[access_review_notification_recipient_item.AccessReviewNotificationRecipientItem]]
+        """
+        return self._additional_notification_recipients
+    
+    @additional_notification_recipients.setter
+    def additional_notification_recipients(self,value: Optional[List[access_review_notification_recipient_item.AccessReviewNotificationRecipientItem]] = None) -> None:
+        """
+        Sets the additionalNotificationRecipients property value. Defines the list of additional users or group members to be notified of the access review progress.
+        Args:
+            value: Value to set for the additional_notification_recipients property.
+        """
+        self._additional_notification_recipients = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new AccessReviewScheduleDefinition and sets the default values.
@@ -46,23 +68,6 @@ class AccessReviewScheduleDefinition(entity.Entity):
         self._stage_settings: Optional[List[access_review_stage_settings.AccessReviewStageSettings]] = None
         # This read-only field specifies the status of an access review. The typical states include Initializing, NotStarted, Starting, InProgress, Completing, Completed, AutoReviewing, and AutoReviewed.  Supports $select, $orderby, and $filter (eq only). Read-only.
         self._status: Optional[str] = None
-    
-    @property
-    def additional_notification_recipients(self,) -> Optional[List[access_review_notification_recipient_item.AccessReviewNotificationRecipientItem]]:
-        """
-        Gets the additionalNotificationRecipients property value. Defines the list of additional users or group members to be notified of the access review progress.
-        Returns: Optional[List[access_review_notification_recipient_item.AccessReviewNotificationRecipientItem]]
-        """
-        return self._additional_notification_recipients
-    
-    @additional_notification_recipients.setter
-    def additional_notification_recipients(self,value: Optional[List[access_review_notification_recipient_item.AccessReviewNotificationRecipientItem]] = None) -> None:
-        """
-        Sets the additionalNotificationRecipients property value. Defines the list of additional users or group members to be notified of the access review progress.
-        Args:
-            value: Value to set for the additional_notification_recipients property.
-        """
-        self._additional_notification_recipients = value
     
     @property
     def created_by(self,) -> Optional[user_identity.UserIdentity]:
@@ -183,9 +188,7 @@ class AccessReviewScheduleDefinition(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_instance, access_review_notification_recipient_item, access_review_reviewer_scope, access_review_schedule_settings, access_review_scope, access_review_stage_settings, entity, user_identity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "additionalNotificationRecipients": lambda n : setattr(self, 'additional_notification_recipients', n.get_collection_of_object_values(access_review_notification_recipient_item.AccessReviewNotificationRecipientItem)),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),

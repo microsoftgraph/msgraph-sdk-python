@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_package_question
-
-from . import access_package_question
+access_package_question = lazy_import('msgraph.generated.models.access_package_question')
 
 class AccessPackageTextInputQuestion(access_package_question.AccessPackageQuestion):
     def __init__(self,) -> None:
@@ -36,9 +34,7 @@ class AccessPackageTextInputQuestion(access_package_question.AccessPackageQuesti
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_question
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "isSingleLineQuestion": lambda n : setattr(self, 'is_single_line_question', n.get_bool_value()),
             "regexPattern": lambda n : setattr(self, 'regex_pattern', n.get_str_value()),
         }

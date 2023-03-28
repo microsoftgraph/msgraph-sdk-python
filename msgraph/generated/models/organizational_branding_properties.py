@@ -1,41 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, organizational_branding, organizational_branding_localization
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class OrganizationalBrandingProperties(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new organizationalBrandingProperties and sets the default values.
-        """
-        super().__init__()
-        # Color that will appear in place of the background image in low-bandwidth connections. We recommend that you use the primary color of your banner logo or your organization color. Specify this in hexadecimal format, for example, white is #FFFFFF.
-        self._background_color: Optional[str] = None
-        # Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
-        self._background_image: Optional[bytes] = None
-        # A relative URL for the backgroundImage property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
-        self._background_image_relative_url: Optional[str] = None
-        # A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
-        self._banner_logo: Optional[bytes] = None
-        # A relative url for the bannerLogo property that is combined with a CDN base URL from the cdnList to provide the read-only version served by a CDN. Read-only.
-        self._banner_logo_relative_url: Optional[str] = None
-        # A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
-        self._cdn_list: Optional[List[str]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Text that appears at the bottom of the sign-in box. You can use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be Unicode and not exceed 1024 characters.
-        self._sign_in_page_text: Optional[str] = None
-        # A square version of your company logo that appears in Windows 10 out-of-box experiences (OOBE) and when Windows Autopilot is enabled for deployment. Allowed types are PNG or JPEG no larger than 240 x 240 pixels and no more than 10 KB in size. We recommend using a transparent image with no padding around the logo.
-        self._square_logo: Optional[bytes] = None
-        # A relative url for the squareLogo property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
-        self._square_logo_relative_url: Optional[str] = None
-        # String that shows as the hint in the username textbox on the sign-in screen. This text must be a Unicode, without links or code, and can't exceed 64 characters.
-        self._username_hint_text: Optional[str] = None
-    
     @property
     def background_color(self,) -> Optional[str]:
         """
@@ -138,6 +108,34 @@ class OrganizationalBrandingProperties(entity.Entity):
         """
         self._cdn_list = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new organizationalBrandingProperties and sets the default values.
+        """
+        super().__init__()
+        # Color that will appear in place of the background image in low-bandwidth connections. We recommend that you use the primary color of your banner logo or your organization color. Specify this in hexadecimal format, for example, white is #FFFFFF.
+        self._background_color: Optional[str] = None
+        # Image that appears as the background of the sign-in page. The allowed types are PNG or JPEG not smaller than 300 KB and not larger than 1920 × 1080 pixels. A smaller image will reduce bandwidth requirements and make the page load faster.
+        self._background_image: Optional[bytes] = None
+        # A relative URL for the backgroundImage property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
+        self._background_image_relative_url: Optional[str] = None
+        # A banner version of your company logo that appears on the sign-in page. The allowed types are PNG or JPEG no larger than 36 × 245 pixels. We recommend using a transparent image with no padding around the logo.
+        self._banner_logo: Optional[bytes] = None
+        # A relative url for the bannerLogo property that is combined with a CDN base URL from the cdnList to provide the read-only version served by a CDN. Read-only.
+        self._banner_logo_relative_url: Optional[str] = None
+        # A list of base URLs for all available CDN providers that are serving the assets of the current resource. Several CDN providers are used at the same time for high availability of read requests. Read-only.
+        self._cdn_list: Optional[List[str]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Text that appears at the bottom of the sign-in box. You can use this to communicate additional information, such as the phone number to your help desk or a legal statement. This text must be Unicode and not exceed 1024 characters.
+        self._sign_in_page_text: Optional[str] = None
+        # A square version of your company logo that appears in Windows 10 out-of-box experiences (OOBE) and when Windows Autopilot is enabled for deployment. Allowed types are PNG or JPEG no larger than 240 x 240 pixels and no more than 10 KB in size. We recommend using a transparent image with no padding around the logo.
+        self._square_logo: Optional[bytes] = None
+        # A relative url for the squareLogo property that is combined with a CDN base URL from the cdnList to provide the version served by a CDN. Read-only.
+        self._square_logo_relative_url: Optional[str] = None
+        # String that shows as the hint in the username textbox on the sign-in screen. This text must be a Unicode, without links or code, and can't exceed 64 characters.
+        self._username_hint_text: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OrganizationalBrandingProperties:
         """
@@ -148,17 +146,6 @@ class OrganizationalBrandingProperties(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.organizationalBranding":
-                from . import organizational_branding
-
-                return organizational_branding.OrganizationalBranding()
-            if mapping_value == "#microsoft.graph.organizationalBrandingLocalization":
-                from . import organizational_branding_localization
-
-                return organizational_branding_localization.OrganizationalBrandingLocalization()
         return OrganizationalBrandingProperties()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -166,9 +153,7 @@ class OrganizationalBrandingProperties(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, organizational_branding, organizational_branding_localization
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "backgroundColor": lambda n : setattr(self, 'background_color', n.get_str_value()),
             "backgroundImage": lambda n : setattr(self, 'background_image', n.get_bytes_value()),
             "backgroundImageRelativeUrl": lambda n : setattr(self, 'background_image_relative_url', n.get_str_value()),

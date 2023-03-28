@@ -1,59 +1,17 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import column_definition, column_link, content_type_order, document_set, document_set_content, entity, item_reference
-
-from . import entity
+column_definition = lazy_import('msgraph.generated.models.column_definition')
+column_link = lazy_import('msgraph.generated.models.column_link')
+content_type_order = lazy_import('msgraph.generated.models.content_type_order')
+document_set = lazy_import('msgraph.generated.models.document_set')
+document_set_content = lazy_import('msgraph.generated.models.document_set_content')
+entity = lazy_import('msgraph.generated.models.entity')
+item_reference = lazy_import('msgraph.generated.models.item_reference')
 
 class ContentType(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new contentType and sets the default values.
-        """
-        super().__init__()
-        # List of canonical URLs for hub sites with which this content type is associated to. This will contain all hub sites where this content type is queued to be enforced or is already enforced. Enforcing a content type means that the content type will be applied to the lists in the enforced sites.
-        self._associated_hubs_urls: Optional[List[str]] = None
-        # Parent contentType from which this content type is derived.
-        self._base: Optional[ContentType] = None
-        # The collection of content types that are ancestors of this content type.
-        self._base_types: Optional[List[ContentType]] = None
-        # The collection of columns that are required by this content type.
-        self._column_links: Optional[List[column_link.ColumnLink]] = None
-        # Column order information in a content type.
-        self._column_positions: Optional[List[column_definition.ColumnDefinition]] = None
-        # The collection of column definitions for this contentType.
-        self._columns: Optional[List[column_definition.ColumnDefinition]] = None
-        # The descriptive text for the item.
-        self._description: Optional[str] = None
-        # Document Set metadata.
-        self._document_set: Optional[document_set.DocumentSet] = None
-        # Document template metadata. To make sure that documents have consistent content across a site and its subsites, you can associate a Word, Excel, or PowerPoint template with a site content type.
-        self._document_template: Optional[document_set_content.DocumentSetContent] = None
-        # The name of the group this content type belongs to. Helps organize related content types.
-        self._group: Optional[str] = None
-        # Indicates whether the content type is hidden in the list's 'New' menu.
-        self._hidden: Optional[bool] = None
-        # If this content type is inherited from another scope (like a site), provides a reference to the item where the content type is defined.
-        self._inherited_from: Optional[item_reference.ItemReference] = None
-        # Specifies if a content type is a built-in content type.
-        self._is_built_in: Optional[bool] = None
-        # The name of the content type.
-        self._name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Specifies the order in which the content type appears in the selection UI.
-        self._order: Optional[content_type_order.ContentTypeOrder] = None
-        # The unique identifier of the content type.
-        self._parent_id: Optional[str] = None
-        # If true, any changes made to the content type will be pushed to inherited content types and lists that implement the content type.
-        self._propagate_changes: Optional[bool] = None
-        # If true, the content type can't be modified unless this value is first set to false.
-        self._read_only: Optional[bool] = None
-        # If true, the content type can't be modified by users or through push-down operations. Only site collection administrators can seal or unseal content types.
-        self._sealed: Optional[bool] = None
-    
     @property
     def associated_hubs_urls(self,) -> Optional[List[str]]:
         """
@@ -156,6 +114,52 @@ class ContentType(entity.Entity):
         """
         self._columns = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new contentType and sets the default values.
+        """
+        super().__init__()
+        # List of canonical URLs for hub sites with which this content type is associated to. This will contain all hub sites where this content type is queued to be enforced or is already enforced. Enforcing a content type means that the content type will be applied to the lists in the enforced sites.
+        self._associated_hubs_urls: Optional[List[str]] = None
+        # Parent contentType from which this content type is derived.
+        self._base: Optional[ContentType] = None
+        # The collection of content types that are ancestors of this content type.
+        self._base_types: Optional[List[ContentType]] = None
+        # The collection of columns that are required by this content type.
+        self._column_links: Optional[List[column_link.ColumnLink]] = None
+        # Column order information in a content type.
+        self._column_positions: Optional[List[column_definition.ColumnDefinition]] = None
+        # The collection of column definitions for this contentType.
+        self._columns: Optional[List[column_definition.ColumnDefinition]] = None
+        # The descriptive text for the item.
+        self._description: Optional[str] = None
+        # Document Set metadata.
+        self._document_set: Optional[document_set.DocumentSet] = None
+        # Document template metadata. To make sure that documents have consistent content across a site and its subsites, you can associate a Word, Excel, or PowerPoint template with a site content type.
+        self._document_template: Optional[document_set_content.DocumentSetContent] = None
+        # The name of the group this content type belongs to. Helps organize related content types.
+        self._group: Optional[str] = None
+        # Indicates whether the content type is hidden in the list's 'New' menu.
+        self._hidden: Optional[bool] = None
+        # If this content type is inherited from another scope (like a site), provides a reference to the item where the content type is defined.
+        self._inherited_from: Optional[item_reference.ItemReference] = None
+        # Specifies if a content type is a built-in content type.
+        self._is_built_in: Optional[bool] = None
+        # The name of the content type.
+        self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Specifies the order in which the content type appears in the selection UI.
+        self._order: Optional[content_type_order.ContentTypeOrder] = None
+        # The unique identifier of the content type.
+        self._parent_id: Optional[str] = None
+        # If true, any changes made to the content type will be pushed to inherited content types and lists that implement the content type.
+        self._propagate_changes: Optional[bool] = None
+        # If true, the content type can't be modified unless this value is first set to false.
+        self._read_only: Optional[bool] = None
+        # If true, the content type can't be modified by users or through push-down operations. Only site collection administrators can seal or unseal content types.
+        self._sealed: Optional[bool] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ContentType:
         """
@@ -224,9 +228,7 @@ class ContentType(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import column_definition, column_link, content_type_order, document_set, document_set_content, entity, item_reference
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "associatedHubsUrls": lambda n : setattr(self, 'associated_hubs_urls', n.get_collection_of_primitive_values(str)),
             "base": lambda n : setattr(self, 'base', n.get_object_value(ContentType)),
             "baseTypes": lambda n : setattr(self, 'base_types', n.get_collection_of_object_values(ContentType)),

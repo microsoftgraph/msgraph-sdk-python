@@ -7,22 +7,56 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import managed_app_registration
-    from ....models.o_data_errors import o_data_error
-    from .applied_policies import applied_policies_request_builder
-    from .applied_policies.item import managed_app_policy_item_request_builder
-    from .intended_policies import intended_policies_request_builder
-    from .intended_policies.item import managed_app_policy_item_request_builder
-    from .operations import operations_request_builder
-    from .operations.item import managed_app_operation_item_request_builder
+applied_policies_request_builder = lazy_import('msgraph.generated.device_app_management.managed_app_registrations.item.applied_policies.applied_policies_request_builder')
+managed_app_policy_item_request_builder = lazy_import('msgraph.generated.device_app_management.managed_app_registrations.item.applied_policies.item.managed_app_policy_item_request_builder')
+intended_policies_request_builder = lazy_import('msgraph.generated.device_app_management.managed_app_registrations.item.intended_policies.intended_policies_request_builder')
+managed_app_policy_item_request_builder = lazy_import('msgraph.generated.device_app_management.managed_app_registrations.item.intended_policies.item.managed_app_policy_item_request_builder')
+operations_request_builder = lazy_import('msgraph.generated.device_app_management.managed_app_registrations.item.operations.operations_request_builder')
+managed_app_operation_item_request_builder = lazy_import('msgraph.generated.device_app_management.managed_app_registrations.item.operations.item.managed_app_operation_item_request_builder')
+managed_app_registration = lazy_import('msgraph.generated.models.managed_app_registration')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ManagedAppRegistrationItemRequestBuilder():
     """
     Provides operations to manage the managedAppRegistrations property of the microsoft.graph.deviceAppManagement entity.
     """
+    @property
+    def applied_policies(self) -> applied_policies_request_builder.AppliedPoliciesRequestBuilder:
+        """
+        Provides operations to manage the appliedPolicies property of the microsoft.graph.managedAppRegistration entity.
+        """
+        return applied_policies_request_builder.AppliedPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def intended_policies(self) -> intended_policies_request_builder.IntendedPoliciesRequestBuilder:
+        """
+        Provides operations to manage the intendedPolicies property of the microsoft.graph.managedAppRegistration entity.
+        """
+        return intended_policies_request_builder.IntendedPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
+        """
+        Provides operations to manage the operations property of the microsoft.graph.managedAppRegistration entity.
+        """
+        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def applied_policies_by_id(self,id: str) -> managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder:
+        """
+        Provides operations to manage the appliedPolicies property of the microsoft.graph.managedAppRegistration entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["managedAppPolicy%2Did"] = id
+        return managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ManagedAppRegistrationItemRequestBuilder and sets the default values.
@@ -41,22 +75,6 @@ class ManagedAppRegistrationItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def applied_policies_by_id(self,id: str) -> managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder:
-        """
-        Provides operations to manage the appliedPolicies property of the microsoft.graph.managedAppRegistration entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .applied_policies.item import managed_app_policy_item_request_builder
-        from .intended_policies.item import managed_app_policy_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["managedAppPolicy%2Did"] = id
-        return managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def delete(self,request_configuration: Optional[ManagedAppRegistrationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property managedAppRegistrations for deviceAppManagement
@@ -66,8 +84,6 @@ class ManagedAppRegistrationItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -86,16 +102,12 @@ class ManagedAppRegistrationItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import managed_app_registration
-
         return await self.request_adapter.send_async(request_info, managed_app_registration.ManagedAppRegistration, error_mapping)
     
     def intended_policies_by_id(self,id: str) -> managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder:
@@ -107,9 +119,6 @@ class ManagedAppRegistrationItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .applied_policies.item import managed_app_policy_item_request_builder
-        from .intended_policies.item import managed_app_policy_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["managedAppPolicy%2Did"] = id
         return managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -123,8 +132,6 @@ class ManagedAppRegistrationItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .operations.item import managed_app_operation_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["managedAppOperation%2Did"] = id
         return managed_app_operation_item_request_builder.ManagedAppOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -142,16 +149,12 @@ class ManagedAppRegistrationItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import managed_app_registration
-
         return await self.request_adapter.send_async(request_info, managed_app_registration.ManagedAppRegistration, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ManagedAppRegistrationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -209,33 +212,6 @@ class ManagedAppRegistrationItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def applied_policies(self) -> applied_policies_request_builder.AppliedPoliciesRequestBuilder:
-        """
-        Provides operations to manage the appliedPolicies property of the microsoft.graph.managedAppRegistration entity.
-        """
-        from .applied_policies import applied_policies_request_builder
-
-        return applied_policies_request_builder.AppliedPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def intended_policies(self) -> intended_policies_request_builder.IntendedPoliciesRequestBuilder:
-        """
-        Provides operations to manage the intendedPolicies property of the microsoft.graph.managedAppRegistration entity.
-        """
-        from .intended_policies import intended_policies_request_builder
-
-        return intended_policies_request_builder.IntendedPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
-        """
-        Provides operations to manage the operations property of the microsoft.graph.managedAppRegistration entity.
-        """
-        from .operations import operations_request_builder
-
-        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class ManagedAppRegistrationItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -253,6 +229,12 @@ class ManagedAppRegistrationItemRequestBuilder():
         """
         The managed app registrations.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -268,12 +250,6 @@ class ManagedAppRegistrationItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class ManagedAppRegistrationItemRequestBuilderGetRequestConfiguration():

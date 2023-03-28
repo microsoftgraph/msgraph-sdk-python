@@ -7,22 +7,64 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import directory_object_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .graph_application import graph_application_request_builder
-    from .graph_app_role_assignment import graph_app_role_assignment_request_builder
-    from .graph_endpoint import graph_endpoint_request_builder
-    from .graph_group import graph_group_request_builder
-    from .graph_service_principal import graph_service_principal_request_builder
+directory_object_collection_response = lazy_import('msgraph.generated.models.directory_object_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+count_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.count.count_request_builder')
+graph_application_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.graph_application.graph_application_request_builder')
+graph_app_role_assignment_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.graph_app_role_assignment.graph_app_role_assignment_request_builder')
+graph_endpoint_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.graph_endpoint.graph_endpoint_request_builder')
+graph_group_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.graph_group.graph_group_request_builder')
+graph_service_principal_request_builder = lazy_import('msgraph.generated.service_principals.item.owned_objects.graph_service_principal.graph_service_principal_request_builder')
 
 class OwnedObjectsRequestBuilder():
     """
     Provides operations to manage the ownedObjects property of the microsoft.graph.servicePrincipal entity.
     """
+    @property
+    def count(self) -> count_request_builder.CountRequestBuilder:
+        """
+        Provides operations to count the resources in the collection.
+        """
+        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_application(self) -> graph_application_request_builder.GraphApplicationRequestBuilder:
+        """
+        Casts the previous resource to application.
+        """
+        return graph_application_request_builder.GraphApplicationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_app_role_assignment(self) -> graph_app_role_assignment_request_builder.GraphAppRoleAssignmentRequestBuilder:
+        """
+        Casts the previous resource to appRoleAssignment.
+        """
+        return graph_app_role_assignment_request_builder.GraphAppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_endpoint(self) -> graph_endpoint_request_builder.GraphEndpointRequestBuilder:
+        """
+        Casts the previous resource to endpoint.
+        """
+        return graph_endpoint_request_builder.GraphEndpointRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_group(self) -> graph_group_request_builder.GraphGroupRequestBuilder:
+        """
+        Casts the previous resource to group.
+        """
+        return graph_group_request_builder.GraphGroupRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_service_principal(self) -> graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder:
+        """
+        Casts the previous resource to servicePrincipal.
+        """
+        return graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new OwnedObjectsRequestBuilder and sets the default values.
@@ -51,16 +93,12 @@ class OwnedObjectsRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import directory_object_collection_response
-
         return await self.request_adapter.send_async(request_info, directory_object_collection_response.DirectoryObjectCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[OwnedObjectsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -81,65 +119,35 @@ class OwnedObjectsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count import count_request_builder
-
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def graph_application(self) -> graph_application_request_builder.GraphApplicationRequestBuilder:
-        """
-        Casts the previous resource to application.
-        """
-        from .graph_application import graph_application_request_builder
-
-        return graph_application_request_builder.GraphApplicationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def graph_app_role_assignment(self) -> graph_app_role_assignment_request_builder.GraphAppRoleAssignmentRequestBuilder:
-        """
-        Casts the previous resource to appRoleAssignment.
-        """
-        from .graph_app_role_assignment import graph_app_role_assignment_request_builder
-
-        return graph_app_role_assignment_request_builder.GraphAppRoleAssignmentRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def graph_endpoint(self) -> graph_endpoint_request_builder.GraphEndpointRequestBuilder:
-        """
-        Casts the previous resource to endpoint.
-        """
-        from .graph_endpoint import graph_endpoint_request_builder
-
-        return graph_endpoint_request_builder.GraphEndpointRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def graph_group(self) -> graph_group_request_builder.GraphGroupRequestBuilder:
-        """
-        Casts the previous resource to group.
-        """
-        from .graph_group import graph_group_request_builder
-
-        return graph_group_request_builder.GraphGroupRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def graph_service_principal(self) -> graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder:
-        """
-        Casts the previous resource to servicePrincipal.
-        """
-        from .graph_service_principal import graph_service_principal_request_builder
-
-        return graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class OwnedObjectsRequestBuilderGetQueryParameters():
         """
         Directory objects that are owned by this service principal. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
         """
+        # Include count of items
+        count: Optional[bool] = None
+
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -167,30 +175,6 @@ class OwnedObjectsRequestBuilder():
                 return "%24top"
             return original_name
         
-        # Include count of items
-        count: Optional[bool] = None
-
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Filter items by property values
-        filter: Optional[str] = None
-
-        # Order items by property values
-        orderby: Optional[List[str]] = None
-
-        # Search items by search phrases
-        search: Optional[str] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
-        # Skip the first n items
-        skip: Optional[int] = None
-
-        # Show only the first n items
-        top: Optional[int] = None
-
     
     @dataclass
     class OwnedObjectsRequestBuilderGetRequestConfiguration():

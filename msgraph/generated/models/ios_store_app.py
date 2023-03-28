@@ -1,28 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import ios_device_type, ios_minimum_operating_system, mobile_app
-
-from . import mobile_app
+ios_device_type = lazy_import('msgraph.generated.models.ios_device_type')
+ios_minimum_operating_system = lazy_import('msgraph.generated.models.ios_minimum_operating_system')
+mobile_app = lazy_import('msgraph.generated.models.mobile_app')
 
 class IosStoreApp(mobile_app.MobileApp):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IosStoreApp and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.iosStoreApp"
-        # The Apple App Store URL
-        self._app_store_url: Optional[str] = None
-        # Contains properties of the possible iOS device types the mobile app can run on.
-        self._applicable_device_type: Optional[ios_device_type.IosDeviceType] = None
-        # The Identity Name.
-        self._bundle_id: Optional[str] = None
-        # The value for the minimum applicable operating system.
-        self._minimum_supported_operating_system: Optional[ios_minimum_operating_system.IosMinimumOperatingSystem] = None
-    
     @property
     def app_store_url(self,) -> Optional[str]:
         """
@@ -74,6 +59,21 @@ class IosStoreApp(mobile_app.MobileApp):
         """
         self._bundle_id = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new IosStoreApp and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.iosStoreApp"
+        # The Apple App Store URL
+        self._app_store_url: Optional[str] = None
+        # Contains properties of the possible iOS device types the mobile app can run on.
+        self._applicable_device_type: Optional[ios_device_type.IosDeviceType] = None
+        # The Identity Name.
+        self._bundle_id: Optional[str] = None
+        # The value for the minimum applicable operating system.
+        self._minimum_supported_operating_system: Optional[ios_minimum_operating_system.IosMinimumOperatingSystem] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosStoreApp:
         """
@@ -91,9 +91,7 @@ class IosStoreApp(mobile_app.MobileApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ios_device_type, ios_minimum_operating_system, mobile_app
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "applicableDeviceType": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(ios_device_type.IosDeviceType)),
             "appStoreUrl": lambda n : setattr(self, 'app_store_url', n.get_str_value()),
             "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),

@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_review_notification_recipient_scope
-
-from . import access_review_notification_recipient_scope
+access_review_notification_recipient_scope = lazy_import('msgraph.generated.models.access_review_notification_recipient_scope')
 
 class AccessReviewNotificationRecipientQueryScope(access_review_notification_recipient_scope.AccessReviewNotificationRecipientScope):
     def __init__(self,) -> None:
@@ -38,9 +36,7 @@ class AccessReviewNotificationRecipientQueryScope(access_review_notification_rec
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_notification_recipient_scope
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "query": lambda n : setattr(self, 'query', n.get_str_value()),
             "queryRoot": lambda n : setattr(self, 'query_root', n.get_str_value()),
             "queryType": lambda n : setattr(self, 'query_type', n.get_str_value()),

@@ -7,12 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import add_copy_from_content_type_hub_post_request_body
-    from .....models import content_type
-    from .....models.o_data_errors import o_data_error
+content_type = lazy_import('msgraph.generated.models.content_type')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+add_copy_from_content_type_hub_post_request_body = lazy_import('msgraph.generated.sites.item.content_types.add_copy_from_content_type_hub.add_copy_from_content_type_hub_post_request_body')
 
 class AddCopyFromContentTypeHubRequestBuilder():
     """
@@ -49,16 +49,12 @@ class AddCopyFromContentTypeHubRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from .....models import content_type
-
         return await self.request_adapter.send_async(request_info, content_type.ContentType, error_mapping)
     
     def to_post_request_information(self,body: Optional[add_copy_from_content_type_hub_post_request_body.AddCopyFromContentTypeHubPostRequestBody] = None, request_configuration: Optional[AddCopyFromContentTypeHubRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:

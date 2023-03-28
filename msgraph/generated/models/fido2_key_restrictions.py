@@ -1,27 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import fido2_restriction_enforcement_type
+fido2_restriction_enforcement_type = lazy_import('msgraph.generated.models.fido2_restriction_enforcement_type')
 
 class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new fido2KeyRestrictions and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # A collection of Authenticator Attestation GUIDs. AADGUIDs define key types and manufacturers.
-        self._aa_guids: Optional[List[str]] = None
-        # Enforcement type. Possible values are: allow, block.
-        self._enforcement_type: Optional[fido2_restriction_enforcement_type.Fido2RestrictionEnforcementType] = None
-        # Determines if the configured key enforcement is enabled.
-        self._is_enforced: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def aa_guids(self,) -> Optional[List[str]]:
         """
@@ -55,6 +39,22 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new fido2KeyRestrictions and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # A collection of Authenticator Attestation GUIDs. AADGUIDs define key types and manufacturers.
+        self._aa_guids: Optional[List[str]] = None
+        # Enforcement type. Possible values are: allow, block.
+        self._enforcement_type: Optional[fido2_restriction_enforcement_type.Fido2RestrictionEnforcementType] = None
+        # Determines if the configured key enforcement is enabled.
+        self._is_enforced: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Fido2KeyRestrictions:
@@ -90,9 +90,7 @@ class Fido2KeyRestrictions(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import fido2_restriction_enforcement_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "aaGuids": lambda n : setattr(self, 'aa_guids', n.get_collection_of_primitive_values(str)),
             "enforcementType": lambda n : setattr(self, 'enforcement_type', n.get_enum_value(fido2_restriction_enforcement_type.Fido2RestrictionEnforcementType)),
             "isEnforced": lambda n : setattr(self, 'is_enforced', n.get_bool_value()),

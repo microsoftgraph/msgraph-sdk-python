@@ -1,27 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import planner_container_type
+planner_container_type = lazy_import('msgraph.generated.models.planner_container_type')
 
 class PlannerPlanContainer(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new plannerPlanContainer and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The identifier of the resource that contains the plan. Optional.
-        self._container_id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The type of the resource that contains the plan. For supported types, see the previous table. Possible values are: group, unknownFutureValue, roster. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: roster. Optional.
-        self._type: Optional[planner_container_type.PlannerContainerType] = None
-        # The full canonical URL of the container. Optional.
-        self._url: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,6 +22,22 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new plannerPlanContainer and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The identifier of the resource that contains the plan. Optional.
+        self._container_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The type of the resource that contains the plan. For supported types, see the previous table. Possible values are: group, unknownFutureValue, roster. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value in this evolvable enum: roster. Optional.
+        self._type: Optional[planner_container_type.PlannerContainerType] = None
+        # The full canonical URL of the container. Optional.
+        self._url: Optional[str] = None
     
     @property
     def container_id(self,) -> Optional[str]:
@@ -73,9 +73,7 @@ class PlannerPlanContainer(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import planner_container_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "containerId": lambda n : setattr(self, 'container_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(planner_container_type.PlannerContainerType)),

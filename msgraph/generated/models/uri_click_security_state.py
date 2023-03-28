@@ -1,31 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class UriClickSecurityState(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new uriClickSecurityState and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The clickAction property
-        self._click_action: Optional[str] = None
-        # The clickDateTime property
-        self._click_date_time: Optional[datetime] = None
-        # The id property
-        self._id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The sourceId property
-        self._source_id: Optional[str] = None
-        # The uriDomain property
-        self._uri_domain: Optional[str] = None
-        # The verdict property
-        self._verdict: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -77,6 +56,28 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         """
         self._click_date_time = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new uriClickSecurityState and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The clickAction property
+        self._click_action: Optional[str] = None
+        # The clickDateTime property
+        self._click_date_time: Optional[datetime] = None
+        # The id property
+        self._id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The sourceId property
+        self._source_id: Optional[str] = None
+        # The uriDomain property
+        self._uri_domain: Optional[str] = None
+        # The verdict property
+        self._verdict: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UriClickSecurityState:
         """
@@ -94,7 +95,7 @@ class UriClickSecurityState(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "clickAction": lambda n : setattr(self, 'click_action', n.get_str_value()),
             "clickDateTime": lambda n : setattr(self, 'click_date_time', n.get_datetime_value()),
             "id": lambda n : setattr(self, 'id', n.get_str_value()),

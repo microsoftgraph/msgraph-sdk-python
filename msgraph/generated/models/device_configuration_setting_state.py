@@ -1,14 +1,32 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import compliance_status, setting_source
+compliance_status = lazy_import('msgraph.generated.models.compliance_status')
+setting_source = lazy_import('msgraph.generated.models.setting_source')
 
 class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
     """
     Device Configuration Setting State for a given device.
     """
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceConfigurationSettingState and sets the default values.
@@ -42,23 +60,6 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         self._user_name: Optional[str] = None
         # UserPrincipalName.
         self._user_principal_name: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceConfigurationSettingState:
@@ -128,9 +129,7 @@ class DeviceConfigurationSettingState(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import compliance_status, setting_source
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "currentValue": lambda n : setattr(self, 'current_value', n.get_str_value()),
             "errorCode": lambda n : setattr(self, 'error_code', n.get_int_value()),
             "errorDescription": lambda n : setattr(self, 'error_description', n.get_str_value()),

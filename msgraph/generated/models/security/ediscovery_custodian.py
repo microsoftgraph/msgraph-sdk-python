@@ -1,14 +1,33 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import data_source_container, ediscovery_index_operation, site_source, unified_group_source, user_source
-
-from . import data_source_container
+data_source_container = lazy_import('msgraph.generated.models.security.data_source_container')
+ediscovery_index_operation = lazy_import('msgraph.generated.models.security.ediscovery_index_operation')
+site_source = lazy_import('msgraph.generated.models.security.site_source')
+unified_group_source = lazy_import('msgraph.generated.models.security.unified_group_source')
+user_source = lazy_import('msgraph.generated.models.security.user_source')
 
 class EdiscoveryCustodian(data_source_container.DataSourceContainer):
+    @property
+    def acknowledged_date_time(self,) -> Optional[datetime]:
+        """
+        Gets the acknowledgedDateTime property value. Date and time the custodian acknowledged a hold notification.
+        Returns: Optional[datetime]
+        """
+        return self._acknowledged_date_time
+    
+    @acknowledged_date_time.setter
+    def acknowledged_date_time(self,value: Optional[datetime] = None) -> None:
+        """
+        Sets the acknowledgedDateTime property value. Date and time the custodian acknowledged a hold notification.
+        Args:
+            value: Value to set for the acknowledged_date_time property.
+        """
+        self._acknowledged_date_time = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new EdiscoveryCustodian and sets the default values.
@@ -27,23 +46,6 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
         self._unified_group_sources: Optional[List[unified_group_source.UnifiedGroupSource]] = None
         # Data source entity for a the custodian. This is the container for a custodian's mailbox and OneDrive for Business site.
         self._user_sources: Optional[List[user_source.UserSource]] = None
-    
-    @property
-    def acknowledged_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the acknowledgedDateTime property value. Date and time the custodian acknowledged a hold notification.
-        Returns: Optional[datetime]
-        """
-        return self._acknowledged_date_time
-    
-    @acknowledged_date_time.setter
-    def acknowledged_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the acknowledgedDateTime property value. Date and time the custodian acknowledged a hold notification.
-        Args:
-            value: Value to set for the acknowledged_date_time property.
-        """
-        self._acknowledged_date_time = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryCustodian:
@@ -79,9 +81,7 @@ class EdiscoveryCustodian(data_source_container.DataSourceContainer):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import data_source_container, ediscovery_index_operation, site_source, unified_group_source, user_source
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "acknowledgedDateTime": lambda n : setattr(self, 'acknowledged_date_time', n.get_datetime_value()),
             "email": lambda n : setattr(self, 'email', n.get_str_value()),
             "lastIndexOperation": lambda n : setattr(self, 'last_index_operation', n.get_object_value(ediscovery_index_operation.EdiscoveryIndexOperation)),

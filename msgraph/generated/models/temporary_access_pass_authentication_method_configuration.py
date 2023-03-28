@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import authentication_method_configuration, authentication_method_target
-
-from . import authentication_method_configuration
+authentication_method_configuration = lazy_import('msgraph.generated.models.authentication_method_configuration')
+authentication_method_target = lazy_import('msgraph.generated.models.authentication_method_target')
 
 class TemporaryAccessPassAuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
     def __init__(self,) -> None:
@@ -78,9 +77,7 @@ class TemporaryAccessPassAuthenticationMethodConfiguration(authentication_method
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_configuration, authentication_method_target
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "defaultLength": lambda n : setattr(self, 'default_length', n.get_int_value()),
             "defaultLifetimeInMinutes": lambda n : setattr(self, 'default_lifetime_in_minutes', n.get_int_value()),
             "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),

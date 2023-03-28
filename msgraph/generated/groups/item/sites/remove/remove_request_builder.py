@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import remove_post_request_body, remove_response
-    from .....models.o_data_errors import o_data_error
+remove_post_request_body = lazy_import('msgraph.generated.groups.item.sites.remove.remove_post_request_body')
+remove_response = lazy_import('msgraph.generated.groups.item.sites.remove.remove_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class RemoveRequestBuilder():
     """
@@ -48,16 +49,12 @@ class RemoveRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from .....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import remove_response
-
         return await self.request_adapter.send_async(request_info, remove_response.RemoveResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[remove_post_request_body.RemovePostRequestBody] = None, request_configuration: Optional[RemoveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:

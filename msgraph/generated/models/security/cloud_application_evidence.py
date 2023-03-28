@@ -1,13 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import alert_evidence
-
-from . import alert_evidence
+alert_evidence = lazy_import('msgraph.generated.models.security.alert_evidence')
 
 class CloudApplicationEvidence(alert_evidence.AlertEvidence):
+    @property
+    def app_id(self,) -> Optional[int]:
+        """
+        Gets the appId property value. Unique identifier of the application.
+        Returns: Optional[int]
+        """
+        return self._app_id
+    
+    @app_id.setter
+    def app_id(self,value: Optional[int] = None) -> None:
+        """
+        Sets the appId property value. Unique identifier of the application.
+        Args:
+            value: Value to set for the app_id property.
+        """
+        self._app_id = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new CloudApplicationEvidence and sets the default values.
@@ -25,23 +40,6 @@ class CloudApplicationEvidence(alert_evidence.AlertEvidence):
         self.odata_type: Optional[str] = None
         # The identifier of the SaaS application.
         self._saas_app_id: Optional[int] = None
-    
-    @property
-    def app_id(self,) -> Optional[int]:
-        """
-        Gets the appId property value. Unique identifier of the application.
-        Returns: Optional[int]
-        """
-        return self._app_id
-    
-    @app_id.setter
-    def app_id(self,value: Optional[int] = None) -> None:
-        """
-        Sets the appId property value. Unique identifier of the application.
-        Args:
-            value: Value to set for the app_id property.
-        """
-        self._app_id = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CloudApplicationEvidence:
@@ -77,9 +75,7 @@ class CloudApplicationEvidence(alert_evidence.AlertEvidence):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alert_evidence
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "appId": lambda n : setattr(self, 'app_id', n.get_int_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "instanceId": lambda n : setattr(self, 'instance_id', n.get_int_value()),

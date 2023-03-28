@@ -1,37 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import json, workbook_icon
+json = lazy_import('msgraph.generated.models.json')
+workbook_icon = lazy_import('msgraph.generated.models.workbook_icon')
 
 class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookFilterCriteria and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The color property
-        self._color: Optional[str] = None
-        # The criterion1 property
-        self._criterion1: Optional[str] = None
-        # The criterion2 property
-        self._criterion2: Optional[str] = None
-        # The dynamicCriteria property
-        self._dynamic_criteria: Optional[str] = None
-        # The filterOn property
-        self._filter_on: Optional[str] = None
-        # The icon property
-        self._icon: Optional[workbook_icon.WorkbookIcon] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The operator property
-        self._operator: Optional[str] = None
-        # The values property
-        self._values: Optional[json.Json] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -65,6 +40,32 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
             value: Value to set for the color property.
         """
         self._color = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new workbookFilterCriteria and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The color property
+        self._color: Optional[str] = None
+        # The criterion1 property
+        self._criterion1: Optional[str] = None
+        # The criterion2 property
+        self._criterion2: Optional[str] = None
+        # The dynamicCriteria property
+        self._dynamic_criteria: Optional[str] = None
+        # The filterOn property
+        self._filter_on: Optional[str] = None
+        # The icon property
+        self._icon: Optional[workbook_icon.WorkbookIcon] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The operator property
+        self._operator: Optional[str] = None
+        # The values property
+        self._values: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookFilterCriteria:
@@ -151,9 +152,7 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import json, workbook_icon
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "color": lambda n : setattr(self, 'color', n.get_str_value()),
             "criterion1": lambda n : setattr(self, 'criterion1', n.get_str_value()),
             "criterion2": lambda n : setattr(self, 'criterion2', n.get_str_value()),

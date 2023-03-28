@@ -1,34 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import data_policy_operation_status, entity
-
-from . import entity
+data_policy_operation_status = lazy_import('msgraph.generated.models.data_policy_operation_status')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DataPolicyOperation(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new dataPolicyOperation and sets the default values.
-        """
-        super().__init__()
-        # Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.
-        self._completed_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Specifies the progress of an operation.
-        self._progress: Optional[float] = None
-        # Possible values are: notStarted, running, complete, failed, unknownFutureValue.
-        self._status: Optional[data_policy_operation_status.DataPolicyOperationStatus] = None
-        # The URL location to where data is being exported for export requests.
-        self._storage_location: Optional[str] = None
-        # Represents when the request for this data operation was submitted, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._submitted_date_time: Optional[datetime] = None
-        # The id for the user on whom the operation is performed.
-        self._user_id: Optional[str] = None
-    
     @property
     def completed_date_time(self,) -> Optional[datetime]:
         """
@@ -45,6 +24,26 @@ class DataPolicyOperation(entity.Entity):
             value: Value to set for the completed_date_time property.
         """
         self._completed_date_time = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new DataPolicyOperation and sets the default values.
+        """
+        super().__init__()
+        # Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.
+        self._completed_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Specifies the progress of an operation.
+        self._progress: Optional[float] = None
+        # Possible values are: notStarted, running, complete, failed, unknownFutureValue.
+        self._status: Optional[data_policy_operation_status.DataPolicyOperationStatus] = None
+        # The URL location to where data is being exported for export requests.
+        self._storage_location: Optional[str] = None
+        # Represents when the request for this data operation was submitted, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._submitted_date_time: Optional[datetime] = None
+        # The id for the user on whom the operation is performed.
+        self._user_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DataPolicyOperation:
@@ -63,9 +62,7 @@ class DataPolicyOperation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import data_policy_operation_status, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
             "progress": lambda n : setattr(self, 'progress', n.get_float_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(data_policy_operation_status.DataPolicyOperationStatus)),

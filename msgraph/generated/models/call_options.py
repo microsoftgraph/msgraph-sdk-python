@@ -1,25 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
-
-if TYPE_CHECKING:
-    from . import incoming_call_options, outgoing_call_options
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class CallOptions(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new callOptions and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Indicates whether to hide the app after the call is escalated.
-        self._hide_bot_after_escalation: Optional[bool] = None
-        # Indicates whether content sharing notifications should be enabled for the call.
-        self._is_content_sharing_notification_enabled: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -37,6 +21,20 @@ class CallOptions(AdditionalDataHolder, Parsable):
         """
         self._additional_data = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new callOptions and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Indicates whether to hide the app after the call is escalated.
+        self._hide_bot_after_escalation: Optional[bool] = None
+        # Indicates whether content sharing notifications should be enabled for the call.
+        self._is_content_sharing_notification_enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallOptions:
         """
@@ -47,17 +45,6 @@ class CallOptions(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.incomingCallOptions":
-                from . import incoming_call_options
-
-                return incoming_call_options.IncomingCallOptions()
-            if mapping_value == "#microsoft.graph.outgoingCallOptions":
-                from . import outgoing_call_options
-
-                return outgoing_call_options.OutgoingCallOptions()
         return CallOptions()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -65,9 +52,7 @@ class CallOptions(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import incoming_call_options, outgoing_call_options
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "hideBotAfterEscalation": lambda n : setattr(self, 'hide_bot_after_escalation', n.get_bool_value()),
             "isContentSharingNotificationEnabled": lambda n : setattr(self, 'is_content_sharing_notification_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -1,31 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import document_set_version_item, identity_set, list_item_version
-
-from . import list_item_version
+document_set_version_item = lazy_import('msgraph.generated.models.document_set_version_item')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+list_item_version = lazy_import('msgraph.generated.models.list_item_version')
 
 class DocumentSetVersion(list_item_version.ListItemVersion):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new DocumentSetVersion and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.documentSetVersion"
-        # Comment about the captured version.
-        self._comment: Optional[str] = None
-        # User who captured the version.
-        self._created_by: Optional[identity_set.IdentitySet] = None
-        # Date and time when this version was created.
-        self._created_date_time: Optional[datetime] = None
-        # Items within the document set that are captured as part of this version.
-        self._items: Optional[List[document_set_version_item.DocumentSetVersionItem]] = None
-        # If true, minor versions of items are also captured; otherwise, only major versions will be captured. Default value is false.
-        self._should_capture_minor_version: Optional[bool] = None
-    
     @property
     def comment(self,) -> Optional[str]:
         """
@@ -42,6 +25,23 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
             value: Value to set for the comment property.
         """
         self._comment = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new DocumentSetVersion and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.documentSetVersion"
+        # Comment about the captured version.
+        self._comment: Optional[str] = None
+        # User who captured the version.
+        self._created_by: Optional[identity_set.IdentitySet] = None
+        # Date and time when this version was created.
+        self._created_date_time: Optional[datetime] = None
+        # Items within the document set that are captured as part of this version.
+        self._items: Optional[List[document_set_version_item.DocumentSetVersionItem]] = None
+        # If true, minor versions of items are also captured; otherwise, only major versions will be captured. Default value is false.
+        self._should_capture_minor_version: Optional[bool] = None
     
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
@@ -94,9 +94,7 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import document_set_version_item, identity_set, list_item_version
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),

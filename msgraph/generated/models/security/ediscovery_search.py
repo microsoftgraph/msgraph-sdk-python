@@ -1,32 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import data_source, data_source_scopes, ediscovery_add_to_review_set_operation, ediscovery_estimate_operation, ediscovery_noncustodial_data_source, search
-
-from . import search
+data_source = lazy_import('msgraph.generated.models.security.data_source')
+data_source_scopes = lazy_import('msgraph.generated.models.security.data_source_scopes')
+ediscovery_add_to_review_set_operation = lazy_import('msgraph.generated.models.security.ediscovery_add_to_review_set_operation')
+ediscovery_estimate_operation = lazy_import('msgraph.generated.models.security.ediscovery_estimate_operation')
+ediscovery_noncustodial_data_source = lazy_import('msgraph.generated.models.security.ediscovery_noncustodial_data_source')
+search = lazy_import('msgraph.generated.models.security.search')
 
 class EdiscoverySearch(search.Search):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EdiscoverySearch and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.security.ediscoverySearch"
-        # Adds the results of the eDiscovery search to the specified reviewSet.
-        self._add_to_review_set_operation: Optional[ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation] = None
-        # Adds an additional source to the eDiscovery search.
-        self._additional_sources: Optional[List[data_source.DataSource]] = None
-        # Custodian sources that are included in the eDiscovery search.
-        self._custodian_sources: Optional[List[data_source.DataSource]] = None
-        # When specified, the collection will span across a service for an entire workload. Possible values are: none, allTenantMailboxes, allTenantSites, allCaseCustodians, allCaseNoncustodialDataSources.
-        self._data_source_scopes: Optional[data_source_scopes.DataSourceScopes] = None
-        # The last estimate operation associated with the eDiscovery search.
-        self._last_estimate_statistics_operation: Optional[ediscovery_estimate_operation.EdiscoveryEstimateOperation] = None
-        # noncustodialDataSource sources that are included in the eDiscovery search
-        self._noncustodial_sources: Optional[List[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]] = None
-    
     @property
     def add_to_review_set_operation(self,) -> Optional[ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation]:
         """
@@ -60,6 +44,25 @@ class EdiscoverySearch(search.Search):
             value: Value to set for the additional_sources property.
         """
         self._additional_sources = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new EdiscoverySearch and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.security.ediscoverySearch"
+        # Adds the results of the eDiscovery search to the specified reviewSet.
+        self._add_to_review_set_operation: Optional[ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation] = None
+        # Adds an additional source to the eDiscovery search.
+        self._additional_sources: Optional[List[data_source.DataSource]] = None
+        # Custodian sources that are included in the eDiscovery search.
+        self._custodian_sources: Optional[List[data_source.DataSource]] = None
+        # When specified, the collection will span across a service for an entire workload. Possible values are: none, allTenantMailboxes, allTenantSites, allCaseCustodians, allCaseNoncustodialDataSources.
+        self._data_source_scopes: Optional[data_source_scopes.DataSourceScopes] = None
+        # The last estimate operation associated with the eDiscovery search.
+        self._last_estimate_statistics_operation: Optional[ediscovery_estimate_operation.EdiscoveryEstimateOperation] = None
+        # noncustodialDataSource sources that are included in the eDiscovery search
+        self._noncustodial_sources: Optional[List[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoverySearch:
@@ -112,9 +115,7 @@ class EdiscoverySearch(search.Search):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import data_source, data_source_scopes, ediscovery_add_to_review_set_operation, ediscovery_estimate_operation, ediscovery_noncustodial_data_source, search
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "additionalSources": lambda n : setattr(self, 'additional_sources', n.get_collection_of_object_values(data_source.DataSource)),
             "addToReviewSetOperation": lambda n : setattr(self, 'add_to_review_set_operation', n.get_object_value(ediscovery_add_to_review_set_operation.EdiscoveryAddToReviewSetOperation)),
             "custodianSources": lambda n : setattr(self, 'custodian_sources', n.get_collection_of_object_values(data_source.DataSource)),

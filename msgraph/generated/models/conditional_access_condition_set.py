@@ -1,41 +1,18 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import conditional_access_applications, conditional_access_client_app, conditional_access_client_applications, conditional_access_devices, conditional_access_locations, conditional_access_platforms, conditional_access_users, risk_level
+conditional_access_applications = lazy_import('msgraph.generated.models.conditional_access_applications')
+conditional_access_client_app = lazy_import('msgraph.generated.models.conditional_access_client_app')
+conditional_access_client_applications = lazy_import('msgraph.generated.models.conditional_access_client_applications')
+conditional_access_devices = lazy_import('msgraph.generated.models.conditional_access_devices')
+conditional_access_locations = lazy_import('msgraph.generated.models.conditional_access_locations')
+conditional_access_platforms = lazy_import('msgraph.generated.models.conditional_access_platforms')
+conditional_access_users = lazy_import('msgraph.generated.models.conditional_access_users')
+risk_level = lazy_import('msgraph.generated.models.risk_level')
 
 class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new conditionalAccessConditionSet and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Applications and user actions included in and excluded from the policy. Required.
-        self._applications: Optional[conditional_access_applications.ConditionalAccessApplications] = None
-        # Client application types included in the policy. Possible values are: all, browser, mobileAppsAndDesktopClients, exchangeActiveSync, easSupported, other. Required.
-        self._client_app_types: Optional[List[conditional_access_client_app.ConditionalAccessClientApp]] = None
-        # Client applications (service principals and workload identities) included in and excluded from the policy. Either users or clientApplications is required.
-        self._client_applications: Optional[conditional_access_client_applications.ConditionalAccessClientApplications] = None
-        # Devices in the policy.
-        self._devices: Optional[conditional_access_devices.ConditionalAccessDevices] = None
-        # Locations included in and excluded from the policy.
-        self._locations: Optional[conditional_access_locations.ConditionalAccessLocations] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Platforms included in and excluded from the policy.
-        self._platforms: Optional[conditional_access_platforms.ConditionalAccessPlatforms] = None
-        # Service principal risk levels included in the policy. Possible values are: low, medium, high, none, unknownFutureValue.
-        self._service_principal_risk_levels: Optional[List[risk_level.RiskLevel]] = None
-        # Sign-in risk levels included in the policy. Possible values are: low, medium, high, hidden, none, unknownFutureValue. Required.
-        self._sign_in_risk_levels: Optional[List[risk_level.RiskLevel]] = None
-        # User risk levels included in the policy. Possible values are: low, medium, high, hidden, none, unknownFutureValue. Required.
-        self._user_risk_levels: Optional[List[risk_level.RiskLevel]] = None
-        # Users, groups, and roles included in and excluded from the policy. Either users or clientApplications is required.
-        self._users: Optional[conditional_access_users.ConditionalAccessUsers] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -104,6 +81,36 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         """
         self._client_applications = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new conditionalAccessConditionSet and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Applications and user actions included in and excluded from the policy. Required.
+        self._applications: Optional[conditional_access_applications.ConditionalAccessApplications] = None
+        # Client application types included in the policy. Possible values are: all, browser, mobileAppsAndDesktopClients, exchangeActiveSync, easSupported, other. Required.
+        self._client_app_types: Optional[List[conditional_access_client_app.ConditionalAccessClientApp]] = None
+        # Client applications (service principals and workload identities) included in and excluded from the policy. Either users or clientApplications is required.
+        self._client_applications: Optional[conditional_access_client_applications.ConditionalAccessClientApplications] = None
+        # Devices in the policy.
+        self._devices: Optional[conditional_access_devices.ConditionalAccessDevices] = None
+        # Locations included in and excluded from the policy.
+        self._locations: Optional[conditional_access_locations.ConditionalAccessLocations] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Platforms included in and excluded from the policy.
+        self._platforms: Optional[conditional_access_platforms.ConditionalAccessPlatforms] = None
+        # Service principal risk levels included in the policy. Possible values are: low, medium, high, none, unknownFutureValue.
+        self._service_principal_risk_levels: Optional[List[risk_level.RiskLevel]] = None
+        # Sign-in risk levels included in the policy. Possible values are: low, medium, high, hidden, none, unknownFutureValue. Required.
+        self._sign_in_risk_levels: Optional[List[risk_level.RiskLevel]] = None
+        # User risk levels included in the policy. Possible values are: low, medium, high, hidden, none, unknownFutureValue. Required.
+        self._user_risk_levels: Optional[List[risk_level.RiskLevel]] = None
+        # Users, groups, and roles included in and excluded from the policy. Either users or clientApplications is required.
+        self._users: Optional[conditional_access_users.ConditionalAccessUsers] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessConditionSet:
         """
@@ -138,9 +145,7 @@ class ConditionalAccessConditionSet(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_applications, conditional_access_client_app, conditional_access_client_applications, conditional_access_devices, conditional_access_locations, conditional_access_platforms, conditional_access_users, risk_level
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "applications": lambda n : setattr(self, 'applications', n.get_object_value(conditional_access_applications.ConditionalAccessApplications)),
             "clientApplications": lambda n : setattr(self, 'client_applications', n.get_object_value(conditional_access_client_applications.ConditionalAccessClientApplications)),
             "clientAppTypes": lambda n : setattr(self, 'client_app_types', n.get_collection_of_enum_values(conditional_access_client_app.ConditionalAccessClientApp)),

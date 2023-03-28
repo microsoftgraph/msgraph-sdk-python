@@ -7,20 +7,48 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ............models import workbook_chart_axis
-    from ............models.o_data_errors import o_data_error
-    from .format import format_request_builder
-    from .major_gridlines import major_gridlines_request_builder
-    from .minor_gridlines import minor_gridlines_request_builder
-    from .title import title_request_builder
+format_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.axes.category_axis.format.format_request_builder')
+major_gridlines_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.axes.category_axis.major_gridlines.major_gridlines_request_builder')
+minor_gridlines_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.axes.category_axis.minor_gridlines.minor_gridlines_request_builder')
+title_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.axes.category_axis.title.title_request_builder')
+workbook_chart_axis = lazy_import('msgraph.generated.models.workbook_chart_axis')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class CategoryAxisRequestBuilder():
     """
     Provides operations to manage the categoryAxis property of the microsoft.graph.workbookChartAxes entity.
     """
+    @property
+    def format(self) -> format_request_builder.FormatRequestBuilder:
+        """
+        Provides operations to manage the format property of the microsoft.graph.workbookChartAxis entity.
+        """
+        return format_request_builder.FormatRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def major_gridlines(self) -> major_gridlines_request_builder.MajorGridlinesRequestBuilder:
+        """
+        Provides operations to manage the majorGridlines property of the microsoft.graph.workbookChartAxis entity.
+        """
+        return major_gridlines_request_builder.MajorGridlinesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def minor_gridlines(self) -> minor_gridlines_request_builder.MinorGridlinesRequestBuilder:
+        """
+        Provides operations to manage the minorGridlines property of the microsoft.graph.workbookChartAxis entity.
+        """
+        return minor_gridlines_request_builder.MinorGridlinesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def title(self) -> title_request_builder.TitleRequestBuilder:
+        """
+        Provides operations to manage the title property of the microsoft.graph.workbookChartAxis entity.
+        """
+        return title_request_builder.TitleRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CategoryAxisRequestBuilder and sets the default values.
@@ -48,8 +76,6 @@ class CategoryAxisRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ............models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -68,16 +94,12 @@ class CategoryAxisRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ............models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ............models import workbook_chart_axis
-
         return await self.request_adapter.send_async(request_info, workbook_chart_axis.WorkbookChartAxis, error_mapping)
     
     async def patch(self,body: Optional[workbook_chart_axis.WorkbookChartAxis] = None, request_configuration: Optional[CategoryAxisRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart_axis.WorkbookChartAxis]:
@@ -93,16 +115,12 @@ class CategoryAxisRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ............models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ............models import workbook_chart_axis
-
         return await self.request_adapter.send_async(request_info, workbook_chart_axis.WorkbookChartAxis, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[CategoryAxisRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -160,42 +178,6 @@ class CategoryAxisRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def format(self) -> format_request_builder.FormatRequestBuilder:
-        """
-        Provides operations to manage the format property of the microsoft.graph.workbookChartAxis entity.
-        """
-        from .format import format_request_builder
-
-        return format_request_builder.FormatRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def major_gridlines(self) -> major_gridlines_request_builder.MajorGridlinesRequestBuilder:
-        """
-        Provides operations to manage the majorGridlines property of the microsoft.graph.workbookChartAxis entity.
-        """
-        from .major_gridlines import major_gridlines_request_builder
-
-        return major_gridlines_request_builder.MajorGridlinesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def minor_gridlines(self) -> minor_gridlines_request_builder.MinorGridlinesRequestBuilder:
-        """
-        Provides operations to manage the minorGridlines property of the microsoft.graph.workbookChartAxis entity.
-        """
-        from .minor_gridlines import minor_gridlines_request_builder
-
-        return minor_gridlines_request_builder.MinorGridlinesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def title(self) -> title_request_builder.TitleRequestBuilder:
-        """
-        Provides operations to manage the title property of the microsoft.graph.workbookChartAxis entity.
-        """
-        from .title import title_request_builder
-
-        return title_request_builder.TitleRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class CategoryAxisRequestBuilderDeleteRequestConfiguration():
         """
@@ -213,6 +195,12 @@ class CategoryAxisRequestBuilder():
         """
         Represents the category axis in a chart. Read-only.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -228,12 +216,6 @@ class CategoryAxisRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class CategoryAxisRequestBuilderGetRequestConfiguration():

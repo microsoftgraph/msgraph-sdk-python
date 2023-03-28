@@ -1,35 +1,16 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, terms_and_conditions
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+terms_and_conditions = lazy_import('msgraph.generated.models.terms_and_conditions')
 
 class TermsAndConditionsAcceptanceStatus(entity.Entity):
     """
     A termsAndConditionsAcceptanceStatus entity represents the acceptance status of a given Terms and Conditions (T&C) policy by a given user. Users must accept the most up-to-date version of the terms in order to retain access to the Company Portal.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new termsAndConditionsAcceptanceStatus and sets the default values.
-        """
-        super().__init__()
-        # DateTime when the terms were last accepted by the user.
-        self._accepted_date_time: Optional[datetime] = None
-        # Most recent version number of the T&C accepted by the user.
-        self._accepted_version: Optional[int] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Navigation link to the terms and conditions that are assigned.
-        self._terms_and_conditions: Optional[terms_and_conditions.TermsAndConditions] = None
-        # Display name of the user whose acceptance the entity represents.
-        self._user_display_name: Optional[str] = None
-        # The userPrincipalName of the User that accepted the term.
-        self._user_principal_name: Optional[str] = None
-    
     @property
     def accepted_date_time(self,) -> Optional[datetime]:
         """
@@ -64,6 +45,24 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         """
         self._accepted_version = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new termsAndConditionsAcceptanceStatus and sets the default values.
+        """
+        super().__init__()
+        # DateTime when the terms were last accepted by the user.
+        self._accepted_date_time: Optional[datetime] = None
+        # Most recent version number of the T&C accepted by the user.
+        self._accepted_version: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Navigation link to the terms and conditions that are assigned.
+        self._terms_and_conditions: Optional[terms_and_conditions.TermsAndConditions] = None
+        # Display name of the user whose acceptance the entity represents.
+        self._user_display_name: Optional[str] = None
+        # The userPrincipalName of the User that accepted the term.
+        self._user_principal_name: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TermsAndConditionsAcceptanceStatus:
         """
@@ -81,9 +80,7 @@ class TermsAndConditionsAcceptanceStatus(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, terms_and_conditions
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "acceptedDateTime": lambda n : setattr(self, 'accepted_date_time', n.get_datetime_value()),
             "acceptedVersion": lambda n : setattr(self, 'accepted_version', n.get_int_value()),
             "termsAndConditions": lambda n : setattr(self, 'terms_and_conditions', n.get_object_value(terms_and_conditions.TermsAndConditions)),

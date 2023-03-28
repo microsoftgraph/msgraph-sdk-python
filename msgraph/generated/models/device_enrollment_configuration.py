@@ -1,17 +1,33 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import device_enrollment_limit_configuration, device_enrollment_platform_restrictions_configuration, device_enrollment_windows_hello_for_business_configuration, enrollment_configuration_assignment, entity
-
-from . import entity
+enrollment_configuration_assignment = lazy_import('msgraph.generated.models.enrollment_configuration_assignment')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceEnrollmentConfiguration(entity.Entity):
     """
     The Base Class of Device Enrollment Configuration
     """
+    @property
+    def assignments(self,) -> Optional[List[enrollment_configuration_assignment.EnrollmentConfigurationAssignment]]:
+        """
+        Gets the assignments property value. The list of group assignments for the device configuration profile
+        Returns: Optional[List[enrollment_configuration_assignment.EnrollmentConfigurationAssignment]]
+        """
+        return self._assignments
+    
+    @assignments.setter
+    def assignments(self,value: Optional[List[enrollment_configuration_assignment.EnrollmentConfigurationAssignment]] = None) -> None:
+        """
+        Sets the assignments property value. The list of group assignments for the device configuration profile
+        Args:
+            value: Value to set for the assignments property.
+        """
+        self._assignments = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceEnrollmentConfiguration and sets the default values.
@@ -33,23 +49,6 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         self._priority: Optional[int] = None
         # The version of the device enrollment configuration
         self._version: Optional[int] = None
-    
-    @property
-    def assignments(self,) -> Optional[List[enrollment_configuration_assignment.EnrollmentConfigurationAssignment]]:
-        """
-        Gets the assignments property value. The list of group assignments for the device configuration profile
-        Returns: Optional[List[enrollment_configuration_assignment.EnrollmentConfigurationAssignment]]
-        """
-        return self._assignments
-    
-    @assignments.setter
-    def assignments(self,value: Optional[List[enrollment_configuration_assignment.EnrollmentConfigurationAssignment]] = None) -> None:
-        """
-        Sets the assignments property value. The list of group assignments for the device configuration profile
-        Args:
-            value: Value to set for the assignments property.
-        """
-        self._assignments = value
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -78,21 +77,6 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.deviceEnrollmentLimitConfiguration":
-                from . import device_enrollment_limit_configuration
-
-                return device_enrollment_limit_configuration.DeviceEnrollmentLimitConfiguration()
-            if mapping_value == "#microsoft.graph.deviceEnrollmentPlatformRestrictionsConfiguration":
-                from . import device_enrollment_platform_restrictions_configuration
-
-                return device_enrollment_platform_restrictions_configuration.DeviceEnrollmentPlatformRestrictionsConfiguration()
-            if mapping_value == "#microsoft.graph.deviceEnrollmentWindowsHelloForBusinessConfiguration":
-                from . import device_enrollment_windows_hello_for_business_configuration
-
-                return device_enrollment_windows_hello_for_business_configuration.DeviceEnrollmentWindowsHelloForBusinessConfiguration()
         return DeviceEnrollmentConfiguration()
     
     @property
@@ -134,9 +118,7 @@ class DeviceEnrollmentConfiguration(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_enrollment_limit_configuration, device_enrollment_platform_restrictions_configuration, device_enrollment_windows_hello_for_business_configuration, enrollment_configuration_assignment, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(enrollment_configuration_assignment.EnrollmentConfigurationAssignment)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),

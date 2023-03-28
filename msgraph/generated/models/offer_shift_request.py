@@ -1,12 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import schedule_change_request, swap_shifts_change_request
-
-from . import schedule_change_request
+schedule_change_request = lazy_import('msgraph.generated.models.schedule_change_request')
 
 class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
     def __init__(self,) -> None:
@@ -34,13 +32,6 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.swapShiftsChangeRequest":
-                from . import swap_shifts_change_request
-
-                return swap_shifts_change_request.SwapShiftsChangeRequest()
         return OfferShiftRequest()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -48,9 +39,7 @@ class OfferShiftRequest(schedule_change_request.ScheduleChangeRequest):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import schedule_change_request, swap_shifts_change_request
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "recipientActionDateTime": lambda n : setattr(self, 'recipient_action_date_time', n.get_datetime_value()),
             "recipientActionMessage": lambda n : setattr(self, 'recipient_action_message', n.get_str_value()),
             "recipientUserId": lambda n : setattr(self, 'recipient_user_id', n.get_str_value()),

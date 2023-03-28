@@ -1,36 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class PermissionScope(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new permissionScope and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # A description of the delegated permissions, intended to be read by an administrator granting the permission on behalf of all users. This text appears in tenant-wide admin consent experiences.
-        self._admin_consent_description: Optional[str] = None
-        # The permission's title, intended to be read by an administrator granting the permission on behalf of all users.
-        self._admin_consent_display_name: Optional[str] = None
-        # Unique delegated permission identifier inside the collection of delegated permissions defined for a resource application.
-        self._id: Optional[Guid] = None
-        # When creating or updating a permission, this property must be set to true (which is the default). To delete a permission, this property must first be set to false.  At that point, in a subsequent call, the permission may be removed.
-        self._is_enabled: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The origin property
-        self._origin: Optional[str] = None
-        # The possible values are: User and Admin. Specifies whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator consent should always be required. While Microsoft Graph defines the default consent requirement for each permission, the tenant administrator may override the behavior in their organization (by allowing, restricting, or limiting user consent to this delegated permission). For more information, see Configure how users consent to applications.
-        self._type: Optional[str] = None
-        # A description of the delegated permissions, intended to be read by a user granting the permission on their own behalf. This text appears in consent experiences where the user is consenting only on behalf of themselves.
-        self._user_consent_description: Optional[str] = None
-        # A title for the permission, intended to be read by a user granting the permission on their own behalf. This text appears in consent experiences where the user is consenting only on behalf of themselves.
-        self._user_consent_display_name: Optional[str] = None
-        # Specifies the value to include in the scp (scope) claim in access tokens. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
-        self._value: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -82,6 +55,34 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         """
         self._admin_consent_display_name = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new permissionScope and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # A description of the delegated permissions, intended to be read by an administrator granting the permission on behalf of all users. This text appears in tenant-wide admin consent experiences.
+        self._admin_consent_description: Optional[str] = None
+        # The permission's title, intended to be read by an administrator granting the permission on behalf of all users.
+        self._admin_consent_display_name: Optional[str] = None
+        # Unique delegated permission identifier inside the collection of delegated permissions defined for a resource application.
+        self._id: Optional[Guid] = None
+        # When creating or updating a permission, this property must be set to true (which is the default). To delete a permission, this property must first be set to false.  At that point, in a subsequent call, the permission may be removed.
+        self._is_enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The origin property
+        self._origin: Optional[str] = None
+        # The possible values are: User and Admin. Specifies whether this delegated permission should be considered safe for non-admin users to consent to on behalf of themselves, or whether an administrator consent should always be required. While Microsoft Graph defines the default consent requirement for each permission, the tenant administrator may override the behavior in their organization (by allowing, restricting, or limiting user consent to this delegated permission). For more information, see Configure how users consent to applications.
+        self._type: Optional[str] = None
+        # A description of the delegated permissions, intended to be read by a user granting the permission on their own behalf. This text appears in consent experiences where the user is consenting only on behalf of themselves.
+        self._user_consent_description: Optional[str] = None
+        # A title for the permission, intended to be read by a user granting the permission on their own behalf. This text appears in consent experiences where the user is consenting only on behalf of themselves.
+        self._user_consent_display_name: Optional[str] = None
+        # Specifies the value to include in the scp (scope) claim in access tokens. Must not exceed 120 characters in length. Allowed characters are : ! # $ % & ' ( ) * + , - . / : ;  =  ? @ [ ] ^ + _  {  } ~, as well as characters in the ranges 0-9, A-Z and a-z. Any other character, including the space character, are not allowed. May not begin with ..
+        self._value: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PermissionScope:
         """
@@ -99,7 +100,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "adminConsentDescription": lambda n : setattr(self, 'admin_consent_description', n.get_str_value()),
             "adminConsentDisplayName": lambda n : setattr(self, 'admin_consent_display_name', n.get_str_value()),
             "id": lambda n : setattr(self, 'id', n.get_object_value(Guid)),

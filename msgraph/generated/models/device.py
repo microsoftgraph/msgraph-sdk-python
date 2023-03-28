@@ -1,69 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import alternative_security_id, directory_object, extension
-
-from . import directory_object
+alternative_security_id = lazy_import('msgraph.generated.models.alternative_security_id')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+extension = lazy_import('msgraph.generated.models.extension')
 
 class Device(directory_object.DirectoryObject):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new device and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.device"
-        # true if the account is enabled; otherwise, false. Required. Default is true.  Supports $filter (eq, ne, not, in). Only callers in Global Administrator and Cloud Device Administrator roles can set this property.
-        self._account_enabled: Optional[bool] = None
-        # For internal use only. Not nullable. Supports $filter (eq, not, ge, le).
-        self._alternative_security_ids: Optional[List[alternative_security_id.AlternativeSecurityId]] = None
-        # The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderBy.
-        self._approximate_last_sign_in_date_time: Optional[datetime] = None
-        # The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-        self._compliance_expiration_date_time: Optional[datetime] = None
-        # Unique identifier set by Azure Device Registration Service at the time of registration. This is an alternate key that can be used to reference the device object. Supports $filter (eq, ne, not, startsWith).
-        self._device_id: Optional[str] = None
-        # For internal use only. Set to null.
-        self._device_metadata: Optional[str] = None
-        # For internal use only.
-        self._device_version: Optional[int] = None
-        # The display name for the device. Required. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
-        self._display_name: Optional[str] = None
-        # The collection of open extensions defined for the device. Read-only. Nullable.
-        self._extensions: Optional[List[extension.Extension]] = None
-        # true if the device complies with Mobile Device Management (MDM) policies; otherwise, false. Read-only. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, not).
-        self._is_compliant: Optional[bool] = None
-        # true if the device is managed by a Mobile Device Management (MDM) app; otherwise, false. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, not).
-        self._is_managed: Optional[bool] = None
-        # Application identifier used to register device into MDM. Read-only. Supports $filter (eq, ne, not, startsWith).
-        self._mdm_app_id: Optional[str] = None
-        # Groups and administrative units that this device is a member of. Read-only. Nullable. Supports $expand.
-        self._member_of: Optional[List[directory_object.DirectoryObject]] = None
-        # The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, not, ge, le, in).
-        self._on_premises_last_sync_date_time: Optional[datetime] = None
-        # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
-        self._on_premises_sync_enabled: Optional[bool] = None
-        # The type of operating system on the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
-        self._operating_system: Optional[str] = None
-        # The version of the operating system on the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
-        self._operating_system_version: Optional[str] = None
-        # For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith,/$count eq 0, /$count ne 0).
-        self._physical_ids: Optional[List[str]] = None
-        # The profile type of the device. Possible values: RegisteredDevice (default), SecureVM, Printer, Shared, IoT.
-        self._profile_type: Optional[str] = None
-        # The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Currently, there can be only one owner. Read-only. Nullable. Supports $expand.
-        self._registered_owners: Optional[List[directory_object.DirectoryObject]] = None
-        # Collection of registered users of the device. For cloud joined devices and registered personal devices, registered users are set to the same value as registered owners at the time of registration. Read-only. Nullable. Supports $expand.
-        self._registered_users: Optional[List[directory_object.DirectoryObject]] = None
-        # List of labels applied to the device by the system. Supports $filter (/$count eq 0, /$count ne 0).
-        self._system_labels: Optional[List[str]] = None
-        # Groups and administrative units that the device is a member of. This operation is transitive. Supports $expand.
-        self._transitive_member_of: Optional[List[directory_object.DirectoryObject]] = None
-        # Type of trust for the joined device. Read-only. Possible values:  Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details, see Introduction to device management in Azure Active Directory
-        self._trust_type: Optional[str] = None
-    
     @property
     def account_enabled(self,) -> Optional[bool]:
         """
@@ -131,6 +76,61 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the compliance_expiration_date_time property.
         """
         self._compliance_expiration_date_time = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Device and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.device"
+        # true if the account is enabled; otherwise, false. Required. Default is true.  Supports $filter (eq, ne, not, in). Only callers in Global Administrator and Cloud Device Administrator roles can set this property.
+        self._account_enabled: Optional[bool] = None
+        # For internal use only. Not nullable. Supports $filter (eq, not, ge, le).
+        self._alternative_security_ids: Optional[List[alternative_security_id.AlternativeSecurityId]] = None
+        # The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter (eq, ne, not, ge, le, and eq on null values) and $orderBy.
+        self._approximate_last_sign_in_date_time: Optional[datetime] = None
+        # The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+        self._compliance_expiration_date_time: Optional[datetime] = None
+        # Unique identifier set by Azure Device Registration Service at the time of registration. This is an alternate key that can be used to reference the device object. Supports $filter (eq, ne, not, startsWith).
+        self._device_id: Optional[str] = None
+        # For internal use only. Set to null.
+        self._device_metadata: Optional[str] = None
+        # For internal use only.
+        self._device_version: Optional[int] = None
+        # The display name for the device. Required. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
+        self._display_name: Optional[str] = None
+        # The collection of open extensions defined for the device. Read-only. Nullable.
+        self._extensions: Optional[List[extension.Extension]] = None
+        # true if the device complies with Mobile Device Management (MDM) policies; otherwise, false. Read-only. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, not).
+        self._is_compliant: Optional[bool] = None
+        # true if the device is managed by a Mobile Device Management (MDM) app; otherwise, false. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, not).
+        self._is_managed: Optional[bool] = None
+        # Application identifier used to register device into MDM. Read-only. Supports $filter (eq, ne, not, startsWith).
+        self._mdm_app_id: Optional[str] = None
+        # Groups and administrative units that this device is a member of. Read-only. Nullable. Supports $expand.
+        self._member_of: Optional[List[directory_object.DirectoryObject]] = None
+        # The last time at which the object was synced with the on-premises directory. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z Read-only. Supports $filter (eq, ne, not, ge, le, in).
+        self._on_premises_last_sync_date_time: Optional[datetime] = None
+        # true if this object is synced from an on-premises directory; false if this object was originally synced from an on-premises directory but is no longer synced; null if this object has never been synced from an on-premises directory (default). Read-only. Supports $filter (eq, ne, not, in, and eq on null values).
+        self._on_premises_sync_enabled: Optional[bool] = None
+        # The type of operating system on the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
+        self._operating_system: Optional[str] = None
+        # The version of the operating system on the device. Required. Supports $filter (eq, ne, not, ge, le, startsWith, and eq on null values).
+        self._operating_system_version: Optional[str] = None
+        # For internal use only. Not nullable. Supports $filter (eq, not, ge, le, startsWith,/$count eq 0, /$count ne 0).
+        self._physical_ids: Optional[List[str]] = None
+        # The profile type of the device. Possible values: RegisteredDevice (default), SecureVM, Printer, Shared, IoT.
+        self._profile_type: Optional[str] = None
+        # The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Currently, there can be only one owner. Read-only. Nullable. Supports $expand.
+        self._registered_owners: Optional[List[directory_object.DirectoryObject]] = None
+        # Collection of registered users of the device. For cloud joined devices and registered personal devices, registered users are set to the same value as registered owners at the time of registration. Read-only. Nullable. Supports $expand.
+        self._registered_users: Optional[List[directory_object.DirectoryObject]] = None
+        # List of labels applied to the device by the system. Supports $filter (/$count eq 0, /$count ne 0).
+        self._system_labels: Optional[List[str]] = None
+        # Groups and administrative units that the device is a member of. This operation is transitive. Supports $expand.
+        self._transitive_member_of: Optional[List[directory_object.DirectoryObject]] = None
+        # Type of trust for the joined device. Read-only. Possible values:  Workplace (indicates bring your own personal devices), AzureAd (Cloud only joined devices), ServerAd (on-premises domain joined devices joined to Azure AD). For more details, see Introduction to device management in Azure Active Directory
+        self._trust_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Device:
@@ -234,9 +234,7 @@ class Device(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alternative_security_id, directory_object, extension
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
             "alternativeSecurityIds": lambda n : setattr(self, 'alternative_security_ids', n.get_collection_of_object_values(alternative_security_id.AlternativeSecurityId)),
             "approximateLastSignInDateTime": lambda n : setattr(self, 'approximate_last_sign_in_date_time', n.get_datetime_value()),

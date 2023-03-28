@@ -1,30 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import call, entity, online_meeting, presence
-    from .call_records import call_record
-
-from . import entity
+call = lazy_import('msgraph.generated.models.call')
+entity = lazy_import('msgraph.generated.models.entity')
+online_meeting = lazy_import('msgraph.generated.models.online_meeting')
+presence = lazy_import('msgraph.generated.models.presence')
+call_record = lazy_import('msgraph.generated.models.call_records.call_record')
 
 class CloudCommunications(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new CloudCommunications and sets the default values.
-        """
-        super().__init__()
-        # The callRecords property
-        self._call_records: Optional[List[call_record.CallRecord]] = None
-        # The calls property
-        self._calls: Optional[List[call.Call]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The onlineMeetings property
-        self._online_meetings: Optional[List[online_meeting.OnlineMeeting]] = None
-        # The presences property
-        self._presences: Optional[List[presence.Presence]] = None
-    
     @property
     def call_records(self,) -> Optional[List[call_record.CallRecord]]:
         """
@@ -59,6 +44,22 @@ class CloudCommunications(entity.Entity):
         """
         self._calls = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new cloudCommunications and sets the default values.
+        """
+        super().__init__()
+        # The callRecords property
+        self._call_records: Optional[List[call_record.CallRecord]] = None
+        # The calls property
+        self._calls: Optional[List[call.Call]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The onlineMeetings property
+        self._online_meetings: Optional[List[online_meeting.OnlineMeeting]] = None
+        # The presences property
+        self._presences: Optional[List[presence.Presence]] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CloudCommunications:
         """
@@ -76,10 +77,7 @@ class CloudCommunications(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import call, entity, online_meeting, presence
-        from .call_records import call_record
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "calls": lambda n : setattr(self, 'calls', n.get_collection_of_object_values(call.Call)),
             "callRecords": lambda n : setattr(self, 'call_records', n.get_collection_of_object_values(call_record.CallRecord)),
             "onlineMeetings": lambda n : setattr(self, 'online_meetings', n.get_collection_of_object_values(online_meeting.OnlineMeeting)),

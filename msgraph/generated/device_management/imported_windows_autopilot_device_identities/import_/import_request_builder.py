@@ -7,11 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import import_post_request_body, import_response
-    from ....models.o_data_errors import o_data_error
+import_post_request_body = lazy_import('msgraph.generated.device_management.imported_windows_autopilot_device_identities.import_.import_post_request_body')
+import_response = lazy_import('msgraph.generated.device_management.imported_windows_autopilot_device_identities.import_.import_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ImportRequestBuilder():
     """
@@ -48,16 +49,12 @@ class ImportRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from . import import_response
-
         return await self.request_adapter.send_async(request_info, import_response.ImportResponse, error_mapping)
     
     def to_post_request_information(self,body: Optional[import_post_request_body.ImportPostRequestBody] = None, request_configuration: Optional[ImportRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:

@@ -1,27 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ........models import json
+json = lazy_import('msgraph.generated.models.json')
 
 class Binom_Dist_RangePostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new binom_Dist_RangePostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The numberS property
-        self._number_s: Optional[json.Json] = None
-        # The numberS2 property
-        self._number_s2: Optional[json.Json] = None
-        # The probabilityS property
-        self._probability_s: Optional[json.Json] = None
-        # The trials property
-        self._trials: Optional[json.Json] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,6 +22,22 @@ class Binom_Dist_RangePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new binom_Dist_RangePostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The numberS property
+        self._number_s: Optional[json.Json] = None
+        # The numberS2 property
+        self._number_s2: Optional[json.Json] = None
+        # The probabilityS property
+        self._probability_s: Optional[json.Json] = None
+        # The trials property
+        self._trials: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Binom_Dist_RangePostRequestBody:
@@ -56,9 +56,7 @@ class Binom_Dist_RangePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "numberS": lambda n : setattr(self, 'number_s', n.get_object_value(json.Json)),
             "numberS2": lambda n : setattr(self, 'number_s2', n.get_object_value(json.Json)),
             "probabilityS": lambda n : setattr(self, 'probability_s', n.get_object_value(json.Json)),

@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import bitlocker_recovery_key, entity
-
-from . import entity
+bitlocker_recovery_key = lazy_import('msgraph.generated.models.bitlocker_recovery_key')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class Bitlocker(entity.Entity):
     def __init__(self,) -> None:
@@ -35,9 +34,7 @@ class Bitlocker(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import bitlocker_recovery_key, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "recoveryKeys": lambda n : setattr(self, 'recovery_keys', n.get_collection_of_object_values(bitlocker_recovery_key.BitlockerRecoveryKey)),
         }
         super_fields = super().get_field_deserializers()

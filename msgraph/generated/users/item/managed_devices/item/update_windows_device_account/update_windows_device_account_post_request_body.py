@@ -1,21 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ......models import update_windows_device_account_action_parameter
+update_windows_device_account_action_parameter = lazy_import('msgraph.generated.models.update_windows_device_account_action_parameter')
 
 class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new updateWindowsDeviceAccountPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The updateWindowsDeviceAccountActionParameter property
-        self._update_windows_device_account_action_parameter: Optional[update_windows_device_account_action_parameter.UpdateWindowsDeviceAccountActionParameter] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -32,6 +22,16 @@ class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new updateWindowsDeviceAccountPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The updateWindowsDeviceAccountActionParameter property
+        self._update_windows_device_account_action_parameter: Optional[update_windows_device_account_action_parameter.UpdateWindowsDeviceAccountActionParameter] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UpdateWindowsDeviceAccountPostRequestBody:
@@ -50,9 +50,7 @@ class UpdateWindowsDeviceAccountPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ......models import update_windows_device_account_action_parameter
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "updateWindowsDeviceAccountActionParameter": lambda n : setattr(self, 'update_windows_device_account_action_parameter', n.get_object_value(update_windows_device_account_action_parameter.UpdateWindowsDeviceAccountActionParameter)),
         }
         return fields

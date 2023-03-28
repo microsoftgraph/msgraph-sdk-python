@@ -1,27 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import recipient
+recipient = lazy_import('msgraph.generated.models.recipient')
 
 class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new invitedUserMessageInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Additional recipients the invitation message should be sent to. Currently only 1 additional recipient is supported.
-        self._cc_recipients: Optional[List[recipient.Recipient]] = None
-        # Customized message body you want to send if you don't want the default message.
-        self._customized_message_body: Optional[str] = None
-        # The language you want to send the default message in. If the customizedMessageBody is specified, this property is ignored, and the message is sent using the customizedMessageBody. The language format should be in ISO 639. The default is en-US.
-        self._message_language: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -55,6 +39,22 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the cc_recipients property.
         """
         self._cc_recipients = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new invitedUserMessageInfo and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Additional recipients the invitation message should be sent to. Currently only 1 additional recipient is supported.
+        self._cc_recipients: Optional[List[recipient.Recipient]] = None
+        # Customized message body you want to send if you don't want the default message.
+        self._customized_message_body: Optional[str] = None
+        # The language you want to send the default message in. If the customizedMessageBody is specified, this property is ignored, and the message is sent using the customizedMessageBody. The language format should be in ISO 639. The default is en-US.
+        self._message_language: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InvitedUserMessageInfo:
@@ -90,9 +90,7 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import recipient
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "ccRecipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(recipient.Recipient)),
             "customizedMessageBody": lambda n : setattr(self, 'customized_message_body', n.get_str_value()),
             "messageLanguage": lambda n : setattr(self, 'message_language', n.get_str_value()),

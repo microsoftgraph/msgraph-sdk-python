@@ -1,38 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_package, access_package_catalog_state, access_package_catalog_type, entity
-
-from . import entity
+access_package = lazy_import('msgraph.generated.models.access_package')
+access_package_catalog_state = lazy_import('msgraph.generated.models.access_package_catalog_state')
+access_package_catalog_type = lazy_import('msgraph.generated.models.access_package_catalog_type')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AccessPackageCatalog(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new accessPackageCatalog and sets the default values.
-        """
-        super().__init__()
-        # The access packages in this catalog. Read-only. Nullable.
-        self._access_packages: Optional[List[access_package.AccessPackage]] = None
-        # Whether the catalog is created by a user or entitlement management. The possible values are: userManaged, serviceDefault, serviceManaged, unknownFutureValue.
-        self._catalog_type: Optional[access_package_catalog_type.AccessPackageCatalogType] = None
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-        self._created_date_time: Optional[datetime] = None
-        # The description of the access package catalog.
-        self._description: Optional[str] = None
-        # The display name of the access package catalog.
-        self._display_name: Optional[str] = None
-        # Whether the access packages in this catalog can be requested by users outside of the tenant.
-        self._is_externally_visible: Optional[bool] = None
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-        self._modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Has the value published if the access packages are available for management. The possible values are: unpublished, published, unknownFutureValue.
-        self._state: Optional[access_package_catalog_state.AccessPackageCatalogState] = None
-    
     @property
     def access_packages(self,) -> Optional[List[access_package.AccessPackage]]:
         """
@@ -66,6 +43,30 @@ class AccessPackageCatalog(entity.Entity):
             value: Value to set for the catalog_type property.
         """
         self._catalog_type = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new accessPackageCatalog and sets the default values.
+        """
+        super().__init__()
+        # The access packages in this catalog. Read-only. Nullable.
+        self._access_packages: Optional[List[access_package.AccessPackage]] = None
+        # Whether the catalog is created by a user or entitlement management. The possible values are: userManaged, serviceDefault, serviceManaged, unknownFutureValue.
+        self._catalog_type: Optional[access_package_catalog_type.AccessPackageCatalogType] = None
+        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+        self._created_date_time: Optional[datetime] = None
+        # The description of the access package catalog.
+        self._description: Optional[str] = None
+        # The display name of the access package catalog.
+        self._display_name: Optional[str] = None
+        # Whether the access packages in this catalog can be requested by users outside of the tenant.
+        self._is_externally_visible: Optional[bool] = None
+        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+        self._modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Has the value published if the access packages are available for management. The possible values are: unpublished, published, unknownFutureValue.
+        self._state: Optional[access_package_catalog_state.AccessPackageCatalogState] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -135,9 +136,7 @@ class AccessPackageCatalog(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package, access_package_catalog_state, access_package_catalog_type, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "accessPackages": lambda n : setattr(self, 'access_packages', n.get_collection_of_object_values(access_package.AccessPackage)),
             "catalogType": lambda n : setattr(self, 'catalog_type', n.get_enum_value(access_package_catalog_type.AccessPackageCatalogType)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),

@@ -7,17 +7,24 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ...models import place
-    from ...models.o_data_errors import o_data_error
-    from .graph_room import graph_room_request_builder
+place = lazy_import('msgraph.generated.models.place')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+graph_room_request_builder = lazy_import('msgraph.generated.places.item.graph_room.graph_room_request_builder')
 
 class PlaceItemRequestBuilder():
     """
     Provides operations to manage the collection of place entities.
     """
+    @property
+    def graph_room(self) -> graph_room_request_builder.GraphRoomRequestBuilder:
+        """
+        Casts the previous resource to room.
+        """
+        return graph_room_request_builder.GraphRoomRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PlaceItemRequestBuilder and sets the default values.
@@ -45,8 +52,6 @@ class PlaceItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -68,16 +73,12 @@ class PlaceItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ...models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...models import place
-
         return await self.request_adapter.send_async(request_info, place.Place, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PlaceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -116,15 +117,6 @@ class PlaceItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-    
-    @property
-    def graph_room(self) -> graph_room_request_builder.GraphRoomRequestBuilder:
-        """
-        Casts the previous resource to room.
-        """
-        from .graph_room import graph_room_request_builder
-
-        return graph_room_request_builder.GraphRoomRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class PlaceItemRequestBuilderDeleteRequestConfiguration():

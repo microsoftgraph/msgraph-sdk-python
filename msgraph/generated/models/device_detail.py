@@ -1,32 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class DeviceDetail(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceDetail and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Indicates the browser information of the used for signing in.
-        self._browser: Optional[str] = None
-        # Refers to the UniqueID of the device used for signing in.
-        self._device_id: Optional[str] = None
-        # Refers to the name of the device used for signing in.
-        self._display_name: Optional[str] = None
-        # Indicates whether the device is compliant.
-        self._is_compliant: Optional[bool] = None
-        # Indicates whether the device is managed.
-        self._is_managed: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Indicates the operating system name and version used for signing in.
-        self._operating_system: Optional[str] = None
-        # Provides information about whether the signed-in device is Workplace Joined, AzureAD Joined, Domain Joined.
-        self._trust_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -60,6 +37,30 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
             value: Value to set for the browser property.
         """
         self._browser = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new deviceDetail and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Indicates the browser information of the used for signing in.
+        self._browser: Optional[str] = None
+        # Refers to the UniqueID of the device used for signing in.
+        self._device_id: Optional[str] = None
+        # Refers to the name of the device used for signing in.
+        self._display_name: Optional[str] = None
+        # Indicates whether the device is compliant.
+        self._is_compliant: Optional[bool] = None
+        # Indicates whether the device is managed.
+        self._is_managed: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Indicates the operating system name and version used for signing in.
+        self._operating_system: Optional[str] = None
+        # Provides information about whether the signed-in device is Workplace Joined, AzureAD Joined, Domain Joined.
+        self._trust_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceDetail:
@@ -112,7 +113,7 @@ class DeviceDetail(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "browser": lambda n : setattr(self, 'browser', n.get_str_value()),
             "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

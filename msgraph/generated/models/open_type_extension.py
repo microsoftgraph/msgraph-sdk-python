@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import extension
-
-from . import extension
+extension = lazy_import('msgraph.generated.models.extension')
 
 class OpenTypeExtension(extension.Extension):
     def __init__(self,) -> None:
@@ -51,9 +49,7 @@ class OpenTypeExtension(extension.Extension):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import extension
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "extensionName": lambda n : setattr(self, 'extension_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

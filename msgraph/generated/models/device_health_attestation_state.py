@@ -1,83 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceHealthAttestationState and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # TWhen an Attestation Identity Key (AIK) is present on a device, it indicates that the device has an endorsement key (EK) certificate.
-        self._attestation_identity_key: Optional[str] = None
-        # On or Off of BitLocker Drive Encryption
-        self._bit_locker_status: Optional[str] = None
-        # The security version number of the Boot Application
-        self._boot_app_security_version: Optional[str] = None
-        # When bootDebugging is enabled, the device is used in development and testing
-        self._boot_debugging: Optional[str] = None
-        # The security version number of the Boot Application
-        self._boot_manager_security_version: Optional[str] = None
-        # The version of the Boot Manager
-        self._boot_manager_version: Optional[str] = None
-        # The Boot Revision List that was loaded during initial boot on the attested device
-        self._boot_revision_list_info: Optional[str] = None
-        # When code integrity is enabled, code execution is restricted to integrity verified code
-        self._code_integrity: Optional[str] = None
-        # The version of the Boot Manager
-        self._code_integrity_check_version: Optional[str] = None
-        # The Code Integrity policy that is controlling the security of the boot environment
-        self._code_integrity_policy: Optional[str] = None
-        # The DHA report version. (Namespace version)
-        self._content_namespace_url: Optional[str] = None
-        # The HealthAttestation state schema version
-        self._content_version: Optional[str] = None
-        # DEP Policy defines a set of hardware and software technologies that perform additional checks on memory
-        self._data_excution_policy: Optional[str] = None
-        # The DHA report version. (Namespace version)
-        self._device_health_attestation_status: Optional[str] = None
-        # ELAM provides protection for the computers in your network when they start up
-        self._early_launch_anti_malware_driver_protection: Optional[str] = None
-        # This attribute indicates if DHA is supported for the device
-        self._health_attestation_supported_status: Optional[str] = None
-        # This attribute appears if DHA-Service detects an integrity issue
-        self._health_status_mismatch_info: Optional[str] = None
-        # The DateTime when device was evaluated or issued to MDM
-        self._issued_date_time: Optional[datetime] = None
-        # The Timestamp of the last update.
-        self._last_update_date_time: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # When operatingSystemKernelDebugging is enabled, the device is used in development and testing
-        self._operating_system_kernel_debugging: Optional[str] = None
-        # The Operating System Revision List that was loaded during initial boot on the attested device
-        self._operating_system_rev_list_info: Optional[str] = None
-        # Informational attribute that identifies the HASH algorithm that was used by TPM
-        self._pcr_hash_algorithm: Optional[str] = None
-        # The measurement that is captured in PCR[0]
-        self._pcr0: Optional[str] = None
-        # The number of times a PC device has hibernated or resumed
-        self._reset_count: Optional[int] = None
-        # The number of times a PC device has rebooted
-        self._restart_count: Optional[int] = None
-        # Safe mode is a troubleshooting option for Windows that starts your computer in a limited state
-        self._safe_mode: Optional[str] = None
-        # When Secure Boot is enabled, the core components must have the correct cryptographic signatures
-        self._secure_boot: Optional[str] = None
-        # Fingerprint of the Custom Secure Boot Configuration Policy
-        self._secure_boot_configuration_policy_finger_print: Optional[str] = None
-        # When test signing is allowed, the device does not enforce signature validation during boot
-        self._test_signing: Optional[str] = None
-        # The security version number of the Boot Application
-        self._tpm_version: Optional[str] = None
-        # VSM is a container that protects high value assets from a compromised kernel
-        self._virtual_secure_mode: Optional[str] = None
-        # Operating system running with limited services that is used to prepare a computer for Windows
-        self._windows_p_e: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -265,6 +192,80 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         """
         self._code_integrity_policy = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new deviceHealthAttestationState and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # TWhen an Attestation Identity Key (AIK) is present on a device, it indicates that the device has an endorsement key (EK) certificate.
+        self._attestation_identity_key: Optional[str] = None
+        # On or Off of BitLocker Drive Encryption
+        self._bit_locker_status: Optional[str] = None
+        # The security version number of the Boot Application
+        self._boot_app_security_version: Optional[str] = None
+        # When bootDebugging is enabled, the device is used in development and testing
+        self._boot_debugging: Optional[str] = None
+        # The security version number of the Boot Application
+        self._boot_manager_security_version: Optional[str] = None
+        # The version of the Boot Manager
+        self._boot_manager_version: Optional[str] = None
+        # The Boot Revision List that was loaded during initial boot on the attested device
+        self._boot_revision_list_info: Optional[str] = None
+        # When code integrity is enabled, code execution is restricted to integrity verified code
+        self._code_integrity: Optional[str] = None
+        # The version of the Boot Manager
+        self._code_integrity_check_version: Optional[str] = None
+        # The Code Integrity policy that is controlling the security of the boot environment
+        self._code_integrity_policy: Optional[str] = None
+        # The DHA report version. (Namespace version)
+        self._content_namespace_url: Optional[str] = None
+        # The HealthAttestation state schema version
+        self._content_version: Optional[str] = None
+        # DEP Policy defines a set of hardware and software technologies that perform additional checks on memory
+        self._data_excution_policy: Optional[str] = None
+        # The DHA report version. (Namespace version)
+        self._device_health_attestation_status: Optional[str] = None
+        # ELAM provides protection for the computers in your network when they start up
+        self._early_launch_anti_malware_driver_protection: Optional[str] = None
+        # This attribute indicates if DHA is supported for the device
+        self._health_attestation_supported_status: Optional[str] = None
+        # This attribute appears if DHA-Service detects an integrity issue
+        self._health_status_mismatch_info: Optional[str] = None
+        # The DateTime when device was evaluated or issued to MDM
+        self._issued_date_time: Optional[datetime] = None
+        # The Timestamp of the last update.
+        self._last_update_date_time: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # When operatingSystemKernelDebugging is enabled, the device is used in development and testing
+        self._operating_system_kernel_debugging: Optional[str] = None
+        # The Operating System Revision List that was loaded during initial boot on the attested device
+        self._operating_system_rev_list_info: Optional[str] = None
+        # Informational attribute that identifies the HASH algorithm that was used by TPM
+        self._pcr_hash_algorithm: Optional[str] = None
+        # The measurement that is captured in PCR[0]
+        self._pcr0: Optional[str] = None
+        # The number of times a PC device has hibernated or resumed
+        self._reset_count: Optional[int] = None
+        # The number of times a PC device has rebooted
+        self._restart_count: Optional[int] = None
+        # Safe mode is a troubleshooting option for Windows that starts your computer in a limited state
+        self._safe_mode: Optional[str] = None
+        # When Secure Boot is enabled, the core components must have the correct cryptographic signatures
+        self._secure_boot: Optional[str] = None
+        # Fingerprint of the Custom Secure Boot Configuration Policy
+        self._secure_boot_configuration_policy_finger_print: Optional[str] = None
+        # When test signing is allowed, the device does not enforce signature validation during boot
+        self._test_signing: Optional[str] = None
+        # The security version number of the Boot Application
+        self._tpm_version: Optional[str] = None
+        # VSM is a container that protects high value assets from a compromised kernel
+        self._virtual_secure_mode: Optional[str] = None
+        # Operating system running with limited services that is used to prepare a computer for Windows
+        self._windows_p_e: Optional[str] = None
+    
     @property
     def content_namespace_url(self,) -> Optional[str]:
         """
@@ -367,7 +368,7 @@ class DeviceHealthAttestationState(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "attestationIdentityKey": lambda n : setattr(self, 'attestation_identity_key', n.get_str_value()),
             "bitLockerStatus": lambda n : setattr(self, 'bit_locker_status', n.get_str_value()),
             "bootAppSecurityVersion": lambda n : setattr(self, 'boot_app_security_version', n.get_str_value()),

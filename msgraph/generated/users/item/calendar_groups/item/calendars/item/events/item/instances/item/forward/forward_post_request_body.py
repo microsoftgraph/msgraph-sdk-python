@@ -1,23 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ............models import recipient
+recipient = lazy_import('msgraph.generated.models.recipient')
 
 class ForwardPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new forwardPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The Comment property
-        self._comment: Optional[str] = None
-        # The ToRecipients property
-        self._to_recipients: Optional[List[recipient.Recipient]] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -52,6 +40,18 @@ class ForwardPostRequestBody(AdditionalDataHolder, Parsable):
         """
         self._comment = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new forwardPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The Comment property
+        self._comment: Optional[str] = None
+        # The ToRecipients property
+        self._to_recipients: Optional[List[recipient.Recipient]] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ForwardPostRequestBody:
         """
@@ -69,9 +69,7 @@ class ForwardPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ............models import recipient
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "Comment": lambda n : setattr(self, 'comment', n.get_str_value()),
             "ToRecipients": lambda n : setattr(self, 'to_recipients', n.get_collection_of_object_values(recipient.Recipient)),
         }

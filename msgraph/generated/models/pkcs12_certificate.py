@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import api_authentication_configuration_base
-
-from . import api_authentication_configuration_base
+api_authentication_configuration_base = lazy_import('msgraph.generated.models.api_authentication_configuration_base')
 
 class Pkcs12Certificate(api_authentication_configuration_base.ApiAuthenticationConfigurationBase):
     def __init__(self,) -> None:
@@ -36,9 +34,7 @@ class Pkcs12Certificate(api_authentication_configuration_base.ApiAuthenticationC
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import api_authentication_configuration_base
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "password": lambda n : setattr(self, 'password', n.get_str_value()),
             "pkcs12Value": lambda n : setattr(self, 'pkcs12_value', n.get_str_value()),
         }

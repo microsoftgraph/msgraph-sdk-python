@@ -1,11 +1,30 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import details_info, provisioning_result, provisioning_step_type
+details_info = lazy_import('msgraph.generated.models.details_info')
+provisioning_result = lazy_import('msgraph.generated.models.provisioning_result')
+provisioning_step_type = lazy_import('msgraph.generated.models.provisioning_step_type')
 
 class ProvisioningStep(AdditionalDataHolder, Parsable):
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new provisioningStep and sets the default values.
@@ -25,23 +44,6 @@ class ProvisioningStep(AdditionalDataHolder, Parsable):
         self._provisioning_step_type: Optional[provisioning_step_type.ProvisioningStepType] = None
         # Status of the step. Possible values are: success, warning,  failure, skipped, unknownFutureValue.
         self._status: Optional[provisioning_result.ProvisioningResult] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProvisioningStep:
@@ -94,9 +96,7 @@ class ProvisioningStep(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import details_info, provisioning_result, provisioning_step_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "details": lambda n : setattr(self, 'details', n.get_object_value(details_info.DetailsInfo)),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),

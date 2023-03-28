@@ -1,28 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class TextColumn(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new textColumn and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Whether to allow multiple lines of text.
-        self._allow_multiple_lines: Optional[bool] = None
-        # Whether updates to this column should replace existing text, or append to it.
-        self._append_changes_to_existing_text: Optional[bool] = None
-        # The size of the text box.
-        self._lines_for_editing: Optional[int] = None
-        # The maximum number of characters for the value.
-        self._max_length: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The type of text being stored. Must be one of plain or richText
-        self._text_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -74,6 +55,26 @@ class TextColumn(AdditionalDataHolder, Parsable):
         """
         self._append_changes_to_existing_text = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new textColumn and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Whether to allow multiple lines of text.
+        self._allow_multiple_lines: Optional[bool] = None
+        # Whether updates to this column should replace existing text, or append to it.
+        self._append_changes_to_existing_text: Optional[bool] = None
+        # The size of the text box.
+        self._lines_for_editing: Optional[int] = None
+        # The maximum number of characters for the value.
+        self._max_length: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The type of text being stored. Must be one of plain or richText
+        self._text_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TextColumn:
         """
@@ -91,7 +92,7 @@ class TextColumn(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "allowMultipleLines": lambda n : setattr(self, 'allow_multiple_lines', n.get_bool_value()),
             "appendChangesToExistingText": lambda n : setattr(self, 'append_changes_to_existing_text', n.get_bool_value()),
             "linesForEditing": lambda n : setattr(self, 'lines_for_editing', n.get_int_value()),

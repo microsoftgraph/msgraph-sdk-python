@@ -1,31 +1,15 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import booking_reminder_recipients
+booking_reminder_recipients = lazy_import('msgraph.generated.models.booking_reminder_recipients')
 
 class BookingReminder(AdditionalDataHolder, Parsable):
     """
     This type represents when and to whom to send an e-mail reminder.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new bookingReminder and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The message in the reminder.
-        self._message: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The amount of time before the start of an appointment that the reminder should be sent. It's denoted in ISO 8601 format.
-        self._offset: Optional[Timedelta] = None
-        # The recipients property
-        self._recipients: Optional[booking_reminder_recipients.BookingReminderRecipients] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -42,6 +26,22 @@ class BookingReminder(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new bookingReminder and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The message in the reminder.
+        self._message: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The amount of time before the start of an appointment that the reminder should be sent. It's denoted in ISO 8601 format.
+        self._offset: Optional[Timedelta] = None
+        # The recipients property
+        self._recipients: Optional[booking_reminder_recipients.BookingReminderRecipients] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingReminder:
@@ -60,9 +60,7 @@ class BookingReminder(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import booking_reminder_recipients
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "message": lambda n : setattr(self, 'message', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "offset": lambda n : setattr(self, 'offset', n.get_object_value(Timedelta)),

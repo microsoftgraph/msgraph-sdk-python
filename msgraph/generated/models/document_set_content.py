@@ -1,27 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import content_type_info
+content_type_info = lazy_import('msgraph.generated.models.content_type_info')
 
 class DocumentSetContent(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new documentSetContent and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Content type information of the file.
-        self._content_type: Optional[content_type_info.ContentTypeInfo] = None
-        # Name of the file in resource folder that should be added as a default content or a template in the document set.
-        self._file_name: Optional[str] = None
-        # Folder name in which the file will be placed when a new document set is created in the library.
-        self._folder_name: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,6 +22,22 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new documentSetContent and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Content type information of the file.
+        self._content_type: Optional[content_type_info.ContentTypeInfo] = None
+        # Name of the file in resource folder that should be added as a default content or a template in the document set.
+        self._file_name: Optional[str] = None
+        # Folder name in which the file will be placed when a new document set is created in the library.
+        self._folder_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
     
     @property
     def content_type(self,) -> Optional[content_type_info.ContentTypeInfo]:
@@ -107,9 +107,7 @@ class DocumentSetContent(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import content_type_info
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "contentType": lambda n : setattr(self, 'content_type', n.get_object_value(content_type_info.ContentTypeInfo)),
             "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),
             "folderName": lambda n : setattr(self, 'folder_name', n.get_str_value()),

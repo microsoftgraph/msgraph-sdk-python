@@ -7,18 +7,32 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import app_management_policy_collection_response
-    from ....models.o_data_errors import o_data_error
-    from .count import count_request_builder
-    from .ref import ref_request_builder
+count_request_builder = lazy_import('msgraph.generated.applications.item.app_management_policies.count.count_request_builder')
+ref_request_builder = lazy_import('msgraph.generated.applications.item.app_management_policies.ref.ref_request_builder')
+app_management_policy_collection_response = lazy_import('msgraph.generated.models.app_management_policy_collection_response')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class AppManagementPoliciesRequestBuilder():
     """
     Provides operations to manage the appManagementPolicies property of the microsoft.graph.application entity.
     """
+    @property
+    def count(self) -> count_request_builder.CountRequestBuilder:
+        """
+        Provides operations to count the resources in the collection.
+        """
+        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def ref(self) -> ref_request_builder.RefRequestBuilder:
+        """
+        Provides operations to manage the collection of application entities.
+        """
+        return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AppManagementPoliciesRequestBuilder and sets the default values.
@@ -39,7 +53,7 @@ class AppManagementPoliciesRequestBuilder():
     
     async def get(self,request_configuration: Optional[AppManagementPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[app_management_policy_collection_response.AppManagementPolicyCollectionResponse]:
         """
-        The appManagementPolicy applied to this application.
+        Get appManagementPolicies from applications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[app_management_policy_collection_response.AppManagementPolicyCollectionResponse]
@@ -47,21 +61,17 @@ class AppManagementPoliciesRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import app_management_policy_collection_response
-
         return await self.request_adapter.send_async(request_info, app_management_policy_collection_response.AppManagementPolicyCollectionResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[AppManagementPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The appManagementPolicy applied to this application.
+        Get appManagementPolicies from applications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -77,29 +87,35 @@ class AppManagementPoliciesRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count import count_request_builder
-
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def ref(self) -> ref_request_builder.RefRequestBuilder:
-        """
-        Provides operations to manage the collection of application entities.
-        """
-        from .ref import ref_request_builder
-
-        return ref_request_builder.RefRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class AppManagementPoliciesRequestBuilderGetQueryParameters():
         """
-        The appManagementPolicy applied to this application.
+        Get appManagementPolicies from applications
         """
+        # Include count of items
+        count: Optional[bool] = None
+
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -127,30 +143,6 @@ class AppManagementPoliciesRequestBuilder():
                 return "%24top"
             return original_name
         
-        # Include count of items
-        count: Optional[bool] = None
-
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Filter items by property values
-        filter: Optional[str] = None
-
-        # Order items by property values
-        orderby: Optional[List[str]] = None
-
-        # Search items by search phrases
-        search: Optional[str] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
-        # Skip the first n items
-        skip: Optional[int] = None
-
-        # Show only the first n items
-        top: Optional[int] = None
-
     
     @dataclass
     class AppManagementPoliciesRequestBuilderGetRequestConfiguration():

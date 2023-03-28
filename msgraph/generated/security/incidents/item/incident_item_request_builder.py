@@ -7,18 +7,38 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models.o_data_errors import o_data_error
-    from ....models.security import incident
-    from .alerts import alerts_request_builder
-    from .alerts.item import alert_item_request_builder
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+incident = lazy_import('msgraph.generated.models.security.incident')
+alerts_request_builder = lazy_import('msgraph.generated.security.incidents.item.alerts.alerts_request_builder')
+alert_item_request_builder = lazy_import('msgraph.generated.security.incidents.item.alerts.item.alert_item_request_builder')
 
 class IncidentItemRequestBuilder():
     """
     Provides operations to manage the incidents property of the microsoft.graph.security entity.
     """
+    @property
+    def alerts(self) -> alerts_request_builder.AlertsRequestBuilder:
+        """
+        Provides operations to manage the alerts property of the microsoft.graph.security.incident entity.
+        """
+        return alerts_request_builder.AlertsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def alerts_by_id(self,id: str) -> alert_item_request_builder.AlertItemRequestBuilder:
+        """
+        Provides operations to manage the alerts property of the microsoft.graph.security.incident entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: alert_item_request_builder.AlertItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["alert%2Did"] = id
+        return alert_item_request_builder.AlertItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new IncidentItemRequestBuilder and sets the default values.
@@ -37,21 +57,6 @@ class IncidentItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def alerts_by_id(self,id: str) -> alert_item_request_builder.AlertItemRequestBuilder:
-        """
-        Provides operations to manage the alerts property of the microsoft.graph.security.incident entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: alert_item_request_builder.AlertItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .alerts.item import alert_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["alert%2Did"] = id
-        return alert_item_request_builder.AlertItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def delete(self,request_configuration: Optional[IncidentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property incidents for security
@@ -61,8 +66,6 @@ class IncidentItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -81,16 +84,12 @@ class IncidentItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models.security import incident
-
         return await self.request_adapter.send_async(request_info, incident.Incident, error_mapping)
     
     async def patch(self,body: Optional[incident.Incident] = None, request_configuration: Optional[IncidentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[incident.Incident]:
@@ -106,16 +105,12 @@ class IncidentItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models.security import incident
-
         return await self.request_adapter.send_async(request_info, incident.Incident, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[IncidentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -173,15 +168,6 @@ class IncidentItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def alerts(self) -> alerts_request_builder.AlertsRequestBuilder:
-        """
-        Provides operations to manage the alerts property of the microsoft.graph.security.incident entity.
-        """
-        from .alerts import alerts_request_builder
-
-        return alerts_request_builder.AlertsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class IncidentItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -199,6 +185,12 @@ class IncidentItemRequestBuilder():
         """
         A collection of incidents in Microsoft 365 Defender, each of which is a set of correlated alerts and associated metadata that reflects the story of an attack.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -214,12 +206,6 @@ class IncidentItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class IncidentItemRequestBuilderGetRequestConfiguration():

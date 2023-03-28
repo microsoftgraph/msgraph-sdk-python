@@ -1,26 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import child_selectability, tag
-
-from . import tag
+child_selectability = lazy_import('msgraph.generated.models.security.child_selectability')
+tag = lazy_import('msgraph.generated.models.security.tag')
 
 class EdiscoveryReviewTag(tag.Tag):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EdiscoveryReviewTag and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.security.ediscoveryReviewTag"
-        # Indicates whether a single or multiple child tags can be associated with a document. Possible values are: One, Many.  This value controls whether the UX presents the tags as checkboxes or a radio button group.
-        self._child_selectability: Optional[child_selectability.ChildSelectability] = None
-        # Returns the tags that are a child of a tag.
-        self._child_tags: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None
-        # Returns the parent tag of the specified tag.
-        self._parent: Optional[ediscovery_review_tag.EdiscoveryReviewTag] = None
-    
     @property
     def child_selectability(self,) -> Optional[child_selectability.ChildSelectability]:
         """
@@ -55,6 +41,19 @@ class EdiscoveryReviewTag(tag.Tag):
         """
         self._child_tags = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new EdiscoveryReviewTag and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.security.ediscoveryReviewTag"
+        # Indicates whether a single or multiple child tags can be associated with a document. Possible values are: One, Many.  This value controls whether the UX presents the tags as checkboxes or a radio button group.
+        self._child_selectability: Optional[child_selectability.ChildSelectability] = None
+        # Returns the tags that are a child of a tag.
+        self._child_tags: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None
+        # Returns the parent tag of the specified tag.
+        self._parent: Optional[ediscovery_review_tag.EdiscoveryReviewTag] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryReviewTag:
         """
@@ -72,9 +71,7 @@ class EdiscoveryReviewTag(tag.Tag):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import child_selectability, tag
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "childSelectability": lambda n : setattr(self, 'child_selectability', n.get_enum_value(child_selectability.ChildSelectability)),
             "childTags": lambda n : setattr(self, 'child_tags', n.get_collection_of_object_values(ediscovery_review_tag.EdiscoveryReviewTag)),
             "parent": lambda n : setattr(self, 'parent', n.get_object_value(ediscovery_review_tag.EdiscoveryReviewTag)),

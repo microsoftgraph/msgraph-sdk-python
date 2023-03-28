@@ -1,12 +1,10 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_review_query_scope
-
-from . import access_review_query_scope
+access_review_query_scope = lazy_import('msgraph.generated.models.access_review_query_scope')
 
 class AccessReviewInactiveUsersQueryScope(access_review_query_scope.AccessReviewQueryScope):
     def __init__(self,) -> None:
@@ -35,9 +33,7 @@ class AccessReviewInactiveUsersQueryScope(access_review_query_scope.AccessReview
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_review_query_scope
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "inactiveDuration": lambda n : setattr(self, 'inactive_duration', n.get_object_value(Timedelta)),
         }
         super_fields = super().get_field_deserializers()

@@ -1,24 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new validatePropertiesPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The displayName property
-        self._display_name: Optional[str] = None
-        # The entityType property
-        self._entity_type: Optional[str] = None
-        # The mailNickname property
-        self._mail_nickname: Optional[str] = None
-        # The onBehalfOfUserId property
-        self._on_behalf_of_user_id: Optional[Guid] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -35,6 +20,22 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new validatePropertiesPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The displayName property
+        self._display_name: Optional[str] = None
+        # The entityType property
+        self._entity_type: Optional[str] = None
+        # The mailNickname property
+        self._mail_nickname: Optional[str] = None
+        # The onBehalfOfUserId property
+        self._on_behalf_of_user_id: Optional[Guid] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ValidatePropertiesPostRequestBody:
@@ -87,7 +88,7 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "entityType": lambda n : setattr(self, 'entity_type', n.get_str_value()),
             "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),

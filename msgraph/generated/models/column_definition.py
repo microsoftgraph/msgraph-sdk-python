@@ -1,13 +1,97 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import boolean_column, calculated_column, choice_column, column_types, column_validation, content_approval_status_column, content_type_info, currency_column, date_time_column, default_column_value, entity, geolocation_column, hyperlink_or_picture_column, lookup_column, number_column, person_or_group_column, term_column, text_column, thumbnail_column
-
-from . import entity
+boolean_column = lazy_import('msgraph.generated.models.boolean_column')
+calculated_column = lazy_import('msgraph.generated.models.calculated_column')
+choice_column = lazy_import('msgraph.generated.models.choice_column')
+column_types = lazy_import('msgraph.generated.models.column_types')
+column_validation = lazy_import('msgraph.generated.models.column_validation')
+content_approval_status_column = lazy_import('msgraph.generated.models.content_approval_status_column')
+content_type_info = lazy_import('msgraph.generated.models.content_type_info')
+currency_column = lazy_import('msgraph.generated.models.currency_column')
+date_time_column = lazy_import('msgraph.generated.models.date_time_column')
+default_column_value = lazy_import('msgraph.generated.models.default_column_value')
+entity = lazy_import('msgraph.generated.models.entity')
+geolocation_column = lazy_import('msgraph.generated.models.geolocation_column')
+hyperlink_or_picture_column = lazy_import('msgraph.generated.models.hyperlink_or_picture_column')
+lookup_column = lazy_import('msgraph.generated.models.lookup_column')
+number_column = lazy_import('msgraph.generated.models.number_column')
+person_or_group_column = lazy_import('msgraph.generated.models.person_or_group_column')
+term_column = lazy_import('msgraph.generated.models.term_column')
+text_column = lazy_import('msgraph.generated.models.text_column')
+thumbnail_column = lazy_import('msgraph.generated.models.thumbnail_column')
 
 class ColumnDefinition(entity.Entity):
+    @property
+    def boolean(self,) -> Optional[boolean_column.BooleanColumn]:
+        """
+        Gets the boolean property value. This column stores boolean values.
+        Returns: Optional[boolean_column.BooleanColumn]
+        """
+        return self._boolean
+    
+    @boolean.setter
+    def boolean(self,value: Optional[boolean_column.BooleanColumn] = None) -> None:
+        """
+        Sets the boolean property value. This column stores boolean values.
+        Args:
+            value: Value to set for the boolean property.
+        """
+        self._boolean = value
+    
+    @property
+    def calculated(self,) -> Optional[calculated_column.CalculatedColumn]:
+        """
+        Gets the calculated property value. This column's data is calculated based on other columns.
+        Returns: Optional[calculated_column.CalculatedColumn]
+        """
+        return self._calculated
+    
+    @calculated.setter
+    def calculated(self,value: Optional[calculated_column.CalculatedColumn] = None) -> None:
+        """
+        Sets the calculated property value. This column's data is calculated based on other columns.
+        Args:
+            value: Value to set for the calculated property.
+        """
+        self._calculated = value
+    
+    @property
+    def choice(self,) -> Optional[choice_column.ChoiceColumn]:
+        """
+        Gets the choice property value. This column stores data from a list of choices.
+        Returns: Optional[choice_column.ChoiceColumn]
+        """
+        return self._choice
+    
+    @choice.setter
+    def choice(self,value: Optional[choice_column.ChoiceColumn] = None) -> None:
+        """
+        Sets the choice property value. This column stores data from a list of choices.
+        Args:
+            value: Value to set for the choice property.
+        """
+        self._choice = value
+    
+    @property
+    def column_group(self,) -> Optional[str]:
+        """
+        Gets the columnGroup property value. For site columns, the name of the group this column belongs to. Helps organize related columns.
+        Returns: Optional[str]
+        """
+        return self._column_group
+    
+    @column_group.setter
+    def column_group(self,value: Optional[str] = None) -> None:
+        """
+        Sets the columnGroup property value. For site columns, the name of the group this column belongs to. Helps organize related columns.
+        Args:
+            value: Value to set for the column_group property.
+        """
+        self._column_group = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new columnDefinition and sets the default values.
@@ -79,74 +163,6 @@ class ColumnDefinition(entity.Entity):
         self._type: Optional[column_types.ColumnTypes] = None
         # This column stores validation formula and message for the column.
         self._validation: Optional[column_validation.ColumnValidation] = None
-    
-    @property
-    def boolean(self,) -> Optional[boolean_column.BooleanColumn]:
-        """
-        Gets the boolean property value. This column stores boolean values.
-        Returns: Optional[boolean_column.BooleanColumn]
-        """
-        return self._boolean
-    
-    @boolean.setter
-    def boolean(self,value: Optional[boolean_column.BooleanColumn] = None) -> None:
-        """
-        Sets the boolean property value. This column stores boolean values.
-        Args:
-            value: Value to set for the boolean property.
-        """
-        self._boolean = value
-    
-    @property
-    def calculated(self,) -> Optional[calculated_column.CalculatedColumn]:
-        """
-        Gets the calculated property value. This column's data is calculated based on other columns.
-        Returns: Optional[calculated_column.CalculatedColumn]
-        """
-        return self._calculated
-    
-    @calculated.setter
-    def calculated(self,value: Optional[calculated_column.CalculatedColumn] = None) -> None:
-        """
-        Sets the calculated property value. This column's data is calculated based on other columns.
-        Args:
-            value: Value to set for the calculated property.
-        """
-        self._calculated = value
-    
-    @property
-    def choice(self,) -> Optional[choice_column.ChoiceColumn]:
-        """
-        Gets the choice property value. This column stores data from a list of choices.
-        Returns: Optional[choice_column.ChoiceColumn]
-        """
-        return self._choice
-    
-    @choice.setter
-    def choice(self,value: Optional[choice_column.ChoiceColumn] = None) -> None:
-        """
-        Sets the choice property value. This column stores data from a list of choices.
-        Args:
-            value: Value to set for the choice property.
-        """
-        self._choice = value
-    
-    @property
-    def column_group(self,) -> Optional[str]:
-        """
-        Gets the columnGroup property value. For site columns, the name of the group this column belongs to. Helps organize related columns.
-        Returns: Optional[str]
-        """
-        return self._column_group
-    
-    @column_group.setter
-    def column_group(self,value: Optional[str] = None) -> None:
-        """
-        Sets the columnGroup property value. For site columns, the name of the group this column belongs to. Helps organize related columns.
-        Args:
-            value: Value to set for the column_group property.
-        """
-        self._column_group = value
     
     @property
     def content_approval_status(self,) -> Optional[content_approval_status_column.ContentApprovalStatusColumn]:
@@ -301,9 +317,7 @@ class ColumnDefinition(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import boolean_column, calculated_column, choice_column, column_types, column_validation, content_approval_status_column, content_type_info, currency_column, date_time_column, default_column_value, entity, geolocation_column, hyperlink_or_picture_column, lookup_column, number_column, person_or_group_column, term_column, text_column, thumbnail_column
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "boolean": lambda n : setattr(self, 'boolean', n.get_object_value(boolean_column.BooleanColumn)),
             "calculated": lambda n : setattr(self, 'calculated', n.get_object_value(calculated_column.CalculatedColumn)),
             "choice": lambda n : setattr(self, 'choice', n.get_object_value(choice_column.ChoiceColumn)),

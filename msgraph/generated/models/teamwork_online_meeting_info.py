@@ -1,27 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import teamwork_user_identity
+teamwork_user_identity = lazy_import('msgraph.generated.models.teamwork_user_identity')
 
 class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new teamworkOnlineMeetingInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The identifier of the calendar event associated with the meeting.
-        self._calendar_event_id: Optional[str] = None
-        # The URL that users click to join or uniquely identify the meeting.
-        self._join_web_url: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The organizer of the meeting.
-        self._organizer: Optional[teamwork_user_identity.TeamworkUserIdentity] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -56,6 +40,22 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
         """
         self._calendar_event_id = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new teamworkOnlineMeetingInfo and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The identifier of the calendar event associated with the meeting.
+        self._calendar_event_id: Optional[str] = None
+        # The URL that users click to join or uniquely identify the meeting.
+        self._join_web_url: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The organizer of the meeting.
+        self._organizer: Optional[teamwork_user_identity.TeamworkUserIdentity] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkOnlineMeetingInfo:
         """
@@ -73,9 +73,7 @@ class TeamworkOnlineMeetingInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import teamwork_user_identity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "calendarEventId": lambda n : setattr(self, 'calendar_event_id', n.get_str_value()),
             "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

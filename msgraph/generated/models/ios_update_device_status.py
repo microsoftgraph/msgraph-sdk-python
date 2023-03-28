@@ -1,14 +1,31 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import compliance_status, entity, ios_updates_install_status
-
-from . import entity
+compliance_status = lazy_import('msgraph.generated.models.compliance_status')
+entity = lazy_import('msgraph.generated.models.entity')
+ios_updates_install_status = lazy_import('msgraph.generated.models.ios_updates_install_status')
 
 class IosUpdateDeviceStatus(entity.Entity):
+    @property
+    def compliance_grace_period_expiration_date_time(self,) -> Optional[datetime]:
+        """
+        Gets the complianceGracePeriodExpirationDateTime property value. The DateTime when device compliance grace period expires
+        Returns: Optional[datetime]
+        """
+        return self._compliance_grace_period_expiration_date_time
+    
+    @compliance_grace_period_expiration_date_time.setter
+    def compliance_grace_period_expiration_date_time(self,value: Optional[datetime] = None) -> None:
+        """
+        Sets the complianceGracePeriodExpirationDateTime property value. The DateTime when device compliance grace period expires
+        Args:
+            value: Value to set for the compliance_grace_period_expiration_date_time property.
+        """
+        self._compliance_grace_period_expiration_date_time = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new iosUpdateDeviceStatus and sets the default values.
@@ -38,23 +55,6 @@ class IosUpdateDeviceStatus(entity.Entity):
         self._user_name: Optional[str] = None
         # UserPrincipalName.
         self._user_principal_name: Optional[str] = None
-    
-    @property
-    def compliance_grace_period_expiration_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the complianceGracePeriodExpirationDateTime property value. The DateTime when device compliance grace period expires
-        Returns: Optional[datetime]
-        """
-        return self._compliance_grace_period_expiration_date_time
-    
-    @compliance_grace_period_expiration_date_time.setter
-    def compliance_grace_period_expiration_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the complianceGracePeriodExpirationDateTime property value. The DateTime when device compliance grace period expires
-        Args:
-            value: Value to set for the compliance_grace_period_expiration_date_time property.
-        """
-        self._compliance_grace_period_expiration_date_time = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosUpdateDeviceStatus:
@@ -124,9 +124,7 @@ class IosUpdateDeviceStatus(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import compliance_status, entity, ios_updates_install_status
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "complianceGracePeriodExpirationDateTime": lambda n : setattr(self, 'compliance_grace_period_expiration_date_time', n.get_datetime_value()),
             "deviceDisplayName": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
             "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),

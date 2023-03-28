@@ -1,28 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import client_platform, product_family, user_agent
-
-from . import user_agent
+client_platform = lazy_import('msgraph.generated.models.call_records.client_platform')
+product_family = lazy_import('msgraph.generated.models.call_records.product_family')
+user_agent = lazy_import('msgraph.generated.models.call_records.user_agent')
 
 class ClientUserAgent(user_agent.UserAgent):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ClientUserAgent and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.callRecords.clientUserAgent"
-        # The unique identifier of the Azure AD application used by this endpoint.
-        self._azure_a_d_app_id: Optional[str] = None
-        # Immutable resource identifier of the Azure Communication Service associated with this endpoint based on Communication Services APIs.
-        self._communication_service_id: Optional[str] = None
-        # The platform property
-        self._platform: Optional[client_platform.ClientPlatform] = None
-        # The productFamily property
-        self._product_family: Optional[product_family.ProductFamily] = None
-    
     @property
     def azure_a_d_app_id(self,) -> Optional[str]:
         """
@@ -57,6 +42,21 @@ class ClientUserAgent(user_agent.UserAgent):
         """
         self._communication_service_id = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ClientUserAgent and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.callRecords.clientUserAgent"
+        # The unique identifier of the Azure AD application used by this endpoint.
+        self._azure_a_d_app_id: Optional[str] = None
+        # Immutable resource identifier of the Azure Communication Service associated with this endpoint based on Communication Services APIs.
+        self._communication_service_id: Optional[str] = None
+        # The platform property
+        self._platform: Optional[client_platform.ClientPlatform] = None
+        # The productFamily property
+        self._product_family: Optional[product_family.ProductFamily] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ClientUserAgent:
         """
@@ -74,9 +74,7 @@ class ClientUserAgent(user_agent.UserAgent):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import client_platform, product_family, user_agent
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "azureADAppId": lambda n : setattr(self, 'azure_a_d_app_id', n.get_str_value()),
             "communicationServiceId": lambda n : setattr(self, 'communication_service_id', n.get_str_value()),
             "platform": lambda n : setattr(self, 'platform', n.get_enum_value(client_platform.ClientPlatform)),

@@ -7,11 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ...........models import calendar
-    from ...........models.o_data_errors import o_data_error
+calendar = lazy_import('msgraph.generated.models.calendar')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class CalendarRequestBuilder():
     """
@@ -45,16 +45,12 @@ class CalendarRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ...........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ...........models import calendar
-
         return await self.request_adapter.send_async(request_info, calendar.Calendar, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CalendarRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -80,6 +76,9 @@ class CalendarRequestBuilder():
         """
         The calendar that contains the event. Navigation property. Read-only.
         """
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -93,9 +92,6 @@ class CalendarRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class CalendarRequestBuilderGetRequestConfiguration():

@@ -1,11 +1,30 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import day_of_week, recurrence_pattern_type, week_index
+day_of_week = lazy_import('msgraph.generated.models.day_of_week')
+recurrence_pattern_type = lazy_import('msgraph.generated.models.recurrence_pattern_type')
+week_index = lazy_import('msgraph.generated.models.week_index')
 
 class RecurrencePattern(AdditionalDataHolder, Parsable):
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new recurrencePattern and sets the default values.
@@ -29,23 +48,6 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The recurrence pattern type: daily, weekly, absoluteMonthly, relativeMonthly, absoluteYearly, relativeYearly. Required. For more information, see values of type property.
         self._type: Optional[recurrence_pattern_type.RecurrencePatternType] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecurrencePattern:
@@ -115,9 +117,7 @@ class RecurrencePattern(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import day_of_week, recurrence_pattern_type, week_index
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "daysOfWeek": lambda n : setattr(self, 'days_of_week', n.get_collection_of_enum_values(day_of_week.DayOfWeek)),
             "dayOfMonth": lambda n : setattr(self, 'day_of_month', n.get_int_value()),
             "firstDayOfWeek": lambda n : setattr(self, 'first_day_of_week', n.get_enum_value(day_of_week.DayOfWeek)),

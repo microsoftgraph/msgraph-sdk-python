@@ -1,12 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import android_managed_app_protection, default_managed_app_protection, entity, ios_managed_app_protection, managed_app_configuration, managed_app_protection, mdm_windows_information_protection_policy, targeted_managed_app_configuration, targeted_managed_app_protection, windows_information_protection, windows_information_protection_policy
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class ManagedAppPolicy(entity.Entity):
     """
@@ -57,49 +55,6 @@ class ManagedAppPolicy(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.androidManagedAppProtection":
-                from . import android_managed_app_protection
-
-                return android_managed_app_protection.AndroidManagedAppProtection()
-            if mapping_value == "#microsoft.graph.defaultManagedAppProtection":
-                from . import default_managed_app_protection
-
-                return default_managed_app_protection.DefaultManagedAppProtection()
-            if mapping_value == "#microsoft.graph.iosManagedAppProtection":
-                from . import ios_managed_app_protection
-
-                return ios_managed_app_protection.IosManagedAppProtection()
-            if mapping_value == "#microsoft.graph.managedAppConfiguration":
-                from . import managed_app_configuration
-
-                return managed_app_configuration.ManagedAppConfiguration()
-            if mapping_value == "#microsoft.graph.managedAppProtection":
-                from . import managed_app_protection
-
-                return managed_app_protection.ManagedAppProtection()
-            if mapping_value == "#microsoft.graph.mdmWindowsInformationProtectionPolicy":
-                from . import mdm_windows_information_protection_policy
-
-                return mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy()
-            if mapping_value == "#microsoft.graph.targetedManagedAppConfiguration":
-                from . import targeted_managed_app_configuration
-
-                return targeted_managed_app_configuration.TargetedManagedAppConfiguration()
-            if mapping_value == "#microsoft.graph.targetedManagedAppProtection":
-                from . import targeted_managed_app_protection
-
-                return targeted_managed_app_protection.TargetedManagedAppProtection()
-            if mapping_value == "#microsoft.graph.windowsInformationProtection":
-                from . import windows_information_protection
-
-                return windows_information_protection.WindowsInformationProtection()
-            if mapping_value == "#microsoft.graph.windowsInformationProtectionPolicy":
-                from . import windows_information_protection_policy
-
-                return windows_information_protection_policy.WindowsInformationProtectionPolicy()
         return ManagedAppPolicy()
     
     @property
@@ -141,9 +96,7 @@ class ManagedAppPolicy(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_managed_app_protection, default_managed_app_protection, entity, ios_managed_app_protection, managed_app_configuration, managed_app_protection, mdm_windows_information_protection_policy, targeted_managed_app_configuration, targeted_managed_app_protection, windows_information_protection, windows_information_protection_policy
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

@@ -1,12 +1,11 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import weekly_schedule, windows_update_install_schedule_type
-
-from . import windows_update_install_schedule_type
+weekly_schedule = lazy_import('msgraph.generated.models.weekly_schedule')
+windows_update_install_schedule_type = lazy_import('msgraph.generated.models.windows_update_install_schedule_type')
 
 class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.WindowsUpdateInstallScheduleType):
     def __init__(self,) -> None:
@@ -37,9 +36,7 @@ class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.Windows
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import weekly_schedule, windows_update_install_schedule_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "scheduledInstallDay": lambda n : setattr(self, 'scheduled_install_day', n.get_enum_value(weekly_schedule.WeeklySchedule)),
             "scheduledInstallTime": lambda n : setattr(self, 'scheduled_install_time', n.get_object_value(Time)),
         }

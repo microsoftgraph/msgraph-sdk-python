@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import chat_message, entity
-
-from . import entity
+chat_message = lazy_import('msgraph.generated.models.chat_message')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class PinnedChatMessageInfo(entity.Entity):
     def __init__(self,) -> None:
@@ -35,9 +34,7 @@ class PinnedChatMessageInfo(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import chat_message, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "message": lambda n : setattr(self, 'message', n.get_object_value(chat_message.ChatMessage)),
         }
         super_fields = super().get_field_deserializers()

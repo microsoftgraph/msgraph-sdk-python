@@ -1,14 +1,31 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, post, recipient
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+post = lazy_import('msgraph.generated.models.post')
+recipient = lazy_import('msgraph.generated.models.recipient')
 
 class ConversationThread(entity.Entity):
+    @property
+    def cc_recipients(self,) -> Optional[List[recipient.Recipient]]:
+        """
+        Gets the ccRecipients property value. The Cc: recipients for the thread. Returned only on $select.
+        Returns: Optional[List[recipient.Recipient]]
+        """
+        return self._cc_recipients
+    
+    @cc_recipients.setter
+    def cc_recipients(self,value: Optional[List[recipient.Recipient]] = None) -> None:
+        """
+        Sets the ccRecipients property value. The Cc: recipients for the thread. Returned only on $select.
+        Args:
+            value: Value to set for the cc_recipients property.
+        """
+        self._cc_recipients = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new conversationThread and sets the default values.
@@ -35,23 +52,6 @@ class ConversationThread(entity.Entity):
         # All the users that sent a message to this thread. Returned by default.
         self._unique_senders: Optional[List[str]] = None
     
-    @property
-    def cc_recipients(self,) -> Optional[List[recipient.Recipient]]:
-        """
-        Gets the ccRecipients property value. The Cc: recipients for the thread. Returned only on $select.
-        Returns: Optional[List[recipient.Recipient]]
-        """
-        return self._cc_recipients
-    
-    @cc_recipients.setter
-    def cc_recipients(self,value: Optional[List[recipient.Recipient]] = None) -> None:
-        """
-        Sets the ccRecipients property value. The Cc: recipients for the thread. Returned only on $select.
-        Args:
-            value: Value to set for the cc_recipients property.
-        """
-        self._cc_recipients = value
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConversationThread:
         """
@@ -69,9 +69,7 @@ class ConversationThread(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, post, recipient
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "ccRecipients": lambda n : setattr(self, 'cc_recipients', n.get_collection_of_object_values(recipient.Recipient)),
             "hasAttachments": lambda n : setattr(self, 'has_attachments', n.get_bool_value()),
             "isLocked": lambda n : setattr(self, 'is_locked', n.get_bool_value()),

@@ -1,42 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import access_package_assignment_policy, access_package_catalog, entity, group
-
-from . import entity
+access_package_assignment_policy = lazy_import('msgraph.generated.models.access_package_assignment_policy')
+access_package_catalog = lazy_import('msgraph.generated.models.access_package_catalog')
+entity = lazy_import('msgraph.generated.models.entity')
+group = lazy_import('msgraph.generated.models.group')
 
 class AccessPackage(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new accessPackage and sets the default values.
-        """
-        super().__init__()
-        # The access packages that are incompatible with this package. Read-only.
-        self._access_packages_incompatible_with: Optional[List[AccessPackage]] = None
-        # The assignmentPolicies property
-        self._assignment_policies: Optional[List[access_package_assignment_policy.AccessPackageAssignmentPolicy]] = None
-        # The catalog property
-        self._catalog: Optional[access_package_catalog.AccessPackageCatalog] = None
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-        self._created_date_time: Optional[datetime] = None
-        # The description of the access package.
-        self._description: Optional[str] = None
-        # The display name of the access package. Supports $filter (eq, contains).
-        self._display_name: Optional[str] = None
-        # The access packages whose assigned users are ineligible to be assigned this access package.
-        self._incompatible_access_packages: Optional[List[AccessPackage]] = None
-        # The groups whose members are ineligible to be assigned this access package.
-        self._incompatible_groups: Optional[List[group.Group]] = None
-        # Whether the access package is hidden from the requestor.
-        self._is_hidden: Optional[bool] = None
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-        self._modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
     @property
     def access_packages_incompatible_with(self,) -> Optional[List[AccessPackage]]:
         """
@@ -87,6 +60,34 @@ class AccessPackage(entity.Entity):
             value: Value to set for the catalog property.
         """
         self._catalog = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new accessPackage and sets the default values.
+        """
+        super().__init__()
+        # The access packages that are incompatible with this package. Read-only.
+        self._access_packages_incompatible_with: Optional[List[AccessPackage]] = None
+        # The assignmentPolicies property
+        self._assignment_policies: Optional[List[access_package_assignment_policy.AccessPackageAssignmentPolicy]] = None
+        # The catalog property
+        self._catalog: Optional[access_package_catalog.AccessPackageCatalog] = None
+        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+        self._created_date_time: Optional[datetime] = None
+        # The description of the access package.
+        self._description: Optional[str] = None
+        # The display name of the access package. Supports $filter (eq, contains).
+        self._display_name: Optional[str] = None
+        # The access packages whose assigned users are ineligible to be assigned this access package.
+        self._incompatible_access_packages: Optional[List[AccessPackage]] = None
+        # The groups whose members are ineligible to be assigned this access package.
+        self._incompatible_groups: Optional[List[group.Group]] = None
+        # Whether the access package is hidden from the requestor.
+        self._is_hidden: Optional[bool] = None
+        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+        self._modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -156,9 +157,7 @@ class AccessPackage(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import access_package_assignment_policy, access_package_catalog, entity, group
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "accessPackagesIncompatibleWith": lambda n : setattr(self, 'access_packages_incompatible_with', n.get_collection_of_object_values(AccessPackage)),
             "assignmentPolicies": lambda n : setattr(self, 'assignment_policies', n.get_collection_of_object_values(access_package_assignment_policy.AccessPackageAssignmentPolicy)),
             "catalog": lambda n : setattr(self, 'catalog', n.get_object_value(access_package_catalog.AccessPackageCatalog)),

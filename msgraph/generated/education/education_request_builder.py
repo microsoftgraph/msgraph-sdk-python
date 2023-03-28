@@ -7,23 +7,64 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ..models import education_root
-    from ..models.o_data_errors import o_data_error
-    from .classes import classes_request_builder
-    from .classes.item import education_class_item_request_builder
-    from .me import me_request_builder
-    from .schools import schools_request_builder
-    from .schools.item import education_school_item_request_builder
-    from .users import users_request_builder
-    from .users.item import education_user_item_request_builder
+classes_request_builder = lazy_import('msgraph.generated.education.classes.classes_request_builder')
+education_class_item_request_builder = lazy_import('msgraph.generated.education.classes.item.education_class_item_request_builder')
+me_request_builder = lazy_import('msgraph.generated.education.me.me_request_builder')
+schools_request_builder = lazy_import('msgraph.generated.education.schools.schools_request_builder')
+education_school_item_request_builder = lazy_import('msgraph.generated.education.schools.item.education_school_item_request_builder')
+users_request_builder = lazy_import('msgraph.generated.education.users.users_request_builder')
+education_user_item_request_builder = lazy_import('msgraph.generated.education.users.item.education_user_item_request_builder')
+education_root = lazy_import('msgraph.generated.models.education_root')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class EducationRequestBuilder():
     """
     Provides operations to manage the educationRoot singleton.
     """
+    @property
+    def classes(self) -> classes_request_builder.ClassesRequestBuilder:
+        """
+        Provides operations to manage the classes property of the microsoft.graph.educationRoot entity.
+        """
+        return classes_request_builder.ClassesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def me(self) -> me_request_builder.MeRequestBuilder:
+        """
+        Provides operations to manage the me property of the microsoft.graph.educationRoot entity.
+        """
+        return me_request_builder.MeRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def schools(self) -> schools_request_builder.SchoolsRequestBuilder:
+        """
+        Provides operations to manage the schools property of the microsoft.graph.educationRoot entity.
+        """
+        return schools_request_builder.SchoolsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def users(self) -> users_request_builder.UsersRequestBuilder:
+        """
+        Provides operations to manage the users property of the microsoft.graph.educationRoot entity.
+        """
+        return users_request_builder.UsersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    def classes_by_id(self,id: str) -> education_class_item_request_builder.EducationClassItemRequestBuilder:
+        """
+        Provides operations to manage the classes property of the microsoft.graph.educationRoot entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: education_class_item_request_builder.EducationClassItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["educationClass%2Did"] = id
+        return education_class_item_request_builder.EducationClassItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EducationRequestBuilder and sets the default values.
@@ -42,21 +83,6 @@ class EducationRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def classes_by_id(self,id: str) -> education_class_item_request_builder.EducationClassItemRequestBuilder:
-        """
-        Provides operations to manage the classes property of the microsoft.graph.educationRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: education_class_item_request_builder.EducationClassItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .classes.item import education_class_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["educationClass%2Did"] = id
-        return education_class_item_request_builder.EducationClassItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def get(self,request_configuration: Optional[EducationRequestBuilderGetRequestConfiguration] = None) -> Optional[education_root.EducationRoot]:
         """
         Get education
@@ -67,16 +93,12 @@ class EducationRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import education_root
-
         return await self.request_adapter.send_async(request_info, education_root.EducationRoot, error_mapping)
     
     async def patch(self,body: Optional[education_root.EducationRoot] = None, request_configuration: Optional[EducationRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_root.EducationRoot]:
@@ -92,16 +114,12 @@ class EducationRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import education_root
-
         return await self.request_adapter.send_async(request_info, education_root.EducationRoot, error_mapping)
     
     def schools_by_id(self,id: str) -> education_school_item_request_builder.EducationSchoolItemRequestBuilder:
@@ -113,8 +131,6 @@ class EducationRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .schools.item import education_school_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["educationSchool%2Did"] = id
         return education_school_item_request_builder.EducationSchoolItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -167,53 +183,21 @@ class EducationRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .users.item import education_user_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["educationUser%2Did"] = id
         return education_user_item_request_builder.EducationUserItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    @property
-    def classes(self) -> classes_request_builder.ClassesRequestBuilder:
-        """
-        Provides operations to manage the classes property of the microsoft.graph.educationRoot entity.
-        """
-        from .classes import classes_request_builder
-
-        return classes_request_builder.ClassesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def me(self) -> me_request_builder.MeRequestBuilder:
-        """
-        Provides operations to manage the me property of the microsoft.graph.educationRoot entity.
-        """
-        from .me import me_request_builder
-
-        return me_request_builder.MeRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def schools(self) -> schools_request_builder.SchoolsRequestBuilder:
-        """
-        Provides operations to manage the schools property of the microsoft.graph.educationRoot entity.
-        """
-        from .schools import schools_request_builder
-
-        return schools_request_builder.SchoolsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def users(self) -> users_request_builder.UsersRequestBuilder:
-        """
-        Provides operations to manage the users property of the microsoft.graph.educationRoot entity.
-        """
-        from .users import users_request_builder
-
-        return users_request_builder.UsersRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EducationRequestBuilderGetQueryParameters():
         """
         Get education
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -229,12 +213,6 @@ class EducationRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class EducationRequestBuilderGetRequestConfiguration():

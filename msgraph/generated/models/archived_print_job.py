@@ -1,40 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import print_job_processing_state, user_identity
+print_job_processing_state = lazy_import('msgraph.generated.models.print_job_processing_state')
+user_identity = lazy_import('msgraph.generated.models.user_identity')
 
 class ArchivedPrintJob(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new archivedPrintJob and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # True if the job was acquired by a printer; false otherwise. Read-only.
-        self._acquired_by_printer: Optional[bool] = None
-        # The dateTimeOffset when the job was acquired by the printer, if any. Read-only.
-        self._acquired_date_time: Optional[datetime] = None
-        # The dateTimeOffset when the job was completed, canceled or aborted. Read-only.
-        self._completion_date_time: Optional[datetime] = None
-        # The number of copies that were printed. Read-only.
-        self._copies_printed: Optional[int] = None
-        # The user who created the print job. Read-only.
-        self._created_by: Optional[user_identity.UserIdentity] = None
-        # The dateTimeOffset when the job was created. Read-only.
-        self._created_date_time: Optional[datetime] = None
-        # The archived print job's GUID. Read-only.
-        self._id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The printer ID that the job was queued for. Read-only.
-        self._printer_id: Optional[str] = None
-        # The processingState property
-        self._processing_state: Optional[print_job_processing_state.PrintJobProcessingState] = None
-    
     @property
     def acquired_by_printer(self,) -> Optional[bool]:
         """
@@ -102,6 +75,34 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
             value: Value to set for the completion_date_time property.
         """
         self._completion_date_time = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new archivedPrintJob and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # True if the job was acquired by a printer; false otherwise. Read-only.
+        self._acquired_by_printer: Optional[bool] = None
+        # The dateTimeOffset when the job was acquired by the printer, if any. Read-only.
+        self._acquired_date_time: Optional[datetime] = None
+        # The dateTimeOffset when the job was completed, canceled or aborted. Read-only.
+        self._completion_date_time: Optional[datetime] = None
+        # The number of copies that were printed. Read-only.
+        self._copies_printed: Optional[int] = None
+        # The user who created the print job. Read-only.
+        self._created_by: Optional[user_identity.UserIdentity] = None
+        # The dateTimeOffset when the job was created. Read-only.
+        self._created_date_time: Optional[datetime] = None
+        # The archived print job's GUID. Read-only.
+        self._id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The printer ID that the job was queued for. Read-only.
+        self._printer_id: Optional[str] = None
+        # The processingState property
+        self._processing_state: Optional[print_job_processing_state.PrintJobProcessingState] = None
     
     @property
     def copies_printed(self,) -> Optional[int]:
@@ -171,9 +172,7 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import print_job_processing_state, user_identity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "acquiredByPrinter": lambda n : setattr(self, 'acquired_by_printer', n.get_bool_value()),
             "acquiredDateTime": lambda n : setattr(self, 'acquired_date_time', n.get_datetime_value()),
             "completionDateTime": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),

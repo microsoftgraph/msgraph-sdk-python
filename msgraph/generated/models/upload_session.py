@@ -1,25 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class UploadSession(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new uploadSession and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The date and time in UTC that the upload session will expire. The complete file must be uploaded before this expiration time is reached.
-        self._expiration_date_time: Optional[datetime] = None
-        # A collection of byte ranges that the server is missing for the file. These ranges are zero indexed and of the format 'start-end' (e.g. '0-26' to indicate the first 27 bytes of the file). When uploading files as Outlook attachments, instead of a collection of ranges, this property always indicates a single value '{start}', the location in the file where the next upload should begin.
-        self._next_expected_ranges: Optional[List[str]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The URL endpoint that accepts PUT requests for byte ranges of the file.
-        self._upload_url: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -36,6 +21,22 @@ class UploadSession(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new uploadSession and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The date and time in UTC that the upload session will expire. The complete file must be uploaded before this expiration time is reached.
+        self._expiration_date_time: Optional[datetime] = None
+        # A collection of byte ranges that the server is missing for the file. These ranges are zero indexed and of the format 'start-end' (e.g. '0-26' to indicate the first 27 bytes of the file). When uploading files as Outlook attachments, instead of a collection of ranges, this property always indicates a single value '{start}', the location in the file where the next upload should begin.
+        self._next_expected_ranges: Optional[List[str]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The URL endpoint that accepts PUT requests for byte ranges of the file.
+        self._upload_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UploadSession:
@@ -71,7 +72,7 @@ class UploadSession(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "nextExpectedRanges": lambda n : setattr(self, 'next_expected_ranges', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -1,26 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import daylight_time_zone_offset, standard_time_zone_offset, time_zone_base
-
-from . import time_zone_base
+daylight_time_zone_offset = lazy_import('msgraph.generated.models.daylight_time_zone_offset')
+standard_time_zone_offset = lazy_import('msgraph.generated.models.standard_time_zone_offset')
+time_zone_base = lazy_import('msgraph.generated.models.time_zone_base')
 
 class CustomTimeZone(time_zone_base.TimeZoneBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new CustomTimeZone and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.customTimeZone"
-        # The time offset of the time zone from Coordinated Universal Time (UTC). This value is in minutes. Time zones that are ahead of UTC have a positive offset; time zones that are behind UTC have a negative offset.
-        self._bias: Optional[int] = None
-        # Specifies when the time zone switches from standard time to daylight saving time.
-        self._daylight_offset: Optional[daylight_time_zone_offset.DaylightTimeZoneOffset] = None
-        # Specifies when the time zone switches from daylight saving time to standard time.
-        self._standard_offset: Optional[standard_time_zone_offset.StandardTimeZoneOffset] = None
-    
     @property
     def bias(self,) -> Optional[int]:
         """
@@ -37,6 +24,19 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
             value: Value to set for the bias property.
         """
         self._bias = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new CustomTimeZone and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.customTimeZone"
+        # The time offset of the time zone from Coordinated Universal Time (UTC). This value is in minutes. Time zones that are ahead of UTC have a positive offset; time zones that are behind UTC have a negative offset.
+        self._bias: Optional[int] = None
+        # Specifies when the time zone switches from standard time to daylight saving time.
+        self._daylight_offset: Optional[daylight_time_zone_offset.DaylightTimeZoneOffset] = None
+        # Specifies when the time zone switches from daylight saving time to standard time.
+        self._standard_offset: Optional[standard_time_zone_offset.StandardTimeZoneOffset] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CustomTimeZone:
@@ -72,9 +72,7 @@ class CustomTimeZone(time_zone_base.TimeZoneBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import daylight_time_zone_offset, standard_time_zone_offset, time_zone_base
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "bias": lambda n : setattr(self, 'bias', n.get_int_value()),
             "daylightOffset": lambda n : setattr(self, 'daylight_offset', n.get_object_value(daylight_time_zone_offset.DaylightTimeZoneOffset)),
             "standardOffset": lambda n : setattr(self, 'standard_offset', n.get_object_value(standard_time_zone_offset.StandardTimeZoneOffset)),

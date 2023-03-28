@@ -1,36 +1,14 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import attendee_base, location_constraint, time_constraint
+attendee_base = lazy_import('msgraph.generated.models.attendee_base')
+location_constraint = lazy_import('msgraph.generated.models.location_constraint')
+time_constraint = lazy_import('msgraph.generated.models.time_constraint')
 
 class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new findMeetingTimesPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The attendees property
-        self._attendees: Optional[List[attendee_base.AttendeeBase]] = None
-        # The isOrganizerOptional property
-        self._is_organizer_optional: Optional[bool] = None
-        # The locationConstraint property
-        self._location_constraint: Optional[location_constraint.LocationConstraint] = None
-        # The maxCandidates property
-        self._max_candidates: Optional[int] = None
-        # The meetingDuration property
-        self._meeting_duration: Optional[Timedelta] = None
-        # The minimumAttendeePercentage property
-        self._minimum_attendee_percentage: Optional[float] = None
-        # The returnSuggestionReasons property
-        self._return_suggestion_reasons: Optional[bool] = None
-        # The timeConstraint property
-        self._time_constraint: Optional[time_constraint.TimeConstraint] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -65,6 +43,30 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         """
         self._attendees = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new findMeetingTimesPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The attendees property
+        self._attendees: Optional[List[attendee_base.AttendeeBase]] = None
+        # The isOrganizerOptional property
+        self._is_organizer_optional: Optional[bool] = None
+        # The locationConstraint property
+        self._location_constraint: Optional[location_constraint.LocationConstraint] = None
+        # The maxCandidates property
+        self._max_candidates: Optional[int] = None
+        # The meetingDuration property
+        self._meeting_duration: Optional[Timedelta] = None
+        # The minimumAttendeePercentage property
+        self._minimum_attendee_percentage: Optional[float] = None
+        # The returnSuggestionReasons property
+        self._return_suggestion_reasons: Optional[bool] = None
+        # The timeConstraint property
+        self._time_constraint: Optional[time_constraint.TimeConstraint] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FindMeetingTimesPostRequestBody:
         """
@@ -82,9 +84,7 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ....models import attendee_base, location_constraint, time_constraint
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "attendees": lambda n : setattr(self, 'attendees', n.get_collection_of_object_values(attendee_base.AttendeeBase)),
             "isOrganizerOptional": lambda n : setattr(self, 'is_organizer_optional', n.get_bool_value()),
             "locationConstraint": lambda n : setattr(self, 'location_constraint', n.get_object_value(location_constraint.LocationConstraint)),

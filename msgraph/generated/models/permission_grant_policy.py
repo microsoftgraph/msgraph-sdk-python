@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import permission_grant_condition_set, policy_base
-
-from . import policy_base
+permission_grant_condition_set = lazy_import('msgraph.generated.models.permission_grant_condition_set')
+policy_base = lazy_import('msgraph.generated.models.policy_base')
 
 class PermissionGrantPolicy(policy_base.PolicyBase):
     def __init__(self,) -> None:
@@ -53,9 +52,7 @@ class PermissionGrantPolicy(policy_base.PolicyBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import permission_grant_condition_set, policy_base
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "excludes": lambda n : setattr(self, 'excludes', n.get_collection_of_object_values(permission_grant_condition_set.PermissionGrantConditionSet)),
             "includes": lambda n : setattr(self, 'includes', n.get_collection_of_object_values(permission_grant_condition_set.PermissionGrantConditionSet)),
         }

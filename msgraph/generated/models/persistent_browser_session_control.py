@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import conditional_access_session_control, persistent_browser_session_mode
-
-from . import conditional_access_session_control
+conditional_access_session_control = lazy_import('msgraph.generated.models.conditional_access_session_control')
+persistent_browser_session_mode = lazy_import('msgraph.generated.models.persistent_browser_session_mode')
 
 class PersistentBrowserSessionControl(conditional_access_session_control.ConditionalAccessSessionControl):
     def __init__(self,) -> None:
@@ -34,9 +33,7 @@ class PersistentBrowserSessionControl(conditional_access_session_control.Conditi
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_session_control, persistent_browser_session_mode
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "mode": lambda n : setattr(self, 'mode', n.get_enum_value(persistent_browser_session_mode.PersistentBrowserSessionMode)),
         }
         super_fields = super().get_field_deserializers()

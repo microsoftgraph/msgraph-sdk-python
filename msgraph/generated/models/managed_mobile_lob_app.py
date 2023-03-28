@@ -1,28 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import managed_android_lob_app, managed_app, managed_i_o_s_lob_app, mobile_app_content
-
-from . import managed_app
+managed_app = lazy_import('msgraph.generated.models.managed_app')
+mobile_app_content = lazy_import('msgraph.generated.models.mobile_app_content')
 
 class ManagedMobileLobApp(managed_app.ManagedApp):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ManagedMobileLobApp and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.managedMobileLobApp"
-        # The internal committed content version.
-        self._committed_content_version: Optional[str] = None
-        # The list of content versions for this app.
-        self._content_versions: Optional[List[mobile_app_content.MobileAppContent]] = None
-        # The name of the main Lob application file.
-        self._file_name: Optional[str] = None
-        # The total size, including all uploaded files.
-        self._size: Optional[int] = None
-    
     @property
     def committed_content_version(self,) -> Optional[str]:
         """
@@ -39,6 +23,21 @@ class ManagedMobileLobApp(managed_app.ManagedApp):
             value: Value to set for the committed_content_version property.
         """
         self._committed_content_version = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ManagedMobileLobApp and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.managedMobileLobApp"
+        # The internal committed content version.
+        self._committed_content_version: Optional[str] = None
+        # The list of content versions for this app.
+        self._content_versions: Optional[List[mobile_app_content.MobileAppContent]] = None
+        # The name of the main Lob application file.
+        self._file_name: Optional[str] = None
+        # The total size, including all uploaded files.
+        self._size: Optional[int] = None
     
     @property
     def content_versions(self,) -> Optional[List[mobile_app_content.MobileAppContent]]:
@@ -67,17 +66,6 @@ class ManagedMobileLobApp(managed_app.ManagedApp):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.managedAndroidLobApp":
-                from . import managed_android_lob_app
-
-                return managed_android_lob_app.ManagedAndroidLobApp()
-            if mapping_value == "#microsoft.graph.managedIOSLobApp":
-                from . import managed_i_o_s_lob_app
-
-                return managed_i_o_s_lob_app.ManagedIOSLobApp()
         return ManagedMobileLobApp()
     
     @property
@@ -102,9 +90,7 @@ class ManagedMobileLobApp(managed_app.ManagedApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import managed_android_lob_app, managed_app, managed_i_o_s_lob_app, mobile_app_content
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "committedContentVersion": lambda n : setattr(self, 'committed_content_version', n.get_str_value()),
             "contentVersions": lambda n : setattr(self, 'content_versions', n.get_collection_of_object_values(mobile_app_content.MobileAppContent)),
             "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),

@@ -1,40 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import attack_simulation_user, user_simulation_event_info, user_training_event_info
+attack_simulation_user = lazy_import('msgraph.generated.models.attack_simulation_user')
+user_simulation_event_info = lazy_import('msgraph.generated.models.user_simulation_event_info')
+user_training_event_info = lazy_import('msgraph.generated.models.user_training_event_info')
 
 class UserSimulationDetails(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new userSimulationDetails and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Number of trainings assigned to a user in an attack simulation and training campaign.
-        self._assigned_trainings_count: Optional[int] = None
-        # Number of trainings completed by a user in an attack simulation and training campaign.
-        self._completed_trainings_count: Optional[int] = None
-        # Date and time of the compromising online action by a user in an attack simulation and training campaign.
-        self._compromised_date_time: Optional[datetime] = None
-        # Number of trainings in progress by a user in an attack simulation and training campaign.
-        self._in_progress_trainings_count: Optional[int] = None
-        # Indicates whether a user was compromised in an attack simulation and training campaign.
-        self._is_compromised: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Date and time when a user reported the delivered payload as phishing in the attack simulation and training campaign.
-        self._reported_phish_date_time: Optional[datetime] = None
-        # List of simulation events of a user in the attack simulation and training campaign.
-        self._simulation_events: Optional[List[user_simulation_event_info.UserSimulationEventInfo]] = None
-        # User in an attack simulation and training campaign.
-        self._simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
-        # List of training events of a user in the attack simulation and training campaign.
-        self._training_events: Optional[List[user_training_event_info.UserTrainingEventInfo]] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -103,6 +77,34 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         """
         self._compromised_date_time = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new userSimulationDetails and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Number of trainings assigned to a user in an attack simulation and training campaign.
+        self._assigned_trainings_count: Optional[int] = None
+        # Number of trainings completed by a user in an attack simulation and training campaign.
+        self._completed_trainings_count: Optional[int] = None
+        # Date and time of the compromising online action by a user in an attack simulation and training campaign.
+        self._compromised_date_time: Optional[datetime] = None
+        # Number of trainings in progress by a user in an attack simulation and training campaign.
+        self._in_progress_trainings_count: Optional[int] = None
+        # Indicates whether a user was compromised in an attack simulation and training campaign.
+        self._is_compromised: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Date and time when a user reported the delivered payload as phishing in the attack simulation and training campaign.
+        self._reported_phish_date_time: Optional[datetime] = None
+        # List of simulation events of a user in the attack simulation and training campaign.
+        self._simulation_events: Optional[List[user_simulation_event_info.UserSimulationEventInfo]] = None
+        # User in an attack simulation and training campaign.
+        self._simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
+        # List of training events of a user in the attack simulation and training campaign.
+        self._training_events: Optional[List[user_training_event_info.UserTrainingEventInfo]] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserSimulationDetails:
         """
@@ -120,9 +122,7 @@ class UserSimulationDetails(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import attack_simulation_user, user_simulation_event_info, user_training_event_info
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "assignedTrainingsCount": lambda n : setattr(self, 'assigned_trainings_count', n.get_int_value()),
             "completedTrainingsCount": lambda n : setattr(self, 'completed_trainings_count', n.get_int_value()),
             "compromisedDateTime": lambda n : setattr(self, 'compromised_date_time', n.get_datetime_value()),

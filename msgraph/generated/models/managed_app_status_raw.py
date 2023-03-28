@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import json, managed_app_status
-
-from . import managed_app_status
+json = lazy_import('msgraph.generated.models.json')
+managed_app_status = lazy_import('msgraph.generated.models.managed_app_status')
 
 class ManagedAppStatusRaw(managed_app_status.ManagedAppStatus):
     def __init__(self,) -> None:
@@ -51,9 +50,7 @@ class ManagedAppStatusRaw(managed_app_status.ManagedAppStatus):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import json, managed_app_status
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "content": lambda n : setattr(self, 'content', n.get_object_value(json.Json)),
         }
         super_fields = super().get_field_deserializers()

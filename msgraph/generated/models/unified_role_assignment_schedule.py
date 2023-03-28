@@ -1,29 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import request_schedule, unified_role_eligibility_schedule, unified_role_schedule_base
-
-from . import unified_role_schedule_base
+request_schedule = lazy_import('msgraph.generated.models.request_schedule')
+unified_role_eligibility_schedule = lazy_import('msgraph.generated.models.unified_role_eligibility_schedule')
+unified_role_schedule_base = lazy_import('msgraph.generated.models.unified_role_schedule_base')
 
 class UnifiedRoleAssignmentSchedule(unified_role_schedule_base.UnifiedRoleScheduleBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new UnifiedRoleAssignmentSchedule and sets the default values.
-        """
-        super().__init__()
-        # If the request is from an eligible administrator to activate a role, this parameter will show the related eligible assignment for that activation. Otherwise, it is null. Supports $expand.
-        self._activated_using: Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule] = None
-        # Type of the assignment which can either be Assigned or Activated. Supports $filter (eq, ne).
-        self._assignment_type: Optional[str] = None
-        # How the assignments is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleAssignmentSchedule can be managed by the caller. Supports $filter (eq, ne).
-        self._member_type: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The period of the role assignment. It can represent a single occurrence or multiple recurrences.
-        self._schedule_info: Optional[request_schedule.RequestSchedule] = None
-    
     @property
     def activated_using(self,) -> Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]:
         """
@@ -58,6 +42,22 @@ class UnifiedRoleAssignmentSchedule(unified_role_schedule_base.UnifiedRoleSchedu
         """
         self._assignment_type = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new UnifiedRoleAssignmentSchedule and sets the default values.
+        """
+        super().__init__()
+        # If the request is from an eligible administrator to activate a role, this parameter will show the related eligible assignment for that activation. Otherwise, it is null. Supports $expand.
+        self._activated_using: Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule] = None
+        # Type of the assignment which can either be Assigned or Activated. Supports $filter (eq, ne).
+        self._assignment_type: Optional[str] = None
+        # How the assignments is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleAssignmentSchedule can be managed by the caller. Supports $filter (eq, ne).
+        self._member_type: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The period of the role assignment. It can represent a single occurrence or multiple recurrences.
+        self._schedule_info: Optional[request_schedule.RequestSchedule] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleAssignmentSchedule:
         """
@@ -75,9 +75,7 @@ class UnifiedRoleAssignmentSchedule(unified_role_schedule_base.UnifiedRoleSchedu
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import request_schedule, unified_role_eligibility_schedule, unified_role_schedule_base
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "activatedUsing": lambda n : setattr(self, 'activated_using', n.get_object_value(unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule)),
             "assignmentType": lambda n : setattr(self, 'assignment_type', n.get_str_value()),
             "memberType": lambda n : setattr(self, 'member_type', n.get_str_value()),

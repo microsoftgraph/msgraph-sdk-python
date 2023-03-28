@@ -1,24 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new crossTenantAccessPolicyInboundTrust and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Specifies whether compliant devices from external Azure AD organizations are trusted.
-        self._is_compliant_device_accepted: Optional[bool] = None
-        # Specifies whether hybrid Azure AD joined devices from external Azure AD organizations are trusted.
-        self._is_hybrid_azure_a_d_joined_device_accepted: Optional[bool] = None
-        # Specifies whether MFA from external Azure AD organizations is trusted.
-        self._is_mfa_accepted: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -35,6 +20,22 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new crossTenantAccessPolicyInboundTrust and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Specifies whether compliant devices from external Azure AD organizations are trusted.
+        self._is_compliant_device_accepted: Optional[bool] = None
+        # Specifies whether hybrid Azure AD joined devices from external Azure AD organizations are trusted.
+        self._is_hybrid_azure_a_d_joined_device_accepted: Optional[bool] = None
+        # Specifies whether MFA from external Azure AD organizations is trusted.
+        self._is_mfa_accepted: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicyInboundTrust:
@@ -53,7 +54,7 @@ class CrossTenantAccessPolicyInboundTrust(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "isCompliantDeviceAccepted": lambda n : setattr(self, 'is_compliant_device_accepted', n.get_bool_value()),
             "isHybridAzureADJoinedDeviceAccepted": lambda n : setattr(self, 'is_hybrid_azure_a_d_joined_device_accepted', n.get_bool_value()),
             "isMfaAccepted": lambda n : setattr(self, 'is_mfa_accepted', n.get_bool_value()),

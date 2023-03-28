@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import identity_provider_base
-
-from . import identity_provider_base
+identity_provider_base = lazy_import('msgraph.generated.models.identity_provider_base')
 
 class BuiltInIdentityProvider(identity_provider_base.IdentityProviderBase):
     def __init__(self,) -> None:
@@ -34,9 +32,7 @@ class BuiltInIdentityProvider(identity_provider_base.IdentityProviderBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_provider_base
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "identityProviderType": lambda n : setattr(self, 'identity_provider_type', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

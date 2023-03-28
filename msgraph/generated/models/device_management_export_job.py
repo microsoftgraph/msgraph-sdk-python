@@ -1,12 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import device_management_export_job_localization_type, device_management_report_file_format, device_management_report_status, entity
-
-from . import entity
+device_management_export_job_localization_type = lazy_import('msgraph.generated.models.device_management_export_job_localization_type')
+device_management_report_file_format = lazy_import('msgraph.generated.models.device_management_report_file_format')
+device_management_report_status = lazy_import('msgraph.generated.models.device_management_report_status')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class DeviceManagementExportJob(entity.Entity):
     """
@@ -108,9 +109,7 @@ class DeviceManagementExportJob(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_management_export_job_localization_type, device_management_report_file_format, device_management_report_status, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "filter": lambda n : setattr(self, 'filter', n.get_str_value()),
             "format": lambda n : setattr(self, 'format', n.get_enum_value(device_management_report_file_format.DeviceManagementReportFileFormat)),

@@ -1,14 +1,31 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import change_tracked_entity, offer_shift_request, open_shift_change_request, schedule_change_request_actor, schedule_change_state, swap_shifts_change_request, time_off_request
-
-from . import change_tracked_entity
+change_tracked_entity = lazy_import('msgraph.generated.models.change_tracked_entity')
+schedule_change_request_actor = lazy_import('msgraph.generated.models.schedule_change_request_actor')
+schedule_change_state = lazy_import('msgraph.generated.models.schedule_change_state')
 
 class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
+    @property
+    def assigned_to(self,) -> Optional[schedule_change_request_actor.ScheduleChangeRequestActor]:
+        """
+        Gets the assignedTo property value. The assignedTo property
+        Returns: Optional[schedule_change_request_actor.ScheduleChangeRequestActor]
+        """
+        return self._assigned_to
+    
+    @assigned_to.setter
+    def assigned_to(self,value: Optional[schedule_change_request_actor.ScheduleChangeRequestActor] = None) -> None:
+        """
+        Sets the assignedTo property value. The assignedTo property
+        Args:
+            value: Value to set for the assigned_to property.
+        """
+        self._assigned_to = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new ScheduleChangeRequest and sets the default values.
@@ -32,23 +49,6 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
         # The state property
         self._state: Optional[schedule_change_state.ScheduleChangeState] = None
     
-    @property
-    def assigned_to(self,) -> Optional[schedule_change_request_actor.ScheduleChangeRequestActor]:
-        """
-        Gets the assignedTo property value. The assignedTo property
-        Returns: Optional[schedule_change_request_actor.ScheduleChangeRequestActor]
-        """
-        return self._assigned_to
-    
-    @assigned_to.setter
-    def assigned_to(self,value: Optional[schedule_change_request_actor.ScheduleChangeRequestActor] = None) -> None:
-        """
-        Sets the assignedTo property value. The assignedTo property
-        Args:
-            value: Value to set for the assigned_to property.
-        """
-        self._assigned_to = value
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScheduleChangeRequest:
         """
@@ -59,25 +59,6 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.offerShiftRequest":
-                from . import offer_shift_request
-
-                return offer_shift_request.OfferShiftRequest()
-            if mapping_value == "#microsoft.graph.openShiftChangeRequest":
-                from . import open_shift_change_request
-
-                return open_shift_change_request.OpenShiftChangeRequest()
-            if mapping_value == "#microsoft.graph.swapShiftsChangeRequest":
-                from . import swap_shifts_change_request
-
-                return swap_shifts_change_request.SwapShiftsChangeRequest()
-            if mapping_value == "#microsoft.graph.timeOffRequest":
-                from . import time_off_request
-
-                return time_off_request.TimeOffRequest()
         return ScheduleChangeRequest()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -85,9 +66,7 @@ class ScheduleChangeRequest(change_tracked_entity.ChangeTrackedEntity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import change_tracked_entity, offer_shift_request, open_shift_change_request, schedule_change_request_actor, schedule_change_state, swap_shifts_change_request, time_off_request
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_enum_value(schedule_change_request_actor.ScheduleChangeRequestActor)),
             "managerActionDateTime": lambda n : setattr(self, 'manager_action_date_time', n.get_datetime_value()),
             "managerActionMessage": lambda n : setattr(self, 'manager_action_message', n.get_str_value()),

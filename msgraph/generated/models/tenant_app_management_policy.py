@@ -1,30 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import app_management_configuration, policy_base
-
-from . import policy_base
+app_management_configuration = lazy_import('msgraph.generated.models.app_management_configuration')
+policy_base = lazy_import('msgraph.generated.models.policy_base')
 
 class TenantAppManagementPolicy(policy_base.PolicyBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new TenantAppManagementPolicy and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.tenantAppManagementPolicy"
-        # Restrictions that apply as default to all application objects in the tenant.
-        self._application_restrictions: Optional[app_management_configuration.AppManagementConfiguration] = None
-        # Denotes whether the policy is enabled. Default value is false.
-        self._is_enabled: Optional[bool] = None
-        # Restrictions that apply as default to all service principal objects in the tenant.
-        self._service_principal_restrictions: Optional[app_management_configuration.AppManagementConfiguration] = None
-    
     @property
     def application_restrictions(self,) -> Optional[app_management_configuration.AppManagementConfiguration]:
         """
-        Gets the applicationRestrictions property value. Restrictions that apply as default to all application objects in the tenant.
+        Gets the applicationRestrictions property value. The applicationRestrictions property
         Returns: Optional[app_management_configuration.AppManagementConfiguration]
         """
         return self._application_restrictions
@@ -32,11 +18,24 @@ class TenantAppManagementPolicy(policy_base.PolicyBase):
     @application_restrictions.setter
     def application_restrictions(self,value: Optional[app_management_configuration.AppManagementConfiguration] = None) -> None:
         """
-        Sets the applicationRestrictions property value. Restrictions that apply as default to all application objects in the tenant.
+        Sets the applicationRestrictions property value. The applicationRestrictions property
         Args:
             value: Value to set for the application_restrictions property.
         """
         self._application_restrictions = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new TenantAppManagementPolicy and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.tenantAppManagementPolicy"
+        # The applicationRestrictions property
+        self._application_restrictions: Optional[app_management_configuration.AppManagementConfiguration] = None
+        # The isEnabled property
+        self._is_enabled: Optional[bool] = None
+        # The servicePrincipalRestrictions property
+        self._service_principal_restrictions: Optional[app_management_configuration.AppManagementConfiguration] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TenantAppManagementPolicy:
@@ -55,9 +54,7 @@ class TenantAppManagementPolicy(policy_base.PolicyBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_management_configuration, policy_base
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "applicationRestrictions": lambda n : setattr(self, 'application_restrictions', n.get_object_value(app_management_configuration.AppManagementConfiguration)),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "servicePrincipalRestrictions": lambda n : setattr(self, 'service_principal_restrictions', n.get_object_value(app_management_configuration.AppManagementConfiguration)),
@@ -69,7 +66,7 @@ class TenantAppManagementPolicy(policy_base.PolicyBase):
     @property
     def is_enabled(self,) -> Optional[bool]:
         """
-        Gets the isEnabled property value. Denotes whether the policy is enabled. Default value is false.
+        Gets the isEnabled property value. The isEnabled property
         Returns: Optional[bool]
         """
         return self._is_enabled
@@ -77,7 +74,7 @@ class TenantAppManagementPolicy(policy_base.PolicyBase):
     @is_enabled.setter
     def is_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isEnabled property value. Denotes whether the policy is enabled. Default value is false.
+        Sets the isEnabled property value. The isEnabled property
         Args:
             value: Value to set for the is_enabled property.
         """
@@ -99,7 +96,7 @@ class TenantAppManagementPolicy(policy_base.PolicyBase):
     @property
     def service_principal_restrictions(self,) -> Optional[app_management_configuration.AppManagementConfiguration]:
         """
-        Gets the servicePrincipalRestrictions property value. Restrictions that apply as default to all service principal objects in the tenant.
+        Gets the servicePrincipalRestrictions property value. The servicePrincipalRestrictions property
         Returns: Optional[app_management_configuration.AppManagementConfiguration]
         """
         return self._service_principal_restrictions
@@ -107,7 +104,7 @@ class TenantAppManagementPolicy(policy_base.PolicyBase):
     @service_principal_restrictions.setter
     def service_principal_restrictions(self,value: Optional[app_management_configuration.AppManagementConfiguration] = None) -> None:
         """
-        Sets the servicePrincipalRestrictions property value. Restrictions that apply as default to all service principal objects in the tenant.
+        Sets the servicePrincipalRestrictions property value. The servicePrincipalRestrictions property
         Args:
             value: Value to set for the service_principal_restrictions property.
         """

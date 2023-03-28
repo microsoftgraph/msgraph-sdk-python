@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import mobile_app_assignment_settings
-
-from . import mobile_app_assignment_settings
+mobile_app_assignment_settings = lazy_import('msgraph.generated.models.mobile_app_assignment_settings')
 
 class WindowsUniversalAppXAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
     def __init__(self,) -> None:
@@ -34,9 +32,7 @@ class WindowsUniversalAppXAppAssignmentSettings(mobile_app_assignment_settings.M
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import mobile_app_assignment_settings
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "useDeviceContext": lambda n : setattr(self, 'use_device_context', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

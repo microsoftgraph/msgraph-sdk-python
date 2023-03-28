@@ -1,17 +1,39 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import android_compliance_policy, android_work_profile_compliance_policy, device_compliance_device_overview, device_compliance_device_status, device_compliance_policy_assignment, device_compliance_scheduled_action_for_rule, device_compliance_user_overview, device_compliance_user_status, entity, ios_compliance_policy, mac_o_s_compliance_policy, setting_state_device_summary, windows10_compliance_policy, windows10_mobile_compliance_policy, windows81_compliance_policy, windows_phone81_compliance_policy
-
-from . import entity
+device_compliance_device_overview = lazy_import('msgraph.generated.models.device_compliance_device_overview')
+device_compliance_device_status = lazy_import('msgraph.generated.models.device_compliance_device_status')
+device_compliance_policy_assignment = lazy_import('msgraph.generated.models.device_compliance_policy_assignment')
+device_compliance_scheduled_action_for_rule = lazy_import('msgraph.generated.models.device_compliance_scheduled_action_for_rule')
+device_compliance_user_overview = lazy_import('msgraph.generated.models.device_compliance_user_overview')
+device_compliance_user_status = lazy_import('msgraph.generated.models.device_compliance_user_status')
+entity = lazy_import('msgraph.generated.models.entity')
+setting_state_device_summary = lazy_import('msgraph.generated.models.setting_state_device_summary')
 
 class DeviceCompliancePolicy(entity.Entity):
     """
     This is the base class for Compliance policy. Compliance policies are platform specific and individual per-platform compliance policies inherit from here. 
     """
+    @property
+    def assignments(self,) -> Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]]:
+        """
+        Gets the assignments property value. The collection of assignments for this compliance policy.
+        Returns: Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]]
+        """
+        return self._assignments
+    
+    @assignments.setter
+    def assignments(self,value: Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]] = None) -> None:
+        """
+        Sets the assignments property value. The collection of assignments for this compliance policy.
+        Args:
+            value: Value to set for the assignments property.
+        """
+        self._assignments = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new deviceCompliancePolicy and sets the default values.
@@ -45,23 +67,6 @@ class DeviceCompliancePolicy(entity.Entity):
         self._version: Optional[int] = None
     
     @property
-    def assignments(self,) -> Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]]:
-        """
-        Gets the assignments property value. The collection of assignments for this compliance policy.
-        Returns: Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]]
-        """
-        return self._assignments
-    
-    @assignments.setter
-    def assignments(self,value: Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]] = None) -> None:
-        """
-        Sets the assignments property value. The collection of assignments for this compliance policy.
-        Args:
-            value: Value to set for the assignments property.
-        """
-        self._assignments = value
-    
-    @property
     def created_date_time(self,) -> Optional[datetime]:
         """
         Gets the createdDateTime property value. DateTime the object was created.
@@ -88,41 +93,6 @@ class DeviceCompliancePolicy(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.androidCompliancePolicy":
-                from . import android_compliance_policy
-
-                return android_compliance_policy.AndroidCompliancePolicy()
-            if mapping_value == "#microsoft.graph.androidWorkProfileCompliancePolicy":
-                from . import android_work_profile_compliance_policy
-
-                return android_work_profile_compliance_policy.AndroidWorkProfileCompliancePolicy()
-            if mapping_value == "#microsoft.graph.iosCompliancePolicy":
-                from . import ios_compliance_policy
-
-                return ios_compliance_policy.IosCompliancePolicy()
-            if mapping_value == "#microsoft.graph.macOSCompliancePolicy":
-                from . import mac_o_s_compliance_policy
-
-                return mac_o_s_compliance_policy.MacOSCompliancePolicy()
-            if mapping_value == "#microsoft.graph.windows10CompliancePolicy":
-                from . import windows10_compliance_policy
-
-                return windows10_compliance_policy.Windows10CompliancePolicy()
-            if mapping_value == "#microsoft.graph.windows10MobileCompliancePolicy":
-                from . import windows10_mobile_compliance_policy
-
-                return windows10_mobile_compliance_policy.Windows10MobileCompliancePolicy()
-            if mapping_value == "#microsoft.graph.windows81CompliancePolicy":
-                from . import windows81_compliance_policy
-
-                return windows81_compliance_policy.Windows81CompliancePolicy()
-            if mapping_value == "#microsoft.graph.windowsPhone81CompliancePolicy":
-                from . import windows_phone81_compliance_policy
-
-                return windows_phone81_compliance_policy.WindowsPhone81CompliancePolicy()
         return DeviceCompliancePolicy()
     
     @property
@@ -215,9 +185,7 @@ class DeviceCompliancePolicy(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_compliance_policy, android_work_profile_compliance_policy, device_compliance_device_overview, device_compliance_device_status, device_compliance_policy_assignment, device_compliance_scheduled_action_for_rule, device_compliance_user_overview, device_compliance_user_status, entity, ios_compliance_policy, mac_o_s_compliance_policy, setting_state_device_summary, windows10_compliance_policy, windows10_mobile_compliance_policy, windows81_compliance_policy, windows_phone81_compliance_policy
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(device_compliance_policy_assignment.DeviceCompliancePolicyAssignment)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),

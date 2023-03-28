@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import device_and_app_management_assignment_target, entity, install_intent, ios_vpp_e_book_assignment
-
-from . import entity
+device_and_app_management_assignment_target = lazy_import('msgraph.generated.models.device_and_app_management_assignment_target')
+entity = lazy_import('msgraph.generated.models.entity')
+install_intent = lazy_import('msgraph.generated.models.install_intent')
 
 class ManagedEBookAssignment(entity.Entity):
     """
@@ -33,13 +33,6 @@ class ManagedEBookAssignment(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.iosVppEBookAssignment":
-                from . import ios_vpp_e_book_assignment
-
-                return ios_vpp_e_book_assignment.IosVppEBookAssignment()
         return ManagedEBookAssignment()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -47,9 +40,7 @@ class ManagedEBookAssignment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_and_app_management_assignment_target, entity, install_intent, ios_vpp_e_book_assignment
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "installIntent": lambda n : setattr(self, 'install_intent', n.get_enum_value(install_intent.InstallIntent)),
             "target": lambda n : setattr(self, 'target', n.get_object_value(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget)),
         }

@@ -1,44 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import audit_actor, audit_resource, entity
-
-from . import entity
+audit_actor = lazy_import('msgraph.generated.models.audit_actor')
+audit_resource = lazy_import('msgraph.generated.models.audit_resource')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AuditEvent(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AuditEvent and sets the default values.
-        """
-        super().__init__()
-        # Friendly name of the activity.
-        self._activity: Optional[str] = None
-        # The date time in UTC when the activity was performed.
-        self._activity_date_time: Optional[datetime] = None
-        # The HTTP operation type of the activity.
-        self._activity_operation_type: Optional[str] = None
-        # The result of the activity.
-        self._activity_result: Optional[str] = None
-        # The type of activity that was being performed.
-        self._activity_type: Optional[str] = None
-        # AAD user and application that are associated with the audit event.
-        self._actor: Optional[audit_actor.AuditActor] = None
-        # Audit category.
-        self._category: Optional[str] = None
-        # Component name.
-        self._component_name: Optional[str] = None
-        # The client request Id that is used to correlate activity within the system.
-        self._correlation_id: Optional[Guid] = None
-        # Event display name.
-        self._display_name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Resources being modified.
-        self._resources: Optional[List[audit_resource.AuditResource]] = None
-    
     @property
     def activity(self,) -> Optional[str]:
         """
@@ -175,6 +145,36 @@ class AuditEvent(entity.Entity):
         """
         self._component_name = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new AuditEvent and sets the default values.
+        """
+        super().__init__()
+        # Friendly name of the activity.
+        self._activity: Optional[str] = None
+        # The date time in UTC when the activity was performed.
+        self._activity_date_time: Optional[datetime] = None
+        # The HTTP operation type of the activity.
+        self._activity_operation_type: Optional[str] = None
+        # The result of the activity.
+        self._activity_result: Optional[str] = None
+        # The type of activity that was being performed.
+        self._activity_type: Optional[str] = None
+        # AAD user and application that are associated with the audit event.
+        self._actor: Optional[audit_actor.AuditActor] = None
+        # Audit category.
+        self._category: Optional[str] = None
+        # Component name.
+        self._component_name: Optional[str] = None
+        # The client request Id that is used to correlate activity within the system.
+        self._correlation_id: Optional[Guid] = None
+        # Event display name.
+        self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Resources being modified.
+        self._resources: Optional[List[audit_resource.AuditResource]] = None
+    
     @property
     def correlation_id(self,) -> Optional[Guid]:
         """
@@ -226,9 +226,7 @@ class AuditEvent(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import audit_actor, audit_resource, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "activity": lambda n : setattr(self, 'activity', n.get_str_value()),
             "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
             "activityOperationType": lambda n : setattr(self, 'activity_operation_type', n.get_str_value()),

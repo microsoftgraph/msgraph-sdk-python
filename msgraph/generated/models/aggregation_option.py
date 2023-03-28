@@ -1,27 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import bucket_aggregation_definition
+bucket_aggregation_definition = lazy_import('msgraph.generated.models.bucket_aggregation_definition')
 
 class AggregationOption(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new aggregationOption and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The bucketDefinition property
-        self._bucket_definition: Optional[bucket_aggregation_definition.BucketAggregationDefinition] = None
-        # Computes aggregation on the field while the field exists in current entity type. Required.
-        self._field: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The number of searchBucket resources to be returned. This is not required when the range is provided manually in the search request. Optional.
-        self._size: Optional[int] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -55,6 +39,22 @@ class AggregationOption(AdditionalDataHolder, Parsable):
             value: Value to set for the bucket_definition property.
         """
         self._bucket_definition = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new aggregationOption and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The bucketDefinition property
+        self._bucket_definition: Optional[bucket_aggregation_definition.BucketAggregationDefinition] = None
+        # Computes aggregation on the field while the field exists in current entity type. Required.
+        self._field: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The number of searchBucket resources to be returned. This is not required when the range is provided manually in the search request. Optional.
+        self._size: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AggregationOption:
@@ -90,9 +90,7 @@ class AggregationOption(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import bucket_aggregation_definition
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "bucketDefinition": lambda n : setattr(self, 'bucket_definition', n.get_object_value(bucket_aggregation_definition.BucketAggregationDefinition)),
             "field": lambda n : setattr(self, 'field', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

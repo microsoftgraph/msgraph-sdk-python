@@ -1,28 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import conditional_access_session_control, signin_frequency_type, sign_in_frequency_authentication_type, sign_in_frequency_interval
-
-from . import conditional_access_session_control
+conditional_access_session_control = lazy_import('msgraph.generated.models.conditional_access_session_control')
+sign_in_frequency_authentication_type = lazy_import('msgraph.generated.models.sign_in_frequency_authentication_type')
+sign_in_frequency_interval = lazy_import('msgraph.generated.models.sign_in_frequency_interval')
+signin_frequency_type = lazy_import('msgraph.generated.models.signin_frequency_type')
 
 class SignInFrequencySessionControl(conditional_access_session_control.ConditionalAccessSessionControl):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new SignInFrequencySessionControl and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.signInFrequencySessionControl"
-        # The possible values are primaryAndSecondaryAuthentication, secondaryAuthentication, unknownFutureValue.
-        self._authentication_type: Optional[sign_in_frequency_authentication_type.SignInFrequencyAuthenticationType] = None
-        # The possible values are timeBased, everyTime, unknownFutureValue.
-        self._frequency_interval: Optional[sign_in_frequency_interval.SignInFrequencyInterval] = None
-        # Possible values are: days, hours.
-        self._type: Optional[signin_frequency_type.SigninFrequencyType] = None
-        # The number of days or hours.
-        self._value: Optional[int] = None
-    
     @property
     def authentication_type(self,) -> Optional[sign_in_frequency_authentication_type.SignInFrequencyAuthenticationType]:
         """
@@ -39,6 +25,21 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
             value: Value to set for the authentication_type property.
         """
         self._authentication_type = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new SignInFrequencySessionControl and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.signInFrequencySessionControl"
+        # The possible values are primaryAndSecondaryAuthentication, secondaryAuthentication, unknownFutureValue.
+        self._authentication_type: Optional[sign_in_frequency_authentication_type.SignInFrequencyAuthenticationType] = None
+        # The possible values are timeBased, everyTime, unknownFutureValue.
+        self._frequency_interval: Optional[sign_in_frequency_interval.SignInFrequencyInterval] = None
+        # Possible values are: days, hours.
+        self._type: Optional[signin_frequency_type.SigninFrequencyType] = None
+        # The number of days or hours.
+        self._value: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SignInFrequencySessionControl:
@@ -74,9 +75,7 @@ class SignInFrequencySessionControl(conditional_access_session_control.Condition
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_session_control, signin_frequency_type, sign_in_frequency_authentication_type, sign_in_frequency_interval
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "authenticationType": lambda n : setattr(self, 'authentication_type', n.get_enum_value(sign_in_frequency_authentication_type.SignInFrequencyAuthenticationType)),
             "frequencyInterval": lambda n : setattr(self, 'frequency_interval', n.get_enum_value(sign_in_frequency_interval.SignInFrequencyInterval)),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(signin_frequency_type.SigninFrequencyType)),

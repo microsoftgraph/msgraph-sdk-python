@@ -1,51 +1,18 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import app_scope, directory_object, request, request_schedule, ticket_info, unified_role_definition, unified_role_eligibility_schedule, unified_role_schedule_request_actions
-
-from . import request
+app_scope = lazy_import('msgraph.generated.models.app_scope')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+request = lazy_import('msgraph.generated.models.request')
+request_schedule = lazy_import('msgraph.generated.models.request_schedule')
+ticket_info = lazy_import('msgraph.generated.models.ticket_info')
+unified_role_definition = lazy_import('msgraph.generated.models.unified_role_definition')
+unified_role_eligibility_schedule = lazy_import('msgraph.generated.models.unified_role_eligibility_schedule')
+unified_role_schedule_request_actions = lazy_import('msgraph.generated.models.unified_role_schedule_request_actions')
 
 class UnifiedRoleEligibilityScheduleRequest(request.Request):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new UnifiedRoleEligibilityScheduleRequest and sets the default values.
-        """
-        super().__init__()
-        # Represents the type of operation on the role eligibility request. The possible values are: adminAssign, adminUpdate, adminRemove, selfActivate, selfDeactivate, adminExtend, adminRenew, selfExtend, selfRenew, unknownFutureValue. adminAssign: For administrators to assign eligible roles to principals.adminRemove: For administrators to remove eligible roles from principals. adminUpdate: For administrators to change existing role eligibilities.adminExtend: For administrators to extend expiring role eligibilities.adminRenew: For administrators to renew expired eligibilities.selfActivate: For users to activate their assignments.selfDeactivate: For users to deactivate their active assignments.selfExtend: For users to request to extend their expiring assignments.selfRenew: For users to request to renew their expired assignments.
-        self._action: Optional[unified_role_schedule_request_actions.UnifiedRoleScheduleRequestActions] = None
-        # Read-only property with details of the app-specific scope when the role eligibility is scoped to an app. Nullable. Supports $expand.
-        self._app_scope: Optional[app_scope.AppScope] = None
-        # Identifier of the app-specific scope when the role eligibility is scoped to an app. The scope of a role eligibility determines the set of resources for which the principal is eligible to access. App scopes are scopes that are defined and understood by this application only. Use / for tenant-wide app scopes. Use directoryScopeId to limit the scope to particular directory objects, for example, administrative units. Supports $filter (eq, ne, and on null values).
-        self._app_scope_id: Optional[str] = None
-        # The directory object that is the scope of the role eligibility. Read-only. Supports $expand.
-        self._directory_scope: Optional[directory_object.DirectoryObject] = None
-        # Identifier of the directory object representing the scope of the role eligibility. The scope of a role eligibility determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only. Supports $filter (eq, ne, and on null values).
-        self._directory_scope_id: Optional[str] = None
-        # Determines whether the call is a validation or an actual call. Only set this property if you want to check whether an activation is subject to additional rules like MFA before actually submitting the request.
-        self._is_validation_only: Optional[bool] = None
-        # A message provided by users and administrators when create they create the unifiedRoleEligibilityScheduleRequest object.
-        self._justification: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The principal that's getting a role eligibility through the request. Supports $expand.
-        self._principal: Optional[directory_object.DirectoryObject] = None
-        # Identifier of the principal that has been granted the role eligibility. Can be a user or a role-assignable group. You can grant only active assignments service principals.Supports $filter (eq, ne).
-        self._principal_id: Optional[str] = None
-        # Detailed information for the unifiedRoleDefinition object that is referenced through the roleDefinitionId property. Supports $expand.
-        self._role_definition: Optional[unified_role_definition.UnifiedRoleDefinition] = None
-        # Identifier of the unifiedRoleDefinition object that is being assigned to the principal. Supports $filter (eq, ne).
-        self._role_definition_id: Optional[str] = None
-        # The period of the role eligibility. Recurring schedules are currently unsupported.
-        self._schedule_info: Optional[request_schedule.RequestSchedule] = None
-        # The schedule for a role eligibility that is referenced through the targetScheduleId property. Supports $expand.
-        self._target_schedule: Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule] = None
-        # Identifier of the schedule object that's linked to the eligibility request. Supports $filter (eq, ne).
-        self._target_schedule_id: Optional[str] = None
-        # Ticket details linked to the role eligibility request including details of the ticket number and ticket system. Optional.
-        self._ticket_info: Optional[ticket_info.TicketInfo] = None
-    
     @property
     def action(self,) -> Optional[unified_role_schedule_request_actions.UnifiedRoleScheduleRequestActions]:
         """
@@ -96,6 +63,44 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
             value: Value to set for the app_scope_id property.
         """
         self._app_scope_id = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new UnifiedRoleEligibilityScheduleRequest and sets the default values.
+        """
+        super().__init__()
+        # Represents the type of operation on the role eligibility request. The possible values are: adminAssign, adminUpdate, adminRemove, selfActivate, selfDeactivate, adminExtend, adminRenew, selfExtend, selfRenew, unknownFutureValue. adminAssign: For administrators to assign eligible roles to principals.adminRemove: For administrators to remove eligible roles from principals. adminUpdate: For administrators to change existing role eligibilities.adminExtend: For administrators to extend expiring role eligibilities.adminRenew: For administrators to renew expired eligibilities.selfActivate: For users to activate their assignments.selfDeactivate: For users to deactivate their active assignments.selfExtend: For users to request to extend their expiring assignments.selfRenew: For users to request to renew their expired assignments.
+        self._action: Optional[unified_role_schedule_request_actions.UnifiedRoleScheduleRequestActions] = None
+        # Read-only property with details of the app-specific scope when the role eligibility is scoped to an app. Nullable. Supports $expand.
+        self._app_scope: Optional[app_scope.AppScope] = None
+        # Identifier of the app-specific scope when the role eligibility is scoped to an app. The scope of a role eligibility determines the set of resources for which the principal is eligible to access. App scopes are scopes that are defined and understood by this application only. Use / for tenant-wide app scopes. Use directoryScopeId to limit the scope to particular directory objects, for example, administrative units. Supports $filter (eq, ne, and on null values).
+        self._app_scope_id: Optional[str] = None
+        # The directory object that is the scope of the role eligibility. Read-only. Supports $expand.
+        self._directory_scope: Optional[directory_object.DirectoryObject] = None
+        # Identifier of the directory object representing the scope of the role eligibility. The scope of a role eligibility determines the set of resources for which the principal has been granted access. Directory scopes are shared scopes stored in the directory that are understood by multiple applications. Use / for tenant-wide scope. Use appScopeId to limit the scope to an application only. Supports $filter (eq, ne, and on null values).
+        self._directory_scope_id: Optional[str] = None
+        # Determines whether the call is a validation or an actual call. Only set this property if you want to check whether an activation is subject to additional rules like MFA before actually submitting the request.
+        self._is_validation_only: Optional[bool] = None
+        # A message provided by users and administrators when create they create the unifiedRoleEligibilityScheduleRequest object.
+        self._justification: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The principal that's getting a role eligibility through the request. Supports $expand.
+        self._principal: Optional[directory_object.DirectoryObject] = None
+        # Identifier of the principal that has been granted the role eligibility. Can be a user or a role-assignable group. You can grant only active assignments service principals.Supports $filter (eq, ne).
+        self._principal_id: Optional[str] = None
+        # Detailed information for the unifiedRoleDefinition object that is referenced through the roleDefinitionId property. Supports $expand.
+        self._role_definition: Optional[unified_role_definition.UnifiedRoleDefinition] = None
+        # Identifier of the unifiedRoleDefinition object that is being assigned to the principal. Supports $filter (eq, ne).
+        self._role_definition_id: Optional[str] = None
+        # The period of the role eligibility. Recurring schedules are currently unsupported.
+        self._schedule_info: Optional[request_schedule.RequestSchedule] = None
+        # The schedule for a role eligibility that is referenced through the targetScheduleId property. Supports $expand.
+        self._target_schedule: Optional[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule] = None
+        # Identifier of the schedule object that's linked to the eligibility request. Supports $filter (eq, ne).
+        self._target_schedule_id: Optional[str] = None
+        # Ticket details linked to the role eligibility request including details of the ticket number and ticket system. Optional.
+        self._ticket_info: Optional[ticket_info.TicketInfo] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleEligibilityScheduleRequest:
@@ -148,9 +153,7 @@ class UnifiedRoleEligibilityScheduleRequest(request.Request):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import app_scope, directory_object, request, request_schedule, ticket_info, unified_role_definition, unified_role_eligibility_schedule, unified_role_schedule_request_actions
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(unified_role_schedule_request_actions.UnifiedRoleScheduleRequestActions)),
             "appScope": lambda n : setattr(self, 'app_scope', n.get_object_value(app_scope.AppScope)),
             "appScopeId": lambda n : setattr(self, 'app_scope_id', n.get_str_value()),

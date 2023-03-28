@@ -1,13 +1,30 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import calendar_role_type, email_address, entity
-
-from . import entity
+calendar_role_type = lazy_import('msgraph.generated.models.calendar_role_type')
+email_address = lazy_import('msgraph.generated.models.email_address')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class CalendarPermission(entity.Entity):
+    @property
+    def allowed_roles(self,) -> Optional[List[calendar_role_type.CalendarRoleType]]:
+        """
+        Gets the allowedRoles property value. List of allowed sharing or delegating permission levels for the calendar. Possible values are: none, freeBusyRead, limitedRead, read, write, delegateWithoutPrivateEventAccess, delegateWithPrivateEventAccess, custom.
+        Returns: Optional[List[calendar_role_type.CalendarRoleType]]
+        """
+        return self._allowed_roles
+    
+    @allowed_roles.setter
+    def allowed_roles(self,value: Optional[List[calendar_role_type.CalendarRoleType]] = None) -> None:
+        """
+        Sets the allowedRoles property value. List of allowed sharing or delegating permission levels for the calendar. Possible values are: none, freeBusyRead, limitedRead, read, write, delegateWithoutPrivateEventAccess, delegateWithPrivateEventAccess, custom.
+        Args:
+            value: Value to set for the allowed_roles property.
+        """
+        self._allowed_roles = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new calendarPermission and sets the default values.
@@ -25,23 +42,6 @@ class CalendarPermission(entity.Entity):
         self.odata_type: Optional[str] = None
         # Current permission level of the calendar sharee or delegate.
         self._role: Optional[calendar_role_type.CalendarRoleType] = None
-    
-    @property
-    def allowed_roles(self,) -> Optional[List[calendar_role_type.CalendarRoleType]]:
-        """
-        Gets the allowedRoles property value. List of allowed sharing or delegating permission levels for the calendar. Possible values are: none, freeBusyRead, limitedRead, read, write, delegateWithoutPrivateEventAccess, delegateWithPrivateEventAccess, custom.
-        Returns: Optional[List[calendar_role_type.CalendarRoleType]]
-        """
-        return self._allowed_roles
-    
-    @allowed_roles.setter
-    def allowed_roles(self,value: Optional[List[calendar_role_type.CalendarRoleType]] = None) -> None:
-        """
-        Sets the allowedRoles property value. List of allowed sharing or delegating permission levels for the calendar. Possible values are: none, freeBusyRead, limitedRead, read, write, delegateWithoutPrivateEventAccess, delegateWithPrivateEventAccess, custom.
-        Args:
-            value: Value to set for the allowed_roles property.
-        """
-        self._allowed_roles = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CalendarPermission:
@@ -77,9 +77,7 @@ class CalendarPermission(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import calendar_role_type, email_address, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "allowedRoles": lambda n : setattr(self, 'allowed_roles', n.get_collection_of_enum_values(calendar_role_type.CalendarRoleType)),
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_object_value(email_address.EmailAddress)),
             "isInsideOrganization": lambda n : setattr(self, 'is_inside_organization', n.get_bool_value()),

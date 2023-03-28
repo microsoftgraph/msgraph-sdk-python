@@ -1,29 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import administrative_unit, directory_object, entity, identity_provider_base, on_premises_directory_synchronization
-
-from . import entity
+administrative_unit = lazy_import('msgraph.generated.models.administrative_unit')
+directory_object = lazy_import('msgraph.generated.models.directory_object')
+entity = lazy_import('msgraph.generated.models.entity')
+identity_provider_base = lazy_import('msgraph.generated.models.identity_provider_base')
+on_premises_directory_synchronization = lazy_import('msgraph.generated.models.on_premises_directory_synchronization')
 
 class Directory(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Directory and sets the default values.
-        """
-        super().__init__()
-        # Conceptual container for user and group directory objects.
-        self._administrative_units: Optional[List[administrative_unit.AdministrativeUnit]] = None
-        # Recently deleted items. Read-only. Nullable.
-        self._deleted_items: Optional[List[directory_object.DirectoryObject]] = None
-        # Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
-        self._federation_configurations: Optional[List[identity_provider_base.IdentityProviderBase]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # A container for on-premises directory synchronization functionalities that are available for the organization.
-        self._on_premises_synchronization: Optional[List[on_premises_directory_synchronization.OnPremisesDirectorySynchronization]] = None
-    
     @property
     def administrative_units(self,) -> Optional[List[administrative_unit.AdministrativeUnit]]:
         """
@@ -40,6 +26,22 @@ class Directory(entity.Entity):
             value: Value to set for the administrative_units property.
         """
         self._administrative_units = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Directory and sets the default values.
+        """
+        super().__init__()
+        # Conceptual container for user and group directory objects.
+        self._administrative_units: Optional[List[administrative_unit.AdministrativeUnit]] = None
+        # Recently deleted items. Read-only. Nullable.
+        self._deleted_items: Optional[List[directory_object.DirectoryObject]] = None
+        # Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
+        self._federation_configurations: Optional[List[identity_provider_base.IdentityProviderBase]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # A container for on-premises directory synchronization functionalities that are available for the organization.
+        self._on_premises_synchronization: Optional[List[on_premises_directory_synchronization.OnPremisesDirectorySynchronization]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Directory:
@@ -92,9 +94,7 @@ class Directory(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import administrative_unit, directory_object, entity, identity_provider_base, on_premises_directory_synchronization
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "administrativeUnits": lambda n : setattr(self, 'administrative_units', n.get_collection_of_object_values(administrative_unit.AdministrativeUnit)),
             "deletedItems": lambda n : setattr(self, 'deleted_items', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "federationConfigurations": lambda n : setattr(self, 'federation_configurations', n.get_collection_of_object_values(identity_provider_base.IdentityProviderBase)),

@@ -1,37 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import location_constraint_item, location_type, location_unique_id_type, outlook_geo_coordinates, physical_address
+location_type = lazy_import('msgraph.generated.models.location_type')
+location_unique_id_type = lazy_import('msgraph.generated.models.location_unique_id_type')
+outlook_geo_coordinates = lazy_import('msgraph.generated.models.outlook_geo_coordinates')
+physical_address = lazy_import('msgraph.generated.models.physical_address')
 
 class Location(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new location and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The street address of the location.
-        self._address: Optional[physical_address.PhysicalAddress] = None
-        # The geographic coordinates and elevation of the location.
-        self._coordinates: Optional[outlook_geo_coordinates.OutlookGeoCoordinates] = None
-        # The name associated with the location.
-        self._display_name: Optional[str] = None
-        # Optional email address of the location.
-        self._location_email_address: Optional[str] = None
-        # The type of location. The possible values are: default, conferenceRoom, homeAddress, businessAddress,geoCoordinates, streetAddress, hotel, restaurant, localBusiness, postalAddress. Read-only.
-        self._location_type: Optional[location_type.LocationType] = None
-        # Optional URI representing the location.
-        self._location_uri: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # For internal use only.
-        self._unique_id: Optional[str] = None
-        # For internal use only.
-        self._unique_id_type: Optional[location_unique_id_type.LocationUniqueIdType] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -66,6 +43,32 @@ class Location(AdditionalDataHolder, Parsable):
         """
         self._address = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new location and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The street address of the location.
+        self._address: Optional[physical_address.PhysicalAddress] = None
+        # The geographic coordinates and elevation of the location.
+        self._coordinates: Optional[outlook_geo_coordinates.OutlookGeoCoordinates] = None
+        # The name associated with the location.
+        self._display_name: Optional[str] = None
+        # Optional email address of the location.
+        self._location_email_address: Optional[str] = None
+        # The type of location. The possible values are: default, conferenceRoom, homeAddress, businessAddress,geoCoordinates, streetAddress, hotel, restaurant, localBusiness, postalAddress. Read-only.
+        self._location_type: Optional[location_type.LocationType] = None
+        # Optional URI representing the location.
+        self._location_uri: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # For internal use only.
+        self._unique_id: Optional[str] = None
+        # For internal use only.
+        self._unique_id_type: Optional[location_unique_id_type.LocationUniqueIdType] = None
+    
     @property
     def coordinates(self,) -> Optional[outlook_geo_coordinates.OutlookGeoCoordinates]:
         """
@@ -93,13 +96,6 @@ class Location(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.locationConstraintItem":
-                from . import location_constraint_item
-
-                return location_constraint_item.LocationConstraintItem()
         return Location()
     
     @property
@@ -124,9 +120,7 @@ class Location(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import location_constraint_item, location_type, location_unique_id_type, outlook_geo_coordinates, physical_address
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "address": lambda n : setattr(self, 'address', n.get_object_value(physical_address.PhysicalAddress)),
             "coordinates": lambda n : setattr(self, 'coordinates', n.get_object_value(outlook_geo_coordinates.OutlookGeoCoordinates)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

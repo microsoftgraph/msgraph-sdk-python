@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import onenote_entity_base_model
-
-from . import onenote_entity_base_model
+onenote_entity_base_model = lazy_import('msgraph.generated.models.onenote_entity_base_model')
 
 class OnenoteResource(onenote_entity_base_model.OnenoteEntityBaseModel):
     def __init__(self,) -> None:
@@ -70,9 +68,7 @@ class OnenoteResource(onenote_entity_base_model.OnenoteEntityBaseModel):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import onenote_entity_base_model
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "content": lambda n : setattr(self, 'content', n.get_bytes_value()),
             "contentUrl": lambda n : setattr(self, 'content_url', n.get_str_value()),
         }

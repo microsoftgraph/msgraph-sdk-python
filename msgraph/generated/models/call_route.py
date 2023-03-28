@@ -1,27 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import identity_set, routing_type
+identity_set = lazy_import('msgraph.generated.models.identity_set')
+routing_type = lazy_import('msgraph.generated.models.routing_type')
 
 class CallRoute(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new callRoute and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The final property
-        self._final: Optional[identity_set.IdentitySet] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The original property
-        self._original: Optional[identity_set.IdentitySet] = None
-        # The routingType property
-        self._routing_type: Optional[routing_type.RoutingType] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,6 +23,22 @@ class CallRoute(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new callRoute and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The final property
+        self._final: Optional[identity_set.IdentitySet] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The original property
+        self._original: Optional[identity_set.IdentitySet] = None
+        # The routingType property
+        self._routing_type: Optional[routing_type.RoutingType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallRoute:
@@ -73,9 +74,7 @@ class CallRoute(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_set, routing_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "final": lambda n : setattr(self, 'final', n.get_object_value(identity_set.IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "original": lambda n : setattr(self, 'original', n.get_object_value(identity_set.IdentitySet)),

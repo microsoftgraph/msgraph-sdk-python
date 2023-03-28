@@ -1,11 +1,10 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import country_lookup_method_type, named_location
-
-from . import named_location
+country_lookup_method_type = lazy_import('msgraph.generated.models.country_lookup_method_type')
+named_location = lazy_import('msgraph.generated.models.named_location')
 
 class CountryNamedLocation(named_location.NamedLocation):
     def __init__(self,) -> None:
@@ -73,9 +72,7 @@ class CountryNamedLocation(named_location.NamedLocation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import country_lookup_method_type, named_location
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "countriesAndRegions": lambda n : setattr(self, 'countries_and_regions', n.get_collection_of_primitive_values(str)),
             "countryLookupMethod": lambda n : setattr(self, 'country_lookup_method', n.get_enum_value(country_lookup_method_type.CountryLookupMethodType)),
             "includeUnknownCountriesAndRegions": lambda n : setattr(self, 'include_unknown_countries_and_regions', n.get_bool_value()),

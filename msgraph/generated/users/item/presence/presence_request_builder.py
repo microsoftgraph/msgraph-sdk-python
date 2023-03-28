@@ -7,20 +7,48 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ....models import presence
-    from ....models.o_data_errors import o_data_error
-    from .clear_presence import clear_presence_request_builder
-    from .clear_user_preferred_presence import clear_user_preferred_presence_request_builder
-    from .set_presence import set_presence_request_builder
-    from .set_user_preferred_presence import set_user_preferred_presence_request_builder
+presence = lazy_import('msgraph.generated.models.presence')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+clear_presence_request_builder = lazy_import('msgraph.generated.users.item.presence.clear_presence.clear_presence_request_builder')
+clear_user_preferred_presence_request_builder = lazy_import('msgraph.generated.users.item.presence.clear_user_preferred_presence.clear_user_preferred_presence_request_builder')
+set_presence_request_builder = lazy_import('msgraph.generated.users.item.presence.set_presence.set_presence_request_builder')
+set_user_preferred_presence_request_builder = lazy_import('msgraph.generated.users.item.presence.set_user_preferred_presence.set_user_preferred_presence_request_builder')
 
 class PresenceRequestBuilder():
     """
     Provides operations to manage the presence property of the microsoft.graph.user entity.
     """
+    @property
+    def clear_presence(self) -> clear_presence_request_builder.ClearPresenceRequestBuilder:
+        """
+        Provides operations to call the clearPresence method.
+        """
+        return clear_presence_request_builder.ClearPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def clear_user_preferred_presence(self) -> clear_user_preferred_presence_request_builder.ClearUserPreferredPresenceRequestBuilder:
+        """
+        Provides operations to call the clearUserPreferredPresence method.
+        """
+        return clear_user_preferred_presence_request_builder.ClearUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def set_presence(self) -> set_presence_request_builder.SetPresenceRequestBuilder:
+        """
+        Provides operations to call the setPresence method.
+        """
+        return set_presence_request_builder.SetPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def set_user_preferred_presence(self) -> set_user_preferred_presence_request_builder.SetUserPreferredPresenceRequestBuilder:
+        """
+        Provides operations to call the setUserPreferredPresence method.
+        """
+        return set_user_preferred_presence_request_builder.SetUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PresenceRequestBuilder and sets the default values.
@@ -48,8 +76,6 @@ class PresenceRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -68,16 +94,12 @@ class PresenceRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import presence
-
         return await self.request_adapter.send_async(request_info, presence.Presence, error_mapping)
     
     async def patch(self,body: Optional[presence.Presence] = None, request_configuration: Optional[PresenceRequestBuilderPatchRequestConfiguration] = None) -> Optional[presence.Presence]:
@@ -93,16 +115,12 @@ class PresenceRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ....models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ....models import presence
-
         return await self.request_adapter.send_async(request_info, presence.Presence, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PresenceRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -160,42 +178,6 @@ class PresenceRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def clear_presence(self) -> clear_presence_request_builder.ClearPresenceRequestBuilder:
-        """
-        Provides operations to call the clearPresence method.
-        """
-        from .clear_presence import clear_presence_request_builder
-
-        return clear_presence_request_builder.ClearPresenceRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def clear_user_preferred_presence(self) -> clear_user_preferred_presence_request_builder.ClearUserPreferredPresenceRequestBuilder:
-        """
-        Provides operations to call the clearUserPreferredPresence method.
-        """
-        from .clear_user_preferred_presence import clear_user_preferred_presence_request_builder
-
-        return clear_user_preferred_presence_request_builder.ClearUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def set_presence(self) -> set_presence_request_builder.SetPresenceRequestBuilder:
-        """
-        Provides operations to call the setPresence method.
-        """
-        from .set_presence import set_presence_request_builder
-
-        return set_presence_request_builder.SetPresenceRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def set_user_preferred_presence(self) -> set_user_preferred_presence_request_builder.SetUserPreferredPresenceRequestBuilder:
-        """
-        Provides operations to call the setUserPreferredPresence method.
-        """
-        from .set_user_preferred_presence import set_user_preferred_presence_request_builder
-
-        return set_user_preferred_presence_request_builder.SetUserPreferredPresenceRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class PresenceRequestBuilderDeleteRequestConfiguration():
         """
@@ -213,6 +195,12 @@ class PresenceRequestBuilder():
         """
         Get a user's presence information.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -228,12 +216,6 @@ class PresenceRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class PresenceRequestBuilderGetRequestConfiguration():

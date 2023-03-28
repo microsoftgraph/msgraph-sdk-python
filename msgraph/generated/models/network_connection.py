@@ -1,12 +1,48 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import connection_direction, connection_status, security_network_protocol
+connection_direction = lazy_import('msgraph.generated.models.connection_direction')
+connection_status = lazy_import('msgraph.generated.models.connection_status')
+security_network_protocol = lazy_import('msgraph.generated.models.security_network_protocol')
 
 class NetworkConnection(AdditionalDataHolder, Parsable):
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
+    @property
+    def application_name(self,) -> Optional[str]:
+        """
+        Gets the applicationName property value. Name of the application managing the network connection (for example, Facebook or SMTP).
+        Returns: Optional[str]
+        """
+        return self._application_name
+    
+    @application_name.setter
+    def application_name(self,value: Optional[str] = None) -> None:
+        """
+        Sets the applicationName property value. Name of the application managing the network connection (for example, Facebook or SMTP).
+        Args:
+            value: Value to set for the application_name property.
+        """
+        self._application_name = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new networkConnection and sets the default values.
@@ -56,40 +92,6 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         self._status: Optional[connection_status.ConnectionStatus] = None
         # Parameters (suffix) of the destination URL.
         self._url_parameters: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def application_name(self,) -> Optional[str]:
-        """
-        Gets the applicationName property value. Name of the application managing the network connection (for example, Facebook or SMTP).
-        Returns: Optional[str]
-        """
-        return self._application_name
-    
-    @application_name.setter
-    def application_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the applicationName property value. Name of the application managing the network connection (for example, Facebook or SMTP).
-        Args:
-            value: Value to set for the application_name property.
-        """
-        self._application_name = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> NetworkConnection:
@@ -227,9 +229,7 @@ class NetworkConnection(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import connection_direction, connection_status, security_network_protocol
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "applicationName": lambda n : setattr(self, 'application_name', n.get_str_value()),
             "destinationAddress": lambda n : setattr(self, 'destination_address', n.get_str_value()),
             "destinationDomain": lambda n : setattr(self, 'destination_domain', n.get_str_value()),

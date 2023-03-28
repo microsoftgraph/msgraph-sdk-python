@@ -1,24 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class SearchBucket(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new searchBucket and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # A token containing the encoded filter to aggregate search matches by the specific key value. To use the filter, pass the token as part of the aggregationFilter property in a searchRequest object, in the format '{field}:/'{aggregationFilterToken}/''. See an example.
-        self._aggregation_filter_token: Optional[str] = None
-        # The approximate number of search matches that share the same value specified in the key property. Note that this number is not the exact number of matches.
-        self._count: Optional[int] = None
-        # The discrete value of the field that an aggregation was computed on.
-        self._key: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -52,6 +37,22 @@ class SearchBucket(AdditionalDataHolder, Parsable):
             value: Value to set for the aggregation_filter_token property.
         """
         self._aggregation_filter_token = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new searchBucket and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # A token containing the encoded filter to aggregate search matches by the specific key value. To use the filter, pass the token as part of the aggregationFilter property in a searchRequest object, in the format '{field}:/'{aggregationFilterToken}/''. See an example.
+        self._aggregation_filter_token: Optional[str] = None
+        # The approximate number of search matches that share the same value specified in the key property. Note that this number is not the exact number of matches.
+        self._count: Optional[int] = None
+        # The discrete value of the field that an aggregation was computed on.
+        self._key: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
     
     @property
     def count(self,) -> Optional[int]:
@@ -87,7 +88,7 @@ class SearchBucket(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "aggregationFilterToken": lambda n : setattr(self, 'aggregation_filter_token', n.get_str_value()),
             "count": lambda n : setattr(self, 'count', n.get_int_value()),
             "key": lambda n : setattr(self, 'key', n.get_str_value()),

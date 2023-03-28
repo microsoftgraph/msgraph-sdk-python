@@ -7,20 +7,41 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ..........models import chat_message
-    from ..........models.o_data_errors import o_data_error
-    from .hosted_contents import hosted_contents_request_builder
-    from .hosted_contents.item import chat_message_hosted_content_item_request_builder
-    from .soft_delete import soft_delete_request_builder
-    from .undo_soft_delete import undo_soft_delete_request_builder
+hosted_contents_request_builder = lazy_import('msgraph.generated.groups.item.team.channels.item.messages.item.replies.item.hosted_contents.hosted_contents_request_builder')
+chat_message_hosted_content_item_request_builder = lazy_import('msgraph.generated.groups.item.team.channels.item.messages.item.replies.item.hosted_contents.item.chat_message_hosted_content_item_request_builder')
+soft_delete_request_builder = lazy_import('msgraph.generated.groups.item.team.channels.item.messages.item.replies.item.soft_delete.soft_delete_request_builder')
+undo_soft_delete_request_builder = lazy_import('msgraph.generated.groups.item.team.channels.item.messages.item.replies.item.undo_soft_delete.undo_soft_delete_request_builder')
+chat_message = lazy_import('msgraph.generated.models.chat_message')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
 
 class ChatMessageItemRequestBuilder():
     """
     Provides operations to manage the replies property of the microsoft.graph.chatMessage entity.
     """
+    @property
+    def hosted_contents(self) -> hosted_contents_request_builder.HostedContentsRequestBuilder:
+        """
+        Provides operations to manage the hostedContents property of the microsoft.graph.chatMessage entity.
+        """
+        return hosted_contents_request_builder.HostedContentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def soft_delete(self) -> soft_delete_request_builder.SoftDeleteRequestBuilder:
+        """
+        Provides operations to call the softDelete method.
+        """
+        return soft_delete_request_builder.SoftDeleteRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def undo_soft_delete(self) -> undo_soft_delete_request_builder.UndoSoftDeleteRequestBuilder:
+        """
+        Provides operations to call the undoSoftDelete method.
+        """
+        return undo_soft_delete_request_builder.UndoSoftDeleteRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ChatMessageItemRequestBuilder and sets the default values.
@@ -48,8 +69,6 @@ class ChatMessageItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -68,16 +87,12 @@ class ChatMessageItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import chat_message
-
         return await self.request_adapter.send_async(request_info, chat_message.ChatMessage, error_mapping)
     
     def hosted_contents_by_id(self,id: str) -> chat_message_hosted_content_item_request_builder.ChatMessageHostedContentItemRequestBuilder:
@@ -89,8 +104,6 @@ class ChatMessageItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
-        from .hosted_contents.item import chat_message_hosted_content_item_request_builder
-
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["chatMessageHostedContent%2Did"] = id
         return chat_message_hosted_content_item_request_builder.ChatMessageHostedContentItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -108,16 +121,12 @@ class ChatMessageItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..........models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..........models import chat_message
-
         return await self.request_adapter.send_async(request_info, chat_message.ChatMessage, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ChatMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -175,33 +184,6 @@ class ChatMessageItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def hosted_contents(self) -> hosted_contents_request_builder.HostedContentsRequestBuilder:
-        """
-        Provides operations to manage the hostedContents property of the microsoft.graph.chatMessage entity.
-        """
-        from .hosted_contents import hosted_contents_request_builder
-
-        return hosted_contents_request_builder.HostedContentsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def soft_delete(self) -> soft_delete_request_builder.SoftDeleteRequestBuilder:
-        """
-        Provides operations to call the softDelete method.
-        """
-        from .soft_delete import soft_delete_request_builder
-
-        return soft_delete_request_builder.SoftDeleteRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def undo_soft_delete(self) -> undo_soft_delete_request_builder.UndoSoftDeleteRequestBuilder:
-        """
-        Provides operations to call the undoSoftDelete method.
-        """
-        from .undo_soft_delete import undo_soft_delete_request_builder
-
-        return undo_soft_delete_request_builder.UndoSoftDeleteRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class ChatMessageItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -219,6 +201,12 @@ class ChatMessageItemRequestBuilder():
         """
         Replies for a specified message. Supports $expand for channel messages.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -234,12 +222,6 @@ class ChatMessageItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class ChatMessageItemRequestBuilderGetRequestConfiguration():

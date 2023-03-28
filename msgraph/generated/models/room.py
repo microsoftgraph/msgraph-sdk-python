@@ -1,46 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import booking_type, place
-
-from . import place
+booking_type = lazy_import('msgraph.generated.models.booking_type')
+place = lazy_import('msgraph.generated.models.place')
 
 class Room(place.Place):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Room and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.room"
-        # Specifies the name of the audio device in the room.
-        self._audio_device_name: Optional[str] = None
-        # Type of room. Possible values are standard, and reserved.
-        self._booking_type: Optional[booking_type.BookingType] = None
-        # Specifies the building name or building number that the room is in.
-        self._building: Optional[str] = None
-        # Specifies the capacity of the room.
-        self._capacity: Optional[int] = None
-        # Specifies the name of the display device in the room.
-        self._display_device_name: Optional[str] = None
-        # Email address of the room.
-        self._email_address: Optional[str] = None
-        # Specifies a descriptive label for the floor, for example, P.
-        self._floor_label: Optional[str] = None
-        # Specifies the floor number that the room is on.
-        self._floor_number: Optional[int] = None
-        # Specifies whether the room is wheelchair accessible.
-        self._is_wheel_chair_accessible: Optional[bool] = None
-        # Specifies a descriptive label for the room, for example, a number or name.
-        self._label: Optional[str] = None
-        # Specifies a nickname for the room, for example, 'conf room'.
-        self._nickname: Optional[str] = None
-        # Specifies additional features of the room, for example, details like the type of view or furniture type.
-        self._tags: Optional[List[str]] = None
-        # Specifies the name of the video device in the room.
-        self._video_device_name: Optional[str] = None
-    
     @property
     def audio_device_name(self,) -> Optional[str]:
         """
@@ -108,6 +74,39 @@ class Room(place.Place):
             value: Value to set for the capacity property.
         """
         self._capacity = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Room and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.room"
+        # Specifies the name of the audio device in the room.
+        self._audio_device_name: Optional[str] = None
+        # Type of room. Possible values are standard, and reserved.
+        self._booking_type: Optional[booking_type.BookingType] = None
+        # Specifies the building name or building number that the room is in.
+        self._building: Optional[str] = None
+        # Specifies the capacity of the room.
+        self._capacity: Optional[int] = None
+        # Specifies the name of the display device in the room.
+        self._display_device_name: Optional[str] = None
+        # Email address of the room.
+        self._email_address: Optional[str] = None
+        # Specifies a descriptive label for the floor, for example, P.
+        self._floor_label: Optional[str] = None
+        # Specifies the floor number that the room is on.
+        self._floor_number: Optional[int] = None
+        # Specifies whether the room is wheelchair accessible.
+        self._is_wheel_chair_accessible: Optional[bool] = None
+        # Specifies a descriptive label for the room, for example, a number or name.
+        self._label: Optional[str] = None
+        # Specifies a nickname for the room, for example, 'conf room'.
+        self._nickname: Optional[str] = None
+        # Specifies additional features of the room, for example, details like the type of view or furniture type.
+        self._tags: Optional[List[str]] = None
+        # Specifies the name of the video device in the room.
+        self._video_device_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Room:
@@ -194,9 +193,7 @@ class Room(place.Place):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import booking_type, place
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "audioDeviceName": lambda n : setattr(self, 'audio_device_name', n.get_str_value()),
             "bookingType": lambda n : setattr(self, 'booking_type', n.get_enum_value(booking_type.BookingType)),
             "building": lambda n : setattr(self, 'building', n.get_str_value()),

@@ -1,27 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
 
 class GroupLifecyclePolicy(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new groupLifecyclePolicy and sets the default values.
-        """
-        super().__init__()
-        # List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.
-        self._alternate_notification_emails: Optional[str] = None
-        # Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.
-        self._group_lifetime_in_days: Optional[int] = None
-        # The group type for which the expiration policy applies. Possible values are All, Selected or None.
-        self._managed_group_types: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
     @property
     def alternate_notification_emails(self,) -> Optional[str]:
         """
@@ -38,6 +22,20 @@ class GroupLifecyclePolicy(entity.Entity):
             value: Value to set for the alternate_notification_emails property.
         """
         self._alternate_notification_emails = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new groupLifecyclePolicy and sets the default values.
+        """
+        super().__init__()
+        # List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.
+        self._alternate_notification_emails: Optional[str] = None
+        # Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.
+        self._group_lifetime_in_days: Optional[int] = None
+        # The group type for which the expiration policy applies. Possible values are All, Selected or None.
+        self._managed_group_types: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GroupLifecyclePolicy:
@@ -56,9 +54,7 @@ class GroupLifecyclePolicy(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "alternateNotificationEmails": lambda n : setattr(self, 'alternate_notification_emails', n.get_str_value()),
             "groupLifetimeInDays": lambda n : setattr(self, 'group_lifetime_in_days', n.get_int_value()),
             "managedGroupTypes": lambda n : setattr(self, 'managed_group_types', n.get_str_value()),

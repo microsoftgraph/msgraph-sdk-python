@@ -1,27 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import feedback_token_set, user_feedback_rating
+feedback_token_set = lazy_import('msgraph.generated.models.call_records.feedback_token_set')
+user_feedback_rating = lazy_import('msgraph.generated.models.call_records.user_feedback_rating')
 
 class UserFeedback(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new userFeedback and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The rating property
-        self._rating: Optional[user_feedback_rating.UserFeedbackRating] = None
-        # The feedback text provided by the user of this endpoint for the session.
-        self._text: Optional[str] = None
-        # The set of feedback tokens provided by the user of this endpoint for the session. This is a set of Boolean properties. The property names should not be relied upon since they may change depending on what tokens are offered to the user.
-        self._tokens: Optional[feedback_token_set.FeedbackTokenSet] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,6 +23,22 @@ class UserFeedback(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new userFeedback and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The rating property
+        self._rating: Optional[user_feedback_rating.UserFeedbackRating] = None
+        # The feedback text provided by the user of this endpoint for the session.
+        self._text: Optional[str] = None
+        # The set of feedback tokens provided by the user of this endpoint for the session. This is a set of Boolean properties. The property names should not be relied upon since they may change depending on what tokens are offered to the user.
+        self._tokens: Optional[feedback_token_set.FeedbackTokenSet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserFeedback:
@@ -56,9 +57,7 @@ class UserFeedback(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import feedback_token_set, user_feedback_rating
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "rating": lambda n : setattr(self, 'rating', n.get_enum_value(user_feedback_rating.UserFeedbackRating)),
             "text": lambda n : setattr(self, 'text', n.get_str_value()),

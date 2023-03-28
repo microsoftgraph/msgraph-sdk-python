@@ -1,12 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import relation_type, set, term
-    from .. import entity
-
-from .. import entity
+entity = lazy_import('msgraph.generated.models.entity')
+relation_type = lazy_import('msgraph.generated.models.term_store.relation_type')
+set = lazy_import('msgraph.generated.models.term_store.set')
+term = lazy_import('msgraph.generated.models.term_store.term')
 
 class Relation(entity.Entity):
     def __init__(self,) -> None:
@@ -59,10 +59,7 @@ class Relation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import relation_type, set, term
-        from .. import entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "fromTerm": lambda n : setattr(self, 'from_term', n.get_object_value(term.Term)),
             "relationship": lambda n : setattr(self, 'relationship', n.get_enum_value(relation_type.RelationType)),
             "set": lambda n : setattr(self, 'set', n.get_object_value(set.Set)),

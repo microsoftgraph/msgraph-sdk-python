@@ -1,34 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import schedule_entity_theme
+schedule_entity_theme = lazy_import('msgraph.generated.models.schedule_entity_theme')
 
 class ShiftActivity(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new shiftActivity and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Customer defined code for the shiftActivity. Required.
-        self._code: Optional[str] = None
-        # The name of the shiftActivity. Required.
-        self._display_name: Optional[str] = None
-        # The end date and time for the shiftActivity. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Required.
-        self._end_date_time: Optional[datetime] = None
-        # Indicates whether the microsoft.graph.user should be paid for the activity during their shift. Required.
-        self._is_paid: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The start date and time for the shiftActivity. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Required.
-        self._start_date_time: Optional[datetime] = None
-        # The theme property
-        self._theme: Optional[schedule_entity_theme.ScheduleEntityTheme] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -62,6 +40,28 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
             value: Value to set for the code property.
         """
         self._code = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new shiftActivity and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Customer defined code for the shiftActivity. Required.
+        self._code: Optional[str] = None
+        # The name of the shiftActivity. Required.
+        self._display_name: Optional[str] = None
+        # The end date and time for the shiftActivity. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Required.
+        self._end_date_time: Optional[datetime] = None
+        # Indicates whether the microsoft.graph.user should be paid for the activity during their shift. Required.
+        self._is_paid: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The start date and time for the shiftActivity. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Required.
+        self._start_date_time: Optional[datetime] = None
+        # The theme property
+        self._theme: Optional[schedule_entity_theme.ScheduleEntityTheme] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ShiftActivity:
@@ -114,9 +114,7 @@ class ShiftActivity(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import schedule_entity_theme
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "code": lambda n : setattr(self, 'code', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),

@@ -1,26 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import identity_provider_base
-
-from . import identity_provider_base
+identity_provider_base = lazy_import('msgraph.generated.models.identity_provider_base')
 
 class SocialIdentityProvider(identity_provider_base.IdentityProviderBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new SocialIdentityProvider and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.socialIdentityProvider"
-        # The identifier for the client application obtained when registering the application with the identity provider. Required.
-        self._client_id: Optional[str] = None
-        # The client secret for the application that is obtained when the application is registered with the identity provider. This is write-only. A read operation returns ****. Required.
-        self._client_secret: Optional[str] = None
-        # For a B2B scenario, possible values: Google, Facebook. For a B2C scenario, possible values: Microsoft, Google, Amazon, LinkedIn, Facebook, GitHub, Twitter, Weibo, QQ, WeChat. Required.
-        self._identity_provider_type: Optional[str] = None
-    
     @property
     def client_id(self,) -> Optional[str]:
         """
@@ -55,6 +40,19 @@ class SocialIdentityProvider(identity_provider_base.IdentityProviderBase):
         """
         self._client_secret = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new SocialIdentityProvider and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.socialIdentityProvider"
+        # The identifier for the client application obtained when registering the application with the identity provider. Required.
+        self._client_id: Optional[str] = None
+        # The client secret for the application that is obtained when the application is registered with the identity provider. This is write-only. A read operation returns ****. Required.
+        self._client_secret: Optional[str] = None
+        # For a B2B scenario, possible values: Google, Facebook. For a B2C scenario, possible values: Microsoft, Google, Amazon, LinkedIn, Facebook, GitHub, Twitter, Weibo, QQ, WeChat. Required.
+        self._identity_provider_type: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SocialIdentityProvider:
         """
@@ -72,9 +70,7 @@ class SocialIdentityProvider(identity_provider_base.IdentityProviderBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity_provider_base
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "clientId": lambda n : setattr(self, 'client_id', n.get_str_value()),
             "clientSecret": lambda n : setattr(self, 'client_secret', n.get_str_value()),
             "identityProviderType": lambda n : setattr(self, 'identity_provider_type', n.get_str_value()),

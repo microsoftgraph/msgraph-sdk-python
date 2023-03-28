@@ -1,29 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import onenote_patch_action_type, onenote_patch_insert_position
+onenote_patch_action_type = lazy_import('msgraph.generated.models.onenote_patch_action_type')
+onenote_patch_insert_position = lazy_import('msgraph.generated.models.onenote_patch_insert_position')
 
 class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new onenotePatchContentCommand and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The action property
-        self._action: Optional[onenote_patch_action_type.OnenotePatchActionType] = None
-        # A string of well-formed HTML to add to the page, and any image or file binary data. If the content contains binary data, the request must be sent using the multipart/form-data content type with a 'Commands' part.
-        self._content: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The location to add the supplied content, relative to the target element. The possible values are: after (default) or before.
-        self._position: Optional[onenote_patch_insert_position.OnenotePatchInsertPosition] = None
-        # The element to update. Must be the #<data-id> or the generated <id> of the element, or the body or title keyword.
-        self._target: Optional[str] = None
-    
     @property
     def action(self,) -> Optional[onenote_patch_action_type.OnenotePatchActionType]:
         """
@@ -57,6 +40,24 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new onenotePatchContentCommand and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The action property
+        self._action: Optional[onenote_patch_action_type.OnenotePatchActionType] = None
+        # A string of well-formed HTML to add to the page, and any image or file binary data. If the content contains binary data, the request must be sent using the multipart/form-data content type with a 'Commands' part.
+        self._content: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The location to add the supplied content, relative to the target element. The possible values are: after (default) or before.
+        self._position: Optional[onenote_patch_insert_position.OnenotePatchInsertPosition] = None
+        # The element to update. Must be the #<data-id> or the generated <id> of the element, or the body or title keyword.
+        self._target: Optional[str] = None
     
     @property
     def content(self,) -> Optional[str]:
@@ -92,9 +93,7 @@ class OnenotePatchContentCommand(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import onenote_patch_action_type, onenote_patch_insert_position
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "action": lambda n : setattr(self, 'action', n.get_enum_value(onenote_patch_action_type.OnenotePatchActionType)),
             "content": lambda n : setattr(self, 'content', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

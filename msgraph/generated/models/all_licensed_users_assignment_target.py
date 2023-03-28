@@ -1,11 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import device_and_app_management_assignment_target
-
-from . import device_and_app_management_assignment_target
+device_and_app_management_assignment_target = lazy_import('msgraph.generated.models.device_and_app_management_assignment_target')
 
 class AllLicensedUsersAssignmentTarget(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget):
     def __init__(self,) -> None:
@@ -32,9 +30,7 @@ class AllLicensedUsersAssignmentTarget(device_and_app_management_assignment_targ
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import device_and_app_management_assignment_target
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

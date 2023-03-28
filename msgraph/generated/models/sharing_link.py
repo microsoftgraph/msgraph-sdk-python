@@ -1,33 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import identity
+identity = lazy_import('msgraph.generated.models.identity')
 
 class SharingLink(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new sharingLink and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The app the link is associated with.
-        self._application: Optional[identity.Identity] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # If true then the user can only use this link to view the item on the web, and cannot use it to download the contents of the item. Only for OneDrive for Business and SharePoint.
-        self._prevents_download: Optional[bool] = None
-        # The scope of the link represented by this permission. Value anonymous indicates the link is usable by anyone, organization indicates the link is only usable for users signed into the same tenant.
-        self._scope: Optional[str] = None
-        # The type of the link created.
-        self._type: Optional[str] = None
-        # For embed links, this property contains the HTML code for an <iframe> element that will embed the item in a webpage.
-        self._web_html: Optional[str] = None
-        # A URL that opens the item in the browser on the OneDrive website.
-        self._web_url: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -62,6 +40,28 @@ class SharingLink(AdditionalDataHolder, Parsable):
         """
         self._application = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new sharingLink and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The app the link is associated with.
+        self._application: Optional[identity.Identity] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # If true then the user can only use this link to view the item on the web, and cannot use it to download the contents of the item. Only for OneDrive for Business and SharePoint.
+        self._prevents_download: Optional[bool] = None
+        # The scope of the link represented by this permission. Value anonymous indicates the link is usable by anyone, organization indicates the link is only usable for users signed into the same tenant.
+        self._scope: Optional[str] = None
+        # The type of the link created.
+        self._type: Optional[str] = None
+        # For embed links, this property contains the HTML code for an <iframe> element that will embed the item in a webpage.
+        self._web_html: Optional[str] = None
+        # A URL that opens the item in the browser on the OneDrive website.
+        self._web_url: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharingLink:
         """
@@ -79,9 +79,7 @@ class SharingLink(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import identity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "application": lambda n : setattr(self, 'application', n.get_object_value(identity.Identity)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "preventsDownload": lambda n : setattr(self, 'prevents_download', n.get_bool_value()),

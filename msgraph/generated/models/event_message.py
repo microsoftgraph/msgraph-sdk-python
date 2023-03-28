@@ -1,11 +1,15 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import date_time_time_zone, event, event_message_request, event_message_response, event_type, location, meeting_message_type, message, patterned_recurrence
-
-from . import message
+date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
+event = lazy_import('msgraph.generated.models.event')
+event_type = lazy_import('msgraph.generated.models.event_type')
+location = lazy_import('msgraph.generated.models.location')
+meeting_message_type = lazy_import('msgraph.generated.models.meeting_message_type')
+message = lazy_import('msgraph.generated.models.message')
+patterned_recurrence = lazy_import('msgraph.generated.models.patterned_recurrence')
 
 class EventMessage(message.Message):
     def __init__(self,) -> None:
@@ -45,17 +49,6 @@ class EventMessage(message.Message):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.eventMessageRequest":
-                from . import event_message_request
-
-                return event_message_request.EventMessageRequest()
-            if mapping_value == "#microsoft.graph.eventMessageResponse":
-                from . import event_message_response
-
-                return event_message_response.EventMessageResponse()
         return EventMessage()
     
     @property
@@ -97,9 +90,7 @@ class EventMessage(message.Message):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import date_time_time_zone, event, event_message_request, event_message_response, event_type, location, meeting_message_type, message, patterned_recurrence
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "event": lambda n : setattr(self, 'event', n.get_object_value(event.Event)),
             "isAllDay": lambda n : setattr(self, 'is_all_day', n.get_bool_value()),

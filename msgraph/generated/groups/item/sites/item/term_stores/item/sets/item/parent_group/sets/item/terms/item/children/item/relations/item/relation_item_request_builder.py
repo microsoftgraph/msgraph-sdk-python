@@ -7,19 +7,40 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ..................models.o_data_errors import o_data_error
-    from ..................models.term_store import relation
-    from .from_term import from_term_request_builder
-    from .set import set_request_builder
-    from .to_term import to_term_request_builder
+from_term_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.term_stores.item.sets.item.parent_group.sets.item.terms.item.children.item.relations.item.from_term.from_term_request_builder')
+set_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.term_stores.item.sets.item.parent_group.sets.item.terms.item.children.item.relations.item.set.set_request_builder')
+to_term_request_builder = lazy_import('msgraph.generated.groups.item.sites.item.term_stores.item.sets.item.parent_group.sets.item.terms.item.children.item.relations.item.to_term.to_term_request_builder')
+o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+relation = lazy_import('msgraph.generated.models.term_store.relation')
 
 class RelationItemRequestBuilder():
     """
     Provides operations to manage the relations property of the microsoft.graph.termStore.term entity.
     """
+    @property
+    def from_term(self) -> from_term_request_builder.FromTermRequestBuilder:
+        """
+        Provides operations to manage the fromTerm property of the microsoft.graph.termStore.relation entity.
+        """
+        return from_term_request_builder.FromTermRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def set(self) -> set_request_builder.SetRequestBuilder:
+        """
+        Provides operations to manage the set property of the microsoft.graph.termStore.relation entity.
+        """
+        return set_request_builder.SetRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def to_term(self) -> to_term_request_builder.ToTermRequestBuilder:
+        """
+        Provides operations to manage the toTerm property of the microsoft.graph.termStore.relation entity.
+        """
+        return to_term_request_builder.ToTermRequestBuilder(self.request_adapter, self.path_parameters)
+    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new RelationItemRequestBuilder and sets the default values.
@@ -47,8 +68,6 @@ class RelationItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ..................models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -67,16 +86,12 @@ class RelationItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from ..................models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..................models.term_store import relation
-
         return await self.request_adapter.send_async(request_info, relation.Relation, error_mapping)
     
     async def patch(self,body: Optional[relation.Relation] = None, request_configuration: Optional[RelationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[relation.Relation]:
@@ -92,16 +107,12 @@ class RelationItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..................models.o_data_errors import o_data_error
-
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..................models.term_store import relation
-
         return await self.request_adapter.send_async(request_info, relation.Relation, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[RelationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -159,33 +170,6 @@ class RelationItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def from_term(self) -> from_term_request_builder.FromTermRequestBuilder:
-        """
-        Provides operations to manage the fromTerm property of the microsoft.graph.termStore.relation entity.
-        """
-        from .from_term import from_term_request_builder
-
-        return from_term_request_builder.FromTermRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def set(self) -> set_request_builder.SetRequestBuilder:
-        """
-        Provides operations to manage the set property of the microsoft.graph.termStore.relation entity.
-        """
-        from .set import set_request_builder
-
-        return set_request_builder.SetRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def to_term(self) -> to_term_request_builder.ToTermRequestBuilder:
-        """
-        Provides operations to manage the toTerm property of the microsoft.graph.termStore.relation entity.
-        """
-        from .to_term import to_term_request_builder
-
-        return to_term_request_builder.ToTermRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class RelationItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -203,6 +187,12 @@ class RelationItemRequestBuilder():
         """
         To indicate which terms are related to the current term as either pinned or reused.
         """
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -218,12 +208,6 @@ class RelationItemRequestBuilder():
                 return "%24select"
             return original_name
         
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
     
     @dataclass
     class RelationItemRequestBuilderGetRequestConfiguration():

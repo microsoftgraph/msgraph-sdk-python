@@ -1,30 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import bit_locker_encryption_method
+bit_locker_encryption_method = lazy_import('msgraph.generated.models.bit_locker_encryption_method')
 
 class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
     """
     BitLocker Removable Drive Policies.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new bitLockerRemovableDrivePolicy and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # This policy setting determines whether BitLocker protection is required for removable data drives to be writable on a computer.
-        self._block_cross_organization_write_access: Optional[bool] = None
-        # Select the encryption method for removable  drives. Possible values are: aesCbc128, aesCbc256, xtsAes128, xtsAes256.
-        self._encryption_method: Optional[bit_locker_encryption_method.BitLockerEncryptionMethod] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Indicates whether to block write access to devices configured in another organization.  If requireEncryptionForWriteAccess is false, this value does not affect.
-        self._require_encryption_for_write_access: Optional[bool] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -58,6 +42,22 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
             value: Value to set for the block_cross_organization_write_access property.
         """
         self._block_cross_organization_write_access = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new bitLockerRemovableDrivePolicy and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # This policy setting determines whether BitLocker protection is required for removable data drives to be writable on a computer.
+        self._block_cross_organization_write_access: Optional[bool] = None
+        # Select the encryption method for removable  drives. Possible values are: aesCbc128, aesCbc256, xtsAes128, xtsAes256.
+        self._encryption_method: Optional[bit_locker_encryption_method.BitLockerEncryptionMethod] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Indicates whether to block write access to devices configured in another organization.  If requireEncryptionForWriteAccess is false, this value does not affect.
+        self._require_encryption_for_write_access: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BitLockerRemovableDrivePolicy:
@@ -93,9 +93,7 @@ class BitLockerRemovableDrivePolicy(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import bit_locker_encryption_method
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "blockCrossOrganizationWriteAccess": lambda n : setattr(self, 'block_cross_organization_write_access', n.get_bool_value()),
             "encryptionMethod": lambda n : setattr(self, 'encryption_method', n.get_enum_value(bit_locker_encryption_method.BitLockerEncryptionMethod)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -1,48 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import agreement_acceptance_state, entity
-
-from . import entity
+agreement_acceptance_state = lazy_import('msgraph.generated.models.agreement_acceptance_state')
+entity = lazy_import('msgraph.generated.models.entity')
 
 class AgreementAcceptance(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new agreementAcceptance and sets the default values.
-        """
-        super().__init__()
-        # The identifier of the agreement file accepted by the user.
-        self._agreement_file_id: Optional[str] = None
-        # The identifier of the agreement.
-        self._agreement_id: Optional[str] = None
-        # The display name of the device used for accepting the agreement.
-        self._device_display_name: Optional[str] = None
-        # The unique identifier of the device used for accepting the agreement. Supports $filter (eq) and eq for null values.
-        self._device_id: Optional[str] = None
-        # The operating system used to accept the agreement.
-        self._device_o_s_type: Optional[str] = None
-        # The operating system version of the device used to accept the agreement.
-        self._device_o_s_version: Optional[str] = None
-        # The expiration date time of the acceptance. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ge, le) and eq for null values.
-        self._expiration_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._recorded_date_time: Optional[datetime] = None
-        # The state of the agreement acceptance. Possible values are: accepted, declined. Supports $filter (eq).
-        self._state: Optional[agreement_acceptance_state.AgreementAcceptanceState] = None
-        # Display name of the user when the acceptance was recorded.
-        self._user_display_name: Optional[str] = None
-        # Email of the user when the acceptance was recorded.
-        self._user_email: Optional[str] = None
-        # The identifier of the user who accepted the agreement. Supports $filter (eq).
-        self._user_id: Optional[str] = None
-        # UPN of the user when the acceptance was recorded.
-        self._user_principal_name: Optional[str] = None
-    
     @property
     def agreement_file_id(self,) -> Optional[str]:
         """
@@ -76,6 +41,40 @@ class AgreementAcceptance(entity.Entity):
             value: Value to set for the agreement_id property.
         """
         self._agreement_id = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new agreementAcceptance and sets the default values.
+        """
+        super().__init__()
+        # The identifier of the agreement file accepted by the user.
+        self._agreement_file_id: Optional[str] = None
+        # The identifier of the agreement.
+        self._agreement_id: Optional[str] = None
+        # The display name of the device used for accepting the agreement.
+        self._device_display_name: Optional[str] = None
+        # The unique identifier of the device used for accepting the agreement. Supports $filter (eq) and eq for null values.
+        self._device_id: Optional[str] = None
+        # The operating system used to accept the agreement.
+        self._device_o_s_type: Optional[str] = None
+        # The operating system version of the device used to accept the agreement.
+        self._device_o_s_version: Optional[str] = None
+        # The expiration date time of the acceptance. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Supports $filter (eq, ge, le) and eq for null values.
+        self._expiration_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+        self._recorded_date_time: Optional[datetime] = None
+        # The state of the agreement acceptance. Possible values are: accepted, declined. Supports $filter (eq).
+        self._state: Optional[agreement_acceptance_state.AgreementAcceptanceState] = None
+        # Display name of the user when the acceptance was recorded.
+        self._user_display_name: Optional[str] = None
+        # Email of the user when the acceptance was recorded.
+        self._user_email: Optional[str] = None
+        # The identifier of the user who accepted the agreement. Supports $filter (eq).
+        self._user_id: Optional[str] = None
+        # UPN of the user when the acceptance was recorded.
+        self._user_principal_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AgreementAcceptance:
@@ -179,9 +178,7 @@ class AgreementAcceptance(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import agreement_acceptance_state, entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "agreementFileId": lambda n : setattr(self, 'agreement_file_id', n.get_str_value()),
             "agreementId": lambda n : setattr(self, 'agreement_id', n.get_str_value()),
             "deviceDisplayName": lambda n : setattr(self, 'device_display_name', n.get_str_value()),
@@ -189,6 +186,7 @@ class AgreementAcceptance(entity.Entity):
             "deviceOSType": lambda n : setattr(self, 'device_o_s_type', n.get_str_value()),
             "deviceOSVersion": lambda n : setattr(self, 'device_o_s_version', n.get_str_value()),
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recordedDateTime": lambda n : setattr(self, 'recorded_date_time', n.get_datetime_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(agreement_acceptance_state.AgreementAcceptanceState)),
             "userDisplayName": lambda n : setattr(self, 'user_display_name', n.get_str_value()),
@@ -199,6 +197,23 @@ class AgreementAcceptance(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
+    
+    @property
+    def odata_type(self,) -> Optional[str]:
+        """
+        Gets the @odata.type property value. The OdataType property
+        Returns: Optional[str]
+        """
+        return self._odata_type
+    
+    @odata_type.setter
+    def odata_type(self,value: Optional[str] = None) -> None:
+        """
+        Sets the @odata.type property value. The OdataType property
+        Args:
+            value: Value to set for the odata_type property.
+        """
+        self._odata_type = value
     
     @property
     def recorded_date_time(self,) -> Optional[datetime]:
@@ -233,6 +248,7 @@ class AgreementAcceptance(entity.Entity):
         writer.write_str_value("deviceOSType", self.device_o_s_type)
         writer.write_str_value("deviceOSVersion", self.device_o_s_version)
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_datetime_value("recordedDateTime", self.recorded_date_time)
         writer.write_enum_value("state", self.state)
         writer.write_str_value("userDisplayName", self.user_display_name)

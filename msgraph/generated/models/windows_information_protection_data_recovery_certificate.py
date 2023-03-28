@@ -1,30 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class WindowsInformationProtectionDataRecoveryCertificate(AdditionalDataHolder, Parsable):
     """
     Windows Information Protection DataRecoveryCertificate
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new windowsInformationProtectionDataRecoveryCertificate and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Data recovery Certificate
-        self._certificate: Optional[bytes] = None
-        # Data recovery Certificate description
-        self._description: Optional[str] = None
-        # Data recovery Certificate expiration datetime
-        self._expiration_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Data recovery Certificate subject name
-        self._subject_name: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -58,6 +41,24 @@ class WindowsInformationProtectionDataRecoveryCertificate(AdditionalDataHolder, 
             value: Value to set for the certificate property.
         """
         self._certificate = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new windowsInformationProtectionDataRecoveryCertificate and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Data recovery Certificate
+        self._certificate: Optional[bytes] = None
+        # Data recovery Certificate description
+        self._description: Optional[str] = None
+        # Data recovery Certificate expiration datetime
+        self._expiration_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Data recovery Certificate subject name
+        self._subject_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionDataRecoveryCertificate:
@@ -110,7 +111,7 @@ class WindowsInformationProtectionDataRecoveryCertificate(AdditionalDataHolder, 
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "certificate": lambda n : setattr(self, 'certificate', n.get_bytes_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),

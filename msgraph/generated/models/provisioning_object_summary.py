@@ -1,14 +1,54 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, initiator, modified_property, provisioned_identity, provisioning_action, provisioning_service_principal, provisioning_status_info, provisioning_step, provisioning_system
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+initiator = lazy_import('msgraph.generated.models.initiator')
+modified_property = lazy_import('msgraph.generated.models.modified_property')
+provisioned_identity = lazy_import('msgraph.generated.models.provisioned_identity')
+provisioning_action = lazy_import('msgraph.generated.models.provisioning_action')
+provisioning_service_principal = lazy_import('msgraph.generated.models.provisioning_service_principal')
+provisioning_status_info = lazy_import('msgraph.generated.models.provisioning_status_info')
+provisioning_step = lazy_import('msgraph.generated.models.provisioning_step')
+provisioning_system = lazy_import('msgraph.generated.models.provisioning_system')
 
 class ProvisioningObjectSummary(entity.Entity):
+    @property
+    def activity_date_time(self,) -> Optional[datetime]:
+        """
+        Gets the activityDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        Returns: Optional[datetime]
+        """
+        return self._activity_date_time
+    
+    @activity_date_time.setter
+    def activity_date_time(self,value: Optional[datetime] = None) -> None:
+        """
+        Sets the activityDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        Args:
+            value: Value to set for the activity_date_time property.
+        """
+        self._activity_date_time = value
+    
+    @property
+    def change_id(self,) -> Optional[str]:
+        """
+        Gets the changeId property value. Unique ID of this change in this cycle.
+        Returns: Optional[str]
+        """
+        return self._change_id
+    
+    @change_id.setter
+    def change_id(self,value: Optional[str] = None) -> None:
+        """
+        Sets the changeId property value. Unique ID of this change in this cycle.
+        Args:
+            value: Value to set for the change_id property.
+        """
+        self._change_id = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new provisioningObjectSummary and sets the default values.
@@ -48,40 +88,6 @@ class ProvisioningObjectSummary(entity.Entity):
         self._target_system: Optional[provisioning_system.ProvisioningSystem] = None
         # Unique Azure AD tenant ID.
         self._tenant_id: Optional[str] = None
-    
-    @property
-    def activity_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the activityDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Returns: Optional[datetime]
-        """
-        return self._activity_date_time
-    
-    @activity_date_time.setter
-    def activity_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the activityDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Args:
-            value: Value to set for the activity_date_time property.
-        """
-        self._activity_date_time = value
-    
-    @property
-    def change_id(self,) -> Optional[str]:
-        """
-        Gets the changeId property value. Unique ID of this change in this cycle.
-        Returns: Optional[str]
-        """
-        return self._change_id
-    
-    @change_id.setter
-    def change_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the changeId property value. Unique ID of this change in this cycle.
-        Args:
-            value: Value to set for the change_id property.
-        """
-        self._change_id = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProvisioningObjectSummary:
@@ -134,9 +140,7 @@ class ProvisioningObjectSummary(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, initiator, modified_property, provisioned_identity, provisioning_action, provisioning_service_principal, provisioning_status_info, provisioning_step, provisioning_system
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
             "changeId": lambda n : setattr(self, 'change_id', n.get_str_value()),
             "cycleId": lambda n : setattr(self, 'cycle_id', n.get_str_value()),

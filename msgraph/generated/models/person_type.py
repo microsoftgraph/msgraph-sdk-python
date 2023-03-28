@@ -1,22 +1,9 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
 class PersonType(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new personType and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The type of data source, such as Person.
-        self._class_: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The secondary type of data source, such as OrganizationUser.
-        self._subclass: Optional[str] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -51,6 +38,20 @@ class PersonType(AdditionalDataHolder, Parsable):
         """
         self._class_ = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new personType and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The type of data source, such as Person.
+        self._class_: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The secondary type of data source, such as OrganizationUser.
+        self._subclass: Optional[str] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PersonType:
         """
@@ -68,7 +69,7 @@ class PersonType(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "class": lambda n : setattr(self, 'class_', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "subclass": lambda n : setattr(self, 'subclass', n.get_str_value()),

@@ -1,25 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from ........models import json
+json = lazy_import('msgraph.generated.models.json')
 
 class Confidence_TPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new confidence_TPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The alpha property
-        self._alpha: Optional[json.Json] = None
-        # The size property
-        self._size: Optional[json.Json] = None
-        # The standardDev property
-        self._standard_dev: Optional[json.Json] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -54,6 +40,20 @@ class Confidence_TPostRequestBody(AdditionalDataHolder, Parsable):
         """
         self._alpha = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new confidence_TPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The alpha property
+        self._alpha: Optional[json.Json] = None
+        # The size property
+        self._size: Optional[json.Json] = None
+        # The standardDev property
+        self._standard_dev: Optional[json.Json] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Confidence_TPostRequestBody:
         """
@@ -71,9 +71,7 @@ class Confidence_TPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from ........models import json
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "alpha": lambda n : setattr(self, 'alpha', n.get_object_value(json.Json)),
             "size": lambda n : setattr(self, 'size', n.get_object_value(json.Json)),
             "standardDev": lambda n : setattr(self, 'standard_dev', n.get_object_value(json.Json)),

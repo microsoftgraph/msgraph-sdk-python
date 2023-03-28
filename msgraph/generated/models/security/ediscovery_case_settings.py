@@ -1,12 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import ocr_settings, redundancy_detection_settings, topic_modeling_settings
-    from .. import entity
-
-from .. import entity
+entity = lazy_import('msgraph.generated.models.entity')
+ocr_settings = lazy_import('msgraph.generated.models.security.ocr_settings')
+redundancy_detection_settings = lazy_import('msgraph.generated.models.security.redundancy_detection_settings')
+topic_modeling_settings = lazy_import('msgraph.generated.models.security.topic_modeling_settings')
 
 class EdiscoveryCaseSettings(entity.Entity):
     def __init__(self,) -> None:
@@ -40,10 +40,7 @@ class EdiscoveryCaseSettings(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import ocr_settings, redundancy_detection_settings, topic_modeling_settings
-        from .. import entity
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "ocr": lambda n : setattr(self, 'ocr', n.get_object_value(ocr_settings.OcrSettings)),
             "redundancyDetection": lambda n : setattr(self, 'redundancy_detection', n.get_object_value(redundancy_detection_settings.RedundancyDetectionSettings)),
             "topicModeling": lambda n : setattr(self, 'topic_modeling', n.get_object_value(topic_modeling_settings.TopicModelingSettings)),

@@ -1,74 +1,23 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import education_added_student_action, education_add_to_calendar_options, education_assignment_grade_type, education_assignment_recipient, education_assignment_resource, education_assignment_status, education_category, education_item_body, education_rubric, education_submission, entity, identity_set
-
-from . import entity
+education_add_to_calendar_options = lazy_import('msgraph.generated.models.education_add_to_calendar_options')
+education_added_student_action = lazy_import('msgraph.generated.models.education_added_student_action')
+education_assignment_grade_type = lazy_import('msgraph.generated.models.education_assignment_grade_type')
+education_assignment_recipient = lazy_import('msgraph.generated.models.education_assignment_recipient')
+education_assignment_resource = lazy_import('msgraph.generated.models.education_assignment_resource')
+education_assignment_status = lazy_import('msgraph.generated.models.education_assignment_status')
+education_category = lazy_import('msgraph.generated.models.education_category')
+education_item_body = lazy_import('msgraph.generated.models.education_item_body')
+education_rubric = lazy_import('msgraph.generated.models.education_rubric')
+education_submission = lazy_import('msgraph.generated.models.education_submission')
+entity = lazy_import('msgraph.generated.models.entity')
+identity_set = lazy_import('msgraph.generated.models.identity_set')
 
 class EducationAssignment(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EducationAssignment and sets the default values.
-        """
-        super().__init__()
-        # Optional field to control the assignment behavior  for adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
-        self._add_to_calendar_action: Optional[education_add_to_calendar_options.EducationAddToCalendarOptions] = None
-        # Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none. Supported values are: none, assignIfOpen. For example, a teacher can use assignIfOpen to indicate that an assignment should be assigned to any new student who joins the class while the assignment is still open, and none to indicate that an assignment should not be assigned to new students.
-        self._added_student_action: Optional[education_added_student_action.EducationAddedStudentAction] = None
-        # Identifies whether students can submit after the due date. If this property isn't specified during create, it defaults to true.
-        self._allow_late_submissions: Optional[bool] = None
-        # Identifies whether students can add their own resources to a submission or if they can only modify resources added by the teacher.
-        self._allow_students_to_add_resources_to_submission: Optional[bool] = None
-        # The date when the assignment should become active.  If in the future, the assignment isn't shown to the student until this date.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._assign_date_time: Optional[datetime] = None
-        # Which users, or whole class should receive a submission object once the assignment is published.
-        self._assign_to: Optional[education_assignment_recipient.EducationAssignmentRecipient] = None
-        # The moment that the assignment was published to students and the assignment shows up on the students timeline.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._assigned_date_time: Optional[datetime] = None
-        # When set, enables users to easily find assignments of a given type.  Read-only. Nullable.
-        self._categories: Optional[List[education_category.EducationCategory]] = None
-        # Class which this assignment belongs.
-        self._class_id: Optional[str] = None
-        # Date when the assignment will be closed for submissions. This is an optional field that can be null if the assignment does not allowLateSubmissions or when the closeDateTime is the same as the dueDateTime. But if specified, then the closeDateTime must be greater than or equal to the dueDateTime. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._close_date_time: Optional[datetime] = None
-        # Who created the assignment.
-        self._created_by: Optional[identity_set.IdentitySet] = None
-        # Moment when the assignment was created.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._created_date_time: Optional[datetime] = None
-        # Name of the assignment.
-        self._display_name: Optional[str] = None
-        # Date when the students assignment is due.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._due_date_time: Optional[datetime] = None
-        # Folder URL where all the feedback file resources for this assignment are stored.
-        self._feedback_resources_folder_url: Optional[str] = None
-        # How the assignment will be graded.
-        self._grading: Optional[education_assignment_grade_type.EducationAssignmentGradeType] = None
-        # Instructions for the assignment.  This along with the display name tell the student what to do.
-        self._instructions: Optional[education_item_body.EducationItemBody] = None
-        # Who last modified the assignment.
-        self._last_modified_by: Optional[identity_set.IdentitySet] = None
-        # Moment when the assignment was last modified.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._last_modified_date_time: Optional[datetime] = None
-        # Optional field to specify the URL of the channel to post the assignment publish notification. If not specified or null, defaults to the General channel. This field only applies to assignments where the assignTo value is educationAssignmentClassRecipient. Updating the notificationChannelUrl isn't allowed after the assignment has been published.
-        self._notification_channel_url: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Learning objects that are associated with this assignment.  Only teachers can modify this list. Nullable.
-        self._resources: Optional[List[education_assignment_resource.EducationAssignmentResource]] = None
-        # Folder URL where all the file resources for this assignment are stored.
-        self._resources_folder_url: Optional[str] = None
-        # When set, the grading rubric attached to this assignment.
-        self._rubric: Optional[education_rubric.EducationRubric] = None
-        # Status of the Assignment.  You can't PATCH this value.  Possible values are: draft, scheduled, published, assigned.
-        self._status: Optional[education_assignment_status.EducationAssignmentStatus] = None
-        # Once published, there is a submission object for each student representing their work and grade.  Read-only. Nullable.
-        self._submissions: Optional[List[education_submission.EducationSubmission]] = None
-        # The deep link URL for the given assignment.
-        self._web_url: Optional[str] = None
-    
     @property
     def add_to_calendar_action(self,) -> Optional[education_add_to_calendar_options.EducationAddToCalendarOptions]:
         """
@@ -239,6 +188,66 @@ class EducationAssignment(entity.Entity):
         """
         self._close_date_time = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new EducationAssignment and sets the default values.
+        """
+        super().__init__()
+        # Optional field to control the assignment behavior  for adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
+        self._add_to_calendar_action: Optional[education_add_to_calendar_options.EducationAddToCalendarOptions] = None
+        # Optional field to control the assignment behavior for students who are added after the assignment is published. If not specified, defaults to none. Supported values are: none, assignIfOpen. For example, a teacher can use assignIfOpen to indicate that an assignment should be assigned to any new student who joins the class while the assignment is still open, and none to indicate that an assignment should not be assigned to new students.
+        self._added_student_action: Optional[education_added_student_action.EducationAddedStudentAction] = None
+        # Identifies whether students can submit after the due date. If this property isn't specified during create, it defaults to true.
+        self._allow_late_submissions: Optional[bool] = None
+        # Identifies whether students can add their own resources to a submission or if they can only modify resources added by the teacher.
+        self._allow_students_to_add_resources_to_submission: Optional[bool] = None
+        # The date when the assignment should become active.  If in the future, the assignment isn't shown to the student until this date.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._assign_date_time: Optional[datetime] = None
+        # Which users, or whole class should receive a submission object once the assignment is published.
+        self._assign_to: Optional[education_assignment_recipient.EducationAssignmentRecipient] = None
+        # The moment that the assignment was published to students and the assignment shows up on the students timeline.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._assigned_date_time: Optional[datetime] = None
+        # When set, enables users to easily find assignments of a given type.  Read-only. Nullable.
+        self._categories: Optional[List[education_category.EducationCategory]] = None
+        # Class which this assignment belongs.
+        self._class_id: Optional[str] = None
+        # Date when the assignment will be closed for submissions. This is an optional field that can be null if the assignment does not allowLateSubmissions or when the closeDateTime is the same as the dueDateTime. But if specified, then the closeDateTime must be greater than or equal to the dueDateTime. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._close_date_time: Optional[datetime] = None
+        # Who created the assignment.
+        self._created_by: Optional[identity_set.IdentitySet] = None
+        # Moment when the assignment was created.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._created_date_time: Optional[datetime] = None
+        # Name of the assignment.
+        self._display_name: Optional[str] = None
+        # Date when the students assignment is due.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._due_date_time: Optional[datetime] = None
+        # Folder URL where all the feedback file resources for this assignment are stored.
+        self._feedback_resources_folder_url: Optional[str] = None
+        # How the assignment will be graded.
+        self._grading: Optional[education_assignment_grade_type.EducationAssignmentGradeType] = None
+        # Instructions for the assignment.  This along with the display name tell the student what to do.
+        self._instructions: Optional[education_item_body.EducationItemBody] = None
+        # Who last modified the assignment.
+        self._last_modified_by: Optional[identity_set.IdentitySet] = None
+        # Moment when the assignment was last modified.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._last_modified_date_time: Optional[datetime] = None
+        # Optional field to specify the URL of the channel to post the assignment publish notification. If not specified or null, defaults to the General channel. This field only applies to assignments where the assignTo value is educationAssignmentClassRecipient. Updating the notificationChannelUrl isn't allowed after the assignment has been published.
+        self._notification_channel_url: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Learning objects that are associated with this assignment.  Only teachers can modify this list. Nullable.
+        self._resources: Optional[List[education_assignment_resource.EducationAssignmentResource]] = None
+        # Folder URL where all the file resources for this assignment are stored.
+        self._resources_folder_url: Optional[str] = None
+        # When set, the grading rubric attached to this assignment.
+        self._rubric: Optional[education_rubric.EducationRubric] = None
+        # Status of the Assignment.  You can't PATCH this value.  Possible values are: draft, scheduled, published, assigned.
+        self._status: Optional[education_assignment_status.EducationAssignmentStatus] = None
+        # Once published, there is a submission object for each student representing their work and grade.  Read-only. Nullable.
+        self._submissions: Optional[List[education_submission.EducationSubmission]] = None
+        # The deep link URL for the given assignment.
+        self._web_url: Optional[str] = None
+    
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
         """
@@ -341,9 +350,7 @@ class EducationAssignment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import education_added_student_action, education_add_to_calendar_options, education_assignment_grade_type, education_assignment_recipient, education_assignment_resource, education_assignment_status, education_category, education_item_body, education_rubric, education_submission, entity, identity_set
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "addedStudentAction": lambda n : setattr(self, 'added_student_action', n.get_enum_value(education_added_student_action.EducationAddedStudentAction)),
             "addToCalendarAction": lambda n : setattr(self, 'add_to_calendar_action', n.get_enum_value(education_add_to_calendar_options.EducationAddToCalendarOptions)),
             "allowLateSubmissions": lambda n : setattr(self, 'allow_late_submissions', n.get_bool_value()),

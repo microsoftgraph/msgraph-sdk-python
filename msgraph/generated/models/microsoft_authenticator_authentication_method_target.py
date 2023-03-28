@@ -1,23 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import authentication_method_target, microsoft_authenticator_authentication_mode
-
-from . import authentication_method_target
+authentication_method_target = lazy_import('msgraph.generated.models.authentication_method_target')
+microsoft_authenticator_authentication_mode = lazy_import('msgraph.generated.models.microsoft_authenticator_authentication_mode')
 
 class MicrosoftAuthenticatorAuthenticationMethodTarget(authentication_method_target.AuthenticationMethodTarget):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new MicrosoftAuthenticatorAuthenticationMethodTarget and sets the default values.
-        """
-        super().__init__()
-        # The authenticationMode property
-        self._authentication_mode: Optional[microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
     @property
     def authentication_mode(self,) -> Optional[microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode]:
         """
@@ -34,6 +23,16 @@ class MicrosoftAuthenticatorAuthenticationMethodTarget(authentication_method_tar
             value: Value to set for the authentication_mode property.
         """
         self._authentication_mode = value
+    
+    def __init__(self,) -> None:
+        """
+        Instantiates a new MicrosoftAuthenticatorAuthenticationMethodTarget and sets the default values.
+        """
+        super().__init__()
+        # The authenticationMode property
+        self._authentication_mode: Optional[microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MicrosoftAuthenticatorAuthenticationMethodTarget:
@@ -52,9 +51,7 @@ class MicrosoftAuthenticatorAuthenticationMethodTarget(authentication_method_tar
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_method_target, microsoft_authenticator_authentication_mode
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "authenticationMode": lambda n : setattr(self, 'authentication_mode', n.get_enum_value(microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode)),
         }
         super_fields = super().get_field_deserializers()

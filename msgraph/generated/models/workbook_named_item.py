@@ -1,13 +1,30 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import entity, json, workbook_worksheet
-
-from . import entity
+entity = lazy_import('msgraph.generated.models.entity')
+json = lazy_import('msgraph.generated.models.json')
+workbook_worksheet = lazy_import('msgraph.generated.models.workbook_worksheet')
 
 class WorkbookNamedItem(entity.Entity):
+    @property
+    def comment(self,) -> Optional[str]:
+        """
+        Gets the comment property value. Represents the comment associated with this name.
+        Returns: Optional[str]
+        """
+        return self._comment
+    
+    @comment.setter
+    def comment(self,value: Optional[str] = None) -> None:
+        """
+        Sets the comment property value. Represents the comment associated with this name.
+        Args:
+            value: Value to set for the comment property.
+        """
+        self._comment = value
+    
     def __init__(self,) -> None:
         """
         Instantiates a new workbookNamedItem and sets the default values.
@@ -30,23 +47,6 @@ class WorkbookNamedItem(entity.Entity):
         # Returns the worksheet on which the named item is scoped to. Available only if the item is scoped to the worksheet. Read-only.
         self._worksheet: Optional[workbook_worksheet.WorkbookWorksheet] = None
     
-    @property
-    def comment(self,) -> Optional[str]:
-        """
-        Gets the comment property value. Represents the comment associated with this name.
-        Returns: Optional[str]
-        """
-        return self._comment
-    
-    @comment.setter
-    def comment(self,value: Optional[str] = None) -> None:
-        """
-        Sets the comment property value. Represents the comment associated with this name.
-        Args:
-            value: Value to set for the comment property.
-        """
-        self._comment = value
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookNamedItem:
         """
@@ -64,9 +64,7 @@ class WorkbookNamedItem(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, json, workbook_worksheet
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "scope": lambda n : setattr(self, 'scope', n.get_str_value()),

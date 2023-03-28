@@ -1,27 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import chat_message_from_identity_set, chat_message_mentioned_identity_set, chat_message_reaction_identity_set, identity, share_point_identity_set
+identity = lazy_import('msgraph.generated.models.identity')
 
 class IdentitySet(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new identitySet and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Optional. The application associated with this action.
-        self._application: Optional[identity.Identity] = None
-        # Optional. The device associated with this action.
-        self._device: Optional[identity.Identity] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Optional. The user associated with this action.
-        self._user: Optional[identity.Identity] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -56,6 +40,22 @@ class IdentitySet(AdditionalDataHolder, Parsable):
         """
         self._application = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new identitySet and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Optional. The application associated with this action.
+        self._application: Optional[identity.Identity] = None
+        # Optional. The device associated with this action.
+        self._device: Optional[identity.Identity] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Optional. The user associated with this action.
+        self._user: Optional[identity.Identity] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentitySet:
         """
@@ -66,25 +66,6 @@ class IdentitySet(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.chatMessageFromIdentitySet":
-                from . import chat_message_from_identity_set
-
-                return chat_message_from_identity_set.ChatMessageFromIdentitySet()
-            if mapping_value == "#microsoft.graph.chatMessageMentionedIdentitySet":
-                from . import chat_message_mentioned_identity_set
-
-                return chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet()
-            if mapping_value == "#microsoft.graph.chatMessageReactionIdentitySet":
-                from . import chat_message_reaction_identity_set
-
-                return chat_message_reaction_identity_set.ChatMessageReactionIdentitySet()
-            if mapping_value == "#microsoft.graph.sharePointIdentitySet":
-                from . import share_point_identity_set
-
-                return share_point_identity_set.SharePointIdentitySet()
         return IdentitySet()
     
     @property
@@ -109,9 +90,7 @@ class IdentitySet(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import chat_message_from_identity_set, chat_message_mentioned_identity_set, chat_message_reaction_identity_set, identity, share_point_identity_set
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "application": lambda n : setattr(self, 'application', n.get_object_value(identity.Identity)),
             "device": lambda n : setattr(self, 'device', n.get_object_value(identity.Identity)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

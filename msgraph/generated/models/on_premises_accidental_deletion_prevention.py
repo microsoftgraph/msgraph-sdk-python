@@ -1,25 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import on_premises_directory_synchronization_deletion_prevention_type
+on_premises_directory_synchronization_deletion_prevention_type = lazy_import('msgraph.generated.models.on_premises_directory_synchronization_deletion_prevention_type')
 
 class OnPremisesAccidentalDeletionPrevention(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new onPremisesAccidentalDeletionPrevention and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Threshold value which triggers accidental deletion prevention. The threshold is either an absolute number of objects or a percentage number of objects.
-        self._alert_threshold: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The status of the accidental deletion prevention feature. The possible values are: disabled, enabledForCount, enabledForPercentage, unknownFutureValue.
-        self._synchronization_prevention_type: Optional[on_premises_directory_synchronization_deletion_prevention_type.OnPremisesDirectorySynchronizationDeletionPreventionType] = None
-    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -54,6 +40,20 @@ class OnPremisesAccidentalDeletionPrevention(AdditionalDataHolder, Parsable):
         """
         self._alert_threshold = value
     
+    def __init__(self,) -> None:
+        """
+        Instantiates a new onPremisesAccidentalDeletionPrevention and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Threshold value which triggers accidental deletion prevention. The threshold is either an absolute number of objects or a percentage number of objects.
+        self._alert_threshold: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The status of the accidental deletion prevention feature. The possible values are: disabled, enabledForCount, enabledForPercentage, unknownFutureValue.
+        self._synchronization_prevention_type: Optional[on_premises_directory_synchronization_deletion_prevention_type.OnPremisesDirectorySynchronizationDeletionPreventionType] = None
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnPremisesAccidentalDeletionPrevention:
         """
@@ -71,9 +71,7 @@ class OnPremisesAccidentalDeletionPrevention(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import on_premises_directory_synchronization_deletion_prevention_type
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "alertThreshold": lambda n : setattr(self, 'alert_threshold', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "synchronizationPreventionType": lambda n : setattr(self, 'synchronization_prevention_type', n.get_enum_value(on_premises_directory_synchronization_deletion_prevention_type.OnPremisesDirectorySynchronizationDeletionPreventionType)),

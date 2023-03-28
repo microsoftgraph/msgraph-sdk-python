@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from kiota_abstractions.utils import lazy_import
+from typing import Any, Callable, Dict, List, Optional, Union
 
-if TYPE_CHECKING:
-    from . import event_message, response_type, time_slot
-
-from . import event_message
+event_message = lazy_import('msgraph.generated.models.event_message')
+response_type = lazy_import('msgraph.generated.models.response_type')
+time_slot = lazy_import('msgraph.generated.models.time_slot')
 
 class EventMessageResponse(event_message.EventMessage):
     def __init__(self,) -> None:
@@ -36,9 +36,7 @@ class EventMessageResponse(event_message.EventMessage):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import event_message, response_type, time_slot
-
-        fields: Dict[str, Callable[[Any], None]] = {
+        fields = {
             "proposedNewTime": lambda n : setattr(self, 'proposed_new_time', n.get_object_value(time_slot.TimeSlot)),
             "responseType": lambda n : setattr(self, 'response_type', n.get_enum_value(response_type.ResponseType)),
         }

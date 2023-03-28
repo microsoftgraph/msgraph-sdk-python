@@ -1,12 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-schedule_entity = lazy_import('msgraph.generated.models.schedule_entity')
-shift_activity = lazy_import('msgraph.generated.models.shift_activity')
+if TYPE_CHECKING:
+    from . import open_shift_item, schedule_entity, shift_activity
+
+from . import schedule_entity
 
 class ShiftItem(schedule_entity.ScheduleEntity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ShiftItem and sets the default values.
+        """
+        super().__init__()
+        # An incremental part of a shift which can cover details of when and where an employee is during their shift. For example, an assignment or a scheduled break or lunch. Required.
+        self._activities: Optional[List[shift_activity.ShiftActivity]] = None
+        # The shift label of the shiftItem.
+        self._display_name: Optional[str] = None
+        # The shift notes for the shiftItem.
+        self._notes: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+    
     @property
     def activities(self,) -> Optional[List[shift_activity.ShiftActivity]]:
         """
@@ -24,20 +39,6 @@ class ShiftItem(schedule_entity.ScheduleEntity):
         """
         self._activities = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ShiftItem and sets the default values.
-        """
-        super().__init__()
-        # An incremental part of a shift which can cover details of when and where an employee is during their shift. For example, an assignment or a scheduled break or lunch. Required.
-        self._activities: Optional[List[shift_activity.ShiftActivity]] = None
-        # The shift label of the shiftItem.
-        self._display_name: Optional[str] = None
-        # The shift notes for the shiftItem.
-        self._notes: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ShiftItem:
         """
@@ -48,6 +49,13 @@ class ShiftItem(schedule_entity.ScheduleEntity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.openShiftItem":
+                from . import open_shift_item
+
+                return open_shift_item.OpenShiftItem()
         return ShiftItem()
     
     @property
@@ -72,7 +80,9 @@ class ShiftItem(schedule_entity.ScheduleEntity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import open_shift_item, schedule_entity, shift_activity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(shift_activity.ShiftActivity)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),

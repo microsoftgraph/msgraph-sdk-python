@@ -7,24 +7,17 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-attachment_session = lazy_import('msgraph.generated.models.attachment_session')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-content_request_builder = lazy_import('msgraph.generated.users.item.todo.lists.item.tasks.item.attachment_sessions.item.content.content_request_builder')
+if TYPE_CHECKING:
+    from ..........models import attachment_session
+    from ..........models.o_data_errors import o_data_error
+    from .content import content_request_builder
 
 class AttachmentSessionItemRequestBuilder():
     """
     Provides operations to manage the attachmentSessions property of the microsoft.graph.todoTask entity.
     """
-    @property
-    def content(self) -> content_request_builder.ContentRequestBuilder:
-        """
-        Provides operations to manage the media for the user entity.
-        """
-        return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AttachmentSessionItemRequestBuilder and sets the default values.
@@ -52,6 +45,8 @@ class AttachmentSessionItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from ..........models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -70,12 +65,16 @@ class AttachmentSessionItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ..........models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ..........models import attachment_session
+
         return await self.request_adapter.send_async(request_info, attachment_session.AttachmentSession, error_mapping)
     
     async def patch(self,body: Optional[attachment_session.AttachmentSession] = None, request_configuration: Optional[AttachmentSessionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[attachment_session.AttachmentSession]:
@@ -91,12 +90,16 @@ class AttachmentSessionItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ..........models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ..........models import attachment_session
+
         return await self.request_adapter.send_async(request_info, attachment_session.AttachmentSession, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AttachmentSessionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -154,6 +157,15 @@ class AttachmentSessionItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def content(self) -> content_request_builder.ContentRequestBuilder:
+        """
+        Provides operations to manage the media for the user entity.
+        """
+        from .content import content_request_builder
+
+        return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class AttachmentSessionItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -171,9 +183,6 @@ class AttachmentSessionItemRequestBuilder():
         """
         Get attachmentSessions from users
         """
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -187,6 +196,9 @@ class AttachmentSessionItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class AttachmentSessionItemRequestBuilderGetRequestConfiguration():

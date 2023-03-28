@@ -1,11 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-key_value_pair = lazy_import('msgraph.generated.models.key_value_pair')
+if TYPE_CHECKING:
+    from . import entity, key_value_pair, service_health_issue, service_update_message
+
+from . import entity
 
 class ServiceAnnouncementBase(entity.Entity):
     def __init__(self,) -> None:
@@ -36,6 +37,17 @@ class ServiceAnnouncementBase(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.serviceHealthIssue":
+                from . import service_health_issue
+
+                return service_health_issue.ServiceHealthIssue()
+            if mapping_value == "#microsoft.graph.serviceUpdateMessage":
+                from . import service_update_message
+
+                return service_update_message.ServiceUpdateMessage()
         return ServiceAnnouncementBase()
     
     @property
@@ -77,7 +89,9 @@ class ServiceAnnouncementBase(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, key_value_pair, service_health_issue, service_update_message
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "details": lambda n : setattr(self, 'details', n.get_collection_of_object_values(key_value_pair.KeyValuePair)),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),

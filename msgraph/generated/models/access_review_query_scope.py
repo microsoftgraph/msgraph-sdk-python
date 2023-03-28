@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_review_scope = lazy_import('msgraph.generated.models.access_review_scope')
+if TYPE_CHECKING:
+    from . import access_review_inactive_users_query_scope, access_review_scope
+
+from . import access_review_scope
 
 class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
     def __init__(self,) -> None:
@@ -29,6 +31,13 @@ class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.accessReviewInactiveUsersQueryScope":
+                from . import access_review_inactive_users_query_scope
+
+                return access_review_inactive_users_query_scope.AccessReviewInactiveUsersQueryScope()
         return AccessReviewQueryScope()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -36,7 +45,9 @@ class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import access_review_inactive_users_query_scope, access_review_scope
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "query": lambda n : setattr(self, 'query', n.get_str_value()),
             "queryRoot": lambda n : setattr(self, 'query_root', n.get_str_value()),
             "queryType": lambda n : setattr(self, 'query_type', n.get_str_value()),

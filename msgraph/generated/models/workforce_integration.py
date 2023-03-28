@@ -1,30 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-change_tracked_entity = lazy_import('msgraph.generated.models.change_tracked_entity')
-workforce_integration_encryption = lazy_import('msgraph.generated.models.workforce_integration_encryption')
-workforce_integration_supported_entities = lazy_import('msgraph.generated.models.workforce_integration_supported_entities')
+if TYPE_CHECKING:
+    from . import change_tracked_entity, workforce_integration_encryption, workforce_integration_supported_entities
+
+from . import change_tracked_entity
 
 class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
-    @property
-    def api_version(self,) -> Optional[int]:
-        """
-        Gets the apiVersion property value. API version for the call back URL. Start with 1.
-        Returns: Optional[int]
-        """
-        return self._api_version
-    
-    @api_version.setter
-    def api_version(self,value: Optional[int] = None) -> None:
-        """
-        Sets the apiVersion property value. API version for the call back URL. Start with 1.
-        Args:
-            value: Value to set for the api_version property.
-        """
-        self._api_version = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new WorkforceIntegration and sets the default values.
@@ -43,6 +26,23 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         self._supported_entities: Optional[workforce_integration_supported_entities.WorkforceIntegrationSupportedEntities] = None
         # Workforce Integration URL for callbacks from the Shifts service.
         self._url: Optional[str] = None
+    
+    @property
+    def api_version(self,) -> Optional[int]:
+        """
+        Gets the apiVersion property value. API version for the call back URL. Start with 1.
+        Returns: Optional[int]
+        """
+        return self._api_version
+    
+    @api_version.setter
+    def api_version(self,value: Optional[int] = None) -> None:
+        """
+        Sets the apiVersion property value. API version for the call back URL. Start with 1.
+        Args:
+            value: Value to set for the api_version property.
+        """
+        self._api_version = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkforceIntegration:
@@ -95,7 +95,9 @@ class WorkforceIntegration(change_tracked_entity.ChangeTrackedEntity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import change_tracked_entity, workforce_integration_encryption, workforce_integration_supported_entities
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "apiVersion": lambda n : setattr(self, 'api_version', n.get_int_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "encryption": lambda n : setattr(self, 'encryption', n.get_object_value(workforce_integration_encryption.WorkforceIntegrationEncryption)),

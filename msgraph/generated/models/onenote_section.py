@@ -1,13 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-notebook = lazy_import('msgraph.generated.models.notebook')
-onenote_entity_hierarchy_model = lazy_import('msgraph.generated.models.onenote_entity_hierarchy_model')
-onenote_page = lazy_import('msgraph.generated.models.onenote_page')
-section_group = lazy_import('msgraph.generated.models.section_group')
-section_links = lazy_import('msgraph.generated.models.section_links')
+if TYPE_CHECKING:
+    from . import notebook, onenote_entity_hierarchy_model, onenote_page, section_group, section_links
+
+from . import onenote_entity_hierarchy_model
 
 class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel):
     def __init__(self,) -> None:
@@ -46,7 +44,9 @@ class OnenoteSection(onenote_entity_hierarchy_model.OnenoteEntityHierarchyModel)
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import notebook, onenote_entity_hierarchy_model, onenote_page, section_group, section_links
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "isDefault": lambda n : setattr(self, 'is_default', n.get_bool_value()),
             "links": lambda n : setattr(self, 'links', n.get_object_value(section_links.SectionLinks)),
             "pages": lambda n : setattr(self, 'pages', n.get_collection_of_object_values(onenote_page.OnenotePage)),

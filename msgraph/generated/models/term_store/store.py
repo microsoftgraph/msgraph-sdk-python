@@ -1,11 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-group = lazy_import('msgraph.generated.models.term_store.group')
-set = lazy_import('msgraph.generated.models.term_store.set')
+if TYPE_CHECKING:
+    from . import group, set
+    from .. import entity
+
+from .. import entity
 
 class Store(entity.Entity):
     def __init__(self,) -> None:
@@ -58,7 +59,10 @@ class Store(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import group, set
+        from .. import entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "defaultLanguageTag": lambda n : setattr(self, 'default_language_tag', n.get_str_value()),
             "groups": lambda n : setattr(self, 'groups', n.get_collection_of_object_values(group.Group)),
             "languageTags": lambda n : setattr(self, 'language_tags', n.get_collection_of_primitive_values(str)),

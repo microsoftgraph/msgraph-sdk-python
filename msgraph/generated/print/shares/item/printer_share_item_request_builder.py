@@ -7,68 +7,21 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-printer_share = lazy_import('msgraph.generated.models.printer_share')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-allowed_groups_request_builder = lazy_import('msgraph.generated.print.shares.item.allowed_groups.allowed_groups_request_builder')
-group_item_request_builder = lazy_import('msgraph.generated.print.shares.item.allowed_groups.item.group_item_request_builder')
-allowed_users_request_builder = lazy_import('msgraph.generated.print.shares.item.allowed_users.allowed_users_request_builder')
-user_item_request_builder = lazy_import('msgraph.generated.print.shares.item.allowed_users.item.user_item_request_builder')
-printer_request_builder = lazy_import('msgraph.generated.print.shares.item.printer.printer_request_builder')
+if TYPE_CHECKING:
+    from ....models import printer_share
+    from ....models.o_data_errors import o_data_error
+    from .allowed_groups import allowed_groups_request_builder
+    from .allowed_groups.item import group_item_request_builder
+    from .allowed_users import allowed_users_request_builder
+    from .allowed_users.item import user_item_request_builder
+    from .printer import printer_request_builder
 
 class PrinterShareItemRequestBuilder():
     """
     Provides operations to manage the shares property of the microsoft.graph.print entity.
     """
-    @property
-    def allowed_groups(self) -> allowed_groups_request_builder.AllowedGroupsRequestBuilder:
-        """
-        Provides operations to manage the allowedGroups property of the microsoft.graph.printerShare entity.
-        """
-        return allowed_groups_request_builder.AllowedGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def allowed_users(self) -> allowed_users_request_builder.AllowedUsersRequestBuilder:
-        """
-        Provides operations to manage the allowedUsers property of the microsoft.graph.printerShare entity.
-        """
-        return allowed_users_request_builder.AllowedUsersRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def printer(self) -> printer_request_builder.PrinterRequestBuilder:
-        """
-        Provides operations to manage the printer property of the microsoft.graph.printerShare entity.
-        """
-        return printer_request_builder.PrinterRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def allowed_groups_by_id(self,id: str) -> group_item_request_builder.GroupItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.print.shares.item.allowedGroups.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: group_item_request_builder.GroupItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["group%2Did"] = id
-        return group_item_request_builder.GroupItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def allowed_users_by_id(self,id: str) -> user_item_request_builder.UserItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.print.shares.item.allowedUsers.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: user_item_request_builder.UserItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["user%2Did"] = id
-        return user_item_request_builder.UserItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PrinterShareItemRequestBuilder and sets the default values.
@@ -87,6 +40,36 @@ class PrinterShareItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def allowed_groups_by_id(self,id: str) -> group_item_request_builder.GroupItemRequestBuilder:
+        """
+        Gets an item from the msgraph.generated.print.shares.item.allowedGroups.item collection
+        Args:
+            id: Unique identifier of the item
+        Returns: group_item_request_builder.GroupItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        from .allowed_groups.item import group_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["group%2Did"] = id
+        return group_item_request_builder.GroupItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def allowed_users_by_id(self,id: str) -> user_item_request_builder.UserItemRequestBuilder:
+        """
+        Gets an item from the msgraph.generated.print.shares.item.allowedUsers.item collection
+        Args:
+            id: Unique identifier of the item
+        Returns: user_item_request_builder.UserItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        from .allowed_users.item import user_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["user%2Did"] = id
+        return user_item_request_builder.UserItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def delete(self,request_configuration: Optional[PrinterShareItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property shares for print
@@ -96,6 +79,8 @@ class PrinterShareItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -114,12 +99,16 @@ class PrinterShareItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ....models import printer_share
+
         return await self.request_adapter.send_async(request_info, printer_share.PrinterShare, error_mapping)
     
     async def patch(self,body: Optional[printer_share.PrinterShare] = None, request_configuration: Optional[PrinterShareItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[printer_share.PrinterShare]:
@@ -135,12 +124,16 @@ class PrinterShareItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ....models import printer_share
+
         return await self.request_adapter.send_async(request_info, printer_share.PrinterShare, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PrinterShareItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -198,6 +191,33 @@ class PrinterShareItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def allowed_groups(self) -> allowed_groups_request_builder.AllowedGroupsRequestBuilder:
+        """
+        Provides operations to manage the allowedGroups property of the microsoft.graph.printerShare entity.
+        """
+        from .allowed_groups import allowed_groups_request_builder
+
+        return allowed_groups_request_builder.AllowedGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def allowed_users(self) -> allowed_users_request_builder.AllowedUsersRequestBuilder:
+        """
+        Provides operations to manage the allowedUsers property of the microsoft.graph.printerShare entity.
+        """
+        from .allowed_users import allowed_users_request_builder
+
+        return allowed_users_request_builder.AllowedUsersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def printer(self) -> printer_request_builder.PrinterRequestBuilder:
+        """
+        Provides operations to manage the printer property of the microsoft.graph.printerShare entity.
+        """
+        from .printer import printer_request_builder
+
+        return printer_request_builder.PrinterRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class PrinterShareItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -215,12 +235,6 @@ class PrinterShareItemRequestBuilder():
         """
         The list of printer shares registered in the tenant.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -236,6 +250,12 @@ class PrinterShareItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class PrinterShareItemRequestBuilderGetRequestConfiguration():

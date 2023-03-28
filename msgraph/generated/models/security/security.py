@@ -1,18 +1,36 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-alert = lazy_import('msgraph.generated.models.alert')
-attack_simulation_root = lazy_import('msgraph.generated.models.attack_simulation_root')
-entity = lazy_import('msgraph.generated.models.entity')
-secure_score = lazy_import('msgraph.generated.models.secure_score')
-secure_score_control_profile = lazy_import('msgraph.generated.models.secure_score_control_profile')
-alert = lazy_import('msgraph.generated.models.security.alert')
-cases_root = lazy_import('msgraph.generated.models.security.cases_root')
-incident = lazy_import('msgraph.generated.models.security.incident')
+if TYPE_CHECKING:
+    from . import alert, cases_root, incident
+    from .. import alert, attack_simulation_root, entity, secure_score, secure_score_control_profile
+
+from .. import entity
 
 class Security(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Security and sets the default values.
+        """
+        super().__init__()
+        # The alerts property
+        self._alerts: Optional[List[alert.Alert]] = None
+        # A collection of alerts in Microsoft 365 Defender.
+        self._alerts_v2: Optional[List[alert.Alert]] = None
+        # The attackSimulation property
+        self._attack_simulation: Optional[attack_simulation_root.AttackSimulationRoot] = None
+        # The cases property
+        self._cases: Optional[cases_root.CasesRoot] = None
+        # A collection of incidents in Microsoft 365 Defender, each of which is a set of correlated alerts and associated metadata that reflects the story of an attack.
+        self._incidents: Optional[List[incident.Incident]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The secureScoreControlProfiles property
+        self._secure_score_control_profiles: Optional[List[secure_score_control_profile.SecureScoreControlProfile]] = None
+        # The secureScores property
+        self._secure_scores: Optional[List[secure_score.SecureScore]] = None
+    
     @property
     def alerts(self,) -> Optional[List[alert.Alert]]:
         """
@@ -81,28 +99,6 @@ class Security(entity.Entity):
         """
         self._cases = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Security and sets the default values.
-        """
-        super().__init__()
-        # The alerts property
-        self._alerts: Optional[List[alert.Alert]] = None
-        # A collection of alerts in Microsoft 365 Defender.
-        self._alerts_v2: Optional[List[alert.Alert]] = None
-        # The attackSimulation property
-        self._attack_simulation: Optional[attack_simulation_root.AttackSimulationRoot] = None
-        # The cases property
-        self._cases: Optional[cases_root.CasesRoot] = None
-        # A collection of incidents in Microsoft 365 Defender, each of which is a set of correlated alerts and associated metadata that reflects the story of an attack.
-        self._incidents: Optional[List[incident.Incident]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The secureScoreControlProfiles property
-        self._secure_score_control_profiles: Optional[List[secure_score_control_profile.SecureScoreControlProfile]] = None
-        # The secureScores property
-        self._secure_scores: Optional[List[secure_score.SecureScore]] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Security:
         """
@@ -120,7 +116,10 @@ class Security(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import alert, cases_root, incident
+        from .. import alert, attack_simulation_root, entity, secure_score, secure_score_control_profile
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "alerts": lambda n : setattr(self, 'alerts', n.get_collection_of_object_values(alert.Alert)),
             "alerts_v2": lambda n : setattr(self, 'alerts_v2', n.get_collection_of_object_values(alert.Alert)),
             "attackSimulation": lambda n : setattr(self, 'attack_simulation', n.get_object_value(attack_simulation_root.AttackSimulationRoot)),

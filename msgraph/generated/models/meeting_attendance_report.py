@@ -1,13 +1,30 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-attendance_record = lazy_import('msgraph.generated.models.attendance_record')
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import attendance_record, entity
+
+from . import entity
 
 class MeetingAttendanceReport(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new meetingAttendanceReport and sets the default values.
+        """
+        super().__init__()
+        # List of attendance records of an attendance report. Read-only.
+        self._attendance_records: Optional[List[attendance_record.AttendanceRecord]] = None
+        # UTC time when the meeting ended. Read-only.
+        self._meeting_end_date_time: Optional[datetime] = None
+        # UTC time when the meeting started. Read-only.
+        self._meeting_start_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Total number of participants. Read-only.
+        self._total_participant_count: Optional[int] = None
+    
     @property
     def attendance_records(self,) -> Optional[List[attendance_record.AttendanceRecord]]:
         """
@@ -24,22 +41,6 @@ class MeetingAttendanceReport(entity.Entity):
             value: Value to set for the attendance_records property.
         """
         self._attendance_records = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new meetingAttendanceReport and sets the default values.
-        """
-        super().__init__()
-        # List of attendance records of an attendance report. Read-only.
-        self._attendance_records: Optional[List[attendance_record.AttendanceRecord]] = None
-        # UTC time when the meeting ended. Read-only.
-        self._meeting_end_date_time: Optional[datetime] = None
-        # UTC time when the meeting started. Read-only.
-        self._meeting_start_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Total number of participants. Read-only.
-        self._total_participant_count: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MeetingAttendanceReport:
@@ -58,7 +59,9 @@ class MeetingAttendanceReport(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import attendance_record, entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "attendanceRecords": lambda n : setattr(self, 'attendance_records', n.get_collection_of_object_values(attendance_record.AttendanceRecord)),
             "meetingEndDateTime": lambda n : setattr(self, 'meeting_end_date_time', n.get_datetime_value()),
             "meetingStartDateTime": lambda n : setattr(self, 'meeting_start_date_time', n.get_datetime_value()),

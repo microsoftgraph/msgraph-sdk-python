@@ -1,10 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-schedule_change_request = lazy_import('msgraph.generated.models.schedule_change_request')
+if TYPE_CHECKING:
+    from . import schedule_change_request
+
+from . import schedule_change_request
 
 class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
     def __init__(self,) -> None:
@@ -54,7 +56,9 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import schedule_change_request
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "timeOffReasonId": lambda n : setattr(self, 'time_off_reason_id', n.get_str_value()),

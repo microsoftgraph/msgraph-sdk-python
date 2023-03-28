@@ -7,12 +7,12 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-create_link_post_request_body = lazy_import('msgraph.generated.drives.item.items.item.create_link.create_link_post_request_body')
-permission = lazy_import('msgraph.generated.models.permission')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from . import create_link_post_request_body
+    from ......models import permission
+    from ......models.o_data_errors import o_data_error
 
 class CreateLinkRequestBuilder():
     """
@@ -49,12 +49,16 @@ class CreateLinkRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
+        from ......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ......models import permission
+
         return await self.request_adapter.send_async(request_info, permission.Permission, error_mapping)
     
     def to_post_request_information(self,body: Optional[create_link_post_request_body.CreateLinkPostRequestBody] = None, request_configuration: Optional[CreateLinkRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:

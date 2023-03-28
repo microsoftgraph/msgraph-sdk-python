@@ -1,11 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-delegated_admin_access_container_type = lazy_import('msgraph.generated.models.delegated_admin_access_container_type')
+if TYPE_CHECKING:
+    from . import delegated_admin_access_container_type
 
 class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new delegatedAdminAccessContainer and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The identifier of the access container (for example, a security group). For 'securityGroup' access containers, this must be a valid ID of an Azure AD security group in the Microsoft partner's tenant.
+        self._access_container_id: Optional[str] = None
+        # The accessContainerType property
+        self._access_container_type: Optional[delegated_admin_access_container_type.DelegatedAdminAccessContainerType] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def access_container_id(self,) -> Optional[str]:
         """
@@ -57,20 +71,6 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
         """
         self._additional_data = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new delegatedAdminAccessContainer and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The identifier of the access container (for example, a security group). For 'securityGroup' access containers, this must be a valid ID of an Azure AD security group in the Microsoft partner's tenant.
-        self._access_container_id: Optional[str] = None
-        # The accessContainerType property
-        self._access_container_type: Optional[delegated_admin_access_container_type.DelegatedAdminAccessContainerType] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DelegatedAdminAccessContainer:
         """
@@ -88,7 +88,9 @@ class DelegatedAdminAccessContainer(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import delegated_admin_access_container_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "accessContainerId": lambda n : setattr(self, 'access_container_id', n.get_str_value()),
             "accessContainerType": lambda n : setattr(self, 'access_container_type', n.get_enum_value(delegated_admin_access_container_type.DelegatedAdminAccessContainerType)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -1,33 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-identity_provider = lazy_import('msgraph.generated.models.identity_provider')
-identity_provider_base = lazy_import('msgraph.generated.models.identity_provider_base')
-identity_user_flow = lazy_import('msgraph.generated.models.identity_user_flow')
-identity_user_flow_attribute_assignment = lazy_import('msgraph.generated.models.identity_user_flow_attribute_assignment')
-user_flow_api_connector_configuration = lazy_import('msgraph.generated.models.user_flow_api_connector_configuration')
-user_flow_language_configuration = lazy_import('msgraph.generated.models.user_flow_language_configuration')
+if TYPE_CHECKING:
+    from . import identity_provider, identity_provider_base, identity_user_flow, identity_user_flow_attribute_assignment, user_flow_api_connector_configuration, user_flow_language_configuration
+
+from . import identity_user_flow
 
 class B2xIdentityUserFlow(identity_user_flow.IdentityUserFlow):
-    @property
-    def api_connector_configuration(self,) -> Optional[user_flow_api_connector_configuration.UserFlowApiConnectorConfiguration]:
-        """
-        Gets the apiConnectorConfiguration property value. Configuration for enabling an API connector for use as part of the self-service sign-up user flow. You can only obtain the value of this object using Get userFlowApiConnectorConfiguration.
-        Returns: Optional[user_flow_api_connector_configuration.UserFlowApiConnectorConfiguration]
-        """
-        return self._api_connector_configuration
-    
-    @api_connector_configuration.setter
-    def api_connector_configuration(self,value: Optional[user_flow_api_connector_configuration.UserFlowApiConnectorConfiguration] = None) -> None:
-        """
-        Sets the apiConnectorConfiguration property value. Configuration for enabling an API connector for use as part of the self-service sign-up user flow. You can only obtain the value of this object using Get userFlowApiConnectorConfiguration.
-        Args:
-            value: Value to set for the api_connector_configuration property.
-        """
-        self._api_connector_configuration = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new B2xIdentityUserFlow and sets the default values.
@@ -46,6 +26,23 @@ class B2xIdentityUserFlow(identity_user_flow.IdentityUserFlow):
         # The userFlowIdentityProviders property
         self._user_flow_identity_providers: Optional[List[identity_provider_base.IdentityProviderBase]] = None
     
+    @property
+    def api_connector_configuration(self,) -> Optional[user_flow_api_connector_configuration.UserFlowApiConnectorConfiguration]:
+        """
+        Gets the apiConnectorConfiguration property value. Configuration for enabling an API connector for use as part of the self-service sign-up user flow. You can only obtain the value of this object using Get userFlowApiConnectorConfiguration.
+        Returns: Optional[user_flow_api_connector_configuration.UserFlowApiConnectorConfiguration]
+        """
+        return self._api_connector_configuration
+    
+    @api_connector_configuration.setter
+    def api_connector_configuration(self,value: Optional[user_flow_api_connector_configuration.UserFlowApiConnectorConfiguration] = None) -> None:
+        """
+        Sets the apiConnectorConfiguration property value. Configuration for enabling an API connector for use as part of the self-service sign-up user flow. You can only obtain the value of this object using Get userFlowApiConnectorConfiguration.
+        Args:
+            value: Value to set for the api_connector_configuration property.
+        """
+        self._api_connector_configuration = value
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> B2xIdentityUserFlow:
         """
@@ -63,7 +60,9 @@ class B2xIdentityUserFlow(identity_user_flow.IdentityUserFlow):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import identity_provider, identity_provider_base, identity_user_flow, identity_user_flow_attribute_assignment, user_flow_api_connector_configuration, user_flow_language_configuration
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "apiConnectorConfiguration": lambda n : setattr(self, 'api_connector_configuration', n.get_object_value(user_flow_api_connector_configuration.UserFlowApiConnectorConfiguration)),
             "identityProviders": lambda n : setattr(self, 'identity_providers', n.get_collection_of_object_values(identity_provider.IdentityProvider)),
             "languages": lambda n : setattr(self, 'languages', n.get_collection_of_object_values(user_flow_language_configuration.UserFlowLanguageConfiguration)),

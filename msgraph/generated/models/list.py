@@ -1,37 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-base_item = lazy_import('msgraph.generated.models.base_item')
-column_definition = lazy_import('msgraph.generated.models.column_definition')
-content_type = lazy_import('msgraph.generated.models.content_type')
-drive = lazy_import('msgraph.generated.models.drive')
-list_info = lazy_import('msgraph.generated.models.list_info')
-list_item = lazy_import('msgraph.generated.models.list_item')
-rich_long_running_operation = lazy_import('msgraph.generated.models.rich_long_running_operation')
-sharepoint_ids = lazy_import('msgraph.generated.models.sharepoint_ids')
-subscription = lazy_import('msgraph.generated.models.subscription')
-system_facet = lazy_import('msgraph.generated.models.system_facet')
+if TYPE_CHECKING:
+    from . import base_item, column_definition, content_type, drive, list_info, list_item, rich_long_running_operation, sharepoint_ids, subscription, system_facet
+
+from . import base_item
 
 class List(base_item.BaseItem):
-    @property
-    def columns(self,) -> Optional[List[column_definition.ColumnDefinition]]:
-        """
-        Gets the columns property value. The collection of field definitions for this list.
-        Returns: Optional[List[column_definition.ColumnDefinition]]
-        """
-        return self._columns
-    
-    @columns.setter
-    def columns(self,value: Optional[List[column_definition.ColumnDefinition]] = None) -> None:
-        """
-        Sets the columns property value. The collection of field definitions for this list.
-        Args:
-            value: Value to set for the columns property.
-        """
-        self._columns = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new list and sets the default values.
@@ -58,6 +34,23 @@ class List(base_item.BaseItem):
         self._subscriptions: Optional[List[subscription.Subscription]] = None
         # If present, indicates that this is a system-managed list. Read-only.
         self._system: Optional[system_facet.SystemFacet] = None
+    
+    @property
+    def columns(self,) -> Optional[List[column_definition.ColumnDefinition]]:
+        """
+        Gets the columns property value. The collection of field definitions for this list.
+        Returns: Optional[List[column_definition.ColumnDefinition]]
+        """
+        return self._columns
+    
+    @columns.setter
+    def columns(self,value: Optional[List[column_definition.ColumnDefinition]] = None) -> None:
+        """
+        Sets the columns property value. The collection of field definitions for this list.
+        Args:
+            value: Value to set for the columns property.
+        """
+        self._columns = value
     
     @property
     def content_types(self,) -> Optional[List[content_type.ContentType]]:
@@ -127,7 +120,9 @@ class List(base_item.BaseItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import base_item, column_definition, content_type, drive, list_info, list_item, rich_long_running_operation, sharepoint_ids, subscription, system_facet
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(column_definition.ColumnDefinition)),
             "contentTypes": lambda n : setattr(self, 'content_types', n.get_collection_of_object_values(content_type.ContentType)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

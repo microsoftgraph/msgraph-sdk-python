@@ -1,12 +1,22 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-api_authentication_configuration_base = lazy_import('msgraph.generated.models.api_authentication_configuration_base')
-pkcs12_certificate_information = lazy_import('msgraph.generated.models.pkcs12_certificate_information')
+if TYPE_CHECKING:
+    from . import api_authentication_configuration_base, pkcs12_certificate_information
+
+from . import api_authentication_configuration_base
 
 class ClientCertificateAuthentication(api_authentication_configuration_base.ApiAuthenticationConfigurationBase):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ClientCertificateAuthentication and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.clientCertificateAuthentication"
+        # The list of certificates uploaded for this API connector.
+        self._certificate_list: Optional[List[pkcs12_certificate_information.Pkcs12CertificateInformation]] = None
+    
     @property
     def certificate_list(self,) -> Optional[List[pkcs12_certificate_information.Pkcs12CertificateInformation]]:
         """
@@ -23,15 +33,6 @@ class ClientCertificateAuthentication(api_authentication_configuration_base.ApiA
             value: Value to set for the certificate_list property.
         """
         self._certificate_list = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ClientCertificateAuthentication and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.clientCertificateAuthentication"
-        # The list of certificates uploaded for this API connector.
-        self._certificate_list: Optional[List[pkcs12_certificate_information.Pkcs12CertificateInformation]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ClientCertificateAuthentication:
@@ -50,7 +51,9 @@ class ClientCertificateAuthentication(api_authentication_configuration_base.ApiA
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import api_authentication_configuration_base, pkcs12_certificate_information
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "certificateList": lambda n : setattr(self, 'certificate_list', n.get_collection_of_object_values(pkcs12_certificate_information.Pkcs12CertificateInformation)),
         }
         super_fields = super().get_field_deserializers()

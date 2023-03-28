@@ -1,9 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+
+if TYPE_CHECKING:
+    from . import lobby_bypass_scope
 
 class LobbyBypassSettings(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new lobbyBypassSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Specifies whether or not to always let dial-in callers bypass the lobby. Optional.
+        self._is_dial_in_bypass_enabled: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Specifies the type of participants that are automatically admitted into a meeting, bypassing the lobby. Optional.
+        self._scope: Optional[lobby_bypass_scope.LobbyBypassScope] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -20,18 +36,6 @@ class LobbyBypassSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new lobbyBypassSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Specifies whether or not to always let dial-in callers bypass the lobby. Optional.
-        self._is_dial_in_bypass_enabled: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LobbyBypassSettings:
@@ -50,9 +54,12 @@ class LobbyBypassSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import lobby_bypass_scope
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "isDialInBypassEnabled": lambda n : setattr(self, 'is_dial_in_bypass_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
+            "scope": lambda n : setattr(self, 'scope', n.get_enum_value(lobby_bypass_scope.LobbyBypassScope)),
         }
         return fields
     
@@ -90,6 +97,23 @@ class LobbyBypassSettings(AdditionalDataHolder, Parsable):
         """
         self._odata_type = value
     
+    @property
+    def scope(self,) -> Optional[lobby_bypass_scope.LobbyBypassScope]:
+        """
+        Gets the scope property value. Specifies the type of participants that are automatically admitted into a meeting, bypassing the lobby. Optional.
+        Returns: Optional[lobby_bypass_scope.LobbyBypassScope]
+        """
+        return self._scope
+    
+    @scope.setter
+    def scope(self,value: Optional[lobby_bypass_scope.LobbyBypassScope] = None) -> None:
+        """
+        Sets the scope property value. Specifies the type of participants that are automatically admitted into a meeting, bypassing the lobby. Optional.
+        Args:
+            value: Value to set for the scope property.
+        """
+        self._scope = value
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -100,6 +124,7 @@ class LobbyBypassSettings(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("isDialInBypassEnabled", self.is_dial_in_bypass_enabled)
         writer.write_str_value("@odata.type", self.odata_type)
+        writer.write_enum_value("scope", self.scope)
         writer.write_additional_data_value(self.additional_data)
     
 

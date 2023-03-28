@@ -1,12 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class Win32LobAppRestartSettings(AdditionalDataHolder, Parsable):
     """
     Contains properties describing restart coordination following an app installation.
     """
+    def __init__(self,) -> None:
+        """
+        Instantiates a new win32LobAppRestartSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The number of minutes before the restart time to display the countdown dialog for pending restarts.
+        self._countdown_display_before_restart_in_minutes: Optional[int] = None
+        # The number of minutes to wait before restarting the device after an app installation.
+        self._grace_period_in_minutes: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The number of minutes to snooze the restart notification dialog when the snooze button is selected.
+        self._restart_notification_snooze_duration_in_minutes: Optional[int] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -23,22 +38,6 @@ class Win32LobAppRestartSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new win32LobAppRestartSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The number of minutes before the restart time to display the countdown dialog for pending restarts.
-        self._countdown_display_before_restart_in_minutes: Optional[int] = None
-        # The number of minutes to wait before restarting the device after an app installation.
-        self._grace_period_in_minutes: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The number of minutes to snooze the restart notification dialog when the snooze button is selected.
-        self._restart_notification_snooze_duration_in_minutes: Optional[int] = None
     
     @property
     def countdown_display_before_restart_in_minutes(self,) -> Optional[int]:
@@ -74,7 +73,7 @@ class Win32LobAppRestartSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "countdownDisplayBeforeRestartInMinutes": lambda n : setattr(self, 'countdown_display_before_restart_in_minutes', n.get_int_value()),
             "gracePeriodInMinutes": lambda n : setattr(self, 'grace_period_in_minutes', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

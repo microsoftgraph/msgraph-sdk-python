@@ -1,13 +1,24 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-authentication_method_configuration = lazy_import('msgraph.generated.models.authentication_method_configuration')
-authentication_method_target = lazy_import('msgraph.generated.models.authentication_method_target')
-external_email_otp_state = lazy_import('msgraph.generated.models.external_email_otp_state')
+if TYPE_CHECKING:
+    from . import authentication_method_configuration, authentication_method_target, external_email_otp_state
+
+from . import authentication_method_configuration
 
 class EmailAuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new EmailAuthenticationMethodConfiguration and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.emailAuthenticationMethodConfiguration"
+        # Determines whether email OTP is usable by external users for authentication. Possible values are: default, enabled, disabled, unknownFutureValue. Tenants in the default state who did not use public preview will automatically have email OTP enabled beginning in October 2021.
+        self._allow_external_id_to_use_email_otp: Optional[external_email_otp_state.ExternalEmailOtpState] = None
+        # A collection of groups that are enabled to use the authentication method.
+        self._include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
+    
     @property
     def allow_external_id_to_use_email_otp(self,) -> Optional[external_email_otp_state.ExternalEmailOtpState]:
         """
@@ -24,17 +35,6 @@ class EmailAuthenticationMethodConfiguration(authentication_method_configuration
             value: Value to set for the allow_external_id_to_use_email_otp property.
         """
         self._allow_external_id_to_use_email_otp = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EmailAuthenticationMethodConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.emailAuthenticationMethodConfiguration"
-        # Determines whether email OTP is usable by external users for authentication. Possible values are: default, enabled, disabled, unknownFutureValue. Tenants in the default state who did not use public preview will automatically have email OTP enabled beginning in October 2021.
-        self._allow_external_id_to_use_email_otp: Optional[external_email_otp_state.ExternalEmailOtpState] = None
-        # A collection of groups that are enabled to use the authentication method.
-        self._include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EmailAuthenticationMethodConfiguration:
@@ -53,7 +53,9 @@ class EmailAuthenticationMethodConfiguration(authentication_method_configuration
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import authentication_method_configuration, authentication_method_target, external_email_otp_state
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowExternalIdToUseEmailOtp": lambda n : setattr(self, 'allow_external_id_to_use_email_otp', n.get_enum_value(external_email_otp_state.ExternalEmailOtpState)),
             "includeTargets": lambda n : setattr(self, 'include_targets', n.get_collection_of_object_values(authentication_method_target.AuthenticationMethodTarget)),
         }

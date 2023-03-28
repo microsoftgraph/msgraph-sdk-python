@@ -1,11 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-simulation_event = lazy_import('msgraph.generated.models.simulation_event')
+if TYPE_CHECKING:
+    from . import simulation_event
 
 class SimulationEventsContent(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new simulationEventsContent and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Actual percentage of users who fell for the simulated attack in an attack simulation and training campaign.
+        self._compromised_rate: Optional[float] = None
+        # List of simulation events in an attack simulation and training campaign.
+        self._events: Optional[List[simulation_event.SimulationEvent]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -39,20 +53,6 @@ class SimulationEventsContent(AdditionalDataHolder, Parsable):
             value: Value to set for the compromised_rate property.
         """
         self._compromised_rate = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new simulationEventsContent and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Actual percentage of users who fell for the simulated attack in an attack simulation and training campaign.
-        self._compromised_rate: Optional[float] = None
-        # List of simulation events in an attack simulation and training campaign.
-        self._events: Optional[List[simulation_event.SimulationEvent]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SimulationEventsContent:
@@ -88,7 +88,9 @@ class SimulationEventsContent(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import simulation_event
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "compromisedRate": lambda n : setattr(self, 'compromised_rate', n.get_float_value()),
             "events": lambda n : setattr(self, 'events', n.get_collection_of_object_values(simulation_event.SimulationEvent)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

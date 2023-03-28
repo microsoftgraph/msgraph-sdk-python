@@ -7,116 +7,33 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-application_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.application.application_request_builder')
-close_session_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.close_session.close_session_request_builder')
-comments_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.comments.comments_request_builder')
-workbook_comment_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.comments.item.workbook_comment_item_request_builder')
-create_session_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.create_session.create_session_request_builder')
-functions_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.functions.functions_request_builder')
-names_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.names.names_request_builder')
-workbook_named_item_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.names.item.workbook_named_item_item_request_builder')
-operations_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.operations.operations_request_builder')
-workbook_operation_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.operations.item.workbook_operation_item_request_builder')
-refresh_session_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.refresh_session.refresh_session_request_builder')
-session_info_resource_with_key_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.session_info_resource_with_key.session_info_resource_with_key_request_builder')
-table_row_operation_result_with_key_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.table_row_operation_result_with_key.table_row_operation_result_with_key_request_builder')
-tables_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.tables_request_builder')
-workbook_table_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.tables.item.workbook_table_item_request_builder')
-worksheets_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.worksheets_request_builder')
-workbook_worksheet_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.workbook_worksheet_item_request_builder')
-workbook = lazy_import('msgraph.generated.models.workbook')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from ......models import workbook
+    from ......models.o_data_errors import o_data_error
+    from .application import application_request_builder
+    from .close_session import close_session_request_builder
+    from .comments import comments_request_builder
+    from .comments.item import workbook_comment_item_request_builder
+    from .create_session import create_session_request_builder
+    from .functions import functions_request_builder
+    from .names import names_request_builder
+    from .names.item import workbook_named_item_item_request_builder
+    from .operations import operations_request_builder
+    from .operations.item import workbook_operation_item_request_builder
+    from .refresh_session import refresh_session_request_builder
+    from .session_info_resource_with_key import session_info_resource_with_key_request_builder
+    from .table_row_operation_result_with_key import table_row_operation_result_with_key_request_builder
+    from .tables import tables_request_builder
+    from .tables.item import workbook_table_item_request_builder
+    from .worksheets import worksheets_request_builder
+    from .worksheets.item import workbook_worksheet_item_request_builder
 
 class WorkbookRequestBuilder():
     """
     Provides operations to manage the workbook property of the microsoft.graph.driveItem entity.
     """
-    @property
-    def application(self) -> application_request_builder.ApplicationRequestBuilder:
-        """
-        Provides operations to manage the application property of the microsoft.graph.workbook entity.
-        """
-        return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def close_session(self) -> close_session_request_builder.CloseSessionRequestBuilder:
-        """
-        Provides operations to call the closeSession method.
-        """
-        return close_session_request_builder.CloseSessionRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def comments(self) -> comments_request_builder.CommentsRequestBuilder:
-        """
-        Provides operations to manage the comments property of the microsoft.graph.workbook entity.
-        """
-        return comments_request_builder.CommentsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def create_session(self) -> create_session_request_builder.CreateSessionRequestBuilder:
-        """
-        Provides operations to call the createSession method.
-        """
-        return create_session_request_builder.CreateSessionRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def functions(self) -> functions_request_builder.FunctionsRequestBuilder:
-        """
-        Provides operations to manage the functions property of the microsoft.graph.workbook entity.
-        """
-        return functions_request_builder.FunctionsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def names(self) -> names_request_builder.NamesRequestBuilder:
-        """
-        Provides operations to manage the names property of the microsoft.graph.workbook entity.
-        """
-        return names_request_builder.NamesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
-        """
-        Provides operations to manage the operations property of the microsoft.graph.workbook entity.
-        """
-        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def refresh_session(self) -> refresh_session_request_builder.RefreshSessionRequestBuilder:
-        """
-        Provides operations to call the refreshSession method.
-        """
-        return refresh_session_request_builder.RefreshSessionRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def tables(self) -> tables_request_builder.TablesRequestBuilder:
-        """
-        Provides operations to manage the tables property of the microsoft.graph.workbook entity.
-        """
-        return tables_request_builder.TablesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def worksheets(self) -> worksheets_request_builder.WorksheetsRequestBuilder:
-        """
-        Provides operations to manage the worksheets property of the microsoft.graph.workbook entity.
-        """
-        return worksheets_request_builder.WorksheetsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def comments_by_id(self,id: str) -> workbook_comment_item_request_builder.WorkbookCommentItemRequestBuilder:
-        """
-        Provides operations to manage the comments property of the microsoft.graph.workbook entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: workbook_comment_item_request_builder.WorkbookCommentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["workbookComment%2Did"] = id
-        return workbook_comment_item_request_builder.WorkbookCommentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WorkbookRequestBuilder and sets the default values.
@@ -135,6 +52,21 @@ class WorkbookRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def comments_by_id(self,id: str) -> workbook_comment_item_request_builder.WorkbookCommentItemRequestBuilder:
+        """
+        Provides operations to manage the comments property of the microsoft.graph.workbook entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: workbook_comment_item_request_builder.WorkbookCommentItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        from .comments.item import workbook_comment_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["workbookComment%2Did"] = id
+        return workbook_comment_item_request_builder.WorkbookCommentItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def delete(self,request_configuration: Optional[WorkbookRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property workbook for drives
@@ -144,6 +76,8 @@ class WorkbookRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from ......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -162,12 +96,16 @@ class WorkbookRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ......models import workbook
+
         return await self.request_adapter.send_async(request_info, workbook.Workbook, error_mapping)
     
     def names_by_id(self,id: str) -> workbook_named_item_item_request_builder.WorkbookNamedItemItemRequestBuilder:
@@ -179,6 +117,8 @@ class WorkbookRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .names.item import workbook_named_item_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["workbookNamedItem%2Did"] = id
         return workbook_named_item_item_request_builder.WorkbookNamedItemItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -192,6 +132,8 @@ class WorkbookRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .operations.item import workbook_operation_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["workbookOperation%2Did"] = id
         return workbook_operation_item_request_builder.WorkbookOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -209,12 +151,16 @@ class WorkbookRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ......models import workbook
+
         return await self.request_adapter.send_async(request_info, workbook.Workbook, error_mapping)
     
     def session_info_resource_with_key(self,key: Optional[str] = None) -> session_info_resource_with_key_request_builder.SessionInfoResourceWithKeyRequestBuilder:
@@ -226,6 +172,8 @@ class WorkbookRequestBuilder():
         """
         if key is None:
             raise Exception("key cannot be undefined")
+        from .session_info_resource_with_key import session_info_resource_with_key_request_builder
+
         return session_info_resource_with_key_request_builder.SessionInfoResourceWithKeyRequestBuilder(self.request_adapter, self.path_parameters, key)
     
     def table_row_operation_result_with_key(self,key: Optional[str] = None) -> table_row_operation_result_with_key_request_builder.TableRowOperationResultWithKeyRequestBuilder:
@@ -237,6 +185,8 @@ class WorkbookRequestBuilder():
         """
         if key is None:
             raise Exception("key cannot be undefined")
+        from .table_row_operation_result_with_key import table_row_operation_result_with_key_request_builder
+
         return table_row_operation_result_with_key_request_builder.TableRowOperationResultWithKeyRequestBuilder(self.request_adapter, self.path_parameters, key)
     
     def tables_by_id(self,id: str) -> workbook_table_item_request_builder.WorkbookTableItemRequestBuilder:
@@ -248,6 +198,8 @@ class WorkbookRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .tables.item import workbook_table_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["workbookTable%2Did"] = id
         return workbook_table_item_request_builder.WorkbookTableItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -316,9 +268,101 @@ class WorkbookRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .worksheets.item import workbook_worksheet_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["workbookWorksheet%2Did"] = id
         return workbook_worksheet_item_request_builder.WorkbookWorksheetItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    @property
+    def application(self) -> application_request_builder.ApplicationRequestBuilder:
+        """
+        Provides operations to manage the application property of the microsoft.graph.workbook entity.
+        """
+        from .application import application_request_builder
+
+        return application_request_builder.ApplicationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def close_session(self) -> close_session_request_builder.CloseSessionRequestBuilder:
+        """
+        Provides operations to call the closeSession method.
+        """
+        from .close_session import close_session_request_builder
+
+        return close_session_request_builder.CloseSessionRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def comments(self) -> comments_request_builder.CommentsRequestBuilder:
+        """
+        Provides operations to manage the comments property of the microsoft.graph.workbook entity.
+        """
+        from .comments import comments_request_builder
+
+        return comments_request_builder.CommentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def create_session(self) -> create_session_request_builder.CreateSessionRequestBuilder:
+        """
+        Provides operations to call the createSession method.
+        """
+        from .create_session import create_session_request_builder
+
+        return create_session_request_builder.CreateSessionRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def functions(self) -> functions_request_builder.FunctionsRequestBuilder:
+        """
+        Provides operations to manage the functions property of the microsoft.graph.workbook entity.
+        """
+        from .functions import functions_request_builder
+
+        return functions_request_builder.FunctionsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def names(self) -> names_request_builder.NamesRequestBuilder:
+        """
+        Provides operations to manage the names property of the microsoft.graph.workbook entity.
+        """
+        from .names import names_request_builder
+
+        return names_request_builder.NamesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def operations(self) -> operations_request_builder.OperationsRequestBuilder:
+        """
+        Provides operations to manage the operations property of the microsoft.graph.workbook entity.
+        """
+        from .operations import operations_request_builder
+
+        return operations_request_builder.OperationsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def refresh_session(self) -> refresh_session_request_builder.RefreshSessionRequestBuilder:
+        """
+        Provides operations to call the refreshSession method.
+        """
+        from .refresh_session import refresh_session_request_builder
+
+        return refresh_session_request_builder.RefreshSessionRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def tables(self) -> tables_request_builder.TablesRequestBuilder:
+        """
+        Provides operations to manage the tables property of the microsoft.graph.workbook entity.
+        """
+        from .tables import tables_request_builder
+
+        return tables_request_builder.TablesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def worksheets(self) -> worksheets_request_builder.WorksheetsRequestBuilder:
+        """
+        Provides operations to manage the worksheets property of the microsoft.graph.workbook entity.
+        """
+        from .worksheets import worksheets_request_builder
+
+        return worksheets_request_builder.WorksheetsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class WorkbookRequestBuilderDeleteRequestConfiguration():
@@ -337,12 +381,6 @@ class WorkbookRequestBuilder():
         """
         For files that are Excel spreadsheets, accesses the workbook API to work with the spreadsheet's contents. Nullable.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -358,6 +396,12 @@ class WorkbookRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class WorkbookRequestBuilderGetRequestConfiguration():

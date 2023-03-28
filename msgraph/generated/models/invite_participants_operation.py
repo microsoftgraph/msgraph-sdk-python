@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-comms_operation = lazy_import('msgraph.generated.models.comms_operation')
-invitation_participant_info = lazy_import('msgraph.generated.models.invitation_participant_info')
+if TYPE_CHECKING:
+    from . import comms_operation, invitation_participant_info
+
+from . import comms_operation
 
 class InviteParticipantsOperation(comms_operation.CommsOperation):
     def __init__(self,) -> None:
@@ -34,7 +35,9 @@ class InviteParticipantsOperation(comms_operation.CommsOperation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import comms_operation, invitation_participant_info
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "participants": lambda n : setattr(self, 'participants', n.get_collection_of_object_values(invitation_participant_info.InvitationParticipantInfo)),
         }
         super_fields = super().get_field_deserializers()

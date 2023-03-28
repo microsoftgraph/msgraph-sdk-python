@@ -1,12 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-identity_set = lazy_import('msgraph.generated.models.identity_set')
-data_source_hold_status = lazy_import('msgraph.generated.models.security.data_source_hold_status')
+if TYPE_CHECKING:
+    from . import data_source_hold_status, site_source, unified_group_source, user_source
+    from .. import entity, identity_set
+
+from .. import entity
 
 class DataSource(entity.Entity):
     def __init__(self,) -> None:
@@ -69,6 +70,21 @@ class DataSource(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.security.siteSource":
+                from . import site_source
+
+                return site_source.SiteSource()
+            if mapping_value == "#microsoft.graph.security.unifiedGroupSource":
+                from . import unified_group_source
+
+                return unified_group_source.UnifiedGroupSource()
+            if mapping_value == "#microsoft.graph.security.userSource":
+                from . import user_source
+
+                return user_source.UserSource()
         return DataSource()
     
     @property
@@ -93,7 +109,10 @@ class DataSource(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import data_source_hold_status, site_source, unified_group_source, user_source
+        from .. import entity, identity_set
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

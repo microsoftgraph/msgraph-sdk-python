@@ -1,37 +1,17 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-configuration = lazy_import('msgraph.generated.models.external_connectors.configuration')
-connection_operation = lazy_import('msgraph.generated.models.external_connectors.connection_operation')
-connection_state = lazy_import('msgraph.generated.models.external_connectors.connection_state')
-external_group = lazy_import('msgraph.generated.models.external_connectors.external_group')
-external_item = lazy_import('msgraph.generated.models.external_connectors.external_item')
-schema = lazy_import('msgraph.generated.models.external_connectors.schema')
+if TYPE_CHECKING:
+    from . import configuration, connection_operation, connection_state, external_group, external_item, schema
+    from .. import entity
+
+from .. import entity
 
 class ExternalConnection(entity.Entity):
-    @property
-    def configuration(self,) -> Optional[configuration.Configuration]:
-        """
-        Gets the configuration property value. Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.
-        Returns: Optional[configuration.Configuration]
-        """
-        return self._configuration
-    
-    @configuration.setter
-    def configuration(self,value: Optional[configuration.Configuration] = None) -> None:
-        """
-        Sets the configuration property value. Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.
-        Args:
-            value: Value to set for the configuration property.
-        """
-        self._configuration = value
-    
     def __init__(self,) -> None:
         """
-        Instantiates a new externalConnection and sets the default values.
+        Instantiates a new ExternalConnection and sets the default values.
         """
         super().__init__()
         # Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.
@@ -52,6 +32,23 @@ class ExternalConnection(entity.Entity):
         self._schema: Optional[schema.Schema] = None
         # Indicates the current state of the connection. Possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.
         self._state: Optional[connection_state.ConnectionState] = None
+    
+    @property
+    def configuration(self,) -> Optional[configuration.Configuration]:
+        """
+        Gets the configuration property value. Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.
+        Returns: Optional[configuration.Configuration]
+        """
+        return self._configuration
+    
+    @configuration.setter
+    def configuration(self,value: Optional[configuration.Configuration] = None) -> None:
+        """
+        Sets the configuration property value. Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.
+        Args:
+            value: Value to set for the configuration property.
+        """
+        self._configuration = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExternalConnection:
@@ -87,7 +84,10 @@ class ExternalConnection(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import configuration, connection_operation, connection_state, external_group, external_item, schema
+        from .. import entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(configuration.Configuration)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "groups": lambda n : setattr(self, 'groups', n.get_collection_of_object_values(external_group.ExternalGroup)),

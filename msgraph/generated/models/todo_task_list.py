@@ -1,12 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-extension = lazy_import('msgraph.generated.models.extension')
-todo_task = lazy_import('msgraph.generated.models.todo_task')
-wellknown_list_name = lazy_import('msgraph.generated.models.wellknown_list_name')
+if TYPE_CHECKING:
+    from . import entity, extension, todo_task, wellknown_list_name
+
+from . import entity
 
 class TodoTaskList(entity.Entity):
     def __init__(self,) -> None:
@@ -80,7 +79,9 @@ class TodoTaskList(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, extension, todo_task, wellknown_list_name
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
             "isOwner": lambda n : setattr(self, 'is_owner', n.get_bool_value()),

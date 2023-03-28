@@ -1,9 +1,60 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class DeviceInfo(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new deviceInfo and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Name of the capture device driver used by the media endpoint.
+        self._capture_device_driver: Optional[str] = None
+        # Name of the capture device used by the media endpoint.
+        self._capture_device_name: Optional[str] = None
+        # Fraction of the call that the media endpoint detected the capture device was not working properly.
+        self._capture_not_functioning_event_ratio: Optional[float] = None
+        # Fraction of the call that the media endpoint detected the CPU resources available were insufficient and caused poor quality of the audio sent and received.
+        self._cpu_insufficent_event_ratio: Optional[float] = None
+        # Fraction of the call that the media endpoint detected clipping in the captured audio that caused poor quality of the audio being sent.
+        self._device_clipping_event_ratio: Optional[float] = None
+        # Fraction of the call that the media endpoint detected glitches or gaps in the audio played or captured that caused poor quality of the audio being sent or received.
+        self._device_glitch_event_ratio: Optional[float] = None
+        # Number of times during the call that the media endpoint detected howling or screeching audio.
+        self._howling_event_count: Optional[int] = None
+        # The root mean square (RMS) of the incoming signal of up to the first 30 seconds of the call.
+        self._initial_signal_level_root_mean_square: Optional[float] = None
+        # Fraction of the call that the media endpoint detected low speech level that caused poor quality of the audio being sent.
+        self._low_speech_level_event_ratio: Optional[float] = None
+        # Fraction of the call that the media endpoint detected low speech to noise level that caused poor quality of the audio being sent.
+        self._low_speech_to_noise_event_ratio: Optional[float] = None
+        # Glitches per 5 minute interval for the media endpoint's microphone.
+        self._mic_glitch_rate: Optional[float] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Average energy level of received audio for audio classified as mono noise or left channel of stereo noise by the media endpoint.
+        self._received_noise_level: Optional[int] = None
+        # Average energy level of received audio for audio classified as mono speech, or left channel of stereo speech by the media endpoint.
+        self._received_signal_level: Optional[int] = None
+        # Name of the render device driver used by the media endpoint.
+        self._render_device_driver: Optional[str] = None
+        # Name of the render device used by the media endpoint.
+        self._render_device_name: Optional[str] = None
+        # Fraction of the call that media endpoint detected device render is muted.
+        self._render_mute_event_ratio: Optional[float] = None
+        # Fraction of the call that the media endpoint detected the render device was not working properly.
+        self._render_not_functioning_event_ratio: Optional[float] = None
+        # Fraction of the call that media endpoint detected device render volume is set to 0.
+        self._render_zero_volume_event_ratio: Optional[float] = None
+        # Average energy level of sent audio for audio classified as mono noise or left channel of stereo noise by the media endpoint.
+        self._sent_noise_level: Optional[int] = None
+        # Average energy level of sent audio for audio classified as mono speech, or left channel of stereo speech by the media endpoint.
+        self._sent_signal_level: Optional[int] = None
+        # Glitches per 5 minute internal for the media endpoint's loudspeaker.
+        self._speaker_glitch_rate: Optional[float] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -71,58 +122,6 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the capture_not_functioning_event_ratio property.
         """
         self._capture_not_functioning_event_ratio = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Name of the capture device driver used by the media endpoint.
-        self._capture_device_driver: Optional[str] = None
-        # Name of the capture device used by the media endpoint.
-        self._capture_device_name: Optional[str] = None
-        # Fraction of the call that the media endpoint detected the capture device was not working properly.
-        self._capture_not_functioning_event_ratio: Optional[float] = None
-        # Fraction of the call that the media endpoint detected the CPU resources available were insufficient and caused poor quality of the audio sent and received.
-        self._cpu_insufficent_event_ratio: Optional[float] = None
-        # Fraction of the call that the media endpoint detected clipping in the captured audio that caused poor quality of the audio being sent.
-        self._device_clipping_event_ratio: Optional[float] = None
-        # Fraction of the call that the media endpoint detected glitches or gaps in the audio played or captured that caused poor quality of the audio being sent or received.
-        self._device_glitch_event_ratio: Optional[float] = None
-        # Number of times during the call that the media endpoint detected howling or screeching audio.
-        self._howling_event_count: Optional[int] = None
-        # The root mean square (RMS) of the incoming signal of up to the first 30 seconds of the call.
-        self._initial_signal_level_root_mean_square: Optional[float] = None
-        # Fraction of the call that the media endpoint detected low speech level that caused poor quality of the audio being sent.
-        self._low_speech_level_event_ratio: Optional[float] = None
-        # Fraction of the call that the media endpoint detected low speech to noise level that caused poor quality of the audio being sent.
-        self._low_speech_to_noise_event_ratio: Optional[float] = None
-        # Glitches per 5 minute interval for the media endpoint's microphone.
-        self._mic_glitch_rate: Optional[float] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Average energy level of received audio for audio classified as mono noise or left channel of stereo noise by the media endpoint.
-        self._received_noise_level: Optional[int] = None
-        # Average energy level of received audio for audio classified as mono speech, or left channel of stereo speech by the media endpoint.
-        self._received_signal_level: Optional[int] = None
-        # Name of the render device driver used by the media endpoint.
-        self._render_device_driver: Optional[str] = None
-        # Name of the render device used by the media endpoint.
-        self._render_device_name: Optional[str] = None
-        # Fraction of the call that media endpoint detected device render is muted.
-        self._render_mute_event_ratio: Optional[float] = None
-        # Fraction of the call that the media endpoint detected the render device was not working properly.
-        self._render_not_functioning_event_ratio: Optional[float] = None
-        # Fraction of the call that media endpoint detected device render volume is set to 0.
-        self._render_zero_volume_event_ratio: Optional[float] = None
-        # Average energy level of sent audio for audio classified as mono noise or left channel of stereo noise by the media endpoint.
-        self._sent_noise_level: Optional[int] = None
-        # Average energy level of sent audio for audio classified as mono speech, or left channel of stereo speech by the media endpoint.
-        self._sent_signal_level: Optional[int] = None
-        # Glitches per 5 minute internal for the media endpoint's loudspeaker.
-        self._speaker_glitch_rate: Optional[float] = None
     
     @property
     def cpu_insufficent_event_ratio(self,) -> Optional[float]:
@@ -192,7 +191,7 @@ class DeviceInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "captureDeviceDriver": lambda n : setattr(self, 'capture_device_driver', n.get_str_value()),
             "captureDeviceName": lambda n : setattr(self, 'capture_device_name', n.get_str_value()),
             "captureNotFunctioningEventRatio": lambda n : setattr(self, 'capture_not_functioning_event_ratio', n.get_float_value()),

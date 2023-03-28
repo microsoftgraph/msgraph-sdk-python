@@ -1,16 +1,50 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-activity_history_item = lazy_import('msgraph.generated.models.activity_history_item')
-entity = lazy_import('msgraph.generated.models.entity')
-json = lazy_import('msgraph.generated.models.json')
-status = lazy_import('msgraph.generated.models.status')
-visual_info = lazy_import('msgraph.generated.models.visual_info')
+if TYPE_CHECKING:
+    from . import activity_history_item, entity, json, status, visual_info
+
+from . import entity
 
 class UserActivity(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new userActivity and sets the default values.
+        """
+        super().__init__()
+        # Required. URL used to launch the activity in the best native experience represented by the appId. Might launch a web-based app if no native app exists.
+        self._activation_url: Optional[str] = None
+        # Required. URL for the domain representing the cross-platform identity mapping for the app. Mapping is stored either as a JSON file hosted on the domain or configurable via Windows Dev Center. The JSON file is named cross-platform-app-identifiers and is hosted at root of your HTTPS domain, either at the top level domain or include a sub domain. For example: https://contoso.com or https://myapp.contoso.com but NOT https://myapp.contoso.com/somepath. You must have a unique file and domain (or sub domain) per cross-platform app identity. For example, a separate file and domain is needed for Word vs. PowerPoint.
+        self._activity_source_host: Optional[str] = None
+        # Required. The unique activity ID in the context of the app - supplied by caller and immutable thereafter.
+        self._app_activity_id: Optional[str] = None
+        # Optional. Short text description of the app used to generate the activity for use in cases when the app is not installed on the user’s local device.
+        self._app_display_name: Optional[str] = None
+        # Optional. A custom piece of data - JSON-LD extensible description of content according to schema.org syntax.
+        self._content_info: Optional[json.Json] = None
+        # Optional. Used in the event the content can be rendered outside of a native or web-based app experience (for example, a pointer to an item in an RSS feed).
+        self._content_url: Optional[str] = None
+        # Set by the server. DateTime in UTC when the object was created on the server.
+        self._created_date_time: Optional[datetime] = None
+        # Set by the server. DateTime in UTC when the object expired on the server.
+        self._expiration_date_time: Optional[datetime] = None
+        # Optional. URL used to launch the activity in a web-based app, if available.
+        self._fallback_url: Optional[str] = None
+        # Optional. NavigationProperty/Containment; navigation property to the activity's historyItems.
+        self._history_items: Optional[List[activity_history_item.ActivityHistoryItem]] = None
+        # Set by the server. DateTime in UTC when the object was modified on the server.
+        self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Set by the server. A status code used to identify valid objects. Values: active, updated, deleted, ignored.
+        self._status: Optional[status.Status] = None
+        # Optional. The timezone in which the user's device used to generate the activity was located at activity creation time; values supplied as Olson IDs in order to support cross-platform representation.
+        self._user_timezone: Optional[str] = None
+        # The visualElements property
+        self._visual_elements: Optional[visual_info.VisualInfo] = None
+    
     @property
     def activation_url(self,) -> Optional[str]:
         """
@@ -78,42 +112,6 @@ class UserActivity(entity.Entity):
             value: Value to set for the app_display_name property.
         """
         self._app_display_name = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new userActivity and sets the default values.
-        """
-        super().__init__()
-        # Required. URL used to launch the activity in the best native experience represented by the appId. Might launch a web-based app if no native app exists.
-        self._activation_url: Optional[str] = None
-        # Required. URL for the domain representing the cross-platform identity mapping for the app. Mapping is stored either as a JSON file hosted on the domain or configurable via Windows Dev Center. The JSON file is named cross-platform-app-identifiers and is hosted at root of your HTTPS domain, either at the top level domain or include a sub domain. For example: https://contoso.com or https://myapp.contoso.com but NOT https://myapp.contoso.com/somepath. You must have a unique file and domain (or sub domain) per cross-platform app identity. For example, a separate file and domain is needed for Word vs. PowerPoint.
-        self._activity_source_host: Optional[str] = None
-        # Required. The unique activity ID in the context of the app - supplied by caller and immutable thereafter.
-        self._app_activity_id: Optional[str] = None
-        # Optional. Short text description of the app used to generate the activity for use in cases when the app is not installed on the user’s local device.
-        self._app_display_name: Optional[str] = None
-        # Optional. A custom piece of data - JSON-LD extensible description of content according to schema.org syntax.
-        self._content_info: Optional[json.Json] = None
-        # Optional. Used in the event the content can be rendered outside of a native or web-based app experience (for example, a pointer to an item in an RSS feed).
-        self._content_url: Optional[str] = None
-        # Set by the server. DateTime in UTC when the object was created on the server.
-        self._created_date_time: Optional[datetime] = None
-        # Set by the server. DateTime in UTC when the object expired on the server.
-        self._expiration_date_time: Optional[datetime] = None
-        # Optional. URL used to launch the activity in a web-based app, if available.
-        self._fallback_url: Optional[str] = None
-        # Optional. NavigationProperty/Containment; navigation property to the activity's historyItems.
-        self._history_items: Optional[List[activity_history_item.ActivityHistoryItem]] = None
-        # Set by the server. DateTime in UTC when the object was modified on the server.
-        self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Set by the server. A status code used to identify valid objects. Values: active, updated, deleted, ignored.
-        self._status: Optional[status.Status] = None
-        # Optional. The timezone in which the user's device used to generate the activity was located at activity creation time; values supplied as Olson IDs in order to support cross-platform representation.
-        self._user_timezone: Optional[str] = None
-        # The visualElements property
-        self._visual_elements: Optional[visual_info.VisualInfo] = None
     
     @property
     def content_info(self,) -> Optional[json.Json]:
@@ -217,7 +215,9 @@ class UserActivity(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import activity_history_item, entity, json, status, visual_info
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "activationUrl": lambda n : setattr(self, 'activation_url', n.get_str_value()),
             "activitySourceHost": lambda n : setattr(self, 'activity_source_host', n.get_str_value()),
             "appActivityId": lambda n : setattr(self, 'app_activity_id', n.get_str_value()),

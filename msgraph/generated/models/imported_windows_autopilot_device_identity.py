@@ -1,32 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-imported_windows_autopilot_device_identity_state = lazy_import('msgraph.generated.models.imported_windows_autopilot_device_identity_state')
+if TYPE_CHECKING:
+    from . import entity, imported_windows_autopilot_device_identity_state
+
+from . import entity
 
 class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
     """
     Imported windows autopilot devices.
     """
-    @property
-    def assigned_user_principal_name(self,) -> Optional[str]:
-        """
-        Gets the assignedUserPrincipalName property value. UPN of the user the device will be assigned
-        Returns: Optional[str]
-        """
-        return self._assigned_user_principal_name
-    
-    @assigned_user_principal_name.setter
-    def assigned_user_principal_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the assignedUserPrincipalName property value. UPN of the user the device will be assigned
-        Args:
-            value: Value to set for the assigned_user_principal_name property.
-        """
-        self._assigned_user_principal_name = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new importedWindowsAutopilotDeviceIdentity and sets the default values.
@@ -49,6 +33,23 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         # Current state of the imported device.
         self._state: Optional[imported_windows_autopilot_device_identity_state.ImportedWindowsAutopilotDeviceIdentityState] = None
     
+    @property
+    def assigned_user_principal_name(self,) -> Optional[str]:
+        """
+        Gets the assignedUserPrincipalName property value. UPN of the user the device will be assigned
+        Returns: Optional[str]
+        """
+        return self._assigned_user_principal_name
+    
+    @assigned_user_principal_name.setter
+    def assigned_user_principal_name(self,value: Optional[str] = None) -> None:
+        """
+        Sets the assignedUserPrincipalName property value. UPN of the user the device will be assigned
+        Args:
+            value: Value to set for the assigned_user_principal_name property.
+        """
+        self._assigned_user_principal_name = value
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ImportedWindowsAutopilotDeviceIdentity:
         """
@@ -66,7 +67,9 @@ class ImportedWindowsAutopilotDeviceIdentity(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, imported_windows_autopilot_device_identity_state
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "assignedUserPrincipalName": lambda n : setattr(self, 'assigned_user_principal_name', n.get_str_value()),
             "groupTag": lambda n : setattr(self, 'group_tag', n.get_str_value()),
             "hardwareIdentifier": lambda n : setattr(self, 'hardware_identifier', n.get_bytes_value()),

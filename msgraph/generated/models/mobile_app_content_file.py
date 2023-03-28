@@ -1,16 +1,43 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-mobile_app_content_file_upload_state = lazy_import('msgraph.generated.models.mobile_app_content_file_upload_state')
+if TYPE_CHECKING:
+    from . import entity, mobile_app_content_file_upload_state
+
+from . import entity
 
 class MobileAppContentFile(entity.Entity):
     """
     Contains properties for a single installer file that is associated with a given mobileAppContent version.
     """
+    def __init__(self,) -> None:
+        """
+        Instantiates a new mobileAppContentFile and sets the default values.
+        """
+        super().__init__()
+        # The Azure Storage URI.
+        self._azure_storage_uri: Optional[str] = None
+        # The time the Azure storage Uri expires.
+        self._azure_storage_uri_expiration_date_time: Optional[datetime] = None
+        # The time the file was created.
+        self._created_date_time: Optional[datetime] = None
+        # A value indicating whether the file is committed.
+        self._is_committed: Optional[bool] = None
+        # The manifest information.
+        self._manifest: Optional[bytes] = None
+        # the file name.
+        self._name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The size of the file prior to encryption.
+        self._size: Optional[int] = None
+        # The size of the file after encryption.
+        self._size_encrypted: Optional[int] = None
+        # Contains properties for upload request states.
+        self._upload_state: Optional[mobile_app_content_file_upload_state.MobileAppContentFileUploadState] = None
+    
     @property
     def azure_storage_uri(self,) -> Optional[str]:
         """
@@ -44,32 +71,6 @@ class MobileAppContentFile(entity.Entity):
             value: Value to set for the azure_storage_uri_expiration_date_time property.
         """
         self._azure_storage_uri_expiration_date_time = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new mobileAppContentFile and sets the default values.
-        """
-        super().__init__()
-        # The Azure Storage URI.
-        self._azure_storage_uri: Optional[str] = None
-        # The time the Azure storage Uri expires.
-        self._azure_storage_uri_expiration_date_time: Optional[datetime] = None
-        # The time the file was created.
-        self._created_date_time: Optional[datetime] = None
-        # A value indicating whether the file is committed.
-        self._is_committed: Optional[bool] = None
-        # The manifest information.
-        self._manifest: Optional[bytes] = None
-        # the file name.
-        self._name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The size of the file prior to encryption.
-        self._size: Optional[int] = None
-        # The size of the file after encryption.
-        self._size_encrypted: Optional[int] = None
-        # Contains properties for upload request states.
-        self._upload_state: Optional[mobile_app_content_file_upload_state.MobileAppContentFileUploadState] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -105,7 +106,9 @@ class MobileAppContentFile(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, mobile_app_content_file_upload_state
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "azureStorageUri": lambda n : setattr(self, 'azure_storage_uri', n.get_str_value()),
             "azureStorageUriExpirationDateTime": lambda n : setattr(self, 'azure_storage_uri_expiration_date_time', n.get_datetime_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),

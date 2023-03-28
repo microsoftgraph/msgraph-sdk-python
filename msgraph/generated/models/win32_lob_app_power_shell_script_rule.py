@@ -1,31 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-run_as_account_type = lazy_import('msgraph.generated.models.run_as_account_type')
-win32_lob_app_power_shell_script_rule_operation_type = lazy_import('msgraph.generated.models.win32_lob_app_power_shell_script_rule_operation_type')
-win32_lob_app_rule = lazy_import('msgraph.generated.models.win32_lob_app_rule')
-win32_lob_app_rule_operator = lazy_import('msgraph.generated.models.win32_lob_app_rule_operator')
+if TYPE_CHECKING:
+    from . import run_as_account_type, win32_lob_app_power_shell_script_rule_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
+
+from . import win32_lob_app_rule
 
 class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
-    @property
-    def comparison_value(self,) -> Optional[str]:
-        """
-        Gets the comparisonValue property value. The script output comparison value. Do not specify a value if the rule is used for detection.
-        Returns: Optional[str]
-        """
-        return self._comparison_value
-    
-    @comparison_value.setter
-    def comparison_value(self,value: Optional[str] = None) -> None:
-        """
-        Sets the comparisonValue property value. The script output comparison value. Do not specify a value if the rule is used for detection.
-        Args:
-            value: Value to set for the comparison_value property.
-        """
-        self._comparison_value = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new Win32LobAppPowerShellScriptRule and sets the default values.
@@ -48,6 +30,23 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         self._run_as32_bit: Optional[bool] = None
         # The base64-encoded script content.
         self._script_content: Optional[str] = None
+    
+    @property
+    def comparison_value(self,) -> Optional[str]:
+        """
+        Gets the comparisonValue property value. The script output comparison value. Do not specify a value if the rule is used for detection.
+        Returns: Optional[str]
+        """
+        return self._comparison_value
+    
+    @comparison_value.setter
+    def comparison_value(self,value: Optional[str] = None) -> None:
+        """
+        Sets the comparisonValue property value. The script output comparison value. Do not specify a value if the rule is used for detection.
+        Args:
+            value: Value to set for the comparison_value property.
+        """
+        self._comparison_value = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppPowerShellScriptRule:
@@ -100,7 +99,9 @@ class Win32LobAppPowerShellScriptRule(win32_lob_app_rule.Win32LobAppRule):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import run_as_account_type, win32_lob_app_power_shell_script_rule_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "comparisonValue": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "enforceSignatureCheck": lambda n : setattr(self, 'enforce_signature_check', n.get_bool_value()),

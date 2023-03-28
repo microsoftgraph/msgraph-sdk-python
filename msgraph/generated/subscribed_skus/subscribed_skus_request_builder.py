@@ -7,12 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-subscribed_sku = lazy_import('msgraph.generated.models.subscribed_sku')
-subscribed_sku_collection_response = lazy_import('msgraph.generated.models.subscribed_sku_collection_response')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from ..models import subscribed_sku, subscribed_sku_collection_response
+    from ..models.o_data_errors import o_data_error
 
 class SubscribedSkusRequestBuilder():
     """
@@ -46,12 +45,16 @@ class SubscribedSkusRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ..models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ..models import subscribed_sku_collection_response
+
         return await self.request_adapter.send_async(request_info, subscribed_sku_collection_response.SubscribedSkuCollectionResponse, error_mapping)
     
     async def post(self,body: Optional[subscribed_sku.SubscribedSku] = None, request_configuration: Optional[SubscribedSkusRequestBuilderPostRequestConfiguration] = None) -> Optional[subscribed_sku.SubscribedSku]:
@@ -67,12 +70,16 @@ class SubscribedSkusRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
+        from ..models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ..models import subscribed_sku
+
         return await self.request_adapter.send_async(request_info, subscribed_sku.SubscribedSku, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[SubscribedSkusRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -119,15 +126,6 @@ class SubscribedSkusRequestBuilder():
         """
         Get the list of commercial subscriptions that an organization has acquired. For the mapping of license names as displayed on the Azure portal or the Microsoft 365 admin center against their Microsoft Graph **skuId** and **skuPartNumber** properties, see Product names and service plan identifiers for licensing.
         """
-        # Order items by property values
-        orderby: Optional[List[str]] = None
-
-        # Search items by search phrases
-        search: Optional[str] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -145,6 +143,15 @@ class SubscribedSkusRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Order items by property values
+        orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class SubscribedSkusRequestBuilderGetRequestConfiguration():

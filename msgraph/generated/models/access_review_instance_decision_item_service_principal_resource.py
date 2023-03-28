@@ -1,11 +1,22 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_review_instance_decision_item_resource = lazy_import('msgraph.generated.models.access_review_instance_decision_item_resource')
+if TYPE_CHECKING:
+    from . import access_review_instance_decision_item_resource
+
+from . import access_review_instance_decision_item_resource
 
 class AccessReviewInstanceDecisionItemServicePrincipalResource(access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new AccessReviewInstanceDecisionItemServicePrincipalResource and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.accessReviewInstanceDecisionItemServicePrincipalResource"
+        # The appId property
+        self._app_id: Optional[str] = None
+    
     @property
     def app_id(self,) -> Optional[str]:
         """
@@ -22,15 +33,6 @@ class AccessReviewInstanceDecisionItemServicePrincipalResource(access_review_ins
             value: Value to set for the app_id property.
         """
         self._app_id = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AccessReviewInstanceDecisionItemServicePrincipalResource and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.accessReviewInstanceDecisionItemServicePrincipalResource"
-        # The appId property
-        self._app_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewInstanceDecisionItemServicePrincipalResource:
@@ -49,7 +51,9 @@ class AccessReviewInstanceDecisionItemServicePrincipalResource(access_review_ins
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import access_review_instance_decision_item_resource
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

@@ -1,32 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-identity_set = lazy_import('msgraph.generated.models.identity_set')
-teams_app_publishing_state = lazy_import('msgraph.generated.models.teams_app_publishing_state')
-teamwork_bot = lazy_import('msgraph.generated.models.teamwork_bot')
+if TYPE_CHECKING:
+    from . import entity, identity_set, teams_app_publishing_state, teamwork_bot
+
+from . import entity
 
 class TeamsAppDefinition(entity.Entity):
-    @property
-    def bot(self,) -> Optional[teamwork_bot.TeamworkBot]:
-        """
-        Gets the bot property value. The details of the bot specified in the Teams app manifest.
-        Returns: Optional[teamwork_bot.TeamworkBot]
-        """
-        return self._bot
-    
-    @bot.setter
-    def bot(self,value: Optional[teamwork_bot.TeamworkBot] = None) -> None:
-        """
-        Sets the bot property value. The details of the bot specified in the Teams app manifest.
-        Args:
-            value: Value to set for the bot property.
-        """
-        self._bot = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new teamsAppDefinition and sets the default values.
@@ -52,6 +34,23 @@ class TeamsAppDefinition(entity.Entity):
         self._teams_app_id: Optional[str] = None
         # The version number of the application.
         self._version: Optional[str] = None
+    
+    @property
+    def bot(self,) -> Optional[teamwork_bot.TeamworkBot]:
+        """
+        Gets the bot property value. The details of the bot specified in the Teams app manifest.
+        Returns: Optional[teamwork_bot.TeamworkBot]
+        """
+        return self._bot
+    
+    @bot.setter
+    def bot(self,value: Optional[teamwork_bot.TeamworkBot] = None) -> None:
+        """
+        Sets the bot property value. The details of the bot specified in the Teams app manifest.
+        Args:
+            value: Value to set for the bot property.
+        """
+        self._bot = value
     
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
@@ -121,7 +120,9 @@ class TeamsAppDefinition(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, identity_set, teams_app_publishing_state, teamwork_bot
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "bot": lambda n : setattr(self, 'bot', n.get_object_value(teamwork_bot.TeamworkBot)),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),

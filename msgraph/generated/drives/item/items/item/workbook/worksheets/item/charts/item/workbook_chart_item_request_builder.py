@@ -7,100 +7,30 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-axes_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.axes.axes_request_builder')
-data_labels_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.data_labels.data_labels_request_builder')
-format_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.format.format_request_builder')
-image_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.image.image_request_builder')
-image_with_width_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.image_with_width.image_with_width_request_builder')
-image_with_width_with_height_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.image_with_width_with_height.image_with_width_with_height_request_builder')
-image_with_width_with_height_with_fitting_mode_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.image_with_width_with_height_with_fitting_mode.image_with_width_with_height_with_fitting_mode_request_builder')
-legend_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.legend.legend_request_builder')
-series_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.series.series_request_builder')
-workbook_chart_series_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.series.item.workbook_chart_series_item_request_builder')
-set_data_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.set_data.set_data_request_builder')
-set_position_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.set_position.set_position_request_builder')
-title_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.title.title_request_builder')
-worksheet_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.worksheet.worksheet_request_builder')
-workbook_chart = lazy_import('msgraph.generated.models.workbook_chart')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from ..........models import workbook_chart
+    from ..........models.o_data_errors import o_data_error
+    from .axes import axes_request_builder
+    from .data_labels import data_labels_request_builder
+    from .format import format_request_builder
+    from .image import image_request_builder
+    from .image_with_width import image_with_width_request_builder
+    from .image_with_width_with_height import image_with_width_with_height_request_builder
+    from .image_with_width_with_height_with_fitting_mode import image_with_width_with_height_with_fitting_mode_request_builder
+    from .legend import legend_request_builder
+    from .series import series_request_builder
+    from .series.item import workbook_chart_series_item_request_builder
+    from .set_data import set_data_request_builder
+    from .set_position import set_position_request_builder
+    from .title import title_request_builder
+    from .worksheet import worksheet_request_builder
 
 class WorkbookChartItemRequestBuilder():
     """
     Provides operations to manage the charts property of the microsoft.graph.workbookWorksheet entity.
     """
-    @property
-    def axes(self) -> axes_request_builder.AxesRequestBuilder:
-        """
-        Provides operations to manage the axes property of the microsoft.graph.workbookChart entity.
-        """
-        return axes_request_builder.AxesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def data_labels(self) -> data_labels_request_builder.DataLabelsRequestBuilder:
-        """
-        Provides operations to manage the dataLabels property of the microsoft.graph.workbookChart entity.
-        """
-        return data_labels_request_builder.DataLabelsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def format(self) -> format_request_builder.FormatRequestBuilder:
-        """
-        Provides operations to manage the format property of the microsoft.graph.workbookChart entity.
-        """
-        return format_request_builder.FormatRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def image(self) -> image_request_builder.ImageRequestBuilder:
-        """
-        Provides operations to call the image method.
-        """
-        return image_request_builder.ImageRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def legend(self) -> legend_request_builder.LegendRequestBuilder:
-        """
-        Provides operations to manage the legend property of the microsoft.graph.workbookChart entity.
-        """
-        return legend_request_builder.LegendRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def series(self) -> series_request_builder.SeriesRequestBuilder:
-        """
-        Provides operations to manage the series property of the microsoft.graph.workbookChart entity.
-        """
-        return series_request_builder.SeriesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def set_data(self) -> set_data_request_builder.SetDataRequestBuilder:
-        """
-        Provides operations to call the setData method.
-        """
-        return set_data_request_builder.SetDataRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def set_position(self) -> set_position_request_builder.SetPositionRequestBuilder:
-        """
-        Provides operations to call the setPosition method.
-        """
-        return set_position_request_builder.SetPositionRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def title(self) -> title_request_builder.TitleRequestBuilder:
-        """
-        Provides operations to manage the title property of the microsoft.graph.workbookChart entity.
-        """
-        return title_request_builder.TitleRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def worksheet(self) -> worksheet_request_builder.WorksheetRequestBuilder:
-        """
-        Provides operations to manage the worksheet property of the microsoft.graph.workbookChart entity.
-        """
-        return worksheet_request_builder.WorksheetRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WorkbookChartItemRequestBuilder and sets the default values.
@@ -128,6 +58,8 @@ class WorkbookChartItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from ..........models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -146,12 +78,16 @@ class WorkbookChartItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ..........models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ..........models import workbook_chart
+
         return await self.request_adapter.send_async(request_info, workbook_chart.WorkbookChart, error_mapping)
     
     def image_with_width(self,width: Optional[int] = None) -> image_with_width_request_builder.ImageWithWidthRequestBuilder:
@@ -163,6 +99,8 @@ class WorkbookChartItemRequestBuilder():
         """
         if width is None:
             raise Exception("width cannot be undefined")
+        from .image_with_width import image_with_width_request_builder
+
         return image_with_width_request_builder.ImageWithWidthRequestBuilder(self.request_adapter, self.path_parameters, width)
     
     def image_with_width_with_height(self,height: Optional[int] = None, width: Optional[int] = None) -> image_with_width_with_height_request_builder.ImageWithWidthWithHeightRequestBuilder:
@@ -177,6 +115,8 @@ class WorkbookChartItemRequestBuilder():
             raise Exception("height cannot be undefined")
         if width is None:
             raise Exception("width cannot be undefined")
+        from .image_with_width_with_height import image_with_width_with_height_request_builder
+
         return image_with_width_with_height_request_builder.ImageWithWidthWithHeightRequestBuilder(self.request_adapter, self.path_parameters, height, width)
     
     def image_with_width_with_height_with_fitting_mode(self,fitting_mode: Optional[str] = None, height: Optional[int] = None, width: Optional[int] = None) -> image_with_width_with_height_with_fitting_mode_request_builder.ImageWithWidthWithHeightWithFittingModeRequestBuilder:
@@ -194,7 +134,9 @@ class WorkbookChartItemRequestBuilder():
             raise Exception("height cannot be undefined")
         if width is None:
             raise Exception("width cannot be undefined")
-        return image_with_width_with_height_with_fitting_mode_request_builder.ImageWithWidthWithHeightWithFittingModeRequestBuilder(self.request_adapter, self.path_parameters, fittingMode, height, width)
+        from .image_with_width_with_height_with_fitting_mode import image_with_width_with_height_with_fitting_mode_request_builder
+
+        return image_with_width_with_height_with_fitting_mode_request_builder.ImageWithWidthWithHeightWithFittingModeRequestBuilder(self.request_adapter, self.path_parameters, fitting_mode, height, width)
     
     async def patch(self,body: Optional[workbook_chart.WorkbookChart] = None, request_configuration: Optional[WorkbookChartItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart.WorkbookChart]:
         """
@@ -209,12 +151,16 @@ class WorkbookChartItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ..........models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ..........models import workbook_chart
+
         return await self.request_adapter.send_async(request_info, workbook_chart.WorkbookChart, error_mapping)
     
     def series_by_id(self,id: str) -> workbook_chart_series_item_request_builder.WorkbookChartSeriesItemRequestBuilder:
@@ -226,6 +172,8 @@ class WorkbookChartItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .series.item import workbook_chart_series_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["workbookChartSeries%2Did"] = id
         return workbook_chart_series_item_request_builder.WorkbookChartSeriesItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -285,6 +233,96 @@ class WorkbookChartItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def axes(self) -> axes_request_builder.AxesRequestBuilder:
+        """
+        Provides operations to manage the axes property of the microsoft.graph.workbookChart entity.
+        """
+        from .axes import axes_request_builder
+
+        return axes_request_builder.AxesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def data_labels(self) -> data_labels_request_builder.DataLabelsRequestBuilder:
+        """
+        Provides operations to manage the dataLabels property of the microsoft.graph.workbookChart entity.
+        """
+        from .data_labels import data_labels_request_builder
+
+        return data_labels_request_builder.DataLabelsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def format(self) -> format_request_builder.FormatRequestBuilder:
+        """
+        Provides operations to manage the format property of the microsoft.graph.workbookChart entity.
+        """
+        from .format import format_request_builder
+
+        return format_request_builder.FormatRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def image(self) -> image_request_builder.ImageRequestBuilder:
+        """
+        Provides operations to call the image method.
+        """
+        from .image import image_request_builder
+
+        return image_request_builder.ImageRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def legend(self) -> legend_request_builder.LegendRequestBuilder:
+        """
+        Provides operations to manage the legend property of the microsoft.graph.workbookChart entity.
+        """
+        from .legend import legend_request_builder
+
+        return legend_request_builder.LegendRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def series(self) -> series_request_builder.SeriesRequestBuilder:
+        """
+        Provides operations to manage the series property of the microsoft.graph.workbookChart entity.
+        """
+        from .series import series_request_builder
+
+        return series_request_builder.SeriesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def set_data(self) -> set_data_request_builder.SetDataRequestBuilder:
+        """
+        Provides operations to call the setData method.
+        """
+        from .set_data import set_data_request_builder
+
+        return set_data_request_builder.SetDataRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def set_position(self) -> set_position_request_builder.SetPositionRequestBuilder:
+        """
+        Provides operations to call the setPosition method.
+        """
+        from .set_position import set_position_request_builder
+
+        return set_position_request_builder.SetPositionRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def title(self) -> title_request_builder.TitleRequestBuilder:
+        """
+        Provides operations to manage the title property of the microsoft.graph.workbookChart entity.
+        """
+        from .title import title_request_builder
+
+        return title_request_builder.TitleRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def worksheet(self) -> worksheet_request_builder.WorksheetRequestBuilder:
+        """
+        Provides operations to manage the worksheet property of the microsoft.graph.workbookChart entity.
+        """
+        from .worksheet import worksheet_request_builder
+
+        return worksheet_request_builder.WorksheetRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class WorkbookChartItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -302,12 +340,6 @@ class WorkbookChartItemRequestBuilder():
         """
         Returns collection of charts that are part of the worksheet. Read-only.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -323,6 +355,12 @@ class WorkbookChartItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class WorkbookChartItemRequestBuilderGetRequestConfiguration():

@@ -1,12 +1,23 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-purge_areas = lazy_import('msgraph.generated.models.security.purge_areas')
-purge_type = lazy_import('msgraph.generated.models.security.purge_type')
+if TYPE_CHECKING:
+    from ........models.security import purge_areas, purge_type
 
 class PurgeDataPostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new purgeDataPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The purgeAreas property
+        self._purge_areas: Optional[purge_areas.PurgeAreas] = None
+        # The purgeType property
+        self._purge_type: Optional[purge_type.PurgeType] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -23,18 +34,6 @@ class PurgeDataPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new purgeDataPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The purgeAreas property
-        self._purge_areas: Optional[purge_areas.PurgeAreas] = None
-        # The purgeType property
-        self._purge_type: Optional[purge_type.PurgeType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PurgeDataPostRequestBody:
@@ -53,7 +52,9 @@ class PurgeDataPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from ........models.security import purge_areas, purge_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "purgeAreas": lambda n : setattr(self, 'purge_areas', n.get_enum_value(purge_areas.PurgeAreas)),
             "purgeType": lambda n : setattr(self, 'purge_type', n.get_enum_value(purge_type.PurgeType)),
         }

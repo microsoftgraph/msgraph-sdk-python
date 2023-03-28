@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-domain_dns_record = lazy_import('msgraph.generated.models.domain_dns_record')
+if TYPE_CHECKING:
+    from . import domain_dns_record
+
+from . import domain_dns_record
 
 class DomainDnsTxtRecord(domain_dns_record.DomainDnsRecord):
     def __init__(self,) -> None:
@@ -33,7 +35,9 @@ class DomainDnsTxtRecord(domain_dns_record.DomainDnsRecord):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import domain_dns_record
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "text": lambda n : setattr(self, 'text', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

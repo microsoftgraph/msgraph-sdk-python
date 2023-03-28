@@ -1,14 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-identity_set = lazy_import('msgraph.generated.models.identity_set')
-call_type = lazy_import('msgraph.generated.models.call_records.call_type')
-modality = lazy_import('msgraph.generated.models.call_records.modality')
-session = lazy_import('msgraph.generated.models.call_records.session')
+if TYPE_CHECKING:
+    from . import call_type, modality, session
+    from .. import entity, identity_set
+
+from .. import entity
 
 class CallRecord(entity.Entity):
     def __init__(self,) -> None:
@@ -73,7 +72,10 @@ class CallRecord(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import call_type, modality, session
+        from .. import entity, identity_set
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),

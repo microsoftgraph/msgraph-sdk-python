@@ -1,11 +1,23 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-prompt = lazy_import('msgraph.generated.models.prompt')
+if TYPE_CHECKING:
+    from .....models import prompt
 
 class PlayPromptPostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new playPromptPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The clientContext property
+        self._client_context: Optional[str] = None
+        # The prompts property
+        self._prompts: Optional[List[prompt.Prompt]] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -40,18 +52,6 @@ class PlayPromptPostRequestBody(AdditionalDataHolder, Parsable):
         """
         self._client_context = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new playPromptPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The clientContext property
-        self._client_context: Optional[str] = None
-        # The prompts property
-        self._prompts: Optional[List[prompt.Prompt]] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlayPromptPostRequestBody:
         """
@@ -69,7 +69,9 @@ class PlayPromptPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from .....models import prompt
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
             "prompts": lambda n : setattr(self, 'prompts', n.get_collection_of_object_values(prompt.Prompt)),
         }

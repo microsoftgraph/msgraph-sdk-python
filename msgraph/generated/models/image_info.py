@@ -1,9 +1,26 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class ImageInfo(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new imageInfo and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Optional; parameter used to indicate the server is able to render image dynamically in response to parameterization. For example – a high contrast image
+        self._add_image_query: Optional[bool] = None
+        # Optional; alt-text accessible content for the image
+        self._alternate_text: Optional[str] = None
+        # The alternativeText property
+        self._alternative_text: Optional[str] = None
+        # Optional; URI that points to an icon which represents the application used to generate the activity
+        self._icon_url: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def add_image_query(self,) -> Optional[bool]:
         """
@@ -72,24 +89,6 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         """
         self._alternative_text = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new imageInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Optional; parameter used to indicate the server is able to render image dynamically in response to parameterization. For example – a high contrast image
-        self._add_image_query: Optional[bool] = None
-        # Optional; alt-text accessible content for the image
-        self._alternate_text: Optional[str] = None
-        # The alternativeText property
-        self._alternative_text: Optional[str] = None
-        # Optional; URI that points to an icon which represents the application used to generate the activity
-        self._icon_url: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ImageInfo:
         """
@@ -107,7 +106,7 @@ class ImageInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "addImageQuery": lambda n : setattr(self, 'add_image_query', n.get_bool_value()),
             "alternateText": lambda n : setattr(self, 'alternate_text', n.get_str_value()),
             "alternativeText": lambda n : setattr(self, 'alternative_text', n.get_str_value()),

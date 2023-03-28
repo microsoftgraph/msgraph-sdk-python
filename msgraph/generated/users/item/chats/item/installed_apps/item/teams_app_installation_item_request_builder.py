@@ -7,40 +7,19 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-teams_app_installation = lazy_import('msgraph.generated.models.teams_app_installation')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-teams_app_request_builder = lazy_import('msgraph.generated.users.item.chats.item.installed_apps.item.teams_app.teams_app_request_builder')
-teams_app_definition_request_builder = lazy_import('msgraph.generated.users.item.chats.item.installed_apps.item.teams_app_definition.teams_app_definition_request_builder')
-upgrade_request_builder = lazy_import('msgraph.generated.users.item.chats.item.installed_apps.item.upgrade.upgrade_request_builder')
+if TYPE_CHECKING:
+    from .......models import teams_app_installation
+    from .......models.o_data_errors import o_data_error
+    from .teams_app import teams_app_request_builder
+    from .teams_app_definition import teams_app_definition_request_builder
+    from .upgrade import upgrade_request_builder
 
 class TeamsAppInstallationItemRequestBuilder():
     """
     Provides operations to manage the installedApps property of the microsoft.graph.chat entity.
     """
-    @property
-    def teams_app(self) -> teams_app_request_builder.TeamsAppRequestBuilder:
-        """
-        Provides operations to manage the teamsApp property of the microsoft.graph.teamsAppInstallation entity.
-        """
-        return teams_app_request_builder.TeamsAppRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def teams_app_definition(self) -> teams_app_definition_request_builder.TeamsAppDefinitionRequestBuilder:
-        """
-        Provides operations to manage the teamsAppDefinition property of the microsoft.graph.teamsAppInstallation entity.
-        """
-        return teams_app_definition_request_builder.TeamsAppDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def upgrade(self) -> upgrade_request_builder.UpgradeRequestBuilder:
-        """
-        Provides operations to call the upgrade method.
-        """
-        return upgrade_request_builder.UpgradeRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TeamsAppInstallationItemRequestBuilder and sets the default values.
@@ -68,6 +47,8 @@ class TeamsAppInstallationItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from .......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -86,12 +67,16 @@ class TeamsAppInstallationItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from .......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .......models import teams_app_installation
+
         return await self.request_adapter.send_async(request_info, teams_app_installation.TeamsAppInstallation, error_mapping)
     
     async def patch(self,body: Optional[teams_app_installation.TeamsAppInstallation] = None, request_configuration: Optional[TeamsAppInstallationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[teams_app_installation.TeamsAppInstallation]:
@@ -107,12 +92,16 @@ class TeamsAppInstallationItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from .......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .......models import teams_app_installation
+
         return await self.request_adapter.send_async(request_info, teams_app_installation.TeamsAppInstallation, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[TeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -170,6 +159,33 @@ class TeamsAppInstallationItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def teams_app(self) -> teams_app_request_builder.TeamsAppRequestBuilder:
+        """
+        Provides operations to manage the teamsApp property of the microsoft.graph.teamsAppInstallation entity.
+        """
+        from .teams_app import teams_app_request_builder
+
+        return teams_app_request_builder.TeamsAppRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def teams_app_definition(self) -> teams_app_definition_request_builder.TeamsAppDefinitionRequestBuilder:
+        """
+        Provides operations to manage the teamsAppDefinition property of the microsoft.graph.teamsAppInstallation entity.
+        """
+        from .teams_app_definition import teams_app_definition_request_builder
+
+        return teams_app_definition_request_builder.TeamsAppDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def upgrade(self) -> upgrade_request_builder.UpgradeRequestBuilder:
+        """
+        Provides operations to call the upgrade method.
+        """
+        from .upgrade import upgrade_request_builder
+
+        return upgrade_request_builder.UpgradeRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class TeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -187,12 +203,6 @@ class TeamsAppInstallationItemRequestBuilder():
         """
         A collection of all the apps in the chat. Nullable.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -208,6 +218,12 @@ class TeamsAppInstallationItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class TeamsAppInstallationItemRequestBuilderGetRequestConfiguration():

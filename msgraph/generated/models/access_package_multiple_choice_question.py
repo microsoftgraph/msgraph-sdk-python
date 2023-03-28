@@ -1,12 +1,24 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_package_answer_choice = lazy_import('msgraph.generated.models.access_package_answer_choice')
-access_package_question = lazy_import('msgraph.generated.models.access_package_question')
+if TYPE_CHECKING:
+    from . import access_package_answer_choice, access_package_question
+
+from . import access_package_question
 
 class AccessPackageMultipleChoiceQuestion(access_package_question.AccessPackageQuestion):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new AccessPackageMultipleChoiceQuestion and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.accessPackageMultipleChoiceQuestion"
+        # List of answer choices.
+        self._choices: Optional[List[access_package_answer_choice.AccessPackageAnswerChoice]] = None
+        # Indicates whether requestor can select multiple choices as their answer.
+        self._is_multiple_selection_allowed: Optional[bool] = None
+    
     @property
     def choices(self,) -> Optional[List[access_package_answer_choice.AccessPackageAnswerChoice]]:
         """
@@ -23,17 +35,6 @@ class AccessPackageMultipleChoiceQuestion(access_package_question.AccessPackageQ
             value: Value to set for the choices property.
         """
         self._choices = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AccessPackageMultipleChoiceQuestion and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.accessPackageMultipleChoiceQuestion"
-        # List of answer choices.
-        self._choices: Optional[List[access_package_answer_choice.AccessPackageAnswerChoice]] = None
-        # Indicates whether requestor can select multiple choices as their answer.
-        self._is_multiple_selection_allowed: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageMultipleChoiceQuestion:
@@ -52,7 +53,9 @@ class AccessPackageMultipleChoiceQuestion(access_package_question.AccessPackageQ
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import access_package_answer_choice, access_package_question
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "choices": lambda n : setattr(self, 'choices', n.get_collection_of_object_values(access_package_answer_choice.AccessPackageAnswerChoice)),
             "isMultipleSelectionAllowed": lambda n : setattr(self, 'is_multiple_selection_allowed', n.get_bool_value()),
         }

@@ -1,12 +1,23 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-certificate_authority = lazy_import('msgraph.generated.models.certificate_authority')
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import certificate_authority, entity
+
+from . import entity
 
 class CertificateBasedAuthConfiguration(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new certificateBasedAuthConfiguration and sets the default values.
+        """
+        super().__init__()
+        # Collection of certificate authorities which creates a trusted certificate chain.
+        self._certificate_authorities: Optional[List[certificate_authority.CertificateAuthority]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+    
     @property
     def certificate_authorities(self,) -> Optional[List[certificate_authority.CertificateAuthority]]:
         """
@@ -23,16 +34,6 @@ class CertificateBasedAuthConfiguration(entity.Entity):
             value: Value to set for the certificate_authorities property.
         """
         self._certificate_authorities = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new certificateBasedAuthConfiguration and sets the default values.
-        """
-        super().__init__()
-        # Collection of certificate authorities which creates a trusted certificate chain.
-        self._certificate_authorities: Optional[List[certificate_authority.CertificateAuthority]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CertificateBasedAuthConfiguration:
@@ -51,7 +52,9 @@ class CertificateBasedAuthConfiguration(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import certificate_authority, entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "certificateAuthorities": lambda n : setattr(self, 'certificate_authorities', n.get_collection_of_object_values(certificate_authority.CertificateAuthority)),
         }
         super_fields = super().get_field_deserializers()

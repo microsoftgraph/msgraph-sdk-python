@@ -1,12 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-attendee_base = lazy_import('msgraph.generated.models.attendee_base')
-free_busy_status = lazy_import('msgraph.generated.models.free_busy_status')
+if TYPE_CHECKING:
+    from . import attendee_base, free_busy_status
 
 class AttendeeAvailability(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new attendeeAvailability and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The email address and type of attendee - whether it's a person or a resource, and whether required or optional if it's a person.
+        self._attendee: Optional[attendee_base.AttendeeBase] = None
+        # The availability status of the attendee. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
+        self._availability: Optional[free_busy_status.FreeBusyStatus] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -58,20 +71,6 @@ class AttendeeAvailability(AdditionalDataHolder, Parsable):
         """
         self._availability = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new attendeeAvailability and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The email address and type of attendee - whether it's a person or a resource, and whether required or optional if it's a person.
-        self._attendee: Optional[attendee_base.AttendeeBase] = None
-        # The availability status of the attendee. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
-        self._availability: Optional[free_busy_status.FreeBusyStatus] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttendeeAvailability:
         """
@@ -89,7 +88,9 @@ class AttendeeAvailability(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import attendee_base, free_busy_status
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "attendee": lambda n : setattr(self, 'attendee', n.get_object_value(attendee_base.AttendeeBase)),
             "availability": lambda n : setattr(self, 'availability', n.get_enum_value(free_busy_status.FreeBusyStatus)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -1,12 +1,25 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-windows_update_install_schedule_type = lazy_import('msgraph.generated.models.windows_update_install_schedule_type')
+if TYPE_CHECKING:
+    from . import windows_update_install_schedule_type
+
+from . import windows_update_install_schedule_type
 
 class WindowsUpdateActiveHoursInstall(windows_update_install_schedule_type.WindowsUpdateInstallScheduleType):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new WindowsUpdateActiveHoursInstall and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.windowsUpdateActiveHoursInstall"
+        # Active Hours End
+        self._active_hours_end: Optional[Time] = None
+        # Active Hours Start
+        self._active_hours_start: Optional[Time] = None
+    
     @property
     def active_hours_end(self,) -> Optional[Time]:
         """
@@ -41,17 +54,6 @@ class WindowsUpdateActiveHoursInstall(windows_update_install_schedule_type.Windo
         """
         self._active_hours_start = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsUpdateActiveHoursInstall and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsUpdateActiveHoursInstall"
-        # Active Hours End
-        self._active_hours_end: Optional[Time] = None
-        # Active Hours Start
-        self._active_hours_start: Optional[Time] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsUpdateActiveHoursInstall:
         """
@@ -69,7 +71,9 @@ class WindowsUpdateActiveHoursInstall(windows_update_install_schedule_type.Windo
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import windows_update_install_schedule_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "activeHoursEnd": lambda n : setattr(self, 'active_hours_end', n.get_object_value(Time)),
             "activeHoursStart": lambda n : setattr(self, 'active_hours_start', n.get_object_value(Time)),
         }

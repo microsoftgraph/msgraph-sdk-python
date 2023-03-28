@@ -1,19 +1,60 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-activity_type = lazy_import('msgraph.generated.models.activity_type')
-entity = lazy_import('msgraph.generated.models.entity')
-risk_detail = lazy_import('msgraph.generated.models.risk_detail')
-risk_detection_timing_type = lazy_import('msgraph.generated.models.risk_detection_timing_type')
-risk_level = lazy_import('msgraph.generated.models.risk_level')
-risk_state = lazy_import('msgraph.generated.models.risk_state')
-sign_in_location = lazy_import('msgraph.generated.models.sign_in_location')
-token_issuer_type = lazy_import('msgraph.generated.models.token_issuer_type')
+if TYPE_CHECKING:
+    from . import activity_type, entity, risk_detail, risk_detection_timing_type, risk_level, risk_state, sign_in_location, token_issuer_type
+
+from . import entity
 
 class RiskDetection(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new RiskDetection and sets the default values.
+        """
+        super().__init__()
+        # Indicates the activity type the detected risk is linked to. Possible values are: signin, user, unknownFutureValue.
+        self._activity: Optional[activity_type.ActivityType] = None
+        # Date and time that the risky activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is look like this: 2014-01-01T00:00:00Z
+        self._activity_date_time: Optional[datetime] = None
+        # Additional information associated with the risk detection in JSON format. For example, '[{/'Key/':/'userAgent/',/'Value/':/'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36/'}]'. Possible keys in the additionalInfo JSON string are: userAgent, alertUrl, relatedEventTimeInUtc, relatedUserAgent, deviceInformation, relatedLocation, requestId, correlationId, lastActivityTimeInUtc, malwareName, clientLocation, clientIp, riskReasons. For more information about riskReasons and possible values, see riskReasons values.
+        self._additional_info: Optional[str] = None
+        # Correlation ID of the sign-in associated with the risk detection. This property is null if the risk detection is not associated with a sign-in.
+        self._correlation_id: Optional[str] = None
+        # Date and time that the risk was detected. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 looks like this: 2014-01-01T00:00:00Z
+        self._detected_date_time: Optional[datetime] = None
+        # Timing of the detected risk (real-time/offline). Possible values are: notDefined, realtime, nearRealtime, offline, unknownFutureValue.
+        self._detection_timing_type: Optional[risk_detection_timing_type.RiskDetectionTimingType] = None
+        # Provides the IP address of the client from where the risk occurred.
+        self._ip_address: Optional[str] = None
+        # Date and time that the risk detection was last updated. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is look like this: 2014-01-01T00:00:00Z
+        self._last_updated_date_time: Optional[datetime] = None
+        # Location of the sign-in.
+        self._location: Optional[sign_in_location.SignInLocation] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Request ID of the sign-in associated with the risk detection. This property is null if the risk detection is not associated with a sign-in.
+        self._request_id: Optional[str] = None
+        # Details of the detected risk. The possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue, m365DAdminDismissedDetection. Note that you must use the Prefer: include - unknown -enum-members request header to get the following value(s) in this evolvable enum: m365DAdminDismissedDetection.
+        self._risk_detail: Optional[risk_detail.RiskDetail] = None
+        # The type of risk event detected. The possible values are unlikelyTravel, anonymizedIPAddress, maliciousIPAddress, unfamiliarFeatures, malwareInfectedIPAddress, suspiciousIPAddress, leakedCredentials, investigationsThreatIntelligence, generic,adminConfirmedUserCompromised, passwordSpray, impossibleTravel, newCountry, anomalousToken, tokenIssuerAnomaly,suspiciousBrowser, riskyIPAddress, mcasSuspiciousInboxManipulationRules, suspiciousInboxForwarding, and anomalousUserActivity. If the risk detection is a premium detection, will show generic. For more information about each value, see riskEventType values.
+        self._risk_event_type: Optional[str] = None
+        # Level of the detected risk. Possible values are: low, medium, high, hidden, none, unknownFutureValue.
+        self._risk_level: Optional[risk_level.RiskLevel] = None
+        # The state of a detected risky user or sign-in. Possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
+        self._risk_state: Optional[risk_state.RiskState] = None
+        # Source of the risk detection. For example, activeDirectory.
+        self._source: Optional[str] = None
+        # Indicates the type of token issuer for the detected sign-in risk. Possible values are: AzureAD, ADFederationServices, UnknownFutureValue.
+        self._token_issuer_type: Optional[token_issuer_type.TokenIssuerType] = None
+        # The user principal name (UPN) of the user.
+        self._user_display_name: Optional[str] = None
+        # Unique ID of the user.
+        self._user_id: Optional[str] = None
+        # The user principal name (UPN) of the user.
+        self._user_principal_name: Optional[str] = None
+    
     @property
     def activity(self,) -> Optional[activity_type.ActivityType]:
         """
@@ -64,52 +105,6 @@ class RiskDetection(entity.Entity):
             value: Value to set for the additional_info property.
         """
         self._additional_info = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new RiskDetection and sets the default values.
-        """
-        super().__init__()
-        # Indicates the activity type the detected risk is linked to. Possible values are: signin, user, unknownFutureValue.
-        self._activity: Optional[activity_type.ActivityType] = None
-        # Date and time that the risky activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is look like this: 2014-01-01T00:00:00Z
-        self._activity_date_time: Optional[datetime] = None
-        # Additional information associated with the risk detection in JSON format. For example, '[{/'Key/':/'userAgent/',/'Value/':/'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36/'}]'. Possible keys in the additionalInfo JSON string are: userAgent, alertUrl, relatedEventTimeInUtc, relatedUserAgent, deviceInformation, relatedLocation, requestId, correlationId, lastActivityTimeInUtc, malwareName, clientLocation, clientIp, riskReasons. For more information about riskReasons and possible values, see riskReasons values.
-        self._additional_info: Optional[str] = None
-        # Correlation ID of the sign-in associated with the risk detection. This property is null if the risk detection is not associated with a sign-in.
-        self._correlation_id: Optional[str] = None
-        # Date and time that the risk was detected. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 looks like this: 2014-01-01T00:00:00Z
-        self._detected_date_time: Optional[datetime] = None
-        # Timing of the detected risk (real-time/offline). Possible values are: notDefined, realtime, nearRealtime, offline, unknownFutureValue.
-        self._detection_timing_type: Optional[risk_detection_timing_type.RiskDetectionTimingType] = None
-        # Provides the IP address of the client from where the risk occurred.
-        self._ip_address: Optional[str] = None
-        # Date and time that the risk detection was last updated. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is look like this: 2014-01-01T00:00:00Z
-        self._last_updated_date_time: Optional[datetime] = None
-        # Location of the sign-in.
-        self._location: Optional[sign_in_location.SignInLocation] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Request ID of the sign-in associated with the risk detection. This property is null if the risk detection is not associated with a sign-in.
-        self._request_id: Optional[str] = None
-        # Details of the detected risk. The possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue, m365DAdminDismissedDetection. Note that you must use the Prefer: include - unknown -enum-members request header to get the following value(s) in this evolvable enum: m365DAdminDismissedDetection.
-        self._risk_detail: Optional[risk_detail.RiskDetail] = None
-        # The type of risk event detected. The possible values are unlikelyTravel, anonymizedIPAddress, maliciousIPAddress, unfamiliarFeatures, malwareInfectedIPAddress, suspiciousIPAddress, leakedCredentials, investigationsThreatIntelligence, generic,adminConfirmedUserCompromised, passwordSpray, impossibleTravel, newCountry, anomalousToken, tokenIssuerAnomaly,suspiciousBrowser, riskyIPAddress, mcasSuspiciousInboxManipulationRules, suspiciousInboxForwarding, and anomalousUserActivity. If the risk detection is a premium detection, will show generic. For more information about each value, see riskEventType values.
-        self._risk_event_type: Optional[str] = None
-        # Level of the detected risk. Possible values are: low, medium, high, hidden, none, unknownFutureValue.
-        self._risk_level: Optional[risk_level.RiskLevel] = None
-        # The state of a detected risky user or sign-in. Possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
-        self._risk_state: Optional[risk_state.RiskState] = None
-        # Source of the risk detection. For example, activeDirectory.
-        self._source: Optional[str] = None
-        # Indicates the type of token issuer for the detected sign-in risk. Possible values are: AzureAD, ADFederationServices, UnknownFutureValue.
-        self._token_issuer_type: Optional[token_issuer_type.TokenIssuerType] = None
-        # The user principal name (UPN) of the user.
-        self._user_display_name: Optional[str] = None
-        # Unique ID of the user.
-        self._user_id: Optional[str] = None
-        # The user principal name (UPN) of the user.
-        self._user_principal_name: Optional[str] = None
     
     @property
     def correlation_id(self,) -> Optional[str]:
@@ -179,7 +174,9 @@ class RiskDetection(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import activity_type, entity, risk_detail, risk_detection_timing_type, risk_level, risk_state, sign_in_location, token_issuer_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_enum_value(activity_type.ActivityType)),
             "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
             "additionalInfo": lambda n : setattr(self, 'additional_info', n.get_str_value()),

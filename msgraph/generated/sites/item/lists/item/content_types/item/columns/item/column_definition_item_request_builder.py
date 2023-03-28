@@ -7,24 +7,17 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-column_definition = lazy_import('msgraph.generated.models.column_definition')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-source_column_request_builder = lazy_import('msgraph.generated.sites.item.lists.item.content_types.item.columns.item.source_column.source_column_request_builder')
+if TYPE_CHECKING:
+    from .........models import column_definition
+    from .........models.o_data_errors import o_data_error
+    from .source_column import source_column_request_builder
 
 class ColumnDefinitionItemRequestBuilder():
     """
     Provides operations to manage the columns property of the microsoft.graph.contentType entity.
     """
-    @property
-    def source_column(self) -> source_column_request_builder.SourceColumnRequestBuilder:
-        """
-        Provides operations to manage the sourceColumn property of the microsoft.graph.columnDefinition entity.
-        """
-        return source_column_request_builder.SourceColumnRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ColumnDefinitionItemRequestBuilder and sets the default values.
@@ -52,6 +45,8 @@ class ColumnDefinitionItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from .........models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -70,12 +65,16 @@ class ColumnDefinitionItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from .........models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .........models import column_definition
+
         return await self.request_adapter.send_async(request_info, column_definition.ColumnDefinition, error_mapping)
     
     async def patch(self,body: Optional[column_definition.ColumnDefinition] = None, request_configuration: Optional[ColumnDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[column_definition.ColumnDefinition]:
@@ -91,12 +90,16 @@ class ColumnDefinitionItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from .........models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .........models import column_definition
+
         return await self.request_adapter.send_async(request_info, column_definition.ColumnDefinition, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ColumnDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -154,6 +157,15 @@ class ColumnDefinitionItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def source_column(self) -> source_column_request_builder.SourceColumnRequestBuilder:
+        """
+        Provides operations to manage the sourceColumn property of the microsoft.graph.columnDefinition entity.
+        """
+        from .source_column import source_column_request_builder
+
+        return source_column_request_builder.SourceColumnRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class ColumnDefinitionItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -171,12 +183,6 @@ class ColumnDefinitionItemRequestBuilder():
         """
         The collection of column definitions for this contentType.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -192,6 +198,12 @@ class ColumnDefinitionItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class ColumnDefinitionItemRequestBuilderGetRequestConfiguration():

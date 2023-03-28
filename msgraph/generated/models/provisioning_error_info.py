@@ -1,11 +1,31 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-provisioning_status_error_category = lazy_import('msgraph.generated.models.provisioning_status_error_category')
+if TYPE_CHECKING:
+    from . import provisioning_status_error_category
 
 class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new provisioningErrorInfo and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Additional details in case of error.
+        self._additional_details: Optional[str] = None
+        # Categorizes the error code. Possible values are failure, nonServiceFailure, success, unknownFutureValue
+        self._error_category: Optional[provisioning_status_error_category.ProvisioningStatusErrorCategory] = None
+        # Unique error code if any occurred. Learn more
+        self._error_code: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Summarizes the status and describes why the status happened.
+        self._reason: Optional[str] = None
+        # Provides the resolution for the corresponding error.
+        self._recommended_action: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -39,26 +59,6 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the additional_details property.
         """
         self._additional_details = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new provisioningErrorInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Additional details in case of error.
-        self._additional_details: Optional[str] = None
-        # Categorizes the error code. Possible values are failure, nonServiceFailure, success, unknownFutureValue
-        self._error_category: Optional[provisioning_status_error_category.ProvisioningStatusErrorCategory] = None
-        # Unique error code if any occurred. Learn more
-        self._error_code: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Summarizes the status and describes why the status happened.
-        self._reason: Optional[str] = None
-        # Provides the resolution for the corresponding error.
-        self._recommended_action: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProvisioningErrorInfo:
@@ -111,7 +111,9 @@ class ProvisioningErrorInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import provisioning_status_error_category
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "additionalDetails": lambda n : setattr(self, 'additional_details', n.get_str_value()),
             "errorCategory": lambda n : setattr(self, 'error_category', n.get_enum_value(provisioning_status_error_category.ProvisioningStatusErrorCategory)),
             "errorCode": lambda n : setattr(self, 'error_code', n.get_str_value()),

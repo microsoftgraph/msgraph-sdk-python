@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-policy_base = lazy_import('msgraph.generated.models.policy_base')
+if TYPE_CHECKING:
+    from . import policy_base
+
+from . import policy_base
 
 class IdentitySecurityDefaultsEnforcementPolicy(policy_base.PolicyBase):
     def __init__(self,) -> None:
@@ -32,7 +34,9 @@ class IdentitySecurityDefaultsEnforcementPolicy(policy_base.PolicyBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import policy_base
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

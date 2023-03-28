@@ -1,11 +1,23 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-authentication_methods_registration_campaign = lazy_import('msgraph.generated.models.authentication_methods_registration_campaign')
+if TYPE_CHECKING:
+    from . import authentication_methods_registration_campaign
 
 class RegistrationEnforcement(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new registrationEnforcement and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Run campaigns to remind users to set up targeted authentication methods.
+        self._authentication_methods_registration_campaign: Optional[authentication_methods_registration_campaign.AuthenticationMethodsRegistrationCampaign] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -40,18 +52,6 @@ class RegistrationEnforcement(AdditionalDataHolder, Parsable):
         """
         self._authentication_methods_registration_campaign = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new registrationEnforcement and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Run campaigns to remind users to set up targeted authentication methods.
-        self._authentication_methods_registration_campaign: Optional[authentication_methods_registration_campaign.AuthenticationMethodsRegistrationCampaign] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RegistrationEnforcement:
         """
@@ -69,7 +69,9 @@ class RegistrationEnforcement(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import authentication_methods_registration_campaign
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "authenticationMethodsRegistrationCampaign": lambda n : setattr(self, 'authentication_methods_registration_campaign', n.get_object_value(authentication_methods_registration_campaign.AuthenticationMethodsRegistrationCampaign)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }

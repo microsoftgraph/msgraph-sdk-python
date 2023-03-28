@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-ip_range = lazy_import('msgraph.generated.models.ip_range')
+if TYPE_CHECKING:
+    from . import ip_range
+
+from . import ip_range
 
 class IPv4Range(ip_range.IpRange):
     def __init__(self,) -> None:
@@ -34,7 +36,9 @@ class IPv4Range(ip_range.IpRange):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import ip_range
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "lowerAddress": lambda n : setattr(self, 'lower_address', n.get_str_value()),
             "upperAddress": lambda n : setattr(self, 'upper_address', n.get_str_value()),
         }

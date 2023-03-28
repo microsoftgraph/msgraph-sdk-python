@@ -1,30 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_review_expiration_behavior = lazy_import('msgraph.generated.models.access_review_expiration_behavior')
-entitlement_management_schedule = lazy_import('msgraph.generated.models.entitlement_management_schedule')
-subject_set = lazy_import('msgraph.generated.models.subject_set')
+if TYPE_CHECKING:
+    from . import access_review_expiration_behavior, entitlement_management_schedule, subject_set
 
 class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new accessPackageAssignmentReviewSettings and sets the default values.
@@ -50,6 +31,23 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         self._primary_reviewers: Optional[List[subject_set.SubjectSet]] = None
         # When the first review should start and how often it should recur.
         self._schedule: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None
+    
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignmentReviewSettings:
@@ -102,7 +100,9 @@ class AccessPackageAssignmentReviewSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import access_review_expiration_behavior, entitlement_management_schedule, subject_set
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "expirationBehavior": lambda n : setattr(self, 'expiration_behavior', n.get_enum_value(access_review_expiration_behavior.AccessReviewExpirationBehavior)),
             "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(subject_set.SubjectSet)),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),

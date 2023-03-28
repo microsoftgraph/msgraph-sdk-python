@@ -1,15 +1,32 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-delegated_admin_access_assignment_status = lazy_import('msgraph.generated.models.delegated_admin_access_assignment_status')
-delegated_admin_access_container = lazy_import('msgraph.generated.models.delegated_admin_access_container')
-delegated_admin_access_details = lazy_import('msgraph.generated.models.delegated_admin_access_details')
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import delegated_admin_access_assignment_status, delegated_admin_access_container, delegated_admin_access_details, entity
+
+from . import entity
 
 class DelegatedAdminAccessAssignment(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new DelegatedAdminAccessAssignment and sets the default values.
+        """
+        super().__init__()
+        # The accessContainer property
+        self._access_container: Optional[delegated_admin_access_container.DelegatedAdminAccessContainer] = None
+        # The accessDetails property
+        self._access_details: Optional[delegated_admin_access_details.DelegatedAdminAccessDetails] = None
+        # The date and time in ISO 8601 format and in UTC time when the access assignment was created. Read-only.
+        self._created_date_time: Optional[datetime] = None
+        # The date and time in ISO 8601 and in UTC time when this access assignment was last modified. Read-only.
+        self._last_modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The status of the access assignment. Read-only. The possible values are: pending, active, deleting, deleted, error, unknownFutureValue.
+        self._status: Optional[delegated_admin_access_assignment_status.DelegatedAdminAccessAssignmentStatus] = None
+    
     @property
     def access_container(self,) -> Optional[delegated_admin_access_container.DelegatedAdminAccessContainer]:
         """
@@ -43,24 +60,6 @@ class DelegatedAdminAccessAssignment(entity.Entity):
             value: Value to set for the access_details property.
         """
         self._access_details = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new delegatedAdminAccessAssignment and sets the default values.
-        """
-        super().__init__()
-        # The accessContainer property
-        self._access_container: Optional[delegated_admin_access_container.DelegatedAdminAccessContainer] = None
-        # The accessDetails property
-        self._access_details: Optional[delegated_admin_access_details.DelegatedAdminAccessDetails] = None
-        # The date and time in ISO 8601 format and in UTC time when the access assignment was created. Read-only.
-        self._created_date_time: Optional[datetime] = None
-        # The date and time in ISO 8601 and in UTC time when this access assignment was last modified. Read-only.
-        self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The status of the access assignment. Read-only. The possible values are: pending, active, deleting, deleted, error, unknownFutureValue.
-        self._status: Optional[delegated_admin_access_assignment_status.DelegatedAdminAccessAssignmentStatus] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -96,7 +95,9 @@ class DelegatedAdminAccessAssignment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import delegated_admin_access_assignment_status, delegated_admin_access_container, delegated_admin_access_details, entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "accessContainer": lambda n : setattr(self, 'access_container', n.get_object_value(delegated_admin_access_container.DelegatedAdminAccessContainer)),
             "accessDetails": lambda n : setattr(self, 'access_details', n.get_object_value(delegated_admin_access_details.DelegatedAdminAccessDetails)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),

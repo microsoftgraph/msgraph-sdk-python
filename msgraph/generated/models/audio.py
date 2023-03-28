@@ -1,9 +1,50 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class Audio(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new audio and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The title of the album for this audio file.
+        self._album: Optional[str] = None
+        # The artist named on the album for the audio file.
+        self._album_artist: Optional[str] = None
+        # The performing artist for the audio file.
+        self._artist: Optional[str] = None
+        # Bitrate expressed in kbps.
+        self._bitrate: Optional[int] = None
+        # The name of the composer of the audio file.
+        self._composers: Optional[str] = None
+        # Copyright information for the audio file.
+        self._copyright: Optional[str] = None
+        # The number of the disc this audio file came from.
+        self._disc: Optional[int] = None
+        # The total number of discs in this album.
+        self._disc_count: Optional[int] = None
+        # Duration of the audio file, expressed in milliseconds
+        self._duration: Optional[int] = None
+        # The genre of this audio file.
+        self._genre: Optional[str] = None
+        # Indicates if the file is protected with digital rights management.
+        self._has_drm: Optional[bool] = None
+        # Indicates if the file is encoded with a variable bitrate.
+        self._is_variable_bitrate: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The title of the audio file.
+        self._title: Optional[str] = None
+        # The number of the track on the original disc for this audio file.
+        self._track: Optional[int] = None
+        # The total number of tracks on the original disc for this audio file.
+        self._track_count: Optional[int] = None
+        # The year the audio file was recorded.
+        self._year: Optional[int] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -105,48 +146,6 @@ class Audio(AdditionalDataHolder, Parsable):
             value: Value to set for the composers property.
         """
         self._composers = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new audio and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The title of the album for this audio file.
-        self._album: Optional[str] = None
-        # The artist named on the album for the audio file.
-        self._album_artist: Optional[str] = None
-        # The performing artist for the audio file.
-        self._artist: Optional[str] = None
-        # Bitrate expressed in kbps.
-        self._bitrate: Optional[int] = None
-        # The name of the composer of the audio file.
-        self._composers: Optional[str] = None
-        # Copyright information for the audio file.
-        self._copyright: Optional[str] = None
-        # The number of the disc this audio file came from.
-        self._disc: Optional[int] = None
-        # The total number of discs in this album.
-        self._disc_count: Optional[int] = None
-        # Duration of the audio file, expressed in milliseconds
-        self._duration: Optional[int] = None
-        # The genre of this audio file.
-        self._genre: Optional[str] = None
-        # Indicates if the file is protected with digital rights management.
-        self._has_drm: Optional[bool] = None
-        # Indicates if the file is encoded with a variable bitrate.
-        self._is_variable_bitrate: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The title of the audio file.
-        self._title: Optional[str] = None
-        # The number of the track on the original disc for this audio file.
-        self._track: Optional[int] = None
-        # The total number of tracks on the original disc for this audio file.
-        self._track_count: Optional[int] = None
-        # The year the audio file was recorded.
-        self._year: Optional[int] = None
     
     @property
     def copyright(self,) -> Optional[str]:
@@ -250,7 +249,7 @@ class Audio(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "album": lambda n : setattr(self, 'album', n.get_str_value()),
             "albumArtist": lambda n : setattr(self, 'album_artist', n.get_str_value()),
             "artist": lambda n : setattr(self, 'artist', n.get_str_value()),

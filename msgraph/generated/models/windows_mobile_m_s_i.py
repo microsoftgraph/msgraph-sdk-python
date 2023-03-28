@@ -1,11 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-mobile_lob_app = lazy_import('msgraph.generated.models.mobile_lob_app')
+if TYPE_CHECKING:
+    from . import mobile_lob_app
+
+from . import mobile_lob_app
 
 class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new WindowsMobileMSI and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.windowsMobileMSI"
+        # The command line.
+        self._command_line: Optional[str] = None
+        # A boolean to control whether the app's version will be used to detect the app after it is installed on a device. Set this to true for Windows Mobile MSI Line of Business (LoB) apps that use a self update feature.
+        self._ignore_version_detection: Optional[bool] = None
+        # The product code.
+        self._product_code: Optional[str] = None
+        # The product version of Windows Mobile MSI Line of Business (LoB) app.
+        self._product_version: Optional[str] = None
+    
     @property
     def command_line(self,) -> Optional[str]:
         """
@@ -22,21 +39,6 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
             value: Value to set for the command_line property.
         """
         self._command_line = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsMobileMSI and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsMobileMSI"
-        # The command line.
-        self._command_line: Optional[str] = None
-        # A boolean to control whether the app's version will be used to detect the app after it is installed on a device. Set this to true for Windows Mobile MSI Line of Business (LoB) apps that use a self update feature.
-        self._ignore_version_detection: Optional[bool] = None
-        # The product code.
-        self._product_code: Optional[str] = None
-        # The product version of Windows Mobile MSI Line of Business (LoB) app.
-        self._product_version: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsMobileMSI:
@@ -55,7 +57,9 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import mobile_lob_app
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "commandLine": lambda n : setattr(self, 'command_line', n.get_str_value()),
             "ignoreVersionDetection": lambda n : setattr(self, 'ignore_version_detection', n.get_bool_value()),
             "productCode": lambda n : setattr(self, 'product_code', n.get_str_value()),

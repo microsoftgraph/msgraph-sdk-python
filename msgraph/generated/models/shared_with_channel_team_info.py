@@ -1,12 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-conversation_member = lazy_import('msgraph.generated.models.conversation_member')
-team_info = lazy_import('msgraph.generated.models.team_info')
+if TYPE_CHECKING:
+    from . import conversation_member, team_info
+
+from . import team_info
 
 class SharedWithChannelTeamInfo(team_info.TeamInfo):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new SharedWithChannelTeamInfo and sets the default values.
+        """
+        super().__init__()
+        # A collection of team members who have access to the shared channel.
+        self._allowed_members: Optional[List[conversation_member.ConversationMember]] = None
+        # Indicates whether the team is the host of the channel.
+        self._is_host_team: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+    
     @property
     def allowed_members(self,) -> Optional[List[conversation_member.ConversationMember]]:
         """
@@ -23,18 +36,6 @@ class SharedWithChannelTeamInfo(team_info.TeamInfo):
             value: Value to set for the allowed_members property.
         """
         self._allowed_members = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new SharedWithChannelTeamInfo and sets the default values.
-        """
-        super().__init__()
-        # A collection of team members who have access to the shared channel.
-        self._allowed_members: Optional[List[conversation_member.ConversationMember]] = None
-        # Indicates whether the team is the host of the channel.
-        self._is_host_team: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharedWithChannelTeamInfo:
@@ -53,7 +54,9 @@ class SharedWithChannelTeamInfo(team_info.TeamInfo):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import conversation_member, team_info
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowedMembers": lambda n : setattr(self, 'allowed_members', n.get_collection_of_object_values(conversation_member.ConversationMember)),
             "isHostTeam": lambda n : setattr(self, 'is_host_team', n.get_bool_value()),
         }

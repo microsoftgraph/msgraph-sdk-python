@@ -1,9 +1,30 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class AudioConferencing(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new audioConferencing and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The conference id of the online meeting.
+        self._conference_id: Optional[str] = None
+        # A URL to the externally-accessible web page that contains dial-in information.
+        self._dialin_url: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The tollFreeNumber property
+        self._toll_free_number: Optional[str] = None
+        # List of toll-free numbers that are displayed in the meeting invite.
+        self._toll_free_numbers: Optional[List[str]] = None
+        # The tollNumber property
+        self._toll_number: Optional[str] = None
+        # List of toll numbers that are displayed in the meeting invite.
+        self._toll_numbers: Optional[List[str]] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -37,28 +58,6 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
             value: Value to set for the conference_id property.
         """
         self._conference_id = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new audioConferencing and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The conference id of the online meeting.
-        self._conference_id: Optional[str] = None
-        # A URL to the externally-accessible web page that contains dial-in information.
-        self._dialin_url: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The tollFreeNumber property
-        self._toll_free_number: Optional[str] = None
-        # List of toll-free numbers that are displayed in the meeting invite.
-        self._toll_free_numbers: Optional[List[str]] = None
-        # The tollNumber property
-        self._toll_number: Optional[str] = None
-        # List of toll numbers that are displayed in the meeting invite.
-        self._toll_numbers: Optional[List[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AudioConferencing:
@@ -94,7 +93,7 @@ class AudioConferencing(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "conferenceId": lambda n : setattr(self, 'conference_id', n.get_str_value()),
             "dialinUrl": lambda n : setattr(self, 'dialin_url', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

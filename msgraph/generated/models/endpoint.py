@@ -1,28 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-directory_object = lazy_import('msgraph.generated.models.directory_object')
+if TYPE_CHECKING:
+    from . import directory_object
+
+from . import directory_object
 
 class Endpoint(directory_object.DirectoryObject):
-    @property
-    def capability(self,) -> Optional[str]:
-        """
-        Gets the capability property value. The capability property
-        Returns: Optional[str]
-        """
-        return self._capability
-    
-    @capability.setter
-    def capability(self,value: Optional[str] = None) -> None:
-        """
-        Sets the capability property value. The capability property
-        Args:
-            value: Value to set for the capability property.
-        """
-        self._capability = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new endpoint and sets the default values.
@@ -39,6 +24,23 @@ class Endpoint(directory_object.DirectoryObject):
         self._provider_resource_id: Optional[str] = None
         # The uri property
         self._uri: Optional[str] = None
+    
+    @property
+    def capability(self,) -> Optional[str]:
+        """
+        Gets the capability property value. The capability property
+        Returns: Optional[str]
+        """
+        return self._capability
+    
+    @capability.setter
+    def capability(self,value: Optional[str] = None) -> None:
+        """
+        Sets the capability property value. The capability property
+        Args:
+            value: Value to set for the capability property.
+        """
+        self._capability = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Endpoint:
@@ -57,7 +59,9 @@ class Endpoint(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import directory_object
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "capability": lambda n : setattr(self, 'capability', n.get_str_value()),
             "providerId": lambda n : setattr(self, 'provider_id', n.get_str_value()),
             "providerName": lambda n : setattr(self, 'provider_name', n.get_str_value()),

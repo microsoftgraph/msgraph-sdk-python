@@ -1,11 +1,24 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-teamwork_notification_recipient = lazy_import('msgraph.generated.models.teamwork_notification_recipient')
+if TYPE_CHECKING:
+    from . import teamwork_notification_recipient
+
+from . import teamwork_notification_recipient
 
 class ChannelMembersNotificationRecipient(teamwork_notification_recipient.TeamworkNotificationRecipient):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ChannelMembersNotificationRecipient and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.channelMembersNotificationRecipient"
+        # The unique identifier for the channel whose members should receive the notification.
+        self._channel_id: Optional[str] = None
+        # The unique identifier for the team under which the channel resides.
+        self._team_id: Optional[str] = None
+    
     @property
     def channel_id(self,) -> Optional[str]:
         """
@@ -22,17 +35,6 @@ class ChannelMembersNotificationRecipient(teamwork_notification_recipient.Teamwo
             value: Value to set for the channel_id property.
         """
         self._channel_id = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ChannelMembersNotificationRecipient and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.channelMembersNotificationRecipient"
-        # The unique identifier for the channel whose members should receive the notification.
-        self._channel_id: Optional[str] = None
-        # The unique identifier for the team under which the channel resides.
-        self._team_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChannelMembersNotificationRecipient:
@@ -51,7 +53,9 @@ class ChannelMembersNotificationRecipient(teamwork_notification_recipient.Teamwo
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import teamwork_notification_recipient
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "channelId": lambda n : setattr(self, 'channel_id', n.get_str_value()),
             "teamId": lambda n : setattr(self, 'team_id', n.get_str_value()),
         }

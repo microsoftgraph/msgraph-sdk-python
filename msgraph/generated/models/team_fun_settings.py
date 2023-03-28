@@ -1,11 +1,29 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-giphy_rating_type = lazy_import('msgraph.generated.models.giphy_rating_type')
+if TYPE_CHECKING:
+    from . import giphy_rating_type
 
 class TeamFunSettings(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new teamFunSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # If set to true, enables users to include custom memes.
+        self._allow_custom_memes: Optional[bool] = None
+        # If set to true, enables Giphy use.
+        self._allow_giphy: Optional[bool] = None
+        # If set to true, enables users to include stickers and memes.
+        self._allow_stickers_and_memes: Optional[bool] = None
+        # Giphy content rating. Possible values are: moderate, strict.
+        self._giphy_content_rating: Optional[giphy_rating_type.GiphyRatingType] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -74,24 +92,6 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
         """
         self._allow_stickers_and_memes = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new teamFunSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # If set to true, enables users to include custom memes.
-        self._allow_custom_memes: Optional[bool] = None
-        # If set to true, enables Giphy use.
-        self._allow_giphy: Optional[bool] = None
-        # If set to true, enables users to include stickers and memes.
-        self._allow_stickers_and_memes: Optional[bool] = None
-        # Giphy content rating. Possible values are: moderate, strict.
-        self._giphy_content_rating: Optional[giphy_rating_type.GiphyRatingType] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamFunSettings:
         """
@@ -109,7 +109,9 @@ class TeamFunSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import giphy_rating_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowCustomMemes": lambda n : setattr(self, 'allow_custom_memes', n.get_bool_value()),
             "allowGiphy": lambda n : setattr(self, 'allow_giphy', n.get_bool_value()),
             "allowStickersAndMemes": lambda n : setattr(self, 'allow_stickers_and_memes', n.get_bool_value()),

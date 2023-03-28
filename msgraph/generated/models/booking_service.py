@@ -1,37 +1,17 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-booking_price_type = lazy_import('msgraph.generated.models.booking_price_type')
-booking_question_assignment = lazy_import('msgraph.generated.models.booking_question_assignment')
-booking_reminder = lazy_import('msgraph.generated.models.booking_reminder')
-booking_scheduling_policy = lazy_import('msgraph.generated.models.booking_scheduling_policy')
-entity = lazy_import('msgraph.generated.models.entity')
-location = lazy_import('msgraph.generated.models.location')
+if TYPE_CHECKING:
+    from . import booking_price_type, booking_question_assignment, booking_reminder, booking_scheduling_policy, entity, location
+
+from . import entity
 
 class BookingService(entity.Entity):
     """
     Represents a particular service offered by a booking business.
     """
-    @property
-    def additional_information(self,) -> Optional[str]:
-        """
-        Gets the additionalInformation property value. Additional information that is sent to the customer when an appointment is confirmed.
-        Returns: Optional[str]
-        """
-        return self._additional_information
-    
-    @additional_information.setter
-    def additional_information(self,value: Optional[str] = None) -> None:
-        """
-        Sets the additionalInformation property value. Additional information that is sent to the customer when an appointment is confirmed.
-        Args:
-            value: Value to set for the additional_information property.
-        """
-        self._additional_information = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new bookingService and sets the default values.
@@ -81,6 +61,23 @@ class BookingService(entity.Entity):
         self._staff_member_ids: Optional[List[str]] = None
         # The URL a customer uses to access the service.
         self._web_url: Optional[str] = None
+    
+    @property
+    def additional_information(self,) -> Optional[str]:
+        """
+        Gets the additionalInformation property value. Additional information that is sent to the customer when an appointment is confirmed.
+        Returns: Optional[str]
+        """
+        return self._additional_information
+    
+    @additional_information.setter
+    def additional_information(self,value: Optional[str] = None) -> None:
+        """
+        Sets the additionalInformation property value. Additional information that is sent to the customer when an appointment is confirmed.
+        Args:
+            value: Value to set for the additional_information property.
+        """
+        self._additional_information = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingService:
@@ -235,7 +232,9 @@ class BookingService(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import booking_price_type, booking_question_assignment, booking_reminder, booking_scheduling_policy, entity, location
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_str_value()),
             "customQuestions": lambda n : setattr(self, 'custom_questions', n.get_collection_of_object_values(booking_question_assignment.BookingQuestionAssignment)),
             "defaultDuration": lambda n : setattr(self, 'default_duration', n.get_object_value(Timedelta)),

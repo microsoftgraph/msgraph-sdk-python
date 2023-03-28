@@ -1,11 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-workforce_integration_encryption_protocol = lazy_import('msgraph.generated.models.workforce_integration_encryption_protocol')
+if TYPE_CHECKING:
+    from . import workforce_integration_encryption_protocol
 
 class WorkforceIntegrationEncryption(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new workforceIntegrationEncryption and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Possible values are: sharedSecret, unknownFutureValue.
+        self._protocol: Optional[workforce_integration_encryption_protocol.WorkforceIntegrationEncryptionProtocol] = None
+        # Encryption shared secret.
+        self._secret: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,20 +36,6 @@ class WorkforceIntegrationEncryption(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workforceIntegrationEncryption and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Possible values are: sharedSecret, unknownFutureValue.
-        self._protocol: Optional[workforce_integration_encryption_protocol.WorkforceIntegrationEncryptionProtocol] = None
-        # Encryption shared secret.
-        self._secret: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkforceIntegrationEncryption:
@@ -54,7 +54,9 @@ class WorkforceIntegrationEncryption(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import workforce_integration_encryption_protocol
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "protocol": lambda n : setattr(self, 'protocol', n.get_enum_value(workforce_integration_encryption_protocol.WorkforceIntegrationEncryptionProtocol)),
             "secret": lambda n : setattr(self, 'secret', n.get_str_value()),

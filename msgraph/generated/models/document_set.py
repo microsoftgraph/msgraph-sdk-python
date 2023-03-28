@@ -1,13 +1,35 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-column_definition = lazy_import('msgraph.generated.models.column_definition')
-content_type_info = lazy_import('msgraph.generated.models.content_type_info')
-document_set_content = lazy_import('msgraph.generated.models.document_set_content')
+if TYPE_CHECKING:
+    from . import column_definition, content_type_info, document_set_content
 
 class DocumentSet(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new documentSet and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Content types allowed in document set.
+        self._allowed_content_types: Optional[List[content_type_info.ContentTypeInfo]] = None
+        # Default contents of document set.
+        self._default_contents: Optional[List[document_set_content.DocumentSetContent]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Specifies whether to push welcome page changes to inherited content types.
+        self._propagate_welcome_page_changes: Optional[bool] = None
+        # The sharedColumns property
+        self._shared_columns: Optional[List[column_definition.ColumnDefinition]] = None
+        # Indicates whether to add the name of the document set to each file name.
+        self._should_prefix_name_to_file: Optional[bool] = None
+        # The welcomePageColumns property
+        self._welcome_page_columns: Optional[List[column_definition.ColumnDefinition]] = None
+        # Welcome page absolute URL.
+        self._welcome_page_url: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -41,30 +63,6 @@ class DocumentSet(AdditionalDataHolder, Parsable):
             value: Value to set for the allowed_content_types property.
         """
         self._allowed_content_types = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new documentSet and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Content types allowed in document set.
-        self._allowed_content_types: Optional[List[content_type_info.ContentTypeInfo]] = None
-        # Default contents of document set.
-        self._default_contents: Optional[List[document_set_content.DocumentSetContent]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Specifies whether to push welcome page changes to inherited content types.
-        self._propagate_welcome_page_changes: Optional[bool] = None
-        # The sharedColumns property
-        self._shared_columns: Optional[List[column_definition.ColumnDefinition]] = None
-        # Indicates whether to add the name of the document set to each file name.
-        self._should_prefix_name_to_file: Optional[bool] = None
-        # The welcomePageColumns property
-        self._welcome_page_columns: Optional[List[column_definition.ColumnDefinition]] = None
-        # Welcome page absolute URL.
-        self._welcome_page_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DocumentSet:
@@ -100,7 +98,9 @@ class DocumentSet(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import column_definition, content_type_info, document_set_content
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowedContentTypes": lambda n : setattr(self, 'allowed_content_types', n.get_collection_of_object_values(content_type_info.ContentTypeInfo)),
             "defaultContents": lambda n : setattr(self, 'default_contents', n.get_collection_of_object_values(document_set_content.DocumentSetContent)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

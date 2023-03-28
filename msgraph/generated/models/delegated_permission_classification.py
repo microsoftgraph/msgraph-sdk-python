@@ -1,12 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-permission_classification_type = lazy_import('msgraph.generated.models.permission_classification_type')
+if TYPE_CHECKING:
+    from . import entity, permission_classification_type
+
+from . import entity
 
 class DelegatedPermissionClassification(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new delegatedPermissionClassification and sets the default values.
+        """
+        super().__init__()
+        # The classification value being given. Possible value: low. Does not support $filter.
+        self._classification: Optional[permission_classification_type.PermissionClassificationType] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The unique identifier (id) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Required on create. Does not support $filter.
+        self._permission_id: Optional[str] = None
+        # The claim value (value) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Does not support $filter.
+        self._permission_name: Optional[str] = None
+    
     @property
     def classification(self,) -> Optional[permission_classification_type.PermissionClassificationType]:
         """
@@ -23,20 +38,6 @@ class DelegatedPermissionClassification(entity.Entity):
             value: Value to set for the classification property.
         """
         self._classification = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new delegatedPermissionClassification and sets the default values.
-        """
-        super().__init__()
-        # The classification value being given. Possible value: low. Does not support $filter.
-        self._classification: Optional[permission_classification_type.PermissionClassificationType] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The unique identifier (id) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Required on create. Does not support $filter.
-        self._permission_id: Optional[str] = None
-        # The claim value (value) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Does not support $filter.
-        self._permission_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DelegatedPermissionClassification:
@@ -55,7 +56,9 @@ class DelegatedPermissionClassification(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, permission_classification_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(permission_classification_type.PermissionClassificationType)),
             "permissionId": lambda n : setattr(self, 'permission_id', n.get_str_value()),
             "permissionName": lambda n : setattr(self, 'permission_name', n.get_str_value()),

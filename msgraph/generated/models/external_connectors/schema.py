@@ -1,12 +1,26 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-property_ = lazy_import('msgraph.generated.models.external_connectors.property_')
+if TYPE_CHECKING:
+    from . import property_
+    from .. import entity
+
+from .. import entity
 
 class Schema(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new schema and sets the default values.
+        """
+        super().__init__()
+        # Must be set to microsoft.graph.externalConnector.externalItem. Required.
+        self._base_type: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128.
+        self._properties: Optional[List[property_.Property_]] = None
+    
     @property
     def base_type(self,) -> Optional[str]:
         """
@@ -23,18 +37,6 @@ class Schema(entity.Entity):
             value: Value to set for the base_type property.
         """
         self._base_type = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new schema and sets the default values.
-        """
-        super().__init__()
-        # Must be set to microsoft.graph.externalConnector.externalItem. Required.
-        self._base_type: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The properties defined for the items in the connection. The minimum number of properties is one, the maximum is 128.
-        self._properties: Optional[List[property_.Property_]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Schema:
@@ -53,7 +55,10 @@ class Schema(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import property_
+        from .. import entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "baseType": lambda n : setattr(self, 'base_type', n.get_str_value()),
             "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(property_.Property_)),
         }

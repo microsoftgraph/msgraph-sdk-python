@@ -1,22 +1,62 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-attachment_base = lazy_import('msgraph.generated.models.attachment_base')
-attachment_session = lazy_import('msgraph.generated.models.attachment_session')
-checklist_item = lazy_import('msgraph.generated.models.checklist_item')
-date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
-entity = lazy_import('msgraph.generated.models.entity')
-extension = lazy_import('msgraph.generated.models.extension')
-importance = lazy_import('msgraph.generated.models.importance')
-item_body = lazy_import('msgraph.generated.models.item_body')
-linked_resource = lazy_import('msgraph.generated.models.linked_resource')
-patterned_recurrence = lazy_import('msgraph.generated.models.patterned_recurrence')
-task_status = lazy_import('msgraph.generated.models.task_status')
+if TYPE_CHECKING:
+    from . import attachment_base, attachment_session, checklist_item, date_time_time_zone, entity, extension, importance, item_body, linked_resource, patterned_recurrence, task_status
+
+from . import entity
 
 class TodoTask(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new todoTask and sets the default values.
+        """
+        super().__init__()
+        # The attachmentSessions property
+        self._attachment_sessions: Optional[List[attachment_session.AttachmentSession]] = None
+        # A collection of file attachments for the task.
+        self._attachments: Optional[List[attachment_base.AttachmentBase]] = None
+        # The task body that typically contains information about the task.
+        self._body: Optional[item_body.ItemBody] = None
+        # The date and time when the task body was last modified. By default, it is in UTC. You can provide a custom time zone in the request header. The property value uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2020 would look like this: '2020-01-01T00:00:00Z'.
+        self._body_last_modified_date_time: Optional[datetime] = None
+        # The categories associated with the task. Each category corresponds to the displayName property of an outlookCategory that the user has defined.
+        self._categories: Optional[List[str]] = None
+        # A collection of checklistItems linked to a task.
+        self._checklist_items: Optional[List[checklist_item.ChecklistItem]] = None
+        # The date and time in the specified time zone that the task was finished.
+        self._completed_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+        # The date and time when the task was created. By default, it is in UTC. You can provide a custom time zone in the request header. The property value uses ISO 8601 format. For example, midnight UTC on Jan 1, 2020 would look like this: '2020-01-01T00:00:00Z'.
+        self._created_date_time: Optional[datetime] = None
+        # The date and time in the specified time zone that the task is to be finished.
+        self._due_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+        # The collection of open extensions defined for the task. Nullable.
+        self._extensions: Optional[List[extension.Extension]] = None
+        # Indicates whether the task has attachments.
+        self._has_attachments: Optional[bool] = None
+        # The importance property
+        self._importance: Optional[importance.Importance] = None
+        # Set to true if an alert is set to remind the user of the task.
+        self._is_reminder_on: Optional[bool] = None
+        # The date and time when the task was last modified. By default, it is in UTC. You can provide a custom time zone in the request header. The property value uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2020 would look like this: '2020-01-01T00:00:00Z'.
+        self._last_modified_date_time: Optional[datetime] = None
+        # A collection of resources linked to the task.
+        self._linked_resources: Optional[List[linked_resource.LinkedResource]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The recurrence pattern for the task.
+        self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
+        # The date and time in the specified time zone for a reminder alert of the task to occur.
+        self._reminder_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+        # The date and time in the specified time zone at which the task is scheduled to start.
+        self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+        # The status property
+        self._status: Optional[task_status.TaskStatus] = None
+        # A brief description of the task.
+        self._title: Optional[str] = None
+    
     @property
     def attachment_sessions(self,) -> Optional[List[attachment_session.AttachmentSession]]:
         """
@@ -136,54 +176,6 @@ class TodoTask(entity.Entity):
         """
         self._completed_date_time = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new todoTask and sets the default values.
-        """
-        super().__init__()
-        # The attachmentSessions property
-        self._attachment_sessions: Optional[List[attachment_session.AttachmentSession]] = None
-        # A collection of file attachments for the task.
-        self._attachments: Optional[List[attachment_base.AttachmentBase]] = None
-        # The task body that typically contains information about the task.
-        self._body: Optional[item_body.ItemBody] = None
-        # The date and time when the task body was last modified. By default, it is in UTC. You can provide a custom time zone in the request header. The property value uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2020 would look like this: '2020-01-01T00:00:00Z'.
-        self._body_last_modified_date_time: Optional[datetime] = None
-        # The categories associated with the task. Each category corresponds to the displayName property of an outlookCategory that the user has defined.
-        self._categories: Optional[List[str]] = None
-        # A collection of checklistItems linked to a task.
-        self._checklist_items: Optional[List[checklist_item.ChecklistItem]] = None
-        # The date and time in the specified time zone that the task was finished.
-        self._completed_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The date and time when the task was created. By default, it is in UTC. You can provide a custom time zone in the request header. The property value uses ISO 8601 format. For example, midnight UTC on Jan 1, 2020 would look like this: '2020-01-01T00:00:00Z'.
-        self._created_date_time: Optional[datetime] = None
-        # The date and time in the specified time zone that the task is to be finished.
-        self._due_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The collection of open extensions defined for the task. Nullable.
-        self._extensions: Optional[List[extension.Extension]] = None
-        # Indicates whether the task has attachments.
-        self._has_attachments: Optional[bool] = None
-        # The importance property
-        self._importance: Optional[importance.Importance] = None
-        # Set to true if an alert is set to remind the user of the task.
-        self._is_reminder_on: Optional[bool] = None
-        # The date and time when the task was last modified. By default, it is in UTC. You can provide a custom time zone in the request header. The property value uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2020 would look like this: '2020-01-01T00:00:00Z'.
-        self._last_modified_date_time: Optional[datetime] = None
-        # A collection of resources linked to the task.
-        self._linked_resources: Optional[List[linked_resource.LinkedResource]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The recurrence pattern for the task.
-        self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
-        # The date and time in the specified time zone for a reminder alert of the task to occur.
-        self._reminder_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The date and time in the specified time zone at which the task is scheduled to start.
-        self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The status property
-        self._status: Optional[task_status.TaskStatus] = None
-        # A brief description of the task.
-        self._title: Optional[str] = None
-    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -252,7 +244,9 @@ class TodoTask(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import attachment_base, attachment_session, checklist_item, date_time_time_zone, entity, extension, importance, item_body, linked_resource, patterned_recurrence, task_status
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(attachment_base.AttachmentBase)),
             "attachmentSessions": lambda n : setattr(self, 'attachment_sessions', n.get_collection_of_object_values(attachment_session.AttachmentSession)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(item_body.ItemBody)),

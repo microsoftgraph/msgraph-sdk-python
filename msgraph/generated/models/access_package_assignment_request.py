@@ -1,19 +1,42 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_package = lazy_import('msgraph.generated.models.access_package')
-access_package_answer = lazy_import('msgraph.generated.models.access_package_answer')
-access_package_assignment = lazy_import('msgraph.generated.models.access_package_assignment')
-access_package_request_state = lazy_import('msgraph.generated.models.access_package_request_state')
-access_package_request_type = lazy_import('msgraph.generated.models.access_package_request_type')
-access_package_subject = lazy_import('msgraph.generated.models.access_package_subject')
-entitlement_management_schedule = lazy_import('msgraph.generated.models.entitlement_management_schedule')
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import access_package, access_package_answer, access_package_assignment, access_package_request_state, access_package_request_type, access_package_subject, entitlement_management_schedule, entity
+
+from . import entity
 
 class AccessPackageAssignmentRequest(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new accessPackageAssignmentRequest and sets the default values.
+        """
+        super().__init__()
+        # The access package associated with the accessPackageAssignmentRequest. An access package defines the collections of resource roles and the policies for how one or more users can get access to those resources. Read-only. Nullable.  Supports $expand.
+        self._access_package: Optional[access_package.AccessPackage] = None
+        # Answers provided by the requestor to accessPackageQuestions asked of them at the time of request.
+        self._answers: Optional[List[access_package_answer.AccessPackageAnswer]] = None
+        # For a requestType of userAdd or adminAdd, this is an access package assignment requested to be created.  For a requestType of userRemove, adminRemove or systemRemove, this has the id property of an existing assignment to be removed.   Supports $expand.
+        self._assignment: Optional[access_package_assignment.AccessPackageAssignment] = None
+        # The date of the end of processing, either successful or failure, of a request. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+        self._completed_date_time: Optional[datetime] = None
+        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter.
+        self._created_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property cannot be changed once set.
+        self._request_type: Optional[access_package_request_type.AccessPackageRequestType] = None
+        # The subject who requested or, if a direct assignment, was assigned. Read-only. Nullable. Supports $expand.
+        self._requestor: Optional[access_package_subject.AccessPackageSubject] = None
+        # The range of dates that access is to be assigned to the requestor. This property cannot be changed once set.
+        self._schedule: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None
+        # The state of the request. The possible values are: submitted, pendingApproval, delivering, delivered, deliveryFailed, denied, scheduled, canceled, partiallyDelivered, unknownFutureValue. Read-only. Supports $filter (eq).
+        self._state: Optional[access_package_request_state.AccessPackageRequestState] = None
+        # More information on the request processing status. Read-only.
+        self._status: Optional[str] = None
+    
     @property
     def access_package(self,) -> Optional[access_package.AccessPackage]:
         """
@@ -82,34 +105,6 @@ class AccessPackageAssignmentRequest(entity.Entity):
         """
         self._completed_date_time = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new accessPackageAssignmentRequest and sets the default values.
-        """
-        super().__init__()
-        # The access package associated with the accessPackageAssignmentRequest. An access package defines the collections of resource roles and the policies for how one or more users can get access to those resources. Read-only. Nullable.  Supports $expand.
-        self._access_package: Optional[access_package.AccessPackage] = None
-        # Answers provided by the requestor to accessPackageQuestions asked of them at the time of request.
-        self._answers: Optional[List[access_package_answer.AccessPackageAnswer]] = None
-        # For a requestType of userAdd or adminAdd, this is an access package assignment requested to be created.  For a requestType of userRemove, adminRemove or systemRemove, this has the id property of an existing assignment to be removed.   Supports $expand.
-        self._assignment: Optional[access_package_assignment.AccessPackageAssignment] = None
-        # The date of the end of processing, either successful or failure, of a request. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-        self._completed_date_time: Optional[datetime] = None
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Supports $filter.
-        self._created_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The type of the request. The possible values are: notSpecified, userAdd, UserExtend, userUpdate, userRemove, adminAdd, adminUpdate, adminRemove, systemAdd, systemUpdate, systemRemove, onBehalfAdd (not supported), unknownFutureValue. A request from the user themselves would have requestType of userAdd, userUpdate or userRemove. This property cannot be changed once set.
-        self._request_type: Optional[access_package_request_type.AccessPackageRequestType] = None
-        # The subject who requested or, if a direct assignment, was assigned. Read-only. Nullable. Supports $expand.
-        self._requestor: Optional[access_package_subject.AccessPackageSubject] = None
-        # The range of dates that access is to be assigned to the requestor. This property cannot be changed once set.
-        self._schedule: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None
-        # The state of the request. The possible values are: submitted, pendingApproval, delivering, delivered, deliveryFailed, denied, scheduled, canceled, partiallyDelivered, unknownFutureValue. Read-only. Supports $filter (eq).
-        self._state: Optional[access_package_request_state.AccessPackageRequestState] = None
-        # More information on the request processing status. Read-only.
-        self._status: Optional[str] = None
-    
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
@@ -144,7 +139,9 @@ class AccessPackageAssignmentRequest(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import access_package, access_package_answer, access_package_assignment, access_package_request_state, access_package_request_type, access_package_subject, entitlement_management_schedule, entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
             "answers": lambda n : setattr(self, 'answers', n.get_collection_of_object_values(access_package_answer.AccessPackageAnswer)),
             "assignment": lambda n : setattr(self, 'assignment', n.get_object_value(access_package_assignment.AccessPackageAssignment)),

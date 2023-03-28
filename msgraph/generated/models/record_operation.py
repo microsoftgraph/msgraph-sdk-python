@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-comms_operation = lazy_import('msgraph.generated.models.comms_operation')
+if TYPE_CHECKING:
+    from . import comms_operation
+
+from . import comms_operation
 
 class RecordOperation(comms_operation.CommsOperation):
     def __init__(self,) -> None:
@@ -35,7 +37,9 @@ class RecordOperation(comms_operation.CommsOperation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import comms_operation
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "recordingAccessToken": lambda n : setattr(self, 'recording_access_token', n.get_str_value()),
             "recordingLocation": lambda n : setattr(self, 'recording_location', n.get_str_value()),
         }

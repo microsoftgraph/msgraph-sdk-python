@@ -1,11 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
+if TYPE_CHECKING:
+    from .....models import date_time_time_zone
 
 class GetStaffAvailabilityPostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new getStaffAvailabilityPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The endDateTime property
+        self._end_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+        # The staffIds property
+        self._staff_ids: Optional[List[str]] = None
+        # The startDateTime property
+        self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,20 +36,6 @@ class GetStaffAvailabilityPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new getStaffAvailabilityPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The endDateTime property
-        self._end_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The staffIds property
-        self._staff_ids: Optional[List[str]] = None
-        # The startDateTime property
-        self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GetStaffAvailabilityPostRequestBody:
@@ -71,7 +71,9 @@ class GetStaffAvailabilityPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from .....models import date_time_time_zone
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "staffIds": lambda n : setattr(self, 'staff_ids', n.get_collection_of_primitive_values(str)),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),

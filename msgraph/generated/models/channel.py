@@ -1,16 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-channel_membership_type = lazy_import('msgraph.generated.models.channel_membership_type')
-chat_message = lazy_import('msgraph.generated.models.chat_message')
-conversation_member = lazy_import('msgraph.generated.models.conversation_member')
-drive_item = lazy_import('msgraph.generated.models.drive_item')
-entity = lazy_import('msgraph.generated.models.entity')
-shared_with_channel_team_info = lazy_import('msgraph.generated.models.shared_with_channel_team_info')
-teams_tab = lazy_import('msgraph.generated.models.teams_tab')
+if TYPE_CHECKING:
+    from . import channel_membership_type, chat_message, conversation_member, drive_item, entity, shared_with_channel_team_info, teams_tab
+
+from . import entity
 
 class Channel(entity.Entity):
     def __init__(self,) -> None:
@@ -149,7 +145,9 @@ class Channel(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import channel_membership_type, chat_message, conversation_member, drive_item, entity, shared_with_channel_team_info, teams_tab
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

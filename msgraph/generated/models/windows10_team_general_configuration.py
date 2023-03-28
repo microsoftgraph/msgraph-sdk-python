@@ -1,14 +1,61 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-device_configuration = lazy_import('msgraph.generated.models.device_configuration')
-miracast_channel = lazy_import('msgraph.generated.models.miracast_channel')
-welcome_screen_meeting_information = lazy_import('msgraph.generated.models.welcome_screen_meeting_information')
+if TYPE_CHECKING:
+    from . import device_configuration, miracast_channel, welcome_screen_meeting_information
+
+from . import device_configuration
 
 class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Windows10TeamGeneralConfiguration and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.windows10TeamGeneralConfiguration"
+        # Indicates whether or not to Block Azure Operational Insights.
+        self._azure_operational_insights_block_telemetry: Optional[bool] = None
+        # The Azure Operational Insights workspace id.
+        self._azure_operational_insights_workspace_id: Optional[str] = None
+        # The Azure Operational Insights Workspace key.
+        self._azure_operational_insights_workspace_key: Optional[str] = None
+        # Specifies whether to automatically launch the Connect app whenever a projection is initiated.
+        self._connect_app_block_auto_launch: Optional[bool] = None
+        # Indicates whether or not to Block setting a maintenance window for device updates.
+        self._maintenance_window_blocked: Optional[bool] = None
+        # Maintenance window duration for device updates. Valid values 0 to 5
+        self._maintenance_window_duration_in_hours: Optional[int] = None
+        # Maintenance window start time for device updates.
+        self._maintenance_window_start_time: Optional[Time] = None
+        # Indicates whether or not to Block wireless projection.
+        self._miracast_blocked: Optional[bool] = None
+        # Possible values for Miracast channel.
+        self._miracast_channel: Optional[miracast_channel.MiracastChannel] = None
+        # Indicates whether or not to require a pin for wireless projection.
+        self._miracast_require_pin: Optional[bool] = None
+        # Specifies whether to disable the 'My meetings and files' feature in the Start menu, which shows the signed-in user's meetings and files from Office 365.
+        self._settings_block_my_meetings_and_files: Optional[bool] = None
+        # Specifies whether to allow the ability to resume a session when the session times out.
+        self._settings_block_session_resume: Optional[bool] = None
+        # Specifies whether to disable auto-populating of the sign-in dialog with invitees from scheduled meetings.
+        self._settings_block_signin_suggestions: Optional[bool] = None
+        # Specifies the default volume value for a new session. Permitted values are 0-100. The default is 45. Valid values 0 to 100
+        self._settings_default_volume: Optional[int] = None
+        # Specifies the number of minutes until the Hub screen turns off.
+        self._settings_screen_timeout_in_minutes: Optional[int] = None
+        # Specifies the number of minutes until the session times out.
+        self._settings_session_timeout_in_minutes: Optional[int] = None
+        # Specifies the number of minutes until the Hub enters sleep mode.
+        self._settings_sleep_timeout_in_minutes: Optional[int] = None
+        # The welcome screen background image URL. The URL must use the HTTPS protocol and return a PNG image.
+        self._welcome_screen_background_image_url: Optional[str] = None
+        # Indicates whether or not to Block the welcome screen from waking up automatically when someone enters the room.
+        self._welcome_screen_block_automatic_wake_up: Optional[bool] = None
+        # Possible values for welcome screen meeting information.
+        self._welcome_screen_meeting_information: Optional[welcome_screen_meeting_information.WelcomeScreenMeetingInformation] = None
+    
     @property
     def azure_operational_insights_block_telemetry(self,) -> Optional[bool]:
         """
@@ -77,53 +124,6 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         """
         self._connect_app_block_auto_launch = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Windows10TeamGeneralConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windows10TeamGeneralConfiguration"
-        # Indicates whether or not to Block Azure Operational Insights.
-        self._azure_operational_insights_block_telemetry: Optional[bool] = None
-        # The Azure Operational Insights workspace id.
-        self._azure_operational_insights_workspace_id: Optional[str] = None
-        # The Azure Operational Insights Workspace key.
-        self._azure_operational_insights_workspace_key: Optional[str] = None
-        # Specifies whether to automatically launch the Connect app whenever a projection is initiated.
-        self._connect_app_block_auto_launch: Optional[bool] = None
-        # Indicates whether or not to Block setting a maintenance window for device updates.
-        self._maintenance_window_blocked: Optional[bool] = None
-        # Maintenance window duration for device updates. Valid values 0 to 5
-        self._maintenance_window_duration_in_hours: Optional[int] = None
-        # Maintenance window start time for device updates.
-        self._maintenance_window_start_time: Optional[Time] = None
-        # Indicates whether or not to Block wireless projection.
-        self._miracast_blocked: Optional[bool] = None
-        # Possible values for Miracast channel.
-        self._miracast_channel: Optional[miracast_channel.MiracastChannel] = None
-        # Indicates whether or not to require a pin for wireless projection.
-        self._miracast_require_pin: Optional[bool] = None
-        # Specifies whether to disable the 'My meetings and files' feature in the Start menu, which shows the signed-in user's meetings and files from Office 365.
-        self._settings_block_my_meetings_and_files: Optional[bool] = None
-        # Specifies whether to allow the ability to resume a session when the session times out.
-        self._settings_block_session_resume: Optional[bool] = None
-        # Specifies whether to disable auto-populating of the sign-in dialog with invitees from scheduled meetings.
-        self._settings_block_signin_suggestions: Optional[bool] = None
-        # Specifies the default volume value for a new session. Permitted values are 0-100. The default is 45. Valid values 0 to 100
-        self._settings_default_volume: Optional[int] = None
-        # Specifies the number of minutes until the Hub screen turns off.
-        self._settings_screen_timeout_in_minutes: Optional[int] = None
-        # Specifies the number of minutes until the session times out.
-        self._settings_session_timeout_in_minutes: Optional[int] = None
-        # Specifies the number of minutes until the Hub enters sleep mode.
-        self._settings_sleep_timeout_in_minutes: Optional[int] = None
-        # The welcome screen background image URL. The URL must use the HTTPS protocol and return a PNG image.
-        self._welcome_screen_background_image_url: Optional[str] = None
-        # Indicates whether or not to Block the welcome screen from waking up automatically when someone enters the room.
-        self._welcome_screen_block_automatic_wake_up: Optional[bool] = None
-        # Possible values for welcome screen meeting information.
-        self._welcome_screen_meeting_information: Optional[welcome_screen_meeting_information.WelcomeScreenMeetingInformation] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10TeamGeneralConfiguration:
         """
@@ -141,7 +141,9 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import device_configuration, miracast_channel, welcome_screen_meeting_information
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "azureOperationalInsightsBlockTelemetry": lambda n : setattr(self, 'azure_operational_insights_block_telemetry', n.get_bool_value()),
             "azureOperationalInsightsWorkspaceId": lambda n : setattr(self, 'azure_operational_insights_workspace_id', n.get_str_value()),
             "azureOperationalInsightsWorkspaceKey": lambda n : setattr(self, 'azure_operational_insights_workspace_key', n.get_str_value()),

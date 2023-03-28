@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-unified_role_management_policy_rule = lazy_import('msgraph.generated.models.unified_role_management_policy_rule')
+if TYPE_CHECKING:
+    from . import unified_role_management_policy_rule
+
+from . import unified_role_management_policy_rule
 
 class UnifiedRoleManagementPolicyEnablementRule(unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule):
     def __init__(self,) -> None:
@@ -49,7 +51,9 @@ class UnifiedRoleManagementPolicyEnablementRule(unified_role_management_policy_r
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import unified_role_management_policy_rule
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "enabledRules": lambda n : setattr(self, 'enabled_rules', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()

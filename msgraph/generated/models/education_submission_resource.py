@@ -1,12 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-education_resource = lazy_import('msgraph.generated.models.education_resource')
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import education_resource, entity
+
+from . import entity
 
 class EducationSubmissionResource(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new educationSubmissionResource and sets the default values.
+        """
+        super().__init__()
+        # Pointer to the assignment from which this resource was copied. If this is null, the student uploaded the resource.
+        self._assignment_resource_url: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Resource object.
+        self._resource: Optional[education_resource.EducationResource] = None
+    
     @property
     def assignment_resource_url(self,) -> Optional[str]:
         """
@@ -23,18 +36,6 @@ class EducationSubmissionResource(entity.Entity):
             value: Value to set for the assignment_resource_url property.
         """
         self._assignment_resource_url = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new educationSubmissionResource and sets the default values.
-        """
-        super().__init__()
-        # Pointer to the assignment from which this resource was copied. If this is null, the student uploaded the resource.
-        self._assignment_resource_url: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Resource object.
-        self._resource: Optional[education_resource.EducationResource] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationSubmissionResource:
@@ -53,7 +54,9 @@ class EducationSubmissionResource(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import education_resource, entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "assignmentResourceUrl": lambda n : setattr(self, 'assignment_resource_url', n.get_str_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(education_resource.EducationResource)),
         }

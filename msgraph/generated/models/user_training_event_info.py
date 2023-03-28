@@ -1,29 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-training_status = lazy_import('msgraph.generated.models.training_status')
-user_training_content_event_info = lazy_import('msgraph.generated.models.user_training_content_event_info')
+if TYPE_CHECKING:
+    from . import training_status, user_training_content_event_info
 
 class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new userTrainingEventInfo and sets the default values.
@@ -43,6 +25,23 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
         self._training_completed_properties: Optional[user_training_content_event_info.UserTrainingContentEventInfo] = None
         # Event details of the training when it was updated/in-progress by the user.
         self._training_updated_properties: Optional[user_training_content_event_info.UserTrainingContentEventInfo] = None
+    
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserTrainingEventInfo:
@@ -78,7 +77,9 @@ class UserTrainingEventInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import training_status, user_training_content_event_info
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "latestTrainingStatus": lambda n : setattr(self, 'latest_training_status', n.get_enum_value(training_status.TrainingStatus)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

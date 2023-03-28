@@ -1,9 +1,24 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class JoinMeetingIdSettings(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new joinMeetingIdSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Indicates whether a passcode is required to join a meeting when using joinMeetingId. Optional.
+        self._is_passcode_required: Optional[bool] = None
+        # The meeting ID to be used to join a meeting. Optional. Read-only.
+        self._join_meeting_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The passcode to join a meeting.  Optional. Read-only.
+        self._passcode: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -20,22 +35,6 @@ class JoinMeetingIdSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new joinMeetingIdSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Indicates whether a passcode is required to join a meeting when using joinMeetingId. Optional.
-        self._is_passcode_required: Optional[bool] = None
-        # The meeting ID to be used to join a meeting. Optional. Read-only.
-        self._join_meeting_id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The passcode to join a meeting.  Optional. Read-only.
-        self._passcode: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> JoinMeetingIdSettings:
@@ -54,7 +53,7 @@ class JoinMeetingIdSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "isPasscodeRequired": lambda n : setattr(self, 'is_passcode_required', n.get_bool_value()),
             "joinMeetingId": lambda n : setattr(self, 'join_meeting_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

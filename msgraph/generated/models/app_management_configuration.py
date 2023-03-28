@@ -1,12 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-key_credential_configuration = lazy_import('msgraph.generated.models.key_credential_configuration')
-password_credential_configuration = lazy_import('msgraph.generated.models.password_credential_configuration')
+if TYPE_CHECKING:
+    from . import key_credential_configuration, password_credential_configuration
 
 class AppManagementConfiguration(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new appManagementConfiguration and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Collection of keyCredential restrictions settings to be applied to an application or service principal.
+        self._key_credentials: Optional[List[key_credential_configuration.KeyCredentialConfiguration]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Collection of password restrictions settings to be applied to an application or service principal.
+        self._password_credentials: Optional[List[password_credential_configuration.PasswordCredentialConfiguration]] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -23,20 +36,6 @@ class AppManagementConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new appManagementConfiguration and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The keyCredentials property
-        self._key_credentials: Optional[List[key_credential_configuration.KeyCredentialConfiguration]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The passwordCredentials property
-        self._password_credentials: Optional[List[password_credential_configuration.PasswordCredentialConfiguration]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppManagementConfiguration:
@@ -55,7 +54,9 @@ class AppManagementConfiguration(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import key_credential_configuration, password_credential_configuration
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "keyCredentials": lambda n : setattr(self, 'key_credentials', n.get_collection_of_object_values(key_credential_configuration.KeyCredentialConfiguration)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "passwordCredentials": lambda n : setattr(self, 'password_credentials', n.get_collection_of_object_values(password_credential_configuration.PasswordCredentialConfiguration)),
@@ -65,7 +66,7 @@ class AppManagementConfiguration(AdditionalDataHolder, Parsable):
     @property
     def key_credentials(self,) -> Optional[List[key_credential_configuration.KeyCredentialConfiguration]]:
         """
-        Gets the keyCredentials property value. The keyCredentials property
+        Gets the keyCredentials property value. Collection of keyCredential restrictions settings to be applied to an application or service principal.
         Returns: Optional[List[key_credential_configuration.KeyCredentialConfiguration]]
         """
         return self._key_credentials
@@ -73,7 +74,7 @@ class AppManagementConfiguration(AdditionalDataHolder, Parsable):
     @key_credentials.setter
     def key_credentials(self,value: Optional[List[key_credential_configuration.KeyCredentialConfiguration]] = None) -> None:
         """
-        Sets the keyCredentials property value. The keyCredentials property
+        Sets the keyCredentials property value. Collection of keyCredential restrictions settings to be applied to an application or service principal.
         Args:
             value: Value to set for the key_credentials property.
         """
@@ -99,7 +100,7 @@ class AppManagementConfiguration(AdditionalDataHolder, Parsable):
     @property
     def password_credentials(self,) -> Optional[List[password_credential_configuration.PasswordCredentialConfiguration]]:
         """
-        Gets the passwordCredentials property value. The passwordCredentials property
+        Gets the passwordCredentials property value. Collection of password restrictions settings to be applied to an application or service principal.
         Returns: Optional[List[password_credential_configuration.PasswordCredentialConfiguration]]
         """
         return self._password_credentials
@@ -107,7 +108,7 @@ class AppManagementConfiguration(AdditionalDataHolder, Parsable):
     @password_credentials.setter
     def password_credentials(self,value: Optional[List[password_credential_configuration.PasswordCredentialConfiguration]] = None) -> None:
         """
-        Sets the passwordCredentials property value. The passwordCredentials property
+        Sets the passwordCredentials property value. Collection of password restrictions settings to be applied to an application or service principal.
         Args:
             value: Value to set for the password_credentials property.
         """

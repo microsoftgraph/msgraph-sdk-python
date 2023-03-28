@@ -1,13 +1,28 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-expiration_pattern = lazy_import('msgraph.generated.models.expiration_pattern')
-patterned_recurrence = lazy_import('msgraph.generated.models.patterned_recurrence')
+if TYPE_CHECKING:
+    from . import expiration_pattern, patterned_recurrence
 
 class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new entitlementManagementSchedule and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # When the access should expire.
+        self._expiration: Optional[expiration_pattern.ExpirationPattern] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # For recurring access reviews.  Not used in access requests.
+        self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
+        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+        self._start_date_time: Optional[datetime] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -24,22 +39,6 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new entitlementManagementSchedule and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # When the access should expire.
-        self._expiration: Optional[expiration_pattern.ExpirationPattern] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # For recurring access reviews.  Not used in access requests.
-        self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._start_date_time: Optional[datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EntitlementManagementSchedule:
@@ -75,7 +74,9 @@ class EntitlementManagementSchedule(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import expiration_pattern, patterned_recurrence
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "expiration": lambda n : setattr(self, 'expiration', n.get_object_value(expiration_pattern.ExpirationPattern)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),

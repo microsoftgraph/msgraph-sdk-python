@@ -1,12 +1,26 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-directory_object = lazy_import('msgraph.generated.models.directory_object')
-policy_base = lazy_import('msgraph.generated.models.policy_base')
+if TYPE_CHECKING:
+    from . import activity_based_timeout_policy, claims_mapping_policy, directory_object, home_realm_discovery_policy, policy_base, token_issuance_policy, token_lifetime_policy
+
+from . import policy_base
 
 class StsPolicy(policy_base.PolicyBase):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new StsPolicy and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.stsPolicy"
+        # The appliesTo property
+        self._applies_to: Optional[List[directory_object.DirectoryObject]] = None
+        # A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
+        self._definition: Optional[List[str]] = None
+        # If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
+        self._is_organization_default: Optional[bool] = None
+    
     @property
     def applies_to(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
@@ -24,19 +38,6 @@ class StsPolicy(policy_base.PolicyBase):
         """
         self._applies_to = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new StsPolicy and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.stsPolicy"
-        # The appliesTo property
-        self._applies_to: Optional[List[directory_object.DirectoryObject]] = None
-        # A string collection containing a JSON string that defines the rules and settings for a policy. The syntax for the definition differs for each derived policy type. Required.
-        self._definition: Optional[List[str]] = None
-        # If set to true, activates this policy. There can be many policies for the same policy type, but only one can be activated as the organization default. Optional, default value is false.
-        self._is_organization_default: Optional[bool] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> StsPolicy:
         """
@@ -47,6 +48,29 @@ class StsPolicy(policy_base.PolicyBase):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.activityBasedTimeoutPolicy":
+                from . import activity_based_timeout_policy
+
+                return activity_based_timeout_policy.ActivityBasedTimeoutPolicy()
+            if mapping_value == "#microsoft.graph.claimsMappingPolicy":
+                from . import claims_mapping_policy
+
+                return claims_mapping_policy.ClaimsMappingPolicy()
+            if mapping_value == "#microsoft.graph.homeRealmDiscoveryPolicy":
+                from . import home_realm_discovery_policy
+
+                return home_realm_discovery_policy.HomeRealmDiscoveryPolicy()
+            if mapping_value == "#microsoft.graph.tokenIssuancePolicy":
+                from . import token_issuance_policy
+
+                return token_issuance_policy.TokenIssuancePolicy()
+            if mapping_value == "#microsoft.graph.tokenLifetimePolicy":
+                from . import token_lifetime_policy
+
+                return token_lifetime_policy.TokenLifetimePolicy()
         return StsPolicy()
     
     @property
@@ -71,7 +95,9 @@ class StsPolicy(policy_base.PolicyBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import activity_based_timeout_policy, claims_mapping_policy, directory_object, home_realm_discovery_policy, policy_base, token_issuance_policy, token_lifetime_policy
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "appliesTo": lambda n : setattr(self, 'applies_to', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "definition": lambda n : setattr(self, 'definition', n.get_collection_of_primitive_values(str)),
             "isOrganizationDefault": lambda n : setattr(self, 'is_organization_default', n.get_bool_value()),

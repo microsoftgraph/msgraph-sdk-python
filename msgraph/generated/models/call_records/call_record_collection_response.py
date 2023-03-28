@@ -1,10 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-base_collection_pagination_count_response = lazy_import('msgraph.generated.models.base_collection_pagination_count_response')
-call_record = lazy_import('msgraph.generated.models.call_records.call_record')
+if TYPE_CHECKING:
+    from . import call_record
+    from .. import base_collection_pagination_count_response
+
+from .. import base_collection_pagination_count_response
 
 class CallRecordCollectionResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
     def __init__(self,) -> None:
@@ -32,7 +34,10 @@ class CallRecordCollectionResponse(base_collection_pagination_count_response.Bas
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import call_record
+        from .. import base_collection_pagination_count_response
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "value": lambda n : setattr(self, 'value', n.get_collection_of_object_values(call_record.CallRecord)),
         }
         super_fields = super().get_field_deserializers()

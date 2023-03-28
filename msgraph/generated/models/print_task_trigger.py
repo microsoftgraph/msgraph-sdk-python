@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-print_event = lazy_import('msgraph.generated.models.print_event')
-print_task_definition = lazy_import('msgraph.generated.models.print_task_definition')
+if TYPE_CHECKING:
+    from . import entity, print_event, print_task_definition
+
+from . import entity
 
 class PrintTaskTrigger(entity.Entity):
     def __init__(self,) -> None:
@@ -71,7 +71,9 @@ class PrintTaskTrigger(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, print_event, print_task_definition
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "definition": lambda n : setattr(self, 'definition', n.get_object_value(print_task_definition.PrintTaskDefinition)),
             "event": lambda n : setattr(self, 'event', n.get_enum_value(print_event.PrintEvent)),
         }

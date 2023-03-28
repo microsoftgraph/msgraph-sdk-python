@@ -1,14 +1,50 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-email_role = lazy_import('msgraph.generated.models.email_role')
-logon_type = lazy_import('msgraph.generated.models.logon_type')
-user_account_security_type = lazy_import('msgraph.generated.models.user_account_security_type')
+if TYPE_CHECKING:
+    from . import email_role, logon_type, user_account_security_type
 
 class UserSecurityState(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new userSecurityState and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # AAD User object identifier (GUID) - represents the physical/multi-account user entity.
+        self._aad_user_id: Optional[str] = None
+        # Account name of user account (without Active Directory domain or DNS domain) - (also called mailNickName).
+        self._account_name: Optional[str] = None
+        # NetBIOS/Active Directory domain of user account (that is, domain/account format).
+        self._domain_name: Optional[str] = None
+        # For email-related alerts - user account's email 'role'. Possible values are: unknown, sender, recipient.
+        self._email_role: Optional[email_role.EmailRole] = None
+        # Indicates whether the user logged on through a VPN.
+        self._is_vpn: Optional[bool] = None
+        # Time at which the sign-in occurred. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+        self._logon_date_time: Optional[datetime] = None
+        # User sign-in ID.
+        self._logon_id: Optional[str] = None
+        # IP Address the sign-in request originated from.
+        self._logon_ip: Optional[str] = None
+        # Location (by IP address mapping) associated with a user sign-in event by this user.
+        self._logon_location: Optional[str] = None
+        # Method of user sign in. Possible values are: unknown, interactive, remoteInteractive, network, batch, service.
+        self._logon_type: Optional[logon_type.LogonType] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Active Directory (on-premises) Security Identifier (SID) of the user.
+        self._on_premises_security_identifier: Optional[str] = None
+        # Provider-generated/calculated risk score of the user account. Recommended value range of 0-1, which equates to a percentage.
+        self._risk_score: Optional[str] = None
+        # User account type (group membership), per Windows definition. Possible values are: unknown, standard, power, administrator.
+        self._user_account_type: Optional[user_account_security_type.UserAccountSecurityType] = None
+        # User sign-in name - internet format: (user account name)@(user account DNS domain name).
+        self._user_principal_name: Optional[str] = None
+    
     @property
     def aad_user_id(self,) -> Optional[str]:
         """
@@ -59,44 +95,6 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new userSecurityState and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # AAD User object identifier (GUID) - represents the physical/multi-account user entity.
-        self._aad_user_id: Optional[str] = None
-        # Account name of user account (without Active Directory domain or DNS domain) - (also called mailNickName).
-        self._account_name: Optional[str] = None
-        # NetBIOS/Active Directory domain of user account (that is, domain/account format).
-        self._domain_name: Optional[str] = None
-        # For email-related alerts - user account's email 'role'. Possible values are: unknown, sender, recipient.
-        self._email_role: Optional[email_role.EmailRole] = None
-        # Indicates whether the user logged on through a VPN.
-        self._is_vpn: Optional[bool] = None
-        # Time at which the sign-in occurred. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._logon_date_time: Optional[datetime] = None
-        # User sign-in ID.
-        self._logon_id: Optional[str] = None
-        # IP Address the sign-in request originated from.
-        self._logon_ip: Optional[str] = None
-        # Location (by IP address mapping) associated with a user sign-in event by this user.
-        self._logon_location: Optional[str] = None
-        # Method of user sign in. Possible values are: unknown, interactive, remoteInteractive, network, batch, service.
-        self._logon_type: Optional[logon_type.LogonType] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Active Directory (on-premises) Security Identifier (SID) of the user.
-        self._on_premises_security_identifier: Optional[str] = None
-        # Provider-generated/calculated risk score of the user account. Recommended value range of 0-1, which equates to a percentage.
-        self._risk_score: Optional[str] = None
-        # User account type (group membership), per Windows definition. Possible values are: unknown, standard, power, administrator.
-        self._user_account_type: Optional[user_account_security_type.UserAccountSecurityType] = None
-        # User sign-in name - internet format: (user account name)@(user account DNS domain name).
-        self._user_principal_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserSecurityState:
@@ -149,7 +147,9 @@ class UserSecurityState(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import email_role, logon_type, user_account_security_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "aadUserId": lambda n : setattr(self, 'aad_user_id', n.get_str_value()),
             "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
             "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),

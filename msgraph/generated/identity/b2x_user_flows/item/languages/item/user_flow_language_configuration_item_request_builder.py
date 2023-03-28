@@ -7,34 +7,20 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-default_pages_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.languages.item.default_pages.default_pages_request_builder')
-user_flow_language_page_item_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.languages.item.default_pages.item.user_flow_language_page_item_request_builder')
-overrides_pages_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.languages.item.overrides_pages.overrides_pages_request_builder')
-user_flow_language_page_item_request_builder = lazy_import('msgraph.generated.identity.b2x_user_flows.item.languages.item.overrides_pages.item.user_flow_language_page_item_request_builder')
-user_flow_language_configuration = lazy_import('msgraph.generated.models.user_flow_language_configuration')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from ......models import user_flow_language_configuration
+    from ......models.o_data_errors import o_data_error
+    from .default_pages import default_pages_request_builder
+    from .default_pages.item import user_flow_language_page_item_request_builder
+    from .overrides_pages import overrides_pages_request_builder
+    from .overrides_pages.item import user_flow_language_page_item_request_builder
 
 class UserFlowLanguageConfigurationItemRequestBuilder():
     """
     Provides operations to manage the languages property of the microsoft.graph.b2xIdentityUserFlow entity.
     """
-    @property
-    def default_pages(self) -> default_pages_request_builder.DefaultPagesRequestBuilder:
-        """
-        Provides operations to manage the defaultPages property of the microsoft.graph.userFlowLanguageConfiguration entity.
-        """
-        return default_pages_request_builder.DefaultPagesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def overrides_pages(self) -> overrides_pages_request_builder.OverridesPagesRequestBuilder:
-        """
-        Provides operations to manage the overridesPages property of the microsoft.graph.userFlowLanguageConfiguration entity.
-        """
-        return overrides_pages_request_builder.OverridesPagesRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new UserFlowLanguageConfigurationItemRequestBuilder and sets the default values.
@@ -62,6 +48,9 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .default_pages.item import user_flow_language_page_item_request_builder
+        from .overrides_pages.item import user_flow_language_page_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["userFlowLanguagePage%2Did"] = id
         return user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -75,6 +64,8 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from ......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -93,12 +84,16 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ......models import user_flow_language_configuration
+
         return await self.request_adapter.send_async(request_info, user_flow_language_configuration.UserFlowLanguageConfiguration, error_mapping)
     
     def overrides_pages_by_id(self,id: str) -> user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder:
@@ -110,6 +105,9 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .default_pages.item import user_flow_language_page_item_request_builder
+        from .overrides_pages.item import user_flow_language_page_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["userFlowLanguagePage%2Did"] = id
         return user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -127,12 +125,16 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ......models import user_flow_language_configuration
+
         return await self.request_adapter.send_async(request_info, user_flow_language_configuration.UserFlowLanguageConfiguration, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[UserFlowLanguageConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -190,6 +192,24 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def default_pages(self) -> default_pages_request_builder.DefaultPagesRequestBuilder:
+        """
+        Provides operations to manage the defaultPages property of the microsoft.graph.userFlowLanguageConfiguration entity.
+        """
+        from .default_pages import default_pages_request_builder
+
+        return default_pages_request_builder.DefaultPagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def overrides_pages(self) -> overrides_pages_request_builder.OverridesPagesRequestBuilder:
+        """
+        Provides operations to manage the overridesPages property of the microsoft.graph.userFlowLanguageConfiguration entity.
+        """
+        from .overrides_pages import overrides_pages_request_builder
+
+        return overrides_pages_request_builder.OverridesPagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class UserFlowLanguageConfigurationItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -207,12 +227,6 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         """
         The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You cannot create custom languages in self-service sign-up user flows.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -228,6 +242,12 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class UserFlowLanguageConfigurationItemRequestBuilderGetRequestConfiguration():

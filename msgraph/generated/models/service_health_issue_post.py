@@ -1,13 +1,28 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-item_body = lazy_import('msgraph.generated.models.item_body')
-post_type = lazy_import('msgraph.generated.models.post_type')
+if TYPE_CHECKING:
+    from . import item_body, post_type
 
 class ServiceHealthIssuePost(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new serviceHealthIssuePost and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The published time of the post.
+        self._created_date_time: Optional[datetime] = None
+        # The content of the service issue post. The supported value for the contentType property is html.
+        self._description: Optional[item_body.ItemBody] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The post type of the service issue historical post. Possible values are: regular, quick, strategic, unknownFutureValue.
+        self._post_type: Optional[post_type.PostType] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -24,22 +39,6 @@ class ServiceHealthIssuePost(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new serviceHealthIssuePost and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The published time of the post.
-        self._created_date_time: Optional[datetime] = None
-        # The content of the service issue post. The supported value for the contentType property is html.
-        self._description: Optional[item_body.ItemBody] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The post type of the service issue historical post. Possible values are: regular, quick, strategic, unknownFutureValue.
-        self._post_type: Optional[post_type.PostType] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -92,7 +91,9 @@ class ServiceHealthIssuePost(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import item_body, post_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_object_value(item_body.ItemBody)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

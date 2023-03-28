@@ -1,19 +1,62 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-activity_type = lazy_import('msgraph.generated.models.activity_type')
-entity = lazy_import('msgraph.generated.models.entity')
-risk_detail = lazy_import('msgraph.generated.models.risk_detail')
-risk_detection_timing_type = lazy_import('msgraph.generated.models.risk_detection_timing_type')
-risk_level = lazy_import('msgraph.generated.models.risk_level')
-risk_state = lazy_import('msgraph.generated.models.risk_state')
-sign_in_location = lazy_import('msgraph.generated.models.sign_in_location')
-token_issuer_type = lazy_import('msgraph.generated.models.token_issuer_type')
+if TYPE_CHECKING:
+    from . import activity_type, entity, risk_detail, risk_detection_timing_type, risk_level, risk_state, sign_in_location, token_issuer_type
+
+from . import entity
 
 class ServicePrincipalRiskDetection(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ServicePrincipalRiskDetection and sets the default values.
+        """
+        super().__init__()
+        # Indicates the activity type the detected risk is linked to.  The possible values are: signin, servicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: servicePrincipal.
+        self._activity: Optional[activity_type.ActivityType] = None
+        # Date and time when the risky activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._activity_date_time: Optional[datetime] = None
+        # Additional information associated with the risk detection. This string value is represented as a JSON object with the quotations escaped.
+        self._additional_info: Optional[str] = None
+        # The unique identifier for the associated application.
+        self._app_id: Optional[str] = None
+        # Correlation ID of the sign-in activity associated with the risk detection. This property is null if the risk detection is not associated with a sign-in activity.
+        self._correlation_id: Optional[str] = None
+        # Date and time when the risk was detected. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+        self._detected_date_time: Optional[datetime] = None
+        # Timing of the detected risk , whether real-time or offline. The possible values are: notDefined, realtime, nearRealtime, offline, unknownFutureValue.
+        self._detection_timing_type: Optional[risk_detection_timing_type.RiskDetectionTimingType] = None
+        # Provides the IP address of the client from where the risk occurred.
+        self._ip_address: Optional[str] = None
+        # The unique identifier for the key credential associated with the risk detection.
+        self._key_ids: Optional[List[str]] = None
+        # Date and time when the risk detection was last updated.
+        self._last_updated_date_time: Optional[datetime] = None
+        # Location from where the sign-in was initiated.
+        self._location: Optional[sign_in_location.SignInLocation] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Request identifier of the sign-in activity associated with the risk detection. This property is null if the risk detection is not associated with a sign-in activity. Supports $filter (eq).
+        self._request_id: Optional[str] = None
+        # Details of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: none, hidden, adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: adminConfirmedServicePrincipalCompromised , adminDismissedAllRiskForServicePrincipal.
+        self._risk_detail: Optional[risk_detail.RiskDetail] = None
+        # The type of risk event detected. The possible values are: investigationsThreatIntelligence, generic, adminConfirmedServicePrincipalCompromised, suspiciousSignins, leakedCredentials, anomalousServicePrincipalActivity, maliciousApplication, suspiciousApplication.
+        self._risk_event_type: Optional[str] = None
+        # Level of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: low, medium, high, hidden, none.
+        self._risk_level: Optional[risk_level.RiskLevel] = None
+        # The state of a detected risky service principal or sign-in activity. The possible values are: none, dismissed, atRisk, confirmedCompromised.
+        self._risk_state: Optional[risk_state.RiskState] = None
+        # The display name for the service principal.
+        self._service_principal_display_name: Optional[str] = None
+        # The unique identifier for the service principal. Supports $filter (eq).
+        self._service_principal_id: Optional[str] = None
+        # Source of the risk detection. For example, identityProtection.
+        self._source: Optional[str] = None
+        # Indicates the type of token issuer for the detected sign-in risk. The possible values are: AzureAD.
+        self._token_issuer_type: Optional[token_issuer_type.TokenIssuerType] = None
+    
     @property
     def activity(self,) -> Optional[activity_type.ActivityType]:
         """
@@ -81,54 +124,6 @@ class ServicePrincipalRiskDetection(entity.Entity):
             value: Value to set for the app_id property.
         """
         self._app_id = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new servicePrincipalRiskDetection and sets the default values.
-        """
-        super().__init__()
-        # Indicates the activity type the detected risk is linked to.  The possible values are: signin, servicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: servicePrincipal.
-        self._activity: Optional[activity_type.ActivityType] = None
-        # Date and time when the risky activity occurred. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._activity_date_time: Optional[datetime] = None
-        # Additional information associated with the risk detection. This string value is represented as a JSON object with the quotations escaped.
-        self._additional_info: Optional[str] = None
-        # The unique identifier for the associated application.
-        self._app_id: Optional[str] = None
-        # Correlation ID of the sign-in activity associated with the risk detection. This property is null if the risk detection is not associated with a sign-in activity.
-        self._correlation_id: Optional[str] = None
-        # Date and time when the risk was detected. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._detected_date_time: Optional[datetime] = None
-        # Timing of the detected risk , whether real-time or offline. The possible values are: notDefined, realtime, nearRealtime, offline, unknownFutureValue.
-        self._detection_timing_type: Optional[risk_detection_timing_type.RiskDetectionTimingType] = None
-        # Provides the IP address of the client from where the risk occurred.
-        self._ip_address: Optional[str] = None
-        # The unique identifier for the key credential associated with the risk detection.
-        self._key_ids: Optional[List[str]] = None
-        # Date and time when the risk detection was last updated.
-        self._last_updated_date_time: Optional[datetime] = None
-        # Location from where the sign-in was initiated.
-        self._location: Optional[sign_in_location.SignInLocation] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Request identifier of the sign-in activity associated with the risk detection. This property is null if the risk detection is not associated with a sign-in activity. Supports $filter (eq).
-        self._request_id: Optional[str] = None
-        # Details of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: none, hidden, adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: adminConfirmedServicePrincipalCompromised , adminDismissedAllRiskForServicePrincipal.
-        self._risk_detail: Optional[risk_detail.RiskDetail] = None
-        # The type of risk event detected. The possible values are: investigationsThreatIntelligence, generic, adminConfirmedServicePrincipalCompromised, suspiciousSignins, leakedCredentials, anomalousServicePrincipalActivity, maliciousApplication, suspiciousApplication.
-        self._risk_event_type: Optional[str] = None
-        # Level of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: low, medium, high, hidden, none.
-        self._risk_level: Optional[risk_level.RiskLevel] = None
-        # The state of a detected risky service principal or sign-in activity. The possible values are: none, dismissed, atRisk, confirmedCompromised.
-        self._risk_state: Optional[risk_state.RiskState] = None
-        # The display name for the service principal.
-        self._service_principal_display_name: Optional[str] = None
-        # The unique identifier for the service principal. Supports $filter (eq).
-        self._service_principal_id: Optional[str] = None
-        # Source of the risk detection. For example, identityProtection.
-        self._source: Optional[str] = None
-        # Indicates the type of token issuer for the detected sign-in risk. The possible values are: AzureAD.
-        self._token_issuer_type: Optional[token_issuer_type.TokenIssuerType] = None
     
     @property
     def correlation_id(self,) -> Optional[str]:
@@ -198,7 +193,9 @@ class ServicePrincipalRiskDetection(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import activity_type, entity, risk_detail, risk_detection_timing_type, risk_level, risk_state, sign_in_location, token_issuer_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_enum_value(activity_type.ActivityType)),
             "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
             "additionalInfo": lambda n : setattr(self, 'additional_info', n.get_str_value()),

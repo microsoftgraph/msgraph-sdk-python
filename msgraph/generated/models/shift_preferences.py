@@ -1,12 +1,22 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-change_tracked_entity = lazy_import('msgraph.generated.models.change_tracked_entity')
-shift_availability = lazy_import('msgraph.generated.models.shift_availability')
+if TYPE_CHECKING:
+    from . import change_tracked_entity, shift_availability
+
+from . import change_tracked_entity
 
 class ShiftPreferences(change_tracked_entity.ChangeTrackedEntity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ShiftPreferences and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.shiftPreferences"
+        # Availability of the user to be scheduled for work and its recurrence pattern.
+        self._availability: Optional[List[shift_availability.ShiftAvailability]] = None
+    
     @property
     def availability(self,) -> Optional[List[shift_availability.ShiftAvailability]]:
         """
@@ -23,15 +33,6 @@ class ShiftPreferences(change_tracked_entity.ChangeTrackedEntity):
             value: Value to set for the availability property.
         """
         self._availability = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ShiftPreferences and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.shiftPreferences"
-        # Availability of the user to be scheduled for work and its recurrence pattern.
-        self._availability: Optional[List[shift_availability.ShiftAvailability]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ShiftPreferences:
@@ -50,7 +51,9 @@ class ShiftPreferences(change_tracked_entity.ChangeTrackedEntity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import change_tracked_entity, shift_availability
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "availability": lambda n : setattr(self, 'availability', n.get_collection_of_object_values(shift_availability.ShiftAvailability)),
         }
         super_fields = super().get_field_deserializers()

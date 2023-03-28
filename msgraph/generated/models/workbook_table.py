@@ -1,32 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-workbook_table_column = lazy_import('msgraph.generated.models.workbook_table_column')
-workbook_table_row = lazy_import('msgraph.generated.models.workbook_table_row')
-workbook_table_sort = lazy_import('msgraph.generated.models.workbook_table_sort')
-workbook_worksheet = lazy_import('msgraph.generated.models.workbook_worksheet')
+if TYPE_CHECKING:
+    from . import entity, workbook_table_column, workbook_table_row, workbook_table_sort, workbook_worksheet
+
+from . import entity
 
 class WorkbookTable(entity.Entity):
-    @property
-    def columns(self,) -> Optional[List[workbook_table_column.WorkbookTableColumn]]:
-        """
-        Gets the columns property value. Represents a collection of all the columns in the table. Read-only.
-        Returns: Optional[List[workbook_table_column.WorkbookTableColumn]]
-        """
-        return self._columns
-    
-    @columns.setter
-    def columns(self,value: Optional[List[workbook_table_column.WorkbookTableColumn]] = None) -> None:
-        """
-        Sets the columns property value. Represents a collection of all the columns in the table. Read-only.
-        Args:
-            value: Value to set for the columns property.
-        """
-        self._columns = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new workbookTable and sets the default values.
@@ -63,6 +44,23 @@ class WorkbookTable(entity.Entity):
         # The worksheet containing the current table. Read-only.
         self._worksheet: Optional[workbook_worksheet.WorkbookWorksheet] = None
     
+    @property
+    def columns(self,) -> Optional[List[workbook_table_column.WorkbookTableColumn]]:
+        """
+        Gets the columns property value. Represents a collection of all the columns in the table. Read-only.
+        Returns: Optional[List[workbook_table_column.WorkbookTableColumn]]
+        """
+        return self._columns
+    
+    @columns.setter
+    def columns(self,value: Optional[List[workbook_table_column.WorkbookTableColumn]] = None) -> None:
+        """
+        Sets the columns property value. Represents a collection of all the columns in the table. Read-only.
+        Args:
+            value: Value to set for the columns property.
+        """
+        self._columns = value
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookTable:
         """
@@ -80,7 +78,9 @@ class WorkbookTable(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, workbook_table_column, workbook_table_row, workbook_table_sort, workbook_worksheet
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "columns": lambda n : setattr(self, 'columns', n.get_collection_of_object_values(workbook_table_column.WorkbookTableColumn)),
             "highlightFirstColumn": lambda n : setattr(self, 'highlight_first_column', n.get_bool_value()),
             "highlightLastColumn": lambda n : setattr(self, 'highlight_last_column', n.get_bool_value()),

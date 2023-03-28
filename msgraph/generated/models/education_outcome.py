@@ -1,11 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-identity_set = lazy_import('msgraph.generated.models.identity_set')
+if TYPE_CHECKING:
+    from . import education_feedback_outcome, education_feedback_resource_outcome, education_points_outcome, education_rubric_outcome, entity, identity_set
+
+from . import entity
 
 class EducationOutcome(entity.Entity):
     def __init__(self,) -> None:
@@ -30,6 +31,25 @@ class EducationOutcome(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.educationFeedbackOutcome":
+                from . import education_feedback_outcome
+
+                return education_feedback_outcome.EducationFeedbackOutcome()
+            if mapping_value == "#microsoft.graph.educationFeedbackResourceOutcome":
+                from . import education_feedback_resource_outcome
+
+                return education_feedback_resource_outcome.EducationFeedbackResourceOutcome()
+            if mapping_value == "#microsoft.graph.educationPointsOutcome":
+                from . import education_points_outcome
+
+                return education_points_outcome.EducationPointsOutcome()
+            if mapping_value == "#microsoft.graph.educationRubricOutcome":
+                from . import education_rubric_outcome
+
+                return education_rubric_outcome.EducationRubricOutcome()
         return EducationOutcome()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -37,7 +57,9 @@ class EducationOutcome(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import education_feedback_outcome, education_feedback_resource_outcome, education_points_outcome, education_rubric_outcome, entity, identity_set
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "lastModifiedBy": lambda n : setattr(self, 'last_modified_by', n.get_object_value(identity_set.IdentitySet)),
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
         }

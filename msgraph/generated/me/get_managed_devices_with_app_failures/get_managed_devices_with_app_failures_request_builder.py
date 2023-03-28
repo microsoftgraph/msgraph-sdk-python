@@ -7,11 +7,11 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-get_managed_devices_with_app_failures_response = lazy_import('msgraph.generated.me.get_managed_devices_with_app_failures.get_managed_devices_with_app_failures_response')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from . import get_managed_devices_with_app_failures_response
+    from ...models.o_data_errors import o_data_error
 
 class GetManagedDevicesWithAppFailuresRequestBuilder():
     """
@@ -45,12 +45,16 @@ class GetManagedDevicesWithAppFailuresRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ...models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from . import get_managed_devices_with_app_failures_response
+
         return await self.request_adapter.send_async(request_info, get_managed_devices_with_app_failures_response.GetManagedDevicesWithAppFailuresResponse, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[GetManagedDevicesWithAppFailuresRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -76,21 +80,6 @@ class GetManagedDevicesWithAppFailuresRequestBuilder():
         """
         Retrieves the list of devices with failed apps
         """
-        # Include count of items
-        count: Optional[bool] = None
-
-        # Filter items by property values
-        filter: Optional[str] = None
-
-        # Search items by search phrases
-        search: Optional[str] = None
-
-        # Skip the first n items
-        skip: Optional[int] = None
-
-        # Show only the first n items
-        top: Optional[int] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -112,6 +101,21 @@ class GetManagedDevicesWithAppFailuresRequestBuilder():
                 return "%24top"
             return original_name
         
+        # Include count of items
+        count: Optional[bool] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
     
     @dataclass
     class GetManagedDevicesWithAppFailuresRequestBuilderGetRequestConfiguration():

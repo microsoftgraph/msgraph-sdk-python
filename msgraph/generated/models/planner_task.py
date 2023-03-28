@@ -1,20 +1,72 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-identity_set = lazy_import('msgraph.generated.models.identity_set')
-planner_applied_categories = lazy_import('msgraph.generated.models.planner_applied_categories')
-planner_assigned_to_task_board_task_format = lazy_import('msgraph.generated.models.planner_assigned_to_task_board_task_format')
-planner_assignments = lazy_import('msgraph.generated.models.planner_assignments')
-planner_bucket_task_board_task_format = lazy_import('msgraph.generated.models.planner_bucket_task_board_task_format')
-planner_preview_type = lazy_import('msgraph.generated.models.planner_preview_type')
-planner_progress_task_board_task_format = lazy_import('msgraph.generated.models.planner_progress_task_board_task_format')
-planner_task_details = lazy_import('msgraph.generated.models.planner_task_details')
+if TYPE_CHECKING:
+    from . import entity, identity_set, planner_applied_categories, planner_assigned_to_task_board_task_format, planner_assignments, planner_bucket_task_board_task_format, planner_preview_type, planner_progress_task_board_task_format, planner_task_details
+
+from . import entity
 
 class PlannerTask(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new plannerTask and sets the default values.
+        """
+        super().__init__()
+        # Number of checklist items with value set to false, representing incomplete items.
+        self._active_checklist_item_count: Optional[int] = None
+        # The categories to which the task has been applied. See applied Categories for possible values.
+        self._applied_categories: Optional[planner_applied_categories.PlannerAppliedCategories] = None
+        # Read-only. Nullable. Used to render the task correctly in the task board view when grouped by assignedTo.
+        self._assigned_to_task_board_format: Optional[planner_assigned_to_task_board_task_format.PlannerAssignedToTaskBoardTaskFormat] = None
+        # Hint used to order items of this type in a list view. The format is defined as outlined here.
+        self._assignee_priority: Optional[str] = None
+        # The set of assignees the task is assigned to.
+        self._assignments: Optional[planner_assignments.PlannerAssignments] = None
+        # Bucket ID to which the task belongs. The bucket needs to be in the plan that the task is in. It is 28 characters long and case-sensitive. Format validation is done on the service.
+        self._bucket_id: Optional[str] = None
+        # Read-only. Nullable. Used to render the task correctly in the task board view when grouped by bucket.
+        self._bucket_task_board_format: Optional[planner_bucket_task_board_task_format.PlannerBucketTaskBoardTaskFormat] = None
+        # Number of checklist items that are present on the task.
+        self._checklist_item_count: Optional[int] = None
+        # Identity of the user that completed the task.
+        self._completed_by: Optional[identity_set.IdentitySet] = None
+        # Read-only. Date and time at which the 'percentComplete' of the task is set to '100'. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._completed_date_time: Optional[datetime] = None
+        # Thread ID of the conversation on the task. This is the ID of the conversation thread object created in the group.
+        self._conversation_thread_id: Optional[str] = None
+        # Identity of the user that created the task.
+        self._created_by: Optional[identity_set.IdentitySet] = None
+        # Read-only. Date and time at which the task is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._created_date_time: Optional[datetime] = None
+        # Read-only. Nullable. Additional details about the task.
+        self._details: Optional[planner_task_details.PlannerTaskDetails] = None
+        # Date and time at which the task is due. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._due_date_time: Optional[datetime] = None
+        # Read-only. Value is true if the details object of the task has a non-empty description and false otherwise.
+        self._has_description: Optional[bool] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Hint used to order items of this type in a list view. The format is defined as outlined here.
+        self._order_hint: Optional[str] = None
+        # Percentage of task completion. When set to 100, the task is considered completed.
+        self._percent_complete: Optional[int] = None
+        # Plan ID to which the task belongs.
+        self._plan_id: Optional[str] = None
+        # This sets the type of preview that shows up on the task. The possible values are: automatic, noPreview, checklist, description, reference.
+        self._preview_type: Optional[planner_preview_type.PlannerPreviewType] = None
+        # Priority of the task. The valid range of values is between 0 and 10, with the increasing value being lower priority (0 has the highest priority and 10 has the lowest priority).  Currently, Planner interprets values 0 and 1 as 'urgent', 2, 3 and 4 as 'important', 5, 6, and 7 as 'medium', and 8, 9, and 10 as 'low'.  Additionally, Planner sets the value 1 for 'urgent', 3 for 'important', 5 for 'medium', and 9 for 'low'.
+        self._priority: Optional[int] = None
+        # Read-only. Nullable. Used to render the task correctly in the task board view when grouped by progress.
+        self._progress_task_board_format: Optional[planner_progress_task_board_task_format.PlannerProgressTaskBoardTaskFormat] = None
+        # Number of external references that exist on the task.
+        self._reference_count: Optional[int] = None
+        # Date and time at which the task starts. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._start_date_time: Optional[datetime] = None
+        # Title of the task.
+        self._title: Optional[str] = None
+    
     @property
     def active_checklist_item_count(self,) -> Optional[int]:
         """
@@ -185,64 +237,6 @@ class PlannerTask(entity.Entity):
         """
         self._completed_date_time = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new plannerTask and sets the default values.
-        """
-        super().__init__()
-        # Number of checklist items with value set to false, representing incomplete items.
-        self._active_checklist_item_count: Optional[int] = None
-        # The categories to which the task has been applied. See applied Categories for possible values.
-        self._applied_categories: Optional[planner_applied_categories.PlannerAppliedCategories] = None
-        # Read-only. Nullable. Used to render the task correctly in the task board view when grouped by assignedTo.
-        self._assigned_to_task_board_format: Optional[planner_assigned_to_task_board_task_format.PlannerAssignedToTaskBoardTaskFormat] = None
-        # Hint used to order items of this type in a list view. The format is defined as outlined here.
-        self._assignee_priority: Optional[str] = None
-        # The set of assignees the task is assigned to.
-        self._assignments: Optional[planner_assignments.PlannerAssignments] = None
-        # Bucket ID to which the task belongs. The bucket needs to be in the plan that the task is in. It is 28 characters long and case-sensitive. Format validation is done on the service.
-        self._bucket_id: Optional[str] = None
-        # Read-only. Nullable. Used to render the task correctly in the task board view when grouped by bucket.
-        self._bucket_task_board_format: Optional[planner_bucket_task_board_task_format.PlannerBucketTaskBoardTaskFormat] = None
-        # Number of checklist items that are present on the task.
-        self._checklist_item_count: Optional[int] = None
-        # Identity of the user that completed the task.
-        self._completed_by: Optional[identity_set.IdentitySet] = None
-        # Read-only. Date and time at which the 'percentComplete' of the task is set to '100'. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._completed_date_time: Optional[datetime] = None
-        # Thread ID of the conversation on the task. This is the ID of the conversation thread object created in the group.
-        self._conversation_thread_id: Optional[str] = None
-        # Identity of the user that created the task.
-        self._created_by: Optional[identity_set.IdentitySet] = None
-        # Read-only. Date and time at which the task is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._created_date_time: Optional[datetime] = None
-        # Read-only. Nullable. Additional details about the task.
-        self._details: Optional[planner_task_details.PlannerTaskDetails] = None
-        # Date and time at which the task is due. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._due_date_time: Optional[datetime] = None
-        # Read-only. Value is true if the details object of the task has a non-empty description and false otherwise.
-        self._has_description: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Hint used to order items of this type in a list view. The format is defined as outlined here.
-        self._order_hint: Optional[str] = None
-        # Percentage of task completion. When set to 100, the task is considered completed.
-        self._percent_complete: Optional[int] = None
-        # Plan ID to which the task belongs.
-        self._plan_id: Optional[str] = None
-        # This sets the type of preview that shows up on the task. The possible values are: automatic, noPreview, checklist, description, reference.
-        self._preview_type: Optional[planner_preview_type.PlannerPreviewType] = None
-        # Priority of the task. The valid range of values is between 0 and 10, with the increasing value being lower priority (0 has the highest priority and 10 has the lowest priority).  Currently, Planner interprets values 0 and 1 as 'urgent', 2, 3 and 4 as 'important', 5, 6, and 7 as 'medium', and 8, 9, and 10 as 'low'.  Additionally, Planner sets the value 1 for 'urgent', 3 for 'important', 5 for 'medium', and 9 for 'low'.
-        self._priority: Optional[int] = None
-        # Read-only. Nullable. Used to render the task correctly in the task board view when grouped by progress.
-        self._progress_task_board_format: Optional[planner_progress_task_board_task_format.PlannerProgressTaskBoardTaskFormat] = None
-        # Number of external references that exist on the task.
-        self._reference_count: Optional[int] = None
-        # Date and time at which the task starts. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._start_date_time: Optional[datetime] = None
-        # Title of the task.
-        self._title: Optional[str] = None
-    
     @property
     def conversation_thread_id(self,) -> Optional[str]:
         """
@@ -345,7 +339,9 @@ class PlannerTask(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, identity_set, planner_applied_categories, planner_assigned_to_task_board_task_format, planner_assignments, planner_bucket_task_board_task_format, planner_preview_type, planner_progress_task_board_task_format, planner_task_details
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "activeChecklistItemCount": lambda n : setattr(self, 'active_checklist_item_count', n.get_int_value()),
             "appliedCategories": lambda n : setattr(self, 'applied_categories', n.get_object_value(planner_applied_categories.PlannerAppliedCategories)),
             "assignedToTaskBoardFormat": lambda n : setattr(self, 'assigned_to_task_board_format', n.get_object_value(planner_assigned_to_task_board_task_format.PlannerAssignedToTaskBoardTaskFormat)),

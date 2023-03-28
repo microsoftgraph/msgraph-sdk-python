@@ -1,9 +1,24 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class ListInfo(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new listInfo and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # If true, indicates that content types are enabled for this list.
+        self._content_types_enabled: Optional[bool] = None
+        # If true, indicates that the list is not normally visible in the SharePoint user experience.
+        self._hidden: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # An enumerated value that represents the base list template used in creating the list. Possible values include documentLibrary, genericList, task, survey, announcements, contacts, and more.
+        self._template: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -20,22 +35,6 @@ class ListInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new listInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # If true, indicates that content types are enabled for this list.
-        self._content_types_enabled: Optional[bool] = None
-        # If true, indicates that the list is not normally visible in the SharePoint user experience.
-        self._hidden: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # An enumerated value that represents the base list template used in creating the list. Possible values include documentLibrary, genericList, task, survey, announcements, contacts, and more.
-        self._template: Optional[str] = None
     
     @property
     def content_types_enabled(self,) -> Optional[bool]:
@@ -71,7 +70,7 @@ class ListInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "contentTypesEnabled": lambda n : setattr(self, 'content_types_enabled', n.get_bool_value()),
             "hidden": lambda n : setattr(self, 'hidden', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

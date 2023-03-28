@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-detected_app_platform_type = lazy_import('msgraph.generated.models.detected_app_platform_type')
-entity = lazy_import('msgraph.generated.models.entity')
-managed_device = lazy_import('msgraph.generated.models.managed_device')
+if TYPE_CHECKING:
+    from . import detected_app_platform_type, entity, managed_device
+
+from . import entity
 
 class DetectedApp(entity.Entity):
     """
@@ -84,7 +84,9 @@ class DetectedApp(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import detected_app_platform_type, entity, managed_device
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "deviceCount": lambda n : setattr(self, 'device_count', n.get_int_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "managedDevices": lambda n : setattr(self, 'managed_devices', n.get_collection_of_object_values(managed_device.ManagedDevice)),

@@ -1,29 +1,57 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-activity_based_timeout_policy = lazy_import('msgraph.generated.models.activity_based_timeout_policy')
-admin_consent_request_policy = lazy_import('msgraph.generated.models.admin_consent_request_policy')
-app_management_policy = lazy_import('msgraph.generated.models.app_management_policy')
-authentication_flows_policy = lazy_import('msgraph.generated.models.authentication_flows_policy')
-authentication_methods_policy = lazy_import('msgraph.generated.models.authentication_methods_policy')
-authorization_policy = lazy_import('msgraph.generated.models.authorization_policy')
-claims_mapping_policy = lazy_import('msgraph.generated.models.claims_mapping_policy')
-conditional_access_policy = lazy_import('msgraph.generated.models.conditional_access_policy')
-cross_tenant_access_policy = lazy_import('msgraph.generated.models.cross_tenant_access_policy')
-entity = lazy_import('msgraph.generated.models.entity')
-feature_rollout_policy = lazy_import('msgraph.generated.models.feature_rollout_policy')
-home_realm_discovery_policy = lazy_import('msgraph.generated.models.home_realm_discovery_policy')
-identity_security_defaults_enforcement_policy = lazy_import('msgraph.generated.models.identity_security_defaults_enforcement_policy')
-permission_grant_policy = lazy_import('msgraph.generated.models.permission_grant_policy')
-tenant_app_management_policy = lazy_import('msgraph.generated.models.tenant_app_management_policy')
-token_issuance_policy = lazy_import('msgraph.generated.models.token_issuance_policy')
-token_lifetime_policy = lazy_import('msgraph.generated.models.token_lifetime_policy')
-unified_role_management_policy = lazy_import('msgraph.generated.models.unified_role_management_policy')
-unified_role_management_policy_assignment = lazy_import('msgraph.generated.models.unified_role_management_policy_assignment')
+if TYPE_CHECKING:
+    from . import activity_based_timeout_policy, admin_consent_request_policy, app_management_policy, authentication_flows_policy, authentication_methods_policy, authorization_policy, claims_mapping_policy, conditional_access_policy, cross_tenant_access_policy, entity, feature_rollout_policy, home_realm_discovery_policy, identity_security_defaults_enforcement_policy, permission_grant_policy, tenant_app_management_policy, token_issuance_policy, token_lifetime_policy, unified_role_management_policy, unified_role_management_policy_assignment
+
+from . import entity
 
 class PolicyRoot(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new PolicyRoot and sets the default values.
+        """
+        super().__init__()
+        # The policy that controls the idle time out for web sessions for applications.
+        self._activity_based_timeout_policies: Optional[List[activity_based_timeout_policy.ActivityBasedTimeoutPolicy]] = None
+        # The policy by which consent requests are created and managed for the entire tenant.
+        self._admin_consent_request_policy: Optional[admin_consent_request_policy.AdminConsentRequestPolicy] = None
+        # The policies that enforce app management restrictions for specific applications and service principals, overriding the defaultAppManagementPolicy.
+        self._app_management_policies: Optional[List[app_management_policy.AppManagementPolicy]] = None
+        # The policy configuration of the self-service sign-up experience of external users.
+        self._authentication_flows_policy: Optional[authentication_flows_policy.AuthenticationFlowsPolicy] = None
+        # The authentication methods and the users that are allowed to use them to sign in and perform multi-factor authentication (MFA) in Azure Active Directory (Azure AD).
+        self._authentication_methods_policy: Optional[authentication_methods_policy.AuthenticationMethodsPolicy] = None
+        # The policy that controls Azure AD authorization settings.
+        self._authorization_policy: Optional[authorization_policy.AuthorizationPolicy] = None
+        # The claim-mapping policies for WS-Fed, SAML, OAuth 2.0, and OpenID Connect protocols, for tokens issued to a specific application.
+        self._claims_mapping_policies: Optional[List[claims_mapping_policy.ClaimsMappingPolicy]] = None
+        # The custom rules that define an access scenario.
+        self._conditional_access_policies: Optional[List[conditional_access_policy.ConditionalAccessPolicy]] = None
+        # The custom rules that define an access scenario when interacting with external Azure AD tenants.
+        self._cross_tenant_access_policy: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy] = None
+        # The tenant-wide policy that enforces app management restrictions for all applications and service principals.
+        self._default_app_management_policy: Optional[tenant_app_management_policy.TenantAppManagementPolicy] = None
+        # The feature rollout policy associated with a directory object.
+        self._feature_rollout_policies: Optional[List[feature_rollout_policy.FeatureRolloutPolicy]] = None
+        # The policy to control Azure AD authentication behavior for federated users.
+        self._home_realm_discovery_policies: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]] = None
+        # The policy that represents the security defaults that protect against common attacks.
+        self._identity_security_defaults_enforcement_policy: Optional[identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The policy that specifies the conditions under which consent can be granted.
+        self._permission_grant_policies: Optional[List[permission_grant_policy.PermissionGrantPolicy]] = None
+        # Specifies the various policies associated with scopes and roles.
+        self._role_management_policies: Optional[List[unified_role_management_policy.UnifiedRoleManagementPolicy]] = None
+        # The assignment of a role management policy to a role definition object.
+        self._role_management_policy_assignments: Optional[List[unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment]] = None
+        # The policy that specifies the characteristics of SAML tokens issued by Azure AD.
+        self._token_issuance_policies: Optional[List[token_issuance_policy.TokenIssuancePolicy]] = None
+        # The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Azure AD.
+        self._token_lifetime_policies: Optional[List[token_lifetime_policy.TokenLifetimePolicy]] = None
+    
     @property
     def activity_based_timeout_policies(self,) -> Optional[List[activity_based_timeout_policy.ActivityBasedTimeoutPolicy]]:
         """
@@ -61,7 +89,7 @@ class PolicyRoot(entity.Entity):
     @property
     def app_management_policies(self,) -> Optional[List[app_management_policy.AppManagementPolicy]]:
         """
-        Gets the appManagementPolicies property value. The appManagementPolicies property
+        Gets the appManagementPolicies property value. The policies that enforce app management restrictions for specific applications and service principals, overriding the defaultAppManagementPolicy.
         Returns: Optional[List[app_management_policy.AppManagementPolicy]]
         """
         return self._app_management_policies
@@ -69,7 +97,7 @@ class PolicyRoot(entity.Entity):
     @app_management_policies.setter
     def app_management_policies(self,value: Optional[List[app_management_policy.AppManagementPolicy]] = None) -> None:
         """
-        Sets the appManagementPolicies property value. The appManagementPolicies property
+        Sets the appManagementPolicies property value. The policies that enforce app management restrictions for specific applications and service principals, overriding the defaultAppManagementPolicy.
         Args:
             value: Value to set for the app_management_policies property.
         """
@@ -160,50 +188,6 @@ class PolicyRoot(entity.Entity):
         """
         self._conditional_access_policies = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new PolicyRoot and sets the default values.
-        """
-        super().__init__()
-        # The policy that controls the idle time out for web sessions for applications.
-        self._activity_based_timeout_policies: Optional[List[activity_based_timeout_policy.ActivityBasedTimeoutPolicy]] = None
-        # The policy by which consent requests are created and managed for the entire tenant.
-        self._admin_consent_request_policy: Optional[admin_consent_request_policy.AdminConsentRequestPolicy] = None
-        # The appManagementPolicies property
-        self._app_management_policies: Optional[List[app_management_policy.AppManagementPolicy]] = None
-        # The policy configuration of the self-service sign-up experience of external users.
-        self._authentication_flows_policy: Optional[authentication_flows_policy.AuthenticationFlowsPolicy] = None
-        # The authentication methods and the users that are allowed to use them to sign in and perform multi-factor authentication (MFA) in Azure Active Directory (Azure AD).
-        self._authentication_methods_policy: Optional[authentication_methods_policy.AuthenticationMethodsPolicy] = None
-        # The policy that controls Azure AD authorization settings.
-        self._authorization_policy: Optional[authorization_policy.AuthorizationPolicy] = None
-        # The claim-mapping policies for WS-Fed, SAML, OAuth 2.0, and OpenID Connect protocols, for tokens issued to a specific application.
-        self._claims_mapping_policies: Optional[List[claims_mapping_policy.ClaimsMappingPolicy]] = None
-        # The custom rules that define an access scenario.
-        self._conditional_access_policies: Optional[List[conditional_access_policy.ConditionalAccessPolicy]] = None
-        # The custom rules that define an access scenario when interacting with external Azure AD tenants.
-        self._cross_tenant_access_policy: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy] = None
-        # The defaultAppManagementPolicy property
-        self._default_app_management_policy: Optional[tenant_app_management_policy.TenantAppManagementPolicy] = None
-        # The feature rollout policy associated with a directory object.
-        self._feature_rollout_policies: Optional[List[feature_rollout_policy.FeatureRolloutPolicy]] = None
-        # The policy to control Azure AD authentication behavior for federated users.
-        self._home_realm_discovery_policies: Optional[List[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]] = None
-        # The policy that represents the security defaults that protect against common attacks.
-        self._identity_security_defaults_enforcement_policy: Optional[identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The policy that specifies the conditions under which consent can be granted.
-        self._permission_grant_policies: Optional[List[permission_grant_policy.PermissionGrantPolicy]] = None
-        # Specifies the various policies associated with scopes and roles.
-        self._role_management_policies: Optional[List[unified_role_management_policy.UnifiedRoleManagementPolicy]] = None
-        # The assignment of a role management policy to a role definition object.
-        self._role_management_policy_assignments: Optional[List[unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment]] = None
-        # The policy that specifies the characteristics of SAML tokens issued by Azure AD.
-        self._token_issuance_policies: Optional[List[token_issuance_policy.TokenIssuancePolicy]] = None
-        # The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Azure AD.
-        self._token_lifetime_policies: Optional[List[token_lifetime_policy.TokenLifetimePolicy]] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PolicyRoot:
         """
@@ -236,7 +220,7 @@ class PolicyRoot(entity.Entity):
     @property
     def default_app_management_policy(self,) -> Optional[tenant_app_management_policy.TenantAppManagementPolicy]:
         """
-        Gets the defaultAppManagementPolicy property value. The defaultAppManagementPolicy property
+        Gets the defaultAppManagementPolicy property value. The tenant-wide policy that enforces app management restrictions for all applications and service principals.
         Returns: Optional[tenant_app_management_policy.TenantAppManagementPolicy]
         """
         return self._default_app_management_policy
@@ -244,7 +228,7 @@ class PolicyRoot(entity.Entity):
     @default_app_management_policy.setter
     def default_app_management_policy(self,value: Optional[tenant_app_management_policy.TenantAppManagementPolicy] = None) -> None:
         """
-        Sets the defaultAppManagementPolicy property value. The defaultAppManagementPolicy property
+        Sets the defaultAppManagementPolicy property value. The tenant-wide policy that enforces app management restrictions for all applications and service principals.
         Args:
             value: Value to set for the default_app_management_policy property.
         """
@@ -272,7 +256,9 @@ class PolicyRoot(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import activity_based_timeout_policy, admin_consent_request_policy, app_management_policy, authentication_flows_policy, authentication_methods_policy, authorization_policy, claims_mapping_policy, conditional_access_policy, cross_tenant_access_policy, entity, feature_rollout_policy, home_realm_discovery_policy, identity_security_defaults_enforcement_policy, permission_grant_policy, tenant_app_management_policy, token_issuance_policy, token_lifetime_policy, unified_role_management_policy, unified_role_management_policy_assignment
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "activityBasedTimeoutPolicies": lambda n : setattr(self, 'activity_based_timeout_policies', n.get_collection_of_object_values(activity_based_timeout_policy.ActivityBasedTimeoutPolicy)),
             "adminConsentRequestPolicy": lambda n : setattr(self, 'admin_consent_request_policy', n.get_object_value(admin_consent_request_policy.AdminConsentRequestPolicy)),
             "appManagementPolicies": lambda n : setattr(self, 'app_management_policies', n.get_collection_of_object_values(app_management_policy.AppManagementPolicy)),

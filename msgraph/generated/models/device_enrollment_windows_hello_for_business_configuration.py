@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-device_enrollment_configuration = lazy_import('msgraph.generated.models.device_enrollment_configuration')
-enablement = lazy_import('msgraph.generated.models.enablement')
-windows_hello_for_business_pin_usage = lazy_import('msgraph.generated.models.windows_hello_for_business_pin_usage')
+if TYPE_CHECKING:
+    from . import device_enrollment_configuration, enablement, windows_hello_for_business_pin_usage
+
+from . import device_enrollment_configuration
 
 class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_configuration.DeviceEnrollmentConfiguration):
     def __init__(self,) -> None:
@@ -73,7 +73,9 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import device_enrollment_configuration, enablement, windows_hello_for_business_pin_usage
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "enhancedBiometricsState": lambda n : setattr(self, 'enhanced_biometrics_state', n.get_enum_value(enablement.Enablement)),
             "pinExpirationInDays": lambda n : setattr(self, 'pin_expiration_in_days', n.get_int_value()),
             "pinLowercaseCharactersUsage": lambda n : setattr(self, 'pin_lowercase_characters_usage', n.get_enum_value(windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage)),

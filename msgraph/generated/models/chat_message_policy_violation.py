@@ -1,31 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-chat_message_policy_violation_dlp_action_types = lazy_import('msgraph.generated.models.chat_message_policy_violation_dlp_action_types')
-chat_message_policy_violation_policy_tip = lazy_import('msgraph.generated.models.chat_message_policy_violation_policy_tip')
-chat_message_policy_violation_user_action_types = lazy_import('msgraph.generated.models.chat_message_policy_violation_user_action_types')
-chat_message_policy_violation_verdict_details_types = lazy_import('msgraph.generated.models.chat_message_policy_violation_verdict_details_types')
+if TYPE_CHECKING:
+    from . import chat_message_policy_violation_dlp_action_types, chat_message_policy_violation_policy_tip, chat_message_policy_violation_user_action_types, chat_message_policy_violation_verdict_details_types
 
 class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new chatMessagePolicyViolation and sets the default values.
@@ -45,6 +25,23 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         self._user_action: Optional[chat_message_policy_violation_user_action_types.ChatMessagePolicyViolationUserActionTypes] = None
         # Indicates what actions the sender may take in response to the policy violation. Supported values are: NoneAllowFalsePositiveOverride -- Allows the sender to declare the policyViolation to be an error in the DLP app and its rules, and allow readers to see the message again if the dlpAction had hidden it.AllowOverrideWithoutJustification -- Allows the sender to overriide the DLP violation and allow readers to see the message again if the dlpAction had hidden it, without needing to provide an explanation for doing so. AllowOverrideWithJustification -- Allows the sender to overriide the DLP violation and allow readers to see the message again if the dlpAction had hidden it, after providing an explanation for doing so.AllowOverrideWithoutJustification and AllowOverrideWithJustification are mutually exclusive.
         self._verdict_details: Optional[chat_message_policy_violation_verdict_details_types.ChatMessagePolicyViolationVerdictDetailsTypes] = None
+    
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessagePolicyViolation:
@@ -80,7 +77,9 @@ class ChatMessagePolicyViolation(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import chat_message_policy_violation_dlp_action_types, chat_message_policy_violation_policy_tip, chat_message_policy_violation_user_action_types, chat_message_policy_violation_verdict_details_types
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "dlpAction": lambda n : setattr(self, 'dlp_action', n.get_enum_value(chat_message_policy_violation_dlp_action_types.ChatMessagePolicyViolationDlpActionTypes)),
             "justificationText": lambda n : setattr(self, 'justification_text', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -1,34 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-key_value = lazy_import('msgraph.generated.models.key_value')
-localized_description = lazy_import('msgraph.generated.models.term_store.localized_description')
-localized_label = lazy_import('msgraph.generated.models.term_store.localized_label')
-relation = lazy_import('msgraph.generated.models.term_store.relation')
-set = lazy_import('msgraph.generated.models.term_store.set')
+if TYPE_CHECKING:
+    from . import localized_description, localized_label, relation, set
+    from .. import entity, key_value
+
+from .. import entity
 
 class Term(entity.Entity):
-    @property
-    def children(self,) -> Optional[List[Term]]:
-        """
-        Gets the children property value. Children of current term.
-        Returns: Optional[List[Term]]
-        """
-        return self._children
-    
-    @children.setter
-    def children(self,value: Optional[List[Term]] = None) -> None:
-        """
-        Sets the children property value. Children of current term.
-        Args:
-            value: Value to set for the children property.
-        """
-        self._children = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new term and sets the default values.
@@ -52,6 +33,23 @@ class Term(entity.Entity):
         self._relations: Optional[List[relation.Relation]] = None
         # The [set] in which the term is created.
         self._set: Optional[set.Set] = None
+    
+    @property
+    def children(self,) -> Optional[List[Term]]:
+        """
+        Gets the children property value. Children of current term.
+        Returns: Optional[List[Term]]
+        """
+        return self._children
+    
+    @children.setter
+    def children(self,value: Optional[List[Term]] = None) -> None:
+        """
+        Sets the children property value. Children of current term.
+        Args:
+            value: Value to set for the children property.
+        """
+        self._children = value
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -104,7 +102,10 @@ class Term(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import localized_description, localized_label, relation, set
+        from .. import entity, key_value
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "children": lambda n : setattr(self, 'children', n.get_collection_of_object_values(Term)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "descriptions": lambda n : setattr(self, 'descriptions', n.get_collection_of_object_values(localized_description.LocalizedDescription)),

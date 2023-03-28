@@ -1,12 +1,31 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-public_error_detail = lazy_import('msgraph.generated.models.public_error_detail')
-public_inner_error = lazy_import('msgraph.generated.models.public_inner_error')
+if TYPE_CHECKING:
+    from . import public_error_detail, public_inner_error
 
 class PublicError(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new publicError and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Represents the error code.
+        self._code: Optional[str] = None
+        # Details of the error.
+        self._details: Optional[List[public_error_detail.PublicErrorDetail]] = None
+        # Details of the inner error.
+        self._inner_error: Optional[public_inner_error.PublicInnerError] = None
+        # A non-localized message for the developer.
+        self._message: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The target of the error.
+        self._target: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -40,26 +59,6 @@ class PublicError(AdditionalDataHolder, Parsable):
             value: Value to set for the code property.
         """
         self._code = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new publicError and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Represents the error code.
-        self._code: Optional[str] = None
-        # Details of the error.
-        self._details: Optional[List[public_error_detail.PublicErrorDetail]] = None
-        # Details of the inner error.
-        self._inner_error: Optional[public_inner_error.PublicInnerError] = None
-        # A non-localized message for the developer.
-        self._message: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The target of the error.
-        self._target: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PublicError:
@@ -95,7 +94,9 @@ class PublicError(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import public_error_detail, public_inner_error
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "code": lambda n : setattr(self, 'code', n.get_str_value()),
             "details": lambda n : setattr(self, 'details', n.get_collection_of_object_values(public_error_detail.PublicErrorDetail)),
             "innerError": lambda n : setattr(self, 'inner_error', n.get_object_value(public_inner_error.PublicInnerError)),

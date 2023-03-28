@@ -1,12 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-advanced_config_state = lazy_import('msgraph.generated.models.advanced_config_state')
-feature_target = lazy_import('msgraph.generated.models.feature_target')
+if TYPE_CHECKING:
+    from . import advanced_config_state, feature_target
 
 class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new authenticationMethodFeatureConfiguration and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # A single entity that is excluded from this feature.
+        self._exclude_target: Optional[feature_target.FeatureTarget] = None
+        # A single entity that is included in this feature.
+        self._include_target: Optional[feature_target.FeatureTarget] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Enable or disable the feature. Possible values are: default, enabled, disabled, unknownFutureValue. The default value is used when the configuration hasn't been explicitly set and uses the default behavior of Azure AD for the setting. The default value is disabled.
+        self._state: Optional[advanced_config_state.AdvancedConfigState] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -23,22 +38,6 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new authenticationMethodFeatureConfiguration and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # A single entity that is excluded from this feature.
-        self._exclude_target: Optional[feature_target.FeatureTarget] = None
-        # A single entity that is included in this feature.
-        self._include_target: Optional[feature_target.FeatureTarget] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Enable or disable the feature. Possible values are: default, enabled, disabled, unknownFutureValue. The default value is used when the configuration hasn't been explicitly set and uses the default behavior of Azure AD for the setting. The default value is disabled.
-        self._state: Optional[advanced_config_state.AdvancedConfigState] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodFeatureConfiguration:
@@ -74,7 +73,9 @@ class AuthenticationMethodFeatureConfiguration(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import advanced_config_state, feature_target
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "excludeTarget": lambda n : setattr(self, 'exclude_target', n.get_object_value(feature_target.FeatureTarget)),
             "includeTarget": lambda n : setattr(self, 'include_target', n.get_object_value(feature_target.FeatureTarget)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

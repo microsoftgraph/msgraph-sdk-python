@@ -1,83 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-importance = lazy_import('msgraph.generated.models.importance')
-message_action_flag = lazy_import('msgraph.generated.models.message_action_flag')
-recipient = lazy_import('msgraph.generated.models.recipient')
-sensitivity = lazy_import('msgraph.generated.models.sensitivity')
-size_range = lazy_import('msgraph.generated.models.size_range')
+if TYPE_CHECKING:
+    from . import importance, message_action_flag, recipient, sensitivity, size_range
 
 class MessageRulePredicates(AdditionalDataHolder, Parsable):
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def body_contains(self,) -> Optional[List[str]]:
-        """
-        Gets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
-        Returns: Optional[List[str]]
-        """
-        return self._body_contains
-    
-    @body_contains.setter
-    def body_contains(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the body_contains property.
-        """
-        self._body_contains = value
-    
-    @property
-    def body_or_subject_contains(self,) -> Optional[List[str]]:
-        """
-        Gets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
-        Returns: Optional[List[str]]
-        """
-        return self._body_or_subject_contains
-    
-    @body_or_subject_contains.setter
-    def body_or_subject_contains(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the body_or_subject_contains property.
-        """
-        self._body_or_subject_contains = value
-    
-    @property
-    def categories(self,) -> Optional[List[str]]:
-        """
-        Gets the categories property value. Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
-        Returns: Optional[List[str]]
-        """
-        return self._categories
-    
-    @categories.setter
-    def categories(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the categories property value. Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the categories property.
-        """
-        self._categories = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new messageRulePredicates and sets the default values.
@@ -148,6 +76,74 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         # Represents the minimum and maximum sizes (in kilobytes) that an incoming message must fall in between in order for the condition or exception to apply.
         self._within_size_range: Optional[size_range.SizeRange] = None
     
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
+    @property
+    def body_contains(self,) -> Optional[List[str]]:
+        """
+        Gets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
+        Returns: Optional[List[str]]
+        """
+        return self._body_contains
+    
+    @body_contains.setter
+    def body_contains(self,value: Optional[List[str]] = None) -> None:
+        """
+        Sets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
+        Args:
+            value: Value to set for the body_contains property.
+        """
+        self._body_contains = value
+    
+    @property
+    def body_or_subject_contains(self,) -> Optional[List[str]]:
+        """
+        Gets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
+        Returns: Optional[List[str]]
+        """
+        return self._body_or_subject_contains
+    
+    @body_or_subject_contains.setter
+    def body_or_subject_contains(self,value: Optional[List[str]] = None) -> None:
+        """
+        Sets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
+        Args:
+            value: Value to set for the body_or_subject_contains property.
+        """
+        self._body_or_subject_contains = value
+    
+    @property
+    def categories(self,) -> Optional[List[str]]:
+        """
+        Gets the categories property value. Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
+        Returns: Optional[List[str]]
+        """
+        return self._categories
+    
+    @categories.setter
+    def categories(self,value: Optional[List[str]] = None) -> None:
+        """
+        Sets the categories property value. Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
+        Args:
+            value: Value to set for the categories property.
+        """
+        self._categories = value
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MessageRulePredicates:
         """
@@ -182,7 +178,9 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import importance, message_action_flag, recipient, sensitivity, size_range
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "bodyContains": lambda n : setattr(self, 'body_contains', n.get_collection_of_primitive_values(str)),
             "bodyOrSubjectContains": lambda n : setattr(self, 'body_or_subject_contains', n.get_collection_of_primitive_values(str)),
             "categories": lambda n : setattr(self, 'categories', n.get_collection_of_primitive_values(str)),

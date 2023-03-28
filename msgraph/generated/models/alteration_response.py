@@ -1,12 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-search_alteration = lazy_import('msgraph.generated.models.search_alteration')
-search_alteration_type = lazy_import('msgraph.generated.models.search_alteration_type')
+if TYPE_CHECKING:
+    from . import search_alteration, search_alteration_type
 
 class AlterationResponse(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new alterationResponse and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Defines the original user query string.
+        self._original_query_string: Optional[str] = None
+        # Defines the details of the alteration information for the spelling correction.
+        self._query_alteration: Optional[search_alteration.SearchAlteration] = None
+        # Defines the type of the spelling correction. Possible values are: suggestion, modification.
+        self._query_alteration_type: Optional[search_alteration_type.SearchAlterationType] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -23,22 +38,6 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new alterationResponse and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Defines the original user query string.
-        self._original_query_string: Optional[str] = None
-        # Defines the details of the alteration information for the spelling correction.
-        self._query_alteration: Optional[search_alteration.SearchAlteration] = None
-        # Defines the type of the spelling correction. Possible values are: suggestion, modification.
-        self._query_alteration_type: Optional[search_alteration_type.SearchAlterationType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AlterationResponse:
@@ -57,7 +56,9 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import search_alteration, search_alteration_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "originalQueryString": lambda n : setattr(self, 'original_query_string', n.get_str_value()),
             "queryAlteration": lambda n : setattr(self, 'query_alteration', n.get_object_value(search_alteration.SearchAlteration)),

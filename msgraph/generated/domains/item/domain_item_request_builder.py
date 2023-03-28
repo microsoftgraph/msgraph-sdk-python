@@ -7,76 +7,27 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-domain_name_references_request_builder = lazy_import('msgraph.generated.domains.item.domain_name_references.domain_name_references_request_builder')
-directory_object_item_request_builder = lazy_import('msgraph.generated.domains.item.domain_name_references.item.directory_object_item_request_builder')
-federation_configuration_request_builder = lazy_import('msgraph.generated.domains.item.federation_configuration.federation_configuration_request_builder')
-internal_domain_federation_item_request_builder = lazy_import('msgraph.generated.domains.item.federation_configuration.item.internal_domain_federation_item_request_builder')
-force_delete_request_builder = lazy_import('msgraph.generated.domains.item.force_delete.force_delete_request_builder')
-promote_request_builder = lazy_import('msgraph.generated.domains.item.promote.promote_request_builder')
-service_configuration_records_request_builder = lazy_import('msgraph.generated.domains.item.service_configuration_records.service_configuration_records_request_builder')
-domain_dns_record_item_request_builder = lazy_import('msgraph.generated.domains.item.service_configuration_records.item.domain_dns_record_item_request_builder')
-verification_dns_records_request_builder = lazy_import('msgraph.generated.domains.item.verification_dns_records.verification_dns_records_request_builder')
-domain_dns_record_item_request_builder = lazy_import('msgraph.generated.domains.item.verification_dns_records.item.domain_dns_record_item_request_builder')
-verify_request_builder = lazy_import('msgraph.generated.domains.item.verify.verify_request_builder')
-domain = lazy_import('msgraph.generated.models.domain')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from ...models import domain
+    from ...models.o_data_errors import o_data_error
+    from .domain_name_references import domain_name_references_request_builder
+    from .domain_name_references.item import directory_object_item_request_builder
+    from .federation_configuration import federation_configuration_request_builder
+    from .federation_configuration.item import internal_domain_federation_item_request_builder
+    from .force_delete import force_delete_request_builder
+    from .promote import promote_request_builder
+    from .service_configuration_records import service_configuration_records_request_builder
+    from .service_configuration_records.item import domain_dns_record_item_request_builder
+    from .verification_dns_records import verification_dns_records_request_builder
+    from .verification_dns_records.item import domain_dns_record_item_request_builder
+    from .verify import verify_request_builder
 
 class DomainItemRequestBuilder():
     """
     Provides operations to manage the collection of domain entities.
     """
-    @property
-    def domain_name_references(self) -> domain_name_references_request_builder.DomainNameReferencesRequestBuilder:
-        """
-        Provides operations to manage the domainNameReferences property of the microsoft.graph.domain entity.
-        """
-        return domain_name_references_request_builder.DomainNameReferencesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def federation_configuration(self) -> federation_configuration_request_builder.FederationConfigurationRequestBuilder:
-        """
-        Provides operations to manage the federationConfiguration property of the microsoft.graph.domain entity.
-        """
-        return federation_configuration_request_builder.FederationConfigurationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def force_delete(self) -> force_delete_request_builder.ForceDeleteRequestBuilder:
-        """
-        Provides operations to call the forceDelete method.
-        """
-        return force_delete_request_builder.ForceDeleteRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def promote(self) -> promote_request_builder.PromoteRequestBuilder:
-        """
-        Provides operations to call the promote method.
-        """
-        return promote_request_builder.PromoteRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def service_configuration_records(self) -> service_configuration_records_request_builder.ServiceConfigurationRecordsRequestBuilder:
-        """
-        Provides operations to manage the serviceConfigurationRecords property of the microsoft.graph.domain entity.
-        """
-        return service_configuration_records_request_builder.ServiceConfigurationRecordsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def verification_dns_records(self) -> verification_dns_records_request_builder.VerificationDnsRecordsRequestBuilder:
-        """
-        Provides operations to manage the verificationDnsRecords property of the microsoft.graph.domain entity.
-        """
-        return verification_dns_records_request_builder.VerificationDnsRecordsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def verify(self) -> verify_request_builder.VerifyRequestBuilder:
-        """
-        Provides operations to call the verify method.
-        """
-        return verify_request_builder.VerifyRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DomainItemRequestBuilder and sets the default values.
@@ -104,6 +55,8 @@ class DomainItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from ...models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -121,6 +74,8 @@ class DomainItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .domain_name_references.item import directory_object_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -134,6 +89,8 @@ class DomainItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .federation_configuration.item import internal_domain_federation_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["internalDomainFederation%2Did"] = id
         return internal_domain_federation_item_request_builder.InternalDomainFederationItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -148,12 +105,16 @@ class DomainItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ...models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ...models import domain
+
         return await self.request_adapter.send_async(request_info, domain.Domain, error_mapping)
     
     async def patch(self,body: Optional[domain.Domain] = None, request_configuration: Optional[DomainItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[domain.Domain]:
@@ -169,12 +130,16 @@ class DomainItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ...models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ...models import domain
+
         return await self.request_adapter.send_async(request_info, domain.Domain, error_mapping)
     
     def service_configuration_records_by_id(self,id: str) -> domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder:
@@ -186,6 +151,9 @@ class DomainItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .service_configuration_records.item import domain_dns_record_item_request_builder
+        from .verification_dns_records.item import domain_dns_record_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["domainDnsRecord%2Did"] = id
         return domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -254,9 +222,75 @@ class DomainItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .service_configuration_records.item import domain_dns_record_item_request_builder
+        from .verification_dns_records.item import domain_dns_record_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["domainDnsRecord%2Did"] = id
         return domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    @property
+    def domain_name_references(self) -> domain_name_references_request_builder.DomainNameReferencesRequestBuilder:
+        """
+        Provides operations to manage the domainNameReferences property of the microsoft.graph.domain entity.
+        """
+        from .domain_name_references import domain_name_references_request_builder
+
+        return domain_name_references_request_builder.DomainNameReferencesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def federation_configuration(self) -> federation_configuration_request_builder.FederationConfigurationRequestBuilder:
+        """
+        Provides operations to manage the federationConfiguration property of the microsoft.graph.domain entity.
+        """
+        from .federation_configuration import federation_configuration_request_builder
+
+        return federation_configuration_request_builder.FederationConfigurationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def force_delete(self) -> force_delete_request_builder.ForceDeleteRequestBuilder:
+        """
+        Provides operations to call the forceDelete method.
+        """
+        from .force_delete import force_delete_request_builder
+
+        return force_delete_request_builder.ForceDeleteRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def promote(self) -> promote_request_builder.PromoteRequestBuilder:
+        """
+        Provides operations to call the promote method.
+        """
+        from .promote import promote_request_builder
+
+        return promote_request_builder.PromoteRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def service_configuration_records(self) -> service_configuration_records_request_builder.ServiceConfigurationRecordsRequestBuilder:
+        """
+        Provides operations to manage the serviceConfigurationRecords property of the microsoft.graph.domain entity.
+        """
+        from .service_configuration_records import service_configuration_records_request_builder
+
+        return service_configuration_records_request_builder.ServiceConfigurationRecordsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def verification_dns_records(self) -> verification_dns_records_request_builder.VerificationDnsRecordsRequestBuilder:
+        """
+        Provides operations to manage the verificationDnsRecords property of the microsoft.graph.domain entity.
+        """
+        from .verification_dns_records import verification_dns_records_request_builder
+
+        return verification_dns_records_request_builder.VerificationDnsRecordsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def verify(self) -> verify_request_builder.VerifyRequestBuilder:
+        """
+        Provides operations to call the verify method.
+        """
+        from .verify import verify_request_builder
+
+        return verify_request_builder.VerifyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DomainItemRequestBuilderDeleteRequestConfiguration():
@@ -275,12 +309,6 @@ class DomainItemRequestBuilder():
         """
         Retrieve the properties and relationships of domain object.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -296,6 +324,12 @@ class DomainItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class DomainItemRequestBuilderGetRequestConfiguration():

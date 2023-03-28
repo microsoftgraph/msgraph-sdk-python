@@ -1,13 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-operation_status = lazy_import('msgraph.generated.models.operation_status')
-result_info = lazy_import('msgraph.generated.models.result_info')
+if TYPE_CHECKING:
+    from . import add_large_gallery_view_operation, cancel_media_processing_operation, entity, invite_participants_operation, mute_participant_operation, operation_status, play_prompt_operation, record_operation, result_info, start_hold_music_operation, stop_hold_music_operation, subscribe_to_tone_operation, unmute_participant_operation, update_recording_status_operation
+
+from . import entity
 
 class CommsOperation(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new commsOperation and sets the default values.
+        """
+        super().__init__()
+        # Unique Client Context string. Max limit is 256 chars.
+        self._client_context: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The result information. Read-only.
+        self._result_info: Optional[result_info.ResultInfo] = None
+        # The status property
+        self._status: Optional[operation_status.OperationStatus] = None
+    
     @property
     def client_context(self,) -> Optional[str]:
         """
@@ -25,20 +39,6 @@ class CommsOperation(entity.Entity):
         """
         self._client_context = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new commsOperation and sets the default values.
-        """
-        super().__init__()
-        # Unique Client Context string. Max limit is 256 chars.
-        self._client_context: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The result information. Read-only.
-        self._result_info: Optional[result_info.ResultInfo] = None
-        # The status property
-        self._status: Optional[operation_status.OperationStatus] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CommsOperation:
         """
@@ -49,6 +49,53 @@ class CommsOperation(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.addLargeGalleryViewOperation":
+                from . import add_large_gallery_view_operation
+
+                return add_large_gallery_view_operation.AddLargeGalleryViewOperation()
+            if mapping_value == "#microsoft.graph.cancelMediaProcessingOperation":
+                from . import cancel_media_processing_operation
+
+                return cancel_media_processing_operation.CancelMediaProcessingOperation()
+            if mapping_value == "#microsoft.graph.inviteParticipantsOperation":
+                from . import invite_participants_operation
+
+                return invite_participants_operation.InviteParticipantsOperation()
+            if mapping_value == "#microsoft.graph.muteParticipantOperation":
+                from . import mute_participant_operation
+
+                return mute_participant_operation.MuteParticipantOperation()
+            if mapping_value == "#microsoft.graph.playPromptOperation":
+                from . import play_prompt_operation
+
+                return play_prompt_operation.PlayPromptOperation()
+            if mapping_value == "#microsoft.graph.recordOperation":
+                from . import record_operation
+
+                return record_operation.RecordOperation()
+            if mapping_value == "#microsoft.graph.startHoldMusicOperation":
+                from . import start_hold_music_operation
+
+                return start_hold_music_operation.StartHoldMusicOperation()
+            if mapping_value == "#microsoft.graph.stopHoldMusicOperation":
+                from . import stop_hold_music_operation
+
+                return stop_hold_music_operation.StopHoldMusicOperation()
+            if mapping_value == "#microsoft.graph.subscribeToToneOperation":
+                from . import subscribe_to_tone_operation
+
+                return subscribe_to_tone_operation.SubscribeToToneOperation()
+            if mapping_value == "#microsoft.graph.unmuteParticipantOperation":
+                from . import unmute_participant_operation
+
+                return unmute_participant_operation.UnmuteParticipantOperation()
+            if mapping_value == "#microsoft.graph.updateRecordingStatusOperation":
+                from . import update_recording_status_operation
+
+                return update_recording_status_operation.UpdateRecordingStatusOperation()
         return CommsOperation()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -56,7 +103,9 @@ class CommsOperation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import add_large_gallery_view_operation, cancel_media_processing_operation, entity, invite_participants_operation, mute_participant_operation, operation_status, play_prompt_operation, record_operation, result_info, start_hold_music_operation, stop_hold_music_operation, subscribe_to_tone_operation, unmute_participant_operation, update_recording_status_operation
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
             "resultInfo": lambda n : setattr(self, 'result_info', n.get_object_value(result_info.ResultInfo)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(operation_status.OperationStatus)),

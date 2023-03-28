@@ -1,11 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-education_resource = lazy_import('msgraph.generated.models.education_resource')
+if TYPE_CHECKING:
+    from . import education_resource
+
+from . import education_resource
 
 class EducationTeamsAppResource(education_resource.EducationResource):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new EducationTeamsAppResource and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.educationTeamsAppResource"
+        # URL that points to the icon of the app.
+        self._app_icon_web_url: Optional[str] = None
+        # Teams app ID of the application.
+        self._app_id: Optional[str] = None
+        # URL for the app resource that will be opened by Teams.
+        self._teams_embedded_content_url: Optional[str] = None
+        # URL for the app resource that can be opened in the browser.
+        self._web_url: Optional[str] = None
+    
     @property
     def app_icon_web_url(self,) -> Optional[str]:
         """
@@ -40,21 +57,6 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         """
         self._app_id = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EducationTeamsAppResource and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.educationTeamsAppResource"
-        # URL that points to the icon of the app.
-        self._app_icon_web_url: Optional[str] = None
-        # Teams app ID of the application.
-        self._app_id: Optional[str] = None
-        # URL for the app resource that will be opened by Teams.
-        self._teams_embedded_content_url: Optional[str] = None
-        # URL for the app resource that can be opened in the browser.
-        self._web_url: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationTeamsAppResource:
         """
@@ -72,7 +74,9 @@ class EducationTeamsAppResource(education_resource.EducationResource):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import education_resource
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "appIconWebUrl": lambda n : setattr(self, 'app_icon_web_url', n.get_str_value()),
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
             "teamsEmbeddedContentUrl": lambda n : setattr(self, 'teams_embedded_content_url', n.get_str_value()),

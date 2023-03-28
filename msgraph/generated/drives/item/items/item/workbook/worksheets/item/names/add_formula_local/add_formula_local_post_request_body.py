@@ -1,9 +1,22 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class AddFormulaLocalPostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new addFormulaLocalPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The comment property
+        self._comment: Optional[str] = None
+        # The formula property
+        self._formula: Optional[str] = None
+        # The name property
+        self._name: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -37,20 +50,6 @@ class AddFormulaLocalPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the comment property.
         """
         self._comment = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new addFormulaLocalPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The comment property
-        self._comment: Optional[str] = None
-        # The formula property
-        self._formula: Optional[str] = None
-        # The name property
-        self._name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddFormulaLocalPostRequestBody:
@@ -86,7 +85,7 @@ class AddFormulaLocalPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
             "formula": lambda n : setattr(self, 'formula', n.get_str_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),

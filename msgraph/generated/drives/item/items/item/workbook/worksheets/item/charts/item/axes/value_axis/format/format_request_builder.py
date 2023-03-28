@@ -7,32 +7,18 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-font_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.axes.value_axis.format.font.font_request_builder')
-line_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.axes.value_axis.format.line.line_request_builder')
-workbook_chart_axis_format = lazy_import('msgraph.generated.models.workbook_chart_axis_format')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from .............models import workbook_chart_axis_format
+    from .............models.o_data_errors import o_data_error
+    from .font import font_request_builder
+    from .line import line_request_builder
 
 class FormatRequestBuilder():
     """
     Provides operations to manage the format property of the microsoft.graph.workbookChartAxis entity.
     """
-    @property
-    def font(self) -> font_request_builder.FontRequestBuilder:
-        """
-        Provides operations to manage the font property of the microsoft.graph.workbookChartAxisFormat entity.
-        """
-        return font_request_builder.FontRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def line(self) -> line_request_builder.LineRequestBuilder:
-        """
-        Provides operations to manage the line property of the microsoft.graph.workbookChartAxisFormat entity.
-        """
-        return line_request_builder.LineRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new FormatRequestBuilder and sets the default values.
@@ -60,6 +46,8 @@ class FormatRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from .............models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -78,12 +66,16 @@ class FormatRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from .............models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .............models import workbook_chart_axis_format
+
         return await self.request_adapter.send_async(request_info, workbook_chart_axis_format.WorkbookChartAxisFormat, error_mapping)
     
     async def patch(self,body: Optional[workbook_chart_axis_format.WorkbookChartAxisFormat] = None, request_configuration: Optional[FormatRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart_axis_format.WorkbookChartAxisFormat]:
@@ -99,12 +91,16 @@ class FormatRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from .............models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .............models import workbook_chart_axis_format
+
         return await self.request_adapter.send_async(request_info, workbook_chart_axis_format.WorkbookChartAxisFormat, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[FormatRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -162,6 +158,24 @@ class FormatRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def font(self) -> font_request_builder.FontRequestBuilder:
+        """
+        Provides operations to manage the font property of the microsoft.graph.workbookChartAxisFormat entity.
+        """
+        from .font import font_request_builder
+
+        return font_request_builder.FontRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def line(self) -> line_request_builder.LineRequestBuilder:
+        """
+        Provides operations to manage the line property of the microsoft.graph.workbookChartAxisFormat entity.
+        """
+        from .line import line_request_builder
+
+        return line_request_builder.LineRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class FormatRequestBuilderDeleteRequestConfiguration():
         """
@@ -179,12 +193,6 @@ class FormatRequestBuilder():
         """
         Represents the formatting of a chart object, which includes line and font formatting. Read-only.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -200,6 +208,12 @@ class FormatRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class FormatRequestBuilderGetRequestConfiguration():

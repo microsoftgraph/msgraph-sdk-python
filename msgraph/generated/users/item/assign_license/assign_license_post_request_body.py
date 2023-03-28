@@ -1,11 +1,23 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-assigned_license = lazy_import('msgraph.generated.models.assigned_license')
+if TYPE_CHECKING:
+    from ....models import assigned_license
 
 class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new assignLicensePostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The addLicenses property
+        self._add_licenses: Optional[List[assigned_license.AssignedLicense]] = None
+        # The removeLicenses property
+        self._remove_licenses: Optional[List[Guid]] = None
+    
     @property
     def add_licenses(self,) -> Optional[List[assigned_license.AssignedLicense]]:
         """
@@ -40,18 +52,6 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
         """
         self._additional_data = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new assignLicensePostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The addLicenses property
-        self._add_licenses: Optional[List[assigned_license.AssignedLicense]] = None
-        # The removeLicenses property
-        self._remove_licenses: Optional[List[Guid]] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssignLicensePostRequestBody:
         """
@@ -69,7 +69,9 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from ....models import assigned_license
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "addLicenses": lambda n : setattr(self, 'add_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
             "removeLicenses": lambda n : setattr(self, 'remove_licenses', n.get_collection_of_primitive_values(guid)),
         }

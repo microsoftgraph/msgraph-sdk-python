@@ -1,14 +1,30 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-app_list_item = lazy_import('msgraph.generated.models.app_list_item')
+if TYPE_CHECKING:
+    from . import app_list_item
 
 class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
     """
     Network Usage Rules allow enterprises to specify how managed apps use networks, such as cellular data networks.
     """
+    def __init__(self,) -> None:
+        """
+        Instantiates a new iosNetworkUsageRule and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # If set to true, corresponding managed apps will not be allowed to use cellular data when roaming.
+        self._cellular_data_block_when_roaming: Optional[bool] = None
+        # If set to true, corresponding managed apps will not be allowed to use cellular data at any time.
+        self._cellular_data_blocked: Optional[bool] = None
+        # Information about the managed apps that this rule is going to apply to. This collection can contain a maximum of 500 elements.
+        self._managed_apps: Optional[List[app_list_item.AppListItem]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -60,22 +76,6 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
         """
         self._cellular_data_blocked = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new iosNetworkUsageRule and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # If set to true, corresponding managed apps will not be allowed to use cellular data when roaming.
-        self._cellular_data_block_when_roaming: Optional[bool] = None
-        # If set to true, corresponding managed apps will not be allowed to use cellular data at any time.
-        self._cellular_data_blocked: Optional[bool] = None
-        # Information about the managed apps that this rule is going to apply to. This collection can contain a maximum of 500 elements.
-        self._managed_apps: Optional[List[app_list_item.AppListItem]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosNetworkUsageRule:
         """
@@ -93,7 +93,9 @@ class IosNetworkUsageRule(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import app_list_item
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "cellularDataBlocked": lambda n : setattr(self, 'cellular_data_blocked', n.get_bool_value()),
             "cellularDataBlockWhenRoaming": lambda n : setattr(self, 'cellular_data_block_when_roaming', n.get_bool_value()),
             "managedApps": lambda n : setattr(self, 'managed_apps', n.get_collection_of_object_values(app_list_item.AppListItem)),

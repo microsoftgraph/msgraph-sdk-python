@@ -7,94 +7,26 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_packages_incompatible_with_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_packages.item.access_packages_incompatible_with.access_packages_incompatible_with_request_builder')
-access_package_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_packages.item.access_packages_incompatible_with.item.access_package_item_request_builder')
-assignment_policies_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_packages.item.assignment_policies.assignment_policies_request_builder')
-access_package_assignment_policy_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_packages.item.assignment_policies.item.access_package_assignment_policy_item_request_builder')
-catalog_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_packages.item.catalog.catalog_request_builder')
-get_applicable_policy_requirements_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_packages.item.get_applicable_policy_requirements.get_applicable_policy_requirements_request_builder')
-incompatible_access_packages_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_packages.item.incompatible_access_packages.incompatible_access_packages_request_builder')
-access_package_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_packages.item.incompatible_access_packages.item.access_package_item_request_builder')
-incompatible_groups_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_packages.item.incompatible_groups.incompatible_groups_request_builder')
-group_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.access_packages.item.incompatible_groups.item.group_item_request_builder')
-access_package = lazy_import('msgraph.generated.models.access_package')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from .....models import access_package
+    from .....models.o_data_errors import o_data_error
+    from .access_packages_incompatible_with import access_packages_incompatible_with_request_builder
+    from .access_packages_incompatible_with.item import access_package_item_request_builder
+    from .assignment_policies import assignment_policies_request_builder
+    from .assignment_policies.item import access_package_assignment_policy_item_request_builder
+    from .catalog import catalog_request_builder
+    from .get_applicable_policy_requirements import get_applicable_policy_requirements_request_builder
+    from .incompatible_access_packages import incompatible_access_packages_request_builder
+    from .incompatible_access_packages.item import access_package_item_request_builder
+    from .incompatible_groups import incompatible_groups_request_builder
+    from .incompatible_groups.item import group_item_request_builder
 
 class AccessPackageItemRequestBuilder():
     """
     Provides operations to manage the accessPackages property of the microsoft.graph.entitlementManagement entity.
     """
-    @property
-    def access_packages_incompatible_with(self) -> access_packages_incompatible_with_request_builder.AccessPackagesIncompatibleWithRequestBuilder:
-        """
-        Provides operations to manage the accessPackagesIncompatibleWith property of the microsoft.graph.accessPackage entity.
-        """
-        return access_packages_incompatible_with_request_builder.AccessPackagesIncompatibleWithRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def assignment_policies(self) -> assignment_policies_request_builder.AssignmentPoliciesRequestBuilder:
-        """
-        Provides operations to manage the assignmentPolicies property of the microsoft.graph.accessPackage entity.
-        """
-        return assignment_policies_request_builder.AssignmentPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def catalog(self) -> catalog_request_builder.CatalogRequestBuilder:
-        """
-        Provides operations to manage the catalog property of the microsoft.graph.accessPackage entity.
-        """
-        return catalog_request_builder.CatalogRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_applicable_policy_requirements(self) -> get_applicable_policy_requirements_request_builder.GetApplicablePolicyRequirementsRequestBuilder:
-        """
-        Provides operations to call the getApplicablePolicyRequirements method.
-        """
-        return get_applicable_policy_requirements_request_builder.GetApplicablePolicyRequirementsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def incompatible_access_packages(self) -> incompatible_access_packages_request_builder.IncompatibleAccessPackagesRequestBuilder:
-        """
-        Provides operations to manage the incompatibleAccessPackages property of the microsoft.graph.accessPackage entity.
-        """
-        return incompatible_access_packages_request_builder.IncompatibleAccessPackagesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def incompatible_groups(self) -> incompatible_groups_request_builder.IncompatibleGroupsRequestBuilder:
-        """
-        Provides operations to manage the incompatibleGroups property of the microsoft.graph.accessPackage entity.
-        """
-        return incompatible_groups_request_builder.IncompatibleGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def access_packages_incompatible_with_by_id(self,id: str) -> AccessPackageItemRequestBuilder:
-        """
-        Provides operations to manage the accessPackagesIncompatibleWith property of the microsoft.graph.accessPackage entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: AccessPackageItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessPackage%2Did1"] = id
-        return AccessPackageItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def assignment_policies_by_id(self,id: str) -> access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder:
-        """
-        Provides operations to manage the assignmentPolicies property of the microsoft.graph.accessPackage entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessPackageAssignmentPolicy%2Did"] = id
-        return access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessPackageItemRequestBuilder and sets the default values.
@@ -113,6 +45,37 @@ class AccessPackageItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def access_packages_incompatible_with_by_id(self,id: str) -> AccessPackageItemRequestBuilder:
+        """
+        Provides operations to manage the accessPackagesIncompatibleWith property of the microsoft.graph.accessPackage entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: AccessPackageItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        from .access_packages_incompatible_with.item import access_package_item_request_builder
+        from .incompatible_access_packages.item import access_package_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["accessPackage%2Did1"] = id
+        return AccessPackageItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    def assignment_policies_by_id(self,id: str) -> access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder:
+        """
+        Provides operations to manage the assignmentPolicies property of the microsoft.graph.accessPackage entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        from .assignment_policies.item import access_package_assignment_policy_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["accessPackageAssignmentPolicy%2Did"] = id
+        return access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def delete(self,request_configuration: Optional[AccessPackageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property accessPackages for identityGovernance
@@ -122,6 +85,8 @@ class AccessPackageItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from .....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -140,12 +105,16 @@ class AccessPackageItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from .....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .....models import access_package
+
         return await self.request_adapter.send_async(request_info, access_package.AccessPackage, error_mapping)
     
     def incompatible_access_packages_by_id(self,id: str) -> AccessPackageItemRequestBuilder:
@@ -157,6 +126,9 @@ class AccessPackageItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .access_packages_incompatible_with.item import access_package_item_request_builder
+        from .incompatible_access_packages.item import access_package_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["accessPackage%2Did1"] = id
         return AccessPackageItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -170,6 +142,8 @@ class AccessPackageItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .incompatible_groups.item import group_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["group%2Did"] = id
         return group_item_request_builder.GroupItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -187,12 +161,16 @@ class AccessPackageItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from .....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .....models import access_package
+
         return await self.request_adapter.send_async(request_info, access_package.AccessPackage, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AccessPackageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -250,6 +228,60 @@ class AccessPackageItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def access_packages_incompatible_with(self) -> access_packages_incompatible_with_request_builder.AccessPackagesIncompatibleWithRequestBuilder:
+        """
+        Provides operations to manage the accessPackagesIncompatibleWith property of the microsoft.graph.accessPackage entity.
+        """
+        from .access_packages_incompatible_with import access_packages_incompatible_with_request_builder
+
+        return access_packages_incompatible_with_request_builder.AccessPackagesIncompatibleWithRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def assignment_policies(self) -> assignment_policies_request_builder.AssignmentPoliciesRequestBuilder:
+        """
+        Provides operations to manage the assignmentPolicies property of the microsoft.graph.accessPackage entity.
+        """
+        from .assignment_policies import assignment_policies_request_builder
+
+        return assignment_policies_request_builder.AssignmentPoliciesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def catalog(self) -> catalog_request_builder.CatalogRequestBuilder:
+        """
+        Provides operations to manage the catalog property of the microsoft.graph.accessPackage entity.
+        """
+        from .catalog import catalog_request_builder
+
+        return catalog_request_builder.CatalogRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_applicable_policy_requirements(self) -> get_applicable_policy_requirements_request_builder.GetApplicablePolicyRequirementsRequestBuilder:
+        """
+        Provides operations to call the getApplicablePolicyRequirements method.
+        """
+        from .get_applicable_policy_requirements import get_applicable_policy_requirements_request_builder
+
+        return get_applicable_policy_requirements_request_builder.GetApplicablePolicyRequirementsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def incompatible_access_packages(self) -> incompatible_access_packages_request_builder.IncompatibleAccessPackagesRequestBuilder:
+        """
+        Provides operations to manage the incompatibleAccessPackages property of the microsoft.graph.accessPackage entity.
+        """
+        from .incompatible_access_packages import incompatible_access_packages_request_builder
+
+        return incompatible_access_packages_request_builder.IncompatibleAccessPackagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def incompatible_groups(self) -> incompatible_groups_request_builder.IncompatibleGroupsRequestBuilder:
+        """
+        Provides operations to manage the incompatibleGroups property of the microsoft.graph.accessPackage entity.
+        """
+        from .incompatible_groups import incompatible_groups_request_builder
+
+        return incompatible_groups_request_builder.IncompatibleGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class AccessPackageItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -267,12 +299,6 @@ class AccessPackageItemRequestBuilder():
         """
         Access packages define the collection of resource roles and the policies for which subjects can request or be assigned access to those resources.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -288,6 +314,12 @@ class AccessPackageItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class AccessPackageItemRequestBuilderGetRequestConfiguration():

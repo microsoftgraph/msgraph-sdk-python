@@ -1,11 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-json = lazy_import('msgraph.generated.models.json')
+if TYPE_CHECKING:
+    from ........models import json
 
 class WorkDay_IntlPostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new workDay_IntlPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The days property
+        self._days: Optional[json.Json] = None
+        # The holidays property
+        self._holidays: Optional[json.Json] = None
+        # The startDate property
+        self._start_date: Optional[json.Json] = None
+        # The weekend property
+        self._weekend: Optional[json.Json] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,22 +38,6 @@ class WorkDay_IntlPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workDay_IntlPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The days property
-        self._days: Optional[json.Json] = None
-        # The holidays property
-        self._holidays: Optional[json.Json] = None
-        # The startDate property
-        self._start_date: Optional[json.Json] = None
-        # The weekend property
-        self._weekend: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkDay_IntlPostRequestBody:
@@ -73,7 +73,9 @@ class WorkDay_IntlPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from ........models import json
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "days": lambda n : setattr(self, 'days', n.get_object_value(json.Json)),
             "holidays": lambda n : setattr(self, 'holidays', n.get_object_value(json.Json)),
             "startDate": lambda n : setattr(self, 'start_date', n.get_object_value(json.Json)),

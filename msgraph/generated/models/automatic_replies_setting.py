@@ -1,30 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-automatic_replies_status = lazy_import('msgraph.generated.models.automatic_replies_status')
-date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
-external_audience_scope = lazy_import('msgraph.generated.models.external_audience_scope')
+if TYPE_CHECKING:
+    from . import automatic_replies_status, date_time_time_zone, external_audience_scope
 
 class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new automaticRepliesSetting and sets the default values.
@@ -46,6 +27,23 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         self._scheduled_start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # Configurations status for automatic replies. The possible values are: disabled, alwaysEnabled, scheduled.
         self._status: Optional[automatic_replies_status.AutomaticRepliesStatus] = None
+    
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AutomaticRepliesSetting:
@@ -98,7 +96,9 @@ class AutomaticRepliesSetting(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import automatic_replies_status, date_time_time_zone, external_audience_scope
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "externalAudience": lambda n : setattr(self, 'external_audience', n.get_enum_value(external_audience_scope.ExternalAudienceScope)),
             "externalReplyMessage": lambda n : setattr(self, 'external_reply_message', n.get_str_value()),
             "internalReplyMessage": lambda n : setattr(self, 'internal_reply_message', n.get_str_value()),

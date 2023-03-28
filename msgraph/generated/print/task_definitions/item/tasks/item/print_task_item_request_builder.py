@@ -7,32 +7,18 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-print_task = lazy_import('msgraph.generated.models.print_task')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-definition_request_builder = lazy_import('msgraph.generated.print.task_definitions.item.tasks.item.definition.definition_request_builder')
-trigger_request_builder = lazy_import('msgraph.generated.print.task_definitions.item.tasks.item.trigger.trigger_request_builder')
+if TYPE_CHECKING:
+    from ......models import print_task
+    from ......models.o_data_errors import o_data_error
+    from .definition import definition_request_builder
+    from .trigger import trigger_request_builder
 
 class PrintTaskItemRequestBuilder():
     """
     Provides operations to manage the tasks property of the microsoft.graph.printTaskDefinition entity.
     """
-    @property
-    def definition(self) -> definition_request_builder.DefinitionRequestBuilder:
-        """
-        Provides operations to manage the definition property of the microsoft.graph.printTask entity.
-        """
-        return definition_request_builder.DefinitionRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def trigger(self) -> trigger_request_builder.TriggerRequestBuilder:
-        """
-        Provides operations to manage the trigger property of the microsoft.graph.printTask entity.
-        """
-        return trigger_request_builder.TriggerRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new PrintTaskItemRequestBuilder and sets the default values.
@@ -60,6 +46,8 @@ class PrintTaskItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from ......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -78,12 +66,16 @@ class PrintTaskItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ......models import print_task
+
         return await self.request_adapter.send_async(request_info, print_task.PrintTask, error_mapping)
     
     async def patch(self,body: Optional[print_task.PrintTask] = None, request_configuration: Optional[PrintTaskItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[print_task.PrintTask]:
@@ -99,12 +91,16 @@ class PrintTaskItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ......models import print_task
+
         return await self.request_adapter.send_async(request_info, print_task.PrintTask, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[PrintTaskItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -162,6 +158,24 @@ class PrintTaskItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def definition(self) -> definition_request_builder.DefinitionRequestBuilder:
+        """
+        Provides operations to manage the definition property of the microsoft.graph.printTask entity.
+        """
+        from .definition import definition_request_builder
+
+        return definition_request_builder.DefinitionRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def trigger(self) -> trigger_request_builder.TriggerRequestBuilder:
+        """
+        Provides operations to manage the trigger property of the microsoft.graph.printTask entity.
+        """
+        from .trigger import trigger_request_builder
+
+        return trigger_request_builder.TriggerRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class PrintTaskItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -179,12 +193,6 @@ class PrintTaskItemRequestBuilder():
         """
         A list of tasks that have been created based on this definition. The list includes currently running tasks and recently completed tasks. Read-only.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -200,6 +208,12 @@ class PrintTaskItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class PrintTaskItemRequestBuilderGetRequestConfiguration():

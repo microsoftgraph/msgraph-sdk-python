@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-agreement_file_localization = lazy_import('msgraph.generated.models.agreement_file_localization')
-agreement_file_properties = lazy_import('msgraph.generated.models.agreement_file_properties')
+if TYPE_CHECKING:
+    from . import agreement_file_localization, agreement_file_properties
+
+from . import agreement_file_properties
 
 class AgreementFile(agreement_file_properties.AgreementFileProperties):
     def __init__(self,) -> None:
@@ -34,7 +35,9 @@ class AgreementFile(agreement_file_properties.AgreementFileProperties):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import agreement_file_localization, agreement_file_properties
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "localizations": lambda n : setattr(self, 'localizations', n.get_collection_of_object_values(agreement_file_localization.AgreementFileLocalization)),
         }
         super_fields = super().get_field_deserializers()

@@ -1,12 +1,32 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-attack_simulation_user = lazy_import('msgraph.generated.models.attack_simulation_user')
+if TYPE_CHECKING:
+    from . import attack_simulation_user
 
 class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new attackSimulationSimulationUserCoverage and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # User in an attack simulation and training campaign.
+        self._attack_simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
+        # Number of link clicks in the received payloads by the user in attack simulation and training campaigns.
+        self._click_count: Optional[int] = None
+        # Number of compromising actions by the user in attack simulation and training campaigns.
+        self._compromised_count: Optional[int] = None
+        # Date and time of the latest attack simulation and training campaign that the user was included in.
+        self._latest_simulation_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Number of attack simulation and training campaigns that the user was included in.
+        self._simulation_count: Optional[int] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -75,26 +95,6 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         """
         self._compromised_count = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new attackSimulationSimulationUserCoverage and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # User in an attack simulation and training campaign.
-        self._attack_simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
-        # Number of link clicks in the received payloads by the user in attack simulation and training campaigns.
-        self._click_count: Optional[int] = None
-        # Number of compromising actions by the user in attack simulation and training campaigns.
-        self._compromised_count: Optional[int] = None
-        # Date and time of the latest attack simulation and training campaign that the user was included in.
-        self._latest_simulation_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Number of attack simulation and training campaigns that the user was included in.
-        self._simulation_count: Optional[int] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttackSimulationSimulationUserCoverage:
         """
@@ -112,7 +112,9 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import attack_simulation_user
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "attackSimulationUser": lambda n : setattr(self, 'attack_simulation_user', n.get_object_value(attack_simulation_user.AttackSimulationUser)),
             "clickCount": lambda n : setattr(self, 'click_count', n.get_int_value()),
             "compromisedCount": lambda n : setattr(self, 'compromised_count', n.get_int_value()),

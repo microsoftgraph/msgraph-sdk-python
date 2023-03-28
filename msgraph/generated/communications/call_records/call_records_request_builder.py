@@ -8,55 +8,19 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder = lazy_import('msgraph.generated.communications.call_records.call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time.call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder')
-call_records_get_pstn_calls_with_from_date_time_with_to_date_time_request_builder = lazy_import('msgraph.generated.communications.call_records.call_records_get_pstn_calls_with_from_date_time_with_to_date_time.call_records_get_pstn_calls_with_from_date_time_with_to_date_time_request_builder')
-count_request_builder = lazy_import('msgraph.generated.communications.call_records.count.count_request_builder')
-call_record = lazy_import('msgraph.generated.models.call_records.call_record')
-call_record_collection_response = lazy_import('msgraph.generated.models.call_records.call_record_collection_response')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from ...models.call_records import call_record, call_record_collection_response
+    from ...models.o_data_errors import o_data_error
+    from .call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time import call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder
+    from .call_records_get_pstn_calls_with_from_date_time_with_to_date_time import call_records_get_pstn_calls_with_from_date_time_with_to_date_time_request_builder
+    from .count import count_request_builder
 
 class CallRecordsRequestBuilder():
     """
     Provides operations to manage the callRecords property of the microsoft.graph.cloudCommunications entity.
     """
-    @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time(self,from_date_time: Optional[datetime] = None, to_date_time: Optional[datetime] = None) -> call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder.CallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder:
-        """
-        Provides operations to call the getDirectRoutingCalls method.
-        Args:
-            fromDateTime: Usage: fromDateTime={fromDateTime}
-            toDateTime: Usage: toDateTime={toDateTime}
-        Returns: call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder.CallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder
-        """
-        if from_date_time is None:
-            raise Exception("from_date_time cannot be undefined")
-        if to_date_time is None:
-            raise Exception("to_date_time cannot be undefined")
-        return call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder.CallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder(self.request_adapter, self.path_parameters, fromDateTime, toDateTime)
-    
-    def call_records_get_pstn_calls_with_from_date_time_with_to_date_time(self,from_date_time: Optional[datetime] = None, to_date_time: Optional[datetime] = None) -> call_records_get_pstn_calls_with_from_date_time_with_to_date_time_request_builder.CallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder:
-        """
-        Provides operations to call the getPstnCalls method.
-        Args:
-            fromDateTime: Usage: fromDateTime={fromDateTime}
-            toDateTime: Usage: toDateTime={toDateTime}
-        Returns: call_records_get_pstn_calls_with_from_date_time_with_to_date_time_request_builder.CallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder
-        """
-        if from_date_time is None:
-            raise Exception("from_date_time cannot be undefined")
-        if to_date_time is None:
-            raise Exception("to_date_time cannot be undefined")
-        return call_records_get_pstn_calls_with_from_date_time_with_to_date_time_request_builder.CallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder(self.request_adapter, self.path_parameters, fromDateTime, toDateTime)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CallRecordsRequestBuilder and sets the default values.
@@ -75,6 +39,38 @@ class CallRecordsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time(self,from_date_time: Optional[datetime] = None, to_date_time: Optional[datetime] = None) -> call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder.CallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder:
+        """
+        Provides operations to call the getDirectRoutingCalls method.
+        Args:
+            fromDateTime: Usage: fromDateTime={fromDateTime}
+            toDateTime: Usage: toDateTime={toDateTime}
+        Returns: call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder.CallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder
+        """
+        if from_date_time is None:
+            raise Exception("from_date_time cannot be undefined")
+        if to_date_time is None:
+            raise Exception("to_date_time cannot be undefined")
+        from .call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time import call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder
+
+        return call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder.CallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder(self.request_adapter, self.path_parameters, from_date_time, to_date_time)
+    
+    def call_records_get_pstn_calls_with_from_date_time_with_to_date_time(self,from_date_time: Optional[datetime] = None, to_date_time: Optional[datetime] = None) -> call_records_get_pstn_calls_with_from_date_time_with_to_date_time_request_builder.CallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder:
+        """
+        Provides operations to call the getPstnCalls method.
+        Args:
+            fromDateTime: Usage: fromDateTime={fromDateTime}
+            toDateTime: Usage: toDateTime={toDateTime}
+        Returns: call_records_get_pstn_calls_with_from_date_time_with_to_date_time_request_builder.CallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder
+        """
+        if from_date_time is None:
+            raise Exception("from_date_time cannot be undefined")
+        if to_date_time is None:
+            raise Exception("to_date_time cannot be undefined")
+        from .call_records_get_pstn_calls_with_from_date_time_with_to_date_time import call_records_get_pstn_calls_with_from_date_time_with_to_date_time_request_builder
+
+        return call_records_get_pstn_calls_with_from_date_time_with_to_date_time_request_builder.CallRecordsGetPstnCallsWithFromDateTimeWithToDateTimeRequestBuilder(self.request_adapter, self.path_parameters, from_date_time, to_date_time)
+    
     async def get(self,request_configuration: Optional[CallRecordsRequestBuilderGetRequestConfiguration] = None) -> Optional[call_record_collection_response.CallRecordCollectionResponse]:
         """
         Get callRecords from communications
@@ -85,12 +81,16 @@ class CallRecordsRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ...models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ...models.call_records import call_record_collection_response
+
         return await self.request_adapter.send_async(request_info, call_record_collection_response.CallRecordCollectionResponse, error_mapping)
     
     async def post(self,body: Optional[call_record.CallRecord] = None, request_configuration: Optional[CallRecordsRequestBuilderPostRequestConfiguration] = None) -> Optional[call_record.CallRecord]:
@@ -106,12 +106,16 @@ class CallRecordsRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
+        from ...models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ...models.call_records import call_record
+
         return await self.request_adapter.send_async(request_info, call_record.CallRecord, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CallRecordsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -153,35 +157,20 @@ class CallRecordsRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def count(self) -> count_request_builder.CountRequestBuilder:
+        """
+        Provides operations to count the resources in the collection.
+        """
+        from .count import count_request_builder
+
+        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class CallRecordsRequestBuilderGetQueryParameters():
         """
         Get callRecords from communications
         """
-        # Include count of items
-        count: Optional[bool] = None
-
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Filter items by property values
-        filter: Optional[str] = None
-
-        # Order items by property values
-        orderby: Optional[List[str]] = None
-
-        # Search items by search phrases
-        search: Optional[str] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
-        # Skip the first n items
-        skip: Optional[int] = None
-
-        # Show only the first n items
-        top: Optional[int] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -209,6 +198,30 @@ class CallRecordsRequestBuilder():
                 return "%24top"
             return original_name
         
+        # Include count of items
+        count: Optional[bool] = None
+
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
     
     @dataclass
     class CallRecordsRequestBuilderGetRequestConfiguration():

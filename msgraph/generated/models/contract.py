@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-directory_object = lazy_import('msgraph.generated.models.directory_object')
+if TYPE_CHECKING:
+    from . import directory_object
+
+from . import directory_object
 
 class Contract(directory_object.DirectoryObject):
     def __init__(self,) -> None:
@@ -106,7 +108,9 @@ class Contract(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import directory_object
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "contractType": lambda n : setattr(self, 'contract_type', n.get_str_value()),
             "customerId": lambda n : setattr(self, 'customer_id', n.get_object_value(Guid)),
             "defaultDomainName": lambda n : setattr(self, 'default_domain_name', n.get_str_value()),

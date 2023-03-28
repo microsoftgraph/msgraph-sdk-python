@@ -1,10 +1,64 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+
+if TYPE_CHECKING:
+    from . import teleconference_device_audio_quality, teleconference_device_screen_sharing_quality, teleconference_device_video_quality
 
 class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new teleconferenceDeviceMediaQuality and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The average inbound stream network jitter.
+        self._average_inbound_jitter: Optional[Timedelta] = None
+        # The average inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
+        self._average_inbound_packet_loss_rate_in_percentage: Optional[float] = None
+        # The average inbound stream network round trip delay.
+        self._average_inbound_round_trip_delay: Optional[Timedelta] = None
+        # The average outbound stream network jitter.
+        self._average_outbound_jitter: Optional[Timedelta] = None
+        # The average outbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
+        self._average_outbound_packet_loss_rate_in_percentage: Optional[float] = None
+        # The average outbound stream network round trip delay.
+        self._average_outbound_round_trip_delay: Optional[Timedelta] = None
+        # The channel index of media. Indexing begins with 1.  If a media session contains 3 video modalities, channel indexes will be 1, 2, and 3.
+        self._channel_index: Optional[int] = None
+        # The total number of the inbound packets.
+        self._inbound_packets: Optional[int] = None
+        # the local IP address for the media session.
+        self._local_i_p_address: Optional[str] = None
+        # The local media port.
+        self._local_port: Optional[int] = None
+        # The maximum inbound stream network jitter.
+        self._maximum_inbound_jitter: Optional[Timedelta] = None
+        # The maximum inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
+        self._maximum_inbound_packet_loss_rate_in_percentage: Optional[float] = None
+        # The maximum inbound stream network round trip delay.
+        self._maximum_inbound_round_trip_delay: Optional[Timedelta] = None
+        # The maximum outbound stream network jitter.
+        self._maximum_outbound_jitter: Optional[Timedelta] = None
+        # The maximum outbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
+        self._maximum_outbound_packet_loss_rate_in_percentage: Optional[float] = None
+        # The maximum outbound stream network round trip delay.
+        self._maximum_outbound_round_trip_delay: Optional[Timedelta] = None
+        # The total modality duration. If the media enabled and disabled multiple times, MediaDuration will the summation of all of the durations.
+        self._media_duration: Optional[Timedelta] = None
+        # The network link speed in bytes
+        self._network_link_speed_in_bytes: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The total number of the outbound packets.
+        self._outbound_packets: Optional[int] = None
+        # The remote IP address for the media session.
+        self._remote_i_p_address: Optional[str] = None
+        # The remote media port.
+        self._remote_port: Optional[int] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -141,58 +195,6 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         self._channel_index = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new teleconferenceDeviceMediaQuality and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The average inbound stream network jitter.
-        self._average_inbound_jitter: Optional[Timedelta] = None
-        # The average inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-        self._average_inbound_packet_loss_rate_in_percentage: Optional[float] = None
-        # The average inbound stream network round trip delay.
-        self._average_inbound_round_trip_delay: Optional[Timedelta] = None
-        # The average outbound stream network jitter.
-        self._average_outbound_jitter: Optional[Timedelta] = None
-        # The average outbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-        self._average_outbound_packet_loss_rate_in_percentage: Optional[float] = None
-        # The average outbound stream network round trip delay.
-        self._average_outbound_round_trip_delay: Optional[Timedelta] = None
-        # The channel index of media. Indexing begins with 1.  If a media session contains 3 video modalities, channel indexes will be 1, 2, and 3.
-        self._channel_index: Optional[int] = None
-        # The total number of the inbound packets.
-        self._inbound_packets: Optional[int] = None
-        # the local IP address for the media session.
-        self._local_i_p_address: Optional[str] = None
-        # The local media port.
-        self._local_port: Optional[int] = None
-        # The maximum inbound stream network jitter.
-        self._maximum_inbound_jitter: Optional[Timedelta] = None
-        # The maximum inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-        self._maximum_inbound_packet_loss_rate_in_percentage: Optional[float] = None
-        # The maximum inbound stream network round trip delay.
-        self._maximum_inbound_round_trip_delay: Optional[Timedelta] = None
-        # The maximum outbound stream network jitter.
-        self._maximum_outbound_jitter: Optional[Timedelta] = None
-        # The maximum outbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-        self._maximum_outbound_packet_loss_rate_in_percentage: Optional[float] = None
-        # The maximum outbound stream network round trip delay.
-        self._maximum_outbound_round_trip_delay: Optional[Timedelta] = None
-        # The total modality duration. If the media enabled and disabled multiple times, MediaDuration will the summation of all of the durations.
-        self._media_duration: Optional[Timedelta] = None
-        # The network link speed in bytes
-        self._network_link_speed_in_bytes: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The total number of the outbound packets.
-        self._outbound_packets: Optional[int] = None
-        # The remote IP address for the media session.
-        self._remote_i_p_address: Optional[str] = None
-        # The remote media port.
-        self._remote_port: Optional[int] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeleconferenceDeviceMediaQuality:
         """
@@ -203,6 +205,21 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.teleconferenceDeviceAudioQuality":
+                from . import teleconference_device_audio_quality
+
+                return teleconference_device_audio_quality.TeleconferenceDeviceAudioQuality()
+            if mapping_value == "#microsoft.graph.teleconferenceDeviceScreenSharingQuality":
+                from . import teleconference_device_screen_sharing_quality
+
+                return teleconference_device_screen_sharing_quality.TeleconferenceDeviceScreenSharingQuality()
+            if mapping_value == "#microsoft.graph.teleconferenceDeviceVideoQuality":
+                from . import teleconference_device_video_quality
+
+                return teleconference_device_video_quality.TeleconferenceDeviceVideoQuality()
         return TeleconferenceDeviceMediaQuality()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -210,7 +227,9 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import teleconference_device_audio_quality, teleconference_device_screen_sharing_quality, teleconference_device_video_quality
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "averageInboundJitter": lambda n : setattr(self, 'average_inbound_jitter', n.get_object_value(Timedelta)),
             "averageInboundPacketLossRateInPercentage": lambda n : setattr(self, 'average_inbound_packet_loss_rate_in_percentage', n.get_float_value()),
             "averageInboundRoundTripDelay": lambda n : setattr(self, 'average_inbound_round_trip_delay', n.get_object_value(Timedelta)),

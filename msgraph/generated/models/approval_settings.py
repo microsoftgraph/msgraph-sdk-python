@@ -1,11 +1,31 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-unified_approval_stage = lazy_import('msgraph.generated.models.unified_approval_stage')
+if TYPE_CHECKING:
+    from . import unified_approval_stage
 
 class ApprovalSettings(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new approvalSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # One of SingleStage, Serial, Parallel, NoApproval (default). NoApproval is used when isApprovalRequired is false.
+        self._approval_mode: Optional[str] = None
+        # If approval is required, the one or two elements of this collection define each of the stages of approval. An empty array if no approval is required.
+        self._approval_stages: Optional[List[unified_approval_stage.UnifiedApprovalStage]] = None
+        # Indicates whether approval is required for requests in this policy.
+        self._is_approval_required: Optional[bool] = None
+        # Indicates whether approval is required for a user to extend their assignment.
+        self._is_approval_required_for_extension: Optional[bool] = None
+        # Indicates whether the requestor is required to supply a justification in their request.
+        self._is_requestor_justification_required: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -57,26 +77,6 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         """
         self._approval_stages = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new approvalSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # One of SingleStage, Serial, Parallel, NoApproval (default). NoApproval is used when isApprovalRequired is false.
-        self._approval_mode: Optional[str] = None
-        # If approval is required, the one or two elements of this collection define each of the stages of approval. An empty array if no approval is required.
-        self._approval_stages: Optional[List[unified_approval_stage.UnifiedApprovalStage]] = None
-        # Indicates whether approval is required for requests in this policy.
-        self._is_approval_required: Optional[bool] = None
-        # Indicates whether approval is required for a user to extend their assignment.
-        self._is_approval_required_for_extension: Optional[bool] = None
-        # Indicates whether the requestor is required to supply a justification in their request.
-        self._is_requestor_justification_required: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApprovalSettings:
         """
@@ -94,7 +94,9 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import unified_approval_stage
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "approvalMode": lambda n : setattr(self, 'approval_mode', n.get_str_value()),
             "approvalStages": lambda n : setattr(self, 'approval_stages', n.get_collection_of_object_values(unified_approval_stage.UnifiedApprovalStage)),
             "isApprovalRequired": lambda n : setattr(self, 'is_approval_required', n.get_bool_value()),

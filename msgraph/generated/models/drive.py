@@ -1,34 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-base_item = lazy_import('msgraph.generated.models.base_item')
-drive_item = lazy_import('msgraph.generated.models.drive_item')
-identity_set = lazy_import('msgraph.generated.models.identity_set')
-list = lazy_import('msgraph.generated.models.list')
-quota = lazy_import('msgraph.generated.models.quota')
-sharepoint_ids = lazy_import('msgraph.generated.models.sharepoint_ids')
-system_facet = lazy_import('msgraph.generated.models.system_facet')
+if TYPE_CHECKING:
+    from . import base_item, drive_item, identity_set, list, quota, sharepoint_ids, system_facet
+
+from . import base_item
 
 class Drive(base_item.BaseItem):
-    @property
-    def bundles(self,) -> Optional[List[drive_item.DriveItem]]:
-        """
-        Gets the bundles property value. Collection of [bundles][bundle] (albums and multi-select-shared sets of items). Only in personal OneDrive.
-        Returns: Optional[List[drive_item.DriveItem]]
-        """
-        return self._bundles
-    
-    @bundles.setter
-    def bundles(self,value: Optional[List[drive_item.DriveItem]] = None) -> None:
-        """
-        Sets the bundles property value. Collection of [bundles][bundle] (albums and multi-select-shared sets of items). Only in personal OneDrive.
-        Args:
-            value: Value to set for the bundles property.
-        """
-        self._bundles = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new Drive and sets the default values.
@@ -57,6 +36,23 @@ class Drive(base_item.BaseItem):
         self._special: Optional[List[drive_item.DriveItem]] = None
         # If present, indicates that this is a system-managed drive. Read-only.
         self._system: Optional[system_facet.SystemFacet] = None
+    
+    @property
+    def bundles(self,) -> Optional[List[drive_item.DriveItem]]:
+        """
+        Gets the bundles property value. Collection of [bundles][bundle] (albums and multi-select-shared sets of items). Only in personal OneDrive.
+        Returns: Optional[List[drive_item.DriveItem]]
+        """
+        return self._bundles
+    
+    @bundles.setter
+    def bundles(self,value: Optional[List[drive_item.DriveItem]] = None) -> None:
+        """
+        Sets the bundles property value. Collection of [bundles][bundle] (albums and multi-select-shared sets of items). Only in personal OneDrive.
+        Args:
+            value: Value to set for the bundles property.
+        """
+        self._bundles = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Drive:
@@ -109,7 +105,9 @@ class Drive(base_item.BaseItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import base_item, drive_item, identity_set, list, quota, sharepoint_ids, system_facet
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "bundles": lambda n : setattr(self, 'bundles', n.get_collection_of_object_values(drive_item.DriveItem)),
             "driveType": lambda n : setattr(self, 'drive_type', n.get_str_value()),
             "following": lambda n : setattr(self, 'following', n.get_collection_of_object_values(drive_item.DriveItem)),

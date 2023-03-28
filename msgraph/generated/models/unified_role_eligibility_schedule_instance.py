@@ -1,10 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-unified_role_schedule_instance_base = lazy_import('msgraph.generated.models.unified_role_schedule_instance_base')
+if TYPE_CHECKING:
+    from . import unified_role_schedule_instance_base
+
+from . import unified_role_schedule_instance_base
 
 class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base.UnifiedRoleScheduleInstanceBase):
     def __init__(self,) -> None:
@@ -57,7 +59,9 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import unified_role_schedule_instance_base
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "memberType": lambda n : setattr(self, 'member_type', n.get_str_value()),
             "roleEligibilityScheduleId": lambda n : setattr(self, 'role_eligibility_schedule_id', n.get_str_value()),

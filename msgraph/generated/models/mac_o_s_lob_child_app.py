@@ -1,12 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class MacOSLobChildApp(AdditionalDataHolder, Parsable):
     """
     Contains properties of a macOS .app in the package
     """
+    def __init__(self,) -> None:
+        """
+        Instantiates a new macOSLobChildApp and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The build number of the app.
+        self._build_number: Optional[str] = None
+        # The bundleId of the app.
+        self._bundle_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The version number of the app.
+        self._version_number: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -58,22 +73,6 @@ class MacOSLobChildApp(AdditionalDataHolder, Parsable):
         """
         self._bundle_id = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new macOSLobChildApp and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The build number of the app.
-        self._build_number: Optional[str] = None
-        # The bundleId of the app.
-        self._bundle_id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The version number of the app.
-        self._version_number: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MacOSLobChildApp:
         """
@@ -91,7 +90,7 @@ class MacOSLobChildApp(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "buildNumber": lambda n : setattr(self, 'build_number', n.get_str_value()),
             "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

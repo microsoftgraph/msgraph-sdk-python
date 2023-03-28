@@ -1,15 +1,60 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-compliance_information = lazy_import('msgraph.generated.models.compliance_information')
-entity = lazy_import('msgraph.generated.models.entity')
-secure_score_control_state_update = lazy_import('msgraph.generated.models.secure_score_control_state_update')
-security_vendor_information = lazy_import('msgraph.generated.models.security_vendor_information')
+if TYPE_CHECKING:
+    from . import compliance_information, entity, secure_score_control_state_update, security_vendor_information
+
+from . import entity
 
 class SecureScoreControlProfile(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new secureScoreControlProfile and sets the default values.
+        """
+        super().__init__()
+        # Control action type (Config, Review, Behavior).
+        self._action_type: Optional[str] = None
+        # URL to where the control can be actioned.
+        self._action_url: Optional[str] = None
+        # GUID string for tenant ID.
+        self._azure_tenant_id: Optional[str] = None
+        # The collection of compliance information associated with secure score control
+        self._compliance_information: Optional[List[compliance_information.ComplianceInformation]] = None
+        # Control action category (Identity, Data, Device, Apps, Infrastructure).
+        self._control_category: Optional[str] = None
+        # Flag to indicate where the tenant has marked a control (ignored, thirdParty, reviewed) (supports update).
+        self._control_state_updates: Optional[List[secure_score_control_state_update.SecureScoreControlStateUpdate]] = None
+        # Flag to indicate if a control is depreciated.
+        self._deprecated: Optional[bool] = None
+        # Resource cost of implemmentating control (low, moderate, high).
+        self._implementation_cost: Optional[str] = None
+        # Time at which the control profile entity was last modified. The Timestamp type represents date and time
+        self._last_modified_date_time: Optional[datetime] = None
+        # max attainable score for the control.
+        self._max_score: Optional[float] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Microsoft's stack ranking of control.
+        self._rank: Optional[int] = None
+        # Description of what the control will help remediate.
+        self._remediation: Optional[str] = None
+        # Description of the impact on users of the remediation.
+        self._remediation_impact: Optional[str] = None
+        # Service that owns the control (Exchange, Sharepoint, Azure AD).
+        self._service: Optional[str] = None
+        # List of threats the control mitigates (accountBreach,dataDeletion,dataExfiltration,dataSpillage,
+        self._threats: Optional[List[str]] = None
+        # The tier property
+        self._tier: Optional[str] = None
+        # The title property
+        self._title: Optional[str] = None
+        # The userImpact property
+        self._user_impact: Optional[str] = None
+        # The vendorInformation property
+        self._vendor_information: Optional[security_vendor_information.SecurityVendorInformation] = None
+    
     @property
     def action_type(self,) -> Optional[str]:
         """
@@ -77,52 +122,6 @@ class SecureScoreControlProfile(entity.Entity):
             value: Value to set for the compliance_information property.
         """
         self._compliance_information = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new secureScoreControlProfile and sets the default values.
-        """
-        super().__init__()
-        # Control action type (Config, Review, Behavior).
-        self._action_type: Optional[str] = None
-        # URL to where the control can be actioned.
-        self._action_url: Optional[str] = None
-        # GUID string for tenant ID.
-        self._azure_tenant_id: Optional[str] = None
-        # The collection of compliance information associated with secure score control
-        self._compliance_information: Optional[List[compliance_information.ComplianceInformation]] = None
-        # Control action category (Identity, Data, Device, Apps, Infrastructure).
-        self._control_category: Optional[str] = None
-        # Flag to indicate where the tenant has marked a control (ignored, thirdParty, reviewed) (supports update).
-        self._control_state_updates: Optional[List[secure_score_control_state_update.SecureScoreControlStateUpdate]] = None
-        # Flag to indicate if a control is depreciated.
-        self._deprecated: Optional[bool] = None
-        # Resource cost of implemmentating control (low, moderate, high).
-        self._implementation_cost: Optional[str] = None
-        # Time at which the control profile entity was last modified. The Timestamp type represents date and time
-        self._last_modified_date_time: Optional[datetime] = None
-        # max attainable score for the control.
-        self._max_score: Optional[float] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Microsoft's stack ranking of control.
-        self._rank: Optional[int] = None
-        # Description of what the control will help remediate.
-        self._remediation: Optional[str] = None
-        # Description of the impact on users of the remediation.
-        self._remediation_impact: Optional[str] = None
-        # Service that owns the control (Exchange, Sharepoint, Azure AD).
-        self._service: Optional[str] = None
-        # List of threats the control mitigates (accountBreach,dataDeletion,dataExfiltration,dataSpillage,
-        self._threats: Optional[List[str]] = None
-        # The tier property
-        self._tier: Optional[str] = None
-        # The title property
-        self._title: Optional[str] = None
-        # The userImpact property
-        self._user_impact: Optional[str] = None
-        # The vendorInformation property
-        self._vendor_information: Optional[security_vendor_information.SecurityVendorInformation] = None
     
     @property
     def control_category(self,) -> Optional[str]:
@@ -192,7 +191,9 @@ class SecureScoreControlProfile(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import compliance_information, entity, secure_score_control_state_update, security_vendor_information
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "actionType": lambda n : setattr(self, 'action_type', n.get_str_value()),
             "actionUrl": lambda n : setattr(self, 'action_url', n.get_str_value()),
             "azureTenantId": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),

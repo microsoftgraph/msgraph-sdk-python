@@ -1,11 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-altered_query_token = lazy_import('msgraph.generated.models.altered_query_token')
+if TYPE_CHECKING:
+    from . import altered_query_token
 
 class SearchAlteration(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new searchAlteration and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Defines the altered highlighted query string with spelling correction. The annotation around the corrected segment is: /ue000, /ue001.
+        self._altered_highlighted_query_string: Optional[str] = None
+        # Defines the altered query string with spelling correction.
+        self._altered_query_string: Optional[str] = None
+        # Represents changed segments related to an original user query.
+        self._altered_query_tokens: Optional[List[altered_query_token.AlteredQueryToken]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -74,22 +90,6 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         """
         self._altered_query_tokens = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new searchAlteration and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Defines the altered highlighted query string with spelling correction. The annotation around the corrected segment is: /ue000, /ue001.
-        self._altered_highlighted_query_string: Optional[str] = None
-        # Defines the altered query string with spelling correction.
-        self._altered_query_string: Optional[str] = None
-        # Represents changed segments related to an original user query.
-        self._altered_query_tokens: Optional[List[altered_query_token.AlteredQueryToken]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SearchAlteration:
         """
@@ -107,7 +107,9 @@ class SearchAlteration(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import altered_query_token
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "alteredHighlightedQueryString": lambda n : setattr(self, 'altered_highlighted_query_string', n.get_str_value()),
             "alteredQueryString": lambda n : setattr(self, 'altered_query_string', n.get_str_value()),
             "alteredQueryTokens": lambda n : setattr(self, 'altered_query_tokens', n.get_collection_of_object_values(altered_query_token.AlteredQueryToken)),

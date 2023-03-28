@@ -1,35 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-workbook_chart_area_format = lazy_import('msgraph.generated.models.workbook_chart_area_format')
-workbook_chart_axes = lazy_import('msgraph.generated.models.workbook_chart_axes')
-workbook_chart_data_labels = lazy_import('msgraph.generated.models.workbook_chart_data_labels')
-workbook_chart_legend = lazy_import('msgraph.generated.models.workbook_chart_legend')
-workbook_chart_series = lazy_import('msgraph.generated.models.workbook_chart_series')
-workbook_chart_title = lazy_import('msgraph.generated.models.workbook_chart_title')
-workbook_worksheet = lazy_import('msgraph.generated.models.workbook_worksheet')
+if TYPE_CHECKING:
+    from . import entity, workbook_chart_area_format, workbook_chart_axes, workbook_chart_data_labels, workbook_chart_legend, workbook_chart_series, workbook_chart_title, workbook_worksheet
+
+from . import entity
 
 class WorkbookChart(entity.Entity):
-    @property
-    def axes(self,) -> Optional[workbook_chart_axes.WorkbookChartAxes]:
-        """
-        Gets the axes property value. Represents chart axes. Read-only.
-        Returns: Optional[workbook_chart_axes.WorkbookChartAxes]
-        """
-        return self._axes
-    
-    @axes.setter
-    def axes(self,value: Optional[workbook_chart_axes.WorkbookChartAxes] = None) -> None:
-        """
-        Sets the axes property value. Represents chart axes. Read-only.
-        Args:
-            value: Value to set for the axes property.
-        """
-        self._axes = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new workbookChart and sets the default values.
@@ -61,6 +39,23 @@ class WorkbookChart(entity.Entity):
         self._width: Optional[float] = None
         # The worksheet containing the current chart. Read-only.
         self._worksheet: Optional[workbook_worksheet.WorkbookWorksheet] = None
+    
+    @property
+    def axes(self,) -> Optional[workbook_chart_axes.WorkbookChartAxes]:
+        """
+        Gets the axes property value. Represents chart axes. Read-only.
+        Returns: Optional[workbook_chart_axes.WorkbookChartAxes]
+        """
+        return self._axes
+    
+    @axes.setter
+    def axes(self,value: Optional[workbook_chart_axes.WorkbookChartAxes] = None) -> None:
+        """
+        Sets the axes property value. Represents chart axes. Read-only.
+        Args:
+            value: Value to set for the axes property.
+        """
+        self._axes = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChart:
@@ -113,7 +108,9 @@ class WorkbookChart(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, workbook_chart_area_format, workbook_chart_axes, workbook_chart_data_labels, workbook_chart_legend, workbook_chart_series, workbook_chart_title, workbook_worksheet
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "axes": lambda n : setattr(self, 'axes', n.get_object_value(workbook_chart_axes.WorkbookChartAxes)),
             "dataLabels": lambda n : setattr(self, 'data_labels', n.get_object_value(workbook_chart_data_labels.WorkbookChartDataLabels)),
             "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_area_format.WorkbookChartAreaFormat)),

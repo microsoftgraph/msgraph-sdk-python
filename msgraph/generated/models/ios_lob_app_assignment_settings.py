@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-mobile_app_assignment_settings = lazy_import('msgraph.generated.models.mobile_app_assignment_settings')
+if TYPE_CHECKING:
+    from . import mobile_app_assignment_settings
+
+from . import mobile_app_assignment_settings
 
 class IosLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
     def __init__(self,) -> None:
@@ -36,7 +38,9 @@ class IosLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssign
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import mobile_app_assignment_settings
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "isRemovable": lambda n : setattr(self, 'is_removable', n.get_bool_value()),
             "uninstallOnDeviceRemoval": lambda n : setattr(self, 'uninstall_on_device_removal', n.get_bool_value()),
             "vpnConfigurationId": lambda n : setattr(self, 'vpn_configuration_id', n.get_str_value()),

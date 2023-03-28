@@ -1,12 +1,29 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-error_details = lazy_import('msgraph.generated.models.o_data_errors.error_details')
-inner_error = lazy_import('msgraph.generated.models.o_data_errors.inner_error')
+if TYPE_CHECKING:
+    from . import error_details, inner_error
 
 class MainError(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new MainError and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The code property
+        self._code: Optional[str] = None
+        # The details property
+        self._details: Optional[List[error_details.ErrorDetails]] = None
+        # The innererror property
+        self._innererror: Optional[inner_error.InnerError] = None
+        # The message property
+        self._message: Optional[str] = None
+        # The target property
+        self._target: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -40,24 +57,6 @@ class MainError(AdditionalDataHolder, Parsable):
             value: Value to set for the code property.
         """
         self._code = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new MainError and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The code property
-        self._code: Optional[str] = None
-        # The details property
-        self._details: Optional[List[error_details.ErrorDetails]] = None
-        # The innererror property
-        self._innererror: Optional[inner_error.InnerError] = None
-        # The message property
-        self._message: Optional[str] = None
-        # The target property
-        self._target: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MainError:
@@ -93,7 +92,9 @@ class MainError(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import error_details, inner_error
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "code": lambda n : setattr(self, 'code', n.get_str_value()),
             "details": lambda n : setattr(self, 'details', n.get_collection_of_object_values(error_details.ErrorDetails)),
             "innererror": lambda n : setattr(self, 'innererror', n.get_object_value(inner_error.InnerError)),

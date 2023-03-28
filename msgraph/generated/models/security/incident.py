@@ -1,18 +1,51 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-alert = lazy_import('msgraph.generated.models.security.alert')
-alert_classification = lazy_import('msgraph.generated.models.security.alert_classification')
-alert_comment = lazy_import('msgraph.generated.models.security.alert_comment')
-alert_determination = lazy_import('msgraph.generated.models.security.alert_determination')
-alert_severity = lazy_import('msgraph.generated.models.security.alert_severity')
-incident_status = lazy_import('msgraph.generated.models.security.incident_status')
+if TYPE_CHECKING:
+    from . import alert, alert_classification, alert_comment, alert_determination, alert_severity, incident_status
+    from .. import entity
+
+from .. import entity
 
 class Incident(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new incident and sets the default values.
+        """
+        super().__init__()
+        # The list of related alerts. Supports $expand.
+        self._alerts: Optional[List[alert.Alert]] = None
+        # Owner of the incident, or null if no owner is assigned. Free editable text.
+        self._assigned_to: Optional[str] = None
+        # The specification for the incident. Possible values are: unknown, falsePositive, truePositive, informationalExpectedActivity, unknownFutureValue.
+        self._classification: Optional[alert_classification.AlertClassification] = None
+        # Array of comments created by the Security Operations (SecOps) team when the incident is managed.
+        self._comments: Optional[List[alert_comment.AlertComment]] = None
+        # Time when the incident was first created.
+        self._created_date_time: Optional[datetime] = None
+        # Array of custom tags associated with an incident.
+        self._custom_tags: Optional[List[str]] = None
+        # Specifies the determination of the incident. Possible values are: unknown, apt, malware, securityPersonnel, securityTesting, unwantedSoftware, other, multiStagedAttack, compromisedUser, phishing, maliciousUserActivity, clean, insufficientData, confirmedUserActivity, lineOfBusinessApplication, unknownFutureValue.
+        self._determination: Optional[alert_determination.AlertDetermination] = None
+        # The incident name.
+        self._display_name: Optional[str] = None
+        # The URL for the incident page in the Microsoft 365 Defender portal.
+        self._incident_web_url: Optional[str] = None
+        # Time when the incident was last updated.
+        self._last_update_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Only populated in case an incident is grouped together with another incident, as part of the logic that processes incidents. In such a case, the status property is redirected.
+        self._redirect_incident_id: Optional[str] = None
+        # The severity property
+        self._severity: Optional[alert_severity.AlertSeverity] = None
+        # The status property
+        self._status: Optional[incident_status.IncidentStatus] = None
+        # The Azure Active Directory tenant in which the alert was created.
+        self._tenant_id: Optional[str] = None
+    
     @property
     def alerts(self,) -> Optional[List[alert.Alert]]:
         """
@@ -80,42 +113,6 @@ class Incident(entity.Entity):
             value: Value to set for the comments property.
         """
         self._comments = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new incident and sets the default values.
-        """
-        super().__init__()
-        # The list of related alerts. Supports $expand.
-        self._alerts: Optional[List[alert.Alert]] = None
-        # Owner of the incident, or null if no owner is assigned. Free editable text.
-        self._assigned_to: Optional[str] = None
-        # The specification for the incident. Possible values are: unknown, falsePositive, truePositive, informationalExpectedActivity, unknownFutureValue.
-        self._classification: Optional[alert_classification.AlertClassification] = None
-        # Array of comments created by the Security Operations (SecOps) team when the incident is managed.
-        self._comments: Optional[List[alert_comment.AlertComment]] = None
-        # Time when the incident was first created.
-        self._created_date_time: Optional[datetime] = None
-        # Array of custom tags associated with an incident.
-        self._custom_tags: Optional[List[str]] = None
-        # Specifies the determination of the incident. Possible values are: unknown, apt, malware, securityPersonnel, securityTesting, unwantedSoftware, other, multiStagedAttack, compromisedUser, phishing, maliciousUserActivity, clean, insufficientData, confirmedUserActivity, lineOfBusinessApplication, unknownFutureValue.
-        self._determination: Optional[alert_determination.AlertDetermination] = None
-        # The incident name.
-        self._display_name: Optional[str] = None
-        # The URL for the incident page in the Microsoft 365 Defender portal.
-        self._incident_web_url: Optional[str] = None
-        # Time when the incident was last updated.
-        self._last_update_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Only populated in case an incident is grouped together with another incident, as part of the logic that processes incidents. In such a case, the status property is redirected.
-        self._redirect_incident_id: Optional[str] = None
-        # The severity property
-        self._severity: Optional[alert_severity.AlertSeverity] = None
-        # The status property
-        self._status: Optional[incident_status.IncidentStatus] = None
-        # The Azure Active Directory tenant in which the alert was created.
-        self._tenant_id: Optional[str] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -202,7 +199,10 @@ class Incident(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import alert, alert_classification, alert_comment, alert_determination, alert_severity, incident_status
+        from .. import entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "alerts": lambda n : setattr(self, 'alerts', n.get_collection_of_object_values(alert.Alert)),
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "classification": lambda n : setattr(self, 'classification', n.get_enum_value(alert_classification.AlertClassification)),

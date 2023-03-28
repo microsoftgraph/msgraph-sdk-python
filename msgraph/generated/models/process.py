@@ -1,13 +1,46 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-file_hash = lazy_import('msgraph.generated.models.file_hash')
-process_integrity_level = lazy_import('msgraph.generated.models.process_integrity_level')
+if TYPE_CHECKING:
+    from . import file_hash, process_integrity_level
 
 class Process(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new process and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # User account identifier (user account context the process ran under) for example, AccountName, SID, and so on.
+        self._account_name: Optional[str] = None
+        # The full process invocation commandline including all parameters.
+        self._command_line: Optional[str] = None
+        # Time at which the process was started. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+        self._created_date_time: Optional[datetime] = None
+        # Complex type containing file hashes (cryptographic and location-sensitive).
+        self._file_hash: Optional[file_hash.FileHash] = None
+        # The integrity level of the process. Possible values are: unknown, untrusted, low, medium, high, system.
+        self._integrity_level: Optional[process_integrity_level.ProcessIntegrityLevel] = None
+        # True if the process is elevated.
+        self._is_elevated: Optional[bool] = None
+        # The name of the process' Image file.
+        self._name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # DateTime at which the parent process was started. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+        self._parent_process_created_date_time: Optional[datetime] = None
+        # The Process ID (PID) of the parent process.
+        self._parent_process_id: Optional[int] = None
+        # The name of the image file of the parent process.
+        self._parent_process_name: Optional[str] = None
+        # Full path, including filename.
+        self._path: Optional[str] = None
+        # The Process ID (PID) of the process.
+        self._process_id: Optional[int] = None
+    
     @property
     def account_name(self,) -> Optional[str]:
         """
@@ -58,40 +91,6 @@ class Process(AdditionalDataHolder, Parsable):
             value: Value to set for the command_line property.
         """
         self._command_line = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new process and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # User account identifier (user account context the process ran under) for example, AccountName, SID, and so on.
-        self._account_name: Optional[str] = None
-        # The full process invocation commandline including all parameters.
-        self._command_line: Optional[str] = None
-        # Time at which the process was started. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._created_date_time: Optional[datetime] = None
-        # Complex type containing file hashes (cryptographic and location-sensitive).
-        self._file_hash: Optional[file_hash.FileHash] = None
-        # The integrity level of the process. Possible values are: unknown, untrusted, low, medium, high, system.
-        self._integrity_level: Optional[process_integrity_level.ProcessIntegrityLevel] = None
-        # True if the process is elevated.
-        self._is_elevated: Optional[bool] = None
-        # The name of the process' Image file.
-        self._name: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # DateTime at which the parent process was started. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._parent_process_created_date_time: Optional[datetime] = None
-        # The Process ID (PID) of the parent process.
-        self._parent_process_id: Optional[int] = None
-        # The name of the image file of the parent process.
-        self._parent_process_name: Optional[str] = None
-        # Full path, including filename.
-        self._path: Optional[str] = None
-        # The Process ID (PID) of the process.
-        self._process_id: Optional[int] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -144,7 +143,9 @@ class Process(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import file_hash, process_integrity_level
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
             "commandLine": lambda n : setattr(self, 'command_line', n.get_str_value()),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),

@@ -1,10 +1,23 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class SetUserPreferredPresencePostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new setUserPreferredPresencePostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The activity property
+        self._activity: Optional[str] = None
+        # The availability property
+        self._availability: Optional[str] = None
+        # The expirationDuration property
+        self._expiration_duration: Optional[timedelta] = None
+    
     @property
     def activity(self,) -> Optional[str]:
         """
@@ -56,20 +69,6 @@ class SetUserPreferredPresencePostRequestBody(AdditionalDataHolder, Parsable):
         """
         self._availability = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new setUserPreferredPresencePostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The activity property
-        self._activity: Optional[str] = None
-        # The availability property
-        self._availability: Optional[str] = None
-        # The expirationDuration property
-        self._expiration_duration: Optional[Timedelta] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SetUserPreferredPresencePostRequestBody:
         """
@@ -83,15 +82,15 @@ class SetUserPreferredPresencePostRequestBody(AdditionalDataHolder, Parsable):
         return SetUserPreferredPresencePostRequestBody()
     
     @property
-    def expiration_duration(self,) -> Optional[Timedelta]:
+    def expiration_duration(self,) -> Optional[timedelta]:
         """
         Gets the expirationDuration property value. The expirationDuration property
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._expiration_duration
     
     @expiration_duration.setter
-    def expiration_duration(self,value: Optional[Timedelta] = None) -> None:
+    def expiration_duration(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the expirationDuration property value. The expirationDuration property
         Args:
@@ -104,10 +103,10 @@ class SetUserPreferredPresencePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_str_value()),
             "availability": lambda n : setattr(self, 'availability', n.get_str_value()),
-            "expirationDuration": lambda n : setattr(self, 'expiration_duration', n.get_object_value(Timedelta)),
+            "expirationDuration": lambda n : setattr(self, 'expiration_duration', n.get_timedelta_value()),
         }
         return fields
     
@@ -121,7 +120,7 @@ class SetUserPreferredPresencePostRequestBody(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_str_value("activity", self.activity)
         writer.write_str_value("availability", self.availability)
-        writer.write_object_value("expirationDuration", self.expiration_duration)
+        writer.write_timedelta_value("expirationDuration", self.expiration_duration)
         writer.write_additional_data_value(self.additional_data)
     
 

@@ -7,38 +7,18 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_packages_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.catalogs.item.access_packages.access_packages_request_builder')
-access_package_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.catalogs.item.access_packages.item.access_package_item_request_builder')
-access_package_catalog = lazy_import('msgraph.generated.models.access_package_catalog')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from .....models import access_package_catalog
+    from .....models.o_data_errors import o_data_error
+    from .access_packages import access_packages_request_builder
+    from .access_packages.item import access_package_item_request_builder
 
 class AccessPackageCatalogItemRequestBuilder():
     """
     Provides operations to manage the catalogs property of the microsoft.graph.entitlementManagement entity.
     """
-    @property
-    def access_packages(self) -> access_packages_request_builder.AccessPackagesRequestBuilder:
-        """
-        Provides operations to manage the accessPackages property of the microsoft.graph.accessPackageCatalog entity.
-        """
-        return access_packages_request_builder.AccessPackagesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def access_packages_by_id(self,id: str) -> access_package_item_request_builder.AccessPackageItemRequestBuilder:
-        """
-        Provides operations to manage the accessPackages property of the microsoft.graph.accessPackageCatalog entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_package_item_request_builder.AccessPackageItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessPackage%2Did"] = id
-        return access_package_item_request_builder.AccessPackageItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new AccessPackageCatalogItemRequestBuilder and sets the default values.
@@ -57,6 +37,21 @@ class AccessPackageCatalogItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def access_packages_by_id(self,id: str) -> access_package_item_request_builder.AccessPackageItemRequestBuilder:
+        """
+        Provides operations to manage the accessPackages property of the microsoft.graph.accessPackageCatalog entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: access_package_item_request_builder.AccessPackageItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        from .access_packages.item import access_package_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["accessPackage%2Did"] = id
+        return access_package_item_request_builder.AccessPackageItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def delete(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property catalogs for identityGovernance
@@ -66,6 +61,8 @@ class AccessPackageCatalogItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from .....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -84,12 +81,16 @@ class AccessPackageCatalogItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from .....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .....models import access_package_catalog
+
         return await self.request_adapter.send_async(request_info, access_package_catalog.AccessPackageCatalog, error_mapping)
     
     async def patch(self,body: Optional[access_package_catalog.AccessPackageCatalog] = None, request_configuration: Optional[AccessPackageCatalogItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[access_package_catalog.AccessPackageCatalog]:
@@ -105,12 +106,16 @@ class AccessPackageCatalogItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from .....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .....models import access_package_catalog
+
         return await self.request_adapter.send_async(request_info, access_package_catalog.AccessPackageCatalog, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -168,6 +173,15 @@ class AccessPackageCatalogItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def access_packages(self) -> access_packages_request_builder.AccessPackagesRequestBuilder:
+        """
+        Provides operations to manage the accessPackages property of the microsoft.graph.accessPackageCatalog entity.
+        """
+        from .access_packages import access_packages_request_builder
+
+        return access_packages_request_builder.AccessPackagesRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class AccessPackageCatalogItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -185,12 +199,6 @@ class AccessPackageCatalogItemRequestBuilder():
         """
         A container for access packages.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -206,6 +214,12 @@ class AccessPackageCatalogItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class AccessPackageCatalogItemRequestBuilderGetRequestConfiguration():

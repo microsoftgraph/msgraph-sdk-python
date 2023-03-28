@@ -1,11 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_package_question = lazy_import('msgraph.generated.models.access_package_question')
+if TYPE_CHECKING:
+    from . import access_package_answer_string, access_package_question
 
 class AccessPackageAnswer(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new accessPackageAnswer and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The answeredQuestion property
+        self._answered_question: Optional[access_package_question.AccessPackageQuestion] = None
+        # The localized display value shown to the requestor and approvers.
+        self._display_value: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -40,20 +54,6 @@ class AccessPackageAnswer(AdditionalDataHolder, Parsable):
         """
         self._answered_question = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new accessPackageAnswer and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The answeredQuestion property
-        self._answered_question: Optional[access_package_question.AccessPackageQuestion] = None
-        # The localized display value shown to the requestor and approvers.
-        self._display_value: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAnswer:
         """
@@ -64,6 +64,13 @@ class AccessPackageAnswer(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.accessPackageAnswerString":
+                from . import access_package_answer_string
+
+                return access_package_answer_string.AccessPackageAnswerString()
         return AccessPackageAnswer()
     
     @property
@@ -88,7 +95,9 @@ class AccessPackageAnswer(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import access_package_answer_string, access_package_question
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "answeredQuestion": lambda n : setattr(self, 'answered_question', n.get_object_value(access_package_question.AccessPackageQuestion)),
             "displayValue": lambda n : setattr(self, 'display_value', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

@@ -1,12 +1,37 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_package_question = lazy_import('msgraph.generated.models.access_package_question')
-entitlement_management_schedule = lazy_import('msgraph.generated.models.entitlement_management_schedule')
+if TYPE_CHECKING:
+    from . import access_package_question, entitlement_management_schedule
 
 class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new accessPackageAssignmentRequestRequirements and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Indicates whether the requestor is allowed to set a custom schedule.
+        self._allow_custom_assignment_schedule: Optional[bool] = None
+        # Indicates whether a request to add must be approved by an approver.
+        self._is_approval_required_for_add: Optional[bool] = None
+        # Indicates whether a request to update must be approved by an approver.
+        self._is_approval_required_for_update: Optional[bool] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The description of the policy that the user is trying to request access using.
+        self._policy_description: Optional[str] = None
+        # The display name of the policy that the user is trying to request access using.
+        self._policy_display_name: Optional[str] = None
+        # The identifier of the policy that these requirements are associated with. This identifier can be used when creating a new assignment request.
+        self._policy_id: Optional[str] = None
+        # The questions property
+        self._questions: Optional[List[access_package_question.AccessPackageQuestion]] = None
+        # Schedule restrictions enforced, if any.
+        self._schedule: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -41,32 +66,6 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         """
         self._allow_custom_assignment_schedule = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new accessPackageAssignmentRequestRequirements and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Indicates whether the requestor is allowed to set a custom schedule.
-        self._allow_custom_assignment_schedule: Optional[bool] = None
-        # Indicates whether a request to add must be approved by an approver.
-        self._is_approval_required_for_add: Optional[bool] = None
-        # Indicates whether a request to update must be approved by an approver.
-        self._is_approval_required_for_update: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The description of the policy that the user is trying to request access using.
-        self._policy_description: Optional[str] = None
-        # The display name of the policy that the user is trying to request access using.
-        self._policy_display_name: Optional[str] = None
-        # The identifier of the policy that these requirements are associated with. This identifier can be used when creating a new assignment request.
-        self._policy_id: Optional[str] = None
-        # The questions property
-        self._questions: Optional[List[access_package_question.AccessPackageQuestion]] = None
-        # Schedule restrictions enforced, if any.
-        self._schedule: Optional[entitlement_management_schedule.EntitlementManagementSchedule] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignmentRequestRequirements:
         """
@@ -84,7 +83,9 @@ class AccessPackageAssignmentRequestRequirements(AdditionalDataHolder, Parsable)
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import access_package_question, entitlement_management_schedule
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowCustomAssignmentSchedule": lambda n : setattr(self, 'allow_custom_assignment_schedule', n.get_bool_value()),
             "isApprovalRequiredForAdd": lambda n : setattr(self, 'is_approval_required_for_add', n.get_bool_value()),
             "isApprovalRequiredForUpdate": lambda n : setattr(self, 'is_approval_required_for_update', n.get_bool_value()),

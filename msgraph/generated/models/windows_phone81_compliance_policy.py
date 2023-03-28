@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-device_compliance_policy = lazy_import('msgraph.generated.models.device_compliance_policy')
-required_password_type = lazy_import('msgraph.generated.models.required_password_type')
+if TYPE_CHECKING:
+    from . import device_compliance_policy, required_password_type
+
+from . import device_compliance_policy
 
 class WindowsPhone81CompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
     def __init__(self,) -> None:
@@ -53,7 +54,9 @@ class WindowsPhone81CompliancePolicy(device_compliance_policy.DeviceCompliancePo
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import device_compliance_policy, required_password_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "osMaximumVersion": lambda n : setattr(self, 'os_maximum_version', n.get_str_value()),
             "osMinimumVersion": lambda n : setattr(self, 'os_minimum_version', n.get_str_value()),
             "passwordBlockSimple": lambda n : setattr(self, 'password_block_simple', n.get_bool_value()),

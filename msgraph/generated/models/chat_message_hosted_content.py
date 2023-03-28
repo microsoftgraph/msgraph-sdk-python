@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-teamwork_hosted_content = lazy_import('msgraph.generated.models.teamwork_hosted_content')
+if TYPE_CHECKING:
+    from . import teamwork_hosted_content
+
+from . import teamwork_hosted_content
 
 class ChatMessageHostedContent(teamwork_hosted_content.TeamworkHostedContent):
     def __init__(self,) -> None:
@@ -31,7 +33,9 @@ class ChatMessageHostedContent(teamwork_hosted_content.TeamworkHostedContent):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import teamwork_hosted_content
+
+        fields: Dict[str, Callable[[Any], None]] = {
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

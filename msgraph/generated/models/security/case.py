@@ -1,12 +1,13 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-identity_set = lazy_import('msgraph.generated.models.identity_set')
-case_status = lazy_import('msgraph.generated.models.security.case_status')
+if TYPE_CHECKING:
+    from . import case_status, ediscovery_case
+    from .. import entity, identity_set
+
+from .. import entity
 
 class Case(entity.Entity):
     def __init__(self,) -> None:
@@ -56,6 +57,13 @@ class Case(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.security.ediscoveryCase":
+                from . import ediscovery_case
+
+                return ediscovery_case.EdiscoveryCase()
         return Case()
     
     @property
@@ -97,7 +105,10 @@ class Case(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import case_status, ediscovery_case
+        from .. import entity, identity_set
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

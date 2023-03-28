@@ -1,9 +1,24 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class PersonOrGroupColumn(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new personOrGroupColumn and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Indicates whether multiple values can be selected from the source.
+        self._allow_multiple_selection: Optional[bool] = None
+        # Whether to allow selection of people only, or people and groups. Must be one of peopleAndGroups or peopleOnly.
+        self._choose_from_type: Optional[str] = None
+        # How to display the information about the person or group chosen. See below.
+        self._display_as: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -55,22 +70,6 @@ class PersonOrGroupColumn(AdditionalDataHolder, Parsable):
         """
         self._choose_from_type = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new personOrGroupColumn and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Indicates whether multiple values can be selected from the source.
-        self._allow_multiple_selection: Optional[bool] = None
-        # Whether to allow selection of people only, or people and groups. Must be one of peopleAndGroups or peopleOnly.
-        self._choose_from_type: Optional[str] = None
-        # How to display the information about the person or group chosen. See below.
-        self._display_as: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PersonOrGroupColumn:
         """
@@ -105,7 +104,7 @@ class PersonOrGroupColumn(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowMultipleSelection": lambda n : setattr(self, 'allow_multiple_selection', n.get_bool_value()),
             "chooseFromType": lambda n : setattr(self, 'choose_from_type', n.get_str_value()),
             "displayAs": lambda n : setattr(self, 'display_as', n.get_str_value()),

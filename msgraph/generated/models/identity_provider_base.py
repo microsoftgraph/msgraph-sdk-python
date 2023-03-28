@@ -1,14 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import apple_managed_identity_provider, built_in_identity_provider, entity, internal_domain_federation, saml_or_ws_fed_external_domain_federation, saml_or_ws_fed_provider, social_identity_provider
+
+from . import entity
 
 class IdentityProviderBase(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new IdentityProviderBase and sets the default values.
+        Instantiates a new identityProviderBase and sets the default values.
         """
         super().__init__()
         # The display name of the identity provider.
@@ -26,6 +28,33 @@ class IdentityProviderBase(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.appleManagedIdentityProvider":
+                from . import apple_managed_identity_provider
+
+                return apple_managed_identity_provider.AppleManagedIdentityProvider()
+            if mapping_value == "#microsoft.graph.builtInIdentityProvider":
+                from . import built_in_identity_provider
+
+                return built_in_identity_provider.BuiltInIdentityProvider()
+            if mapping_value == "#microsoft.graph.internalDomainFederation":
+                from . import internal_domain_federation
+
+                return internal_domain_federation.InternalDomainFederation()
+            if mapping_value == "#microsoft.graph.samlOrWsFedExternalDomainFederation":
+                from . import saml_or_ws_fed_external_domain_federation
+
+                return saml_or_ws_fed_external_domain_federation.SamlOrWsFedExternalDomainFederation()
+            if mapping_value == "#microsoft.graph.samlOrWsFedProvider":
+                from . import saml_or_ws_fed_provider
+
+                return saml_or_ws_fed_provider.SamlOrWsFedProvider()
+            if mapping_value == "#microsoft.graph.socialIdentityProvider":
+                from . import social_identity_provider
+
+                return social_identity_provider.SocialIdentityProvider()
         return IdentityProviderBase()
     
     @property
@@ -50,7 +79,9 @@ class IdentityProviderBase(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import apple_managed_identity_provider, built_in_identity_provider, entity, internal_domain_federation, saml_or_ws_fed_external_domain_federation, saml_or_ws_fed_provider, social_identity_provider
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

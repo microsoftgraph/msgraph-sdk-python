@@ -1,12 +1,26 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-event_message_detail = lazy_import('msgraph.generated.models.event_message_detail')
-identity_set = lazy_import('msgraph.generated.models.identity_set')
+if TYPE_CHECKING:
+    from . import event_message_detail, identity_set
+
+from . import event_message_detail
 
 class ChatRenamedEventMessageDetail(event_message_detail.EventMessageDetail):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ChatRenamedEventMessageDetail and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.chatRenamedEventMessageDetail"
+        # The updated name of the chat.
+        self._chat_display_name: Optional[str] = None
+        # Unique identifier of the chat.
+        self._chat_id: Optional[str] = None
+        # Initiator of the event.
+        self._initiator: Optional[identity_set.IdentitySet] = None
+    
     @property
     def chat_display_name(self,) -> Optional[str]:
         """
@@ -41,19 +55,6 @@ class ChatRenamedEventMessageDetail(event_message_detail.EventMessageDetail):
         """
         self._chat_id = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ChatRenamedEventMessageDetail and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.chatRenamedEventMessageDetail"
-        # The updated name of the chat.
-        self._chat_display_name: Optional[str] = None
-        # Unique identifier of the chat.
-        self._chat_id: Optional[str] = None
-        # Initiator of the event.
-        self._initiator: Optional[identity_set.IdentitySet] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatRenamedEventMessageDetail:
         """
@@ -71,7 +72,9 @@ class ChatRenamedEventMessageDetail(event_message_detail.EventMessageDetail):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import event_message_detail, identity_set
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "chatDisplayName": lambda n : setattr(self, 'chat_display_name', n.get_str_value()),
             "chatId": lambda n : setattr(self, 'chat_id', n.get_str_value()),
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),

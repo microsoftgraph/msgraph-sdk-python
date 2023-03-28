@@ -1,149 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-compliance_state = lazy_import('msgraph.generated.models.compliance_state')
-configuration_manager_client_enabled_features = lazy_import('msgraph.generated.models.configuration_manager_client_enabled_features')
-device_action_result = lazy_import('msgraph.generated.models.device_action_result')
-device_category = lazy_import('msgraph.generated.models.device_category')
-device_compliance_policy_state = lazy_import('msgraph.generated.models.device_compliance_policy_state')
-device_configuration_state = lazy_import('msgraph.generated.models.device_configuration_state')
-device_enrollment_type = lazy_import('msgraph.generated.models.device_enrollment_type')
-device_health_attestation_state = lazy_import('msgraph.generated.models.device_health_attestation_state')
-device_management_exchange_access_state = lazy_import('msgraph.generated.models.device_management_exchange_access_state')
-device_management_exchange_access_state_reason = lazy_import('msgraph.generated.models.device_management_exchange_access_state_reason')
-device_registration_state = lazy_import('msgraph.generated.models.device_registration_state')
-entity = lazy_import('msgraph.generated.models.entity')
-managed_device_owner_type = lazy_import('msgraph.generated.models.managed_device_owner_type')
-managed_device_partner_reported_health_state = lazy_import('msgraph.generated.models.managed_device_partner_reported_health_state')
-management_agent_type = lazy_import('msgraph.generated.models.management_agent_type')
-user = lazy_import('msgraph.generated.models.user')
+if TYPE_CHECKING:
+    from . import compliance_state, configuration_manager_client_enabled_features, device_action_result, device_category, device_compliance_policy_state, device_configuration_state, device_enrollment_type, device_health_attestation_state, device_management_exchange_access_state, device_management_exchange_access_state_reason, device_registration_state, entity, managed_device_owner_type, managed_device_partner_reported_health_state, management_agent_type, user
+
+from . import entity
 
 class ManagedDevice(entity.Entity):
     """
     Devices that are managed or pre-enrolled through Intune
     """
-    @property
-    def activation_lock_bypass_code(self,) -> Optional[str]:
-        """
-        Gets the activationLockBypassCode property value. The code that allows the Activation Lock on managed device to be bypassed. Default, is Null (Non-Default property) for this property when returned as part of managedDevice entity in LIST call. Individual GET call with select query options is needed to retrieve actual values. Supports: $select. $Search is not supported. Read-only. This property is read-only.
-        Returns: Optional[str]
-        """
-        return self._activation_lock_bypass_code
-    
-    @activation_lock_bypass_code.setter
-    def activation_lock_bypass_code(self,value: Optional[str] = None) -> None:
-        """
-        Sets the activationLockBypassCode property value. The code that allows the Activation Lock on managed device to be bypassed. Default, is Null (Non-Default property) for this property when returned as part of managedDevice entity in LIST call. Individual GET call with select query options is needed to retrieve actual values. Supports: $select. $Search is not supported. Read-only. This property is read-only.
-        Args:
-            value: Value to set for the activation_lock_bypass_code property.
-        """
-        self._activation_lock_bypass_code = value
-    
-    @property
-    def android_security_patch_level(self,) -> Optional[str]:
-        """
-        Gets the androidSecurityPatchLevel property value. Android security patch level. This property is read-only.
-        Returns: Optional[str]
-        """
-        return self._android_security_patch_level
-    
-    @android_security_patch_level.setter
-    def android_security_patch_level(self,value: Optional[str] = None) -> None:
-        """
-        Sets the androidSecurityPatchLevel property value. Android security patch level. This property is read-only.
-        Args:
-            value: Value to set for the android_security_patch_level property.
-        """
-        self._android_security_patch_level = value
-    
-    @property
-    def azure_a_d_device_id(self,) -> Optional[str]:
-        """
-        Gets the azureADDeviceId property value. The unique identifier for the Azure Active Directory device. Read only. This property is read-only.
-        Returns: Optional[str]
-        """
-        return self._azure_a_d_device_id
-    
-    @azure_a_d_device_id.setter
-    def azure_a_d_device_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the azureADDeviceId property value. The unique identifier for the Azure Active Directory device. Read only. This property is read-only.
-        Args:
-            value: Value to set for the azure_a_d_device_id property.
-        """
-        self._azure_a_d_device_id = value
-    
-    @property
-    def azure_a_d_registered(self,) -> Optional[bool]:
-        """
-        Gets the azureADRegistered property value. Whether the device is Azure Active Directory registered. This property is read-only.
-        Returns: Optional[bool]
-        """
-        return self._azure_a_d_registered
-    
-    @azure_a_d_registered.setter
-    def azure_a_d_registered(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the azureADRegistered property value. Whether the device is Azure Active Directory registered. This property is read-only.
-        Args:
-            value: Value to set for the azure_a_d_registered property.
-        """
-        self._azure_a_d_registered = value
-    
-    @property
-    def compliance_grace_period_expiration_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the complianceGracePeriodExpirationDateTime property value. The DateTime when device compliance grace period expires. This property is read-only.
-        Returns: Optional[datetime]
-        """
-        return self._compliance_grace_period_expiration_date_time
-    
-    @compliance_grace_period_expiration_date_time.setter
-    def compliance_grace_period_expiration_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the complianceGracePeriodExpirationDateTime property value. The DateTime when device compliance grace period expires. This property is read-only.
-        Args:
-            value: Value to set for the compliance_grace_period_expiration_date_time property.
-        """
-        self._compliance_grace_period_expiration_date_time = value
-    
-    @property
-    def compliance_state(self,) -> Optional[compliance_state.ComplianceState]:
-        """
-        Gets the complianceState property value. Compliance state.
-        Returns: Optional[compliance_state.ComplianceState]
-        """
-        return self._compliance_state
-    
-    @compliance_state.setter
-    def compliance_state(self,value: Optional[compliance_state.ComplianceState] = None) -> None:
-        """
-        Sets the complianceState property value. Compliance state.
-        Args:
-            value: Value to set for the compliance_state property.
-        """
-        self._compliance_state = value
-    
-    @property
-    def configuration_manager_client_enabled_features(self,) -> Optional[configuration_manager_client_enabled_features.ConfigurationManagerClientEnabledFeatures]:
-        """
-        Gets the configurationManagerClientEnabledFeatures property value. ConfigrMgr client enabled features. This property is read-only.
-        Returns: Optional[configuration_manager_client_enabled_features.ConfigurationManagerClientEnabledFeatures]
-        """
-        return self._configuration_manager_client_enabled_features
-    
-    @configuration_manager_client_enabled_features.setter
-    def configuration_manager_client_enabled_features(self,value: Optional[configuration_manager_client_enabled_features.ConfigurationManagerClientEnabledFeatures] = None) -> None:
-        """
-        Sets the configurationManagerClientEnabledFeatures property value. ConfigrMgr client enabled features. This property is read-only.
-        Args:
-            value: Value to set for the configuration_manager_client_enabled_features property.
-        """
-        self._configuration_manager_client_enabled_features = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new managedDevice and sets the default values.
@@ -265,6 +133,125 @@ class ManagedDevice(entity.Entity):
         self._users: Optional[List[user.User]] = None
         # Wi-Fi MAC. This property is read-only.
         self._wi_fi_mac_address: Optional[str] = None
+    
+    @property
+    def activation_lock_bypass_code(self,) -> Optional[str]:
+        """
+        Gets the activationLockBypassCode property value. The code that allows the Activation Lock on managed device to be bypassed. Default, is Null (Non-Default property) for this property when returned as part of managedDevice entity in LIST call. Individual GET call with select query options is needed to retrieve actual values. Supports: $select. $Search is not supported. Read-only. This property is read-only.
+        Returns: Optional[str]
+        """
+        return self._activation_lock_bypass_code
+    
+    @activation_lock_bypass_code.setter
+    def activation_lock_bypass_code(self,value: Optional[str] = None) -> None:
+        """
+        Sets the activationLockBypassCode property value. The code that allows the Activation Lock on managed device to be bypassed. Default, is Null (Non-Default property) for this property when returned as part of managedDevice entity in LIST call. Individual GET call with select query options is needed to retrieve actual values. Supports: $select. $Search is not supported. Read-only. This property is read-only.
+        Args:
+            value: Value to set for the activation_lock_bypass_code property.
+        """
+        self._activation_lock_bypass_code = value
+    
+    @property
+    def android_security_patch_level(self,) -> Optional[str]:
+        """
+        Gets the androidSecurityPatchLevel property value. Android security patch level. This property is read-only.
+        Returns: Optional[str]
+        """
+        return self._android_security_patch_level
+    
+    @android_security_patch_level.setter
+    def android_security_patch_level(self,value: Optional[str] = None) -> None:
+        """
+        Sets the androidSecurityPatchLevel property value. Android security patch level. This property is read-only.
+        Args:
+            value: Value to set for the android_security_patch_level property.
+        """
+        self._android_security_patch_level = value
+    
+    @property
+    def azure_a_d_device_id(self,) -> Optional[str]:
+        """
+        Gets the azureADDeviceId property value. The unique identifier for the Azure Active Directory device. Read only. This property is read-only.
+        Returns: Optional[str]
+        """
+        return self._azure_a_d_device_id
+    
+    @azure_a_d_device_id.setter
+    def azure_a_d_device_id(self,value: Optional[str] = None) -> None:
+        """
+        Sets the azureADDeviceId property value. The unique identifier for the Azure Active Directory device. Read only. This property is read-only.
+        Args:
+            value: Value to set for the azure_a_d_device_id property.
+        """
+        self._azure_a_d_device_id = value
+    
+    @property
+    def azure_a_d_registered(self,) -> Optional[bool]:
+        """
+        Gets the azureADRegistered property value. Whether the device is Azure Active Directory registered. This property is read-only.
+        Returns: Optional[bool]
+        """
+        return self._azure_a_d_registered
+    
+    @azure_a_d_registered.setter
+    def azure_a_d_registered(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the azureADRegistered property value. Whether the device is Azure Active Directory registered. This property is read-only.
+        Args:
+            value: Value to set for the azure_a_d_registered property.
+        """
+        self._azure_a_d_registered = value
+    
+    @property
+    def compliance_grace_period_expiration_date_time(self,) -> Optional[datetime]:
+        """
+        Gets the complianceGracePeriodExpirationDateTime property value. The DateTime when device compliance grace period expires. This property is read-only.
+        Returns: Optional[datetime]
+        """
+        return self._compliance_grace_period_expiration_date_time
+    
+    @compliance_grace_period_expiration_date_time.setter
+    def compliance_grace_period_expiration_date_time(self,value: Optional[datetime] = None) -> None:
+        """
+        Sets the complianceGracePeriodExpirationDateTime property value. The DateTime when device compliance grace period expires. This property is read-only.
+        Args:
+            value: Value to set for the compliance_grace_period_expiration_date_time property.
+        """
+        self._compliance_grace_period_expiration_date_time = value
+    
+    @property
+    def compliance_state(self,) -> Optional[compliance_state.ComplianceState]:
+        """
+        Gets the complianceState property value. Compliance state.
+        Returns: Optional[compliance_state.ComplianceState]
+        """
+        return self._compliance_state
+    
+    @compliance_state.setter
+    def compliance_state(self,value: Optional[compliance_state.ComplianceState] = None) -> None:
+        """
+        Sets the complianceState property value. Compliance state.
+        Args:
+            value: Value to set for the compliance_state property.
+        """
+        self._compliance_state = value
+    
+    @property
+    def configuration_manager_client_enabled_features(self,) -> Optional[configuration_manager_client_enabled_features.ConfigurationManagerClientEnabledFeatures]:
+        """
+        Gets the configurationManagerClientEnabledFeatures property value. ConfigrMgr client enabled features. This property is read-only.
+        Returns: Optional[configuration_manager_client_enabled_features.ConfigurationManagerClientEnabledFeatures]
+        """
+        return self._configuration_manager_client_enabled_features
+    
+    @configuration_manager_client_enabled_features.setter
+    def configuration_manager_client_enabled_features(self,value: Optional[configuration_manager_client_enabled_features.ConfigurationManagerClientEnabledFeatures] = None) -> None:
+        """
+        Sets the configurationManagerClientEnabledFeatures property value. ConfigrMgr client enabled features. This property is read-only.
+        Args:
+            value: Value to set for the configuration_manager_client_enabled_features property.
+        """
+        self._configuration_manager_client_enabled_features = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedDevice:
@@ -606,7 +593,9 @@ class ManagedDevice(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import compliance_state, configuration_manager_client_enabled_features, device_action_result, device_category, device_compliance_policy_state, device_configuration_state, device_enrollment_type, device_health_attestation_state, device_management_exchange_access_state, device_management_exchange_access_state_reason, device_registration_state, entity, managed_device_owner_type, managed_device_partner_reported_health_state, management_agent_type, user
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "activationLockBypassCode": lambda n : setattr(self, 'activation_lock_bypass_code', n.get_str_value()),
             "androidSecurityPatchLevel": lambda n : setattr(self, 'android_security_patch_level', n.get_str_value()),
             "azureADDeviceId": lambda n : setattr(self, 'azure_a_d_device_id', n.get_str_value()),

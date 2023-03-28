@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-device_and_app_management_assignment_target = lazy_import('msgraph.generated.models.device_and_app_management_assignment_target')
+if TYPE_CHECKING:
+    from . import device_and_app_management_assignment_target, exclusion_group_assignment_target
+
+from . import device_and_app_management_assignment_target
 
 class GroupAssignmentTarget(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget):
     def __init__(self,) -> None:
@@ -25,6 +27,13 @@ class GroupAssignmentTarget(device_and_app_management_assignment_target.DeviceAn
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.exclusionGroupAssignmentTarget":
+                from . import exclusion_group_assignment_target
+
+                return exclusion_group_assignment_target.ExclusionGroupAssignmentTarget()
         return GroupAssignmentTarget()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -32,7 +41,9 @@ class GroupAssignmentTarget(device_and_app_management_assignment_target.DeviceAn
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import device_and_app_management_assignment_target, exclusion_group_assignment_target
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "groupId": lambda n : setattr(self, 'group_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

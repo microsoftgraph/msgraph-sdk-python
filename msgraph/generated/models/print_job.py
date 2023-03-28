@@ -1,34 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-print_document = lazy_import('msgraph.generated.models.print_document')
-print_job_configuration = lazy_import('msgraph.generated.models.print_job_configuration')
-print_job_status = lazy_import('msgraph.generated.models.print_job_status')
-print_task = lazy_import('msgraph.generated.models.print_task')
-user_identity = lazy_import('msgraph.generated.models.user_identity')
+if TYPE_CHECKING:
+    from . import entity, print_document, print_job_configuration, print_job_status, print_task, user_identity
+
+from . import entity
 
 class PrintJob(entity.Entity):
-    @property
-    def configuration(self,) -> Optional[print_job_configuration.PrintJobConfiguration]:
-        """
-        Gets the configuration property value. The configuration property
-        Returns: Optional[print_job_configuration.PrintJobConfiguration]
-        """
-        return self._configuration
-    
-    @configuration.setter
-    def configuration(self,value: Optional[print_job_configuration.PrintJobConfiguration] = None) -> None:
-        """
-        Sets the configuration property value. The configuration property
-        Args:
-            value: Value to set for the configuration property.
-        """
-        self._configuration = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new printJob and sets the default values.
@@ -54,6 +34,23 @@ class PrintJob(entity.Entity):
         self._status: Optional[print_job_status.PrintJobStatus] = None
         # A list of printTasks that were triggered by this print job.
         self._tasks: Optional[List[print_task.PrintTask]] = None
+    
+    @property
+    def configuration(self,) -> Optional[print_job_configuration.PrintJobConfiguration]:
+        """
+        Gets the configuration property value. The configuration property
+        Returns: Optional[print_job_configuration.PrintJobConfiguration]
+        """
+        return self._configuration
+    
+    @configuration.setter
+    def configuration(self,value: Optional[print_job_configuration.PrintJobConfiguration] = None) -> None:
+        """
+        Sets the configuration property value. The configuration property
+        Args:
+            value: Value to set for the configuration property.
+        """
+        self._configuration = value
     
     @property
     def created_by(self,) -> Optional[user_identity.UserIdentity]:
@@ -123,7 +120,9 @@ class PrintJob(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, print_document, print_job_configuration, print_job_status, print_task, user_identity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(print_job_configuration.PrintJobConfiguration)),
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(user_identity.UserIdentity)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),

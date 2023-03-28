@@ -1,13 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-role_assignment = lazy_import('msgraph.generated.models.role_assignment')
-role_permission = lazy_import('msgraph.generated.models.role_permission')
+if TYPE_CHECKING:
+    from . import device_and_app_management_role_definition, entity, role_assignment, role_permission
+
+from . import entity
 
 class RoleDefinition(entity.Entity):
+    """
+    The Role Definition resource. The role definition is the foundation of role based access in Intune. The role combines an Intune resource such as a Mobile App and associated role permissions such as Create or Read for the resource. There are two types of roles, built-in and custom. Built-in roles cannot be modified. Both built-in roles and custom roles must have assignments to be enforced. Create custom roles if you want to define a role that allows any of the available resources and role permissions to be combined into a single role.
+    """
     def __init__(self,) -> None:
         """
         Instantiates a new roleDefinition and sets the default values.
@@ -36,6 +39,13 @@ class RoleDefinition(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.deviceAndAppManagementRoleDefinition":
+                from . import device_and_app_management_role_definition
+
+                return device_and_app_management_role_definition.DeviceAndAppManagementRoleDefinition()
         return RoleDefinition()
     
     @property
@@ -77,7 +87,9 @@ class RoleDefinition(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import device_and_app_management_role_definition, entity, role_assignment, role_permission
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "isBuiltIn": lambda n : setattr(self, 'is_built_in', n.get_bool_value()),

@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-json = lazy_import('msgraph.generated.models.json')
-workbook_filter = lazy_import('msgraph.generated.models.workbook_filter')
+if TYPE_CHECKING:
+    from . import entity, json, workbook_filter
+
+from . import entity
 
 class WorkbookTableColumn(entity.Entity):
     def __init__(self,) -> None:
@@ -58,7 +58,9 @@ class WorkbookTableColumn(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, json, workbook_filter
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "filter": lambda n : setattr(self, 'filter', n.get_object_value(workbook_filter.WorkbookFilter)),
             "index": lambda n : setattr(self, 'index', n.get_int_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),

@@ -1,28 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-directory_object = lazy_import('msgraph.generated.models.directory_object')
+if TYPE_CHECKING:
+    from . import directory_object
+
+from . import directory_object
 
 class ExtensionProperty(directory_object.DirectoryObject):
-    @property
-    def app_display_name(self,) -> Optional[str]:
-        """
-        Gets the appDisplayName property value. Display name of the application object on which this extension property is defined. Read-only.
-        Returns: Optional[str]
-        """
-        return self._app_display_name
-    
-    @app_display_name.setter
-    def app_display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the appDisplayName property value. Display name of the application object on which this extension property is defined. Read-only.
-        Args:
-            value: Value to set for the app_display_name property.
-        """
-        self._app_display_name = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new extensionProperty and sets the default values.
@@ -39,6 +24,23 @@ class ExtensionProperty(directory_object.DirectoryObject):
         self._name: Optional[str] = None
         # Following values are supported. Not nullable. UserGroupAdministrativeUnitApplicationDeviceOrganization
         self._target_objects: Optional[List[str]] = None
+    
+    @property
+    def app_display_name(self,) -> Optional[str]:
+        """
+        Gets the appDisplayName property value. Display name of the application object on which this extension property is defined. Read-only.
+        Returns: Optional[str]
+        """
+        return self._app_display_name
+    
+    @app_display_name.setter
+    def app_display_name(self,value: Optional[str] = None) -> None:
+        """
+        Sets the appDisplayName property value. Display name of the application object on which this extension property is defined. Read-only.
+        Args:
+            value: Value to set for the app_display_name property.
+        """
+        self._app_display_name = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExtensionProperty:
@@ -74,7 +76,9 @@ class ExtensionProperty(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import directory_object
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
             "dataType": lambda n : setattr(self, 'data_type', n.get_str_value()),
             "isSyncedFromOnPremises": lambda n : setattr(self, 'is_synced_from_on_premises', n.get_bool_value()),

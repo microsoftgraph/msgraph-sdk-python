@@ -1,11 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-simulation_automation_run_status = lazy_import('msgraph.generated.models.simulation_automation_run_status')
+if TYPE_CHECKING:
+    from . import entity, simulation_automation_run_status
+
+from . import entity
 
 class SimulationAutomationRun(entity.Entity):
     def __init__(self,) -> None:
@@ -58,7 +59,9 @@ class SimulationAutomationRun(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, simulation_automation_run_status
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "simulationId": lambda n : setattr(self, 'simulation_id', n.get_str_value()),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),

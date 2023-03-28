@@ -1,11 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
-key_value = lazy_import('msgraph.generated.models.key_value')
+if TYPE_CHECKING:
+    from . import key_value
 
 class AddIn(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new addIn and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The id property
+        self._id: Optional[UUID] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The properties property
+        self._properties: Optional[List[key_value.KeyValue]] = None
+        # The type property
+        self._type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,22 +39,6 @@ class AddIn(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new addIn and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The id property
-        self._id: Optional[Guid] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The properties property
-        self._properties: Optional[List[key_value.KeyValue]] = None
-        # The type property
-        self._type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddIn:
@@ -56,8 +57,10 @@ class AddIn(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
-            "id": lambda n : setattr(self, 'id', n.get_object_value(Guid)),
+        from . import key_value
+
+        fields: Dict[str, Callable[[Any], None]] = {
+            "id": lambda n : setattr(self, 'id', n.get_uuid_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(key_value.KeyValue)),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
@@ -65,15 +68,15 @@ class AddIn(AdditionalDataHolder, Parsable):
         return fields
     
     @property
-    def id(self,) -> Optional[Guid]:
+    def id(self,) -> Optional[UUID]:
         """
         Gets the id property value. The id property
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._id
     
     @id.setter
-    def id(self,value: Optional[Guid] = None) -> None:
+    def id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the id property value. The id property
         Args:
@@ -123,7 +126,7 @@ class AddIn(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_object_value("id", self.id)
+        writer.write_uuid_value("id", self.id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("properties", self.properties)
         writer.write_str_value("type", self.type)

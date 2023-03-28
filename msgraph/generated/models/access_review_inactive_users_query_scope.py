@@ -1,10 +1,12 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_review_query_scope = lazy_import('msgraph.generated.models.access_review_query_scope')
+if TYPE_CHECKING:
+    from . import access_review_query_scope
+
+from . import access_review_query_scope
 
 class AccessReviewInactiveUsersQueryScope(access_review_query_scope.AccessReviewQueryScope):
     def __init__(self,) -> None:
@@ -14,7 +16,7 @@ class AccessReviewInactiveUsersQueryScope(access_review_query_scope.AccessReview
         super().__init__()
         self.odata_type = "#microsoft.graph.accessReviewInactiveUsersQueryScope"
         # Defines the duration of inactivity. Inactivity is based on the last sign in date of the user compared to the access review instance's start date. If this property is not specified, it's assigned the default value PT0S.
-        self._inactive_duration: Optional[Timedelta] = None
+        self._inactive_duration: Optional[timedelta] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewInactiveUsersQueryScope:
@@ -33,23 +35,25 @@ class AccessReviewInactiveUsersQueryScope(access_review_query_scope.AccessReview
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
-            "inactiveDuration": lambda n : setattr(self, 'inactive_duration', n.get_object_value(Timedelta)),
+        from . import access_review_query_scope
+
+        fields: Dict[str, Callable[[Any], None]] = {
+            "inactiveDuration": lambda n : setattr(self, 'inactive_duration', n.get_timedelta_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
     
     @property
-    def inactive_duration(self,) -> Optional[Timedelta]:
+    def inactive_duration(self,) -> Optional[timedelta]:
         """
         Gets the inactiveDuration property value. Defines the duration of inactivity. Inactivity is based on the last sign in date of the user compared to the access review instance's start date. If this property is not specified, it's assigned the default value PT0S.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._inactive_duration
     
     @inactive_duration.setter
-    def inactive_duration(self,value: Optional[Timedelta] = None) -> None:
+    def inactive_duration(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the inactiveDuration property value. Defines the duration of inactivity. Inactivity is based on the last sign in date of the user compared to the access review instance's start date. If this property is not specified, it's assigned the default value PT0S.
         Args:
@@ -66,6 +70,6 @@ class AccessReviewInactiveUsersQueryScope(access_review_query_scope.AccessReview
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-        writer.write_object_value("inactiveDuration", self.inactive_duration)
+        writer.write_timedelta_value("inactiveDuration", self.inactive_duration)
     
 

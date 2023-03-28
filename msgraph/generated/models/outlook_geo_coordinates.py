@@ -1,9 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class OutlookGeoCoordinates(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new outlookGeoCoordinates and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The accuracy of the latitude and longitude. As an example, the accuracy can be measured in meters, such as the latitude and longitude are accurate to within 50 meters.
+        self._accuracy: Optional[float] = None
+        # The altitude of the location.
+        self._altitude: Optional[float] = None
+        # The accuracy of the altitude.
+        self._altitude_accuracy: Optional[float] = None
+        # The latitude of the location.
+        self._latitude: Optional[float] = None
+        # The longitude of the location.
+        self._longitude: Optional[float] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+    
     @property
     def accuracy(self,) -> Optional[float]:
         """
@@ -72,26 +91,6 @@ class OutlookGeoCoordinates(AdditionalDataHolder, Parsable):
         """
         self._altitude_accuracy = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new outlookGeoCoordinates and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The accuracy of the latitude and longitude. As an example, the accuracy can be measured in meters, such as the latitude and longitude are accurate to within 50 meters.
-        self._accuracy: Optional[float] = None
-        # The altitude of the location.
-        self._altitude: Optional[float] = None
-        # The accuracy of the altitude.
-        self._altitude_accuracy: Optional[float] = None
-        # The latitude of the location.
-        self._latitude: Optional[float] = None
-        # The longitude of the location.
-        self._longitude: Optional[float] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OutlookGeoCoordinates:
         """
@@ -109,7 +108,7 @@ class OutlookGeoCoordinates(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "accuracy": lambda n : setattr(self, 'accuracy', n.get_float_value()),
             "altitude": lambda n : setattr(self, 'altitude', n.get_float_value()),
             "altitudeAccuracy": lambda n : setattr(self, 'altitude_accuracy', n.get_float_value()),

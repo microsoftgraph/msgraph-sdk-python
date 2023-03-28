@@ -1,11 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-alert_evidence = lazy_import('msgraph.generated.models.security.alert_evidence')
-detection_status = lazy_import('msgraph.generated.models.security.detection_status')
-file_details = lazy_import('msgraph.generated.models.security.file_details')
+if TYPE_CHECKING:
+    from . import alert_evidence, detection_status, file_details
+
+from . import alert_evidence
 
 class FileEvidence(alert_evidence.AlertEvidence):
     def __init__(self,) -> None:
@@ -73,7 +73,9 @@ class FileEvidence(alert_evidence.AlertEvidence):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import alert_evidence, detection_status, file_details
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "detectionStatus": lambda n : setattr(self, 'detection_status', n.get_enum_value(detection_status.DetectionStatus)),
             "fileDetails": lambda n : setattr(self, 'file_details', n.get_object_value(file_details.FileDetails)),
             "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),

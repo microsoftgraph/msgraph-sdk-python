@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-service_role = lazy_import('msgraph.generated.models.call_records.service_role')
-user_agent = lazy_import('msgraph.generated.models.call_records.user_agent')
+if TYPE_CHECKING:
+    from . import service_role, user_agent
+
+from . import user_agent
 
 class ServiceUserAgent(user_agent.UserAgent):
     def __init__(self,) -> None:
@@ -33,7 +34,9 @@ class ServiceUserAgent(user_agent.UserAgent):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import service_role, user_agent
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "role": lambda n : setattr(self, 'role', n.get_enum_value(service_role.ServiceRole)),
         }
         super_fields = super().get_field_deserializers()

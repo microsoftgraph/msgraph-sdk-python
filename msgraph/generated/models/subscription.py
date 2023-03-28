@@ -1,12 +1,50 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import entity
+
+from . import entity
 
 class Subscription(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new subscription and sets the default values.
+        """
+        super().__init__()
+        # Optional. Identifier of the application used to create the subscription. Read-only.
+        self._application_id: Optional[str] = None
+        # Required. Indicates the type of change in the subscribed resource that will raise a change notification. The supported values are: created, updated, deleted. Multiple values can be combined using a comma-separated list. Note:  Drive root item and list change notifications support only the updated changeType. User and group change notifications support updated and deleted changeType. Use updated to receive notifications when user or group is created, updated or soft deleted.  Use deleted to receive notifications when user or group is permanently deleted.
+        self._change_type: Optional[str] = None
+        # Required. Specifies the value of the clientState property sent by the service in each change notification. The maximum length is 128 characters. The client can check that the change notification came from the service by comparing the value of the clientState property sent with the subscription with the value of the clientState property received with each change notification.
+        self._client_state: Optional[str] = None
+        # Optional. Identifier of the user or service principal that created the subscription. If the app used delegated permissions to create the subscription, this field contains the id of the signed-in user the app called on behalf of. If the app used application permissions, this field contains the id of the service principal corresponding to the app. Read-only.
+        self._creator_id: Optional[str] = None
+        # Optional. A base64-encoded representation of a certificate with a public key used to encrypt resource data in change notifications. Optional but required when includeResourceData is true.
+        self._encryption_certificate: Optional[str] = None
+        # Optional. A custom app-provided identifier to help identify the certificate needed to decrypt resource data.
+        self._encryption_certificate_id: Optional[str] = None
+        # Required. Specifies the date and time when the webhook subscription expires. The time is in UTC, and can be an amount of time from subscription creation that varies for the resource subscribed to. For the maximum supported subscription length of time, see the table below.
+        self._expiration_date_time: Optional[datetime] = None
+        # Optional. When set to true, change notifications include resource data (such as content of a chat message).
+        self._include_resource_data: Optional[bool] = None
+        # Optional. Specifies the latest version of Transport Layer Security (TLS) that the notification endpoint, specified by notificationUrl, supports. The possible values are: v1_0, v1_1, v1_2, v1_3. For subscribers whose notification endpoint supports a version lower than the currently recommended version (TLS 1.2), specifying this property by a set timeline allows them to temporarily use their deprecated version of TLS before completing their upgrade to TLS 1.2. For these subscribers, not setting this property per the timeline would result in subscription operations failing. For subscribers whose notification endpoint already supports TLS 1.2, setting this property is optional. In such cases, Microsoft Graph defaults the property to v1_2.
+        self._latest_supported_tls_version: Optional[str] = None
+        # Optional. The URL of the endpoint that receives lifecycle notifications, including subscriptionRemoved, reauthorizationRequired, and missed notifications. This URL must make use of the HTTPS protocol.
+        self._lifecycle_notification_url: Optional[str] = None
+        # Optional. OData query options for specifying value for the targeting resource. Clients receive notifications when resource reaches the state matching the query options provided here. With this new property in the subscription creation payload along with all existing properties, Webhooks will deliver notifications whenever a resource reaches the desired state mentioned in the notificationQueryOptions property. For example, when the print job is completed or when a print job resource isFetchable property value becomes true etc.  Supported only for Universal Print Service. For more information, see Subscribe to change notifications from cloud printing APIs using Microsoft Graph.
+        self._notification_query_options: Optional[str] = None
+        # Required. The URL of the endpoint that will receive the change notifications. This URL must make use of the HTTPS protocol.
+        self._notification_url: Optional[str] = None
+        # Optional. The app ID that the subscription service can use to generate the validation token. This allows the client to validate the authenticity of the notification received.
+        self._notification_url_app_id: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Required. Specifies the resource that will be monitored for changes. Do not include the base URL (https://graph.microsoft.com/v1.0/). See the possible resource path values for each supported resource.
+        self._resource: Optional[str] = None
+    
     @property
     def application_id(self,) -> Optional[str]:
         """
@@ -57,42 +95,6 @@ class Subscription(entity.Entity):
             value: Value to set for the client_state property.
         """
         self._client_state = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new subscription and sets the default values.
-        """
-        super().__init__()
-        # Optional. Identifier of the application used to create the subscription. Read-only.
-        self._application_id: Optional[str] = None
-        # Required. Indicates the type of change in the subscribed resource that will raise a change notification. The supported values are: created, updated, deleted. Multiple values can be combined using a comma-separated list. Note:  Drive root item and list change notifications support only the updated changeType. User and group change notifications support updated and deleted changeType. Use updated to receive notifications when user or group is created, updated or soft deleted.  Use deleted to receive notifications when user or group is permanently deleted.
-        self._change_type: Optional[str] = None
-        # Required. Specifies the value of the clientState property sent by the service in each change notification. The maximum length is 128 characters. The client can check that the change notification came from the service by comparing the value of the clientState property sent with the subscription with the value of the clientState property received with each change notification.
-        self._client_state: Optional[str] = None
-        # Optional. Identifier of the user or service principal that created the subscription. If the app used delegated permissions to create the subscription, this field contains the id of the signed-in user the app called on behalf of. If the app used application permissions, this field contains the id of the service principal corresponding to the app. Read-only.
-        self._creator_id: Optional[str] = None
-        # Optional. A base64-encoded representation of a certificate with a public key used to encrypt resource data in change notifications. Optional but required when includeResourceData is true.
-        self._encryption_certificate: Optional[str] = None
-        # Optional. A custom app-provided identifier to help identify the certificate needed to decrypt resource data.
-        self._encryption_certificate_id: Optional[str] = None
-        # Required. Specifies the date and time when the webhook subscription expires. The time is in UTC, and can be an amount of time from subscription creation that varies for the resource subscribed to. For the maximum supported subscription length of time, see the table below.
-        self._expiration_date_time: Optional[datetime] = None
-        # Optional. When set to true, change notifications include resource data (such as content of a chat message).
-        self._include_resource_data: Optional[bool] = None
-        # Optional. Specifies the latest version of Transport Layer Security (TLS) that the notification endpoint, specified by notificationUrl, supports. The possible values are: v1_0, v1_1, v1_2, v1_3. For subscribers whose notification endpoint supports a version lower than the currently recommended version (TLS 1.2), specifying this property by a set timeline allows them to temporarily use their deprecated version of TLS before completing their upgrade to TLS 1.2. For these subscribers, not setting this property per the timeline would result in subscription operations failing. For subscribers whose notification endpoint already supports TLS 1.2, setting this property is optional. In such cases, Microsoft Graph defaults the property to v1_2.
-        self._latest_supported_tls_version: Optional[str] = None
-        # Optional. The URL of the endpoint that receives lifecycle notifications, including subscriptionRemoved, reauthorizationRequired, and missed notifications. This URL must make use of the HTTPS protocol.
-        self._lifecycle_notification_url: Optional[str] = None
-        # Optional. OData query options for specifying value for the targeting resource. Clients receive notifications when resource reaches the state matching the query options provided here. With this new property in the subscription creation payload along with all existing properties, Webhooks will deliver notifications whenever a resource reaches the desired state mentioned in the notificationQueryOptions property. For example, when the print job is completed or when a print job resource isFetchable property value becomes true etc.  Supported only for Universal Print Service. For more information, see Subscribe to change notifications from cloud printing APIs using Microsoft Graph.
-        self._notification_query_options: Optional[str] = None
-        # Required. The URL of the endpoint that will receive the change notifications. This URL must make use of the HTTPS protocol.
-        self._notification_url: Optional[str] = None
-        # Optional. The app ID that the subscription service can use to generate the validation token. This allows the client to validate the authenticity of the notification received.
-        self._notification_url_app_id: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Required. Specifies the resource that will be monitored for changes. Do not include the base URL (https://graph.microsoft.com/v1.0/). See the possible resource path values for each supported resource.
-        self._resource: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Subscription:
@@ -179,7 +181,9 @@ class Subscription(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "applicationId": lambda n : setattr(self, 'application_id', n.get_str_value()),
             "changeType": lambda n : setattr(self, 'change_type', n.get_str_value()),
             "clientState": lambda n : setattr(self, 'client_state', n.get_str_value()),

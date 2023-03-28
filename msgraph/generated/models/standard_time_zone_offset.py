@@ -1,12 +1,32 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-day_of_week = lazy_import('msgraph.generated.models.day_of_week')
+if TYPE_CHECKING:
+    from . import daylight_time_zone_offset, day_of_week
 
 class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new standardTimeZoneOffset and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Represents the nth occurrence of the day of week that the transition from daylight saving time to standard time occurs.
+        self._day_occurrence: Optional[int] = None
+        # Represents the day of the week when the transition from daylight saving time to standard time.
+        self._day_of_week: Optional[day_of_week.DayOfWeek] = None
+        # Represents the month of the year when the transition from daylight saving time to standard time occurs.
+        self._month: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Represents the time of day when the transition from daylight saving time to standard time occurs.
+        self._time: Optional[time] = None
+        # Represents how frequently in terms of years the change from daylight saving time to standard time occurs. For example, a value of 0 means every year.
+        self._year: Optional[int] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -24,26 +44,6 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         """
         self._additional_data = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new standardTimeZoneOffset and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Represents the nth occurrence of the day of week that the transition from daylight saving time to standard time occurs.
-        self._day_occurrence: Optional[int] = None
-        # Represents the day of the week when the transition from daylight saving time to standard time.
-        self._day_of_week: Optional[day_of_week.DayOfWeek] = None
-        # Represents the month of the year when the transition from daylight saving time to standard time occurs.
-        self._month: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Represents the time of day when the transition from daylight saving time to standard time occurs.
-        self._time: Optional[Time] = None
-        # Represents how frequently in terms of years the change from daylight saving time to standard time occurs. For example, a value of 0 means every year.
-        self._year: Optional[int] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> StandardTimeZoneOffset:
         """
@@ -54,6 +54,13 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.daylightTimeZoneOffset":
+                from . import daylight_time_zone_offset
+
+                return daylight_time_zone_offset.DaylightTimeZoneOffset()
         return StandardTimeZoneOffset()
     
     @property
@@ -95,12 +102,14 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import daylight_time_zone_offset, day_of_week
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "dayOccurrence": lambda n : setattr(self, 'day_occurrence', n.get_int_value()),
             "dayOfWeek": lambda n : setattr(self, 'day_of_week', n.get_enum_value(day_of_week.DayOfWeek)),
             "month": lambda n : setattr(self, 'month', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "time": lambda n : setattr(self, 'time', n.get_object_value(Time)),
+            "time": lambda n : setattr(self, 'time', n.get_time_value()),
             "year": lambda n : setattr(self, 'year', n.get_int_value()),
         }
         return fields
@@ -151,20 +160,20 @@ class StandardTimeZoneOffset(AdditionalDataHolder, Parsable):
         writer.write_enum_value("dayOfWeek", self.day_of_week)
         writer.write_int_value("month", self.month)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_object_value("time", self.time)
+        writer.write_time_value("time", self.time)
         writer.write_int_value("year", self.year)
         writer.write_additional_data_value(self.additional_data)
     
     @property
-    def time(self,) -> Optional[Time]:
+    def time(self,) -> Optional[time]:
         """
         Gets the time property value. Represents the time of day when the transition from daylight saving time to standard time occurs.
-        Returns: Optional[Time]
+        Returns: Optional[time]
         """
         return self._time
     
     @time.setter
-    def time(self,value: Optional[Time] = None) -> None:
+    def time(self,value: Optional[time] = None) -> None:
         """
         Sets the time property value. Represents the time of day when the transition from daylight saving time to standard time occurs.
         Args:

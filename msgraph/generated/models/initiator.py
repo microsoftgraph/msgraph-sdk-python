@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-identity = lazy_import('msgraph.generated.models.identity')
-initiator_type = lazy_import('msgraph.generated.models.initiator_type')
+if TYPE_CHECKING:
+    from . import identity, initiator_type
+
+from . import identity
 
 class Initiator(identity.Identity):
     def __init__(self,) -> None:
@@ -33,7 +34,9 @@ class Initiator(identity.Identity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import identity, initiator_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "initiatorType": lambda n : setattr(self, 'initiator_type', n.get_enum_value(initiator_type.InitiatorType)),
         }
         super_fields = super().get_field_deserializers()

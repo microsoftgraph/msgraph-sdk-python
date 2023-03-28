@@ -1,11 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-json = lazy_import('msgraph.generated.models.json')
+if TYPE_CHECKING:
+    from ........models import json
 
 class SydPostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new sydPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The cost property
+        self._cost: Optional[json.Json] = None
+        # The life property
+        self._life: Optional[json.Json] = None
+        # The per property
+        self._per: Optional[json.Json] = None
+        # The salvage property
+        self._salvage: Optional[json.Json] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,22 +38,6 @@ class SydPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new sydPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The cost property
-        self._cost: Optional[json.Json] = None
-        # The life property
-        self._life: Optional[json.Json] = None
-        # The per property
-        self._per: Optional[json.Json] = None
-        # The salvage property
-        self._salvage: Optional[json.Json] = None
     
     @property
     def cost(self,) -> Optional[json.Json]:
@@ -73,7 +73,9 @@ class SydPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from ........models import json
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "cost": lambda n : setattr(self, 'cost', n.get_object_value(json.Json)),
             "life": lambda n : setattr(self, 'life', n.get_object_value(json.Json)),
             "per": lambda n : setattr(self, 'per', n.get_object_value(json.Json)),

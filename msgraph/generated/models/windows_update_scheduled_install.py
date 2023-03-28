@@ -1,11 +1,12 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-weekly_schedule = lazy_import('msgraph.generated.models.weekly_schedule')
-windows_update_install_schedule_type = lazy_import('msgraph.generated.models.windows_update_install_schedule_type')
+if TYPE_CHECKING:
+    from . import weekly_schedule, windows_update_install_schedule_type
+
+from . import windows_update_install_schedule_type
 
 class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.WindowsUpdateInstallScheduleType):
     def __init__(self,) -> None:
@@ -17,7 +18,7 @@ class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.Windows
         # Possible values for a weekly schedule.
         self._scheduled_install_day: Optional[weekly_schedule.WeeklySchedule] = None
         # Scheduled Install Time during day
-        self._scheduled_install_time: Optional[Time] = None
+        self._scheduled_install_time: Optional[time] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsUpdateScheduledInstall:
@@ -36,9 +37,11 @@ class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.Windows
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import weekly_schedule, windows_update_install_schedule_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "scheduledInstallDay": lambda n : setattr(self, 'scheduled_install_day', n.get_enum_value(weekly_schedule.WeeklySchedule)),
-            "scheduledInstallTime": lambda n : setattr(self, 'scheduled_install_time', n.get_object_value(Time)),
+            "scheduledInstallTime": lambda n : setattr(self, 'scheduled_install_time', n.get_time_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -62,15 +65,15 @@ class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.Windows
         self._scheduled_install_day = value
     
     @property
-    def scheduled_install_time(self,) -> Optional[Time]:
+    def scheduled_install_time(self,) -> Optional[time]:
         """
         Gets the scheduledInstallTime property value. Scheduled Install Time during day
-        Returns: Optional[Time]
+        Returns: Optional[time]
         """
         return self._scheduled_install_time
     
     @scheduled_install_time.setter
-    def scheduled_install_time(self,value: Optional[Time] = None) -> None:
+    def scheduled_install_time(self,value: Optional[time] = None) -> None:
         """
         Sets the scheduledInstallTime property value. Scheduled Install Time during day
         Args:
@@ -88,6 +91,6 @@ class WindowsUpdateScheduledInstall(windows_update_install_schedule_type.Windows
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("scheduledInstallDay", self.scheduled_install_day)
-        writer.write_object_value("scheduledInstallTime", self.scheduled_install_time)
+        writer.write_time_value("scheduledInstallTime", self.scheduled_install_time)
     
 

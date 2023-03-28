@@ -1,13 +1,32 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-win32_lob_app_registry_rule_operation_type = lazy_import('msgraph.generated.models.win32_lob_app_registry_rule_operation_type')
-win32_lob_app_rule = lazy_import('msgraph.generated.models.win32_lob_app_rule')
-win32_lob_app_rule_operator = lazy_import('msgraph.generated.models.win32_lob_app_rule_operator')
+if TYPE_CHECKING:
+    from . import win32_lob_app_registry_rule_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
+
+from . import win32_lob_app_rule
 
 class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Win32LobAppRegistryRule and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.win32LobAppRegistryRule"
+        # A value indicating whether to search the 32-bit registry on 64-bit systems.
+        self._check32_bit_on64_system: Optional[bool] = None
+        # The registry comparison value.
+        self._comparison_value: Optional[str] = None
+        # The full path of the registry entry containing the value to detect.
+        self._key_path: Optional[str] = None
+        # Contains all supported registry data detection type.
+        self._operation_type: Optional[win32_lob_app_registry_rule_operation_type.Win32LobAppRegistryRuleOperationType] = None
+        # Contains properties for detection operator.
+        self._operator: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator] = None
+        # The name of the registry value to detect.
+        self._value_name: Optional[str] = None
+    
     @property
     def check32_bit_on64_system(self,) -> Optional[bool]:
         """
@@ -42,25 +61,6 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         """
         self._comparison_value = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Win32LobAppRegistryRule and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.win32LobAppRegistryRule"
-        # A value indicating whether to search the 32-bit registry on 64-bit systems.
-        self._check32_bit_on64_system: Optional[bool] = None
-        # The registry comparison value.
-        self._comparison_value: Optional[str] = None
-        # The full path of the registry entry containing the value to detect.
-        self._key_path: Optional[str] = None
-        # Contains all supported registry data detection type.
-        self._operation_type: Optional[win32_lob_app_registry_rule_operation_type.Win32LobAppRegistryRuleOperationType] = None
-        # Contains properties for detection operator.
-        self._operator: Optional[win32_lob_app_rule_operator.Win32LobAppRuleOperator] = None
-        # The name of the registry value to detect.
-        self._value_name: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppRegistryRule:
         """
@@ -78,7 +78,9 @@ class Win32LobAppRegistryRule(win32_lob_app_rule.Win32LobAppRule):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import win32_lob_app_registry_rule_operation_type, win32_lob_app_rule, win32_lob_app_rule_operator
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "check32BitOn64System": lambda n : setattr(self, 'check32_bit_on64_system', n.get_bool_value()),
             "comparisonValue": lambda n : setattr(self, 'comparison_value', n.get_str_value()),
             "keyPath": lambda n : setattr(self, 'key_path', n.get_str_value()),

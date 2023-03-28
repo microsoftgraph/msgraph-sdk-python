@@ -1,16 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-channel = lazy_import('msgraph.generated.models.channel')
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import channel, entity
+
+from . import entity
 
 class DeletedTeam(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new DeletedTeam and sets the default values.
+        """
+        super().__init__()
+        # The channels that are either shared with this deleted team or created in this deleted team.
+        self._channels: Optional[List[channel.Channel]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+    
     @property
     def channels(self,) -> Optional[List[channel.Channel]]:
         """
-        Gets the channels property value. The channels property
+        Gets the channels property value. The channels that are either shared with this deleted team or created in this deleted team.
         Returns: Optional[List[channel.Channel]]
         """
         return self._channels
@@ -18,21 +29,11 @@ class DeletedTeam(entity.Entity):
     @channels.setter
     def channels(self,value: Optional[List[channel.Channel]] = None) -> None:
         """
-        Sets the channels property value. The channels property
+        Sets the channels property value. The channels that are either shared with this deleted team or created in this deleted team.
         Args:
             value: Value to set for the channels property.
         """
         self._channels = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deletedTeam and sets the default values.
-        """
-        super().__init__()
-        # The channels property
-        self._channels: Optional[List[channel.Channel]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeletedTeam:
@@ -51,7 +52,9 @@ class DeletedTeam(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import channel, entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "channels": lambda n : setattr(self, 'channels', n.get_collection_of_object_values(channel.Channel)),
         }
         super_fields = super().get_field_deserializers()

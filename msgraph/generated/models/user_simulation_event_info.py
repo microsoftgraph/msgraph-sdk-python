@@ -1,10 +1,29 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new userSimulationEventInfo and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Browser information from where the simulation event was initiated by a user in an attack simulation and training campaign.
+        self._browser: Optional[str] = None
+        # Date and time of the simulation event by a user in an attack simulation and training campaign.
+        self._event_date_time: Optional[datetime] = None
+        # Name of the simulation event by a user in an attack simulation and training campaign.
+        self._event_name: Optional[str] = None
+        # IP address from where the simulation event was initiated by a user in an attack simulation and training campaign.
+        self._ip_address: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The operating system, platform, and device details from where the simulation event was initiated by a user in an attack simulation and training campaign.
+        self._os_platform_device_details: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -38,26 +57,6 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the browser property.
         """
         self._browser = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new userSimulationEventInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Browser information from where the simulation event was initiated by a user in an attack simulation and training campaign.
-        self._browser: Optional[str] = None
-        # Date and time of the simulation event by a user in an attack simulation and training campaign.
-        self._event_date_time: Optional[datetime] = None
-        # Name of the simulation event by a user in an attack simulation and training campaign.
-        self._event_name: Optional[str] = None
-        # IP address from where the simulation event was initiated by a user in an attack simulation and training campaign.
-        self._ip_address: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The operating system, platform, and device details from where the simulation event was initiated by a user in an attack simulation and training campaign.
-        self._os_platform_device_details: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserSimulationEventInfo:
@@ -110,7 +109,7 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "browser": lambda n : setattr(self, 'browser', n.get_str_value()),
             "eventDateTime": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
             "eventName": lambda n : setattr(self, 'event_name', n.get_str_value()),

@@ -1,10 +1,27 @@
 from __future__ import annotations
 from datetime import date
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class EducationTerm(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new educationTerm and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Display name of the term.
+        self._display_name: Optional[str] = None
+        # End of the term.
+        self._end_date: Optional[date] = None
+        # ID of term in the syncing system.
+        self._external_id: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Start of the term.
+        self._start_date: Optional[date] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -21,24 +38,6 @@ class EducationTerm(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new educationTerm and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Display name of the term.
-        self._display_name: Optional[str] = None
-        # End of the term.
-        self._end_date: Optional[Date] = None
-        # ID of term in the syncing system.
-        self._external_id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Start of the term.
-        self._start_date: Optional[Date] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationTerm:
@@ -70,15 +69,15 @@ class EducationTerm(AdditionalDataHolder, Parsable):
         self._display_name = value
     
     @property
-    def end_date(self,) -> Optional[Date]:
+    def end_date(self,) -> Optional[date]:
         """
         Gets the endDate property value. End of the term.
-        Returns: Optional[Date]
+        Returns: Optional[date]
         """
         return self._end_date
     
     @end_date.setter
-    def end_date(self,value: Optional[Date] = None) -> None:
+    def end_date(self,value: Optional[date] = None) -> None:
         """
         Sets the endDate property value. End of the term.
         Args:
@@ -108,12 +107,12 @@ class EducationTerm(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "endDate": lambda n : setattr(self, 'end_date', n.get_object_value(Date)),
+            "endDate": lambda n : setattr(self, 'end_date', n.get_date_value()),
             "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "startDate": lambda n : setattr(self, 'start_date', n.get_object_value(Date)),
+            "startDate": lambda n : setattr(self, 'start_date', n.get_date_value()),
         }
         return fields
     
@@ -143,22 +142,22 @@ class EducationTerm(AdditionalDataHolder, Parsable):
         if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("endDate", self.end_date)
+        writer.write_date_value("endDate", self.end_date)
         writer.write_str_value("externalId", self.external_id)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_object_value("startDate", self.start_date)
+        writer.write_date_value("startDate", self.start_date)
         writer.write_additional_data_value(self.additional_data)
     
     @property
-    def start_date(self,) -> Optional[Date]:
+    def start_date(self,) -> Optional[date]:
         """
         Gets the startDate property value. Start of the term.
-        Returns: Optional[Date]
+        Returns: Optional[date]
         """
         return self._start_date
     
     @start_date.setter
-    def start_date(self,value: Optional[Date] = None) -> None:
+    def start_date(self,value: Optional[date] = None) -> None:
         """
         Sets the startDate property value. Start of the term.
         Args:

@@ -1,36 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-risk_detail = lazy_import('msgraph.generated.models.risk_detail')
-risk_level = lazy_import('msgraph.generated.models.risk_level')
-risk_state = lazy_import('msgraph.generated.models.risk_state')
-risky_service_principal_history_item = lazy_import('msgraph.generated.models.risky_service_principal_history_item')
+if TYPE_CHECKING:
+    from . import entity, risky_service_principal_history_item, risk_detail, risk_level, risk_state
+
+from . import entity
 
 class RiskyServicePrincipal(entity.Entity):
-    @property
-    def app_id(self,) -> Optional[str]:
-        """
-        Gets the appId property value. The globally unique identifier for the associated application (its appId property), if any.
-        Returns: Optional[str]
-        """
-        return self._app_id
-    
-    @app_id.setter
-    def app_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the appId property value. The globally unique identifier for the associated application (its appId property), if any.
-        Args:
-            value: Value to set for the app_id property.
-        """
-        self._app_id = value
-    
     def __init__(self,) -> None:
         """
-        Instantiates a new riskyServicePrincipal and sets the default values.
+        Instantiates a new RiskyServicePrincipal and sets the default values.
         """
         super().__init__()
         # The globally unique identifier for the associated application (its appId property), if any.
@@ -56,6 +37,23 @@ class RiskyServicePrincipal(entity.Entity):
         # Identifies whether the service principal represents an Application, a ManagedIdentity, or a legacy application (socialIdp). This is set by Azure AD internally and is inherited from servicePrincipal.
         self._service_principal_type: Optional[str] = None
     
+    @property
+    def app_id(self,) -> Optional[str]:
+        """
+        Gets the appId property value. The globally unique identifier for the associated application (its appId property), if any.
+        Returns: Optional[str]
+        """
+        return self._app_id
+    
+    @app_id.setter
+    def app_id(self,value: Optional[str] = None) -> None:
+        """
+        Sets the appId property value. The globally unique identifier for the associated application (its appId property), if any.
+        Args:
+            value: Value to set for the app_id property.
+        """
+        self._app_id = value
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RiskyServicePrincipal:
         """
@@ -66,6 +64,13 @@ class RiskyServicePrincipal(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.riskyServicePrincipalHistoryItem":
+                from . import risky_service_principal_history_item
+
+                return risky_service_principal_history_item.RiskyServicePrincipalHistoryItem()
         return RiskyServicePrincipal()
     
     @property
@@ -90,7 +95,9 @@ class RiskyServicePrincipal(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, risky_service_principal_history_item, risk_detail, risk_level, risk_state
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(risky_service_principal_history_item.RiskyServicePrincipalHistoryItem)),

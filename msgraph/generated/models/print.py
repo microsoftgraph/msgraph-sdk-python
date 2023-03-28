@@ -1,17 +1,35 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-print_connector = lazy_import('msgraph.generated.models.print_connector')
-print_operation = lazy_import('msgraph.generated.models.print_operation')
-print_service = lazy_import('msgraph.generated.models.print_service')
-print_settings = lazy_import('msgraph.generated.models.print_settings')
-print_task_definition = lazy_import('msgraph.generated.models.print_task_definition')
-printer = lazy_import('msgraph.generated.models.printer')
-printer_share = lazy_import('msgraph.generated.models.printer_share')
+if TYPE_CHECKING:
+    from . import printer, printer_share, print_connector, print_operation, print_service, print_settings, print_task_definition
 
 class Print(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Print and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The list of available print connectors.
+        self._connectors: Optional[List[print_connector.PrintConnector]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The list of print long running operations.
+        self._operations: Optional[List[print_operation.PrintOperation]] = None
+        # The list of printers registered in the tenant.
+        self._printers: Optional[List[printer.Printer]] = None
+        # The list of available Universal Print service endpoints.
+        self._services: Optional[List[print_service.PrintService]] = None
+        # Tenant-wide settings for the Universal Print service.
+        self._settings: Optional[print_settings.PrintSettings] = None
+        # The list of printer shares registered in the tenant.
+        self._shares: Optional[List[printer_share.PrinterShare]] = None
+        # List of abstract definition for a task that can be triggered when various events occur within Universal Print.
+        self._task_definitions: Optional[List[print_task_definition.PrintTaskDefinition]] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -46,30 +64,6 @@ class Print(AdditionalDataHolder, Parsable):
         """
         self._connectors = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Print and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The list of available print connectors.
-        self._connectors: Optional[List[print_connector.PrintConnector]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The list of print long running operations.
-        self._operations: Optional[List[print_operation.PrintOperation]] = None
-        # The list of printers registered in the tenant.
-        self._printers: Optional[List[printer.Printer]] = None
-        # The list of available Universal Print service endpoints.
-        self._services: Optional[List[print_service.PrintService]] = None
-        # Tenant-wide settings for the Universal Print service.
-        self._settings: Optional[print_settings.PrintSettings] = None
-        # The list of printer shares registered in the tenant.
-        self._shares: Optional[List[printer_share.PrinterShare]] = None
-        # List of abstract definition for a task that can be triggered when various events occur within Universal Print.
-        self._task_definitions: Optional[List[print_task_definition.PrintTaskDefinition]] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Print:
         """
@@ -87,7 +81,9 @@ class Print(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import printer, printer_share, print_connector, print_operation, print_service, print_settings, print_task_definition
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "connectors": lambda n : setattr(self, 'connectors', n.get_collection_of_object_values(print_connector.PrintConnector)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(print_operation.PrintOperation)),

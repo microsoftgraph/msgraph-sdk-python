@@ -1,11 +1,31 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-json = lazy_import('msgraph.generated.models.json')
+if TYPE_CHECKING:
+    from ........models import json
 
 class DurationPostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new durationPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The basis property
+        self._basis: Optional[json.Json] = None
+        # The coupon property
+        self._coupon: Optional[json.Json] = None
+        # The frequency property
+        self._frequency: Optional[json.Json] = None
+        # The maturity property
+        self._maturity: Optional[json.Json] = None
+        # The settlement property
+        self._settlement: Optional[json.Json] = None
+        # The yld property
+        self._yld: Optional[json.Json] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -39,26 +59,6 @@ class DurationPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the basis property.
         """
         self._basis = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new durationPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The basis property
-        self._basis: Optional[json.Json] = None
-        # The coupon property
-        self._coupon: Optional[json.Json] = None
-        # The frequency property
-        self._frequency: Optional[json.Json] = None
-        # The maturity property
-        self._maturity: Optional[json.Json] = None
-        # The settlement property
-        self._settlement: Optional[json.Json] = None
-        # The yld property
-        self._yld: Optional[json.Json] = None
     
     @property
     def coupon(self,) -> Optional[json.Json]:
@@ -111,7 +111,9 @@ class DurationPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from ........models import json
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "basis": lambda n : setattr(self, 'basis', n.get_object_value(json.Json)),
             "coupon": lambda n : setattr(self, 'coupon', n.get_object_value(json.Json)),
             "frequency": lambda n : setattr(self, 'frequency', n.get_object_value(json.Json)),

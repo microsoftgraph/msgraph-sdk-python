@@ -1,12 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-imported_windows_autopilot_device_identity = lazy_import('msgraph.generated.models.imported_windows_autopilot_device_identity')
-imported_windows_autopilot_device_identity_upload_status = lazy_import('msgraph.generated.models.imported_windows_autopilot_device_identity_upload_status')
+if TYPE_CHECKING:
+    from . import entity, imported_windows_autopilot_device_identity, imported_windows_autopilot_device_identity_upload_status
+
+from . import entity
 
 class ImportedWindowsAutopilotDeviceIdentityUpload(entity.Entity):
     def __init__(self,) -> None:
@@ -74,7 +74,9 @@ class ImportedWindowsAutopilotDeviceIdentityUpload(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, imported_windows_autopilot_device_identity, imported_windows_autopilot_device_identity_upload_status
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTimeUtc": lambda n : setattr(self, 'created_date_time_utc', n.get_datetime_value()),
             "deviceIdentities": lambda n : setattr(self, 'device_identities', n.get_collection_of_object_values(imported_windows_autopilot_device_identity.ImportedWindowsAutopilotDeviceIdentity)),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(imported_windows_autopilot_device_identity_upload_status.ImportedWindowsAutopilotDeviceIdentityUploadStatus)),

@@ -1,15 +1,42 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-incomplete_data = lazy_import('msgraph.generated.models.incomplete_data')
-item_action_stat = lazy_import('msgraph.generated.models.item_action_stat')
-item_activity = lazy_import('msgraph.generated.models.item_activity')
+if TYPE_CHECKING:
+    from . import entity, incomplete_data, item_action_stat, item_activity
+
+from . import entity
 
 class ItemActivityStat(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new itemActivityStat and sets the default values.
+        """
+        super().__init__()
+        # Statistics about the access actions in this interval. Read-only.
+        self._access: Optional[item_action_stat.ItemActionStat] = None
+        # Exposes the itemActivities represented in this itemActivityStat resource.
+        self._activities: Optional[List[item_activity.ItemActivity]] = None
+        # Statistics about the create actions in this interval. Read-only.
+        self._create: Optional[item_action_stat.ItemActionStat] = None
+        # Statistics about the delete actions in this interval. Read-only.
+        self._delete: Optional[item_action_stat.ItemActionStat] = None
+        # Statistics about the edit actions in this interval. Read-only.
+        self._edit: Optional[item_action_stat.ItemActionStat] = None
+        # When the interval ends. Read-only.
+        self._end_date_time: Optional[datetime] = None
+        # Indicates that the statistics in this interval are based on incomplete data. Read-only.
+        self._incomplete_data: Optional[incomplete_data.IncompleteData] = None
+        # Indicates whether the item is 'trending.' Read-only.
+        self._is_trending: Optional[bool] = None
+        # Statistics about the move actions in this interval. Read-only.
+        self._move: Optional[item_action_stat.ItemActionStat] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # When the interval starts. Read-only.
+        self._start_date_time: Optional[datetime] = None
+    
     @property
     def access(self,) -> Optional[item_action_stat.ItemActionStat]:
         """
@@ -43,34 +70,6 @@ class ItemActivityStat(entity.Entity):
             value: Value to set for the activities property.
         """
         self._activities = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new itemActivityStat and sets the default values.
-        """
-        super().__init__()
-        # Statistics about the access actions in this interval. Read-only.
-        self._access: Optional[item_action_stat.ItemActionStat] = None
-        # Exposes the itemActivities represented in this itemActivityStat resource.
-        self._activities: Optional[List[item_activity.ItemActivity]] = None
-        # Statistics about the create actions in this interval. Read-only.
-        self._create: Optional[item_action_stat.ItemActionStat] = None
-        # Statistics about the delete actions in this interval. Read-only.
-        self._delete: Optional[item_action_stat.ItemActionStat] = None
-        # Statistics about the edit actions in this interval. Read-only.
-        self._edit: Optional[item_action_stat.ItemActionStat] = None
-        # When the interval ends. Read-only.
-        self._end_date_time: Optional[datetime] = None
-        # Indicates that the statistics in this interval are based on incomplete data. Read-only.
-        self._incomplete_data: Optional[incomplete_data.IncompleteData] = None
-        # Indicates whether the item is 'trending.' Read-only.
-        self._is_trending: Optional[bool] = None
-        # Statistics about the move actions in this interval. Read-only.
-        self._move: Optional[item_action_stat.ItemActionStat] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # When the interval starts. Read-only.
-        self._start_date_time: Optional[datetime] = None
     
     @property
     def create(self,) -> Optional[item_action_stat.ItemActionStat]:
@@ -157,7 +156,9 @@ class ItemActivityStat(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, incomplete_data, item_action_stat, item_activity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "access": lambda n : setattr(self, 'access', n.get_object_value(item_action_stat.ItemActionStat)),
             "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(item_activity.ItemActivity)),
             "create": lambda n : setattr(self, 'create', n.get_object_value(item_action_stat.ItemActionStat)),

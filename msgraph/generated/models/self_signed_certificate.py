@@ -1,27 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 class SelfSignedCertificate(AdditionalDataHolder, Parsable):
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new SelfSignedCertificate and sets the default values.
@@ -38,7 +21,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
         # The key property
         self._key: Optional[bytes] = None
         # The keyId property
-        self._key_id: Optional[Guid] = None
+        self._key_id: Optional[UUID] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # The startDateTime property
@@ -49,6 +32,23 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
         self._type: Optional[str] = None
         # The usage property
         self._usage: Optional[str] = None
+    
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SelfSignedCertificate:
@@ -118,12 +118,12 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "customKeyIdentifier": lambda n : setattr(self, 'custom_key_identifier', n.get_bytes_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "key": lambda n : setattr(self, 'key', n.get_bytes_value()),
-            "keyId": lambda n : setattr(self, 'key_id', n.get_object_value(Guid)),
+            "keyId": lambda n : setattr(self, 'key_id', n.get_uuid_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "thumbprint": lambda n : setattr(self, 'thumbprint', n.get_str_value()),
@@ -150,15 +150,15 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
         self._key = value
     
     @property
-    def key_id(self,) -> Optional[Guid]:
+    def key_id(self,) -> Optional[UUID]:
         """
         Gets the keyId property value. The keyId property
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._key_id
     
     @key_id.setter
-    def key_id(self,value: Optional[Guid] = None) -> None:
+    def key_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the keyId property value. The keyId property
         Args:
@@ -195,7 +195,7 @@ class SelfSignedCertificate(AdditionalDataHolder, Parsable):
         writer.write_str_value("displayName", self.display_name)
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_object_value("key", self.key)
-        writer.write_object_value("keyId", self.key_id)
+        writer.write_uuid_value("keyId", self.key_id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("thumbprint", self.thumbprint)

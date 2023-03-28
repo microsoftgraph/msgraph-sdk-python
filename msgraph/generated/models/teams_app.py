@@ -1,13 +1,29 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-teams_app_definition = lazy_import('msgraph.generated.models.teams_app_definition')
-teams_app_distribution_method = lazy_import('msgraph.generated.models.teams_app_distribution_method')
+if TYPE_CHECKING:
+    from . import entity, teams_app_definition, teams_app_distribution_method
+
+from . import entity
 
 class TeamsApp(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new teamsApp and sets the default values.
+        """
+        super().__init__()
+        # The details for each version of the app.
+        self._app_definitions: Optional[List[teams_app_definition.TeamsAppDefinition]] = None
+        # The name of the catalog app provided by the app developer in the Microsoft Teams zip app package.
+        self._display_name: Optional[str] = None
+        # The method of distribution for the app. Read-only.
+        self._distribution_method: Optional[teams_app_distribution_method.TeamsAppDistributionMethod] = None
+        # The ID of the catalog provided by the app developer in the Microsoft Teams zip app package.
+        self._external_id: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+    
     @property
     def app_definitions(self,) -> Optional[List[teams_app_definition.TeamsAppDefinition]]:
         """
@@ -24,22 +40,6 @@ class TeamsApp(entity.Entity):
             value: Value to set for the app_definitions property.
         """
         self._app_definitions = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new teamsApp and sets the default values.
-        """
-        super().__init__()
-        # The details for each version of the app.
-        self._app_definitions: Optional[List[teams_app_definition.TeamsAppDefinition]] = None
-        # The name of the catalog app provided by the app developer in the Microsoft Teams zip app package.
-        self._display_name: Optional[str] = None
-        # The method of distribution for the app. Read-only.
-        self._distribution_method: Optional[teams_app_distribution_method.TeamsAppDistributionMethod] = None
-        # The ID of the catalog provided by the app developer in the Microsoft Teams zip app package.
-        self._external_id: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamsApp:
@@ -109,7 +109,9 @@ class TeamsApp(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, teams_app_definition, teams_app_distribution_method
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "appDefinitions": lambda n : setattr(self, 'app_definitions', n.get_collection_of_object_values(teams_app_definition.TeamsAppDefinition)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "distributionMethod": lambda n : setattr(self, 'distribution_method', n.get_enum_value(teams_app_distribution_method.TeamsAppDistributionMethod)),

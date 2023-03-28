@@ -1,13 +1,29 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-teams_app = lazy_import('msgraph.generated.models.teams_app')
-teams_tab_configuration = lazy_import('msgraph.generated.models.teams_tab_configuration')
+if TYPE_CHECKING:
+    from . import entity, teams_app, teams_tab_configuration
+
+from . import entity
 
 class TeamsTab(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new teamsTab and sets the default values.
+        """
+        super().__init__()
+        # Container for custom settings applied to a tab. The tab is considered configured only once this property is set.
+        self._configuration: Optional[teams_tab_configuration.TeamsTabConfiguration] = None
+        # Name of the tab.
+        self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The application that is linked to the tab. This cannot be changed after tab creation.
+        self._teams_app: Optional[teams_app.TeamsApp] = None
+        # Deep link URL of the tab instance. Read only.
+        self._web_url: Optional[str] = None
+    
     @property
     def configuration(self,) -> Optional[teams_tab_configuration.TeamsTabConfiguration]:
         """
@@ -24,22 +40,6 @@ class TeamsTab(entity.Entity):
             value: Value to set for the configuration property.
         """
         self._configuration = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new teamsTab and sets the default values.
-        """
-        super().__init__()
-        # Container for custom settings applied to a tab. The tab is considered configured only once this property is set.
-        self._configuration: Optional[teams_tab_configuration.TeamsTabConfiguration] = None
-        # Name of the tab.
-        self._display_name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The application that is linked to the tab. This cannot be changed after tab creation.
-        self._teams_app: Optional[teams_app.TeamsApp] = None
-        # Deep link URL of the tab instance. Read only.
-        self._web_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamsTab:
@@ -75,7 +75,9 @@ class TeamsTab(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, teams_app, teams_tab_configuration
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "configuration": lambda n : setattr(self, 'configuration', n.get_object_value(teams_tab_configuration.TeamsTabConfiguration)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "teamsApp": lambda n : setattr(self, 'teams_app', n.get_object_value(teams_app.TeamsApp)),

@@ -1,11 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-volume_type = lazy_import('msgraph.generated.models.volume_type')
+if TYPE_CHECKING:
+    from . import entity, volume_type
+
+from . import entity
 
 class BitlockerRecoveryKey(entity.Entity):
     def __init__(self,) -> None:
@@ -75,7 +76,9 @@ class BitlockerRecoveryKey(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, volume_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
             "key": lambda n : setattr(self, 'key', n.get_str_value()),

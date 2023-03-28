@@ -1,13 +1,36 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
-entity = lazy_import('msgraph.generated.models.entity')
-license_units_detail = lazy_import('msgraph.generated.models.license_units_detail')
-service_plan_info = lazy_import('msgraph.generated.models.service_plan_info')
+if TYPE_CHECKING:
+    from . import entity, license_units_detail, service_plan_info
+
+from . import entity
 
 class SubscribedSku(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new SubscribedSku and sets the default values.
+        """
+        super().__init__()
+        # For example, 'User' or 'Company'.
+        self._applies_to: Optional[str] = None
+        # Possible values are: Enabled, Warning, Suspended, Deleted, LockedOut. The capabilityStatus is Enabled if the prepaidUnits property has at least 1 unit that is enabled, and LockedOut if the customer cancelled their subscription.
+        self._capability_status: Optional[str] = None
+        # The number of licenses that have been assigned.
+        self._consumed_units: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Information about the number and status of prepaid licenses.
+        self._prepaid_units: Optional[license_units_detail.LicenseUnitsDetail] = None
+        # Information about the service plans that are available with the SKU. Not nullable
+        self._service_plans: Optional[List[service_plan_info.ServicePlanInfo]] = None
+        # The unique identifier (GUID) for the service SKU.
+        self._sku_id: Optional[UUID] = None
+        # The SKU part number; for example: 'AAD_PREMIUM' or 'RMSBASIC'. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.
+        self._sku_part_number: Optional[str] = None
+    
     @property
     def applies_to(self,) -> Optional[str]:
         """
@@ -41,28 +64,6 @@ class SubscribedSku(entity.Entity):
             value: Value to set for the capability_status property.
         """
         self._capability_status = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new SubscribedSku and sets the default values.
-        """
-        super().__init__()
-        # For example, 'User' or 'Company'.
-        self._applies_to: Optional[str] = None
-        # Possible values are: Enabled, Warning, Suspended, Deleted, LockedOut. The capabilityStatus is Enabled if the prepaidUnits property has at least 1 unit that is enabled, and LockedOut if the customer cancelled their subscription.
-        self._capability_status: Optional[str] = None
-        # The number of licenses that have been assigned.
-        self._consumed_units: Optional[int] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Information about the number and status of prepaid licenses.
-        self._prepaid_units: Optional[license_units_detail.LicenseUnitsDetail] = None
-        # Information about the service plans that are available with the SKU. Not nullable
-        self._service_plans: Optional[List[service_plan_info.ServicePlanInfo]] = None
-        # The unique identifier (GUID) for the service SKU.
-        self._sku_id: Optional[Guid] = None
-        # The SKU part number; for example: 'AAD_PREMIUM' or 'RMSBASIC'. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.
-        self._sku_part_number: Optional[str] = None
     
     @property
     def consumed_units(self,) -> Optional[int]:
@@ -98,13 +99,15 @@ class SubscribedSku(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, license_units_detail, service_plan_info
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "appliesTo": lambda n : setattr(self, 'applies_to', n.get_str_value()),
             "capabilityStatus": lambda n : setattr(self, 'capability_status', n.get_str_value()),
             "consumedUnits": lambda n : setattr(self, 'consumed_units', n.get_int_value()),
             "prepaidUnits": lambda n : setattr(self, 'prepaid_units', n.get_object_value(license_units_detail.LicenseUnitsDetail)),
             "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(service_plan_info.ServicePlanInfo)),
-            "skuId": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
+            "skuId": lambda n : setattr(self, 'sku_id', n.get_uuid_value()),
             "skuPartNumber": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -142,7 +145,7 @@ class SubscribedSku(entity.Entity):
         writer.write_int_value("consumedUnits", self.consumed_units)
         writer.write_object_value("prepaidUnits", self.prepaid_units)
         writer.write_collection_of_object_values("servicePlans", self.service_plans)
-        writer.write_object_value("skuId", self.sku_id)
+        writer.write_uuid_value("skuId", self.sku_id)
         writer.write_str_value("skuPartNumber", self.sku_part_number)
     
     @property
@@ -163,15 +166,15 @@ class SubscribedSku(entity.Entity):
         self._service_plans = value
     
     @property
-    def sku_id(self,) -> Optional[Guid]:
+    def sku_id(self,) -> Optional[UUID]:
         """
         Gets the skuId property value. The unique identifier (GUID) for the service SKU.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._sku_id
     
     @sku_id.setter
-    def sku_id(self,value: Optional[Guid] = None) -> None:
+    def sku_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the skuId property value. The unique identifier (GUID) for the service SKU.
         Args:

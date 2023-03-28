@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-details_info = lazy_import('msgraph.generated.models.details_info')
-identity = lazy_import('msgraph.generated.models.identity')
+if TYPE_CHECKING:
+    from . import details_info, identity
+
+from . import identity
 
 class ProvisionedIdentity(identity.Identity):
     def __init__(self,) -> None:
@@ -52,7 +53,9 @@ class ProvisionedIdentity(identity.Identity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import details_info, identity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "details": lambda n : setattr(self, 'details', n.get_object_value(details_info.DetailsInfo)),
             "identityType": lambda n : setattr(self, 'identity_type', n.get_str_value()),
         }

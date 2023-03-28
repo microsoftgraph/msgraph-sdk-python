@@ -7,34 +7,20 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-external_sponsors_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.external_sponsors.external_sponsors_request_builder')
-directory_object_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.external_sponsors.item.directory_object_item_request_builder')
-internal_sponsors_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.internal_sponsors_request_builder')
-directory_object_item_request_builder = lazy_import('msgraph.generated.identity_governance.entitlement_management.connected_organizations.item.internal_sponsors.item.directory_object_item_request_builder')
-connected_organization = lazy_import('msgraph.generated.models.connected_organization')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from .....models import connected_organization
+    from .....models.o_data_errors import o_data_error
+    from .external_sponsors import external_sponsors_request_builder
+    from .external_sponsors.item import directory_object_item_request_builder
+    from .internal_sponsors import internal_sponsors_request_builder
+    from .internal_sponsors.item import directory_object_item_request_builder
 
 class ConnectedOrganizationItemRequestBuilder():
     """
     Provides operations to manage the connectedOrganizations property of the microsoft.graph.entitlementManagement entity.
     """
-    @property
-    def external_sponsors(self) -> external_sponsors_request_builder.ExternalSponsorsRequestBuilder:
-        """
-        Provides operations to manage the externalSponsors property of the microsoft.graph.connectedOrganization entity.
-        """
-        return external_sponsors_request_builder.ExternalSponsorsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def internal_sponsors(self) -> internal_sponsors_request_builder.InternalSponsorsRequestBuilder:
-        """
-        Provides operations to manage the internalSponsors property of the microsoft.graph.connectedOrganization entity.
-        """
-        return internal_sponsors_request_builder.InternalSponsorsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new ConnectedOrganizationItemRequestBuilder and sets the default values.
@@ -62,6 +48,8 @@ class ConnectedOrganizationItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from .....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -79,6 +67,9 @@ class ConnectedOrganizationItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .external_sponsors.item import directory_object_item_request_builder
+        from .internal_sponsors.item import directory_object_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -93,12 +84,16 @@ class ConnectedOrganizationItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from .....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .....models import connected_organization
+
         return await self.request_adapter.send_async(request_info, connected_organization.ConnectedOrganization, error_mapping)
     
     def internal_sponsors_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
@@ -110,6 +105,9 @@ class ConnectedOrganizationItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .external_sponsors.item import directory_object_item_request_builder
+        from .internal_sponsors.item import directory_object_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["directoryObject%2Did"] = id
         return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -127,12 +125,16 @@ class ConnectedOrganizationItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from .....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .....models import connected_organization
+
         return await self.request_adapter.send_async(request_info, connected_organization.ConnectedOrganization, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[ConnectedOrganizationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -190,6 +192,24 @@ class ConnectedOrganizationItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def external_sponsors(self) -> external_sponsors_request_builder.ExternalSponsorsRequestBuilder:
+        """
+        Provides operations to manage the externalSponsors property of the microsoft.graph.connectedOrganization entity.
+        """
+        from .external_sponsors import external_sponsors_request_builder
+
+        return external_sponsors_request_builder.ExternalSponsorsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def internal_sponsors(self) -> internal_sponsors_request_builder.InternalSponsorsRequestBuilder:
+        """
+        Provides operations to manage the internalSponsors property of the microsoft.graph.connectedOrganization entity.
+        """
+        from .internal_sponsors import internal_sponsors_request_builder
+
+        return internal_sponsors_request_builder.InternalSponsorsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class ConnectedOrganizationItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -207,12 +227,6 @@ class ConnectedOrganizationItemRequestBuilder():
         """
         References to a directory or domain of another organization whose users can request access.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -228,6 +242,12 @@ class ConnectedOrganizationItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class ConnectedOrganizationItemRequestBuilderGetRequestConfiguration():

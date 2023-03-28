@@ -1,12 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-mobile_app = lazy_import('msgraph.generated.models.mobile_app')
-mobile_app_content = lazy_import('msgraph.generated.models.mobile_app_content')
+if TYPE_CHECKING:
+    from . import android_lob_app, ios_lob_app, mac_o_s_lob_app, mobile_app, mobile_app_content, win32_lob_app, windows_mobile_m_s_i, windows_universal_app_x
+
+from . import mobile_app
 
 class MobileLobApp(mobile_app.MobileApp):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new MobileLobApp and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.mobileLobApp"
+        # The internal committed content version.
+        self._committed_content_version: Optional[str] = None
+        # The list of content versions for this app.
+        self._content_versions: Optional[List[mobile_app_content.MobileAppContent]] = None
+        # The name of the main Lob application file.
+        self._file_name: Optional[str] = None
+        # The total size, including all uploaded files.
+        self._size: Optional[int] = None
+    
     @property
     def committed_content_version(self,) -> Optional[str]:
         """
@@ -23,21 +39,6 @@ class MobileLobApp(mobile_app.MobileApp):
             value: Value to set for the committed_content_version property.
         """
         self._committed_content_version = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new MobileLobApp and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.mobileLobApp"
-        # The internal committed content version.
-        self._committed_content_version: Optional[str] = None
-        # The list of content versions for this app.
-        self._content_versions: Optional[List[mobile_app_content.MobileAppContent]] = None
-        # The name of the main Lob application file.
-        self._file_name: Optional[str] = None
-        # The total size, including all uploaded files.
-        self._size: Optional[int] = None
     
     @property
     def content_versions(self,) -> Optional[List[mobile_app_content.MobileAppContent]]:
@@ -66,6 +67,33 @@ class MobileLobApp(mobile_app.MobileApp):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.androidLobApp":
+                from . import android_lob_app
+
+                return android_lob_app.AndroidLobApp()
+            if mapping_value == "#microsoft.graph.iosLobApp":
+                from . import ios_lob_app
+
+                return ios_lob_app.IosLobApp()
+            if mapping_value == "#microsoft.graph.macOSLobApp":
+                from . import mac_o_s_lob_app
+
+                return mac_o_s_lob_app.MacOSLobApp()
+            if mapping_value == "#microsoft.graph.win32LobApp":
+                from . import win32_lob_app
+
+                return win32_lob_app.Win32LobApp()
+            if mapping_value == "#microsoft.graph.windowsMobileMSI":
+                from . import windows_mobile_m_s_i
+
+                return windows_mobile_m_s_i.WindowsMobileMSI()
+            if mapping_value == "#microsoft.graph.windowsUniversalAppX":
+                from . import windows_universal_app_x
+
+                return windows_universal_app_x.WindowsUniversalAppX()
         return MobileLobApp()
     
     @property
@@ -90,7 +118,9 @@ class MobileLobApp(mobile_app.MobileApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import android_lob_app, ios_lob_app, mac_o_s_lob_app, mobile_app, mobile_app_content, win32_lob_app, windows_mobile_m_s_i, windows_universal_app_x
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "committedContentVersion": lambda n : setattr(self, 'committed_content_version', n.get_str_value()),
             "contentVersions": lambda n : setattr(self, 'content_versions', n.get_collection_of_object_values(mobile_app_content.MobileAppContent)),
             "fileName": lambda n : setattr(self, 'file_name', n.get_str_value()),

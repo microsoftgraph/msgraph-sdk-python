@@ -1,15 +1,43 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
-change_notification_encrypted_content = lazy_import('msgraph.generated.models.change_notification_encrypted_content')
-change_type = lazy_import('msgraph.generated.models.change_type')
-lifecycle_event_type = lazy_import('msgraph.generated.models.lifecycle_event_type')
-resource_data = lazy_import('msgraph.generated.models.resource_data')
+if TYPE_CHECKING:
+    from . import change_notification_encrypted_content, change_type, lifecycle_event_type, resource_data
 
 class ChangeNotification(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new changeNotification and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The changeType property
+        self._change_type: Optional[change_type.ChangeType] = None
+        # Value of the clientState property sent in the subscription request (if any). The maximum length is 255 characters. The client can check whether the change notification came from the service by comparing the values of the clientState property. The value of the clientState property sent with the subscription is compared with the value of the clientState property received with each change notification. Optional.
+        self._client_state: Optional[str] = None
+        # (Preview) Encrypted content attached with the change notification. Only provided if encryptionCertificate and includeResourceData were defined during the subscription request and if the resource supports it. Optional.
+        self._encrypted_content: Optional[change_notification_encrypted_content.ChangeNotificationEncryptedContent] = None
+        # Unique ID for the notification. Optional.
+        self._id: Optional[str] = None
+        # The type of lifecycle notification if the current notification is a lifecycle notification. Optional. Supported values are missed, subscriptionRemoved, reauthorizationRequired. Optional.
+        self._lifecycle_event: Optional[lifecycle_event_type.LifecycleEventType] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The URI of the resource that emitted the change notification relative to https://graph.microsoft.com. Required.
+        self._resource: Optional[str] = None
+        # The content of this property depends on the type of resource being subscribed to. Optional.
+        self._resource_data: Optional[resource_data.ResourceData] = None
+        # The expiration time for the subscription. Required.
+        self._subscription_expiration_date_time: Optional[datetime] = None
+        # The unique identifier of the subscription that generated the notification.Required.
+        self._subscription_id: Optional[UUID] = None
+        # The unique identifier of the tenant from which the change notification originated. Required.
+        self._tenant_id: Optional[UUID] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -61,36 +89,6 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         """
         self._client_state = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new changeNotification and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The changeType property
-        self._change_type: Optional[change_type.ChangeType] = None
-        # Value of the clientState property sent in the subscription request (if any). The maximum length is 255 characters. The client can check whether the change notification came from the service by comparing the values of the clientState property. The value of the clientState property sent with the subscription is compared with the value of the clientState property received with each change notification. Optional.
-        self._client_state: Optional[str] = None
-        # (Preview) Encrypted content attached with the change notification. Only provided if encryptionCertificate and includeResourceData were defined during the subscription request and if the resource supports it. Optional.
-        self._encrypted_content: Optional[change_notification_encrypted_content.ChangeNotificationEncryptedContent] = None
-        # Unique ID for the notification. Optional.
-        self._id: Optional[str] = None
-        # The type of lifecycle notification if the current notification is a lifecycle notification. Optional. Supported values are missed, subscriptionRemoved, reauthorizationRequired. Optional.
-        self._lifecycle_event: Optional[lifecycle_event_type.LifecycleEventType] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The URI of the resource that emitted the change notification relative to https://graph.microsoft.com. Required.
-        self._resource: Optional[str] = None
-        # The content of this property depends on the type of resource being subscribed to. Optional.
-        self._resource_data: Optional[resource_data.ResourceData] = None
-        # The expiration time for the subscription. Required.
-        self._subscription_expiration_date_time: Optional[datetime] = None
-        # The unique identifier of the subscription that generated the notification.Required.
-        self._subscription_id: Optional[Guid] = None
-        # The unique identifier of the tenant from which the change notification originated. Required.
-        self._tenant_id: Optional[Guid] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChangeNotification:
         """
@@ -125,7 +123,9 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import change_notification_encrypted_content, change_type, lifecycle_event_type, resource_data
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "changeType": lambda n : setattr(self, 'change_type', n.get_enum_value(change_type.ChangeType)),
             "clientState": lambda n : setattr(self, 'client_state', n.get_str_value()),
             "encryptedContent": lambda n : setattr(self, 'encrypted_content', n.get_object_value(change_notification_encrypted_content.ChangeNotificationEncryptedContent)),
@@ -135,8 +135,8 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
             "resource": lambda n : setattr(self, 'resource', n.get_str_value()),
             "resourceData": lambda n : setattr(self, 'resource_data', n.get_object_value(resource_data.ResourceData)),
             "subscriptionExpirationDateTime": lambda n : setattr(self, 'subscription_expiration_date_time', n.get_datetime_value()),
-            "subscriptionId": lambda n : setattr(self, 'subscription_id', n.get_object_value(Guid)),
-            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_object_value(Guid)),
+            "subscriptionId": lambda n : setattr(self, 'subscription_id', n.get_uuid_value()),
+            "tenantId": lambda n : setattr(self, 'tenant_id', n.get_uuid_value()),
         }
         return fields
     
@@ -242,8 +242,8 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         writer.write_str_value("resource", self.resource)
         writer.write_object_value("resourceData", self.resource_data)
         writer.write_datetime_value("subscriptionExpirationDateTime", self.subscription_expiration_date_time)
-        writer.write_object_value("subscriptionId", self.subscription_id)
-        writer.write_object_value("tenantId", self.tenant_id)
+        writer.write_uuid_value("subscriptionId", self.subscription_id)
+        writer.write_uuid_value("tenantId", self.tenant_id)
         writer.write_additional_data_value(self.additional_data)
     
     @property
@@ -264,15 +264,15 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         self._subscription_expiration_date_time = value
     
     @property
-    def subscription_id(self,) -> Optional[Guid]:
+    def subscription_id(self,) -> Optional[UUID]:
         """
         Gets the subscriptionId property value. The unique identifier of the subscription that generated the notification.Required.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._subscription_id
     
     @subscription_id.setter
-    def subscription_id(self,value: Optional[Guid] = None) -> None:
+    def subscription_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the subscriptionId property value. The unique identifier of the subscription that generated the notification.Required.
         Args:
@@ -281,15 +281,15 @@ class ChangeNotification(AdditionalDataHolder, Parsable):
         self._subscription_id = value
     
     @property
-    def tenant_id(self,) -> Optional[Guid]:
+    def tenant_id(self,) -> Optional[UUID]:
         """
         Gets the tenantId property value. The unique identifier of the tenant from which the change notification originated. Required.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._tenant_id
     
     @tenant_id.setter
-    def tenant_id(self,value: Optional[Guid] = None) -> None:
+    def tenant_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the tenantId property value. The unique identifier of the tenant from which the change notification originated. Required.
         Args:

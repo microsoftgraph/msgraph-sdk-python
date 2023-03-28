@@ -1,13 +1,37 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
-allow_invites_from = lazy_import('msgraph.generated.models.allow_invites_from')
-default_user_role_permissions = lazy_import('msgraph.generated.models.default_user_role_permissions')
-policy_base = lazy_import('msgraph.generated.models.policy_base')
+if TYPE_CHECKING:
+    from . import allow_invites_from, default_user_role_permissions, policy_base
+
+from . import policy_base
 
 class AuthorizationPolicy(policy_base.PolicyBase):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new AuthorizationPolicy and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.authorizationPolicy"
+        # Indicates whether a user can join the tenant by email validation.
+        self._allow_email_verified_users_to_join_organization: Optional[bool] = None
+        # Indicates who can invite external users to the organization. Possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.  everyone is the default setting for all cloud environments except US Government. See more in the table below.
+        self._allow_invites_from: Optional[allow_invites_from.AllowInvitesFrom] = None
+        # The allowUserConsentForRiskyApps property
+        self._allow_user_consent_for_risky_apps: Optional[bool] = None
+        # Indicates whether users can sign up for email based subscriptions.
+        self._allowed_to_sign_up_email_based_subscriptions: Optional[bool] = None
+        # Indicates whether the Self-Serve Password Reset feature can be used by users on the tenant.
+        self._allowed_to_use_s_s_p_r: Optional[bool] = None
+        # To disable the use of MSOL PowerShell set this property to true. This will also disable user-based access to the legacy service endpoint used by MSOL PowerShell. This does not affect Azure AD Connect or Microsoft Graph.
+        self._block_msol_power_shell: Optional[bool] = None
+        # The defaultUserRolePermissions property
+        self._default_user_role_permissions: Optional[default_user_role_permissions.DefaultUserRolePermissions] = None
+        # Represents role templateId for the role that should be granted to guest user. Currently following roles are supported:  User (a0b1b346-4d3e-4e8b-98f8-753987be4970), Guest User (10dae51f-b6af-4016-8d66-8c2a99b929b3), and Restricted Guest User (2af84b1e-32c8-42b7-82bc-daa82404023b).
+        self._guest_user_role_id: Optional[UUID] = None
+    
     @property
     def allow_email_verified_users_to_join_organization(self,) -> Optional[bool]:
         """
@@ -41,6 +65,23 @@ class AuthorizationPolicy(policy_base.PolicyBase):
             value: Value to set for the allow_invites_from property.
         """
         self._allow_invites_from = value
+    
+    @property
+    def allow_user_consent_for_risky_apps(self,) -> Optional[bool]:
+        """
+        Gets the allowUserConsentForRiskyApps property value. The allowUserConsentForRiskyApps property
+        Returns: Optional[bool]
+        """
+        return self._allow_user_consent_for_risky_apps
+    
+    @allow_user_consent_for_risky_apps.setter
+    def allow_user_consent_for_risky_apps(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the allowUserConsentForRiskyApps property value. The allowUserConsentForRiskyApps property
+        Args:
+            value: Value to set for the allow_user_consent_for_risky_apps property.
+        """
+        self._allow_user_consent_for_risky_apps = value
     
     @property
     def allowed_to_sign_up_email_based_subscriptions(self,) -> Optional[bool]:
@@ -93,27 +134,6 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         """
         self._block_msol_power_shell = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AuthorizationPolicy and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.authorizationPolicy"
-        # Indicates whether a user can join the tenant by email validation.
-        self._allow_email_verified_users_to_join_organization: Optional[bool] = None
-        # Indicates who can invite external users to the organization. Possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.  everyone is the default setting for all cloud environments except US Government. See more in the table below.
-        self._allow_invites_from: Optional[allow_invites_from.AllowInvitesFrom] = None
-        # Indicates whether users can sign up for email based subscriptions.
-        self._allowed_to_sign_up_email_based_subscriptions: Optional[bool] = None
-        # Indicates whether the Self-Serve Password Reset feature can be used by users on the tenant.
-        self._allowed_to_use_s_s_p_r: Optional[bool] = None
-        # To disable the use of MSOL PowerShell set this property to true. This will also disable user-based access to the legacy service endpoint used by MSOL PowerShell. This does not affect Azure AD Connect or Microsoft Graph.
-        self._block_msol_power_shell: Optional[bool] = None
-        # The defaultUserRolePermissions property
-        self._default_user_role_permissions: Optional[default_user_role_permissions.DefaultUserRolePermissions] = None
-        # Represents role templateId for the role that should be granted to guest user. Currently following roles are supported:  User (a0b1b346-4d3e-4e8b-98f8-753987be4970), Guest User (10dae51f-b6af-4016-8d66-8c2a99b929b3), and Restricted Guest User (2af84b1e-32c8-42b7-82bc-daa82404023b).
-        self._guest_user_role_id: Optional[Guid] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthorizationPolicy:
         """
@@ -148,29 +168,32 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import allow_invites_from, default_user_role_permissions, policy_base
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowedToSignUpEmailBasedSubscriptions": lambda n : setattr(self, 'allowed_to_sign_up_email_based_subscriptions', n.get_bool_value()),
             "allowedToUseSSPR": lambda n : setattr(self, 'allowed_to_use_s_s_p_r', n.get_bool_value()),
             "allowEmailVerifiedUsersToJoinOrganization": lambda n : setattr(self, 'allow_email_verified_users_to_join_organization', n.get_bool_value()),
             "allowInvitesFrom": lambda n : setattr(self, 'allow_invites_from', n.get_enum_value(allow_invites_from.AllowInvitesFrom)),
+            "allowUserConsentForRiskyApps": lambda n : setattr(self, 'allow_user_consent_for_risky_apps', n.get_bool_value()),
             "blockMsolPowerShell": lambda n : setattr(self, 'block_msol_power_shell', n.get_bool_value()),
             "defaultUserRolePermissions": lambda n : setattr(self, 'default_user_role_permissions', n.get_object_value(default_user_role_permissions.DefaultUserRolePermissions)),
-            "guestUserRoleId": lambda n : setattr(self, 'guest_user_role_id', n.get_object_value(Guid)),
+            "guestUserRoleId": lambda n : setattr(self, 'guest_user_role_id', n.get_uuid_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
     
     @property
-    def guest_user_role_id(self,) -> Optional[Guid]:
+    def guest_user_role_id(self,) -> Optional[UUID]:
         """
         Gets the guestUserRoleId property value. Represents role templateId for the role that should be granted to guest user. Currently following roles are supported:  User (a0b1b346-4d3e-4e8b-98f8-753987be4970), Guest User (10dae51f-b6af-4016-8d66-8c2a99b929b3), and Restricted Guest User (2af84b1e-32c8-42b7-82bc-daa82404023b).
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._guest_user_role_id
     
     @guest_user_role_id.setter
-    def guest_user_role_id(self,value: Optional[Guid] = None) -> None:
+    def guest_user_role_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the guestUserRoleId property value. Represents role templateId for the role that should be granted to guest user. Currently following roles are supported:  User (a0b1b346-4d3e-4e8b-98f8-753987be4970), Guest User (10dae51f-b6af-4016-8d66-8c2a99b929b3), and Restricted Guest User (2af84b1e-32c8-42b7-82bc-daa82404023b).
         Args:
@@ -191,8 +214,9 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         writer.write_bool_value("allowedToUseSSPR", self.allowed_to_use_s_s_p_r)
         writer.write_bool_value("allowEmailVerifiedUsersToJoinOrganization", self.allow_email_verified_users_to_join_organization)
         writer.write_enum_value("allowInvitesFrom", self.allow_invites_from)
+        writer.write_bool_value("allowUserConsentForRiskyApps", self.allow_user_consent_for_risky_apps)
         writer.write_bool_value("blockMsolPowerShell", self.block_msol_power_shell)
         writer.write_object_value("defaultUserRolePermissions", self.default_user_role_permissions)
-        writer.write_object_value("guestUserRoleId", self.guest_user_role_id)
+        writer.write_uuid_value("guestUserRoleId", self.guest_user_role_id)
     
 

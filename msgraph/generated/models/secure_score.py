@@ -1,15 +1,42 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-average_comparative_score = lazy_import('msgraph.generated.models.average_comparative_score')
-control_score = lazy_import('msgraph.generated.models.control_score')
-entity = lazy_import('msgraph.generated.models.entity')
-security_vendor_information = lazy_import('msgraph.generated.models.security_vendor_information')
+if TYPE_CHECKING:
+    from . import average_comparative_score, control_score, entity, security_vendor_information
+
+from . import entity
 
 class SecureScore(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new secureScore and sets the default values.
+        """
+        super().__init__()
+        # Active user count of the given tenant.
+        self._active_user_count: Optional[int] = None
+        # Average score by different scopes (for example, average by industry, average by seating) and control category (Identity, Data, Device, Apps, Infrastructure) within the scope.
+        self._average_comparative_scores: Optional[List[average_comparative_score.AverageComparativeScore]] = None
+        # GUID string for tenant ID.
+        self._azure_tenant_id: Optional[str] = None
+        # Contains tenant scores for a set of controls.
+        self._control_scores: Optional[List[control_score.ControlScore]] = None
+        # The date when the entity is created.
+        self._created_date_time: Optional[datetime] = None
+        # Tenant current attained score on specified date.
+        self._current_score: Optional[float] = None
+        # Microsoft-provided services for the tenant (for example, Exchange online, Skype, Sharepoint).
+        self._enabled_services: Optional[List[str]] = None
+        # Licensed user count of the given tenant.
+        self._licensed_user_count: Optional[int] = None
+        # Tenant maximum possible score on specified date.
+        self._max_score: Optional[float] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Complex type containing details about the security product/service vendor, provider, and subprovider (for example, vendor=Microsoft; provider=SecureScore). Required.
+        self._vendor_information: Optional[security_vendor_information.SecurityVendorInformation] = None
+    
     @property
     def active_user_count(self,) -> Optional[int]:
         """
@@ -60,34 +87,6 @@ class SecureScore(entity.Entity):
             value: Value to set for the azure_tenant_id property.
         """
         self._azure_tenant_id = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new secureScore and sets the default values.
-        """
-        super().__init__()
-        # Active user count of the given tenant.
-        self._active_user_count: Optional[int] = None
-        # Average score by different scopes (for example, average by industry, average by seating) and control category (Identity, Data, Device, Apps, Infrastructure) within the scope.
-        self._average_comparative_scores: Optional[List[average_comparative_score.AverageComparativeScore]] = None
-        # GUID string for tenant ID.
-        self._azure_tenant_id: Optional[str] = None
-        # Contains tenant scores for a set of controls.
-        self._control_scores: Optional[List[control_score.ControlScore]] = None
-        # The date when the entity is created.
-        self._created_date_time: Optional[datetime] = None
-        # Tenant current attained score on specified date.
-        self._current_score: Optional[float] = None
-        # Microsoft-provided services for the tenant (for example, Exchange online, Skype, Sharepoint).
-        self._enabled_services: Optional[List[str]] = None
-        # Licensed user count of the given tenant.
-        self._licensed_user_count: Optional[int] = None
-        # Tenant maximum possible score on specified date.
-        self._max_score: Optional[float] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Complex type containing details about the security product/service vendor, provider, and subprovider (for example, vendor=Microsoft; provider=SecureScore). Required.
-        self._vendor_information: Optional[security_vendor_information.SecurityVendorInformation] = None
     
     @property
     def control_scores(self,) -> Optional[List[control_score.ControlScore]]:
@@ -174,7 +173,9 @@ class SecureScore(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import average_comparative_score, control_score, entity, security_vendor_information
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "activeUserCount": lambda n : setattr(self, 'active_user_count', n.get_int_value()),
             "averageComparativeScores": lambda n : setattr(self, 'average_comparative_scores', n.get_collection_of_object_values(average_comparative_score.AverageComparativeScore)),
             "azureTenantId": lambda n : setattr(self, 'azure_tenant_id', n.get_str_value()),

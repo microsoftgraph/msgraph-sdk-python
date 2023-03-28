@@ -7,42 +7,21 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-teamwork = lazy_import('msgraph.generated.models.teamwork')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-deleted_teams_request_builder = lazy_import('msgraph.generated.teamwork.deleted_teams.deleted_teams_request_builder')
-deleted_team_item_request_builder = lazy_import('msgraph.generated.teamwork.deleted_teams.item.deleted_team_item_request_builder')
-send_activity_notification_to_recipients_request_builder = lazy_import('msgraph.generated.teamwork.send_activity_notification_to_recipients.send_activity_notification_to_recipients_request_builder')
-workforce_integrations_request_builder = lazy_import('msgraph.generated.teamwork.workforce_integrations.workforce_integrations_request_builder')
-workforce_integration_item_request_builder = lazy_import('msgraph.generated.teamwork.workforce_integrations.item.workforce_integration_item_request_builder')
+if TYPE_CHECKING:
+    from ..models import teamwork
+    from ..models.o_data_errors import o_data_error
+    from .deleted_teams import deleted_teams_request_builder
+    from .deleted_teams.item import deleted_team_item_request_builder
+    from .send_activity_notification_to_recipients import send_activity_notification_to_recipients_request_builder
+    from .workforce_integrations import workforce_integrations_request_builder
+    from .workforce_integrations.item import workforce_integration_item_request_builder
 
 class TeamworkRequestBuilder():
     """
     Provides operations to manage the teamwork singleton.
     """
-    @property
-    def deleted_teams(self) -> deleted_teams_request_builder.DeletedTeamsRequestBuilder:
-        """
-        Provides operations to manage the deletedTeams property of the microsoft.graph.teamwork entity.
-        """
-        return deleted_teams_request_builder.DeletedTeamsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def send_activity_notification_to_recipients(self) -> send_activity_notification_to_recipients_request_builder.SendActivityNotificationToRecipientsRequestBuilder:
-        """
-        Provides operations to call the sendActivityNotificationToRecipients method.
-        """
-        return send_activity_notification_to_recipients_request_builder.SendActivityNotificationToRecipientsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def workforce_integrations(self) -> workforce_integrations_request_builder.WorkforceIntegrationsRequestBuilder:
-        """
-        Provides operations to manage the workforceIntegrations property of the microsoft.graph.teamwork entity.
-        """
-        return workforce_integrations_request_builder.WorkforceIntegrationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new TeamworkRequestBuilder and sets the default values.
@@ -70,6 +49,8 @@ class TeamworkRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .deleted_teams.item import deleted_team_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deletedTeam%2Did"] = id
         return deleted_team_item_request_builder.DeletedTeamItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -84,12 +65,16 @@ class TeamworkRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ..models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ..models import teamwork
+
         return await self.request_adapter.send_async(request_info, teamwork.Teamwork, error_mapping)
     
     async def patch(self,body: Optional[teamwork.Teamwork] = None, request_configuration: Optional[TeamworkRequestBuilderPatchRequestConfiguration] = None) -> Optional[teamwork.Teamwork]:
@@ -105,12 +90,16 @@ class TeamworkRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ..models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ..models import teamwork
+
         return await self.request_adapter.send_async(request_info, teamwork.Teamwork, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[TeamworkRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -161,21 +150,44 @@ class TeamworkRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .workforce_integrations.item import workforce_integration_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["workforceIntegration%2Did"] = id
         return workforce_integration_item_request_builder.WorkforceIntegrationItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
+    @property
+    def deleted_teams(self) -> deleted_teams_request_builder.DeletedTeamsRequestBuilder:
+        """
+        Provides operations to manage the deletedTeams property of the microsoft.graph.teamwork entity.
+        """
+        from .deleted_teams import deleted_teams_request_builder
+
+        return deleted_teams_request_builder.DeletedTeamsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def send_activity_notification_to_recipients(self) -> send_activity_notification_to_recipients_request_builder.SendActivityNotificationToRecipientsRequestBuilder:
+        """
+        Provides operations to call the sendActivityNotificationToRecipients method.
+        """
+        from .send_activity_notification_to_recipients import send_activity_notification_to_recipients_request_builder
+
+        return send_activity_notification_to_recipients_request_builder.SendActivityNotificationToRecipientsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def workforce_integrations(self) -> workforce_integrations_request_builder.WorkforceIntegrationsRequestBuilder:
+        """
+        Provides operations to manage the workforceIntegrations property of the microsoft.graph.teamwork entity.
+        """
+        from .workforce_integrations import workforce_integrations_request_builder
+
+        return workforce_integrations_request_builder.WorkforceIntegrationsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TeamworkRequestBuilderGetQueryParameters():
         """
         Get teamwork
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -191,6 +203,12 @@ class TeamworkRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class TeamworkRequestBuilderGetRequestConfiguration():

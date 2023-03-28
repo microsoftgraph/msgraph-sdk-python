@@ -1,11 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-print_task_processing_state = lazy_import('msgraph.generated.models.print_task_processing_state')
+if TYPE_CHECKING:
+    from . import print_task_processing_state
 
 class PrintTaskStatus(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new printTaskStatus and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # A human-readable description of the current processing state of the printTask.
+        self._description: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The state property
+        self._state: Optional[print_task_processing_state.PrintTaskProcessingState] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,20 +36,6 @@ class PrintTaskStatus(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new printTaskStatus and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # A human-readable description of the current processing state of the printTask.
-        self._description: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The state property
-        self._state: Optional[print_task_processing_state.PrintTaskProcessingState] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintTaskStatus:
@@ -71,7 +71,9 @@ class PrintTaskStatus(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import print_task_processing_state
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "state": lambda n : setattr(self, 'state', n.get_enum_value(print_task_processing_state.PrintTaskProcessingState)),

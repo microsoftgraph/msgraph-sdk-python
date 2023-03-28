@@ -1,39 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-file = lazy_import('msgraph.generated.models.file')
-file_system_info = lazy_import('msgraph.generated.models.file_system_info')
-folder = lazy_import('msgraph.generated.models.folder')
-identity_set = lazy_import('msgraph.generated.models.identity_set')
-image = lazy_import('msgraph.generated.models.image')
-item_reference = lazy_import('msgraph.generated.models.item_reference')
-package = lazy_import('msgraph.generated.models.package')
-shared = lazy_import('msgraph.generated.models.shared')
-sharepoint_ids = lazy_import('msgraph.generated.models.sharepoint_ids')
-special_folder = lazy_import('msgraph.generated.models.special_folder')
-video = lazy_import('msgraph.generated.models.video')
+if TYPE_CHECKING:
+    from . import file, file_system_info, folder, identity_set, image, item_reference, package, shared, sharepoint_ids, special_folder, video
 
 class RemoteItem(AdditionalDataHolder, Parsable):
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new remoteItem and sets the default values.
@@ -81,6 +54,23 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         self._web_dav_url: Optional[str] = None
         # URL that displays the resource in the browser. Read-only.
         self._web_url: Optional[str] = None
+    
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
     
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
@@ -184,7 +174,9 @@ class RemoteItem(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import file, file_system_info, folder, identity_set, image, item_reference, package, shared, sharepoint_ids, special_folder, video
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "file": lambda n : setattr(self, 'file', n.get_object_value(file.File)),

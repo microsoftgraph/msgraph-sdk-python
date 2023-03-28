@@ -1,9 +1,19 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 class RemovePasswordPostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new removePasswordPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The keyId property
+        self._key_id: Optional[UUID] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -20,16 +30,6 @@ class RemovePasswordPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new removePasswordPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The keyId property
-        self._key_id: Optional[Guid] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RemovePasswordPostRequestBody:
@@ -48,21 +48,21 @@ class RemovePasswordPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
-            "keyId": lambda n : setattr(self, 'key_id', n.get_object_value(Guid)),
+        fields: Dict[str, Callable[[Any], None]] = {
+            "keyId": lambda n : setattr(self, 'key_id', n.get_uuid_value()),
         }
         return fields
     
     @property
-    def key_id(self,) -> Optional[Guid]:
+    def key_id(self,) -> Optional[UUID]:
         """
         Gets the keyId property value. The keyId property
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._key_id
     
     @key_id.setter
-    def key_id(self,value: Optional[Guid] = None) -> None:
+    def key_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the keyId property value. The keyId property
         Args:
@@ -78,7 +78,7 @@ class RemovePasswordPostRequestBody(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_object_value("keyId", self.key_id)
+        writer.write_uuid_value("keyId", self.key_id)
         writer.write_additional_data_value(self.additional_data)
     
 

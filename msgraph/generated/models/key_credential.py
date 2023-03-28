@@ -1,27 +1,10 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 class KeyCredential(AdditionalDataHolder, Parsable):
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new keyCredential and sets the default values.
@@ -38,7 +21,7 @@ class KeyCredential(AdditionalDataHolder, Parsable):
         # The certificate's raw data in byte array converted to Base64 string. Returned only on $select for a single object, that is, GET applications/{applicationId}?$select=keyCredentials or GET servicePrincipals/{servicePrincipalId}?$select=keyCredentials; otherwise, it is always null.
         self._key: Optional[bytes] = None
         # The unique identifier (GUID) for the key.
-        self._key_id: Optional[Guid] = None
+        self._key_id: Optional[UUID] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # The date and time at which the credential becomes valid.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -47,6 +30,23 @@ class KeyCredential(AdditionalDataHolder, Parsable):
         self._type: Optional[str] = None
         # A string that describes the purpose for which the key can be used; for example, Verify.
         self._usage: Optional[str] = None
+    
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> KeyCredential:
@@ -116,12 +116,12 @@ class KeyCredential(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "customKeyIdentifier": lambda n : setattr(self, 'custom_key_identifier', n.get_bytes_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "key": lambda n : setattr(self, 'key', n.get_bytes_value()),
-            "keyId": lambda n : setattr(self, 'key_id', n.get_object_value(Guid)),
+            "keyId": lambda n : setattr(self, 'key_id', n.get_uuid_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
@@ -147,15 +147,15 @@ class KeyCredential(AdditionalDataHolder, Parsable):
         self._key = value
     
     @property
-    def key_id(self,) -> Optional[Guid]:
+    def key_id(self,) -> Optional[UUID]:
         """
         Gets the keyId property value. The unique identifier (GUID) for the key.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._key_id
     
     @key_id.setter
-    def key_id(self,value: Optional[Guid] = None) -> None:
+    def key_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the keyId property value. The unique identifier (GUID) for the key.
         Args:
@@ -192,7 +192,7 @@ class KeyCredential(AdditionalDataHolder, Parsable):
         writer.write_str_value("displayName", self.display_name)
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_object_value("key", self.key)
-        writer.write_object_value("keyId", self.key_id)
+        writer.write_uuid_value("keyId", self.key_id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("type", self.type)

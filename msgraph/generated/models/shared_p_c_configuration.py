@@ -1,14 +1,45 @@
 from __future__ import annotations
 from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-device_configuration = lazy_import('msgraph.generated.models.device_configuration')
-shared_p_c_account_manager_policy = lazy_import('msgraph.generated.models.shared_p_c_account_manager_policy')
-shared_p_c_allowed_account_type = lazy_import('msgraph.generated.models.shared_p_c_allowed_account_type')
+if TYPE_CHECKING:
+    from . import device_configuration, shared_p_c_account_manager_policy, shared_p_c_allowed_account_type
+
+from . import device_configuration
 
 class SharedPCConfiguration(device_configuration.DeviceConfiguration):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new SharedPCConfiguration and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.sharedPCConfiguration"
+        # Specifies how accounts are managed on a shared PC. Only applies when disableAccountManager is false.
+        self._account_manager_policy: Optional[shared_p_c_account_manager_policy.SharedPCAccountManagerPolicy] = None
+        # Specifies whether local storage is allowed on a shared PC.
+        self._allow_local_storage: Optional[bool] = None
+        # Type of accounts that are allowed to share the PC.
+        self._allowed_accounts: Optional[shared_p_c_allowed_account_type.SharedPCAllowedAccountType] = None
+        # Disables the account manager for shared PC mode.
+        self._disable_account_manager: Optional[bool] = None
+        # Specifies whether the default shared PC education environment policies should be disabled. For Windows 10 RS2 and later, this policy will be applied without setting Enabled to true.
+        self._disable_edu_policies: Optional[bool] = None
+        # Specifies whether the default shared PC power policies should be disabled.
+        self._disable_power_policies: Optional[bool] = None
+        # Disables the requirement to sign in whenever the device wakes up from sleep mode.
+        self._disable_sign_in_on_resume: Optional[bool] = None
+        # Enables shared PC mode and applies the shared pc policies.
+        self._enabled: Optional[bool] = None
+        # Specifies the time in seconds that a device must sit idle before the PC goes to sleep. Setting this value to 0 prevents the sleep timeout from occurring.
+        self._idle_time_before_sleep_in_seconds: Optional[int] = None
+        # Specifies the display text for the account shown on the sign-in screen which launches the app specified by SetKioskAppUserModelId. Only applies when KioskAppUserModelId is set.
+        self._kiosk_app_display_name: Optional[str] = None
+        # Specifies the application user model ID of the app to use with assigned access.
+        self._kiosk_app_user_model_id: Optional[str] = None
+        # Specifies the daily start time of maintenance hour.
+        self._maintenance_start_time: Optional[time] = None
+    
     @property
     def account_manager_policy(self,) -> Optional[shared_p_c_account_manager_policy.SharedPCAccountManagerPolicy]:
         """
@@ -59,37 +90,6 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the allowed_accounts property.
         """
         self._allowed_accounts = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new SharedPCConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.sharedPCConfiguration"
-        # Specifies how accounts are managed on a shared PC. Only applies when disableAccountManager is false.
-        self._account_manager_policy: Optional[shared_p_c_account_manager_policy.SharedPCAccountManagerPolicy] = None
-        # Specifies whether local storage is allowed on a shared PC.
-        self._allow_local_storage: Optional[bool] = None
-        # Type of accounts that are allowed to share the PC.
-        self._allowed_accounts: Optional[shared_p_c_allowed_account_type.SharedPCAllowedAccountType] = None
-        # Disables the account manager for shared PC mode.
-        self._disable_account_manager: Optional[bool] = None
-        # Specifies whether the default shared PC education environment policies should be disabled. For Windows 10 RS2 and later, this policy will be applied without setting Enabled to true.
-        self._disable_edu_policies: Optional[bool] = None
-        # Specifies whether the default shared PC power policies should be disabled.
-        self._disable_power_policies: Optional[bool] = None
-        # Disables the requirement to sign in whenever the device wakes up from sleep mode.
-        self._disable_sign_in_on_resume: Optional[bool] = None
-        # Enables shared PC mode and applies the shared pc policies.
-        self._enabled: Optional[bool] = None
-        # Specifies the time in seconds that a device must sit idle before the PC goes to sleep. Setting this value to 0 prevents the sleep timeout from occurring.
-        self._idle_time_before_sleep_in_seconds: Optional[int] = None
-        # Specifies the display text for the account shown on the sign-in screen which launches the app specified by SetKioskAppUserModelId. Only applies when KioskAppUserModelId is set.
-        self._kiosk_app_display_name: Optional[str] = None
-        # Specifies the application user model ID of the app to use with assigned access.
-        self._kiosk_app_user_model_id: Optional[str] = None
-        # Specifies the daily start time of maintenance hour.
-        self._maintenance_start_time: Optional[Time] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharedPCConfiguration:
@@ -193,7 +193,9 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import device_configuration, shared_p_c_account_manager_policy, shared_p_c_allowed_account_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "accountManagerPolicy": lambda n : setattr(self, 'account_manager_policy', n.get_object_value(shared_p_c_account_manager_policy.SharedPCAccountManagerPolicy)),
             "allowedAccounts": lambda n : setattr(self, 'allowed_accounts', n.get_enum_value(shared_p_c_allowed_account_type.SharedPCAllowedAccountType)),
             "allowLocalStorage": lambda n : setattr(self, 'allow_local_storage', n.get_bool_value()),
@@ -205,7 +207,7 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
             "idleTimeBeforeSleepInSeconds": lambda n : setattr(self, 'idle_time_before_sleep_in_seconds', n.get_int_value()),
             "kioskAppDisplayName": lambda n : setattr(self, 'kiosk_app_display_name', n.get_str_value()),
             "kioskAppUserModelId": lambda n : setattr(self, 'kiosk_app_user_model_id', n.get_str_value()),
-            "maintenanceStartTime": lambda n : setattr(self, 'maintenance_start_time', n.get_object_value(Time)),
+            "maintenanceStartTime": lambda n : setattr(self, 'maintenance_start_time', n.get_time_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -263,15 +265,15 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         self._kiosk_app_user_model_id = value
     
     @property
-    def maintenance_start_time(self,) -> Optional[Time]:
+    def maintenance_start_time(self,) -> Optional[time]:
         """
         Gets the maintenanceStartTime property value. Specifies the daily start time of maintenance hour.
-        Returns: Optional[Time]
+        Returns: Optional[time]
         """
         return self._maintenance_start_time
     
     @maintenance_start_time.setter
-    def maintenance_start_time(self,value: Optional[Time] = None) -> None:
+    def maintenance_start_time(self,value: Optional[time] = None) -> None:
         """
         Sets the maintenanceStartTime property value. Specifies the daily start time of maintenance hour.
         Args:
@@ -299,6 +301,6 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         writer.write_int_value("idleTimeBeforeSleepInSeconds", self.idle_time_before_sleep_in_seconds)
         writer.write_str_value("kioskAppDisplayName", self.kiosk_app_display_name)
         writer.write_str_value("kioskAppUserModelId", self.kiosk_app_user_model_id)
-        writer.write_object_value("maintenanceStartTime", self.maintenance_start_time)
+        writer.write_time_value("maintenanceStartTime", self.maintenance_start_time)
     
 

@@ -1,11 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_review_history_status = lazy_import('msgraph.generated.models.access_review_history_status')
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import access_review_history_status, entity
+
+from . import entity
 
 class AccessReviewHistoryInstance(entity.Entity):
     def __init__(self,) -> None:
@@ -98,7 +99,9 @@ class AccessReviewHistoryInstance(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import access_review_history_status, entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "downloadUri": lambda n : setattr(self, 'download_uri', n.get_str_value()),
             "expirationDateTime": lambda n : setattr(self, 'expiration_date_time', n.get_datetime_value()),
             "fulfilledDateTime": lambda n : setattr(self, 'fulfilled_date_time', n.get_datetime_value()),

@@ -1,30 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-identity = lazy_import('msgraph.generated.models.identity')
+if TYPE_CHECKING:
+    from . import entity, identity
+
+from . import entity
 
 class ApprovalStage(entity.Entity):
-    @property
-    def assigned_to_me(self,) -> Optional[bool]:
-        """
-        Gets the assignedToMe property value. Indicates whether the stage is assigned to the calling user to review. Read-only.
-        Returns: Optional[bool]
-        """
-        return self._assigned_to_me
-    
-    @assigned_to_me.setter
-    def assigned_to_me(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the assignedToMe property value. Indicates whether the stage is assigned to the calling user to review. Read-only.
-        Args:
-            value: Value to set for the assigned_to_me property.
-        """
-        self._assigned_to_me = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new approvalStage and sets the default values.
@@ -46,6 +30,23 @@ class ApprovalStage(entity.Entity):
         self._reviewed_date_time: Optional[datetime] = None
         # The stage status. Possible values: InProgress, Initializing, Completed, Expired. Read-only.
         self._status: Optional[str] = None
+    
+    @property
+    def assigned_to_me(self,) -> Optional[bool]:
+        """
+        Gets the assignedToMe property value. Indicates whether the stage is assigned to the calling user to review. Read-only.
+        Returns: Optional[bool]
+        """
+        return self._assigned_to_me
+    
+    @assigned_to_me.setter
+    def assigned_to_me(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the assignedToMe property value. Indicates whether the stage is assigned to the calling user to review. Read-only.
+        Args:
+            value: Value to set for the assigned_to_me property.
+        """
+        self._assigned_to_me = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApprovalStage:
@@ -81,7 +82,9 @@ class ApprovalStage(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, identity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "assignedToMe": lambda n : setattr(self, 'assigned_to_me', n.get_bool_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "justification": lambda n : setattr(self, 'justification', n.get_str_value()),

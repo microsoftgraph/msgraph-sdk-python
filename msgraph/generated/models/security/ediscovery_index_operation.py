@@ -1,14 +1,16 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-case_operation = lazy_import('msgraph.generated.models.security.case_operation')
+if TYPE_CHECKING:
+    from . import case_operation
+
+from . import case_operation
 
 class EdiscoveryIndexOperation(case_operation.CaseOperation):
     def __init__(self,) -> None:
         """
-        Instantiates a new ediscoveryIndexOperation and sets the default values.
+        Instantiates a new EdiscoveryIndexOperation and sets the default values.
         """
         super().__init__()
         # The OdataType property
@@ -31,7 +33,9 @@ class EdiscoveryIndexOperation(case_operation.CaseOperation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import case_operation
+
+        fields: Dict[str, Callable[[Any], None]] = {
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)

@@ -1,11 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-json = lazy_import('msgraph.generated.models.json')
+if TYPE_CHECKING:
+    from ........models import json
 
 class BasePostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new basePostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The minLength property
+        self._min_length: Optional[json.Json] = None
+        # The number property
+        self._number: Optional[json.Json] = None
+        # The radix property
+        self._radix: Optional[json.Json] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -22,20 +36,6 @@ class BasePostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new basePostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The minLength property
-        self._min_length: Optional[json.Json] = None
-        # The number property
-        self._number: Optional[json.Json] = None
-        # The radix property
-        self._radix: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BasePostRequestBody:
@@ -54,7 +54,9 @@ class BasePostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from ........models import json
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "minLength": lambda n : setattr(self, 'min_length', n.get_object_value(json.Json)),
             "number": lambda n : setattr(self, 'number', n.get_object_value(json.Json)),
             "radix": lambda n : setattr(self, 'radix', n.get_object_value(json.Json)),

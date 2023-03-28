@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-self_service_sign_up_authentication_flow_configuration = lazy_import('msgraph.generated.models.self_service_sign_up_authentication_flow_configuration')
+if TYPE_CHECKING:
+    from . import entity, self_service_sign_up_authentication_flow_configuration
+
+from . import entity
 
 class AuthenticationFlowsPolicy(entity.Entity):
     def __init__(self,) -> None:
@@ -72,7 +73,9 @@ class AuthenticationFlowsPolicy(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, self_service_sign_up_authentication_flow_configuration
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "selfServiceSignUp": lambda n : setattr(self, 'self_service_sign_up', n.get_object_value(self_service_sign_up_authentication_flow_configuration.SelfServiceSignUpAuthenticationFlowConfiguration)),

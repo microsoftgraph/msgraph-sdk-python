@@ -1,11 +1,22 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-teamwork_notification_recipient = lazy_import('msgraph.generated.models.teamwork_notification_recipient')
+if TYPE_CHECKING:
+    from . import teamwork_notification_recipient
+
+from . import teamwork_notification_recipient
 
 class ChatMembersNotificationRecipient(teamwork_notification_recipient.TeamworkNotificationRecipient):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ChatMembersNotificationRecipient and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.chatMembersNotificationRecipient"
+        # The unique identifier for the chat whose members should receive the notifications.
+        self._chat_id: Optional[str] = None
+    
     @property
     def chat_id(self,) -> Optional[str]:
         """
@@ -22,15 +33,6 @@ class ChatMembersNotificationRecipient(teamwork_notification_recipient.TeamworkN
             value: Value to set for the chat_id property.
         """
         self._chat_id = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ChatMembersNotificationRecipient and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.chatMembersNotificationRecipient"
-        # The unique identifier for the chat whose members should receive the notifications.
-        self._chat_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMembersNotificationRecipient:
@@ -49,7 +51,9 @@ class ChatMembersNotificationRecipient(teamwork_notification_recipient.TeamworkN
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import teamwork_notification_recipient
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "chatId": lambda n : setattr(self, 'chat_id', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

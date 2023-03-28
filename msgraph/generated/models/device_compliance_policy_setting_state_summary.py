@@ -1,16 +1,46 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-device_compliance_setting_state = lazy_import('msgraph.generated.models.device_compliance_setting_state')
-entity = lazy_import('msgraph.generated.models.entity')
-policy_platform_type = lazy_import('msgraph.generated.models.policy_platform_type')
+if TYPE_CHECKING:
+    from . import device_compliance_setting_state, entity, policy_platform_type
+
+from . import entity
 
 class DeviceCompliancePolicySettingStateSummary(entity.Entity):
     """
     Device Compilance Policy Setting State summary across the account.
     """
+    def __init__(self,) -> None:
+        """
+        Instantiates a new deviceCompliancePolicySettingStateSummary and sets the default values.
+        """
+        super().__init__()
+        # Number of compliant devices
+        self._compliant_device_count: Optional[int] = None
+        # Number of conflict devices
+        self._conflict_device_count: Optional[int] = None
+        # Not yet documented
+        self._device_compliance_setting_states: Optional[List[device_compliance_setting_state.DeviceComplianceSettingState]] = None
+        # Number of error devices
+        self._error_device_count: Optional[int] = None
+        # Number of NonCompliant devices
+        self._non_compliant_device_count: Optional[int] = None
+        # Number of not applicable devices
+        self._not_applicable_device_count: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Supported platform types for policies.
+        self._platform_type: Optional[policy_platform_type.PolicyPlatformType] = None
+        # Number of remediated devices
+        self._remediated_device_count: Optional[int] = None
+        # The setting class name and property name.
+        self._setting: Optional[str] = None
+        # Name of the setting.
+        self._setting_name: Optional[str] = None
+        # Number of unknown devices
+        self._unknown_device_count: Optional[int] = None
+    
     @property
     def compliant_device_count(self,) -> Optional[int]:
         """
@@ -44,36 +74,6 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
             value: Value to set for the conflict_device_count property.
         """
         self._conflict_device_count = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceCompliancePolicySettingStateSummary and sets the default values.
-        """
-        super().__init__()
-        # Number of compliant devices
-        self._compliant_device_count: Optional[int] = None
-        # Number of conflict devices
-        self._conflict_device_count: Optional[int] = None
-        # Not yet documented
-        self._device_compliance_setting_states: Optional[List[device_compliance_setting_state.DeviceComplianceSettingState]] = None
-        # Number of error devices
-        self._error_device_count: Optional[int] = None
-        # Number of NonCompliant devices
-        self._non_compliant_device_count: Optional[int] = None
-        # Number of not applicable devices
-        self._not_applicable_device_count: Optional[int] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Supported platform types for policies.
-        self._platform_type: Optional[policy_platform_type.PolicyPlatformType] = None
-        # Number of remediated devices
-        self._remediated_device_count: Optional[int] = None
-        # The setting class name and property name.
-        self._setting: Optional[str] = None
-        # Name of the setting.
-        self._setting_name: Optional[str] = None
-        # Number of unknown devices
-        self._unknown_device_count: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceCompliancePolicySettingStateSummary:
@@ -126,7 +126,9 @@ class DeviceCompliancePolicySettingStateSummary(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import device_compliance_setting_state, entity, policy_platform_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "compliantDeviceCount": lambda n : setattr(self, 'compliant_device_count', n.get_int_value()),
             "conflictDeviceCount": lambda n : setattr(self, 'conflict_device_count', n.get_int_value()),
             "deviceComplianceSettingStates": lambda n : setattr(self, 'device_compliance_setting_states', n.get_collection_of_object_values(device_compliance_setting_state.DeviceComplianceSettingState)),

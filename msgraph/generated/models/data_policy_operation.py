@@ -1,30 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-data_policy_operation_status = lazy_import('msgraph.generated.models.data_policy_operation_status')
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import data_policy_operation_status, entity
+
+from . import entity
 
 class DataPolicyOperation(entity.Entity):
-    @property
-    def completed_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the completedDateTime property value. Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.
-        Returns: Optional[datetime]
-        """
-        return self._completed_date_time
-    
-    @completed_date_time.setter
-    def completed_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the completedDateTime property value. Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.
-        Args:
-            value: Value to set for the completed_date_time property.
-        """
-        self._completed_date_time = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new DataPolicyOperation and sets the default values.
@@ -45,6 +29,23 @@ class DataPolicyOperation(entity.Entity):
         # The id for the user on whom the operation is performed.
         self._user_id: Optional[str] = None
     
+    @property
+    def completed_date_time(self,) -> Optional[datetime]:
+        """
+        Gets the completedDateTime property value. Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.
+        Returns: Optional[datetime]
+        """
+        return self._completed_date_time
+    
+    @completed_date_time.setter
+    def completed_date_time(self,value: Optional[datetime] = None) -> None:
+        """
+        Sets the completedDateTime property value. Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.
+        Args:
+            value: Value to set for the completed_date_time property.
+        """
+        self._completed_date_time = value
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DataPolicyOperation:
         """
@@ -62,7 +63,9 @@ class DataPolicyOperation(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import data_policy_operation_status, entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_datetime_value()),
             "progress": lambda n : setattr(self, 'progress', n.get_float_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(data_policy_operation_status.DataPolicyOperationStatus)),

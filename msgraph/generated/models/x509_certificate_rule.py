@@ -1,12 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-x509_certificate_authentication_mode = lazy_import('msgraph.generated.models.x509_certificate_authentication_mode')
-x509_certificate_rule_type = lazy_import('msgraph.generated.models.x509_certificate_rule_type')
+if TYPE_CHECKING:
+    from . import x509_certificate_authentication_mode, x509_certificate_rule_type
 
 class X509CertificateRule(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new x509CertificateRule and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The identifier of the X.509 certificate. Required.
+        self._identifier: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The type of strong authentication mode. The possible values are: x509CertificateSingleFactor, x509CertificateMultiFactor, unknownFutureValue. Required.
+        self._x509_certificate_authentication_mode: Optional[x509_certificate_authentication_mode.X509CertificateAuthenticationMode] = None
+        # The type of the X.509 certificate mode configuration rule. The possible values are: issuerSubject, policyOID, unknownFutureValue. Required.
+        self._x509_certificate_rule_type: Optional[x509_certificate_rule_type.X509CertificateRuleType] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -23,22 +38,6 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new x509CertificateRule and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The identifier of the X.509 certificate. Required.
-        self._identifier: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The type of strong authentication mode. The possible values are: x509CertificateSingleFactor, x509CertificateMultiFactor, unknownFutureValue. Required.
-        self._x509_certificate_authentication_mode: Optional[x509_certificate_authentication_mode.X509CertificateAuthenticationMode] = None
-        # The type of the X.509 certificate mode configuration rule. The possible values are: issuerSubject, policyOID, unknownFutureValue. Required.
-        self._x509_certificate_rule_type: Optional[x509_certificate_rule_type.X509CertificateRuleType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> X509CertificateRule:
@@ -57,7 +56,9 @@ class X509CertificateRule(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import x509_certificate_authentication_mode, x509_certificate_rule_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "identifier": lambda n : setattr(self, 'identifier', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "x509CertificateAuthenticationMode": lambda n : setattr(self, 'x509_certificate_authentication_mode', n.get_enum_value(x509_certificate_authentication_mode.X509CertificateAuthenticationMode)),

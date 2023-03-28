@@ -1,30 +1,105 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-attachment = lazy_import('msgraph.generated.models.attachment')
-attendee = lazy_import('msgraph.generated.models.attendee')
-calendar = lazy_import('msgraph.generated.models.calendar')
-date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
-event_type = lazy_import('msgraph.generated.models.event_type')
-extension = lazy_import('msgraph.generated.models.extension')
-free_busy_status = lazy_import('msgraph.generated.models.free_busy_status')
-importance = lazy_import('msgraph.generated.models.importance')
-item_body = lazy_import('msgraph.generated.models.item_body')
-location = lazy_import('msgraph.generated.models.location')
-multi_value_legacy_extended_property = lazy_import('msgraph.generated.models.multi_value_legacy_extended_property')
-online_meeting_info = lazy_import('msgraph.generated.models.online_meeting_info')
-online_meeting_provider_type = lazy_import('msgraph.generated.models.online_meeting_provider_type')
-outlook_item = lazy_import('msgraph.generated.models.outlook_item')
-patterned_recurrence = lazy_import('msgraph.generated.models.patterned_recurrence')
-recipient = lazy_import('msgraph.generated.models.recipient')
-response_status = lazy_import('msgraph.generated.models.response_status')
-sensitivity = lazy_import('msgraph.generated.models.sensitivity')
-single_value_legacy_extended_property = lazy_import('msgraph.generated.models.single_value_legacy_extended_property')
+if TYPE_CHECKING:
+    from . import attachment, attendee, calendar, date_time_time_zone, event_type, extension, free_busy_status, importance, item_body, location, multi_value_legacy_extended_property, online_meeting_info, online_meeting_provider_type, outlook_item, patterned_recurrence, recipient, response_status, sensitivity, single_value_legacy_extended_property
+
+from . import outlook_item
 
 class Event(outlook_item.OutlookItem):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Event and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.event"
+        # true if the meeting organizer allows invitees to propose a new time when responding; otherwise, false. Optional. Default is true.
+        self._allow_new_time_proposals: Optional[bool] = None
+        # The collection of FileAttachment, ItemAttachment, and referenceAttachment attachments for the event. Navigation property. Read-only. Nullable.
+        self._attachments: Optional[List[attachment.Attachment]] = None
+        # The collection of attendees for the event.
+        self._attendees: Optional[List[attendee.Attendee]] = None
+        # The body of the message associated with the event. It can be in HTML or text format.
+        self._body: Optional[item_body.ItemBody] = None
+        # The preview of the message associated with the event. It is in text format.
+        self._body_preview: Optional[str] = None
+        # The calendar that contains the event. Navigation property. Read-only.
+        self._calendar: Optional[calendar.Calendar] = None
+        # The date, time, and time zone that the event ends. By default, the end time is in UTC.
+        self._end: Optional[date_time_time_zone.DateTimeTimeZone] = None
+        # The collection of open extensions defined for the event. Nullable.
+        self._extensions: Optional[List[extension.Extension]] = None
+        # Set to true if the event has attachments.
+        self._has_attachments: Optional[bool] = None
+        # When set to true, each attendee only sees themselves in the meeting request and meeting Tracking list. Default is false.
+        self._hide_attendees: Optional[bool] = None
+        # A unique identifier for an event across calendars. This ID is different for each occurrence in a recurring series. Read-only.
+        self._i_cal_u_id: Optional[str] = None
+        # The importance property
+        self._importance: Optional[importance.Importance] = None
+        # The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions that have been modified, but does not include occurrences that have been cancelled from the series. Navigation property. Read-only. Nullable.
+        self._instances: Optional[List[event.Event]] = None
+        # The isAllDay property
+        self._is_all_day: Optional[bool] = None
+        # The isCancelled property
+        self._is_cancelled: Optional[bool] = None
+        # The isDraft property
+        self._is_draft: Optional[bool] = None
+        # The isOnlineMeeting property
+        self._is_online_meeting: Optional[bool] = None
+        # The isOrganizer property
+        self._is_organizer: Optional[bool] = None
+        # The isReminderOn property
+        self._is_reminder_on: Optional[bool] = None
+        # The location property
+        self._location: Optional[location.Location] = None
+        # The locations property
+        self._locations: Optional[List[location.Location]] = None
+        # The collection of multi-value extended properties defined for the event. Read-only. Nullable.
+        self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
+        # The onlineMeeting property
+        self._online_meeting: Optional[online_meeting_info.OnlineMeetingInfo] = None
+        # The onlineMeetingProvider property
+        self._online_meeting_provider: Optional[online_meeting_provider_type.OnlineMeetingProviderType] = None
+        # The onlineMeetingUrl property
+        self._online_meeting_url: Optional[str] = None
+        # The organizer property
+        self._organizer: Optional[recipient.Recipient] = None
+        # The originalEndTimeZone property
+        self._original_end_time_zone: Optional[str] = None
+        # The originalStart property
+        self._original_start: Optional[datetime] = None
+        # The originalStartTimeZone property
+        self._original_start_time_zone: Optional[str] = None
+        # The recurrence property
+        self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
+        # The reminderMinutesBeforeStart property
+        self._reminder_minutes_before_start: Optional[int] = None
+        # The responseRequested property
+        self._response_requested: Optional[bool] = None
+        # The responseStatus property
+        self._response_status: Optional[response_status.ResponseStatus] = None
+        # The sensitivity property
+        self._sensitivity: Optional[sensitivity.Sensitivity] = None
+        # The seriesMasterId property
+        self._series_master_id: Optional[str] = None
+        # The showAs property
+        self._show_as: Optional[free_busy_status.FreeBusyStatus] = None
+        # The collection of single-value extended properties defined for the event. Read-only. Nullable.
+        self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
+        # The start property
+        self._start: Optional[date_time_time_zone.DateTimeTimeZone] = None
+        # The subject property
+        self._subject: Optional[str] = None
+        # The transactionId property
+        self._transaction_id: Optional[str] = None
+        # The type property
+        self._type: Optional[event_type.EventType] = None
+        # The webLink property
+        self._web_link: Optional[str] = None
+    
     @property
     def allow_new_time_proposals(self,) -> Optional[bool]:
         """
@@ -127,97 +202,6 @@ class Event(outlook_item.OutlookItem):
         """
         self._calendar = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Event and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.event"
-        # true if the meeting organizer allows invitees to propose a new time when responding; otherwise, false. Optional. Default is true.
-        self._allow_new_time_proposals: Optional[bool] = None
-        # The collection of FileAttachment, ItemAttachment, and referenceAttachment attachments for the event. Navigation property. Read-only. Nullable.
-        self._attachments: Optional[List[attachment.Attachment]] = None
-        # The collection of attendees for the event.
-        self._attendees: Optional[List[attendee.Attendee]] = None
-        # The body of the message associated with the event. It can be in HTML or text format.
-        self._body: Optional[item_body.ItemBody] = None
-        # The preview of the message associated with the event. It is in text format.
-        self._body_preview: Optional[str] = None
-        # The calendar that contains the event. Navigation property. Read-only.
-        self._calendar: Optional[calendar.Calendar] = None
-        # The date, time, and time zone that the event ends. By default, the end time is in UTC.
-        self._end: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The collection of open extensions defined for the event. Nullable.
-        self._extensions: Optional[List[extension.Extension]] = None
-        # Set to true if the event has attachments.
-        self._has_attachments: Optional[bool] = None
-        # When set to true, each attendee only sees themselves in the meeting request and meeting Tracking list. Default is false.
-        self._hide_attendees: Optional[bool] = None
-        # A unique identifier for an event across calendars. This ID is different for each occurrence in a recurring series. Read-only.
-        self._i_cal_u_id: Optional[str] = None
-        # The importance property
-        self._importance: Optional[importance.Importance] = None
-        # The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions that have been modified, but does not include occurrences that have been cancelled from the series. Navigation property. Read-only. Nullable.
-        self._instances: Optional[List[event.Event]] = None
-        # The isAllDay property
-        self._is_all_day: Optional[bool] = None
-        # The isCancelled property
-        self._is_cancelled: Optional[bool] = None
-        # The isDraft property
-        self._is_draft: Optional[bool] = None
-        # The isOnlineMeeting property
-        self._is_online_meeting: Optional[bool] = None
-        # The isOrganizer property
-        self._is_organizer: Optional[bool] = None
-        # The isReminderOn property
-        self._is_reminder_on: Optional[bool] = None
-        # The location property
-        self._location: Optional[location.Location] = None
-        # The locations property
-        self._locations: Optional[List[location.Location]] = None
-        # The collection of multi-value extended properties defined for the event. Read-only. Nullable.
-        self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
-        # The onlineMeeting property
-        self._online_meeting: Optional[online_meeting_info.OnlineMeetingInfo] = None
-        # The onlineMeetingProvider property
-        self._online_meeting_provider: Optional[online_meeting_provider_type.OnlineMeetingProviderType] = None
-        # The onlineMeetingUrl property
-        self._online_meeting_url: Optional[str] = None
-        # The organizer property
-        self._organizer: Optional[recipient.Recipient] = None
-        # The originalEndTimeZone property
-        self._original_end_time_zone: Optional[str] = None
-        # The originalStart property
-        self._original_start: Optional[datetime] = None
-        # The originalStartTimeZone property
-        self._original_start_time_zone: Optional[str] = None
-        # The recurrence property
-        self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
-        # The reminderMinutesBeforeStart property
-        self._reminder_minutes_before_start: Optional[int] = None
-        # The responseRequested property
-        self._response_requested: Optional[bool] = None
-        # The responseStatus property
-        self._response_status: Optional[response_status.ResponseStatus] = None
-        # The sensitivity property
-        self._sensitivity: Optional[sensitivity.Sensitivity] = None
-        # The seriesMasterId property
-        self._series_master_id: Optional[str] = None
-        # The showAs property
-        self._show_as: Optional[free_busy_status.FreeBusyStatus] = None
-        # The collection of single-value extended properties defined for the event. Read-only. Nullable.
-        self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
-        # The start property
-        self._start: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The subject property
-        self._subject: Optional[str] = None
-        # The transactionId property
-        self._transaction_id: Optional[str] = None
-        # The type property
-        self._type: Optional[event_type.EventType] = None
-        # The webLink property
-        self._web_link: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Event:
         """
@@ -269,7 +253,9 @@ class Event(outlook_item.OutlookItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import attachment, attendee, calendar, date_time_time_zone, event_type, extension, free_busy_status, importance, item_body, location, multi_value_legacy_extended_property, online_meeting_info, online_meeting_provider_type, outlook_item, patterned_recurrence, recipient, response_status, sensitivity, single_value_legacy_extended_property
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowNewTimeProposals": lambda n : setattr(self, 'allow_new_time_proposals', n.get_bool_value()),
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(attachment.Attachment)),
             "attendees": lambda n : setattr(self, 'attendees', n.get_collection_of_object_values(attendee.Attendee)),

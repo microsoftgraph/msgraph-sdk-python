@@ -1,29 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-identity_set = lazy_import('msgraph.generated.models.identity_set')
+if TYPE_CHECKING:
+    from . import education_excel_resource, education_external_resource, education_file_resource, education_link_resource, education_media_resource, education_power_point_resource, education_teams_app_resource, education_word_resource, identity_set
 
 class EducationResource(AdditionalDataHolder, Parsable):
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new educationResource and sets the default values.
@@ -43,6 +26,23 @@ class EducationResource(AdditionalDataHolder, Parsable):
         self._last_modified_date_time: Optional[datetime] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
+    
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
     
     @property
     def created_by(self,) -> Optional[identity_set.IdentitySet]:
@@ -88,6 +88,41 @@ class EducationResource(AdditionalDataHolder, Parsable):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.educationExcelResource":
+                from . import education_excel_resource
+
+                return education_excel_resource.EducationExcelResource()
+            if mapping_value == "#microsoft.graph.educationExternalResource":
+                from . import education_external_resource
+
+                return education_external_resource.EducationExternalResource()
+            if mapping_value == "#microsoft.graph.educationFileResource":
+                from . import education_file_resource
+
+                return education_file_resource.EducationFileResource()
+            if mapping_value == "#microsoft.graph.educationLinkResource":
+                from . import education_link_resource
+
+                return education_link_resource.EducationLinkResource()
+            if mapping_value == "#microsoft.graph.educationMediaResource":
+                from . import education_media_resource
+
+                return education_media_resource.EducationMediaResource()
+            if mapping_value == "#microsoft.graph.educationPowerPointResource":
+                from . import education_power_point_resource
+
+                return education_power_point_resource.EducationPowerPointResource()
+            if mapping_value == "#microsoft.graph.educationTeamsAppResource":
+                from . import education_teams_app_resource
+
+                return education_teams_app_resource.EducationTeamsAppResource()
+            if mapping_value == "#microsoft.graph.educationWordResource":
+                from . import education_word_resource
+
+                return education_word_resource.EducationWordResource()
         return EducationResource()
     
     @property
@@ -112,7 +147,9 @@ class EducationResource(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import education_excel_resource, education_external_resource, education_file_resource, education_link_resource, education_media_resource, education_power_point_resource, education_teams_app_resource, education_word_resource, identity_set
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "createdBy": lambda n : setattr(self, 'created_by', n.get_object_value(identity_set.IdentitySet)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

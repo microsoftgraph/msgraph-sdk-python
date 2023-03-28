@@ -1,12 +1,24 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-print_operation = lazy_import('msgraph.generated.models.print_operation')
-printer = lazy_import('msgraph.generated.models.printer')
+if TYPE_CHECKING:
+    from . import printer, print_operation
+
+from . import print_operation
 
 class PrinterCreateOperation(print_operation.PrintOperation):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new PrinterCreateOperation and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.printerCreateOperation"
+        # The signed certificate created during the registration process. Read-only.
+        self._certificate: Optional[str] = None
+        # The created printer entity. Read-only.
+        self._printer: Optional[printer.Printer] = None
+    
     @property
     def certificate(self,) -> Optional[str]:
         """
@@ -23,17 +35,6 @@ class PrinterCreateOperation(print_operation.PrintOperation):
             value: Value to set for the certificate property.
         """
         self._certificate = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new PrinterCreateOperation and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.printerCreateOperation"
-        # The signed certificate created during the registration process. Read-only.
-        self._certificate: Optional[str] = None
-        # The created printer entity. Read-only.
-        self._printer: Optional[printer.Printer] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrinterCreateOperation:
@@ -52,7 +53,9 @@ class PrinterCreateOperation(print_operation.PrintOperation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import printer, print_operation
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "certificate": lambda n : setattr(self, 'certificate', n.get_str_value()),
             "printer": lambda n : setattr(self, 'printer', n.get_object_value(printer.Printer)),
         }

@@ -1,14 +1,29 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-planner_checklist_items = lazy_import('msgraph.generated.models.planner_checklist_items')
-planner_external_references = lazy_import('msgraph.generated.models.planner_external_references')
-planner_preview_type = lazy_import('msgraph.generated.models.planner_preview_type')
+if TYPE_CHECKING:
+    from . import entity, planner_checklist_items, planner_external_references, planner_preview_type
+
+from . import entity
 
 class PlannerTaskDetails(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new plannerTaskDetails and sets the default values.
+        """
+        super().__init__()
+        # The collection of checklist items on the task.
+        self._checklist: Optional[planner_checklist_items.PlannerChecklistItems] = None
+        # Description of the task.
+        self._description: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # This sets the type of preview that shows up on the task. The possible values are: automatic, noPreview, checklist, description, reference. When set to automatic the displayed preview is chosen by the app viewing the task.
+        self._preview_type: Optional[planner_preview_type.PlannerPreviewType] = None
+        # The collection of references on the task.
+        self._references: Optional[planner_external_references.PlannerExternalReferences] = None
+    
     @property
     def checklist(self,) -> Optional[planner_checklist_items.PlannerChecklistItems]:
         """
@@ -25,22 +40,6 @@ class PlannerTaskDetails(entity.Entity):
             value: Value to set for the checklist property.
         """
         self._checklist = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new plannerTaskDetails and sets the default values.
-        """
-        super().__init__()
-        # The collection of checklist items on the task.
-        self._checklist: Optional[planner_checklist_items.PlannerChecklistItems] = None
-        # Description of the task.
-        self._description: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # This sets the type of preview that shows up on the task. The possible values are: automatic, noPreview, checklist, description, reference. When set to automatic the displayed preview is chosen by the app viewing the task.
-        self._preview_type: Optional[planner_preview_type.PlannerPreviewType] = None
-        # The collection of references on the task.
-        self._references: Optional[planner_external_references.PlannerExternalReferences] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerTaskDetails:
@@ -76,7 +75,9 @@ class PlannerTaskDetails(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, planner_checklist_items, planner_external_references, planner_preview_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "checklist": lambda n : setattr(self, 'checklist', n.get_object_value(planner_checklist_items.PlannerChecklistItems)),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "previewType": lambda n : setattr(self, 'preview_type', n.get_enum_value(planner_preview_type.PlannerPreviewType)),

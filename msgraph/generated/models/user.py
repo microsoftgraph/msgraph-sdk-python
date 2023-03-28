@@ -1,57 +1,261 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-agreement_acceptance = lazy_import('msgraph.generated.models.agreement_acceptance')
-app_role_assignment = lazy_import('msgraph.generated.models.app_role_assignment')
-assigned_license = lazy_import('msgraph.generated.models.assigned_license')
-assigned_plan = lazy_import('msgraph.generated.models.assigned_plan')
-authentication = lazy_import('msgraph.generated.models.authentication')
-authorization_info = lazy_import('msgraph.generated.models.authorization_info')
-calendar = lazy_import('msgraph.generated.models.calendar')
-calendar_group = lazy_import('msgraph.generated.models.calendar_group')
-chat = lazy_import('msgraph.generated.models.chat')
-contact = lazy_import('msgraph.generated.models.contact')
-contact_folder = lazy_import('msgraph.generated.models.contact_folder')
-device_management_troubleshooting_event = lazy_import('msgraph.generated.models.device_management_troubleshooting_event')
-directory_object = lazy_import('msgraph.generated.models.directory_object')
-drive = lazy_import('msgraph.generated.models.drive')
-employee_org_data = lazy_import('msgraph.generated.models.employee_org_data')
-event = lazy_import('msgraph.generated.models.event')
-extension = lazy_import('msgraph.generated.models.extension')
-inference_classification = lazy_import('msgraph.generated.models.inference_classification')
-license_assignment_state = lazy_import('msgraph.generated.models.license_assignment_state')
-license_details = lazy_import('msgraph.generated.models.license_details')
-mail_folder = lazy_import('msgraph.generated.models.mail_folder')
-mailbox_settings = lazy_import('msgraph.generated.models.mailbox_settings')
-managed_app_registration = lazy_import('msgraph.generated.models.managed_app_registration')
-managed_device = lazy_import('msgraph.generated.models.managed_device')
-message = lazy_import('msgraph.generated.models.message')
-o_auth2_permission_grant = lazy_import('msgraph.generated.models.o_auth2_permission_grant')
-object_identity = lazy_import('msgraph.generated.models.object_identity')
-office_graph_insights = lazy_import('msgraph.generated.models.office_graph_insights')
-on_premises_extension_attributes = lazy_import('msgraph.generated.models.on_premises_extension_attributes')
-on_premises_provisioning_error = lazy_import('msgraph.generated.models.on_premises_provisioning_error')
-onenote = lazy_import('msgraph.generated.models.onenote')
-online_meeting = lazy_import('msgraph.generated.models.online_meeting')
-outlook_user = lazy_import('msgraph.generated.models.outlook_user')
-password_profile = lazy_import('msgraph.generated.models.password_profile')
-person = lazy_import('msgraph.generated.models.person')
-planner_user = lazy_import('msgraph.generated.models.planner_user')
-presence = lazy_import('msgraph.generated.models.presence')
-profile_photo = lazy_import('msgraph.generated.models.profile_photo')
-provisioned_plan = lazy_import('msgraph.generated.models.provisioned_plan')
-scoped_role_membership = lazy_import('msgraph.generated.models.scoped_role_membership')
-site = lazy_import('msgraph.generated.models.site')
-team = lazy_import('msgraph.generated.models.team')
-todo = lazy_import('msgraph.generated.models.todo')
-user_activity = lazy_import('msgraph.generated.models.user_activity')
-user_settings = lazy_import('msgraph.generated.models.user_settings')
-user_teamwork = lazy_import('msgraph.generated.models.user_teamwork')
+if TYPE_CHECKING:
+    from . import agreement_acceptance, app_role_assignment, assigned_license, assigned_plan, authentication, authorization_info, calendar, calendar_group, chat, contact, contact_folder, device_management_troubleshooting_event, directory_object, drive, employee_org_data, event, extension, inference_classification, license_assignment_state, license_details, mailbox_settings, mail_folder, managed_app_registration, managed_device, message, object_identity, office_graph_insights, onenote, online_meeting, on_premises_extension_attributes, on_premises_provisioning_error, outlook_user, o_auth2_permission_grant, password_profile, person, planner_user, presence, profile_photo, provisioned_plan, scoped_role_membership, sign_in_activity, site, team, todo, user_activity, user_settings, user_teamwork
+
+from . import directory_object
 
 class User(directory_object.DirectoryObject):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new User and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.user"
+        # A freeform text entry field for the user to describe themselves. Returned only on $select.
+        self._about_me: Optional[str] = None
+        # true if the account is enabled; otherwise, false. This property is required when a user is created. Returned only on $select. Supports $filter (eq, ne, not, and in).
+        self._account_enabled: Optional[bool] = None
+        # The user's activities across devices. Read-only. Nullable.
+        self._activities: Optional[List[user_activity.UserActivity]] = None
+        # Sets the age group of the user. Allowed values: null, Minor, NotAdult and Adult. Refer to the legal age group property definitions for further information. Returned only on $select. Supports $filter (eq, ne, not, and in).
+        self._age_group: Optional[str] = None
+        # The user's terms of use acceptance statuses. Read-only. Nullable.
+        self._agreement_acceptances: Optional[List[agreement_acceptance.AgreementAcceptance]] = None
+        # Represents the app roles a user has been granted for an application. Supports $expand.
+        self._app_role_assignments: Optional[List[app_role_assignment.AppRoleAssignment]] = None
+        # The licenses that are assigned to the user, including inherited (group-based) licenses. This property doesn't differentiate directly-assigned and inherited licenses. Use the licenseAssignmentStates property to identify the directly-assigned and inherited licenses.  Not nullable. Returned only on $select. Supports $filter (eq, not, /$count eq 0, /$count ne 0).
+        self._assigned_licenses: Optional[List[assigned_license.AssignedLicense]] = None
+        # The plans that are assigned to the user. Read-only. Not nullable. Returned only on $select. Supports $filter (eq and not).
+        self._assigned_plans: Optional[List[assigned_plan.AssignedPlan]] = None
+        # The authentication methods that are supported for the user.
+        self._authentication: Optional[authentication.Authentication] = None
+        # The authorizationInfo property
+        self._authorization_info: Optional[authorization_info.AuthorizationInfo] = None
+        # The birthday of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned only on $select.
+        self._birthday: Optional[datetime] = None
+        # The telephone numbers for the user. NOTE: Although this is a string collection, only one number can be set for this property. Read-only for users synced from on-premises directory. Returned by default. Supports $filter (eq, not, ge, le, startsWith).
+        self._business_phones: Optional[List[str]] = None
+        # The user's primary calendar. Read-only.
+        self._calendar: Optional[calendar.Calendar] = None
+        # The user's calendar groups. Read-only. Nullable.
+        self._calendar_groups: Optional[List[calendar_group.CalendarGroup]] = None
+        # The calendar view for the calendar. Read-only. Nullable.
+        self._calendar_view: Optional[List[event.Event]] = None
+        # The user's calendars. Read-only. Nullable.
+        self._calendars: Optional[List[calendar.Calendar]] = None
+        # The chats property
+        self._chats: Optional[List[chat.Chat]] = None
+        # The city in which the user is located. Maximum length is 128 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+        self._city: Optional[str] = None
+        # The company name which the user is associated. This property can be useful for describing the company that an external user comes from. The maximum length is 64 characters.Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+        self._company_name: Optional[str] = None
+        # Sets whether consent has been obtained for minors. Allowed values: null, Granted, Denied and NotRequired. Refer to the legal age group property definitions for further information. Returned only on $select. Supports $filter (eq, ne, not, and in).
+        self._consent_provided_for_minor: Optional[str] = None
+        # The user's contacts folders. Read-only. Nullable.
+        self._contact_folders: Optional[List[contact_folder.ContactFolder]] = None
+        # The user's contacts. Read-only. Nullable.
+        self._contacts: Optional[List[contact.Contact]] = None
+        # The country/region in which the user is located; for example, US or UK. Maximum length is 128 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+        self._country: Optional[str] = None
+        # The date and time the user was created, in ISO 8601 format and in UTC time. The value cannot be modified and is automatically populated when the entity is created. Nullable. For on-premises users, the value represents when they were first created in Azure AD. Property is null for some users created before June 2018 and on-premises users that were synced to Azure AD before June 2018. Read-only. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in).
+        self._created_date_time: Optional[datetime] = None
+        # Directory objects that were created by the user. Read-only. Nullable.
+        self._created_objects: Optional[List[directory_object.DirectoryObject]] = None
+        # Indicates whether the user account was created through one of the following methods:  As a regular school or work account (null). As an external account (Invitation). As a local account for an Azure Active Directory B2C tenant (LocalAccount). Through self-service sign-up by an internal user using email verification (EmailVerified). Through self-service sign-up by an external user signing up through a link that is part of a user flow (SelfServiceSignUp). Read-only.Returned only on $select. Supports $filter (eq, ne, not, in).
+        self._creation_type: Optional[str] = None
+        # The name for the department in which the user works. Maximum length is 64 characters. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, and eq on null values).
+        self._department: Optional[str] = None
+        # The limit on the maximum number of devices that the user is permitted to enroll. Allowed values are 5 or 1000.
+        self._device_enrollment_limit: Optional[int] = None
+        # The list of troubleshooting events for this user.
+        self._device_management_troubleshooting_events: Optional[List[device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent]] = None
+        # The users and contacts that report to the user. (The users and contacts that have their manager property set to this user.) Read-only. Nullable. Supports $expand.
+        self._direct_reports: Optional[List[directory_object.DirectoryObject]] = None
+        # The name displayed in the address book for the user. This is usually the combination of the user's first name, middle initial and last name. This property is required when a user is created and it cannot be cleared during updates. Maximum length is 256 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values), $orderBy, and $search.
+        self._display_name: Optional[str] = None
+        # The user's OneDrive. Read-only.
+        self._drive: Optional[drive.Drive] = None
+        # A collection of drives available for this user. Read-only.
+        self._drives: Optional[List[drive.Drive]] = None
+        # The date and time when the user was hired or will start work in case of a future hire. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in).
+        self._employee_hire_date: Optional[datetime] = None
+        # The employee identifier assigned to the user by the organization. The maximum length is 16 characters. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
+        self._employee_id: Optional[str] = None
+        # The date and time when the user left or will leave the organization. To read this property, the calling app must be assigned the User-LifeCycleInfo.Read.All permission. To write this property, the calling app must be assigned the User.Read.All and User-LifeCycleInfo.ReadWrite.All permissions. To read this property in delegated scenarios, the admin needs one of the following Azure AD roles: Lifecycle Workflows Administrator, Global Reader, or Global Administrator. To write this property in delegated scenarios, the admin needs the Global Administrator role. Supports $filter (eq, ne, not , ge, le, in). For more information, see Configure the employeeLeaveDateTime property for a user.
+        self._employee_leave_date_time: Optional[datetime] = None
+        # Represents organization data (e.g. division and costCenter) associated with a user. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in).
+        self._employee_org_data: Optional[employee_org_data.EmployeeOrgData] = None
+        # Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, startsWith).
+        self._employee_type: Optional[str] = None
+        # The user's events. Default is to show Events under the Default Calendar. Read-only. Nullable.
+        self._events: Optional[List[event.Event]] = None
+        # The collection of open extensions defined for the user. Read-only. Supports $expand. Nullable.
+        self._extensions: Optional[List[extension.Extension]] = None
+        # For an external user invited to the tenant using the invitation API, this property represents the invited user's invitation status. For invited users, the state can be PendingAcceptance or Accepted, or null for all other users. Returned only on $select. Supports $filter (eq, ne, not , in).
+        self._external_user_state: Optional[str] = None
+        # Shows the timestamp for the latest change to the externalUserState property. Returned only on $select. Supports $filter (eq, ne, not , in).
+        self._external_user_state_change_date_time: Optional[datetime] = None
+        # The fax number of the user. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
+        self._fax_number: Optional[str] = None
+        # The followedSites property
+        self._followed_sites: Optional[List[site.Site]] = None
+        # The given name (first name) of the user. Maximum length is 64 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
+        self._given_name: Optional[str] = None
+        # The hire date of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned only on $select.  Note: This property is specific to SharePoint Online. We recommend using the native employeeHireDate property to set and update hire date values using Microsoft Graph APIs.
+        self._hire_date: Optional[datetime] = None
+        # Represents the identities that can be used to sign in to this user account. An identity can be provided by Microsoft (also known as a local account), by organizations, or by social identity providers such as Facebook, Google, and Microsoft, and tied to a user account. May contain multiple items with the same signInType value. Returned only on $select. Supports $filter (eq) including on null values, only where the signInType is not userPrincipalName.
+        self._identities: Optional[List[object_identity.ObjectIdentity]] = None
+        # The instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user. Read-only. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith).
+        self._im_addresses: Optional[List[str]] = None
+        # Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
+        self._inference_classification: Optional[inference_classification.InferenceClassification] = None
+        # The insights property
+        self._insights: Optional[office_graph_insights.OfficeGraphInsights] = None
+        # A list for the user to describe their interests. Returned only on $select.
+        self._interests: Optional[List[str]] = None
+        # Do not use – reserved for future use.
+        self._is_resource_account: Optional[bool] = None
+        # The user's job title. Maximum length is 128 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
+        self._job_title: Optional[str] = None
+        # The joinedTeams property
+        self._joined_teams: Optional[List[team.Team]] = None
+        # The time when this Azure AD user last changed their password or when their password was created, whichever date the latest action was performed. The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned only on $select.
+        self._last_password_change_date_time: Optional[datetime] = None
+        # Used by enterprise applications to determine the legal age group of the user. This property is read-only and calculated based on ageGroup and consentProvidedForMinor properties. Allowed values: null, MinorWithOutParentalConsent, MinorWithParentalConsent, MinorNoParentalConsentRequired, NotAdult and Adult. Refer to the legal age group property definitions for further information. Returned only on $select.
+        self._legal_age_group_classification: Optional[str] = None
+        # State of license assignments for this user. Also indicates licenses that are directly-assigned and those that the user has inherited through group memberships. Read-only. Returned only on $select.
+        self._license_assignment_states: Optional[List[license_assignment_state.LicenseAssignmentState]] = None
+        # A collection of this user's license details. Read-only.
+        self._license_details: Optional[List[license_details.LicenseDetails]] = None
+        # The SMTP address for the user, for example, jeff@contoso.onmicrosoft.com. Changes to this property will also update the user's proxyAddresses collection to include the value as an SMTP address. This property cannot contain accent characters.  NOTE: We do not recommend updating this property for Azure AD B2C user profiles. Use the otherMails property instead. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, endsWith, and eq on null values).
+        self._mail: Optional[str] = None
+        # The user's mail folders. Read-only. Nullable.
+        self._mail_folders: Optional[List[mail_folder.MailFolder]] = None
+        # The mail alias for the user. This property must be specified when a user is created. Maximum length is 64 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+        self._mail_nickname: Optional[str] = None
+        # Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale and time zone. Returned only on $select.
+        self._mailbox_settings: Optional[mailbox_settings.MailboxSettings] = None
+        # Zero or more managed app registrations that belong to the user.
+        self._managed_app_registrations: Optional[List[managed_app_registration.ManagedAppRegistration]] = None
+        # The managed devices associated with the user.
+        self._managed_devices: Optional[List[managed_device.ManagedDevice]] = None
+        # The user or contact that is this user's manager. Read-only. (HTTP Methods: GET, PUT, DELETE.). Supports $expand.
+        self._manager: Optional[directory_object.DirectoryObject] = None
+        # The groups and directory roles that the user is a member of. Read-only. Nullable. Supports $expand.
+        self._member_of: Optional[List[directory_object.DirectoryObject]] = None
+        # The messages in a mailbox or folder. Read-only. Nullable.
+        self._messages: Optional[List[message.Message]] = None
+        # The primary cellular telephone number for the user. Read-only for users synced from on-premises directory. Maximum length is 64 characters. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+        self._mobile_phone: Optional[str] = None
+        # The URL for the user's personal site. Returned only on $select.
+        self._my_site: Optional[str] = None
+        # The oauth2PermissionGrants property
+        self._oauth2_permission_grants: Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]] = None
+        # The office location in the user's place of business. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+        self._office_location: Optional[str] = None
+        # Contains the on-premises Active Directory distinguished name or DN. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
+        self._on_premises_distinguished_name: Optional[str] = None
+        # Contains the on-premises domainFQDN, also called dnsDomainName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
+        self._on_premises_domain_name: Optional[str] = None
+        # Contains extensionAttributes1-15 for the user. These extension attributes are also known as Exchange custom attributes 1-15. For an onPremisesSyncEnabled user, the source of authority for this set of properties is the on-premises and is read-only. For a cloud-only user (where onPremisesSyncEnabled is false), these properties can be set during creation or update of a user object.  For a cloud-only user previously synced from on-premises Active Directory, these properties are read-only in Microsoft Graph but can be fully managed through the Exchange Admin Center or the Exchange Online V2 module in PowerShell. Returned only on $select. Supports $filter (eq, ne, not, in).
+        self._on_premises_extension_attributes: Optional[on_premises_extension_attributes.OnPremisesExtensionAttributes] = None
+        # This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property. NOTE: The $ and _ characters cannot be used when specifying this property. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in)..
+        self._on_premises_immutable_id: Optional[str] = None
+        # Indicates the last time at which the object was synced with the on-premises directory; for example: 2013-02-16T03:04:54Z. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in).
+        self._on_premises_last_sync_date_time: Optional[datetime] = None
+        # Errors when using Microsoft synchronization product during provisioning. Returned only on $select. Supports $filter (eq, not, ge, le).
+        self._on_premises_provisioning_errors: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]] = None
+        # Contains the on-premises samAccountName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
+        self._on_premises_sam_account_name: Optional[str] = None
+        # Contains the on-premises security identifier (SID) for the user that was synchronized from on-premises to the cloud. Read-only. Returned only on $select.  Supports $filter (eq including on null values).
+        self._on_premises_security_identifier: Optional[str] = None
+        # true if this user object is currently being synced from an on-premises Active Directory (AD); otherwise the user isn't being synced and can be managed in Azure Active Directory (Azure AD). Read-only. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
+        self._on_premises_sync_enabled: Optional[bool] = None
+        # Contains the on-premises userPrincipalName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
+        self._on_premises_user_principal_name: Optional[str] = None
+        # The onenote property
+        self._onenote: Optional[onenote.Onenote] = None
+        # The onlineMeetings property
+        self._online_meetings: Optional[List[online_meeting.OnlineMeeting]] = None
+        # A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. NOTE: This property cannot contain accent characters. Returned only on $select. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, /$count eq 0, /$count ne 0).
+        self._other_mails: Optional[List[str]] = None
+        # The outlook property
+        self._outlook: Optional[outlook_user.OutlookUser] = None
+        # Devices that are owned by the user. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
+        self._owned_devices: Optional[List[directory_object.DirectoryObject]] = None
+        # Directory objects that are owned by the user. Read-only. Nullable. Supports $expand.
+        self._owned_objects: Optional[List[directory_object.DirectoryObject]] = None
+        # Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two may be specified together; for example: DisablePasswordExpiration, DisableStrongPassword. Returned only on $select. For more information on the default password policies, see Azure AD pasword policies. Supports $filter (ne, not, and eq on null values).
+        self._password_policies: Optional[str] = None
+        # Specifies the password profile for the user. The profile contains the user’s password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
+        self._password_profile: Optional[password_profile.PasswordProfile] = None
+        # A list for the user to enumerate their past projects. Returned only on $select.
+        self._past_projects: Optional[List[str]] = None
+        # People that are relevant to the user. Read-only. Nullable.
+        self._people: Optional[List[person.Person]] = None
+        # The user's profile photo. Read-only.
+        self._photo: Optional[profile_photo.ProfilePhoto] = None
+        # The photos property
+        self._photos: Optional[List[profile_photo.ProfilePhoto]] = None
+        # Entry-point to the Planner resource that might exist for a user. Read-only.
+        self._planner: Optional[planner_user.PlannerUser] = None
+        # The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code. Maximum length is 40 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+        self._postal_code: Optional[str] = None
+        # The preferred data location for the user. For more information, see OneDrive Online Multi-Geo.
+        self._preferred_data_location: Optional[str] = None
+        # The preferred language for the user. Should follow ISO 639-1 Code; for example en-US. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values)
+        self._preferred_language: Optional[str] = None
+        # The preferred name for the user. Not Supported. This attribute returns an empty string.Returned only on $select.
+        self._preferred_name: Optional[str] = None
+        # The presence property
+        self._presence: Optional[presence.Presence] = None
+        # The plans that are provisioned for the user. Read-only. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le).
+        self._provisioned_plans: Optional[List[provisioned_plan.ProvisionedPlan]] = None
+        # For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. Changes to the mail property will also update this collection to include the value as an SMTP address. For more information, see mail and proxyAddresses properties. The proxy address prefixed with SMTP (capitalized) is the primary proxy address while those prefixed with smtp are the secondary proxy addresses. For Azure AD B2C accounts, this property has a limit of ten unique addresses. Read-only in Microsoft Graph; you can update this property only through the Microsoft 365 admin center. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0).
+        self._proxy_addresses: Optional[List[str]] = None
+        # Devices that are registered for the user. Read-only. Nullable. Supports $expand.
+        self._registered_devices: Optional[List[directory_object.DirectoryObject]] = None
+        # A list for the user to enumerate their responsibilities. Returned only on $select.
+        self._responsibilities: Optional[List[str]] = None
+        # A list for the user to enumerate the schools they have attended. Returned only on $select.
+        self._schools: Optional[List[str]] = None
+        # The scopedRoleMemberOf property
+        self._scoped_role_member_of: Optional[List[scoped_role_membership.ScopedRoleMembership]] = None
+        # Security identifier (SID) of the user, used in Windows scenarios. Read-only. Returned by default. Supports $select and $filter (eq, not, ge, le, startsWith).
+        self._security_identifier: Optional[str] = None
+        # The settings property
+        self._settings: Optional[user_settings.UserSettings] = None
+        # Do not use in Microsoft Graph. Manage this property through the Microsoft 365 admin center instead. Represents whether the user should be included in the Outlook global address list. See Known issue.
+        self._show_in_address_list: Optional[bool] = None
+        # The signInActivity property
+        self._sign_in_activity: Optional[sign_in_activity.SignInActivity] = None
+        # Any refresh tokens or sessions tokens (session cookies) issued before this time are invalid, and applications will get an error when using an invalid refresh or sessions token to acquire a delegated access token (to access APIs such as Microsoft Graph).  If this happens, the application will need to acquire a new refresh token by making a request to the authorize endpoint. Read-only. Use revokeSignInSessions to reset. Returned only on $select.
+        self._sign_in_sessions_valid_from_date_time: Optional[datetime] = None
+        # A list for the user to enumerate their skills. Returned only on $select.
+        self._skills: Optional[List[str]] = None
+        # The state or province in the user's address. Maximum length is 128 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+        self._state: Optional[str] = None
+        # The street address of the user's place of business. Maximum length is 1024 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+        self._street_address: Optional[str] = None
+        # The user's surname (family name or last name). Maximum length is 64 characters. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+        self._surname: Optional[str] = None
+        # The teamwork property
+        self._teamwork: Optional[user_teamwork.UserTeamwork] = None
+        # Represents the To Do services available to a user.
+        self._todo: Optional[todo.Todo] = None
+        # The groups, including nested groups, and directory roles that a user is a member of. Nullable.
+        self._transitive_member_of: Optional[List[directory_object.DirectoryObject]] = None
+        # A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries.  Examples include: US, JP, and GB. Not nullable. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
+        self._usage_location: Optional[str] = None
+        # The user principal name (UPN) of the user. The UPN is an Internet-style login name for the user based on the Internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where domain must be present in the tenant's collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization.NOTE: This property cannot contain accent characters. Only the following characters are allowed A - Z, a - z, 0 - 9, ' . - _ ! # ^ ~. For the complete list of allowed characters, see username policies. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, endsWith) and $orderBy.
+        self._user_principal_name: Optional[str] = None
+        # A string value that can be used to classify user types in your directory, such as Member and Guest. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values). NOTE: For more information about the permissions for member and guest users, see What are the default user permissions in Azure Active Directory?
+        self._user_type: Optional[str] = None
+    
     @property
     def about_me(self,) -> Optional[str]:
         """
@@ -392,251 +596,6 @@ class User(directory_object.DirectoryObject):
         """
         self._consent_provided_for_minor = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new User and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.user"
-        # A freeform text entry field for the user to describe themselves. Returned only on $select.
-        self._about_me: Optional[str] = None
-        # true if the account is enabled; otherwise, false. This property is required when a user is created. Returned only on $select. Supports $filter (eq, ne, not, and in).
-        self._account_enabled: Optional[bool] = None
-        # The user's activities across devices. Read-only. Nullable.
-        self._activities: Optional[List[user_activity.UserActivity]] = None
-        # Sets the age group of the user. Allowed values: null, Minor, NotAdult and Adult. Refer to the legal age group property definitions for further information. Returned only on $select. Supports $filter (eq, ne, not, and in).
-        self._age_group: Optional[str] = None
-        # The user's terms of use acceptance statuses. Read-only. Nullable.
-        self._agreement_acceptances: Optional[List[agreement_acceptance.AgreementAcceptance]] = None
-        # Represents the app roles a user has been granted for an application. Supports $expand.
-        self._app_role_assignments: Optional[List[app_role_assignment.AppRoleAssignment]] = None
-        # The licenses that are assigned to the user, including inherited (group-based) licenses. This property doesn't differentiate directly-assigned and inherited licenses. Use the licenseAssignmentStates property to identify the directly-assigned and inherited licenses.  Not nullable. Returned only on $select. Supports $filter (eq, not, /$count eq 0, /$count ne 0).
-        self._assigned_licenses: Optional[List[assigned_license.AssignedLicense]] = None
-        # The plans that are assigned to the user. Read-only. Not nullable. Returned only on $select. Supports $filter (eq and not).
-        self._assigned_plans: Optional[List[assigned_plan.AssignedPlan]] = None
-        # The authentication methods that are supported for the user.
-        self._authentication: Optional[authentication.Authentication] = None
-        # The authorizationInfo property
-        self._authorization_info: Optional[authorization_info.AuthorizationInfo] = None
-        # The birthday of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned only on $select.
-        self._birthday: Optional[datetime] = None
-        # The telephone numbers for the user. NOTE: Although this is a string collection, only one number can be set for this property. Read-only for users synced from on-premises directory. Returned by default. Supports $filter (eq, not, ge, le, startsWith).
-        self._business_phones: Optional[List[str]] = None
-        # The user's primary calendar. Read-only.
-        self._calendar: Optional[calendar.Calendar] = None
-        # The user's calendar groups. Read-only. Nullable.
-        self._calendar_groups: Optional[List[calendar_group.CalendarGroup]] = None
-        # The calendar view for the calendar. Read-only. Nullable.
-        self._calendar_view: Optional[List[event.Event]] = None
-        # The user's calendars. Read-only. Nullable.
-        self._calendars: Optional[List[calendar.Calendar]] = None
-        # The chats property
-        self._chats: Optional[List[chat.Chat]] = None
-        # The city in which the user is located. Maximum length is 128 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
-        self._city: Optional[str] = None
-        # The company name which the user is associated. This property can be useful for describing the company that an external user comes from. The maximum length is 64 characters.Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
-        self._company_name: Optional[str] = None
-        # Sets whether consent has been obtained for minors. Allowed values: null, Granted, Denied and NotRequired. Refer to the legal age group property definitions for further information. Returned only on $select. Supports $filter (eq, ne, not, and in).
-        self._consent_provided_for_minor: Optional[str] = None
-        # The user's contacts folders. Read-only. Nullable.
-        self._contact_folders: Optional[List[contact_folder.ContactFolder]] = None
-        # The user's contacts. Read-only. Nullable.
-        self._contacts: Optional[List[contact.Contact]] = None
-        # The country/region in which the user is located; for example, US or UK. Maximum length is 128 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
-        self._country: Optional[str] = None
-        # The date and time the user was created, in ISO 8601 format and in UTC time. The value cannot be modified and is automatically populated when the entity is created. Nullable. For on-premises users, the value represents when they were first created in Azure AD. Property is null for some users created before June 2018 and on-premises users that were synced to Azure AD before June 2018. Read-only. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in).
-        self._created_date_time: Optional[datetime] = None
-        # Directory objects that were created by the user. Read-only. Nullable.
-        self._created_objects: Optional[List[directory_object.DirectoryObject]] = None
-        # Indicates whether the user account was created through one of the following methods:  As a regular school or work account (null). As an external account (Invitation). As a local account for an Azure Active Directory B2C tenant (LocalAccount). Through self-service sign-up by an internal user using email verification (EmailVerified). Through self-service sign-up by an external user signing up through a link that is part of a user flow (SelfServiceSignUp). Read-only.Returned only on $select. Supports $filter (eq, ne, not, in).
-        self._creation_type: Optional[str] = None
-        # The name for the department in which the user works. Maximum length is 64 characters. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, and eq on null values).
-        self._department: Optional[str] = None
-        # The limit on the maximum number of devices that the user is permitted to enroll. Allowed values are 5 or 1000.
-        self._device_enrollment_limit: Optional[int] = None
-        # The list of troubleshooting events for this user.
-        self._device_management_troubleshooting_events: Optional[List[device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent]] = None
-        # The users and contacts that report to the user. (The users and contacts that have their manager property set to this user.) Read-only. Nullable. Supports $expand.
-        self._direct_reports: Optional[List[directory_object.DirectoryObject]] = None
-        # The name displayed in the address book for the user. This is usually the combination of the user's first name, middle initial and last name. This property is required when a user is created and it cannot be cleared during updates. Maximum length is 256 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values), $orderBy, and $search.
-        self._display_name: Optional[str] = None
-        # The user's OneDrive. Read-only.
-        self._drive: Optional[drive.Drive] = None
-        # A collection of drives available for this user. Read-only.
-        self._drives: Optional[List[drive.Drive]] = None
-        # The date and time when the user was hired or will start work in case of a future hire. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in).
-        self._employee_hire_date: Optional[datetime] = None
-        # The employee identifier assigned to the user by the organization. The maximum length is 16 characters. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
-        self._employee_id: Optional[str] = None
-        # The employeeLeaveDateTime property
-        self._employee_leave_date_time: Optional[datetime] = None
-        # Represents organization data (e.g. division and costCenter) associated with a user. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in).
-        self._employee_org_data: Optional[employee_org_data.EmployeeOrgData] = None
-        # Captures enterprise worker type. For example, Employee, Contractor, Consultant, or Vendor. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, startsWith).
-        self._employee_type: Optional[str] = None
-        # The user's events. Default is to show Events under the Default Calendar. Read-only. Nullable.
-        self._events: Optional[List[event.Event]] = None
-        # The collection of open extensions defined for the user. Read-only. Supports $expand. Nullable.
-        self._extensions: Optional[List[extension.Extension]] = None
-        # For an external user invited to the tenant using the invitation API, this property represents the invited user's invitation status. For invited users, the state can be PendingAcceptance or Accepted, or null for all other users. Returned only on $select. Supports $filter (eq, ne, not , in).
-        self._external_user_state: Optional[str] = None
-        # Shows the timestamp for the latest change to the externalUserState property. Returned only on $select. Supports $filter (eq, ne, not , in).
-        self._external_user_state_change_date_time: Optional[datetime] = None
-        # The fax number of the user. Returned only on $select. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
-        self._fax_number: Optional[str] = None
-        # The followedSites property
-        self._followed_sites: Optional[List[site.Site]] = None
-        # The given name (first name) of the user. Maximum length is 64 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
-        self._given_name: Optional[str] = None
-        # The hire date of the user. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned only on $select.  Note: This property is specific to SharePoint Online. We recommend using the native employeeHireDate property to set and update hire date values using Microsoft Graph APIs.
-        self._hire_date: Optional[datetime] = None
-        # Represents the identities that can be used to sign in to this user account. An identity can be provided by Microsoft (also known as a local account), by organizations, or by social identity providers such as Facebook, Google, and Microsoft, and tied to a user account. May contain multiple items with the same signInType value. Returned only on $select. Supports $filter (eq) including on null values, only where the signInType is not userPrincipalName.
-        self._identities: Optional[List[object_identity.ObjectIdentity]] = None
-        # The instant message voice over IP (VOIP) session initiation protocol (SIP) addresses for the user. Read-only. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith).
-        self._im_addresses: Optional[List[str]] = None
-        # Relevance classification of the user's messages based on explicit designations which override inferred relevance or importance.
-        self._inference_classification: Optional[inference_classification.InferenceClassification] = None
-        # The insights property
-        self._insights: Optional[office_graph_insights.OfficeGraphInsights] = None
-        # A list for the user to describe their interests. Returned only on $select.
-        self._interests: Optional[List[str]] = None
-        # Do not use – reserved for future use.
-        self._is_resource_account: Optional[bool] = None
-        # The user's job title. Maximum length is 128 characters. Returned by default. Supports $filter (eq, ne, not , ge, le, in, startsWith, and eq on null values).
-        self._job_title: Optional[str] = None
-        # The joinedTeams property
-        self._joined_teams: Optional[List[team.Team]] = None
-        # The time when this Azure AD user last changed their password or when their password was created, whichever date the latest action was performed. The date and time information uses ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned only on $select.
-        self._last_password_change_date_time: Optional[datetime] = None
-        # Used by enterprise applications to determine the legal age group of the user. This property is read-only and calculated based on ageGroup and consentProvidedForMinor properties. Allowed values: null, MinorWithOutParentalConsent, MinorWithParentalConsent, MinorNoParentalConsentRequired, NotAdult and Adult. Refer to the legal age group property definitions for further information. Returned only on $select.
-        self._legal_age_group_classification: Optional[str] = None
-        # State of license assignments for this user. Also indicates licenses that are directly-assigned and those that the user has inherited through group memberships. Read-only. Returned only on $select.
-        self._license_assignment_states: Optional[List[license_assignment_state.LicenseAssignmentState]] = None
-        # A collection of this user's license details. Read-only.
-        self._license_details: Optional[List[license_details.LicenseDetails]] = None
-        # The SMTP address for the user, for example, jeff@contoso.onmicrosoft.com. Changes to this property will also update the user's proxyAddresses collection to include the value as an SMTP address. This property cannot contain accent characters.  NOTE: We do not recommend updating this property for Azure AD B2C user profiles. Use the otherMails property instead. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, endsWith, and eq on null values).
-        self._mail: Optional[str] = None
-        # The user's mail folders. Read-only. Nullable.
-        self._mail_folders: Optional[List[mail_folder.MailFolder]] = None
-        # The mail alias for the user. This property must be specified when a user is created. Maximum length is 64 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
-        self._mail_nickname: Optional[str] = None
-        # Settings for the primary mailbox of the signed-in user. You can get or update settings for sending automatic replies to incoming messages, locale and time zone. Returned only on $select.
-        self._mailbox_settings: Optional[mailbox_settings.MailboxSettings] = None
-        # Zero or more managed app registrations that belong to the user.
-        self._managed_app_registrations: Optional[List[managed_app_registration.ManagedAppRegistration]] = None
-        # The managed devices associated with the user.
-        self._managed_devices: Optional[List[managed_device.ManagedDevice]] = None
-        # The user or contact that is this user's manager. Read-only. (HTTP Methods: GET, PUT, DELETE.). Supports $expand.
-        self._manager: Optional[directory_object.DirectoryObject] = None
-        # The groups and directory roles that the user is a member of. Read-only. Nullable. Supports $expand.
-        self._member_of: Optional[List[directory_object.DirectoryObject]] = None
-        # The messages in a mailbox or folder. Read-only. Nullable.
-        self._messages: Optional[List[message.Message]] = None
-        # The primary cellular telephone number for the user. Read-only for users synced from on-premises directory. Maximum length is 64 characters. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
-        self._mobile_phone: Optional[str] = None
-        # The URL for the user's personal site. Returned only on $select.
-        self._my_site: Optional[str] = None
-        # The oauth2PermissionGrants property
-        self._oauth2_permission_grants: Optional[List[o_auth2_permission_grant.OAuth2PermissionGrant]] = None
-        # The office location in the user's place of business. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
-        self._office_location: Optional[str] = None
-        # Contains the on-premises Active Directory distinguished name or DN. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
-        self._on_premises_distinguished_name: Optional[str] = None
-        # Contains the on-premises domainFQDN, also called dnsDomainName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select.
-        self._on_premises_domain_name: Optional[str] = None
-        # Contains extensionAttributes1-15 for the user. These extension attributes are also known as Exchange custom attributes 1-15. For an onPremisesSyncEnabled user, the source of authority for this set of properties is the on-premises and is read-only. For a cloud-only user (where onPremisesSyncEnabled is false), these properties can be set during creation or update of a user object.  For a cloud-only user previously synced from on-premises Active Directory, these properties are read-only in Microsoft Graph but can be fully managed through the Exchange Admin Center or the Exchange Online V2 module in PowerShell. Returned only on $select. Supports $filter (eq, ne, not, in).
-        self._on_premises_extension_attributes: Optional[on_premises_extension_attributes.OnPremisesExtensionAttributes] = None
-        # This property is used to associate an on-premises Active Directory user account to their Azure AD user object. This property must be specified when creating a new user account in the Graph if you are using a federated domain for the user's userPrincipalName (UPN) property. NOTE: The $ and _ characters cannot be used when specifying this property. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in)..
-        self._on_premises_immutable_id: Optional[str] = None
-        # Indicates the last time at which the object was synced with the on-premises directory; for example: 2013-02-16T03:04:54Z. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in).
-        self._on_premises_last_sync_date_time: Optional[datetime] = None
-        # Errors when using Microsoft synchronization product during provisioning. Returned only on $select. Supports $filter (eq, not, ge, le).
-        self._on_premises_provisioning_errors: Optional[List[on_premises_provisioning_error.OnPremisesProvisioningError]] = None
-        # Contains the on-premises samAccountName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
-        self._on_premises_sam_account_name: Optional[str] = None
-        # Contains the on-premises security identifier (SID) for the user that was synchronized from on-premises to the cloud. Read-only. Returned only on $select.  Supports $filter (eq including on null values).
-        self._on_premises_security_identifier: Optional[str] = None
-        # true if this user object is currently being synced from an on-premises Active Directory (AD); otherwise the user isn't being synced and can be managed in Azure Active Directory (Azure AD). Read-only. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
-        self._on_premises_sync_enabled: Optional[bool] = None
-        # Contains the on-premises userPrincipalName synchronized from the on-premises directory. The property is only populated for customers who are synchronizing their on-premises directory to Azure Active Directory via Azure AD Connect. Read-only. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith).
-        self._on_premises_user_principal_name: Optional[str] = None
-        # The onenote property
-        self._onenote: Optional[onenote.Onenote] = None
-        # The onlineMeetings property
-        self._online_meetings: Optional[List[online_meeting.OnlineMeeting]] = None
-        # A list of additional email addresses for the user; for example: ['bob@contoso.com', 'Robert@fabrikam.com']. NOTE: This property cannot contain accent characters. Returned only on $select. Supports $filter (eq, not, ge, le, in, startsWith, endsWith, /$count eq 0, /$count ne 0).
-        self._other_mails: Optional[List[str]] = None
-        # The outlook property
-        self._outlook: Optional[outlook_user.OutlookUser] = None
-        # Devices that are owned by the user. Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0, /$count eq 1, /$count ne 1).
-        self._owned_devices: Optional[List[directory_object.DirectoryObject]] = None
-        # Directory objects that are owned by the user. Read-only. Nullable. Supports $expand.
-        self._owned_objects: Optional[List[directory_object.DirectoryObject]] = None
-        # Specifies password policies for the user. This value is an enumeration with one possible value being DisableStrongPassword, which allows weaker passwords than the default policy to be specified. DisablePasswordExpiration can also be specified. The two may be specified together; for example: DisablePasswordExpiration, DisableStrongPassword. Returned only on $select. For more information on the default password policies, see Azure AD pasword policies. Supports $filter (ne, not, and eq on null values).
-        self._password_policies: Optional[str] = None
-        # Specifies the password profile for the user. The profile contains the user’s password. This property is required when a user is created. The password in the profile must satisfy minimum requirements as specified by the passwordPolicies property. By default, a strong password is required. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values).
-        self._password_profile: Optional[password_profile.PasswordProfile] = None
-        # A list for the user to enumerate their past projects. Returned only on $select.
-        self._past_projects: Optional[List[str]] = None
-        # People that are relevant to the user. Read-only. Nullable.
-        self._people: Optional[List[person.Person]] = None
-        # The user's profile photo. Read-only.
-        self._photo: Optional[profile_photo.ProfilePhoto] = None
-        # The photos property
-        self._photos: Optional[List[profile_photo.ProfilePhoto]] = None
-        # Entry-point to the Planner resource that might exist for a user. Read-only.
-        self._planner: Optional[planner_user.PlannerUser] = None
-        # The postal code for the user's postal address. The postal code is specific to the user's country/region. In the United States of America, this attribute contains the ZIP code. Maximum length is 40 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
-        self._postal_code: Optional[str] = None
-        # The preferred data location for the user. For more information, see OneDrive Online Multi-Geo.
-        self._preferred_data_location: Optional[str] = None
-        # The preferred language for the user. Should follow ISO 639-1 Code; for example en-US. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values)
-        self._preferred_language: Optional[str] = None
-        # The preferred name for the user. Not Supported. This attribute returns an empty string.Returned only on $select.
-        self._preferred_name: Optional[str] = None
-        # The presence property
-        self._presence: Optional[presence.Presence] = None
-        # The plans that are provisioned for the user. Read-only. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le).
-        self._provisioned_plans: Optional[List[provisioned_plan.ProvisionedPlan]] = None
-        # For example: ['SMTP: bob@contoso.com', 'smtp: bob@sales.contoso.com']. Changes to the mail property will also update this collection to include the value as an SMTP address. For more information, see mail and proxyAddresses properties. The proxy address prefixed with SMTP (capitalized) is the primary proxy address while those prefixed with smtp are the secondary proxy addresses. For Azure AD B2C accounts, this property has a limit of ten unique addresses. Read-only in Microsoft Graph; you can update this property only through the Microsoft 365 admin center. Not nullable. Returned only on $select. Supports $filter (eq, not, ge, le, startsWith, endsWith, /$count eq 0, /$count ne 0).
-        self._proxy_addresses: Optional[List[str]] = None
-        # Devices that are registered for the user. Read-only. Nullable. Supports $expand.
-        self._registered_devices: Optional[List[directory_object.DirectoryObject]] = None
-        # A list for the user to enumerate their responsibilities. Returned only on $select.
-        self._responsibilities: Optional[List[str]] = None
-        # A list for the user to enumerate the schools they have attended. Returned only on $select.
-        self._schools: Optional[List[str]] = None
-        # The scopedRoleMemberOf property
-        self._scoped_role_member_of: Optional[List[scoped_role_membership.ScopedRoleMembership]] = None
-        # Security identifier (SID) of the user, used in Windows scenarios. Read-only. Returned by default. Supports $select and $filter (eq, not, ge, le, startsWith).
-        self._security_identifier: Optional[str] = None
-        # The settings property
-        self._settings: Optional[user_settings.UserSettings] = None
-        # Do not use in Microsoft Graph. Manage this property through the Microsoft 365 admin center instead. Represents whether the user should be included in the Outlook global address list. See Known issue.
-        self._show_in_address_list: Optional[bool] = None
-        # Any refresh tokens or sessions tokens (session cookies) issued before this time are invalid, and applications will get an error when using an invalid refresh or sessions token to acquire a delegated access token (to access APIs such as Microsoft Graph).  If this happens, the application will need to acquire a new refresh token by making a request to the authorize endpoint. Read-only. Use revokeSignInSessions to reset. Returned only on $select.
-        self._sign_in_sessions_valid_from_date_time: Optional[datetime] = None
-        # A list for the user to enumerate their skills. Returned only on $select.
-        self._skills: Optional[List[str]] = None
-        # The state or province in the user's address. Maximum length is 128 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
-        self._state: Optional[str] = None
-        # The street address of the user's place of business. Maximum length is 1024 characters. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
-        self._street_address: Optional[str] = None
-        # The user's surname (family name or last name). Maximum length is 64 characters. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
-        self._surname: Optional[str] = None
-        # The teamwork property
-        self._teamwork: Optional[user_teamwork.UserTeamwork] = None
-        # Represents the To Do services available to a user.
-        self._todo: Optional[todo.Todo] = None
-        # The groups, including nested groups, and directory roles that a user is a member of. Nullable.
-        self._transitive_member_of: Optional[List[directory_object.DirectoryObject]] = None
-        # A two letter country code (ISO standard 3166). Required for users that will be assigned licenses due to legal requirement to check for availability of services in countries.  Examples include: US, JP, and GB. Not nullable. Returned only on $select. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values).
-        self._usage_location: Optional[str] = None
-        # The user principal name (UPN) of the user. The UPN is an Internet-style login name for the user based on the Internet standard RFC 822. By convention, this should map to the user's email name. The general format is alias@domain, where domain must be present in the tenant's collection of verified domains. This property is required when a user is created. The verified domains for the tenant can be accessed from the verifiedDomains property of organization.NOTE: This property cannot contain accent characters. Only the following characters are allowed A - Z, a - z, 0 - 9, ' . - _ ! # ^ ~. For the complete list of allowed characters, see username policies. Returned by default. Supports $filter (eq, ne, not, ge, le, in, startsWith, endsWith) and $orderBy.
-        self._user_principal_name: Optional[str] = None
-        # A string value that can be used to classify user types in your directory, such as Member and Guest. Returned only on $select. Supports $filter (eq, ne, not, in, and eq on null values). NOTE: For more information about the permissions for member and guest users, see What are the default user permissions in Azure Active Directory?
-        self._user_type: Optional[str] = None
-    
     @property
     def contact_folders(self,) -> Optional[List[contact_folder.ContactFolder]]:
         """
@@ -907,7 +866,7 @@ class User(directory_object.DirectoryObject):
     @property
     def employee_leave_date_time(self,) -> Optional[datetime]:
         """
-        Gets the employeeLeaveDateTime property value. The employeeLeaveDateTime property
+        Gets the employeeLeaveDateTime property value. The date and time when the user left or will leave the organization. To read this property, the calling app must be assigned the User-LifeCycleInfo.Read.All permission. To write this property, the calling app must be assigned the User.Read.All and User-LifeCycleInfo.ReadWrite.All permissions. To read this property in delegated scenarios, the admin needs one of the following Azure AD roles: Lifecycle Workflows Administrator, Global Reader, or Global Administrator. To write this property in delegated scenarios, the admin needs the Global Administrator role. Supports $filter (eq, ne, not , ge, le, in). For more information, see Configure the employeeLeaveDateTime property for a user.
         Returns: Optional[datetime]
         """
         return self._employee_leave_date_time
@@ -915,7 +874,7 @@ class User(directory_object.DirectoryObject):
     @employee_leave_date_time.setter
     def employee_leave_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the employeeLeaveDateTime property value. The employeeLeaveDateTime property
+        Sets the employeeLeaveDateTime property value. The date and time when the user left or will leave the organization. To read this property, the calling app must be assigned the User-LifeCycleInfo.Read.All permission. To write this property, the calling app must be assigned the User.Read.All and User-LifeCycleInfo.ReadWrite.All permissions. To read this property in delegated scenarios, the admin needs one of the following Azure AD roles: Lifecycle Workflows Administrator, Global Reader, or Global Administrator. To write this property in delegated scenarios, the admin needs the Global Administrator role. Supports $filter (eq, ne, not , ge, le, in). For more information, see Configure the employeeLeaveDateTime property for a user.
         Args:
             value: Value to set for the employee_leave_date_time property.
         """
@@ -1062,7 +1021,9 @@ class User(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import agreement_acceptance, app_role_assignment, assigned_license, assigned_plan, authentication, authorization_info, calendar, calendar_group, chat, contact, contact_folder, device_management_troubleshooting_event, directory_object, drive, employee_org_data, event, extension, inference_classification, license_assignment_state, license_details, mailbox_settings, mail_folder, managed_app_registration, managed_device, message, object_identity, office_graph_insights, onenote, online_meeting, on_premises_extension_attributes, on_premises_provisioning_error, outlook_user, o_auth2_permission_grant, password_profile, person, planner_user, presence, profile_photo, provisioned_plan, scoped_role_membership, sign_in_activity, site, team, todo, user_activity, user_settings, user_teamwork
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "aboutMe": lambda n : setattr(self, 'about_me', n.get_str_value()),
             "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
             "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(user_activity.UserActivity)),
@@ -1171,6 +1132,7 @@ class User(directory_object.DirectoryObject):
             "securityIdentifier": lambda n : setattr(self, 'security_identifier', n.get_str_value()),
             "settings": lambda n : setattr(self, 'settings', n.get_object_value(user_settings.UserSettings)),
             "showInAddressList": lambda n : setattr(self, 'show_in_address_list', n.get_bool_value()),
+            "signInActivity": lambda n : setattr(self, 'sign_in_activity', n.get_object_value(sign_in_activity.SignInActivity)),
             "signInSessionsValidFromDateTime": lambda n : setattr(self, 'sign_in_sessions_valid_from_date_time', n.get_datetime_value()),
             "skills": lambda n : setattr(self, 'skills', n.get_collection_of_primitive_values(str)),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
@@ -2358,6 +2320,7 @@ class User(directory_object.DirectoryObject):
         writer.write_str_value("securityIdentifier", self.security_identifier)
         writer.write_object_value("settings", self.settings)
         writer.write_bool_value("showInAddressList", self.show_in_address_list)
+        writer.write_object_value("signInActivity", self.sign_in_activity)
         writer.write_datetime_value("signInSessionsValidFromDateTime", self.sign_in_sessions_valid_from_date_time)
         writer.write_collection_of_primitive_values("skills", self.skills)
         writer.write_str_value("state", self.state)
@@ -2403,6 +2366,23 @@ class User(directory_object.DirectoryObject):
             value: Value to set for the show_in_address_list property.
         """
         self._show_in_address_list = value
+    
+    @property
+    def sign_in_activity(self,) -> Optional[sign_in_activity.SignInActivity]:
+        """
+        Gets the signInActivity property value. The signInActivity property
+        Returns: Optional[sign_in_activity.SignInActivity]
+        """
+        return self._sign_in_activity
+    
+    @sign_in_activity.setter
+    def sign_in_activity(self,value: Optional[sign_in_activity.SignInActivity] = None) -> None:
+        """
+        Sets the signInActivity property value. The signInActivity property
+        Args:
+            value: Value to set for the sign_in_activity property.
+        """
+        self._sign_in_activity = value
     
     @property
     def sign_in_sessions_valid_from_date_time(self,) -> Optional[datetime]:

@@ -1,12 +1,30 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-training_status = lazy_import('msgraph.generated.models.training_status')
+if TYPE_CHECKING:
+    from . import training_status
 
 class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new userTrainingStatusInfo and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Date and time of assignment of the training to the user.
+        self._assigned_date_time: Optional[datetime] = None
+        # Date and time of completion of the training by the user.
+        self._completion_date_time: Optional[datetime] = None
+        # Display name of the assigned training.
+        self._display_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The status of the training assigned to the user. Possible values are: unknown, assigned, inProgress, completed, overdue, unknownFutureValue.
+        self._training_status: Optional[training_status.TrainingStatus] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -58,24 +76,6 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         """
         self._completion_date_time = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new userTrainingStatusInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Date and time of assignment of the training to the user.
-        self._assigned_date_time: Optional[datetime] = None
-        # Date and time of completion of the training by the user.
-        self._completion_date_time: Optional[datetime] = None
-        # Display name of the assigned training.
-        self._display_name: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The status of the training assigned to the user. Possible values are: unknown, assigned, inProgress, completed, overdue, unknownFutureValue.
-        self._training_status: Optional[training_status.TrainingStatus] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserTrainingStatusInfo:
         """
@@ -110,7 +110,9 @@ class UserTrainingStatusInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import training_status
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "assignedDateTime": lambda n : setattr(self, 'assigned_date_time', n.get_datetime_value()),
             "completionDateTime": lambda n : setattr(self, 'completion_date_time', n.get_datetime_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

@@ -1,9 +1,24 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class AlteredQueryToken(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new alteredQueryToken and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Defines the length of a changed segment.
+        self._length: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Defines the offset of a changed segment.
+        self._offset: Optional[int] = None
+        # Represents the corrected segment string.
+        self._suggestion: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -20,22 +35,6 @@ class AlteredQueryToken(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new alteredQueryToken and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Defines the length of a changed segment.
-        self._length: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Defines the offset of a changed segment.
-        self._offset: Optional[int] = None
-        # Represents the corrected segment string.
-        self._suggestion: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AlteredQueryToken:
@@ -54,7 +53,7 @@ class AlteredQueryToken(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "length": lambda n : setattr(self, 'length', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "offset": lambda n : setattr(self, 'offset', n.get_int_value()),

@@ -1,14 +1,44 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-app_list_item = lazy_import('msgraph.generated.models.app_list_item')
-app_list_type = lazy_import('msgraph.generated.models.app_list_type')
-device_configuration = lazy_import('msgraph.generated.models.device_configuration')
-required_password_type = lazy_import('msgraph.generated.models.required_password_type')
+if TYPE_CHECKING:
+    from . import app_list_item, app_list_type, device_configuration, required_password_type
+
+from . import device_configuration
 
 class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new MacOSGeneralDeviceConfiguration and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.macOSGeneralDeviceConfiguration"
+        # Possible values of the compliance app list.
+        self._compliant_app_list_type: Optional[app_list_type.AppListType] = None
+        # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
+        self._compliant_apps_list: Optional[List[app_list_item.AppListItem]] = None
+        # An email address lacking a suffix that matches any of these strings will be considered out-of-domain.
+        self._email_in_domain_suffixes: Optional[List[str]] = None
+        # Block simple passwords.
+        self._password_block_simple: Optional[bool] = None
+        # Number of days before the password expires.
+        self._password_expiration_days: Optional[int] = None
+        # Number of character sets a password must contain. Valid values 0 to 4
+        self._password_minimum_character_set_count: Optional[int] = None
+        # Minimum length of passwords.
+        self._password_minimum_length: Optional[int] = None
+        # Minutes of inactivity required before a password is required.
+        self._password_minutes_of_inactivity_before_lock: Optional[int] = None
+        # Minutes of inactivity required before the screen times out.
+        self._password_minutes_of_inactivity_before_screen_timeout: Optional[int] = None
+        # Number of previous passwords to block.
+        self._password_previous_password_block_count: Optional[int] = None
+        # Whether or not to require a password.
+        self._password_required: Optional[bool] = None
+        # Possible values of required passwords.
+        self._password_required_type: Optional[required_password_type.RequiredPasswordType] = None
+    
     @property
     def compliant_app_list_type(self,) -> Optional[app_list_type.AppListType]:
         """
@@ -42,37 +72,6 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
             value: Value to set for the compliant_apps_list property.
         """
         self._compliant_apps_list = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new MacOSGeneralDeviceConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.macOSGeneralDeviceConfiguration"
-        # Possible values of the compliance app list.
-        self._compliant_app_list_type: Optional[app_list_type.AppListType] = None
-        # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
-        self._compliant_apps_list: Optional[List[app_list_item.AppListItem]] = None
-        # An email address lacking a suffix that matches any of these strings will be considered out-of-domain.
-        self._email_in_domain_suffixes: Optional[List[str]] = None
-        # Block simple passwords.
-        self._password_block_simple: Optional[bool] = None
-        # Number of days before the password expires.
-        self._password_expiration_days: Optional[int] = None
-        # Number of character sets a password must contain. Valid values 0 to 4
-        self._password_minimum_character_set_count: Optional[int] = None
-        # Minimum length of passwords.
-        self._password_minimum_length: Optional[int] = None
-        # Minutes of inactivity required before a password is required.
-        self._password_minutes_of_inactivity_before_lock: Optional[int] = None
-        # Minutes of inactivity required before the screen times out.
-        self._password_minutes_of_inactivity_before_screen_timeout: Optional[int] = None
-        # Number of previous passwords to block.
-        self._password_previous_password_block_count: Optional[int] = None
-        # Whether or not to require a password.
-        self._password_required: Optional[bool] = None
-        # Possible values of required passwords.
-        self._password_required_type: Optional[required_password_type.RequiredPasswordType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MacOSGeneralDeviceConfiguration:
@@ -108,7 +107,9 @@ class MacOSGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import app_list_item, app_list_type, device_configuration, required_password_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "compliantAppsList": lambda n : setattr(self, 'compliant_apps_list', n.get_collection_of_object_values(app_list_item.AppListItem)),
             "compliantAppListType": lambda n : setattr(self, 'compliant_app_list_type', n.get_enum_value(app_list_type.AppListType)),
             "emailInDomainSuffixes": lambda n : setattr(self, 'email_in_domain_suffixes', n.get_collection_of_primitive_values(str)),

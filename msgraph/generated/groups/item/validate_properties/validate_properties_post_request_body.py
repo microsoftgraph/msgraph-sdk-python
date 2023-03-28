@@ -1,9 +1,23 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new validatePropertiesPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The displayName property
+        self._display_name: Optional[str] = None
+        # The mailNickname property
+        self._mail_nickname: Optional[str] = None
+        # The onBehalfOfUserId property
+        self._on_behalf_of_user_id: Optional[UUID] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -20,20 +34,6 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new validatePropertiesPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The displayName property
-        self._display_name: Optional[str] = None
-        # The mailNickname property
-        self._mail_nickname: Optional[str] = None
-        # The onBehalfOfUserId property
-        self._on_behalf_of_user_id: Optional[Guid] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ValidatePropertiesPostRequestBody:
@@ -69,10 +69,10 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "mailNickname": lambda n : setattr(self, 'mail_nickname', n.get_str_value()),
-            "onBehalfOfUserId": lambda n : setattr(self, 'on_behalf_of_user_id', n.get_object_value(Guid)),
+            "onBehalfOfUserId": lambda n : setattr(self, 'on_behalf_of_user_id', n.get_uuid_value()),
         }
         return fields
     
@@ -94,15 +94,15 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
         self._mail_nickname = value
     
     @property
-    def on_behalf_of_user_id(self,) -> Optional[Guid]:
+    def on_behalf_of_user_id(self,) -> Optional[UUID]:
         """
         Gets the onBehalfOfUserId property value. The onBehalfOfUserId property
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._on_behalf_of_user_id
     
     @on_behalf_of_user_id.setter
-    def on_behalf_of_user_id(self,value: Optional[Guid] = None) -> None:
+    def on_behalf_of_user_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the onBehalfOfUserId property value. The onBehalfOfUserId property
         Args:
@@ -120,7 +120,7 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("mailNickname", self.mail_nickname)
-        writer.write_object_value("onBehalfOfUserId", self.on_behalf_of_user_id)
+        writer.write_uuid_value("onBehalfOfUserId", self.on_behalf_of_user_id)
         writer.write_additional_data_value(self.additional_data)
     
 

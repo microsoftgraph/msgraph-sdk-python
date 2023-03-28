@@ -1,15 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-notebook = lazy_import('msgraph.generated.models.notebook')
-onenote_operation = lazy_import('msgraph.generated.models.onenote_operation')
-onenote_page = lazy_import('msgraph.generated.models.onenote_page')
-onenote_resource = lazy_import('msgraph.generated.models.onenote_resource')
-onenote_section = lazy_import('msgraph.generated.models.onenote_section')
-section_group = lazy_import('msgraph.generated.models.section_group')
+if TYPE_CHECKING:
+    from . import entity, notebook, onenote_operation, onenote_page, onenote_resource, onenote_section, section_group
+
+from . import entity
 
 class Onenote(entity.Entity):
     def __init__(self,) -> None:
@@ -49,7 +45,9 @@ class Onenote(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, notebook, onenote_operation, onenote_page, onenote_resource, onenote_section, section_group
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "notebooks": lambda n : setattr(self, 'notebooks', n.get_collection_of_object_values(notebook.Notebook)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(onenote_operation.OnenoteOperation)),
             "pages": lambda n : setattr(self, 'pages', n.get_collection_of_object_values(onenote_page.OnenotePage)),

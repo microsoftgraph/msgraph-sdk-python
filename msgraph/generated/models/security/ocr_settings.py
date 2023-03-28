@@ -1,10 +1,25 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class OcrSettings(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ocrSettings and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Indicates whether or not OCR is enabled for the case.
+        self._is_enabled: Optional[bool] = None
+        # Maximum image size that will be processed in KB).
+        self._max_image_size: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The timeout duration for the OCR engine. A longer timeout might increase success of OCR, but might add to the total processing time.
+        self._timeout: Optional[timedelta] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -21,22 +36,6 @@ class OcrSettings(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ocrSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Indicates whether or not OCR is enabled for the case.
-        self._is_enabled: Optional[bool] = None
-        # Maximum image size that will be processed in KB).
-        self._max_image_size: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The timeout duration for the OCR engine. A longer timeout might increase success of OCR, but might add to the total processing time.
-        self._timeout: Optional[Timedelta] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OcrSettings:
@@ -55,11 +54,11 @@ class OcrSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "maxImageSize": lambda n : setattr(self, 'max_image_size', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "timeout": lambda n : setattr(self, 'timeout', n.get_object_value(Timedelta)),
+            "timeout": lambda n : setattr(self, 'timeout', n.get_timedelta_value()),
         }
         return fields
     
@@ -125,19 +124,19 @@ class OcrSettings(AdditionalDataHolder, Parsable):
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_int_value("maxImageSize", self.max_image_size)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_object_value("timeout", self.timeout)
+        writer.write_timedelta_value("timeout", self.timeout)
         writer.write_additional_data_value(self.additional_data)
     
     @property
-    def timeout(self,) -> Optional[Timedelta]:
+    def timeout(self,) -> Optional[timedelta]:
         """
         Gets the timeout property value. The timeout duration for the OCR engine. A longer timeout might increase success of OCR, but might add to the total processing time.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._timeout
     
     @timeout.setter
-    def timeout(self,value: Optional[Timedelta] = None) -> None:
+    def timeout(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the timeout property value. The timeout duration for the OCR engine. A longer timeout might increase success of OCR, but might add to the total processing time.
         Args:

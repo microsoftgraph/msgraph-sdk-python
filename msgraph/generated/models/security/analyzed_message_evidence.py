@@ -1,47 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-alert_evidence = lazy_import('msgraph.generated.models.security.alert_evidence')
-email_sender = lazy_import('msgraph.generated.models.security.email_sender')
+if TYPE_CHECKING:
+    from . import alert_evidence, email_sender
+
+from . import alert_evidence
 
 class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
-    @property
-    def anti_spam_direction(self,) -> Optional[str]:
-        """
-        Gets the antiSpamDirection property value. Direction of the email relative to your network. The possible values are: inbound, outbound or intraorg.
-        Returns: Optional[str]
-        """
-        return self._anti_spam_direction
-    
-    @anti_spam_direction.setter
-    def anti_spam_direction(self,value: Optional[str] = None) -> None:
-        """
-        Sets the antiSpamDirection property value. Direction of the email relative to your network. The possible values are: inbound, outbound or intraorg.
-        Args:
-            value: Value to set for the anti_spam_direction property.
-        """
-        self._anti_spam_direction = value
-    
-    @property
-    def attachments_count(self,) -> Optional[int]:
-        """
-        Gets the attachmentsCount property value. Number of attachments in the email.
-        Returns: Optional[int]
-        """
-        return self._attachments_count
-    
-    @attachments_count.setter
-    def attachments_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the attachmentsCount property value. Number of attachments in the email.
-        Args:
-            value: Value to set for the attachments_count property.
-        """
-        self._attachments_count = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new AnalyzedMessageEvidence and sets the default values.
@@ -85,6 +52,40 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         self._urls: Optional[List[str]] = None
         # Uniform resource name (URN) of the automated investigation where the cluster was identified.
         self._urn: Optional[str] = None
+    
+    @property
+    def anti_spam_direction(self,) -> Optional[str]:
+        """
+        Gets the antiSpamDirection property value. Direction of the email relative to your network. The possible values are: inbound, outbound or intraorg.
+        Returns: Optional[str]
+        """
+        return self._anti_spam_direction
+    
+    @anti_spam_direction.setter
+    def anti_spam_direction(self,value: Optional[str] = None) -> None:
+        """
+        Sets the antiSpamDirection property value. Direction of the email relative to your network. The possible values are: inbound, outbound or intraorg.
+        Args:
+            value: Value to set for the anti_spam_direction property.
+        """
+        self._anti_spam_direction = value
+    
+    @property
+    def attachments_count(self,) -> Optional[int]:
+        """
+        Gets the attachmentsCount property value. Number of attachments in the email.
+        Returns: Optional[int]
+        """
+        return self._attachments_count
+    
+    @attachments_count.setter
+    def attachments_count(self,value: Optional[int] = None) -> None:
+        """
+        Sets the attachmentsCount property value. Number of attachments in the email.
+        Args:
+            value: Value to set for the attachments_count property.
+        """
+        self._attachments_count = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AnalyzedMessageEvidence:
@@ -137,7 +138,9 @@ class AnalyzedMessageEvidence(alert_evidence.AlertEvidence):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import alert_evidence, email_sender
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "antiSpamDirection": lambda n : setattr(self, 'anti_spam_direction', n.get_str_value()),
             "attachmentsCount": lambda n : setattr(self, 'attachments_count', n.get_int_value()),
             "deliveryAction": lambda n : setattr(self, 'delivery_action', n.get_str_value()),

@@ -1,9 +1,12 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
-directory_object = lazy_import('msgraph.generated.models.directory_object')
+if TYPE_CHECKING:
+    from . import directory_object
+
+from . import directory_object
 
 class Contract(directory_object.DirectoryObject):
     def __init__(self,) -> None:
@@ -15,7 +18,7 @@ class Contract(directory_object.DirectoryObject):
         # Type of contract. Possible values are:  SyndicationPartner, BreadthPartner, ResellerPartner. See more in the table below.
         self._contract_type: Optional[str] = None
         # The unique identifier for the customer tenant referenced by this partnership. Corresponds to the id property of the customer tenant's organization resource.
-        self._customer_id: Optional[Guid] = None
+        self._customer_id: Optional[UUID] = None
         # A copy of the customer tenant's default domain name. The copy is made when the partnership with the customer is established. It is not automatically updated if the customer tenant's default domain name changes.
         self._default_domain_name: Optional[str] = None
         # A copy of the customer tenant's display name. The copy is made when the partnership with the customer is established. It is not automatically updated if the customer tenant's display name changes.
@@ -51,15 +54,15 @@ class Contract(directory_object.DirectoryObject):
         return Contract()
     
     @property
-    def customer_id(self,) -> Optional[Guid]:
+    def customer_id(self,) -> Optional[UUID]:
         """
         Gets the customerId property value. The unique identifier for the customer tenant referenced by this partnership. Corresponds to the id property of the customer tenant's organization resource.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._customer_id
     
     @customer_id.setter
-    def customer_id(self,value: Optional[Guid] = None) -> None:
+    def customer_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the customerId property value. The unique identifier for the customer tenant referenced by this partnership. Corresponds to the id property of the customer tenant's organization resource.
         Args:
@@ -106,9 +109,11 @@ class Contract(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import directory_object
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "contractType": lambda n : setattr(self, 'contract_type', n.get_str_value()),
-            "customerId": lambda n : setattr(self, 'customer_id', n.get_object_value(Guid)),
+            "customerId": lambda n : setattr(self, 'customer_id', n.get_uuid_value()),
             "defaultDomainName": lambda n : setattr(self, 'default_domain_name', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
         }
@@ -126,7 +131,7 @@ class Contract(directory_object.DirectoryObject):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("contractType", self.contract_type)
-        writer.write_object_value("customerId", self.customer_id)
+        writer.write_uuid_value("customerId", self.customer_id)
         writer.write_str_value("defaultDomainName", self.default_domain_name)
         writer.write_str_value("displayName", self.display_name)
     

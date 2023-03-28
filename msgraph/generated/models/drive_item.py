@@ -1,38 +1,84 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-audio = lazy_import('msgraph.generated.models.audio')
-base_item = lazy_import('msgraph.generated.models.base_item')
-bundle = lazy_import('msgraph.generated.models.bundle')
-deleted = lazy_import('msgraph.generated.models.deleted')
-drive_item_version = lazy_import('msgraph.generated.models.drive_item_version')
-file = lazy_import('msgraph.generated.models.file')
-file_system_info = lazy_import('msgraph.generated.models.file_system_info')
-folder = lazy_import('msgraph.generated.models.folder')
-geo_coordinates = lazy_import('msgraph.generated.models.geo_coordinates')
-image = lazy_import('msgraph.generated.models.image')
-item_analytics = lazy_import('msgraph.generated.models.item_analytics')
-list_item = lazy_import('msgraph.generated.models.list_item')
-malware = lazy_import('msgraph.generated.models.malware')
-package = lazy_import('msgraph.generated.models.package')
-pending_operations = lazy_import('msgraph.generated.models.pending_operations')
-permission = lazy_import('msgraph.generated.models.permission')
-photo = lazy_import('msgraph.generated.models.photo')
-publication_facet = lazy_import('msgraph.generated.models.publication_facet')
-remote_item = lazy_import('msgraph.generated.models.remote_item')
-root = lazy_import('msgraph.generated.models.root')
-search_result = lazy_import('msgraph.generated.models.search_result')
-shared = lazy_import('msgraph.generated.models.shared')
-sharepoint_ids = lazy_import('msgraph.generated.models.sharepoint_ids')
-special_folder = lazy_import('msgraph.generated.models.special_folder')
-subscription = lazy_import('msgraph.generated.models.subscription')
-thumbnail_set = lazy_import('msgraph.generated.models.thumbnail_set')
-video = lazy_import('msgraph.generated.models.video')
-workbook = lazy_import('msgraph.generated.models.workbook')
+if TYPE_CHECKING:
+    from . import audio, base_item, bundle, deleted, drive_item_version, file, file_system_info, folder, geo_coordinates, image, item_analytics, list_item, malware, package, pending_operations, permission, photo, publication_facet, remote_item, root, search_result, shared, sharepoint_ids, special_folder, subscription, thumbnail_set, video, workbook
+
+from . import base_item
 
 class DriveItem(base_item.BaseItem):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new driveItem and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.driveItem"
+        # Analytics about the view activities that took place on this item.
+        self._analytics: Optional[item_analytics.ItemAnalytics] = None
+        # Audio metadata, if the item is an audio file. Read-only. Read-only. Only on OneDrive Personal.
+        self._audio: Optional[audio.Audio] = None
+        # Bundle metadata, if the item is a bundle. Read-only.
+        self._bundle: Optional[bundle.Bundle] = None
+        # An eTag for the content of the item. This eTag is not changed if only the metadata is changed. Note This property is not returned if the item is a folder. Read-only.
+        self._c_tag: Optional[str] = None
+        # Collection containing Item objects for the immediate children of Item. Only items representing folders have children. Read-only. Nullable.
+        self._children: Optional[List[DriveItem]] = None
+        # The content stream, if the item represents a file.
+        self._content: Optional[bytes] = None
+        # Information about the deleted state of the item. Read-only.
+        self._deleted: Optional[deleted.Deleted] = None
+        # File metadata, if the item is a file. Read-only.
+        self._file: Optional[file.File] = None
+        # File system information on client. Read-write.
+        self._file_system_info: Optional[file_system_info.FileSystemInfo] = None
+        # Folder metadata, if the item is a folder. Read-only.
+        self._folder: Optional[folder.Folder] = None
+        # Image metadata, if the item is an image. Read-only.
+        self._image: Optional[image.Image] = None
+        # For drives in SharePoint, the associated document library list item. Read-only. Nullable.
+        self._list_item: Optional[list_item.ListItem] = None
+        # Location metadata, if the item has location data. Read-only.
+        self._location: Optional[geo_coordinates.GeoCoordinates] = None
+        # Malware metadata, if the item was detected to contain malware. Read-only.
+        self._malware: Optional[malware.Malware] = None
+        # If present, indicates that this item is a package instead of a folder or file. Packages are treated like files in some contexts and folders in others. Read-only.
+        self._package: Optional[package.Package] = None
+        # If present, indicates that one or more operations that might affect the state of the driveItem are pending completion. Read-only.
+        self._pending_operations: Optional[pending_operations.PendingOperations] = None
+        # The set of permissions for the item. Read-only. Nullable.
+        self._permissions: Optional[List[permission.Permission]] = None
+        # Photo metadata, if the item is a photo. Read-only.
+        self._photo: Optional[photo.Photo] = None
+        # Provides information about the published or checked-out state of an item, in locations that support such actions. This property is not returned by default. Read-only.
+        self._publication: Optional[publication_facet.PublicationFacet] = None
+        # Remote item data, if the item is shared from a drive other than the one being accessed. Read-only.
+        self._remote_item: Optional[remote_item.RemoteItem] = None
+        # If this property is non-null, it indicates that the driveItem is the top-most driveItem in the drive.
+        self._root: Optional[root.Root] = None
+        # Search metadata, if the item is from a search result. Read-only.
+        self._search_result: Optional[search_result.SearchResult] = None
+        # Indicates that the item has been shared with others and provides information about the shared state of the item. Read-only.
+        self._shared: Optional[shared.Shared] = None
+        # Returns identifiers useful for SharePoint REST compatibility. Read-only.
+        self._sharepoint_ids: Optional[sharepoint_ids.SharepointIds] = None
+        # Size of the item in bytes. Read-only.
+        self._size: Optional[int] = None
+        # If the current item is also available as a special folder, this facet is returned. Read-only.
+        self._special_folder: Optional[special_folder.SpecialFolder] = None
+        # The set of subscriptions on the item. Only supported on the root of a drive.
+        self._subscriptions: Optional[List[subscription.Subscription]] = None
+        # Collection containing [ThumbnailSet][] objects associated with the item. For more info, see [getting thumbnails][]. Read-only. Nullable.
+        self._thumbnails: Optional[List[thumbnail_set.ThumbnailSet]] = None
+        # The list of previous versions of the item. For more info, see [getting previous versions][]. Read-only. Nullable.
+        self._versions: Optional[List[drive_item_version.DriveItemVersion]] = None
+        # Video metadata, if the item is a video. Read-only.
+        self._video: Optional[video.Video] = None
+        # WebDAV compatible URL for the item.
+        self._web_dav_url: Optional[str] = None
+        # For files that are Excel spreadsheets, accesses the workbook API to work with the spreadsheet's contents. Nullable.
+        self._workbook: Optional[workbook.Workbook] = None
+    
     @property
     def analytics(self,) -> Optional[item_analytics.ItemAnalytics]:
         """
@@ -117,77 +163,6 @@ class DriveItem(base_item.BaseItem):
             value: Value to set for the children property.
         """
         self._children = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new driveItem and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.driveItem"
-        # Analytics about the view activities that took place on this item.
-        self._analytics: Optional[item_analytics.ItemAnalytics] = None
-        # Audio metadata, if the item is an audio file. Read-only. Read-only. Only on OneDrive Personal.
-        self._audio: Optional[audio.Audio] = None
-        # Bundle metadata, if the item is a bundle. Read-only.
-        self._bundle: Optional[bundle.Bundle] = None
-        # An eTag for the content of the item. This eTag is not changed if only the metadata is changed. Note This property is not returned if the item is a folder. Read-only.
-        self._c_tag: Optional[str] = None
-        # Collection containing Item objects for the immediate children of Item. Only items representing folders have children. Read-only. Nullable.
-        self._children: Optional[List[DriveItem]] = None
-        # The content stream, if the item represents a file.
-        self._content: Optional[bytes] = None
-        # Information about the deleted state of the item. Read-only.
-        self._deleted: Optional[deleted.Deleted] = None
-        # File metadata, if the item is a file. Read-only.
-        self._file: Optional[file.File] = None
-        # File system information on client. Read-write.
-        self._file_system_info: Optional[file_system_info.FileSystemInfo] = None
-        # Folder metadata, if the item is a folder. Read-only.
-        self._folder: Optional[folder.Folder] = None
-        # Image metadata, if the item is an image. Read-only.
-        self._image: Optional[image.Image] = None
-        # For drives in SharePoint, the associated document library list item. Read-only. Nullable.
-        self._list_item: Optional[list_item.ListItem] = None
-        # Location metadata, if the item has location data. Read-only.
-        self._location: Optional[geo_coordinates.GeoCoordinates] = None
-        # Malware metadata, if the item was detected to contain malware. Read-only.
-        self._malware: Optional[malware.Malware] = None
-        # If present, indicates that this item is a package instead of a folder or file. Packages are treated like files in some contexts and folders in others. Read-only.
-        self._package: Optional[package.Package] = None
-        # If present, indicates that one or more operations that might affect the state of the driveItem are pending completion. Read-only.
-        self._pending_operations: Optional[pending_operations.PendingOperations] = None
-        # The set of permissions for the item. Read-only. Nullable.
-        self._permissions: Optional[List[permission.Permission]] = None
-        # Photo metadata, if the item is a photo. Read-only.
-        self._photo: Optional[photo.Photo] = None
-        # Provides information about the published or checked-out state of an item, in locations that support such actions. This property is not returned by default. Read-only.
-        self._publication: Optional[publication_facet.PublicationFacet] = None
-        # Remote item data, if the item is shared from a drive other than the one being accessed. Read-only.
-        self._remote_item: Optional[remote_item.RemoteItem] = None
-        # If this property is non-null, it indicates that the driveItem is the top-most driveItem in the drive.
-        self._root: Optional[root.Root] = None
-        # Search metadata, if the item is from a search result. Read-only.
-        self._search_result: Optional[search_result.SearchResult] = None
-        # Indicates that the item has been shared with others and provides information about the shared state of the item. Read-only.
-        self._shared: Optional[shared.Shared] = None
-        # Returns identifiers useful for SharePoint REST compatibility. Read-only.
-        self._sharepoint_ids: Optional[sharepoint_ids.SharepointIds] = None
-        # Size of the item in bytes. Read-only.
-        self._size: Optional[int] = None
-        # If the current item is also available as a special folder, this facet is returned. Read-only.
-        self._special_folder: Optional[special_folder.SpecialFolder] = None
-        # The set of subscriptions on the item. Only supported on the root of a drive.
-        self._subscriptions: Optional[List[subscription.Subscription]] = None
-        # Collection containing [ThumbnailSet][] objects associated with the item. For more info, see [getting thumbnails][]. Read-only. Nullable.
-        self._thumbnails: Optional[List[thumbnail_set.ThumbnailSet]] = None
-        # The list of previous versions of the item. For more info, see [getting previous versions][]. Read-only. Nullable.
-        self._versions: Optional[List[drive_item_version.DriveItemVersion]] = None
-        # Video metadata, if the item is a video. Read-only.
-        self._video: Optional[video.Video] = None
-        # WebDAV compatible URL for the item.
-        self._web_dav_url: Optional[str] = None
-        # For files that are Excel spreadsheets, accesses the workbook API to work with the spreadsheet's contents. Nullable.
-        self._workbook: Optional[workbook.Workbook] = None
     
     @property
     def content(self,) -> Optional[bytes]:
@@ -291,7 +266,9 @@ class DriveItem(base_item.BaseItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import audio, base_item, bundle, deleted, drive_item_version, file, file_system_info, folder, geo_coordinates, image, item_analytics, list_item, malware, package, pending_operations, permission, photo, publication_facet, remote_item, root, search_result, shared, sharepoint_ids, special_folder, subscription, thumbnail_set, video, workbook
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "analytics": lambda n : setattr(self, 'analytics', n.get_object_value(item_analytics.ItemAnalytics)),
             "audio": lambda n : setattr(self, 'audio', n.get_object_value(audio.Audio)),
             "bundle": lambda n : setattr(self, 'bundle', n.get_object_value(bundle.Bundle)),

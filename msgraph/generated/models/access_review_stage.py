@@ -1,12 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_review_instance_decision_item = lazy_import('msgraph.generated.models.access_review_instance_decision_item')
-access_review_reviewer_scope = lazy_import('msgraph.generated.models.access_review_reviewer_scope')
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import access_review_instance_decision_item, access_review_reviewer_scope, entity
+
+from . import entity
 
 class AccessReviewStage(entity.Entity):
     def __init__(self,) -> None:
@@ -97,7 +97,9 @@ class AccessReviewStage(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import access_review_instance_decision_item, access_review_reviewer_scope, entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "decisions": lambda n : setattr(self, 'decisions', n.get_collection_of_object_values(access_review_instance_decision_item.AccessReviewInstanceDecisionItem)),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "fallbackReviewers": lambda n : setattr(self, 'fallback_reviewers', n.get_collection_of_object_values(access_review_reviewer_scope.AccessReviewReviewerScope)),

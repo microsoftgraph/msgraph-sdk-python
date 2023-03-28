@@ -1,46 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-device_compliance_policy = lazy_import('msgraph.generated.models.device_compliance_policy')
-required_password_type = lazy_import('msgraph.generated.models.required_password_type')
+if TYPE_CHECKING:
+    from . import device_compliance_policy, required_password_type
+
+from . import device_compliance_policy
 
 class Windows10MobileCompliancePolicy(device_compliance_policy.DeviceCompliancePolicy):
-    @property
-    def bit_locker_enabled(self,) -> Optional[bool]:
-        """
-        Gets the bitLockerEnabled property value. Require devices to be reported healthy by Windows Device Health Attestation - bit locker is enabled
-        Returns: Optional[bool]
-        """
-        return self._bit_locker_enabled
-    
-    @bit_locker_enabled.setter
-    def bit_locker_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the bitLockerEnabled property value. Require devices to be reported healthy by Windows Device Health Attestation - bit locker is enabled
-        Args:
-            value: Value to set for the bit_locker_enabled property.
-        """
-        self._bit_locker_enabled = value
-    
-    @property
-    def code_integrity_enabled(self,) -> Optional[bool]:
-        """
-        Gets the codeIntegrityEnabled property value. Require devices to be reported as healthy by Windows Device Health Attestation.
-        Returns: Optional[bool]
-        """
-        return self._code_integrity_enabled
-    
-    @code_integrity_enabled.setter
-    def code_integrity_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the codeIntegrityEnabled property value. Require devices to be reported as healthy by Windows Device Health Attestation.
-        Args:
-            value: Value to set for the code_integrity_enabled property.
-        """
-        self._code_integrity_enabled = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new Windows10MobileCompliancePolicy and sets the default values.
@@ -80,6 +47,40 @@ class Windows10MobileCompliancePolicy(device_compliance_policy.DeviceComplianceP
         # Require encryption on windows devices.
         self._storage_require_encryption: Optional[bool] = None
     
+    @property
+    def bit_locker_enabled(self,) -> Optional[bool]:
+        """
+        Gets the bitLockerEnabled property value. Require devices to be reported healthy by Windows Device Health Attestation - bit locker is enabled
+        Returns: Optional[bool]
+        """
+        return self._bit_locker_enabled
+    
+    @bit_locker_enabled.setter
+    def bit_locker_enabled(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the bitLockerEnabled property value. Require devices to be reported healthy by Windows Device Health Attestation - bit locker is enabled
+        Args:
+            value: Value to set for the bit_locker_enabled property.
+        """
+        self._bit_locker_enabled = value
+    
+    @property
+    def code_integrity_enabled(self,) -> Optional[bool]:
+        """
+        Gets the codeIntegrityEnabled property value. Require devices to be reported as healthy by Windows Device Health Attestation.
+        Returns: Optional[bool]
+        """
+        return self._code_integrity_enabled
+    
+    @code_integrity_enabled.setter
+    def code_integrity_enabled(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the codeIntegrityEnabled property value. Require devices to be reported as healthy by Windows Device Health Attestation.
+        Args:
+            value: Value to set for the code_integrity_enabled property.
+        """
+        self._code_integrity_enabled = value
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10MobileCompliancePolicy:
         """
@@ -114,7 +115,9 @@ class Windows10MobileCompliancePolicy(device_compliance_policy.DeviceComplianceP
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import device_compliance_policy, required_password_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "bitLockerEnabled": lambda n : setattr(self, 'bit_locker_enabled', n.get_bool_value()),
             "codeIntegrityEnabled": lambda n : setattr(self, 'code_integrity_enabled', n.get_bool_value()),
             "earlyLaunchAntiMalwareDriverEnabled": lambda n : setattr(self, 'early_launch_anti_malware_driver_enabled', n.get_bool_value()),

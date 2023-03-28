@@ -1,37 +1,17 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-booking_price_type = lazy_import('msgraph.generated.models.booking_price_type')
-booking_question_assignment = lazy_import('msgraph.generated.models.booking_question_assignment')
-booking_reminder = lazy_import('msgraph.generated.models.booking_reminder')
-booking_scheduling_policy = lazy_import('msgraph.generated.models.booking_scheduling_policy')
-entity = lazy_import('msgraph.generated.models.entity')
-location = lazy_import('msgraph.generated.models.location')
+if TYPE_CHECKING:
+    from . import booking_price_type, booking_question_assignment, booking_reminder, booking_scheduling_policy, entity, location
+
+from . import entity
 
 class BookingService(entity.Entity):
     """
     Represents a particular service offered by a booking business.
     """
-    @property
-    def additional_information(self,) -> Optional[str]:
-        """
-        Gets the additionalInformation property value. Additional information that is sent to the customer when an appointment is confirmed.
-        Returns: Optional[str]
-        """
-        return self._additional_information
-    
-    @additional_information.setter
-    def additional_information(self,value: Optional[str] = None) -> None:
-        """
-        Sets the additionalInformation property value. Additional information that is sent to the customer when an appointment is confirmed.
-        Args:
-            value: Value to set for the additional_information property.
-        """
-        self._additional_information = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new bookingService and sets the default values.
@@ -42,7 +22,7 @@ class BookingService(entity.Entity):
         # Contains the set of custom questions associated with a particular service.
         self._custom_questions: Optional[List[booking_question_assignment.BookingQuestionAssignment]] = None
         # The default length of the service, represented in numbers of days, hours, minutes, and seconds. For example, P11D23H59M59.999999999999S.
-        self._default_duration: Optional[Timedelta] = None
+        self._default_duration: Optional[timedelta] = None
         # The default physical location for the service.
         self._default_location: Optional[location.Location] = None
         # The default monetary price for the service.
@@ -70,9 +50,9 @@ class BookingService(entity.Entity):
         # The OdataType property
         self.odata_type: Optional[str] = None
         # The time to buffer after an appointment for this service ends, and before the next customer appointment can be booked.
-        self._post_buffer: Optional[Timedelta] = None
+        self._post_buffer: Optional[timedelta] = None
         # The time to buffer before an appointment for this service can start.
-        self._pre_buffer: Optional[Timedelta] = None
+        self._pre_buffer: Optional[timedelta] = None
         # The set of policies that determine how appointments for this type of service should be created and managed.
         self._scheduling_policy: Optional[booking_scheduling_policy.BookingSchedulingPolicy] = None
         # True indicates SMS notifications can be sent to the customers for the appointment of the service. Default value is false.
@@ -81,6 +61,23 @@ class BookingService(entity.Entity):
         self._staff_member_ids: Optional[List[str]] = None
         # The URL a customer uses to access the service.
         self._web_url: Optional[str] = None
+    
+    @property
+    def additional_information(self,) -> Optional[str]:
+        """
+        Gets the additionalInformation property value. Additional information that is sent to the customer when an appointment is confirmed.
+        Returns: Optional[str]
+        """
+        return self._additional_information
+    
+    @additional_information.setter
+    def additional_information(self,value: Optional[str] = None) -> None:
+        """
+        Sets the additionalInformation property value. Additional information that is sent to the customer when an appointment is confirmed.
+        Args:
+            value: Value to set for the additional_information property.
+        """
+        self._additional_information = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingService:
@@ -112,15 +109,15 @@ class BookingService(entity.Entity):
         self._custom_questions = value
     
     @property
-    def default_duration(self,) -> Optional[Timedelta]:
+    def default_duration(self,) -> Optional[timedelta]:
         """
         Gets the defaultDuration property value. The default length of the service, represented in numbers of days, hours, minutes, and seconds. For example, P11D23H59M59.999999999999S.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._default_duration
     
     @default_duration.setter
-    def default_duration(self,value: Optional[Timedelta] = None) -> None:
+    def default_duration(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the defaultDuration property value. The default length of the service, represented in numbers of days, hours, minutes, and seconds. For example, P11D23H59M59.999999999999S.
         Args:
@@ -235,10 +232,12 @@ class BookingService(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import booking_price_type, booking_question_assignment, booking_reminder, booking_scheduling_policy, entity, location
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "additionalInformation": lambda n : setattr(self, 'additional_information', n.get_str_value()),
             "customQuestions": lambda n : setattr(self, 'custom_questions', n.get_collection_of_object_values(booking_question_assignment.BookingQuestionAssignment)),
-            "defaultDuration": lambda n : setattr(self, 'default_duration', n.get_object_value(Timedelta)),
+            "defaultDuration": lambda n : setattr(self, 'default_duration', n.get_timedelta_value()),
             "defaultLocation": lambda n : setattr(self, 'default_location', n.get_object_value(location.Location)),
             "defaultPrice": lambda n : setattr(self, 'default_price', n.get_float_value()),
             "defaultPriceType": lambda n : setattr(self, 'default_price_type', n.get_enum_value(booking_price_type.BookingPriceType)),
@@ -251,8 +250,8 @@ class BookingService(entity.Entity):
             "languageTag": lambda n : setattr(self, 'language_tag', n.get_str_value()),
             "maximumAttendeesCount": lambda n : setattr(self, 'maximum_attendees_count', n.get_int_value()),
             "notes": lambda n : setattr(self, 'notes', n.get_str_value()),
-            "postBuffer": lambda n : setattr(self, 'post_buffer', n.get_object_value(Timedelta)),
-            "preBuffer": lambda n : setattr(self, 'pre_buffer', n.get_object_value(Timedelta)),
+            "postBuffer": lambda n : setattr(self, 'post_buffer', n.get_timedelta_value()),
+            "preBuffer": lambda n : setattr(self, 'pre_buffer', n.get_timedelta_value()),
             "schedulingPolicy": lambda n : setattr(self, 'scheduling_policy', n.get_object_value(booking_scheduling_policy.BookingSchedulingPolicy)),
             "smsNotificationsEnabled": lambda n : setattr(self, 'sms_notifications_enabled', n.get_bool_value()),
             "staffMemberIds": lambda n : setattr(self, 'staff_member_ids', n.get_collection_of_primitive_values(str)),
@@ -365,15 +364,15 @@ class BookingService(entity.Entity):
         self._notes = value
     
     @property
-    def post_buffer(self,) -> Optional[Timedelta]:
+    def post_buffer(self,) -> Optional[timedelta]:
         """
         Gets the postBuffer property value. The time to buffer after an appointment for this service ends, and before the next customer appointment can be booked.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._post_buffer
     
     @post_buffer.setter
-    def post_buffer(self,value: Optional[Timedelta] = None) -> None:
+    def post_buffer(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the postBuffer property value. The time to buffer after an appointment for this service ends, and before the next customer appointment can be booked.
         Args:
@@ -382,15 +381,15 @@ class BookingService(entity.Entity):
         self._post_buffer = value
     
     @property
-    def pre_buffer(self,) -> Optional[Timedelta]:
+    def pre_buffer(self,) -> Optional[timedelta]:
         """
         Gets the preBuffer property value. The time to buffer before an appointment for this service can start.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._pre_buffer
     
     @pre_buffer.setter
-    def pre_buffer(self,value: Optional[Timedelta] = None) -> None:
+    def pre_buffer(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the preBuffer property value. The time to buffer before an appointment for this service can start.
         Args:
@@ -426,7 +425,7 @@ class BookingService(entity.Entity):
         super().serialize(writer)
         writer.write_str_value("additionalInformation", self.additional_information)
         writer.write_collection_of_object_values("customQuestions", self.custom_questions)
-        writer.write_object_value("defaultDuration", self.default_duration)
+        writer.write_timedelta_value("defaultDuration", self.default_duration)
         writer.write_object_value("defaultLocation", self.default_location)
         writer.write_float_value("defaultPrice", self.default_price)
         writer.write_enum_value("defaultPriceType", self.default_price_type)
@@ -439,8 +438,8 @@ class BookingService(entity.Entity):
         writer.write_str_value("languageTag", self.language_tag)
         writer.write_int_value("maximumAttendeesCount", self.maximum_attendees_count)
         writer.write_str_value("notes", self.notes)
-        writer.write_object_value("postBuffer", self.post_buffer)
-        writer.write_object_value("preBuffer", self.pre_buffer)
+        writer.write_timedelta_value("postBuffer", self.post_buffer)
+        writer.write_timedelta_value("preBuffer", self.pre_buffer)
         writer.write_object_value("schedulingPolicy", self.scheduling_policy)
         writer.write_bool_value("smsNotificationsEnabled", self.sms_notifications_enabled)
         writer.write_collection_of_primitive_values("staffMemberIds", self.staff_member_ids)

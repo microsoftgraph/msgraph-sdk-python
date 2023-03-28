@@ -7,25 +7,18 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-device_compliance_setting_states_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policy_setting_state_summaries.item.device_compliance_setting_states.device_compliance_setting_states_request_builder')
-device_compliance_setting_state_item_request_builder = lazy_import('msgraph.generated.device_management.device_compliance_policy_setting_state_summaries.item.device_compliance_setting_states.item.device_compliance_setting_state_item_request_builder')
-device_compliance_policy_setting_state_summary = lazy_import('msgraph.generated.models.device_compliance_policy_setting_state_summary')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from ....models import device_compliance_policy_setting_state_summary
+    from ....models.o_data_errors import o_data_error
+    from .device_compliance_setting_states import device_compliance_setting_states_request_builder
+    from .device_compliance_setting_states.item import device_compliance_setting_state_item_request_builder
 
 class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
     """
     Provides operations to manage the deviceCompliancePolicySettingStateSummaries property of the microsoft.graph.deviceManagement entity.
     """
-    @property
-    def device_compliance_setting_states(self) -> device_compliance_setting_states_request_builder.DeviceComplianceSettingStatesRequestBuilder:
-        """
-        Provides operations to manage the deviceComplianceSettingStates property of the microsoft.graph.deviceCompliancePolicySettingStateSummary entity.
-        """
-        return device_compliance_setting_states_request_builder.DeviceComplianceSettingStatesRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DeviceCompliancePolicySettingStateSummaryItemRequestBuilder and sets the default values.
@@ -53,6 +46,8 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -70,6 +65,8 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .device_compliance_setting_states.item import device_compliance_setting_state_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["deviceComplianceSettingState%2Did"] = id
         return device_compliance_setting_state_item_request_builder.DeviceComplianceSettingStateItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -84,12 +81,16 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ....models import device_compliance_policy_setting_state_summary
+
         return await self.request_adapter.send_async(request_info, device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary, error_mapping)
     
     async def patch(self,body: Optional[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary] = None, request_configuration: Optional[DeviceCompliancePolicySettingStateSummaryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary]:
@@ -105,12 +106,16 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ....models import device_compliance_policy_setting_state_summary
+
         return await self.request_adapter.send_async(request_info, device_compliance_policy_setting_state_summary.DeviceCompliancePolicySettingStateSummary, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceCompliancePolicySettingStateSummaryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -168,6 +173,15 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def device_compliance_setting_states(self) -> device_compliance_setting_states_request_builder.DeviceComplianceSettingStatesRequestBuilder:
+        """
+        Provides operations to manage the deviceComplianceSettingStates property of the microsoft.graph.deviceCompliancePolicySettingStateSummary entity.
+        """
+        from .device_compliance_setting_states import device_compliance_setting_states_request_builder
+
+        return device_compliance_setting_states_request_builder.DeviceComplianceSettingStatesRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class DeviceCompliancePolicySettingStateSummaryItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -185,12 +199,6 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
         """
         The summary states of compliance policy settings for this account.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -206,6 +214,12 @@ class DeviceCompliancePolicySettingStateSummaryItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class DeviceCompliancePolicySettingStateSummaryItemRequestBuilderGetRequestConfiguration():

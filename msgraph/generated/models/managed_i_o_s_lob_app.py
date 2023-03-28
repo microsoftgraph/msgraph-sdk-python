@@ -1,14 +1,33 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-ios_device_type = lazy_import('msgraph.generated.models.ios_device_type')
-ios_minimum_operating_system = lazy_import('msgraph.generated.models.ios_minimum_operating_system')
-managed_mobile_lob_app = lazy_import('msgraph.generated.models.managed_mobile_lob_app')
+if TYPE_CHECKING:
+    from . import ios_device_type, ios_minimum_operating_system, managed_mobile_lob_app
+
+from . import managed_mobile_lob_app
 
 class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new ManagedIOSLobApp and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.managedIOSLobApp"
+        # Contains properties of the possible iOS device types the mobile app can run on.
+        self._applicable_device_type: Optional[ios_device_type.IosDeviceType] = None
+        # The build number of managed iOS Line of Business (LoB) app.
+        self._build_number: Optional[str] = None
+        # The Identity Name.
+        self._bundle_id: Optional[str] = None
+        # The expiration time.
+        self._expiration_date_time: Optional[datetime] = None
+        # The value for the minimum applicable operating system.
+        self._minimum_supported_operating_system: Optional[ios_minimum_operating_system.IosMinimumOperatingSystem] = None
+        # The version number of managed iOS Line of Business (LoB) app.
+        self._version_number: Optional[str] = None
+    
     @property
     def applicable_device_type(self,) -> Optional[ios_device_type.IosDeviceType]:
         """
@@ -60,25 +79,6 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
         """
         self._bundle_id = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ManagedIOSLobApp and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.managedIOSLobApp"
-        # Contains properties of the possible iOS device types the mobile app can run on.
-        self._applicable_device_type: Optional[ios_device_type.IosDeviceType] = None
-        # The build number of managed iOS Line of Business (LoB) app.
-        self._build_number: Optional[str] = None
-        # The Identity Name.
-        self._bundle_id: Optional[str] = None
-        # The expiration time.
-        self._expiration_date_time: Optional[datetime] = None
-        # The value for the minimum applicable operating system.
-        self._minimum_supported_operating_system: Optional[ios_minimum_operating_system.IosMinimumOperatingSystem] = None
-        # The version number of managed iOS Line of Business (LoB) app.
-        self._version_number: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedIOSLobApp:
         """
@@ -113,7 +113,9 @@ class ManagedIOSLobApp(managed_mobile_lob_app.ManagedMobileLobApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import ios_device_type, ios_minimum_operating_system, managed_mobile_lob_app
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "applicableDeviceType": lambda n : setattr(self, 'applicable_device_type', n.get_object_value(ios_device_type.IosDeviceType)),
             "buildNumber": lambda n : setattr(self, 'build_number', n.get_str_value()),
             "bundleId": lambda n : setattr(self, 'bundle_id', n.get_str_value()),

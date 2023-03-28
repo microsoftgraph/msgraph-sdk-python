@@ -1,9 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class UserAccount(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new userAccount and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The user account's displayed name.
+        self._account_name: Optional[str] = None
+        # The user object identifier in Azure AD.
+        self._azure_ad_user_id: Optional[str] = None
+        # The name of the Active Directory domain of which the user is a member.
+        self._domain_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The user principal name of the account in Azure AD.
+        self._user_principal_name: Optional[str] = None
+        # The local security identifier of the user account.
+        self._user_sid: Optional[str] = None
+    
     @property
     def account_name(self,) -> Optional[str]:
         """
@@ -55,26 +74,6 @@ class UserAccount(AdditionalDataHolder, Parsable):
         """
         self._azure_ad_user_id = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new userAccount and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The user account's displayed name.
-        self._account_name: Optional[str] = None
-        # The user object identifier in Azure AD.
-        self._azure_ad_user_id: Optional[str] = None
-        # The name of the Active Directory domain of which the user is a member.
-        self._domain_name: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The user principal name of the account in Azure AD.
-        self._user_principal_name: Optional[str] = None
-        # The local security identifier of the user account.
-        self._user_sid: Optional[str] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserAccount:
         """
@@ -109,7 +108,7 @@ class UserAccount(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
             "azureAdUserId": lambda n : setattr(self, 'azure_ad_user_id', n.get_str_value()),
             "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),

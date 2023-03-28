@@ -1,49 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-automatic_replies_mail_tips = lazy_import('msgraph.generated.models.automatic_replies_mail_tips')
-email_address = lazy_import('msgraph.generated.models.email_address')
-mail_tips_error = lazy_import('msgraph.generated.models.mail_tips_error')
-recipient = lazy_import('msgraph.generated.models.recipient')
-recipient_scope_type = lazy_import('msgraph.generated.models.recipient_scope_type')
+if TYPE_CHECKING:
+    from . import automatic_replies_mail_tips, email_address, mail_tips_error, recipient, recipient_scope_type
 
 class MailTips(AdditionalDataHolder, Parsable):
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def automatic_replies(self,) -> Optional[automatic_replies_mail_tips.AutomaticRepliesMailTips]:
-        """
-        Gets the automaticReplies property value. Mail tips for automatic reply if it has been set up by the recipient.
-        Returns: Optional[automatic_replies_mail_tips.AutomaticRepliesMailTips]
-        """
-        return self._automatic_replies
-    
-    @automatic_replies.setter
-    def automatic_replies(self,value: Optional[automatic_replies_mail_tips.AutomaticRepliesMailTips] = None) -> None:
-        """
-        Sets the automaticReplies property value. Mail tips for automatic reply if it has been set up by the recipient.
-        Args:
-            value: Value to set for the automatic_replies property.
-        """
-        self._automatic_replies = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new mailTips and sets the default values.
@@ -77,6 +39,40 @@ class MailTips(AdditionalDataHolder, Parsable):
         self._recipient_suggestions: Optional[List[recipient.Recipient]] = None
         # The number of members if the recipient is a distribution list.
         self._total_member_count: Optional[int] = None
+    
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
+    @property
+    def automatic_replies(self,) -> Optional[automatic_replies_mail_tips.AutomaticRepliesMailTips]:
+        """
+        Gets the automaticReplies property value. Mail tips for automatic reply if it has been set up by the recipient.
+        Returns: Optional[automatic_replies_mail_tips.AutomaticRepliesMailTips]
+        """
+        return self._automatic_replies
+    
+    @automatic_replies.setter
+    def automatic_replies(self,value: Optional[automatic_replies_mail_tips.AutomaticRepliesMailTips] = None) -> None:
+        """
+        Sets the automaticReplies property value. Mail tips for automatic reply if it has been set up by the recipient.
+        Args:
+            value: Value to set for the automatic_replies property.
+        """
+        self._automatic_replies = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MailTips:
@@ -180,7 +176,9 @@ class MailTips(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import automatic_replies_mail_tips, email_address, mail_tips_error, recipient, recipient_scope_type
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "automaticReplies": lambda n : setattr(self, 'automatic_replies', n.get_object_value(automatic_replies_mail_tips.AutomaticRepliesMailTips)),
             "customMailTip": lambda n : setattr(self, 'custom_mail_tip', n.get_str_value()),
             "deliveryRestricted": lambda n : setattr(self, 'delivery_restricted', n.get_bool_value()),

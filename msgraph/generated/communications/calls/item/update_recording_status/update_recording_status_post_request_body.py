@@ -1,11 +1,23 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-recording_status = lazy_import('msgraph.generated.models.recording_status')
+if TYPE_CHECKING:
+    from .....models import recording_status
 
 class UpdateRecordingStatusPostRequestBody(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new updateRecordingStatusPostRequestBody and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The clientContext property
+        self._client_context: Optional[str] = None
+        # The status property
+        self._status: Optional[recording_status.RecordingStatus] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -40,18 +52,6 @@ class UpdateRecordingStatusPostRequestBody(AdditionalDataHolder, Parsable):
         """
         self._client_context = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new updateRecordingStatusPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The clientContext property
-        self._client_context: Optional[str] = None
-        # The status property
-        self._status: Optional[recording_status.RecordingStatus] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UpdateRecordingStatusPostRequestBody:
         """
@@ -69,7 +69,9 @@ class UpdateRecordingStatusPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from .....models import recording_status
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "clientContext": lambda n : setattr(self, 'client_context', n.get_str_value()),
             "status": lambda n : setattr(self, 'status', n.get_enum_value(recording_status.RecordingStatus)),
         }

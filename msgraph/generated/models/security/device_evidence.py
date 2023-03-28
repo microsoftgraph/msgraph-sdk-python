@@ -1,35 +1,14 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-alert_evidence = lazy_import('msgraph.generated.models.security.alert_evidence')
-defender_av_status = lazy_import('msgraph.generated.models.security.defender_av_status')
-device_health_status = lazy_import('msgraph.generated.models.security.device_health_status')
-device_risk_score = lazy_import('msgraph.generated.models.security.device_risk_score')
-logged_on_user = lazy_import('msgraph.generated.models.security.logged_on_user')
-onboarding_status = lazy_import('msgraph.generated.models.security.onboarding_status')
-vm_metadata = lazy_import('msgraph.generated.models.security.vm_metadata')
+if TYPE_CHECKING:
+    from . import alert_evidence, defender_av_status, device_health_status, device_risk_score, logged_on_user, onboarding_status, vm_metadata
+
+from . import alert_evidence
 
 class DeviceEvidence(alert_evidence.AlertEvidence):
-    @property
-    def azure_ad_device_id(self,) -> Optional[str]:
-        """
-        Gets the azureAdDeviceId property value. A unique identifier assigned to a device by Azure Active Directory (Azure AD) when device is Azure AD-joined.
-        Returns: Optional[str]
-        """
-        return self._azure_ad_device_id
-    
-    @azure_ad_device_id.setter
-    def azure_ad_device_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the azureAdDeviceId property value. A unique identifier assigned to a device by Azure Active Directory (Azure AD) when device is Azure AD-joined.
-        Args:
-            value: Value to set for the azure_ad_device_id property.
-        """
-        self._azure_ad_device_id = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new DeviceEvidence and sets the default values.
@@ -67,6 +46,23 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         self._version: Optional[str] = None
         # Metadata of the virtual machine (VM) on which Microsoft Defender for Endpoint is running.
         self._vm_metadata: Optional[vm_metadata.VmMetadata] = None
+    
+    @property
+    def azure_ad_device_id(self,) -> Optional[str]:
+        """
+        Gets the azureAdDeviceId property value. A unique identifier assigned to a device by Azure Active Directory (Azure AD) when device is Azure AD-joined.
+        Returns: Optional[str]
+        """
+        return self._azure_ad_device_id
+    
+    @azure_ad_device_id.setter
+    def azure_ad_device_id(self,value: Optional[str] = None) -> None:
+        """
+        Sets the azureAdDeviceId property value. A unique identifier assigned to a device by Azure Active Directory (Azure AD) when device is Azure AD-joined.
+        Args:
+            value: Value to set for the azure_ad_device_id property.
+        """
+        self._azure_ad_device_id = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceEvidence:
@@ -136,7 +132,9 @@ class DeviceEvidence(alert_evidence.AlertEvidence):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import alert_evidence, defender_av_status, device_health_status, device_risk_score, logged_on_user, onboarding_status, vm_metadata
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "azureAdDeviceId": lambda n : setattr(self, 'azure_ad_device_id', n.get_str_value()),
             "defenderAvStatus": lambda n : setattr(self, 'defender_av_status', n.get_enum_value(defender_av_status.DefenderAvStatus)),
             "deviceDnsName": lambda n : setattr(self, 'device_dns_name', n.get_str_value()),

@@ -1,37 +1,17 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-device_install_state = lazy_import('msgraph.generated.models.device_install_state')
-e_book_install_summary = lazy_import('msgraph.generated.models.e_book_install_summary')
-entity = lazy_import('msgraph.generated.models.entity')
-managed_e_book_assignment = lazy_import('msgraph.generated.models.managed_e_book_assignment')
-mime_content = lazy_import('msgraph.generated.models.mime_content')
-user_install_state_summary = lazy_import('msgraph.generated.models.user_install_state_summary')
+if TYPE_CHECKING:
+    from . import device_install_state, entity, e_book_install_summary, ios_vpp_e_book, managed_e_book_assignment, mime_content, user_install_state_summary
+
+from . import entity
 
 class ManagedEBook(entity.Entity):
     """
     An abstract class containing the base properties for Managed eBook.
     """
-    @property
-    def assignments(self,) -> Optional[List[managed_e_book_assignment.ManagedEBookAssignment]]:
-        """
-        Gets the assignments property value. The list of assignments for this eBook.
-        Returns: Optional[List[managed_e_book_assignment.ManagedEBookAssignment]]
-        """
-        return self._assignments
-    
-    @assignments.setter
-    def assignments(self,value: Optional[List[managed_e_book_assignment.ManagedEBookAssignment]] = None) -> None:
-        """
-        Sets the assignments property value. The list of assignments for this eBook.
-        Args:
-            value: Value to set for the assignments property.
-        """
-        self._assignments = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new managedEBook and sets the default values.
@@ -67,6 +47,23 @@ class ManagedEBook(entity.Entity):
         self._user_state_summary: Optional[List[user_install_state_summary.UserInstallStateSummary]] = None
     
     @property
+    def assignments(self,) -> Optional[List[managed_e_book_assignment.ManagedEBookAssignment]]:
+        """
+        Gets the assignments property value. The list of assignments for this eBook.
+        Returns: Optional[List[managed_e_book_assignment.ManagedEBookAssignment]]
+        """
+        return self._assignments
+    
+    @assignments.setter
+    def assignments(self,value: Optional[List[managed_e_book_assignment.ManagedEBookAssignment]] = None) -> None:
+        """
+        Sets the assignments property value. The list of assignments for this eBook.
+        Args:
+            value: Value to set for the assignments property.
+        """
+        self._assignments = value
+    
+    @property
     def created_date_time(self,) -> Optional[datetime]:
         """
         Gets the createdDateTime property value. The date and time when the eBook file was created.
@@ -93,6 +90,13 @@ class ManagedEBook(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.iosVppEBook":
+                from . import ios_vpp_e_book
+
+                return ios_vpp_e_book.IosVppEBook()
         return ManagedEBook()
     
     @property
@@ -151,7 +155,9 @@ class ManagedEBook(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import device_install_state, entity, e_book_install_summary, ios_vpp_e_book, managed_e_book_assignment, mime_content, user_install_state_summary
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(managed_e_book_assignment.ManagedEBookAssignment)),
             "createdDateTime": lambda n : setattr(self, 'created_date_time', n.get_datetime_value()),
             "description": lambda n : setattr(self, 'description', n.get_str_value()),

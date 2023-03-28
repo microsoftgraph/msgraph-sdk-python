@@ -7,88 +7,26 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-ediscovery_search = lazy_import('msgraph.generated.models.security.ediscovery_search')
-additional_sources_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.additional_sources.additional_sources_request_builder')
-data_source_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.additional_sources.item.data_source_item_request_builder')
-add_to_review_set_operation_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.add_to_review_set_operation.add_to_review_set_operation_request_builder')
-custodian_sources_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.custodian_sources.custodian_sources_request_builder')
-data_source_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.custodian_sources.item.data_source_item_request_builder')
-last_estimate_statistics_operation_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.last_estimate_statistics_operation.last_estimate_statistics_operation_request_builder')
-noncustodial_sources_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.noncustodial_sources.noncustodial_sources_request_builder')
-ediscovery_noncustodial_data_source_item_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.noncustodial_sources.item.ediscovery_noncustodial_data_source_item_request_builder')
-security_estimate_statistics_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.security_estimate_statistics.security_estimate_statistics_request_builder')
-security_purge_data_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.searches.item.security_purge_data.security_purge_data_request_builder')
+if TYPE_CHECKING:
+    from .......models.o_data_errors import o_data_error
+    from .......models.security import ediscovery_search
+    from .additional_sources import additional_sources_request_builder
+    from .additional_sources.item import data_source_item_request_builder
+    from .add_to_review_set_operation import add_to_review_set_operation_request_builder
+    from .custodian_sources import custodian_sources_request_builder
+    from .custodian_sources.item import data_source_item_request_builder
+    from .last_estimate_statistics_operation import last_estimate_statistics_operation_request_builder
+    from .noncustodial_sources import noncustodial_sources_request_builder
+    from .noncustodial_sources.item import ediscovery_noncustodial_data_source_item_request_builder
+    from .security_estimate_statistics import security_estimate_statistics_request_builder
+    from .security_purge_data import security_purge_data_request_builder
 
 class EdiscoverySearchItemRequestBuilder():
     """
     Provides operations to manage the searches property of the microsoft.graph.security.ediscoveryCase entity.
     """
-    @property
-    def additional_sources(self) -> additional_sources_request_builder.AdditionalSourcesRequestBuilder:
-        """
-        Provides operations to manage the additionalSources property of the microsoft.graph.security.ediscoverySearch entity.
-        """
-        return additional_sources_request_builder.AdditionalSourcesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def add_to_review_set_operation(self) -> add_to_review_set_operation_request_builder.AddToReviewSetOperationRequestBuilder:
-        """
-        Provides operations to manage the addToReviewSetOperation property of the microsoft.graph.security.ediscoverySearch entity.
-        """
-        return add_to_review_set_operation_request_builder.AddToReviewSetOperationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def custodian_sources(self) -> custodian_sources_request_builder.CustodianSourcesRequestBuilder:
-        """
-        Provides operations to manage the custodianSources property of the microsoft.graph.security.ediscoverySearch entity.
-        """
-        return custodian_sources_request_builder.CustodianSourcesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def last_estimate_statistics_operation(self) -> last_estimate_statistics_operation_request_builder.LastEstimateStatisticsOperationRequestBuilder:
-        """
-        Provides operations to manage the lastEstimateStatisticsOperation property of the microsoft.graph.security.ediscoverySearch entity.
-        """
-        return last_estimate_statistics_operation_request_builder.LastEstimateStatisticsOperationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def noncustodial_sources(self) -> noncustodial_sources_request_builder.NoncustodialSourcesRequestBuilder:
-        """
-        Provides operations to manage the noncustodialSources property of the microsoft.graph.security.ediscoverySearch entity.
-        """
-        return noncustodial_sources_request_builder.NoncustodialSourcesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def security_estimate_statistics(self) -> security_estimate_statistics_request_builder.SecurityEstimateStatisticsRequestBuilder:
-        """
-        Provides operations to call the estimateStatistics method.
-        """
-        return security_estimate_statistics_request_builder.SecurityEstimateStatisticsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def security_purge_data(self) -> security_purge_data_request_builder.SecurityPurgeDataRequestBuilder:
-        """
-        Provides operations to call the purgeData method.
-        """
-        return security_purge_data_request_builder.SecurityPurgeDataRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    def additional_sources_by_id(self,id: str) -> data_source_item_request_builder.DataSourceItemRequestBuilder:
-        """
-        Provides operations to manage the additionalSources property of the microsoft.graph.security.ediscoverySearch entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: data_source_item_request_builder.DataSourceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["dataSource%2Did"] = id
-        return data_source_item_request_builder.DataSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EdiscoverySearchItemRequestBuilder and sets the default values.
@@ -107,6 +45,22 @@ class EdiscoverySearchItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def additional_sources_by_id(self,id: str) -> data_source_item_request_builder.DataSourceItemRequestBuilder:
+        """
+        Provides operations to manage the additionalSources property of the microsoft.graph.security.ediscoverySearch entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: data_source_item_request_builder.DataSourceItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        from .additional_sources.item import data_source_item_request_builder
+        from .custodian_sources.item import data_source_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["dataSource%2Did"] = id
+        return data_source_item_request_builder.DataSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     def custodian_sources_by_id(self,id: str) -> data_source_item_request_builder.DataSourceItemRequestBuilder:
         """
         Provides operations to manage the custodianSources property of the microsoft.graph.security.ediscoverySearch entity.
@@ -116,6 +70,9 @@ class EdiscoverySearchItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .additional_sources.item import data_source_item_request_builder
+        from .custodian_sources.item import data_source_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["dataSource%2Did"] = id
         return data_source_item_request_builder.DataSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -129,6 +86,8 @@ class EdiscoverySearchItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from .......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -147,12 +106,16 @@ class EdiscoverySearchItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from .......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .......models.security import ediscovery_search
+
         return await self.request_adapter.send_async(request_info, ediscovery_search.EdiscoverySearch, error_mapping)
     
     def noncustodial_sources_by_id(self,id: str) -> ediscovery_noncustodial_data_source_item_request_builder.EdiscoveryNoncustodialDataSourceItemRequestBuilder:
@@ -164,6 +127,8 @@ class EdiscoverySearchItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .noncustodial_sources.item import ediscovery_noncustodial_data_source_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["ediscoveryNoncustodialDataSource%2Did"] = id
         return ediscovery_noncustodial_data_source_item_request_builder.EdiscoveryNoncustodialDataSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -181,12 +146,16 @@ class EdiscoverySearchItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from .......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .......models.security import ediscovery_search
+
         return await self.request_adapter.send_async(request_info, ediscovery_search.EdiscoverySearch, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EdiscoverySearchItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -244,6 +213,69 @@ class EdiscoverySearchItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def additional_sources(self) -> additional_sources_request_builder.AdditionalSourcesRequestBuilder:
+        """
+        Provides operations to manage the additionalSources property of the microsoft.graph.security.ediscoverySearch entity.
+        """
+        from .additional_sources import additional_sources_request_builder
+
+        return additional_sources_request_builder.AdditionalSourcesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def add_to_review_set_operation(self) -> add_to_review_set_operation_request_builder.AddToReviewSetOperationRequestBuilder:
+        """
+        Provides operations to manage the addToReviewSetOperation property of the microsoft.graph.security.ediscoverySearch entity.
+        """
+        from .add_to_review_set_operation import add_to_review_set_operation_request_builder
+
+        return add_to_review_set_operation_request_builder.AddToReviewSetOperationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def custodian_sources(self) -> custodian_sources_request_builder.CustodianSourcesRequestBuilder:
+        """
+        Provides operations to manage the custodianSources property of the microsoft.graph.security.ediscoverySearch entity.
+        """
+        from .custodian_sources import custodian_sources_request_builder
+
+        return custodian_sources_request_builder.CustodianSourcesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def last_estimate_statistics_operation(self) -> last_estimate_statistics_operation_request_builder.LastEstimateStatisticsOperationRequestBuilder:
+        """
+        Provides operations to manage the lastEstimateStatisticsOperation property of the microsoft.graph.security.ediscoverySearch entity.
+        """
+        from .last_estimate_statistics_operation import last_estimate_statistics_operation_request_builder
+
+        return last_estimate_statistics_operation_request_builder.LastEstimateStatisticsOperationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def noncustodial_sources(self) -> noncustodial_sources_request_builder.NoncustodialSourcesRequestBuilder:
+        """
+        Provides operations to manage the noncustodialSources property of the microsoft.graph.security.ediscoverySearch entity.
+        """
+        from .noncustodial_sources import noncustodial_sources_request_builder
+
+        return noncustodial_sources_request_builder.NoncustodialSourcesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def security_estimate_statistics(self) -> security_estimate_statistics_request_builder.SecurityEstimateStatisticsRequestBuilder:
+        """
+        Provides operations to call the estimateStatistics method.
+        """
+        from .security_estimate_statistics import security_estimate_statistics_request_builder
+
+        return security_estimate_statistics_request_builder.SecurityEstimateStatisticsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def security_purge_data(self) -> security_purge_data_request_builder.SecurityPurgeDataRequestBuilder:
+        """
+        Provides operations to call the purgeData method.
+        """
+        from .security_purge_data import security_purge_data_request_builder
+
+        return security_purge_data_request_builder.SecurityPurgeDataRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class EdiscoverySearchItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -261,12 +293,6 @@ class EdiscoverySearchItemRequestBuilder():
         """
         Returns a list of eDiscoverySearch objects associated with this case.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -282,6 +308,12 @@ class EdiscoverySearchItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class EdiscoverySearchItemRequestBuilderGetRequestConfiguration():

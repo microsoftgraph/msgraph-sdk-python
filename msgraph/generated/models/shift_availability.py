@@ -1,12 +1,27 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-patterned_recurrence = lazy_import('msgraph.generated.models.patterned_recurrence')
-time_range = lazy_import('msgraph.generated.models.time_range')
+if TYPE_CHECKING:
+    from . import patterned_recurrence, time_range
 
 class ShiftAvailability(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new shiftAvailability and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Specifies the pattern for recurrence
+        self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
+        # The time slot(s) preferred by the user.
+        self._time_slots: Optional[List[time_range.TimeRange]] = None
+        # Specifies the time zone for the indicated time.
+        self._time_zone: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -23,22 +38,6 @@ class ShiftAvailability(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new shiftAvailability and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Specifies the pattern for recurrence
-        self._recurrence: Optional[patterned_recurrence.PatternedRecurrence] = None
-        # The time slot(s) preferred by the user.
-        self._time_slots: Optional[List[time_range.TimeRange]] = None
-        # Specifies the time zone for the indicated time.
-        self._time_zone: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ShiftAvailability:
@@ -57,7 +56,9 @@ class ShiftAvailability(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import patterned_recurrence, time_range
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recurrence": lambda n : setattr(self, 'recurrence', n.get_object_value(patterned_recurrence.PatternedRecurrence)),
             "timeSlots": lambda n : setattr(self, 'time_slots', n.get_collection_of_object_values(time_range.TimeRange)),

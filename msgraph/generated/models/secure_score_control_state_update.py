@@ -1,10 +1,29 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new secureScoreControlStateUpdate and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Assigns the control to the user who will take the action.
+        self._assigned_to: Optional[str] = None
+        # Provides optional comment about the control.
+        self._comment: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # State of the control, which can be modified via a PATCH command (for example, ignored, thirdParty).
+        self._state: Optional[str] = None
+        # ID of the user who updated tenant state.
+        self._updated_by: Optional[str] = None
+        # Time at which the control state was updated.
+        self._updated_date_time: Optional[datetime] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -56,26 +75,6 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         """
         self._comment = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new secureScoreControlStateUpdate and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Assigns the control to the user who will take the action.
-        self._assigned_to: Optional[str] = None
-        # Provides optional comment about the control.
-        self._comment: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # State of the control, which can be modified via a PATCH command (for example, ignored, thirdParty).
-        self._state: Optional[str] = None
-        # ID of the user who updated tenant state.
-        self._updated_by: Optional[str] = None
-        # Time at which the control state was updated.
-        self._updated_date_time: Optional[datetime] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SecureScoreControlStateUpdate:
         """
@@ -93,7 +92,7 @@ class SecureScoreControlStateUpdate(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),
             "comment": lambda n : setattr(self, 'comment', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

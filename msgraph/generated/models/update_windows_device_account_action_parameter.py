@@ -1,11 +1,33 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-windows_device_account = lazy_import('msgraph.generated.models.windows_device_account')
+if TYPE_CHECKING:
+    from . import windows_device_account
 
 class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new updateWindowsDeviceAccountActionParameter and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Not yet documented
+        self._calendar_sync_enabled: Optional[bool] = None
+        # Not yet documented
+        self._device_account: Optional[windows_device_account.WindowsDeviceAccount] = None
+        # Not yet documented
+        self._device_account_email: Optional[str] = None
+        # Not yet documented
+        self._exchange_server: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Not yet documented
+        self._password_rotation_enabled: Optional[bool] = None
+        # Not yet documented
+        self._session_initiation_protocal_address: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -39,28 +61,6 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
             value: Value to set for the calendar_sync_enabled property.
         """
         self._calendar_sync_enabled = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new updateWindowsDeviceAccountActionParameter and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Not yet documented
-        self._calendar_sync_enabled: Optional[bool] = None
-        # Not yet documented
-        self._device_account: Optional[windows_device_account.WindowsDeviceAccount] = None
-        # Not yet documented
-        self._device_account_email: Optional[str] = None
-        # Not yet documented
-        self._exchange_server: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Not yet documented
-        self._password_rotation_enabled: Optional[bool] = None
-        # Not yet documented
-        self._session_initiation_protocal_address: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UpdateWindowsDeviceAccountActionParameter:
@@ -130,7 +130,9 @@ class UpdateWindowsDeviceAccountActionParameter(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import windows_device_account
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "calendarSyncEnabled": lambda n : setattr(self, 'calendar_sync_enabled', n.get_bool_value()),
             "deviceAccount": lambda n : setattr(self, 'device_account', n.get_object_value(windows_device_account.WindowsDeviceAccount)),
             "deviceAccountEmail": lambda n : setattr(self, 'device_account_email', n.get_str_value()),

@@ -7,64 +7,22 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-ediscovery_noncustodial_data_source = lazy_import('msgraph.generated.models.security.ediscovery_noncustodial_data_source')
-data_source_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.data_source.data_source_request_builder')
-last_index_operation_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.last_index_operation.last_index_operation_request_builder')
-security_apply_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.security_apply_hold.security_apply_hold_request_builder')
-security_release_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.security_release.security_release_request_builder')
-security_remove_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.security_remove_hold.security_remove_hold_request_builder')
-security_update_index_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.noncustodial_data_sources.item.security_update_index.security_update_index_request_builder')
+if TYPE_CHECKING:
+    from .......models.o_data_errors import o_data_error
+    from .......models.security import ediscovery_noncustodial_data_source
+    from .data_source import data_source_request_builder
+    from .last_index_operation import last_index_operation_request_builder
+    from .security_apply_hold import security_apply_hold_request_builder
+    from .security_release import security_release_request_builder
+    from .security_remove_hold import security_remove_hold_request_builder
+    from .security_update_index import security_update_index_request_builder
 
 class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
     """
     Provides operations to manage the noncustodialDataSources property of the microsoft.graph.security.ediscoveryCase entity.
     """
-    @property
-    def data_source(self) -> data_source_request_builder.DataSourceRequestBuilder:
-        """
-        Provides operations to manage the dataSource property of the microsoft.graph.security.ediscoveryNoncustodialDataSource entity.
-        """
-        return data_source_request_builder.DataSourceRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def last_index_operation(self) -> last_index_operation_request_builder.LastIndexOperationRequestBuilder:
-        """
-        Provides operations to manage the lastIndexOperation property of the microsoft.graph.security.ediscoveryNoncustodialDataSource entity.
-        """
-        return last_index_operation_request_builder.LastIndexOperationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def security_apply_hold(self) -> security_apply_hold_request_builder.SecurityApplyHoldRequestBuilder:
-        """
-        Provides operations to call the applyHold method.
-        """
-        return security_apply_hold_request_builder.SecurityApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def security_release(self) -> security_release_request_builder.SecurityReleaseRequestBuilder:
-        """
-        Provides operations to call the release method.
-        """
-        return security_release_request_builder.SecurityReleaseRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def security_remove_hold(self) -> security_remove_hold_request_builder.SecurityRemoveHoldRequestBuilder:
-        """
-        Provides operations to call the removeHold method.
-        """
-        return security_remove_hold_request_builder.SecurityRemoveHoldRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def security_update_index(self) -> security_update_index_request_builder.SecurityUpdateIndexRequestBuilder:
-        """
-        Provides operations to call the updateIndex method.
-        """
-        return security_update_index_request_builder.SecurityUpdateIndexRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new EdiscoveryNoncustodialDataSourceItemRequestBuilder and sets the default values.
@@ -92,6 +50,8 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from .......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -110,12 +70,16 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from .......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .......models.security import ediscovery_noncustodial_data_source
+
         return await self.request_adapter.send_async(request_info, ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource, error_mapping)
     
     async def patch(self,body: Optional[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource] = None, request_configuration: Optional[EdiscoveryNoncustodialDataSourceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]:
@@ -131,12 +95,16 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from .......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from .......models.security import ediscovery_noncustodial_data_source
+
         return await self.request_adapter.send_async(request_info, ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[EdiscoveryNoncustodialDataSourceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -194,6 +162,60 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def data_source(self) -> data_source_request_builder.DataSourceRequestBuilder:
+        """
+        Provides operations to manage the dataSource property of the microsoft.graph.security.ediscoveryNoncustodialDataSource entity.
+        """
+        from .data_source import data_source_request_builder
+
+        return data_source_request_builder.DataSourceRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def last_index_operation(self) -> last_index_operation_request_builder.LastIndexOperationRequestBuilder:
+        """
+        Provides operations to manage the lastIndexOperation property of the microsoft.graph.security.ediscoveryNoncustodialDataSource entity.
+        """
+        from .last_index_operation import last_index_operation_request_builder
+
+        return last_index_operation_request_builder.LastIndexOperationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def security_apply_hold(self) -> security_apply_hold_request_builder.SecurityApplyHoldRequestBuilder:
+        """
+        Provides operations to call the applyHold method.
+        """
+        from .security_apply_hold import security_apply_hold_request_builder
+
+        return security_apply_hold_request_builder.SecurityApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def security_release(self) -> security_release_request_builder.SecurityReleaseRequestBuilder:
+        """
+        Provides operations to call the release method.
+        """
+        from .security_release import security_release_request_builder
+
+        return security_release_request_builder.SecurityReleaseRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def security_remove_hold(self) -> security_remove_hold_request_builder.SecurityRemoveHoldRequestBuilder:
+        """
+        Provides operations to call the removeHold method.
+        """
+        from .security_remove_hold import security_remove_hold_request_builder
+
+        return security_remove_hold_request_builder.SecurityRemoveHoldRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def security_update_index(self) -> security_update_index_request_builder.SecurityUpdateIndexRequestBuilder:
+        """
+        Provides operations to call the updateIndex method.
+        """
+        from .security_update_index import security_update_index_request_builder
+
+        return security_update_index_request_builder.SecurityUpdateIndexRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class EdiscoveryNoncustodialDataSourceItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -211,12 +233,6 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         """
         Returns a list of case ediscoveryNoncustodialDataSource objects for this case.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -232,6 +248,12 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class EdiscoveryNoncustodialDataSourceItemRequestBuilderGetRequestConfiguration():

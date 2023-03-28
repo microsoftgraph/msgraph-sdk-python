@@ -1,11 +1,24 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-device_configuration = lazy_import('msgraph.generated.models.device_configuration')
+if TYPE_CHECKING:
+    from . import device_configuration
+
+from . import device_configuration
 
 class WindowsDefenderAdvancedThreatProtectionConfiguration(device_configuration.DeviceConfiguration):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new WindowsDefenderAdvancedThreatProtectionConfiguration and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.windowsDefenderAdvancedThreatProtectionConfiguration"
+        # Windows Defender AdvancedThreatProtection 'Allow Sample Sharing' Rule
+        self._allow_sample_sharing: Optional[bool] = None
+        # Expedite Windows Defender Advanced Threat Protection telemetry reporting frequency.
+        self._enable_expedited_telemetry_reporting: Optional[bool] = None
+    
     @property
     def allow_sample_sharing(self,) -> Optional[bool]:
         """
@@ -22,17 +35,6 @@ class WindowsDefenderAdvancedThreatProtectionConfiguration(device_configuration.
             value: Value to set for the allow_sample_sharing property.
         """
         self._allow_sample_sharing = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsDefenderAdvancedThreatProtectionConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsDefenderAdvancedThreatProtectionConfiguration"
-        # Windows Defender AdvancedThreatProtection 'Allow Sample Sharing' Rule
-        self._allow_sample_sharing: Optional[bool] = None
-        # Expedite Windows Defender Advanced Threat Protection telemetry reporting frequency.
-        self._enable_expedited_telemetry_reporting: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsDefenderAdvancedThreatProtectionConfiguration:
@@ -68,7 +70,9 @@ class WindowsDefenderAdvancedThreatProtectionConfiguration(device_configuration.
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import device_configuration
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowSampleSharing": lambda n : setattr(self, 'allow_sample_sharing', n.get_bool_value()),
             "enableExpeditedTelemetryReporting": lambda n : setattr(self, 'enable_expedited_telemetry_reporting', n.get_bool_value()),
         }

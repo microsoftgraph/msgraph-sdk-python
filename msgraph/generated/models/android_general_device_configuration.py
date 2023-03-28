@@ -1,15 +1,116 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-android_required_password_type = lazy_import('msgraph.generated.models.android_required_password_type')
-app_list_item = lazy_import('msgraph.generated.models.app_list_item')
-app_list_type = lazy_import('msgraph.generated.models.app_list_type')
-device_configuration = lazy_import('msgraph.generated.models.device_configuration')
-web_browser_cookie_settings = lazy_import('msgraph.generated.models.web_browser_cookie_settings')
+if TYPE_CHECKING:
+    from . import android_required_password_type, app_list_item, app_list_type, device_configuration, web_browser_cookie_settings
+
+from . import device_configuration
 
 class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new AndroidGeneralDeviceConfiguration and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.androidGeneralDeviceConfiguration"
+        # Indicates whether or not to block clipboard sharing to copy and paste between applications.
+        self._apps_block_clipboard_sharing: Optional[bool] = None
+        # Indicates whether or not to block copy and paste within applications.
+        self._apps_block_copy_paste: Optional[bool] = None
+        # Indicates whether or not to block the YouTube app.
+        self._apps_block_you_tube: Optional[bool] = None
+        # List of apps to be hidden on the KNOX device. This collection can contain a maximum of 500 elements.
+        self._apps_hide_list: Optional[List[app_list_item.AppListItem]] = None
+        # List of apps which can be installed on the KNOX device. This collection can contain a maximum of 500 elements.
+        self._apps_install_allow_list: Optional[List[app_list_item.AppListItem]] = None
+        # List of apps which are blocked from being launched on the KNOX device. This collection can contain a maximum of 500 elements.
+        self._apps_launch_block_list: Optional[List[app_list_item.AppListItem]] = None
+        # Indicates whether or not to block Bluetooth.
+        self._bluetooth_blocked: Optional[bool] = None
+        # Indicates whether or not to block the use of the camera.
+        self._camera_blocked: Optional[bool] = None
+        # Indicates whether or not to block data roaming.
+        self._cellular_block_data_roaming: Optional[bool] = None
+        # Indicates whether or not to block SMS/MMS messaging.
+        self._cellular_block_messaging: Optional[bool] = None
+        # Indicates whether or not to block voice roaming.
+        self._cellular_block_voice_roaming: Optional[bool] = None
+        # Indicates whether or not to block syncing Wi-Fi tethering.
+        self._cellular_block_wi_fi_tethering: Optional[bool] = None
+        # Possible values of the compliance app list.
+        self._compliant_app_list_type: Optional[app_list_type.AppListType] = None
+        # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
+        self._compliant_apps_list: Optional[List[app_list_item.AppListItem]] = None
+        # Indicates whether or not to allow device sharing mode.
+        self._device_sharing_allowed: Optional[bool] = None
+        # Indicates whether or not to block diagnostic data submission.
+        self._diagnostic_data_block_submission: Optional[bool] = None
+        # Indicates whether or not to block user performing a factory reset.
+        self._factory_reset_blocked: Optional[bool] = None
+        # Indicates whether or not to block Google account auto sync.
+        self._google_account_block_auto_sync: Optional[bool] = None
+        # Indicates whether or not to block the Google Play store.
+        self._google_play_store_blocked: Optional[bool] = None
+        # A list of apps that will be allowed to run when the device is in Kiosk Mode. This collection can contain a maximum of 500 elements.
+        self._kiosk_mode_apps: Optional[List[app_list_item.AppListItem]] = None
+        # Indicates whether or not to block the screen sleep button while in Kiosk Mode.
+        self._kiosk_mode_block_sleep_button: Optional[bool] = None
+        # Indicates whether or not to block the volume buttons while in Kiosk Mode.
+        self._kiosk_mode_block_volume_buttons: Optional[bool] = None
+        # Indicates whether or not to block location services.
+        self._location_services_blocked: Optional[bool] = None
+        # Indicates whether or not to block Near-Field Communication.
+        self._nfc_blocked: Optional[bool] = None
+        # Indicates whether or not to block fingerprint unlock.
+        self._password_block_fingerprint_unlock: Optional[bool] = None
+        # Indicates whether or not to block Smart Lock and other trust agents.
+        self._password_block_trust_agents: Optional[bool] = None
+        # Number of days before the password expires. Valid values 1 to 365
+        self._password_expiration_days: Optional[int] = None
+        # Minimum length of passwords. Valid values 4 to 16
+        self._password_minimum_length: Optional[int] = None
+        # Minutes of inactivity before the screen times out.
+        self._password_minutes_of_inactivity_before_screen_timeout: Optional[int] = None
+        # Number of previous passwords to block. Valid values 0 to 24
+        self._password_previous_password_block_count: Optional[int] = None
+        # Indicates whether or not to require a password.
+        self._password_required: Optional[bool] = None
+        # Android required password type.
+        self._password_required_type: Optional[android_required_password_type.AndroidRequiredPasswordType] = None
+        # Number of sign in failures allowed before factory reset. Valid values 1 to 16
+        self._password_sign_in_failure_count_before_factory_reset: Optional[int] = None
+        # Indicates whether or not to block powering off the device.
+        self._power_off_blocked: Optional[bool] = None
+        # Indicates whether or not to block screenshots.
+        self._screen_capture_blocked: Optional[bool] = None
+        # Require the Android Verify apps feature is turned on.
+        self._security_require_verify_apps: Optional[bool] = None
+        # Indicates whether or not to block Google Backup.
+        self._storage_block_google_backup: Optional[bool] = None
+        # Indicates whether or not to block removable storage usage.
+        self._storage_block_removable_storage: Optional[bool] = None
+        # Indicates whether or not to require device encryption.
+        self._storage_require_device_encryption: Optional[bool] = None
+        # Indicates whether or not to require removable storage encryption.
+        self._storage_require_removable_storage_encryption: Optional[bool] = None
+        # Indicates whether or not to block the use of the Voice Assistant.
+        self._voice_assistant_blocked: Optional[bool] = None
+        # Indicates whether or not to block voice dialing.
+        self._voice_dialing_blocked: Optional[bool] = None
+        # Indicates whether or not to block the web browser's auto fill feature.
+        self._web_browser_block_autofill: Optional[bool] = None
+        # Indicates whether or not to block JavaScript within the web browser.
+        self._web_browser_block_java_script: Optional[bool] = None
+        # Indicates whether or not to block popups within the web browser.
+        self._web_browser_block_popups: Optional[bool] = None
+        # Indicates whether or not to block the web browser.
+        self._web_browser_blocked: Optional[bool] = None
+        # Web Browser Cookie Settings.
+        self._web_browser_cookie_settings: Optional[web_browser_cookie_settings.WebBrowserCookieSettings] = None
+        # Indicates whether or not to block syncing Wi-Fi.
+        self._wi_fi_blocked: Optional[bool] = None
+    
     @property
     def apps_block_clipboard_sharing(self,) -> Optional[bool]:
         """
@@ -248,109 +349,6 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         """
         self._compliant_apps_list = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AndroidGeneralDeviceConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.androidGeneralDeviceConfiguration"
-        # Indicates whether or not to block clipboard sharing to copy and paste between applications.
-        self._apps_block_clipboard_sharing: Optional[bool] = None
-        # Indicates whether or not to block copy and paste within applications.
-        self._apps_block_copy_paste: Optional[bool] = None
-        # Indicates whether or not to block the YouTube app.
-        self._apps_block_you_tube: Optional[bool] = None
-        # List of apps to be hidden on the KNOX device. This collection can contain a maximum of 500 elements.
-        self._apps_hide_list: Optional[List[app_list_item.AppListItem]] = None
-        # List of apps which can be installed on the KNOX device. This collection can contain a maximum of 500 elements.
-        self._apps_install_allow_list: Optional[List[app_list_item.AppListItem]] = None
-        # List of apps which are blocked from being launched on the KNOX device. This collection can contain a maximum of 500 elements.
-        self._apps_launch_block_list: Optional[List[app_list_item.AppListItem]] = None
-        # Indicates whether or not to block Bluetooth.
-        self._bluetooth_blocked: Optional[bool] = None
-        # Indicates whether or not to block the use of the camera.
-        self._camera_blocked: Optional[bool] = None
-        # Indicates whether or not to block data roaming.
-        self._cellular_block_data_roaming: Optional[bool] = None
-        # Indicates whether or not to block SMS/MMS messaging.
-        self._cellular_block_messaging: Optional[bool] = None
-        # Indicates whether or not to block voice roaming.
-        self._cellular_block_voice_roaming: Optional[bool] = None
-        # Indicates whether or not to block syncing Wi-Fi tethering.
-        self._cellular_block_wi_fi_tethering: Optional[bool] = None
-        # Possible values of the compliance app list.
-        self._compliant_app_list_type: Optional[app_list_type.AppListType] = None
-        # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
-        self._compliant_apps_list: Optional[List[app_list_item.AppListItem]] = None
-        # Indicates whether or not to allow device sharing mode.
-        self._device_sharing_allowed: Optional[bool] = None
-        # Indicates whether or not to block diagnostic data submission.
-        self._diagnostic_data_block_submission: Optional[bool] = None
-        # Indicates whether or not to block user performing a factory reset.
-        self._factory_reset_blocked: Optional[bool] = None
-        # Indicates whether or not to block Google account auto sync.
-        self._google_account_block_auto_sync: Optional[bool] = None
-        # Indicates whether or not to block the Google Play store.
-        self._google_play_store_blocked: Optional[bool] = None
-        # A list of apps that will be allowed to run when the device is in Kiosk Mode. This collection can contain a maximum of 500 elements.
-        self._kiosk_mode_apps: Optional[List[app_list_item.AppListItem]] = None
-        # Indicates whether or not to block the screen sleep button while in Kiosk Mode.
-        self._kiosk_mode_block_sleep_button: Optional[bool] = None
-        # Indicates whether or not to block the volume buttons while in Kiosk Mode.
-        self._kiosk_mode_block_volume_buttons: Optional[bool] = None
-        # Indicates whether or not to block location services.
-        self._location_services_blocked: Optional[bool] = None
-        # Indicates whether or not to block Near-Field Communication.
-        self._nfc_blocked: Optional[bool] = None
-        # Indicates whether or not to block fingerprint unlock.
-        self._password_block_fingerprint_unlock: Optional[bool] = None
-        # Indicates whether or not to block Smart Lock and other trust agents.
-        self._password_block_trust_agents: Optional[bool] = None
-        # Number of days before the password expires. Valid values 1 to 365
-        self._password_expiration_days: Optional[int] = None
-        # Minimum length of passwords. Valid values 4 to 16
-        self._password_minimum_length: Optional[int] = None
-        # Minutes of inactivity before the screen times out.
-        self._password_minutes_of_inactivity_before_screen_timeout: Optional[int] = None
-        # Number of previous passwords to block. Valid values 0 to 24
-        self._password_previous_password_block_count: Optional[int] = None
-        # Indicates whether or not to require a password.
-        self._password_required: Optional[bool] = None
-        # Android required password type.
-        self._password_required_type: Optional[android_required_password_type.AndroidRequiredPasswordType] = None
-        # Number of sign in failures allowed before factory reset. Valid values 1 to 16
-        self._password_sign_in_failure_count_before_factory_reset: Optional[int] = None
-        # Indicates whether or not to block powering off the device.
-        self._power_off_blocked: Optional[bool] = None
-        # Indicates whether or not to block screenshots.
-        self._screen_capture_blocked: Optional[bool] = None
-        # Require the Android Verify apps feature is turned on.
-        self._security_require_verify_apps: Optional[bool] = None
-        # Indicates whether or not to block Google Backup.
-        self._storage_block_google_backup: Optional[bool] = None
-        # Indicates whether or not to block removable storage usage.
-        self._storage_block_removable_storage: Optional[bool] = None
-        # Indicates whether or not to require device encryption.
-        self._storage_require_device_encryption: Optional[bool] = None
-        # Indicates whether or not to require removable storage encryption.
-        self._storage_require_removable_storage_encryption: Optional[bool] = None
-        # Indicates whether or not to block the use of the Voice Assistant.
-        self._voice_assistant_blocked: Optional[bool] = None
-        # Indicates whether or not to block voice dialing.
-        self._voice_dialing_blocked: Optional[bool] = None
-        # Indicates whether or not to block the web browser's auto fill feature.
-        self._web_browser_block_autofill: Optional[bool] = None
-        # Indicates whether or not to block JavaScript within the web browser.
-        self._web_browser_block_java_script: Optional[bool] = None
-        # Indicates whether or not to block popups within the web browser.
-        self._web_browser_block_popups: Optional[bool] = None
-        # Indicates whether or not to block the web browser.
-        self._web_browser_blocked: Optional[bool] = None
-        # Web Browser Cookie Settings.
-        self._web_browser_cookie_settings: Optional[web_browser_cookie_settings.WebBrowserCookieSettings] = None
-        # Indicates whether or not to block syncing Wi-Fi.
-        self._wi_fi_blocked: Optional[bool] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AndroidGeneralDeviceConfiguration:
         """
@@ -419,7 +417,9 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import android_required_password_type, app_list_item, app_list_type, device_configuration, web_browser_cookie_settings
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "appsBlockClipboardSharing": lambda n : setattr(self, 'apps_block_clipboard_sharing', n.get_bool_value()),
             "appsBlockCopyPaste": lambda n : setattr(self, 'apps_block_copy_paste', n.get_bool_value()),
             "appsBlockYouTube": lambda n : setattr(self, 'apps_block_you_tube', n.get_bool_value()),

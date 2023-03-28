@@ -1,11 +1,42 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
-teleconference_device_media_quality = lazy_import('msgraph.generated.models.teleconference_device_media_quality')
+if TYPE_CHECKING:
+    from . import teleconference_device_media_quality
 
 class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new teleconferenceDeviceQuality and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # A unique identifier for all  the participant calls in a conference or a unique identifier for two participant calls in P2P call. This needs to be copied over from Microsoft.Graph.Call.CallChainId.
+        self._call_chain_id: Optional[UUID] = None
+        # A geo-region where the service is deployed, such as ProdNoam.
+        self._cloud_service_deployment_environment: Optional[str] = None
+        # A unique deployment identifier assigned by Azure.
+        self._cloud_service_deployment_id: Optional[str] = None
+        # The Azure deployed cloud service instance name, such as FrontEnd_IN_3.
+        self._cloud_service_instance_name: Optional[str] = None
+        # The Azure deployed cloud service name, such as contoso.cloudapp.net.
+        self._cloud_service_name: Optional[str] = None
+        # Any additional description, such as VTC Bldg 30/21.
+        self._device_description: Optional[str] = None
+        # The user media agent name, such as Cisco SX80.
+        self._device_name: Optional[str] = None
+        # A unique identifier for a specific media leg of a participant in a conference.  One participant can have multiple media leg identifiers if retargeting happens. CVI partner assigns this value.
+        self._media_leg_id: Optional[UUID] = None
+        # The list of media qualities in a media session (call), such as audio quality, video quality, and/or screen sharing quality.
+        self._media_quality_list: Optional[List[teleconference_device_media_quality.TeleconferenceDeviceMediaQuality]] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # A unique identifier for a specific participant in a conference. The CVI partner needs to copy over Call.MyParticipantId to this property.
+        self._participant_id: Optional[UUID] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -24,15 +55,15 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         self._additional_data = value
     
     @property
-    def call_chain_id(self,) -> Optional[Guid]:
+    def call_chain_id(self,) -> Optional[UUID]:
         """
         Gets the callChainId property value. A unique identifier for all  the participant calls in a conference or a unique identifier for two participant calls in P2P call. This needs to be copied over from Microsoft.Graph.Call.CallChainId.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._call_chain_id
     
     @call_chain_id.setter
-    def call_chain_id(self,value: Optional[Guid] = None) -> None:
+    def call_chain_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the callChainId property value. A unique identifier for all  the participant calls in a conference or a unique identifier for two participant calls in P2P call. This needs to be copied over from Microsoft.Graph.Call.CallChainId.
         Args:
@@ -108,36 +139,6 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         """
         self._cloud_service_name = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new teleconferenceDeviceQuality and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # A unique identifier for all  the participant calls in a conference or a unique identifier for two participant calls in P2P call. This needs to be copied over from Microsoft.Graph.Call.CallChainId.
-        self._call_chain_id: Optional[Guid] = None
-        # A geo-region where the service is deployed, such as ProdNoam.
-        self._cloud_service_deployment_environment: Optional[str] = None
-        # A unique deployment identifier assigned by Azure.
-        self._cloud_service_deployment_id: Optional[str] = None
-        # The Azure deployed cloud service instance name, such as FrontEnd_IN_3.
-        self._cloud_service_instance_name: Optional[str] = None
-        # The Azure deployed cloud service name, such as contoso.cloudapp.net.
-        self._cloud_service_name: Optional[str] = None
-        # Any additional description, such as VTC Bldg 30/21.
-        self._device_description: Optional[str] = None
-        # The user media agent name, such as Cisco SX80.
-        self._device_name: Optional[str] = None
-        # A unique identifier for a specific media leg of a participant in a conference.  One participant can have multiple media leg identifiers if retargeting happens. CVI partner assigns this value.
-        self._media_leg_id: Optional[Guid] = None
-        # The list of media qualities in a media session (call), such as audio quality, video quality, and/or screen sharing quality.
-        self._media_quality_list: Optional[List[teleconference_device_media_quality.TeleconferenceDeviceMediaQuality]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # A unique identifier for a specific participant in a conference. The CVI partner needs to copy over Call.MyParticipantId to this property.
-        self._participant_id: Optional[Guid] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeleconferenceDeviceQuality:
         """
@@ -189,31 +190,33 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
-            "callChainId": lambda n : setattr(self, 'call_chain_id', n.get_object_value(Guid)),
+        from . import teleconference_device_media_quality
+
+        fields: Dict[str, Callable[[Any], None]] = {
+            "callChainId": lambda n : setattr(self, 'call_chain_id', n.get_uuid_value()),
             "cloudServiceDeploymentEnvironment": lambda n : setattr(self, 'cloud_service_deployment_environment', n.get_str_value()),
             "cloudServiceDeploymentId": lambda n : setattr(self, 'cloud_service_deployment_id', n.get_str_value()),
             "cloudServiceInstanceName": lambda n : setattr(self, 'cloud_service_instance_name', n.get_str_value()),
             "cloudServiceName": lambda n : setattr(self, 'cloud_service_name', n.get_str_value()),
             "deviceDescription": lambda n : setattr(self, 'device_description', n.get_str_value()),
             "deviceName": lambda n : setattr(self, 'device_name', n.get_str_value()),
-            "mediaLegId": lambda n : setattr(self, 'media_leg_id', n.get_object_value(Guid)),
+            "mediaLegId": lambda n : setattr(self, 'media_leg_id', n.get_uuid_value()),
             "mediaQualityList": lambda n : setattr(self, 'media_quality_list', n.get_collection_of_object_values(teleconference_device_media_quality.TeleconferenceDeviceMediaQuality)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "participantId": lambda n : setattr(self, 'participant_id', n.get_object_value(Guid)),
+            "participantId": lambda n : setattr(self, 'participant_id', n.get_uuid_value()),
         }
         return fields
     
     @property
-    def media_leg_id(self,) -> Optional[Guid]:
+    def media_leg_id(self,) -> Optional[UUID]:
         """
         Gets the mediaLegId property value. A unique identifier for a specific media leg of a participant in a conference.  One participant can have multiple media leg identifiers if retargeting happens. CVI partner assigns this value.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._media_leg_id
     
     @media_leg_id.setter
-    def media_leg_id(self,value: Optional[Guid] = None) -> None:
+    def media_leg_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the mediaLegId property value. A unique identifier for a specific media leg of a participant in a conference.  One participant can have multiple media leg identifiers if retargeting happens. CVI partner assigns this value.
         Args:
@@ -256,15 +259,15 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         self._odata_type = value
     
     @property
-    def participant_id(self,) -> Optional[Guid]:
+    def participant_id(self,) -> Optional[UUID]:
         """
         Gets the participantId property value. A unique identifier for a specific participant in a conference. The CVI partner needs to copy over Call.MyParticipantId to this property.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._participant_id
     
     @participant_id.setter
-    def participant_id(self,value: Optional[Guid] = None) -> None:
+    def participant_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the participantId property value. A unique identifier for a specific participant in a conference. The CVI partner needs to copy over Call.MyParticipantId to this property.
         Args:
@@ -280,17 +283,17 @@ class TeleconferenceDeviceQuality(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_object_value("callChainId", self.call_chain_id)
+        writer.write_uuid_value("callChainId", self.call_chain_id)
         writer.write_str_value("cloudServiceDeploymentEnvironment", self.cloud_service_deployment_environment)
         writer.write_str_value("cloudServiceDeploymentId", self.cloud_service_deployment_id)
         writer.write_str_value("cloudServiceInstanceName", self.cloud_service_instance_name)
         writer.write_str_value("cloudServiceName", self.cloud_service_name)
         writer.write_str_value("deviceDescription", self.device_description)
         writer.write_str_value("deviceName", self.device_name)
-        writer.write_object_value("mediaLegId", self.media_leg_id)
+        writer.write_uuid_value("mediaLegId", self.media_leg_id)
         writer.write_collection_of_object_values("mediaQualityList", self.media_quality_list)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_object_value("participantId", self.participant_id)
+        writer.write_uuid_value("participantId", self.participant_id)
         writer.write_additional_data_value(self.additional_data)
     
 

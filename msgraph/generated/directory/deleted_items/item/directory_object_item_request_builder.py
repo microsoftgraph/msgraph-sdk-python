@@ -7,80 +7,24 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-check_member_groups_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.check_member_groups.check_member_groups_request_builder')
-check_member_objects_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.check_member_objects.check_member_objects_request_builder')
-get_member_groups_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.get_member_groups.get_member_groups_request_builder')
-get_member_objects_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.get_member_objects.get_member_objects_request_builder')
-graph_application_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.graph_application.graph_application_request_builder')
-graph_group_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.graph_group.graph_group_request_builder')
-graph_user_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.graph_user.graph_user_request_builder')
-restore_request_builder = lazy_import('msgraph.generated.directory.deleted_items.item.restore.restore_request_builder')
-directory_object = lazy_import('msgraph.generated.models.directory_object')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from ....models import directory_object
+    from ....models.o_data_errors import o_data_error
+    from .check_member_groups import check_member_groups_request_builder
+    from .check_member_objects import check_member_objects_request_builder
+    from .get_member_groups import get_member_groups_request_builder
+    from .get_member_objects import get_member_objects_request_builder
+    from .graph_application import graph_application_request_builder
+    from .graph_group import graph_group_request_builder
+    from .graph_user import graph_user_request_builder
+    from .restore import restore_request_builder
 
 class DirectoryObjectItemRequestBuilder():
     """
     Provides operations to manage the deletedItems property of the microsoft.graph.directory entity.
     """
-    @property
-    def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
-        """
-        Provides operations to call the checkMemberGroups method.
-        """
-        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
-        """
-        Provides operations to call the checkMemberObjects method.
-        """
-        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
-        """
-        Provides operations to call the getMemberGroups method.
-        """
-        return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
-        """
-        Provides operations to call the getMemberObjects method.
-        """
-        return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def graph_application(self) -> graph_application_request_builder.GraphApplicationRequestBuilder:
-        """
-        Casts the previous resource to application.
-        """
-        return graph_application_request_builder.GraphApplicationRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def graph_group(self) -> graph_group_request_builder.GraphGroupRequestBuilder:
-        """
-        Casts the previous resource to group.
-        """
-        return graph_group_request_builder.GraphGroupRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def graph_user(self) -> graph_user_request_builder.GraphUserRequestBuilder:
-        """
-        Casts the previous resource to user.
-        """
-        return graph_user_request_builder.GraphUserRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
-        """
-        Provides operations to call the restore method.
-        """
-        return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new DirectoryObjectItemRequestBuilder and sets the default values.
@@ -108,6 +52,8 @@ class DirectoryObjectItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -126,12 +72,16 @@ class DirectoryObjectItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ....models import directory_object
+
         return await self.request_adapter.send_async(request_info, directory_object.DirectoryObject, error_mapping)
     
     async def patch(self,body: Optional[directory_object.DirectoryObject] = None, request_configuration: Optional[DirectoryObjectItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[directory_object.DirectoryObject]:
@@ -147,12 +97,16 @@ class DirectoryObjectItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ....models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ....models import directory_object
+
         return await self.request_adapter.send_async(request_info, directory_object.DirectoryObject, error_mapping)
     
     def to_delete_request_information(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
@@ -210,6 +164,78 @@ class DirectoryObjectItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:
+        """
+        Provides operations to call the checkMemberGroups method.
+        """
+        from .check_member_groups import check_member_groups_request_builder
+
+        return check_member_groups_request_builder.CheckMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def check_member_objects(self) -> check_member_objects_request_builder.CheckMemberObjectsRequestBuilder:
+        """
+        Provides operations to call the checkMemberObjects method.
+        """
+        from .check_member_objects import check_member_objects_request_builder
+
+        return check_member_objects_request_builder.CheckMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_member_groups(self) -> get_member_groups_request_builder.GetMemberGroupsRequestBuilder:
+        """
+        Provides operations to call the getMemberGroups method.
+        """
+        from .get_member_groups import get_member_groups_request_builder
+
+        return get_member_groups_request_builder.GetMemberGroupsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_member_objects(self) -> get_member_objects_request_builder.GetMemberObjectsRequestBuilder:
+        """
+        Provides operations to call the getMemberObjects method.
+        """
+        from .get_member_objects import get_member_objects_request_builder
+
+        return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_application(self) -> graph_application_request_builder.GraphApplicationRequestBuilder:
+        """
+        Casts the previous resource to application.
+        """
+        from .graph_application import graph_application_request_builder
+
+        return graph_application_request_builder.GraphApplicationRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_group(self) -> graph_group_request_builder.GraphGroupRequestBuilder:
+        """
+        Casts the previous resource to group.
+        """
+        from .graph_group import graph_group_request_builder
+
+        return graph_group_request_builder.GraphGroupRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_user(self) -> graph_user_request_builder.GraphUserRequestBuilder:
+        """
+        Casts the previous resource to user.
+        """
+        from .graph_user import graph_user_request_builder
+
+        return graph_user_request_builder.GraphUserRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def restore(self) -> restore_request_builder.RestoreRequestBuilder:
+        """
+        Provides operations to call the restore method.
+        """
+        from .restore import restore_request_builder
+
+        return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class DirectoryObjectItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -227,12 +253,6 @@ class DirectoryObjectItemRequestBuilder():
         """
         Recently deleted items. Read-only. Nullable.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -248,6 +268,12 @@ class DirectoryObjectItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class DirectoryObjectItemRequestBuilderGetRequestConfiguration():

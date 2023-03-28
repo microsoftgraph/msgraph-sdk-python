@@ -1,14 +1,45 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
-audit_actor = lazy_import('msgraph.generated.models.audit_actor')
-audit_resource = lazy_import('msgraph.generated.models.audit_resource')
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import audit_actor, audit_resource, entity
+
+from . import entity
 
 class AuditEvent(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new AuditEvent and sets the default values.
+        """
+        super().__init__()
+        # Friendly name of the activity.
+        self._activity: Optional[str] = None
+        # The date time in UTC when the activity was performed.
+        self._activity_date_time: Optional[datetime] = None
+        # The HTTP operation type of the activity.
+        self._activity_operation_type: Optional[str] = None
+        # The result of the activity.
+        self._activity_result: Optional[str] = None
+        # The type of activity that was being performed.
+        self._activity_type: Optional[str] = None
+        # AAD user and application that are associated with the audit event.
+        self._actor: Optional[audit_actor.AuditActor] = None
+        # Audit category.
+        self._category: Optional[str] = None
+        # Component name.
+        self._component_name: Optional[str] = None
+        # The client request Id that is used to correlate activity within the system.
+        self._correlation_id: Optional[UUID] = None
+        # Event display name.
+        self._display_name: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Resources being modified.
+        self._resources: Optional[List[audit_resource.AuditResource]] = None
+    
     @property
     def activity(self,) -> Optional[str]:
         """
@@ -145,46 +176,16 @@ class AuditEvent(entity.Entity):
         """
         self._component_name = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AuditEvent and sets the default values.
-        """
-        super().__init__()
-        # Friendly name of the activity.
-        self._activity: Optional[str] = None
-        # The date time in UTC when the activity was performed.
-        self._activity_date_time: Optional[datetime] = None
-        # The HTTP operation type of the activity.
-        self._activity_operation_type: Optional[str] = None
-        # The result of the activity.
-        self._activity_result: Optional[str] = None
-        # The type of activity that was being performed.
-        self._activity_type: Optional[str] = None
-        # AAD user and application that are associated with the audit event.
-        self._actor: Optional[audit_actor.AuditActor] = None
-        # Audit category.
-        self._category: Optional[str] = None
-        # Component name.
-        self._component_name: Optional[str] = None
-        # The client request Id that is used to correlate activity within the system.
-        self._correlation_id: Optional[Guid] = None
-        # Event display name.
-        self._display_name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Resources being modified.
-        self._resources: Optional[List[audit_resource.AuditResource]] = None
-    
     @property
-    def correlation_id(self,) -> Optional[Guid]:
+    def correlation_id(self,) -> Optional[UUID]:
         """
         Gets the correlationId property value. The client request Id that is used to correlate activity within the system.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._correlation_id
     
     @correlation_id.setter
-    def correlation_id(self,value: Optional[Guid] = None) -> None:
+    def correlation_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the correlationId property value. The client request Id that is used to correlate activity within the system.
         Args:
@@ -226,7 +227,9 @@ class AuditEvent(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import audit_actor, audit_resource, entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_str_value()),
             "activityDateTime": lambda n : setattr(self, 'activity_date_time', n.get_datetime_value()),
             "activityOperationType": lambda n : setattr(self, 'activity_operation_type', n.get_str_value()),
@@ -235,7 +238,7 @@ class AuditEvent(entity.Entity):
             "actor": lambda n : setattr(self, 'actor', n.get_object_value(audit_actor.AuditActor)),
             "category": lambda n : setattr(self, 'category', n.get_str_value()),
             "componentName": lambda n : setattr(self, 'component_name', n.get_str_value()),
-            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_object_value(Guid)),
+            "correlationId": lambda n : setattr(self, 'correlation_id', n.get_uuid_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(audit_resource.AuditResource)),
         }
@@ -277,7 +280,7 @@ class AuditEvent(entity.Entity):
         writer.write_object_value("actor", self.actor)
         writer.write_str_value("category", self.category)
         writer.write_str_value("componentName", self.component_name)
-        writer.write_object_value("correlationId", self.correlation_id)
+        writer.write_uuid_value("correlationId", self.correlation_id)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("resources", self.resources)
     

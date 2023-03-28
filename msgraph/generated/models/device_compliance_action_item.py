@@ -1,15 +1,32 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-device_compliance_action_type = lazy_import('msgraph.generated.models.device_compliance_action_type')
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import device_compliance_action_type, entity
+
+from . import entity
 
 class DeviceComplianceActionItem(entity.Entity):
     """
     Scheduled Action Configuration
     """
+    def __init__(self,) -> None:
+        """
+        Instantiates a new deviceComplianceActionItem and sets the default values.
+        """
+        super().__init__()
+        # Scheduled Action Type Enum
+        self._action_type: Optional[device_compliance_action_type.DeviceComplianceActionType] = None
+        # Number of hours to wait till the action will be enforced. Valid values 0 to 8760
+        self._grace_period_hours: Optional[int] = None
+        # A list of group IDs to speicify who to CC this notification message to.
+        self._notification_message_c_c_list: Optional[List[str]] = None
+        # What notification Message template to use
+        self._notification_template_id: Optional[str] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+    
     @property
     def action_type(self,) -> Optional[device_compliance_action_type.DeviceComplianceActionType]:
         """
@@ -26,22 +43,6 @@ class DeviceComplianceActionItem(entity.Entity):
             value: Value to set for the action_type property.
         """
         self._action_type = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceComplianceActionItem and sets the default values.
-        """
-        super().__init__()
-        # Scheduled Action Type Enum
-        self._action_type: Optional[device_compliance_action_type.DeviceComplianceActionType] = None
-        # Number of hours to wait till the action will be enforced. Valid values 0 to 8760
-        self._grace_period_hours: Optional[int] = None
-        # A list of group IDs to speicify who to CC this notification message to.
-        self._notification_message_c_c_list: Optional[List[str]] = None
-        # What notification Message template to use
-        self._notification_template_id: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceComplianceActionItem:
@@ -60,7 +61,9 @@ class DeviceComplianceActionItem(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import device_compliance_action_type, entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "actionType": lambda n : setattr(self, 'action_type', n.get_enum_value(device_compliance_action_type.DeviceComplianceActionType)),
             "gracePeriodHours": lambda n : setattr(self, 'grace_period_hours', n.get_int_value()),
             "notificationMessageCCList": lambda n : setattr(self, 'notification_message_c_c_list', n.get_collection_of_primitive_values(str)),

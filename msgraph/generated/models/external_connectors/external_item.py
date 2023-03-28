@@ -1,14 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-acl = lazy_import('msgraph.generated.models.external_connectors.acl')
-external_item_content = lazy_import('msgraph.generated.models.external_connectors.external_item_content')
-properties = lazy_import('msgraph.generated.models.external_connectors.properties')
+if TYPE_CHECKING:
+    from . import acl, external_item_content, properties
+    from .. import entity
+
+from .. import entity
 
 class ExternalItem(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new externalItem and sets the default values.
+        """
+        super().__init__()
+        # An array of access control entries. Each entry specifies the access granted to a user or group. Required.
+        self._acl: Optional[List[acl.Acl]] = None
+        # A plain-text  representation of the contents of the item. The text in this property is full-text indexed. Optional.
+        self._content: Optional[external_item_content.ExternalItemContent] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # A property bag with the properties of the item. The properties MUST conform to the schema defined for the externalConnection. Required.
+        self._properties: Optional[properties.Properties] = None
+    
     @property
     def acl(self,) -> Optional[List[acl.Acl]]:
         """
@@ -25,20 +39,6 @@ class ExternalItem(entity.Entity):
             value: Value to set for the acl property.
         """
         self._acl = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new externalItem and sets the default values.
-        """
-        super().__init__()
-        # An array of access control entries. Each entry specifies the access granted to a user or group. Required.
-        self._acl: Optional[List[acl.Acl]] = None
-        # A plain-text  representation of the contents of the item. The text in this property is full-text indexed. Optional.
-        self._content: Optional[external_item_content.ExternalItemContent] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # A property bag with the properties of the item. The properties MUST conform to the schema defined for the externalConnection. Required.
-        self._properties: Optional[properties.Properties] = None
     
     @property
     def content(self,) -> Optional[external_item_content.ExternalItemContent]:
@@ -74,7 +74,10 @@ class ExternalItem(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import acl, external_item_content, properties
+        from .. import entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "acl": lambda n : setattr(self, 'acl', n.get_collection_of_object_values(acl.Acl)),
             "content": lambda n : setattr(self, 'content', n.get_object_value(external_item_content.ExternalItemContent)),
             "properties": lambda n : setattr(self, 'properties', n.get_object_value(properties.Properties)),

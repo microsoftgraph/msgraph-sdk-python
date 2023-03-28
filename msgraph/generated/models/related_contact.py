@@ -1,11 +1,31 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-contact_relationship = lazy_import('msgraph.generated.models.contact_relationship')
+if TYPE_CHECKING:
+    from . import contact_relationship
 
 class RelatedContact(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new relatedContact and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Indicates whether the user has been consented to access student data.
+        self._access_consent: Optional[bool] = None
+        # Name of the contact. Required.
+        self._display_name: Optional[str] = None
+        # Primary email address of the contact. Required.
+        self._email_address: Optional[str] = None
+        # Mobile phone number of the contact.
+        self._mobile_phone: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The relationship property
+        self._relationship: Optional[contact_relationship.ContactRelationship] = None
+    
     @property
     def access_consent(self,) -> Optional[bool]:
         """
@@ -39,26 +59,6 @@ class RelatedContact(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new relatedContact and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Indicates whether the user has been consented to access student data.
-        self._access_consent: Optional[bool] = None
-        # Name of the contact. Required.
-        self._display_name: Optional[str] = None
-        # Primary email address of the contact. Required.
-        self._email_address: Optional[str] = None
-        # Mobile phone number of the contact.
-        self._mobile_phone: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The relationship property
-        self._relationship: Optional[contact_relationship.ContactRelationship] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RelatedContact:
@@ -111,7 +111,9 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import contact_relationship
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "accessConsent": lambda n : setattr(self, 'access_consent', n.get_bool_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "emailAddress": lambda n : setattr(self, 'email_address', n.get_str_value()),

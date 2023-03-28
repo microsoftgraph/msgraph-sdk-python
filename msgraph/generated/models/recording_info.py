@@ -1,12 +1,25 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-identity_set = lazy_import('msgraph.generated.models.identity_set')
-recording_status = lazy_import('msgraph.generated.models.recording_status')
+if TYPE_CHECKING:
+    from . import identity_set, recording_status
 
 class RecordingInfo(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new recordingInfo and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The identities of the recording initiator.
+        self._initiator: Optional[identity_set.IdentitySet] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The recordingStatus property
+        self._recording_status: Optional[recording_status.RecordingStatus] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -23,20 +36,6 @@ class RecordingInfo(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new recordingInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The identities of the recording initiator.
-        self._initiator: Optional[identity_set.IdentitySet] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The recordingStatus property
-        self._recording_status: Optional[recording_status.RecordingStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecordingInfo:
@@ -55,7 +54,9 @@ class RecordingInfo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import identity_set, recording_status
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "initiator": lambda n : setattr(self, 'initiator', n.get_object_value(identity_set.IdentitySet)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recordingStatus": lambda n : setattr(self, 'recording_status', n.get_enum_value(recording_status.RecordingStatus)),

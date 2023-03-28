@@ -1,14 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-risk_detail = lazy_import('msgraph.generated.models.risk_detail')
-risk_level = lazy_import('msgraph.generated.models.risk_level')
-risk_state = lazy_import('msgraph.generated.models.risk_state')
-risky_user_history_item = lazy_import('msgraph.generated.models.risky_user_history_item')
+if TYPE_CHECKING:
+    from . import entity, risky_user_history_item, risk_detail, risk_level, risk_state
+
+from . import entity
 
 class RiskyUser(entity.Entity):
     def __init__(self,) -> None:
@@ -47,6 +45,13 @@ class RiskyUser(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.riskyUserHistoryItem":
+                from . import risky_user_history_item
+
+                return risky_user_history_item.RiskyUserHistoryItem()
         return RiskyUser()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -54,7 +59,9 @@ class RiskyUser(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, risky_user_history_item, risk_detail, risk_level, risk_state
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "history": lambda n : setattr(self, 'history', n.get_collection_of_object_values(risky_user_history_item.RiskyUserHistoryItem)),
             "isDeleted": lambda n : setattr(self, 'is_deleted', n.get_bool_value()),
             "isProcessing": lambda n : setattr(self, 'is_processing', n.get_bool_value()),

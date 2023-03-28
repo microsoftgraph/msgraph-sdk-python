@@ -1,53 +1,14 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
-managed_app_policy = lazy_import('msgraph.generated.models.managed_app_policy')
-targeted_managed_app_policy_assignment = lazy_import('msgraph.generated.models.targeted_managed_app_policy_assignment')
-windows_information_protection_app = lazy_import('msgraph.generated.models.windows_information_protection_app')
-windows_information_protection_app_locker_file = lazy_import('msgraph.generated.models.windows_information_protection_app_locker_file')
-windows_information_protection_data_recovery_certificate = lazy_import('msgraph.generated.models.windows_information_protection_data_recovery_certificate')
-windows_information_protection_enforcement_level = lazy_import('msgraph.generated.models.windows_information_protection_enforcement_level')
-windows_information_protection_i_p_range_collection = lazy_import('msgraph.generated.models.windows_information_protection_i_p_range_collection')
-windows_information_protection_proxied_domain_collection = lazy_import('msgraph.generated.models.windows_information_protection_proxied_domain_collection')
-windows_information_protection_resource_collection = lazy_import('msgraph.generated.models.windows_information_protection_resource_collection')
+if TYPE_CHECKING:
+    from . import managed_app_policy, mdm_windows_information_protection_policy, targeted_managed_app_policy_assignment, windows_information_protection_app, windows_information_protection_app_locker_file, windows_information_protection_data_recovery_certificate, windows_information_protection_enforcement_level, windows_information_protection_i_p_range_collection, windows_information_protection_policy, windows_information_protection_proxied_domain_collection, windows_information_protection_resource_collection
+
+from . import managed_app_policy
 
 class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
-    @property
-    def assignments(self,) -> Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]]:
-        """
-        Gets the assignments property value. Navigation property to list of security groups targeted for policy.
-        Returns: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]]
-        """
-        return self._assignments
-    
-    @assignments.setter
-    def assignments(self,value: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]] = None) -> None:
-        """
-        Sets the assignments property value. Navigation property to list of security groups targeted for policy.
-        Args:
-            value: Value to set for the assignments property.
-        """
-        self._assignments = value
-    
-    @property
-    def azure_rights_management_services_allowed(self,) -> Optional[bool]:
-        """
-        Gets the azureRightsManagementServicesAllowed property value. Specifies whether to allow Azure RMS encryption for WIP
-        Returns: Optional[bool]
-        """
-        return self._azure_rights_management_services_allowed
-    
-    @azure_rights_management_services_allowed.setter
-    def azure_rights_management_services_allowed(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the azureRightsManagementServicesAllowed property value. Specifies whether to allow Azure RMS encryption for WIP
-        Args:
-            value: Value to set for the azure_rights_management_services_allowed property.
-        """
-        self._azure_rights_management_services_allowed = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new WindowsInformationProtection and sets the default values.
@@ -101,9 +62,43 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         # This policy controls whether to revoke the WIP keys when a device unenrolls from the management service. If set to 1 (Don't revoke keys), the keys will not be revoked and the user will continue to have access to protected files after unenrollment. If the keys are not revoked, there will be no revoked file cleanup subsequently.
         self._revoke_on_unenroll_disabled: Optional[bool] = None
         # TemplateID GUID to use for RMS encryption. The RMS template allows the IT admin to configure the details about who has access to RMS-protected file and how long they have access
-        self._rights_management_services_template_id: Optional[Guid] = None
+        self._rights_management_services_template_id: Optional[UUID] = None
         # Specifies a list of file extensions, so that files with these extensions are encrypted when copying from an SMB share within the corporate boundary
         self._smb_auto_encrypted_file_extensions: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]] = None
+    
+    @property
+    def assignments(self,) -> Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]]:
+        """
+        Gets the assignments property value. Navigation property to list of security groups targeted for policy.
+        Returns: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]]
+        """
+        return self._assignments
+    
+    @assignments.setter
+    def assignments(self,value: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]] = None) -> None:
+        """
+        Sets the assignments property value. Navigation property to list of security groups targeted for policy.
+        Args:
+            value: Value to set for the assignments property.
+        """
+        self._assignments = value
+    
+    @property
+    def azure_rights_management_services_allowed(self,) -> Optional[bool]:
+        """
+        Gets the azureRightsManagementServicesAllowed property value. Specifies whether to allow Azure RMS encryption for WIP
+        Returns: Optional[bool]
+        """
+        return self._azure_rights_management_services_allowed
+    
+    @azure_rights_management_services_allowed.setter
+    def azure_rights_management_services_allowed(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the azureRightsManagementServicesAllowed property value. Specifies whether to allow Azure RMS encryption for WIP
+        Args:
+            value: Value to set for the azure_rights_management_services_allowed property.
+        """
+        self._azure_rights_management_services_allowed = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtection:
@@ -115,6 +110,17 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.mdmWindowsInformationProtectionPolicy":
+                from . import mdm_windows_information_protection_policy
+
+                return mdm_windows_information_protection_policy.MdmWindowsInformationProtectionPolicy()
+            if mapping_value == "#microsoft.graph.windowsInformationProtectionPolicy":
+                from . import windows_information_protection_policy
+
+                return windows_information_protection_policy.WindowsInformationProtectionPolicy()
         return WindowsInformationProtection()
     
     @property
@@ -343,7 +349,9 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import managed_app_policy, mdm_windows_information_protection_policy, targeted_managed_app_policy_assignment, windows_information_protection_app, windows_information_protection_app_locker_file, windows_information_protection_data_recovery_certificate, windows_information_protection_enforcement_level, windows_information_protection_i_p_range_collection, windows_information_protection_policy, windows_information_protection_proxied_domain_collection, windows_information_protection_resource_collection
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment)),
             "azureRightsManagementServicesAllowed": lambda n : setattr(self, 'azure_rights_management_services_allowed', n.get_bool_value()),
             "dataRecoveryCertificate": lambda n : setattr(self, 'data_recovery_certificate', n.get_object_value(windows_information_protection_data_recovery_certificate.WindowsInformationProtectionDataRecoveryCertificate)),
@@ -367,7 +375,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             "protectedAppLockerFiles": lambda n : setattr(self, 'protected_app_locker_files', n.get_collection_of_object_values(windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile)),
             "protectionUnderLockConfigRequired": lambda n : setattr(self, 'protection_under_lock_config_required', n.get_bool_value()),
             "revokeOnUnenrollDisabled": lambda n : setattr(self, 'revoke_on_unenroll_disabled', n.get_bool_value()),
-            "rightsManagementServicesTemplateId": lambda n : setattr(self, 'rights_management_services_template_id', n.get_object_value(Guid)),
+            "rightsManagementServicesTemplateId": lambda n : setattr(self, 'rights_management_services_template_id', n.get_uuid_value()),
             "smbAutoEncryptedFileExtensions": lambda n : setattr(self, 'smb_auto_encrypted_file_extensions', n.get_collection_of_object_values(windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection)),
         }
         super_fields = super().get_field_deserializers()
@@ -511,15 +519,15 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         self._revoke_on_unenroll_disabled = value
     
     @property
-    def rights_management_services_template_id(self,) -> Optional[Guid]:
+    def rights_management_services_template_id(self,) -> Optional[UUID]:
         """
         Gets the rightsManagementServicesTemplateId property value. TemplateID GUID to use for RMS encryption. The RMS template allows the IT admin to configure the details about who has access to RMS-protected file and how long they have access
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._rights_management_services_template_id
     
     @rights_management_services_template_id.setter
-    def rights_management_services_template_id(self,value: Optional[Guid] = None) -> None:
+    def rights_management_services_template_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the rightsManagementServicesTemplateId property value. TemplateID GUID to use for RMS encryption. The RMS template allows the IT admin to configure the details about who has access to RMS-protected file and how long they have access
         Args:
@@ -559,7 +567,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         writer.write_collection_of_object_values("protectedAppLockerFiles", self.protected_app_locker_files)
         writer.write_bool_value("protectionUnderLockConfigRequired", self.protection_under_lock_config_required)
         writer.write_bool_value("revokeOnUnenrollDisabled", self.revoke_on_unenroll_disabled)
-        writer.write_object_value("rightsManagementServicesTemplateId", self.rights_management_services_template_id)
+        writer.write_uuid_value("rightsManagementServicesTemplateId", self.rights_management_services_template_id)
         writer.write_collection_of_object_values("smbAutoEncryptedFileExtensions", self.smb_auto_encrypted_file_extensions)
     
     @property

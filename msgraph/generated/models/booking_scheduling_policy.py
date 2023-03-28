@@ -1,13 +1,32 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
     """
     This type represents the set of policies that dictate how bookings can be created in a Booking Calendar.
     """
+    def __init__(self,) -> None:
+        """
+        Instantiates a new bookingSchedulingPolicy and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # True if to allow customers to choose a specific person for the booking.
+        self._allow_staff_selection: Optional[bool] = None
+        # Maximum number of days in advance that a booking can be made. It follows the ISO 8601 format.
+        self._maximum_advance: Optional[timedelta] = None
+        # The minimum amount of time before which bookings and cancellations must be made. It follows the ISO 8601 format.
+        self._minimum_lead_time: Optional[timedelta] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # True to notify the business via email when a booking is created or changed. Use the email address specified in the email property of the bookingBusiness entity for the business.
+        self._send_confirmations_to_owner: Optional[bool] = None
+        # Duration of each time slot, denoted in ISO 8601 format.
+        self._time_slot_interval: Optional[timedelta] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -42,26 +61,6 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         """
         self._allow_staff_selection = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new bookingSchedulingPolicy and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # True if to allow customers to choose a specific person for the booking.
-        self._allow_staff_selection: Optional[bool] = None
-        # Maximum number of days in advance that a booking can be made. It follows the ISO 8601 format.
-        self._maximum_advance: Optional[Timedelta] = None
-        # The minimum amount of time before which bookings and cancellations must be made. It follows the ISO 8601 format.
-        self._minimum_lead_time: Optional[Timedelta] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # True to notify the business via email when a booking is created or changed. Use the email address specified in the email property of the bookingBusiness entity for the business.
-        self._send_confirmations_to_owner: Optional[bool] = None
-        # Duration of each time slot, denoted in ISO 8601 format.
-        self._time_slot_interval: Optional[Timedelta] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingSchedulingPolicy:
         """
@@ -79,26 +78,26 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowStaffSelection": lambda n : setattr(self, 'allow_staff_selection', n.get_bool_value()),
-            "maximumAdvance": lambda n : setattr(self, 'maximum_advance', n.get_object_value(Timedelta)),
-            "minimumLeadTime": lambda n : setattr(self, 'minimum_lead_time', n.get_object_value(Timedelta)),
+            "maximumAdvance": lambda n : setattr(self, 'maximum_advance', n.get_timedelta_value()),
+            "minimumLeadTime": lambda n : setattr(self, 'minimum_lead_time', n.get_timedelta_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "sendConfirmationsToOwner": lambda n : setattr(self, 'send_confirmations_to_owner', n.get_bool_value()),
-            "timeSlotInterval": lambda n : setattr(self, 'time_slot_interval', n.get_object_value(Timedelta)),
+            "timeSlotInterval": lambda n : setattr(self, 'time_slot_interval', n.get_timedelta_value()),
         }
         return fields
     
     @property
-    def maximum_advance(self,) -> Optional[Timedelta]:
+    def maximum_advance(self,) -> Optional[timedelta]:
         """
         Gets the maximumAdvance property value. Maximum number of days in advance that a booking can be made. It follows the ISO 8601 format.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._maximum_advance
     
     @maximum_advance.setter
-    def maximum_advance(self,value: Optional[Timedelta] = None) -> None:
+    def maximum_advance(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the maximumAdvance property value. Maximum number of days in advance that a booking can be made. It follows the ISO 8601 format.
         Args:
@@ -107,15 +106,15 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         self._maximum_advance = value
     
     @property
-    def minimum_lead_time(self,) -> Optional[Timedelta]:
+    def minimum_lead_time(self,) -> Optional[timedelta]:
         """
         Gets the minimumLeadTime property value. The minimum amount of time before which bookings and cancellations must be made. It follows the ISO 8601 format.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._minimum_lead_time
     
     @minimum_lead_time.setter
-    def minimum_lead_time(self,value: Optional[Timedelta] = None) -> None:
+    def minimum_lead_time(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the minimumLeadTime property value. The minimum amount of time before which bookings and cancellations must be made. It follows the ISO 8601 format.
         Args:
@@ -166,23 +165,23 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         if writer is None:
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("allowStaffSelection", self.allow_staff_selection)
-        writer.write_object_value("maximumAdvance", self.maximum_advance)
-        writer.write_object_value("minimumLeadTime", self.minimum_lead_time)
+        writer.write_timedelta_value("maximumAdvance", self.maximum_advance)
+        writer.write_timedelta_value("minimumLeadTime", self.minimum_lead_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("sendConfirmationsToOwner", self.send_confirmations_to_owner)
-        writer.write_object_value("timeSlotInterval", self.time_slot_interval)
+        writer.write_timedelta_value("timeSlotInterval", self.time_slot_interval)
         writer.write_additional_data_value(self.additional_data)
     
     @property
-    def time_slot_interval(self,) -> Optional[Timedelta]:
+    def time_slot_interval(self,) -> Optional[timedelta]:
         """
         Gets the timeSlotInterval property value. Duration of each time slot, denoted in ISO 8601 format.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._time_slot_interval
     
     @time_slot_interval.setter
-    def time_slot_interval(self,value: Optional[Timedelta] = None) -> None:
+    def time_slot_interval(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the timeSlotInterval property value. Duration of each time slot, denoted in ISO 8601 format.
         Args:

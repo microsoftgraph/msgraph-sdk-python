@@ -1,12 +1,30 @@
 from __future__ import annotations
 from datetime import date
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
+if TYPE_CHECKING:
+    from . import entity, print_usage_by_printer, print_usage_by_user
+
+from . import entity
 
 class PrintUsage(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new PrintUsage and sets the default values.
+        """
+        super().__init__()
+        # The completedBlackAndWhiteJobCount property
+        self._completed_black_and_white_job_count: Optional[int] = None
+        # The completedColorJobCount property
+        self._completed_color_job_count: Optional[int] = None
+        # The incompleteJobCount property
+        self._incomplete_job_count: Optional[int] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The usageDate property
+        self._usage_date: Optional[date] = None
+    
     @property
     def completed_black_and_white_job_count(self,) -> Optional[int]:
         """
@@ -41,22 +59,6 @@ class PrintUsage(entity.Entity):
         """
         self._completed_color_job_count = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new printUsage and sets the default values.
-        """
-        super().__init__()
-        # The completedBlackAndWhiteJobCount property
-        self._completed_black_and_white_job_count: Optional[int] = None
-        # The completedColorJobCount property
-        self._completed_color_job_count: Optional[int] = None
-        # The incompleteJobCount property
-        self._incomplete_job_count: Optional[int] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The usageDate property
-        self._usage_date: Optional[Date] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintUsage:
         """
@@ -67,6 +69,17 @@ class PrintUsage(entity.Entity):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.printUsageByPrinter":
+                from . import print_usage_by_printer
+
+                return print_usage_by_printer.PrintUsageByPrinter()
+            if mapping_value == "#microsoft.graph.printUsageByUser":
+                from . import print_usage_by_user
+
+                return print_usage_by_user.PrintUsageByUser()
         return PrintUsage()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -74,11 +87,13 @@ class PrintUsage(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, print_usage_by_printer, print_usage_by_user
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "completedBlackAndWhiteJobCount": lambda n : setattr(self, 'completed_black_and_white_job_count', n.get_int_value()),
             "completedColorJobCount": lambda n : setattr(self, 'completed_color_job_count', n.get_int_value()),
             "incompleteJobCount": lambda n : setattr(self, 'incomplete_job_count', n.get_int_value()),
-            "usageDate": lambda n : setattr(self, 'usage_date', n.get_object_value(Date)),
+            "usageDate": lambda n : setattr(self, 'usage_date', n.get_date_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -113,18 +128,18 @@ class PrintUsage(entity.Entity):
         writer.write_int_value("completedBlackAndWhiteJobCount", self.completed_black_and_white_job_count)
         writer.write_int_value("completedColorJobCount", self.completed_color_job_count)
         writer.write_int_value("incompleteJobCount", self.incomplete_job_count)
-        writer.write_object_value("usageDate", self.usage_date)
+        writer.write_date_value("usageDate", self.usage_date)
     
     @property
-    def usage_date(self,) -> Optional[Date]:
+    def usage_date(self,) -> Optional[date]:
         """
         Gets the usageDate property value. The usageDate property
-        Returns: Optional[Date]
+        Returns: Optional[date]
         """
         return self._usage_date
     
     @usage_date.setter
-    def usage_date(self,value: Optional[Date] = None) -> None:
+    def usage_date(self,value: Optional[date] = None) -> None:
         """
         Sets the usageDate property value. The usageDate property
         Args:

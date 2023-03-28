@@ -1,50 +1,13 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-location = lazy_import('msgraph.generated.models.location')
-person_type = lazy_import('msgraph.generated.models.person_type')
-phone = lazy_import('msgraph.generated.models.phone')
-scored_email_address = lazy_import('msgraph.generated.models.scored_email_address')
-website = lazy_import('msgraph.generated.models.website')
+if TYPE_CHECKING:
+    from . import entity, location, person_type, phone, scored_email_address, website
+
+from . import entity
 
 class Person(entity.Entity):
-    @property
-    def birthday(self,) -> Optional[str]:
-        """
-        Gets the birthday property value. The person's birthday.
-        Returns: Optional[str]
-        """
-        return self._birthday
-    
-    @birthday.setter
-    def birthday(self,value: Optional[str] = None) -> None:
-        """
-        Sets the birthday property value. The person's birthday.
-        Args:
-            value: Value to set for the birthday property.
-        """
-        self._birthday = value
-    
-    @property
-    def company_name(self,) -> Optional[str]:
-        """
-        Gets the companyName property value. The name of the person's company.
-        Returns: Optional[str]
-        """
-        return self._company_name
-    
-    @company_name.setter
-    def company_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the companyName property value. The name of the person's company.
-        Args:
-            value: Value to set for the company_name property.
-        """
-        self._company_name = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new person and sets the default values.
@@ -90,6 +53,40 @@ class Person(entity.Entity):
         self._websites: Optional[List[website.Website]] = None
         # The phonetic Japanese name of the person's company.
         self._yomi_company: Optional[str] = None
+    
+    @property
+    def birthday(self,) -> Optional[str]:
+        """
+        Gets the birthday property value. The person's birthday.
+        Returns: Optional[str]
+        """
+        return self._birthday
+    
+    @birthday.setter
+    def birthday(self,value: Optional[str] = None) -> None:
+        """
+        Sets the birthday property value. The person's birthday.
+        Args:
+            value: Value to set for the birthday property.
+        """
+        self._birthday = value
+    
+    @property
+    def company_name(self,) -> Optional[str]:
+        """
+        Gets the companyName property value. The name of the person's company.
+        Returns: Optional[str]
+        """
+        return self._company_name
+    
+    @company_name.setter
+    def company_name(self,value: Optional[str] = None) -> None:
+        """
+        Sets the companyName property value. The name of the person's company.
+        Args:
+            value: Value to set for the company_name property.
+        """
+        self._company_name = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Person:
@@ -142,7 +139,9 @@ class Person(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, location, person_type, phone, scored_email_address, website
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "birthday": lambda n : setattr(self, 'birthday', n.get_str_value()),
             "companyName": lambda n : setattr(self, 'company_name', n.get_str_value()),
             "department": lambda n : setattr(self, 'department', n.get_str_value()),

@@ -1,33 +1,14 @@
 from __future__ import annotations
 from datetime import timedelta
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-agreement_acceptance = lazy_import('msgraph.generated.models.agreement_acceptance')
-agreement_file = lazy_import('msgraph.generated.models.agreement_file')
-agreement_file_localization = lazy_import('msgraph.generated.models.agreement_file_localization')
-entity = lazy_import('msgraph.generated.models.entity')
-terms_expiration = lazy_import('msgraph.generated.models.terms_expiration')
+if TYPE_CHECKING:
+    from . import agreement_acceptance, agreement_file, agreement_file_localization, entity, terms_expiration
+
+from . import entity
 
 class Agreement(entity.Entity):
-    @property
-    def acceptances(self,) -> Optional[List[agreement_acceptance.AgreementAcceptance]]:
-        """
-        Gets the acceptances property value. Read-only. Information about acceptances of this agreement.
-        Returns: Optional[List[agreement_acceptance.AgreementAcceptance]]
-        """
-        return self._acceptances
-    
-    @acceptances.setter
-    def acceptances(self,value: Optional[List[agreement_acceptance.AgreementAcceptance]] = None) -> None:
-        """
-        Sets the acceptances property value. Read-only. Information about acceptances of this agreement.
-        Args:
-            value: Value to set for the acceptances property.
-        """
-        self._acceptances = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new agreement and sets the default values.
@@ -50,7 +31,24 @@ class Agreement(entity.Entity):
         # Expiration schedule and frequency of agreement for all users. Supports $filter (eq).
         self._terms_expiration: Optional[terms_expiration.TermsExpiration] = None
         # The duration after which the user must re-accept the terms of use. The value is represented in ISO 8601 format for durations. Supports $filter (eq).
-        self._user_reaccept_required_frequency: Optional[Timedelta] = None
+        self._user_reaccept_required_frequency: Optional[timedelta] = None
+    
+    @property
+    def acceptances(self,) -> Optional[List[agreement_acceptance.AgreementAcceptance]]:
+        """
+        Gets the acceptances property value. Read-only. Information about acceptances of this agreement.
+        Returns: Optional[List[agreement_acceptance.AgreementAcceptance]]
+        """
+        return self._acceptances
+    
+    @acceptances.setter
+    def acceptances(self,value: Optional[List[agreement_acceptance.AgreementAcceptance]] = None) -> None:
+        """
+        Sets the acceptances property value. Read-only. Information about acceptances of this agreement.
+        Args:
+            value: Value to set for the acceptances property.
+        """
+        self._acceptances = value
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Agreement:
@@ -120,7 +118,9 @@ class Agreement(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import agreement_acceptance, agreement_file, agreement_file_localization, entity, terms_expiration
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "acceptances": lambda n : setattr(self, 'acceptances', n.get_collection_of_object_values(agreement_acceptance.AgreementAcceptance)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "file": lambda n : setattr(self, 'file', n.get_object_value(agreement_file.AgreementFile)),
@@ -128,7 +128,7 @@ class Agreement(entity.Entity):
             "isPerDeviceAcceptanceRequired": lambda n : setattr(self, 'is_per_device_acceptance_required', n.get_bool_value()),
             "isViewingBeforeAcceptanceRequired": lambda n : setattr(self, 'is_viewing_before_acceptance_required', n.get_bool_value()),
             "termsExpiration": lambda n : setattr(self, 'terms_expiration', n.get_object_value(terms_expiration.TermsExpiration)),
-            "userReacceptRequiredFrequency": lambda n : setattr(self, 'user_reaccept_required_frequency', n.get_object_value(Timedelta)),
+            "userReacceptRequiredFrequency": lambda n : setattr(self, 'user_reaccept_required_frequency', n.get_timedelta_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -184,7 +184,7 @@ class Agreement(entity.Entity):
         writer.write_bool_value("isPerDeviceAcceptanceRequired", self.is_per_device_acceptance_required)
         writer.write_bool_value("isViewingBeforeAcceptanceRequired", self.is_viewing_before_acceptance_required)
         writer.write_object_value("termsExpiration", self.terms_expiration)
-        writer.write_object_value("userReacceptRequiredFrequency", self.user_reaccept_required_frequency)
+        writer.write_timedelta_value("userReacceptRequiredFrequency", self.user_reaccept_required_frequency)
     
     @property
     def terms_expiration(self,) -> Optional[terms_expiration.TermsExpiration]:
@@ -204,15 +204,15 @@ class Agreement(entity.Entity):
         self._terms_expiration = value
     
     @property
-    def user_reaccept_required_frequency(self,) -> Optional[Timedelta]:
+    def user_reaccept_required_frequency(self,) -> Optional[timedelta]:
         """
         Gets the userReacceptRequiredFrequency property value. The duration after which the user must re-accept the terms of use. The value is represented in ISO 8601 format for durations. Supports $filter (eq).
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._user_reaccept_required_frequency
     
     @user_reaccept_required_frequency.setter
-    def user_reaccept_required_frequency(self,value: Optional[Timedelta] = None) -> None:
+    def user_reaccept_required_frequency(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the userReacceptRequiredFrequency property value. The duration after which the user must re-accept the terms of use. The value is represented in ISO 8601 format for durations. Supports $filter (eq).
         Args:

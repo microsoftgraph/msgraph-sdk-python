@@ -1,9 +1,38 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class Video(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new video and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Number of audio bits per sample.
+        self._audio_bits_per_sample: Optional[int] = None
+        # Number of audio channels.
+        self._audio_channels: Optional[int] = None
+        # Name of the audio format (AAC, MP3, etc.).
+        self._audio_format: Optional[str] = None
+        # Number of audio samples per second.
+        self._audio_samples_per_second: Optional[int] = None
+        # Bit rate of the video in bits per second.
+        self._bitrate: Optional[int] = None
+        # Duration of the file in milliseconds.
+        self._duration: Optional[int] = None
+        # 'Four character code' name of the video format.
+        self._four_c_c: Optional[str] = None
+        # Frame rate of the video.
+        self._frame_rate: Optional[float] = None
+        # Height of the video, in pixels.
+        self._height: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Width of the video, in pixels.
+        self._width: Optional[int] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -106,36 +135,6 @@ class Video(AdditionalDataHolder, Parsable):
         """
         self._bitrate = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new video and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Number of audio bits per sample.
-        self._audio_bits_per_sample: Optional[int] = None
-        # Number of audio channels.
-        self._audio_channels: Optional[int] = None
-        # Name of the audio format (AAC, MP3, etc.).
-        self._audio_format: Optional[str] = None
-        # Number of audio samples per second.
-        self._audio_samples_per_second: Optional[int] = None
-        # Bit rate of the video in bits per second.
-        self._bitrate: Optional[int] = None
-        # Duration of the file in milliseconds.
-        self._duration: Optional[int] = None
-        # 'Four character code' name of the video format.
-        self._four_c_c: Optional[str] = None
-        # Frame rate of the video.
-        self._frame_rate: Optional[float] = None
-        # Height of the video, in pixels.
-        self._height: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Width of the video, in pixels.
-        self._width: Optional[int] = None
-    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Video:
         """
@@ -204,7 +203,7 @@ class Video(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "audioBitsPerSample": lambda n : setattr(self, 'audio_bits_per_sample', n.get_int_value()),
             "audioChannels": lambda n : setattr(self, 'audio_channels', n.get_int_value()),
             "audioFormat": lambda n : setattr(self, 'audio_format', n.get_str_value()),

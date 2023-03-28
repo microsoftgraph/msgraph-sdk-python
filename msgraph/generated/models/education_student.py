@@ -1,12 +1,34 @@
 from __future__ import annotations
 from datetime import date
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-education_gender = lazy_import('msgraph.generated.models.education_gender')
+if TYPE_CHECKING:
+    from . import education_gender
 
 class EducationStudent(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new educationStudent and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Birth date of the student.
+        self._birth_date: Optional[date] = None
+        # ID of the student in the source system.
+        self._external_id: Optional[str] = None
+        # The possible values are: female, male, other, unknownFutureValue.
+        self._gender: Optional[education_gender.EducationGender] = None
+        # Current grade level of the student.
+        self._grade: Optional[str] = None
+        # Year the student is graduating from the school.
+        self._graduation_year: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Student Number.
+        self._student_number: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -25,43 +47,21 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         self._additional_data = value
     
     @property
-    def birth_date(self,) -> Optional[Date]:
+    def birth_date(self,) -> Optional[date]:
         """
         Gets the birthDate property value. Birth date of the student.
-        Returns: Optional[Date]
+        Returns: Optional[date]
         """
         return self._birth_date
     
     @birth_date.setter
-    def birth_date(self,value: Optional[Date] = None) -> None:
+    def birth_date(self,value: Optional[date] = None) -> None:
         """
         Sets the birthDate property value. Birth date of the student.
         Args:
             value: Value to set for the birth_date property.
         """
         self._birth_date = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new educationStudent and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Birth date of the student.
-        self._birth_date: Optional[Date] = None
-        # ID of the student in the source system.
-        self._external_id: Optional[str] = None
-        # The possible values are: female, male, other, unknownFutureValue.
-        self._gender: Optional[education_gender.EducationGender] = None
-        # Current grade level of the student.
-        self._grade: Optional[str] = None
-        # Year the student is graduating from the school.
-        self._graduation_year: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Student Number.
-        self._student_number: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationStudent:
@@ -114,8 +114,10 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
-            "birthDate": lambda n : setattr(self, 'birth_date', n.get_object_value(Date)),
+        from . import education_gender
+
+        fields: Dict[str, Callable[[Any], None]] = {
+            "birthDate": lambda n : setattr(self, 'birth_date', n.get_date_value()),
             "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "gender": lambda n : setattr(self, 'gender', n.get_enum_value(education_gender.EducationGender)),
             "grade": lambda n : setattr(self, 'grade', n.get_str_value()),
@@ -184,7 +186,7 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_object_value("birthDate", self.birth_date)
+        writer.write_date_value("birthDate", self.birth_date)
         writer.write_str_value("externalId", self.external_id)
         writer.write_enum_value("gender", self.gender)
         writer.write_str_value("grade", self.grade)

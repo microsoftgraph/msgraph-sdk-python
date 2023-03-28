@@ -1,12 +1,29 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-date_time_time_zone = lazy_import('msgraph.generated.models.date_time_time_zone')
-followup_flag_status = lazy_import('msgraph.generated.models.followup_flag_status')
+if TYPE_CHECKING:
+    from . import date_time_time_zone, followup_flag_status
 
 class FollowupFlag(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new followupFlag and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The date and time that the follow-up was finished.
+        self._completed_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+        # The date and time that the follow up is to be finished. Note: To set the due date, you must also specify the startDateTime; otherwise, you will get a 400 Bad Request response.
+        self._due_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+        # The status for follow-up for an item. Possible values are notFlagged, complete, and flagged.
+        self._flag_status: Optional[followup_flag_status.FollowupFlagStatus] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The date and time that the follow-up is to begin.
+        self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -40,24 +57,6 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
             value: Value to set for the completed_date_time property.
         """
         self._completed_date_time = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new followupFlag and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The date and time that the follow-up was finished.
-        self._completed_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The date and time that the follow up is to be finished. Note: To set the due date, you must also specify the startDateTime; otherwise, you will get a 400 Bad Request response.
-        self._due_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The status for follow-up for an item. Possible values are notFlagged, complete, and flagged.
-        self._flag_status: Optional[followup_flag_status.FollowupFlagStatus] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The date and time that the follow-up is to begin.
-        self._start_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FollowupFlag:
@@ -110,7 +109,9 @@ class FollowupFlag(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import date_time_time_zone, followup_flag_status
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "completedDateTime": lambda n : setattr(self, 'completed_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "dueDateTime": lambda n : setattr(self, 'due_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "flagStatus": lambda n : setattr(self, 'flag_status', n.get_enum_value(followup_flag_status.FollowupFlagStatus)),

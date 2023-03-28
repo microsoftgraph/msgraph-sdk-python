@@ -7,41 +7,19 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
-ediscovery_custodian = lazy_import('msgraph.generated.models.security.ediscovery_custodian')
-ediscovery_custodian_collection_response = lazy_import('msgraph.generated.models.security.ediscovery_custodian_collection_response')
-count_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.custodians.count.count_request_builder')
-security_apply_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.custodians.security_apply_hold.security_apply_hold_request_builder')
-security_remove_hold_request_builder = lazy_import('msgraph.generated.security.cases.ediscovery_cases.item.custodians.security_remove_hold.security_remove_hold_request_builder')
+if TYPE_CHECKING:
+    from ......models.o_data_errors import o_data_error
+    from ......models.security import ediscovery_custodian, ediscovery_custodian_collection_response
+    from .count import count_request_builder
+    from .security_apply_hold import security_apply_hold_request_builder
+    from .security_remove_hold import security_remove_hold_request_builder
 
 class CustodiansRequestBuilder():
     """
     Provides operations to manage the custodians property of the microsoft.graph.security.ediscoveryCase entity.
     """
-    @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def security_apply_hold(self) -> security_apply_hold_request_builder.SecurityApplyHoldRequestBuilder:
-        """
-        Provides operations to call the applyHold method.
-        """
-        return security_apply_hold_request_builder.SecurityApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def security_remove_hold(self) -> security_remove_hold_request_builder.SecurityRemoveHoldRequestBuilder:
-        """
-        Provides operations to call the removeHold method.
-        """
-        return security_remove_hold_request_builder.SecurityRemoveHoldRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new CustodiansRequestBuilder and sets the default values.
@@ -70,12 +48,16 @@ class CustodiansRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ......models.security import ediscovery_custodian_collection_response
+
         return await self.request_adapter.send_async(request_info, ediscovery_custodian_collection_response.EdiscoveryCustodianCollectionResponse, error_mapping)
     
     async def post(self,body: Optional[ediscovery_custodian.EdiscoveryCustodian] = None, request_configuration: Optional[CustodiansRequestBuilderPostRequestConfiguration] = None) -> Optional[ediscovery_custodian.EdiscoveryCustodian]:
@@ -91,12 +73,16 @@ class CustodiansRequestBuilder():
         request_info = self.to_post_request_information(
             body, request_configuration
         )
+        from ......models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ......models.security import ediscovery_custodian
+
         return await self.request_adapter.send_async(request_info, ediscovery_custodian.EdiscoveryCustodian, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[CustodiansRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
@@ -138,35 +124,38 @@ class CustodiansRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def count(self) -> count_request_builder.CountRequestBuilder:
+        """
+        Provides operations to count the resources in the collection.
+        """
+        from .count import count_request_builder
+
+        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def security_apply_hold(self) -> security_apply_hold_request_builder.SecurityApplyHoldRequestBuilder:
+        """
+        Provides operations to call the applyHold method.
+        """
+        from .security_apply_hold import security_apply_hold_request_builder
+
+        return security_apply_hold_request_builder.SecurityApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def security_remove_hold(self) -> security_remove_hold_request_builder.SecurityRemoveHoldRequestBuilder:
+        """
+        Provides operations to call the removeHold method.
+        """
+        from .security_remove_hold import security_remove_hold_request_builder
+
+        return security_remove_hold_request_builder.SecurityRemoveHoldRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class CustodiansRequestBuilderGetQueryParameters():
         """
         Get a list of the custodian objects and their properties.
         """
-        # Include count of items
-        count: Optional[bool] = None
-
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Filter items by property values
-        filter: Optional[str] = None
-
-        # Order items by property values
-        orderby: Optional[List[str]] = None
-
-        # Search items by search phrases
-        search: Optional[str] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
-        # Skip the first n items
-        skip: Optional[int] = None
-
-        # Show only the first n items
-        top: Optional[int] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -194,6 +183,30 @@ class CustodiansRequestBuilder():
                 return "%24top"
             return original_name
         
+        # Include count of items
+        count: Optional[bool] = None
+
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Filter items by property values
+        filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[List[str]] = None
+
+        # Search items by search phrases
+        search: Optional[str] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
     
     @dataclass
     class CustodiansRequestBuilderGetRequestConfiguration():

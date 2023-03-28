@@ -1,22 +1,81 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-attachment = lazy_import('msgraph.generated.models.attachment')
-extension = lazy_import('msgraph.generated.models.extension')
-followup_flag = lazy_import('msgraph.generated.models.followup_flag')
-importance = lazy_import('msgraph.generated.models.importance')
-inference_classification_type = lazy_import('msgraph.generated.models.inference_classification_type')
-internet_message_header = lazy_import('msgraph.generated.models.internet_message_header')
-item_body = lazy_import('msgraph.generated.models.item_body')
-multi_value_legacy_extended_property = lazy_import('msgraph.generated.models.multi_value_legacy_extended_property')
-outlook_item = lazy_import('msgraph.generated.models.outlook_item')
-recipient = lazy_import('msgraph.generated.models.recipient')
-single_value_legacy_extended_property = lazy_import('msgraph.generated.models.single_value_legacy_extended_property')
+if TYPE_CHECKING:
+    from . import attachment, calendar_sharing_message, event_message, event_message_request, event_message_response, extension, followup_flag, importance, inference_classification_type, internet_message_header, item_body, multi_value_legacy_extended_property, outlook_item, recipient, single_value_legacy_extended_property
+
+from . import outlook_item
 
 class Message(outlook_item.OutlookItem):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new Message and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.message"
+        # The fileAttachment and itemAttachment attachments for the message.
+        self._attachments: Optional[List[attachment.Attachment]] = None
+        # The Bcc: recipients for the message.
+        self._bcc_recipients: Optional[List[recipient.Recipient]] = None
+        # The body of the message. It can be in HTML or text format. Find out about safe HTML in a message body.
+        self._body: Optional[item_body.ItemBody] = None
+        # The first 255 characters of the message body. It is in text format.
+        self._body_preview: Optional[str] = None
+        # The Cc: recipients for the message.
+        self._cc_recipients: Optional[List[recipient.Recipient]] = None
+        # The ID of the conversation the email belongs to.
+        self._conversation_id: Optional[str] = None
+        # Indicates the position of the message within the conversation.
+        self._conversation_index: Optional[bytes] = None
+        # The collection of open extensions defined for the message. Nullable.
+        self._extensions: Optional[List[extension.Extension]] = None
+        # The flag value that indicates the status, start date, due date, or completion date for the message.
+        self._flag: Optional[followup_flag.FollowupFlag] = None
+        # The owner of the mailbox from which the message is sent. In most cases, this value is the same as the sender property, except for sharing or delegation scenarios. The value must correspond to the actual mailbox used. Find out more about setting the from and sender properties of a message.
+        self._from_: Optional[recipient.Recipient] = None
+        # Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
+        self._has_attachments: Optional[bool] = None
+        # The importance property
+        self._importance: Optional[importance.Importance] = None
+        # The inferenceClassification property
+        self._inference_classification: Optional[inference_classification_type.InferenceClassificationType] = None
+        # The internetMessageHeaders property
+        self._internet_message_headers: Optional[List[internet_message_header.InternetMessageHeader]] = None
+        # The internetMessageId property
+        self._internet_message_id: Optional[str] = None
+        # The isDeliveryReceiptRequested property
+        self._is_delivery_receipt_requested: Optional[bool] = None
+        # The isDraft property
+        self._is_draft: Optional[bool] = None
+        # The isRead property
+        self._is_read: Optional[bool] = None
+        # The isReadReceiptRequested property
+        self._is_read_receipt_requested: Optional[bool] = None
+        # The collection of multi-value extended properties defined for the message. Nullable.
+        self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
+        # The parentFolderId property
+        self._parent_folder_id: Optional[str] = None
+        # The receivedDateTime property
+        self._received_date_time: Optional[datetime] = None
+        # The replyTo property
+        self._reply_to: Optional[List[recipient.Recipient]] = None
+        # The sender property
+        self._sender: Optional[recipient.Recipient] = None
+        # The sentDateTime property
+        self._sent_date_time: Optional[datetime] = None
+        # The collection of single-value extended properties defined for the message. Nullable.
+        self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
+        # The subject property
+        self._subject: Optional[str] = None
+        # The toRecipients property
+        self._to_recipients: Optional[List[recipient.Recipient]] = None
+        # The uniqueBody property
+        self._unique_body: Optional[item_body.ItemBody] = None
+        # The webLink property
+        self._web_link: Optional[str] = None
+    
     @property
     def attachments(self,) -> Optional[List[attachment.Attachment]]:
         """
@@ -102,73 +161,6 @@ class Message(outlook_item.OutlookItem):
         """
         self._cc_recipients = value
     
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Message and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.message"
-        # The fileAttachment and itemAttachment attachments for the message.
-        self._attachments: Optional[List[attachment.Attachment]] = None
-        # The Bcc: recipients for the message.
-        self._bcc_recipients: Optional[List[recipient.Recipient]] = None
-        # The body of the message. It can be in HTML or text format. Find out about safe HTML in a message body.
-        self._body: Optional[item_body.ItemBody] = None
-        # The first 255 characters of the message body. It is in text format.
-        self._body_preview: Optional[str] = None
-        # The Cc: recipients for the message.
-        self._cc_recipients: Optional[List[recipient.Recipient]] = None
-        # The ID of the conversation the email belongs to.
-        self._conversation_id: Optional[str] = None
-        # Indicates the position of the message within the conversation.
-        self._conversation_index: Optional[bytes] = None
-        # The collection of open extensions defined for the message. Nullable.
-        self._extensions: Optional[List[extension.Extension]] = None
-        # The flag value that indicates the status, start date, due date, or completion date for the message.
-        self._flag: Optional[followup_flag.FollowupFlag] = None
-        # The owner of the mailbox from which the message is sent. In most cases, this value is the same as the sender property, except for sharing or delegation scenarios. The value must correspond to the actual mailbox used. Find out more about setting the from and sender properties of a message.
-        self._from_: Optional[recipient.Recipient] = None
-        # Indicates whether the message has attachments. This property doesn't include inline attachments, so if a message contains only inline attachments, this property is false. To verify the existence of inline attachments, parse the body property to look for a src attribute, such as <IMG src='cid:image001.jpg@01D26CD8.6C05F070'>.
-        self._has_attachments: Optional[bool] = None
-        # The importance property
-        self._importance: Optional[importance.Importance] = None
-        # The inferenceClassification property
-        self._inference_classification: Optional[inference_classification_type.InferenceClassificationType] = None
-        # The internetMessageHeaders property
-        self._internet_message_headers: Optional[List[internet_message_header.InternetMessageHeader]] = None
-        # The internetMessageId property
-        self._internet_message_id: Optional[str] = None
-        # The isDeliveryReceiptRequested property
-        self._is_delivery_receipt_requested: Optional[bool] = None
-        # The isDraft property
-        self._is_draft: Optional[bool] = None
-        # The isRead property
-        self._is_read: Optional[bool] = None
-        # The isReadReceiptRequested property
-        self._is_read_receipt_requested: Optional[bool] = None
-        # The collection of multi-value extended properties defined for the message. Nullable.
-        self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
-        # The parentFolderId property
-        self._parent_folder_id: Optional[str] = None
-        # The receivedDateTime property
-        self._received_date_time: Optional[datetime] = None
-        # The replyTo property
-        self._reply_to: Optional[List[recipient.Recipient]] = None
-        # The sender property
-        self._sender: Optional[recipient.Recipient] = None
-        # The sentDateTime property
-        self._sent_date_time: Optional[datetime] = None
-        # The collection of single-value extended properties defined for the message. Nullable.
-        self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
-        # The subject property
-        self._subject: Optional[str] = None
-        # The toRecipients property
-        self._to_recipients: Optional[List[recipient.Recipient]] = None
-        # The uniqueBody property
-        self._unique_body: Optional[item_body.ItemBody] = None
-        # The webLink property
-        self._web_link: Optional[str] = None
-    
     @property
     def conversation_id(self,) -> Optional[str]:
         """
@@ -213,6 +205,25 @@ class Message(outlook_item.OutlookItem):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.calendarSharingMessage":
+                from . import calendar_sharing_message
+
+                return calendar_sharing_message.CalendarSharingMessage()
+            if mapping_value == "#microsoft.graph.eventMessage":
+                from . import event_message
+
+                return event_message.EventMessage()
+            if mapping_value == "#microsoft.graph.eventMessageRequest":
+                from . import event_message_request
+
+                return event_message_request.EventMessageRequest()
+            if mapping_value == "#microsoft.graph.eventMessageResponse":
+                from . import event_message_response
+
+                return event_message_response.EventMessageResponse()
         return Message()
     
     @property
@@ -271,7 +282,9 @@ class Message(outlook_item.OutlookItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import attachment, calendar_sharing_message, event_message, event_message_request, event_message_response, extension, followup_flag, importance, inference_classification_type, internet_message_header, item_body, multi_value_legacy_extended_property, outlook_item, recipient, single_value_legacy_extended_property
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(attachment.Attachment)),
             "bccRecipients": lambda n : setattr(self, 'bcc_recipients', n.get_collection_of_object_values(recipient.Recipient)),
             "body": lambda n : setattr(self, 'body', n.get_object_value(item_body.ItemBody)),

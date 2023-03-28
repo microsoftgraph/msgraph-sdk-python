@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-mail_folder = lazy_import('msgraph.generated.models.mail_folder')
+if TYPE_CHECKING:
+    from . import mail_folder
+
+from . import mail_folder
 
 class MailSearchFolder(mail_folder.MailFolder):
     def __init__(self,) -> None:
@@ -55,7 +57,9 @@ class MailSearchFolder(mail_folder.MailFolder):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import mail_folder
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "filterQuery": lambda n : setattr(self, 'filter_query', n.get_str_value()),
             "includeNestedFolders": lambda n : setattr(self, 'include_nested_folders', n.get_bool_value()),
             "isSupported": lambda n : setattr(self, 'is_supported', n.get_bool_value()),

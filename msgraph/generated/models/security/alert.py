@@ -1,20 +1,79 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-alert_classification = lazy_import('msgraph.generated.models.security.alert_classification')
-alert_comment = lazy_import('msgraph.generated.models.security.alert_comment')
-alert_determination = lazy_import('msgraph.generated.models.security.alert_determination')
-alert_evidence = lazy_import('msgraph.generated.models.security.alert_evidence')
-alert_severity = lazy_import('msgraph.generated.models.security.alert_severity')
-alert_status = lazy_import('msgraph.generated.models.security.alert_status')
-detection_source = lazy_import('msgraph.generated.models.security.detection_source')
-service_source = lazy_import('msgraph.generated.models.security.service_source')
+if TYPE_CHECKING:
+    from . import alert_classification, alert_comment, alert_determination, alert_evidence, alert_severity, alert_status, detection_source, service_source
+    from .. import entity
+
+from .. import entity
 
 class Alert(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new alert and sets the default values.
+        """
+        super().__init__()
+        # The adversary or activity group that is associated with this alert.
+        self._actor_display_name: Optional[str] = None
+        # URL for the alert page in the Microsoft 365 Defender portal.
+        self._alert_web_url: Optional[str] = None
+        # Owner of the alert, or null if no owner is assigned.
+        self._assigned_to: Optional[str] = None
+        # The attack kill-chain category that the alert belongs to. Aligned with the MITRE ATT&CK framework.
+        self._category: Optional[str] = None
+        # Specifies whether the alert represents a true threat. Possible values are: unknown, falsePositive, truePositive, benignPositive, unknownFutureValue.
+        self._classification: Optional[alert_classification.AlertClassification] = None
+        # Array of comments created by the Security Operations (SecOps) team during the alert management process.
+        self._comments: Optional[List[alert_comment.AlertComment]] = None
+        # Time when Microsoft 365 Defender created the alert.
+        self._created_date_time: Optional[datetime] = None
+        # String value describing each alert.
+        self._description: Optional[str] = None
+        # Detection technology or sensor that identified the notable component or activity.
+        self._detection_source: Optional[detection_source.DetectionSource] = None
+        # The ID of the detector that triggered the alert.
+        self._detector_id: Optional[str] = None
+        # Specifies the result of the investigation, whether the alert represents a true attack and if so, the nature of the attack. Possible values are: unknown, apt, malware, securityPersonnel, securityTesting, unwantedSoftware, other, multiStagedAttack, compromisedUser, phishing, maliciousUserActivity, clean, insufficientData, confirmedUserActivity, lineOfBusinessApplication, unknownFutureValue.
+        self._determination: Optional[alert_determination.AlertDetermination] = None
+        # Collection of evidence related to the alert.
+        self._evidence: Optional[List[alert_evidence.AlertEvidence]] = None
+        # The earliest activity associated with the alert.
+        self._first_activity_date_time: Optional[datetime] = None
+        # Unique identifier to represent the incident this alert resource is associated with.
+        self._incident_id: Optional[str] = None
+        # URL for the incident page in the Microsoft 365 Defender portal.
+        self._incident_web_url: Optional[str] = None
+        # The oldest activity associated with the alert.
+        self._last_activity_date_time: Optional[datetime] = None
+        # Time when the alert was last updated at Microsoft 365 Defender.
+        self._last_update_date_time: Optional[datetime] = None
+        # The attack techniques, as aligned with the MITRE ATT&CK framework.
+        self._mitre_techniques: Optional[List[str]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The ID of the alert as it appears in the security provider product that generated the alert.
+        self._provider_alert_id: Optional[str] = None
+        # Recommended response and remediation actions to take in the event this alert was generated.
+        self._recommended_actions: Optional[str] = None
+        # Time when the alert was resolved.
+        self._resolved_date_time: Optional[datetime] = None
+        # The serviceSource property
+        self._service_source: Optional[service_source.ServiceSource] = None
+        # The severity property
+        self._severity: Optional[alert_severity.AlertSeverity] = None
+        # The status property
+        self._status: Optional[alert_status.AlertStatus] = None
+        # The Azure Active Directory tenant the alert was created in.
+        self._tenant_id: Optional[str] = None
+        # The threat associated with this alert.
+        self._threat_display_name: Optional[str] = None
+        # Threat family associated with this alert.
+        self._threat_family_name: Optional[str] = None
+        # Brief identifying string value describing the alert.
+        self._title: Optional[str] = None
+    
     @property
     def actor_display_name(self,) -> Optional[str]:
         """
@@ -116,70 +175,6 @@ class Alert(entity.Entity):
             value: Value to set for the comments property.
         """
         self._comments = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new alert and sets the default values.
-        """
-        super().__init__()
-        # The adversary or activity group that is associated with this alert.
-        self._actor_display_name: Optional[str] = None
-        # URL for the alert page in the Microsoft 365 Defender portal.
-        self._alert_web_url: Optional[str] = None
-        # Owner of the alert, or null if no owner is assigned.
-        self._assigned_to: Optional[str] = None
-        # The attack kill-chain category that the alert belongs to. Aligned with the MITRE ATT&CK framework.
-        self._category: Optional[str] = None
-        # Specifies whether the alert represents a true threat. Possible values are: unknown, falsePositive, truePositive, benignPositive, unknownFutureValue.
-        self._classification: Optional[alert_classification.AlertClassification] = None
-        # Array of comments created by the Security Operations (SecOps) team during the alert management process.
-        self._comments: Optional[List[alert_comment.AlertComment]] = None
-        # Time when Microsoft 365 Defender created the alert.
-        self._created_date_time: Optional[datetime] = None
-        # String value describing each alert.
-        self._description: Optional[str] = None
-        # Detection technology or sensor that identified the notable component or activity.
-        self._detection_source: Optional[detection_source.DetectionSource] = None
-        # The ID of the detector that triggered the alert.
-        self._detector_id: Optional[str] = None
-        # Specifies the result of the investigation, whether the alert represents a true attack and if so, the nature of the attack. Possible values are: unknown, apt, malware, securityPersonnel, securityTesting, unwantedSoftware, other, multiStagedAttack, compromisedUser, phishing, maliciousUserActivity, clean, insufficientData, confirmedUserActivity, lineOfBusinessApplication, unknownFutureValue.
-        self._determination: Optional[alert_determination.AlertDetermination] = None
-        # Collection of evidence related to the alert.
-        self._evidence: Optional[List[alert_evidence.AlertEvidence]] = None
-        # The earliest activity associated with the alert.
-        self._first_activity_date_time: Optional[datetime] = None
-        # Unique identifier to represent the incident this alert resource is associated with.
-        self._incident_id: Optional[str] = None
-        # URL for the incident page in the Microsoft 365 Defender portal.
-        self._incident_web_url: Optional[str] = None
-        # The oldest activity associated with the alert.
-        self._last_activity_date_time: Optional[datetime] = None
-        # Time when the alert was last updated at Microsoft 365 Defender.
-        self._last_update_date_time: Optional[datetime] = None
-        # The attack techniques, as aligned with the MITRE ATT&CK framework.
-        self._mitre_techniques: Optional[List[str]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The ID of the alert as it appears in the security provider product that generated the alert.
-        self._provider_alert_id: Optional[str] = None
-        # Recommended response and remediation actions to take in the event this alert was generated.
-        self._recommended_actions: Optional[str] = None
-        # Time when the alert was resolved.
-        self._resolved_date_time: Optional[datetime] = None
-        # The serviceSource property
-        self._service_source: Optional[service_source.ServiceSource] = None
-        # The severity property
-        self._severity: Optional[alert_severity.AlertSeverity] = None
-        # The status property
-        self._status: Optional[alert_status.AlertStatus] = None
-        # The Azure Active Directory tenant the alert was created in.
-        self._tenant_id: Optional[str] = None
-        # The threat associated with this alert.
-        self._threat_display_name: Optional[str] = None
-        # Threat family associated with this alert.
-        self._threat_family_name: Optional[str] = None
-        # Brief identifying string value describing the alert.
-        self._title: Optional[str] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -317,7 +312,10 @@ class Alert(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import alert_classification, alert_comment, alert_determination, alert_evidence, alert_severity, alert_status, detection_source, service_source
+        from .. import entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "actorDisplayName": lambda n : setattr(self, 'actor_display_name', n.get_str_value()),
             "alertWebUrl": lambda n : setattr(self, 'alert_web_url', n.get_str_value()),
             "assignedTo": lambda n : setattr(self, 'assigned_to', n.get_str_value()),

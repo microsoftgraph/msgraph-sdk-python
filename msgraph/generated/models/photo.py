@@ -1,10 +1,37 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class Photo(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new photo and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Camera manufacturer. Read-only.
+        self._camera_make: Optional[str] = None
+        # Camera model. Read-only.
+        self._camera_model: Optional[str] = None
+        # The denominator for the exposure time fraction from the camera. Read-only.
+        self._exposure_denominator: Optional[float] = None
+        # The numerator for the exposure time fraction from the camera. Read-only.
+        self._exposure_numerator: Optional[float] = None
+        # The F-stop value from the camera. Read-only.
+        self._f_number: Optional[float] = None
+        # The focal length from the camera. Read-only.
+        self._focal_length: Optional[float] = None
+        # The ISO value from the camera. Read-only.
+        self._iso: Optional[int] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The orientation value from the camera. Writable on OneDrive Personal.
+        self._orientation: Optional[int] = None
+        # Represents the date and time the photo was taken. Read-only.
+        self._taken_date_time: Optional[datetime] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -55,34 +82,6 @@ class Photo(AdditionalDataHolder, Parsable):
             value: Value to set for the camera_model property.
         """
         self._camera_model = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new photo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Camera manufacturer. Read-only.
-        self._camera_make: Optional[str] = None
-        # Camera model. Read-only.
-        self._camera_model: Optional[str] = None
-        # The denominator for the exposure time fraction from the camera. Read-only.
-        self._exposure_denominator: Optional[float] = None
-        # The numerator for the exposure time fraction from the camera. Read-only.
-        self._exposure_numerator: Optional[float] = None
-        # The F-stop value from the camera. Read-only.
-        self._f_number: Optional[float] = None
-        # The focal length from the camera. Read-only.
-        self._focal_length: Optional[float] = None
-        # The ISO value from the camera. Read-only.
-        self._iso: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The orientation value from the camera. Writable on OneDrive Personal.
-        self._orientation: Optional[int] = None
-        # Represents the date and time the photo was taken. Read-only.
-        self._taken_date_time: Optional[datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Photo:
@@ -169,7 +168,7 @@ class Photo(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "cameraMake": lambda n : setattr(self, 'camera_make', n.get_str_value()),
             "cameraModel": lambda n : setattr(self, 'camera_model', n.get_str_value()),
             "exposureDenominator": lambda n : setattr(self, 'exposure_denominator', n.get_float_value()),

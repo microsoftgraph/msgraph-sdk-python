@@ -1,14 +1,32 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-identity_set = lazy_import('msgraph.generated.models.identity_set')
-subject_rights_request_stage = lazy_import('msgraph.generated.models.subject_rights_request_stage')
-subject_rights_request_stage_status = lazy_import('msgraph.generated.models.subject_rights_request_stage_status')
+if TYPE_CHECKING:
+    from . import identity_set, subject_rights_request_stage, subject_rights_request_stage_status
 
 class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new subjectRightsRequestHistory and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Identity of the user who changed the  subject rights request.
+        self._changed_by: Optional[identity_set.IdentitySet] = None
+        # Data and time when the entity was changed.
+        self._event_date_time: Optional[datetime] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The stage when the entity was changed. Possible values are: contentRetrieval, contentReview, generateReport, contentDeletion, caseResolved, unknownFutureValue.
+        self._stage: Optional[subject_rights_request_stage.SubjectRightsRequestStage] = None
+        # The status of the stage when the entity was changed. Possible values are: notStarted, current, completed, failed, unknownFutureValue.
+        self._stage_status: Optional[subject_rights_request_stage_status.SubjectRightsRequestStageStatus] = None
+        # Type of history.
+        self._type: Optional[str] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -42,26 +60,6 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
             value: Value to set for the changed_by property.
         """
         self._changed_by = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new subjectRightsRequestHistory and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Identity of the user who changed the  subject rights request.
-        self._changed_by: Optional[identity_set.IdentitySet] = None
-        # Data and time when the entity was changed.
-        self._event_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The stage when the entity was changed. Possible values are: contentRetrieval, contentReview, generateReport, contentDeletion, caseResolved, unknownFutureValue.
-        self._stage: Optional[subject_rights_request_stage.SubjectRightsRequestStage] = None
-        # The status of the stage when the entity was changed. Possible values are: notStarted, current, completed, failed, unknownFutureValue.
-        self._stage_status: Optional[subject_rights_request_stage_status.SubjectRightsRequestStageStatus] = None
-        # Type of history.
-        self._type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SubjectRightsRequestHistory:
@@ -97,7 +95,9 @@ class SubjectRightsRequestHistory(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import identity_set, subject_rights_request_stage, subject_rights_request_stage_status
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "changedBy": lambda n : setattr(self, 'changed_by', n.get_object_value(identity_set.IdentitySet)),
             "eventDateTime": lambda n : setattr(self, 'event_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

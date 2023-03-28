@@ -1,12 +1,12 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-resource_reference = lazy_import('msgraph.generated.models.resource_reference')
-resource_visualization = lazy_import('msgraph.generated.models.resource_visualization')
+if TYPE_CHECKING:
+    from . import entity, resource_reference, resource_visualization
+
+from . import entity
 
 class Trending(entity.Entity):
     def __init__(self,) -> None:
@@ -44,7 +44,9 @@ class Trending(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, resource_reference, resource_visualization
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(entity.Entity)),
             "resourceReference": lambda n : setattr(self, 'resource_reference', n.get_object_value(resource_reference.ResourceReference)),

@@ -1,14 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-proxied_domain = lazy_import('msgraph.generated.models.proxied_domain')
+if TYPE_CHECKING:
+    from . import proxied_domain
 
 class WindowsInformationProtectionProxiedDomainCollection(AdditionalDataHolder, Parsable):
     """
     Windows Information Protection Proxied Domain Collection
     """
+    def __init__(self,) -> None:
+        """
+        Instantiates a new windowsInformationProtectionProxiedDomainCollection and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # Display name
+        self._display_name: Optional[str] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # Collection of proxied domains
+        self._proxied_domains: Optional[List[proxied_domain.ProxiedDomain]] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -25,20 +39,6 @@ class WindowsInformationProtectionProxiedDomainCollection(AdditionalDataHolder, 
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new windowsInformationProtectionProxiedDomainCollection and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # Display name
-        self._display_name: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Collection of proxied domains
-        self._proxied_domains: Optional[List[proxied_domain.ProxiedDomain]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionProxiedDomainCollection:
@@ -74,7 +74,9 @@ class WindowsInformationProtectionProxiedDomainCollection(AdditionalDataHolder, 
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import proxied_domain
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "proxiedDomains": lambda n : setattr(self, 'proxied_domains', n.get_collection_of_object_values(proxied_domain.ProxiedDomain)),

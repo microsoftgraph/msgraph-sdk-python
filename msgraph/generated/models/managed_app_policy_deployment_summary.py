@@ -1,13 +1,32 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-managed_app_policy_deployment_summary_per_app = lazy_import('msgraph.generated.models.managed_app_policy_deployment_summary_per_app')
+if TYPE_CHECKING:
+    from . import entity, managed_app_policy_deployment_summary_per_app
+
+from . import entity
 
 class ManagedAppPolicyDeploymentSummary(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new managedAppPolicyDeploymentSummary and sets the default values.
+        """
+        super().__init__()
+        # Not yet documented
+        self._configuration_deployed_user_count: Optional[int] = None
+        # Not yet documented
+        self._configuration_deployment_summary_per_app: Optional[List[managed_app_policy_deployment_summary_per_app.ManagedAppPolicyDeploymentSummaryPerApp]] = None
+        # Not yet documented
+        self._display_name: Optional[str] = None
+        # Not yet documented
+        self._last_refresh_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Version of the entity.
+        self._version: Optional[str] = None
+    
     @property
     def configuration_deployed_user_count(self,) -> Optional[int]:
         """
@@ -41,24 +60,6 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
             value: Value to set for the configuration_deployment_summary_per_app property.
         """
         self._configuration_deployment_summary_per_app = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new managedAppPolicyDeploymentSummary and sets the default values.
-        """
-        super().__init__()
-        # Not yet documented
-        self._configuration_deployed_user_count: Optional[int] = None
-        # Not yet documented
-        self._configuration_deployment_summary_per_app: Optional[List[managed_app_policy_deployment_summary_per_app.ManagedAppPolicyDeploymentSummaryPerApp]] = None
-        # Not yet documented
-        self._display_name: Optional[str] = None
-        # Not yet documented
-        self._last_refresh_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Version of the entity.
-        self._version: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedAppPolicyDeploymentSummary:
@@ -94,7 +95,9 @@ class ManagedAppPolicyDeploymentSummary(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, managed_app_policy_deployment_summary_per_app
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "configurationDeployedUserCount": lambda n : setattr(self, 'configuration_deployed_user_count', n.get_int_value()),
             "configurationDeploymentSummaryPerApp": lambda n : setattr(self, 'configuration_deployment_summary_per_app', n.get_collection_of_object_values(managed_app_policy_deployment_summary_per_app.ManagedAppPolicyDeploymentSummaryPerApp)),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),

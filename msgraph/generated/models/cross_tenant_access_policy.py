@@ -1,13 +1,26 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-cross_tenant_access_policy_configuration_default = lazy_import('msgraph.generated.models.cross_tenant_access_policy_configuration_default')
-cross_tenant_access_policy_configuration_partner = lazy_import('msgraph.generated.models.cross_tenant_access_policy_configuration_partner')
-policy_base = lazy_import('msgraph.generated.models.policy_base')
+if TYPE_CHECKING:
+    from . import cross_tenant_access_policy_configuration_default, cross_tenant_access_policy_configuration_partner, policy_base
+
+from . import policy_base
 
 class CrossTenantAccessPolicy(policy_base.PolicyBase):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new CrossTenantAccessPolicy and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.crossTenantAccessPolicy"
+        # Used to specify which Microsoft clouds an organization would like to collaborate with. By default, this value is empty. Supported values for this field are: microsoftonline.com, microsoftonline.us, and partner.microsoftonline.cn.
+        self._allowed_cloud_endpoints: Optional[List[str]] = None
+        # Defines the default configuration for how your organization interacts with external Azure Active Directory organizations.
+        self._default: Optional[cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault] = None
+        # Defines partner-specific configurations for external Azure Active Directory organizations.
+        self._partners: Optional[List[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner]] = None
+    
     @property
     def allowed_cloud_endpoints(self,) -> Optional[List[str]]:
         """
@@ -24,19 +37,6 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
             value: Value to set for the allowed_cloud_endpoints property.
         """
         self._allowed_cloud_endpoints = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new CrossTenantAccessPolicy and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.crossTenantAccessPolicy"
-        # Used to specify which Microsoft clouds an organization would like to collaborate with. By default, this value is empty. Supported values for this field are: microsoftonline.com, microsoftonline.us, and partner.microsoftonline.cn.
-        self._allowed_cloud_endpoints: Optional[List[str]] = None
-        # Defines the default configuration for how your organization interacts with external Azure Active Directory organizations.
-        self._default: Optional[cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault] = None
-        # Defines partner-specific configurations for external Azure Active Directory organizations.
-        self._partners: Optional[List[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicy:
@@ -72,7 +72,9 @@ class CrossTenantAccessPolicy(policy_base.PolicyBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import cross_tenant_access_policy_configuration_default, cross_tenant_access_policy_configuration_partner, policy_base
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "allowedCloudEndpoints": lambda n : setattr(self, 'allowed_cloud_endpoints', n.get_collection_of_primitive_values(str)),
             "default": lambda n : setattr(self, 'default', n.get_object_value(cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault)),
             "partners": lambda n : setattr(self, 'partners', n.get_collection_of_object_values(cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner)),

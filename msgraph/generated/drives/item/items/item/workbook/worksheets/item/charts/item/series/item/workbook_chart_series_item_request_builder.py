@@ -7,33 +7,19 @@ from kiota_abstractions.request_information import RequestInformation
 from kiota_abstractions.request_option import RequestOption
 from kiota_abstractions.response_handler import ResponseHandler
 from kiota_abstractions.serialization import Parsable, ParsableFactory
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-format_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.series.item.format.format_request_builder')
-points_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.series.item.points.points_request_builder')
-workbook_chart_point_item_request_builder = lazy_import('msgraph.generated.drives.item.items.item.workbook.worksheets.item.charts.item.series.item.points.item.workbook_chart_point_item_request_builder')
-workbook_chart_series = lazy_import('msgraph.generated.models.workbook_chart_series')
-o_data_error = lazy_import('msgraph.generated.models.o_data_errors.o_data_error')
+if TYPE_CHECKING:
+    from ............models import workbook_chart_series
+    from ............models.o_data_errors import o_data_error
+    from .format import format_request_builder
+    from .points import points_request_builder
+    from .points.item import workbook_chart_point_item_request_builder
 
 class WorkbookChartSeriesItemRequestBuilder():
     """
     Provides operations to manage the series property of the microsoft.graph.workbookChart entity.
     """
-    @property
-    def format(self) -> format_request_builder.FormatRequestBuilder:
-        """
-        Provides operations to manage the format property of the microsoft.graph.workbookChartSeries entity.
-        """
-        return format_request_builder.FormatRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def points(self) -> points_request_builder.PointsRequestBuilder:
-        """
-        Provides operations to manage the points property of the microsoft.graph.workbookChartSeries entity.
-        """
-        return points_request_builder.PointsRequestBuilder(self.request_adapter, self.path_parameters)
-    
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
         Instantiates a new WorkbookChartSeriesItemRequestBuilder and sets the default values.
@@ -61,6 +47,8 @@ class WorkbookChartSeriesItemRequestBuilder():
         request_info = self.to_delete_request_information(
             request_configuration
         )
+        from ............models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
@@ -79,12 +67,16 @@ class WorkbookChartSeriesItemRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
+        from ............models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ............models import workbook_chart_series
+
         return await self.request_adapter.send_async(request_info, workbook_chart_series.WorkbookChartSeries, error_mapping)
     
     async def patch(self,body: Optional[workbook_chart_series.WorkbookChartSeries] = None, request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart_series.WorkbookChartSeries]:
@@ -100,12 +92,16 @@ class WorkbookChartSeriesItemRequestBuilder():
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
+        from ............models.o_data_errors import o_data_error
+
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
             "5XX": o_data_error.ODataError,
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
+        from ............models import workbook_chart_series
+
         return await self.request_adapter.send_async(request_info, workbook_chart_series.WorkbookChartSeries, error_mapping)
     
     def points_by_id(self,id: str) -> workbook_chart_point_item_request_builder.WorkbookChartPointItemRequestBuilder:
@@ -117,6 +113,8 @@ class WorkbookChartSeriesItemRequestBuilder():
         """
         if id is None:
             raise Exception("id cannot be undefined")
+        from .points.item import workbook_chart_point_item_request_builder
+
         url_tpl_params = get_path_parameters(self.path_parameters)
         url_tpl_params["workbookChartPoint%2Did"] = id
         return workbook_chart_point_item_request_builder.WorkbookChartPointItemRequestBuilder(self.request_adapter, url_tpl_params)
@@ -176,6 +174,24 @@ class WorkbookChartSeriesItemRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
+    @property
+    def format(self) -> format_request_builder.FormatRequestBuilder:
+        """
+        Provides operations to manage the format property of the microsoft.graph.workbookChartSeries entity.
+        """
+        from .format import format_request_builder
+
+        return format_request_builder.FormatRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def points(self) -> points_request_builder.PointsRequestBuilder:
+        """
+        Provides operations to manage the points property of the microsoft.graph.workbookChartSeries entity.
+        """
+        from .points import points_request_builder
+
+        return points_request_builder.PointsRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class WorkbookChartSeriesItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -193,12 +209,6 @@ class WorkbookChartSeriesItemRequestBuilder():
         """
         Represents either a single series or collection of series in the chart. Read-only.
         """
-        # Expand related entities
-        expand: Optional[List[str]] = None
-
-        # Select properties to be returned
-        select: Optional[List[str]] = None
-
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
             Maps the query parameters names to their encoded names for the URI template parsing.
@@ -214,6 +224,12 @@ class WorkbookChartSeriesItemRequestBuilder():
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
     
     @dataclass
     class WorkbookChartSeriesItemRequestBuilderGetRequestConfiguration():

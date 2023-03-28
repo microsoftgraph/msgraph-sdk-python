@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-routing_mode = lazy_import('msgraph.generated.models.routing_mode')
+if TYPE_CHECKING:
+    from . import entity, routing_mode
+
+from . import entity
 
 class AudioRoutingGroup(entity.Entity):
     def __init__(self,) -> None:
@@ -38,7 +39,9 @@ class AudioRoutingGroup(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, routing_mode
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "receivers": lambda n : setattr(self, 'receivers', n.get_collection_of_primitive_values(str)),
             "routingMode": lambda n : setattr(self, 'routing_mode', n.get_enum_value(routing_mode.RoutingMode)),
             "sources": lambda n : setattr(self, 'sources', n.get_collection_of_primitive_values(str)),

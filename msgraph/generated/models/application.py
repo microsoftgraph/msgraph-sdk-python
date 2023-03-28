@@ -1,152 +1,15 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
-add_in = lazy_import('msgraph.generated.models.add_in')
-api_application = lazy_import('msgraph.generated.models.api_application')
-app_management_policy = lazy_import('msgraph.generated.models.app_management_policy')
-app_role = lazy_import('msgraph.generated.models.app_role')
-certification = lazy_import('msgraph.generated.models.certification')
-directory_object = lazy_import('msgraph.generated.models.directory_object')
-extension_property = lazy_import('msgraph.generated.models.extension_property')
-federated_identity_credential = lazy_import('msgraph.generated.models.federated_identity_credential')
-home_realm_discovery_policy = lazy_import('msgraph.generated.models.home_realm_discovery_policy')
-informational_url = lazy_import('msgraph.generated.models.informational_url')
-key_credential = lazy_import('msgraph.generated.models.key_credential')
-optional_claims = lazy_import('msgraph.generated.models.optional_claims')
-parental_control_settings = lazy_import('msgraph.generated.models.parental_control_settings')
-password_credential = lazy_import('msgraph.generated.models.password_credential')
-public_client_application = lazy_import('msgraph.generated.models.public_client_application')
-request_signature_verification = lazy_import('msgraph.generated.models.request_signature_verification')
-required_resource_access = lazy_import('msgraph.generated.models.required_resource_access')
-spa_application = lazy_import('msgraph.generated.models.spa_application')
-token_issuance_policy = lazy_import('msgraph.generated.models.token_issuance_policy')
-token_lifetime_policy = lazy_import('msgraph.generated.models.token_lifetime_policy')
-verified_publisher = lazy_import('msgraph.generated.models.verified_publisher')
-web_application = lazy_import('msgraph.generated.models.web_application')
+if TYPE_CHECKING:
+    from . import add_in, api_application, app_management_policy, app_role, certification, directory_object, extension_property, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, optional_claims, parental_control_settings, password_credential, public_client_application, request_signature_verification, required_resource_access, spa_application, token_issuance_policy, token_lifetime_policy, verified_publisher, web_application
+
+from . import directory_object
 
 class Application(directory_object.DirectoryObject):
-    @property
-    def add_ins(self,) -> Optional[List[add_in.AddIn]]:
-        """
-        Gets the addIns property value. Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Office 365 call the application in the context of a document the user is working on.
-        Returns: Optional[List[add_in.AddIn]]
-        """
-        return self._add_ins
-    
-    @add_ins.setter
-    def add_ins(self,value: Optional[List[add_in.AddIn]] = None) -> None:
-        """
-        Sets the addIns property value. Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Office 365 call the application in the context of a document the user is working on.
-        Args:
-            value: Value to set for the add_ins property.
-        """
-        self._add_ins = value
-    
-    @property
-    def api(self,) -> Optional[api_application.ApiApplication]:
-        """
-        Gets the api property value. Specifies settings for an application that implements a web API.
-        Returns: Optional[api_application.ApiApplication]
-        """
-        return self._api
-    
-    @api.setter
-    def api(self,value: Optional[api_application.ApiApplication] = None) -> None:
-        """
-        Sets the api property value. Specifies settings for an application that implements a web API.
-        Args:
-            value: Value to set for the api property.
-        """
-        self._api = value
-    
-    @property
-    def app_id(self,) -> Optional[str]:
-        """
-        Gets the appId property value. The unique identifier for the application that is assigned to an application by Azure AD. Not nullable. Read-only. Supports $filter (eq).
-        Returns: Optional[str]
-        """
-        return self._app_id
-    
-    @app_id.setter
-    def app_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the appId property value. The unique identifier for the application that is assigned to an application by Azure AD. Not nullable. Read-only. Supports $filter (eq).
-        Args:
-            value: Value to set for the app_id property.
-        """
-        self._app_id = value
-    
-    @property
-    def app_management_policies(self,) -> Optional[List[app_management_policy.AppManagementPolicy]]:
-        """
-        Gets the appManagementPolicies property value. The appManagementPolicies property
-        Returns: Optional[List[app_management_policy.AppManagementPolicy]]
-        """
-        return self._app_management_policies
-    
-    @app_management_policies.setter
-    def app_management_policies(self,value: Optional[List[app_management_policy.AppManagementPolicy]] = None) -> None:
-        """
-        Sets the appManagementPolicies property value. The appManagementPolicies property
-        Args:
-            value: Value to set for the app_management_policies property.
-        """
-        self._app_management_policies = value
-    
-    @property
-    def app_roles(self,) -> Optional[List[app_role.AppRole]]:
-        """
-        Gets the appRoles property value. The collection of roles defined for the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable.
-        Returns: Optional[List[app_role.AppRole]]
-        """
-        return self._app_roles
-    
-    @app_roles.setter
-    def app_roles(self,value: Optional[List[app_role.AppRole]] = None) -> None:
-        """
-        Sets the appRoles property value. The collection of roles defined for the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable.
-        Args:
-            value: Value to set for the app_roles property.
-        """
-        self._app_roles = value
-    
-    @property
-    def application_template_id(self,) -> Optional[str]:
-        """
-        Gets the applicationTemplateId property value. Unique identifier of the applicationTemplate. Supports $filter (eq, not, ne).
-        Returns: Optional[str]
-        """
-        return self._application_template_id
-    
-    @application_template_id.setter
-    def application_template_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the applicationTemplateId property value. Unique identifier of the applicationTemplate. Supports $filter (eq, not, ne).
-        Args:
-            value: Value to set for the application_template_id property.
-        """
-        self._application_template_id = value
-    
-    @property
-    def certification(self,) -> Optional[certification.Certification]:
-        """
-        Gets the certification property value. Specifies the certification status of the application.
-        Returns: Optional[certification.Certification]
-        """
-        return self._certification
-    
-    @certification.setter
-    def certification(self,value: Optional[certification.Certification] = None) -> None:
-        """
-        Sets the certification property value. Specifies the certification status of the application.
-        Args:
-            value: Value to set for the certification property.
-        """
-        self._certification = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new Application and sets the default values.
@@ -159,7 +22,7 @@ class Application(directory_object.DirectoryObject):
         self._api: Optional[api_application.ApiApplication] = None
         # The unique identifier for the application that is assigned to an application by Azure AD. Not nullable. Read-only. Supports $filter (eq).
         self._app_id: Optional[str] = None
-        # The appManagementPolicies property
+        # The appManagementPolicy applied to this application.
         self._app_management_policies: Optional[List[app_management_policy.AppManagementPolicy]] = None
         # The collection of roles defined for the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable.
         self._app_roles: Optional[List[app_role.AppRole]] = None
@@ -215,7 +78,7 @@ class Application(directory_object.DirectoryObject):
         self._public_client: Optional[public_client_application.PublicClientApplication] = None
         # The verified publisher domain for the application. Read-only. For more information, see How to: Configure an application's publisher domain. Supports $filter (eq, ne, ge, le, startsWith).
         self._publisher_domain: Optional[str] = None
-        # The requestSignatureVerification property
+        # Specifies whether this application requires Azure AD to verify the signed authentication requests.
         self._request_signature_verification: Optional[request_signature_verification.RequestSignatureVerification] = None
         # Specifies the resources that the application needs to access. This property also specifies the set of delegated permissions and application roles that it needs for each of those resources. This configuration of access to the required resources drives the consent experience. No more than 50 resource services (APIs) can be configured. Beginning mid-October 2021, the total number of required permissions must not exceed 400. For more information, see Limits on requested permissions per app. Not nullable. Supports $filter (eq, not, ge, le).
         self._required_resource_access: Optional[List[required_resource_access.RequiredResourceAccess]] = None
@@ -230,7 +93,7 @@ class Application(directory_object.DirectoryObject):
         # Custom strings that can be used to categorize and identify the application. Not nullable. Supports $filter (eq, not, ge, le, startsWith).
         self._tags: Optional[List[str]] = None
         # Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD encrypts all the tokens it emits by using the key this property points to. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
-        self._token_encryption_key_id: Optional[Guid] = None
+        self._token_encryption_key_id: Optional[UUID] = None
         # The tokenIssuancePolicies property
         self._token_issuance_policies: Optional[List[token_issuance_policy.TokenIssuancePolicy]] = None
         # The tokenLifetimePolicies property
@@ -239,6 +102,125 @@ class Application(directory_object.DirectoryObject):
         self._verified_publisher: Optional[verified_publisher.VerifiedPublisher] = None
         # Specifies settings for a web application.
         self._web: Optional[web_application.WebApplication] = None
+    
+    @property
+    def add_ins(self,) -> Optional[List[add_in.AddIn]]:
+        """
+        Gets the addIns property value. Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Office 365 call the application in the context of a document the user is working on.
+        Returns: Optional[List[add_in.AddIn]]
+        """
+        return self._add_ins
+    
+    @add_ins.setter
+    def add_ins(self,value: Optional[List[add_in.AddIn]] = None) -> None:
+        """
+        Sets the addIns property value. Defines custom behavior that a consuming service can use to call an app in specific contexts. For example, applications that can render file streams may set the addIns property for its 'FileHandler' functionality. This will let services like Office 365 call the application in the context of a document the user is working on.
+        Args:
+            value: Value to set for the add_ins property.
+        """
+        self._add_ins = value
+    
+    @property
+    def api(self,) -> Optional[api_application.ApiApplication]:
+        """
+        Gets the api property value. Specifies settings for an application that implements a web API.
+        Returns: Optional[api_application.ApiApplication]
+        """
+        return self._api
+    
+    @api.setter
+    def api(self,value: Optional[api_application.ApiApplication] = None) -> None:
+        """
+        Sets the api property value. Specifies settings for an application that implements a web API.
+        Args:
+            value: Value to set for the api property.
+        """
+        self._api = value
+    
+    @property
+    def app_id(self,) -> Optional[str]:
+        """
+        Gets the appId property value. The unique identifier for the application that is assigned to an application by Azure AD. Not nullable. Read-only. Supports $filter (eq).
+        Returns: Optional[str]
+        """
+        return self._app_id
+    
+    @app_id.setter
+    def app_id(self,value: Optional[str] = None) -> None:
+        """
+        Sets the appId property value. The unique identifier for the application that is assigned to an application by Azure AD. Not nullable. Read-only. Supports $filter (eq).
+        Args:
+            value: Value to set for the app_id property.
+        """
+        self._app_id = value
+    
+    @property
+    def app_management_policies(self,) -> Optional[List[app_management_policy.AppManagementPolicy]]:
+        """
+        Gets the appManagementPolicies property value. The appManagementPolicy applied to this application.
+        Returns: Optional[List[app_management_policy.AppManagementPolicy]]
+        """
+        return self._app_management_policies
+    
+    @app_management_policies.setter
+    def app_management_policies(self,value: Optional[List[app_management_policy.AppManagementPolicy]] = None) -> None:
+        """
+        Sets the appManagementPolicies property value. The appManagementPolicy applied to this application.
+        Args:
+            value: Value to set for the app_management_policies property.
+        """
+        self._app_management_policies = value
+    
+    @property
+    def app_roles(self,) -> Optional[List[app_role.AppRole]]:
+        """
+        Gets the appRoles property value. The collection of roles defined for the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable.
+        Returns: Optional[List[app_role.AppRole]]
+        """
+        return self._app_roles
+    
+    @app_roles.setter
+    def app_roles(self,value: Optional[List[app_role.AppRole]] = None) -> None:
+        """
+        Sets the appRoles property value. The collection of roles defined for the application. With app role assignments, these roles can be assigned to users, groups, or service principals associated with other applications. Not nullable.
+        Args:
+            value: Value to set for the app_roles property.
+        """
+        self._app_roles = value
+    
+    @property
+    def application_template_id(self,) -> Optional[str]:
+        """
+        Gets the applicationTemplateId property value. Unique identifier of the applicationTemplate. Supports $filter (eq, not, ne).
+        Returns: Optional[str]
+        """
+        return self._application_template_id
+    
+    @application_template_id.setter
+    def application_template_id(self,value: Optional[str] = None) -> None:
+        """
+        Sets the applicationTemplateId property value. Unique identifier of the applicationTemplate. Supports $filter (eq, not, ne).
+        Args:
+            value: Value to set for the application_template_id property.
+        """
+        self._application_template_id = value
+    
+    @property
+    def certification(self,) -> Optional[certification.Certification]:
+        """
+        Gets the certification property value. Specifies the certification status of the application.
+        Returns: Optional[certification.Certification]
+        """
+        return self._certification
+    
+    @certification.setter
+    def certification(self,value: Optional[certification.Certification] = None) -> None:
+        """
+        Sets the certification property value. Specifies the certification status of the application.
+        Args:
+            value: Value to set for the certification property.
+        """
+        self._certification = value
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -393,7 +375,9 @@ class Application(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import add_in, api_application, app_management_policy, app_role, certification, directory_object, extension_property, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, optional_claims, parental_control_settings, password_credential, public_client_application, request_signature_verification, required_resource_access, spa_application, token_issuance_policy, token_lifetime_policy, verified_publisher, web_application
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "addIns": lambda n : setattr(self, 'add_ins', n.get_collection_of_object_values(add_in.AddIn)),
             "api": lambda n : setattr(self, 'api', n.get_object_value(api_application.ApiApplication)),
             "applicationTemplateId": lambda n : setattr(self, 'application_template_id', n.get_str_value()),
@@ -432,7 +416,7 @@ class Application(directory_object.DirectoryObject):
             "signInAudience": lambda n : setattr(self, 'sign_in_audience', n.get_str_value()),
             "spa": lambda n : setattr(self, 'spa', n.get_object_value(spa_application.SpaApplication)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
-            "tokenEncryptionKeyId": lambda n : setattr(self, 'token_encryption_key_id', n.get_object_value(Guid)),
+            "tokenEncryptionKeyId": lambda n : setattr(self, 'token_encryption_key_id', n.get_uuid_value()),
             "tokenIssuancePolicies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(token_issuance_policy.TokenIssuancePolicy)),
             "tokenLifetimePolicies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(token_lifetime_policy.TokenLifetimePolicy)),
             "verifiedPublisher": lambda n : setattr(self, 'verified_publisher', n.get_object_value(verified_publisher.VerifiedPublisher)),
@@ -717,7 +701,7 @@ class Application(directory_object.DirectoryObject):
     @property
     def request_signature_verification(self,) -> Optional[request_signature_verification.RequestSignatureVerification]:
         """
-        Gets the requestSignatureVerification property value. The requestSignatureVerification property
+        Gets the requestSignatureVerification property value. Specifies whether this application requires Azure AD to verify the signed authentication requests.
         Returns: Optional[request_signature_verification.RequestSignatureVerification]
         """
         return self._request_signature_verification
@@ -725,7 +709,7 @@ class Application(directory_object.DirectoryObject):
     @request_signature_verification.setter
     def request_signature_verification(self,value: Optional[request_signature_verification.RequestSignatureVerification] = None) -> None:
         """
-        Sets the requestSignatureVerification property value. The requestSignatureVerification property
+        Sets the requestSignatureVerification property value. Specifies whether this application requires Azure AD to verify the signed authentication requests.
         Args:
             value: Value to set for the request_signature_verification property.
         """
@@ -812,7 +796,7 @@ class Application(directory_object.DirectoryObject):
         writer.write_str_value("signInAudience", self.sign_in_audience)
         writer.write_object_value("spa", self.spa)
         writer.write_collection_of_primitive_values("tags", self.tags)
-        writer.write_object_value("tokenEncryptionKeyId", self.token_encryption_key_id)
+        writer.write_uuid_value("tokenEncryptionKeyId", self.token_encryption_key_id)
         writer.write_collection_of_object_values("tokenIssuancePolicies", self.token_issuance_policies)
         writer.write_collection_of_object_values("tokenLifetimePolicies", self.token_lifetime_policies)
         writer.write_object_value("verifiedPublisher", self.verified_publisher)
@@ -887,15 +871,15 @@ class Application(directory_object.DirectoryObject):
         self._tags = value
     
     @property
-    def token_encryption_key_id(self,) -> Optional[Guid]:
+    def token_encryption_key_id(self,) -> Optional[UUID]:
         """
         Gets the tokenEncryptionKeyId property value. Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD encrypts all the tokens it emits by using the key this property points to. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._token_encryption_key_id
     
     @token_encryption_key_id.setter
-    def token_encryption_key_id(self,value: Optional[Guid] = None) -> None:
+    def token_encryption_key_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the tokenEncryptionKeyId property value. Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD encrypts all the tokens it emits by using the key this property points to. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
         Args:

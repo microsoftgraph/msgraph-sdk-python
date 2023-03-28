@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-standard_time_zone_offset = lazy_import('msgraph.generated.models.standard_time_zone_offset')
+if TYPE_CHECKING:
+    from . import standard_time_zone_offset
+
+from . import standard_time_zone_offset
 
 class DaylightTimeZoneOffset(standard_time_zone_offset.StandardTimeZoneOffset):
     def __init__(self,) -> None:
@@ -49,7 +51,9 @@ class DaylightTimeZoneOffset(standard_time_zone_offset.StandardTimeZoneOffset):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import standard_time_zone_offset
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "daylightBias": lambda n : setattr(self, 'daylight_bias', n.get_int_value()),
         }
         super_fields = super().get_field_deserializers()

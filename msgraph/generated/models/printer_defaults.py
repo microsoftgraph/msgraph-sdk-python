@@ -1,51 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-print_color_mode = lazy_import('msgraph.generated.models.print_color_mode')
-print_duplex_mode = lazy_import('msgraph.generated.models.print_duplex_mode')
-print_finishing = lazy_import('msgraph.generated.models.print_finishing')
-print_multipage_layout = lazy_import('msgraph.generated.models.print_multipage_layout')
-print_orientation = lazy_import('msgraph.generated.models.print_orientation')
-print_quality = lazy_import('msgraph.generated.models.print_quality')
-print_scaling = lazy_import('msgraph.generated.models.print_scaling')
+if TYPE_CHECKING:
+    from . import print_color_mode, print_duplex_mode, print_finishing, print_multipage_layout, print_orientation, print_quality, print_scaling
 
 class PrinterDefaults(AdditionalDataHolder, Parsable):
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def color_mode(self,) -> Optional[print_color_mode.PrintColorMode]:
-        """
-        Gets the colorMode property value. The default color mode to use when printing the document. Valid values are described in the following table.
-        Returns: Optional[print_color_mode.PrintColorMode]
-        """
-        return self._color_mode
-    
-    @color_mode.setter
-    def color_mode(self,value: Optional[print_color_mode.PrintColorMode] = None) -> None:
-        """
-        Sets the colorMode property value. The default color mode to use when printing the document. Valid values are described in the following table.
-        Args:
-            value: Value to set for the color_mode property.
-        """
-        self._color_mode = value
-    
     def __init__(self,) -> None:
         """
         Instantiates a new printerDefaults and sets the default values.
@@ -89,6 +49,40 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         self._quality: Optional[print_quality.PrintQuality] = None
         # Specifies how the printer scales the document data to fit the requested media. Valid values are described in the following table.
         self._scaling: Optional[print_scaling.PrintScaling] = None
+    
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
+    
+    @property
+    def color_mode(self,) -> Optional[print_color_mode.PrintColorMode]:
+        """
+        Gets the colorMode property value. The default color mode to use when printing the document. Valid values are described in the following table.
+        Returns: Optional[print_color_mode.PrintColorMode]
+        """
+        return self._color_mode
+    
+    @color_mode.setter
+    def color_mode(self,value: Optional[print_color_mode.PrintColorMode] = None) -> None:
+        """
+        Sets the colorMode property value. The default color mode to use when printing the document. Valid values are described in the following table.
+        Args:
+            value: Value to set for the color_mode property.
+        """
+        self._color_mode = value
     
     @property
     def content_type(self,) -> Optional[str]:
@@ -209,7 +203,9 @@ class PrinterDefaults(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import print_color_mode, print_duplex_mode, print_finishing, print_multipage_layout, print_orientation, print_quality, print_scaling
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "colorMode": lambda n : setattr(self, 'color_mode', n.get_enum_value(print_color_mode.PrintColorMode)),
             "contentType": lambda n : setattr(self, 'content_type', n.get_str_value()),
             "copiesPerJob": lambda n : setattr(self, 'copies_per_job', n.get_int_value()),

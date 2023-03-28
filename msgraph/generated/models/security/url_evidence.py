@@ -1,9 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-alert_evidence = lazy_import('msgraph.generated.models.security.alert_evidence')
+if TYPE_CHECKING:
+    from . import alert_evidence
+
+from . import alert_evidence
 
 class UrlEvidence(alert_evidence.AlertEvidence):
     def __init__(self,) -> None:
@@ -33,7 +35,9 @@ class UrlEvidence(alert_evidence.AlertEvidence):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import alert_evidence
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "url": lambda n : setattr(self, 'url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()

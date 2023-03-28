@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-authentication_protocol = lazy_import('msgraph.generated.models.authentication_protocol')
-identity_provider_base = lazy_import('msgraph.generated.models.identity_provider_base')
+if TYPE_CHECKING:
+    from . import authentication_protocol, identity_provider_base, internal_domain_federation, saml_or_ws_fed_external_domain_federation
+
+from . import identity_provider_base
 
 class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
     def __init__(self,) -> None:
@@ -34,6 +35,17 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
+        mapping_value_node = parse_node.get_child_node("@odata.type")
+        if mapping_value_node:
+            mapping_value = mapping_value_node.get_str_value()
+            if mapping_value == "#microsoft.graph.internalDomainFederation":
+                from . import internal_domain_federation
+
+                return internal_domain_federation.InternalDomainFederation()
+            if mapping_value == "#microsoft.graph.samlOrWsFedExternalDomainFederation":
+                from . import saml_or_ws_fed_external_domain_federation
+
+                return saml_or_ws_fed_external_domain_federation.SamlOrWsFedExternalDomainFederation()
         return SamlOrWsFedProvider()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -41,7 +53,9 @@ class SamlOrWsFedProvider(identity_provider_base.IdentityProviderBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import authentication_protocol, identity_provider_base, internal_domain_federation, saml_or_ws_fed_external_domain_federation
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "issuerUri": lambda n : setattr(self, 'issuer_uri', n.get_str_value()),
             "metadataExchangeUri": lambda n : setattr(self, 'metadata_exchange_uri', n.get_str_value()),
             "passiveSignInUri": lambda n : setattr(self, 'passive_sign_in_uri', n.get_str_value()),

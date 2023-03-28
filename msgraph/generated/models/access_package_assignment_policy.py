@@ -1,22 +1,50 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-access_package = lazy_import('msgraph.generated.models.access_package')
-access_package_assignment_approval_settings = lazy_import('msgraph.generated.models.access_package_assignment_approval_settings')
-access_package_assignment_requestor_settings = lazy_import('msgraph.generated.models.access_package_assignment_requestor_settings')
-access_package_assignment_review_settings = lazy_import('msgraph.generated.models.access_package_assignment_review_settings')
-access_package_automatic_request_settings = lazy_import('msgraph.generated.models.access_package_automatic_request_settings')
-access_package_catalog = lazy_import('msgraph.generated.models.access_package_catalog')
-access_package_question = lazy_import('msgraph.generated.models.access_package_question')
-allowed_target_scope = lazy_import('msgraph.generated.models.allowed_target_scope')
-entity = lazy_import('msgraph.generated.models.entity')
-expiration_pattern = lazy_import('msgraph.generated.models.expiration_pattern')
-subject_set = lazy_import('msgraph.generated.models.subject_set')
+if TYPE_CHECKING:
+    from . import access_package, access_package_assignment_approval_settings, access_package_assignment_requestor_settings, access_package_assignment_review_settings, access_package_automatic_request_settings, access_package_catalog, access_package_question, allowed_target_scope, entity, expiration_pattern, subject_set
+
+from . import entity
 
 class AccessPackageAssignmentPolicy(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new accessPackageAssignmentPolicy and sets the default values.
+        """
+        super().__init__()
+        # Access package containing this policy. Read-only.
+        self._access_package: Optional[access_package.AccessPackage] = None
+        # Principals that can be assigned the access package through this policy. The possible values are: notSpecified, specificDirectoryUsers, specificConnectedOrganizationUsers, specificDirectoryServicePrincipals, allMemberUsers, allDirectoryUsers, allDirectoryServicePrincipals, allConfiguredConnectedOrganizationUsers, allExternalUsers, unknownFutureValue.
+        self._allowed_target_scope: Optional[allowed_target_scope.AllowedTargetScope] = None
+        # This property is only present for an auto assignment policy; if absent, this is a request-based policy.
+        self._automatic_request_settings: Optional[access_package_automatic_request_settings.AccessPackageAutomaticRequestSettings] = None
+        # Catalog of the access package containing this policy. Read-only.
+        self._catalog: Optional[access_package_catalog.AccessPackageCatalog] = None
+        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+        self._created_date_time: Optional[datetime] = None
+        # The description of the policy.
+        self._description: Optional[str] = None
+        # The display name of the policy.
+        self._display_name: Optional[str] = None
+        # The expiration date for assignments created in this policy.
+        self._expiration: Optional[expiration_pattern.ExpirationPattern] = None
+        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+        self._modified_date_time: Optional[datetime] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # Questions that are posed to the  requestor.
+        self._questions: Optional[List[access_package_question.AccessPackageQuestion]] = None
+        # Specifies the settings for approval of requests for an access package assignment through this policy. For example, if approval is required for new requests.
+        self._request_approval_settings: Optional[access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings] = None
+        # Provides additional settings to select who can create a request for an access package assignment through this policy, and what they can include in their request.
+        self._requestor_settings: Optional[access_package_assignment_requestor_settings.AccessPackageAssignmentRequestorSettings] = None
+        # Settings for access reviews of assignments through this policy.
+        self._review_settings: Optional[access_package_assignment_review_settings.AccessPackageAssignmentReviewSettings] = None
+        # The principals that can be assigned access from an access package through this policy.
+        self._specific_allowed_targets: Optional[List[subject_set.SubjectSet]] = None
+    
     @property
     def access_package(self,) -> Optional[access_package.AccessPackage]:
         """
@@ -84,42 +112,6 @@ class AccessPackageAssignmentPolicy(entity.Entity):
             value: Value to set for the catalog property.
         """
         self._catalog = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new accessPackageAssignmentPolicy and sets the default values.
-        """
-        super().__init__()
-        # Access package containing this policy. Read-only.
-        self._access_package: Optional[access_package.AccessPackage] = None
-        # Principals that can be assigned the access package through this policy. The possible values are: notSpecified, specificDirectoryUsers, specificConnectedOrganizationUsers, specificDirectoryServicePrincipals, allMemberUsers, allDirectoryUsers, allDirectoryServicePrincipals, allConfiguredConnectedOrganizationUsers, allExternalUsers, unknownFutureValue.
-        self._allowed_target_scope: Optional[allowed_target_scope.AllowedTargetScope] = None
-        # This property is only present for an auto assignment policy; if absent, this is a request-based policy.
-        self._automatic_request_settings: Optional[access_package_automatic_request_settings.AccessPackageAutomaticRequestSettings] = None
-        # Catalog of the access package containing this policy. Read-only.
-        self._catalog: Optional[access_package_catalog.AccessPackageCatalog] = None
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._created_date_time: Optional[datetime] = None
-        # The description of the policy.
-        self._description: Optional[str] = None
-        # The display name of the policy.
-        self._display_name: Optional[str] = None
-        # The expiration date for assignments created in this policy.
-        self._expiration: Optional[expiration_pattern.ExpirationPattern] = None
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The questions property
-        self._questions: Optional[List[access_package_question.AccessPackageQuestion]] = None
-        # Specifies the settings for approval of requests for an access package assignment through this policy. For example, if approval is required for new requests.
-        self._request_approval_settings: Optional[access_package_assignment_approval_settings.AccessPackageAssignmentApprovalSettings] = None
-        # Provides additional settings to select who can create a request for an access package assignment through this policy, and what they can include in their request.
-        self._requestor_settings: Optional[access_package_assignment_requestor_settings.AccessPackageAssignmentRequestorSettings] = None
-        # Settings for access reviews of assignments through this policy.
-        self._review_settings: Optional[access_package_assignment_review_settings.AccessPackageAssignmentReviewSettings] = None
-        # The principals that can be assigned access from an access package through this policy.
-        self._specific_allowed_targets: Optional[List[subject_set.SubjectSet]] = None
     
     @property
     def created_date_time(self,) -> Optional[datetime]:
@@ -206,7 +198,9 @@ class AccessPackageAssignmentPolicy(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import access_package, access_package_assignment_approval_settings, access_package_assignment_requestor_settings, access_package_assignment_review_settings, access_package_automatic_request_settings, access_package_catalog, access_package_question, allowed_target_scope, entity, expiration_pattern, subject_set
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "accessPackage": lambda n : setattr(self, 'access_package', n.get_object_value(access_package.AccessPackage)),
             "allowedTargetScope": lambda n : setattr(self, 'allowed_target_scope', n.get_enum_value(allowed_target_scope.AllowedTargetScope)),
             "automaticRequestSettings": lambda n : setattr(self, 'automatic_request_settings', n.get_object_value(access_package_automatic_request_settings.AccessPackageAutomaticRequestSettings)),
@@ -246,7 +240,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
     @property
     def questions(self,) -> Optional[List[access_package_question.AccessPackageQuestion]]:
         """
-        Gets the questions property value. The questions property
+        Gets the questions property value. Questions that are posed to the  requestor.
         Returns: Optional[List[access_package_question.AccessPackageQuestion]]
         """
         return self._questions
@@ -254,7 +248,7 @@ class AccessPackageAssignmentPolicy(entity.Entity):
     @questions.setter
     def questions(self,value: Optional[List[access_package_question.AccessPackageQuestion]] = None) -> None:
         """
-        Sets the questions property value. The questions property
+        Sets the questions property value. Questions that are posed to the  requestor.
         Args:
             value: Value to set for the questions property.
         """

@@ -1,16 +1,37 @@
 from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-endpoint = lazy_import('msgraph.generated.models.call_records.endpoint')
-failure_info = lazy_import('msgraph.generated.models.call_records.failure_info')
-modality = lazy_import('msgraph.generated.models.call_records.modality')
-segment = lazy_import('msgraph.generated.models.call_records.segment')
+if TYPE_CHECKING:
+    from . import endpoint, failure_info, modality, segment
+    from .. import entity
+
+from .. import entity
 
 class Session(entity.Entity):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new session and sets the default values.
+        """
+        super().__init__()
+        # Endpoint that answered the session.
+        self._callee: Optional[endpoint.Endpoint] = None
+        # Endpoint that initiated the session.
+        self._caller: Optional[endpoint.Endpoint] = None
+        # UTC time when the last user left the session. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._end_date_time: Optional[datetime] = None
+        # Failure information associated with the session if the session failed.
+        self._failure_info: Optional[failure_info.FailureInfo] = None
+        # List of modalities present in the session. Possible values are: unknown, audio, video, videoBasedScreenSharing, data, screenSharing, unknownFutureValue.
+        self._modalities: Optional[List[modality.Modality]] = None
+        # The OdataType property
+        self.odata_type: Optional[str] = None
+        # The list of segments involved in the session. Read-only. Nullable.
+        self._segments: Optional[List[segment.Segment]] = None
+        # UTC time when the first user joined the session. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+        self._start_date_time: Optional[datetime] = None
+    
     @property
     def callee(self,) -> Optional[endpoint.Endpoint]:
         """
@@ -44,28 +65,6 @@ class Session(entity.Entity):
             value: Value to set for the caller property.
         """
         self._caller = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new session and sets the default values.
-        """
-        super().__init__()
-        # Endpoint that answered the session.
-        self._callee: Optional[endpoint.Endpoint] = None
-        # Endpoint that initiated the session.
-        self._caller: Optional[endpoint.Endpoint] = None
-        # UTC time when the last user left the session. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._end_date_time: Optional[datetime] = None
-        # Failure information associated with the session if the session failed.
-        self._failure_info: Optional[failure_info.FailureInfo] = None
-        # List of modalities present in the session. Possible values are: unknown, audio, video, videoBasedScreenSharing, data, screenSharing, unknownFutureValue.
-        self._modalities: Optional[List[modality.Modality]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The list of segments involved in the session. Read-only. Nullable.
-        self._segments: Optional[List[segment.Segment]] = None
-        # UTC time when the first user joined the session. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._start_date_time: Optional[datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Session:
@@ -118,7 +117,10 @@ class Session(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import endpoint, failure_info, modality, segment
+        from .. import entity
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "callee": lambda n : setattr(self, 'callee', n.get_object_value(endpoint.Endpoint)),
             "caller": lambda n : setattr(self, 'caller', n.get_object_value(endpoint.Endpoint)),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),

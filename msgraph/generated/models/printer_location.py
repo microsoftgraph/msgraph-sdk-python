@@ -1,9 +1,52 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 class PrinterLocation(AdditionalDataHolder, Parsable):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new printerLocation and sets the default values.
+        """
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
+        # The altitude, in meters, that the printer is located at.
+        self._altitude_in_meters: Optional[int] = None
+        # The building that the printer is located in.
+        self._building: Optional[str] = None
+        # The city that the printer is located in.
+        self._city: Optional[str] = None
+        # The country or region that the printer is located in.
+        self._country_or_region: Optional[str] = None
+        # The floor that the printer is located on. Only numerical values are supported right now.
+        self._floor: Optional[str] = None
+        # The description of the floor that the printer is located on.
+        self._floor_description: Optional[str] = None
+        # The latitude that the printer is located at.
+        self._latitude: Optional[float] = None
+        # The longitude that the printer is located at.
+        self._longitude: Optional[float] = None
+        # The OdataType property
+        self._odata_type: Optional[str] = None
+        # The organizational hierarchy that the printer belongs to. The elements should be in hierarchical order.
+        self._organization: Optional[List[str]] = None
+        # The postal code that the printer is located in.
+        self._postal_code: Optional[str] = None
+        # The description of the room that the printer is located in.
+        self._room_description: Optional[str] = None
+        # The room that the printer is located in. Only numerical values are supported right now.
+        self._room_name: Optional[str] = None
+        # The site that the printer is located in.
+        self._site: Optional[str] = None
+        # The state or province that the printer is located in.
+        self._state_or_province: Optional[str] = None
+        # The street address where the printer is located.
+        self._street_address: Optional[str] = None
+        # The subdivision that the printer is located in. The elements should be in hierarchical order.
+        self._subdivision: Optional[List[str]] = None
+        # The subunit property
+        self._subunit: Optional[List[str]] = None
+    
     @property
     def additional_data(self,) -> Dict[str, Any]:
         """
@@ -71,50 +114,6 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
             value: Value to set for the city property.
         """
         self._city = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new printerLocation and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
-
-        # The altitude, in meters, that the printer is located at.
-        self._altitude_in_meters: Optional[int] = None
-        # The building that the printer is located in.
-        self._building: Optional[str] = None
-        # The city that the printer is located in.
-        self._city: Optional[str] = None
-        # The country or region that the printer is located in.
-        self._country_or_region: Optional[str] = None
-        # The floor that the printer is located on. Only numerical values are supported right now.
-        self._floor: Optional[str] = None
-        # The description of the floor that the printer is located on.
-        self._floor_description: Optional[str] = None
-        # The latitude that the printer is located at.
-        self._latitude: Optional[float] = None
-        # The longitude that the printer is located at.
-        self._longitude: Optional[float] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The organizational hierarchy that the printer belongs to. The elements should be in hierarchical order.
-        self._organization: Optional[List[str]] = None
-        # The postal code that the printer is located in.
-        self._postal_code: Optional[str] = None
-        # The description of the room that the printer is located in.
-        self._room_description: Optional[str] = None
-        # The room that the printer is located in. Only numerical values are supported right now.
-        self._room_name: Optional[str] = None
-        # The site that the printer is located in.
-        self._site: Optional[str] = None
-        # The state or province that the printer is located in.
-        self._state_or_province: Optional[str] = None
-        # The street address where the printer is located.
-        self._street_address: Optional[str] = None
-        # The subdivision that the printer is located in. The elements should be in hierarchical order.
-        self._subdivision: Optional[List[str]] = None
-        # The subunit property
-        self._subunit: Optional[List[str]] = None
     
     @property
     def country_or_region(self,) -> Optional[str]:
@@ -184,7 +183,7 @@ class PrinterLocation(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        fields: Dict[str, Callable[[Any], None]] = {
             "altitudeInMeters": lambda n : setattr(self, 'altitude_in_meters', n.get_int_value()),
             "building": lambda n : setattr(self, 'building', n.get_str_value()),
             "city": lambda n : setattr(self, 'city', n.get_str_value()),

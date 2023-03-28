@@ -1,10 +1,11 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-entity = lazy_import('msgraph.generated.models.entity')
-workbook_chart_axis_title_format = lazy_import('msgraph.generated.models.workbook_chart_axis_title_format')
+if TYPE_CHECKING:
+    from . import entity, workbook_chart_axis_title_format
+
+from . import entity
 
 class WorkbookChartAxisTitle(entity.Entity):
     def __init__(self,) -> None:
@@ -55,7 +56,9 @@ class WorkbookChartAxisTitle(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import entity, workbook_chart_axis_title_format
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "format": lambda n : setattr(self, 'format', n.get_object_value(workbook_chart_axis_title_format.WorkbookChartAxisTitleFormat)),
             "text": lambda n : setattr(self, 'text', n.get_str_value()),
             "visible": lambda n : setattr(self, 'visible', n.get_bool_value()),

@@ -1,12 +1,28 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
-from kiota_abstractions.utils import lazy_import
-from typing import Any, Callable, Dict, List, Optional, Union
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-calendar_sharing_message_action = lazy_import('msgraph.generated.models.calendar_sharing_message_action')
-message = lazy_import('msgraph.generated.models.message')
+if TYPE_CHECKING:
+    from . import calendar_sharing_message_action, message
+
+from . import message
 
 class CalendarSharingMessage(message.Message):
+    def __init__(self,) -> None:
+        """
+        Instantiates a new CalendarSharingMessage and sets the default values.
+        """
+        super().__init__()
+        self.odata_type = "#microsoft.graph.calendarSharingMessage"
+        # The canAccept property
+        self._can_accept: Optional[bool] = None
+        # The sharingMessageAction property
+        self._sharing_message_action: Optional[calendar_sharing_message_action.CalendarSharingMessageAction] = None
+        # The sharingMessageActions property
+        self._sharing_message_actions: Optional[List[calendar_sharing_message_action.CalendarSharingMessageAction]] = None
+        # The suggestedCalendarName property
+        self._suggested_calendar_name: Optional[str] = None
+    
     @property
     def can_accept(self,) -> Optional[bool]:
         """
@@ -23,21 +39,6 @@ class CalendarSharingMessage(message.Message):
             value: Value to set for the can_accept property.
         """
         self._can_accept = value
-    
-    def __init__(self,) -> None:
-        """
-        Instantiates a new CalendarSharingMessage and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.calendarSharingMessage"
-        # The canAccept property
-        self._can_accept: Optional[bool] = None
-        # The sharingMessageAction property
-        self._sharing_message_action: Optional[calendar_sharing_message_action.CalendarSharingMessageAction] = None
-        # The sharingMessageActions property
-        self._sharing_message_actions: Optional[List[calendar_sharing_message_action.CalendarSharingMessageAction]] = None
-        # The suggestedCalendarName property
-        self._suggested_calendar_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CalendarSharingMessage:
@@ -56,7 +57,9 @@ class CalendarSharingMessage(message.Message):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        fields = {
+        from . import calendar_sharing_message_action, message
+
+        fields: Dict[str, Callable[[Any], None]] = {
             "canAccept": lambda n : setattr(self, 'can_accept', n.get_bool_value()),
             "sharingMessageAction": lambda n : setattr(self, 'sharing_message_action', n.get_object_value(calendar_sharing_message_action.CalendarSharingMessageAction)),
             "sharingMessageActions": lambda n : setattr(self, 'sharing_message_actions', n.get_collection_of_object_values(calendar_sharing_message_action.CalendarSharingMessageAction)),

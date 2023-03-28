@@ -17,7 +17,7 @@ class GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder():
     """
     Provides operations to call the getSkypeForBusinessActivityUserDetail method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, date: Optional[Date] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, date: Optional[date] = None) -> None:
         """
         Instantiates a new GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder and sets the default values.
         Args:

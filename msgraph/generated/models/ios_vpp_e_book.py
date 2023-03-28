@@ -1,6 +1,7 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from . import managed_e_book
@@ -29,7 +30,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         # The Vpp token's organization name.
         self._vpp_organization_name: Optional[str] = None
         # The Vpp token ID.
-        self._vpp_token_id: Optional[Guid] = None
+        self._vpp_token_id: Optional[UUID] = None
     
     @property
     def apple_id(self,) -> Optional[str]:
@@ -92,7 +93,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
             "totalLicenseCount": lambda n : setattr(self, 'total_license_count', n.get_int_value()),
             "usedLicenseCount": lambda n : setattr(self, 'used_license_count', n.get_int_value()),
             "vppOrganizationName": lambda n : setattr(self, 'vpp_organization_name', n.get_str_value()),
-            "vppTokenId": lambda n : setattr(self, 'vpp_token_id', n.get_object_value(Guid)),
+            "vppTokenId": lambda n : setattr(self, 'vpp_token_id', n.get_uuid_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -148,7 +149,7 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         writer.write_int_value("totalLicenseCount", self.total_license_count)
         writer.write_int_value("usedLicenseCount", self.used_license_count)
         writer.write_str_value("vppOrganizationName", self.vpp_organization_name)
-        writer.write_object_value("vppTokenId", self.vpp_token_id)
+        writer.write_uuid_value("vppTokenId", self.vpp_token_id)
     
     @property
     def total_license_count(self,) -> Optional[int]:
@@ -202,15 +203,15 @@ class IosVppEBook(managed_e_book.ManagedEBook):
         self._vpp_organization_name = value
     
     @property
-    def vpp_token_id(self,) -> Optional[Guid]:
+    def vpp_token_id(self,) -> Optional[UUID]:
         """
         Gets the vppTokenId property value. The Vpp token ID.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._vpp_token_id
     
     @vpp_token_id.setter
-    def vpp_token_id(self,value: Optional[Guid] = None) -> None:
+    def vpp_token_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the vppTokenId property value. The Vpp token ID.
         Args:

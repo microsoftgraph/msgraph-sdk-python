@@ -15,7 +15,7 @@ class EntitlementManagementSettings(entity.Entity):
         """
         super().__init__()
         # If externalUserLifecycleAction is blockSignInAndDelete, the duration, typically a number of days, after an external user is blocked from sign in before their account is deleted.
-        self._duration_until_external_user_deleted_after_blocked: Optional[Timedelta] = None
+        self._duration_until_external_user_deleted_after_blocked: Optional[timedelta] = None
         # Automatic action that the service should take when an external user's last access package assignment is removed. The possible values are: none, blockSignIn, blockSignInAndDelete, unknownFutureValue.
         self._external_user_lifecycle_action: Optional[access_package_external_user_lifecycle_action.AccessPackageExternalUserLifecycleAction] = None
         # The OdataType property
@@ -34,15 +34,15 @@ class EntitlementManagementSettings(entity.Entity):
         return EntitlementManagementSettings()
     
     @property
-    def duration_until_external_user_deleted_after_blocked(self,) -> Optional[Timedelta]:
+    def duration_until_external_user_deleted_after_blocked(self,) -> Optional[timedelta]:
         """
         Gets the durationUntilExternalUserDeletedAfterBlocked property value. If externalUserLifecycleAction is blockSignInAndDelete, the duration, typically a number of days, after an external user is blocked from sign in before their account is deleted.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._duration_until_external_user_deleted_after_blocked
     
     @duration_until_external_user_deleted_after_blocked.setter
-    def duration_until_external_user_deleted_after_blocked(self,value: Optional[Timedelta] = None) -> None:
+    def duration_until_external_user_deleted_after_blocked(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the durationUntilExternalUserDeletedAfterBlocked property value. If externalUserLifecycleAction is blockSignInAndDelete, the duration, typically a number of days, after an external user is blocked from sign in before their account is deleted.
         Args:
@@ -75,7 +75,7 @@ class EntitlementManagementSettings(entity.Entity):
         from . import access_package_external_user_lifecycle_action, entity
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "durationUntilExternalUserDeletedAfterBlocked": lambda n : setattr(self, 'duration_until_external_user_deleted_after_blocked', n.get_object_value(Timedelta)),
+            "durationUntilExternalUserDeletedAfterBlocked": lambda n : setattr(self, 'duration_until_external_user_deleted_after_blocked', n.get_timedelta_value()),
             "externalUserLifecycleAction": lambda n : setattr(self, 'external_user_lifecycle_action', n.get_enum_value(access_package_external_user_lifecycle_action.AccessPackageExternalUserLifecycleAction)),
         }
         super_fields = super().get_field_deserializers()
@@ -91,7 +91,7 @@ class EntitlementManagementSettings(entity.Entity):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-        writer.write_object_value("durationUntilExternalUserDeletedAfterBlocked", self.duration_until_external_user_deleted_after_blocked)
+        writer.write_timedelta_value("durationUntilExternalUserDeletedAfterBlocked", self.duration_until_external_user_deleted_after_blocked)
         writer.write_enum_value("externalUserLifecycleAction", self.external_user_lifecycle_action)
     
 

@@ -17,7 +17,7 @@ class GetYammerGroupsActivityDetailWithDateRequestBuilder():
     """
     Provides operations to call the getYammerGroupsActivityDetail method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, date: Optional[Date] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, date: Optional[date] = None) -> None:
         """
         Instantiates a new GetYammerGroupsActivityDetailWithDateRequestBuilder and sets the default values.
         Args:

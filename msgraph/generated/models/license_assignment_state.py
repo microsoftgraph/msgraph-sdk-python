@@ -2,6 +2,7 @@ from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 class LicenseAssignmentState(AdditionalDataHolder, Parsable):
     def __init__(self,) -> None:
@@ -14,7 +15,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         # The assignedByGroup property
         self._assigned_by_group: Optional[str] = None
         # The disabledPlans property
-        self._disabled_plans: Optional[List[Guid]] = None
+        self._disabled_plans: Optional[List[UUID]] = None
         # The error property
         self._error: Optional[str] = None
         # The lastUpdatedDateTime property
@@ -22,7 +23,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         # The OdataType property
         self._odata_type: Optional[str] = None
         # The skuId property
-        self._sku_id: Optional[Guid] = None
+        self._sku_id: Optional[UUID] = None
         # The state property
         self._state: Optional[str] = None
     
@@ -73,15 +74,15 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         return LicenseAssignmentState()
     
     @property
-    def disabled_plans(self,) -> Optional[List[Guid]]:
+    def disabled_plans(self,) -> Optional[List[UUID]]:
         """
         Gets the disabledPlans property value. The disabledPlans property
-        Returns: Optional[List[Guid]]
+        Returns: Optional[List[UUID]]
         """
         return self._disabled_plans
     
     @disabled_plans.setter
-    def disabled_plans(self,value: Optional[List[Guid]] = None) -> None:
+    def disabled_plans(self,value: Optional[List[UUID]] = None) -> None:
         """
         Sets the disabledPlans property value. The disabledPlans property
         Args:
@@ -113,11 +114,11 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "assignedByGroup": lambda n : setattr(self, 'assigned_by_group', n.get_str_value()),
-            "disabledPlans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(guid)),
+            "disabledPlans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(u_u_i_d)),
             "error": lambda n : setattr(self, 'error', n.get_str_value()),
             "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "skuId": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
+            "skuId": lambda n : setattr(self, 'sku_id', n.get_uuid_value()),
             "state": lambda n : setattr(self, 'state', n.get_str_value()),
         }
         return fields
@@ -169,20 +170,20 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         writer.write_str_value("error", self.error)
         writer.write_datetime_value("lastUpdatedDateTime", self.last_updated_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_object_value("skuId", self.sku_id)
+        writer.write_uuid_value("skuId", self.sku_id)
         writer.write_str_value("state", self.state)
         writer.write_additional_data_value(self.additional_data)
     
     @property
-    def sku_id(self,) -> Optional[Guid]:
+    def sku_id(self,) -> Optional[UUID]:
         """
         Gets the skuId property value. The skuId property
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._sku_id
     
     @sku_id.setter
-    def sku_id(self,value: Optional[Guid] = None) -> None:
+    def sku_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the skuId property value. The skuId property
         Args:

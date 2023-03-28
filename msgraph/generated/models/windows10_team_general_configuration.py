@@ -28,7 +28,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         # Maintenance window duration for device updates. Valid values 0 to 5
         self._maintenance_window_duration_in_hours: Optional[int] = None
         # Maintenance window start time for device updates.
-        self._maintenance_window_start_time: Optional[Time] = None
+        self._maintenance_window_start_time: Optional[time] = None
         # Indicates whether or not to Block wireless projection.
         self._miracast_blocked: Optional[bool] = None
         # Possible values for Miracast channel.
@@ -150,7 +150,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
             "connectAppBlockAutoLaunch": lambda n : setattr(self, 'connect_app_block_auto_launch', n.get_bool_value()),
             "maintenanceWindowBlocked": lambda n : setattr(self, 'maintenance_window_blocked', n.get_bool_value()),
             "maintenanceWindowDurationInHours": lambda n : setattr(self, 'maintenance_window_duration_in_hours', n.get_int_value()),
-            "maintenanceWindowStartTime": lambda n : setattr(self, 'maintenance_window_start_time', n.get_object_value(Time)),
+            "maintenanceWindowStartTime": lambda n : setattr(self, 'maintenance_window_start_time', n.get_time_value()),
             "miracastBlocked": lambda n : setattr(self, 'miracast_blocked', n.get_bool_value()),
             "miracastChannel": lambda n : setattr(self, 'miracast_channel', n.get_enum_value(miracast_channel.MiracastChannel)),
             "miracastRequirePin": lambda n : setattr(self, 'miracast_require_pin', n.get_bool_value()),
@@ -204,15 +204,15 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         self._maintenance_window_duration_in_hours = value
     
     @property
-    def maintenance_window_start_time(self,) -> Optional[Time]:
+    def maintenance_window_start_time(self,) -> Optional[time]:
         """
         Gets the maintenanceWindowStartTime property value. Maintenance window start time for device updates.
-        Returns: Optional[Time]
+        Returns: Optional[time]
         """
         return self._maintenance_window_start_time
     
     @maintenance_window_start_time.setter
-    def maintenance_window_start_time(self,value: Optional[Time] = None) -> None:
+    def maintenance_window_start_time(self,value: Optional[time] = None) -> None:
         """
         Sets the maintenanceWindowStartTime property value. Maintenance window start time for device updates.
         Args:
@@ -286,7 +286,7 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         writer.write_bool_value("connectAppBlockAutoLaunch", self.connect_app_block_auto_launch)
         writer.write_bool_value("maintenanceWindowBlocked", self.maintenance_window_blocked)
         writer.write_int_value("maintenanceWindowDurationInHours", self.maintenance_window_duration_in_hours)
-        writer.write_object_value("maintenanceWindowStartTime", self.maintenance_window_start_time)
+        writer.write_time_value("maintenanceWindowStartTime", self.maintenance_window_start_time)
         writer.write_bool_value("miracastBlocked", self.miracast_blocked)
         writer.write_enum_value("miracastChannel", self.miracast_channel)
         writer.write_bool_value("miracastRequirePin", self.miracast_require_pin)

@@ -1,6 +1,7 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from . import entity
@@ -16,9 +17,9 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         # Indicates if on premises conditional access is enabled for this organization
         self._enabled: Optional[bool] = None
         # User groups that will be exempt by on premises conditional access. All users in these groups will be exempt from the conditional access policy.
-        self._excluded_groups: Optional[List[Guid]] = None
+        self._excluded_groups: Optional[List[UUID]] = None
         # User groups that will be targeted by on premises conditional access. All users in these groups will be required to have mobile device managed and compliant for mail access.
-        self._included_groups: Optional[List[Guid]] = None
+        self._included_groups: Optional[List[UUID]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
         # Override the default access rule when allowing a device to ensure access is granted.
@@ -54,15 +55,15 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         self._enabled = value
     
     @property
-    def excluded_groups(self,) -> Optional[List[Guid]]:
+    def excluded_groups(self,) -> Optional[List[UUID]]:
         """
         Gets the excludedGroups property value. User groups that will be exempt by on premises conditional access. All users in these groups will be exempt from the conditional access policy.
-        Returns: Optional[List[Guid]]
+        Returns: Optional[List[UUID]]
         """
         return self._excluded_groups
     
     @excluded_groups.setter
-    def excluded_groups(self,value: Optional[List[Guid]] = None) -> None:
+    def excluded_groups(self,value: Optional[List[UUID]] = None) -> None:
         """
         Sets the excludedGroups property value. User groups that will be exempt by on premises conditional access. All users in these groups will be exempt from the conditional access policy.
         Args:
@@ -79,8 +80,8 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
-            "excludedGroups": lambda n : setattr(self, 'excluded_groups', n.get_collection_of_primitive_values(guid)),
-            "includedGroups": lambda n : setattr(self, 'included_groups', n.get_collection_of_primitive_values(guid)),
+            "excludedGroups": lambda n : setattr(self, 'excluded_groups', n.get_collection_of_primitive_values(u_u_i_d)),
+            "includedGroups": lambda n : setattr(self, 'included_groups', n.get_collection_of_primitive_values(u_u_i_d)),
             "overrideDefaultRule": lambda n : setattr(self, 'override_default_rule', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -88,15 +89,15 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
         return fields
     
     @property
-    def included_groups(self,) -> Optional[List[Guid]]:
+    def included_groups(self,) -> Optional[List[UUID]]:
         """
         Gets the includedGroups property value. User groups that will be targeted by on premises conditional access. All users in these groups will be required to have mobile device managed and compliant for mail access.
-        Returns: Optional[List[Guid]]
+        Returns: Optional[List[UUID]]
         """
         return self._included_groups
     
     @included_groups.setter
-    def included_groups(self,value: Optional[List[Guid]] = None) -> None:
+    def included_groups(self,value: Optional[List[UUID]] = None) -> None:
         """
         Sets the includedGroups property value. User groups that will be targeted by on premises conditional access. All users in these groups will be required to have mobile device managed and compliant for mail access.
         Args:

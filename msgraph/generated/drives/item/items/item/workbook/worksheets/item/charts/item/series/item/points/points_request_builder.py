@@ -39,7 +39,7 @@ class PointsRequestBuilder():
     
     async def get(self,request_configuration: Optional[PointsRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_point_collection_response.WorkbookChartPointCollectionResponse]:
         """
-        Retrieve a list of chartpoints objects.
+        Retrieve a list of chartpoint objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_chart_point_collection_response.WorkbookChartPointCollectionResponse]
@@ -99,7 +99,7 @@ class PointsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PointsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of chartpoints objects.
+        Retrieve a list of chartpoint objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -148,7 +148,7 @@ class PointsRequestBuilder():
     @dataclass
     class PointsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of chartpoints objects.
+        Retrieve a list of chartpoint objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

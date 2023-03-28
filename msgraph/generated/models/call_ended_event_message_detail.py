@@ -16,7 +16,7 @@ class CallEndedEventMessageDetail(event_message_detail.EventMessageDetail):
         super().__init__()
         self.odata_type = "#microsoft.graph.callEndedEventMessageDetail"
         # Duration of the call.
-        self._call_duration: Optional[Timedelta] = None
+        self._call_duration: Optional[timedelta] = None
         # Represents the call event type. Possible values are: call, meeting, screenShare, unknownFutureValue.
         self._call_event_type: Optional[teamwork_call_event_type.TeamworkCallEventType] = None
         # Unique identifier of the call.
@@ -27,15 +27,15 @@ class CallEndedEventMessageDetail(event_message_detail.EventMessageDetail):
         self._initiator: Optional[identity_set.IdentitySet] = None
     
     @property
-    def call_duration(self,) -> Optional[Timedelta]:
+    def call_duration(self,) -> Optional[timedelta]:
         """
         Gets the callDuration property value. Duration of the call.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._call_duration
     
     @call_duration.setter
-    def call_duration(self,value: Optional[Timedelta] = None) -> None:
+    def call_duration(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the callDuration property value. Duration of the call.
         Args:
@@ -114,7 +114,7 @@ class CallEndedEventMessageDetail(event_message_detail.EventMessageDetail):
         from . import call_participant_info, event_message_detail, identity_set, teamwork_call_event_type
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "callDuration": lambda n : setattr(self, 'call_duration', n.get_object_value(Timedelta)),
+            "callDuration": lambda n : setattr(self, 'call_duration', n.get_timedelta_value()),
             "callEventType": lambda n : setattr(self, 'call_event_type', n.get_enum_value(teamwork_call_event_type.TeamworkCallEventType)),
             "callId": lambda n : setattr(self, 'call_id', n.get_str_value()),
             "callParticipants": lambda n : setattr(self, 'call_participants', n.get_collection_of_object_values(call_participant_info.CallParticipantInfo)),
@@ -150,7 +150,7 @@ class CallEndedEventMessageDetail(event_message_detail.EventMessageDetail):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
-        writer.write_object_value("callDuration", self.call_duration)
+        writer.write_timedelta_value("callDuration", self.call_duration)
         writer.write_enum_value("callEventType", self.call_event_type)
         writer.write_str_value("callId", self.call_id)
         writer.write_collection_of_object_values("callParticipants", self.call_participants)

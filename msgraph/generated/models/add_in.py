@@ -1,6 +1,7 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from . import key_value
@@ -14,7 +15,7 @@ class AddIn(AdditionalDataHolder, Parsable):
         self._additional_data: Dict[str, Any] = {}
 
         # The id property
-        self._id: Optional[Guid] = None
+        self._id: Optional[UUID] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # The properties property
@@ -59,7 +60,7 @@ class AddIn(AdditionalDataHolder, Parsable):
         from . import key_value
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "id": lambda n : setattr(self, 'id', n.get_object_value(Guid)),
+            "id": lambda n : setattr(self, 'id', n.get_uuid_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "properties": lambda n : setattr(self, 'properties', n.get_collection_of_object_values(key_value.KeyValue)),
             "type": lambda n : setattr(self, 'type', n.get_str_value()),
@@ -67,15 +68,15 @@ class AddIn(AdditionalDataHolder, Parsable):
         return fields
     
     @property
-    def id(self,) -> Optional[Guid]:
+    def id(self,) -> Optional[UUID]:
         """
         Gets the id property value. The id property
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._id
     
     @id.setter
-    def id(self,value: Optional[Guid] = None) -> None:
+    def id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the id property value. The id property
         Args:
@@ -125,7 +126,7 @@ class AddIn(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_object_value("id", self.id)
+        writer.write_uuid_value("id", self.id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("properties", self.properties)
         writer.write_str_value("type", self.type)

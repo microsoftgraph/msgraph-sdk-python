@@ -18,7 +18,7 @@ class UnifiedRoleManagementPolicyExpirationRule(unified_role_management_policy_r
         # Indicates whether expiration is required or if it's a permanently active assignment or eligibility.
         self._is_expiration_required: Optional[bool] = None
         # The maximum duration allowed for eligibility or assignment which is not permanent. Required when isExpirationRequired is true.
-        self._maximum_duration: Optional[Timedelta] = None
+        self._maximum_duration: Optional[timedelta] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleManagementPolicyExpirationRule:
@@ -41,7 +41,7 @@ class UnifiedRoleManagementPolicyExpirationRule(unified_role_management_policy_r
 
         fields: Dict[str, Callable[[Any], None]] = {
             "isExpirationRequired": lambda n : setattr(self, 'is_expiration_required', n.get_bool_value()),
-            "maximumDuration": lambda n : setattr(self, 'maximum_duration', n.get_object_value(Timedelta)),
+            "maximumDuration": lambda n : setattr(self, 'maximum_duration', n.get_timedelta_value()),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -65,15 +65,15 @@ class UnifiedRoleManagementPolicyExpirationRule(unified_role_management_policy_r
         self._is_expiration_required = value
     
     @property
-    def maximum_duration(self,) -> Optional[Timedelta]:
+    def maximum_duration(self,) -> Optional[timedelta]:
         """
         Gets the maximumDuration property value. The maximum duration allowed for eligibility or assignment which is not permanent. Required when isExpirationRequired is true.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._maximum_duration
     
     @maximum_duration.setter
-    def maximum_duration(self,value: Optional[Timedelta] = None) -> None:
+    def maximum_duration(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the maximumDuration property value. The maximum duration allowed for eligibility or assignment which is not permanent. Required when isExpirationRequired is true.
         Args:
@@ -91,6 +91,6 @@ class UnifiedRoleManagementPolicyExpirationRule(unified_role_management_policy_r
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("isExpirationRequired", self.is_expiration_required)
-        writer.write_object_value("maximumDuration", self.maximum_duration)
+        writer.write_timedelta_value("maximumDuration", self.maximum_duration)
     
 

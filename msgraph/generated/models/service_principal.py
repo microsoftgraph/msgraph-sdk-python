@@ -1,6 +1,7 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from . import add_in, app_management_policy, app_role, app_role_assignment, claims_mapping_policy, delegated_permission_classification, directory_object, endpoint, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, o_auth2_permission_grant, password_credential, permission_scope, resource_specific_permission, saml_single_sign_on_settings, token_issuance_policy, token_lifetime_policy, verified_publisher
@@ -29,7 +30,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         # The appManagementPolicy applied to this application.
         self._app_management_policies: Optional[List[app_management_policy.AppManagementPolicy]] = None
         # Contains the tenant id where the application is registered. This is applicable only to service principals backed by applications. Supports $filter (eq, ne, NOT, ge, le).
-        self._app_owner_organization_id: Optional[Guid] = None
+        self._app_owner_organization_id: Optional[UUID] = None
         # App role assignments for this app or service, granted to users, groups, and other service principals. Supports $expand.
         self._app_role_assigned_to: Optional[List[app_role_assignment.AppRoleAssignment]] = None
         # Specifies whether users or other service principals need to be granted an app role assignment for this service principal before users can sign in or apps can get tokens. The default value is false. Not nullable. Supports $filter (eq, ne, NOT).
@@ -103,7 +104,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         # Custom strings that can be used to categorize and identify the service principal. Not nullable. Supports $filter (eq, not, ge, le, startsWith).
         self._tags: Optional[List[str]] = None
         # Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD issues tokens for this application encrypted using the key specified by this property. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
-        self._token_encryption_key_id: Optional[Guid] = None
+        self._token_encryption_key_id: Optional[UUID] = None
         # The tokenIssuancePolicies assigned to this service principal.
         self._token_issuance_policies: Optional[List[token_issuance_policy.TokenIssuancePolicy]] = None
         # The tokenLifetimePolicies assigned to this service principal.
@@ -233,15 +234,15 @@ class ServicePrincipal(directory_object.DirectoryObject):
         self._app_management_policies = value
     
     @property
-    def app_owner_organization_id(self,) -> Optional[Guid]:
+    def app_owner_organization_id(self,) -> Optional[UUID]:
         """
         Gets the appOwnerOrganizationId property value. Contains the tenant id where the application is registered. This is applicable only to service principals backed by applications. Supports $filter (eq, ne, NOT, ge, le).
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._app_owner_organization_id
     
     @app_owner_organization_id.setter
-    def app_owner_organization_id(self,value: Optional[Guid] = None) -> None:
+    def app_owner_organization_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the appOwnerOrganizationId property value. Contains the tenant id where the application is registered. This is applicable only to service principals backed by applications. Supports $filter (eq, ne, NOT, ge, le).
         Args:
@@ -498,7 +499,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             "appDisplayName": lambda n : setattr(self, 'app_display_name', n.get_str_value()),
             "appId": lambda n : setattr(self, 'app_id', n.get_str_value()),
             "appManagementPolicies": lambda n : setattr(self, 'app_management_policies', n.get_collection_of_object_values(app_management_policy.AppManagementPolicy)),
-            "appOwnerOrganizationId": lambda n : setattr(self, 'app_owner_organization_id', n.get_object_value(Guid)),
+            "appOwnerOrganizationId": lambda n : setattr(self, 'app_owner_organization_id', n.get_uuid_value()),
             "appRoles": lambda n : setattr(self, 'app_roles', n.get_collection_of_object_values(app_role.AppRole)),
             "appRoleAssignedTo": lambda n : setattr(self, 'app_role_assigned_to', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
             "appRoleAssignments": lambda n : setattr(self, 'app_role_assignments', n.get_collection_of_object_values(app_role_assignment.AppRoleAssignment)),
@@ -534,7 +535,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             "servicePrincipalType": lambda n : setattr(self, 'service_principal_type', n.get_str_value()),
             "signInAudience": lambda n : setattr(self, 'sign_in_audience', n.get_str_value()),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
-            "tokenEncryptionKeyId": lambda n : setattr(self, 'token_encryption_key_id', n.get_object_value(Guid)),
+            "tokenEncryptionKeyId": lambda n : setattr(self, 'token_encryption_key_id', n.get_uuid_value()),
             "tokenIssuancePolicies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(token_issuance_policy.TokenIssuancePolicy)),
             "tokenLifetimePolicies": lambda n : setattr(self, 'token_lifetime_policies', n.get_collection_of_object_values(token_lifetime_policy.TokenLifetimePolicy)),
             "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
@@ -884,7 +885,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         writer.write_str_value("appDisplayName", self.app_display_name)
         writer.write_str_value("appId", self.app_id)
         writer.write_collection_of_object_values("appManagementPolicies", self.app_management_policies)
-        writer.write_object_value("appOwnerOrganizationId", self.app_owner_organization_id)
+        writer.write_uuid_value("appOwnerOrganizationId", self.app_owner_organization_id)
         writer.write_collection_of_object_values("appRoles", self.app_roles)
         writer.write_collection_of_object_values("appRoleAssignedTo", self.app_role_assigned_to)
         writer.write_collection_of_object_values("appRoleAssignments", self.app_role_assignments)
@@ -920,7 +921,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         writer.write_str_value("servicePrincipalType", self.service_principal_type)
         writer.write_str_value("signInAudience", self.sign_in_audience)
         writer.write_collection_of_primitive_values("tags", self.tags)
-        writer.write_object_value("tokenEncryptionKeyId", self.token_encryption_key_id)
+        writer.write_uuid_value("tokenEncryptionKeyId", self.token_encryption_key_id)
         writer.write_collection_of_object_values("tokenIssuancePolicies", self.token_issuance_policies)
         writer.write_collection_of_object_values("tokenLifetimePolicies", self.token_lifetime_policies)
         writer.write_collection_of_object_values("transitiveMemberOf", self.transitive_member_of)
@@ -995,15 +996,15 @@ class ServicePrincipal(directory_object.DirectoryObject):
         self._tags = value
     
     @property
-    def token_encryption_key_id(self,) -> Optional[Guid]:
+    def token_encryption_key_id(self,) -> Optional[UUID]:
         """
         Gets the tokenEncryptionKeyId property value. Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD issues tokens for this application encrypted using the key specified by this property. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._token_encryption_key_id
     
     @token_encryption_key_id.setter
-    def token_encryption_key_id(self,value: Optional[Guid] = None) -> None:
+    def token_encryption_key_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the tokenEncryptionKeyId property value. Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD issues tokens for this application encrypted using the key specified by this property. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
         Args:

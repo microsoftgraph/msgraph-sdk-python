@@ -1,6 +1,7 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from . import calendar, entity
@@ -18,7 +19,7 @@ class CalendarGroup(entity.Entity):
         # Identifies the version of the calendar group. Every time the calendar group is changed, ChangeKey changes as well. This allows Exchange to apply changes to the correct version of the object. Read-only.
         self._change_key: Optional[str] = None
         # The class identifier. Read-only.
-        self._class_id: Optional[Guid] = None
+        self._class_id: Optional[UUID] = None
         # The group name.
         self._name: Optional[str] = None
         # The OdataType property
@@ -59,15 +60,15 @@ class CalendarGroup(entity.Entity):
         self._change_key = value
     
     @property
-    def class_id(self,) -> Optional[Guid]:
+    def class_id(self,) -> Optional[UUID]:
         """
         Gets the classId property value. The class identifier. Read-only.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._class_id
     
     @class_id.setter
-    def class_id(self,value: Optional[Guid] = None) -> None:
+    def class_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the classId property value. The class identifier. Read-only.
         Args:
@@ -97,7 +98,7 @@ class CalendarGroup(entity.Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "calendars": lambda n : setattr(self, 'calendars', n.get_collection_of_object_values(calendar.Calendar)),
             "changeKey": lambda n : setattr(self, 'change_key', n.get_str_value()),
-            "classId": lambda n : setattr(self, 'class_id', n.get_object_value(Guid)),
+            "classId": lambda n : setattr(self, 'class_id', n.get_uuid_value()),
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -132,7 +133,7 @@ class CalendarGroup(entity.Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("calendars", self.calendars)
         writer.write_str_value("changeKey", self.change_key)
-        writer.write_object_value("classId", self.class_id)
+        writer.write_uuid_value("classId", self.class_id)
         writer.write_str_value("name", self.name)
     
 

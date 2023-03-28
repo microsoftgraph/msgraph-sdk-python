@@ -11,7 +11,7 @@ from . import entity
 class EducationAssignmentDefaults(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new EducationAssignmentDefaults and sets the default values.
+        Instantiates a new educationAssignmentDefaults and sets the default values.
         """
         super().__init__()
         # Optional field to control adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.
@@ -19,7 +19,7 @@ class EducationAssignmentDefaults(entity.Entity):
         # Class-level default behavior for handling students who are added after the assignment is published. Possible values are: none, assignIfOpen.
         self._added_student_action: Optional[education_added_student_action.EducationAddedStudentAction] = None
         # Class-level default value for due time field. Default value is 23:59:00.
-        self._due_time: Optional[Time] = None
+        self._due_time: Optional[time] = None
         # Default Teams channel to which notifications will be sent. Default value is null.
         self._notification_channel_url: Optional[str] = None
         # The OdataType property
@@ -72,15 +72,15 @@ class EducationAssignmentDefaults(entity.Entity):
         return EducationAssignmentDefaults()
     
     @property
-    def due_time(self,) -> Optional[Time]:
+    def due_time(self,) -> Optional[time]:
         """
         Gets the dueTime property value. Class-level default value for due time field. Default value is 23:59:00.
-        Returns: Optional[Time]
+        Returns: Optional[time]
         """
         return self._due_time
     
     @due_time.setter
-    def due_time(self,value: Optional[Time] = None) -> None:
+    def due_time(self,value: Optional[time] = None) -> None:
         """
         Sets the dueTime property value. Class-level default value for due time field. Default value is 23:59:00.
         Args:
@@ -98,7 +98,7 @@ class EducationAssignmentDefaults(entity.Entity):
         fields: Dict[str, Callable[[Any], None]] = {
             "addedStudentAction": lambda n : setattr(self, 'added_student_action', n.get_enum_value(education_added_student_action.EducationAddedStudentAction)),
             "addToCalendarAction": lambda n : setattr(self, 'add_to_calendar_action', n.get_enum_value(education_add_to_calendar_options.EducationAddToCalendarOptions)),
-            "dueTime": lambda n : setattr(self, 'due_time', n.get_object_value(Time)),
+            "dueTime": lambda n : setattr(self, 'due_time', n.get_time_value()),
             "notificationChannelUrl": lambda n : setattr(self, 'notification_channel_url', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -133,7 +133,7 @@ class EducationAssignmentDefaults(entity.Entity):
         super().serialize(writer)
         writer.write_enum_value("addedStudentAction", self.added_student_action)
         writer.write_enum_value("addToCalendarAction", self.add_to_calendar_action)
-        writer.write_object_value("dueTime", self.due_time)
+        writer.write_time_value("dueTime", self.due_time)
         writer.write_str_value("notificationChannelUrl", self.notification_channel_url)
     
 

@@ -12,7 +12,7 @@ class TermsExpiration(AdditionalDataHolder, Parsable):
         self._additional_data: Dict[str, Any] = {}
 
         # Represents the frequency at which the terms will expire, after its first expiration as set in startDateTime. The value is represented in ISO 8601 format for durations. For example, PT1M represents a time period of 1 month.
-        self._frequency: Optional[Timedelta] = None
+        self._frequency: Optional[timedelta] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # The DateTime when the agreement is set to expire for all users. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
@@ -48,15 +48,15 @@ class TermsExpiration(AdditionalDataHolder, Parsable):
         return TermsExpiration()
     
     @property
-    def frequency(self,) -> Optional[Timedelta]:
+    def frequency(self,) -> Optional[timedelta]:
         """
         Gets the frequency property value. Represents the frequency at which the terms will expire, after its first expiration as set in startDateTime. The value is represented in ISO 8601 format for durations. For example, PT1M represents a time period of 1 month.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._frequency
     
     @frequency.setter
-    def frequency(self,value: Optional[Timedelta] = None) -> None:
+    def frequency(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the frequency property value. Represents the frequency at which the terms will expire, after its first expiration as set in startDateTime. The value is represented in ISO 8601 format for durations. For example, PT1M represents a time period of 1 month.
         Args:
@@ -70,7 +70,7 @@ class TermsExpiration(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "frequency": lambda n : setattr(self, 'frequency', n.get_object_value(Timedelta)),
+            "frequency": lambda n : setattr(self, 'frequency', n.get_timedelta_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
         }
@@ -101,7 +101,7 @@ class TermsExpiration(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_object_value("frequency", self.frequency)
+        writer.write_timedelta_value("frequency", self.frequency)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_additional_data_value(self.additional_data)

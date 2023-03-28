@@ -1,6 +1,7 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from . import entity, service_plan_info
@@ -18,7 +19,7 @@ class LicenseDetails(entity.Entity):
         # Information about the service plans assigned with the license. Read-only, Not nullable
         self._service_plans: Optional[List[service_plan_info.ServicePlanInfo]] = None
         # Unique identifier (GUID) for the service SKU. Equal to the skuId property on the related SubscribedSku object. Read-only
-        self._sku_id: Optional[Guid] = None
+        self._sku_id: Optional[UUID] = None
         # Unique SKU display name. Equal to the skuPartNumber on the related SubscribedSku object; for example: 'AAD_Premium'. Read-only
         self._sku_part_number: Optional[str] = None
     
@@ -43,7 +44,7 @@ class LicenseDetails(entity.Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(service_plan_info.ServicePlanInfo)),
-            "skuId": lambda n : setattr(self, 'sku_id', n.get_object_value(Guid)),
+            "skuId": lambda n : setattr(self, 'sku_id', n.get_uuid_value()),
             "skuPartNumber": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
         }
         super_fields = super().get_field_deserializers()
@@ -60,7 +61,7 @@ class LicenseDetails(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("servicePlans", self.service_plans)
-        writer.write_object_value("skuId", self.sku_id)
+        writer.write_uuid_value("skuId", self.sku_id)
         writer.write_str_value("skuPartNumber", self.sku_part_number)
     
     @property
@@ -81,15 +82,15 @@ class LicenseDetails(entity.Entity):
         self._service_plans = value
     
     @property
-    def sku_id(self,) -> Optional[Guid]:
+    def sku_id(self,) -> Optional[UUID]:
         """
         Gets the skuId property value. Unique identifier (GUID) for the service SKU. Equal to the skuId property on the related SubscribedSku object. Read-only
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._sku_id
     
     @sku_id.setter
-    def sku_id(self,value: Optional[Guid] = None) -> None:
+    def sku_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the skuId property value. Unique identifier (GUID) for the service SKU. Equal to the skuId property on the related SubscribedSku object. Read-only
         Args:

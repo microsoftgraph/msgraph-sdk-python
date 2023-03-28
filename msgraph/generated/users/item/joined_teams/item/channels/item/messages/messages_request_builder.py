@@ -61,7 +61,7 @@ class MessagesRequestBuilder():
     
     async def post(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> Optional[chat_message.ChatMessage]:
         """
-        Send a new chatMessage in the specified channel.
+        Send a new chatMessage in the specified channel or a chat.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class MessagesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Send a new chatMessage in the specified channel.
+        Send a new chatMessage in the specified channel or a chat.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -17,7 +17,7 @@ class GetSharePointActivityUserDetailWithDateRequestBuilder():
     """
     Provides operations to call the getSharePointActivityUserDetail method.
     """
-    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, date: Optional[Date] = None) -> None:
+    def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None, date: Optional[date] = None) -> None:
         """
         Instantiates a new GetSharePointActivityUserDetailWithDateRequestBuilder and sets the default values.
         Args:

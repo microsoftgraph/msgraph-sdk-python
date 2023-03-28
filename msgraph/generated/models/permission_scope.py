@@ -1,6 +1,7 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 class PermissionScope(AdditionalDataHolder, Parsable):
     def __init__(self,) -> None:
@@ -15,7 +16,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         # The permission's title, intended to be read by an administrator granting the permission on behalf of all users.
         self._admin_consent_display_name: Optional[str] = None
         # Unique delegated permission identifier inside the collection of delegated permissions defined for a resource application.
-        self._id: Optional[Guid] = None
+        self._id: Optional[UUID] = None
         # When creating or updating a permission, this property must be set to true (which is the default). To delete a permission, this property must first be set to false.  At that point, in a subsequent call, the permission may be removed.
         self._is_enabled: Optional[bool] = None
         # The OdataType property
@@ -102,7 +103,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "adminConsentDescription": lambda n : setattr(self, 'admin_consent_description', n.get_str_value()),
             "adminConsentDisplayName": lambda n : setattr(self, 'admin_consent_display_name', n.get_str_value()),
-            "id": lambda n : setattr(self, 'id', n.get_object_value(Guid)),
+            "id": lambda n : setattr(self, 'id', n.get_uuid_value()),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "origin": lambda n : setattr(self, 'origin', n.get_str_value()),
@@ -114,15 +115,15 @@ class PermissionScope(AdditionalDataHolder, Parsable):
         return fields
     
     @property
-    def id(self,) -> Optional[Guid]:
+    def id(self,) -> Optional[UUID]:
         """
         Gets the id property value. Unique delegated permission identifier inside the collection of delegated permissions defined for a resource application.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._id
     
     @id.setter
-    def id(self,value: Optional[Guid] = None) -> None:
+    def id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the id property value. Unique delegated permission identifier inside the collection of delegated permissions defined for a resource application.
         Args:
@@ -191,7 +192,7 @@ class PermissionScope(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_str_value("adminConsentDescription", self.admin_consent_description)
         writer.write_str_value("adminConsentDisplayName", self.admin_consent_display_name)
-        writer.write_object_value("id", self.id)
+        writer.write_uuid_value("id", self.id)
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("origin", self.origin)

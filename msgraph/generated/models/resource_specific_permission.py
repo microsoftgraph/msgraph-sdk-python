@@ -1,6 +1,7 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 class ResourceSpecificPermission(AdditionalDataHolder, Parsable):
     def __init__(self,) -> None:
@@ -15,7 +16,7 @@ class ResourceSpecificPermission(AdditionalDataHolder, Parsable):
         # The display name for the resource-specific permission.
         self._display_name: Optional[str] = None
         # The unique identifier for the resource-specific application permission.
-        self._id: Optional[Guid] = None
+        self._id: Optional[UUID] = None
         # Indicates whether the permission is enabled.
         self._is_enabled: Optional[bool] = None
         # The OdataType property
@@ -94,7 +95,7 @@ class ResourceSpecificPermission(AdditionalDataHolder, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "description": lambda n : setattr(self, 'description', n.get_str_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
-            "id": lambda n : setattr(self, 'id', n.get_object_value(Guid)),
+            "id": lambda n : setattr(self, 'id', n.get_uuid_value()),
             "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "value": lambda n : setattr(self, 'value', n.get_str_value()),
@@ -102,15 +103,15 @@ class ResourceSpecificPermission(AdditionalDataHolder, Parsable):
         return fields
     
     @property
-    def id(self,) -> Optional[Guid]:
+    def id(self,) -> Optional[UUID]:
         """
         Gets the id property value. The unique identifier for the resource-specific application permission.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._id
     
     @id.setter
-    def id(self,value: Optional[Guid] = None) -> None:
+    def id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the id property value. The unique identifier for the resource-specific application permission.
         Args:
@@ -162,7 +163,7 @@ class ResourceSpecificPermission(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
-        writer.write_object_value("id", self.id)
+        writer.write_uuid_value("id", self.id)
         writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("value", self.value)

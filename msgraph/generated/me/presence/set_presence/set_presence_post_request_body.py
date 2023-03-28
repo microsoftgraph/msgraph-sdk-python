@@ -16,7 +16,7 @@ class SetPresencePostRequestBody(AdditionalDataHolder, Parsable):
         # The availability property
         self._availability: Optional[str] = None
         # The expirationDuration property
-        self._expiration_duration: Optional[Timedelta] = None
+        self._expiration_duration: Optional[timedelta] = None
         # The sessionId property
         self._session_id: Optional[str] = None
     
@@ -84,15 +84,15 @@ class SetPresencePostRequestBody(AdditionalDataHolder, Parsable):
         return SetPresencePostRequestBody()
     
     @property
-    def expiration_duration(self,) -> Optional[Timedelta]:
+    def expiration_duration(self,) -> Optional[timedelta]:
         """
         Gets the expirationDuration property value. The expirationDuration property
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._expiration_duration
     
     @expiration_duration.setter
-    def expiration_duration(self,value: Optional[Timedelta] = None) -> None:
+    def expiration_duration(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the expirationDuration property value. The expirationDuration property
         Args:
@@ -108,7 +108,7 @@ class SetPresencePostRequestBody(AdditionalDataHolder, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "activity": lambda n : setattr(self, 'activity', n.get_str_value()),
             "availability": lambda n : setattr(self, 'availability', n.get_str_value()),
-            "expirationDuration": lambda n : setattr(self, 'expiration_duration', n.get_object_value(Timedelta)),
+            "expirationDuration": lambda n : setattr(self, 'expiration_duration', n.get_timedelta_value()),
             "sessionId": lambda n : setattr(self, 'session_id', n.get_str_value()),
         }
         return fields
@@ -123,7 +123,7 @@ class SetPresencePostRequestBody(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_str_value("activity", self.activity)
         writer.write_str_value("availability", self.availability)
-        writer.write_object_value("expirationDuration", self.expiration_duration)
+        writer.write_timedelta_value("expirationDuration", self.expiration_duration)
         writer.write_str_value("sessionId", self.session_id)
         writer.write_additional_data_value(self.additional_data)
     

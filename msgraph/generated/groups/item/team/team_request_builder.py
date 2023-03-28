@@ -196,9 +196,9 @@ class TeamRequestBuilder():
         url_tpl_params["teamsAsyncOperation%2Did"] = id
         return teams_async_operation_item_request_builder.TeamsAsyncOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def patch(self,body: Optional[team.Team] = None, request_configuration: Optional[TeamRequestBuilderPatchRequestConfiguration] = None) -> Optional[team.Team]:
+    async def put(self,body: Optional[team.Team] = None, request_configuration: Optional[TeamRequestBuilderPutRequestConfiguration] = None) -> Optional[team.Team]:
         """
-        Create a new team under a group. In order to create a team, the group must have a least one owner. If the group was created less than 15 minutes ago, it's possible for the Create team call to fail with a 404 error code due to replication delays. The recommended pattern is to retry the Create team call three times, with a 10 second delay between calls.
+        Update the navigation property team in groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -206,7 +206,7 @@ class TeamRequestBuilder():
         """
         if body is None:
             raise Exception("body cannot be undefined")
-        request_info = self.to_patch_request_information(
+        request_info = self.to_put_request_information(
             body, request_configuration
         )
         from ....models.o_data_errors import o_data_error
@@ -270,9 +270,9 @@ class TeamRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[team.Team] = None, request_configuration: Optional[TeamRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_put_request_information(self,body: Optional[team.Team] = None, request_configuration: Optional[TeamRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new team under a group. In order to create a team, the group must have a least one owner. If the group was created less than 15 minutes ago, it's possible for the Create team call to fail with a 404 error code due to replication delays. The recommended pattern is to retry the Create team call three times, with a 10 second delay between calls.
+        Update the navigation property team in groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -283,7 +283,7 @@ class TeamRequestBuilder():
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.PATCH
+        request_info.http_method = Method.PUT
         request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
@@ -499,7 +499,7 @@ class TeamRequestBuilder():
 
     
     @dataclass
-    class TeamRequestBuilderPatchRequestConfiguration():
+    class TeamRequestBuilderPutRequestConfiguration():
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """

@@ -15,7 +15,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         self._additional_data: Dict[str, Any] = {}
 
         # The requestor's desired duration of access represented in ISO 8601 format for durations. For example, PT3H refers to three hours.  If specified in a request, endDateTime should not be present and the type property should be set to afterDuration.
-        self._duration: Optional[Timedelta] = None
+        self._duration: Optional[timedelta] = None
         # Timestamp of date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
         self._end_date_time: Optional[datetime] = None
         # The OdataType property
@@ -53,15 +53,15 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         return ExpirationPattern()
     
     @property
-    def duration(self,) -> Optional[Timedelta]:
+    def duration(self,) -> Optional[timedelta]:
         """
         Gets the duration property value. The requestor's desired duration of access represented in ISO 8601 format for durations. For example, PT3H refers to three hours.  If specified in a request, endDateTime should not be present and the type property should be set to afterDuration.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._duration
     
     @duration.setter
-    def duration(self,value: Optional[Timedelta] = None) -> None:
+    def duration(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the duration property value. The requestor's desired duration of access represented in ISO 8601 format for durations. For example, PT3H refers to three hours.  If specified in a request, endDateTime should not be present and the type property should be set to afterDuration.
         Args:
@@ -94,7 +94,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         from . import expiration_pattern_type
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "duration": lambda n : setattr(self, 'duration', n.get_object_value(Timedelta)),
+            "duration": lambda n : setattr(self, 'duration', n.get_timedelta_value()),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(expiration_pattern_type.ExpirationPatternType)),
@@ -126,7 +126,7 @@ class ExpirationPattern(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_object_value("duration", self.duration)
+        writer.write_timedelta_value("duration", self.duration)
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("type", self.type)

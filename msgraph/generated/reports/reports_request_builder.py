@@ -221,7 +221,7 @@ class ReportsRequestBuilder():
 
         return get_email_activity_user_counts_with_period_request_builder.GetEmailActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_email_activity_user_detail_with_date(self,date: Optional[Date] = None) -> get_email_activity_user_detail_with_date_request_builder.GetEmailActivityUserDetailWithDateRequestBuilder:
+    def get_email_activity_user_detail_with_date(self,date: Optional[date] = None) -> get_email_activity_user_detail_with_date_request_builder.GetEmailActivityUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getEmailActivityUserDetail method.
         Args:
@@ -273,7 +273,7 @@ class ReportsRequestBuilder():
 
         return get_email_app_usage_user_counts_with_period_request_builder.GetEmailAppUsageUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_email_app_usage_user_detail_with_date(self,date: Optional[Date] = None) -> get_email_app_usage_user_detail_with_date_request_builder.GetEmailAppUsageUserDetailWithDateRequestBuilder:
+    def get_email_app_usage_user_detail_with_date(self,date: Optional[date] = None) -> get_email_app_usage_user_detail_with_date_request_builder.GetEmailAppUsageUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getEmailAppUsageUserDetail method.
         Args:
@@ -357,7 +357,7 @@ class ReportsRequestBuilder():
 
         return get_m365_app_user_counts_with_period_request_builder.GetM365AppUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_m365_app_user_detail_with_date(self,date: Optional[Date] = None) -> get_m365_app_user_detail_with_date_request_builder.GetM365AppUserDetailWithDateRequestBuilder:
+    def get_m365_app_user_detail_with_date(self,date: Optional[date] = None) -> get_m365_app_user_detail_with_date_request_builder.GetM365AppUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getM365AppUserDetail method.
         Args:
@@ -448,7 +448,7 @@ class ReportsRequestBuilder():
 
         return get_office365_active_user_counts_with_period_request_builder.GetOffice365ActiveUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_office365_active_user_detail_with_date(self,date: Optional[Date] = None) -> get_office365_active_user_detail_with_date_request_builder.GetOffice365ActiveUserDetailWithDateRequestBuilder:
+    def get_office365_active_user_detail_with_date(self,date: Optional[date] = None) -> get_office365_active_user_detail_with_date_request_builder.GetOffice365ActiveUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getOffice365ActiveUserDetail method.
         Args:
@@ -487,7 +487,7 @@ class ReportsRequestBuilder():
 
         return get_office365_groups_activity_counts_with_period_request_builder.GetOffice365GroupsActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_office365_groups_activity_detail_with_date(self,date: Optional[Date] = None) -> get_office365_groups_activity_detail_with_date_request_builder.GetOffice365GroupsActivityDetailWithDateRequestBuilder:
+    def get_office365_groups_activity_detail_with_date(self,date: Optional[date] = None) -> get_office365_groups_activity_detail_with_date_request_builder.GetOffice365GroupsActivityDetailWithDateRequestBuilder:
         """
         Provides operations to call the getOffice365GroupsActivityDetail method.
         Args:
@@ -591,7 +591,7 @@ class ReportsRequestBuilder():
 
         return get_one_drive_activity_user_counts_with_period_request_builder.GetOneDriveActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_one_drive_activity_user_detail_with_date(self,date: Optional[Date] = None) -> get_one_drive_activity_user_detail_with_date_request_builder.GetOneDriveActivityUserDetailWithDateRequestBuilder:
+    def get_one_drive_activity_user_detail_with_date(self,date: Optional[date] = None) -> get_one_drive_activity_user_detail_with_date_request_builder.GetOneDriveActivityUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getOneDriveActivityUserDetail method.
         Args:
@@ -630,7 +630,7 @@ class ReportsRequestBuilder():
 
         return get_one_drive_usage_account_counts_with_period_request_builder.GetOneDriveUsageAccountCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_one_drive_usage_account_detail_with_date(self,date: Optional[Date] = None) -> get_one_drive_usage_account_detail_with_date_request_builder.GetOneDriveUsageAccountDetailWithDateRequestBuilder:
+    def get_one_drive_usage_account_detail_with_date(self,date: Optional[date] = None) -> get_one_drive_usage_account_detail_with_date_request_builder.GetOneDriveUsageAccountDetailWithDateRequestBuilder:
         """
         Provides operations to call the getOneDriveUsageAccountDetail method.
         Args:
@@ -740,7 +740,7 @@ class ReportsRequestBuilder():
 
         return get_share_point_activity_user_counts_with_period_request_builder.GetSharePointActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_share_point_activity_user_detail_with_date(self,date: Optional[Date] = None) -> get_share_point_activity_user_detail_with_date_request_builder.GetSharePointActivityUserDetailWithDateRequestBuilder:
+    def get_share_point_activity_user_detail_with_date(self,date: Optional[date] = None) -> get_share_point_activity_user_detail_with_date_request_builder.GetSharePointActivityUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getSharePointActivityUserDetail method.
         Args:
@@ -766,7 +766,7 @@ class ReportsRequestBuilder():
 
         return get_share_point_activity_user_detail_with_period_request_builder.GetSharePointActivityUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_share_point_site_usage_detail_with_date(self,date: Optional[Date] = None) -> get_share_point_site_usage_detail_with_date_request_builder.GetSharePointSiteUsageDetailWithDateRequestBuilder:
+    def get_share_point_site_usage_detail_with_date(self,date: Optional[date] = None) -> get_share_point_site_usage_detail_with_date_request_builder.GetSharePointSiteUsageDetailWithDateRequestBuilder:
         """
         Provides operations to call the getSharePointSiteUsageDetail method.
         Args:
@@ -870,7 +870,7 @@ class ReportsRequestBuilder():
 
         return get_skype_for_business_activity_user_counts_with_period_request_builder.GetSkypeForBusinessActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_skype_for_business_activity_user_detail_with_date(self,date: Optional[Date] = None) -> get_skype_for_business_activity_user_detail_with_date_request_builder.GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder:
+    def get_skype_for_business_activity_user_detail_with_date(self,date: Optional[date] = None) -> get_skype_for_business_activity_user_detail_with_date_request_builder.GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessActivityUserDetail method.
         Args:
@@ -922,7 +922,7 @@ class ReportsRequestBuilder():
 
         return get_skype_for_business_device_usage_user_counts_with_period_request_builder.GetSkypeForBusinessDeviceUsageUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_skype_for_business_device_usage_user_detail_with_date(self,date: Optional[Date] = None) -> get_skype_for_business_device_usage_user_detail_with_date_request_builder.GetSkypeForBusinessDeviceUsageUserDetailWithDateRequestBuilder:
+    def get_skype_for_business_device_usage_user_detail_with_date(self,date: Optional[date] = None) -> get_skype_for_business_device_usage_user_detail_with_date_request_builder.GetSkypeForBusinessDeviceUsageUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getSkypeForBusinessDeviceUsageUserDetail method.
         Args:
@@ -1091,7 +1091,7 @@ class ReportsRequestBuilder():
 
         return get_teams_device_usage_user_counts_with_period_request_builder.GetTeamsDeviceUsageUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_teams_device_usage_user_detail_with_date(self,date: Optional[Date] = None) -> get_teams_device_usage_user_detail_with_date_request_builder.GetTeamsDeviceUsageUserDetailWithDateRequestBuilder:
+    def get_teams_device_usage_user_detail_with_date(self,date: Optional[date] = None) -> get_teams_device_usage_user_detail_with_date_request_builder.GetTeamsDeviceUsageUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getTeamsDeviceUsageUserDetail method.
         Args:
@@ -1143,7 +1143,7 @@ class ReportsRequestBuilder():
 
         return get_teams_user_activity_user_counts_with_period_request_builder.GetTeamsUserActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_teams_user_activity_user_detail_with_date(self,date: Optional[Date] = None) -> get_teams_user_activity_user_detail_with_date_request_builder.GetTeamsUserActivityUserDetailWithDateRequestBuilder:
+    def get_teams_user_activity_user_detail_with_date(self,date: Optional[date] = None) -> get_teams_user_activity_user_detail_with_date_request_builder.GetTeamsUserActivityUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getTeamsUserActivityUserDetail method.
         Args:
@@ -1214,7 +1214,7 @@ class ReportsRequestBuilder():
 
         return get_yammer_activity_user_counts_with_period_request_builder.GetYammerActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_yammer_activity_user_detail_with_date(self,date: Optional[Date] = None) -> get_yammer_activity_user_detail_with_date_request_builder.GetYammerActivityUserDetailWithDateRequestBuilder:
+    def get_yammer_activity_user_detail_with_date(self,date: Optional[date] = None) -> get_yammer_activity_user_detail_with_date_request_builder.GetYammerActivityUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getYammerActivityUserDetail method.
         Args:
@@ -1266,7 +1266,7 @@ class ReportsRequestBuilder():
 
         return get_yammer_device_usage_user_counts_with_period_request_builder.GetYammerDeviceUsageUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_yammer_device_usage_user_detail_with_date(self,date: Optional[Date] = None) -> get_yammer_device_usage_user_detail_with_date_request_builder.GetYammerDeviceUsageUserDetailWithDateRequestBuilder:
+    def get_yammer_device_usage_user_detail_with_date(self,date: Optional[date] = None) -> get_yammer_device_usage_user_detail_with_date_request_builder.GetYammerDeviceUsageUserDetailWithDateRequestBuilder:
         """
         Provides operations to call the getYammerDeviceUsageUserDetail method.
         Args:
@@ -1305,7 +1305,7 @@ class ReportsRequestBuilder():
 
         return get_yammer_groups_activity_counts_with_period_request_builder.GetYammerGroupsActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
-    def get_yammer_groups_activity_detail_with_date(self,date: Optional[Date] = None) -> get_yammer_groups_activity_detail_with_date_request_builder.GetYammerGroupsActivityDetailWithDateRequestBuilder:
+    def get_yammer_groups_activity_detail_with_date(self,date: Optional[date] = None) -> get_yammer_groups_activity_detail_with_date_request_builder.GetYammerGroupsActivityDetailWithDateRequestBuilder:
         """
         Provides operations to call the getYammerGroupsActivityDetail method.
         Args:

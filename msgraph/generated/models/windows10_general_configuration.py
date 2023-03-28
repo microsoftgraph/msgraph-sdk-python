@@ -94,9 +94,9 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         # Possible values for system scan type.
         self._defender_scan_type: Optional[defender_scan_type.DefenderScanType] = None
         # The time to perform a daily quick scan.
-        self._defender_scheduled_quick_scan_time: Optional[Time] = None
+        self._defender_scheduled_quick_scan_time: Optional[time] = None
         # The defender time for the system scan.
-        self._defender_scheduled_scan_time: Optional[Time] = None
+        self._defender_scheduled_scan_time: Optional[time] = None
         # The signature update interval in hours. Specify 0 not to check. Valid values 0 to 24
         self._defender_signature_update_interval_in_hours: Optional[int] = None
         # Possible values for a weekly schedule.
@@ -1094,15 +1094,15 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         self._defender_scan_type = value
     
     @property
-    def defender_scheduled_quick_scan_time(self,) -> Optional[Time]:
+    def defender_scheduled_quick_scan_time(self,) -> Optional[time]:
         """
         Gets the defenderScheduledQuickScanTime property value. The time to perform a daily quick scan.
-        Returns: Optional[Time]
+        Returns: Optional[time]
         """
         return self._defender_scheduled_quick_scan_time
     
     @defender_scheduled_quick_scan_time.setter
-    def defender_scheduled_quick_scan_time(self,value: Optional[Time] = None) -> None:
+    def defender_scheduled_quick_scan_time(self,value: Optional[time] = None) -> None:
         """
         Sets the defenderScheduledQuickScanTime property value. The time to perform a daily quick scan.
         Args:
@@ -1111,15 +1111,15 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         self._defender_scheduled_quick_scan_time = value
     
     @property
-    def defender_scheduled_scan_time(self,) -> Optional[Time]:
+    def defender_scheduled_scan_time(self,) -> Optional[time]:
         """
         Gets the defenderScheduledScanTime property value. The defender time for the system scan.
-        Returns: Optional[Time]
+        Returns: Optional[time]
         """
         return self._defender_scheduled_scan_time
     
     @defender_scheduled_scan_time.setter
-    def defender_scheduled_scan_time(self,value: Optional[Time] = None) -> None:
+    def defender_scheduled_scan_time(self,value: Optional[time] = None) -> None:
         """
         Sets the defenderScheduledScanTime property value. The defender time for the system scan.
         Args:
@@ -1888,8 +1888,8 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
             "defenderScanRemovableDrivesDuringFullScan": lambda n : setattr(self, 'defender_scan_removable_drives_during_full_scan', n.get_bool_value()),
             "defenderScanScriptsLoadedInInternetExplorer": lambda n : setattr(self, 'defender_scan_scripts_loaded_in_internet_explorer', n.get_bool_value()),
             "defenderScanType": lambda n : setattr(self, 'defender_scan_type', n.get_enum_value(defender_scan_type.DefenderScanType)),
-            "defenderScheduledQuickScanTime": lambda n : setattr(self, 'defender_scheduled_quick_scan_time', n.get_object_value(Time)),
-            "defenderScheduledScanTime": lambda n : setattr(self, 'defender_scheduled_scan_time', n.get_object_value(Time)),
+            "defenderScheduledQuickScanTime": lambda n : setattr(self, 'defender_scheduled_quick_scan_time', n.get_time_value()),
+            "defenderScheduledScanTime": lambda n : setattr(self, 'defender_scheduled_scan_time', n.get_time_value()),
             "defenderSignatureUpdateIntervalInHours": lambda n : setattr(self, 'defender_signature_update_interval_in_hours', n.get_int_value()),
             "defenderSystemScanSchedule": lambda n : setattr(self, 'defender_system_scan_schedule', n.get_enum_value(weekly_schedule.WeeklySchedule)),
             "developerUnlockSetting": lambda n : setattr(self, 'developer_unlock_setting', n.get_enum_value(state_management_setting.StateManagementSetting)),
@@ -2800,8 +2800,8 @@ class Windows10GeneralConfiguration(device_configuration.DeviceConfiguration):
         writer.write_bool_value("defenderScanRemovableDrivesDuringFullScan", self.defender_scan_removable_drives_during_full_scan)
         writer.write_bool_value("defenderScanScriptsLoadedInInternetExplorer", self.defender_scan_scripts_loaded_in_internet_explorer)
         writer.write_enum_value("defenderScanType", self.defender_scan_type)
-        writer.write_object_value("defenderScheduledQuickScanTime", self.defender_scheduled_quick_scan_time)
-        writer.write_object_value("defenderScheduledScanTime", self.defender_scheduled_scan_time)
+        writer.write_time_value("defenderScheduledQuickScanTime", self.defender_scheduled_quick_scan_time)
+        writer.write_time_value("defenderScheduledScanTime", self.defender_scheduled_scan_time)
         writer.write_int_value("defenderSignatureUpdateIntervalInHours", self.defender_signature_update_interval_in_hours)
         writer.write_enum_value("defenderSystemScanSchedule", self.defender_system_scan_schedule)
         writer.write_enum_value("developerUnlockSetting", self.developer_unlock_setting)

@@ -44,7 +44,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         # The Feature Updates Pause Expiry datetime. This value is 35 days from the time admin paused or extended the pause for the ring. Returned by default. Query parameters are not supported.
         self._feature_updates_pause_expiry_date_time: Optional[datetime] = None
         # The Feature Updates Pause start date. This value is the time when the admin paused or extended the pause for the ring. Returned by default. Query parameters are not supported. This property is read-only.
-        self._feature_updates_pause_start_date: Optional[Date] = None
+        self._feature_updates_pause_start_date: Optional[date] = None
         # When TRUE, assigned devices are paused from receiving feature updates for up to 35 days from the time you pause the ring. When FALSE, does not pause Feature Updates. Returned by default. Query parameters are not supported.s
         self._feature_updates_paused: Optional[bool] = None
         # The Feature Updates Rollback Start datetime.This value is the time when the admin rolled back the Feature update for the ring.Returned by default.Query parameters are not supported.
@@ -66,7 +66,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         # The Quality Updates Pause Expiry datetime. This value is 35 days from the time admin paused or extended the pause for the ring. Returned by default. Query parameters are not supported.
         self._quality_updates_pause_expiry_date_time: Optional[datetime] = None
         # The Quality Updates Pause start date. This value is the time when the admin paused or extended the pause for the ring. Returned by default. Query parameters are not supported. This property is read-only.
-        self._quality_updates_pause_start_date: Optional[Date] = None
+        self._quality_updates_pause_start_date: Optional[date] = None
         # When TRUE, assigned devices are paused from receiving quality updates for up to 35 days from the time you pause the ring. When FALSE, does not pause Quality Updates. Returned by default. Query parameters are not supported.
         self._quality_updates_paused: Optional[bool] = None
         # The Quality Updates Rollback Start datetime. This value is the time when the admin rolled back the Quality update for the ring. Returned by default. Query parameters are not supported.
@@ -339,15 +339,15 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         self._feature_updates_pause_expiry_date_time = value
     
     @property
-    def feature_updates_pause_start_date(self,) -> Optional[Date]:
+    def feature_updates_pause_start_date(self,) -> Optional[date]:
         """
         Gets the featureUpdatesPauseStartDate property value. The Feature Updates Pause start date. This value is the time when the admin paused or extended the pause for the ring. Returned by default. Query parameters are not supported. This property is read-only.
-        Returns: Optional[Date]
+        Returns: Optional[date]
         """
         return self._feature_updates_pause_start_date
     
     @feature_updates_pause_start_date.setter
-    def feature_updates_pause_start_date(self,value: Optional[Date] = None) -> None:
+    def feature_updates_pause_start_date(self,value: Optional[date] = None) -> None:
         """
         Sets the featureUpdatesPauseStartDate property value. The Feature Updates Pause start date. This value is the time when the admin paused or extended the pause for the ring. Returned by default. Query parameters are not supported. This property is read-only.
         Args:
@@ -446,7 +446,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             "featureUpdatesDeferralPeriodInDays": lambda n : setattr(self, 'feature_updates_deferral_period_in_days', n.get_int_value()),
             "featureUpdatesPaused": lambda n : setattr(self, 'feature_updates_paused', n.get_bool_value()),
             "featureUpdatesPauseExpiryDateTime": lambda n : setattr(self, 'feature_updates_pause_expiry_date_time', n.get_datetime_value()),
-            "featureUpdatesPauseStartDate": lambda n : setattr(self, 'feature_updates_pause_start_date', n.get_object_value(Date)),
+            "featureUpdatesPauseStartDate": lambda n : setattr(self, 'feature_updates_pause_start_date', n.get_date_value()),
             "featureUpdatesRollbackStartDateTime": lambda n : setattr(self, 'feature_updates_rollback_start_date_time', n.get_datetime_value()),
             "featureUpdatesRollbackWindowInDays": lambda n : setattr(self, 'feature_updates_rollback_window_in_days', n.get_int_value()),
             "featureUpdatesWillBeRolledBack": lambda n : setattr(self, 'feature_updates_will_be_rolled_back', n.get_bool_value()),
@@ -457,7 +457,7 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
             "qualityUpdatesDeferralPeriodInDays": lambda n : setattr(self, 'quality_updates_deferral_period_in_days', n.get_int_value()),
             "qualityUpdatesPaused": lambda n : setattr(self, 'quality_updates_paused', n.get_bool_value()),
             "qualityUpdatesPauseExpiryDateTime": lambda n : setattr(self, 'quality_updates_pause_expiry_date_time', n.get_datetime_value()),
-            "qualityUpdatesPauseStartDate": lambda n : setattr(self, 'quality_updates_pause_start_date', n.get_object_value(Date)),
+            "qualityUpdatesPauseStartDate": lambda n : setattr(self, 'quality_updates_pause_start_date', n.get_date_value()),
             "qualityUpdatesRollbackStartDateTime": lambda n : setattr(self, 'quality_updates_rollback_start_date_time', n.get_datetime_value()),
             "qualityUpdatesWillBeRolledBack": lambda n : setattr(self, 'quality_updates_will_be_rolled_back', n.get_bool_value()),
             "scheduleImminentRestartWarningInMinutes": lambda n : setattr(self, 'schedule_imminent_restart_warning_in_minutes', n.get_int_value()),
@@ -575,15 +575,15 @@ class WindowsUpdateForBusinessConfiguration(device_configuration.DeviceConfigura
         self._quality_updates_pause_expiry_date_time = value
     
     @property
-    def quality_updates_pause_start_date(self,) -> Optional[Date]:
+    def quality_updates_pause_start_date(self,) -> Optional[date]:
         """
         Gets the qualityUpdatesPauseStartDate property value. The Quality Updates Pause start date. This value is the time when the admin paused or extended the pause for the ring. Returned by default. Query parameters are not supported. This property is read-only.
-        Returns: Optional[Date]
+        Returns: Optional[date]
         """
         return self._quality_updates_pause_start_date
     
     @quality_updates_pause_start_date.setter
-    def quality_updates_pause_start_date(self,value: Optional[Date] = None) -> None:
+    def quality_updates_pause_start_date(self,value: Optional[date] = None) -> None:
         """
         Sets the qualityUpdatesPauseStartDate property value. The Quality Updates Pause start date. This value is the time when the admin paused or extended the pause for the ring. Returned by default. Query parameters are not supported. This property is read-only.
         Args:

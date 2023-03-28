@@ -1,6 +1,7 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from ...models import assigned_license
@@ -16,7 +17,7 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
         # The addLicenses property
         self._add_licenses: Optional[List[assigned_license.AssignedLicense]] = None
         # The removeLicenses property
-        self._remove_licenses: Optional[List[Guid]] = None
+        self._remove_licenses: Optional[List[UUID]] = None
     
     @property
     def add_licenses(self,) -> Optional[List[assigned_license.AssignedLicense]]:
@@ -73,20 +74,20 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "addLicenses": lambda n : setattr(self, 'add_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
-            "removeLicenses": lambda n : setattr(self, 'remove_licenses', n.get_collection_of_primitive_values(guid)),
+            "removeLicenses": lambda n : setattr(self, 'remove_licenses', n.get_collection_of_primitive_values(u_u_i_d)),
         }
         return fields
     
     @property
-    def remove_licenses(self,) -> Optional[List[Guid]]:
+    def remove_licenses(self,) -> Optional[List[UUID]]:
         """
         Gets the removeLicenses property value. The removeLicenses property
-        Returns: Optional[List[Guid]]
+        Returns: Optional[List[UUID]]
         """
         return self._remove_licenses
     
     @remove_licenses.setter
-    def remove_licenses(self,value: Optional[List[Guid]] = None) -> None:
+    def remove_licenses(self,value: Optional[List[UUID]] = None) -> None:
         """
         Sets the removeLicenses property value. The removeLicenses property
         Args:

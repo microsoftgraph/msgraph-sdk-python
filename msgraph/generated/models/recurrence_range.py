@@ -15,7 +15,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         self._additional_data: Dict[str, Any] = {}
 
         # The date to stop applying the recurrence pattern. Depending on the recurrence pattern of the event, the last occurrence of the meeting may not be this date. Required if type is endDate.
-        self._end_date: Optional[Date] = None
+        self._end_date: Optional[date] = None
         # The number of times to repeat the event. Required and must be positive if type is numbered.
         self._number_of_occurrences: Optional[int] = None
         # The OdataType property
@@ -23,7 +23,7 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         # Time zone for the startDate and endDate properties. Optional. If not specified, the time zone of the event is used.
         self._recurrence_time_zone: Optional[str] = None
         # The date to start applying the recurrence pattern. The first occurrence of the meeting may be this date or later, depending on the recurrence pattern of the event. Must be the same value as the start property of the recurring event. Required.
-        self._start_date: Optional[Date] = None
+        self._start_date: Optional[date] = None
         # The recurrence range. The possible values are: endDate, noEnd, numbered. Required.
         self._type: Optional[recurrence_range_type.RecurrenceRangeType] = None
     
@@ -57,15 +57,15 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         return RecurrenceRange()
     
     @property
-    def end_date(self,) -> Optional[Date]:
+    def end_date(self,) -> Optional[date]:
         """
         Gets the endDate property value. The date to stop applying the recurrence pattern. Depending on the recurrence pattern of the event, the last occurrence of the meeting may not be this date. Required if type is endDate.
-        Returns: Optional[Date]
+        Returns: Optional[date]
         """
         return self._end_date
     
     @end_date.setter
-    def end_date(self,value: Optional[Date] = None) -> None:
+    def end_date(self,value: Optional[date] = None) -> None:
         """
         Sets the endDate property value. The date to stop applying the recurrence pattern. Depending on the recurrence pattern of the event, the last occurrence of the meeting may not be this date. Required if type is endDate.
         Args:
@@ -81,11 +81,11 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         from . import recurrence_range_type
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "endDate": lambda n : setattr(self, 'end_date', n.get_object_value(Date)),
+            "endDate": lambda n : setattr(self, 'end_date', n.get_date_value()),
             "numberOfOccurrences": lambda n : setattr(self, 'number_of_occurrences', n.get_int_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "recurrenceTimeZone": lambda n : setattr(self, 'recurrence_time_zone', n.get_str_value()),
-            "startDate": lambda n : setattr(self, 'start_date', n.get_object_value(Date)),
+            "startDate": lambda n : setattr(self, 'start_date', n.get_date_value()),
             "type": lambda n : setattr(self, 'type', n.get_enum_value(recurrence_range_type.RecurrenceRangeType)),
         }
         return fields
@@ -149,24 +149,24 @@ class RecurrenceRange(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_object_value("endDate", self.end_date)
+        writer.write_date_value("endDate", self.end_date)
         writer.write_int_value("numberOfOccurrences", self.number_of_occurrences)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("recurrenceTimeZone", self.recurrence_time_zone)
-        writer.write_object_value("startDate", self.start_date)
+        writer.write_date_value("startDate", self.start_date)
         writer.write_enum_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
     
     @property
-    def start_date(self,) -> Optional[Date]:
+    def start_date(self,) -> Optional[date]:
         """
         Gets the startDate property value. The date to start applying the recurrence pattern. The first occurrence of the meeting may be this date or later, depending on the recurrence pattern of the event. Must be the same value as the start property of the recurring event. Required.
-        Returns: Optional[Date]
+        Returns: Optional[date]
         """
         return self._start_date
     
     @start_date.setter
-    def start_date(self,value: Optional[Date] = None) -> None:
+    def start_date(self,value: Optional[date] = None) -> None:
         """
         Sets the startDate property value. The date to start applying the recurrence pattern. The first occurrence of the meeting may be this date or later, depending on the recurrence pattern of the event. Must be the same value as the start property of the recurring event. Required.
         Args:

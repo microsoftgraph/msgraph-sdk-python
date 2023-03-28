@@ -1,6 +1,7 @@
 from __future__ import annotations
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 if TYPE_CHECKING:
     from . import managed_app_policy, mdm_windows_information_protection_policy, targeted_managed_app_policy_assignment, windows_information_protection_app, windows_information_protection_app_locker_file, windows_information_protection_data_recovery_certificate, windows_information_protection_enforcement_level, windows_information_protection_i_p_range_collection, windows_information_protection_policy, windows_information_protection_proxied_domain_collection, windows_information_protection_resource_collection
@@ -61,7 +62,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         # This policy controls whether to revoke the WIP keys when a device unenrolls from the management service. If set to 1 (Don't revoke keys), the keys will not be revoked and the user will continue to have access to protected files after unenrollment. If the keys are not revoked, there will be no revoked file cleanup subsequently.
         self._revoke_on_unenroll_disabled: Optional[bool] = None
         # TemplateID GUID to use for RMS encryption. The RMS template allows the IT admin to configure the details about who has access to RMS-protected file and how long they have access
-        self._rights_management_services_template_id: Optional[Guid] = None
+        self._rights_management_services_template_id: Optional[UUID] = None
         # Specifies a list of file extensions, so that files with these extensions are encrypted when copying from an SMB share within the corporate boundary
         self._smb_auto_encrypted_file_extensions: Optional[List[windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection]] = None
     
@@ -374,7 +375,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
             "protectedAppLockerFiles": lambda n : setattr(self, 'protected_app_locker_files', n.get_collection_of_object_values(windows_information_protection_app_locker_file.WindowsInformationProtectionAppLockerFile)),
             "protectionUnderLockConfigRequired": lambda n : setattr(self, 'protection_under_lock_config_required', n.get_bool_value()),
             "revokeOnUnenrollDisabled": lambda n : setattr(self, 'revoke_on_unenroll_disabled', n.get_bool_value()),
-            "rightsManagementServicesTemplateId": lambda n : setattr(self, 'rights_management_services_template_id', n.get_object_value(Guid)),
+            "rightsManagementServicesTemplateId": lambda n : setattr(self, 'rights_management_services_template_id', n.get_uuid_value()),
             "smbAutoEncryptedFileExtensions": lambda n : setattr(self, 'smb_auto_encrypted_file_extensions', n.get_collection_of_object_values(windows_information_protection_resource_collection.WindowsInformationProtectionResourceCollection)),
         }
         super_fields = super().get_field_deserializers()
@@ -518,15 +519,15 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         self._revoke_on_unenroll_disabled = value
     
     @property
-    def rights_management_services_template_id(self,) -> Optional[Guid]:
+    def rights_management_services_template_id(self,) -> Optional[UUID]:
         """
         Gets the rightsManagementServicesTemplateId property value. TemplateID GUID to use for RMS encryption. The RMS template allows the IT admin to configure the details about who has access to RMS-protected file and how long they have access
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._rights_management_services_template_id
     
     @rights_management_services_template_id.setter
-    def rights_management_services_template_id(self,value: Optional[Guid] = None) -> None:
+    def rights_management_services_template_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the rightsManagementServicesTemplateId property value. TemplateID GUID to use for RMS encryption. The RMS template allows the IT admin to configure the details about who has access to RMS-protected file and how long they have access
         Args:
@@ -566,7 +567,7 @@ class WindowsInformationProtection(managed_app_policy.ManagedAppPolicy):
         writer.write_collection_of_object_values("protectedAppLockerFiles", self.protected_app_locker_files)
         writer.write_bool_value("protectionUnderLockConfigRequired", self.protection_under_lock_config_required)
         writer.write_bool_value("revokeOnUnenrollDisabled", self.revoke_on_unenroll_disabled)
-        writer.write_object_value("rightsManagementServicesTemplateId", self.rights_management_services_template_id)
+        writer.write_uuid_value("rightsManagementServicesTemplateId", self.rights_management_services_template_id)
         writer.write_collection_of_object_values("smbAutoEncryptedFileExtensions", self.smb_auto_encrypted_file_extensions)
     
     @property

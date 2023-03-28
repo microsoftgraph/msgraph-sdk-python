@@ -2,6 +2,7 @@ from __future__ import annotations
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+from uuid import UUID
 
 class AssignedPlan(AdditionalDataHolder, Parsable):
     def __init__(self,) -> None:
@@ -20,7 +21,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         # The name of the service; for example, exchange.
         self._service: Optional[str] = None
         # A GUID that identifies the service plan. For a complete list of GUIDs and their equivalent friendly service names, see Product names and service plan identifiers for licensing.
-        self._service_plan_id: Optional[Guid] = None
+        self._service_plan_id: Optional[UUID] = None
     
     @property
     def additional_data(self,) -> Dict[str, Any]:
@@ -95,7 +96,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
             "capabilityStatus": lambda n : setattr(self, 'capability_status', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "service": lambda n : setattr(self, 'service', n.get_str_value()),
-            "servicePlanId": lambda n : setattr(self, 'service_plan_id', n.get_object_value(Guid)),
+            "servicePlanId": lambda n : setattr(self, 'service_plan_id', n.get_uuid_value()),
         }
         return fields
     
@@ -128,7 +129,7 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         writer.write_str_value("capabilityStatus", self.capability_status)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("service", self.service)
-        writer.write_object_value("servicePlanId", self.service_plan_id)
+        writer.write_uuid_value("servicePlanId", self.service_plan_id)
         writer.write_additional_data_value(self.additional_data)
     
     @property
@@ -149,15 +150,15 @@ class AssignedPlan(AdditionalDataHolder, Parsable):
         self._service = value
     
     @property
-    def service_plan_id(self,) -> Optional[Guid]:
+    def service_plan_id(self,) -> Optional[UUID]:
         """
         Gets the servicePlanId property value. A GUID that identifies the service plan. For a complete list of GUIDs and their equivalent friendly service names, see Product names and service plan identifiers for licensing.
-        Returns: Optional[Guid]
+        Returns: Optional[UUID]
         """
         return self._service_plan_id
     
     @service_plan_id.setter
-    def service_plan_id(self,value: Optional[Guid] = None) -> None:
+    def service_plan_id(self,value: Optional[UUID] = None) -> None:
         """
         Sets the servicePlanId property value. A GUID that identifies the service plan. For a complete list of GUIDs and their equivalent friendly service names, see Product names and service plan identifiers for licensing.
         Args:

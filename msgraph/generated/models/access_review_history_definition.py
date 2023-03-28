@@ -11,7 +11,7 @@ from . import entity
 class AccessReviewHistoryDefinition(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new AccessReviewHistoryDefinition and sets the default values.
+        Instantiates a new accessReviewHistoryDefinition and sets the default values.
         """
         super().__init__()
         # The createdBy property

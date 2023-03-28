@@ -15,7 +15,7 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         self._additional_data: Dict[str, Any] = {}
 
         # Birth date of the student.
-        self._birth_date: Optional[Date] = None
+        self._birth_date: Optional[date] = None
         # ID of the student in the source system.
         self._external_id: Optional[str] = None
         # The possible values are: female, male, other, unknownFutureValue.
@@ -47,15 +47,15 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         self._additional_data = value
     
     @property
-    def birth_date(self,) -> Optional[Date]:
+    def birth_date(self,) -> Optional[date]:
         """
         Gets the birthDate property value. Birth date of the student.
-        Returns: Optional[Date]
+        Returns: Optional[date]
         """
         return self._birth_date
     
     @birth_date.setter
-    def birth_date(self,value: Optional[Date] = None) -> None:
+    def birth_date(self,value: Optional[date] = None) -> None:
         """
         Sets the birthDate property value. Birth date of the student.
         Args:
@@ -117,7 +117,7 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         from . import education_gender
 
         fields: Dict[str, Callable[[Any], None]] = {
-            "birthDate": lambda n : setattr(self, 'birth_date', n.get_object_value(Date)),
+            "birthDate": lambda n : setattr(self, 'birth_date', n.get_date_value()),
             "externalId": lambda n : setattr(self, 'external_id', n.get_str_value()),
             "gender": lambda n : setattr(self, 'gender', n.get_enum_value(education_gender.EducationGender)),
             "grade": lambda n : setattr(self, 'grade', n.get_str_value()),
@@ -186,7 +186,7 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_object_value("birthDate", self.birth_date)
+        writer.write_date_value("birthDate", self.birth_date)
         writer.write_str_value("externalId", self.external_id)
         writer.write_enum_value("gender", self.gender)
         writer.write_str_value("grade", self.grade)

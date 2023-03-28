@@ -9,9 +9,12 @@ if TYPE_CHECKING:
 from . import entity
 
 class BookingAppointment(entity.Entity):
+    """
+    Represents a booked appointment of a service by a customer in a business.
+    """
     def __init__(self,) -> None:
         """
-        Instantiates a new BookingAppointment and sets the default values.
+        Instantiates a new bookingAppointment and sets the default values.
         """
         super().__init__()
         # Additional information that is sent to the customer when an appointment is confirmed.
@@ -23,7 +26,7 @@ class BookingAppointment(entity.Entity):
         # A collection of customer properties for an appointment. An appointment will contain a list of customer information and each unit will indicate the properties of a customer who is part of that appointment. Optional.
         self._customers: Optional[List[booking_customer_information_base.BookingCustomerInformationBase]] = None
         # The length of the appointment, denoted in ISO8601 format.
-        self._duration: Optional[Timedelta] = None
+        self._duration: Optional[timedelta] = None
         # The endDateTime property
         self._end_date_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
         # The current number of customers in the appointment
@@ -39,9 +42,9 @@ class BookingAppointment(entity.Entity):
         # If true indicates that the bookingCustomer for this appointment does not wish to receive a confirmation for this appointment.
         self._opt_out_of_customer_email: Optional[bool] = None
         # The amount of time to reserve after the appointment ends, for cleaning up, as an example. The value is expressed in ISO8601 format.
-        self._post_buffer: Optional[Timedelta] = None
+        self._post_buffer: Optional[timedelta] = None
         # The amount of time to reserve before the appointment begins, for preparation, as an example. The value is expressed in ISO8601 format.
-        self._pre_buffer: Optional[Timedelta] = None
+        self._pre_buffer: Optional[timedelta] = None
         # The regular price for an appointment for the specified bookingService.
         self._price: Optional[float] = None
         # Represents the type of pricing of a booking service.
@@ -146,15 +149,15 @@ class BookingAppointment(entity.Entity):
         self._customers = value
     
     @property
-    def duration(self,) -> Optional[Timedelta]:
+    def duration(self,) -> Optional[timedelta]:
         """
         Gets the duration property value. The length of the appointment, denoted in ISO8601 format.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._duration
     
     @duration.setter
-    def duration(self,value: Optional[Timedelta] = None) -> None:
+    def duration(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the duration property value. The length of the appointment, denoted in ISO8601 format.
         Args:
@@ -208,15 +211,15 @@ class BookingAppointment(entity.Entity):
             "anonymousJoinWebUrl": lambda n : setattr(self, 'anonymous_join_web_url', n.get_str_value()),
             "customers": lambda n : setattr(self, 'customers', n.get_collection_of_object_values(booking_customer_information_base.BookingCustomerInformationBase)),
             "customerTimeZone": lambda n : setattr(self, 'customer_time_zone', n.get_str_value()),
-            "duration": lambda n : setattr(self, 'duration', n.get_object_value(Timedelta)),
+            "duration": lambda n : setattr(self, 'duration', n.get_timedelta_value()),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
             "filledAttendeesCount": lambda n : setattr(self, 'filled_attendees_count', n.get_int_value()),
             "isLocationOnline": lambda n : setattr(self, 'is_location_online', n.get_bool_value()),
             "joinWebUrl": lambda n : setattr(self, 'join_web_url', n.get_str_value()),
             "maximumAttendeesCount": lambda n : setattr(self, 'maximum_attendees_count', n.get_int_value()),
             "optOutOfCustomerEmail": lambda n : setattr(self, 'opt_out_of_customer_email', n.get_bool_value()),
-            "postBuffer": lambda n : setattr(self, 'post_buffer', n.get_object_value(Timedelta)),
-            "preBuffer": lambda n : setattr(self, 'pre_buffer', n.get_object_value(Timedelta)),
+            "postBuffer": lambda n : setattr(self, 'post_buffer', n.get_timedelta_value()),
+            "preBuffer": lambda n : setattr(self, 'pre_buffer', n.get_timedelta_value()),
             "price": lambda n : setattr(self, 'price', n.get_float_value()),
             "priceType": lambda n : setattr(self, 'price_type', n.get_enum_value(booking_price_type.BookingPriceType)),
             "reminders": lambda n : setattr(self, 'reminders', n.get_collection_of_object_values(booking_reminder.BookingReminder)),
@@ -302,15 +305,15 @@ class BookingAppointment(entity.Entity):
         self._opt_out_of_customer_email = value
     
     @property
-    def post_buffer(self,) -> Optional[Timedelta]:
+    def post_buffer(self,) -> Optional[timedelta]:
         """
         Gets the postBuffer property value. The amount of time to reserve after the appointment ends, for cleaning up, as an example. The value is expressed in ISO8601 format.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._post_buffer
     
     @post_buffer.setter
-    def post_buffer(self,value: Optional[Timedelta] = None) -> None:
+    def post_buffer(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the postBuffer property value. The amount of time to reserve after the appointment ends, for cleaning up, as an example. The value is expressed in ISO8601 format.
         Args:
@@ -319,15 +322,15 @@ class BookingAppointment(entity.Entity):
         self._post_buffer = value
     
     @property
-    def pre_buffer(self,) -> Optional[Timedelta]:
+    def pre_buffer(self,) -> Optional[timedelta]:
         """
         Gets the preBuffer property value. The amount of time to reserve before the appointment begins, for preparation, as an example. The value is expressed in ISO8601 format.
-        Returns: Optional[Timedelta]
+        Returns: Optional[timedelta]
         """
         return self._pre_buffer
     
     @pre_buffer.setter
-    def pre_buffer(self,value: Optional[Timedelta] = None) -> None:
+    def pre_buffer(self,value: Optional[timedelta] = None) -> None:
         """
         Sets the preBuffer property value. The amount of time to reserve before the appointment begins, for preparation, as an example. The value is expressed in ISO8601 format.
         Args:
@@ -421,8 +424,8 @@ class BookingAppointment(entity.Entity):
         writer.write_str_value("joinWebUrl", self.join_web_url)
         writer.write_int_value("maximumAttendeesCount", self.maximum_attendees_count)
         writer.write_bool_value("optOutOfCustomerEmail", self.opt_out_of_customer_email)
-        writer.write_object_value("postBuffer", self.post_buffer)
-        writer.write_object_value("preBuffer", self.pre_buffer)
+        writer.write_timedelta_value("postBuffer", self.post_buffer)
+        writer.write_timedelta_value("preBuffer", self.pre_buffer)
         writer.write_float_value("price", self.price)
         writer.write_enum_value("priceType", self.price_type)
         writer.write_collection_of_object_values("reminders", self.reminders)

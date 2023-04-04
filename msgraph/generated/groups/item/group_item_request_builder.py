@@ -164,11 +164,12 @@ class GroupItemRequestBuilder():
         url_tpl_params["conversation%2Did"] = id
         return conversation_item_request_builder.ConversationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def delete(self,request_configuration: Optional[GroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[GroupItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
         """
         Delete group. When deleted, Microsoft 365 groups are moved to a temporary container and can be restored within 30 days. After that time, they're permanently deleted. This isn't applicable to Security groups and Distribution groups which are permanently deleted immediately. To learn more, see deletedItems.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -181,7 +182,7 @@ class GroupItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
     def drives_by_id(self,id: str) -> drive_item_request_builder.DriveItemRequestBuilder:
         """
@@ -356,7 +357,7 @@ class GroupItemRequestBuilder():
     
     async def patch(self,body: Optional[group.Group] = None, request_configuration: Optional[GroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[group.Group]:
         """
-        Add a member to a security or Microsoft 365 group through the **members** navigation property. The following table shows the types of members that can be added to either security groups or Microsoft 365 groups.
+        Update the properties of a group object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -512,7 +513,7 @@ class GroupItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[group.Group] = None, request_configuration: Optional[GroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Add a member to a security or Microsoft 365 group through the **members** navigation property. The following table shows the types of members that can be added to either security groups or Microsoft 365 groups.
+        Update the properties of a group object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -90,11 +90,12 @@ class TodoTaskItemRequestBuilder():
         url_tpl_params["checklistItem%2Did"] = id
         return checklist_item_item_request_builder.ChecklistItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def delete(self,request_configuration: Optional[TodoTaskItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[TodoTaskItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
         """
         Delete navigation property tasks for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -107,7 +108,7 @@ class TodoTaskItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
     def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
         """

@@ -30,7 +30,7 @@ class CalendarViewRequestBuilder():
         if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/solutions/bookingBusinesses/{bookingBusiness%2Did}/calendarView{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}"
+        self.url_template: str = "{+baseurl}/solutions/bookingBusinesses/{bookingBusiness%2Did}/calendarView{?start*,end*,%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
@@ -38,7 +38,7 @@ class CalendarViewRequestBuilder():
     
     async def get(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_appointment_collection_response.BookingAppointmentCollectionResponse]:
         """
-        Get the collection of bookingAppointment objects for a bookingBusiness that occurs in the specified date range.
+        The set of appointments of this business in a specified date range. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[booking_appointment_collection_response.BookingAppointmentCollectionResponse]
@@ -85,7 +85,7 @@ class CalendarViewRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the collection of bookingAppointment objects for a bookingBusiness that occurs in the specified date range.
+        The set of appointments of this business in a specified date range. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -134,7 +134,7 @@ class CalendarViewRequestBuilder():
     @dataclass
     class CalendarViewRequestBuilderGetQueryParameters():
         """
-        Get the collection of bookingAppointment objects for a bookingBusiness that occurs in the specified date range.
+        The set of appointments of this business in a specified date range. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -161,10 +161,17 @@ class CalendarViewRequestBuilder():
                 return "%24skip"
             if original_name == "top":
                 return "%24top"
+            if original_name == "end":
+                return "end"
+            if original_name == "start":
+                return "start"
             return original_name
         
         # Include count of items
         count: Optional[bool] = None
+
+        # The end date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T20:00:00-08:00
+        end: Optional[str] = None
 
         # Expand related entities
         expand: Optional[List[str]] = None
@@ -183,6 +190,9 @@ class CalendarViewRequestBuilder():
 
         # Skip the first n items
         skip: Optional[int] = None
+
+        # The start date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T19:00:00-08:00
+        start: Optional[str] = None
 
         # Show only the first n items
         top: Optional[int] = None

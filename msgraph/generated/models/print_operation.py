@@ -11,7 +11,7 @@ from . import entity
 class PrintOperation(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new printOperation and sets the default values.
+        Instantiates a new PrintOperation and sets the default values.
         """
         super().__init__()
         # The DateTimeOffset when the operation was created. Read-only.

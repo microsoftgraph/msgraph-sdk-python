@@ -25,6 +25,8 @@ if TYPE_CHECKING:
     from .secure_scores import secure_scores_request_builder
     from .secure_scores.item import secure_score_item_request_builder
     from .security_run_hunting_query import security_run_hunting_query_request_builder
+    from .triggers import triggers_request_builder
+    from .trigger_types import trigger_types_request_builder
 
 class SecurityRequestBuilder():
     """
@@ -282,6 +284,24 @@ class SecurityRequestBuilder():
         from .security_run_hunting_query import security_run_hunting_query_request_builder
 
         return security_run_hunting_query_request_builder.SecurityRunHuntingQueryRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def triggers(self) -> triggers_request_builder.TriggersRequestBuilder:
+        """
+        Provides operations to manage the triggers property of the microsoft.graph.security entity.
+        """
+        from .triggers import triggers_request_builder
+
+        return triggers_request_builder.TriggersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def trigger_types(self) -> trigger_types_request_builder.TriggerTypesRequestBuilder:
+        """
+        Provides operations to manage the triggerTypes property of the microsoft.graph.security entity.
+        """
+        from .trigger_types import trigger_types_request_builder
+
+        return trigger_types_request_builder.TriggerTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SecurityRequestBuilderGetQueryParameters():

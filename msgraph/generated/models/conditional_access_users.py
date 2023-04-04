@@ -21,13 +21,13 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
         self._exclude_roles: Optional[List[str]] = None
         # User IDs excluded from scope of policy and/or GuestsOrExternalUsers.
         self._exclude_users: Optional[List[str]] = None
-        # Group IDs in scope of policy unless explicitly excluded, or All.
+        # Group IDs in scope of policy unless explicitly excluded.
         self._include_groups: Optional[List[str]] = None
         # The includeGuestsOrExternalUsers property
         self._include_guests_or_external_users: Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers] = None
-        # Role IDs in scope of policy unless explicitly excluded, or All.
+        # Role IDs in scope of policy unless explicitly excluded.
         self._include_roles: Optional[List[str]] = None
-        # User IDs in scope of policy unless explicitly excluded, or None or All or GuestsOrExternalUsers.
+        # User IDs in scope of policy unless explicitly excluded, None, All, or GuestsOrExternalUsers.
         self._include_users: Optional[List[str]] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
@@ -152,7 +152,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
     @property
     def include_groups(self,) -> Optional[List[str]]:
         """
-        Gets the includeGroups property value. Group IDs in scope of policy unless explicitly excluded, or All.
+        Gets the includeGroups property value. Group IDs in scope of policy unless explicitly excluded.
         Returns: Optional[List[str]]
         """
         return self._include_groups
@@ -160,7 +160,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
     @include_groups.setter
     def include_groups(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the includeGroups property value. Group IDs in scope of policy unless explicitly excluded, or All.
+        Sets the includeGroups property value. Group IDs in scope of policy unless explicitly excluded.
         Args:
             value: Value to set for the include_groups property.
         """
@@ -186,7 +186,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
     @property
     def include_roles(self,) -> Optional[List[str]]:
         """
-        Gets the includeRoles property value. Role IDs in scope of policy unless explicitly excluded, or All.
+        Gets the includeRoles property value. Role IDs in scope of policy unless explicitly excluded.
         Returns: Optional[List[str]]
         """
         return self._include_roles
@@ -194,7 +194,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
     @include_roles.setter
     def include_roles(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the includeRoles property value. Role IDs in scope of policy unless explicitly excluded, or All.
+        Sets the includeRoles property value. Role IDs in scope of policy unless explicitly excluded.
         Args:
             value: Value to set for the include_roles property.
         """
@@ -203,7 +203,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
     @property
     def include_users(self,) -> Optional[List[str]]:
         """
-        Gets the includeUsers property value. User IDs in scope of policy unless explicitly excluded, or None or All or GuestsOrExternalUsers.
+        Gets the includeUsers property value. User IDs in scope of policy unless explicitly excluded, None, All, or GuestsOrExternalUsers.
         Returns: Optional[List[str]]
         """
         return self._include_users
@@ -211,7 +211,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
     @include_users.setter
     def include_users(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the includeUsers property value. User IDs in scope of policy unless explicitly excluded, or None or All or GuestsOrExternalUsers.
+        Sets the includeUsers property value. User IDs in scope of policy unless explicitly excluded, None, All, or GuestsOrExternalUsers.
         Args:
             value: Value to set for the include_users property.
         """

@@ -3,7 +3,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import alert, cases_root, incident
+    from . import alert, cases_root, incident, triggers_root, trigger_types_root
     from .. import alert, attack_simulation_root, entity, secure_score, secure_score_control_profile
 
 from .. import entity
@@ -30,6 +30,10 @@ class Security(entity.Entity):
         self._secure_score_control_profiles: Optional[List[secure_score_control_profile.SecureScoreControlProfile]] = None
         # The secureScores property
         self._secure_scores: Optional[List[secure_score.SecureScore]] = None
+        # The triggerTypes property
+        self._trigger_types: Optional[trigger_types_root.TriggerTypesRoot] = None
+        # The triggers property
+        self._triggers: Optional[triggers_root.TriggersRoot] = None
     
     @property
     def alerts(self,) -> Optional[List[alert.Alert]]:
@@ -116,7 +120,7 @@ class Security(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import alert, cases_root, incident
+        from . import alert, cases_root, incident, triggers_root, trigger_types_root
         from .. import alert, attack_simulation_root, entity, secure_score, secure_score_control_profile
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -127,6 +131,8 @@ class Security(entity.Entity):
             "incidents": lambda n : setattr(self, 'incidents', n.get_collection_of_object_values(incident.Incident)),
             "secureScores": lambda n : setattr(self, 'secure_scores', n.get_collection_of_object_values(secure_score.SecureScore)),
             "secureScoreControlProfiles": lambda n : setattr(self, 'secure_score_control_profiles', n.get_collection_of_object_values(secure_score_control_profile.SecureScoreControlProfile)),
+            "triggers": lambda n : setattr(self, 'triggers', n.get_object_value(triggers_root.TriggersRoot)),
+            "triggerTypes": lambda n : setattr(self, 'trigger_types', n.get_object_value(trigger_types_root.TriggerTypesRoot)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -199,5 +205,41 @@ class Security(entity.Entity):
         writer.write_collection_of_object_values("incidents", self.incidents)
         writer.write_collection_of_object_values("secureScores", self.secure_scores)
         writer.write_collection_of_object_values("secureScoreControlProfiles", self.secure_score_control_profiles)
+        writer.write_object_value("triggers", self.triggers)
+        writer.write_object_value("triggerTypes", self.trigger_types)
+    
+    @property
+    def trigger_types(self,) -> Optional[trigger_types_root.TriggerTypesRoot]:
+        """
+        Gets the triggerTypes property value. The triggerTypes property
+        Returns: Optional[trigger_types_root.TriggerTypesRoot]
+        """
+        return self._trigger_types
+    
+    @trigger_types.setter
+    def trigger_types(self,value: Optional[trigger_types_root.TriggerTypesRoot] = None) -> None:
+        """
+        Sets the triggerTypes property value. The triggerTypes property
+        Args:
+            value: Value to set for the trigger_types property.
+        """
+        self._trigger_types = value
+    
+    @property
+    def triggers(self,) -> Optional[triggers_root.TriggersRoot]:
+        """
+        Gets the triggers property value. The triggers property
+        Returns: Optional[triggers_root.TriggersRoot]
+        """
+        return self._triggers
+    
+    @triggers.setter
+    def triggers(self,value: Optional[triggers_root.TriggersRoot] = None) -> None:
+        """
+        Sets the triggers property value. The triggers property
+        Args:
+            value: Value to set for the triggers property.
+        """
+        self._triggers = value
     
 

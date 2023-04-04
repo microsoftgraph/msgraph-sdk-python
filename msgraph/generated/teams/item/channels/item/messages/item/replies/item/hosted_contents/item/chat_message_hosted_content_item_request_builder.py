@@ -12,6 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...........models import chat_message_hosted_content
     from ...........models.o_data_errors import o_data_error
+    from .value import content_request_builder
 
 class ChatMessageHostedContentItemRequestBuilder():
     """
@@ -35,11 +36,12 @@ class ChatMessageHostedContentItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
         """
         Delete navigation property hostedContents for teams
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -52,7 +54,7 @@ class ChatMessageHostedContentItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
     async def get(self,request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[chat_message_hosted_content.ChatMessageHostedContent]:
         """
@@ -155,6 +157,15 @@ class ChatMessageHostedContentItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    @property
+    def content(self) -> content_request_builder.ContentRequestBuilder:
+        """
+        Provides operations to manage the media for the team entity.
+        """
+        from .value import content_request_builder
+
+        return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ChatMessageHostedContentItemRequestBuilderDeleteRequestConfiguration():

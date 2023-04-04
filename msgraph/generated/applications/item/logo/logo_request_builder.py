@@ -54,12 +54,13 @@ class LogoRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    async def put(self,body: bytes, request_configuration: Optional[LogoRequestBuilderPutRequestConfiguration] = None) -> None:
+    async def put(self,body: bytes, request_configuration: Optional[LogoRequestBuilderPutRequestConfiguration] = None) -> bytes:
         """
         The main logo for the application. Not nullable.
         Args:
             body: Binary request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: bytes
         """
         if body is None:
             raise Exception("body cannot be undefined")
@@ -74,7 +75,7 @@ class LogoRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[LogoRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

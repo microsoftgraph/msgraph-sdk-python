@@ -9,12 +9,9 @@ if TYPE_CHECKING:
 from . import entity
 
 class BookingAppointment(entity.Entity):
-    """
-    Represents a booked appointment of a service by a customer in a business.
-    """
     def __init__(self,) -> None:
         """
-        Instantiates a new bookingAppointment and sets the default values.
+        Instantiates a new BookingAppointment and sets the default values.
         """
         super().__init__()
         # Additional information that is sent to the customer when an appointment is confirmed.

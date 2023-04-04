@@ -15,13 +15,13 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
 
         # Optional field. Describes the  actions to take once a review is complete. There are two types that are currently supported: removeAccessApplyAction (default) and disableAndDeleteUserApplyAction. Field only needs to be specified in the case of disableAndDeleteUserApplyAction.
         self._apply_actions: Optional[List[access_review_apply_action.AccessReviewApplyAction]] = None
-        # Indicates whether decisions are automatically applied. When set to false, an admin must apply the decisions manually once the reviewer completes the access review. When set to true, decisions are applied automatically after the access review instance duration ends, whether or not the reviewers have responded. Default value is false.
+        # Indicates whether decisions are automatically applied. When set to false, an admin must apply the decisions manually once the reviewer completes the access review. When set to true, decisions are applied automatically after the access review instance duration ends, whether or not the reviewers have responded. Default value is false.  CAUTION: If both autoApplyDecisionsEnabled and defaultDecisionEnabled are true, all access for the principals to the resource risks being revoked if the reviewers fail to respond.
         self._auto_apply_decisions_enabled: Optional[bool] = None
         # Indicates whether decisions on previous access review stages are available for reviewers on an accessReviewInstance with multiple subsequent stages. If not provided, the default is disabled (false).
         self._decision_histories_for_reviewers_enabled: Optional[bool] = None
         # Decision chosen if defaultDecisionEnabled is enabled. Can be one of Approve, Deny, or Recommendation.
         self._default_decision: Optional[str] = None
-        # Indicates whether the default decision is enabled or disabled when reviewers do not respond. Default value is false.
+        # Indicates whether the default decision is enabled or disabled when reviewers do not respond. Default value is false.  CAUTION: If both autoApplyDecisionsEnabled and defaultDecisionEnabled are true, all access for the principals to the resource risks being revoked if the reviewers fail to respond.
         self._default_decision_enabled: Optional[bool] = None
         # Duration of an access review instance in days. NOTE: If the stageSettings of the accessReviewScheduleDefinition object is defined, its durationInDays setting will be used instead of the value of this property.
         self._instance_duration_in_days: Optional[int] = None
@@ -75,7 +75,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
     @property
     def auto_apply_decisions_enabled(self,) -> Optional[bool]:
         """
-        Gets the autoApplyDecisionsEnabled property value. Indicates whether decisions are automatically applied. When set to false, an admin must apply the decisions manually once the reviewer completes the access review. When set to true, decisions are applied automatically after the access review instance duration ends, whether or not the reviewers have responded. Default value is false.
+        Gets the autoApplyDecisionsEnabled property value. Indicates whether decisions are automatically applied. When set to false, an admin must apply the decisions manually once the reviewer completes the access review. When set to true, decisions are applied automatically after the access review instance duration ends, whether or not the reviewers have responded. Default value is false.  CAUTION: If both autoApplyDecisionsEnabled and defaultDecisionEnabled are true, all access for the principals to the resource risks being revoked if the reviewers fail to respond.
         Returns: Optional[bool]
         """
         return self._auto_apply_decisions_enabled
@@ -83,7 +83,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
     @auto_apply_decisions_enabled.setter
     def auto_apply_decisions_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the autoApplyDecisionsEnabled property value. Indicates whether decisions are automatically applied. When set to false, an admin must apply the decisions manually once the reviewer completes the access review. When set to true, decisions are applied automatically after the access review instance duration ends, whether or not the reviewers have responded. Default value is false.
+        Sets the autoApplyDecisionsEnabled property value. Indicates whether decisions are automatically applied. When set to false, an admin must apply the decisions manually once the reviewer completes the access review. When set to true, decisions are applied automatically after the access review instance duration ends, whether or not the reviewers have responded. Default value is false.  CAUTION: If both autoApplyDecisionsEnabled and defaultDecisionEnabled are true, all access for the principals to the resource risks being revoked if the reviewers fail to respond.
         Args:
             value: Value to set for the auto_apply_decisions_enabled property.
         """
@@ -138,7 +138,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
     @property
     def default_decision_enabled(self,) -> Optional[bool]:
         """
-        Gets the defaultDecisionEnabled property value. Indicates whether the default decision is enabled or disabled when reviewers do not respond. Default value is false.
+        Gets the defaultDecisionEnabled property value. Indicates whether the default decision is enabled or disabled when reviewers do not respond. Default value is false.  CAUTION: If both autoApplyDecisionsEnabled and defaultDecisionEnabled are true, all access for the principals to the resource risks being revoked if the reviewers fail to respond.
         Returns: Optional[bool]
         """
         return self._default_decision_enabled
@@ -146,7 +146,7 @@ class AccessReviewScheduleSettings(AdditionalDataHolder, Parsable):
     @default_decision_enabled.setter
     def default_decision_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the defaultDecisionEnabled property value. Indicates whether the default decision is enabled or disabled when reviewers do not respond. Default value is false.
+        Sets the defaultDecisionEnabled property value. Indicates whether the default decision is enabled or disabled when reviewers do not respond. Default value is false.  CAUTION: If both autoApplyDecisionsEnabled and defaultDecisionEnabled are true, all access for the principals to the resource risks being revoked if the reviewers fail to respond.
         Args:
             value: Value to set for the default_decision_enabled property.
         """

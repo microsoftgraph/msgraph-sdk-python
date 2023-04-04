@@ -11,7 +11,7 @@ from . import entity
 class CloudCommunications(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new CloudCommunications and sets the default values.
+        Instantiates a new cloudCommunications and sets the default values.
         """
         super().__init__()
         # The callRecords property

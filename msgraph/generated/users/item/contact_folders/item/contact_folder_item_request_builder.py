@@ -37,7 +37,7 @@ class ContactFolderItemRequestBuilder():
         if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/users/{user%2Did}/contactFolders/{contactFolder%2Did}{?%24select}"
+        self.url_template: str = "{+baseurl}/users/{user%2Did}/contactFolders/{contactFolder%2Did}{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
@@ -73,11 +73,12 @@ class ContactFolderItemRequestBuilder():
         url_tpl_params["contact%2Did"] = id
         return contact_item_request_builder.ContactItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def delete(self,request_configuration: Optional[ContactFolderItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ContactFolderItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
         """
         Delete navigation property contactFolders for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -90,7 +91,7 @@ class ContactFolderItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
     async def get(self,request_configuration: Optional[ContactFolderItemRequestBuilderGetRequestConfiguration] = None) -> Optional[contact_folder.ContactFolder]:
         """
@@ -286,10 +287,15 @@ class ContactFolderItemRequestBuilder():
             """
             if original_name is None:
                 raise Exception("original_name cannot be undefined")
+            if original_name == "expand":
+                return "%24expand"
             if original_name == "select":
                 return "%24select"
             return original_name
         
+        # Expand related entities
+        expand: Optional[List[str]] = None
+
         # Select properties to be returned
         select: Optional[List[str]] = None
 

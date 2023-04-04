@@ -10,7 +10,7 @@ from . import directory_object
 class DirectoryRoleTemplate(directory_object.DirectoryObject):
     def __init__(self,) -> None:
         """
-        Instantiates a new directoryRoleTemplate and sets the default values.
+        Instantiates a new DirectoryRoleTemplate and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.directoryRoleTemplate"

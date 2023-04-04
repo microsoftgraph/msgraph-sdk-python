@@ -10,7 +10,7 @@ from . import entity
 class AppScope(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new appScope and sets the default values.
+        Instantiates a new AppScope and sets the default values.
         """
         super().__init__()
         # Provides the display name of the app-specific resource represented by the app scope. Provided for display purposes since appScopeId is often an immutable, non-human-readable id. Read-only.

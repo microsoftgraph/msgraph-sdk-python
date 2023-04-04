@@ -48,11 +48,12 @@ class ChannelItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ChannelItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ChannelItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
         """
         Delete navigation property channels for me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -65,7 +66,7 @@ class ChannelItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
     async def get(self,request_configuration: Optional[ChannelItemRequestBuilderGetRequestConfiguration] = None) -> Optional[channel.Channel]:
         """

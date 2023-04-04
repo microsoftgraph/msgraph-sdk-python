@@ -58,11 +58,12 @@ class ConditionalAccessRequestBuilder():
         url_tpl_params["authenticationContextClassReference%2Did"] = id
         return authentication_context_class_reference_item_request_builder.AuthenticationContextClassReferenceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def delete(self,request_configuration: Optional[ConditionalAccessRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ConditionalAccessRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
         """
         Delete navigation property conditionalAccess for identity
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -75,7 +76,7 @@ class ConditionalAccessRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
     async def get(self,request_configuration: Optional[ConditionalAccessRequestBuilderGetRequestConfiguration] = None) -> Optional[conditional_access_root.ConditionalAccessRoot]:
         """

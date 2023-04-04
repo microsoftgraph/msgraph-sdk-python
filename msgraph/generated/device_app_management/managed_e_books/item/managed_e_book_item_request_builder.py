@@ -58,11 +58,12 @@ class ManagedEBookItemRequestBuilder():
         url_tpl_params["managedEBookAssignment%2Did"] = id
         return managed_e_book_assignment_item_request_builder.ManagedEBookAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def delete(self,request_configuration: Optional[ManagedEBookItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[ManagedEBookItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
         """
         Delete navigation property managedEBooks for deviceAppManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -75,7 +76,7 @@ class ManagedEBookItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
     def device_states_by_id(self,id: str) -> device_install_state_item_request_builder.DeviceInstallStateItemRequestBuilder:
         """

@@ -1,4 +1,6 @@
 
+# DELEGATED ACCESS SAMPLES (REQUIRES SIGNED IN USER)
+
 ## 1. DEVICE CODE FLOW
 ```py
 import asyncio
@@ -38,7 +40,7 @@ async def get_user():
 asyncio.run(get_user())
 ```
 
-2. ## INTERACTIVE BROSWER FLOW
+## 2. INTERACTIVE BROSWER FLOW
 
 ```py
 import asyncio
@@ -71,6 +73,8 @@ async def get_user():
         print(f'Error: {e.error.message}')
 asyncio.run(get_user())
 ```
+
+# APPLICATION ACCESS SAMPLES (APPLICATIONS ONLY)
 
 ## 3. CLIENT SECRET CREDENTIALS FLOW
 

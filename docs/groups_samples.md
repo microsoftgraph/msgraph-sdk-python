@@ -1,9 +1,8 @@
-```py
-import asyncio
-
 ## Create the API Client
 
 ```py
+import asyncio
+
 from azure.identity import ClientSecretCredential
 from kiota_abstractions.api_error import APIError
 from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
@@ -93,9 +92,9 @@ async def get_group_transitive_members():
         members = await client.groups_by_id('GROUP_ID').transitive_members.get()
         if members and members.value:
             for member in members.value:
-                object = await client.directory_objects_by_id(member.id).get()
-                if object and object.odata_type == '#microsoft.graph.user':
-                    user = await client.users_by_id(object.id).get()
+                obj = await client.directory_objects_by_id(member.id).get()
+                if obj and obj.odata_type == '#microsoft.graph.user':
+                    user = await client.users_by_id(obj.id).get()
                     if user:
                         print(user.id, user.display_name, user.mail)
     except Exception as e:
@@ -108,7 +107,7 @@ asyncio.run(get_group_transitive_members())
 ```py
 async def get_group_drives():
     try:
-        drives = await client.groups_by_id('1a735b59-61f2-4053-95b6-648637628618').drives.get()
+        drives = await client.groups_by_id('GROUP_ID').drives.get()
         if drives and drives.value:
             for drive in drives.value:
                 print(drive.id, drive.name)

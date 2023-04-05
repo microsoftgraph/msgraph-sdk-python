@@ -26,8 +26,7 @@ request_adapter = GraphRequestAdapter(auth_provider)
 # Create an API client with the request adapter.
 client = GraphServiceClient(request_adapter)
 
-# GET A USER USING THE USER ID
-# Request: GET /users/{id}
+# GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():
     try:
         user = await client.users_by_id('USER_ID').get()
@@ -62,9 +61,7 @@ request_adapter = GraphRequestAdapter(auth_provider)
 # Create an API client with the request adapter.
 client = GraphServiceClient(request_adapter)
 
-# GET A USER USING THE USER ID
-# Request: GET /users/{id}
-
+# GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():
     try:
         user = await client.users_by_id('USER_ID').get()
@@ -103,8 +100,7 @@ request_adapter = GraphRequestAdapter(auth_provider)
 # Create an API client with the request adapter.
 client = GraphServiceClient(request_adapter)
 
-# GET A USER USING THE USER ID
-# Request: GET /users/{id}
+# GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():
     try:
         user = await client.users_by_id('USER_ID').get()
@@ -139,8 +135,7 @@ request_adapter = GraphRequestAdapter(auth_provider)
 # Create an API client with the request adapter.
 client = GraphServiceClient(request_adapter)
 
-# GET A USER USING THE USER ID
-# Request: GET /users/{id}
+# GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():
     try:
         user = await client.users_by_id('USER_ID').get()

@@ -20,9 +20,7 @@ request_adapter = GraphRequestAdapter(auth_provider)
 # Get a service client.
 client = GraphServiceClient(request_adapter)
 
-# GET ALL APPLICATIONS IN THE TENANT
-# Request: GET /applications
-
+# GET ALL APPLICATIONS IN THE TENANT (GET /applications)
 async def get_applications():
     try:
         apps = await client.applications.get()

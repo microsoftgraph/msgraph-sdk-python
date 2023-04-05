@@ -8,12 +8,9 @@ if TYPE_CHECKING:
 from . import entity
 
 class BookingBusiness(entity.Entity):
-    """
-    Represents a Microsot Bookings Business.
-    """
     def __init__(self,) -> None:
         """
-        Instantiates a new bookingBusiness and sets the default values.
+        Instantiates a new BookingBusiness and sets the default values.
         """
         super().__init__()
         # The street address of the business. The address property, together with phone and webSiteUrl, appear in the footer of a business scheduling page. The attribute type of physicalAddress is not supported in v1.0. Internally we map the addresses to the type others.

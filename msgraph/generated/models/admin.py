@@ -3,7 +3,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import service_announcement
+    from . import edge, service_announcement
 
 class Admin(AdditionalDataHolder, Parsable):
     def __init__(self,) -> None:
@@ -13,6 +13,8 @@ class Admin(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
+        # The edge property
+        self._edge: Optional[edge.Edge] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # A container for service communications resources. Read-only.
@@ -47,14 +49,32 @@ class Admin(AdditionalDataHolder, Parsable):
             raise Exception("parse_node cannot be undefined")
         return Admin()
     
+    @property
+    def edge(self,) -> Optional[edge.Edge]:
+        """
+        Gets the edge property value. The edge property
+        Returns: Optional[edge.Edge]
+        """
+        return self._edge
+    
+    @edge.setter
+    def edge(self,value: Optional[edge.Edge] = None) -> None:
+        """
+        Sets the edge property value. The edge property
+        Args:
+            value: Value to set for the edge property.
+        """
+        self._edge = value
+    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import service_announcement
+        from . import edge, service_announcement
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "edge": lambda n : setattr(self, 'edge', n.get_object_value(edge.Edge)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "serviceAnnouncement": lambda n : setattr(self, 'service_announcement', n.get_object_value(service_announcement.ServiceAnnouncement)),
         }
@@ -85,6 +105,7 @@ class Admin(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
+        writer.write_object_value("edge", self.edge)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("serviceAnnouncement", self.service_announcement)
         writer.write_additional_data_value(self.additional_data)

@@ -12,6 +12,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...models import rbac_application
     from ...models.o_data_errors import o_data_error
+    from .resource_namespaces import resource_namespaces_request_builder
+    from .resource_namespaces.item import unified_rbac_resource_namespace_item_request_builder
     from .role_assignments import role_assignments_request_builder
     from .role_assignments.item import unified_role_assignment_item_request_builder
     from .role_assignment_schedule_instances import role_assignment_schedule_instances_request_builder
@@ -51,11 +53,12 @@ class EntitlementManagementRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[EntitlementManagementRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[EntitlementManagementRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
         """
         Delete navigation property entitlementManagement for roleManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -68,7 +71,7 @@ class EntitlementManagementRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
     async def get(self,request_configuration: Optional[EntitlementManagementRequestBuilderGetRequestConfiguration] = None) -> Optional[rbac_application.RbacApplication]:
         """
@@ -116,6 +119,21 @@ class EntitlementManagementRequestBuilder():
         from ...models import rbac_application
 
         return await self.request_adapter.send_async(request_info, rbac_application.RbacApplication, error_mapping)
+    
+    def resource_namespaces_by_id(self,id: str) -> unified_rbac_resource_namespace_item_request_builder.UnifiedRbacResourceNamespaceItemRequestBuilder:
+        """
+        Provides operations to manage the resourceNamespaces property of the microsoft.graph.rbacApplication entity.
+        Args:
+            id: Unique identifier of the item
+        Returns: unified_rbac_resource_namespace_item_request_builder.UnifiedRbacResourceNamespaceItemRequestBuilder
+        """
+        if id is None:
+            raise Exception("id cannot be undefined")
+        from .resource_namespaces.item import unified_rbac_resource_namespace_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["unifiedRbacResourceNamespace%2Did"] = id
+        return unified_rbac_resource_namespace_item_request_builder.UnifiedRbacResourceNamespaceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def role_assignments_by_id(self,id: str) -> unified_role_assignment_item_request_builder.UnifiedRoleAssignmentItemRequestBuilder:
         """
@@ -291,6 +309,15 @@ class EntitlementManagementRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    @property
+    def resource_namespaces(self) -> resource_namespaces_request_builder.ResourceNamespacesRequestBuilder:
+        """
+        Provides operations to manage the resourceNamespaces property of the microsoft.graph.rbacApplication entity.
+        """
+        from .resource_namespaces import resource_namespaces_request_builder
+
+        return resource_namespaces_request_builder.ResourceNamespacesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def role_assignments(self) -> role_assignments_request_builder.RoleAssignmentsRequestBuilder:

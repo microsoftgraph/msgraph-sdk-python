@@ -11,13 +11,13 @@ class SignInActivity(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The lastNonInteractiveSignInDateTime property
+        # The last non-interactive sign-in date for a specific user. You can use this field to calculate the last time a client signed in to the directory on behalf of a user. Because some users may use clients to access tenant resources rather than signing into your tenant directly, you can use the non-interactive sign-in date to along with lastSignInDateTime to identify inactive users. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is: '2014-01-01T00:00:00Z'. Azure AD maintains non-interactive sign-ins going back to May 2020. For more information about using the value of this property, see Manage inactive user accounts in Azure AD.
         self._last_non_interactive_sign_in_date_time: Optional[datetime] = None
-        # The lastNonInteractiveSignInRequestId property
+        # Request identifier of the last non-interactive sign-in performed by this user.
         self._last_non_interactive_sign_in_request_id: Optional[str] = None
-        # The lastSignInDateTime property
+        # The last interactive sign-in date and time for a specific user. You can use this field to calculate the last time a user signed in to the directory with an interactive authentication method. This field can be used to build reports, such as inactive users. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is: '2014-01-01T00:00:00Z'. Azure AD maintains interactive sign-ins going back to April 2020. For more information about using the value of this property, see Manage inactive user accounts in Azure AD.
         self._last_sign_in_date_time: Optional[datetime] = None
-        # The lastSignInRequestId property
+        # Request identifier of the last interactive sign-in performed by this user.
         self._last_sign_in_request_id: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
@@ -68,7 +68,7 @@ class SignInActivity(AdditionalDataHolder, Parsable):
     @property
     def last_non_interactive_sign_in_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastNonInteractiveSignInDateTime property value. The lastNonInteractiveSignInDateTime property
+        Gets the lastNonInteractiveSignInDateTime property value. The last non-interactive sign-in date for a specific user. You can use this field to calculate the last time a client signed in to the directory on behalf of a user. Because some users may use clients to access tenant resources rather than signing into your tenant directly, you can use the non-interactive sign-in date to along with lastSignInDateTime to identify inactive users. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is: '2014-01-01T00:00:00Z'. Azure AD maintains non-interactive sign-ins going back to May 2020. For more information about using the value of this property, see Manage inactive user accounts in Azure AD.
         Returns: Optional[datetime]
         """
         return self._last_non_interactive_sign_in_date_time
@@ -76,7 +76,7 @@ class SignInActivity(AdditionalDataHolder, Parsable):
     @last_non_interactive_sign_in_date_time.setter
     def last_non_interactive_sign_in_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastNonInteractiveSignInDateTime property value. The lastNonInteractiveSignInDateTime property
+        Sets the lastNonInteractiveSignInDateTime property value. The last non-interactive sign-in date for a specific user. You can use this field to calculate the last time a client signed in to the directory on behalf of a user. Because some users may use clients to access tenant resources rather than signing into your tenant directly, you can use the non-interactive sign-in date to along with lastSignInDateTime to identify inactive users. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is: '2014-01-01T00:00:00Z'. Azure AD maintains non-interactive sign-ins going back to May 2020. For more information about using the value of this property, see Manage inactive user accounts in Azure AD.
         Args:
             value: Value to set for the last_non_interactive_sign_in_date_time property.
         """
@@ -85,7 +85,7 @@ class SignInActivity(AdditionalDataHolder, Parsable):
     @property
     def last_non_interactive_sign_in_request_id(self,) -> Optional[str]:
         """
-        Gets the lastNonInteractiveSignInRequestId property value. The lastNonInteractiveSignInRequestId property
+        Gets the lastNonInteractiveSignInRequestId property value. Request identifier of the last non-interactive sign-in performed by this user.
         Returns: Optional[str]
         """
         return self._last_non_interactive_sign_in_request_id
@@ -93,7 +93,7 @@ class SignInActivity(AdditionalDataHolder, Parsable):
     @last_non_interactive_sign_in_request_id.setter
     def last_non_interactive_sign_in_request_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the lastNonInteractiveSignInRequestId property value. The lastNonInteractiveSignInRequestId property
+        Sets the lastNonInteractiveSignInRequestId property value. Request identifier of the last non-interactive sign-in performed by this user.
         Args:
             value: Value to set for the last_non_interactive_sign_in_request_id property.
         """
@@ -102,7 +102,7 @@ class SignInActivity(AdditionalDataHolder, Parsable):
     @property
     def last_sign_in_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastSignInDateTime property value. The lastSignInDateTime property
+        Gets the lastSignInDateTime property value. The last interactive sign-in date and time for a specific user. You can use this field to calculate the last time a user signed in to the directory with an interactive authentication method. This field can be used to build reports, such as inactive users. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is: '2014-01-01T00:00:00Z'. Azure AD maintains interactive sign-ins going back to April 2020. For more information about using the value of this property, see Manage inactive user accounts in Azure AD.
         Returns: Optional[datetime]
         """
         return self._last_sign_in_date_time
@@ -110,7 +110,7 @@ class SignInActivity(AdditionalDataHolder, Parsable):
     @last_sign_in_date_time.setter
     def last_sign_in_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastSignInDateTime property value. The lastSignInDateTime property
+        Sets the lastSignInDateTime property value. The last interactive sign-in date and time for a specific user. You can use this field to calculate the last time a user signed in to the directory with an interactive authentication method. This field can be used to build reports, such as inactive users. The timestamp represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is: '2014-01-01T00:00:00Z'. Azure AD maintains interactive sign-ins going back to April 2020. For more information about using the value of this property, see Manage inactive user accounts in Azure AD.
         Args:
             value: Value to set for the last_sign_in_date_time property.
         """
@@ -119,7 +119,7 @@ class SignInActivity(AdditionalDataHolder, Parsable):
     @property
     def last_sign_in_request_id(self,) -> Optional[str]:
         """
-        Gets the lastSignInRequestId property value. The lastSignInRequestId property
+        Gets the lastSignInRequestId property value. Request identifier of the last interactive sign-in performed by this user.
         Returns: Optional[str]
         """
         return self._last_sign_in_request_id
@@ -127,7 +127,7 @@ class SignInActivity(AdditionalDataHolder, Parsable):
     @last_sign_in_request_id.setter
     def last_sign_in_request_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the lastSignInRequestId property value. The lastSignInRequestId property
+        Sets the lastSignInRequestId property value. Request identifier of the last interactive sign-in performed by this user.
         Args:
             value: Value to set for the last_sign_in_request_id property.
         """

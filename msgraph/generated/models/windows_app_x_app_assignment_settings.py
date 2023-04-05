@@ -14,7 +14,7 @@ class WindowsAppXAppAssignmentSettings(mobile_app_assignment_settings.MobileAppA
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.windowsAppXAppAssignmentSettings"
-        # Whether or not to use device execution context for Windows AppX mobile app.
+        # When TRUE, indicates that device execution context will be used for the AppX mobile app. When FALSE, indicates that user context will be used for the AppX mobile app. By default, this property is set to FALSE. Once this property has been set to TRUE it cannot be changed.
         self._use_device_context: Optional[bool] = None
     
     @staticmethod
@@ -57,7 +57,7 @@ class WindowsAppXAppAssignmentSettings(mobile_app_assignment_settings.MobileAppA
     @property
     def use_device_context(self,) -> Optional[bool]:
         """
-        Gets the useDeviceContext property value. Whether or not to use device execution context for Windows AppX mobile app.
+        Gets the useDeviceContext property value. When TRUE, indicates that device execution context will be used for the AppX mobile app. When FALSE, indicates that user context will be used for the AppX mobile app. By default, this property is set to FALSE. Once this property has been set to TRUE it cannot be changed.
         Returns: Optional[bool]
         """
         return self._use_device_context
@@ -65,7 +65,7 @@ class WindowsAppXAppAssignmentSettings(mobile_app_assignment_settings.MobileAppA
     @use_device_context.setter
     def use_device_context(self,value: Optional[bool] = None) -> None:
         """
-        Sets the useDeviceContext property value. Whether or not to use device execution context for Windows AppX mobile app.
+        Sets the useDeviceContext property value. When TRUE, indicates that device execution context will be used for the AppX mobile app. When FALSE, indicates that user context will be used for the AppX mobile app. By default, this property is set to FALSE. Once this property has been set to TRUE it cannot be changed.
         Args:
             value: Value to set for the use_device_context property.
         """

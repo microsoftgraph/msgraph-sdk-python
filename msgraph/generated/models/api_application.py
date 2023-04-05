@@ -82,7 +82,7 @@ class ApiApplication(AdditionalDataHolder, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "acceptMappedClaims": lambda n : setattr(self, 'accept_mapped_claims', n.get_bool_value()),
-            "knownClientApplications": lambda n : setattr(self, 'known_client_applications', n.get_collection_of_primitive_values(u_u_i_d)),
+            "knownClientApplications": lambda n : setattr(self, 'known_client_applications', n.get_collection_of_primitive_values(UUID)),
             "oauth2PermissionScopes": lambda n : setattr(self, 'oauth2_permission_scopes', n.get_collection_of_object_values(permission_scope.PermissionScope)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "preAuthorizedApplications": lambda n : setattr(self, 'pre_authorized_applications', n.get_collection_of_object_values(pre_authorized_application.PreAuthorizedApplication)),

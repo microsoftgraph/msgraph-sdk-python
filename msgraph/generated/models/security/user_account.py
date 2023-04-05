@@ -14,6 +14,8 @@ class UserAccount(AdditionalDataHolder, Parsable):
         self._account_name: Optional[str] = None
         # The user object identifier in Azure AD.
         self._azure_ad_user_id: Optional[str] = None
+        # The displayName property
+        self._display_name: Optional[str] = None
         # The name of the Active Directory domain of which the user is a member.
         self._domain_name: Optional[str] = None
         # The OdataType property
@@ -87,6 +89,23 @@ class UserAccount(AdditionalDataHolder, Parsable):
         return UserAccount()
     
     @property
+    def display_name(self,) -> Optional[str]:
+        """
+        Gets the displayName property value. The displayName property
+        Returns: Optional[str]
+        """
+        return self._display_name
+    
+    @display_name.setter
+    def display_name(self,value: Optional[str] = None) -> None:
+        """
+        Sets the displayName property value. The displayName property
+        Args:
+            value: Value to set for the display_name property.
+        """
+        self._display_name = value
+    
+    @property
     def domain_name(self,) -> Optional[str]:
         """
         Gets the domainName property value. The name of the Active Directory domain of which the user is a member.
@@ -111,6 +130,7 @@ class UserAccount(AdditionalDataHolder, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
             "azureAdUserId": lambda n : setattr(self, 'azure_ad_user_id', n.get_str_value()),
+            "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
             "domainName": lambda n : setattr(self, 'domain_name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "userPrincipalName": lambda n : setattr(self, 'user_principal_name', n.get_str_value()),
@@ -145,6 +165,7 @@ class UserAccount(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_str_value("accountName", self.account_name)
         writer.write_str_value("azureAdUserId", self.azure_ad_user_id)
+        writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("domainName", self.domain_name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("userPrincipalName", self.user_principal_name)

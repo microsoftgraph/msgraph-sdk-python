@@ -14,6 +14,8 @@ class SearchQuery(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The search query containing the search terms. Required.
         self._query_string: Optional[str] = None
+        # The queryTemplate property
+        self._query_template: Optional[str] = None
     
     @property
     def additional_data(self,) -> Dict[str, Any]:
@@ -52,6 +54,7 @@ class SearchQuery(AdditionalDataHolder, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "queryString": lambda n : setattr(self, 'query_string', n.get_str_value()),
+            "queryTemplate": lambda n : setattr(self, 'query_template', n.get_str_value()),
         }
         return fields
     
@@ -89,6 +92,23 @@ class SearchQuery(AdditionalDataHolder, Parsable):
         """
         self._query_string = value
     
+    @property
+    def query_template(self,) -> Optional[str]:
+        """
+        Gets the queryTemplate property value. The queryTemplate property
+        Returns: Optional[str]
+        """
+        return self._query_template
+    
+    @query_template.setter
+    def query_template(self,value: Optional[str] = None) -> None:
+        """
+        Sets the queryTemplate property value. The queryTemplate property
+        Args:
+            value: Value to set for the query_template property.
+        """
+        self._query_template = value
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -99,6 +119,7 @@ class SearchQuery(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("queryString", self.query_string)
+        writer.write_str_value("queryTemplate", self.query_template)
         writer.write_additional_data_value(self.additional_data)
     
 

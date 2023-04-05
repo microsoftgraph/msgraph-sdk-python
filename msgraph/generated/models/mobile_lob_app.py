@@ -3,7 +3,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import android_lob_app, ios_lob_app, mac_o_s_lob_app, mobile_app, mobile_app_content, win32_lob_app, windows_mobile_m_s_i, windows_universal_app_x
+    from . import android_lob_app, ios_lob_app, mac_o_s_lob_app, mobile_app, mobile_app_content, win32_lob_app, windows_app_x, windows_mobile_m_s_i, windows_universal_app_x
 
 from . import mobile_app
 
@@ -86,6 +86,10 @@ class MobileLobApp(mobile_app.MobileApp):
                 from . import win32_lob_app
 
                 return win32_lob_app.Win32LobApp()
+            if mapping_value == "#microsoft.graph.windowsAppX":
+                from . import windows_app_x
+
+                return windows_app_x.WindowsAppX()
             if mapping_value == "#microsoft.graph.windowsMobileMSI":
                 from . import windows_mobile_m_s_i
 
@@ -118,7 +122,7 @@ class MobileLobApp(mobile_app.MobileApp):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_lob_app, ios_lob_app, mac_o_s_lob_app, mobile_app, mobile_app_content, win32_lob_app, windows_mobile_m_s_i, windows_universal_app_x
+        from . import android_lob_app, ios_lob_app, mac_o_s_lob_app, mobile_app, mobile_app_content, win32_lob_app, windows_app_x, windows_mobile_m_s_i, windows_universal_app_x
 
         fields: Dict[str, Callable[[Any], None]] = {
             "committedContentVersion": lambda n : setattr(self, 'committed_content_version', n.get_str_value()),

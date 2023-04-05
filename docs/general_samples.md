@@ -5,9 +5,13 @@ This creates a default Graph client that uses `https://graph.microsoft.com` as t
 
 ```py
 from azure.identity import AuthorizationCodeCredential
+from kiota_abstactions.api_error import APIError
 from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
 from msgraph import GraphRequestAdapter
 from msgraph import GraphServiceClient
+
+# Set the event loop policy for Windows
+asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 AuthorizationCodeCredential(
     tenant_id: str,
@@ -21,7 +25,7 @@ request_adapter = GraphRequestAdapter(auth_provider)
 client = GraphServiceClient(request_adapter)
 ```
 
-Using a custom `httpx.AsyncClient` instance:
+## Creating a Graph client using a custom `httpx.AsyncClient` instance
 
 ```py
 from msgraph import GraphRequestAdapter
@@ -38,14 +42,15 @@ a delegated permission. Alternatively, using application permissions, you can re
 
 
 ```py
-async def get_user():
+async def get_me():
     try:
-        user = await client.me.get()
-        return user
-    except Exception as e:
+        me = await client.me.get()
+        if me:
+            print(me.user_principal_name, me.display_name, me.id)
+    except APIError as e:
         print(e.error.message)
 
-asyncio.run(get_user())
+asyncio.run(get_me())
 ```
 
 ## Get a collection of items
@@ -56,11 +61,11 @@ The Graph API response is deserialized into a collection of `Message` - a model 
 async def get_user_messages():
     try:
         messages = await (client.users_by_id('USER_ID').messages.get())
-        for msg in messages.value:
-            print(msg.subject, msg.id, msg.from_escaped)
-    except Exception as e:
+        if messages and messages.value:
+            for msg in messages.value:
+                print(msg.subject, msg.id, msg.from_)
+    except APIError as e:
         print(e.error.message)
-
 asyncio.run(get_user_messages())
 ```
 
@@ -79,11 +84,11 @@ async def get_user_messages():
         messages = await (client.users_by_id('USER_ID')
                         .messages
                         .get(request_configuration=request_config))
-        for msg in messages.value:
-            print(msg.subject, msg.id, msg.from_escaped)
+        if messages and messages.value:
+            for msg in messages.value:
+                print(msg.subject, msg.id, msg.from_)
     except Exception as e:
         print(e.error.message)
-
 asyncio.run(get_user_messages())
 ```
 
@@ -104,47 +109,13 @@ async def get_5_user_messages():
         messages = await (client.users_by_id('USER_ID')
                         .messages
                         .get(request_configuration=request_config))
-        for msg in messages.value:
-            print(msg.subject)
+        if messages and messages.value:
+            for msg in messages.value:
+                print(msg.subject)
     except Exception as e:
         print(e.error.message)
-
 asyncio.run(get_5_user_messages())
 ```
-
-## Paging through a collection of items
-Some queries against Microsoft Graph return multiple pages of data either due to server-side paging or due to the use of the `$top` query parameter to specifically limit the page size in a request. When a result set spans multiple pages, Microsoft Graph returns an `@odata.nextLink` property in the response that contains a URL to the next page of results.
-
-For now, you can page through the collection using the `@odata.nextLink` value. We intend to introduce a Page Iterator component in the future releases:
-
-```py
-from msgraph.generated.users.item.messages.messages_request_builder import MessagesRequestBuilder
-
-async def get_user_messages():
-    query_params = MessagesRequestBuilder.MessagesRequestBuilderGetQueryParameters(
-        select=['subject',], top=3
-    )
-    request_config = MessagesRequestBuilder.MessagesRequestBuilderGetRequestConfiguration(
-        query_parameters=query_params
-    )
-
-    messages = await (client.users_by_id('USER_ID')
-                      .messages
-                      .get(request_configuration=request_config))
-    for msg in messages.value:
-        print(msg.subject)
-    while messages.odata_next_link:
-        request_info = client.users_by_id(USER_ID)
-                        .messages
-                        .create_get_request_information(request_configuration=request_config)
-        request_info.uri = messages.odata_next_link
-        messages = request_adapter.send_async(request_info, MessageCollectionResponse)
-        for msg in messages.value:
-        print(msg.subject)
-
-asyncio.run(get_user_messages())
-```
-
 
 ## Get the raw response
 The SDK provides a default response handler which returns the native HTTPX response.
@@ -161,7 +132,7 @@ async def get_user_messages():
             options=[ResponseHandlerOption(NativeResponseHandler())], )
         messages = await client.users_by_id('USER_ID').messages.get(request_configuration=request_config)
         print(messages.json())
-    except Exception as e:
+    except APIError as e:
         print(e.error.message)
 asyncio.run(get_user())
 ```

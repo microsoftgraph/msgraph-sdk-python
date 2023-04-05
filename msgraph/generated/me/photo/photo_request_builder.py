@@ -36,6 +36,26 @@ class PhotoRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    async def delete(self,request_configuration: Optional[PhotoRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+        """
+        Delete navigation property photo for me
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: bytes
+        """
+        request_info = self.to_delete_request_information(
+            request_configuration
+        )
+        from ...models.o_data_errors import o_data_error
+
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
+        }
+        if not self.request_adapter:
+            raise Exception("Http core is null") 
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+    
     async def get(self,request_configuration: Optional[PhotoRequestBuilderGetRequestConfiguration] = None) -> Optional[profile_photo.ProfilePhoto]:
         """
         The user's profile photo. Read-only.
@@ -82,6 +102,22 @@ class PhotoRequestBuilder():
         from ...models import profile_photo
 
         return await self.request_adapter.send_async(request_info, profile_photo.ProfilePhoto, error_mapping)
+    
+    def to_delete_request_information(self,request_configuration: Optional[PhotoRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+        """
+        Delete navigation property photo for me
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        request_info = RequestInformation()
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.DELETE
+        if request_configuration:
+            request_info.add_request_headers(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
+        return request_info
     
     def to_get_request_information(self,request_configuration: Optional[PhotoRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -130,6 +166,18 @@ class PhotoRequestBuilder():
         from .value import content_request_builder
 
         return content_request_builder.ContentRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @dataclass
+    class PhotoRequestBuilderDeleteRequestConfiguration():
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request headers
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
+
+        # Request options
+        options: Optional[List[RequestOption]] = None
+
     
     @dataclass
     class PhotoRequestBuilderGetQueryParameters():

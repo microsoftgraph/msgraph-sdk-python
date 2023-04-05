@@ -301,6 +301,10 @@ class EventItemRequestBuilder():
                 raise Exception("original_name cannot be undefined")
             if original_name == "select":
                 return "%24select"
+            if original_name == "end_date_time":
+                return "endDateTime"
+            if original_name == "start_date_time":
+                return "startDateTime"
             return original_name
         
         # The end date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T20:00:00-08:00

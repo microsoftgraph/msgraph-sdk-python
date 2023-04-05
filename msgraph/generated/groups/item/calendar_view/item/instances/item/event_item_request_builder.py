@@ -45,7 +45,7 @@ class EventItemRequestBuilder():
         if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/groups/{group%2Did}/calendarView/{event%2Did}/instances/{event%2Did1}{?%24select}"
+        self.url_template: str = "{+baseurl}/groups/{group%2Did}/calendarView/{event%2Did}/instances/{event%2Did1}{?startDateTime*,endDateTime*,%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
@@ -275,10 +275,20 @@ class EventItemRequestBuilder():
                 raise Exception("original_name cannot be undefined")
             if original_name == "select":
                 return "%24select"
+            if original_name == "end_date_time":
+                return "endDateTime"
+            if original_name == "start_date_time":
+                return "startDateTime"
             return original_name
         
+        # The end date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T20:00:00-08:00
+        end_date_time: Optional[str] = None
+
         # Select properties to be returned
         select: Optional[List[str]] = None
+
+        # The start date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T19:00:00-08:00
+        start_date_time: Optional[str] = None
 
     
     @dataclass

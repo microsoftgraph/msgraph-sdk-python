@@ -70,7 +70,7 @@ class AssignedLicense(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "disabledPlans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(u_u_i_d)),
+            "disabledPlans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(UUID)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "skuId": lambda n : setattr(self, 'sku_id', n.get_uuid_value()),
         }

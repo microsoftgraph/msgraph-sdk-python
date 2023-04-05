@@ -52,11 +52,12 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
         url_tpl_params["conversationMember%2Did"] = id
         return conversation_member_item_request_builder.ConversationMemberItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def delete(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+    async def delete(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
         """
         Delete navigation property sharedWithTeams for me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -69,7 +70,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
     async def get(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderGetRequestConfiguration] = None) -> Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo]:
         """

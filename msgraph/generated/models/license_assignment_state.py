@@ -114,7 +114,7 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         """
         fields: Dict[str, Callable[[Any], None]] = {
             "assignedByGroup": lambda n : setattr(self, 'assigned_by_group', n.get_str_value()),
-            "disabledPlans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(u_u_i_d)),
+            "disabledPlans": lambda n : setattr(self, 'disabled_plans', n.get_collection_of_primitive_values(UUID)),
             "error": lambda n : setattr(self, 'error', n.get_str_value()),
             "lastUpdatedDateTime": lambda n : setattr(self, 'last_updated_date_time', n.get_datetime_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),

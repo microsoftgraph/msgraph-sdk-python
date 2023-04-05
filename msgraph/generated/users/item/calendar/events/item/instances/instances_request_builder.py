@@ -31,7 +31,7 @@ class InstancesRequestBuilder():
         if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/users/{user%2Did}/calendar/events/{event%2Did}/instances{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}"
+        self.url_template: str = "{+baseurl}/users/{user%2Did}/calendar/events/{event%2Did}/instances{?startDateTime*,endDateTime*,%24top,%24skip,%24filter,%24count,%24orderby,%24select}"
 
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
@@ -39,7 +39,7 @@ class InstancesRequestBuilder():
     
     async def get(self,request_configuration: Optional[InstancesRequestBuilderGetRequestConfiguration] = None) -> Optional[event_collection_response.EventCollectionResponse]:
         """
-        Get the instances (occurrences) of an event for a specified time range.  If the event is a `seriesMaster` type, this returns the occurrences and exceptions of the event in the specified time range.
+        The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions that have been modified, but does not include occurrences that have been cancelled from the series. Navigation property. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[event_collection_response.EventCollectionResponse]
@@ -61,7 +61,7 @@ class InstancesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[InstancesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the instances (occurrences) of an event for a specified time range.  If the event is a `seriesMaster` type, this returns the occurrences and exceptions of the event in the specified time range.
+        The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions that have been modified, but does not include occurrences that have been cancelled from the series. Navigation property. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -98,7 +98,7 @@ class InstancesRequestBuilder():
     @dataclass
     class InstancesRequestBuilderGetQueryParameters():
         """
-        Get the instances (occurrences) of an event for a specified time range.  If the event is a `seriesMaster` type, this returns the occurrences and exceptions of the event in the specified time range.
+        The occurrences of a recurring series, if the event is a series master. This property includes occurrences that are part of the recurrence pattern, and exceptions that have been modified, but does not include occurrences that have been cancelled from the series. Navigation property. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -121,10 +121,17 @@ class InstancesRequestBuilder():
                 return "%24skip"
             if original_name == "top":
                 return "%24top"
+            if original_name == "end_date_time":
+                return "endDateTime"
+            if original_name == "start_date_time":
+                return "startDateTime"
             return original_name
         
         # Include count of items
         count: Optional[bool] = None
+
+        # The end date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T20:00:00-08:00
+        end_date_time: Optional[str] = None
 
         # Filter items by property values
         filter: Optional[str] = None
@@ -137,6 +144,9 @@ class InstancesRequestBuilder():
 
         # Skip the first n items
         skip: Optional[int] = None
+
+        # The start date and time of the time range, represented in ISO 8601 format. For example, 2019-11-08T19:00:00-08:00
+        start_date_time: Optional[str] = None
 
         # Show only the first n items
         top: Optional[int] = None

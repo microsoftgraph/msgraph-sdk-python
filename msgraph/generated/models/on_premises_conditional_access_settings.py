@@ -80,8 +80,8 @@ class OnPremisesConditionalAccessSettings(entity.Entity):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "enabled": lambda n : setattr(self, 'enabled', n.get_bool_value()),
-            "excludedGroups": lambda n : setattr(self, 'excluded_groups', n.get_collection_of_primitive_values(u_u_i_d)),
-            "includedGroups": lambda n : setattr(self, 'included_groups', n.get_collection_of_primitive_values(u_u_i_d)),
+            "excludedGroups": lambda n : setattr(self, 'excluded_groups', n.get_collection_of_primitive_values(UUID)),
+            "includedGroups": lambda n : setattr(self, 'included_groups', n.get_collection_of_primitive_values(UUID)),
             "overrideDefaultRule": lambda n : setattr(self, 'override_default_rule', n.get_bool_value()),
         }
         super_fields = super().get_field_deserializers()

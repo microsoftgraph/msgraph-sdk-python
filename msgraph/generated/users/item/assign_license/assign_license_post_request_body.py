@@ -74,7 +74,7 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
 
         fields: Dict[str, Callable[[Any], None]] = {
             "addLicenses": lambda n : setattr(self, 'add_licenses', n.get_collection_of_object_values(assigned_license.AssignedLicense)),
-            "removeLicenses": lambda n : setattr(self, 'remove_licenses', n.get_collection_of_primitive_values(u_u_i_d)),
+            "removeLicenses": lambda n : setattr(self, 'remove_licenses', n.get_collection_of_primitive_values(UUID)),
         }
         return fields
     

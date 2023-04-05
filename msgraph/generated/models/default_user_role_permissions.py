@@ -14,6 +14,8 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         self._allowed_to_create_apps: Optional[bool] = None
         # Indicates whether the default user role can create security groups.
         self._allowed_to_create_security_groups: Optional[bool] = None
+        # The allowedToReadBitlockerKeysForOwnedDevice property
+        self._allowed_to_read_bitlocker_keys_for_owned_device: Optional[bool] = None
         # Indicates whether the default user role can read other users.
         self._allowed_to_read_other_users: Optional[bool] = None
         # The OdataType property
@@ -73,6 +75,23 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         self._allowed_to_create_security_groups = value
     
     @property
+    def allowed_to_read_bitlocker_keys_for_owned_device(self,) -> Optional[bool]:
+        """
+        Gets the allowedToReadBitlockerKeysForOwnedDevice property value. The allowedToReadBitlockerKeysForOwnedDevice property
+        Returns: Optional[bool]
+        """
+        return self._allowed_to_read_bitlocker_keys_for_owned_device
+    
+    @allowed_to_read_bitlocker_keys_for_owned_device.setter
+    def allowed_to_read_bitlocker_keys_for_owned_device(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the allowedToReadBitlockerKeysForOwnedDevice property value. The allowedToReadBitlockerKeysForOwnedDevice property
+        Args:
+            value: Value to set for the allowed_to_read_bitlocker_keys_for_owned_device property.
+        """
+        self._allowed_to_read_bitlocker_keys_for_owned_device = value
+    
+    @property
     def allowed_to_read_other_users(self,) -> Optional[bool]:
         """
         Gets the allowedToReadOtherUsers property value. Indicates whether the default user role can read other users.
@@ -109,6 +128,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "allowedToCreateApps": lambda n : setattr(self, 'allowed_to_create_apps', n.get_bool_value()),
             "allowedToCreateSecurityGroups": lambda n : setattr(self, 'allowed_to_create_security_groups', n.get_bool_value()),
+            "allowedToReadBitlockerKeysForOwnedDevice": lambda n : setattr(self, 'allowed_to_read_bitlocker_keys_for_owned_device', n.get_bool_value()),
             "allowedToReadOtherUsers": lambda n : setattr(self, 'allowed_to_read_other_users', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "permissionGrantPoliciesAssigned": lambda n : setattr(self, 'permission_grant_policies_assigned', n.get_collection_of_primitive_values(str)),
@@ -159,6 +179,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("allowedToCreateApps", self.allowed_to_create_apps)
         writer.write_bool_value("allowedToCreateSecurityGroups", self.allowed_to_create_security_groups)
+        writer.write_bool_value("allowedToReadBitlockerKeysForOwnedDevice", self.allowed_to_read_bitlocker_keys_for_owned_device)
         writer.write_bool_value("allowedToReadOtherUsers", self.allowed_to_read_other_users)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_primitive_values("permissionGrantPoliciesAssigned", self.permission_grant_policies_assigned)

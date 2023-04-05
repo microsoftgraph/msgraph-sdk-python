@@ -10,6 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .......models import onenote_resource
     from .......models.o_data_errors import o_data_error
 
 class ContentRequestBuilder():
@@ -54,12 +55,13 @@ class ContentRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
     
-    async def put(self,body: bytes, request_configuration: Optional[ContentRequestBuilderPutRequestConfiguration] = None) -> None:
+    async def put(self,body: bytes, request_configuration: Optional[ContentRequestBuilderPutRequestConfiguration] = None) -> Optional[onenote_resource.OnenoteResource]:
         """
         The content stream
         Args:
             body: Binary request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: Optional[onenote_resource.OnenoteResource]
         """
         if body is None:
             raise Exception("body cannot be undefined")
@@ -74,7 +76,9 @@ class ContentRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+        from .......models import onenote_resource
+
+        return await self.request_adapter.send_async(request_info, onenote_resource.OnenoteResource, error_mapping)
     
     def to_get_request_information(self,request_configuration: Optional[ContentRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
@@ -106,6 +110,7 @@ class ContentRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.PUT
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.add_request_options(request_configuration.options)

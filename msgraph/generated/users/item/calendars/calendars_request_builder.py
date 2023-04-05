@@ -30,7 +30,7 @@ class CalendarsRequestBuilder():
         if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/users/{user%2Did}/calendars{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}"
+        self.url_template: str = "{+baseurl}/users/{user%2Did}/calendars{?%24top,%24skip,%24filter,%24count,%24orderby,%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
@@ -147,6 +147,8 @@ class CalendarsRequestBuilder():
                 raise Exception("original_name cannot be undefined")
             if original_name == "count":
                 return "%24count"
+            if original_name == "expand":
+                return "%24expand"
             if original_name == "filter":
                 return "%24filter"
             if original_name == "orderby":
@@ -161,6 +163,9 @@ class CalendarsRequestBuilder():
         
         # Include count of items
         count: Optional[bool] = None
+
+        # Expand related entities
+        expand: Optional[List[str]] = None
 
         # Filter items by property values
         filter: Optional[str] = None

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import android_lob_app, android_store_app, entity, iosi_pad_o_s_web_clip, ios_lob_app, ios_store_app, ios_vpp_app, mac_o_s_lob_app, mac_o_s_microsoft_edge_app, mac_o_s_office_suite_app, managed_android_lob_app, managed_android_store_app, managed_app, managed_i_o_s_lob_app, managed_i_o_s_store_app, managed_mobile_lob_app, microsoft_store_for_business_app, mime_content, mobile_app_assignment, mobile_app_category, mobile_app_publishing_state, mobile_lob_app, web_app, win32_lob_app, windows_microsoft_edge_app, windows_mobile_m_s_i, windows_universal_app_x, windows_web_app
+    from . import android_lob_app, android_store_app, entity, iosi_pad_o_s_web_clip, ios_lob_app, ios_store_app, ios_vpp_app, mac_o_s_lob_app, mac_o_s_microsoft_edge_app, mac_o_s_office_suite_app, managed_android_lob_app, managed_android_store_app, managed_app, managed_i_o_s_lob_app, managed_i_o_s_store_app, managed_mobile_lob_app, microsoft_store_for_business_app, mime_content, mobile_app_assignment, mobile_app_category, mobile_app_publishing_state, mobile_lob_app, web_app, win32_lob_app, windows_app_x, windows_microsoft_edge_app, windows_mobile_m_s_i, windows_universal_app_x, windows_web_app
 
 from . import entity
 
@@ -190,6 +190,10 @@ class MobileApp(entity.Entity):
                 from . import win32_lob_app
 
                 return win32_lob_app.Win32LobApp()
+            if mapping_value == "#microsoft.graph.windowsAppX":
+                from . import windows_app_x
+
+                return windows_app_x.WindowsAppX()
             if mapping_value == "#microsoft.graph.windowsMicrosoftEdgeApp":
                 from . import windows_microsoft_edge_app
 
@@ -264,7 +268,7 @@ class MobileApp(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import android_lob_app, android_store_app, entity, iosi_pad_o_s_web_clip, ios_lob_app, ios_store_app, ios_vpp_app, mac_o_s_lob_app, mac_o_s_microsoft_edge_app, mac_o_s_office_suite_app, managed_android_lob_app, managed_android_store_app, managed_app, managed_i_o_s_lob_app, managed_i_o_s_store_app, managed_mobile_lob_app, microsoft_store_for_business_app, mime_content, mobile_app_assignment, mobile_app_category, mobile_app_publishing_state, mobile_lob_app, web_app, win32_lob_app, windows_microsoft_edge_app, windows_mobile_m_s_i, windows_universal_app_x, windows_web_app
+        from . import android_lob_app, android_store_app, entity, iosi_pad_o_s_web_clip, ios_lob_app, ios_store_app, ios_vpp_app, mac_o_s_lob_app, mac_o_s_microsoft_edge_app, mac_o_s_office_suite_app, managed_android_lob_app, managed_android_store_app, managed_app, managed_i_o_s_lob_app, managed_i_o_s_store_app, managed_mobile_lob_app, microsoft_store_for_business_app, mime_content, mobile_app_assignment, mobile_app_category, mobile_app_publishing_state, mobile_lob_app, web_app, win32_lob_app, windows_app_x, windows_microsoft_edge_app, windows_mobile_m_s_i, windows_universal_app_x, windows_web_app
 
         fields: Dict[str, Callable[[Any], None]] = {
             "assignments": lambda n : setattr(self, 'assignments', n.get_collection_of_object_values(mobile_app_assignment.MobileAppAssignment)),

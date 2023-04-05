@@ -11,7 +11,7 @@ from .. import entity
 class ExternalConnection(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new externalConnection and sets the default values.
+        Instantiates a new ExternalConnection and sets the default values.
         """
         super().__init__()
         # Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.

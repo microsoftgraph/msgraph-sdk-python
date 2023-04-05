@@ -12,6 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ..models import admin
     from ..models.o_data_errors import o_data_error
+    from .edge import edge_request_builder
     from .service_announcement import service_announcement_request_builder
 
 class AdminRequestBuilder():
@@ -121,6 +122,15 @@ class AdminRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    @property
+    def edge(self) -> edge_request_builder.EdgeRequestBuilder:
+        """
+        Provides operations to manage the edge property of the microsoft.graph.admin entity.
+        """
+        from .edge import edge_request_builder
+
+        return edge_request_builder.EdgeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def service_announcement(self) -> service_announcement_request_builder.ServiceAnnouncementRequestBuilder:

@@ -231,7 +231,7 @@ class User(directory_object.DirectoryObject):
         self._settings: Optional[user_settings.UserSettings] = None
         # Do not use in Microsoft Graph. Manage this property through the Microsoft 365 admin center instead. Represents whether the user should be included in the Outlook global address list. See Known issue.
         self._show_in_address_list: Optional[bool] = None
-        # Get the last signed-in date and request ID of the sign-in for a given user. Read-only.Returned only on $select. Supports $filter (eq, ne, not, ge, le) but not with any other filterable properties. Note: Details for this property require an Azure AD Premium P1/P2 license and the AuditLog.Read.All permission.There's a known issue with retrieving this property.This property is not returned for a user who has never signed in or last signed in before April 2020.
+        # Get the last signed-in date and request ID of the sign-in for a given user. Read-only.Returned only on $select. Supports $filter (eq, ne, not, ge, le) but not with any other filterable properties. Note: Details for this property require an Azure AD Premium P1/P2 license and the AuditLog.Read.All permission.When you specify $select=signInActivity or $filter=signInActivity while listing users, the maximum page size is 120 users. Requests with $top set higher than 120 will fail. Requests with $top set higher than 120 will fail.This property is not returned for a user who has never signed in or last signed in before April 2020.
         self._sign_in_activity: Optional[sign_in_activity.SignInActivity] = None
         # Any refresh tokens or sessions tokens (session cookies) issued before this time are invalid, and applications will get an error when using an invalid refresh or sessions token to acquire a delegated access token (to access APIs such as Microsoft Graph).  If this happens, the application will need to acquire a new refresh token by making a request to the authorize endpoint. Read-only. Use revokeSignInSessions to reset. Returned only on $select.
         self._sign_in_sessions_valid_from_date_time: Optional[datetime] = None
@@ -2370,7 +2370,7 @@ class User(directory_object.DirectoryObject):
     @property
     def sign_in_activity(self,) -> Optional[sign_in_activity.SignInActivity]:
         """
-        Gets the signInActivity property value. Get the last signed-in date and request ID of the sign-in for a given user. Read-only.Returned only on $select. Supports $filter (eq, ne, not, ge, le) but not with any other filterable properties. Note: Details for this property require an Azure AD Premium P1/P2 license and the AuditLog.Read.All permission.There's a known issue with retrieving this property.This property is not returned for a user who has never signed in or last signed in before April 2020.
+        Gets the signInActivity property value. Get the last signed-in date and request ID of the sign-in for a given user. Read-only.Returned only on $select. Supports $filter (eq, ne, not, ge, le) but not with any other filterable properties. Note: Details for this property require an Azure AD Premium P1/P2 license and the AuditLog.Read.All permission.When you specify $select=signInActivity or $filter=signInActivity while listing users, the maximum page size is 120 users. Requests with $top set higher than 120 will fail. Requests with $top set higher than 120 will fail.This property is not returned for a user who has never signed in or last signed in before April 2020.
         Returns: Optional[sign_in_activity.SignInActivity]
         """
         return self._sign_in_activity
@@ -2378,7 +2378,7 @@ class User(directory_object.DirectoryObject):
     @sign_in_activity.setter
     def sign_in_activity(self,value: Optional[sign_in_activity.SignInActivity] = None) -> None:
         """
-        Sets the signInActivity property value. Get the last signed-in date and request ID of the sign-in for a given user. Read-only.Returned only on $select. Supports $filter (eq, ne, not, ge, le) but not with any other filterable properties. Note: Details for this property require an Azure AD Premium P1/P2 license and the AuditLog.Read.All permission.There's a known issue with retrieving this property.This property is not returned for a user who has never signed in or last signed in before April 2020.
+        Sets the signInActivity property value. Get the last signed-in date and request ID of the sign-in for a given user. Read-only.Returned only on $select. Supports $filter (eq, ne, not, ge, le) but not with any other filterable properties. Note: Details for this property require an Azure AD Premium P1/P2 license and the AuditLog.Read.All permission.When you specify $select=signInActivity or $filter=signInActivity while listing users, the maximum page size is 120 users. Requests with $top set higher than 120 will fail. Requests with $top set higher than 120 will fail.This property is not returned for a user who has never signed in or last signed in before April 2020.
         Args:
             value: Value to set for the sign_in_activity property.
         """

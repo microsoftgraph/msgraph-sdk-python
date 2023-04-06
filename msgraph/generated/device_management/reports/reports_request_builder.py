@@ -55,12 +55,11 @@ class ReportsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ReportsRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[ReportsRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property reports for deviceManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -73,7 +72,7 @@ class ReportsRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def export_jobs_by_id(self,id: str) -> device_management_export_job_item_request_builder.DeviceManagementExportJobItemRequestBuilder:
         """

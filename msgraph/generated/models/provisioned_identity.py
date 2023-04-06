@@ -10,7 +10,7 @@ from . import identity
 class ProvisionedIdentity(identity.Identity):
     def __init__(self,) -> None:
         """
-        Instantiates a new ProvisionedIdentity and sets the default values.
+        Instantiates a new provisionedIdentity and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.provisionedIdentity"

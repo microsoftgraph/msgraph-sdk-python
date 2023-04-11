@@ -3,7 +3,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import edge, service_announcement
+    from . import edge, service_announcement, sharepoint
 
 class Admin(AdditionalDataHolder, Parsable):
     def __init__(self,) -> None:
@@ -13,12 +13,14 @@ class Admin(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The edge property
+        # A container for Microsoft Edge resources. Read-only.
         self._edge: Optional[edge.Edge] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # A container for service communications resources. Read-only.
         self._service_announcement: Optional[service_announcement.ServiceAnnouncement] = None
+        # The sharepoint property
+        self._sharepoint: Optional[sharepoint.Sharepoint] = None
     
     @property
     def additional_data(self,) -> Dict[str, Any]:
@@ -52,7 +54,7 @@ class Admin(AdditionalDataHolder, Parsable):
     @property
     def edge(self,) -> Optional[edge.Edge]:
         """
-        Gets the edge property value. The edge property
+        Gets the edge property value. A container for Microsoft Edge resources. Read-only.
         Returns: Optional[edge.Edge]
         """
         return self._edge
@@ -60,7 +62,7 @@ class Admin(AdditionalDataHolder, Parsable):
     @edge.setter
     def edge(self,value: Optional[edge.Edge] = None) -> None:
         """
-        Sets the edge property value. The edge property
+        Sets the edge property value. A container for Microsoft Edge resources. Read-only.
         Args:
             value: Value to set for the edge property.
         """
@@ -71,12 +73,13 @@ class Admin(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import edge, service_announcement
+        from . import edge, service_announcement, sharepoint
 
         fields: Dict[str, Callable[[Any], None]] = {
             "edge": lambda n : setattr(self, 'edge', n.get_object_value(edge.Edge)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "serviceAnnouncement": lambda n : setattr(self, 'service_announcement', n.get_object_value(service_announcement.ServiceAnnouncement)),
+            "sharepoint": lambda n : setattr(self, 'sharepoint', n.get_object_value(sharepoint.Sharepoint)),
         }
         return fields
     
@@ -108,6 +111,7 @@ class Admin(AdditionalDataHolder, Parsable):
         writer.write_object_value("edge", self.edge)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_object_value("serviceAnnouncement", self.service_announcement)
+        writer.write_object_value("sharepoint", self.sharepoint)
         writer.write_additional_data_value(self.additional_data)
     
     @property
@@ -126,5 +130,22 @@ class Admin(AdditionalDataHolder, Parsable):
             value: Value to set for the service_announcement property.
         """
         self._service_announcement = value
+    
+    @property
+    def sharepoint(self,) -> Optional[sharepoint.Sharepoint]:
+        """
+        Gets the sharepoint property value. The sharepoint property
+        Returns: Optional[sharepoint.Sharepoint]
+        """
+        return self._sharepoint
+    
+    @sharepoint.setter
+    def sharepoint(self,value: Optional[sharepoint.Sharepoint] = None) -> None:
+        """
+        Sets the sharepoint property value. The sharepoint property
+        Args:
+            value: Value to set for the sharepoint property.
+        """
+        self._sharepoint = value
     
 

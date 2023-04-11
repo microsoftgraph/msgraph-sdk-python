@@ -52,12 +52,11 @@ class AppConsentRequestBuilder():
         url_tpl_params["appConsentRequest%2Did"] = id
         return app_consent_request_item_request_builder.AppConsentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def delete(self,request_configuration: Optional[AppConsentRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[AppConsentRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property appConsent for identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -70,7 +69,7 @@ class AppConsentRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[AppConsentRequestBuilderGetRequestConfiguration] = None) -> Optional[app_consent_approval_route.AppConsentApprovalRoute]:
         """

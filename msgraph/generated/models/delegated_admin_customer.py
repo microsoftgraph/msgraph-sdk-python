@@ -10,7 +10,7 @@ from . import entity
 class DelegatedAdminCustomer(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new DelegatedAdminCustomer and sets the default values.
+        Instantiates a new delegatedAdminCustomer and sets the default values.
         """
         super().__init__()
         # The Azure AD display name of the customer tenant. Read-only. Supports $orderBy.

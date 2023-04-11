@@ -35,12 +35,11 @@ class BrowserSiteItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[BrowserSiteItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[BrowserSiteItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property sites for admin
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -53,11 +52,11 @@ class BrowserSiteItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[BrowserSiteItemRequestBuilderGetRequestConfiguration] = None) -> Optional[browser_site.BrowserSite]:
         """
-        Get sites from admin
+        A collection of sites defined for the site list.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[browser_site.BrowserSite]
@@ -120,7 +119,7 @@ class BrowserSiteItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[BrowserSiteItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get sites from admin
+        A collection of sites defined for the site list.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -172,7 +171,7 @@ class BrowserSiteItemRequestBuilder():
     @dataclass
     class BrowserSiteItemRequestBuilderGetQueryParameters():
         """
-        Get sites from admin
+        A collection of sites defined for the site list.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

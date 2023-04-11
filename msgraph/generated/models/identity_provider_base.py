@@ -10,7 +10,7 @@ from . import entity
 class IdentityProviderBase(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new identityProviderBase and sets the default values.
+        Instantiates a new IdentityProviderBase and sets the default values.
         """
         super().__init__()
         # The display name of the identity provider.

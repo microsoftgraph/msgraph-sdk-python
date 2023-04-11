@@ -38,7 +38,7 @@ class SharedCookiesRequestBuilder():
     
     async def get(self,request_configuration: Optional[SharedCookiesRequestBuilderGetRequestConfiguration] = None) -> Optional[browser_shared_cookie_collection_response.BrowserSharedCookieCollectionResponse]:
         """
-        Get sharedCookies from admin
+        Get a list of the browserSharedCookie objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[browser_shared_cookie_collection_response.BrowserSharedCookieCollectionResponse]
@@ -60,7 +60,7 @@ class SharedCookiesRequestBuilder():
     
     async def post(self,body: Optional[browser_shared_cookie.BrowserSharedCookie] = None, request_configuration: Optional[SharedCookiesRequestBuilderPostRequestConfiguration] = None) -> Optional[browser_shared_cookie.BrowserSharedCookie]:
         """
-        Create new navigation property to sharedCookies for admin
+        Create a new browserSharedCookie object in a browserSiteList.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -85,7 +85,7 @@ class SharedCookiesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SharedCookiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get sharedCookies from admin
+        Get a list of the browserSharedCookie objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -103,7 +103,7 @@ class SharedCookiesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[browser_shared_cookie.BrowserSharedCookie] = None, request_configuration: Optional[SharedCookiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to sharedCookies for admin
+        Create a new browserSharedCookie object in a browserSiteList.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -134,7 +134,7 @@ class SharedCookiesRequestBuilder():
     @dataclass
     class SharedCookiesRequestBuilderGetQueryParameters():
         """
-        Get sharedCookies from admin
+        Get a list of the browserSharedCookie objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

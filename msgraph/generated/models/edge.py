@@ -10,10 +10,10 @@ from . import entity
 class Edge(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new Edge and sets the default values.
+        Instantiates a new edge and sets the default values.
         """
         super().__init__()
-        # The internetExplorerMode property
+        # A container for Internet Explorer mode resources.
         self._internet_explorer_mode: Optional[internet_explorer_mode.InternetExplorerMode] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
@@ -47,7 +47,7 @@ class Edge(entity.Entity):
     @property
     def internet_explorer_mode(self,) -> Optional[internet_explorer_mode.InternetExplorerMode]:
         """
-        Gets the internetExplorerMode property value. The internetExplorerMode property
+        Gets the internetExplorerMode property value. A container for Internet Explorer mode resources.
         Returns: Optional[internet_explorer_mode.InternetExplorerMode]
         """
         return self._internet_explorer_mode
@@ -55,7 +55,7 @@ class Edge(entity.Entity):
     @internet_explorer_mode.setter
     def internet_explorer_mode(self,value: Optional[internet_explorer_mode.InternetExplorerMode] = None) -> None:
         """
-        Sets the internetExplorerMode property value. The internetExplorerMode property
+        Sets the internetExplorerMode property value. A container for Internet Explorer mode resources.
         Args:
             value: Value to set for the internet_explorer_mode property.
         """

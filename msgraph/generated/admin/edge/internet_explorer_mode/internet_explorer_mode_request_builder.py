@@ -37,12 +37,11 @@ class InternetExplorerModeRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[InternetExplorerModeRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[InternetExplorerModeRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property internetExplorerMode for admin
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -55,11 +54,11 @@ class InternetExplorerModeRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[InternetExplorerModeRequestBuilderGetRequestConfiguration] = None) -> Optional[internet_explorer_mode.InternetExplorerMode]:
         """
-        Get internetExplorerMode from admin
+        A container for Internet Explorer mode resources.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[internet_explorer_mode.InternetExplorerMode]
@@ -137,7 +136,7 @@ class InternetExplorerModeRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[InternetExplorerModeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get internetExplorerMode from admin
+        A container for Internet Explorer mode resources.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -198,7 +197,7 @@ class InternetExplorerModeRequestBuilder():
     @dataclass
     class InternetExplorerModeRequestBuilderGetQueryParameters():
         """
-        Get internetExplorerMode from admin
+        A container for Internet Explorer mode resources.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

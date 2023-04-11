@@ -36,12 +36,11 @@ class EdgeRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[EdgeRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[EdgeRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property edge for admin
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -54,11 +53,11 @@ class EdgeRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[EdgeRequestBuilderGetRequestConfiguration] = None) -> Optional[edge.Edge]:
         """
-        Get edge from admin
+        A container for Microsoft Edge resources. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[edge.Edge]
@@ -121,7 +120,7 @@ class EdgeRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[EdgeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get edge from admin
+        A container for Microsoft Edge resources. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -182,7 +181,7 @@ class EdgeRequestBuilder():
     @dataclass
     class EdgeRequestBuilderGetQueryParameters():
         """
-        Get edge from admin
+        A container for Microsoft Edge resources. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

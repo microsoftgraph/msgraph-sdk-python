@@ -17,21 +17,21 @@ class BrowserSiteHistory(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # Boolean attribute that controls the behavior of redirected sites
+        # Controls the behavior of redirected sites. If true, indicates that the site will open in Internet Explorer 11 or Microsoft Edge even if the site is navigated to as part of a HTTP or meta refresh redirection chain.
         self._allow_redirect: Optional[bool] = None
-        # The content for the site
+        # The comment for the site.
         self._comment: Optional[str] = None
-        # Controls what compatibility setting is used for specific sites or domains
+        # Controls what compatibility setting is used for specific sites or domains. The possible values are: default, internetExplorer8Enterprise, internetExplorer7Enterprise, internetExplorer11, internetExplorer10, internetExplorer9, internetExplorer8, internetExplorer7, internetExplorer5, unknownFutureValue.
         self._compatibility_mode: Optional[browser_site_compatibility_mode.BrowserSiteCompatibilityMode] = None
-        # The user who modified the site
+        # The user who last modified the site.
         self._last_modified_by: Optional[identity_set.IdentitySet] = None
-        # The merge type of the site
+        # The merge type of the site. The possible values are: noMerge, default, unknownFutureValue.
         self._merge_type: Optional[browser_site_merge_type.BrowserSiteMergeType] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # The time the site was last published
+        # The date and time when the site was last published.
         self._published_date_time: Optional[datetime] = None
-        # The render mode in Edge client that the site is supposed to open in
+        # The target environment that the site should open in. The possible values are: internetExplorerMode, internetExplorer11, microsoftEdge, configurable, none, unknownFutureValue.Prior to June 15, 2022, the internetExplorer11 option would allow opening a site in the Internet Explorer 11 (IE11) desktop application. Following the retirement of IE11 on June 15, 2022, the internetExplorer11 option will no longer open an IE11 window and will instead behave the same as the internetExplorerMode option.
         self._target_environment: Optional[browser_site_target_environment.BrowserSiteTargetEnvironment] = None
     
     @property
@@ -54,7 +54,7 @@ class BrowserSiteHistory(AdditionalDataHolder, Parsable):
     @property
     def allow_redirect(self,) -> Optional[bool]:
         """
-        Gets the allowRedirect property value. Boolean attribute that controls the behavior of redirected sites
+        Gets the allowRedirect property value. Controls the behavior of redirected sites. If true, indicates that the site will open in Internet Explorer 11 or Microsoft Edge even if the site is navigated to as part of a HTTP or meta refresh redirection chain.
         Returns: Optional[bool]
         """
         return self._allow_redirect
@@ -62,7 +62,7 @@ class BrowserSiteHistory(AdditionalDataHolder, Parsable):
     @allow_redirect.setter
     def allow_redirect(self,value: Optional[bool] = None) -> None:
         """
-        Sets the allowRedirect property value. Boolean attribute that controls the behavior of redirected sites
+        Sets the allowRedirect property value. Controls the behavior of redirected sites. If true, indicates that the site will open in Internet Explorer 11 or Microsoft Edge even if the site is navigated to as part of a HTTP or meta refresh redirection chain.
         Args:
             value: Value to set for the allow_redirect property.
         """
@@ -71,7 +71,7 @@ class BrowserSiteHistory(AdditionalDataHolder, Parsable):
     @property
     def comment(self,) -> Optional[str]:
         """
-        Gets the comment property value. The content for the site
+        Gets the comment property value. The comment for the site.
         Returns: Optional[str]
         """
         return self._comment
@@ -79,7 +79,7 @@ class BrowserSiteHistory(AdditionalDataHolder, Parsable):
     @comment.setter
     def comment(self,value: Optional[str] = None) -> None:
         """
-        Sets the comment property value. The content for the site
+        Sets the comment property value. The comment for the site.
         Args:
             value: Value to set for the comment property.
         """
@@ -88,7 +88,7 @@ class BrowserSiteHistory(AdditionalDataHolder, Parsable):
     @property
     def compatibility_mode(self,) -> Optional[browser_site_compatibility_mode.BrowserSiteCompatibilityMode]:
         """
-        Gets the compatibilityMode property value. Controls what compatibility setting is used for specific sites or domains
+        Gets the compatibilityMode property value. Controls what compatibility setting is used for specific sites or domains. The possible values are: default, internetExplorer8Enterprise, internetExplorer7Enterprise, internetExplorer11, internetExplorer10, internetExplorer9, internetExplorer8, internetExplorer7, internetExplorer5, unknownFutureValue.
         Returns: Optional[browser_site_compatibility_mode.BrowserSiteCompatibilityMode]
         """
         return self._compatibility_mode
@@ -96,7 +96,7 @@ class BrowserSiteHistory(AdditionalDataHolder, Parsable):
     @compatibility_mode.setter
     def compatibility_mode(self,value: Optional[browser_site_compatibility_mode.BrowserSiteCompatibilityMode] = None) -> None:
         """
-        Sets the compatibilityMode property value. Controls what compatibility setting is used for specific sites or domains
+        Sets the compatibilityMode property value. Controls what compatibility setting is used for specific sites or domains. The possible values are: default, internetExplorer8Enterprise, internetExplorer7Enterprise, internetExplorer11, internetExplorer10, internetExplorer9, internetExplorer8, internetExplorer7, internetExplorer5, unknownFutureValue.
         Args:
             value: Value to set for the compatibility_mode property.
         """
@@ -136,7 +136,7 @@ class BrowserSiteHistory(AdditionalDataHolder, Parsable):
     @property
     def last_modified_by(self,) -> Optional[identity_set.IdentitySet]:
         """
-        Gets the lastModifiedBy property value. The user who modified the site
+        Gets the lastModifiedBy property value. The user who last modified the site.
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._last_modified_by
@@ -144,7 +144,7 @@ class BrowserSiteHistory(AdditionalDataHolder, Parsable):
     @last_modified_by.setter
     def last_modified_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
-        Sets the lastModifiedBy property value. The user who modified the site
+        Sets the lastModifiedBy property value. The user who last modified the site.
         Args:
             value: Value to set for the last_modified_by property.
         """
@@ -153,7 +153,7 @@ class BrowserSiteHistory(AdditionalDataHolder, Parsable):
     @property
     def merge_type(self,) -> Optional[browser_site_merge_type.BrowserSiteMergeType]:
         """
-        Gets the mergeType property value. The merge type of the site
+        Gets the mergeType property value. The merge type of the site. The possible values are: noMerge, default, unknownFutureValue.
         Returns: Optional[browser_site_merge_type.BrowserSiteMergeType]
         """
         return self._merge_type
@@ -161,7 +161,7 @@ class BrowserSiteHistory(AdditionalDataHolder, Parsable):
     @merge_type.setter
     def merge_type(self,value: Optional[browser_site_merge_type.BrowserSiteMergeType] = None) -> None:
         """
-        Sets the mergeType property value. The merge type of the site
+        Sets the mergeType property value. The merge type of the site. The possible values are: noMerge, default, unknownFutureValue.
         Args:
             value: Value to set for the merge_type property.
         """
@@ -187,7 +187,7 @@ class BrowserSiteHistory(AdditionalDataHolder, Parsable):
     @property
     def published_date_time(self,) -> Optional[datetime]:
         """
-        Gets the publishedDateTime property value. The time the site was last published
+        Gets the publishedDateTime property value. The date and time when the site was last published.
         Returns: Optional[datetime]
         """
         return self._published_date_time
@@ -195,7 +195,7 @@ class BrowserSiteHistory(AdditionalDataHolder, Parsable):
     @published_date_time.setter
     def published_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the publishedDateTime property value. The time the site was last published
+        Sets the publishedDateTime property value. The date and time when the site was last published.
         Args:
             value: Value to set for the published_date_time property.
         """
@@ -222,7 +222,7 @@ class BrowserSiteHistory(AdditionalDataHolder, Parsable):
     @property
     def target_environment(self,) -> Optional[browser_site_target_environment.BrowserSiteTargetEnvironment]:
         """
-        Gets the targetEnvironment property value. The render mode in Edge client that the site is supposed to open in
+        Gets the targetEnvironment property value. The target environment that the site should open in. The possible values are: internetExplorerMode, internetExplorer11, microsoftEdge, configurable, none, unknownFutureValue.Prior to June 15, 2022, the internetExplorer11 option would allow opening a site in the Internet Explorer 11 (IE11) desktop application. Following the retirement of IE11 on June 15, 2022, the internetExplorer11 option will no longer open an IE11 window and will instead behave the same as the internetExplorerMode option.
         Returns: Optional[browser_site_target_environment.BrowserSiteTargetEnvironment]
         """
         return self._target_environment
@@ -230,7 +230,7 @@ class BrowserSiteHistory(AdditionalDataHolder, Parsable):
     @target_environment.setter
     def target_environment(self,value: Optional[browser_site_target_environment.BrowserSiteTargetEnvironment] = None) -> None:
         """
-        Sets the targetEnvironment property value. The render mode in Edge client that the site is supposed to open in
+        Sets the targetEnvironment property value. The target environment that the site should open in. The possible values are: internetExplorerMode, internetExplorer11, microsoftEdge, configurable, none, unknownFutureValue.Prior to June 15, 2022, the internetExplorer11 option would allow opening a site in the Internet Explorer 11 (IE11) desktop application. Following the retirement of IE11 on June 15, 2022, the internetExplorer11 option will no longer open an IE11 window and will instead behave the same as the internetExplorerMode option.
         Args:
             value: Value to set for the target_environment property.
         """

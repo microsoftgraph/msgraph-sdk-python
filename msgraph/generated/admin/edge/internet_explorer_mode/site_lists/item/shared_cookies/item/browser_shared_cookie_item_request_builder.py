@@ -56,7 +56,7 @@ class BrowserSharedCookieItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[BrowserSharedCookieItemRequestBuilderGetRequestConfiguration] = None) -> Optional[browser_shared_cookie.BrowserSharedCookie]:
         """
-        Get sharedCookies from admin
+        A collection of shared cookies defined for the site list.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[browser_shared_cookie.BrowserSharedCookie]
@@ -119,7 +119,7 @@ class BrowserSharedCookieItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[BrowserSharedCookieItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get sharedCookies from admin
+        A collection of shared cookies defined for the site list.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class BrowserSharedCookieItemRequestBuilder():
     @dataclass
     class BrowserSharedCookieItemRequestBuilderGetQueryParameters():
         """
-        Get sharedCookies from admin
+        A collection of shared cookies defined for the site list.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

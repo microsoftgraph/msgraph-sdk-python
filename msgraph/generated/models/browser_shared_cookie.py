@@ -14,27 +14,27 @@ class BrowserSharedCookie(entity.Entity):
         Instantiates a new browserSharedCookie and sets the default values.
         """
         super().__init__()
-        # The comment of the cookie
+        # The comment for the shared cookie.
         self._comment: Optional[str] = None
-        # The datetime that the admin created the cookie
+        # The date and time when the shared cookie was created.
         self._created_date_time: Optional[datetime] = None
-        # The datetime that the admin deleted the cookie
+        # The date and time when the shared cookie was deleted.
         self._deleted_date_time: Optional[datetime] = None
-        # The name of the cookie
+        # The name of the cookie.
         self._display_name: Optional[str] = None
-        # The history of the cookie
+        # The history of modifications applied to the cookie.
         self._history: Optional[List[browser_shared_cookie_history.BrowserSharedCookieHistory]] = None
-        # Boolean attribute that determines whether a cookie is  a host-only or domain cookie
+        # Controls whether a cookie is a host-only or domain cookie.
         self._host_only: Optional[bool] = None
-        # The URL of the cookie
+        # The URL of the cookie.
         self._host_or_domain: Optional[str] = None
-        # The identity of the admin who last updated the cookie
+        # The user who last modified the cookie.
         self._last_modified_by: Optional[identity_set.IdentitySet] = None
-        # The datetime that the admin last updated the cookie
+        # The date and time when the cookie was last modified.
         self._last_modified_date_time: Optional[datetime] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # The path of the cookie
+        # The path of the cookie.
         self._path: Optional[str] = None
         # The sourceEnvironment property
         self._source_environment: Optional[browser_shared_cookie_source_environment.BrowserSharedCookieSourceEnvironment] = None
@@ -44,7 +44,7 @@ class BrowserSharedCookie(entity.Entity):
     @property
     def comment(self,) -> Optional[str]:
         """
-        Gets the comment property value. The comment of the cookie
+        Gets the comment property value. The comment for the shared cookie.
         Returns: Optional[str]
         """
         return self._comment
@@ -52,7 +52,7 @@ class BrowserSharedCookie(entity.Entity):
     @comment.setter
     def comment(self,value: Optional[str] = None) -> None:
         """
-        Sets the comment property value. The comment of the cookie
+        Sets the comment property value. The comment for the shared cookie.
         Args:
             value: Value to set for the comment property.
         """
@@ -61,7 +61,7 @@ class BrowserSharedCookie(entity.Entity):
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
-        Gets the createdDateTime property value. The datetime that the admin created the cookie
+        Gets the createdDateTime property value. The date and time when the shared cookie was created.
         Returns: Optional[datetime]
         """
         return self._created_date_time
@@ -69,7 +69,7 @@ class BrowserSharedCookie(entity.Entity):
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the createdDateTime property value. The datetime that the admin created the cookie
+        Sets the createdDateTime property value. The date and time when the shared cookie was created.
         Args:
             value: Value to set for the created_date_time property.
         """
@@ -90,7 +90,7 @@ class BrowserSharedCookie(entity.Entity):
     @property
     def deleted_date_time(self,) -> Optional[datetime]:
         """
-        Gets the deletedDateTime property value. The datetime that the admin deleted the cookie
+        Gets the deletedDateTime property value. The date and time when the shared cookie was deleted.
         Returns: Optional[datetime]
         """
         return self._deleted_date_time
@@ -98,7 +98,7 @@ class BrowserSharedCookie(entity.Entity):
     @deleted_date_time.setter
     def deleted_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the deletedDateTime property value. The datetime that the admin deleted the cookie
+        Sets the deletedDateTime property value. The date and time when the shared cookie was deleted.
         Args:
             value: Value to set for the deleted_date_time property.
         """
@@ -107,7 +107,7 @@ class BrowserSharedCookie(entity.Entity):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The name of the cookie
+        Gets the displayName property value. The name of the cookie.
         Returns: Optional[str]
         """
         return self._display_name
@@ -115,7 +115,7 @@ class BrowserSharedCookie(entity.Entity):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The name of the cookie
+        Sets the displayName property value. The name of the cookie.
         Args:
             value: Value to set for the display_name property.
         """
@@ -149,7 +149,7 @@ class BrowserSharedCookie(entity.Entity):
     @property
     def history(self,) -> Optional[List[browser_shared_cookie_history.BrowserSharedCookieHistory]]:
         """
-        Gets the history property value. The history of the cookie
+        Gets the history property value. The history of modifications applied to the cookie.
         Returns: Optional[List[browser_shared_cookie_history.BrowserSharedCookieHistory]]
         """
         return self._history
@@ -157,7 +157,7 @@ class BrowserSharedCookie(entity.Entity):
     @history.setter
     def history(self,value: Optional[List[browser_shared_cookie_history.BrowserSharedCookieHistory]] = None) -> None:
         """
-        Sets the history property value. The history of the cookie
+        Sets the history property value. The history of modifications applied to the cookie.
         Args:
             value: Value to set for the history property.
         """
@@ -166,7 +166,7 @@ class BrowserSharedCookie(entity.Entity):
     @property
     def host_only(self,) -> Optional[bool]:
         """
-        Gets the hostOnly property value. Boolean attribute that determines whether a cookie is  a host-only or domain cookie
+        Gets the hostOnly property value. Controls whether a cookie is a host-only or domain cookie.
         Returns: Optional[bool]
         """
         return self._host_only
@@ -174,7 +174,7 @@ class BrowserSharedCookie(entity.Entity):
     @host_only.setter
     def host_only(self,value: Optional[bool] = None) -> None:
         """
-        Sets the hostOnly property value. Boolean attribute that determines whether a cookie is  a host-only or domain cookie
+        Sets the hostOnly property value. Controls whether a cookie is a host-only or domain cookie.
         Args:
             value: Value to set for the host_only property.
         """
@@ -183,7 +183,7 @@ class BrowserSharedCookie(entity.Entity):
     @property
     def host_or_domain(self,) -> Optional[str]:
         """
-        Gets the hostOrDomain property value. The URL of the cookie
+        Gets the hostOrDomain property value. The URL of the cookie.
         Returns: Optional[str]
         """
         return self._host_or_domain
@@ -191,7 +191,7 @@ class BrowserSharedCookie(entity.Entity):
     @host_or_domain.setter
     def host_or_domain(self,value: Optional[str] = None) -> None:
         """
-        Sets the hostOrDomain property value. The URL of the cookie
+        Sets the hostOrDomain property value. The URL of the cookie.
         Args:
             value: Value to set for the host_or_domain property.
         """
@@ -200,7 +200,7 @@ class BrowserSharedCookie(entity.Entity):
     @property
     def last_modified_by(self,) -> Optional[identity_set.IdentitySet]:
         """
-        Gets the lastModifiedBy property value. The identity of the admin who last updated the cookie
+        Gets the lastModifiedBy property value. The user who last modified the cookie.
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._last_modified_by
@@ -208,7 +208,7 @@ class BrowserSharedCookie(entity.Entity):
     @last_modified_by.setter
     def last_modified_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
-        Sets the lastModifiedBy property value. The identity of the admin who last updated the cookie
+        Sets the lastModifiedBy property value. The user who last modified the cookie.
         Args:
             value: Value to set for the last_modified_by property.
         """
@@ -217,7 +217,7 @@ class BrowserSharedCookie(entity.Entity):
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastModifiedDateTime property value. The datetime that the admin last updated the cookie
+        Gets the lastModifiedDateTime property value. The date and time when the cookie was last modified.
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
@@ -225,7 +225,7 @@ class BrowserSharedCookie(entity.Entity):
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastModifiedDateTime property value. The datetime that the admin last updated the cookie
+        Sets the lastModifiedDateTime property value. The date and time when the cookie was last modified.
         Args:
             value: Value to set for the last_modified_date_time property.
         """
@@ -234,7 +234,7 @@ class BrowserSharedCookie(entity.Entity):
     @property
     def path(self,) -> Optional[str]:
         """
-        Gets the path property value. The path of the cookie
+        Gets the path property value. The path of the cookie.
         Returns: Optional[str]
         """
         return self._path
@@ -242,7 +242,7 @@ class BrowserSharedCookie(entity.Entity):
     @path.setter
     def path(self,value: Optional[str] = None) -> None:
         """
-        Sets the path property value. The path of the cookie
+        Sets the path property value. The path of the cookie.
         Args:
             value: Value to set for the path property.
         """

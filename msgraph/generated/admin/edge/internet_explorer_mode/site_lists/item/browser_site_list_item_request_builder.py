@@ -61,7 +61,7 @@ class BrowserSiteListItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[BrowserSiteListItemRequestBuilderGetRequestConfiguration] = None) -> Optional[browser_site_list.BrowserSiteList]:
         """
-        Get siteLists from admin
+        A collection of site lists to support Internet Explorer mode.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[browser_site_list.BrowserSiteList]
@@ -154,7 +154,7 @@ class BrowserSiteListItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[BrowserSiteListItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get siteLists from admin
+        A collection of site lists to support Internet Explorer mode.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -233,7 +233,7 @@ class BrowserSiteListItemRequestBuilder():
     @dataclass
     class BrowserSiteListItemRequestBuilderGetQueryParameters():
         """
-        Get siteLists from admin
+        A collection of site lists to support Internet Explorer mode.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

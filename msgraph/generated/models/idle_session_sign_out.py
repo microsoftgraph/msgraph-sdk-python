@@ -2,25 +2,22 @@ from __future__ import annotations
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
-if TYPE_CHECKING:
-    from . import edge, service_announcement, sharepoint
-
-class Admin(AdditionalDataHolder, Parsable):
+class IdleSessionSignOut(AdditionalDataHolder, Parsable):
     def __init__(self,) -> None:
         """
-        Instantiates a new Admin and sets the default values.
+        Instantiates a new idleSessionSignOut and sets the default values.
         """
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # A container for Microsoft Edge resources. Read-only.
-        self._edge: Optional[edge.Edge] = None
+        # The isEnabled property
+        self._is_enabled: Optional[bool] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # A container for service communications resources. Read-only.
-        self._service_announcement: Optional[service_announcement.ServiceAnnouncement] = None
-        # The sharepoint property
-        self._sharepoint: Optional[sharepoint.Sharepoint] = None
+        # The signOutAfterInSeconds property
+        self._sign_out_after_in_seconds: Optional[int] = None
+        # The warnAfterInSeconds property
+        self._warn_after_in_seconds: Optional[int] = None
     
     @property
     def additional_data(self,) -> Dict[str, Any]:
@@ -40,48 +37,46 @@ class Admin(AdditionalDataHolder, Parsable):
         self._additional_data = value
     
     @staticmethod
-    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Admin:
+    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdleSessionSignOut:
         """
         Creates a new instance of the appropriate class based on discriminator value
         Args:
             parseNode: The parse node to use to read the discriminator value and create the object
-        Returns: Admin
+        Returns: IdleSessionSignOut
         """
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
-        return Admin()
-    
-    @property
-    def edge(self,) -> Optional[edge.Edge]:
-        """
-        Gets the edge property value. A container for Microsoft Edge resources. Read-only.
-        Returns: Optional[edge.Edge]
-        """
-        return self._edge
-    
-    @edge.setter
-    def edge(self,value: Optional[edge.Edge] = None) -> None:
-        """
-        Sets the edge property value. A container for Microsoft Edge resources. Read-only.
-        Args:
-            value: Value to set for the edge property.
-        """
-        self._edge = value
+        return IdleSessionSignOut()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import edge, service_announcement, sharepoint
-
         fields: Dict[str, Callable[[Any], None]] = {
-            "edge": lambda n : setattr(self, 'edge', n.get_object_value(edge.Edge)),
+            "isEnabled": lambda n : setattr(self, 'is_enabled', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
-            "serviceAnnouncement": lambda n : setattr(self, 'service_announcement', n.get_object_value(service_announcement.ServiceAnnouncement)),
-            "sharepoint": lambda n : setattr(self, 'sharepoint', n.get_object_value(sharepoint.Sharepoint)),
+            "signOutAfterInSeconds": lambda n : setattr(self, 'sign_out_after_in_seconds', n.get_int_value()),
+            "warnAfterInSeconds": lambda n : setattr(self, 'warn_after_in_seconds', n.get_int_value()),
         }
         return fields
+    
+    @property
+    def is_enabled(self,) -> Optional[bool]:
+        """
+        Gets the isEnabled property value. The isEnabled property
+        Returns: Optional[bool]
+        """
+        return self._is_enabled
+    
+    @is_enabled.setter
+    def is_enabled(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the isEnabled property value. The isEnabled property
+        Args:
+            value: Value to set for the is_enabled property.
+        """
+        self._is_enabled = value
     
     @property
     def odata_type(self,) -> Optional[str]:
@@ -108,44 +103,44 @@ class Admin(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        writer.write_object_value("edge", self.edge)
+        writer.write_bool_value("isEnabled", self.is_enabled)
         writer.write_str_value("@odata.type", self.odata_type)
-        writer.write_object_value("serviceAnnouncement", self.service_announcement)
-        writer.write_object_value("sharepoint", self.sharepoint)
+        writer.write_int_value("signOutAfterInSeconds", self.sign_out_after_in_seconds)
+        writer.write_int_value("warnAfterInSeconds", self.warn_after_in_seconds)
         writer.write_additional_data_value(self.additional_data)
     
     @property
-    def service_announcement(self,) -> Optional[service_announcement.ServiceAnnouncement]:
+    def sign_out_after_in_seconds(self,) -> Optional[int]:
         """
-        Gets the serviceAnnouncement property value. A container for service communications resources. Read-only.
-        Returns: Optional[service_announcement.ServiceAnnouncement]
+        Gets the signOutAfterInSeconds property value. The signOutAfterInSeconds property
+        Returns: Optional[int]
         """
-        return self._service_announcement
+        return self._sign_out_after_in_seconds
     
-    @service_announcement.setter
-    def service_announcement(self,value: Optional[service_announcement.ServiceAnnouncement] = None) -> None:
+    @sign_out_after_in_seconds.setter
+    def sign_out_after_in_seconds(self,value: Optional[int] = None) -> None:
         """
-        Sets the serviceAnnouncement property value. A container for service communications resources. Read-only.
+        Sets the signOutAfterInSeconds property value. The signOutAfterInSeconds property
         Args:
-            value: Value to set for the service_announcement property.
+            value: Value to set for the sign_out_after_in_seconds property.
         """
-        self._service_announcement = value
+        self._sign_out_after_in_seconds = value
     
     @property
-    def sharepoint(self,) -> Optional[sharepoint.Sharepoint]:
+    def warn_after_in_seconds(self,) -> Optional[int]:
         """
-        Gets the sharepoint property value. The sharepoint property
-        Returns: Optional[sharepoint.Sharepoint]
+        Gets the warnAfterInSeconds property value. The warnAfterInSeconds property
+        Returns: Optional[int]
         """
-        return self._sharepoint
+        return self._warn_after_in_seconds
     
-    @sharepoint.setter
-    def sharepoint(self,value: Optional[sharepoint.Sharepoint] = None) -> None:
+    @warn_after_in_seconds.setter
+    def warn_after_in_seconds(self,value: Optional[int] = None) -> None:
         """
-        Sets the sharepoint property value. The sharepoint property
+        Sets the warnAfterInSeconds property value. The warnAfterInSeconds property
         Args:
-            value: Value to set for the sharepoint property.
+            value: Value to set for the warn_after_in_seconds property.
         """
-        self._sharepoint = value
+        self._warn_after_in_seconds = value
     
 

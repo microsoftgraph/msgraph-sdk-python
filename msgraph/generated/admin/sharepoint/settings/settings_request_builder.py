@@ -10,19 +10,16 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ..models import admin
-    from ..models.o_data_errors import o_data_error
-    from .edge import edge_request_builder
-    from .service_announcement import service_announcement_request_builder
-    from .sharepoint import sharepoint_request_builder
+    from ....models import sharepoint_settings
+    from ....models.o_data_errors import o_data_error
 
-class AdminRequestBuilder():
+class SettingsRequestBuilder():
     """
-    Provides operations to manage the admin singleton.
+    Provides operations to manage the settings property of the microsoft.graph.sharepoint entity.
     """
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
-        Instantiates a new AdminRequestBuilder and sets the default values.
+        Instantiates a new SettingsRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
@@ -32,23 +29,22 @@ class AdminRequestBuilder():
         if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/admin{?%24select,%24expand}"
+        self.url_template: str = "{+baseurl}/admin/sharepoint/settings{?%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[AdminRequestBuilderGetRequestConfiguration] = None) -> Optional[admin.Admin]:
+    async def delete(self,request_configuration: Optional[SettingsRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Get admin
+        Delete navigation property settings for admin
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[admin.Admin]
         """
-        request_info = self.to_get_request_information(
+        request_info = self.to_delete_request_information(
             request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ....models.o_data_errors import o_data_error
 
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
@@ -56,24 +52,44 @@ class AdminRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import admin
-
-        return await self.request_adapter.send_async(request_info, admin.Admin, error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    async def patch(self,body: Optional[admin.Admin] = None, request_configuration: Optional[AdminRequestBuilderPatchRequestConfiguration] = None) -> Optional[admin.Admin]:
+    async def get(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[sharepoint_settings.SharepointSettings]:
         """
-        Update admin
+        Get settings from admin
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: Optional[sharepoint_settings.SharepointSettings]
+        """
+        request_info = self.to_get_request_information(
+            request_configuration
+        )
+        from ....models.o_data_errors import o_data_error
+
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
+        }
+        if not self.request_adapter:
+            raise Exception("Http core is null") 
+        from ....models import sharepoint_settings
+
+        return await self.request_adapter.send_async(request_info, sharepoint_settings.SharepointSettings, error_mapping)
+    
+    async def patch(self,body: Optional[sharepoint_settings.SharepointSettings] = None, request_configuration: Optional[SettingsRequestBuilderPatchRequestConfiguration] = None) -> Optional[sharepoint_settings.SharepointSettings]:
+        """
+        Update the navigation property settings in admin
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[admin.Admin]
+        Returns: Optional[sharepoint_settings.SharepointSettings]
         """
         if body is None:
             raise Exception("body cannot be undefined")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
-        from ..models.o_data_errors import o_data_error
+        from ....models.o_data_errors import o_data_error
 
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
@@ -81,13 +97,29 @@ class AdminRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        from ..models import admin
+        from ....models import sharepoint_settings
 
-        return await self.request_adapter.send_async(request_info, admin.Admin, error_mapping)
+        return await self.request_adapter.send_async(request_info, sharepoint_settings.SharepointSettings, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[AdminRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_delete_request_information(self,request_configuration: Optional[SettingsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Get admin
+        Delete navigation property settings for admin
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        request_info = RequestInformation()
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.DELETE
+        if request_configuration:
+            request_info.add_request_headers(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
+        return request_info
+    
+    def to_get_request_information(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+        """
+        Get settings from admin
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -103,9 +135,9 @@ class AdminRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         return request_info
     
-    def to_patch_request_information(self,body: Optional[admin.Admin] = None, request_configuration: Optional[AdminRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
+    def to_patch_request_information(self,body: Optional[sharepoint_settings.SharepointSettings] = None, request_configuration: Optional[SettingsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update admin
+        Update the navigation property settings in admin
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -124,37 +156,22 @@ class AdminRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def edge(self) -> edge_request_builder.EdgeRequestBuilder:
+    @dataclass
+    class SettingsRequestBuilderDeleteRequestConfiguration():
         """
-        Provides operations to manage the edge property of the microsoft.graph.admin entity.
+        Configuration for the request such as headers, query parameters, and middleware options.
         """
-        from .edge import edge_request_builder
+        # Request headers
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
 
-        return edge_request_builder.EdgeRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def service_announcement(self) -> service_announcement_request_builder.ServiceAnnouncementRequestBuilder:
-        """
-        Provides operations to manage the serviceAnnouncement property of the microsoft.graph.admin entity.
-        """
-        from .service_announcement import service_announcement_request_builder
+        # Request options
+        options: Optional[List[RequestOption]] = None
 
-        return service_announcement_request_builder.ServiceAnnouncementRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def sharepoint(self) -> sharepoint_request_builder.SharepointRequestBuilder:
-        """
-        Provides operations to manage the sharepoint property of the microsoft.graph.admin entity.
-        """
-        from .sharepoint import sharepoint_request_builder
-
-        return sharepoint_request_builder.SharepointRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
-    class AdminRequestBuilderGetQueryParameters():
+    class SettingsRequestBuilderGetQueryParameters():
         """
-        Get admin
+        Get settings from admin
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -179,7 +196,7 @@ class AdminRequestBuilder():
 
     
     @dataclass
-    class AdminRequestBuilderGetRequestConfiguration():
+    class SettingsRequestBuilderGetRequestConfiguration():
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -190,11 +207,11 @@ class AdminRequestBuilder():
         options: Optional[List[RequestOption]] = None
 
         # Request query parameters
-        query_parameters: Optional[AdminRequestBuilder.AdminRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[SettingsRequestBuilder.SettingsRequestBuilderGetQueryParameters] = None
 
     
     @dataclass
-    class AdminRequestBuilderPatchRequestConfiguration():
+    class SettingsRequestBuilderPatchRequestConfiguration():
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """

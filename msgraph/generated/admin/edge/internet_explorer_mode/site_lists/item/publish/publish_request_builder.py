@@ -38,7 +38,7 @@ class PublishRequestBuilder():
     
     async def post(self,body: Optional[publish_post_request_body.PublishPostRequestBody] = None, request_configuration: Optional[PublishRequestBuilderPostRequestConfiguration] = None) -> Optional[browser_site_list.BrowserSiteList]:
         """
-        Invoke action publish
+        Publish the specified browserSiteList for devices to download.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class PublishRequestBuilder():
     
     def to_post_request_information(self,body: Optional[publish_post_request_body.PublishPostRequestBody] = None, request_configuration: Optional[PublishRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action publish
+        Publish the specified browserSiteList for devices to download.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

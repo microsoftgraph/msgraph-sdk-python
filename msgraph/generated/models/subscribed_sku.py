@@ -11,7 +11,7 @@ from . import entity
 class SubscribedSku(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new SubscribedSku and sets the default values.
+        Instantiates a new subscribedSku and sets the default values.
         """
         super().__init__()
         # For example, 'User' or 'Company'.

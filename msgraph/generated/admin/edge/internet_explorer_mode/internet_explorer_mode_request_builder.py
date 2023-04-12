@@ -58,7 +58,7 @@ class InternetExplorerModeRequestBuilder():
     
     async def get(self,request_configuration: Optional[InternetExplorerModeRequestBuilderGetRequestConfiguration] = None) -> Optional[internet_explorer_mode.InternetExplorerMode]:
         """
-        Get internetExplorerMode from admin
+        A container for Internet Explorer mode resources.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[internet_explorer_mode.InternetExplorerMode]
@@ -136,7 +136,7 @@ class InternetExplorerModeRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[InternetExplorerModeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get internetExplorerMode from admin
+        A container for Internet Explorer mode resources.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -197,7 +197,7 @@ class InternetExplorerModeRequestBuilder():
     @dataclass
     class InternetExplorerModeRequestBuilderGetQueryParameters():
         """
-        Get internetExplorerMode from admin
+        A container for Internet Explorer mode resources.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -56,7 +56,7 @@ class BrowserSiteItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[BrowserSiteItemRequestBuilderGetRequestConfiguration] = None) -> Optional[browser_site.BrowserSite]:
         """
-        Get sites from admin
+        A collection of sites defined for the site list.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[browser_site.BrowserSite]
@@ -119,7 +119,7 @@ class BrowserSiteItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[BrowserSiteItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get sites from admin
+        A collection of sites defined for the site list.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class BrowserSiteItemRequestBuilder():
     @dataclass
     class BrowserSiteItemRequestBuilderGetQueryParameters():
         """
-        Get sites from admin
+        A collection of sites defined for the site list.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

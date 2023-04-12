@@ -15,7 +15,7 @@ class InternetExplorerMode(entity.Entity):
         super().__init__()
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # The siteLists property
+        # A collection of site lists to support Internet Explorer mode.
         self._site_lists: Optional[List[browser_site_list.BrowserSiteList]] = None
     
     @staticmethod
@@ -58,7 +58,7 @@ class InternetExplorerMode(entity.Entity):
     @property
     def site_lists(self,) -> Optional[List[browser_site_list.BrowserSiteList]]:
         """
-        Gets the siteLists property value. The siteLists property
+        Gets the siteLists property value. A collection of site lists to support Internet Explorer mode.
         Returns: Optional[List[browser_site_list.BrowserSiteList]]
         """
         return self._site_lists
@@ -66,7 +66,7 @@ class InternetExplorerMode(entity.Entity):
     @site_lists.setter
     def site_lists(self,value: Optional[List[browser_site_list.BrowserSiteList]] = None) -> None:
         """
-        Sets the siteLists property value. The siteLists property
+        Sets the siteLists property value. A collection of site lists to support Internet Explorer mode.
         Args:
             value: Value to set for the site_lists property.
         """

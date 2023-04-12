@@ -61,7 +61,7 @@ class AttachmentsRequestBuilder():
     
     async def post(self,body: Optional[attachment.Attachment] = None, request_configuration: Optional[AttachmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[attachment.Attachment]:
         """
-        Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
+        Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class AttachmentsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[attachment.Attachment] = None, request_configuration: Optional[AttachmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
+        Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

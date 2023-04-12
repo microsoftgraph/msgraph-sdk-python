@@ -17,21 +17,21 @@ class BrowserSite(entity.Entity):
         Instantiates a new browserSite and sets the default values.
         """
         super().__init__()
-        # Boolean attribute that controls the behavior of redirected sites
+        # Controls the behavior of redirected sites. If true, indicates that the site will open in Internet Explorer 11 or Microsoft Edge even if the site is navigated to as part of a HTTP or meta refresh redirection chain.
         self._allow_redirect: Optional[bool] = None
-        # The comment for the site
+        # The comment for the site.
         self._comment: Optional[str] = None
         # The compatibilityMode property
         self._compatibility_mode: Optional[browser_site_compatibility_mode.BrowserSiteCompatibilityMode] = None
-        # The datetime that the site is created
+        # The date and time when the site was created.
         self._created_date_time: Optional[datetime] = None
-        # The datetime that the admin deleted the site
+        # The date and time when the site was deleted.
         self._deleted_date_time: Optional[datetime] = None
-        # The collection stores site revision metadata and audit logs.
+        # The history of modifications applied to the site.
         self._history: Optional[List[browser_site_history.BrowserSiteHistory]] = None
-        # The admin who made the last update on the site.
+        # The user who last modified the site.
         self._last_modified_by: Optional[identity_set.IdentitySet] = None
-        # The datetime that the admin updated the site.
+        # The date and time when the site was last modified.
         self._last_modified_date_time: Optional[datetime] = None
         # The mergeType property
         self._merge_type: Optional[browser_site_merge_type.BrowserSiteMergeType] = None
@@ -41,13 +41,13 @@ class BrowserSite(entity.Entity):
         self._status: Optional[browser_site_status.BrowserSiteStatus] = None
         # The targetEnvironment property
         self._target_environment: Optional[browser_site_target_environment.BrowserSiteTargetEnvironment] = None
-        # The URL of the site
+        # The URL of the site.
         self._web_url: Optional[str] = None
     
     @property
     def allow_redirect(self,) -> Optional[bool]:
         """
-        Gets the allowRedirect property value. Boolean attribute that controls the behavior of redirected sites
+        Gets the allowRedirect property value. Controls the behavior of redirected sites. If true, indicates that the site will open in Internet Explorer 11 or Microsoft Edge even if the site is navigated to as part of a HTTP or meta refresh redirection chain.
         Returns: Optional[bool]
         """
         return self._allow_redirect
@@ -55,7 +55,7 @@ class BrowserSite(entity.Entity):
     @allow_redirect.setter
     def allow_redirect(self,value: Optional[bool] = None) -> None:
         """
-        Sets the allowRedirect property value. Boolean attribute that controls the behavior of redirected sites
+        Sets the allowRedirect property value. Controls the behavior of redirected sites. If true, indicates that the site will open in Internet Explorer 11 or Microsoft Edge even if the site is navigated to as part of a HTTP or meta refresh redirection chain.
         Args:
             value: Value to set for the allow_redirect property.
         """
@@ -64,7 +64,7 @@ class BrowserSite(entity.Entity):
     @property
     def comment(self,) -> Optional[str]:
         """
-        Gets the comment property value. The comment for the site
+        Gets the comment property value. The comment for the site.
         Returns: Optional[str]
         """
         return self._comment
@@ -72,7 +72,7 @@ class BrowserSite(entity.Entity):
     @comment.setter
     def comment(self,value: Optional[str] = None) -> None:
         """
-        Sets the comment property value. The comment for the site
+        Sets the comment property value. The comment for the site.
         Args:
             value: Value to set for the comment property.
         """
@@ -98,7 +98,7 @@ class BrowserSite(entity.Entity):
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
-        Gets the createdDateTime property value. The datetime that the site is created
+        Gets the createdDateTime property value. The date and time when the site was created.
         Returns: Optional[datetime]
         """
         return self._created_date_time
@@ -106,7 +106,7 @@ class BrowserSite(entity.Entity):
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the createdDateTime property value. The datetime that the site is created
+        Sets the createdDateTime property value. The date and time when the site was created.
         Args:
             value: Value to set for the created_date_time property.
         """
@@ -127,7 +127,7 @@ class BrowserSite(entity.Entity):
     @property
     def deleted_date_time(self,) -> Optional[datetime]:
         """
-        Gets the deletedDateTime property value. The datetime that the admin deleted the site
+        Gets the deletedDateTime property value. The date and time when the site was deleted.
         Returns: Optional[datetime]
         """
         return self._deleted_date_time
@@ -135,7 +135,7 @@ class BrowserSite(entity.Entity):
     @deleted_date_time.setter
     def deleted_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the deletedDateTime property value. The datetime that the admin deleted the site
+        Sets the deletedDateTime property value. The date and time when the site was deleted.
         Args:
             value: Value to set for the deleted_date_time property.
         """
@@ -169,7 +169,7 @@ class BrowserSite(entity.Entity):
     @property
     def history(self,) -> Optional[List[browser_site_history.BrowserSiteHistory]]:
         """
-        Gets the history property value. The collection stores site revision metadata and audit logs.
+        Gets the history property value. The history of modifications applied to the site.
         Returns: Optional[List[browser_site_history.BrowserSiteHistory]]
         """
         return self._history
@@ -177,7 +177,7 @@ class BrowserSite(entity.Entity):
     @history.setter
     def history(self,value: Optional[List[browser_site_history.BrowserSiteHistory]] = None) -> None:
         """
-        Sets the history property value. The collection stores site revision metadata and audit logs.
+        Sets the history property value. The history of modifications applied to the site.
         Args:
             value: Value to set for the history property.
         """
@@ -186,7 +186,7 @@ class BrowserSite(entity.Entity):
     @property
     def last_modified_by(self,) -> Optional[identity_set.IdentitySet]:
         """
-        Gets the lastModifiedBy property value. The admin who made the last update on the site.
+        Gets the lastModifiedBy property value. The user who last modified the site.
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._last_modified_by
@@ -194,7 +194,7 @@ class BrowserSite(entity.Entity):
     @last_modified_by.setter
     def last_modified_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
-        Sets the lastModifiedBy property value. The admin who made the last update on the site.
+        Sets the lastModifiedBy property value. The user who last modified the site.
         Args:
             value: Value to set for the last_modified_by property.
         """
@@ -203,7 +203,7 @@ class BrowserSite(entity.Entity):
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastModifiedDateTime property value. The datetime that the admin updated the site.
+        Gets the lastModifiedDateTime property value. The date and time when the site was last modified.
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
@@ -211,7 +211,7 @@ class BrowserSite(entity.Entity):
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastModifiedDateTime property value. The datetime that the admin updated the site.
+        Sets the lastModifiedDateTime property value. The date and time when the site was last modified.
         Args:
             value: Value to set for the last_modified_date_time property.
         """
@@ -293,7 +293,7 @@ class BrowserSite(entity.Entity):
     @property
     def web_url(self,) -> Optional[str]:
         """
-        Gets the webUrl property value. The URL of the site
+        Gets the webUrl property value. The URL of the site.
         Returns: Optional[str]
         """
         return self._web_url
@@ -301,7 +301,7 @@ class BrowserSite(entity.Entity):
     @web_url.setter
     def web_url(self,value: Optional[str] = None) -> None:
         """
-        Sets the webUrl property value. The URL of the site
+        Sets the webUrl property value. The URL of the site.
         Args:
             value: Value to set for the web_url property.
         """

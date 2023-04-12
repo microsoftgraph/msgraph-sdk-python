@@ -38,7 +38,7 @@ class SitesRequestBuilder():
     
     async def get(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> Optional[browser_site_collection_response.BrowserSiteCollectionResponse]:
         """
-        Get sites from admin
+        Get a list of the browserSite objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[browser_site_collection_response.BrowserSiteCollectionResponse]
@@ -60,7 +60,7 @@ class SitesRequestBuilder():
     
     async def post(self,body: Optional[browser_site.BrowserSite] = None, request_configuration: Optional[SitesRequestBuilderPostRequestConfiguration] = None) -> Optional[browser_site.BrowserSite]:
         """
-        Create new navigation property to sites for admin
+        Create a new browserSite object in a browserSiteList.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -85,7 +85,7 @@ class SitesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get sites from admin
+        Get a list of the browserSite objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -103,7 +103,7 @@ class SitesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[browser_site.BrowserSite] = None, request_configuration: Optional[SitesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to sites for admin
+        Create a new browserSite object in a browserSiteList.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -134,7 +134,7 @@ class SitesRequestBuilder():
     @dataclass
     class SitesRequestBuilderGetQueryParameters():
         """
-        Get sites from admin
+        Get a list of the browserSite objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -39,12 +39,11 @@ class UnifiedRoleManagementPolicyItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[UnifiedRoleManagementPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[UnifiedRoleManagementPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property roleManagementPolicies for policies
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -57,7 +56,7 @@ class UnifiedRoleManagementPolicyItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     def effective_rules_by_id(self,id: str) -> unified_role_management_policy_rule_item_request_builder.UnifiedRoleManagementPolicyRuleItemRequestBuilder:
         """

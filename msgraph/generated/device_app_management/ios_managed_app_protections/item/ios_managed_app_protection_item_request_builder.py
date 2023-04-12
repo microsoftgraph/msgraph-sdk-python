@@ -53,12 +53,11 @@ class IosManagedAppProtectionItemRequestBuilder():
         url_tpl_params["managedMobileApp%2Did"] = id
         return managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def delete(self,request_configuration: Optional[IosManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[IosManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property iosManagedAppProtections for deviceAppManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -71,7 +70,7 @@ class IosManagedAppProtectionItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[IosManagedAppProtectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ios_managed_app_protection.IosManagedAppProtection]:
         """

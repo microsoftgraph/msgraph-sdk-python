@@ -69,12 +69,11 @@ class TermsOfUseRequestBuilder():
         url_tpl_params["agreement%2Did"] = id
         return agreement_item_request_builder.AgreementItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    async def delete(self,request_configuration: Optional[TermsOfUseRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[TermsOfUseRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property termsOfUse for identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -87,7 +86,7 @@ class TermsOfUseRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[TermsOfUseRequestBuilderGetRequestConfiguration] = None) -> Optional[terms_of_use_container.TermsOfUseContainer]:
         """

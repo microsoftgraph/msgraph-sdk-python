@@ -14,12 +14,9 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .assign import assign_request_builder
     from .assignments import assignments_request_builder
-    from .assignments.item import managed_device_mobile_app_configuration_assignment_item_request_builder
     from .device_statuses import device_statuses_request_builder
-    from .device_statuses.item import managed_device_mobile_app_configuration_device_status_item_request_builder
     from .device_status_summary import device_status_summary_request_builder
     from .user_statuses import user_statuses_request_builder
-    from .user_statuses.item import managed_device_mobile_app_configuration_user_status_item_request_builder
     from .user_status_summary import user_status_summary_request_builder
 
 class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
@@ -44,21 +41,6 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def assignments_by_id(self,id: str) -> managed_device_mobile_app_configuration_assignment_item_request_builder.ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder:
-        """
-        Provides operations to manage the assignments property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: managed_device_mobile_app_configuration_assignment_item_request_builder.ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .assignments.item import managed_device_mobile_app_configuration_assignment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["managedDeviceMobileAppConfigurationAssignment%2Did"] = id
-        return managed_device_mobile_app_configuration_assignment_item_request_builder.ManagedDeviceMobileAppConfigurationAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def delete(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property mobileAppConfigurations for deviceAppManagement
@@ -77,21 +59,6 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
-    
-    def device_statuses_by_id(self,id: str) -> managed_device_mobile_app_configuration_device_status_item_request_builder.ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder:
-        """
-        Provides operations to manage the deviceStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: managed_device_mobile_app_configuration_device_status_item_request_builder.ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .device_statuses.item import managed_device_mobile_app_configuration_device_status_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["managedDeviceMobileAppConfigurationDeviceStatus%2Did"] = id
-        return managed_device_mobile_app_configuration_device_status_item_request_builder.ManagedDeviceMobileAppConfigurationDeviceStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ManagedDeviceMobileAppConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration]:
         """
@@ -194,21 +161,6 @@ class ManagedDeviceMobileAppConfigurationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-    
-    def user_statuses_by_id(self,id: str) -> managed_device_mobile_app_configuration_user_status_item_request_builder.ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder:
-        """
-        Provides operations to manage the userStatuses property of the microsoft.graph.managedDeviceMobileAppConfiguration entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: managed_device_mobile_app_configuration_user_status_item_request_builder.ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .user_statuses.item import managed_device_mobile_app_configuration_user_status_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["managedDeviceMobileAppConfigurationUserStatus%2Did"] = id
-        return managed_device_mobile_app_configuration_user_status_item_request_builder.ManagedDeviceMobileAppConfigurationUserStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     @property
     def assign(self) -> assign_request_builder.AssignRequestBuilder:

@@ -14,9 +14,7 @@ if TYPE_CHECKING:
     from ......models.o_data_errors import o_data_error
     from .publish import publish_request_builder
     from .shared_cookies import shared_cookies_request_builder
-    from .shared_cookies.item import browser_shared_cookie_item_request_builder
     from .sites import sites_request_builder
-    from .sites.item import browser_site_item_request_builder
 
 class BrowserSiteListItemRequestBuilder():
     """
@@ -105,36 +103,6 @@ class BrowserSiteListItemRequestBuilder():
         from ......models import browser_site_list
 
         return await self.request_adapter.send_async(request_info, browser_site_list.BrowserSiteList, error_mapping)
-    
-    def shared_cookies_by_id(self,id: str) -> browser_shared_cookie_item_request_builder.BrowserSharedCookieItemRequestBuilder:
-        """
-        Provides operations to manage the sharedCookies property of the microsoft.graph.browserSiteList entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: browser_shared_cookie_item_request_builder.BrowserSharedCookieItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .shared_cookies.item import browser_shared_cookie_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["browserSharedCookie%2Did"] = id
-        return browser_shared_cookie_item_request_builder.BrowserSharedCookieItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def sites_by_id(self,id: str) -> browser_site_item_request_builder.BrowserSiteItemRequestBuilder:
-        """
-        Provides operations to manage the sites property of the microsoft.graph.browserSiteList entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: browser_site_item_request_builder.BrowserSiteItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .sites.item import browser_site_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["browserSite%2Did"] = id
-        return browser_site_item_request_builder.BrowserSiteItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[BrowserSiteListItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

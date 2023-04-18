@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ........models import list_item_version, list_item_version_collection_response
     from ........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import list_item_version_item_request_builder
 
 class VersionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class VersionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_list_item_version_id(self,list_item_version_id: str) -> list_item_version_item_request_builder.ListItemVersionItemRequestBuilder:
+        """
+        Provides operations to manage the versions property of the microsoft.graph.listItem entity.
+        Args:
+            list_item_version_id: Unique identifier of the item
+        Returns: list_item_version_item_request_builder.ListItemVersionItemRequestBuilder
+        """
+        if list_item_version_id is None:
+            raise Exception("list_item_version_id cannot be undefined")
+        from .item import list_item_version_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["listItemVersion%2Did"] = list_item_version_id
+        return list_item_version_item_request_builder.ListItemVersionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[VersionsRequestBuilderGetRequestConfiguration] = None) -> Optional[list_item_version_collection_response.ListItemVersionCollectionResponse]:
         """

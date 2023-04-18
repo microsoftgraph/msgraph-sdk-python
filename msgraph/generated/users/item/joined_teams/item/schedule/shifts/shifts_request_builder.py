@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .......models import shift, shift_collection_response
     from .......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import shift_item_request_builder
 
 class ShiftsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ShiftsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_shift_id(self,shift_id: str) -> shift_item_request_builder.ShiftItemRequestBuilder:
+        """
+        Provides operations to manage the shifts property of the microsoft.graph.schedule entity.
+        Args:
+            shift_id: Unique identifier of the item
+        Returns: shift_item_request_builder.ShiftItemRequestBuilder
+        """
+        if shift_id is None:
+            raise Exception("shift_id cannot be undefined")
+        from .item import shift_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["shift%2Did"] = shift_id
+        return shift_item_request_builder.ShiftItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ShiftsRequestBuilderGetRequestConfiguration] = None) -> Optional[shift_collection_response.ShiftCollectionResponse]:
         """

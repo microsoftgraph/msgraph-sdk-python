@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .....models import app_consent_request
     from .....models.o_data_errors import o_data_error
     from .user_consent_requests import user_consent_requests_request_builder
-    from .user_consent_requests.item import user_consent_request_item_request_builder
 
 class AppConsentRequestItemRequestBuilder():
     """
@@ -157,21 +156,6 @@ class AppConsentRequestItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-    
-    def user_consent_requests_by_id(self,id: str) -> user_consent_request_item_request_builder.UserConsentRequestItemRequestBuilder:
-        """
-        Provides operations to manage the userConsentRequests property of the microsoft.graph.appConsentRequest entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: user_consent_request_item_request_builder.UserConsentRequestItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .user_consent_requests.item import user_consent_request_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["userConsentRequest%2Did"] = id
-        return user_consent_request_item_request_builder.UserConsentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     @property
     def user_consent_requests(self) -> user_consent_requests_request_builder.UserConsentRequestsRequestBuilder:

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import fido2_authentication_method_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import fido2_authentication_method_item_request_builder
 
 class Fido2MethodsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class Fido2MethodsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_fido2_authentication_method_id(self,fido2_authentication_method_id: str) -> fido2_authentication_method_item_request_builder.Fido2AuthenticationMethodItemRequestBuilder:
+        """
+        Provides operations to manage the fido2Methods property of the microsoft.graph.authentication entity.
+        Args:
+            fido2_authentication_method_id: Unique identifier of the item
+        Returns: fido2_authentication_method_item_request_builder.Fido2AuthenticationMethodItemRequestBuilder
+        """
+        if fido2_authentication_method_id is None:
+            raise Exception("fido2_authentication_method_id cannot be undefined")
+        from .item import fido2_authentication_method_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["fido2AuthenticationMethod%2Did"] = fido2_authentication_method_id
+        return fido2_authentication_method_item_request_builder.Fido2AuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[Fido2MethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[fido2_authentication_method_collection_response.Fido2AuthenticationMethodCollectionResponse]:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ........models import teamwork_tag_member, teamwork_tag_member_collection_response
     from ........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import teamwork_tag_member_item_request_builder
 
 class MembersRequestBuilder():
     """
@@ -35,6 +36,21 @@ class MembersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_teamwork_tag_member_id(self,teamwork_tag_member_id: str) -> teamwork_tag_member_item_request_builder.TeamworkTagMemberItemRequestBuilder:
+        """
+        Provides operations to manage the members property of the microsoft.graph.teamworkTag entity.
+        Args:
+            teamwork_tag_member_id: Unique identifier of the item
+        Returns: teamwork_tag_member_item_request_builder.TeamworkTagMemberItemRequestBuilder
+        """
+        if teamwork_tag_member_id is None:
+            raise Exception("teamwork_tag_member_id cannot be undefined")
+        from .item import teamwork_tag_member_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["teamworkTagMember%2Did"] = teamwork_tag_member_id
+        return teamwork_tag_member_item_request_builder.TeamworkTagMemberItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> Optional[teamwork_tag_member_collection_response.TeamworkTagMemberCollectionResponse]:
         """

@@ -15,7 +15,6 @@ if TYPE_CHECKING:
     from .access_package import access_package_request_builder
     from .catalog import catalog_request_builder
     from .questions import questions_request_builder
-    from .questions.item import access_package_question_item_request_builder
 
 class AccessPackageAssignmentPolicyItemRequestBuilder():
     """
@@ -104,21 +103,6 @@ class AccessPackageAssignmentPolicyItemRequestBuilder():
         from .........models import access_package_assignment_policy
 
         return await self.request_adapter.send_async(request_info, access_package_assignment_policy.AccessPackageAssignmentPolicy, error_mapping)
-    
-    def questions_by_id(self,id: str) -> access_package_question_item_request_builder.AccessPackageQuestionItemRequestBuilder:
-        """
-        Provides operations to manage the questions property of the microsoft.graph.accessPackageAssignmentPolicy entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_package_question_item_request_builder.AccessPackageQuestionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .questions.item import access_package_question_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessPackageQuestion%2Did"] = id
-        return access_package_question_item_request_builder.AccessPackageQuestionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[AccessPackageAssignmentPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

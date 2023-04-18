@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import managed_device, managed_device_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import managed_device_item_request_builder
 
 class ManagedDevicesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ManagedDevicesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_managed_device_id(self,managed_device_id: str) -> managed_device_item_request_builder.ManagedDeviceItemRequestBuilder:
+        """
+        Provides operations to manage the managedDevices property of the microsoft.graph.deviceManagement entity.
+        Args:
+            managed_device_id: Unique identifier of the item
+        Returns: managed_device_item_request_builder.ManagedDeviceItemRequestBuilder
+        """
+        if managed_device_id is None:
+            raise Exception("managed_device_id cannot be undefined")
+        from .item import managed_device_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["managedDevice%2Did"] = managed_device_id
+        return managed_device_item_request_builder.ManagedDeviceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ManagedDevicesRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_device_collection_response.ManagedDeviceCollectionResponse]:
         """

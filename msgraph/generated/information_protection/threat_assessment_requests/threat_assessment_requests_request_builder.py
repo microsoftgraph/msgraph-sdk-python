@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import threat_assessment_request, threat_assessment_request_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import threat_assessment_request_item_request_builder
 
 class ThreatAssessmentRequestsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ThreatAssessmentRequestsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_threat_assessment_request_id(self,threat_assessment_request_id: str) -> threat_assessment_request_item_request_builder.ThreatAssessmentRequestItemRequestBuilder:
+        """
+        Provides operations to manage the threatAssessmentRequests property of the microsoft.graph.informationProtection entity.
+        Args:
+            threat_assessment_request_id: Unique identifier of the item
+        Returns: threat_assessment_request_item_request_builder.ThreatAssessmentRequestItemRequestBuilder
+        """
+        if threat_assessment_request_id is None:
+            raise Exception("threat_assessment_request_id cannot be undefined")
+        from .item import threat_assessment_request_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["threatAssessmentRequest%2Did"] = threat_assessment_request_id
+        return threat_assessment_request_item_request_builder.ThreatAssessmentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[threat_assessment_request_collection_response.ThreatAssessmentRequestCollectionResponse]:
         """

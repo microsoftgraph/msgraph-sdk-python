@@ -56,7 +56,7 @@ class OpenShiftChangeRequestItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[OpenShiftChangeRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[open_shift_change_request.OpenShiftChangeRequest]:
         """
-        Get openShiftChangeRequests from me
+        The open shift requests in the schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[open_shift_change_request.OpenShiftChangeRequest]
@@ -119,7 +119,7 @@ class OpenShiftChangeRequestItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OpenShiftChangeRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get openShiftChangeRequests from me
+        The open shift requests in the schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class OpenShiftChangeRequestItemRequestBuilder():
     @dataclass
     class OpenShiftChangeRequestItemRequestBuilderGetQueryParameters():
         """
-        Get openShiftChangeRequests from me
+        The open shift requests in the schedule.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

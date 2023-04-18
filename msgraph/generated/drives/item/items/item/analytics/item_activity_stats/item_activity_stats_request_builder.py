@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .......models import item_activity_stat, item_activity_stat_collection_response
     from .......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import item_activity_stat_item_request_builder
 
 class ItemActivityStatsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ItemActivityStatsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_item_activity_stat_id(self,item_activity_stat_id: str) -> item_activity_stat_item_request_builder.ItemActivityStatItemRequestBuilder:
+        """
+        Provides operations to manage the itemActivityStats property of the microsoft.graph.itemAnalytics entity.
+        Args:
+            item_activity_stat_id: Unique identifier of the item
+        Returns: item_activity_stat_item_request_builder.ItemActivityStatItemRequestBuilder
+        """
+        if item_activity_stat_id is None:
+            raise Exception("item_activity_stat_id cannot be undefined")
+        from .item import item_activity_stat_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["itemActivityStat%2Did"] = item_activity_stat_id
+        return item_activity_stat_item_request_builder.ItemActivityStatItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ItemActivityStatsRequestBuilderGetRequestConfiguration] = None) -> Optional[item_activity_stat_collection_response.ItemActivityStatCollectionResponse]:
         """

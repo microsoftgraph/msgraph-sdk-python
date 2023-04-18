@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .........models import access_review_stage
     from .........models.o_data_errors import o_data_error
     from .decisions import decisions_request_builder
-    from .decisions.item import access_review_instance_decision_item_item_request_builder
     from .stop import stop_request_builder
 
 class AccessReviewStageItemRequestBuilder():
@@ -37,21 +36,6 @@ class AccessReviewStageItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def decisions_by_id(self,id: str) -> access_review_instance_decision_item_item_request_builder.AccessReviewInstanceDecisionItemItemRequestBuilder:
-        """
-        Provides operations to manage the decisions property of the microsoft.graph.accessReviewStage entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_review_instance_decision_item_item_request_builder.AccessReviewInstanceDecisionItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .decisions.item import access_review_instance_decision_item_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessReviewInstanceDecisionItem%2Did"] = id
-        return access_review_instance_decision_item_item_request_builder.AccessReviewInstanceDecisionItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[AccessReviewStageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """

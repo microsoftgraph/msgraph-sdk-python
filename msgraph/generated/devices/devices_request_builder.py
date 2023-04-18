@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .delta import delta_request_builder
     from .get_available_extension_properties import get_available_extension_properties_request_builder
     from .get_by_ids import get_by_ids_request_builder
+    from .item import device_item_request_builder
     from .validate_properties import validate_properties_request_builder
 
 class DevicesRequestBuilder():
@@ -39,6 +40,21 @@ class DevicesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_device_id(self,device_id: str) -> device_item_request_builder.DeviceItemRequestBuilder:
+        """
+        Provides operations to manage the collection of device entities.
+        Args:
+            device_id: Unique identifier of the item
+        Returns: device_item_request_builder.DeviceItemRequestBuilder
+        """
+        if device_id is None:
+            raise Exception("device_id cannot be undefined")
+        from .item import device_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["device%2Did"] = device_id
+        return device_item_request_builder.DeviceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[DevicesRequestBuilderGetRequestConfiguration] = None) -> Optional[device_collection_response.DeviceCollectionResponse]:
         """

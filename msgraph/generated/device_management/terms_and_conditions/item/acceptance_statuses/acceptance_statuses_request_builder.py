@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import terms_and_conditions_acceptance_status, terms_and_conditions_acceptance_status_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import terms_and_conditions_acceptance_status_item_request_builder
 
 class AcceptanceStatusesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class AcceptanceStatusesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_terms_and_conditions_acceptance_status_id(self,terms_and_conditions_acceptance_status_id: str) -> terms_and_conditions_acceptance_status_item_request_builder.TermsAndConditionsAcceptanceStatusItemRequestBuilder:
+        """
+        Provides operations to manage the acceptanceStatuses property of the microsoft.graph.termsAndConditions entity.
+        Args:
+            terms_and_conditions_acceptance_status_id: Unique identifier of the item
+        Returns: terms_and_conditions_acceptance_status_item_request_builder.TermsAndConditionsAcceptanceStatusItemRequestBuilder
+        """
+        if terms_and_conditions_acceptance_status_id is None:
+            raise Exception("terms_and_conditions_acceptance_status_id cannot be undefined")
+        from .item import terms_and_conditions_acceptance_status_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["termsAndConditionsAcceptanceStatus%2Did"] = terms_and_conditions_acceptance_status_id
+        return terms_and_conditions_acceptance_status_item_request_builder.TermsAndConditionsAcceptanceStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AcceptanceStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[terms_and_conditions_acceptance_status_collection_response.TermsAndConditionsAcceptanceStatusCollectionResponse]:
         """

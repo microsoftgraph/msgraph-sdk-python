@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ....models import user_activity
     from ....models.o_data_errors import o_data_error
     from .history_items import history_items_request_builder
-    from .history_items.item import activity_history_item_item_request_builder
 
 class UserActivityItemRequestBuilder():
     """
@@ -77,21 +76,6 @@ class UserActivityItemRequestBuilder():
         from ....models import user_activity
 
         return await self.request_adapter.send_async(request_info, user_activity.UserActivity, error_mapping)
-    
-    def history_items_by_id(self,id: str) -> activity_history_item_item_request_builder.ActivityHistoryItemItemRequestBuilder:
-        """
-        Provides operations to manage the historyItems property of the microsoft.graph.userActivity entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: activity_history_item_item_request_builder.ActivityHistoryItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .history_items.item import activity_history_item_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["activityHistoryItem%2Did"] = id
-        return activity_history_item_item_request_builder.ActivityHistoryItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[user_activity.UserActivity] = None, request_configuration: Optional[UserActivityItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[user_activity.UserActivity]:
         """

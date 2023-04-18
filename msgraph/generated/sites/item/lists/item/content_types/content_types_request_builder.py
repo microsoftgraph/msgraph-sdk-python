@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .add_copy_from_content_type_hub import add_copy_from_content_type_hub_request_builder
     from .count import count_request_builder
     from .get_compatible_hub_content_types import get_compatible_hub_content_types_request_builder
+    from .item import content_type_item_request_builder
 
 class ContentTypesRequestBuilder():
     """
@@ -38,6 +39,21 @@ class ContentTypesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_content_type_id(self,content_type_id: str) -> content_type_item_request_builder.ContentTypeItemRequestBuilder:
+        """
+        Provides operations to manage the contentTypes property of the microsoft.graph.list entity.
+        Args:
+            content_type_id: Unique identifier of the item
+        Returns: content_type_item_request_builder.ContentTypeItemRequestBuilder
+        """
+        if content_type_id is None:
+            raise Exception("content_type_id cannot be undefined")
+        from .item import content_type_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["contentType%2Did"] = content_type_id
+        return content_type_item_request_builder.ContentTypeItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ContentTypesRequestBuilderGetRequestConfiguration] = None) -> Optional[content_type_collection_response.ContentTypeCollectionResponse]:
         """

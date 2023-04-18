@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import inference_classification_override, inference_classification_override_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import inference_classification_override_item_request_builder
 
 class OverridesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class OverridesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_inference_classification_override_id(self,inference_classification_override_id: str) -> inference_classification_override_item_request_builder.InferenceClassificationOverrideItemRequestBuilder:
+        """
+        Provides operations to manage the overrides property of the microsoft.graph.inferenceClassification entity.
+        Args:
+            inference_classification_override_id: Unique identifier of the item
+        Returns: inference_classification_override_item_request_builder.InferenceClassificationOverrideItemRequestBuilder
+        """
+        if inference_classification_override_id is None:
+            raise Exception("inference_classification_override_id cannot be undefined")
+        from .item import inference_classification_override_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["inferenceClassificationOverride%2Did"] = inference_classification_override_id
+        return inference_classification_override_item_request_builder.InferenceClassificationOverrideItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[OverridesRequestBuilderGetRequestConfiguration] = None) -> Optional[inference_classification_override_collection_response.InferenceClassificationOverrideCollectionResponse]:
         """

@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from .archive import archive_request_builder
     from .count import count_request_builder
     from .favorite import favorite_request_builder
+    from .item import service_update_message_item_request_builder
     from .mark_read import mark_read_request_builder
     from .mark_unread import mark_unread_request_builder
     from .unarchive import unarchive_request_builder
@@ -41,6 +42,21 @@ class MessagesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_service_update_message_id(self,service_update_message_id: str) -> service_update_message_item_request_builder.ServiceUpdateMessageItemRequestBuilder:
+        """
+        Provides operations to manage the messages property of the microsoft.graph.serviceAnnouncement entity.
+        Args:
+            service_update_message_id: Unique identifier of the item
+        Returns: service_update_message_item_request_builder.ServiceUpdateMessageItemRequestBuilder
+        """
+        if service_update_message_id is None:
+            raise Exception("service_update_message_id cannot be undefined")
+        from .item import service_update_message_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["serviceUpdateMessage%2Did"] = service_update_message_id
+        return service_update_message_item_request_builder.ServiceUpdateMessageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[service_update_message_collection_response.ServiceUpdateMessageCollectionResponse]:
         """

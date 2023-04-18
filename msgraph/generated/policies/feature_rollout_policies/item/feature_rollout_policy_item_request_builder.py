@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ....models import feature_rollout_policy
     from ....models.o_data_errors import o_data_error
     from .applies_to import applies_to_request_builder
-    from .applies_to.item import directory_object_item_request_builder
 
 class FeatureRolloutPolicyItemRequestBuilder():
     """
@@ -36,21 +35,6 @@ class FeatureRolloutPolicyItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def applies_to_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.policies.featureRolloutPolicies.item.appliesTo.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .applies_to.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """

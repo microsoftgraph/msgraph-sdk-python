@@ -14,7 +14,6 @@ if TYPE_CHECKING:
     from ...models.o_data_errors import o_data_error
     from .default import default_request_builder
     from .partners import partners_request_builder
-    from .partners.item import cross_tenant_access_policy_configuration_partner_tenant_item_request_builder
 
 class CrossTenantAccessPolicyRequestBuilder():
     """
@@ -78,21 +77,6 @@ class CrossTenantAccessPolicyRequestBuilder():
         from ...models import cross_tenant_access_policy
 
         return await self.request_adapter.send_async(request_info, cross_tenant_access_policy.CrossTenantAccessPolicy, error_mapping)
-    
-    def partners_by_id(self,id: str) -> cross_tenant_access_policy_configuration_partner_tenant_item_request_builder.CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder:
-        """
-        Provides operations to manage the partners property of the microsoft.graph.crossTenantAccessPolicy entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: cross_tenant_access_policy_configuration_partner_tenant_item_request_builder.CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .partners.item import cross_tenant_access_policy_configuration_partner_tenant_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["crossTenantAccessPolicyConfigurationPartner%2DtenantId"] = id
-        return cross_tenant_access_policy_configuration_partner_tenant_item_request_builder.CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy] = None, request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[cross_tenant_access_policy.CrossTenantAccessPolicy]:
         """

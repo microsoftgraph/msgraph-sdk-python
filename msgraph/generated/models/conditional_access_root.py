@@ -3,18 +3,20 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import authentication_context_class_reference, conditional_access_policy, conditional_access_template, entity, named_location
+    from . import authentication_context_class_reference, authentication_strength_root, conditional_access_policy, conditional_access_template, entity, named_location
 
 from . import entity
 
 class ConditionalAccessRoot(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new conditionalAccessRoot and sets the default values.
+        Instantiates a new ConditionalAccessRoot and sets the default values.
         """
         super().__init__()
         # Read-only. Nullable. Returns a collection of the specified authentication context class references.
         self._authentication_context_class_references: Optional[List[authentication_context_class_reference.AuthenticationContextClassReference]] = None
+        # The authenticationStrength property
+        self._authentication_strength: Optional[authentication_strength_root.AuthenticationStrengthRoot] = None
         # Read-only. Nullable. Returns a collection of the specified named locations.
         self._named_locations: Optional[List[named_location.NamedLocation]] = None
         # The OdataType property
@@ -41,6 +43,23 @@ class ConditionalAccessRoot(entity.Entity):
         """
         self._authentication_context_class_references = value
     
+    @property
+    def authentication_strength(self,) -> Optional[authentication_strength_root.AuthenticationStrengthRoot]:
+        """
+        Gets the authenticationStrength property value. The authenticationStrength property
+        Returns: Optional[authentication_strength_root.AuthenticationStrengthRoot]
+        """
+        return self._authentication_strength
+    
+    @authentication_strength.setter
+    def authentication_strength(self,value: Optional[authentication_strength_root.AuthenticationStrengthRoot] = None) -> None:
+        """
+        Sets the authenticationStrength property value. The authenticationStrength property
+        Args:
+            value: Value to set for the authentication_strength property.
+        """
+        self._authentication_strength = value
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessRoot:
         """
@@ -58,10 +77,11 @@ class ConditionalAccessRoot(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import authentication_context_class_reference, conditional_access_policy, conditional_access_template, entity, named_location
+        from . import authentication_context_class_reference, authentication_strength_root, conditional_access_policy, conditional_access_template, entity, named_location
 
         fields: Dict[str, Callable[[Any], None]] = {
             "authenticationContextClassReferences": lambda n : setattr(self, 'authentication_context_class_references', n.get_collection_of_object_values(authentication_context_class_reference.AuthenticationContextClassReference)),
+            "authenticationStrength": lambda n : setattr(self, 'authentication_strength', n.get_object_value(authentication_strength_root.AuthenticationStrengthRoot)),
             "namedLocations": lambda n : setattr(self, 'named_locations', n.get_collection_of_object_values(named_location.NamedLocation)),
             "policies": lambda n : setattr(self, 'policies', n.get_collection_of_object_values(conditional_access_policy.ConditionalAccessPolicy)),
             "templates": lambda n : setattr(self, 'templates', n.get_collection_of_object_values(conditional_access_template.ConditionalAccessTemplate)),
@@ -114,6 +134,7 @@ class ConditionalAccessRoot(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("authenticationContextClassReferences", self.authentication_context_class_references)
+        writer.write_object_value("authenticationStrength", self.authentication_strength)
         writer.write_collection_of_object_values("namedLocations", self.named_locations)
         writer.write_collection_of_object_values("policies", self.policies)
         writer.write_collection_of_object_values("templates", self.templates)

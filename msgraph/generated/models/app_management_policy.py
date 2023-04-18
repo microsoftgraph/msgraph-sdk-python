@@ -14,17 +14,17 @@ class AppManagementPolicy(policy_base.PolicyBase):
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.appManagementPolicy"
-        # The appliesTo property
+        # Collection of applications and service principals to which the policy is applied.
         self._applies_to: Optional[List[directory_object.DirectoryObject]] = None
-        # The isEnabled property
+        # Denotes whether the policy is enabled.
         self._is_enabled: Optional[bool] = None
-        # The restrictions property
+        # Restrictions that apply to an application or service principal object.
         self._restrictions: Optional[app_management_configuration.AppManagementConfiguration] = None
     
     @property
     def applies_to(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
-        Gets the appliesTo property value. The appliesTo property
+        Gets the appliesTo property value. Collection of applications and service principals to which the policy is applied.
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._applies_to
@@ -32,7 +32,7 @@ class AppManagementPolicy(policy_base.PolicyBase):
     @applies_to.setter
     def applies_to(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
-        Sets the appliesTo property value. The appliesTo property
+        Sets the appliesTo property value. Collection of applications and service principals to which the policy is applied.
         Args:
             value: Value to set for the applies_to property.
         """
@@ -69,7 +69,7 @@ class AppManagementPolicy(policy_base.PolicyBase):
     @property
     def is_enabled(self,) -> Optional[bool]:
         """
-        Gets the isEnabled property value. The isEnabled property
+        Gets the isEnabled property value. Denotes whether the policy is enabled.
         Returns: Optional[bool]
         """
         return self._is_enabled
@@ -77,7 +77,7 @@ class AppManagementPolicy(policy_base.PolicyBase):
     @is_enabled.setter
     def is_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isEnabled property value. The isEnabled property
+        Sets the isEnabled property value. Denotes whether the policy is enabled.
         Args:
             value: Value to set for the is_enabled property.
         """
@@ -86,7 +86,7 @@ class AppManagementPolicy(policy_base.PolicyBase):
     @property
     def restrictions(self,) -> Optional[app_management_configuration.AppManagementConfiguration]:
         """
-        Gets the restrictions property value. The restrictions property
+        Gets the restrictions property value. Restrictions that apply to an application or service principal object.
         Returns: Optional[app_management_configuration.AppManagementConfiguration]
         """
         return self._restrictions
@@ -94,7 +94,7 @@ class AppManagementPolicy(policy_base.PolicyBase):
     @restrictions.setter
     def restrictions(self,value: Optional[app_management_configuration.AppManagementConfiguration] = None) -> None:
         """
-        Sets the restrictions property value. The restrictions property
+        Sets the restrictions property value. Restrictions that apply to an application or service principal object.
         Args:
             value: Value to set for the restrictions property.
         """

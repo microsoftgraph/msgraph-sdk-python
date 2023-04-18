@@ -14,19 +14,14 @@ if TYPE_CHECKING:
     from ...models.o_data_errors import o_data_error
     from .hide_for_user import hide_for_user_request_builder
     from .installed_apps import installed_apps_request_builder
-    from .installed_apps.item import teams_app_installation_item_request_builder
     from .last_message_preview import last_message_preview_request_builder
     from .mark_chat_read_for_user import mark_chat_read_for_user_request_builder
     from .mark_chat_unread_for_user import mark_chat_unread_for_user_request_builder
     from .members import members_request_builder
-    from .members.item import conversation_member_item_request_builder
     from .messages import messages_request_builder
-    from .messages.item import chat_message_item_request_builder
     from .pinned_messages import pinned_messages_request_builder
-    from .pinned_messages.item import pinned_chat_message_info_item_request_builder
     from .send_activity_notification import send_activity_notification_request_builder
     from .tabs import tabs_request_builder
-    from .tabs.item import teams_tab_item_request_builder
     from .unhide_for_user import unhide_for_user_request_builder
 
 class ChatItemRequestBuilder():
@@ -92,51 +87,6 @@ class ChatItemRequestBuilder():
 
         return await self.request_adapter.send_async(request_info, chat.Chat, error_mapping)
     
-    def installed_apps_by_id(self,id: str) -> teams_app_installation_item_request_builder.TeamsAppInstallationItemRequestBuilder:
-        """
-        Provides operations to manage the installedApps property of the microsoft.graph.chat entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: teams_app_installation_item_request_builder.TeamsAppInstallationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .installed_apps.item import teams_app_installation_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["teamsAppInstallation%2Did"] = id
-        return teams_app_installation_item_request_builder.TeamsAppInstallationItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def members_by_id(self,id: str) -> conversation_member_item_request_builder.ConversationMemberItemRequestBuilder:
-        """
-        Provides operations to manage the members property of the microsoft.graph.chat entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: conversation_member_item_request_builder.ConversationMemberItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .members.item import conversation_member_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["conversationMember%2Did"] = id
-        return conversation_member_item_request_builder.ConversationMemberItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def messages_by_id(self,id: str) -> chat_message_item_request_builder.ChatMessageItemRequestBuilder:
-        """
-        Provides operations to manage the messages property of the microsoft.graph.chat entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: chat_message_item_request_builder.ChatMessageItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .messages.item import chat_message_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["chatMessage%2Did"] = id
-        return chat_message_item_request_builder.ChatMessageItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def patch(self,body: Optional[chat.Chat] = None, request_configuration: Optional[ChatItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[chat.Chat]:
         """
         Update the properties of a chat object.
@@ -161,36 +111,6 @@ class ChatItemRequestBuilder():
         from ...models import chat
 
         return await self.request_adapter.send_async(request_info, chat.Chat, error_mapping)
-    
-    def pinned_messages_by_id(self,id: str) -> pinned_chat_message_info_item_request_builder.PinnedChatMessageInfoItemRequestBuilder:
-        """
-        Provides operations to manage the pinnedMessages property of the microsoft.graph.chat entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: pinned_chat_message_info_item_request_builder.PinnedChatMessageInfoItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .pinned_messages.item import pinned_chat_message_info_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["pinnedChatMessageInfo%2Did"] = id
-        return pinned_chat_message_info_item_request_builder.PinnedChatMessageInfoItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def tabs_by_id(self,id: str) -> teams_tab_item_request_builder.TeamsTabItemRequestBuilder:
-        """
-        Provides operations to manage the tabs property of the microsoft.graph.chat entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: teams_tab_item_request_builder.TeamsTabItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .tabs.item import teams_tab_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["teamsTab%2Did"] = id
-        return teams_tab_item_request_builder.TeamsTabItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[ChatItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

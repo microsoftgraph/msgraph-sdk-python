@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ......models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
+    from .item import access_package_item_request_builder
 
 class AccessPackagesRequestBuilder():
     """
@@ -36,6 +37,21 @@ class AccessPackagesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_access_package_id(self,access_package_id: str) -> access_package_item_request_builder.AccessPackageItemRequestBuilder:
+        """
+        Provides operations to manage the accessPackages property of the microsoft.graph.accessPackageCatalog entity.
+        Args:
+            access_package_id: Unique identifier of the item
+        Returns: access_package_item_request_builder.AccessPackageItemRequestBuilder
+        """
+        if access_package_id is None:
+            raise Exception("access_package_id cannot be undefined")
+        from .item import access_package_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["accessPackage%2Did"] = access_package_id
+        return access_package_item_request_builder.AccessPackageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
         """

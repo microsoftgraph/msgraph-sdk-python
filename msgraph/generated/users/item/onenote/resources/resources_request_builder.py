@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import onenote_resource, onenote_resource_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import onenote_resource_item_request_builder
 
 class ResourcesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ResourcesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_onenote_resource_id(self,onenote_resource_id: str) -> onenote_resource_item_request_builder.OnenoteResourceItemRequestBuilder:
+        """
+        Provides operations to manage the resources property of the microsoft.graph.onenote entity.
+        Args:
+            onenote_resource_id: Unique identifier of the item
+        Returns: onenote_resource_item_request_builder.OnenoteResourceItemRequestBuilder
+        """
+        if onenote_resource_id is None:
+            raise Exception("onenote_resource_id cannot be undefined")
+        from .item import onenote_resource_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["onenoteResource%2Did"] = onenote_resource_id
+        return onenote_resource_item_request_builder.OnenoteResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ResourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[onenote_resource_collection_response.OnenoteResourceCollectionResponse]:
         """

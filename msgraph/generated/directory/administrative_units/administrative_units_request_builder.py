@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .delta import delta_request_builder
+    from .item import administrative_unit_item_request_builder
 
 class AdministrativeUnitsRequestBuilder():
     """
@@ -36,6 +37,21 @@ class AdministrativeUnitsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_administrative_unit_id(self,administrative_unit_id: str) -> administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder:
+        """
+        Provides operations to manage the administrativeUnits property of the microsoft.graph.directory entity.
+        Args:
+            administrative_unit_id: Unique identifier of the item
+        Returns: administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder
+        """
+        if administrative_unit_id is None:
+            raise Exception("administrative_unit_id cannot be undefined")
+        from .item import administrative_unit_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["administrativeUnit%2Did"] = administrative_unit_id
+        return administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AdministrativeUnitsRequestBuilderGetRequestConfiguration] = None) -> Optional[administrative_unit_collection_response.AdministrativeUnitCollectionResponse]:
         """

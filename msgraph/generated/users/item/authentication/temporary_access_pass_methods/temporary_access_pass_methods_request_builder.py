@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import temporary_access_pass_authentication_method, temporary_access_pass_authentication_method_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import temporary_access_pass_authentication_method_item_request_builder
 
 class TemporaryAccessPassMethodsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class TemporaryAccessPassMethodsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_temporary_access_pass_authentication_method_id(self,temporary_access_pass_authentication_method_id: str) -> temporary_access_pass_authentication_method_item_request_builder.TemporaryAccessPassAuthenticationMethodItemRequestBuilder:
+        """
+        Provides operations to manage the temporaryAccessPassMethods property of the microsoft.graph.authentication entity.
+        Args:
+            temporary_access_pass_authentication_method_id: Unique identifier of the item
+        Returns: temporary_access_pass_authentication_method_item_request_builder.TemporaryAccessPassAuthenticationMethodItemRequestBuilder
+        """
+        if temporary_access_pass_authentication_method_id is None:
+            raise Exception("temporary_access_pass_authentication_method_id cannot be undefined")
+        from .item import temporary_access_pass_authentication_method_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["temporaryAccessPassAuthenticationMethod%2Did"] = temporary_access_pass_authentication_method_id
+        return temporary_access_pass_authentication_method_item_request_builder.TemporaryAccessPassAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[temporary_access_pass_authentication_method_collection_response.TemporaryAccessPassAuthenticationMethodCollectionResponse]:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import certificate_based_auth_configuration_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import certificate_based_auth_configuration_item_request_builder
 
 class CertificateBasedAuthConfigurationRequestBuilder():
     """
@@ -35,6 +36,21 @@ class CertificateBasedAuthConfigurationRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_certificate_based_auth_configuration_id(self,certificate_based_auth_configuration_id: str) -> certificate_based_auth_configuration_item_request_builder.CertificateBasedAuthConfigurationItemRequestBuilder:
+        """
+        Provides operations to manage the certificateBasedAuthConfiguration property of the microsoft.graph.organization entity.
+        Args:
+            certificate_based_auth_configuration_id: Unique identifier of the item
+        Returns: certificate_based_auth_configuration_item_request_builder.CertificateBasedAuthConfigurationItemRequestBuilder
+        """
+        if certificate_based_auth_configuration_id is None:
+            raise Exception("certificate_based_auth_configuration_id cannot be undefined")
+        from .item import certificate_based_auth_configuration_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["certificateBasedAuthConfiguration%2Did"] = certificate_based_auth_configuration_id
+        return certificate_based_auth_configuration_item_request_builder.CertificateBasedAuthConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[CertificateBasedAuthConfigurationRequestBuilderGetRequestConfiguration] = None) -> Optional[certificate_based_auth_configuration_collection_response.CertificateBasedAuthConfigurationCollectionResponse]:
         """

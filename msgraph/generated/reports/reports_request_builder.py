@@ -14,9 +14,7 @@ if TYPE_CHECKING:
     from ..models import report_root
     from ..models.o_data_errors import o_data_error
     from .daily_print_usage_by_printer import daily_print_usage_by_printer_request_builder
-    from .daily_print_usage_by_printer.item import print_usage_by_printer_item_request_builder
     from .daily_print_usage_by_user import daily_print_usage_by_user_request_builder
-    from .daily_print_usage_by_user.item import print_usage_by_user_item_request_builder
     from .device_configuration_device_activity import device_configuration_device_activity_request_builder
     from .device_configuration_user_activity import device_configuration_user_activity_request_builder
     from .get_email_activity_counts_with_period import get_email_activity_counts_with_period_request_builder
@@ -114,9 +112,7 @@ if TYPE_CHECKING:
     from .managed_device_enrollment_top_failures import managed_device_enrollment_top_failures_request_builder
     from .managed_device_enrollment_top_failures_with_period import managed_device_enrollment_top_failures_with_period_request_builder
     from .monthly_print_usage_by_printer import monthly_print_usage_by_printer_request_builder
-    from .monthly_print_usage_by_printer.item import print_usage_by_printer_item_request_builder
     from .monthly_print_usage_by_user import monthly_print_usage_by_user_request_builder
-    from .monthly_print_usage_by_user.item import print_usage_by_user_item_request_builder
     from .security import security_request_builder
 
 class ReportsRequestBuilder():
@@ -140,38 +136,6 @@ class ReportsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def daily_print_usage_by_printer_by_id(self,id: str) -> print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder:
-        """
-        Provides operations to manage the dailyPrintUsageByPrinter property of the microsoft.graph.reportRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .daily_print_usage_by_printer.item import print_usage_by_printer_item_request_builder
-        from .monthly_print_usage_by_printer.item import print_usage_by_printer_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["printUsageByPrinter%2Did"] = id
-        return print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def daily_print_usage_by_user_by_id(self,id: str) -> print_usage_by_user_item_request_builder.PrintUsageByUserItemRequestBuilder:
-        """
-        Provides operations to manage the dailyPrintUsageByUser property of the microsoft.graph.reportRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: print_usage_by_user_item_request_builder.PrintUsageByUserItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .daily_print_usage_by_user.item import print_usage_by_user_item_request_builder
-        from .monthly_print_usage_by_user.item import print_usage_by_user_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["printUsageByUser%2Did"] = id
-        return print_usage_by_user_item_request_builder.PrintUsageByUserItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ReportsRequestBuilderGetRequestConfiguration] = None) -> Optional[report_root.ReportRoot]:
         """
@@ -1378,38 +1342,6 @@ class ReportsRequestBuilder():
         from .managed_device_enrollment_top_failures_with_period import managed_device_enrollment_top_failures_with_period_request_builder
 
         return managed_device_enrollment_top_failures_with_period_request_builder.ManagedDeviceEnrollmentTopFailuresWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
-    
-    def monthly_print_usage_by_printer_by_id(self,id: str) -> print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder:
-        """
-        Provides operations to manage the monthlyPrintUsageByPrinter property of the microsoft.graph.reportRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .daily_print_usage_by_printer.item import print_usage_by_printer_item_request_builder
-        from .monthly_print_usage_by_printer.item import print_usage_by_printer_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["printUsageByPrinter%2Did"] = id
-        return print_usage_by_printer_item_request_builder.PrintUsageByPrinterItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def monthly_print_usage_by_user_by_id(self,id: str) -> print_usage_by_user_item_request_builder.PrintUsageByUserItemRequestBuilder:
-        """
-        Provides operations to manage the monthlyPrintUsageByUser property of the microsoft.graph.reportRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: print_usage_by_user_item_request_builder.PrintUsageByUserItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .daily_print_usage_by_user.item import print_usage_by_user_item_request_builder
-        from .monthly_print_usage_by_user.item import print_usage_by_user_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["printUsageByUser%2Did"] = id
-        return print_usage_by_user_item_request_builder.PrintUsageByUserItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[report_root.ReportRoot] = None, request_configuration: Optional[ReportsRequestBuilderPatchRequestConfiguration] = None) -> Optional[report_root.ReportRoot]:
         """

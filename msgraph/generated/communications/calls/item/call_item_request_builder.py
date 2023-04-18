@@ -15,17 +15,13 @@ if TYPE_CHECKING:
     from .add_large_gallery_view import add_large_gallery_view_request_builder
     from .answer import answer_request_builder
     from .audio_routing_groups import audio_routing_groups_request_builder
-    from .audio_routing_groups.item import audio_routing_group_item_request_builder
     from .cancel_media_processing import cancel_media_processing_request_builder
     from .change_screen_sharing_role import change_screen_sharing_role_request_builder
     from .content_sharing_sessions import content_sharing_sessions_request_builder
-    from .content_sharing_sessions.item import content_sharing_session_item_request_builder
     from .keep_alive import keep_alive_request_builder
     from .mute import mute_request_builder
     from .operations import operations_request_builder
-    from .operations.item import comms_operation_item_request_builder
     from .participants import participants_request_builder
-    from .participants.item import participant_item_request_builder
     from .play_prompt import play_prompt_request_builder
     from .record_response import record_response_request_builder
     from .redirect import redirect_request_builder
@@ -56,36 +52,6 @@ class CallItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def audio_routing_groups_by_id(self,id: str) -> audio_routing_group_item_request_builder.AudioRoutingGroupItemRequestBuilder:
-        """
-        Provides operations to manage the audioRoutingGroups property of the microsoft.graph.call entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: audio_routing_group_item_request_builder.AudioRoutingGroupItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .audio_routing_groups.item import audio_routing_group_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["audioRoutingGroup%2Did"] = id
-        return audio_routing_group_item_request_builder.AudioRoutingGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def content_sharing_sessions_by_id(self,id: str) -> content_sharing_session_item_request_builder.ContentSharingSessionItemRequestBuilder:
-        """
-        Provides operations to manage the contentSharingSessions property of the microsoft.graph.call entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: content_sharing_session_item_request_builder.ContentSharingSessionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .content_sharing_sessions.item import content_sharing_session_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["contentSharingSession%2Did"] = id
-        return content_sharing_session_item_request_builder.ContentSharingSessionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[CallItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -127,36 +93,6 @@ class CallItemRequestBuilder():
         from ....models import call
 
         return await self.request_adapter.send_async(request_info, call.Call, error_mapping)
-    
-    def operations_by_id(self,id: str) -> comms_operation_item_request_builder.CommsOperationItemRequestBuilder:
-        """
-        Provides operations to manage the operations property of the microsoft.graph.call entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: comms_operation_item_request_builder.CommsOperationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .operations.item import comms_operation_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["commsOperation%2Did"] = id
-        return comms_operation_item_request_builder.CommsOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def participants_by_id(self,id: str) -> participant_item_request_builder.ParticipantItemRequestBuilder:
-        """
-        Provides operations to manage the participants property of the microsoft.graph.call entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: participant_item_request_builder.ParticipantItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .participants.item import participant_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["participant%2Did"] = id
-        return participant_item_request_builder.ParticipantItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[call.Call] = None, request_configuration: Optional[CallItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[call.Call]:
         """

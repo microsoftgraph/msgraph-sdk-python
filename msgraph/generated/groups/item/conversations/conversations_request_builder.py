@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import conversation, conversation_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import conversation_item_request_builder
 
 class ConversationsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ConversationsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_conversation_id(self,conversation_id: str) -> conversation_item_request_builder.ConversationItemRequestBuilder:
+        """
+        Provides operations to manage the conversations property of the microsoft.graph.group entity.
+        Args:
+            conversation_id: Unique identifier of the item
+        Returns: conversation_item_request_builder.ConversationItemRequestBuilder
+        """
+        if conversation_id is None:
+            raise Exception("conversation_id cannot be undefined")
+        from .item import conversation_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["conversation%2Did"] = conversation_id
+        return conversation_item_request_builder.ConversationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ConversationsRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_collection_response.ConversationCollectionResponse]:
         """
@@ -60,7 +76,7 @@ class ConversationsRequestBuilder():
     
     async def post(self,body: Optional[conversation.Conversation] = None, request_configuration: Optional[ConversationsRequestBuilderPostRequestConfiguration] = None) -> Optional[conversation.Conversation]:
         """
-        Use reply thread or reply post to further post to that conversation.
+        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +119,7 @@ class ConversationsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[conversation.Conversation] = None, request_configuration: Optional[ConversationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use reply thread or reply post to further post to that conversation.
+        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

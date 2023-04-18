@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .....models import simulation_automation
     from .....models.o_data_errors import o_data_error
     from .runs import runs_request_builder
-    from .runs.item import simulation_automation_run_item_request_builder
 
 class SimulationAutomationItemRequestBuilder():
     """
@@ -102,21 +101,6 @@ class SimulationAutomationItemRequestBuilder():
         from .....models import simulation_automation
 
         return await self.request_adapter.send_async(request_info, simulation_automation.SimulationAutomation, error_mapping)
-    
-    def runs_by_id(self,id: str) -> simulation_automation_run_item_request_builder.SimulationAutomationRunItemRequestBuilder:
-        """
-        Provides operations to manage the runs property of the microsoft.graph.simulationAutomation entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: simulation_automation_run_item_request_builder.SimulationAutomationRunItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .runs.item import simulation_automation_run_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["simulationAutomationRun%2Did"] = id
-        return simulation_automation_run_item_request_builder.SimulationAutomationRunItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[SimulationAutomationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

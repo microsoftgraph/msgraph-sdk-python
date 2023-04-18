@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import endpoint, endpoint_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import endpoint_item_request_builder
 
 class EndpointsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class EndpointsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_endpoint_id(self,endpoint_id: str) -> endpoint_item_request_builder.EndpointItemRequestBuilder:
+        """
+        Provides operations to manage the endpoints property of the microsoft.graph.servicePrincipal entity.
+        Args:
+            endpoint_id: Unique identifier of the item
+        Returns: endpoint_item_request_builder.EndpointItemRequestBuilder
+        """
+        if endpoint_id is None:
+            raise Exception("endpoint_id cannot be undefined")
+        from .item import endpoint_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["endpoint%2Did"] = endpoint_id
+        return endpoint_item_request_builder.EndpointItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[EndpointsRequestBuilderGetRequestConfiguration] = None) -> Optional[endpoint_collection_response.EndpointCollectionResponse]:
         """

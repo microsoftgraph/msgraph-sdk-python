@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import home_realm_discovery_policy, home_realm_discovery_policy_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import home_realm_discovery_policy_item_request_builder
 
 class HomeRealmDiscoveryPoliciesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class HomeRealmDiscoveryPoliciesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_home_realm_discovery_policy_id(self,home_realm_discovery_policy_id: str) -> home_realm_discovery_policy_item_request_builder.HomeRealmDiscoveryPolicyItemRequestBuilder:
+        """
+        Provides operations to manage the homeRealmDiscoveryPolicies property of the microsoft.graph.policyRoot entity.
+        Args:
+            home_realm_discovery_policy_id: Unique identifier of the item
+        Returns: home_realm_discovery_policy_item_request_builder.HomeRealmDiscoveryPolicyItemRequestBuilder
+        """
+        if home_realm_discovery_policy_id is None:
+            raise Exception("home_realm_discovery_policy_id cannot be undefined")
+        from .item import home_realm_discovery_policy_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["homeRealmDiscoveryPolicy%2Did"] = home_realm_discovery_policy_id
+        return home_realm_discovery_policy_item_request_builder.HomeRealmDiscoveryPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[home_realm_discovery_policy_collection_response.HomeRealmDiscoveryPolicyCollectionResponse]:
         """

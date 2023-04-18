@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ....models import learning_provider
     from ....models.o_data_errors import o_data_error
     from .learning_contents import learning_contents_request_builder
-    from .learning_contents.item import learning_content_item_request_builder
 
 class LearningProviderItemRequestBuilder():
     """
@@ -77,21 +76,6 @@ class LearningProviderItemRequestBuilder():
         from ....models import learning_provider
 
         return await self.request_adapter.send_async(request_info, learning_provider.LearningProvider, error_mapping)
-    
-    def learning_contents_by_id(self,id: str) -> learning_content_item_request_builder.LearningContentItemRequestBuilder:
-        """
-        Provides operations to manage the learningContents property of the microsoft.graph.learningProvider entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: learning_content_item_request_builder.LearningContentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .learning_contents.item import learning_content_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["learningContent%2Did"] = id
-        return learning_content_item_request_builder.LearningContentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[learning_provider.LearningProvider] = None, request_configuration: Optional[LearningProviderItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[learning_provider.LearningProvider]:
         """

@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .import_ import import_request_builder
+    from .item import imported_windows_autopilot_device_identity_item_request_builder
 
 class ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder():
     """
@@ -36,6 +37,21 @@ class ImportedWindowsAutopilotDeviceIdentitiesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_imported_windows_autopilot_device_identity_id(self,imported_windows_autopilot_device_identity_id: str) -> imported_windows_autopilot_device_identity_item_request_builder.ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder:
+        """
+        Provides operations to manage the importedWindowsAutopilotDeviceIdentities property of the microsoft.graph.deviceManagement entity.
+        Args:
+            imported_windows_autopilot_device_identity_id: Unique identifier of the item
+        Returns: imported_windows_autopilot_device_identity_item_request_builder.ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder
+        """
+        if imported_windows_autopilot_device_identity_id is None:
+            raise Exception("imported_windows_autopilot_device_identity_id cannot be undefined")
+        from .item import imported_windows_autopilot_device_identity_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["importedWindowsAutopilotDeviceIdentity%2Did"] = imported_windows_autopilot_device_identity_id
+        return imported_windows_autopilot_device_identity_item_request_builder.ImportedWindowsAutopilotDeviceIdentityItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ImportedWindowsAutopilotDeviceIdentitiesRequestBuilderGetRequestConfiguration] = None) -> Optional[imported_windows_autopilot_device_identity_collection_response.ImportedWindowsAutopilotDeviceIdentityCollectionResponse]:
         """

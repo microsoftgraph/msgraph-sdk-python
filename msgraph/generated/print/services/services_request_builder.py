@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import print_service, print_service_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import print_service_item_request_builder
 
 class ServicesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ServicesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_print_service_id(self,print_service_id: str) -> print_service_item_request_builder.PrintServiceItemRequestBuilder:
+        """
+        Provides operations to manage the services property of the microsoft.graph.print entity.
+        Args:
+            print_service_id: Unique identifier of the item
+        Returns: print_service_item_request_builder.PrintServiceItemRequestBuilder
+        """
+        if print_service_id is None:
+            raise Exception("print_service_id cannot be undefined")
+        from .item import print_service_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["printService%2Did"] = print_service_id
+        return print_service_item_request_builder.PrintServiceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ServicesRequestBuilderGetRequestConfiguration] = None) -> Optional[print_service_collection_response.PrintServiceCollectionResponse]:
         """

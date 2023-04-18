@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .........models import shared_with_channel_team_info
     from .........models.o_data_errors import o_data_error
     from .allowed_members import allowed_members_request_builder
-    from .allowed_members.item import conversation_member_item_request_builder
 
 class SharedWithChannelTeamInfoItemRequestBuilder():
     """
@@ -36,21 +35,6 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def allowed_members_by_id(self,id: str) -> conversation_member_item_request_builder.ConversationMemberItemRequestBuilder:
-        """
-        Provides operations to manage the allowedMembers property of the microsoft.graph.sharedWithChannelTeamInfo entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: conversation_member_item_request_builder.ConversationMemberItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .allowed_members.item import conversation_member_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["conversationMember%2Did"] = id
-        return conversation_member_item_request_builder.ConversationMemberItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models import teams_template, teams_template_collection_response
     from ..models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import teams_template_item_request_builder
 
 class TeamsTemplatesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class TeamsTemplatesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_teams_template_id(self,teams_template_id: str) -> teams_template_item_request_builder.TeamsTemplateItemRequestBuilder:
+        """
+        Provides operations to manage the collection of teamsTemplate entities.
+        Args:
+            teams_template_id: Unique identifier of the item
+        Returns: teams_template_item_request_builder.TeamsTemplateItemRequestBuilder
+        """
+        if teams_template_id is None:
+            raise Exception("teams_template_id cannot be undefined")
+        from .item import teams_template_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["teamsTemplate%2Did"] = teams_template_id
+        return teams_template_item_request_builder.TeamsTemplateItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[TeamsTemplatesRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_template_collection_response.TeamsTemplateCollectionResponse]:
         """

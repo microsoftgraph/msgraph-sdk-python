@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import service_health, service_health_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import service_health_item_request_builder
 
 class HealthOverviewsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class HealthOverviewsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_service_health_id(self,service_health_id: str) -> service_health_item_request_builder.ServiceHealthItemRequestBuilder:
+        """
+        Provides operations to manage the healthOverviews property of the microsoft.graph.serviceAnnouncement entity.
+        Args:
+            service_health_id: Unique identifier of the item
+        Returns: service_health_item_request_builder.ServiceHealthItemRequestBuilder
+        """
+        if service_health_id is None:
+            raise Exception("service_health_id cannot be undefined")
+        from .item import service_health_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["serviceHealth%2Did"] = service_health_id
+        return service_health_item_request_builder.ServiceHealthItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[HealthOverviewsRequestBuilderGetRequestConfiguration] = None) -> Optional[service_health_collection_response.ServiceHealthCollectionResponse]:
         """

@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .....models import service_update_message
     from .....models.o_data_errors import o_data_error
     from .attachments import attachments_request_builder
-    from .attachments.item import service_announcement_attachment_item_request_builder
     from .attachments_archive import attachments_archive_request_builder
 
 class ServiceUpdateMessageItemRequestBuilder():
@@ -37,21 +36,6 @@ class ServiceUpdateMessageItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def attachments_by_id(self,id: str) -> service_announcement_attachment_item_request_builder.ServiceAnnouncementAttachmentItemRequestBuilder:
-        """
-        Provides operations to manage the attachments property of the microsoft.graph.serviceUpdateMessage entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: service_announcement_attachment_item_request_builder.ServiceAnnouncementAttachmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .attachments.item import service_announcement_attachment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["serviceAnnouncementAttachment%2Did"] = id
-        return service_announcement_attachment_item_request_builder.ServiceAnnouncementAttachmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """

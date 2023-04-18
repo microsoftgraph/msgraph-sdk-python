@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import managed_app_status, managed_app_status_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import managed_app_status_item_request_builder
 
 class ManagedAppStatusesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ManagedAppStatusesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_managed_app_status_id(self,managed_app_status_id: str) -> managed_app_status_item_request_builder.ManagedAppStatusItemRequestBuilder:
+        """
+        Provides operations to manage the managedAppStatuses property of the microsoft.graph.deviceAppManagement entity.
+        Args:
+            managed_app_status_id: Unique identifier of the item
+        Returns: managed_app_status_item_request_builder.ManagedAppStatusItemRequestBuilder
+        """
+        if managed_app_status_id is None:
+            raise Exception("managed_app_status_id cannot be undefined")
+        from .item import managed_app_status_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["managedAppStatus%2Did"] = managed_app_status_id
+        return managed_app_status_item_request_builder.ManagedAppStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ManagedAppStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_app_status_collection_response.ManagedAppStatusCollectionResponse]:
         """

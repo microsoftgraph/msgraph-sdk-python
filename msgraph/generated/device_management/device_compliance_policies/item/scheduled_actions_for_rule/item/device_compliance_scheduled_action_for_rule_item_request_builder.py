@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ......models import device_compliance_scheduled_action_for_rule
     from ......models.o_data_errors import o_data_error
     from .scheduled_action_configurations import scheduled_action_configurations_request_builder
-    from .scheduled_action_configurations.item import device_compliance_action_item_item_request_builder
 
 class DeviceComplianceScheduledActionForRuleItemRequestBuilder():
     """
@@ -102,21 +101,6 @@ class DeviceComplianceScheduledActionForRuleItemRequestBuilder():
         from ......models import device_compliance_scheduled_action_for_rule
 
         return await self.request_adapter.send_async(request_info, device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule, error_mapping)
-    
-    def scheduled_action_configurations_by_id(self,id: str) -> device_compliance_action_item_item_request_builder.DeviceComplianceActionItemItemRequestBuilder:
-        """
-        Provides operations to manage the scheduledActionConfigurations property of the microsoft.graph.deviceComplianceScheduledActionForRule entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: device_compliance_action_item_item_request_builder.DeviceComplianceActionItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .scheduled_action_configurations.item import device_compliance_action_item_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["deviceComplianceActionItem%2Did"] = id
-        return device_compliance_action_item_item_request_builder.DeviceComplianceActionItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceComplianceScheduledActionForRuleItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

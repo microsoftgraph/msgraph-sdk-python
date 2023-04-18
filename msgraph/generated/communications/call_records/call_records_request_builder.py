@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time import call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder
     from .call_records_get_pstn_calls_with_from_date_time_with_to_date_time import call_records_get_pstn_calls_with_from_date_time_with_to_date_time_request_builder
     from .count import count_request_builder
+    from .item import call_record_item_request_builder
 
 class CallRecordsRequestBuilder():
     """
@@ -38,6 +39,21 @@ class CallRecordsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_call_record_id(self,call_record_id: str) -> call_record_item_request_builder.CallRecordItemRequestBuilder:
+        """
+        Provides operations to manage the callRecords property of the microsoft.graph.cloudCommunications entity.
+        Args:
+            call_record_id: Unique identifier of the item
+        Returns: call_record_item_request_builder.CallRecordItemRequestBuilder
+        """
+        if call_record_id is None:
+            raise Exception("call_record_id cannot be undefined")
+        from .item import call_record_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["callRecord%2Did"] = call_record_id
+        return call_record_item_request_builder.CallRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time(self,from_date_time: Optional[datetime] = None, to_date_time: Optional[datetime] = None) -> call_records_get_direct_routing_calls_with_from_date_time_with_to_date_time_request_builder.CallRecordsGetDirectRoutingCallsWithFromDateTimeWithToDateTimeRequestBuilder:
         """

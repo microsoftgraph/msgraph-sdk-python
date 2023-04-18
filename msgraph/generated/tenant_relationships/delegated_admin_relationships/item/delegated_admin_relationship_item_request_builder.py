@@ -13,11 +13,8 @@ if TYPE_CHECKING:
     from ....models import delegated_admin_relationship
     from ....models.o_data_errors import o_data_error
     from .access_assignments import access_assignments_request_builder
-    from .access_assignments.item import delegated_admin_access_assignment_item_request_builder
     from .operations import operations_request_builder
-    from .operations.item import delegated_admin_relationship_operation_item_request_builder
     from .requests import requests_request_builder
-    from .requests.item import delegated_admin_relationship_request_item_request_builder
 
 class DelegatedAdminRelationshipItemRequestBuilder():
     """
@@ -40,21 +37,6 @@ class DelegatedAdminRelationshipItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def access_assignments_by_id(self,id: str) -> delegated_admin_access_assignment_item_request_builder.DelegatedAdminAccessAssignmentItemRequestBuilder:
-        """
-        Provides operations to manage the accessAssignments property of the microsoft.graph.delegatedAdminRelationship entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: delegated_admin_access_assignment_item_request_builder.DelegatedAdminAccessAssignmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .access_assignments.item import delegated_admin_access_assignment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["delegatedAdminAccessAssignment%2Did"] = id
-        return delegated_admin_access_assignment_item_request_builder.DelegatedAdminAccessAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -97,21 +79,6 @@ class DelegatedAdminRelationshipItemRequestBuilder():
 
         return await self.request_adapter.send_async(request_info, delegated_admin_relationship.DelegatedAdminRelationship, error_mapping)
     
-    def operations_by_id(self,id: str) -> delegated_admin_relationship_operation_item_request_builder.DelegatedAdminRelationshipOperationItemRequestBuilder:
-        """
-        Provides operations to manage the operations property of the microsoft.graph.delegatedAdminRelationship entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: delegated_admin_relationship_operation_item_request_builder.DelegatedAdminRelationshipOperationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .operations.item import delegated_admin_relationship_operation_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["delegatedAdminRelationshipOperation%2Did"] = id
-        return delegated_admin_relationship_operation_item_request_builder.DelegatedAdminRelationshipOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def patch(self,body: Optional[delegated_admin_relationship.DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[delegated_admin_relationship.DelegatedAdminRelationship]:
         """
         Update the navigation property delegatedAdminRelationships in tenantRelationships
@@ -136,21 +103,6 @@ class DelegatedAdminRelationshipItemRequestBuilder():
         from ....models import delegated_admin_relationship
 
         return await self.request_adapter.send_async(request_info, delegated_admin_relationship.DelegatedAdminRelationship, error_mapping)
-    
-    def requests_by_id(self,id: str) -> delegated_admin_relationship_request_item_request_builder.DelegatedAdminRelationshipRequestItemRequestBuilder:
-        """
-        Provides operations to manage the requests property of the microsoft.graph.delegatedAdminRelationship entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: delegated_admin_relationship_request_item_request_builder.DelegatedAdminRelationshipRequestItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .requests.item import delegated_admin_relationship_request_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["delegatedAdminRelationshipRequest%2Did"] = id
-        return delegated_admin_relationship_request_item_request_builder.DelegatedAdminRelationshipRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

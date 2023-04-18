@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import associated_team_info, associated_team_info_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import associated_team_info_item_request_builder
 
 class AssociatedTeamsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class AssociatedTeamsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_associated_team_info_id(self,associated_team_info_id: str) -> associated_team_info_item_request_builder.AssociatedTeamInfoItemRequestBuilder:
+        """
+        Provides operations to manage the associatedTeams property of the microsoft.graph.userTeamwork entity.
+        Args:
+            associated_team_info_id: Unique identifier of the item
+        Returns: associated_team_info_item_request_builder.AssociatedTeamInfoItemRequestBuilder
+        """
+        if associated_team_info_id is None:
+            raise Exception("associated_team_info_id cannot be undefined")
+        from .item import associated_team_info_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["associatedTeamInfo%2Did"] = associated_team_info_id
+        return associated_team_info_item_request_builder.AssociatedTeamInfoItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AssociatedTeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[associated_team_info_collection_response.AssociatedTeamInfoCollectionResponse]:
         """

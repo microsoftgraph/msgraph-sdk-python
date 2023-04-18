@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ......models import onenote_section, onenote_section_collection_response
     from ......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import onenote_section_item_request_builder
 
 class SectionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class SectionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_onenote_section_id(self,onenote_section_id: str) -> onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder:
+        """
+        Provides operations to manage the sections property of the microsoft.graph.notebook entity.
+        Args:
+            onenote_section_id: Unique identifier of the item
+        Returns: onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder
+        """
+        if onenote_section_id is None:
+            raise Exception("onenote_section_id cannot be undefined")
+        from .item import onenote_section_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["onenoteSection%2Did"] = onenote_section_id
+        return onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[onenote_section_collection_response.OnenoteSectionCollectionResponse]:
         """

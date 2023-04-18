@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .delta import delta_request_builder
+    from .item import contact_folder_item_request_builder
 
 class ContactFoldersRequestBuilder():
     """
@@ -36,6 +37,21 @@ class ContactFoldersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_contact_folder_id(self,contact_folder_id: str) -> contact_folder_item_request_builder.ContactFolderItemRequestBuilder:
+        """
+        Provides operations to manage the contactFolders property of the microsoft.graph.user entity.
+        Args:
+            contact_folder_id: Unique identifier of the item
+        Returns: contact_folder_item_request_builder.ContactFolderItemRequestBuilder
+        """
+        if contact_folder_id is None:
+            raise Exception("contact_folder_id cannot be undefined")
+        from .item import contact_folder_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["contactFolder%2Did"] = contact_folder_id
+        return contact_folder_item_request_builder.ContactFolderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ContactFoldersRequestBuilderGetRequestConfiguration] = None) -> Optional[contact_folder_collection_response.ContactFolderCollectionResponse]:
         """

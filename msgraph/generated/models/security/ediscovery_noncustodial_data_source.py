@@ -10,7 +10,7 @@ from . import data_source_container
 class EdiscoveryNoncustodialDataSource(data_source_container.DataSourceContainer):
     def __init__(self,) -> None:
         """
-        Instantiates a new EdiscoveryNoncustodialDataSource and sets the default values.
+        Instantiates a new ediscoveryNoncustodialDataSource and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.security.ediscoveryNoncustodialDataSource"

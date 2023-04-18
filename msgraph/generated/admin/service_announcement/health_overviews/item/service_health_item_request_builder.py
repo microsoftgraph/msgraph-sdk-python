@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .....models import service_health
     from .....models.o_data_errors import o_data_error
     from .issues import issues_request_builder
-    from .issues.item import service_health_issue_item_request_builder
 
 class ServiceHealthItemRequestBuilder():
     """
@@ -77,21 +76,6 @@ class ServiceHealthItemRequestBuilder():
         from .....models import service_health
 
         return await self.request_adapter.send_async(request_info, service_health.ServiceHealth, error_mapping)
-    
-    def issues_by_id(self,id: str) -> service_health_issue_item_request_builder.ServiceHealthIssueItemRequestBuilder:
-        """
-        Provides operations to manage the issues property of the microsoft.graph.serviceHealth entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: service_health_issue_item_request_builder.ServiceHealthIssueItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .issues.item import service_health_issue_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["serviceHealthIssue%2Did"] = id
-        return service_health_issue_item_request_builder.ServiceHealthIssueItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[service_health.ServiceHealth] = None, request_configuration: Optional[ServiceHealthItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[service_health.ServiceHealth]:
         """

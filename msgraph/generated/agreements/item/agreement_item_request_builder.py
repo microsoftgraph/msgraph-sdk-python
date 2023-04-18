@@ -13,10 +13,8 @@ if TYPE_CHECKING:
     from ...models import agreement
     from ...models.o_data_errors import o_data_error
     from .acceptances import acceptances_request_builder
-    from .acceptances.item import agreement_acceptance_item_request_builder
     from .file import file_request_builder
     from .files import files_request_builder
-    from .files.item import agreement_file_localization_item_request_builder
 
 class AgreementItemRequestBuilder():
     """
@@ -40,21 +38,6 @@ class AgreementItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def acceptances_by_id(self,id: str) -> agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder:
-        """
-        Provides operations to manage the acceptances property of the microsoft.graph.agreement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .acceptances.item import agreement_acceptance_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["agreementAcceptance%2Did"] = id
-        return agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def delete(self,request_configuration: Optional[AgreementItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete entity from agreements
@@ -73,21 +56,6 @@ class AgreementItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
-    
-    def files_by_id(self,id: str) -> agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder:
-        """
-        Provides operations to manage the files property of the microsoft.graph.agreement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .files.item import agreement_file_localization_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["agreementFileLocalization%2Did"] = id
-        return agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AgreementItemRequestBuilderGetRequestConfiguration] = None) -> Optional[agreement.Agreement]:
         """

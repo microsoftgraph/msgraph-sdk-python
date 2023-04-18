@@ -15,18 +15,13 @@ if TYPE_CHECKING:
     from .check_member_groups import check_member_groups_request_builder
     from .check_member_objects import check_member_objects_request_builder
     from .extensions import extensions_request_builder
-    from .extensions.item import extension_item_request_builder
     from .get_member_groups import get_member_groups_request_builder
     from .get_member_objects import get_member_objects_request_builder
     from .member_of import member_of_request_builder
-    from .member_of.item import directory_object_item_request_builder
     from .registered_owners import registered_owners_request_builder
-    from .registered_owners.item import directory_object_item_request_builder
     from .registered_users import registered_users_request_builder
-    from .registered_users.item import directory_object_item_request_builder
     from .restore import restore_request_builder
     from .transitive_member_of import transitive_member_of_request_builder
-    from .transitive_member_of.item import directory_object_item_request_builder
 
 class DeviceItemRequestBuilder():
     """
@@ -69,21 +64,6 @@ class DeviceItemRequestBuilder():
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
-    def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
-        """
-        Provides operations to manage the extensions property of the microsoft.graph.device entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: extension_item_request_builder.ExtensionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .extensions.item import extension_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["extension%2Did"] = id
-        return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def get(self,request_configuration: Optional[DeviceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[device.Device]:
         """
         Get the properties and relationships of a device object.
@@ -105,24 +85,6 @@ class DeviceItemRequestBuilder():
         from ...models import device
 
         return await self.request_adapter.send_async(request_info, device.Device, error_mapping)
-    
-    def member_of_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Provides operations to manage the memberOf property of the microsoft.graph.device entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .member_of.item import directory_object_item_request_builder
-        from .registered_owners.item import directory_object_item_request_builder
-        from .registered_users.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[device.Device] = None, request_configuration: Optional[DeviceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[device.Device]:
         """
@@ -148,42 +110,6 @@ class DeviceItemRequestBuilder():
         from ...models import device
 
         return await self.request_adapter.send_async(request_info, device.Device, error_mapping)
-    
-    def registered_owners_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.devices.item.registeredOwners.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .member_of.item import directory_object_item_request_builder
-        from .registered_owners.item import directory_object_item_request_builder
-        from .registered_users.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def registered_users_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.devices.item.registeredUsers.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .member_of.item import directory_object_item_request_builder
-        from .registered_owners.item import directory_object_item_request_builder
-        from .registered_users.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[DeviceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -239,24 +165,6 @@ class DeviceItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-    
-    def transitive_member_of_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Provides operations to manage the transitiveMemberOf property of the microsoft.graph.device entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .member_of.item import directory_object_item_request_builder
-        from .registered_owners.item import directory_object_item_request_builder
-        from .registered_users.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     @property
     def check_member_groups(self) -> check_member_groups_request_builder.CheckMemberGroupsRequestBuilder:

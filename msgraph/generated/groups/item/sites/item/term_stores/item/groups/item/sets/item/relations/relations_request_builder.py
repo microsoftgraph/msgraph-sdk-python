@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ............models.o_data_errors import o_data_error
     from ............models.term_store import relation, relation_collection_response
     from .count import count_request_builder
+    from .item import relation_item_request_builder
 
 class RelationsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class RelationsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_relation_id(self,relation_id: str) -> relation_item_request_builder.RelationItemRequestBuilder:
+        """
+        Provides operations to manage the relations property of the microsoft.graph.termStore.set entity.
+        Args:
+            relation_id: Unique identifier of the item
+        Returns: relation_item_request_builder.RelationItemRequestBuilder
+        """
+        if relation_id is None:
+            raise Exception("relation_id cannot be undefined")
+        from .item import relation_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["relation%2Did"] = relation_id
+        return relation_item_request_builder.RelationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RelationsRequestBuilderGetRequestConfiguration] = None) -> Optional[relation_collection_response.RelationCollectionResponse]:
         """

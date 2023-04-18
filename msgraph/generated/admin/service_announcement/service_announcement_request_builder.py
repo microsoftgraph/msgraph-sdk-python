@@ -13,11 +13,8 @@ if TYPE_CHECKING:
     from ...models import service_announcement
     from ...models.o_data_errors import o_data_error
     from .health_overviews import health_overviews_request_builder
-    from .health_overviews.item import service_health_item_request_builder
     from .issues import issues_request_builder
-    from .issues.item import service_health_issue_item_request_builder
     from .messages import messages_request_builder
-    from .messages.item import service_update_message_item_request_builder
 
 class ServiceAnnouncementRequestBuilder():
     """
@@ -81,51 +78,6 @@ class ServiceAnnouncementRequestBuilder():
         from ...models import service_announcement
 
         return await self.request_adapter.send_async(request_info, service_announcement.ServiceAnnouncement, error_mapping)
-    
-    def health_overviews_by_id(self,id: str) -> service_health_item_request_builder.ServiceHealthItemRequestBuilder:
-        """
-        Provides operations to manage the healthOverviews property of the microsoft.graph.serviceAnnouncement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: service_health_item_request_builder.ServiceHealthItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .health_overviews.item import service_health_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["serviceHealth%2Did"] = id
-        return service_health_item_request_builder.ServiceHealthItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def issues_by_id(self,id: str) -> service_health_issue_item_request_builder.ServiceHealthIssueItemRequestBuilder:
-        """
-        Provides operations to manage the issues property of the microsoft.graph.serviceAnnouncement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: service_health_issue_item_request_builder.ServiceHealthIssueItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .issues.item import service_health_issue_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["serviceHealthIssue%2Did"] = id
-        return service_health_issue_item_request_builder.ServiceHealthIssueItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def messages_by_id(self,id: str) -> service_update_message_item_request_builder.ServiceUpdateMessageItemRequestBuilder:
-        """
-        Provides operations to manage the messages property of the microsoft.graph.serviceAnnouncement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: service_update_message_item_request_builder.ServiceUpdateMessageItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .messages.item import service_update_message_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["serviceUpdateMessage%2Did"] = id
-        return service_update_message_item_request_builder.ServiceUpdateMessageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[service_announcement.ServiceAnnouncement] = None, request_configuration: Optional[ServiceAnnouncementRequestBuilderPatchRequestConfiguration] = None) -> Optional[service_announcement.ServiceAnnouncement]:
         """

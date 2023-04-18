@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .delta import delta_request_builder
     from .get_available_extension_properties import get_available_extension_properties_request_builder
     from .get_by_ids import get_by_ids_request_builder
+    from .item import directory_object_item_request_builder
     from .ref import ref_request_builder
     from .validate_properties import validate_properties_request_builder
 
@@ -40,6 +41,21 @@ class ExternalSponsorsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_directory_object_id(self,directory_object_id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+        """
+        Gets an item from the msgraph.generated.identityGovernance.entitlementManagement.connectedOrganizations.item.externalSponsors.item collection
+        Args:
+            directory_object_id: Unique identifier of the item
+        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        """
+        if directory_object_id is None:
+            raise Exception("directory_object_id cannot be undefined")
+        from .item import directory_object_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["directoryObject%2Did"] = directory_object_id
+        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ExternalSponsorsRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
         """

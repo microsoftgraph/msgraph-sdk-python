@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ......models import planner_bucket, planner_bucket_collection_response
     from ......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import planner_bucket_item_request_builder
 
 class BucketsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class BucketsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_planner_bucket_id(self,planner_bucket_id: str) -> planner_bucket_item_request_builder.PlannerBucketItemRequestBuilder:
+        """
+        Provides operations to manage the buckets property of the microsoft.graph.plannerPlan entity.
+        Args:
+            planner_bucket_id: Unique identifier of the item
+        Returns: planner_bucket_item_request_builder.PlannerBucketItemRequestBuilder
+        """
+        if planner_bucket_id is None:
+            raise Exception("planner_bucket_id cannot be undefined")
+        from .item import planner_bucket_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["plannerBucket%2Did"] = planner_bucket_id
+        return planner_bucket_item_request_builder.PlannerBucketItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[BucketsRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_bucket_collection_response.PlannerBucketCollectionResponse]:
         """

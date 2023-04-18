@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ..models.o_data_errors import o_data_error
     from .available_provider_types import available_provider_types_request_builder
     from .count import count_request_builder
+    from .item import identity_provider_item_request_builder
 
 class IdentityProvidersRequestBuilder():
     """
@@ -36,6 +37,21 @@ class IdentityProvidersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_identity_provider_id(self,identity_provider_id: str) -> identity_provider_item_request_builder.IdentityProviderItemRequestBuilder:
+        """
+        Provides operations to manage the collection of identityProvider entities.
+        Args:
+            identity_provider_id: Unique identifier of the item
+        Returns: identity_provider_item_request_builder.IdentityProviderItemRequestBuilder
+        """
+        if identity_provider_id is None:
+            raise Exception("identity_provider_id cannot be undefined")
+        from .item import identity_provider_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["identityProvider%2Did"] = identity_provider_id
+        return identity_provider_item_request_builder.IdentityProviderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[IdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_provider_collection_response.IdentityProviderCollectionResponse]:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .........models.o_data_errors import o_data_error
     from .........models.term_store import term, term_collection_response
     from .count import count_request_builder
+    from .item import term_item_request_builder
 
 class ChildrenRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ChildrenRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_term_id(self,term_id: str) -> term_item_request_builder.TermItemRequestBuilder:
+        """
+        Provides operations to manage the children property of the microsoft.graph.termStore.set entity.
+        Args:
+            term_id: Unique identifier of the item
+        Returns: term_item_request_builder.TermItemRequestBuilder
+        """
+        if term_id is None:
+            raise Exception("term_id cannot be undefined")
+        from .item import term_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["term%2Did"] = term_id
+        return term_item_request_builder.TermItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ChildrenRequestBuilderGetRequestConfiguration] = None) -> Optional[term_collection_response.TermCollectionResponse]:
         """

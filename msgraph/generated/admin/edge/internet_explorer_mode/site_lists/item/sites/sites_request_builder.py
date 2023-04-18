@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .......models import browser_site, browser_site_collection_response
     from .......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import browser_site_item_request_builder
 
 class SitesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class SitesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_browser_site_id(self,browser_site_id: str) -> browser_site_item_request_builder.BrowserSiteItemRequestBuilder:
+        """
+        Provides operations to manage the sites property of the microsoft.graph.browserSiteList entity.
+        Args:
+            browser_site_id: Unique identifier of the item
+        Returns: browser_site_item_request_builder.BrowserSiteItemRequestBuilder
+        """
+        if browser_site_id is None:
+            raise Exception("browser_site_id cannot be undefined")
+        from .item import browser_site_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["browserSite%2Did"] = browser_site_id
+        return browser_site_item_request_builder.BrowserSiteItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> Optional[browser_site_collection_response.BrowserSiteCollectionResponse]:
         """

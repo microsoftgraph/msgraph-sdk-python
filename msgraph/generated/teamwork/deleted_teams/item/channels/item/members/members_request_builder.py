@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .......models.o_data_errors import o_data_error
     from .add import add_request_builder
     from .count import count_request_builder
+    from .item import conversation_member_item_request_builder
 
 class MembersRequestBuilder():
     """
@@ -36,6 +37,21 @@ class MembersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_conversation_member_id(self,conversation_member_id: str) -> conversation_member_item_request_builder.ConversationMemberItemRequestBuilder:
+        """
+        Provides operations to manage the members property of the microsoft.graph.channel entity.
+        Args:
+            conversation_member_id: Unique identifier of the item
+        Returns: conversation_member_item_request_builder.ConversationMemberItemRequestBuilder
+        """
+        if conversation_member_id is None:
+            raise Exception("conversation_member_id cannot be undefined")
+        from .item import conversation_member_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["conversationMember%2Did"] = conversation_member_id
+        return conversation_member_item_request_builder.ConversationMemberItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_member_collection_response.ConversationMemberCollectionResponse]:
         """
@@ -61,7 +77,7 @@ class MembersRequestBuilder():
     
     async def post(self,body: Optional[conversation_member.ConversationMember] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> Optional[conversation_member.ConversationMember]:
         """
-        Add a conversationMember to a channel.
+        Add a conversationMember to a channel. This operation is allowed only for channels with a **membershipType** value of `private` or `shared`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +120,7 @@ class MembersRequestBuilder():
     
     def to_post_request_information(self,body: Optional[conversation_member.ConversationMember] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add a conversationMember to a channel.
+        Add a conversationMember to a channel. This operation is allowed only for channels with a **membershipType** value of `private` or `shared`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -13,15 +13,12 @@ if TYPE_CHECKING:
     from ......models import education_assignment
     from ......models.o_data_errors import o_data_error
     from .categories import categories_request_builder
-    from .categories.item import education_category_item_request_builder
     from .publish import publish_request_builder
     from .resources import resources_request_builder
-    from .resources.item import education_assignment_resource_item_request_builder
     from .rubric import rubric_request_builder
     from .set_up_feedback_resources_folder import set_up_feedback_resources_folder_request_builder
     from .set_up_resources_folder import set_up_resources_folder_request_builder
     from .submissions import submissions_request_builder
-    from .submissions.item import education_submission_item_request_builder
 
 class EducationAssignmentItemRequestBuilder():
     """
@@ -44,21 +41,6 @@ class EducationAssignmentItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def categories_by_id(self,id: str) -> education_category_item_request_builder.EducationCategoryItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.education.classes.item.assignments.item.categories.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: education_category_item_request_builder.EducationCategoryItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .categories.item import education_category_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["educationCategory%2Did"] = id
-        return education_category_item_request_builder.EducationCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[EducationAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -125,36 +107,6 @@ class EducationAssignmentItemRequestBuilder():
         from ......models import education_assignment
 
         return await self.request_adapter.send_async(request_info, education_assignment.EducationAssignment, error_mapping)
-    
-    def resources_by_id(self,id: str) -> education_assignment_resource_item_request_builder.EducationAssignmentResourceItemRequestBuilder:
-        """
-        Provides operations to manage the resources property of the microsoft.graph.educationAssignment entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: education_assignment_resource_item_request_builder.EducationAssignmentResourceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .resources.item import education_assignment_resource_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["educationAssignmentResource%2Did"] = id
-        return education_assignment_resource_item_request_builder.EducationAssignmentResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def submissions_by_id(self,id: str) -> education_submission_item_request_builder.EducationSubmissionItemRequestBuilder:
-        """
-        Provides operations to manage the submissions property of the microsoft.graph.educationAssignment entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: education_submission_item_request_builder.EducationSubmissionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .submissions.item import education_submission_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["educationSubmission%2Did"] = id
-        return education_submission_item_request_builder.EducationSubmissionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[EducationAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

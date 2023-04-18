@@ -11,7 +11,7 @@ from .. import entity
 class ConnectionOperation(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new ConnectionOperation and sets the default values.
+        Instantiates a new connectionOperation and sets the default values.
         """
         super().__init__()
         # If status is failed, provides more information about the error that caused the failure.

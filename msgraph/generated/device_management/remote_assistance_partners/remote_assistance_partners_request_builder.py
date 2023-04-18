@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import remote_assistance_partner, remote_assistance_partner_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import remote_assistance_partner_item_request_builder
 
 class RemoteAssistancePartnersRequestBuilder():
     """
@@ -35,6 +36,21 @@ class RemoteAssistancePartnersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_remote_assistance_partner_id(self,remote_assistance_partner_id: str) -> remote_assistance_partner_item_request_builder.RemoteAssistancePartnerItemRequestBuilder:
+        """
+        Provides operations to manage the remoteAssistancePartners property of the microsoft.graph.deviceManagement entity.
+        Args:
+            remote_assistance_partner_id: Unique identifier of the item
+        Returns: remote_assistance_partner_item_request_builder.RemoteAssistancePartnerItemRequestBuilder
+        """
+        if remote_assistance_partner_id is None:
+            raise Exception("remote_assistance_partner_id cannot be undefined")
+        from .item import remote_assistance_partner_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["remoteAssistancePartner%2Did"] = remote_assistance_partner_id
+        return remote_assistance_partner_item_request_builder.RemoteAssistancePartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RemoteAssistancePartnersRequestBuilderGetRequestConfiguration] = None) -> Optional[remote_assistance_partner_collection_response.RemoteAssistancePartnerCollectionResponse]:
         """

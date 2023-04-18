@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models.o_data_errors import o_data_error
     from .....models.term_store import group, group_collection_response
     from .count import count_request_builder
+    from .item import group_item_request_builder
 
 class GroupsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class GroupsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_group_id(self,group_id: str) -> group_item_request_builder.GroupItemRequestBuilder:
+        """
+        Provides operations to manage the groups property of the microsoft.graph.termStore.store entity.
+        Args:
+            group_id: Unique identifier of the item
+        Returns: group_item_request_builder.GroupItemRequestBuilder
+        """
+        if group_id is None:
+            raise Exception("group_id cannot be undefined")
+        from .item import group_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["group%2Did"] = group_id
+        return group_item_request_builder.GroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[GroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[group_collection_response.GroupCollectionResponse]:
         """

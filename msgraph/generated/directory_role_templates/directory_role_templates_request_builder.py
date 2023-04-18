@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .delta import delta_request_builder
     from .get_available_extension_properties import get_available_extension_properties_request_builder
     from .get_by_ids import get_by_ids_request_builder
+    from .item import directory_role_template_item_request_builder
     from .validate_properties import validate_properties_request_builder
 
 class DirectoryRoleTemplatesRequestBuilder():
@@ -39,6 +40,21 @@ class DirectoryRoleTemplatesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_directory_role_template_id(self,directory_role_template_id: str) -> directory_role_template_item_request_builder.DirectoryRoleTemplateItemRequestBuilder:
+        """
+        Provides operations to manage the collection of directoryRoleTemplate entities.
+        Args:
+            directory_role_template_id: Unique identifier of the item
+        Returns: directory_role_template_item_request_builder.DirectoryRoleTemplateItemRequestBuilder
+        """
+        if directory_role_template_id is None:
+            raise Exception("directory_role_template_id cannot be undefined")
+        from .item import directory_role_template_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["directoryRoleTemplate%2Did"] = directory_role_template_id
+        return directory_role_template_item_request_builder.DirectoryRoleTemplateItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[DirectoryRoleTemplatesRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_role_template_collection_response.DirectoryRoleTemplateCollectionResponse]:
         """

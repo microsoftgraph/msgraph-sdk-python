@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import open_shift_change_request, open_shift_change_request_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import open_shift_change_request_item_request_builder
 
 class OpenShiftChangeRequestsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class OpenShiftChangeRequestsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_open_shift_change_request_id(self,open_shift_change_request_id: str) -> open_shift_change_request_item_request_builder.OpenShiftChangeRequestItemRequestBuilder:
+        """
+        Provides operations to manage the openShiftChangeRequests property of the microsoft.graph.schedule entity.
+        Args:
+            open_shift_change_request_id: Unique identifier of the item
+        Returns: open_shift_change_request_item_request_builder.OpenShiftChangeRequestItemRequestBuilder
+        """
+        if open_shift_change_request_id is None:
+            raise Exception("open_shift_change_request_id cannot be undefined")
+        from .item import open_shift_change_request_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["openShiftChangeRequest%2Did"] = open_shift_change_request_id
+        return open_shift_change_request_item_request_builder.OpenShiftChangeRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[OpenShiftChangeRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[open_shift_change_request_collection_response.OpenShiftChangeRequestCollectionResponse]:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import activity_history_item, activity_history_item_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import activity_history_item_item_request_builder
 
 class HistoryItemsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class HistoryItemsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_activity_history_item_id(self,activity_history_item_id: str) -> activity_history_item_item_request_builder.ActivityHistoryItemItemRequestBuilder:
+        """
+        Provides operations to manage the historyItems property of the microsoft.graph.userActivity entity.
+        Args:
+            activity_history_item_id: Unique identifier of the item
+        Returns: activity_history_item_item_request_builder.ActivityHistoryItemItemRequestBuilder
+        """
+        if activity_history_item_id is None:
+            raise Exception("activity_history_item_id cannot be undefined")
+        from .item import activity_history_item_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["activityHistoryItem%2Did"] = activity_history_item_id
+        return activity_history_item_item_request_builder.ActivityHistoryItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[HistoryItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[activity_history_item_collection_response.ActivityHistoryItemCollectionResponse]:
         """

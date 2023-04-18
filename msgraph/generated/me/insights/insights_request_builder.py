@@ -13,11 +13,8 @@ if TYPE_CHECKING:
     from ...models import office_graph_insights
     from ...models.o_data_errors import o_data_error
     from .shared import shared_request_builder
-    from .shared.item import shared_insight_item_request_builder
     from .trending import trending_request_builder
-    from .trending.item import trending_item_request_builder
     from .used import used_request_builder
-    from .used.item import used_insight_item_request_builder
 
 class InsightsRequestBuilder():
     """
@@ -107,21 +104,6 @@ class InsightsRequestBuilder():
 
         return await self.request_adapter.send_async(request_info, office_graph_insights.OfficeGraphInsights, error_mapping)
     
-    def shared_by_id(self,id: str) -> shared_insight_item_request_builder.SharedInsightItemRequestBuilder:
-        """
-        Provides operations to manage the shared property of the microsoft.graph.officeGraphInsights entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: shared_insight_item_request_builder.SharedInsightItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .shared.item import shared_insight_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["sharedInsight%2Did"] = id
-        return shared_insight_item_request_builder.SharedInsightItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def to_delete_request_information(self,request_configuration: Optional[InsightsRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property insights for me
@@ -176,36 +158,6 @@ class InsightsRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-    
-    def trending_by_id(self,id: str) -> trending_item_request_builder.TrendingItemRequestBuilder:
-        """
-        Provides operations to manage the trending property of the microsoft.graph.officeGraphInsights entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: trending_item_request_builder.TrendingItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .trending.item import trending_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["trending%2Did"] = id
-        return trending_item_request_builder.TrendingItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def used_by_id(self,id: str) -> used_insight_item_request_builder.UsedInsightItemRequestBuilder:
-        """
-        Provides operations to manage the used property of the microsoft.graph.officeGraphInsights entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: used_insight_item_request_builder.UsedInsightItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .used.item import used_insight_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["usedInsight%2Did"] = id
-        return used_insight_item_request_builder.UsedInsightItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     @property
     def shared(self) -> shared_request_builder.SharedRequestBuilder:

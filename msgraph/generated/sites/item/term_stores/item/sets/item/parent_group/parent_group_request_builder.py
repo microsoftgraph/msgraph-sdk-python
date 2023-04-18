@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ........models.o_data_errors import o_data_error
     from ........models.term_store import group
     from .sets import sets_request_builder
-    from .sets.item import set_item_request_builder
 
 class ParentGroupRequestBuilder():
     """
@@ -102,21 +101,6 @@ class ParentGroupRequestBuilder():
         from ........models.term_store import group
 
         return await self.request_adapter.send_async(request_info, group.Group, error_mapping)
-    
-    def sets_by_id(self,id: str) -> set_item_request_builder.SetItemRequestBuilder:
-        """
-        Provides operations to manage the sets property of the microsoft.graph.termStore.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: set_item_request_builder.SetItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .sets.item import set_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["set%2Did1"] = id
-        return set_item_request_builder.SetItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[ParentGroupRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

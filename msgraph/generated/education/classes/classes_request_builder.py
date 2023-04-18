@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .delta import delta_request_builder
+    from .item import education_class_item_request_builder
 
 class ClassesRequestBuilder():
     """
@@ -36,6 +37,21 @@ class ClassesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_education_class_id(self,education_class_id: str) -> education_class_item_request_builder.EducationClassItemRequestBuilder:
+        """
+        Provides operations to manage the classes property of the microsoft.graph.educationRoot entity.
+        Args:
+            education_class_id: Unique identifier of the item
+        Returns: education_class_item_request_builder.EducationClassItemRequestBuilder
+        """
+        if education_class_id is None:
+            raise Exception("education_class_id cannot be undefined")
+        from .item import education_class_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["educationClass%2Did"] = education_class_id
+        return education_class_item_request_builder.EducationClassItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ClassesRequestBuilderGetRequestConfiguration] = None) -> Optional[education_class_collection_response.EducationClassCollectionResponse]:
         """

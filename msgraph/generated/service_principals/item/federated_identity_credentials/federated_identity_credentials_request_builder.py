@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import federated_identity_credential, federated_identity_credential_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import federated_identity_credential_item_request_builder
 
 class FederatedIdentityCredentialsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class FederatedIdentityCredentialsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_federated_identity_credential_id(self,federated_identity_credential_id: str) -> federated_identity_credential_item_request_builder.FederatedIdentityCredentialItemRequestBuilder:
+        """
+        Provides operations to manage the federatedIdentityCredentials property of the microsoft.graph.servicePrincipal entity.
+        Args:
+            federated_identity_credential_id: Unique identifier of the item
+        Returns: federated_identity_credential_item_request_builder.FederatedIdentityCredentialItemRequestBuilder
+        """
+        if federated_identity_credential_id is None:
+            raise Exception("federated_identity_credential_id cannot be undefined")
+        from .item import federated_identity_credential_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["federatedIdentityCredential%2Did"] = federated_identity_credential_id
+        return federated_identity_credential_item_request_builder.FederatedIdentityCredentialItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[FederatedIdentityCredentialsRequestBuilderGetRequestConfiguration] = None) -> Optional[federated_identity_credential_collection_response.FederatedIdentityCredentialCollectionResponse]:
         """

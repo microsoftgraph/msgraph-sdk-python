@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import booking_custom_question, booking_custom_question_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import booking_custom_question_item_request_builder
 
 class CustomQuestionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class CustomQuestionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_booking_custom_question_id(self,booking_custom_question_id: str) -> booking_custom_question_item_request_builder.BookingCustomQuestionItemRequestBuilder:
+        """
+        Provides operations to manage the customQuestions property of the microsoft.graph.bookingBusiness entity.
+        Args:
+            booking_custom_question_id: Unique identifier of the item
+        Returns: booking_custom_question_item_request_builder.BookingCustomQuestionItemRequestBuilder
+        """
+        if booking_custom_question_id is None:
+            raise Exception("booking_custom_question_id cannot be undefined")
+        from .item import booking_custom_question_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["bookingCustomQuestion%2Did"] = booking_custom_question_id
+        return booking_custom_question_item_request_builder.BookingCustomQuestionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[CustomQuestionsRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_custom_question_collection_response.BookingCustomQuestionCollectionResponse]:
         """

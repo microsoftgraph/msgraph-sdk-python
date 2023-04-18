@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from .count import count_request_builder
     from .graph_managed_mobile_lob_app import graph_managed_mobile_lob_app_request_builder
     from .graph_mobile_lob_app import graph_mobile_lob_app_request_builder
+    from .item import mobile_app_item_request_builder
 
 class MobileAppsRequestBuilder():
     """
@@ -37,6 +38,21 @@ class MobileAppsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_mobile_app_id(self,mobile_app_id: str) -> mobile_app_item_request_builder.MobileAppItemRequestBuilder:
+        """
+        Provides operations to manage the mobileApps property of the microsoft.graph.deviceAppManagement entity.
+        Args:
+            mobile_app_id: Unique identifier of the item
+        Returns: mobile_app_item_request_builder.MobileAppItemRequestBuilder
+        """
+        if mobile_app_id is None:
+            raise Exception("mobile_app_id cannot be undefined")
+        from .item import mobile_app_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["mobileApp%2Did"] = mobile_app_id
+        return mobile_app_item_request_builder.MobileAppItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[MobileAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[mobile_app_collection_response.MobileAppCollectionResponse]:
         """

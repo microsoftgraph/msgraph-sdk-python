@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import windows_information_protection_network_learning_summary, windows_information_protection_network_learning_summary_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import windows_information_protection_network_learning_summary_item_request_builder
 
 class WindowsInformationProtectionNetworkLearningSummariesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class WindowsInformationProtectionNetworkLearningSummariesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_windows_information_protection_network_learning_summary_id(self,windows_information_protection_network_learning_summary_id: str) -> windows_information_protection_network_learning_summary_item_request_builder.WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder:
+        """
+        Provides operations to manage the windowsInformationProtectionNetworkLearningSummaries property of the microsoft.graph.deviceManagement entity.
+        Args:
+            windows_information_protection_network_learning_summary_id: Unique identifier of the item
+        Returns: windows_information_protection_network_learning_summary_item_request_builder.WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder
+        """
+        if windows_information_protection_network_learning_summary_id is None:
+            raise Exception("windows_information_protection_network_learning_summary_id cannot be undefined")
+        from .item import windows_information_protection_network_learning_summary_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["windowsInformationProtectionNetworkLearningSummary%2Did"] = windows_information_protection_network_learning_summary_id
+        return windows_information_protection_network_learning_summary_item_request_builder.WindowsInformationProtectionNetworkLearningSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[WindowsInformationProtectionNetworkLearningSummariesRequestBuilderGetRequestConfiguration] = None) -> Optional[windows_information_protection_network_learning_summary_collection_response.WindowsInformationProtectionNetworkLearningSummaryCollectionResponse]:
         """

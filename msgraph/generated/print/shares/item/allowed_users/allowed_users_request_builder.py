@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import user_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import user_item_request_builder
     from .ref import ref_request_builder
 
 class AllowedUsersRequestBuilder():
@@ -36,6 +37,21 @@ class AllowedUsersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_user_id(self,user_id: str) -> user_item_request_builder.UserItemRequestBuilder:
+        """
+        Gets an item from the msgraph.generated.print.shares.item.allowedUsers.item collection
+        Args:
+            user_id: Unique identifier of the item
+        Returns: user_item_request_builder.UserItemRequestBuilder
+        """
+        if user_id is None:
+            raise Exception("user_id cannot be undefined")
+        from .item import user_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["user%2Did"] = user_id
+        return user_item_request_builder.UserItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AllowedUsersRequestBuilderGetRequestConfiguration] = None) -> Optional[user_collection_response.UserCollectionResponse]:
         """

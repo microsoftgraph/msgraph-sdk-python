@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import targeted_managed_app_policy_assignment, targeted_managed_app_policy_assignment_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import targeted_managed_app_policy_assignment_item_request_builder
 
 class AssignmentsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class AssignmentsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_targeted_managed_app_policy_assignment_id(self,targeted_managed_app_policy_assignment_id: str) -> targeted_managed_app_policy_assignment_item_request_builder.TargetedManagedAppPolicyAssignmentItemRequestBuilder:
+        """
+        Provides operations to manage the assignments property of the microsoft.graph.targetedManagedAppConfiguration entity.
+        Args:
+            targeted_managed_app_policy_assignment_id: Unique identifier of the item
+        Returns: targeted_managed_app_policy_assignment_item_request_builder.TargetedManagedAppPolicyAssignmentItemRequestBuilder
+        """
+        if targeted_managed_app_policy_assignment_id is None:
+            raise Exception("targeted_managed_app_policy_assignment_id cannot be undefined")
+        from .item import targeted_managed_app_policy_assignment_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["targetedManagedAppPolicyAssignment%2Did"] = targeted_managed_app_policy_assignment_id
+        return targeted_managed_app_policy_assignment_item_request_builder.TargetedManagedAppPolicyAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[targeted_managed_app_policy_assignment_collection_response.TargetedManagedAppPolicyAssignmentCollectionResponse]:
         """

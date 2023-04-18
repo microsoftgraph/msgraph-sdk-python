@@ -13,9 +13,7 @@ if TYPE_CHECKING:
     from ...models import terms_of_use_container
     from ...models.o_data_errors import o_data_error
     from .agreement_acceptances import agreement_acceptances_request_builder
-    from .agreement_acceptances.item import agreement_acceptance_item_request_builder
     from .agreements import agreements_request_builder
-    from .agreements.item import agreement_item_request_builder
 
 class TermsOfUseRequestBuilder():
     """
@@ -38,36 +36,6 @@ class TermsOfUseRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def agreement_acceptances_by_id(self,id: str) -> agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder:
-        """
-        Provides operations to manage the agreementAcceptances property of the microsoft.graph.termsOfUseContainer entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .agreement_acceptances.item import agreement_acceptance_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["agreementAcceptance%2Did"] = id
-        return agreement_acceptance_item_request_builder.AgreementAcceptanceItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def agreements_by_id(self,id: str) -> agreement_item_request_builder.AgreementItemRequestBuilder:
-        """
-        Provides operations to manage the agreements property of the microsoft.graph.termsOfUseContainer entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: agreement_item_request_builder.AgreementItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .agreements.item import agreement_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["agreement%2Did"] = id
-        return agreement_item_request_builder.AgreementItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[TermsOfUseRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """

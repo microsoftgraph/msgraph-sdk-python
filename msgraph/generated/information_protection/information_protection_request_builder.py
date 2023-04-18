@@ -14,7 +14,6 @@ if TYPE_CHECKING:
     from ..models.o_data_errors import o_data_error
     from .bitlocker import bitlocker_request_builder
     from .threat_assessment_requests import threat_assessment_requests_request_builder
-    from .threat_assessment_requests.item import threat_assessment_request_item_request_builder
 
 class InformationProtectionRequestBuilder():
     """
@@ -84,21 +83,6 @@ class InformationProtectionRequestBuilder():
         from ..models import information_protection
 
         return await self.request_adapter.send_async(request_info, information_protection.InformationProtection, error_mapping)
-    
-    def threat_assessment_requests_by_id(self,id: str) -> threat_assessment_request_item_request_builder.ThreatAssessmentRequestItemRequestBuilder:
-        """
-        Provides operations to manage the threatAssessmentRequests property of the microsoft.graph.informationProtection entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: threat_assessment_request_item_request_builder.ThreatAssessmentRequestItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .threat_assessment_requests.item import threat_assessment_request_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["threatAssessmentRequest%2Did"] = id
-        return threat_assessment_request_item_request_builder.ThreatAssessmentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_get_request_information(self,request_configuration: Optional[InformationProtectionRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

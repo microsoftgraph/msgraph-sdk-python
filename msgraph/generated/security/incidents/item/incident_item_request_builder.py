@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from ....models.security import incident
     from .alerts import alerts_request_builder
-    from .alerts.item import alert_item_request_builder
 
 class IncidentItemRequestBuilder():
     """
@@ -36,21 +35,6 @@ class IncidentItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def alerts_by_id(self,id: str) -> alert_item_request_builder.AlertItemRequestBuilder:
-        """
-        Provides operations to manage the alerts property of the microsoft.graph.security.incident entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: alert_item_request_builder.AlertItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .alerts.item import alert_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["alert%2Did"] = id
-        return alert_item_request_builder.AlertItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[IncidentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """

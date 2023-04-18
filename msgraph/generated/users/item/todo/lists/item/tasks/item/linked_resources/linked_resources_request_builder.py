@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .........models import linked_resource, linked_resource_collection_response
     from .........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import linked_resource_item_request_builder
 
 class LinkedResourcesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class LinkedResourcesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_linked_resource_id(self,linked_resource_id: str) -> linked_resource_item_request_builder.LinkedResourceItemRequestBuilder:
+        """
+        Provides operations to manage the linkedResources property of the microsoft.graph.todoTask entity.
+        Args:
+            linked_resource_id: Unique identifier of the item
+        Returns: linked_resource_item_request_builder.LinkedResourceItemRequestBuilder
+        """
+        if linked_resource_id is None:
+            raise Exception("linked_resource_id cannot be undefined")
+        from .item import linked_resource_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["linkedResource%2Did"] = linked_resource_id
+        return linked_resource_item_request_builder.LinkedResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[LinkedResourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[linked_resource_collection_response.LinkedResourceCollectionResponse]:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .........models import education_outcome, education_outcome_collection_response
     from .........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import education_outcome_item_request_builder
 
 class OutcomesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class OutcomesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_education_outcome_id(self,education_outcome_id: str) -> education_outcome_item_request_builder.EducationOutcomeItemRequestBuilder:
+        """
+        Provides operations to manage the outcomes property of the microsoft.graph.educationSubmission entity.
+        Args:
+            education_outcome_id: Unique identifier of the item
+        Returns: education_outcome_item_request_builder.EducationOutcomeItemRequestBuilder
+        """
+        if education_outcome_id is None:
+            raise Exception("education_outcome_id cannot be undefined")
+        from .item import education_outcome_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["educationOutcome%2Did"] = education_outcome_id
+        return education_outcome_item_request_builder.EducationOutcomeItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[OutcomesRequestBuilderGetRequestConfiguration] = None) -> Optional[education_outcome_collection_response.EducationOutcomeCollectionResponse]:
         """

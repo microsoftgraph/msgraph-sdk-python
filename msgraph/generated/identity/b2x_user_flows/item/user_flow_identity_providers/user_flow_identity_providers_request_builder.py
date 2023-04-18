@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import identity_provider_base_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import identity_provider_base_item_request_builder
     from .ref import ref_request_builder
 
 class UserFlowIdentityProvidersRequestBuilder():
@@ -36,6 +37,21 @@ class UserFlowIdentityProvidersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_identity_provider_base_id(self,identity_provider_base_id: str) -> identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder:
+        """
+        Gets an item from the msgraph.generated.identity.b2xUserFlows.item.userFlowIdentityProviders.item collection
+        Args:
+            identity_provider_base_id: Unique identifier of the item
+        Returns: identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder
+        """
+        if identity_provider_base_id is None:
+            raise Exception("identity_provider_base_id cannot be undefined")
+        from .item import identity_provider_base_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["identityProviderBase%2Did"] = identity_provider_base_id
+        return identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[UserFlowIdentityProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_provider_base_collection_response.IdentityProviderBaseCollectionResponse]:
         """

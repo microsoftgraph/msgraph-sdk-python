@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .additional_access_with_access_package_id_with_incompatible_access_package_id import additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder
     from .count import count_request_builder
     from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
+    from .item import access_package_assignment_item_request_builder
 
 class AssignmentsRequestBuilder():
     """
@@ -54,6 +55,21 @@ class AssignmentsRequestBuilder():
         from .additional_access_with_access_package_id_with_incompatible_access_package_id import additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder
 
         return additional_access_with_access_package_id_with_incompatible_access_package_id_request_builder.AdditionalAccessWithAccessPackageIdWithIncompatibleAccessPackageIdRequestBuilder(self.request_adapter, self.path_parameters, access_package_id, incompatible_access_package_id)
+    
+    def by_access_package_assignment_id(self,access_package_assignment_id: str) -> access_package_assignment_item_request_builder.AccessPackageAssignmentItemRequestBuilder:
+        """
+        Provides operations to manage the assignments property of the microsoft.graph.entitlementManagement entity.
+        Args:
+            access_package_assignment_id: Unique identifier of the item
+        Returns: access_package_assignment_item_request_builder.AccessPackageAssignmentItemRequestBuilder
+        """
+        if access_package_assignment_id is None:
+            raise Exception("access_package_assignment_id cannot be undefined")
+        from .item import access_package_assignment_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["accessPackageAssignment%2Did"] = access_package_assignment_id
+        return access_package_assignment_item_request_builder.AccessPackageAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
         """

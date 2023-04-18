@@ -56,7 +56,7 @@ class OpenShiftItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[OpenShiftItemRequestBuilderGetRequestConfiguration] = None) -> Optional[open_shift.OpenShift]:
         """
-        Get openShifts from teams
+        The set of open shifts in a scheduling group in the schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[open_shift.OpenShift]
@@ -119,7 +119,7 @@ class OpenShiftItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OpenShiftItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get openShifts from teams
+        The set of open shifts in a scheduling group in the schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class OpenShiftItemRequestBuilder():
     @dataclass
     class OpenShiftItemRequestBuilderGetQueryParameters():
         """
-        Get openShifts from teams
+        The set of open shifts in a scheduling group in the schedule.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

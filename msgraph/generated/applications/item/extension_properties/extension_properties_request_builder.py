@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import extension_property, extension_property_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import extension_property_item_request_builder
 
 class ExtensionPropertiesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ExtensionPropertiesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_extension_property_id(self,extension_property_id: str) -> extension_property_item_request_builder.ExtensionPropertyItemRequestBuilder:
+        """
+        Provides operations to manage the extensionProperties property of the microsoft.graph.application entity.
+        Args:
+            extension_property_id: Unique identifier of the item
+        Returns: extension_property_item_request_builder.ExtensionPropertyItemRequestBuilder
+        """
+        if extension_property_id is None:
+            raise Exception("extension_property_id cannot be undefined")
+        from .item import extension_property_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["extensionProperty%2Did"] = extension_property_id
+        return extension_property_item_request_builder.ExtensionPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ExtensionPropertiesRequestBuilderGetRequestConfiguration] = None) -> Optional[extension_property_collection_response.ExtensionPropertyCollectionResponse]:
         """

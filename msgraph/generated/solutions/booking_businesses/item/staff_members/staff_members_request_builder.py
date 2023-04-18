@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import booking_staff_member_base, booking_staff_member_base_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import booking_staff_member_base_item_request_builder
 
 class StaffMembersRequestBuilder():
     """
@@ -35,6 +36,21 @@ class StaffMembersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_booking_staff_member_base_id(self,booking_staff_member_base_id: str) -> booking_staff_member_base_item_request_builder.BookingStaffMemberBaseItemRequestBuilder:
+        """
+        Provides operations to manage the staffMembers property of the microsoft.graph.bookingBusiness entity.
+        Args:
+            booking_staff_member_base_id: Unique identifier of the item
+        Returns: booking_staff_member_base_item_request_builder.BookingStaffMemberBaseItemRequestBuilder
+        """
+        if booking_staff_member_base_id is None:
+            raise Exception("booking_staff_member_base_id cannot be undefined")
+        from .item import booking_staff_member_base_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["bookingStaffMemberBase%2Did"] = booking_staff_member_base_id
+        return booking_staff_member_base_item_request_builder.BookingStaffMemberBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[StaffMembersRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_staff_member_base_collection_response.BookingStaffMemberBaseCollectionResponse]:
         """

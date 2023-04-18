@@ -6,6 +6,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .count import count_request_builder
     from .graph_room import graph_room_request_builder
+    from .item import place_item_request_builder
 
 class PlacesRequestBuilder():
     """
@@ -28,6 +29,21 @@ class PlacesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_place_id(self,place_id: str) -> place_item_request_builder.PlaceItemRequestBuilder:
+        """
+        Provides operations to manage the collection of place entities.
+        Args:
+            place_id: Unique identifier of the item
+        Returns: place_item_request_builder.PlaceItemRequestBuilder
+        """
+        if place_id is None:
+            raise Exception("place_id cannot be undefined")
+        from .item import place_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["place%2Did"] = place_id
+        return place_item_request_builder.PlaceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     @property
     def count(self) -> count_request_builder.CountRequestBuilder:

@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .......models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .delta import delta_request_builder
+    from .item import education_category_item_request_builder
     from .ref import ref_request_builder
 
 class CategoriesRequestBuilder():
@@ -37,6 +38,21 @@ class CategoriesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_education_category_id(self,education_category_id: str) -> education_category_item_request_builder.EducationCategoryItemRequestBuilder:
+        """
+        Gets an item from the msgraph.generated.education.users.item.assignments.item.categories.item collection
+        Args:
+            education_category_id: Unique identifier of the item
+        Returns: education_category_item_request_builder.EducationCategoryItemRequestBuilder
+        """
+        if education_category_id is None:
+            raise Exception("education_category_id cannot be undefined")
+        from .item import education_category_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["educationCategory%2Did"] = education_category_id
+        return education_category_item_request_builder.EducationCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[education_category_collection_response.EducationCategoryCollectionResponse]:
         """

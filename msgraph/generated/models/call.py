@@ -10,7 +10,7 @@ from . import entity
 class Call(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new Call and sets the default values.
+        Instantiates a new call and sets the default values.
         """
         super().__init__()
         # The audioRoutingGroups property

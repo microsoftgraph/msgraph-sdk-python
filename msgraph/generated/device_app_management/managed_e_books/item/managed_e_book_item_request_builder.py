@@ -14,12 +14,9 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .assign import assign_request_builder
     from .assignments import assignments_request_builder
-    from .assignments.item import managed_e_book_assignment_item_request_builder
     from .device_states import device_states_request_builder
-    from .device_states.item import device_install_state_item_request_builder
     from .install_summary import install_summary_request_builder
     from .user_state_summary import user_state_summary_request_builder
-    from .user_state_summary.item import user_install_state_summary_item_request_builder
 
 class ManagedEBookItemRequestBuilder():
     """
@@ -43,21 +40,6 @@ class ManagedEBookItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def assignments_by_id(self,id: str) -> managed_e_book_assignment_item_request_builder.ManagedEBookAssignmentItemRequestBuilder:
-        """
-        Provides operations to manage the assignments property of the microsoft.graph.managedEBook entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: managed_e_book_assignment_item_request_builder.ManagedEBookAssignmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .assignments.item import managed_e_book_assignment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["managedEBookAssignment%2Did"] = id
-        return managed_e_book_assignment_item_request_builder.ManagedEBookAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def delete(self,request_configuration: Optional[ManagedEBookItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property managedEBooks for deviceAppManagement
@@ -76,21 +58,6 @@ class ManagedEBookItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
-    
-    def device_states_by_id(self,id: str) -> device_install_state_item_request_builder.DeviceInstallStateItemRequestBuilder:
-        """
-        Provides operations to manage the deviceStates property of the microsoft.graph.managedEBook entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: device_install_state_item_request_builder.DeviceInstallStateItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .device_states.item import device_install_state_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["deviceInstallState%2Did"] = id
-        return device_install_state_item_request_builder.DeviceInstallStateItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ManagedEBookItemRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_e_book.ManagedEBook]:
         """
@@ -193,21 +160,6 @@ class ManagedEBookItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-    
-    def user_state_summary_by_id(self,id: str) -> user_install_state_summary_item_request_builder.UserInstallStateSummaryItemRequestBuilder:
-        """
-        Provides operations to manage the userStateSummary property of the microsoft.graph.managedEBook entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: user_install_state_summary_item_request_builder.UserInstallStateSummaryItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .user_state_summary.item import user_install_state_summary_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["userInstallStateSummary%2Did"] = id
-        return user_install_state_summary_item_request_builder.UserInstallStateSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     @property
     def assign(self) -> assign_request_builder.AssignRequestBuilder:

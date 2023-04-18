@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ...models import bitlocker
     from ...models.o_data_errors import o_data_error
     from .recovery_keys import recovery_keys_request_builder
-    from .recovery_keys.item import bitlocker_recovery_key_item_request_builder
 
 class BitlockerRequestBuilder():
     """
@@ -58,21 +57,6 @@ class BitlockerRequestBuilder():
         from ...models import bitlocker
 
         return await self.request_adapter.send_async(request_info, bitlocker.Bitlocker, error_mapping)
-    
-    def recovery_keys_by_id(self,id: str) -> bitlocker_recovery_key_item_request_builder.BitlockerRecoveryKeyItemRequestBuilder:
-        """
-        Provides operations to manage the recoveryKeys property of the microsoft.graph.bitlocker entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: bitlocker_recovery_key_item_request_builder.BitlockerRecoveryKeyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .recovery_keys.item import bitlocker_recovery_key_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["bitlockerRecoveryKey%2Did"] = id
-        return bitlocker_recovery_key_item_request_builder.BitlockerRecoveryKeyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_get_request_information(self,request_configuration: Optional[BitlockerRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

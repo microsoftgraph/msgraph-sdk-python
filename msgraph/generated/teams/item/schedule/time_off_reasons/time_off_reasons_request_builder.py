@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import time_off_reason, time_off_reason_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import time_off_reason_item_request_builder
 
 class TimeOffReasonsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class TimeOffReasonsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_time_off_reason_id(self,time_off_reason_id: str) -> time_off_reason_item_request_builder.TimeOffReasonItemRequestBuilder:
+        """
+        Provides operations to manage the timeOffReasons property of the microsoft.graph.schedule entity.
+        Args:
+            time_off_reason_id: Unique identifier of the item
+        Returns: time_off_reason_item_request_builder.TimeOffReasonItemRequestBuilder
+        """
+        if time_off_reason_id is None:
+            raise Exception("time_off_reason_id cannot be undefined")
+        from .item import time_off_reason_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["timeOffReason%2Did"] = time_off_reason_id
+        return time_off_reason_item_request_builder.TimeOffReasonItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[TimeOffReasonsRequestBuilderGetRequestConfiguration] = None) -> Optional[time_off_reason_collection_response.TimeOffReasonCollectionResponse]:
         """

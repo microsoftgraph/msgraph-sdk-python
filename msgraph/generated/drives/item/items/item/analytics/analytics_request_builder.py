@@ -14,7 +14,6 @@ if TYPE_CHECKING:
     from ......models.o_data_errors import o_data_error
     from .all_time import all_time_request_builder
     from .item_activity_stats import item_activity_stats_request_builder
-    from .item_activity_stats.item import item_activity_stat_item_request_builder
     from .last_seven_days import last_seven_days_request_builder
 
 class AnalyticsRequestBuilder():
@@ -79,21 +78,6 @@ class AnalyticsRequestBuilder():
         from ......models import item_analytics
 
         return await self.request_adapter.send_async(request_info, item_analytics.ItemAnalytics, error_mapping)
-    
-    def item_activity_stats_by_id(self,id: str) -> item_activity_stat_item_request_builder.ItemActivityStatItemRequestBuilder:
-        """
-        Provides operations to manage the itemActivityStats property of the microsoft.graph.itemAnalytics entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: item_activity_stat_item_request_builder.ItemActivityStatItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .item_activity_stats.item import item_activity_stat_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["itemActivityStat%2Did"] = id
-        return item_activity_stat_item_request_builder.ItemActivityStatItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[item_analytics.ItemAnalytics] = None, request_configuration: Optional[AnalyticsRequestBuilderPatchRequestConfiguration] = None) -> Optional[item_analytics.ItemAnalytics]:
         """

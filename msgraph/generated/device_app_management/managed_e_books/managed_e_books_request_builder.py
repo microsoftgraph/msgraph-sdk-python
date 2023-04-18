@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import managed_e_book, managed_e_book_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import managed_e_book_item_request_builder
 
 class ManagedEBooksRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ManagedEBooksRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_managed_e_book_id(self,managed_e_book_id: str) -> managed_e_book_item_request_builder.ManagedEBookItemRequestBuilder:
+        """
+        Provides operations to manage the managedEBooks property of the microsoft.graph.deviceAppManagement entity.
+        Args:
+            managed_e_book_id: Unique identifier of the item
+        Returns: managed_e_book_item_request_builder.ManagedEBookItemRequestBuilder
+        """
+        if managed_e_book_id is None:
+            raise Exception("managed_e_book_id cannot be undefined")
+        from .item import managed_e_book_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["managedEBook%2Did"] = managed_e_book_id
+        return managed_e_book_item_request_builder.ManagedEBookItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ManagedEBooksRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_e_book_collection_response.ManagedEBookCollectionResponse]:
         """

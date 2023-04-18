@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ....models import planner_group
     from ....models.o_data_errors import o_data_error
     from .plans import plans_request_builder
-    from .plans.item import planner_plan_item_request_builder
 
 class PlannerRequestBuilder():
     """
@@ -102,21 +101,6 @@ class PlannerRequestBuilder():
         from ....models import planner_group
 
         return await self.request_adapter.send_async(request_info, planner_group.PlannerGroup, error_mapping)
-    
-    def plans_by_id(self,id: str) -> planner_plan_item_request_builder.PlannerPlanItemRequestBuilder:
-        """
-        Provides operations to manage the plans property of the microsoft.graph.plannerGroup entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: planner_plan_item_request_builder.PlannerPlanItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .plans.item import planner_plan_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["plannerPlan%2Did"] = id
-        return planner_plan_item_request_builder.PlannerPlanItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[PlannerRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

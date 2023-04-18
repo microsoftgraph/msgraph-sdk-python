@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ........models import message_rule, message_rule_collection_response
     from ........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import message_rule_item_request_builder
 
 class MessageRulesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class MessageRulesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_message_rule_id(self,message_rule_id: str) -> message_rule_item_request_builder.MessageRuleItemRequestBuilder:
+        """
+        Provides operations to manage the messageRules property of the microsoft.graph.mailFolder entity.
+        Args:
+            message_rule_id: Unique identifier of the item
+        Returns: message_rule_item_request_builder.MessageRuleItemRequestBuilder
+        """
+        if message_rule_id is None:
+            raise Exception("message_rule_id cannot be undefined")
+        from .item import message_rule_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["messageRule%2Did"] = message_rule_id
+        return message_rule_item_request_builder.MessageRuleItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[MessageRulesRequestBuilderGetRequestConfiguration] = None) -> Optional[message_rule_collection_response.MessageRuleCollectionResponse]:
         """

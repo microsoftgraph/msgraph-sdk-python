@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import targeted_managed_app_configuration, targeted_managed_app_configuration_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import targeted_managed_app_configuration_item_request_builder
 
 class TargetedManagedAppConfigurationsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class TargetedManagedAppConfigurationsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_targeted_managed_app_configuration_id(self,targeted_managed_app_configuration_id: str) -> targeted_managed_app_configuration_item_request_builder.TargetedManagedAppConfigurationItemRequestBuilder:
+        """
+        Provides operations to manage the targetedManagedAppConfigurations property of the microsoft.graph.deviceAppManagement entity.
+        Args:
+            targeted_managed_app_configuration_id: Unique identifier of the item
+        Returns: targeted_managed_app_configuration_item_request_builder.TargetedManagedAppConfigurationItemRequestBuilder
+        """
+        if targeted_managed_app_configuration_id is None:
+            raise Exception("targeted_managed_app_configuration_id cannot be undefined")
+        from .item import targeted_managed_app_configuration_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["targetedManagedAppConfiguration%2Did"] = targeted_managed_app_configuration_id
+        return targeted_managed_app_configuration_item_request_builder.TargetedManagedAppConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[TargetedManagedAppConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[targeted_managed_app_configuration_collection_response.TargetedManagedAppConfigurationCollectionResponse]:
         """

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import channel_identity, chat_message_attachment, chat_message_from_identity_set, chat_message_hosted_content, chat_message_importance, chat_message_mention, chat_message_policy_violation, chat_message_reaction, chat_message_type, entity, event_message_detail, item_body
+    from . import channel_identity, chat_message_attachment, chat_message_from_identity_set, chat_message_history_item, chat_message_hosted_content, chat_message_importance, chat_message_mention, chat_message_policy_violation, chat_message_reaction, chat_message_type, entity, event_message_detail, item_body
 
 from . import entity
 
@@ -44,6 +44,8 @@ class ChatMessage(entity.Entity):
         self._locale: Optional[str] = None
         # List of entities mentioned in the chat message. Supported entities are: user, bot, team, and channel.
         self._mentions: Optional[List[chat_message_mention.ChatMessageMention]] = None
+        # The messageHistory property
+        self._message_history: Optional[List[chat_message_history_item.ChatMessageHistoryItem]] = None
         # The messageType property
         self._message_type: Optional[chat_message_type.ChatMessageType] = None
         # The OdataType property
@@ -233,7 +235,7 @@ class ChatMessage(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import channel_identity, chat_message_attachment, chat_message_from_identity_set, chat_message_hosted_content, chat_message_importance, chat_message_mention, chat_message_policy_violation, chat_message_reaction, chat_message_type, entity, event_message_detail, item_body
+        from . import channel_identity, chat_message_attachment, chat_message_from_identity_set, chat_message_history_item, chat_message_hosted_content, chat_message_importance, chat_message_mention, chat_message_policy_violation, chat_message_reaction, chat_message_type, entity, event_message_detail, item_body
 
         fields: Dict[str, Callable[[Any], None]] = {
             "attachments": lambda n : setattr(self, 'attachments', n.get_collection_of_object_values(chat_message_attachment.ChatMessageAttachment)),
@@ -251,6 +253,7 @@ class ChatMessage(entity.Entity):
             "lastModifiedDateTime": lambda n : setattr(self, 'last_modified_date_time', n.get_datetime_value()),
             "locale": lambda n : setattr(self, 'locale', n.get_str_value()),
             "mentions": lambda n : setattr(self, 'mentions', n.get_collection_of_object_values(chat_message_mention.ChatMessageMention)),
+            "messageHistory": lambda n : setattr(self, 'message_history', n.get_collection_of_object_values(chat_message_history_item.ChatMessageHistoryItem)),
             "messageType": lambda n : setattr(self, 'message_type', n.get_enum_value(chat_message_type.ChatMessageType)),
             "policyViolation": lambda n : setattr(self, 'policy_violation', n.get_object_value(chat_message_policy_violation.ChatMessagePolicyViolation)),
             "reactions": lambda n : setattr(self, 'reactions', n.get_collection_of_object_values(chat_message_reaction.ChatMessageReaction)),
@@ -367,6 +370,23 @@ class ChatMessage(entity.Entity):
         self._mentions = value
     
     @property
+    def message_history(self,) -> Optional[List[chat_message_history_item.ChatMessageHistoryItem]]:
+        """
+        Gets the messageHistory property value. The messageHistory property
+        Returns: Optional[List[chat_message_history_item.ChatMessageHistoryItem]]
+        """
+        return self._message_history
+    
+    @message_history.setter
+    def message_history(self,value: Optional[List[chat_message_history_item.ChatMessageHistoryItem]] = None) -> None:
+        """
+        Sets the messageHistory property value. The messageHistory property
+        Args:
+            value: Value to set for the message_history property.
+        """
+        self._message_history = value
+    
+    @property
     def message_type(self,) -> Optional[chat_message_type.ChatMessageType]:
         """
         Gets the messageType property value. The messageType property
@@ -475,6 +495,7 @@ class ChatMessage(entity.Entity):
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("locale", self.locale)
         writer.write_collection_of_object_values("mentions", self.mentions)
+        writer.write_collection_of_object_values("messageHistory", self.message_history)
         writer.write_enum_value("messageType", self.message_type)
         writer.write_object_value("policyViolation", self.policy_violation)
         writer.write_collection_of_object_values("reactions", self.reactions)

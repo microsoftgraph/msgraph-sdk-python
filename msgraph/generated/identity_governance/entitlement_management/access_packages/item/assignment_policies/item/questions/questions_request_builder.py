@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ........models import access_package_question, access_package_question_collection_response
     from ........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import access_package_question_item_request_builder
 
 class QuestionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class QuestionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_access_package_question_id(self,access_package_question_id: str) -> access_package_question_item_request_builder.AccessPackageQuestionItemRequestBuilder:
+        """
+        Provides operations to manage the questions property of the microsoft.graph.accessPackageAssignmentPolicy entity.
+        Args:
+            access_package_question_id: Unique identifier of the item
+        Returns: access_package_question_item_request_builder.AccessPackageQuestionItemRequestBuilder
+        """
+        if access_package_question_id is None:
+            raise Exception("access_package_question_id cannot be undefined")
+        from .item import access_package_question_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["accessPackageQuestion%2Did"] = access_package_question_id
+        return access_package_question_item_request_builder.AccessPackageQuestionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[QuestionsRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_question_collection_response.AccessPackageQuestionCollectionResponse]:
         """

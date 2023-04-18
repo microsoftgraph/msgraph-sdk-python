@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ....models import threat_assessment_request
     from ....models.o_data_errors import o_data_error
     from .results import results_request_builder
-    from .results.item import threat_assessment_result_item_request_builder
 
 class ThreatAssessmentRequestItemRequestBuilder():
     """
@@ -102,21 +101,6 @@ class ThreatAssessmentRequestItemRequestBuilder():
         from ....models import threat_assessment_request
 
         return await self.request_adapter.send_async(request_info, threat_assessment_request.ThreatAssessmentRequest, error_mapping)
-    
-    def results_by_id(self,id: str) -> threat_assessment_result_item_request_builder.ThreatAssessmentResultItemRequestBuilder:
-        """
-        Provides operations to manage the results property of the microsoft.graph.threatAssessmentRequest entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: threat_assessment_result_item_request_builder.ThreatAssessmentResultItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .results.item import threat_assessment_result_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["threatAssessmentResult%2Did"] = id
-        return threat_assessment_result_item_request_builder.ThreatAssessmentResultItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[ThreatAssessmentRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

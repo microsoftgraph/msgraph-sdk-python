@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models import invitation, invitation_collection_response
     from ..models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import invitation_item_request_builder
 
 class InvitationsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class InvitationsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_invitation_id(self,invitation_id: str) -> invitation_item_request_builder.InvitationItemRequestBuilder:
+        """
+        Provides operations to manage the collection of invitation entities.
+        Args:
+            invitation_id: Unique identifier of the item
+        Returns: invitation_item_request_builder.InvitationItemRequestBuilder
+        """
+        if invitation_id is None:
+            raise Exception("invitation_id cannot be undefined")
+        from .item import invitation_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["invitation%2Did"] = invitation_id
+        return invitation_item_request_builder.InvitationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[InvitationsRequestBuilderGetRequestConfiguration] = None) -> Optional[invitation_collection_response.InvitationCollectionResponse]:
         """

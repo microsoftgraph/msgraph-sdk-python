@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import learning_provider, learning_provider_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import learning_provider_item_request_builder
 
 class LearningProvidersRequestBuilder():
     """
@@ -35,6 +36,21 @@ class LearningProvidersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_learning_provider_id(self,learning_provider_id: str) -> learning_provider_item_request_builder.LearningProviderItemRequestBuilder:
+        """
+        Provides operations to manage the learningProviders property of the microsoft.graph.employeeExperience entity.
+        Args:
+            learning_provider_id: Unique identifier of the item
+        Returns: learning_provider_item_request_builder.LearningProviderItemRequestBuilder
+        """
+        if learning_provider_id is None:
+            raise Exception("learning_provider_id cannot be undefined")
+        from .item import learning_provider_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["learningProvider%2Did"] = learning_provider_id
+        return learning_provider_item_request_builder.LearningProviderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[LearningProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[learning_provider_collection_response.LearningProviderCollectionResponse]:
         """

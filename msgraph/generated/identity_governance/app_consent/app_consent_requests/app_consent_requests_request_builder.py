@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
+    from .item import app_consent_request_item_request_builder
 
 class AppConsentRequestsRequestBuilder():
     """
@@ -36,6 +37,21 @@ class AppConsentRequestsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_app_consent_request_id(self,app_consent_request_id: str) -> app_consent_request_item_request_builder.AppConsentRequestItemRequestBuilder:
+        """
+        Provides operations to manage the appConsentRequests property of the microsoft.graph.appConsentApprovalRoute entity.
+        Args:
+            app_consent_request_id: Unique identifier of the item
+        Returns: app_consent_request_item_request_builder.AppConsentRequestItemRequestBuilder
+        """
+        if app_consent_request_id is None:
+            raise Exception("app_consent_request_id cannot be undefined")
+        from .item import app_consent_request_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["appConsentRequest%2Did"] = app_consent_request_id
+        return app_consent_request_item_request_builder.AppConsentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
         """

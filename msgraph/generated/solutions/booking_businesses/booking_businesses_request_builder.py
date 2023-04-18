@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import booking_business, booking_business_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import booking_business_item_request_builder
 
 class BookingBusinessesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class BookingBusinessesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_booking_business_id(self,booking_business_id: str) -> booking_business_item_request_builder.BookingBusinessItemRequestBuilder:
+        """
+        Provides operations to manage the bookingBusinesses property of the microsoft.graph.solutionsRoot entity.
+        Args:
+            booking_business_id: Unique identifier of the item
+        Returns: booking_business_item_request_builder.BookingBusinessItemRequestBuilder
+        """
+        if booking_business_id is None:
+            raise Exception("booking_business_id cannot be undefined")
+        from .item import booking_business_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["bookingBusiness%2Did"] = booking_business_id
+        return booking_business_item_request_builder.BookingBusinessItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[BookingBusinessesRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_business_collection_response.BookingBusinessCollectionResponse]:
         """

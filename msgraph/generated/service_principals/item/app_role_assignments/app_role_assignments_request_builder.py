@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import app_role_assignment, app_role_assignment_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import app_role_assignment_item_request_builder
 
 class AppRoleAssignmentsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class AppRoleAssignmentsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_app_role_assignment_id(self,app_role_assignment_id: str) -> app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder:
+        """
+        Provides operations to manage the appRoleAssignments property of the microsoft.graph.servicePrincipal entity.
+        Args:
+            app_role_assignment_id: Unique identifier of the item
+        Returns: app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder
+        """
+        if app_role_assignment_id is None:
+            raise Exception("app_role_assignment_id cannot be undefined")
+        from .item import app_role_assignment_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["appRoleAssignment%2Did"] = app_role_assignment_id
+        return app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AppRoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[app_role_assignment_collection_response.AppRoleAssignmentCollectionResponse]:
         """

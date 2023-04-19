@@ -153,6 +153,8 @@ asyncio.run(get_user())
 
 * [Microsoft Graph website](https://aka.ms/graph)
 
+* [Samples](samples)
+
 ## Upgrading
 
 For detailed information on breaking changes, bug fixes and new functionality introduced during major upgrades, check out our [Upgrade Guide](UPGRADING.md)

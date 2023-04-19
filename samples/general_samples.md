@@ -60,7 +60,7 @@ The Graph API response is deserialized into a collection of `Message` - a model 
 ```py
 async def get_user_messages():
     try:
-        messages = await (client.users_by_id('USER_ID').messages.get())
+        messages = await (client.users.by_user_id('USER_ID').messages.get())
         if messages and messages.value:
             for msg in messages.value:
                 print(msg.subject, msg.id, msg.from_)
@@ -81,7 +81,7 @@ async def get_user_messages():
             headers={"prefer": "outlook.body-content-type=text"}
         )
 
-        messages = await (client.users_by_id('USER_ID')
+        messages = await (client.users.by_user_id('USER_ID')
                         .messages
                         .get(request_configuration=request_config))
         if messages and messages.value:
@@ -106,7 +106,7 @@ async def get_5_user_messages():
             query_parameters=query_params
         )
 
-        messages = await (client.users_by_id('USER_ID')
+        messages = await (client.users.by_user_id('USER_ID')
                         .messages
                         .get(request_configuration=request_config))
         if messages and messages.value:
@@ -130,7 +130,7 @@ async def get_user_messages():
     try:
         request_config = MessagesRequestBuilder.MessagesRequestBuilderGetRequestConfiguration(
             options=[ResponseHandlerOption(NativeResponseHandler())], )
-        messages = await client.users_by_id('USER_ID').messages.get(request_configuration=request_config)
+        messages = await client.users.by_user_id('USER_ID').messages.get(request_configuration=request_config)
         print(messages.json())
     except APIError as e:
         print(e.error.message)

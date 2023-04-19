@@ -107,7 +107,7 @@ client = GraphServiceClient(request_adapter)
 # GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():
     try:
-        user = await client.users_by_id('USER_ID').get()
+        user = await client.users.by_user_id('USER_ID').get()
         if user:
             print(user.user_principal_name, user.display_name, user.id)
     except APIError as e:
@@ -142,7 +142,7 @@ client = GraphServiceClient(request_adapter)
 # GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():
     try:
-        user = await client.users_by_id('USER_ID').get()
+        user = await client.users.by_user_id('USER_ID').get()
         if user:
             print(user.user_principal_name, user.display_name, user.id)
     except APIError as e:

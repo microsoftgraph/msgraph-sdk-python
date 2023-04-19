@@ -46,7 +46,7 @@ asyncio.run(get_users())
 ```py
 async def get_user():
     try:
-        user = await client.users_by_id('USER_ID').get()
+        user = await client.users.by_user_id('USER_ID').get()
         if user:
             print(user.user_principal_name, user.display_name, user.id)
     except APIError as e:
@@ -57,12 +57,12 @@ asyncio.run(get_user())
 
 async def get_memberships():
     try:
-        memberships = await client.users_by_id('USER_ID').transitive_member_of.get()
+        memberships = await client.users.by_user_id('USER_ID').transitive_member_of.get()
         if memberships and memberships.value:
             for membership in memberships.value:
-                obj = await client.directory_objects_by_id(membership.id).get()
+                obj = await client.directory_objects.by_directory_object_id(membership.id).get()
                 if obj and obj.odata_type == '#microsoft.graph.group':
-                    group = await client.groups_by_id(obj.id).get()
+                    group = await client.groups.by_group_id(obj.id).get()
                     if group:
                         print(group.id, group.group_types, group.display_name, group.mail)
     except Exception as e:

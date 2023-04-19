@@ -45,7 +45,7 @@ asyncio.run(get_groups())
 ```py
 async def get_group():
     try:
-        group = await client.groups_by_id('GROUP_ID').get()
+        group = await client.groups.by_group_id('GROUP_ID').get()
         if group:
             print(group.id, group.display_name, group.description, group.group_types,
                 group.security_enabled)
@@ -59,10 +59,10 @@ asyncio.run(get_group())
 ```py
 async def get_group_members():
     try:
-        members = await client.groups_by_id('GROUP_ID').members.get()
+        members = await client.groups.by_group_id('GROUP_ID').members.get()
         if members and members.value:
             for member in members.value:
-                user = await client.users_by_id(member.id).get()
+                user = await client.users.by_user_id(member.id).get()
                 if user:
                     print(user.display_name, user.mail)
     except APIError as e:
@@ -75,7 +75,7 @@ asyncio.run(get_group_members())
 ```py
 async def get_group_sites():
     try:
-        sites = await client.groups_by_id('GROUP_ID').sites.get()
+        sites = await client.groups.by_group_id('GROUP_ID').sites.get()
         if sites and sites.value:
             for site in sites.value:
                 print(site.id, site.web_url)
@@ -89,12 +89,12 @@ asyncio.run(get_group_sites())
 ```py
 async def get_group_transitive_members():
     try:
-        members = await client.groups_by_id('GROUP_ID').transitive_members.get()
+        members = await client.groups.by_group_id('GROUP_ID').transitive_members.get()
         if members and members.value:
             for member in members.value:
-                obj = await client.directory_objects_by_id(member.id).get()
+                obj = await client.directory_objects.by_directory_object_id(member.id).get()
                 if obj and obj.odata_type == '#microsoft.graph.user':
-                    user = await client.users_by_id(obj.id).get()
+                    user = await client.users.by_user_id(obj.id).get()
                     if user:
                         print(user.id, user.display_name, user.mail)
     except Exception as e:
@@ -107,7 +107,7 @@ asyncio.run(get_group_transitive_members())
 ```py
 async def get_group_drives():
     try:
-        drives = await client.groups_by_id('GROUP_ID').drives.get()
+        drives = await client.groups.by_group_id('GROUP_ID').drives.get()
         if drives and drives.value:
             for drive in drives.value:
                 print(drive.id, drive.name)
@@ -121,9 +121,9 @@ asyncio.run(get_group_drives())
 ```py
 async def get_group_drive():
     try:
-        drive = await client.groups_by_id(
+        drive = await client.groups.by_group_id(
             'GROUP_ID'
-            ).drives_by_id(
+            ).drives.by_drive_id(
                 'DRIVE_ID'
                 ).get()
         if drive:

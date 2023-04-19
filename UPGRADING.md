@@ -34,7 +34,7 @@ This package (`msgraph-sdk`) will only contain models that match the [Microsoft 
 resp =client.get('/users/userId/messages')
 
 # msgraph-sdk
-req = client.users_by_id('userId').messages().get()
+req = client.users.by_user_id('userId').messages.get()
 resp = asyncio.run(req)
 ```
 
@@ -120,7 +120,7 @@ request_config = MessagesRequestBuilder.MessagesRequestBuilderGetRequestConfigur
     query_parameters=query_params,
 )
 
-messages = asyncio.run(client.users_by_id('userId').messages().get(request_configuration=request_config))
+messages = asyncio.run(client.users.by_user_id('userId').messages.get(request_configuration=request_config))
 for msg in messages.value:
     print(msg.subject)
 ```
@@ -129,15 +129,15 @@ See [the examples](docs/Examples.md) on how to pass headers in your requests.
 
 ## Exception handling
 
-Any `4xx` or `5xx` responses from the Graph API will result in an `ApiException` being thrown.
+Any `4xx` or `5xx` responses from the Graph API will result in an `APIError` being thrown.
 
 ```py
-
+from kiota_abstractions.api_error import APIError
 try:
     users = asyncio.run(client.users().get())
 
-except ApiException as e {
-    return f"Exception occurred: {repr(e)}"
+except APIError as e {
+    return f"Exception occurred: {e.error.message}"
 }
 ```
 ## Dependency changes

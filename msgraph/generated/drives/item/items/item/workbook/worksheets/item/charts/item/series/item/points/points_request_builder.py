@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .............models import workbook_chart_point, workbook_chart_point_collection_response
     from .............models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import workbook_chart_point_item_request_builder
     from .item_at_with_index import item_at_with_index_request_builder
 
 class PointsRequestBuilder():
@@ -37,9 +38,24 @@ class PointsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def by_workbook_chart_point_id(self,workbook_chart_point_id: str) -> workbook_chart_point_item_request_builder.WorkbookChartPointItemRequestBuilder:
+        """
+        Provides operations to manage the points property of the microsoft.graph.workbookChartSeries entity.
+        Args:
+            workbook_chart_point_id: Unique identifier of the item
+        Returns: workbook_chart_point_item_request_builder.WorkbookChartPointItemRequestBuilder
+        """
+        if workbook_chart_point_id is None:
+            raise Exception("workbook_chart_point_id cannot be undefined")
+        from .item import workbook_chart_point_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["workbookChartPoint%2Did"] = workbook_chart_point_id
+        return workbook_chart_point_item_request_builder.WorkbookChartPointItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def get(self,request_configuration: Optional[PointsRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_point_collection_response.WorkbookChartPointCollectionResponse]:
         """
-        Retrieve a list of chartpoint objects.
+        Retrieve a list of chartpoints objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_chart_point_collection_response.WorkbookChartPointCollectionResponse]
@@ -99,7 +115,7 @@ class PointsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PointsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of chartpoint objects.
+        Retrieve a list of chartpoints objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -148,7 +164,7 @@ class PointsRequestBuilder():
     @dataclass
     class PointsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of chartpoint objects.
+        Retrieve a list of chartpoints objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

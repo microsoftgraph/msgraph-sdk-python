@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import bitlocker_recovery_key_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import bitlocker_recovery_key_item_request_builder
 
 class RecoveryKeysRequestBuilder():
     """
@@ -35,6 +36,21 @@ class RecoveryKeysRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_bitlocker_recovery_key_id(self,bitlocker_recovery_key_id: str) -> bitlocker_recovery_key_item_request_builder.BitlockerRecoveryKeyItemRequestBuilder:
+        """
+        Provides operations to manage the recoveryKeys property of the microsoft.graph.bitlocker entity.
+        Args:
+            bitlocker_recovery_key_id: Unique identifier of the item
+        Returns: bitlocker_recovery_key_item_request_builder.BitlockerRecoveryKeyItemRequestBuilder
+        """
+        if bitlocker_recovery_key_id is None:
+            raise Exception("bitlocker_recovery_key_id cannot be undefined")
+        from .item import bitlocker_recovery_key_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["bitlockerRecoveryKey%2Did"] = bitlocker_recovery_key_id
+        return bitlocker_recovery_key_item_request_builder.BitlockerRecoveryKeyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RecoveryKeysRequestBuilderGetRequestConfiguration] = None) -> Optional[bitlocker_recovery_key_collection_response.BitlockerRecoveryKeyCollectionResponse]:
         """

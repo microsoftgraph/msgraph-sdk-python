@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ........models.o_data_errors import o_data_error
     from ........models.security import ediscovery_review_tag_collection_response
     from .count import count_request_builder
+    from .item import ediscovery_review_tag_item_request_builder
 
 class ChildTagsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ChildTagsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_ediscovery_review_tag_id1(self,ediscovery_review_tag_id1: str) -> ediscovery_review_tag_item_request_builder.EdiscoveryReviewTagItemRequestBuilder:
+        """
+        Provides operations to manage the childTags property of the microsoft.graph.security.ediscoveryReviewTag entity.
+        Args:
+            ediscovery_review_tag_id1: Unique identifier of the item
+        Returns: ediscovery_review_tag_item_request_builder.EdiscoveryReviewTagItemRequestBuilder
+        """
+        if ediscovery_review_tag_id1 is None:
+            raise Exception("ediscovery_review_tag_id1 cannot be undefined")
+        from .item import ediscovery_review_tag_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["ediscoveryReviewTag%2Did1"] = ediscovery_review_tag_id1
+        return ediscovery_review_tag_item_request_builder.EdiscoveryReviewTagItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ChildTagsRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_review_tag_collection_response.EdiscoveryReviewTagCollectionResponse]:
         """

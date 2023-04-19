@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ...models import authentication_methods_policy
     from ...models.o_data_errors import o_data_error
     from .authentication_method_configurations import authentication_method_configurations_request_builder
-    from .authentication_method_configurations.item import authentication_method_configuration_item_request_builder
 
 class AuthenticationMethodsPolicyRequestBuilder():
     """
@@ -36,21 +35,6 @@ class AuthenticationMethodsPolicyRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def authentication_method_configurations_by_id(self,id: str) -> authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder:
-        """
-        Provides operations to manage the authenticationMethodConfigurations property of the microsoft.graph.authenticationMethodsPolicy entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .authentication_method_configurations.item import authentication_method_configuration_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["authenticationMethodConfiguration%2Did"] = id
-        return authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[AuthenticationMethodsPolicyRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models import domain, domain_collection_response
     from ..models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import domain_item_request_builder
 
 class DomainsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class DomainsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_domain_id(self,domain_id: str) -> domain_item_request_builder.DomainItemRequestBuilder:
+        """
+        Provides operations to manage the collection of domain entities.
+        Args:
+            domain_id: Unique identifier of the item
+        Returns: domain_item_request_builder.DomainItemRequestBuilder
+        """
+        if domain_id is None:
+            raise Exception("domain_id cannot be undefined")
+        from .item import domain_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["domain%2Did"] = domain_id
+        return domain_item_request_builder.DomainItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[DomainsRequestBuilderGetRequestConfiguration] = None) -> Optional[domain_collection_response.DomainCollectionResponse]:
         """

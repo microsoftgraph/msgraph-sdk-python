@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .....models import access_review_history_definition
     from .....models.o_data_errors import o_data_error
     from .instances import instances_request_builder
-    from .instances.item import access_review_history_instance_item_request_builder
 
 class AccessReviewHistoryDefinitionItemRequestBuilder():
     """
@@ -77,21 +76,6 @@ class AccessReviewHistoryDefinitionItemRequestBuilder():
         from .....models import access_review_history_definition
 
         return await self.request_adapter.send_async(request_info, access_review_history_definition.AccessReviewHistoryDefinition, error_mapping)
-    
-    def instances_by_id(self,id: str) -> access_review_history_instance_item_request_builder.AccessReviewHistoryInstanceItemRequestBuilder:
-        """
-        Provides operations to manage the instances property of the microsoft.graph.accessReviewHistoryDefinition entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_review_history_instance_item_request_builder.AccessReviewHistoryInstanceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .instances.item import access_review_history_instance_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessReviewHistoryInstance%2Did"] = id
-        return access_review_history_instance_item_request_builder.AccessReviewHistoryInstanceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[access_review_history_definition.AccessReviewHistoryDefinition] = None, request_configuration: Optional[AccessReviewHistoryDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[access_review_history_definition.AccessReviewHistoryDefinition]:
         """

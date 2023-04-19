@@ -13,13 +13,9 @@ if TYPE_CHECKING:
     from ..models import identity_protection_root
     from ..models.o_data_errors import o_data_error
     from .risk_detections import risk_detections_request_builder
-    from .risk_detections.item import risk_detection_item_request_builder
     from .risky_service_principals import risky_service_principals_request_builder
-    from .risky_service_principals.item import risky_service_principal_item_request_builder
     from .risky_users import risky_users_request_builder
-    from .risky_users.item import risky_user_item_request_builder
     from .service_principal_risk_detections import service_principal_risk_detections_request_builder
-    from .service_principal_risk_detections.item import service_principal_risk_detection_item_request_builder
 
 class IdentityProtectionRequestBuilder():
     """
@@ -89,66 +85,6 @@ class IdentityProtectionRequestBuilder():
         from ..models import identity_protection_root
 
         return await self.request_adapter.send_async(request_info, identity_protection_root.IdentityProtectionRoot, error_mapping)
-    
-    def risk_detections_by_id(self,id: str) -> risk_detection_item_request_builder.RiskDetectionItemRequestBuilder:
-        """
-        Provides operations to manage the riskDetections property of the microsoft.graph.identityProtectionRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: risk_detection_item_request_builder.RiskDetectionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .risk_detections.item import risk_detection_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["riskDetection%2Did"] = id
-        return risk_detection_item_request_builder.RiskDetectionItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def risky_service_principals_by_id(self,id: str) -> risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder:
-        """
-        Provides operations to manage the riskyServicePrincipals property of the microsoft.graph.identityProtectionRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .risky_service_principals.item import risky_service_principal_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["riskyServicePrincipal%2Did"] = id
-        return risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def risky_users_by_id(self,id: str) -> risky_user_item_request_builder.RiskyUserItemRequestBuilder:
-        """
-        Provides operations to manage the riskyUsers property of the microsoft.graph.identityProtectionRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: risky_user_item_request_builder.RiskyUserItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .risky_users.item import risky_user_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["riskyUser%2Did"] = id
-        return risky_user_item_request_builder.RiskyUserItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def service_principal_risk_detections_by_id(self,id: str) -> service_principal_risk_detection_item_request_builder.ServicePrincipalRiskDetectionItemRequestBuilder:
-        """
-        Provides operations to manage the servicePrincipalRiskDetections property of the microsoft.graph.identityProtectionRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: service_principal_risk_detection_item_request_builder.ServicePrincipalRiskDetectionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .service_principal_risk_detections.item import service_principal_risk_detection_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["servicePrincipalRiskDetection%2Did"] = id
-        return service_principal_risk_detection_item_request_builder.ServicePrincipalRiskDetectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_get_request_information(self,request_configuration: Optional[IdentityProtectionRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

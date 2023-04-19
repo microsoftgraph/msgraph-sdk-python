@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import o_auth2_permission_grant_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import o_auth2_permission_grant_item_request_builder
 
 class Oauth2PermissionGrantsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class Oauth2PermissionGrantsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_o_auth2_permission_grant_id(self,o_auth2_permission_grant_id: str) -> o_auth2_permission_grant_item_request_builder.OAuth2PermissionGrantItemRequestBuilder:
+        """
+        Provides operations to manage the oauth2PermissionGrants property of the microsoft.graph.user entity.
+        Args:
+            o_auth2_permission_grant_id: Unique identifier of the item
+        Returns: o_auth2_permission_grant_item_request_builder.OAuth2PermissionGrantItemRequestBuilder
+        """
+        if o_auth2_permission_grant_id is None:
+            raise Exception("o_auth2_permission_grant_id cannot be undefined")
+        from .item import o_auth2_permission_grant_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["oAuth2PermissionGrant%2Did"] = o_auth2_permission_grant_id
+        return o_auth2_permission_grant_item_request_builder.OAuth2PermissionGrantItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> Optional[o_auth2_permission_grant_collection_response.OAuth2PermissionGrantCollectionResponse]:
         """

@@ -15,20 +15,15 @@ if TYPE_CHECKING:
     from .application import application_request_builder
     from .close_session import close_session_request_builder
     from .comments import comments_request_builder
-    from .comments.item import workbook_comment_item_request_builder
     from .create_session import create_session_request_builder
     from .functions import functions_request_builder
     from .names import names_request_builder
-    from .names.item import workbook_named_item_item_request_builder
     from .operations import operations_request_builder
-    from .operations.item import workbook_operation_item_request_builder
     from .refresh_session import refresh_session_request_builder
     from .session_info_resource_with_key import session_info_resource_with_key_request_builder
     from .table_row_operation_result_with_key import table_row_operation_result_with_key_request_builder
     from .tables import tables_request_builder
-    from .tables.item import workbook_table_item_request_builder
     from .worksheets import worksheets_request_builder
-    from .worksheets.item import workbook_worksheet_item_request_builder
 
 class WorkbookRequestBuilder():
     """
@@ -51,21 +46,6 @@ class WorkbookRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def comments_by_id(self,id: str) -> workbook_comment_item_request_builder.WorkbookCommentItemRequestBuilder:
-        """
-        Provides operations to manage the comments property of the microsoft.graph.workbook entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: workbook_comment_item_request_builder.WorkbookCommentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .comments.item import workbook_comment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["workbookComment%2Did"] = id
-        return workbook_comment_item_request_builder.WorkbookCommentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[WorkbookRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -107,36 +87,6 @@ class WorkbookRequestBuilder():
         from ......models import workbook
 
         return await self.request_adapter.send_async(request_info, workbook.Workbook, error_mapping)
-    
-    def names_by_id(self,id: str) -> workbook_named_item_item_request_builder.WorkbookNamedItemItemRequestBuilder:
-        """
-        Provides operations to manage the names property of the microsoft.graph.workbook entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: workbook_named_item_item_request_builder.WorkbookNamedItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .names.item import workbook_named_item_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["workbookNamedItem%2Did"] = id
-        return workbook_named_item_item_request_builder.WorkbookNamedItemItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def operations_by_id(self,id: str) -> workbook_operation_item_request_builder.WorkbookOperationItemRequestBuilder:
-        """
-        Provides operations to manage the operations property of the microsoft.graph.workbook entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: workbook_operation_item_request_builder.WorkbookOperationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .operations.item import workbook_operation_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["workbookOperation%2Did"] = id
-        return workbook_operation_item_request_builder.WorkbookOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[workbook.Workbook] = None, request_configuration: Optional[WorkbookRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook.Workbook]:
         """
@@ -188,21 +138,6 @@ class WorkbookRequestBuilder():
         from .table_row_operation_result_with_key import table_row_operation_result_with_key_request_builder
 
         return table_row_operation_result_with_key_request_builder.TableRowOperationResultWithKeyRequestBuilder(self.request_adapter, self.path_parameters, key)
-    
-    def tables_by_id(self,id: str) -> workbook_table_item_request_builder.WorkbookTableItemRequestBuilder:
-        """
-        Provides operations to manage the tables property of the microsoft.graph.workbook entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: workbook_table_item_request_builder.WorkbookTableItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .tables.item import workbook_table_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["workbookTable%2Did"] = id
-        return workbook_table_item_request_builder.WorkbookTableItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -258,21 +193,6 @@ class WorkbookRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-    
-    def worksheets_by_id(self,id: str) -> workbook_worksheet_item_request_builder.WorkbookWorksheetItemRequestBuilder:
-        """
-        Provides operations to manage the worksheets property of the microsoft.graph.workbook entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: workbook_worksheet_item_request_builder.WorkbookWorksheetItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .worksheets.item import workbook_worksheet_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["workbookWorksheet%2Did"] = id
-        return workbook_worksheet_item_request_builder.WorkbookWorksheetItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     @property
     def application(self) -> application_request_builder.ApplicationRequestBuilder:

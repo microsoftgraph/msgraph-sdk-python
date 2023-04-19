@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ........models import section_group_collection_response
     from ........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import section_group_item_request_builder
 
 class SectionGroupsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class SectionGroupsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_section_group_id1(self,section_group_id1: str) -> section_group_item_request_builder.SectionGroupItemRequestBuilder:
+        """
+        Provides operations to manage the sectionGroups property of the microsoft.graph.sectionGroup entity.
+        Args:
+            section_group_id1: Unique identifier of the item
+        Returns: section_group_item_request_builder.SectionGroupItemRequestBuilder
+        """
+        if section_group_id1 is None:
+            raise Exception("section_group_id1 cannot be undefined")
+        from .item import section_group_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["sectionGroup%2Did1"] = section_group_id1
+        return section_group_item_request_builder.SectionGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SectionGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[section_group_collection_response.SectionGroupCollectionResponse]:
         """

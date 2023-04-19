@@ -19,11 +19,8 @@ if TYPE_CHECKING:
     from .security_remove_hold import security_remove_hold_request_builder
     from .security_update_index import security_update_index_request_builder
     from .site_sources import site_sources_request_builder
-    from .site_sources.item import site_source_item_request_builder
     from .unified_group_sources import unified_group_sources_request_builder
-    from .unified_group_sources.item import unified_group_source_item_request_builder
     from .user_sources import user_sources_request_builder
-    from .user_sources.item import user_source_item_request_builder
 
 class EdiscoveryCustodianItemRequestBuilder():
     """
@@ -113,21 +110,6 @@ class EdiscoveryCustodianItemRequestBuilder():
 
         return await self.request_adapter.send_async(request_info, ediscovery_custodian.EdiscoveryCustodian, error_mapping)
     
-    def site_sources_by_id(self,id: str) -> site_source_item_request_builder.SiteSourceItemRequestBuilder:
-        """
-        Provides operations to manage the siteSources property of the microsoft.graph.security.ediscoveryCustodian entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: site_source_item_request_builder.SiteSourceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .site_sources.item import site_source_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["siteSource%2Did"] = id
-        return site_source_item_request_builder.SiteSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def to_delete_request_information(self,request_configuration: Optional[EdiscoveryCustodianItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property custodians for security
@@ -182,36 +164,6 @@ class EdiscoveryCustodianItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-    
-    def unified_group_sources_by_id(self,id: str) -> unified_group_source_item_request_builder.UnifiedGroupSourceItemRequestBuilder:
-        """
-        Provides operations to manage the unifiedGroupSources property of the microsoft.graph.security.ediscoveryCustodian entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: unified_group_source_item_request_builder.UnifiedGroupSourceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .unified_group_sources.item import unified_group_source_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["unifiedGroupSource%2Did"] = id
-        return unified_group_source_item_request_builder.UnifiedGroupSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def user_sources_by_id(self,id: str) -> user_source_item_request_builder.UserSourceItemRequestBuilder:
-        """
-        Provides operations to manage the userSources property of the microsoft.graph.security.ediscoveryCustodian entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: user_source_item_request_builder.UserSourceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .user_sources.item import user_source_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["userSource%2Did"] = id
-        return user_source_item_request_builder.UserSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     @property
     def last_index_operation(self) -> last_index_operation_request_builder.LastIndexOperationRequestBuilder:

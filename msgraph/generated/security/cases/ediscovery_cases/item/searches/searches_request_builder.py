@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ......models.o_data_errors import o_data_error
     from ......models.security import ediscovery_search, ediscovery_search_collection_response
     from .count import count_request_builder
+    from .item import ediscovery_search_item_request_builder
 
 class SearchesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class SearchesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_ediscovery_search_id(self,ediscovery_search_id: str) -> ediscovery_search_item_request_builder.EdiscoverySearchItemRequestBuilder:
+        """
+        Provides operations to manage the searches property of the microsoft.graph.security.ediscoveryCase entity.
+        Args:
+            ediscovery_search_id: Unique identifier of the item
+        Returns: ediscovery_search_item_request_builder.EdiscoverySearchItemRequestBuilder
+        """
+        if ediscovery_search_id is None:
+            raise Exception("ediscovery_search_id cannot be undefined")
+        from .item import ediscovery_search_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["ediscoverySearch%2Did"] = ediscovery_search_id
+        return ediscovery_search_item_request_builder.EdiscoverySearchItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SearchesRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_search_collection_response.EdiscoverySearchCollectionResponse]:
         """

@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .....models import conversation
     from .....models.o_data_errors import o_data_error
     from .threads import threads_request_builder
-    from .threads.item import conversation_thread_item_request_builder
 
 class ConversationItemRequestBuilder():
     """
@@ -77,21 +76,6 @@ class ConversationItemRequestBuilder():
         from .....models import conversation
 
         return await self.request_adapter.send_async(request_info, conversation.Conversation, error_mapping)
-    
-    def threads_by_id(self,id: str) -> conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder:
-        """
-        Provides operations to manage the threads property of the microsoft.graph.conversation entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .threads.item import conversation_thread_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["conversationThread%2Did"] = id
-        return conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[ConversationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

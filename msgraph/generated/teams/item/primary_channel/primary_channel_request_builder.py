@@ -16,15 +16,11 @@ if TYPE_CHECKING:
     from .does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name import does_user_have_accessuser_id_user_id_tenant_id_tenant_id_user_principal_name_user_principal_name_request_builder
     from .files_folder import files_folder_request_builder
     from .members import members_request_builder
-    from .members.item import conversation_member_item_request_builder
     from .messages import messages_request_builder
-    from .messages.item import chat_message_item_request_builder
     from .provision_email import provision_email_request_builder
     from .remove_email import remove_email_request_builder
     from .shared_with_teams import shared_with_teams_request_builder
-    from .shared_with_teams.item import shared_with_channel_team_info_item_request_builder
     from .tabs import tabs_request_builder
-    from .tabs.item import teams_tab_item_request_builder
 
 class PrimaryChannelRequestBuilder():
     """
@@ -89,36 +85,6 @@ class PrimaryChannelRequestBuilder():
 
         return await self.request_adapter.send_async(request_info, channel.Channel, error_mapping)
     
-    def members_by_id(self,id: str) -> conversation_member_item_request_builder.ConversationMemberItemRequestBuilder:
-        """
-        Provides operations to manage the members property of the microsoft.graph.channel entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: conversation_member_item_request_builder.ConversationMemberItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .members.item import conversation_member_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["conversationMember%2Did"] = id
-        return conversation_member_item_request_builder.ConversationMemberItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def messages_by_id(self,id: str) -> chat_message_item_request_builder.ChatMessageItemRequestBuilder:
-        """
-        Provides operations to manage the messages property of the microsoft.graph.channel entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: chat_message_item_request_builder.ChatMessageItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .messages.item import chat_message_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["chatMessage%2Did"] = id
-        return chat_message_item_request_builder.ChatMessageItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def patch(self,body: Optional[channel.Channel] = None, request_configuration: Optional[PrimaryChannelRequestBuilderPatchRequestConfiguration] = None) -> Optional[channel.Channel]:
         """
         Update the navigation property primaryChannel in teams
@@ -143,36 +109,6 @@ class PrimaryChannelRequestBuilder():
         from ....models import channel
 
         return await self.request_adapter.send_async(request_info, channel.Channel, error_mapping)
-    
-    def shared_with_teams_by_id(self,id: str) -> shared_with_channel_team_info_item_request_builder.SharedWithChannelTeamInfoItemRequestBuilder:
-        """
-        Provides operations to manage the sharedWithTeams property of the microsoft.graph.channel entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: shared_with_channel_team_info_item_request_builder.SharedWithChannelTeamInfoItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .shared_with_teams.item import shared_with_channel_team_info_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["sharedWithChannelTeamInfo%2Did"] = id
-        return shared_with_channel_team_info_item_request_builder.SharedWithChannelTeamInfoItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def tabs_by_id(self,id: str) -> teams_tab_item_request_builder.TeamsTabItemRequestBuilder:
-        """
-        Provides operations to manage the tabs property of the microsoft.graph.channel entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: teams_tab_item_request_builder.TeamsTabItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .tabs.item import teams_tab_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["teamsTab%2Did"] = id
-        return teams_tab_item_request_builder.TeamsTabItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[PrimaryChannelRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

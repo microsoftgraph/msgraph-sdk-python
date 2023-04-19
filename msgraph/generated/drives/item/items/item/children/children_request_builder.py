@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ......models import drive_item, drive_item_collection_response
     from ......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import drive_item_item_request_builder
 
 class ChildrenRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ChildrenRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_drive_item_id1(self,drive_item_id1: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
+        """
+        Provides operations to manage the children property of the microsoft.graph.driveItem entity.
+        Args:
+            drive_item_id1: Unique identifier of the item
+        Returns: drive_item_item_request_builder.DriveItemItemRequestBuilder
+        """
+        if drive_item_id1 is None:
+            raise Exception("drive_item_id1 cannot be undefined")
+        from .item import drive_item_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["driveItem%2Did1"] = drive_item_id1
+        return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ChildrenRequestBuilderGetRequestConfiguration] = None) -> Optional[drive_item_collection_response.DriveItemCollectionResponse]:
         """

@@ -13,9 +13,7 @@ if TYPE_CHECKING:
     from ...models import attack_simulation_root
     from ...models.o_data_errors import o_data_error
     from .simulation_automations import simulation_automations_request_builder
-    from .simulation_automations.item import simulation_automation_item_request_builder
     from .simulations import simulations_request_builder
-    from .simulations.item import simulation_item_request_builder
 
 class AttackSimulationRequestBuilder():
     """
@@ -104,36 +102,6 @@ class AttackSimulationRequestBuilder():
         from ...models import attack_simulation_root
 
         return await self.request_adapter.send_async(request_info, attack_simulation_root.AttackSimulationRoot, error_mapping)
-    
-    def simulation_automations_by_id(self,id: str) -> simulation_automation_item_request_builder.SimulationAutomationItemRequestBuilder:
-        """
-        Provides operations to manage the simulationAutomations property of the microsoft.graph.attackSimulationRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: simulation_automation_item_request_builder.SimulationAutomationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .simulation_automations.item import simulation_automation_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["simulationAutomation%2Did"] = id
-        return simulation_automation_item_request_builder.SimulationAutomationItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def simulations_by_id(self,id: str) -> simulation_item_request_builder.SimulationItemRequestBuilder:
-        """
-        Provides operations to manage the simulations property of the microsoft.graph.attackSimulationRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: simulation_item_request_builder.SimulationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .simulations.item import simulation_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["simulation%2Did"] = id
-        return simulation_item_request_builder.SimulationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[AttackSimulationRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import directory_audit, directory_audit_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import directory_audit_item_request_builder
 
 class DirectoryAuditsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class DirectoryAuditsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_directory_audit_id(self,directory_audit_id: str) -> directory_audit_item_request_builder.DirectoryAuditItemRequestBuilder:
+        """
+        Provides operations to manage the directoryAudits property of the microsoft.graph.auditLogRoot entity.
+        Args:
+            directory_audit_id: Unique identifier of the item
+        Returns: directory_audit_item_request_builder.DirectoryAuditItemRequestBuilder
+        """
+        if directory_audit_id is None:
+            raise Exception("directory_audit_id cannot be undefined")
+        from .item import directory_audit_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["directoryAudit%2Did"] = directory_audit_id
+        return directory_audit_item_request_builder.DirectoryAuditItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[DirectoryAuditsRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_audit_collection_response.DirectoryAuditCollectionResponse]:
         """

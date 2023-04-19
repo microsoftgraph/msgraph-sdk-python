@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models import data_policy_operation, data_policy_operation_collection_response
     from ..models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import data_policy_operation_item_request_builder
 
 class DataPolicyOperationsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class DataPolicyOperationsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_data_policy_operation_id(self,data_policy_operation_id: str) -> data_policy_operation_item_request_builder.DataPolicyOperationItemRequestBuilder:
+        """
+        Provides operations to manage the collection of dataPolicyOperation entities.
+        Args:
+            data_policy_operation_id: Unique identifier of the item
+        Returns: data_policy_operation_item_request_builder.DataPolicyOperationItemRequestBuilder
+        """
+        if data_policy_operation_id is None:
+            raise Exception("data_policy_operation_id cannot be undefined")
+        from .item import data_policy_operation_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["dataPolicyOperation%2Did"] = data_policy_operation_id
+        return data_policy_operation_item_request_builder.DataPolicyOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[DataPolicyOperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[data_policy_operation_collection_response.DataPolicyOperationCollectionResponse]:
         """

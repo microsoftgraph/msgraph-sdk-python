@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ......models import agreement_file
     from ......models.o_data_errors import o_data_error
     from .localizations import localizations_request_builder
-    from .localizations.item import agreement_file_localization_item_request_builder
 
 class FileRequestBuilder():
     """
@@ -77,21 +76,6 @@ class FileRequestBuilder():
         from ......models import agreement_file
 
         return await self.request_adapter.send_async(request_info, agreement_file.AgreementFile, error_mapping)
-    
-    def localizations_by_id(self,id: str) -> agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder:
-        """
-        Provides operations to manage the localizations property of the microsoft.graph.agreementFile entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .localizations.item import agreement_file_localization_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["agreementFileLocalization%2Did"] = id
-        return agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[agreement_file.AgreementFile] = None, request_configuration: Optional[FileRequestBuilderPatchRequestConfiguration] = None) -> Optional[agreement_file.AgreementFile]:
         """

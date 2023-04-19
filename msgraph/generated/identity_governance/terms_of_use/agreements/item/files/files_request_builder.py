@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ......models import agreement_file_localization, agreement_file_localization_collection_response
     from ......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import agreement_file_localization_item_request_builder
 
 class FilesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class FilesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_agreement_file_localization_id(self,agreement_file_localization_id: str) -> agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder:
+        """
+        Provides operations to manage the files property of the microsoft.graph.agreement entity.
+        Args:
+            agreement_file_localization_id: Unique identifier of the item
+        Returns: agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder
+        """
+        if agreement_file_localization_id is None:
+            raise Exception("agreement_file_localization_id cannot be undefined")
+        from .item import agreement_file_localization_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["agreementFileLocalization%2Did"] = agreement_file_localization_id
+        return agreement_file_localization_item_request_builder.AgreementFileLocalizationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[FilesRequestBuilderGetRequestConfiguration] = None) -> Optional[agreement_file_localization_collection_response.AgreementFileLocalizationCollectionResponse]:
         """

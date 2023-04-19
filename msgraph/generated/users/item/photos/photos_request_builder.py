@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import profile_photo_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import profile_photo_item_request_builder
 
 class PhotosRequestBuilder():
     """
@@ -35,6 +36,21 @@ class PhotosRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_profile_photo_id(self,profile_photo_id: str) -> profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder:
+        """
+        Provides operations to manage the photos property of the microsoft.graph.user entity.
+        Args:
+            profile_photo_id: Unique identifier of the item
+        Returns: profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder
+        """
+        if profile_photo_id is None:
+            raise Exception("profile_photo_id cannot be undefined")
+        from .item import profile_photo_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["profilePhoto%2Did"] = profile_photo_id
+        return profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[PhotosRequestBuilderGetRequestConfiguration] = None) -> Optional[profile_photo_collection_response.ProfilePhotoCollectionResponse]:
         """

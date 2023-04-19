@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import risk_detection, risk_detection_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import risk_detection_item_request_builder
 
 class RiskDetectionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class RiskDetectionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_risk_detection_id(self,risk_detection_id: str) -> risk_detection_item_request_builder.RiskDetectionItemRequestBuilder:
+        """
+        Provides operations to manage the riskDetections property of the microsoft.graph.identityProtectionRoot entity.
+        Args:
+            risk_detection_id: Unique identifier of the item
+        Returns: risk_detection_item_request_builder.RiskDetectionItemRequestBuilder
+        """
+        if risk_detection_id is None:
+            raise Exception("risk_detection_id cannot be undefined")
+        from .item import risk_detection_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["riskDetection%2Did"] = risk_detection_id
+        return risk_detection_item_request_builder.RiskDetectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RiskDetectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[risk_detection_collection_response.RiskDetectionCollectionResponse]:
         """

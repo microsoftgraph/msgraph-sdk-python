@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ....models import notification_message_template
     from ....models.o_data_errors import o_data_error
     from .localized_notification_messages import localized_notification_messages_request_builder
-    from .localized_notification_messages.item import localized_notification_message_item_request_builder
     from .send_test_message import send_test_message_request_builder
 
 class NotificationMessageTemplateItemRequestBuilder():
@@ -78,21 +77,6 @@ class NotificationMessageTemplateItemRequestBuilder():
         from ....models import notification_message_template
 
         return await self.request_adapter.send_async(request_info, notification_message_template.NotificationMessageTemplate, error_mapping)
-    
-    def localized_notification_messages_by_id(self,id: str) -> localized_notification_message_item_request_builder.LocalizedNotificationMessageItemRequestBuilder:
-        """
-        Provides operations to manage the localizedNotificationMessages property of the microsoft.graph.notificationMessageTemplate entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: localized_notification_message_item_request_builder.LocalizedNotificationMessageItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .localized_notification_messages.item import localized_notification_message_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["localizedNotificationMessage%2Did"] = id
-        return localized_notification_message_item_request_builder.LocalizedNotificationMessageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[notification_message_template.NotificationMessageTemplate] = None, request_configuration: Optional[NotificationMessageTemplateItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[notification_message_template.NotificationMessageTemplate]:
         """

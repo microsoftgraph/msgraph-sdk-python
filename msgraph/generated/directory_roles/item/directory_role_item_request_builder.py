@@ -17,10 +17,8 @@ if TYPE_CHECKING:
     from .get_member_groups import get_member_groups_request_builder
     from .get_member_objects import get_member_objects_request_builder
     from .members import members_request_builder
-    from .members.item import directory_object_item_request_builder
     from .restore import restore_request_builder
     from .scoped_members import scoped_members_request_builder
-    from .scoped_members.item import scoped_role_membership_item_request_builder
 
 class DirectoryRoleItemRequestBuilder():
     """
@@ -85,21 +83,6 @@ class DirectoryRoleItemRequestBuilder():
 
         return await self.request_adapter.send_async(request_info, directory_role.DirectoryRole, error_mapping)
     
-    def members_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.directoryRoles.item.members.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .members.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def patch(self,body: Optional[directory_role.DirectoryRole] = None, request_configuration: Optional[DirectoryRoleItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[directory_role.DirectoryRole]:
         """
         Update entity in directoryRoles
@@ -124,21 +107,6 @@ class DirectoryRoleItemRequestBuilder():
         from ...models import directory_role
 
         return await self.request_adapter.send_async(request_info, directory_role.DirectoryRole, error_mapping)
-    
-    def scoped_members_by_id(self,id: str) -> scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder:
-        """
-        Provides operations to manage the scopedMembers property of the microsoft.graph.directoryRole entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .scoped_members.item import scoped_role_membership_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["scopedRoleMembership%2Did"] = id
-        return scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[DirectoryRoleItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -15,13 +15,9 @@ if TYPE_CHECKING:
     from .associate_with_hub_sites import associate_with_hub_sites_request_builder
     from .base import base_request_builder
     from .base_types import base_types_request_builder
-    from .base_types.item import content_type_item_request_builder
     from .column_links import column_links_request_builder
-    from .column_links.item import column_link_item_request_builder
     from .column_positions import column_positions_request_builder
-    from .column_positions.item import column_definition_item_request_builder
     from .columns import columns_request_builder
-    from .columns.item import column_definition_item_request_builder
     from .copy_to_default_content_location import copy_to_default_content_location_request_builder
     from .is_published import is_published_request_builder
     from .publish import publish_request_builder
@@ -48,68 +44,6 @@ class ContentTypeItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def base_types_by_id(self,id: str) -> ContentTypeItemRequestBuilder:
-        """
-        Provides operations to manage the baseTypes property of the microsoft.graph.contentType entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: ContentTypeItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .base_types.item import content_type_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["contentType%2Did1"] = id
-        return ContentTypeItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def column_links_by_id(self,id: str) -> column_link_item_request_builder.ColumnLinkItemRequestBuilder:
-        """
-        Provides operations to manage the columnLinks property of the microsoft.graph.contentType entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: column_link_item_request_builder.ColumnLinkItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .column_links.item import column_link_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["columnLink%2Did"] = id
-        return column_link_item_request_builder.ColumnLinkItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def column_positions_by_id(self,id: str) -> column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder:
-        """
-        Provides operations to manage the columnPositions property of the microsoft.graph.contentType entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .column_positions.item import column_definition_item_request_builder
-        from .columns.item import column_definition_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["columnDefinition%2Did"] = id
-        return column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def columns_by_id(self,id: str) -> column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder:
-        """
-        Provides operations to manage the columns property of the microsoft.graph.contentType entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .column_positions.item import column_definition_item_request_builder
-        from .columns.item import column_definition_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["columnDefinition%2Did"] = id
-        return column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[ContentTypeItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """

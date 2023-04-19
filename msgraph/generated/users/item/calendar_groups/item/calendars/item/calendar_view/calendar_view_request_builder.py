@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ........models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .delta import delta_request_builder
+    from .item import event_item_request_builder
 
 class CalendarViewRequestBuilder():
     """
@@ -37,9 +38,24 @@ class CalendarViewRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def by_event_id(self,event_id: str) -> event_item_request_builder.EventItemRequestBuilder:
+        """
+        Provides operations to manage the calendarView property of the microsoft.graph.calendar entity.
+        Args:
+            event_id: Unique identifier of the item
+        Returns: event_item_request_builder.EventItemRequestBuilder
+        """
+        if event_id is None:
+            raise Exception("event_id cannot be undefined")
+        from .item import event_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["event%2Did"] = event_id
+        return event_item_request_builder.EventItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def get(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> Optional[event_collection_response.EventCollectionResponse]:
         """
-        Get the occurrences, exceptions and single instances of events in a calendar view defined by a time range,from a user's default calendar `(../me/calendarview)` or some other calendar of the user's.
+        Get the occurrences, exceptions and single instances of events in a calendar view defined by a time range,from a user's default calendar `(../me/calendarView)` or some other calendar of the user's.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[event_collection_response.EventCollectionResponse]
@@ -61,7 +77,7 @@ class CalendarViewRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the occurrences, exceptions and single instances of events in a calendar view defined by a time range,from a user's default calendar `(../me/calendarview)` or some other calendar of the user's.
+        Get the occurrences, exceptions and single instances of events in a calendar view defined by a time range,from a user's default calendar `(../me/calendarView)` or some other calendar of the user's.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -98,7 +114,7 @@ class CalendarViewRequestBuilder():
     @dataclass
     class CalendarViewRequestBuilderGetQueryParameters():
         """
-        Get the occurrences, exceptions and single instances of events in a calendar view defined by a time range,from a user's default calendar `(../me/calendarview)` or some other calendar of the user's.
+        Get the occurrences, exceptions and single instances of events in a calendar view defined by a time range,from a user's default calendar `(../me/calendarView)` or some other calendar of the user's.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

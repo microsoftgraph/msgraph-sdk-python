@@ -13,64 +13,44 @@ if TYPE_CHECKING:
     from ...models import group
     from ...models.o_data_errors import o_data_error
     from .accepted_senders import accepted_senders_request_builder
-    from .accepted_senders.item import directory_object_item_request_builder
     from .add_favorite import add_favorite_request_builder
     from .app_role_assignments import app_role_assignments_request_builder
-    from .app_role_assignments.item import app_role_assignment_item_request_builder
     from .assign_license import assign_license_request_builder
     from .calendar import calendar_request_builder
     from .calendar_view import calendar_view_request_builder
-    from .calendar_view.item import event_item_request_builder
     from .check_granted_permissions_for_app import check_granted_permissions_for_app_request_builder
     from .check_member_groups import check_member_groups_request_builder
     from .check_member_objects import check_member_objects_request_builder
     from .conversations import conversations_request_builder
-    from .conversations.item import conversation_item_request_builder
     from .created_on_behalf_of import created_on_behalf_of_request_builder
     from .drive import drive_request_builder
     from .drives import drives_request_builder
-    from .drives.item import drive_item_request_builder
     from .events import events_request_builder
-    from .events.item import event_item_request_builder
     from .extensions import extensions_request_builder
-    from .extensions.item import extension_item_request_builder
     from .get_member_groups import get_member_groups_request_builder
     from .get_member_objects import get_member_objects_request_builder
     from .group_lifecycle_policies import group_lifecycle_policies_request_builder
-    from .group_lifecycle_policies.item import group_lifecycle_policy_item_request_builder
     from .member_of import member_of_request_builder
-    from .member_of.item import directory_object_item_request_builder
     from .members import members_request_builder
-    from .members.item import directory_object_item_request_builder
     from .members_with_license_errors import members_with_license_errors_request_builder
-    from .members_with_license_errors.item import directory_object_item_request_builder
     from .onenote import onenote_request_builder
     from .owners import owners_request_builder
-    from .owners.item import directory_object_item_request_builder
     from .permission_grants import permission_grants_request_builder
-    from .permission_grants.item import resource_specific_permission_grant_item_request_builder
     from .photo import photo_request_builder
     from .photos import photos_request_builder
-    from .photos.item import profile_photo_item_request_builder
     from .planner import planner_request_builder
     from .rejected_senders import rejected_senders_request_builder
-    from .rejected_senders.item import directory_object_item_request_builder
     from .remove_favorite import remove_favorite_request_builder
     from .renew import renew_request_builder
     from .reset_unseen_count import reset_unseen_count_request_builder
     from .restore import restore_request_builder
     from .settings import settings_request_builder
-    from .settings.item import group_setting_item_request_builder
     from .sites import sites_request_builder
-    from .sites.item import site_item_request_builder
     from .subscribe_by_mail import subscribe_by_mail_request_builder
     from .team import team_request_builder
     from .threads import threads_request_builder
-    from .threads.item import conversation_thread_item_request_builder
     from .transitive_member_of import transitive_member_of_request_builder
-    from .transitive_member_of.item import directory_object_item_request_builder
     from .transitive_members import transitive_members_request_builder
-    from .transitive_members.item import directory_object_item_request_builder
     from .unsubscribe_by_mail import unsubscribe_by_mail_request_builder
     from .validate_properties import validate_properties_request_builder
 
@@ -96,74 +76,6 @@ class GroupItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def accepted_senders_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.groups.item.acceptedSenders.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .accepted_senders.item import directory_object_item_request_builder
-        from .member_of.item import directory_object_item_request_builder
-        from .members.item import directory_object_item_request_builder
-        from .members_with_license_errors.item import directory_object_item_request_builder
-        from .owners.item import directory_object_item_request_builder
-        from .rejected_senders.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-        from .transitive_members.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def app_role_assignments_by_id(self,id: str) -> app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder:
-        """
-        Provides operations to manage the appRoleAssignments property of the microsoft.graph.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .app_role_assignments.item import app_role_assignment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["appRoleAssignment%2Did"] = id
-        return app_role_assignment_item_request_builder.AppRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def calendar_view_by_id(self,id: str) -> event_item_request_builder.EventItemRequestBuilder:
-        """
-        Provides operations to manage the calendarView property of the microsoft.graph.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: event_item_request_builder.EventItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .calendar_view.item import event_item_request_builder
-        from .events.item import event_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["event%2Did"] = id
-        return event_item_request_builder.EventItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def conversations_by_id(self,id: str) -> conversation_item_request_builder.ConversationItemRequestBuilder:
-        """
-        Provides operations to manage the conversations property of the microsoft.graph.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: conversation_item_request_builder.ConversationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .conversations.item import conversation_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["conversation%2Did"] = id
-        return conversation_item_request_builder.ConversationItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def delete(self,request_configuration: Optional[GroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete group. When deleted, Microsoft 365 groups are moved to a temporary container and can be restored within 30 days. After that time, they're permanently deleted. This isn't applicable to Security groups and Distribution groups which are permanently deleted immediately. To learn more, see deletedItems.
@@ -182,52 +94,6 @@ class GroupItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
-    
-    def drives_by_id(self,id: str) -> drive_item_request_builder.DriveItemRequestBuilder:
-        """
-        Provides operations to manage the drives property of the microsoft.graph.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: drive_item_request_builder.DriveItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .drives.item import drive_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["drive%2Did"] = id
-        return drive_item_request_builder.DriveItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def events_by_id(self,id: str) -> event_item_request_builder.EventItemRequestBuilder:
-        """
-        Provides operations to manage the events property of the microsoft.graph.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: event_item_request_builder.EventItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .calendar_view.item import event_item_request_builder
-        from .events.item import event_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["event%2Did"] = id
-        return event_item_request_builder.EventItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
-        """
-        Provides operations to manage the extensions property of the microsoft.graph.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: extension_item_request_builder.ExtensionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .extensions.item import extension_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["extension%2Did"] = id
-        return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[GroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[group.Group]:
         """
@@ -251,112 +117,9 @@ class GroupItemRequestBuilder():
 
         return await self.request_adapter.send_async(request_info, group.Group, error_mapping)
     
-    def group_lifecycle_policies_by_id(self,id: str) -> group_lifecycle_policy_item_request_builder.GroupLifecyclePolicyItemRequestBuilder:
-        """
-        Provides operations to manage the groupLifecyclePolicies property of the microsoft.graph.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: group_lifecycle_policy_item_request_builder.GroupLifecyclePolicyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .group_lifecycle_policies.item import group_lifecycle_policy_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["groupLifecyclePolicy%2Did"] = id
-        return group_lifecycle_policy_item_request_builder.GroupLifecyclePolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def member_of_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Provides operations to manage the memberOf property of the microsoft.graph.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .accepted_senders.item import directory_object_item_request_builder
-        from .member_of.item import directory_object_item_request_builder
-        from .members.item import directory_object_item_request_builder
-        from .members_with_license_errors.item import directory_object_item_request_builder
-        from .owners.item import directory_object_item_request_builder
-        from .rejected_senders.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-        from .transitive_members.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def members_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.groups.item.members.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .accepted_senders.item import directory_object_item_request_builder
-        from .member_of.item import directory_object_item_request_builder
-        from .members.item import directory_object_item_request_builder
-        from .members_with_license_errors.item import directory_object_item_request_builder
-        from .owners.item import directory_object_item_request_builder
-        from .rejected_senders.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-        from .transitive_members.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def members_with_license_errors_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Provides operations to manage the membersWithLicenseErrors property of the microsoft.graph.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .accepted_senders.item import directory_object_item_request_builder
-        from .member_of.item import directory_object_item_request_builder
-        from .members.item import directory_object_item_request_builder
-        from .members_with_license_errors.item import directory_object_item_request_builder
-        from .owners.item import directory_object_item_request_builder
-        from .rejected_senders.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-        from .transitive_members.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def owners_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.groups.item.owners.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .accepted_senders.item import directory_object_item_request_builder
-        from .member_of.item import directory_object_item_request_builder
-        from .members.item import directory_object_item_request_builder
-        from .members_with_license_errors.item import directory_object_item_request_builder
-        from .owners.item import directory_object_item_request_builder
-        from .rejected_senders.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-        from .transitive_members.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def patch(self,body: Optional[group.Group] = None, request_configuration: Optional[GroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[group.Group]:
         """
-        Update the properties of a group object.
+        Add a member to a security or Microsoft 365 group through the **members** navigation property. The following table shows the types of members that can be added to either security groups or Microsoft 365 groups.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -378,103 +141,6 @@ class GroupItemRequestBuilder():
         from ...models import group
 
         return await self.request_adapter.send_async(request_info, group.Group, error_mapping)
-    
-    def permission_grants_by_id(self,id: str) -> resource_specific_permission_grant_item_request_builder.ResourceSpecificPermissionGrantItemRequestBuilder:
-        """
-        Provides operations to manage the permissionGrants property of the microsoft.graph.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: resource_specific_permission_grant_item_request_builder.ResourceSpecificPermissionGrantItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .permission_grants.item import resource_specific_permission_grant_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["resourceSpecificPermissionGrant%2Did"] = id
-        return resource_specific_permission_grant_item_request_builder.ResourceSpecificPermissionGrantItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def photos_by_id(self,id: str) -> profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder:
-        """
-        Provides operations to manage the photos property of the microsoft.graph.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .photos.item import profile_photo_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["profilePhoto%2Did"] = id
-        return profile_photo_item_request_builder.ProfilePhotoItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def rejected_senders_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.groups.item.rejectedSenders.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .accepted_senders.item import directory_object_item_request_builder
-        from .member_of.item import directory_object_item_request_builder
-        from .members.item import directory_object_item_request_builder
-        from .members_with_license_errors.item import directory_object_item_request_builder
-        from .owners.item import directory_object_item_request_builder
-        from .rejected_senders.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-        from .transitive_members.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def settings_by_id(self,id: str) -> group_setting_item_request_builder.GroupSettingItemRequestBuilder:
-        """
-        Provides operations to manage the settings property of the microsoft.graph.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: group_setting_item_request_builder.GroupSettingItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .settings.item import group_setting_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["groupSetting%2Did"] = id
-        return group_setting_item_request_builder.GroupSettingItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def sites_by_id(self,id: str) -> site_item_request_builder.SiteItemRequestBuilder:
-        """
-        Provides operations to manage the sites property of the microsoft.graph.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: site_item_request_builder.SiteItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .sites.item import site_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["site%2Did"] = id
-        return site_item_request_builder.SiteItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def threads_by_id(self,id: str) -> conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder:
-        """
-        Provides operations to manage the threads property of the microsoft.graph.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .threads.item import conversation_thread_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["conversationThread%2Did"] = id
-        return conversation_thread_item_request_builder.ConversationThreadItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[GroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
@@ -512,7 +178,7 @@ class GroupItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[group.Group] = None, request_configuration: Optional[GroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a group object.
+        Add a member to a security or Microsoft 365 group through the **members** navigation property. The following table shows the types of members that can be added to either security groups or Microsoft 365 groups.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -530,50 +196,6 @@ class GroupItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-    
-    def transitive_member_of_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Provides operations to manage the transitiveMemberOf property of the microsoft.graph.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .accepted_senders.item import directory_object_item_request_builder
-        from .member_of.item import directory_object_item_request_builder
-        from .members.item import directory_object_item_request_builder
-        from .members_with_license_errors.item import directory_object_item_request_builder
-        from .owners.item import directory_object_item_request_builder
-        from .rejected_senders.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-        from .transitive_members.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def transitive_members_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Provides operations to manage the transitiveMembers property of the microsoft.graph.group entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .accepted_senders.item import directory_object_item_request_builder
-        from .member_of.item import directory_object_item_request_builder
-        from .members.item import directory_object_item_request_builder
-        from .members_with_license_errors.item import directory_object_item_request_builder
-        from .owners.item import directory_object_item_request_builder
-        from .rejected_senders.item import directory_object_item_request_builder
-        from .transitive_member_of.item import directory_object_item_request_builder
-        from .transitive_members.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     @property
     def accepted_senders(self) -> accepted_senders_request_builder.AcceptedSendersRequestBuilder:

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import compliance_management_partner, compliance_management_partner_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import compliance_management_partner_item_request_builder
 
 class ComplianceManagementPartnersRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ComplianceManagementPartnersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_compliance_management_partner_id(self,compliance_management_partner_id: str) -> compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder:
+        """
+        Provides operations to manage the complianceManagementPartners property of the microsoft.graph.deviceManagement entity.
+        Args:
+            compliance_management_partner_id: Unique identifier of the item
+        Returns: compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder
+        """
+        if compliance_management_partner_id is None:
+            raise Exception("compliance_management_partner_id cannot be undefined")
+        from .item import compliance_management_partner_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["complianceManagementPartner%2Did"] = compliance_management_partner_id
+        return compliance_management_partner_item_request_builder.ComplianceManagementPartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ComplianceManagementPartnersRequestBuilderGetRequestConfiguration] = None) -> Optional[compliance_management_partner_collection_response.ComplianceManagementPartnerCollectionResponse]:
         """

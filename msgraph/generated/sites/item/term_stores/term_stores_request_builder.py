@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from ....models.term_store import store, store_collection_response
     from .count import count_request_builder
+    from .item import store_item_request_builder
 
 class TermStoresRequestBuilder():
     """
@@ -35,6 +36,21 @@ class TermStoresRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_store_id(self,store_id: str) -> store_item_request_builder.StoreItemRequestBuilder:
+        """
+        Provides operations to manage the termStores property of the microsoft.graph.site entity.
+        Args:
+            store_id: Unique identifier of the item
+        Returns: store_item_request_builder.StoreItemRequestBuilder
+        """
+        if store_id is None:
+            raise Exception("store_id cannot be undefined")
+        from .item import store_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["store%2Did"] = store_id
+        return store_item_request_builder.StoreItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[TermStoresRequestBuilderGetRequestConfiguration] = None) -> Optional[store_collection_response.StoreCollectionResponse]:
         """

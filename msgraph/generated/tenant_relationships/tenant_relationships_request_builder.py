@@ -13,9 +13,7 @@ if TYPE_CHECKING:
     from ..models import tenant_relationship
     from ..models.o_data_errors import o_data_error
     from .delegated_admin_customers import delegated_admin_customers_request_builder
-    from .delegated_admin_customers.item import delegated_admin_customer_item_request_builder
     from .delegated_admin_relationships import delegated_admin_relationships_request_builder
-    from .delegated_admin_relationships.item import delegated_admin_relationship_item_request_builder
 
 class TenantRelationshipsRequestBuilder():
     """
@@ -38,36 +36,6 @@ class TenantRelationshipsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def delegated_admin_customers_by_id(self,id: str) -> delegated_admin_customer_item_request_builder.DelegatedAdminCustomerItemRequestBuilder:
-        """
-        Provides operations to manage the delegatedAdminCustomers property of the microsoft.graph.tenantRelationship entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: delegated_admin_customer_item_request_builder.DelegatedAdminCustomerItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .delegated_admin_customers.item import delegated_admin_customer_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["delegatedAdminCustomer%2Did"] = id
-        return delegated_admin_customer_item_request_builder.DelegatedAdminCustomerItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def delegated_admin_relationships_by_id(self,id: str) -> delegated_admin_relationship_item_request_builder.DelegatedAdminRelationshipItemRequestBuilder:
-        """
-        Provides operations to manage the delegatedAdminRelationships property of the microsoft.graph.tenantRelationship entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: delegated_admin_relationship_item_request_builder.DelegatedAdminRelationshipItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .delegated_admin_relationships.item import delegated_admin_relationship_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["delegatedAdminRelationship%2Did"] = id
-        return delegated_admin_relationship_item_request_builder.DelegatedAdminRelationshipItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[TenantRelationshipsRequestBuilderGetRequestConfiguration] = None) -> Optional[tenant_relationship.TenantRelationship]:
         """

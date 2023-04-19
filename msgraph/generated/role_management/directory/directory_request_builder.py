@@ -13,23 +13,14 @@ if TYPE_CHECKING:
     from ...models import rbac_application
     from ...models.o_data_errors import o_data_error
     from .resource_namespaces import resource_namespaces_request_builder
-    from .resource_namespaces.item import unified_rbac_resource_namespace_item_request_builder
     from .role_assignments import role_assignments_request_builder
-    from .role_assignments.item import unified_role_assignment_item_request_builder
     from .role_assignment_schedule_instances import role_assignment_schedule_instances_request_builder
-    from .role_assignment_schedule_instances.item import unified_role_assignment_schedule_instance_item_request_builder
     from .role_assignment_schedule_requests import role_assignment_schedule_requests_request_builder
-    from .role_assignment_schedule_requests.item import unified_role_assignment_schedule_request_item_request_builder
     from .role_assignment_schedules import role_assignment_schedules_request_builder
-    from .role_assignment_schedules.item import unified_role_assignment_schedule_item_request_builder
     from .role_definitions import role_definitions_request_builder
-    from .role_definitions.item import unified_role_definition_item_request_builder
     from .role_eligibility_schedule_instances import role_eligibility_schedule_instances_request_builder
-    from .role_eligibility_schedule_instances.item import unified_role_eligibility_schedule_instance_item_request_builder
     from .role_eligibility_schedule_requests import role_eligibility_schedule_requests_request_builder
-    from .role_eligibility_schedule_requests.item import unified_role_eligibility_schedule_request_item_request_builder
     from .role_eligibility_schedules import role_eligibility_schedules_request_builder
-    from .role_eligibility_schedules.item import unified_role_eligibility_schedule_item_request_builder
 
 class DirectoryRequestBuilder():
     """
@@ -118,141 +109,6 @@ class DirectoryRequestBuilder():
         from ...models import rbac_application
 
         return await self.request_adapter.send_async(request_info, rbac_application.RbacApplication, error_mapping)
-    
-    def resource_namespaces_by_id(self,id: str) -> unified_rbac_resource_namespace_item_request_builder.UnifiedRbacResourceNamespaceItemRequestBuilder:
-        """
-        Provides operations to manage the resourceNamespaces property of the microsoft.graph.rbacApplication entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: unified_rbac_resource_namespace_item_request_builder.UnifiedRbacResourceNamespaceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .resource_namespaces.item import unified_rbac_resource_namespace_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["unifiedRbacResourceNamespace%2Did"] = id
-        return unified_rbac_resource_namespace_item_request_builder.UnifiedRbacResourceNamespaceItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def role_assignments_by_id(self,id: str) -> unified_role_assignment_item_request_builder.UnifiedRoleAssignmentItemRequestBuilder:
-        """
-        Provides operations to manage the roleAssignments property of the microsoft.graph.rbacApplication entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: unified_role_assignment_item_request_builder.UnifiedRoleAssignmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .role_assignments.item import unified_role_assignment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["unifiedRoleAssignment%2Did"] = id
-        return unified_role_assignment_item_request_builder.UnifiedRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def role_assignment_schedule_instances_by_id(self,id: str) -> unified_role_assignment_schedule_instance_item_request_builder.UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder:
-        """
-        Provides operations to manage the roleAssignmentScheduleInstances property of the microsoft.graph.rbacApplication entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: unified_role_assignment_schedule_instance_item_request_builder.UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .role_assignment_schedule_instances.item import unified_role_assignment_schedule_instance_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["unifiedRoleAssignmentScheduleInstance%2Did"] = id
-        return unified_role_assignment_schedule_instance_item_request_builder.UnifiedRoleAssignmentScheduleInstanceItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def role_assignment_schedule_requests_by_id(self,id: str) -> unified_role_assignment_schedule_request_item_request_builder.UnifiedRoleAssignmentScheduleRequestItemRequestBuilder:
-        """
-        Provides operations to manage the roleAssignmentScheduleRequests property of the microsoft.graph.rbacApplication entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: unified_role_assignment_schedule_request_item_request_builder.UnifiedRoleAssignmentScheduleRequestItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .role_assignment_schedule_requests.item import unified_role_assignment_schedule_request_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["unifiedRoleAssignmentScheduleRequest%2Did"] = id
-        return unified_role_assignment_schedule_request_item_request_builder.UnifiedRoleAssignmentScheduleRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def role_assignment_schedules_by_id(self,id: str) -> unified_role_assignment_schedule_item_request_builder.UnifiedRoleAssignmentScheduleItemRequestBuilder:
-        """
-        Provides operations to manage the roleAssignmentSchedules property of the microsoft.graph.rbacApplication entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: unified_role_assignment_schedule_item_request_builder.UnifiedRoleAssignmentScheduleItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .role_assignment_schedules.item import unified_role_assignment_schedule_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["unifiedRoleAssignmentSchedule%2Did"] = id
-        return unified_role_assignment_schedule_item_request_builder.UnifiedRoleAssignmentScheduleItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def role_definitions_by_id(self,id: str) -> unified_role_definition_item_request_builder.UnifiedRoleDefinitionItemRequestBuilder:
-        """
-        Provides operations to manage the roleDefinitions property of the microsoft.graph.rbacApplication entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: unified_role_definition_item_request_builder.UnifiedRoleDefinitionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .role_definitions.item import unified_role_definition_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["unifiedRoleDefinition%2Did"] = id
-        return unified_role_definition_item_request_builder.UnifiedRoleDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def role_eligibility_schedule_instances_by_id(self,id: str) -> unified_role_eligibility_schedule_instance_item_request_builder.UnifiedRoleEligibilityScheduleInstanceItemRequestBuilder:
-        """
-        Provides operations to manage the roleEligibilityScheduleInstances property of the microsoft.graph.rbacApplication entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: unified_role_eligibility_schedule_instance_item_request_builder.UnifiedRoleEligibilityScheduleInstanceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .role_eligibility_schedule_instances.item import unified_role_eligibility_schedule_instance_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["unifiedRoleEligibilityScheduleInstance%2Did"] = id
-        return unified_role_eligibility_schedule_instance_item_request_builder.UnifiedRoleEligibilityScheduleInstanceItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def role_eligibility_schedule_requests_by_id(self,id: str) -> unified_role_eligibility_schedule_request_item_request_builder.UnifiedRoleEligibilityScheduleRequestItemRequestBuilder:
-        """
-        Provides operations to manage the roleEligibilityScheduleRequests property of the microsoft.graph.rbacApplication entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: unified_role_eligibility_schedule_request_item_request_builder.UnifiedRoleEligibilityScheduleRequestItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .role_eligibility_schedule_requests.item import unified_role_eligibility_schedule_request_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["unifiedRoleEligibilityScheduleRequest%2Did"] = id
-        return unified_role_eligibility_schedule_request_item_request_builder.UnifiedRoleEligibilityScheduleRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def role_eligibility_schedules_by_id(self,id: str) -> unified_role_eligibility_schedule_item_request_builder.UnifiedRoleEligibilityScheduleItemRequestBuilder:
-        """
-        Provides operations to manage the roleEligibilitySchedules property of the microsoft.graph.rbacApplication entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: unified_role_eligibility_schedule_item_request_builder.UnifiedRoleEligibilityScheduleItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .role_eligibility_schedules.item import unified_role_eligibility_schedule_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["unifiedRoleEligibilitySchedule%2Did"] = id
-        return unified_role_eligibility_schedule_item_request_builder.UnifiedRoleEligibilityScheduleItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[DirectoryRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

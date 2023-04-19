@@ -13,15 +13,10 @@ if TYPE_CHECKING:
     from ....models import education_user
     from ....models.o_data_errors import o_data_error
     from .assignments import assignments_request_builder
-    from .assignments.item import education_assignment_item_request_builder
     from .classes import classes_request_builder
-    from .classes.item import education_class_item_request_builder
     from .rubrics import rubrics_request_builder
-    from .rubrics.item import education_rubric_item_request_builder
     from .schools import schools_request_builder
-    from .schools.item import education_school_item_request_builder
     from .taught_classes import taught_classes_request_builder
-    from .taught_classes.item import education_class_item_request_builder
     from .user import user_request_builder
 
 class EducationUserItemRequestBuilder():
@@ -45,37 +40,6 @@ class EducationUserItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def assignments_by_id(self,id: str) -> education_assignment_item_request_builder.EducationAssignmentItemRequestBuilder:
-        """
-        Provides operations to manage the assignments property of the microsoft.graph.educationUser entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: education_assignment_item_request_builder.EducationAssignmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .assignments.item import education_assignment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["educationAssignment%2Did"] = id
-        return education_assignment_item_request_builder.EducationAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def classes_by_id(self,id: str) -> education_class_item_request_builder.EducationClassItemRequestBuilder:
-        """
-        Provides operations to manage the classes property of the microsoft.graph.educationUser entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: education_class_item_request_builder.EducationClassItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .classes.item import education_class_item_request_builder
-        from .taught_classes.item import education_class_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["educationClass%2Did"] = id
-        return education_class_item_request_builder.EducationClassItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[EducationUserItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -142,52 +106,6 @@ class EducationUserItemRequestBuilder():
         from ....models import education_user
 
         return await self.request_adapter.send_async(request_info, education_user.EducationUser, error_mapping)
-    
-    def rubrics_by_id(self,id: str) -> education_rubric_item_request_builder.EducationRubricItemRequestBuilder:
-        """
-        Provides operations to manage the rubrics property of the microsoft.graph.educationUser entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: education_rubric_item_request_builder.EducationRubricItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .rubrics.item import education_rubric_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["educationRubric%2Did"] = id
-        return education_rubric_item_request_builder.EducationRubricItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def schools_by_id(self,id: str) -> education_school_item_request_builder.EducationSchoolItemRequestBuilder:
-        """
-        Provides operations to manage the schools property of the microsoft.graph.educationUser entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: education_school_item_request_builder.EducationSchoolItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .schools.item import education_school_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["educationSchool%2Did"] = id
-        return education_school_item_request_builder.EducationSchoolItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def taught_classes_by_id(self,id: str) -> education_class_item_request_builder.EducationClassItemRequestBuilder:
-        """
-        Provides operations to manage the taughtClasses property of the microsoft.graph.educationUser entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: education_class_item_request_builder.EducationClassItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .classes.item import education_class_item_request_builder
-        from .taught_classes.item import education_class_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["educationClass%2Did"] = id
-        return education_class_item_request_builder.EducationClassItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[EducationUserItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

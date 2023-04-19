@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ......models import user_install_state_summary
     from ......models.o_data_errors import o_data_error
     from .device_states import device_states_request_builder
-    from .device_states.item import device_install_state_item_request_builder
 
 class UserInstallStateSummaryItemRequestBuilder():
     """
@@ -55,21 +54,6 @@ class UserInstallStateSummaryItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
-    
-    def device_states_by_id(self,id: str) -> device_install_state_item_request_builder.DeviceInstallStateItemRequestBuilder:
-        """
-        Provides operations to manage the deviceStates property of the microsoft.graph.userInstallStateSummary entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: device_install_state_item_request_builder.DeviceInstallStateItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .device_states.item import device_install_state_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["deviceInstallState%2Did"] = id
-        return device_install_state_item_request_builder.DeviceInstallStateItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[UserInstallStateSummaryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[user_install_state_summary.UserInstallStateSummary]:
         """

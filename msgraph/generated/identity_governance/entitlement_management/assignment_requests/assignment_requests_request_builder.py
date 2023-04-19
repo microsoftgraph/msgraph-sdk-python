@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
+    from .item import access_package_assignment_request_item_request_builder
 
 class AssignmentRequestsRequestBuilder():
     """
@@ -36,6 +37,21 @@ class AssignmentRequestsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_access_package_assignment_request_id(self,access_package_assignment_request_id: str) -> access_package_assignment_request_item_request_builder.AccessPackageAssignmentRequestItemRequestBuilder:
+        """
+        Provides operations to manage the assignmentRequests property of the microsoft.graph.entitlementManagement entity.
+        Args:
+            access_package_assignment_request_id: Unique identifier of the item
+        Returns: access_package_assignment_request_item_request_builder.AccessPackageAssignmentRequestItemRequestBuilder
+        """
+        if access_package_assignment_request_id is None:
+            raise Exception("access_package_assignment_request_id cannot be undefined")
+        from .item import access_package_assignment_request_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["accessPackageAssignmentRequest%2Did"] = access_package_assignment_request_id
+        return access_package_assignment_request_item_request_builder.AccessPackageAssignmentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
         """

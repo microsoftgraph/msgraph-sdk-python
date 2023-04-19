@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ..models import employee_experience
     from ..models.o_data_errors import o_data_error
     from .learning_providers import learning_providers_request_builder
-    from .learning_providers.item import learning_provider_item_request_builder
 
 class EmployeeExperienceRequestBuilder():
     """
@@ -58,21 +57,6 @@ class EmployeeExperienceRequestBuilder():
         from ..models import employee_experience
 
         return await self.request_adapter.send_async(request_info, employee_experience.EmployeeExperience, error_mapping)
-    
-    def learning_providers_by_id(self,id: str) -> learning_provider_item_request_builder.LearningProviderItemRequestBuilder:
-        """
-        Provides operations to manage the learningProviders property of the microsoft.graph.employeeExperience entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: learning_provider_item_request_builder.LearningProviderItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .learning_providers.item import learning_provider_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["learningProvider%2Did"] = id
-        return learning_provider_item_request_builder.LearningProviderItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[employee_experience.EmployeeExperience] = None, request_configuration: Optional[EmployeeExperienceRequestBuilderPatchRequestConfiguration] = None) -> Optional[employee_experience.EmployeeExperience]:
         """

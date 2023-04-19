@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .....models import unified_rbac_resource_namespace
     from .....models.o_data_errors import o_data_error
     from .resource_actions import resource_actions_request_builder
-    from .resource_actions.item import unified_rbac_resource_action_item_request_builder
 
 class UnifiedRbacResourceNamespaceItemRequestBuilder():
     """
@@ -102,21 +101,6 @@ class UnifiedRbacResourceNamespaceItemRequestBuilder():
         from .....models import unified_rbac_resource_namespace
 
         return await self.request_adapter.send_async(request_info, unified_rbac_resource_namespace.UnifiedRbacResourceNamespace, error_mapping)
-    
-    def resource_actions_by_id(self,id: str) -> unified_rbac_resource_action_item_request_builder.UnifiedRbacResourceActionItemRequestBuilder:
-        """
-        Provides operations to manage the resourceActions property of the microsoft.graph.unifiedRbacResourceNamespace entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: unified_rbac_resource_action_item_request_builder.UnifiedRbacResourceActionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .resource_actions.item import unified_rbac_resource_action_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["unifiedRbacResourceAction%2Did"] = id
-        return unified_rbac_resource_action_item_request_builder.UnifiedRbacResourceActionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[UnifiedRbacResourceNamespaceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

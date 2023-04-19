@@ -14,9 +14,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .assign import assign_request_builder
     from .assignments import assignments_request_builder
-    from .assignments.item import mobile_app_assignment_item_request_builder
     from .categories import categories_request_builder
-    from .categories.item import mobile_app_category_item_request_builder
     from .graph_managed_mobile_lob_app import graph_managed_mobile_lob_app_request_builder
     from .graph_mobile_lob_app import graph_mobile_lob_app_request_builder
 
@@ -41,36 +39,6 @@ class MobileAppItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def assignments_by_id(self,id: str) -> mobile_app_assignment_item_request_builder.MobileAppAssignmentItemRequestBuilder:
-        """
-        Provides operations to manage the assignments property of the microsoft.graph.mobileApp entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: mobile_app_assignment_item_request_builder.MobileAppAssignmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .assignments.item import mobile_app_assignment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["mobileAppAssignment%2Did"] = id
-        return mobile_app_assignment_item_request_builder.MobileAppAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def categories_by_id(self,id: str) -> mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder:
-        """
-        Provides operations to manage the categories property of the microsoft.graph.mobileApp entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .categories.item import mobile_app_category_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["mobileAppCategory%2Did"] = id
-        return mobile_app_category_item_request_builder.MobileAppCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[MobileAppItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """

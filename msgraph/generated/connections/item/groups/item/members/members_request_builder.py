@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ......models.external_connectors import identity, identity_collection_response
     from ......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import identity_item_request_builder
 
 class MembersRequestBuilder():
     """
@@ -35,6 +36,21 @@ class MembersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_identity_id(self,identity_id: str) -> identity_item_request_builder.IdentityItemRequestBuilder:
+        """
+        Provides operations to manage the members property of the microsoft.graph.externalConnectors.externalGroup entity.
+        Args:
+            identity_id: Unique identifier of the item
+        Returns: identity_item_request_builder.IdentityItemRequestBuilder
+        """
+        if identity_id is None:
+            raise Exception("identity_id cannot be undefined")
+        from .item import identity_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["identity%2Did"] = identity_id
+        return identity_item_request_builder.IdentityItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_collection_response.IdentityCollectionResponse]:
         """

@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ...models import outlook_user
     from ...models.o_data_errors import o_data_error
     from .master_categories import master_categories_request_builder
-    from .master_categories.item import outlook_category_item_request_builder
     from .supported_languages import supported_languages_request_builder
     from .supported_time_zones import supported_time_zones_request_builder
     from .supported_time_zones_with_time_zone_standard import supported_time_zones_with_time_zone_standard_request_builder
@@ -61,21 +60,6 @@ class OutlookRequestBuilder():
         from ...models import outlook_user
 
         return await self.request_adapter.send_async(request_info, outlook_user.OutlookUser, error_mapping)
-    
-    def master_categories_by_id(self,id: str) -> outlook_category_item_request_builder.OutlookCategoryItemRequestBuilder:
-        """
-        Provides operations to manage the masterCategories property of the microsoft.graph.outlookUser entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: outlook_category_item_request_builder.OutlookCategoryItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .master_categories.item import outlook_category_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["outlookCategory%2Did"] = id
-        return outlook_category_item_request_builder.OutlookCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def supported_time_zones_with_time_zone_standard(self,time_zone_standard: Optional[str] = None) -> supported_time_zones_with_time_zone_standard_request_builder.SupportedTimeZonesWithTimeZoneStandardRequestBuilder:
         """

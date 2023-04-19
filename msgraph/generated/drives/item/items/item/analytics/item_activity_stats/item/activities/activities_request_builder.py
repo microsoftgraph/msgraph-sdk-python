@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .........models import item_activity, item_activity_collection_response
     from .........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import item_activity_item_request_builder
 
 class ActivitiesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ActivitiesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_item_activity_id(self,item_activity_id: str) -> item_activity_item_request_builder.ItemActivityItemRequestBuilder:
+        """
+        Provides operations to manage the activities property of the microsoft.graph.itemActivityStat entity.
+        Args:
+            item_activity_id: Unique identifier of the item
+        Returns: item_activity_item_request_builder.ItemActivityItemRequestBuilder
+        """
+        if item_activity_id is None:
+            raise Exception("item_activity_id cannot be undefined")
+        from .item import item_activity_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["itemActivity%2Did"] = item_activity_id
+        return item_activity_item_request_builder.ItemActivityItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ActivitiesRequestBuilderGetRequestConfiguration] = None) -> Optional[item_activity_collection_response.ItemActivityCollectionResponse]:
         """

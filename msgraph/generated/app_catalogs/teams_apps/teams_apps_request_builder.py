@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import teams_app, teams_app_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import teams_app_item_request_builder
 
 class TeamsAppsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class TeamsAppsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_teams_app_id(self,teams_app_id: str) -> teams_app_item_request_builder.TeamsAppItemRequestBuilder:
+        """
+        Provides operations to manage the teamsApps property of the microsoft.graph.appCatalogs entity.
+        Args:
+            teams_app_id: Unique identifier of the item
+        Returns: teams_app_item_request_builder.TeamsAppItemRequestBuilder
+        """
+        if teams_app_id is None:
+            raise Exception("teams_app_id cannot be undefined")
+        from .item import teams_app_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["teamsApp%2Did"] = teams_app_id
+        return teams_app_item_request_builder.TeamsAppItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[TeamsAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_app_collection_response.TeamsAppCollectionResponse]:
         """

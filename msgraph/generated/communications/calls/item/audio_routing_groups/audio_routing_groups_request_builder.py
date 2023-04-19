@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import audio_routing_group, audio_routing_group_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import audio_routing_group_item_request_builder
 
 class AudioRoutingGroupsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class AudioRoutingGroupsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_audio_routing_group_id(self,audio_routing_group_id: str) -> audio_routing_group_item_request_builder.AudioRoutingGroupItemRequestBuilder:
+        """
+        Provides operations to manage the audioRoutingGroups property of the microsoft.graph.call entity.
+        Args:
+            audio_routing_group_id: Unique identifier of the item
+        Returns: audio_routing_group_item_request_builder.AudioRoutingGroupItemRequestBuilder
+        """
+        if audio_routing_group_id is None:
+            raise Exception("audio_routing_group_id cannot be undefined")
+        from .item import audio_routing_group_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["audioRoutingGroup%2Did"] = audio_routing_group_id
+        return audio_routing_group_item_request_builder.AudioRoutingGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AudioRoutingGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[audio_routing_group_collection_response.AudioRoutingGroupCollectionResponse]:
         """

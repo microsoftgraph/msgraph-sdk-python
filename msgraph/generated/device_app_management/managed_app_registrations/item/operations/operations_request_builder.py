@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import managed_app_operation, managed_app_operation_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import managed_app_operation_item_request_builder
 
 class OperationsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class OperationsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_managed_app_operation_id(self,managed_app_operation_id: str) -> managed_app_operation_item_request_builder.ManagedAppOperationItemRequestBuilder:
+        """
+        Provides operations to manage the operations property of the microsoft.graph.managedAppRegistration entity.
+        Args:
+            managed_app_operation_id: Unique identifier of the item
+        Returns: managed_app_operation_item_request_builder.ManagedAppOperationItemRequestBuilder
+        """
+        if managed_app_operation_id is None:
+            raise Exception("managed_app_operation_id cannot be undefined")
+        from .item import managed_app_operation_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["managedAppOperation%2Did"] = managed_app_operation_id
+        return managed_app_operation_item_request_builder.ManagedAppOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_app_operation_collection_response.ManagedAppOperationCollectionResponse]:
         """

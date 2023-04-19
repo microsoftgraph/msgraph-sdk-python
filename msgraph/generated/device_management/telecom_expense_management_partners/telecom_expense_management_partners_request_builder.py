@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import telecom_expense_management_partner, telecom_expense_management_partner_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import telecom_expense_management_partner_item_request_builder
 
 class TelecomExpenseManagementPartnersRequestBuilder():
     """
@@ -35,6 +36,21 @@ class TelecomExpenseManagementPartnersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_telecom_expense_management_partner_id(self,telecom_expense_management_partner_id: str) -> telecom_expense_management_partner_item_request_builder.TelecomExpenseManagementPartnerItemRequestBuilder:
+        """
+        Provides operations to manage the telecomExpenseManagementPartners property of the microsoft.graph.deviceManagement entity.
+        Args:
+            telecom_expense_management_partner_id: Unique identifier of the item
+        Returns: telecom_expense_management_partner_item_request_builder.TelecomExpenseManagementPartnerItemRequestBuilder
+        """
+        if telecom_expense_management_partner_id is None:
+            raise Exception("telecom_expense_management_partner_id cannot be undefined")
+        from .item import telecom_expense_management_partner_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["telecomExpenseManagementPartner%2Did"] = telecom_expense_management_partner_id
+        return telecom_expense_management_partner_item_request_builder.TelecomExpenseManagementPartnerItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[TelecomExpenseManagementPartnersRequestBuilderGetRequestConfiguration] = None) -> Optional[telecom_expense_management_partner_collection_response.TelecomExpenseManagementPartnerCollectionResponse]:
         """

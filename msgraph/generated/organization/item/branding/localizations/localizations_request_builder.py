@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import organizational_branding_localization, organizational_branding_localization_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import organizational_branding_localization_item_request_builder
 
 class LocalizationsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class LocalizationsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_organizational_branding_localization_id(self,organizational_branding_localization_id: str) -> organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder:
+        """
+        Provides operations to manage the localizations property of the microsoft.graph.organizationalBranding entity.
+        Args:
+            organizational_branding_localization_id: Unique identifier of the item
+        Returns: organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder
+        """
+        if organizational_branding_localization_id is None:
+            raise Exception("organizational_branding_localization_id cannot be undefined")
+        from .item import organizational_branding_localization_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["organizationalBrandingLocalization%2Did"] = organizational_branding_localization_id
+        return organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[LocalizationsRequestBuilderGetRequestConfiguration] = None) -> Optional[organizational_branding_localization_collection_response.OrganizationalBrandingLocalizationCollectionResponse]:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import delegated_admin_customer, delegated_admin_customer_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import delegated_admin_customer_item_request_builder
 
 class DelegatedAdminCustomersRequestBuilder():
     """
@@ -35,6 +36,21 @@ class DelegatedAdminCustomersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_delegated_admin_customer_id(self,delegated_admin_customer_id: str) -> delegated_admin_customer_item_request_builder.DelegatedAdminCustomerItemRequestBuilder:
+        """
+        Provides operations to manage the delegatedAdminCustomers property of the microsoft.graph.tenantRelationship entity.
+        Args:
+            delegated_admin_customer_id: Unique identifier of the item
+        Returns: delegated_admin_customer_item_request_builder.DelegatedAdminCustomerItemRequestBuilder
+        """
+        if delegated_admin_customer_id is None:
+            raise Exception("delegated_admin_customer_id cannot be undefined")
+        from .item import delegated_admin_customer_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["delegatedAdminCustomer%2Did"] = delegated_admin_customer_id
+        return delegated_admin_customer_item_request_builder.DelegatedAdminCustomerItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[DelegatedAdminCustomersRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_admin_customer_collection_response.DelegatedAdminCustomerCollectionResponse]:
         """

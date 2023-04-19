@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import provisioning_object_summary, provisioning_object_summary_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import provisioning_object_summary_item_request_builder
 
 class ProvisioningRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ProvisioningRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_provisioning_object_summary_id(self,provisioning_object_summary_id: str) -> provisioning_object_summary_item_request_builder.ProvisioningObjectSummaryItemRequestBuilder:
+        """
+        Provides operations to manage the provisioning property of the microsoft.graph.auditLogRoot entity.
+        Args:
+            provisioning_object_summary_id: Unique identifier of the item
+        Returns: provisioning_object_summary_item_request_builder.ProvisioningObjectSummaryItemRequestBuilder
+        """
+        if provisioning_object_summary_id is None:
+            raise Exception("provisioning_object_summary_id cannot be undefined")
+        from .item import provisioning_object_summary_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["provisioningObjectSummary%2Did"] = provisioning_object_summary_id
+        return provisioning_object_summary_item_request_builder.ProvisioningObjectSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ProvisioningRequestBuilderGetRequestConfiguration] = None) -> Optional[provisioning_object_summary_collection_response.ProvisioningObjectSummaryCollectionResponse]:
         """

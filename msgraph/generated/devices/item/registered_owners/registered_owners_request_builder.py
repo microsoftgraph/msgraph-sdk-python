@@ -17,6 +17,7 @@ if TYPE_CHECKING:
     from .graph_endpoint import graph_endpoint_request_builder
     from .graph_service_principal import graph_service_principal_request_builder
     from .graph_user import graph_user_request_builder
+    from .item import directory_object_item_request_builder
     from .ref import ref_request_builder
 
 class RegisteredOwnersRequestBuilder():
@@ -40,6 +41,21 @@ class RegisteredOwnersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_directory_object_id(self,directory_object_id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
+        """
+        Gets an item from the msgraph.generated.devices.item.registeredOwners.item collection
+        Args:
+            directory_object_id: Unique identifier of the item
+        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
+        """
+        if directory_object_id is None:
+            raise Exception("directory_object_id cannot be undefined")
+        from .item import directory_object_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["directoryObject%2Did"] = directory_object_id
+        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RegisteredOwnersRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
         """

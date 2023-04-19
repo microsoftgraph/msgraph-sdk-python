@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import pinned_chat_message_info, pinned_chat_message_info_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import pinned_chat_message_info_item_request_builder
 
 class PinnedMessagesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class PinnedMessagesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_pinned_chat_message_info_id(self,pinned_chat_message_info_id: str) -> pinned_chat_message_info_item_request_builder.PinnedChatMessageInfoItemRequestBuilder:
+        """
+        Provides operations to manage the pinnedMessages property of the microsoft.graph.chat entity.
+        Args:
+            pinned_chat_message_info_id: Unique identifier of the item
+        Returns: pinned_chat_message_info_item_request_builder.PinnedChatMessageInfoItemRequestBuilder
+        """
+        if pinned_chat_message_info_id is None:
+            raise Exception("pinned_chat_message_info_id cannot be undefined")
+        from .item import pinned_chat_message_info_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["pinnedChatMessageInfo%2Did"] = pinned_chat_message_info_id
+        return pinned_chat_message_info_item_request_builder.PinnedChatMessageInfoItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[PinnedMessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[pinned_chat_message_info_collection_response.PinnedChatMessageInfoCollectionResponse]:
         """

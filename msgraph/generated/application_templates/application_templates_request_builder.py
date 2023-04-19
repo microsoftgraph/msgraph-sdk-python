@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models import application_template_collection_response
     from ..models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import application_template_item_request_builder
 
 class ApplicationTemplatesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ApplicationTemplatesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_application_template_id(self,application_template_id: str) -> application_template_item_request_builder.ApplicationTemplateItemRequestBuilder:
+        """
+        Provides operations to manage the collection of applicationTemplate entities.
+        Args:
+            application_template_id: Unique identifier of the item
+        Returns: application_template_item_request_builder.ApplicationTemplateItemRequestBuilder
+        """
+        if application_template_id is None:
+            raise Exception("application_template_id cannot be undefined")
+        from .item import application_template_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["applicationTemplate%2Did"] = application_template_id
+        return application_template_item_request_builder.ApplicationTemplateItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ApplicationTemplatesRequestBuilderGetRequestConfiguration] = None) -> Optional[application_template_collection_response.ApplicationTemplateCollectionResponse]:
         """

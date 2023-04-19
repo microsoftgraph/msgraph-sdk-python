@@ -13,17 +13,11 @@ if TYPE_CHECKING:
     from ..models import print
     from ..models.o_data_errors import o_data_error
     from .connectors import connectors_request_builder
-    from .connectors.item import print_connector_item_request_builder
     from .operations import operations_request_builder
-    from .operations.item import print_operation_item_request_builder
     from .printers import printers_request_builder
-    from .printers.item import printer_item_request_builder
     from .services import services_request_builder
-    from .services.item import print_service_item_request_builder
     from .shares import shares_request_builder
-    from .shares.item import printer_share_item_request_builder
     from .task_definitions import task_definitions_request_builder
-    from .task_definitions.item import print_task_definition_item_request_builder
 
 class PrintRequestBuilder():
     """
@@ -47,21 +41,6 @@ class PrintRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def connectors_by_id(self,id: str) -> print_connector_item_request_builder.PrintConnectorItemRequestBuilder:
-        """
-        Provides operations to manage the connectors property of the microsoft.graph.print entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: print_connector_item_request_builder.PrintConnectorItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .connectors.item import print_connector_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["printConnector%2Did"] = id
-        return print_connector_item_request_builder.PrintConnectorItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def get(self,request_configuration: Optional[PrintRequestBuilderGetRequestConfiguration] = None) -> Optional[print.Print]:
         """
         Get print
@@ -83,21 +62,6 @@ class PrintRequestBuilder():
         from ..models import print
 
         return await self.request_adapter.send_async(request_info, print.Print, error_mapping)
-    
-    def operations_by_id(self,id: str) -> print_operation_item_request_builder.PrintOperationItemRequestBuilder:
-        """
-        Provides operations to manage the operations property of the microsoft.graph.print entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: print_operation_item_request_builder.PrintOperationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .operations.item import print_operation_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["printOperation%2Did"] = id
-        return print_operation_item_request_builder.PrintOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[print.Print] = None, request_configuration: Optional[PrintRequestBuilderPatchRequestConfiguration] = None) -> Optional[print.Print]:
         """
@@ -123,66 +87,6 @@ class PrintRequestBuilder():
         from ..models import print
 
         return await self.request_adapter.send_async(request_info, print.Print, error_mapping)
-    
-    def printers_by_id(self,id: str) -> printer_item_request_builder.PrinterItemRequestBuilder:
-        """
-        Provides operations to manage the printers property of the microsoft.graph.print entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: printer_item_request_builder.PrinterItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .printers.item import printer_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["printer%2Did"] = id
-        return printer_item_request_builder.PrinterItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def services_by_id(self,id: str) -> print_service_item_request_builder.PrintServiceItemRequestBuilder:
-        """
-        Provides operations to manage the services property of the microsoft.graph.print entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: print_service_item_request_builder.PrintServiceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .services.item import print_service_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["printService%2Did"] = id
-        return print_service_item_request_builder.PrintServiceItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def shares_by_id(self,id: str) -> printer_share_item_request_builder.PrinterShareItemRequestBuilder:
-        """
-        Provides operations to manage the shares property of the microsoft.graph.print entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: printer_share_item_request_builder.PrinterShareItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .shares.item import printer_share_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["printerShare%2Did"] = id
-        return printer_share_item_request_builder.PrinterShareItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def task_definitions_by_id(self,id: str) -> print_task_definition_item_request_builder.PrintTaskDefinitionItemRequestBuilder:
-        """
-        Provides operations to manage the taskDefinitions property of the microsoft.graph.print entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: print_task_definition_item_request_builder.PrintTaskDefinitionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .task_definitions.item import print_task_definition_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["printTaskDefinition%2Did"] = id
-        return print_task_definition_item_request_builder.PrintTaskDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_get_request_information(self,request_configuration: Optional[PrintRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

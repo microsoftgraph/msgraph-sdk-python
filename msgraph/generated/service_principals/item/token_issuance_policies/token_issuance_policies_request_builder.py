@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import token_issuance_policy_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import token_issuance_policy_item_request_builder
 
 class TokenIssuancePoliciesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class TokenIssuancePoliciesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_token_issuance_policy_id(self,token_issuance_policy_id: str) -> token_issuance_policy_item_request_builder.TokenIssuancePolicyItemRequestBuilder:
+        """
+        Provides operations to manage the tokenIssuancePolicies property of the microsoft.graph.servicePrincipal entity.
+        Args:
+            token_issuance_policy_id: Unique identifier of the item
+        Returns: token_issuance_policy_item_request_builder.TokenIssuancePolicyItemRequestBuilder
+        """
+        if token_issuance_policy_id is None:
+            raise Exception("token_issuance_policy_id cannot be undefined")
+        from .item import token_issuance_policy_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["tokenIssuancePolicy%2Did"] = token_issuance_policy_id
+        return token_issuance_policy_item_request_builder.TokenIssuancePolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[TokenIssuancePoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[token_issuance_policy_collection_response.TokenIssuancePolicyCollectionResponse]:
         """

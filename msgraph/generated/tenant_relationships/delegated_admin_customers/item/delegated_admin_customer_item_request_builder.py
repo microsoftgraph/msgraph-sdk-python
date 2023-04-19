@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ....models import delegated_admin_customer
     from ....models.o_data_errors import o_data_error
     from .service_management_details import service_management_details_request_builder
-    from .service_management_details.item import delegated_admin_service_management_detail_item_request_builder
 
 class DelegatedAdminCustomerItemRequestBuilder():
     """
@@ -102,21 +101,6 @@ class DelegatedAdminCustomerItemRequestBuilder():
         from ....models import delegated_admin_customer
 
         return await self.request_adapter.send_async(request_info, delegated_admin_customer.DelegatedAdminCustomer, error_mapping)
-    
-    def service_management_details_by_id(self,id: str) -> delegated_admin_service_management_detail_item_request_builder.DelegatedAdminServiceManagementDetailItemRequestBuilder:
-        """
-        Provides operations to manage the serviceManagementDetails property of the microsoft.graph.delegatedAdminCustomer entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: delegated_admin_service_management_detail_item_request_builder.DelegatedAdminServiceManagementDetailItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .service_management_details.item import delegated_admin_service_management_detail_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["delegatedAdminServiceManagementDetail%2Did"] = id
-        return delegated_admin_service_management_detail_item_request_builder.DelegatedAdminServiceManagementDetailItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[DelegatedAdminCustomerItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import email_authentication_method, email_authentication_method_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import email_authentication_method_item_request_builder
 
 class EmailMethodsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class EmailMethodsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_email_authentication_method_id(self,email_authentication_method_id: str) -> email_authentication_method_item_request_builder.EmailAuthenticationMethodItemRequestBuilder:
+        """
+        Provides operations to manage the emailMethods property of the microsoft.graph.authentication entity.
+        Args:
+            email_authentication_method_id: Unique identifier of the item
+        Returns: email_authentication_method_item_request_builder.EmailAuthenticationMethodItemRequestBuilder
+        """
+        if email_authentication_method_id is None:
+            raise Exception("email_authentication_method_id cannot be undefined")
+        from .item import email_authentication_method_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["emailAuthenticationMethod%2Did"] = email_authentication_method_id
+        return email_authentication_method_item_request_builder.EmailAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[EmailMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[email_authentication_method_collection_response.EmailAuthenticationMethodCollectionResponse]:
         """

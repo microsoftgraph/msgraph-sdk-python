@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import secure_score_control_profile, secure_score_control_profile_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import secure_score_control_profile_item_request_builder
 
 class SecureScoreControlProfilesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class SecureScoreControlProfilesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_secure_score_control_profile_id(self,secure_score_control_profile_id: str) -> secure_score_control_profile_item_request_builder.SecureScoreControlProfileItemRequestBuilder:
+        """
+        Provides operations to manage the secureScoreControlProfiles property of the microsoft.graph.security entity.
+        Args:
+            secure_score_control_profile_id: Unique identifier of the item
+        Returns: secure_score_control_profile_item_request_builder.SecureScoreControlProfileItemRequestBuilder
+        """
+        if secure_score_control_profile_id is None:
+            raise Exception("secure_score_control_profile_id cannot be undefined")
+        from .item import secure_score_control_profile_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["secureScoreControlProfile%2Did"] = secure_score_control_profile_id
+        return secure_score_control_profile_item_request_builder.SecureScoreControlProfileItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SecureScoreControlProfilesRequestBuilderGetRequestConfiguration] = None) -> Optional[secure_score_control_profile_collection_response.SecureScoreControlProfileCollectionResponse]:
         """

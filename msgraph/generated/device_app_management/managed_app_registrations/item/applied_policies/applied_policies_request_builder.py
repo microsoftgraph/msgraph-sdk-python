@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import managed_app_policy, managed_app_policy_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import managed_app_policy_item_request_builder
 
 class AppliedPoliciesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class AppliedPoliciesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_managed_app_policy_id(self,managed_app_policy_id: str) -> managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder:
+        """
+        Provides operations to manage the appliedPolicies property of the microsoft.graph.managedAppRegistration entity.
+        Args:
+            managed_app_policy_id: Unique identifier of the item
+        Returns: managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder
+        """
+        if managed_app_policy_id is None:
+            raise Exception("managed_app_policy_id cannot be undefined")
+        from .item import managed_app_policy_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["managedAppPolicy%2Did"] = managed_app_policy_id
+        return managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AppliedPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_app_policy_collection_response.ManagedAppPolicyCollectionResponse]:
         """

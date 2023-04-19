@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .....models import access_review_schedule_definition
     from .....models.o_data_errors import o_data_error
     from .instances import instances_request_builder
-    from .instances.item import access_review_instance_item_request_builder
     from .stop import stop_request_builder
 
 class AccessReviewScheduleDefinitionItemRequestBuilder():
@@ -78,21 +77,6 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
         from .....models import access_review_schedule_definition
 
         return await self.request_adapter.send_async(request_info, access_review_schedule_definition.AccessReviewScheduleDefinition, error_mapping)
-    
-    def instances_by_id(self,id: str) -> access_review_instance_item_request_builder.AccessReviewInstanceItemRequestBuilder:
-        """
-        Provides operations to manage the instances property of the microsoft.graph.accessReviewScheduleDefinition entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_review_instance_item_request_builder.AccessReviewInstanceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .instances.item import access_review_instance_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessReviewInstance%2Did"] = id
-        return access_review_instance_item_request_builder.AccessReviewInstanceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[access_review_schedule_definition.AccessReviewScheduleDefinition] = None, request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[access_review_schedule_definition.AccessReviewScheduleDefinition]:
         """

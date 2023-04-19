@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import domain_dns_record, domain_dns_record_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import domain_dns_record_item_request_builder
 
 class ServiceConfigurationRecordsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ServiceConfigurationRecordsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_domain_dns_record_id(self,domain_dns_record_id: str) -> domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder:
+        """
+        Provides operations to manage the serviceConfigurationRecords property of the microsoft.graph.domain entity.
+        Args:
+            domain_dns_record_id: Unique identifier of the item
+        Returns: domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder
+        """
+        if domain_dns_record_id is None:
+            raise Exception("domain_dns_record_id cannot be undefined")
+        from .item import domain_dns_record_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["domainDnsRecord%2Did"] = domain_dns_record_id
+        return domain_dns_record_item_request_builder.DomainDnsRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ServiceConfigurationRecordsRequestBuilderGetRequestConfiguration] = None) -> Optional[domain_dns_record_collection_response.DomainDnsRecordCollectionResponse]:
         """

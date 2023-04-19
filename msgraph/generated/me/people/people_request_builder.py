@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import person_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import person_item_request_builder
 
 class PeopleRequestBuilder():
     """
@@ -35,6 +36,21 @@ class PeopleRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_person_id(self,person_id: str) -> person_item_request_builder.PersonItemRequestBuilder:
+        """
+        Provides operations to manage the people property of the microsoft.graph.user entity.
+        Args:
+            person_id: Unique identifier of the item
+        Returns: person_item_request_builder.PersonItemRequestBuilder
+        """
+        if person_id is None:
+            raise Exception("person_id cannot be undefined")
+        from .item import person_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["person%2Did"] = person_id
+        return person_item_request_builder.PersonItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[PeopleRequestBuilderGetRequestConfiguration] = None) -> Optional[person_collection_response.PersonCollectionResponse]:
         """

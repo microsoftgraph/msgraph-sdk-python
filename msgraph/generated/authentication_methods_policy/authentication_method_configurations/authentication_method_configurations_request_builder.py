@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import authentication_method_configuration, authentication_method_configuration_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import authentication_method_configuration_item_request_builder
 
 class AuthenticationMethodConfigurationsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class AuthenticationMethodConfigurationsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_authentication_method_configuration_id(self,authentication_method_configuration_id: str) -> authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder:
+        """
+        Provides operations to manage the authenticationMethodConfigurations property of the microsoft.graph.authenticationMethodsPolicy entity.
+        Args:
+            authentication_method_configuration_id: Unique identifier of the item
+        Returns: authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder
+        """
+        if authentication_method_configuration_id is None:
+            raise Exception("authentication_method_configuration_id cannot be undefined")
+        from .item import authentication_method_configuration_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["authenticationMethodConfiguration%2Did"] = authentication_method_configuration_id
+        return authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AuthenticationMethodConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_method_configuration_collection_response.AuthenticationMethodConfigurationCollectionResponse]:
         """

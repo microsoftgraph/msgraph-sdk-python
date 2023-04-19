@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .delta import delta_request_builder
     from .get_available_extension_properties import get_available_extension_properties_request_builder
     from .get_by_ids import get_by_ids_request_builder
+    from .item import service_principal_item_request_builder
     from .validate_properties import validate_properties_request_builder
 
 class ServicePrincipalsRequestBuilder():
@@ -39,6 +40,21 @@ class ServicePrincipalsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_service_principal_id(self,service_principal_id: str) -> service_principal_item_request_builder.ServicePrincipalItemRequestBuilder:
+        """
+        Provides operations to manage the collection of servicePrincipal entities.
+        Args:
+            service_principal_id: Unique identifier of the item
+        Returns: service_principal_item_request_builder.ServicePrincipalItemRequestBuilder
+        """
+        if service_principal_id is None:
+            raise Exception("service_principal_id cannot be undefined")
+        from .item import service_principal_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["servicePrincipal%2Did"] = service_principal_id
+        return service_principal_item_request_builder.ServicePrincipalItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ServicePrincipalsRequestBuilderGetRequestConfiguration] = None) -> Optional[service_principal_collection_response.ServicePrincipalCollectionResponse]:
         """

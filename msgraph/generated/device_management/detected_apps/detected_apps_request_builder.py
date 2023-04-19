@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import detected_app, detected_app_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import detected_app_item_request_builder
 
 class DetectedAppsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class DetectedAppsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_detected_app_id(self,detected_app_id: str) -> detected_app_item_request_builder.DetectedAppItemRequestBuilder:
+        """
+        Provides operations to manage the detectedApps property of the microsoft.graph.deviceManagement entity.
+        Args:
+            detected_app_id: Unique identifier of the item
+        Returns: detected_app_item_request_builder.DetectedAppItemRequestBuilder
+        """
+        if detected_app_id is None:
+            raise Exception("detected_app_id cannot be undefined")
+        from .item import detected_app_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["detectedApp%2Did"] = detected_app_id
+        return detected_app_item_request_builder.DetectedAppItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[DetectedAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[detected_app_collection_response.DetectedAppCollectionResponse]:
         """

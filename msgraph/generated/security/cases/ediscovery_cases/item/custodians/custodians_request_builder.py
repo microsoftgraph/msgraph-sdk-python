@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ......models.o_data_errors import o_data_error
     from ......models.security import ediscovery_custodian, ediscovery_custodian_collection_response
     from .count import count_request_builder
+    from .item import ediscovery_custodian_item_request_builder
     from .security_apply_hold import security_apply_hold_request_builder
     from .security_remove_hold import security_remove_hold_request_builder
 
@@ -37,6 +38,21 @@ class CustodiansRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_ediscovery_custodian_id(self,ediscovery_custodian_id: str) -> ediscovery_custodian_item_request_builder.EdiscoveryCustodianItemRequestBuilder:
+        """
+        Provides operations to manage the custodians property of the microsoft.graph.security.ediscoveryCase entity.
+        Args:
+            ediscovery_custodian_id: Unique identifier of the item
+        Returns: ediscovery_custodian_item_request_builder.EdiscoveryCustodianItemRequestBuilder
+        """
+        if ediscovery_custodian_id is None:
+            raise Exception("ediscovery_custodian_id cannot be undefined")
+        from .item import ediscovery_custodian_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["ediscoveryCustodian%2Did"] = ediscovery_custodian_id
+        return ediscovery_custodian_item_request_builder.EdiscoveryCustodianItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[CustodiansRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_custodian_collection_response.EdiscoveryCustodianCollectionResponse]:
         """

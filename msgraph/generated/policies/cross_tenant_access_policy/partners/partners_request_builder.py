@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import cross_tenant_access_policy_configuration_partner, cross_tenant_access_policy_configuration_partner_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import cross_tenant_access_policy_configuration_partner_tenant_item_request_builder
 
 class PartnersRequestBuilder():
     """
@@ -35,6 +36,21 @@ class PartnersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_cross_tenant_access_policy_configuration_partner_tenant_id(self,cross_tenant_access_policy_configuration_partner_tenant_id: str) -> cross_tenant_access_policy_configuration_partner_tenant_item_request_builder.CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder:
+        """
+        Provides operations to manage the partners property of the microsoft.graph.crossTenantAccessPolicy entity.
+        Args:
+            cross_tenant_access_policy_configuration_partner_tenant_id: Unique identifier of the item
+        Returns: cross_tenant_access_policy_configuration_partner_tenant_item_request_builder.CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder
+        """
+        if cross_tenant_access_policy_configuration_partner_tenant_id is None:
+            raise Exception("cross_tenant_access_policy_configuration_partner_tenant_id cannot be undefined")
+        from .item import cross_tenant_access_policy_configuration_partner_tenant_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["crossTenantAccessPolicyConfigurationPartner%2DtenantId"] = cross_tenant_access_policy_configuration_partner_tenant_id
+        return cross_tenant_access_policy_configuration_partner_tenant_item_request_builder.CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[PartnersRequestBuilderGetRequestConfiguration] = None) -> Optional[cross_tenant_access_policy_configuration_partner_collection_response.CrossTenantAccessPolicyConfigurationPartnerCollectionResponse]:
         """

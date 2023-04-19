@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
+    from .item import access_review_schedule_definition_item_request_builder
 
 class DefinitionsRequestBuilder():
     """
@@ -36,6 +37,21 @@ class DefinitionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_access_review_schedule_definition_id(self,access_review_schedule_definition_id: str) -> access_review_schedule_definition_item_request_builder.AccessReviewScheduleDefinitionItemRequestBuilder:
+        """
+        Provides operations to manage the definitions property of the microsoft.graph.accessReviewSet entity.
+        Args:
+            access_review_schedule_definition_id: Unique identifier of the item
+        Returns: access_review_schedule_definition_item_request_builder.AccessReviewScheduleDefinitionItemRequestBuilder
+        """
+        if access_review_schedule_definition_id is None:
+            raise Exception("access_review_schedule_definition_id cannot be undefined")
+        from .item import access_review_schedule_definition_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["accessReviewScheduleDefinition%2Did"] = access_review_schedule_definition_id
+        return access_review_schedule_definition_item_request_builder.AccessReviewScheduleDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
         """

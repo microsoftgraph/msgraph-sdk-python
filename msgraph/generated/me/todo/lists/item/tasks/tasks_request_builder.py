@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ......models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .delta import delta_request_builder
+    from .item import todo_task_item_request_builder
 
 class TasksRequestBuilder():
     """
@@ -36,6 +37,21 @@ class TasksRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_todo_task_id(self,todo_task_id: str) -> todo_task_item_request_builder.TodoTaskItemRequestBuilder:
+        """
+        Provides operations to manage the tasks property of the microsoft.graph.todoTaskList entity.
+        Args:
+            todo_task_id: Unique identifier of the item
+        Returns: todo_task_item_request_builder.TodoTaskItemRequestBuilder
+        """
+        if todo_task_id is None:
+            raise Exception("todo_task_id cannot be undefined")
+        from .item import todo_task_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["todoTask%2Did"] = todo_task_id
+        return todo_task_item_request_builder.TodoTaskItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[TasksRequestBuilderGetRequestConfiguration] = None) -> Optional[todo_task_collection_response.TodoTaskCollectionResponse]:
         """

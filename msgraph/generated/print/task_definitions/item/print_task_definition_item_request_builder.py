@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ....models import print_task_definition
     from ....models.o_data_errors import o_data_error
     from .tasks import tasks_request_builder
-    from .tasks.item import print_task_item_request_builder
 
 class PrintTaskDefinitionItemRequestBuilder():
     """
@@ -102,21 +101,6 @@ class PrintTaskDefinitionItemRequestBuilder():
         from ....models import print_task_definition
 
         return await self.request_adapter.send_async(request_info, print_task_definition.PrintTaskDefinition, error_mapping)
-    
-    def tasks_by_id(self,id: str) -> print_task_item_request_builder.PrintTaskItemRequestBuilder:
-        """
-        Provides operations to manage the tasks property of the microsoft.graph.printTaskDefinition entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: print_task_item_request_builder.PrintTaskItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .tasks.item import print_task_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["printTask%2Did"] = id
-        return print_task_item_request_builder.PrintTaskItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

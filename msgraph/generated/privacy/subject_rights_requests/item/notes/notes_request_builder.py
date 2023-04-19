@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import authored_note, authored_note_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import authored_note_item_request_builder
 
 class NotesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class NotesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_authored_note_id(self,authored_note_id: str) -> authored_note_item_request_builder.AuthoredNoteItemRequestBuilder:
+        """
+        Provides operations to manage the notes property of the microsoft.graph.subjectRightsRequest entity.
+        Args:
+            authored_note_id: Unique identifier of the item
+        Returns: authored_note_item_request_builder.AuthoredNoteItemRequestBuilder
+        """
+        if authored_note_id is None:
+            raise Exception("authored_note_id cannot be undefined")
+        from .item import authored_note_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["authoredNote%2Did"] = authored_note_id
+        return authored_note_item_request_builder.AuthoredNoteItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[NotesRequestBuilderGetRequestConfiguration] = None) -> Optional[authored_note_collection_response.AuthoredNoteCollectionResponse]:
         """

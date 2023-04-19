@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
+    from .item import approval_item_request_builder
 
 class AccessPackageAssignmentApprovalsRequestBuilder():
     """
@@ -36,6 +37,21 @@ class AccessPackageAssignmentApprovalsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_approval_id(self,approval_id: str) -> approval_item_request_builder.ApprovalItemRequestBuilder:
+        """
+        Provides operations to manage the accessPackageAssignmentApprovals property of the microsoft.graph.entitlementManagement entity.
+        Args:
+            approval_id: Unique identifier of the item
+        Returns: approval_item_request_builder.ApprovalItemRequestBuilder
+        """
+        if approval_id is None:
+            raise Exception("approval_id cannot be undefined")
+        from .item import approval_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["approval%2Did"] = approval_id
+        return approval_item_request_builder.ApprovalItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
         """

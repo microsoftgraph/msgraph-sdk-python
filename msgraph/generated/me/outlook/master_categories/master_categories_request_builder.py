@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import outlook_category, outlook_category_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import outlook_category_item_request_builder
 
 class MasterCategoriesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class MasterCategoriesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_outlook_category_id(self,outlook_category_id: str) -> outlook_category_item_request_builder.OutlookCategoryItemRequestBuilder:
+        """
+        Provides operations to manage the masterCategories property of the microsoft.graph.outlookUser entity.
+        Args:
+            outlook_category_id: Unique identifier of the item
+        Returns: outlook_category_item_request_builder.OutlookCategoryItemRequestBuilder
+        """
+        if outlook_category_id is None:
+            raise Exception("outlook_category_id cannot be undefined")
+        from .item import outlook_category_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["outlookCategory%2Did"] = outlook_category_id
+        return outlook_category_item_request_builder.OutlookCategoryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[MasterCategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[outlook_category_collection_response.OutlookCategoryCollectionResponse]:
         """

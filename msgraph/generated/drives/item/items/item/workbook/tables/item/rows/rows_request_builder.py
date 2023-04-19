@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .........models.o_data_errors import o_data_error
     from .add import add_request_builder
     from .count import count_request_builder
+    from .item import workbook_table_row_item_request_builder
     from .item_at_with_index import item_at_with_index_request_builder
 
 class RowsRequestBuilder():
@@ -37,6 +38,21 @@ class RowsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_workbook_table_row_id(self,workbook_table_row_id: str) -> workbook_table_row_item_request_builder.WorkbookTableRowItemRequestBuilder:
+        """
+        Provides operations to manage the rows property of the microsoft.graph.workbookTable entity.
+        Args:
+            workbook_table_row_id: Unique identifier of the item
+        Returns: workbook_table_row_item_request_builder.WorkbookTableRowItemRequestBuilder
+        """
+        if workbook_table_row_id is None:
+            raise Exception("workbook_table_row_id cannot be undefined")
+        from .item import workbook_table_row_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["workbookTableRow%2Did"] = workbook_table_row_id
+        return workbook_table_row_item_request_builder.WorkbookTableRowItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RowsRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_table_row_collection_response.WorkbookTableRowCollectionResponse]:
         """

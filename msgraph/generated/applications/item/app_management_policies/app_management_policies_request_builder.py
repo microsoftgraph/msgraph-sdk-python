@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import app_management_policy_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import app_management_policy_item_request_builder
     from .ref import ref_request_builder
 
 class AppManagementPoliciesRequestBuilder():
@@ -36,6 +37,21 @@ class AppManagementPoliciesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_app_management_policy_id(self,app_management_policy_id: str) -> app_management_policy_item_request_builder.AppManagementPolicyItemRequestBuilder:
+        """
+        Gets an item from the msgraph.generated.applications.item.appManagementPolicies.item collection
+        Args:
+            app_management_policy_id: Unique identifier of the item
+        Returns: app_management_policy_item_request_builder.AppManagementPolicyItemRequestBuilder
+        """
+        if app_management_policy_id is None:
+            raise Exception("app_management_policy_id cannot be undefined")
+        from .item import app_management_policy_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["appManagementPolicy%2Did"] = app_management_policy_id
+        return app_management_policy_item_request_builder.AppManagementPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AppManagementPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[app_management_policy_collection_response.AppManagementPolicyCollectionResponse]:
         """

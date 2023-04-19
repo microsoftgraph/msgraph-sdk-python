@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .........models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .create_upload_session import create_upload_session_request_builder
+    from .item import attachment_base_item_request_builder
 
 class AttachmentsRequestBuilder():
     """
@@ -36,6 +37,21 @@ class AttachmentsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_attachment_base_id(self,attachment_base_id: str) -> attachment_base_item_request_builder.AttachmentBaseItemRequestBuilder:
+        """
+        Provides operations to manage the attachments property of the microsoft.graph.todoTask entity.
+        Args:
+            attachment_base_id: Unique identifier of the item
+        Returns: attachment_base_item_request_builder.AttachmentBaseItemRequestBuilder
+        """
+        if attachment_base_id is None:
+            raise Exception("attachment_base_id cannot be undefined")
+        from .item import attachment_base_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["attachmentBase%2Did"] = attachment_base_id
+        return attachment_base_item_request_builder.AttachmentBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AttachmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[attachment_base_collection_response.AttachmentBaseCollectionResponse]:
         """

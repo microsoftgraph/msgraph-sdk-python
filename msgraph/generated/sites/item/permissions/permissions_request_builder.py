@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import permission, permission_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import permission_item_request_builder
 
 class PermissionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class PermissionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_permission_id(self,permission_id: str) -> permission_item_request_builder.PermissionItemRequestBuilder:
+        """
+        Provides operations to manage the permissions property of the microsoft.graph.site entity.
+        Args:
+            permission_id: Unique identifier of the item
+        Returns: permission_item_request_builder.PermissionItemRequestBuilder
+        """
+        if permission_id is None:
+            raise Exception("permission_id cannot be undefined")
+        from .item import permission_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["permission%2Did"] = permission_id
+        return permission_item_request_builder.PermissionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[PermissionsRequestBuilderGetRequestConfiguration] = None) -> Optional[permission_collection_response.PermissionCollectionResponse]:
         """

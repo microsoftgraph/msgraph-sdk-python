@@ -13,12 +13,9 @@ if TYPE_CHECKING:
     from ....models import printer
     from ....models.o_data_errors import o_data_error
     from .connectors import connectors_request_builder
-    from .connectors.item import print_connector_item_request_builder
     from .restore_factory_defaults import restore_factory_defaults_request_builder
     from .shares import shares_request_builder
-    from .shares.item import printer_share_item_request_builder
     from .task_triggers import task_triggers_request_builder
-    from .task_triggers.item import print_task_trigger_item_request_builder
 
 class PrinterItemRequestBuilder():
     """
@@ -41,21 +38,6 @@ class PrinterItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def connectors_by_id(self,id: str) -> print_connector_item_request_builder.PrintConnectorItemRequestBuilder:
-        """
-        Provides operations to manage the connectors property of the microsoft.graph.printer entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: print_connector_item_request_builder.PrintConnectorItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .connectors.item import print_connector_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["printConnector%2Did"] = id
-        return print_connector_item_request_builder.PrintConnectorItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[PrinterItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -122,36 +104,6 @@ class PrinterItemRequestBuilder():
         from ....models import printer
 
         return await self.request_adapter.send_async(request_info, printer.Printer, error_mapping)
-    
-    def shares_by_id(self,id: str) -> printer_share_item_request_builder.PrinterShareItemRequestBuilder:
-        """
-        Provides operations to manage the shares property of the microsoft.graph.printer entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: printer_share_item_request_builder.PrinterShareItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .shares.item import printer_share_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["printerShare%2Did"] = id
-        return printer_share_item_request_builder.PrinterShareItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def task_triggers_by_id(self,id: str) -> print_task_trigger_item_request_builder.PrintTaskTriggerItemRequestBuilder:
-        """
-        Provides operations to manage the taskTriggers property of the microsoft.graph.printer entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: print_task_trigger_item_request_builder.PrintTaskTriggerItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .task_triggers.item import print_task_trigger_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["printTaskTrigger%2Did"] = id
-        return print_task_trigger_item_request_builder.PrintTaskTriggerItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[PrinterItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

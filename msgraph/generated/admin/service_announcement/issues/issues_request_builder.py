@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import service_health_issue, service_health_issue_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import service_health_issue_item_request_builder
 
 class IssuesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class IssuesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_service_health_issue_id(self,service_health_issue_id: str) -> service_health_issue_item_request_builder.ServiceHealthIssueItemRequestBuilder:
+        """
+        Provides operations to manage the issues property of the microsoft.graph.serviceAnnouncement entity.
+        Args:
+            service_health_issue_id: Unique identifier of the item
+        Returns: service_health_issue_item_request_builder.ServiceHealthIssueItemRequestBuilder
+        """
+        if service_health_issue_id is None:
+            raise Exception("service_health_issue_id cannot be undefined")
+        from .item import service_health_issue_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["serviceHealthIssue%2Did"] = service_health_issue_id
+        return service_health_issue_item_request_builder.ServiceHealthIssueItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[IssuesRequestBuilderGetRequestConfiguration] = None) -> Optional[service_health_issue_collection_response.ServiceHealthIssueCollectionResponse]:
         """

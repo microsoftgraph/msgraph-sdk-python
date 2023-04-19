@@ -11,7 +11,7 @@ from . import entity
 class RiskDetection(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new riskDetection and sets the default values.
+        Instantiates a new RiskDetection and sets the default values.
         """
         super().__init__()
         # Indicates the activity type the detected risk is linked to. Possible values are: signin, user, unknownFutureValue.

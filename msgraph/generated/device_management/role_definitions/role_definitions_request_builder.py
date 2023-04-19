@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import role_definition, role_definition_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import role_definition_item_request_builder
 
 class RoleDefinitionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class RoleDefinitionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_role_definition_id(self,role_definition_id: str) -> role_definition_item_request_builder.RoleDefinitionItemRequestBuilder:
+        """
+        Provides operations to manage the roleDefinitions property of the microsoft.graph.deviceManagement entity.
+        Args:
+            role_definition_id: Unique identifier of the item
+        Returns: role_definition_item_request_builder.RoleDefinitionItemRequestBuilder
+        """
+        if role_definition_id is None:
+            raise Exception("role_definition_id cannot be undefined")
+        from .item import role_definition_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["roleDefinition%2Did"] = role_definition_id
+        return role_definition_item_request_builder.RoleDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RoleDefinitionsRequestBuilderGetRequestConfiguration] = None) -> Optional[role_definition_collection_response.RoleDefinitionCollectionResponse]:
         """

@@ -15,7 +15,6 @@ if TYPE_CHECKING:
     from .background_image import background_image_request_builder
     from .banner_logo import banner_logo_request_builder
     from .localizations import localizations_request_builder
-    from .localizations.item import organizational_branding_localization_item_request_builder
     from .square_logo import square_logo_request_builder
 
 class BrandingRequestBuilder():
@@ -61,21 +60,6 @@ class BrandingRequestBuilder():
         from ..models import organizational_branding
 
         return await self.request_adapter.send_async(request_info, organizational_branding.OrganizationalBranding, error_mapping)
-    
-    def localizations_by_id(self,id: str) -> organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder:
-        """
-        Provides operations to manage the localizations property of the microsoft.graph.organizationalBranding entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .localizations.item import organizational_branding_localization_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["organizationalBrandingLocalization%2Did"] = id
-        return organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[organizational_branding.OrganizationalBranding] = None, request_configuration: Optional[BrandingRequestBuilderPatchRequestConfiguration] = None) -> Optional[organizational_branding.OrganizationalBranding]:
         """

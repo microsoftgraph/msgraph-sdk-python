@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import unified_role_management_policy_rule, unified_role_management_policy_rule_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import unified_role_management_policy_rule_item_request_builder
 
 class EffectiveRulesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class EffectiveRulesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_unified_role_management_policy_rule_id(self,unified_role_management_policy_rule_id: str) -> unified_role_management_policy_rule_item_request_builder.UnifiedRoleManagementPolicyRuleItemRequestBuilder:
+        """
+        Provides operations to manage the effectiveRules property of the microsoft.graph.unifiedRoleManagementPolicy entity.
+        Args:
+            unified_role_management_policy_rule_id: Unique identifier of the item
+        Returns: unified_role_management_policy_rule_item_request_builder.UnifiedRoleManagementPolicyRuleItemRequestBuilder
+        """
+        if unified_role_management_policy_rule_id is None:
+            raise Exception("unified_role_management_policy_rule_id cannot be undefined")
+        from .item import unified_role_management_policy_rule_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["unifiedRoleManagementPolicyRule%2Did"] = unified_role_management_policy_rule_id
+        return unified_role_management_policy_rule_item_request_builder.UnifiedRoleManagementPolicyRuleItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[EffectiveRulesRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_management_policy_rule_collection_response.UnifiedRoleManagementPolicyRuleCollectionResponse]:
         """

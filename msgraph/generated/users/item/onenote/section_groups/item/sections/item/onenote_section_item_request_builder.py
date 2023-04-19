@@ -15,7 +15,6 @@ if TYPE_CHECKING:
     from .copy_to_notebook import copy_to_notebook_request_builder
     from .copy_to_section_group import copy_to_section_group_request_builder
     from .pages import pages_request_builder
-    from .pages.item import onenote_page_item_request_builder
     from .parent_notebook import parent_notebook_request_builder
     from .parent_section_group import parent_section_group_request_builder
 
@@ -81,21 +80,6 @@ class OnenoteSectionItemRequestBuilder():
         from ........models import onenote_section
 
         return await self.request_adapter.send_async(request_info, onenote_section.OnenoteSection, error_mapping)
-    
-    def pages_by_id(self,id: str) -> onenote_page_item_request_builder.OnenotePageItemRequestBuilder:
-        """
-        Provides operations to manage the pages property of the microsoft.graph.onenoteSection entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: onenote_page_item_request_builder.OnenotePageItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .pages.item import onenote_page_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["onenotePage%2Did"] = id
-        return onenote_page_item_request_builder.OnenotePageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[onenote_section.OnenoteSection] = None, request_configuration: Optional[OnenoteSectionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[onenote_section.OnenoteSection]:
         """

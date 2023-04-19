@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import trending, trending_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import trending_item_request_builder
 
 class TrendingRequestBuilder():
     """
@@ -35,6 +36,21 @@ class TrendingRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_trending_id(self,trending_id: str) -> trending_item_request_builder.TrendingItemRequestBuilder:
+        """
+        Provides operations to manage the trending property of the microsoft.graph.officeGraphInsights entity.
+        Args:
+            trending_id: Unique identifier of the item
+        Returns: trending_item_request_builder.TrendingItemRequestBuilder
+        """
+        if trending_id is None:
+            raise Exception("trending_id cannot be undefined")
+        from .item import trending_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["trending%2Did"] = trending_id
+        return trending_item_request_builder.TrendingItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[TrendingRequestBuilderGetRequestConfiguration] = None) -> Optional[trending_collection_response.TrendingCollectionResponse]:
         """

@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .invite import invite_request_builder
+    from .item import participant_item_request_builder
 
 class ParticipantsRequestBuilder():
     """
@@ -36,6 +37,21 @@ class ParticipantsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_participant_id(self,participant_id: str) -> participant_item_request_builder.ParticipantItemRequestBuilder:
+        """
+        Provides operations to manage the participants property of the microsoft.graph.call entity.
+        Args:
+            participant_id: Unique identifier of the item
+        Returns: participant_item_request_builder.ParticipantItemRequestBuilder
+        """
+        if participant_id is None:
+            raise Exception("participant_id cannot be undefined")
+        from .item import participant_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["participant%2Did"] = participant_id
+        return participant_item_request_builder.ParticipantItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ParticipantsRequestBuilderGetRequestConfiguration] = None) -> Optional[participant_collection_response.ParticipantCollectionResponse]:
         """

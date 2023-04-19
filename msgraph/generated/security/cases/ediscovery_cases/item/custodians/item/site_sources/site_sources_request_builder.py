@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ........models.o_data_errors import o_data_error
     from ........models.security import site_source, site_source_collection_response
     from .count import count_request_builder
+    from .item import site_source_item_request_builder
 
 class SiteSourcesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class SiteSourcesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_site_source_id(self,site_source_id: str) -> site_source_item_request_builder.SiteSourceItemRequestBuilder:
+        """
+        Provides operations to manage the siteSources property of the microsoft.graph.security.ediscoveryCustodian entity.
+        Args:
+            site_source_id: Unique identifier of the item
+        Returns: site_source_item_request_builder.SiteSourceItemRequestBuilder
+        """
+        if site_source_id is None:
+            raise Exception("site_source_id cannot be undefined")
+        from .item import site_source_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["siteSource%2Did"] = site_source_id
+        return site_source_item_request_builder.SiteSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SiteSourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[site_source_collection_response.SiteSourceCollectionResponse]:
         """

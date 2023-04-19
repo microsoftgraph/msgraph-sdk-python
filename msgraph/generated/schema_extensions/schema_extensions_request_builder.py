@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models import schema_extension, schema_extension_collection_response
     from ..models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import schema_extension_item_request_builder
 
 class SchemaExtensionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class SchemaExtensionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_schema_extension_id(self,schema_extension_id: str) -> schema_extension_item_request_builder.SchemaExtensionItemRequestBuilder:
+        """
+        Provides operations to manage the collection of schemaExtension entities.
+        Args:
+            schema_extension_id: Unique identifier of the item
+        Returns: schema_extension_item_request_builder.SchemaExtensionItemRequestBuilder
+        """
+        if schema_extension_id is None:
+            raise Exception("schema_extension_id cannot be undefined")
+        from .item import schema_extension_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["schemaExtension%2Did"] = schema_extension_id
+        return schema_extension_item_request_builder.SchemaExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SchemaExtensionsRequestBuilderGetRequestConfiguration] = None) -> Optional[schema_extension_collection_response.SchemaExtensionCollectionResponse]:
         """

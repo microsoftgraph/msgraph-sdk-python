@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import resource_operation, resource_operation_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import resource_operation_item_request_builder
 
 class ResourceOperationsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ResourceOperationsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_resource_operation_id(self,resource_operation_id: str) -> resource_operation_item_request_builder.ResourceOperationItemRequestBuilder:
+        """
+        Provides operations to manage the resourceOperations property of the microsoft.graph.deviceManagement entity.
+        Args:
+            resource_operation_id: Unique identifier of the item
+        Returns: resource_operation_item_request_builder.ResourceOperationItemRequestBuilder
+        """
+        if resource_operation_id is None:
+            raise Exception("resource_operation_id cannot be undefined")
+        from .item import resource_operation_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["resourceOperation%2Did"] = resource_operation_id
+        return resource_operation_item_request_builder.ResourceOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ResourceOperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[resource_operation_collection_response.ResourceOperationCollectionResponse]:
         """

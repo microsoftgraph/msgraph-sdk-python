@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .......models import education_submission, education_submission_collection_response
     from .......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import education_submission_item_request_builder
 
 class SubmissionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class SubmissionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_education_submission_id(self,education_submission_id: str) -> education_submission_item_request_builder.EducationSubmissionItemRequestBuilder:
+        """
+        Provides operations to manage the submissions property of the microsoft.graph.educationAssignment entity.
+        Args:
+            education_submission_id: Unique identifier of the item
+        Returns: education_submission_item_request_builder.EducationSubmissionItemRequestBuilder
+        """
+        if education_submission_id is None:
+            raise Exception("education_submission_id cannot be undefined")
+        from .item import education_submission_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["educationSubmission%2Did"] = education_submission_id
+        return education_submission_item_request_builder.EducationSubmissionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SubmissionsRequestBuilderGetRequestConfiguration] = None) -> Optional[education_submission_collection_response.EducationSubmissionCollectionResponse]:
         """

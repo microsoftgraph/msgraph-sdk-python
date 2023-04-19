@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import service_principal_risk_detection, service_principal_risk_detection_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import service_principal_risk_detection_item_request_builder
 
 class ServicePrincipalRiskDetectionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ServicePrincipalRiskDetectionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_service_principal_risk_detection_id(self,service_principal_risk_detection_id: str) -> service_principal_risk_detection_item_request_builder.ServicePrincipalRiskDetectionItemRequestBuilder:
+        """
+        Provides operations to manage the servicePrincipalRiskDetections property of the microsoft.graph.identityProtectionRoot entity.
+        Args:
+            service_principal_risk_detection_id: Unique identifier of the item
+        Returns: service_principal_risk_detection_item_request_builder.ServicePrincipalRiskDetectionItemRequestBuilder
+        """
+        if service_principal_risk_detection_id is None:
+            raise Exception("service_principal_risk_detection_id cannot be undefined")
+        from .item import service_principal_risk_detection_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["servicePrincipalRiskDetection%2Did"] = service_principal_risk_detection_id
+        return service_principal_risk_detection_item_request_builder.ServicePrincipalRiskDetectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ServicePrincipalRiskDetectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[service_principal_risk_detection_collection_response.ServicePrincipalRiskDetectionCollectionResponse]:
         """

@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .delta import delta_request_builder
+    from .item import todo_task_list_item_request_builder
 
 class ListsRequestBuilder():
     """
@@ -36,6 +37,21 @@ class ListsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_todo_task_list_id(self,todo_task_list_id: str) -> todo_task_list_item_request_builder.TodoTaskListItemRequestBuilder:
+        """
+        Provides operations to manage the lists property of the microsoft.graph.todo entity.
+        Args:
+            todo_task_list_id: Unique identifier of the item
+        Returns: todo_task_list_item_request_builder.TodoTaskListItemRequestBuilder
+        """
+        if todo_task_list_id is None:
+            raise Exception("todo_task_list_id cannot be undefined")
+        from .item import todo_task_list_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["todoTaskList%2Did"] = todo_task_list_id
+        return todo_task_list_item_request_builder.TodoTaskListItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ListsRequestBuilderGetRequestConfiguration] = None) -> Optional[todo_task_list_collection_response.TodoTaskListCollectionResponse]:
         """

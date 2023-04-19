@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ....models import detected_app
     from ....models.o_data_errors import o_data_error
     from .managed_devices import managed_devices_request_builder
-    from .managed_devices.item import managed_device_item_request_builder
 
 class DetectedAppItemRequestBuilder():
     """
@@ -77,21 +76,6 @@ class DetectedAppItemRequestBuilder():
         from ....models import detected_app
 
         return await self.request_adapter.send_async(request_info, detected_app.DetectedApp, error_mapping)
-    
-    def managed_devices_by_id(self,id: str) -> managed_device_item_request_builder.ManagedDeviceItemRequestBuilder:
-        """
-        Provides operations to manage the managedDevices property of the microsoft.graph.detectedApp entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: managed_device_item_request_builder.ManagedDeviceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .managed_devices.item import managed_device_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["managedDevice%2Did"] = id
-        return managed_device_item_request_builder.ManagedDeviceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[detected_app.DetectedApp] = None, request_configuration: Optional[DetectedAppItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[detected_app.DetectedApp]:
         """

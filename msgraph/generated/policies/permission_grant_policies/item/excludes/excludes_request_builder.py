@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import permission_grant_condition_set, permission_grant_condition_set_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import permission_grant_condition_set_item_request_builder
 
 class ExcludesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ExcludesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_permission_grant_condition_set_id(self,permission_grant_condition_set_id: str) -> permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder:
+        """
+        Provides operations to manage the excludes property of the microsoft.graph.permissionGrantPolicy entity.
+        Args:
+            permission_grant_condition_set_id: Unique identifier of the item
+        Returns: permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder
+        """
+        if permission_grant_condition_set_id is None:
+            raise Exception("permission_grant_condition_set_id cannot be undefined")
+        from .item import permission_grant_condition_set_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["permissionGrantConditionSet%2Did"] = permission_grant_condition_set_id
+        return permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ExcludesRequestBuilderGetRequestConfiguration] = None) -> Optional[permission_grant_condition_set_collection_response.PermissionGrantConditionSetCollectionResponse]:
         """

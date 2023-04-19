@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import mobile_app_assignment, mobile_app_assignment_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import mobile_app_assignment_item_request_builder
 
 class AssignmentsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class AssignmentsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_mobile_app_assignment_id(self,mobile_app_assignment_id: str) -> mobile_app_assignment_item_request_builder.MobileAppAssignmentItemRequestBuilder:
+        """
+        Provides operations to manage the assignments property of the microsoft.graph.mobileApp entity.
+        Args:
+            mobile_app_assignment_id: Unique identifier of the item
+        Returns: mobile_app_assignment_item_request_builder.MobileAppAssignmentItemRequestBuilder
+        """
+        if mobile_app_assignment_id is None:
+            raise Exception("mobile_app_assignment_id cannot be undefined")
+        from .item import mobile_app_assignment_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["mobileAppAssignment%2Did"] = mobile_app_assignment_id
+        return mobile_app_assignment_item_request_builder.MobileAppAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[mobile_app_assignment_collection_response.MobileAppAssignmentCollectionResponse]:
         """

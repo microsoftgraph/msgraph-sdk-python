@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import print_task_trigger, print_task_trigger_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import print_task_trigger_item_request_builder
 
 class TaskTriggersRequestBuilder():
     """
@@ -35,6 +36,21 @@ class TaskTriggersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_print_task_trigger_id(self,print_task_trigger_id: str) -> print_task_trigger_item_request_builder.PrintTaskTriggerItemRequestBuilder:
+        """
+        Provides operations to manage the taskTriggers property of the microsoft.graph.printer entity.
+        Args:
+            print_task_trigger_id: Unique identifier of the item
+        Returns: print_task_trigger_item_request_builder.PrintTaskTriggerItemRequestBuilder
+        """
+        if print_task_trigger_id is None:
+            raise Exception("print_task_trigger_id cannot be undefined")
+        from .item import print_task_trigger_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["printTaskTrigger%2Did"] = print_task_trigger_id
+        return print_task_trigger_item_request_builder.PrintTaskTriggerItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[TaskTriggersRequestBuilderGetRequestConfiguration] = None) -> Optional[print_task_trigger_collection_response.PrintTaskTriggerCollectionResponse]:
         """

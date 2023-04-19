@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ...models import app_consent_approval_route
     from ...models.o_data_errors import o_data_error
     from .app_consent_requests import app_consent_requests_request_builder
-    from .app_consent_requests.item import app_consent_request_item_request_builder
 
 class AppConsentRequestBuilder():
     """
@@ -36,21 +35,6 @@ class AppConsentRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def app_consent_requests_by_id(self,id: str) -> app_consent_request_item_request_builder.AppConsentRequestItemRequestBuilder:
-        """
-        Provides operations to manage the appConsentRequests property of the microsoft.graph.appConsentApprovalRoute entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: app_consent_request_item_request_builder.AppConsentRequestItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .app_consent_requests.item import app_consent_request_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["appConsentRequest%2Did"] = id
-        return app_consent_request_item_request_builder.AppConsentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[AppConsentRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """

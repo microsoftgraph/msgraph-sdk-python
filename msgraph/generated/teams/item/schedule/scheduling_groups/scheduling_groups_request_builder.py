@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import scheduling_group, scheduling_group_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import scheduling_group_item_request_builder
 
 class SchedulingGroupsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class SchedulingGroupsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_scheduling_group_id(self,scheduling_group_id: str) -> scheduling_group_item_request_builder.SchedulingGroupItemRequestBuilder:
+        """
+        Provides operations to manage the schedulingGroups property of the microsoft.graph.schedule entity.
+        Args:
+            scheduling_group_id: Unique identifier of the item
+        Returns: scheduling_group_item_request_builder.SchedulingGroupItemRequestBuilder
+        """
+        if scheduling_group_id is None:
+            raise Exception("scheduling_group_id cannot be undefined")
+        from .item import scheduling_group_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["schedulingGroup%2Did"] = scheduling_group_id
+        return scheduling_group_item_request_builder.SchedulingGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SchedulingGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[scheduling_group_collection_response.SchedulingGroupCollectionResponse]:
         """

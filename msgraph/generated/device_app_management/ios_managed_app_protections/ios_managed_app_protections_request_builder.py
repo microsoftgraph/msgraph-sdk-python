@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import ios_managed_app_protection, ios_managed_app_protection_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import ios_managed_app_protection_item_request_builder
 
 class IosManagedAppProtectionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class IosManagedAppProtectionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_ios_managed_app_protection_id(self,ios_managed_app_protection_id: str) -> ios_managed_app_protection_item_request_builder.IosManagedAppProtectionItemRequestBuilder:
+        """
+        Provides operations to manage the iosManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
+        Args:
+            ios_managed_app_protection_id: Unique identifier of the item
+        Returns: ios_managed_app_protection_item_request_builder.IosManagedAppProtectionItemRequestBuilder
+        """
+        if ios_managed_app_protection_id is None:
+            raise Exception("ios_managed_app_protection_id cannot be undefined")
+        from .item import ios_managed_app_protection_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["iosManagedAppProtection%2Did"] = ios_managed_app_protection_id
+        return ios_managed_app_protection_item_request_builder.IosManagedAppProtectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[IosManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[ios_managed_app_protection_collection_response.IosManagedAppProtectionCollectionResponse]:
         """

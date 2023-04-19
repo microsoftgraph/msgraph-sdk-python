@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import b2x_identity_user_flow, b2x_identity_user_flow_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import b2x_identity_user_flow_item_request_builder
 
 class B2xUserFlowsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class B2xUserFlowsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_b2x_identity_user_flow_id(self,b2x_identity_user_flow_id: str) -> b2x_identity_user_flow_item_request_builder.B2xIdentityUserFlowItemRequestBuilder:
+        """
+        Provides operations to manage the b2xUserFlows property of the microsoft.graph.identityContainer entity.
+        Args:
+            b2x_identity_user_flow_id: Unique identifier of the item
+        Returns: b2x_identity_user_flow_item_request_builder.B2xIdentityUserFlowItemRequestBuilder
+        """
+        if b2x_identity_user_flow_id is None:
+            raise Exception("b2x_identity_user_flow_id cannot be undefined")
+        from .item import b2x_identity_user_flow_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["b2xIdentityUserFlow%2Did"] = b2x_identity_user_flow_id
+        return b2x_identity_user_flow_item_request_builder.B2xIdentityUserFlowItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[B2xUserFlowsRequestBuilderGetRequestConfiguration] = None) -> Optional[b2x_identity_user_flow_collection_response.B2xIdentityUserFlowCollectionResponse]:
         """

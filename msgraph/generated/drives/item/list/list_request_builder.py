@@ -13,16 +13,11 @@ if TYPE_CHECKING:
     from ....models import list
     from ....models.o_data_errors import o_data_error
     from .columns import columns_request_builder
-    from .columns.item import column_definition_item_request_builder
     from .content_types import content_types_request_builder
-    from .content_types.item import content_type_item_request_builder
     from .drive import drive_request_builder
     from .items import items_request_builder
-    from .items.item import list_item_item_request_builder
     from .operations import operations_request_builder
-    from .operations.item import rich_long_running_operation_item_request_builder
     from .subscriptions import subscriptions_request_builder
-    from .subscriptions.item import subscription_item_request_builder
 
 class ListRequestBuilder():
     """
@@ -45,36 +40,6 @@ class ListRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def columns_by_id(self,id: str) -> column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder:
-        """
-        Provides operations to manage the columns property of the microsoft.graph.list entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .columns.item import column_definition_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["columnDefinition%2Did"] = id
-        return column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def content_types_by_id(self,id: str) -> content_type_item_request_builder.ContentTypeItemRequestBuilder:
-        """
-        Provides operations to manage the contentTypes property of the microsoft.graph.list entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: content_type_item_request_builder.ContentTypeItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .content_types.item import content_type_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["contentType%2Did"] = id
-        return content_type_item_request_builder.ContentTypeItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[ListRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -117,36 +82,6 @@ class ListRequestBuilder():
 
         return await self.request_adapter.send_async(request_info, list.List, error_mapping)
     
-    def items_by_id(self,id: str) -> list_item_item_request_builder.ListItemItemRequestBuilder:
-        """
-        Provides operations to manage the items property of the microsoft.graph.list entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: list_item_item_request_builder.ListItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .items.item import list_item_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["listItem%2Did"] = id
-        return list_item_item_request_builder.ListItemItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def operations_by_id(self,id: str) -> rich_long_running_operation_item_request_builder.RichLongRunningOperationItemRequestBuilder:
-        """
-        Provides operations to manage the operations property of the microsoft.graph.list entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: rich_long_running_operation_item_request_builder.RichLongRunningOperationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .operations.item import rich_long_running_operation_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["richLongRunningOperation%2Did"] = id
-        return rich_long_running_operation_item_request_builder.RichLongRunningOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def patch(self,body: Optional[list.List] = None, request_configuration: Optional[ListRequestBuilderPatchRequestConfiguration] = None) -> Optional[list.List]:
         """
         Update the navigation property list in drives
@@ -171,21 +106,6 @@ class ListRequestBuilder():
         from ....models import list
 
         return await self.request_adapter.send_async(request_info, list.List, error_mapping)
-    
-    def subscriptions_by_id(self,id: str) -> subscription_item_request_builder.SubscriptionItemRequestBuilder:
-        """
-        Provides operations to manage the subscriptions property of the microsoft.graph.list entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: subscription_item_request_builder.SubscriptionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .subscriptions.item import subscription_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["subscription%2Did"] = id
-        return subscription_item_request_builder.SubscriptionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[ListRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

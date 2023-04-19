@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import shared_insight, shared_insight_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import shared_insight_item_request_builder
 
 class SharedRequestBuilder():
     """
@@ -35,6 +36,21 @@ class SharedRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_shared_insight_id(self,shared_insight_id: str) -> shared_insight_item_request_builder.SharedInsightItemRequestBuilder:
+        """
+        Provides operations to manage the shared property of the microsoft.graph.officeGraphInsights entity.
+        Args:
+            shared_insight_id: Unique identifier of the item
+        Returns: shared_insight_item_request_builder.SharedInsightItemRequestBuilder
+        """
+        if shared_insight_id is None:
+            raise Exception("shared_insight_id cannot be undefined")
+        from .item import shared_insight_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["sharedInsight%2Did"] = shared_insight_id
+        return shared_insight_item_request_builder.SharedInsightItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SharedRequestBuilderGetRequestConfiguration] = None) -> Optional[shared_insight_collection_response.SharedInsightCollectionResponse]:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .........models import approval_stage, approval_stage_collection_response
     from .........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import approval_stage_item_request_builder
 
 class StagesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class StagesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_approval_stage_id(self,approval_stage_id: str) -> approval_stage_item_request_builder.ApprovalStageItemRequestBuilder:
+        """
+        Provides operations to manage the stages property of the microsoft.graph.approval entity.
+        Args:
+            approval_stage_id: Unique identifier of the item
+        Returns: approval_stage_item_request_builder.ApprovalStageItemRequestBuilder
+        """
+        if approval_stage_id is None:
+            raise Exception("approval_stage_id cannot be undefined")
+        from .item import approval_stage_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["approvalStage%2Did"] = approval_stage_id
+        return approval_stage_item_request_builder.ApprovalStageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[StagesRequestBuilderGetRequestConfiguration] = None) -> Optional[approval_stage_collection_response.ApprovalStageCollectionResponse]:
         """

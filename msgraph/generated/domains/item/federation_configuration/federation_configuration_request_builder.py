@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import internal_domain_federation, internal_domain_federation_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import internal_domain_federation_item_request_builder
 
 class FederationConfigurationRequestBuilder():
     """
@@ -35,6 +36,21 @@ class FederationConfigurationRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_internal_domain_federation_id(self,internal_domain_federation_id: str) -> internal_domain_federation_item_request_builder.InternalDomainFederationItemRequestBuilder:
+        """
+        Provides operations to manage the federationConfiguration property of the microsoft.graph.domain entity.
+        Args:
+            internal_domain_federation_id: Unique identifier of the item
+        Returns: internal_domain_federation_item_request_builder.InternalDomainFederationItemRequestBuilder
+        """
+        if internal_domain_federation_id is None:
+            raise Exception("internal_domain_federation_id cannot be undefined")
+        from .item import internal_domain_federation_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["internalDomainFederation%2Did"] = internal_domain_federation_id
+        return internal_domain_federation_item_request_builder.InternalDomainFederationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[FederationConfigurationRequestBuilderGetRequestConfiguration] = None) -> Optional[internal_domain_federation_collection_response.InternalDomainFederationCollectionResponse]:
         """

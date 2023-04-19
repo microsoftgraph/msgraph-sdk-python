@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from .confirm_compromised import confirm_compromised_request_builder
     from .count import count_request_builder
     from .dismiss import dismiss_request_builder
+    from .item import risky_user_item_request_builder
 
 class RiskyUsersRequestBuilder():
     """
@@ -37,6 +38,21 @@ class RiskyUsersRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_risky_user_id(self,risky_user_id: str) -> risky_user_item_request_builder.RiskyUserItemRequestBuilder:
+        """
+        Provides operations to manage the riskyUsers property of the microsoft.graph.identityProtectionRoot entity.
+        Args:
+            risky_user_id: Unique identifier of the item
+        Returns: risky_user_item_request_builder.RiskyUserItemRequestBuilder
+        """
+        if risky_user_id is None:
+            raise Exception("risky_user_id cannot be undefined")
+        from .item import risky_user_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["riskyUser%2Did"] = risky_user_id
+        return risky_user_item_request_builder.RiskyUserItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RiskyUsersRequestBuilderGetRequestConfiguration] = None) -> Optional[risky_user_collection_response.RiskyUserCollectionResponse]:
         """

@@ -13,15 +13,12 @@ if TYPE_CHECKING:
     from .......models import education_submission
     from .......models.o_data_errors import o_data_error
     from .outcomes import outcomes_request_builder
-    from .outcomes.item import education_outcome_item_request_builder
     from .reassign import reassign_request_builder
     from .resources import resources_request_builder
-    from .resources.item import education_submission_resource_item_request_builder
     from .return_ import return_request_builder
     from .set_up_resources_folder import set_up_resources_folder_request_builder
     from .submit import submit_request_builder
     from .submitted_resources import submitted_resources_request_builder
-    from .submitted_resources.item import education_submission_resource_item_request_builder
     from .unsubmit import unsubmit_request_builder
 
 class EducationSubmissionItemRequestBuilder():
@@ -87,21 +84,6 @@ class EducationSubmissionItemRequestBuilder():
 
         return await self.request_adapter.send_async(request_info, education_submission.EducationSubmission, error_mapping)
     
-    def outcomes_by_id(self,id: str) -> education_outcome_item_request_builder.EducationOutcomeItemRequestBuilder:
-        """
-        Provides operations to manage the outcomes property of the microsoft.graph.educationSubmission entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: education_outcome_item_request_builder.EducationOutcomeItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .outcomes.item import education_outcome_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["educationOutcome%2Did"] = id
-        return education_outcome_item_request_builder.EducationOutcomeItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def patch(self,body: Optional[education_submission.EducationSubmission] = None, request_configuration: Optional[EducationSubmissionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_submission.EducationSubmission]:
         """
         Update the navigation property submissions in education
@@ -126,38 +108,6 @@ class EducationSubmissionItemRequestBuilder():
         from .......models import education_submission
 
         return await self.request_adapter.send_async(request_info, education_submission.EducationSubmission, error_mapping)
-    
-    def resources_by_id(self,id: str) -> education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder:
-        """
-        Provides operations to manage the resources property of the microsoft.graph.educationSubmission entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .resources.item import education_submission_resource_item_request_builder
-        from .submitted_resources.item import education_submission_resource_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["educationSubmissionResource%2Did"] = id
-        return education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def submitted_resources_by_id(self,id: str) -> education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder:
-        """
-        Provides operations to manage the submittedResources property of the microsoft.graph.educationSubmission entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .resources.item import education_submission_resource_item_request_builder
-        from .submitted_resources.item import education_submission_resource_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["educationSubmissionResource%2Did"] = id
-        return education_submission_resource_item_request_builder.EducationSubmissionResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[EducationSubmissionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

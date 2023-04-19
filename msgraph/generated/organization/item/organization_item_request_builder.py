@@ -14,11 +14,9 @@ if TYPE_CHECKING:
     from ...models.o_data_errors import o_data_error
     from .branding import branding_request_builder
     from .certificate_based_auth_configuration import certificate_based_auth_configuration_request_builder
-    from .certificate_based_auth_configuration.item import certificate_based_auth_configuration_item_request_builder
     from .check_member_groups import check_member_groups_request_builder
     from .check_member_objects import check_member_objects_request_builder
     from .extensions import extensions_request_builder
-    from .extensions.item import extension_item_request_builder
     from .get_member_groups import get_member_groups_request_builder
     from .get_member_objects import get_member_objects_request_builder
     from .restore import restore_request_builder
@@ -46,21 +44,6 @@ class OrganizationItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def certificate_based_auth_configuration_by_id(self,id: str) -> certificate_based_auth_configuration_item_request_builder.CertificateBasedAuthConfigurationItemRequestBuilder:
-        """
-        Provides operations to manage the certificateBasedAuthConfiguration property of the microsoft.graph.organization entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: certificate_based_auth_configuration_item_request_builder.CertificateBasedAuthConfigurationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .certificate_based_auth_configuration.item import certificate_based_auth_configuration_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["certificateBasedAuthConfiguration%2Did"] = id
-        return certificate_based_auth_configuration_item_request_builder.CertificateBasedAuthConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def delete(self,request_configuration: Optional[OrganizationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete entity from organization
@@ -79,21 +62,6 @@ class OrganizationItemRequestBuilder():
         if not self.request_adapter:
             raise Exception("Http core is null") 
         return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
-    
-    def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
-        """
-        Provides operations to manage the extensions property of the microsoft.graph.organization entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: extension_item_request_builder.ExtensionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .extensions.item import extension_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["extension%2Did"] = id
-        return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[OrganizationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[organization.Organization]:
         """

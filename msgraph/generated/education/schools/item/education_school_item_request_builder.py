@@ -14,9 +14,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .administrative_unit import administrative_unit_request_builder
     from .classes import classes_request_builder
-    from .classes.item import education_class_item_request_builder
     from .users import users_request_builder
-    from .users.item import education_user_item_request_builder
 
 class EducationSchoolItemRequestBuilder():
     """
@@ -39,21 +37,6 @@ class EducationSchoolItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def classes_by_id(self,id: str) -> education_class_item_request_builder.EducationClassItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.education.schools.item.classes.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: education_class_item_request_builder.EducationClassItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .classes.item import education_class_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["educationClass%2Did"] = id
-        return education_class_item_request_builder.EducationClassItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[EducationSchoolItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
@@ -175,21 +158,6 @@ class EducationSchoolItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-    
-    def users_by_id(self,id: str) -> education_user_item_request_builder.EducationUserItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.education.schools.item.users.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: education_user_item_request_builder.EducationUserItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .users.item import education_user_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["educationUser%2Did"] = id
-        return education_user_item_request_builder.EducationUserItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     @property
     def administrative_unit(self) -> administrative_unit_request_builder.AdministrativeUnitRequestBuilder:

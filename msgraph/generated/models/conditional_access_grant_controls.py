@@ -3,7 +3,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import conditional_access_grant_control
+    from . import authentication_strength_policy, conditional_access_grant_control
 
 class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
     def __init__(self,) -> None:
@@ -13,6 +13,8 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
+        # The authenticationStrength property
+        self._authentication_strength: Optional[authentication_strength_policy.AuthenticationStrengthPolicy] = None
         # List of values of built-in controls required by the policy. Possible values: block, mfa, compliantDevice, domainJoinedDevice, approvedApplication, compliantApplication, passwordChange, unknownFutureValue.
         self._built_in_controls: Optional[List[conditional_access_grant_control.ConditionalAccessGrantControl]] = None
         # List of custom controls IDs required by the policy. For more information, see Custom controls.
@@ -40,6 +42,23 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
             value: Value to set for the AdditionalData property.
         """
         self._additional_data = value
+    
+    @property
+    def authentication_strength(self,) -> Optional[authentication_strength_policy.AuthenticationStrengthPolicy]:
+        """
+        Gets the authenticationStrength property value. The authenticationStrength property
+        Returns: Optional[authentication_strength_policy.AuthenticationStrengthPolicy]
+        """
+        return self._authentication_strength
+    
+    @authentication_strength.setter
+    def authentication_strength(self,value: Optional[authentication_strength_policy.AuthenticationStrengthPolicy] = None) -> None:
+        """
+        Sets the authenticationStrength property value. The authenticationStrength property
+        Args:
+            value: Value to set for the authentication_strength property.
+        """
+        self._authentication_strength = value
     
     @property
     def built_in_controls(self,) -> Optional[List[conditional_access_grant_control.ConditionalAccessGrantControl]]:
@@ -92,9 +111,10 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import conditional_access_grant_control
+        from . import authentication_strength_policy, conditional_access_grant_control
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "authenticationStrength": lambda n : setattr(self, 'authentication_strength', n.get_object_value(authentication_strength_policy.AuthenticationStrengthPolicy)),
             "builtInControls": lambda n : setattr(self, 'built_in_controls', n.get_collection_of_enum_values(conditional_access_grant_control.ConditionalAccessGrantControl)),
             "customAuthenticationFactors": lambda n : setattr(self, 'custom_authentication_factors', n.get_collection_of_primitive_values(str)),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -145,6 +165,7 @@ class ConditionalAccessGrantControls(AdditionalDataHolder, Parsable):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
+        writer.write_object_value("authenticationStrength", self.authentication_strength)
         writer.write_enum_value("builtInControls", self.built_in_controls)
         writer.write_collection_of_primitive_values("customAuthenticationFactors", self.custom_authentication_factors)
         writer.write_str_value("@odata.type", self.odata_type)

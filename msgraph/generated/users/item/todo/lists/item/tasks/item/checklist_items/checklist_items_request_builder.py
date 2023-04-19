@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .........models import checklist_item, checklist_item_collection_response
     from .........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import checklist_item_item_request_builder
 
 class ChecklistItemsRequestBuilder():
     """
@@ -36,9 +37,24 @@ class ChecklistItemsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def by_checklist_item_id(self,checklist_item_id: str) -> checklist_item_item_request_builder.ChecklistItemItemRequestBuilder:
+        """
+        Provides operations to manage the checklistItems property of the microsoft.graph.todoTask entity.
+        Args:
+            checklist_item_id: Unique identifier of the item
+        Returns: checklist_item_item_request_builder.ChecklistItemItemRequestBuilder
+        """
+        if checklist_item_id is None:
+            raise Exception("checklist_item_id cannot be undefined")
+        from .item import checklist_item_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["checklistItem%2Did"] = checklist_item_id
+        return checklist_item_item_request_builder.ChecklistItemItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def get(self,request_configuration: Optional[ChecklistItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[checklist_item_collection_response.ChecklistItemCollectionResponse]:
         """
-        A collection of checklistItems linked to a task.
+        Get the checklistItem resources associated to a todoTask from the checklistItems navigation property.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[checklist_item_collection_response.ChecklistItemCollectionResponse]
@@ -60,7 +76,7 @@ class ChecklistItemsRequestBuilder():
     
     async def post(self,body: Optional[checklist_item.ChecklistItem] = None, request_configuration: Optional[ChecklistItemsRequestBuilderPostRequestConfiguration] = None) -> Optional[checklist_item.ChecklistItem]:
         """
-        Create new navigation property to checklistItems for users
+        Create a new checklistItem object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -85,7 +101,7 @@ class ChecklistItemsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ChecklistItemsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of checklistItems linked to a task.
+        Get the checklistItem resources associated to a todoTask from the checklistItems navigation property.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -103,7 +119,7 @@ class ChecklistItemsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[checklist_item.ChecklistItem] = None, request_configuration: Optional[ChecklistItemsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to checklistItems for users
+        Create a new checklistItem object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -134,7 +150,7 @@ class ChecklistItemsRequestBuilder():
     @dataclass
     class ChecklistItemsRequestBuilderGetQueryParameters():
         """
-        A collection of checklistItems linked to a task.
+        Get the checklistItem resources associated to a todoTask from the checklistItems navigation property.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

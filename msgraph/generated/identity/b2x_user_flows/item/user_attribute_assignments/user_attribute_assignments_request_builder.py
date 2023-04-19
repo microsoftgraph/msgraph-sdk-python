@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .get_order import get_order_request_builder
+    from .item import identity_user_flow_attribute_assignment_item_request_builder
     from .set_order import set_order_request_builder
 
 class UserAttributeAssignmentsRequestBuilder():
@@ -37,6 +38,21 @@ class UserAttributeAssignmentsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_identity_user_flow_attribute_assignment_id(self,identity_user_flow_attribute_assignment_id: str) -> identity_user_flow_attribute_assignment_item_request_builder.IdentityUserFlowAttributeAssignmentItemRequestBuilder:
+        """
+        Provides operations to manage the userAttributeAssignments property of the microsoft.graph.b2xIdentityUserFlow entity.
+        Args:
+            identity_user_flow_attribute_assignment_id: Unique identifier of the item
+        Returns: identity_user_flow_attribute_assignment_item_request_builder.IdentityUserFlowAttributeAssignmentItemRequestBuilder
+        """
+        if identity_user_flow_attribute_assignment_id is None:
+            raise Exception("identity_user_flow_attribute_assignment_id cannot be undefined")
+        from .item import identity_user_flow_attribute_assignment_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["identityUserFlowAttributeAssignment%2Did"] = identity_user_flow_attribute_assignment_id
+        return identity_user_flow_attribute_assignment_item_request_builder.IdentityUserFlowAttributeAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[UserAttributeAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_user_flow_attribute_assignment_collection_response.IdentityUserFlowAttributeAssignmentCollectionResponse]:
         """

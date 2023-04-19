@@ -13,9 +13,7 @@ if TYPE_CHECKING:
     from ..models import solutions_root
     from ..models.o_data_errors import o_data_error
     from .booking_businesses import booking_businesses_request_builder
-    from .booking_businesses.item import booking_business_item_request_builder
     from .booking_currencies import booking_currencies_request_builder
-    from .booking_currencies.item import booking_currency_item_request_builder
 
 class SolutionsRequestBuilder():
     """
@@ -38,36 +36,6 @@ class SolutionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def booking_businesses_by_id(self,id: str) -> booking_business_item_request_builder.BookingBusinessItemRequestBuilder:
-        """
-        Provides operations to manage the bookingBusinesses property of the microsoft.graph.solutionsRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: booking_business_item_request_builder.BookingBusinessItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .booking_businesses.item import booking_business_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["bookingBusiness%2Did"] = id
-        return booking_business_item_request_builder.BookingBusinessItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def booking_currencies_by_id(self,id: str) -> booking_currency_item_request_builder.BookingCurrencyItemRequestBuilder:
-        """
-        Provides operations to manage the bookingCurrencies property of the microsoft.graph.solutionsRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: booking_currency_item_request_builder.BookingCurrencyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .booking_currencies.item import booking_currency_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["bookingCurrency%2Did"] = id
-        return booking_currency_item_request_builder.BookingCurrencyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SolutionsRequestBuilderGetRequestConfiguration] = None) -> Optional[solutions_root.SolutionsRoot]:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ........models.o_data_errors import o_data_error
     from ........models.security import data_source, data_source_collection_response
     from .count import count_request_builder
+    from .item import data_source_item_request_builder
 
 class AdditionalSourcesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class AdditionalSourcesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_data_source_id(self,data_source_id: str) -> data_source_item_request_builder.DataSourceItemRequestBuilder:
+        """
+        Provides operations to manage the additionalSources property of the microsoft.graph.security.ediscoverySearch entity.
+        Args:
+            data_source_id: Unique identifier of the item
+        Returns: data_source_item_request_builder.DataSourceItemRequestBuilder
+        """
+        if data_source_id is None:
+            raise Exception("data_source_id cannot be undefined")
+        from .item import data_source_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["dataSource%2Did"] = data_source_id
+        return data_source_item_request_builder.DataSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AdditionalSourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[data_source_collection_response.DataSourceCollectionResponse]:
         """

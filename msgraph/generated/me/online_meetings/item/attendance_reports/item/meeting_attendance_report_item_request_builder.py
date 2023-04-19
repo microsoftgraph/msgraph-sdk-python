@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ......models import meeting_attendance_report
     from ......models.o_data_errors import o_data_error
     from .attendance_records import attendance_records_request_builder
-    from .attendance_records.item import attendance_record_item_request_builder
 
 class MeetingAttendanceReportItemRequestBuilder():
     """
@@ -36,21 +35,6 @@ class MeetingAttendanceReportItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def attendance_records_by_id(self,id: str) -> attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder:
-        """
-        Provides operations to manage the attendanceRecords property of the microsoft.graph.meetingAttendanceReport entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .attendance_records.item import attendance_record_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["attendanceRecord%2Did"] = id
-        return attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def delete(self,request_configuration: Optional[MeetingAttendanceReportItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """

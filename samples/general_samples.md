@@ -1,6 +1,6 @@
 # Usage Examples
 
-## Creating a Graph client
+## 1. Creating a Graph client
 This creates a default Graph client that uses `https://graph.microsoft.com` as the default base URL and default configured HTTPX client to make the requests.
 
 ```py
@@ -25,7 +25,7 @@ request_adapter = GraphRequestAdapter(auth_provider)
 client = GraphServiceClient(request_adapter)
 ```
 
-## Creating a Graph client using a custom `httpx.AsyncClient` instance
+## 2. Creating a Graph client using a custom `httpx.AsyncClient` instance
 
 ```py
 from msgraph import GraphRequestAdapter
@@ -35,7 +35,7 @@ http_client = GraphClientFactory.create_with_default_middleware(client=httpx.Asy
 request_adapter = GraphRequestAdapter(auth_provider, http_client)
 ```
 
-## Get an item from the Graph
+## 3. Get an item from the Microsoft Graph API
 
 This sample fetches the current signed-in user. Note that to use `/me` endpoint you need
 a delegated permission. Alternatively, using application permissions, you can request `/users/[userPrincipalName]`. See [Microsoft Graph Permissions](https://docs.microsoft.com/en-us/graph/auth/auth-concepts#microsoft-graph-permissions) for more.
@@ -53,7 +53,7 @@ async def get_me():
 asyncio.run(get_me())
 ```
 
-## Get a collection of items
+## 4. Get a collection of items
 This snippet retrieves the messages in a user's mailbox. Ensure you have the [correct permissions](https://docs.microsoft.com/en-us/graph/api/user-list-messages?view=graph-rest-1.0&tabs=http#permissions) set.
 The Graph API response is deserialized into a collection of `Message` - a model class provided by the SDK.
 
@@ -69,7 +69,7 @@ async def get_user_messages():
 asyncio.run(get_user_messages())
 ```
 
-## Passing custom request headers
+## 5. Passing custom request headers
 Each execution method i.e. `get()`, `post()`, `put()`, `patch()`, `delete()` accepts a `RequestConfiguration` object where the request headers can be set:
 
 ```py
@@ -92,7 +92,7 @@ async def get_user_messages():
 asyncio.run(get_user_messages())
 ```
 
-## Passing query parameters
+## 6. Passing query parameters
 
 ```py
 from msgraph.generated.users.item.messages.messages_request_builder import MessagesRequestBuilder
@@ -117,7 +117,7 @@ async def get_5_user_messages():
 asyncio.run(get_5_user_messages())
 ```
 
-## Get the raw response
+## 7. Get the raw http response
 The SDK provides a default response handler which returns the native HTTPX response.
 
 To get the raw response:
@@ -137,7 +137,7 @@ async def get_user_messages():
 asyncio.run(get_user())
 ```
 
-## Send an email
+## 8. Send an email
 
 This sample sends an email. The request body is constructed using the provided models.
 Ensure you have the [right permissions](https://docs.microsoft.com/en-us/graph/api/user-sendmail?view=graph-rest-1.0&tabs=http#permissions).

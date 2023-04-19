@@ -1,4 +1,4 @@
-## Create the API Client
+# Create the API Client
 
 ```py
 import asyncio

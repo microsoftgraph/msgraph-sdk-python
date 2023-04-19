@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import calendar_group, calendar_group_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import calendar_group_item_request_builder
 
 class CalendarGroupsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class CalendarGroupsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_calendar_group_id(self,calendar_group_id: str) -> calendar_group_item_request_builder.CalendarGroupItemRequestBuilder:
+        """
+        Provides operations to manage the calendarGroups property of the microsoft.graph.user entity.
+        Args:
+            calendar_group_id: Unique identifier of the item
+        Returns: calendar_group_item_request_builder.CalendarGroupItemRequestBuilder
+        """
+        if calendar_group_id is None:
+            raise Exception("calendar_group_id cannot be undefined")
+        from .item import calendar_group_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["calendarGroup%2Did"] = calendar_group_id
+        return calendar_group_item_request_builder.CalendarGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[CalendarGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[calendar_group_collection_response.CalendarGroupCollectionResponse]:
         """

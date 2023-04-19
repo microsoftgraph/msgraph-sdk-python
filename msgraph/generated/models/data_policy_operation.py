@@ -11,7 +11,7 @@ from . import entity
 class DataPolicyOperation(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new dataPolicyOperation and sets the default values.
+        Instantiates a new DataPolicyOperation and sets the default values.
         """
         super().__init__()
         # Represents when the request for this data policy operation was completed, in UTC time, using the ISO 8601 format. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Null until the operation completes.

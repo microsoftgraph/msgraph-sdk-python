@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .......models import attendance_record, attendance_record_collection_response
     from .......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import attendance_record_item_request_builder
 
 class AttendanceRecordsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class AttendanceRecordsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_attendance_record_id(self,attendance_record_id: str) -> attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder:
+        """
+        Provides operations to manage the attendanceRecords property of the microsoft.graph.meetingAttendanceReport entity.
+        Args:
+            attendance_record_id: Unique identifier of the item
+        Returns: attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder
+        """
+        if attendance_record_id is None:
+            raise Exception("attendance_record_id cannot be undefined")
+        from .item import attendance_record_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["attendanceRecord%2Did"] = attendance_record_id
+        return attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AttendanceRecordsRequestBuilderGetRequestConfiguration] = None) -> Optional[attendance_record_collection_response.AttendanceRecordCollectionResponse]:
         """

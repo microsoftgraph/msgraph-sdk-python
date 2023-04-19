@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import default_managed_app_protection, default_managed_app_protection_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import default_managed_app_protection_item_request_builder
 
 class DefaultManagedAppProtectionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class DefaultManagedAppProtectionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_default_managed_app_protection_id(self,default_managed_app_protection_id: str) -> default_managed_app_protection_item_request_builder.DefaultManagedAppProtectionItemRequestBuilder:
+        """
+        Provides operations to manage the defaultManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
+        Args:
+            default_managed_app_protection_id: Unique identifier of the item
+        Returns: default_managed_app_protection_item_request_builder.DefaultManagedAppProtectionItemRequestBuilder
+        """
+        if default_managed_app_protection_id is None:
+            raise Exception("default_managed_app_protection_id cannot be undefined")
+        from .item import default_managed_app_protection_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["defaultManagedAppProtection%2Did"] = default_managed_app_protection_id
+        return default_managed_app_protection_item_request_builder.DefaultManagedAppProtectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[DefaultManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[default_managed_app_protection_collection_response.DefaultManagedAppProtectionCollectionResponse]:
         """

@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .delta import delta_request_builder
+    from .item import event_item_request_builder
 
 class InstancesRequestBuilder():
     """
@@ -36,6 +37,21 @@ class InstancesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_event_id1(self,event_id1: str) -> event_item_request_builder.EventItemRequestBuilder:
+        """
+        Provides operations to manage the instances property of the microsoft.graph.event entity.
+        Args:
+            event_id1: Unique identifier of the item
+        Returns: event_item_request_builder.EventItemRequestBuilder
+        """
+        if event_id1 is None:
+            raise Exception("event_id1 cannot be undefined")
+        from .item import event_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["event%2Did1"] = event_id1
+        return event_item_request_builder.EventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[InstancesRequestBuilderGetRequestConfiguration] = None) -> Optional[event_collection_response.EventCollectionResponse]:
         """

@@ -4,7 +4,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import audio_conferencing, broadcast_meeting_settings, chat_info, entity, item_body, join_meeting_id_settings, lobby_bypass_settings, meeting_attendance_report, meeting_chat_mode, meeting_participants, online_meeting_presenters
+    from . import audio_conferencing, broadcast_meeting_settings, chat_info, entity, item_body, join_meeting_id_settings, lobby_bypass_settings, meeting_attendance_report, meeting_chat_mode, meeting_participants, online_meeting_presenters, watermark_protection_values
 
 from . import entity
 
@@ -64,6 +64,8 @@ class OnlineMeeting(entity.Entity):
         self._subject: Optional[str] = None
         # The video teleconferencing ID. Read-only.
         self._video_teleconference_id: Optional[str] = None
+        # Specifies whether a watermark should be applied to a content type by the client application.
+        self._watermark_protection: Optional[watermark_protection_values.WatermarkProtectionValues] = None
     
     @property
     def allow_attendee_to_enable_camera(self,) -> Optional[bool]:
@@ -303,7 +305,7 @@ class OnlineMeeting(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import audio_conferencing, broadcast_meeting_settings, chat_info, entity, item_body, join_meeting_id_settings, lobby_bypass_settings, meeting_attendance_report, meeting_chat_mode, meeting_participants, online_meeting_presenters
+        from . import audio_conferencing, broadcast_meeting_settings, chat_info, entity, item_body, join_meeting_id_settings, lobby_bypass_settings, meeting_attendance_report, meeting_chat_mode, meeting_participants, online_meeting_presenters, watermark_protection_values
 
         fields: Dict[str, Callable[[Any], None]] = {
             "allowedPresenters": lambda n : setattr(self, 'allowed_presenters', n.get_enum_value(online_meeting_presenters.OnlineMeetingPresenters)),
@@ -330,6 +332,7 @@ class OnlineMeeting(entity.Entity):
             "startDateTime": lambda n : setattr(self, 'start_date_time', n.get_datetime_value()),
             "subject": lambda n : setattr(self, 'subject', n.get_str_value()),
             "videoTeleconferenceId": lambda n : setattr(self, 'video_teleconference_id', n.get_str_value()),
+            "watermarkProtection": lambda n : setattr(self, 'watermark_protection', n.get_object_value(watermark_protection_values.WatermarkProtectionValues)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -504,6 +507,7 @@ class OnlineMeeting(entity.Entity):
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("subject", self.subject)
         writer.write_str_value("videoTeleconferenceId", self.video_teleconference_id)
+        writer.write_object_value("watermarkProtection", self.watermark_protection)
     
     @property
     def start_date_time(self,) -> Optional[datetime]:
@@ -555,5 +559,22 @@ class OnlineMeeting(entity.Entity):
             value: Value to set for the video_teleconference_id property.
         """
         self._video_teleconference_id = value
+    
+    @property
+    def watermark_protection(self,) -> Optional[watermark_protection_values.WatermarkProtectionValues]:
+        """
+        Gets the watermarkProtection property value. Specifies whether a watermark should be applied to a content type by the client application.
+        Returns: Optional[watermark_protection_values.WatermarkProtectionValues]
+        """
+        return self._watermark_protection
+    
+    @watermark_protection.setter
+    def watermark_protection(self,value: Optional[watermark_protection_values.WatermarkProtectionValues] = None) -> None:
+        """
+        Sets the watermarkProtection property value. Specifies whether a watermark should be applied to a content type by the client application.
+        Args:
+            value: Value to set for the watermark_protection property.
+        """
+        self._watermark_protection = value
     
 

@@ -13,9 +13,7 @@ if TYPE_CHECKING:
     from ....models import printer_share
     from ....models.o_data_errors import o_data_error
     from .allowed_groups import allowed_groups_request_builder
-    from .allowed_groups.item import group_item_request_builder
     from .allowed_users import allowed_users_request_builder
-    from .allowed_users.item import user_item_request_builder
     from .printer import printer_request_builder
 
 class PrinterShareItemRequestBuilder():
@@ -40,42 +38,11 @@ class PrinterShareItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def allowed_groups_by_id(self,id: str) -> group_item_request_builder.GroupItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.print.shares.item.allowedGroups.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: group_item_request_builder.GroupItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .allowed_groups.item import group_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["group%2Did"] = id
-        return group_item_request_builder.GroupItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def allowed_users_by_id(self,id: str) -> user_item_request_builder.UserItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.print.shares.item.allowedUsers.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: user_item_request_builder.UserItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .allowed_users.item import user_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["user%2Did"] = id
-        return user_item_request_builder.UserItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[PrinterShareItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[PrinterShareItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property shares for print
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -88,7 +55,7 @@ class PrinterShareItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[PrinterShareItemRequestBuilderGetRequestConfiguration] = None) -> Optional[printer_share.PrinterShare]:
         """

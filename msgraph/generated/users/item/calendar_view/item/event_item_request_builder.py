@@ -14,20 +14,15 @@ if TYPE_CHECKING:
     from .....models.o_data_errors import o_data_error
     from .accept import accept_request_builder
     from .attachments import attachments_request_builder
-    from .attachments.item import attachment_item_request_builder
     from .calendar import calendar_request_builder
     from .cancel import cancel_request_builder
     from .decline import decline_request_builder
     from .dismiss_reminder import dismiss_reminder_request_builder
     from .extensions import extensions_request_builder
-    from .extensions.item import extension_item_request_builder
     from .forward import forward_request_builder
     from .instances import instances_request_builder
-    from .instances.item import event_item_request_builder
     from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-    from .multi_value_extended_properties.item import multi_value_legacy_extended_property_item_request_builder
     from .single_value_extended_properties import single_value_extended_properties_request_builder
-    from .single_value_extended_properties.item import single_value_legacy_extended_property_item_request_builder
     from .snooze_reminder import snooze_reminder_request_builder
     from .tentatively_accept import tentatively_accept_request_builder
 
@@ -53,36 +48,6 @@ class EventItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def attachments_by_id(self,id: str) -> attachment_item_request_builder.AttachmentItemRequestBuilder:
-        """
-        Provides operations to manage the attachments property of the microsoft.graph.event entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: attachment_item_request_builder.AttachmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .attachments.item import attachment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["attachment%2Did"] = id
-        return attachment_item_request_builder.AttachmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
-        """
-        Provides operations to manage the extensions property of the microsoft.graph.event entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: extension_item_request_builder.ExtensionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .extensions.item import extension_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["extension%2Did"] = id
-        return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def get(self,request_configuration: Optional[EventItemRequestBuilderGetRequestConfiguration] = None) -> Optional[event.Event]:
         """
         The calendar view for the calendar. Read-only. Nullable.
@@ -104,51 +69,6 @@ class EventItemRequestBuilder():
         from .....models import event
 
         return await self.request_adapter.send_async(request_info, event.Event, error_mapping)
-    
-    def instances_by_id(self,id: str) -> EventItemRequestBuilder:
-        """
-        Provides operations to manage the instances property of the microsoft.graph.event entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: EventItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .instances.item import event_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["event%2Did1"] = id
-        return EventItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def multi_value_extended_properties_by_id(self,id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
-        """
-        Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.event entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .multi_value_extended_properties.item import multi_value_legacy_extended_property_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["multiValueLegacyExtendedProperty%2Did"] = id
-        return multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def single_value_extended_properties_by_id(self,id: str) -> single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder:
-        """
-        Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.event entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .single_value_extended_properties.item import single_value_legacy_extended_property_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["singleValueLegacyExtendedProperty%2Did"] = id
-        return single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_get_request_information(self,request_configuration: Optional[EventItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

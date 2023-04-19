@@ -13,20 +13,14 @@ if TYPE_CHECKING:
     from .....models.o_data_errors import o_data_error
     from .....models.security import ediscovery_case
     from .custodians import custodians_request_builder
-    from .custodians.item import ediscovery_custodian_item_request_builder
     from .noncustodial_data_sources import noncustodial_data_sources_request_builder
-    from .noncustodial_data_sources.item import ediscovery_noncustodial_data_source_item_request_builder
     from .operations import operations_request_builder
-    from .operations.item import case_operation_item_request_builder
     from .review_sets import review_sets_request_builder
-    from .review_sets.item import ediscovery_review_set_item_request_builder
     from .searches import searches_request_builder
-    from .searches.item import ediscovery_search_item_request_builder
     from .security_close import security_close_request_builder
     from .security_reopen import security_reopen_request_builder
     from .settings import settings_request_builder
     from .tags import tags_request_builder
-    from .tags.item import ediscovery_review_tag_item_request_builder
 
 class EdiscoveryCaseItemRequestBuilder():
     """
@@ -50,27 +44,11 @@ class EdiscoveryCaseItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def custodians_by_id(self,id: str) -> ediscovery_custodian_item_request_builder.EdiscoveryCustodianItemRequestBuilder:
-        """
-        Provides operations to manage the custodians property of the microsoft.graph.security.ediscoveryCase entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: ediscovery_custodian_item_request_builder.EdiscoveryCustodianItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .custodians.item import ediscovery_custodian_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["ediscoveryCustodian%2Did"] = id
-        return ediscovery_custodian_item_request_builder.EdiscoveryCustodianItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[EdiscoveryCaseItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[EdiscoveryCaseItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property ediscoveryCases for security
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -83,7 +61,7 @@ class EdiscoveryCaseItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[EdiscoveryCaseItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_case.EdiscoveryCase]:
         """
@@ -106,36 +84,6 @@ class EdiscoveryCaseItemRequestBuilder():
         from .....models.security import ediscovery_case
 
         return await self.request_adapter.send_async(request_info, ediscovery_case.EdiscoveryCase, error_mapping)
-    
-    def noncustodial_data_sources_by_id(self,id: str) -> ediscovery_noncustodial_data_source_item_request_builder.EdiscoveryNoncustodialDataSourceItemRequestBuilder:
-        """
-        Provides operations to manage the noncustodialDataSources property of the microsoft.graph.security.ediscoveryCase entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: ediscovery_noncustodial_data_source_item_request_builder.EdiscoveryNoncustodialDataSourceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .noncustodial_data_sources.item import ediscovery_noncustodial_data_source_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["ediscoveryNoncustodialDataSource%2Did"] = id
-        return ediscovery_noncustodial_data_source_item_request_builder.EdiscoveryNoncustodialDataSourceItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def operations_by_id(self,id: str) -> case_operation_item_request_builder.CaseOperationItemRequestBuilder:
-        """
-        Provides operations to manage the operations property of the microsoft.graph.security.ediscoveryCase entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: case_operation_item_request_builder.CaseOperationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .operations.item import case_operation_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["caseOperation%2Did"] = id
-        return case_operation_item_request_builder.CaseOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[ediscovery_case.EdiscoveryCase] = None, request_configuration: Optional[EdiscoveryCaseItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ediscovery_case.EdiscoveryCase]:
         """
@@ -161,51 +109,6 @@ class EdiscoveryCaseItemRequestBuilder():
         from .....models.security import ediscovery_case
 
         return await self.request_adapter.send_async(request_info, ediscovery_case.EdiscoveryCase, error_mapping)
-    
-    def review_sets_by_id(self,id: str) -> ediscovery_review_set_item_request_builder.EdiscoveryReviewSetItemRequestBuilder:
-        """
-        Provides operations to manage the reviewSets property of the microsoft.graph.security.ediscoveryCase entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: ediscovery_review_set_item_request_builder.EdiscoveryReviewSetItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .review_sets.item import ediscovery_review_set_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["ediscoveryReviewSet%2Did"] = id
-        return ediscovery_review_set_item_request_builder.EdiscoveryReviewSetItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def searches_by_id(self,id: str) -> ediscovery_search_item_request_builder.EdiscoverySearchItemRequestBuilder:
-        """
-        Provides operations to manage the searches property of the microsoft.graph.security.ediscoveryCase entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: ediscovery_search_item_request_builder.EdiscoverySearchItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .searches.item import ediscovery_search_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["ediscoverySearch%2Did"] = id
-        return ediscovery_search_item_request_builder.EdiscoverySearchItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def tags_by_id(self,id: str) -> ediscovery_review_tag_item_request_builder.EdiscoveryReviewTagItemRequestBuilder:
-        """
-        Provides operations to manage the tags property of the microsoft.graph.security.ediscoveryCase entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: ediscovery_review_tag_item_request_builder.EdiscoveryReviewTagItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .tags.item import ediscovery_review_tag_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["ediscoveryReviewTag%2Did"] = id
-        return ediscovery_review_tag_item_request_builder.EdiscoveryReviewTagItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[EdiscoveryCaseItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

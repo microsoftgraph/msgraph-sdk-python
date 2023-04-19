@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..........models import content_type_collection_response
     from ..........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import content_type_item_request_builder
 
 class BaseTypesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class BaseTypesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_content_type_id1(self,content_type_id1: str) -> content_type_item_request_builder.ContentTypeItemRequestBuilder:
+        """
+        Provides operations to manage the baseTypes property of the microsoft.graph.contentType entity.
+        Args:
+            content_type_id1: Unique identifier of the item
+        Returns: content_type_item_request_builder.ContentTypeItemRequestBuilder
+        """
+        if content_type_id1 is None:
+            raise Exception("content_type_id1 cannot be undefined")
+        from .item import content_type_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["contentType%2Did1"] = content_type_id1
+        return content_type_item_request_builder.ContentTypeItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[BaseTypesRequestBuilderGetRequestConfiguration] = None) -> Optional[content_type_collection_response.ContentTypeCollectionResponse]:
         """

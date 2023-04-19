@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ..models import privacy
     from ..models.o_data_errors import o_data_error
     from .subject_rights_requests import subject_rights_requests_request_builder
-    from .subject_rights_requests.item import subject_rights_request_item_request_builder
 
 class PrivacyRequestBuilder():
     """
@@ -83,21 +82,6 @@ class PrivacyRequestBuilder():
         from ..models import privacy
 
         return await self.request_adapter.send_async(request_info, privacy.Privacy, error_mapping)
-    
-    def subject_rights_requests_by_id(self,id: str) -> subject_rights_request_item_request_builder.SubjectRightsRequestItemRequestBuilder:
-        """
-        Provides operations to manage the subjectRightsRequests property of the microsoft.graph.privacy entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: subject_rights_request_item_request_builder.SubjectRightsRequestItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .subject_rights_requests.item import subject_rights_request_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["subjectRightsRequest%2Did"] = id
-        return subject_rights_request_item_request_builder.SubjectRightsRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_get_request_information(self,request_configuration: Optional[PrivacyRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ......models import column_link, column_link_collection_response
     from ......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import column_link_item_request_builder
 
 class ColumnLinksRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ColumnLinksRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_column_link_id(self,column_link_id: str) -> column_link_item_request_builder.ColumnLinkItemRequestBuilder:
+        """
+        Provides operations to manage the columnLinks property of the microsoft.graph.contentType entity.
+        Args:
+            column_link_id: Unique identifier of the item
+        Returns: column_link_item_request_builder.ColumnLinkItemRequestBuilder
+        """
+        if column_link_id is None:
+            raise Exception("column_link_id cannot be undefined")
+        from .item import column_link_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["columnLink%2Did"] = column_link_id
+        return column_link_item_request_builder.ColumnLinkItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ColumnLinksRequestBuilderGetRequestConfiguration] = None) -> Optional[column_link_collection_response.ColumnLinkCollectionResponse]:
         """

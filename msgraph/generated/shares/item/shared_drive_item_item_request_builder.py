@@ -14,7 +14,6 @@ if TYPE_CHECKING:
     from ...models.o_data_errors import o_data_error
     from .drive_item import drive_item_request_builder
     from .items import items_request_builder
-    from .items.item import drive_item_item_request_builder
     from .list import list_request_builder
     from .list_item import list_item_request_builder
     from .permission import permission_request_builder
@@ -43,12 +42,11 @@ class SharedDriveItemItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[SharedDriveItemItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[SharedDriveItemItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete entity from shares
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -61,7 +59,7 @@ class SharedDriveItemItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[SharedDriveItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[shared_drive_item.SharedDriveItem]:
         """
@@ -84,21 +82,6 @@ class SharedDriveItemItemRequestBuilder():
         from ...models import shared_drive_item
 
         return await self.request_adapter.send_async(request_info, shared_drive_item.SharedDriveItem, error_mapping)
-    
-    def items_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
-        """
-        Provides operations to manage the items property of the microsoft.graph.sharedDriveItem entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: drive_item_item_request_builder.DriveItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .items.item import drive_item_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["driveItem%2Did"] = id
-        return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[shared_drive_item.SharedDriveItem] = None, request_configuration: Optional[SharedDriveItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[shared_drive_item.SharedDriveItem]:
         """

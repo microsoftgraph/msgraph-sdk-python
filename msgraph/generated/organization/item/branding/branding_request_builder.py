@@ -15,7 +15,6 @@ if TYPE_CHECKING:
     from .background_image import background_image_request_builder
     from .banner_logo import banner_logo_request_builder
     from .localizations import localizations_request_builder
-    from .localizations.item import organizational_branding_localization_item_request_builder
     from .square_logo import square_logo_request_builder
 
 class BrandingRequestBuilder():
@@ -40,12 +39,11 @@ class BrandingRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[BrandingRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[BrandingRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete the default organizational branding object. To delete the organizationalBranding object, all images (Stream types) must first be removed from the object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -58,7 +56,7 @@ class BrandingRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[BrandingRequestBuilderGetRequestConfiguration] = None) -> Optional[organizational_branding.OrganizationalBranding]:
         """
@@ -81,21 +79,6 @@ class BrandingRequestBuilder():
         from ....models import organizational_branding
 
         return await self.request_adapter.send_async(request_info, organizational_branding.OrganizationalBranding, error_mapping)
-    
-    def localizations_by_id(self,id: str) -> organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder:
-        """
-        Provides operations to manage the localizations property of the microsoft.graph.organizationalBranding entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .localizations.item import organizational_branding_localization_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["organizationalBrandingLocalization%2Did"] = id
-        return organizational_branding_localization_item_request_builder.OrganizationalBrandingLocalizationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[organizational_branding.OrganizationalBranding] = None, request_configuration: Optional[BrandingRequestBuilderPatchRequestConfiguration] = None) -> Optional[organizational_branding.OrganizationalBranding]:
         """

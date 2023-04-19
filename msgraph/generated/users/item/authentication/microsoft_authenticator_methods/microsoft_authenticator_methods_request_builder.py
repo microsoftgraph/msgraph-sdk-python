@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import microsoft_authenticator_authentication_method_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import microsoft_authenticator_authentication_method_item_request_builder
 
 class MicrosoftAuthenticatorMethodsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class MicrosoftAuthenticatorMethodsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_microsoft_authenticator_authentication_method_id(self,microsoft_authenticator_authentication_method_id: str) -> microsoft_authenticator_authentication_method_item_request_builder.MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder:
+        """
+        Provides operations to manage the microsoftAuthenticatorMethods property of the microsoft.graph.authentication entity.
+        Args:
+            microsoft_authenticator_authentication_method_id: Unique identifier of the item
+        Returns: microsoft_authenticator_authentication_method_item_request_builder.MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder
+        """
+        if microsoft_authenticator_authentication_method_id is None:
+            raise Exception("microsoft_authenticator_authentication_method_id cannot be undefined")
+        from .item import microsoft_authenticator_authentication_method_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["microsoftAuthenticatorAuthenticationMethod%2Did"] = microsoft_authenticator_authentication_method_id
+        return microsoft_authenticator_authentication_method_item_request_builder.MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[MicrosoftAuthenticatorMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[microsoft_authenticator_authentication_method_collection_response.MicrosoftAuthenticatorAuthenticationMethodCollectionResponse]:
         """

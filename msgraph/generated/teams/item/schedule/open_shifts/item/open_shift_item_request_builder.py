@@ -35,12 +35,11 @@ class OpenShiftItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[OpenShiftItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[OpenShiftItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property openShifts for teams
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -53,11 +52,11 @@ class OpenShiftItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[OpenShiftItemRequestBuilderGetRequestConfiguration] = None) -> Optional[open_shift.OpenShift]:
         """
-        Get openShifts from teams
+        The set of open shifts in a scheduling group in the schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[open_shift.OpenShift]
@@ -120,7 +119,7 @@ class OpenShiftItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OpenShiftItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get openShifts from teams
+        The set of open shifts in a scheduling group in the schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -172,7 +171,7 @@ class OpenShiftItemRequestBuilder():
     @dataclass
     class OpenShiftItemRequestBuilderGetQueryParameters():
         """
-        Get openShifts from teams
+        The set of open shifts in a scheduling group in the schedule.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

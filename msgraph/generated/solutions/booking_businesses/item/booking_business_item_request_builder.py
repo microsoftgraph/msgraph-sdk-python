@@ -13,19 +13,13 @@ if TYPE_CHECKING:
     from ....models import booking_business
     from ....models.o_data_errors import o_data_error
     from .appointments import appointments_request_builder
-    from .appointments.item import booking_appointment_item_request_builder
     from .calendar_view import calendar_view_request_builder
-    from .calendar_view.item import booking_appointment_item_request_builder
     from .customers import customers_request_builder
-    from .customers.item import booking_customer_base_item_request_builder
     from .custom_questions import custom_questions_request_builder
-    from .custom_questions.item import booking_custom_question_item_request_builder
     from .get_staff_availability import get_staff_availability_request_builder
     from .publish import publish_request_builder
     from .services import services_request_builder
-    from .services.item import booking_service_item_request_builder
     from .staff_members import staff_members_request_builder
-    from .staff_members.item import booking_staff_member_base_item_request_builder
     from .unpublish import unpublish_request_builder
 
 class BookingBusinessItemRequestBuilder():
@@ -50,74 +44,11 @@ class BookingBusinessItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def appointments_by_id(self,id: str) -> booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder:
-        """
-        Provides operations to manage the appointments property of the microsoft.graph.bookingBusiness entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .appointments.item import booking_appointment_item_request_builder
-        from .calendar_view.item import booking_appointment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["bookingAppointment%2Did"] = id
-        return booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def calendar_view_by_id(self,id: str) -> booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder:
-        """
-        Provides operations to manage the calendarView property of the microsoft.graph.bookingBusiness entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .appointments.item import booking_appointment_item_request_builder
-        from .calendar_view.item import booking_appointment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["bookingAppointment%2Did"] = id
-        return booking_appointment_item_request_builder.BookingAppointmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def customers_by_id(self,id: str) -> booking_customer_base_item_request_builder.BookingCustomerBaseItemRequestBuilder:
-        """
-        Provides operations to manage the customers property of the microsoft.graph.bookingBusiness entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: booking_customer_base_item_request_builder.BookingCustomerBaseItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .customers.item import booking_customer_base_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["bookingCustomerBase%2Did"] = id
-        return booking_customer_base_item_request_builder.BookingCustomerBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def custom_questions_by_id(self,id: str) -> booking_custom_question_item_request_builder.BookingCustomQuestionItemRequestBuilder:
-        """
-        Provides operations to manage the customQuestions property of the microsoft.graph.bookingBusiness entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: booking_custom_question_item_request_builder.BookingCustomQuestionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .custom_questions.item import booking_custom_question_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["bookingCustomQuestion%2Did"] = id
-        return booking_custom_question_item_request_builder.BookingCustomQuestionItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[BookingBusinessItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[BookingBusinessItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property bookingBusinesses for solutions
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -130,7 +61,7 @@ class BookingBusinessItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[BookingBusinessItemRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_business.BookingBusiness]:
         """
@@ -178,36 +109,6 @@ class BookingBusinessItemRequestBuilder():
         from ....models import booking_business
 
         return await self.request_adapter.send_async(request_info, booking_business.BookingBusiness, error_mapping)
-    
-    def services_by_id(self,id: str) -> booking_service_item_request_builder.BookingServiceItemRequestBuilder:
-        """
-        Provides operations to manage the services property of the microsoft.graph.bookingBusiness entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: booking_service_item_request_builder.BookingServiceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .services.item import booking_service_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["bookingService%2Did"] = id
-        return booking_service_item_request_builder.BookingServiceItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def staff_members_by_id(self,id: str) -> booking_staff_member_base_item_request_builder.BookingStaffMemberBaseItemRequestBuilder:
-        """
-        Provides operations to manage the staffMembers property of the microsoft.graph.bookingBusiness entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: booking_staff_member_base_item_request_builder.BookingStaffMemberBaseItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .staff_members.item import booking_staff_member_base_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["bookingStaffMemberBase%2Did"] = id
-        return booking_staff_member_base_item_request_builder.BookingStaffMemberBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[BookingBusinessItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

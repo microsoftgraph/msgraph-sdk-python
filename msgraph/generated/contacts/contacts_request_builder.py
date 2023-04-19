@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .delta import delta_request_builder
     from .get_available_extension_properties import get_available_extension_properties_request_builder
     from .get_by_ids import get_by_ids_request_builder
+    from .item import org_contact_item_request_builder
     from .validate_properties import validate_properties_request_builder
 
 class ContactsRequestBuilder():
@@ -39,6 +40,21 @@ class ContactsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_org_contact_id(self,org_contact_id: str) -> org_contact_item_request_builder.OrgContactItemRequestBuilder:
+        """
+        Provides operations to manage the collection of orgContact entities.
+        Args:
+            org_contact_id: Unique identifier of the item
+        Returns: org_contact_item_request_builder.OrgContactItemRequestBuilder
+        """
+        if org_contact_id is None:
+            raise Exception("org_contact_id cannot be undefined")
+        from .item import org_contact_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["orgContact%2Did"] = org_contact_id
+        return org_contact_item_request_builder.OrgContactItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ContactsRequestBuilderGetRequestConfiguration] = None) -> Optional[org_contact_collection_response.OrgContactCollectionResponse]:
         """

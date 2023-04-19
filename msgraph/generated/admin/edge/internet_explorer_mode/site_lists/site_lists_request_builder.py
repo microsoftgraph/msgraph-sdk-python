@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import browser_site_list, browser_site_list_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import browser_site_list_item_request_builder
 
 class SiteListsRequestBuilder():
     """
@@ -36,9 +37,24 @@ class SiteListsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def by_browser_site_list_id(self,browser_site_list_id: str) -> browser_site_list_item_request_builder.BrowserSiteListItemRequestBuilder:
+        """
+        Provides operations to manage the siteLists property of the microsoft.graph.internetExplorerMode entity.
+        Args:
+            browser_site_list_id: Unique identifier of the item
+        Returns: browser_site_list_item_request_builder.BrowserSiteListItemRequestBuilder
+        """
+        if browser_site_list_id is None:
+            raise Exception("browser_site_list_id cannot be undefined")
+        from .item import browser_site_list_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["browserSiteList%2Did"] = browser_site_list_id
+        return browser_site_list_item_request_builder.BrowserSiteListItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def get(self,request_configuration: Optional[SiteListsRequestBuilderGetRequestConfiguration] = None) -> Optional[browser_site_list_collection_response.BrowserSiteListCollectionResponse]:
         """
-        Get siteLists from admin
+        Get a list of the browserSiteList objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[browser_site_list_collection_response.BrowserSiteListCollectionResponse]
@@ -60,7 +76,7 @@ class SiteListsRequestBuilder():
     
     async def post(self,body: Optional[browser_site_list.BrowserSiteList] = None, request_configuration: Optional[SiteListsRequestBuilderPostRequestConfiguration] = None) -> Optional[browser_site_list.BrowserSiteList]:
         """
-        Create new navigation property to siteLists for admin
+        Create a new browserSiteList object to support Internet Explorer mode.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -85,7 +101,7 @@ class SiteListsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SiteListsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get siteLists from admin
+        Get a list of the browserSiteList objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -103,7 +119,7 @@ class SiteListsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[browser_site_list.BrowserSiteList] = None, request_configuration: Optional[SiteListsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to siteLists for admin
+        Create a new browserSiteList object to support Internet Explorer mode.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -134,7 +150,7 @@ class SiteListsRequestBuilder():
     @dataclass
     class SiteListsRequestBuilderGetQueryParameters():
         """
-        Get siteLists from admin
+        Get a list of the browserSiteList objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

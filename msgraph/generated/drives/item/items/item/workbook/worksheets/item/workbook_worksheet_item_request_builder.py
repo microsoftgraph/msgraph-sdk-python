@@ -14,16 +14,12 @@ if TYPE_CHECKING:
     from ........models.o_data_errors import o_data_error
     from .cell_with_row_with_column import cell_with_row_with_column_request_builder
     from .charts import charts_request_builder
-    from .charts.item import workbook_chart_item_request_builder
     from .names import names_request_builder
-    from .names.item import workbook_named_item_item_request_builder
     from .pivot_tables import pivot_tables_request_builder
-    from .pivot_tables.item import workbook_pivot_table_item_request_builder
     from .protection import protection_request_builder
     from .range import range_request_builder
     from .range_with_address import range_with_address_request_builder
     from .tables import tables_request_builder
-    from .tables.item import workbook_table_item_request_builder
     from .used_range import used_range_request_builder
     from .used_range_with_values_only import used_range_with_values_only_request_builder
 
@@ -65,27 +61,11 @@ class WorkbookWorksheetItemRequestBuilder():
 
         return cell_with_row_with_column_request_builder.CellWithRowWithColumnRequestBuilder(self.request_adapter, self.path_parameters, column, row)
     
-    def charts_by_id(self,id: str) -> workbook_chart_item_request_builder.WorkbookChartItemRequestBuilder:
-        """
-        Provides operations to manage the charts property of the microsoft.graph.workbookWorksheet entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: workbook_chart_item_request_builder.WorkbookChartItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .charts.item import workbook_chart_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["workbookChart%2Did"] = id
-        return workbook_chart_item_request_builder.WorkbookChartItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property worksheets for drives
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -98,7 +78,7 @@ class WorkbookWorksheetItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_worksheet.WorkbookWorksheet]:
         """
@@ -121,21 +101,6 @@ class WorkbookWorksheetItemRequestBuilder():
         from ........models import workbook_worksheet
 
         return await self.request_adapter.send_async(request_info, workbook_worksheet.WorkbookWorksheet, error_mapping)
-    
-    def names_by_id(self,id: str) -> workbook_named_item_item_request_builder.WorkbookNamedItemItemRequestBuilder:
-        """
-        Provides operations to manage the names property of the microsoft.graph.workbookWorksheet entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: workbook_named_item_item_request_builder.WorkbookNamedItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .names.item import workbook_named_item_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["workbookNamedItem%2Did"] = id
-        return workbook_named_item_item_request_builder.WorkbookNamedItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[workbook_worksheet.WorkbookWorksheet] = None, request_configuration: Optional[WorkbookWorksheetItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_worksheet.WorkbookWorksheet]:
         """
@@ -162,21 +127,6 @@ class WorkbookWorksheetItemRequestBuilder():
 
         return await self.request_adapter.send_async(request_info, workbook_worksheet.WorkbookWorksheet, error_mapping)
     
-    def pivot_tables_by_id(self,id: str) -> workbook_pivot_table_item_request_builder.WorkbookPivotTableItemRequestBuilder:
-        """
-        Provides operations to manage the pivotTables property of the microsoft.graph.workbookWorksheet entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: workbook_pivot_table_item_request_builder.WorkbookPivotTableItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .pivot_tables.item import workbook_pivot_table_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["workbookPivotTable%2Did"] = id
-        return workbook_pivot_table_item_request_builder.WorkbookPivotTableItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def range_with_address(self,address: Optional[str] = None) -> range_with_address_request_builder.RangeWithAddressRequestBuilder:
         """
         Provides operations to call the range method.
@@ -189,21 +139,6 @@ class WorkbookWorksheetItemRequestBuilder():
         from .range_with_address import range_with_address_request_builder
 
         return range_with_address_request_builder.RangeWithAddressRequestBuilder(self.request_adapter, self.path_parameters, address)
-    
-    def tables_by_id(self,id: str) -> workbook_table_item_request_builder.WorkbookTableItemRequestBuilder:
-        """
-        Provides operations to manage the tables property of the microsoft.graph.workbookWorksheet entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: workbook_table_item_request_builder.WorkbookTableItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .tables.item import workbook_table_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["workbookTable%2Did"] = id
-        return workbook_table_item_request_builder.WorkbookTableItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

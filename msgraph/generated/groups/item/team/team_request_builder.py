@@ -13,27 +13,20 @@ if TYPE_CHECKING:
     from ....models import team
     from ....models.o_data_errors import o_data_error
     from .all_channels import all_channels_request_builder
-    from .all_channels.item import channel_item_request_builder
     from .archive import archive_request_builder
     from .channels import channels_request_builder
-    from .channels.item import channel_item_request_builder
     from .clone import clone_request_builder
     from .complete_migration import complete_migration_request_builder
     from .group import group_request_builder
     from .incoming_channels import incoming_channels_request_builder
-    from .incoming_channels.item import channel_item_request_builder
     from .installed_apps import installed_apps_request_builder
-    from .installed_apps.item import teams_app_installation_item_request_builder
     from .members import members_request_builder
-    from .members.item import conversation_member_item_request_builder
     from .operations import operations_request_builder
-    from .operations.item import teams_async_operation_item_request_builder
     from .photo import photo_request_builder
     from .primary_channel import primary_channel_request_builder
     from .schedule import schedule_request_builder
     from .send_activity_notification import send_activity_notification_request_builder
     from .tags import tags_request_builder
-    from .tags.item import teamwork_tag_item_request_builder
     from .template import template_request_builder
     from .unarchive import unarchive_request_builder
 
@@ -59,46 +52,11 @@ class TeamRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def all_channels_by_id(self,id: str) -> channel_item_request_builder.ChannelItemRequestBuilder:
-        """
-        Provides operations to manage the allChannels property of the microsoft.graph.team entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: channel_item_request_builder.ChannelItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .all_channels.item import channel_item_request_builder
-        from .channels.item import channel_item_request_builder
-        from .incoming_channels.item import channel_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["channel%2Did"] = id
-        return channel_item_request_builder.ChannelItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def channels_by_id(self,id: str) -> channel_item_request_builder.ChannelItemRequestBuilder:
-        """
-        Provides operations to manage the channels property of the microsoft.graph.team entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: channel_item_request_builder.ChannelItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .all_channels.item import channel_item_request_builder
-        from .channels.item import channel_item_request_builder
-        from .incoming_channels.item import channel_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["channel%2Did"] = id
-        return channel_item_request_builder.ChannelItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[TeamRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[TeamRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property team for groups
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -111,7 +69,7 @@ class TeamRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[TeamRequestBuilderGetRequestConfiguration] = None) -> Optional[team.Team]:
         """
@@ -134,68 +92,6 @@ class TeamRequestBuilder():
         from ....models import team
 
         return await self.request_adapter.send_async(request_info, team.Team, error_mapping)
-    
-    def incoming_channels_by_id(self,id: str) -> channel_item_request_builder.ChannelItemRequestBuilder:
-        """
-        Provides operations to manage the incomingChannels property of the microsoft.graph.team entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: channel_item_request_builder.ChannelItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .all_channels.item import channel_item_request_builder
-        from .channels.item import channel_item_request_builder
-        from .incoming_channels.item import channel_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["channel%2Did"] = id
-        return channel_item_request_builder.ChannelItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def installed_apps_by_id(self,id: str) -> teams_app_installation_item_request_builder.TeamsAppInstallationItemRequestBuilder:
-        """
-        Provides operations to manage the installedApps property of the microsoft.graph.team entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: teams_app_installation_item_request_builder.TeamsAppInstallationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .installed_apps.item import teams_app_installation_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["teamsAppInstallation%2Did"] = id
-        return teams_app_installation_item_request_builder.TeamsAppInstallationItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def members_by_id(self,id: str) -> conversation_member_item_request_builder.ConversationMemberItemRequestBuilder:
-        """
-        Provides operations to manage the members property of the microsoft.graph.team entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: conversation_member_item_request_builder.ConversationMemberItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .members.item import conversation_member_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["conversationMember%2Did"] = id
-        return conversation_member_item_request_builder.ConversationMemberItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def operations_by_id(self,id: str) -> teams_async_operation_item_request_builder.TeamsAsyncOperationItemRequestBuilder:
-        """
-        Provides operations to manage the operations property of the microsoft.graph.team entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: teams_async_operation_item_request_builder.TeamsAsyncOperationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .operations.item import teams_async_operation_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["teamsAsyncOperation%2Did"] = id
-        return teams_async_operation_item_request_builder.TeamsAsyncOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def put(self,body: Optional[team.Team] = None, request_configuration: Optional[TeamRequestBuilderPutRequestConfiguration] = None) -> Optional[team.Team]:
         """
@@ -221,21 +117,6 @@ class TeamRequestBuilder():
         from ....models import team
 
         return await self.request_adapter.send_async(request_info, team.Team, error_mapping)
-    
-    def tags_by_id(self,id: str) -> teamwork_tag_item_request_builder.TeamworkTagItemRequestBuilder:
-        """
-        Provides operations to manage the tags property of the microsoft.graph.team entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: teamwork_tag_item_request_builder.TeamworkTagItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .tags.item import teamwork_tag_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["teamworkTag%2Did"] = id
-        return teamwork_tag_item_request_builder.TeamworkTagItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[TeamRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -14,7 +14,6 @@ if TYPE_CHECKING:
     from ............models.o_data_errors import o_data_error
     from .format import format_request_builder
     from .points import points_request_builder
-    from .points.item import workbook_chart_point_item_request_builder
 
 class WorkbookChartSeriesItemRequestBuilder():
     """
@@ -38,12 +37,11 @@ class WorkbookChartSeriesItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property series for drives
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -56,7 +54,7 @@ class WorkbookChartSeriesItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_series.WorkbookChartSeries]:
         """
@@ -104,21 +102,6 @@ class WorkbookChartSeriesItemRequestBuilder():
         from ............models import workbook_chart_series
 
         return await self.request_adapter.send_async(request_info, workbook_chart_series.WorkbookChartSeries, error_mapping)
-    
-    def points_by_id(self,id: str) -> workbook_chart_point_item_request_builder.WorkbookChartPointItemRequestBuilder:
-        """
-        Provides operations to manage the points property of the microsoft.graph.workbookChartSeries entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: workbook_chart_point_item_request_builder.WorkbookChartPointItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .points.item import workbook_chart_point_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["workbookChartPoint%2Did"] = id
-        return workbook_chart_point_item_request_builder.WorkbookChartPointItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

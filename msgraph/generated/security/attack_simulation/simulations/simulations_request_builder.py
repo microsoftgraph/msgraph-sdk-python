@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import simulation, simulation_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import simulation_item_request_builder
 
 class SimulationsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class SimulationsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_simulation_id(self,simulation_id: str) -> simulation_item_request_builder.SimulationItemRequestBuilder:
+        """
+        Provides operations to manage the simulations property of the microsoft.graph.attackSimulationRoot entity.
+        Args:
+            simulation_id: Unique identifier of the item
+        Returns: simulation_item_request_builder.SimulationItemRequestBuilder
+        """
+        if simulation_id is None:
+            raise Exception("simulation_id cannot be undefined")
+        from .item import simulation_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["simulation%2Did"] = simulation_id
+        return simulation_item_request_builder.SimulationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SimulationsRequestBuilderGetRequestConfiguration] = None) -> Optional[simulation_collection_response.SimulationCollectionResponse]:
         """

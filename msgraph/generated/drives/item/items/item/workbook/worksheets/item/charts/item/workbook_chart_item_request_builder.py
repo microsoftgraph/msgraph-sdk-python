@@ -21,7 +21,6 @@ if TYPE_CHECKING:
     from .image_with_width_with_height_with_fitting_mode import image_with_width_with_height_with_fitting_mode_request_builder
     from .legend import legend_request_builder
     from .series import series_request_builder
-    from .series.item import workbook_chart_series_item_request_builder
     from .set_data import set_data_request_builder
     from .set_position import set_position_request_builder
     from .title import title_request_builder
@@ -49,12 +48,11 @@ class WorkbookChartItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[WorkbookChartItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[WorkbookChartItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property charts for drives
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -67,7 +65,7 @@ class WorkbookChartItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[WorkbookChartItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart.WorkbookChart]:
         """
@@ -163,21 +161,6 @@ class WorkbookChartItemRequestBuilder():
         from ..........models import workbook_chart
 
         return await self.request_adapter.send_async(request_info, workbook_chart.WorkbookChart, error_mapping)
-    
-    def series_by_id(self,id: str) -> workbook_chart_series_item_request_builder.WorkbookChartSeriesItemRequestBuilder:
-        """
-        Provides operations to manage the series property of the microsoft.graph.workbookChart entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: workbook_chart_series_item_request_builder.WorkbookChartSeriesItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .series.item import workbook_chart_series_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["workbookChartSeries%2Did"] = id
-        return workbook_chart_series_item_request_builder.WorkbookChartSeriesItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookChartItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

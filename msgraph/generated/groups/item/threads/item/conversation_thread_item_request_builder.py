@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .....models import conversation_thread
     from .....models.o_data_errors import o_data_error
     from .posts import posts_request_builder
-    from .posts.item import post_item_request_builder
     from .reply import reply_request_builder
 
 class ConversationThreadItemRequestBuilder():
@@ -38,12 +37,11 @@ class ConversationThreadItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ConversationThreadItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[ConversationThreadItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property threads for groups
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -56,7 +54,7 @@ class ConversationThreadItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[ConversationThreadItemRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_thread.ConversationThread]:
         """
@@ -104,21 +102,6 @@ class ConversationThreadItemRequestBuilder():
         from .....models import conversation_thread
 
         return await self.request_adapter.send_async(request_info, conversation_thread.ConversationThread, error_mapping)
-    
-    def posts_by_id(self,id: str) -> post_item_request_builder.PostItemRequestBuilder:
-        """
-        Provides operations to manage the posts property of the microsoft.graph.conversationThread entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: post_item_request_builder.PostItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .posts.item import post_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["post%2Did"] = id
-        return post_item_request_builder.PostItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[ConversationThreadItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

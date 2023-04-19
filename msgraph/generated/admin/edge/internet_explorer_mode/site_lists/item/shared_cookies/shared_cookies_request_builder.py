@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .......models import browser_shared_cookie, browser_shared_cookie_collection_response
     from .......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import browser_shared_cookie_item_request_builder
 
 class SharedCookiesRequestBuilder():
     """
@@ -36,9 +37,24 @@ class SharedCookiesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def by_browser_shared_cookie_id(self,browser_shared_cookie_id: str) -> browser_shared_cookie_item_request_builder.BrowserSharedCookieItemRequestBuilder:
+        """
+        Provides operations to manage the sharedCookies property of the microsoft.graph.browserSiteList entity.
+        Args:
+            browser_shared_cookie_id: Unique identifier of the item
+        Returns: browser_shared_cookie_item_request_builder.BrowserSharedCookieItemRequestBuilder
+        """
+        if browser_shared_cookie_id is None:
+            raise Exception("browser_shared_cookie_id cannot be undefined")
+        from .item import browser_shared_cookie_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["browserSharedCookie%2Did"] = browser_shared_cookie_id
+        return browser_shared_cookie_item_request_builder.BrowserSharedCookieItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def get(self,request_configuration: Optional[SharedCookiesRequestBuilderGetRequestConfiguration] = None) -> Optional[browser_shared_cookie_collection_response.BrowserSharedCookieCollectionResponse]:
         """
-        Get sharedCookies from admin
+        Get a list of the browserSharedCookie objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[browser_shared_cookie_collection_response.BrowserSharedCookieCollectionResponse]
@@ -60,7 +76,7 @@ class SharedCookiesRequestBuilder():
     
     async def post(self,body: Optional[browser_shared_cookie.BrowserSharedCookie] = None, request_configuration: Optional[SharedCookiesRequestBuilderPostRequestConfiguration] = None) -> Optional[browser_shared_cookie.BrowserSharedCookie]:
         """
-        Create new navigation property to sharedCookies for admin
+        Create a new browserSharedCookie object in a browserSiteList.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -85,7 +101,7 @@ class SharedCookiesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SharedCookiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get sharedCookies from admin
+        Get a list of the browserSharedCookie objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -103,7 +119,7 @@ class SharedCookiesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[browser_shared_cookie.BrowserSharedCookie] = None, request_configuration: Optional[SharedCookiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to sharedCookies for admin
+        Create a new browserSharedCookie object in a browserSiteList.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -134,7 +150,7 @@ class SharedCookiesRequestBuilder():
     @dataclass
     class SharedCookiesRequestBuilderGetQueryParameters():
         """
-        Get sharedCookies from admin
+        Get a list of the browserSharedCookie objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

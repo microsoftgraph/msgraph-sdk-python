@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ....models import default_managed_app_protection
     from ....models.o_data_errors import o_data_error
     from .apps import apps_request_builder
-    from .apps.item import managed_mobile_app_item_request_builder
     from .deployment_summary import deployment_summary_request_builder
 
 class DefaultManagedAppProtectionItemRequestBuilder():
@@ -38,27 +37,11 @@ class DefaultManagedAppProtectionItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def apps_by_id(self,id: str) -> managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder:
-        """
-        Provides operations to manage the apps property of the microsoft.graph.defaultManagedAppProtection entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .apps.item import managed_mobile_app_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["managedMobileApp%2Did"] = id
-        return managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[DefaultManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[DefaultManagedAppProtectionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property defaultManagedAppProtections for deviceAppManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -71,7 +54,7 @@ class DefaultManagedAppProtectionItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[DefaultManagedAppProtectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[default_managed_app_protection.DefaultManagedAppProtection]:
         """

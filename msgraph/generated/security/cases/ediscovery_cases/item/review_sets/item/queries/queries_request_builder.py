@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ........models.o_data_errors import o_data_error
     from ........models.security import ediscovery_review_set_query, ediscovery_review_set_query_collection_response
     from .count import count_request_builder
+    from .item import ediscovery_review_set_query_item_request_builder
 
 class QueriesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class QueriesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_ediscovery_review_set_query_id(self,ediscovery_review_set_query_id: str) -> ediscovery_review_set_query_item_request_builder.EdiscoveryReviewSetQueryItemRequestBuilder:
+        """
+        Provides operations to manage the queries property of the microsoft.graph.security.ediscoveryReviewSet entity.
+        Args:
+            ediscovery_review_set_query_id: Unique identifier of the item
+        Returns: ediscovery_review_set_query_item_request_builder.EdiscoveryReviewSetQueryItemRequestBuilder
+        """
+        if ediscovery_review_set_query_id is None:
+            raise Exception("ediscovery_review_set_query_id cannot be undefined")
+        from .item import ediscovery_review_set_query_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["ediscoveryReviewSetQuery%2Did"] = ediscovery_review_set_query_id
+        return ediscovery_review_set_query_item_request_builder.EdiscoveryReviewSetQueryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[QueriesRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_review_set_query_collection_response.EdiscoveryReviewSetQueryCollectionResponse]:
         """

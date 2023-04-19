@@ -14,16 +14,11 @@ if TYPE_CHECKING:
     from .......models.o_data_errors import o_data_error
     from .allowed_calendar_sharing_roles_with_user import allowed_calendar_sharing_roles_with_user_request_builder
     from .calendar_permissions import calendar_permissions_request_builder
-    from .calendar_permissions.item import calendar_permission_item_request_builder
     from .calendar_view import calendar_view_request_builder
-    from .calendar_view.item import event_item_request_builder
     from .events import events_request_builder
-    from .events.item import event_item_request_builder
     from .get_schedule import get_schedule_request_builder
     from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-    from .multi_value_extended_properties.item import multi_value_legacy_extended_property_item_request_builder
     from .single_value_extended_properties import single_value_extended_properties_request_builder
-    from .single_value_extended_properties.item import single_value_legacy_extended_property_item_request_builder
 
 class CalendarItemRequestBuilder():
     """
@@ -60,43 +55,11 @@ class CalendarItemRequestBuilder():
 
         return allowed_calendar_sharing_roles_with_user_request_builder.AllowedCalendarSharingRolesWithUserRequestBuilder(self.request_adapter, self.path_parameters, user)
     
-    def calendar_permissions_by_id(self,id: str) -> calendar_permission_item_request_builder.CalendarPermissionItemRequestBuilder:
-        """
-        Provides operations to manage the calendarPermissions property of the microsoft.graph.calendar entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: calendar_permission_item_request_builder.CalendarPermissionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .calendar_permissions.item import calendar_permission_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["calendarPermission%2Did"] = id
-        return calendar_permission_item_request_builder.CalendarPermissionItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def calendar_view_by_id(self,id: str) -> event_item_request_builder.EventItemRequestBuilder:
-        """
-        Provides operations to manage the calendarView property of the microsoft.graph.calendar entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: event_item_request_builder.EventItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .calendar_view.item import event_item_request_builder
-        from .events.item import event_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["event%2Did"] = id
-        return event_item_request_builder.EventItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[CalendarItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[CalendarItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property calendars for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -109,23 +72,7 @@ class CalendarItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
-    
-    def events_by_id(self,id: str) -> event_item_request_builder.EventItemRequestBuilder:
-        """
-        Provides operations to manage the events property of the microsoft.graph.calendar entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: event_item_request_builder.EventItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .calendar_view.item import event_item_request_builder
-        from .events.item import event_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["event%2Did"] = id
-        return event_item_request_builder.EventItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[CalendarItemRequestBuilderGetRequestConfiguration] = None) -> Optional[calendar.Calendar]:
         """
@@ -148,21 +95,6 @@ class CalendarItemRequestBuilder():
         from .......models import calendar
 
         return await self.request_adapter.send_async(request_info, calendar.Calendar, error_mapping)
-    
-    def multi_value_extended_properties_by_id(self,id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
-        """
-        Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.calendar entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .multi_value_extended_properties.item import multi_value_legacy_extended_property_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["multiValueLegacyExtendedProperty%2Did"] = id
-        return multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[calendar.Calendar] = None, request_configuration: Optional[CalendarItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[calendar.Calendar]:
         """
@@ -188,21 +120,6 @@ class CalendarItemRequestBuilder():
         from .......models import calendar
 
         return await self.request_adapter.send_async(request_info, calendar.Calendar, error_mapping)
-    
-    def single_value_extended_properties_by_id(self,id: str) -> single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder:
-        """
-        Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.calendar entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .single_value_extended_properties.item import single_value_legacy_extended_property_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["singleValueLegacyExtendedProperty%2Did"] = id
-        return single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[CalendarItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

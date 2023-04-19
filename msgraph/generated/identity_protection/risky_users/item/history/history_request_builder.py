@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import risky_user_history_item, risky_user_history_item_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import risky_user_history_item_item_request_builder
 
 class HistoryRequestBuilder():
     """
@@ -36,9 +37,24 @@ class HistoryRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def by_risky_user_history_item_id(self,risky_user_history_item_id: str) -> risky_user_history_item_item_request_builder.RiskyUserHistoryItemItemRequestBuilder:
+        """
+        Provides operations to manage the history property of the microsoft.graph.riskyUser entity.
+        Args:
+            risky_user_history_item_id: Unique identifier of the item
+        Returns: risky_user_history_item_item_request_builder.RiskyUserHistoryItemItemRequestBuilder
+        """
+        if risky_user_history_item_id is None:
+            raise Exception("risky_user_history_item_id cannot be undefined")
+        from .item import risky_user_history_item_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["riskyUserHistoryItem%2Did"] = risky_user_history_item_id
+        return risky_user_history_item_item_request_builder.RiskyUserHistoryItemItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def get(self,request_configuration: Optional[HistoryRequestBuilderGetRequestConfiguration] = None) -> Optional[risky_user_history_item_collection_response.RiskyUserHistoryItemCollectionResponse]:
         """
-        Get the riskyUserHistoryItems from the history navigation property.
+        Read the properties and relationships of a riskyUserHistoryItem object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[risky_user_history_item_collection_response.RiskyUserHistoryItemCollectionResponse]
@@ -85,7 +101,7 @@ class HistoryRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[HistoryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the riskyUserHistoryItems from the history navigation property.
+        Read the properties and relationships of a riskyUserHistoryItem object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -134,7 +150,7 @@ class HistoryRequestBuilder():
     @dataclass
     class HistoryRequestBuilderGetQueryParameters():
         """
-        Get the riskyUserHistoryItems from the history navigation property.
+        Read the properties and relationships of a riskyUserHistoryItem object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

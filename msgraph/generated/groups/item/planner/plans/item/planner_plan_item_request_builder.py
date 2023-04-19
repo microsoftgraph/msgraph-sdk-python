@@ -13,10 +13,8 @@ if TYPE_CHECKING:
     from ......models import planner_plan
     from ......models.o_data_errors import o_data_error
     from .buckets import buckets_request_builder
-    from .buckets.item import planner_bucket_item_request_builder
     from .details import details_request_builder
     from .tasks import tasks_request_builder
-    from .tasks.item import planner_task_item_request_builder
 
 class PlannerPlanItemRequestBuilder():
     """
@@ -40,27 +38,11 @@ class PlannerPlanItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def buckets_by_id(self,id: str) -> planner_bucket_item_request_builder.PlannerBucketItemRequestBuilder:
-        """
-        Provides operations to manage the buckets property of the microsoft.graph.plannerPlan entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: planner_bucket_item_request_builder.PlannerBucketItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .buckets.item import planner_bucket_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["plannerBucket%2Did"] = id
-        return planner_bucket_item_request_builder.PlannerBucketItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[PlannerPlanItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[PlannerPlanItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property plans for groups
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -73,7 +55,7 @@ class PlannerPlanItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[PlannerPlanItemRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_plan.PlannerPlan]:
         """
@@ -121,21 +103,6 @@ class PlannerPlanItemRequestBuilder():
         from ......models import planner_plan
 
         return await self.request_adapter.send_async(request_info, planner_plan.PlannerPlan, error_mapping)
-    
-    def tasks_by_id(self,id: str) -> planner_task_item_request_builder.PlannerTaskItemRequestBuilder:
-        """
-        Provides operations to manage the tasks property of the microsoft.graph.plannerPlan entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: planner_task_item_request_builder.PlannerTaskItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .tasks.item import planner_task_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["plannerTask%2Did"] = id
-        return planner_task_item_request_builder.PlannerTaskItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[PlannerPlanItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import sign_in, sign_in_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import sign_in_item_request_builder
 
 class SignInsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class SignInsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_sign_in_id(self,sign_in_id: str) -> sign_in_item_request_builder.SignInItemRequestBuilder:
+        """
+        Provides operations to manage the signIns property of the microsoft.graph.auditLogRoot entity.
+        Args:
+            sign_in_id: Unique identifier of the item
+        Returns: sign_in_item_request_builder.SignInItemRequestBuilder
+        """
+        if sign_in_id is None:
+            raise Exception("sign_in_id cannot be undefined")
+        from .item import sign_in_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["signIn%2Did"] = sign_in_id
+        return sign_in_item_request_builder.SignInItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SignInsRequestBuilderGetRequestConfiguration] = None) -> Optional[sign_in_collection_response.SignInCollectionResponse]:
         """

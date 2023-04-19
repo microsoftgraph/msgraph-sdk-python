@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import user_install_state_summary, user_install_state_summary_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import user_install_state_summary_item_request_builder
 
 class UserStateSummaryRequestBuilder():
     """
@@ -35,6 +36,21 @@ class UserStateSummaryRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_user_install_state_summary_id(self,user_install_state_summary_id: str) -> user_install_state_summary_item_request_builder.UserInstallStateSummaryItemRequestBuilder:
+        """
+        Provides operations to manage the userStateSummary property of the microsoft.graph.managedEBook entity.
+        Args:
+            user_install_state_summary_id: Unique identifier of the item
+        Returns: user_install_state_summary_item_request_builder.UserInstallStateSummaryItemRequestBuilder
+        """
+        if user_install_state_summary_id is None:
+            raise Exception("user_install_state_summary_id cannot be undefined")
+        from .item import user_install_state_summary_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["userInstallStateSummary%2Did"] = user_install_state_summary_id
+        return user_install_state_summary_item_request_builder.UserInstallStateSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[UserStateSummaryRequestBuilderGetRequestConfiguration] = None) -> Optional[user_install_state_summary_collection_response.UserInstallStateSummaryCollectionResponse]:
         """

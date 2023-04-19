@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ....models import todo
     from ....models.o_data_errors import o_data_error
     from .lists import lists_request_builder
-    from .lists.item import todo_task_list_item_request_builder
 
 class TodoRequestBuilder():
     """
@@ -37,12 +36,11 @@ class TodoRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[TodoRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[TodoRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property todo for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -55,7 +53,7 @@ class TodoRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[TodoRequestBuilderGetRequestConfiguration] = None) -> Optional[todo.Todo]:
         """
@@ -78,21 +76,6 @@ class TodoRequestBuilder():
         from ....models import todo
 
         return await self.request_adapter.send_async(request_info, todo.Todo, error_mapping)
-    
-    def lists_by_id(self,id: str) -> todo_task_list_item_request_builder.TodoTaskListItemRequestBuilder:
-        """
-        Provides operations to manage the lists property of the microsoft.graph.todo entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: todo_task_list_item_request_builder.TodoTaskListItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .lists.item import todo_task_list_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["todoTaskList%2Did"] = id
-        return todo_task_list_item_request_builder.TodoTaskListItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[todo.Todo] = None, request_configuration: Optional[TodoRequestBuilderPatchRequestConfiguration] = None) -> Optional[todo.Todo]:
         """

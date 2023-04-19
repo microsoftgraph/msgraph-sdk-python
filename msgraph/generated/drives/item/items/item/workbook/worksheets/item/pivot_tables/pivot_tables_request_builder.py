@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .........models import workbook_pivot_table, workbook_pivot_table_collection_response
     from .........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import workbook_pivot_table_item_request_builder
     from .refresh_all import refresh_all_request_builder
 
 class PivotTablesRequestBuilder():
@@ -36,6 +37,21 @@ class PivotTablesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_workbook_pivot_table_id(self,workbook_pivot_table_id: str) -> workbook_pivot_table_item_request_builder.WorkbookPivotTableItemRequestBuilder:
+        """
+        Provides operations to manage the pivotTables property of the microsoft.graph.workbookWorksheet entity.
+        Args:
+            workbook_pivot_table_id: Unique identifier of the item
+        Returns: workbook_pivot_table_item_request_builder.WorkbookPivotTableItemRequestBuilder
+        """
+        if workbook_pivot_table_id is None:
+            raise Exception("workbook_pivot_table_id cannot be undefined")
+        from .item import workbook_pivot_table_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["workbookPivotTable%2Did"] = workbook_pivot_table_id
+        return workbook_pivot_table_item_request_builder.WorkbookPivotTableItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[PivotTablesRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_pivot_table_collection_response.WorkbookPivotTableCollectionResponse]:
         """

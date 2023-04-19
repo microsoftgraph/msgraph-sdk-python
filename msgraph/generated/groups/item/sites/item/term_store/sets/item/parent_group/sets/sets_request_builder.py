@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..........models.o_data_errors import o_data_error
     from ..........models.term_store import set, set_collection_response
     from .count import count_request_builder
+    from .item import set_item_request_builder
 
 class SetsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class SetsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_set_id1(self,set_id1: str) -> set_item_request_builder.SetItemRequestBuilder:
+        """
+        Provides operations to manage the sets property of the microsoft.graph.termStore.group entity.
+        Args:
+            set_id1: Unique identifier of the item
+        Returns: set_item_request_builder.SetItemRequestBuilder
+        """
+        if set_id1 is None:
+            raise Exception("set_id1 cannot be undefined")
+        from .item import set_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["set%2Did1"] = set_id1
+        return set_item_request_builder.SetItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SetsRequestBuilderGetRequestConfiguration] = None) -> Optional[set_collection_response.SetCollectionResponse]:
         """

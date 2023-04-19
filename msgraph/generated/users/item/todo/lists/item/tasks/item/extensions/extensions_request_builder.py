@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .........models import extension, extension_collection_response
     from .........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import extension_item_request_builder
 
 class ExtensionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ExtensionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_extension_id(self,extension_id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
+        """
+        Provides operations to manage the extensions property of the microsoft.graph.todoTask entity.
+        Args:
+            extension_id: Unique identifier of the item
+        Returns: extension_item_request_builder.ExtensionItemRequestBuilder
+        """
+        if extension_id is None:
+            raise Exception("extension_id cannot be undefined")
+        from .item import extension_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["extension%2Did"] = extension_id
+        return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ExtensionsRequestBuilderGetRequestConfiguration] = None) -> Optional[extension_collection_response.ExtensionCollectionResponse]:
         """

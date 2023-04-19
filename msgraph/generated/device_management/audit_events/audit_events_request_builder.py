@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from .count import count_request_builder
     from .get_audit_activity_types_with_category import get_audit_activity_types_with_category_request_builder
     from .get_audit_categories import get_audit_categories_request_builder
+    from .item import audit_event_item_request_builder
 
 class AuditEventsRequestBuilder():
     """
@@ -37,6 +38,21 @@ class AuditEventsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_audit_event_id(self,audit_event_id: str) -> audit_event_item_request_builder.AuditEventItemRequestBuilder:
+        """
+        Provides operations to manage the auditEvents property of the microsoft.graph.deviceManagement entity.
+        Args:
+            audit_event_id: Unique identifier of the item
+        Returns: audit_event_item_request_builder.AuditEventItemRequestBuilder
+        """
+        if audit_event_id is None:
+            raise Exception("audit_event_id cannot be undefined")
+        from .item import audit_event_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["auditEvent%2Did"] = audit_event_id
+        return audit_event_item_request_builder.AuditEventItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AuditEventsRequestBuilderGetRequestConfiguration] = None) -> Optional[audit_event_collection_response.AuditEventCollectionResponse]:
         """

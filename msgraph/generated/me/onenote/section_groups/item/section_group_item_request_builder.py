@@ -15,9 +15,7 @@ if TYPE_CHECKING:
     from .parent_notebook import parent_notebook_request_builder
     from .parent_section_group import parent_section_group_request_builder
     from .section_groups import section_groups_request_builder
-    from .section_groups.item import section_group_item_request_builder
     from .sections import sections_request_builder
-    from .sections.item import onenote_section_item_request_builder
 
 class SectionGroupItemRequestBuilder():
     """
@@ -41,12 +39,11 @@ class SectionGroupItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[SectionGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[SectionGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property sectionGroups for me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -59,7 +56,7 @@ class SectionGroupItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[SectionGroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[section_group.SectionGroup]:
         """
@@ -107,36 +104,6 @@ class SectionGroupItemRequestBuilder():
         from .....models import section_group
 
         return await self.request_adapter.send_async(request_info, section_group.SectionGroup, error_mapping)
-    
-    def section_groups_by_id(self,id: str) -> SectionGroupItemRequestBuilder:
-        """
-        Provides operations to manage the sectionGroups property of the microsoft.graph.sectionGroup entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: SectionGroupItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .section_groups.item import section_group_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["sectionGroup%2Did1"] = id
-        return SectionGroupItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def sections_by_id(self,id: str) -> onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder:
-        """
-        Provides operations to manage the sections property of the microsoft.graph.sectionGroup entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .sections.item import onenote_section_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["onenoteSection%2Did"] = id
-        return onenote_section_item_request_builder.OnenoteSectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[SectionGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

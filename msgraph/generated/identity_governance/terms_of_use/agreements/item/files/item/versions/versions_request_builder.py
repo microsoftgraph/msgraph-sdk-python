@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ........models import agreement_file_version, agreement_file_version_collection_response
     from ........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import agreement_file_version_item_request_builder
 
 class VersionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class VersionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_agreement_file_version_id(self,agreement_file_version_id: str) -> agreement_file_version_item_request_builder.AgreementFileVersionItemRequestBuilder:
+        """
+        Provides operations to manage the versions property of the microsoft.graph.agreementFileLocalization entity.
+        Args:
+            agreement_file_version_id: Unique identifier of the item
+        Returns: agreement_file_version_item_request_builder.AgreementFileVersionItemRequestBuilder
+        """
+        if agreement_file_version_id is None:
+            raise Exception("agreement_file_version_id cannot be undefined")
+        from .item import agreement_file_version_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["agreementFileVersion%2Did"] = agreement_file_version_id
+        return agreement_file_version_item_request_builder.AgreementFileVersionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[VersionsRequestBuilderGetRequestConfiguration] = None) -> Optional[agreement_file_version_collection_response.AgreementFileVersionCollectionResponse]:
         """

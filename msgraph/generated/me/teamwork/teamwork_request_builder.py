@@ -13,9 +13,7 @@ if TYPE_CHECKING:
     from ...models import user_teamwork
     from ...models.o_data_errors import o_data_error
     from .associated_teams import associated_teams_request_builder
-    from .associated_teams.item import associated_team_info_item_request_builder
     from .installed_apps import installed_apps_request_builder
-    from .installed_apps.item import user_scope_teams_app_installation_item_request_builder
     from .send_activity_notification import send_activity_notification_request_builder
 
 class TeamworkRequestBuilder():
@@ -40,27 +38,11 @@ class TeamworkRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def associated_teams_by_id(self,id: str) -> associated_team_info_item_request_builder.AssociatedTeamInfoItemRequestBuilder:
-        """
-        Provides operations to manage the associatedTeams property of the microsoft.graph.userTeamwork entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: associated_team_info_item_request_builder.AssociatedTeamInfoItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .associated_teams.item import associated_team_info_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["associatedTeamInfo%2Did"] = id
-        return associated_team_info_item_request_builder.AssociatedTeamInfoItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[TeamworkRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[TeamworkRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property teamwork for me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -73,7 +55,7 @@ class TeamworkRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[TeamworkRequestBuilderGetRequestConfiguration] = None) -> Optional[user_teamwork.UserTeamwork]:
         """
@@ -96,21 +78,6 @@ class TeamworkRequestBuilder():
         from ...models import user_teamwork
 
         return await self.request_adapter.send_async(request_info, user_teamwork.UserTeamwork, error_mapping)
-    
-    def installed_apps_by_id(self,id: str) -> user_scope_teams_app_installation_item_request_builder.UserScopeTeamsAppInstallationItemRequestBuilder:
-        """
-        Provides operations to manage the installedApps property of the microsoft.graph.userTeamwork entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: user_scope_teams_app_installation_item_request_builder.UserScopeTeamsAppInstallationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .installed_apps.item import user_scope_teams_app_installation_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["userScopeTeamsAppInstallation%2Did"] = id
-        return user_scope_teams_app_installation_item_request_builder.UserScopeTeamsAppInstallationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[user_teamwork.UserTeamwork] = None, request_configuration: Optional[TeamworkRequestBuilderPatchRequestConfiguration] = None) -> Optional[user_teamwork.UserTeamwork]:
         """

@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .....models import access_package_catalog
     from .....models.o_data_errors import o_data_error
     from .access_packages import access_packages_request_builder
-    from .access_packages.item import access_package_item_request_builder
 
 class AccessPackageCatalogItemRequestBuilder():
     """
@@ -37,27 +36,11 @@ class AccessPackageCatalogItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def access_packages_by_id(self,id: str) -> access_package_item_request_builder.AccessPackageItemRequestBuilder:
-        """
-        Provides operations to manage the accessPackages property of the microsoft.graph.accessPackageCatalog entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_package_item_request_builder.AccessPackageItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .access_packages.item import access_package_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessPackage%2Did"] = id
-        return access_package_item_request_builder.AccessPackageItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property catalogs for identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -70,7 +53,7 @@ class AccessPackageCatalogItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_catalog.AccessPackageCatalog]:
         """

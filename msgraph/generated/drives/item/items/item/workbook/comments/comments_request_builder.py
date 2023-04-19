@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .......models import workbook_comment, workbook_comment_collection_response
     from .......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import workbook_comment_item_request_builder
 
 class CommentsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class CommentsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_workbook_comment_id(self,workbook_comment_id: str) -> workbook_comment_item_request_builder.WorkbookCommentItemRequestBuilder:
+        """
+        Provides operations to manage the comments property of the microsoft.graph.workbook entity.
+        Args:
+            workbook_comment_id: Unique identifier of the item
+        Returns: workbook_comment_item_request_builder.WorkbookCommentItemRequestBuilder
+        """
+        if workbook_comment_id is None:
+            raise Exception("workbook_comment_id cannot be undefined")
+        from .item import workbook_comment_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["workbookComment%2Did"] = workbook_comment_id
+        return workbook_comment_item_request_builder.WorkbookCommentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[CommentsRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_comment_collection_response.WorkbookCommentCollectionResponse]:
         """

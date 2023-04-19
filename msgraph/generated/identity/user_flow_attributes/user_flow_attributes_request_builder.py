@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import identity_user_flow_attribute, identity_user_flow_attribute_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import identity_user_flow_attribute_item_request_builder
 
 class UserFlowAttributesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class UserFlowAttributesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_identity_user_flow_attribute_id(self,identity_user_flow_attribute_id: str) -> identity_user_flow_attribute_item_request_builder.IdentityUserFlowAttributeItemRequestBuilder:
+        """
+        Provides operations to manage the userFlowAttributes property of the microsoft.graph.identityContainer entity.
+        Args:
+            identity_user_flow_attribute_id: Unique identifier of the item
+        Returns: identity_user_flow_attribute_item_request_builder.IdentityUserFlowAttributeItemRequestBuilder
+        """
+        if identity_user_flow_attribute_id is None:
+            raise Exception("identity_user_flow_attribute_id cannot be undefined")
+        from .item import identity_user_flow_attribute_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["identityUserFlowAttribute%2Did"] = identity_user_flow_attribute_id
+        return identity_user_flow_attribute_item_request_builder.IdentityUserFlowAttributeItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[UserFlowAttributesRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_user_flow_attribute_collection_response.IdentityUserFlowAttributeCollectionResponse]:
         """

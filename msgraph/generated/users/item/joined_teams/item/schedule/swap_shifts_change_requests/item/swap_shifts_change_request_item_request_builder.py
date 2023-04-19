@@ -35,12 +35,11 @@ class SwapShiftsChangeRequestItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[SwapShiftsChangeRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[SwapShiftsChangeRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property swapShiftsChangeRequests for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -53,7 +52,7 @@ class SwapShiftsChangeRequestItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[SwapShiftsChangeRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[swap_shifts_change_request.SwapShiftsChangeRequest]:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import delegated_permission_classification, delegated_permission_classification_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import delegated_permission_classification_item_request_builder
 
 class DelegatedPermissionClassificationsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class DelegatedPermissionClassificationsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_delegated_permission_classification_id(self,delegated_permission_classification_id: str) -> delegated_permission_classification_item_request_builder.DelegatedPermissionClassificationItemRequestBuilder:
+        """
+        Provides operations to manage the delegatedPermissionClassifications property of the microsoft.graph.servicePrincipal entity.
+        Args:
+            delegated_permission_classification_id: Unique identifier of the item
+        Returns: delegated_permission_classification_item_request_builder.DelegatedPermissionClassificationItemRequestBuilder
+        """
+        if delegated_permission_classification_id is None:
+            raise Exception("delegated_permission_classification_id cannot be undefined")
+        from .item import delegated_permission_classification_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["delegatedPermissionClassification%2Did"] = delegated_permission_classification_id
+        return delegated_permission_classification_item_request_builder.DelegatedPermissionClassificationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[DelegatedPermissionClassificationsRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_permission_classification_collection_response.DelegatedPermissionClassificationCollectionResponse]:
         """

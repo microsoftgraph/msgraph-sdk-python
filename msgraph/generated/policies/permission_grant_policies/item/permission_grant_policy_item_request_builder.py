@@ -13,9 +13,7 @@ if TYPE_CHECKING:
     from ....models import permission_grant_policy
     from ....models.o_data_errors import o_data_error
     from .excludes import excludes_request_builder
-    from .excludes.item import permission_grant_condition_set_item_request_builder
     from .includes import includes_request_builder
-    from .includes.item import permission_grant_condition_set_item_request_builder
 
 class PermissionGrantPolicyItemRequestBuilder():
     """
@@ -39,12 +37,11 @@ class PermissionGrantPolicyItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[PermissionGrantPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[PermissionGrantPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property permissionGrantPolicies for policies
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -57,23 +54,7 @@ class PermissionGrantPolicyItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
-    
-    def excludes_by_id(self,id: str) -> permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder:
-        """
-        Provides operations to manage the excludes property of the microsoft.graph.permissionGrantPolicy entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .excludes.item import permission_grant_condition_set_item_request_builder
-        from .includes.item import permission_grant_condition_set_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["permissionGrantConditionSet%2Did"] = id
-        return permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[PermissionGrantPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[permission_grant_policy.PermissionGrantPolicy]:
         """
@@ -96,22 +77,6 @@ class PermissionGrantPolicyItemRequestBuilder():
         from ....models import permission_grant_policy
 
         return await self.request_adapter.send_async(request_info, permission_grant_policy.PermissionGrantPolicy, error_mapping)
-    
-    def includes_by_id(self,id: str) -> permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder:
-        """
-        Provides operations to manage the includes property of the microsoft.graph.permissionGrantPolicy entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .excludes.item import permission_grant_condition_set_item_request_builder
-        from .includes.item import permission_grant_condition_set_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["permissionGrantConditionSet%2Did"] = id
-        return permission_grant_condition_set_item_request_builder.PermissionGrantConditionSetItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[permission_grant_policy.PermissionGrantPolicy] = None, request_configuration: Optional[PermissionGrantPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[permission_grant_policy.PermissionGrantPolicy]:
         """

@@ -4,6 +4,7 @@ from kiota_abstractions.request_adapter import RequestAdapter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
+    from .mailbox_settings import mailbox_settings_request_builder
     from .ref import ref_request_builder
 
 class UserItemRequestBuilder():
@@ -27,6 +28,15 @@ class UserItemRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    @property
+    def mailbox_settings(self) -> mailbox_settings_request_builder.MailboxSettingsRequestBuilder:
+        """
+        The mailboxSettings property
+        """
+        from .mailbox_settings import mailbox_settings_request_builder
+
+        return mailbox_settings_request_builder.MailboxSettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def ref(self) -> ref_request_builder.RefRequestBuilder:

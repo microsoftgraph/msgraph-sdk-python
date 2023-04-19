@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ....models.call_records import call_record
     from ....models.o_data_errors import o_data_error
     from .sessions import sessions_request_builder
-    from .sessions.item import session_item_request_builder
 
 class CallRecordItemRequestBuilder():
     """
@@ -37,12 +36,11 @@ class CallRecordItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[CallRecordItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[CallRecordItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property callRecords for communications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -55,7 +53,7 @@ class CallRecordItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[CallRecordItemRequestBuilderGetRequestConfiguration] = None) -> Optional[call_record.CallRecord]:
         """
@@ -103,21 +101,6 @@ class CallRecordItemRequestBuilder():
         from ....models.call_records import call_record
 
         return await self.request_adapter.send_async(request_info, call_record.CallRecord, error_mapping)
-    
-    def sessions_by_id(self,id: str) -> session_item_request_builder.SessionItemRequestBuilder:
-        """
-        Provides operations to manage the sessions property of the microsoft.graph.callRecords.callRecord entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: session_item_request_builder.SessionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .sessions.item import session_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["session%2Did"] = id
-        return session_item_request_builder.SessionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[CallRecordItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

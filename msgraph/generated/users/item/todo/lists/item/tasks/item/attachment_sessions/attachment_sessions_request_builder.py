@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .........models import attachment_session_collection_response
     from .........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import attachment_session_item_request_builder
 
 class AttachmentSessionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class AttachmentSessionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_attachment_session_id(self,attachment_session_id: str) -> attachment_session_item_request_builder.AttachmentSessionItemRequestBuilder:
+        """
+        Provides operations to manage the attachmentSessions property of the microsoft.graph.todoTask entity.
+        Args:
+            attachment_session_id: Unique identifier of the item
+        Returns: attachment_session_item_request_builder.AttachmentSessionItemRequestBuilder
+        """
+        if attachment_session_id is None:
+            raise Exception("attachment_session_id cannot be undefined")
+        from .item import attachment_session_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["attachmentSession%2Did"] = attachment_session_id
+        return attachment_session_item_request_builder.AttachmentSessionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AttachmentSessionsRequestBuilderGetRequestConfiguration] = None) -> Optional[attachment_session_collection_response.AttachmentSessionCollectionResponse]:
         """

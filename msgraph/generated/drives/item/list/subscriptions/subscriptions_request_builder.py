@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import subscription, subscription_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import subscription_item_request_builder
 
 class SubscriptionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class SubscriptionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_subscription_id(self,subscription_id: str) -> subscription_item_request_builder.SubscriptionItemRequestBuilder:
+        """
+        Provides operations to manage the subscriptions property of the microsoft.graph.list entity.
+        Args:
+            subscription_id: Unique identifier of the item
+        Returns: subscription_item_request_builder.SubscriptionItemRequestBuilder
+        """
+        if subscription_id is None:
+            raise Exception("subscription_id cannot be undefined")
+        from .item import subscription_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["subscription%2Did"] = subscription_id
+        return subscription_item_request_builder.SubscriptionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SubscriptionsRequestBuilderGetRequestConfiguration] = None) -> Optional[subscription_collection_response.SubscriptionCollectionResponse]:
         """

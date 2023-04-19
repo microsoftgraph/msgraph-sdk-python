@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ........models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .delta import delta_request_builder
+    from .item import message_item_request_builder
 
 class MessagesRequestBuilder():
     """
@@ -36,6 +37,21 @@ class MessagesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_message_id(self,message_id: str) -> message_item_request_builder.MessageItemRequestBuilder:
+        """
+        Provides operations to manage the messages property of the microsoft.graph.mailFolder entity.
+        Args:
+            message_id: Unique identifier of the item
+        Returns: message_item_request_builder.MessageItemRequestBuilder
+        """
+        if message_id is None:
+            raise Exception("message_id cannot be undefined")
+        from .item import message_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["message%2Did"] = message_id
+        return message_item_request_builder.MessageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[message_collection_response.MessageCollectionResponse]:
         """

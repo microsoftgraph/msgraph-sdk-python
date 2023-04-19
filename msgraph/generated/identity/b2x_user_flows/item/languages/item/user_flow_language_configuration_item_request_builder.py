@@ -13,9 +13,7 @@ if TYPE_CHECKING:
     from ......models import user_flow_language_configuration
     from ......models.o_data_errors import o_data_error
     from .default_pages import default_pages_request_builder
-    from .default_pages.item import user_flow_language_page_item_request_builder
     from .overrides_pages import overrides_pages_request_builder
-    from .overrides_pages.item import user_flow_language_page_item_request_builder
 
 class UserFlowLanguageConfigurationItemRequestBuilder():
     """
@@ -39,28 +37,11 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def default_pages_by_id(self,id: str) -> user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder:
-        """
-        Provides operations to manage the defaultPages property of the microsoft.graph.userFlowLanguageConfiguration entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .default_pages.item import user_flow_language_page_item_request_builder
-        from .overrides_pages.item import user_flow_language_page_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["userFlowLanguagePage%2Did"] = id
-        return user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[UserFlowLanguageConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[UserFlowLanguageConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property languages for identity
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -73,7 +54,7 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[UserFlowLanguageConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[user_flow_language_configuration.UserFlowLanguageConfiguration]:
         """
@@ -96,22 +77,6 @@ class UserFlowLanguageConfigurationItemRequestBuilder():
         from ......models import user_flow_language_configuration
 
         return await self.request_adapter.send_async(request_info, user_flow_language_configuration.UserFlowLanguageConfiguration, error_mapping)
-    
-    def overrides_pages_by_id(self,id: str) -> user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder:
-        """
-        Provides operations to manage the overridesPages property of the microsoft.graph.userFlowLanguageConfiguration entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .default_pages.item import user_flow_language_page_item_request_builder
-        from .overrides_pages.item import user_flow_language_page_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["userFlowLanguagePage%2Did"] = id
-        return user_flow_language_page_item_request_builder.UserFlowLanguagePageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[user_flow_language_configuration.UserFlowLanguageConfiguration] = None, request_configuration: Optional[UserFlowLanguageConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[user_flow_language_configuration.UserFlowLanguageConfiguration]:
         """

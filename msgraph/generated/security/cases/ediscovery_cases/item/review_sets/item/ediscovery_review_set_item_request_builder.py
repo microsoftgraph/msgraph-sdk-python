@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .......models.o_data_errors import o_data_error
     from .......models.security import ediscovery_review_set
     from .queries import queries_request_builder
-    from .queries.item import ediscovery_review_set_query_item_request_builder
     from .security_add_to_review_set import security_add_to_review_set_request_builder
 
 class EdiscoveryReviewSetItemRequestBuilder():
@@ -38,12 +37,11 @@ class EdiscoveryReviewSetItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[EdiscoveryReviewSetItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[EdiscoveryReviewSetItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property reviewSets for security
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -56,7 +54,7 @@ class EdiscoveryReviewSetItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[EdiscoveryReviewSetItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_review_set.EdiscoveryReviewSet]:
         """
@@ -104,21 +102,6 @@ class EdiscoveryReviewSetItemRequestBuilder():
         from .......models.security import ediscovery_review_set
 
         return await self.request_adapter.send_async(request_info, ediscovery_review_set.EdiscoveryReviewSet, error_mapping)
-    
-    def queries_by_id(self,id: str) -> ediscovery_review_set_query_item_request_builder.EdiscoveryReviewSetQueryItemRequestBuilder:
-        """
-        Provides operations to manage the queries property of the microsoft.graph.security.ediscoveryReviewSet entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: ediscovery_review_set_query_item_request_builder.EdiscoveryReviewSetQueryItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .queries.item import ediscovery_review_set_query_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["ediscoveryReviewSetQuery%2Did"] = id
-        return ediscovery_review_set_query_item_request_builder.EdiscoveryReviewSetQueryItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[EdiscoveryReviewSetItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

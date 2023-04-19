@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .......models.o_data_errors import o_data_error
     from .add import add_request_builder
     from .count import count_request_builder
+    from .item import workbook_worksheet_item_request_builder
 
 class WorksheetsRequestBuilder():
     """
@@ -36,6 +37,21 @@ class WorksheetsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_workbook_worksheet_id(self,workbook_worksheet_id: str) -> workbook_worksheet_item_request_builder.WorkbookWorksheetItemRequestBuilder:
+        """
+        Provides operations to manage the worksheets property of the microsoft.graph.workbook entity.
+        Args:
+            workbook_worksheet_id: Unique identifier of the item
+        Returns: workbook_worksheet_item_request_builder.WorkbookWorksheetItemRequestBuilder
+        """
+        if workbook_worksheet_id is None:
+            raise Exception("workbook_worksheet_id cannot be undefined")
+        from .item import workbook_worksheet_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["workbookWorksheet%2Did"] = workbook_worksheet_id
+        return workbook_worksheet_item_request_builder.WorkbookWorksheetItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[WorksheetsRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_worksheet_collection_response.WorkbookWorksheetCollectionResponse]:
         """

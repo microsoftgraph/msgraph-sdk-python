@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .........models import access_review_stage
     from .........models.o_data_errors import o_data_error
     from .decisions import decisions_request_builder
-    from .decisions.item import access_review_instance_decision_item_item_request_builder
     from .stop import stop_request_builder
 
 class AccessReviewStageItemRequestBuilder():
@@ -38,27 +37,11 @@ class AccessReviewStageItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def decisions_by_id(self,id: str) -> access_review_instance_decision_item_item_request_builder.AccessReviewInstanceDecisionItemItemRequestBuilder:
-        """
-        Provides operations to manage the decisions property of the microsoft.graph.accessReviewStage entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_review_instance_decision_item_item_request_builder.AccessReviewInstanceDecisionItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .decisions.item import access_review_instance_decision_item_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessReviewInstanceDecisionItem%2Did"] = id
-        return access_review_instance_decision_item_item_request_builder.AccessReviewInstanceDecisionItemItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[AccessReviewStageItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[AccessReviewStageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property stages for identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -71,7 +54,7 @@ class AccessReviewStageItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[AccessReviewStageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[access_review_stage.AccessReviewStage]:
         """

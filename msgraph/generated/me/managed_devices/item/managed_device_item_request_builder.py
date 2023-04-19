@@ -17,9 +17,7 @@ if TYPE_CHECKING:
     from .delete_user_from_shared_apple_device import delete_user_from_shared_apple_device_request_builder
     from .device_category import device_category_request_builder
     from .device_compliance_policy_states import device_compliance_policy_states_request_builder
-    from .device_compliance_policy_states.item import device_compliance_policy_state_item_request_builder
     from .device_configuration_states import device_configuration_states_request_builder
-    from .device_configuration_states.item import device_configuration_state_item_request_builder
     from .disable_lost_mode import disable_lost_mode_request_builder
     from .locate_device import locate_device_request_builder
     from .logout_shared_apple_device_active_user import logout_shared_apple_device_active_user_request_builder
@@ -59,12 +57,11 @@ class ManagedDeviceItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ManagedDeviceItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[ManagedDeviceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property managedDevices for me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -77,37 +74,7 @@ class ManagedDeviceItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
-    
-    def device_compliance_policy_states_by_id(self,id: str) -> device_compliance_policy_state_item_request_builder.DeviceCompliancePolicyStateItemRequestBuilder:
-        """
-        Provides operations to manage the deviceCompliancePolicyStates property of the microsoft.graph.managedDevice entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: device_compliance_policy_state_item_request_builder.DeviceCompliancePolicyStateItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .device_compliance_policy_states.item import device_compliance_policy_state_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["deviceCompliancePolicyState%2Did"] = id
-        return device_compliance_policy_state_item_request_builder.DeviceCompliancePolicyStateItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def device_configuration_states_by_id(self,id: str) -> device_configuration_state_item_request_builder.DeviceConfigurationStateItemRequestBuilder:
-        """
-        Provides operations to manage the deviceConfigurationStates property of the microsoft.graph.managedDevice entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: device_configuration_state_item_request_builder.DeviceConfigurationStateItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .device_configuration_states.item import device_configuration_state_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["deviceConfigurationState%2Did"] = id
-        return device_configuration_state_item_request_builder.DeviceConfigurationStateItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[ManagedDeviceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_device.ManagedDevice]:
         """

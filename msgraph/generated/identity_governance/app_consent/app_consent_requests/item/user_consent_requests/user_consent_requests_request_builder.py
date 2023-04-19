@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ......models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
+    from .item import user_consent_request_item_request_builder
 
 class UserConsentRequestsRequestBuilder():
     """
@@ -36,6 +37,21 @@ class UserConsentRequestsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_user_consent_request_id(self,user_consent_request_id: str) -> user_consent_request_item_request_builder.UserConsentRequestItemRequestBuilder:
+        """
+        Provides operations to manage the userConsentRequests property of the microsoft.graph.appConsentRequest entity.
+        Args:
+            user_consent_request_id: Unique identifier of the item
+        Returns: user_consent_request_item_request_builder.UserConsentRequestItemRequestBuilder
+        """
+        if user_consent_request_id is None:
+            raise Exception("user_consent_request_id cannot be undefined")
+        from .item import user_consent_request_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["userConsentRequest%2Did"] = user_consent_request_id
+        return user_consent_request_item_request_builder.UserConsentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
         """

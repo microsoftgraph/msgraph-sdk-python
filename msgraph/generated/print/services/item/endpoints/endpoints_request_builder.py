@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import print_service_endpoint, print_service_endpoint_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import print_service_endpoint_item_request_builder
 
 class EndpointsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class EndpointsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_print_service_endpoint_id(self,print_service_endpoint_id: str) -> print_service_endpoint_item_request_builder.PrintServiceEndpointItemRequestBuilder:
+        """
+        Provides operations to manage the endpoints property of the microsoft.graph.printService entity.
+        Args:
+            print_service_endpoint_id: Unique identifier of the item
+        Returns: print_service_endpoint_item_request_builder.PrintServiceEndpointItemRequestBuilder
+        """
+        if print_service_endpoint_id is None:
+            raise Exception("print_service_endpoint_id cannot be undefined")
+        from .item import print_service_endpoint_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["printServiceEndpoint%2Did"] = print_service_endpoint_id
+        return print_service_endpoint_item_request_builder.PrintServiceEndpointItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[EndpointsRequestBuilderGetRequestConfiguration] = None) -> Optional[print_service_endpoint_collection_response.PrintServiceEndpointCollectionResponse]:
         """

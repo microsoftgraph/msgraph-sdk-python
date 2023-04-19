@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from .confirm_compromised import confirm_compromised_request_builder
     from .count import count_request_builder
     from .dismiss import dismiss_request_builder
+    from .item import risky_service_principal_item_request_builder
 
 class RiskyServicePrincipalsRequestBuilder():
     """
@@ -37,6 +38,21 @@ class RiskyServicePrincipalsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_risky_service_principal_id(self,risky_service_principal_id: str) -> risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder:
+        """
+        Provides operations to manage the riskyServicePrincipals property of the microsoft.graph.identityProtectionRoot entity.
+        Args:
+            risky_service_principal_id: Unique identifier of the item
+        Returns: risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder
+        """
+        if risky_service_principal_id is None:
+            raise Exception("risky_service_principal_id cannot be undefined")
+        from .item import risky_service_principal_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["riskyServicePrincipal%2Did"] = risky_service_principal_id
+        return risky_service_principal_item_request_builder.RiskyServicePrincipalItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RiskyServicePrincipalsRequestBuilderGetRequestConfiguration] = None) -> Optional[risky_service_principal_collection_response.RiskyServicePrincipalCollectionResponse]:
         """

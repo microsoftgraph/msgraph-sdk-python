@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ....models import risky_user
     from ....models.o_data_errors import o_data_error
     from .history import history_request_builder
-    from .history.item import risky_user_history_item_item_request_builder
 
 class RiskyUserItemRequestBuilder():
     """
@@ -37,12 +36,11 @@ class RiskyUserItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[RiskyUserItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[RiskyUserItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property riskyUsers for identityProtection
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -55,7 +53,7 @@ class RiskyUserItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[RiskyUserItemRequestBuilderGetRequestConfiguration] = None) -> Optional[risky_user.RiskyUser]:
         """
@@ -78,21 +76,6 @@ class RiskyUserItemRequestBuilder():
         from ....models import risky_user
 
         return await self.request_adapter.send_async(request_info, risky_user.RiskyUser, error_mapping)
-    
-    def history_by_id(self,id: str) -> risky_user_history_item_item_request_builder.RiskyUserHistoryItemItemRequestBuilder:
-        """
-        Provides operations to manage the history property of the microsoft.graph.riskyUser entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: risky_user_history_item_item_request_builder.RiskyUserHistoryItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .history.item import risky_user_history_item_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["riskyUserHistoryItem%2Did"] = id
-        return risky_user_history_item_item_request_builder.RiskyUserHistoryItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[risky_user.RiskyUser] = None, request_configuration: Optional[RiskyUserItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[risky_user.RiskyUser]:
         """

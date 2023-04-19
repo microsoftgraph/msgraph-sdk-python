@@ -13,9 +13,7 @@ if TYPE_CHECKING:
     from ....models import terms_and_conditions
     from ....models.o_data_errors import o_data_error
     from .acceptance_statuses import acceptance_statuses_request_builder
-    from .acceptance_statuses.item import terms_and_conditions_acceptance_status_item_request_builder
     from .assignments import assignments_request_builder
-    from .assignments.item import terms_and_conditions_assignment_item_request_builder
 
 class TermsAndConditionsItemRequestBuilder():
     """
@@ -39,42 +37,11 @@ class TermsAndConditionsItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def acceptance_statuses_by_id(self,id: str) -> terms_and_conditions_acceptance_status_item_request_builder.TermsAndConditionsAcceptanceStatusItemRequestBuilder:
-        """
-        Provides operations to manage the acceptanceStatuses property of the microsoft.graph.termsAndConditions entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: terms_and_conditions_acceptance_status_item_request_builder.TermsAndConditionsAcceptanceStatusItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .acceptance_statuses.item import terms_and_conditions_acceptance_status_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["termsAndConditionsAcceptanceStatus%2Did"] = id
-        return terms_and_conditions_acceptance_status_item_request_builder.TermsAndConditionsAcceptanceStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def assignments_by_id(self,id: str) -> terms_and_conditions_assignment_item_request_builder.TermsAndConditionsAssignmentItemRequestBuilder:
-        """
-        Provides operations to manage the assignments property of the microsoft.graph.termsAndConditions entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: terms_and_conditions_assignment_item_request_builder.TermsAndConditionsAssignmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .assignments.item import terms_and_conditions_assignment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["termsAndConditionsAssignment%2Did"] = id
-        return terms_and_conditions_assignment_item_request_builder.TermsAndConditionsAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[TermsAndConditionsItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[TermsAndConditionsItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property termsAndConditions for deviceManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -87,7 +54,7 @@ class TermsAndConditionsItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[TermsAndConditionsItemRequestBuilderGetRequestConfiguration] = None) -> Optional[terms_and_conditions.TermsAndConditions]:
         """

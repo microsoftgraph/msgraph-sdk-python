@@ -13,13 +13,9 @@ if TYPE_CHECKING:
     from ..models import directory
     from ..models.o_data_errors import o_data_error
     from .administrative_units import administrative_units_request_builder
-    from .administrative_units.item import administrative_unit_item_request_builder
     from .deleted_items import deleted_items_request_builder
-    from .deleted_items.item import directory_object_item_request_builder
     from .federation_configurations import federation_configurations_request_builder
-    from .federation_configurations.item import identity_provider_base_item_request_builder
     from .on_premises_synchronization import on_premises_synchronization_request_builder
-    from .on_premises_synchronization.item import on_premises_directory_synchronization_item_request_builder
 
 class DirectoryRequestBuilder():
     """
@@ -43,51 +39,6 @@ class DirectoryRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def administrative_units_by_id(self,id: str) -> administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder:
-        """
-        Provides operations to manage the administrativeUnits property of the microsoft.graph.directory entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .administrative_units.item import administrative_unit_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["administrativeUnit%2Did"] = id
-        return administrative_unit_item_request_builder.AdministrativeUnitItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def deleted_items_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Provides operations to manage the deletedItems property of the microsoft.graph.directory entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .deleted_items.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def federation_configurations_by_id(self,id: str) -> identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder:
-        """
-        Provides operations to manage the federationConfigurations property of the microsoft.graph.directory entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .federation_configurations.item import identity_provider_base_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["identityProviderBase%2Did"] = id
-        return identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def get(self,request_configuration: Optional[DirectoryRequestBuilderGetRequestConfiguration] = None) -> Optional[directory.Directory]:
         """
         Get directory
@@ -109,21 +60,6 @@ class DirectoryRequestBuilder():
         from ..models import directory
 
         return await self.request_adapter.send_async(request_info, directory.Directory, error_mapping)
-    
-    def on_premises_synchronization_by_id(self,id: str) -> on_premises_directory_synchronization_item_request_builder.OnPremisesDirectorySynchronizationItemRequestBuilder:
-        """
-        Provides operations to manage the onPremisesSynchronization property of the microsoft.graph.directory entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: on_premises_directory_synchronization_item_request_builder.OnPremisesDirectorySynchronizationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .on_premises_synchronization.item import on_premises_directory_synchronization_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["onPremisesDirectorySynchronization%2Did"] = id
-        return on_premises_directory_synchronization_item_request_builder.OnPremisesDirectorySynchronizationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[directory.Directory] = None, request_configuration: Optional[DirectoryRequestBuilderPatchRequestConfiguration] = None) -> Optional[directory.Directory]:
         """

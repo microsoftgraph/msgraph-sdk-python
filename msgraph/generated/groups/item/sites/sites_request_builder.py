@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .add import add_request_builder
     from .count import count_request_builder
+    from .item import site_item_request_builder
     from .remove import remove_request_builder
 
 class SitesRequestBuilder():
@@ -37,6 +38,21 @@ class SitesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_site_id(self,site_id: str) -> site_item_request_builder.SiteItemRequestBuilder:
+        """
+        Provides operations to manage the sites property of the microsoft.graph.group entity.
+        Args:
+            site_id: Unique identifier of the item
+        Returns: site_item_request_builder.SiteItemRequestBuilder
+        """
+        if site_id is None:
+            raise Exception("site_id cannot be undefined")
+        from .item import site_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["site%2Did"] = site_id
+        return site_item_request_builder.SiteItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> Optional[site_collection_response.SiteCollectionResponse]:
         """

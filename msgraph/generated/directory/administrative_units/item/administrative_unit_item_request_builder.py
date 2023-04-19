@@ -13,11 +13,8 @@ if TYPE_CHECKING:
     from ....models import administrative_unit
     from ....models.o_data_errors import o_data_error
     from .extensions import extensions_request_builder
-    from .extensions.item import extension_item_request_builder
     from .members import members_request_builder
-    from .members.item import directory_object_item_request_builder
     from .scoped_role_members import scoped_role_members_request_builder
-    from .scoped_role_members.item import scoped_role_membership_item_request_builder
 
 class AdministrativeUnitItemRequestBuilder():
     """
@@ -41,12 +38,11 @@ class AdministrativeUnitItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[AdministrativeUnitItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[AdministrativeUnitItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property administrativeUnits for directory
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -59,22 +55,7 @@ class AdministrativeUnitItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
-    
-    def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
-        """
-        Provides operations to manage the extensions property of the microsoft.graph.administrativeUnit entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: extension_item_request_builder.ExtensionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .extensions.item import extension_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["extension%2Did"] = id
-        return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[AdministrativeUnitItemRequestBuilderGetRequestConfiguration] = None) -> Optional[administrative_unit.AdministrativeUnit]:
         """
@@ -97,21 +78,6 @@ class AdministrativeUnitItemRequestBuilder():
         from ....models import administrative_unit
 
         return await self.request_adapter.send_async(request_info, administrative_unit.AdministrativeUnit, error_mapping)
-    
-    def members_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.directory.administrativeUnits.item.members.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .members.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[administrative_unit.AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[administrative_unit.AdministrativeUnit]:
         """
@@ -137,21 +103,6 @@ class AdministrativeUnitItemRequestBuilder():
         from ....models import administrative_unit
 
         return await self.request_adapter.send_async(request_info, administrative_unit.AdministrativeUnit, error_mapping)
-    
-    def scoped_role_members_by_id(self,id: str) -> scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder:
-        """
-        Provides operations to manage the scopedRoleMembers property of the microsoft.graph.administrativeUnit entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .scoped_role_members.item import scoped_role_membership_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["scopedRoleMembership%2Did"] = id
-        return scoped_role_membership_item_request_builder.ScopedRoleMembershipItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[AdministrativeUnitItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -13,9 +13,7 @@ if TYPE_CHECKING:
     from .......models.o_data_errors import o_data_error
     from .......models.term_store import store
     from .groups import groups_request_builder
-    from .groups.item import group_item_request_builder
     from .sets import sets_request_builder
-    from .sets.item import set_item_request_builder
 
 class StoreItemRequestBuilder():
     """
@@ -39,12 +37,11 @@ class StoreItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[StoreItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[StoreItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property termStores for groups
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -57,7 +54,7 @@ class StoreItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[StoreItemRequestBuilderGetRequestConfiguration] = None) -> Optional[store.Store]:
         """
@@ -80,21 +77,6 @@ class StoreItemRequestBuilder():
         from .......models.term_store import store
 
         return await self.request_adapter.send_async(request_info, store.Store, error_mapping)
-    
-    def groups_by_id(self,id: str) -> group_item_request_builder.GroupItemRequestBuilder:
-        """
-        Provides operations to manage the groups property of the microsoft.graph.termStore.store entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: group_item_request_builder.GroupItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .groups.item import group_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["group%2Did1"] = id
-        return group_item_request_builder.GroupItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[store.Store] = None, request_configuration: Optional[StoreItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[store.Store]:
         """
@@ -120,21 +102,6 @@ class StoreItemRequestBuilder():
         from .......models.term_store import store
 
         return await self.request_adapter.send_async(request_info, store.Store, error_mapping)
-    
-    def sets_by_id(self,id: str) -> set_item_request_builder.SetItemRequestBuilder:
-        """
-        Provides operations to manage the sets property of the microsoft.graph.termStore.store entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: set_item_request_builder.SetItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .sets.item import set_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["set%2Did"] = id
-        return set_item_request_builder.SetItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[StoreItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -12,6 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models import user
     from ....models.o_data_errors import o_data_error
+    from .mailbox_settings import mailbox_settings_request_builder
 
 class UserRequestBuilder():
     """
@@ -74,6 +75,15 @@ class UserRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
+    
+    @property
+    def mailbox_settings(self) -> mailbox_settings_request_builder.MailboxSettingsRequestBuilder:
+        """
+        The mailboxSettings property
+        """
+        from .mailbox_settings import mailbox_settings_request_builder
+
+        return mailbox_settings_request_builder.MailboxSettingsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class UserRequestBuilderGetQueryParameters():

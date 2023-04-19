@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import password_authentication_method, password_authentication_method_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import password_authentication_method_item_request_builder
 
 class PasswordMethodsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class PasswordMethodsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_password_authentication_method_id(self,password_authentication_method_id: str) -> password_authentication_method_item_request_builder.PasswordAuthenticationMethodItemRequestBuilder:
+        """
+        Provides operations to manage the passwordMethods property of the microsoft.graph.authentication entity.
+        Args:
+            password_authentication_method_id: Unique identifier of the item
+        Returns: password_authentication_method_item_request_builder.PasswordAuthenticationMethodItemRequestBuilder
+        """
+        if password_authentication_method_id is None:
+            raise Exception("password_authentication_method_id cannot be undefined")
+        from .item import password_authentication_method_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["passwordAuthenticationMethod%2Did"] = password_authentication_method_id
+        return password_authentication_method_item_request_builder.PasswordAuthenticationMethodItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[PasswordMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[password_authentication_method_collection_response.PasswordAuthenticationMethodCollectionResponse]:
         """

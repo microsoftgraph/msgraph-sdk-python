@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import android_managed_app_protection, android_managed_app_protection_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import android_managed_app_protection_item_request_builder
 
 class AndroidManagedAppProtectionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class AndroidManagedAppProtectionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_android_managed_app_protection_id(self,android_managed_app_protection_id: str) -> android_managed_app_protection_item_request_builder.AndroidManagedAppProtectionItemRequestBuilder:
+        """
+        Provides operations to manage the androidManagedAppProtections property of the microsoft.graph.deviceAppManagement entity.
+        Args:
+            android_managed_app_protection_id: Unique identifier of the item
+        Returns: android_managed_app_protection_item_request_builder.AndroidManagedAppProtectionItemRequestBuilder
+        """
+        if android_managed_app_protection_id is None:
+            raise Exception("android_managed_app_protection_id cannot be undefined")
+        from .item import android_managed_app_protection_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["androidManagedAppProtection%2Did"] = android_managed_app_protection_id
+        return android_managed_app_protection_item_request_builder.AndroidManagedAppProtectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AndroidManagedAppProtectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[android_managed_app_protection_collection_response.AndroidManagedAppProtectionCollectionResponse]:
         """

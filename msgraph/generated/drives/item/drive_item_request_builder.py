@@ -13,18 +13,14 @@ if TYPE_CHECKING:
     from ...models import drive
     from ...models.o_data_errors import o_data_error
     from .bundles import bundles_request_builder
-    from .bundles.item import drive_item_item_request_builder
     from .following import following_request_builder
-    from .following.item import drive_item_item_request_builder
     from .items import items_request_builder
-    from .items.item import drive_item_item_request_builder
     from .list import list_request_builder
     from .recent import recent_request_builder
     from .root import root_request_builder
     from .search_with_q import search_with_q_request_builder
     from .shared_with_me import shared_with_me_request_builder
     from .special import special_request_builder
-    from .special.item import drive_item_item_request_builder
 
 class DriveItemRequestBuilder():
     """
@@ -48,30 +44,11 @@ class DriveItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def bundles_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
-        """
-        Provides operations to manage the bundles property of the microsoft.graph.drive entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: drive_item_item_request_builder.DriveItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .bundles.item import drive_item_item_request_builder
-        from .following.item import drive_item_item_request_builder
-        from .items.item import drive_item_item_request_builder
-        from .special.item import drive_item_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["driveItem%2Did"] = id
-        return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[DriveItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[DriveItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete entity from drives
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -84,29 +61,11 @@ class DriveItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
-    
-    def following_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
-        """
-        Provides operations to manage the following property of the microsoft.graph.drive entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: drive_item_item_request_builder.DriveItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .bundles.item import drive_item_item_request_builder
-        from .following.item import drive_item_item_request_builder
-        from .items.item import drive_item_item_request_builder
-        from .special.item import drive_item_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["driveItem%2Did"] = id
-        return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[DriveItemRequestBuilderGetRequestConfiguration] = None) -> Optional[drive.Drive]:
         """
-        Retrieve the properties and relationships of a Drive resource. A Drive is the top-level container for a file system, such as OneDrive or SharePoint document libraries.
+        Get entity from drives by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[drive.Drive]
@@ -125,24 +84,6 @@ class DriveItemRequestBuilder():
         from ...models import drive
 
         return await self.request_adapter.send_async(request_info, drive.Drive, error_mapping)
-    
-    def items_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
-        """
-        Provides operations to manage the items property of the microsoft.graph.drive entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: drive_item_item_request_builder.DriveItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .bundles.item import drive_item_item_request_builder
-        from .following.item import drive_item_item_request_builder
-        from .items.item import drive_item_item_request_builder
-        from .special.item import drive_item_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["driveItem%2Did"] = id
-        return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[drive.Drive] = None, request_configuration: Optional[DriveItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[drive.Drive]:
         """
@@ -182,24 +123,6 @@ class DriveItemRequestBuilder():
 
         return search_with_q_request_builder.SearchWithQRequestBuilder(self.request_adapter, self.path_parameters, q)
     
-    def special_by_id(self,id: str) -> drive_item_item_request_builder.DriveItemItemRequestBuilder:
-        """
-        Provides operations to manage the special property of the microsoft.graph.drive entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: drive_item_item_request_builder.DriveItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .bundles.item import drive_item_item_request_builder
-        from .following.item import drive_item_item_request_builder
-        from .items.item import drive_item_item_request_builder
-        from .special.item import drive_item_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["driveItem%2Did"] = id
-        return drive_item_item_request_builder.DriveItemItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def to_delete_request_information(self,request_configuration: Optional[DriveItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete entity from drives
@@ -218,7 +141,7 @@ class DriveItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DriveItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a Drive resource. A Drive is the top-level container for a file system, such as OneDrive or SharePoint document libraries.
+        Get entity from drives by key
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -342,7 +265,7 @@ class DriveItemRequestBuilder():
     @dataclass
     class DriveItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a Drive resource. A Drive is the top-level container for a file system, such as OneDrive or SharePoint document libraries.
+        Get entity from drives by key
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

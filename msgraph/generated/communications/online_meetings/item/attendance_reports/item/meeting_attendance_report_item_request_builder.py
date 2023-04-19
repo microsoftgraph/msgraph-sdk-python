@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ......models import meeting_attendance_report
     from ......models.o_data_errors import o_data_error
     from .attendance_records import attendance_records_request_builder
-    from .attendance_records.item import attendance_record_item_request_builder
 
 class MeetingAttendanceReportItemRequestBuilder():
     """
@@ -37,27 +36,11 @@ class MeetingAttendanceReportItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def attendance_records_by_id(self,id: str) -> attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder:
-        """
-        Provides operations to manage the attendanceRecords property of the microsoft.graph.meetingAttendanceReport entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .attendance_records.item import attendance_record_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["attendanceRecord%2Did"] = id
-        return attendance_record_item_request_builder.AttendanceRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[MeetingAttendanceReportItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[MeetingAttendanceReportItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property attendanceReports for communications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -70,7 +53,7 @@ class MeetingAttendanceReportItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[MeetingAttendanceReportItemRequestBuilderGetRequestConfiguration] = None) -> Optional[meeting_attendance_report.MeetingAttendanceReport]:
         """

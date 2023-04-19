@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import user_scope_teams_app_installation, user_scope_teams_app_installation_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import user_scope_teams_app_installation_item_request_builder
 
 class InstalledAppsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class InstalledAppsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_user_scope_teams_app_installation_id(self,user_scope_teams_app_installation_id: str) -> user_scope_teams_app_installation_item_request_builder.UserScopeTeamsAppInstallationItemRequestBuilder:
+        """
+        Provides operations to manage the installedApps property of the microsoft.graph.userTeamwork entity.
+        Args:
+            user_scope_teams_app_installation_id: Unique identifier of the item
+        Returns: user_scope_teams_app_installation_item_request_builder.UserScopeTeamsAppInstallationItemRequestBuilder
+        """
+        if user_scope_teams_app_installation_id is None:
+            raise Exception("user_scope_teams_app_installation_id cannot be undefined")
+        from .item import user_scope_teams_app_installation_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["userScopeTeamsAppInstallation%2Did"] = user_scope_teams_app_installation_id
+        return user_scope_teams_app_installation_item_request_builder.UserScopeTeamsAppInstallationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[user_scope_teams_app_installation_collection_response.UserScopeTeamsAppInstallationCollectionResponse]:
         """

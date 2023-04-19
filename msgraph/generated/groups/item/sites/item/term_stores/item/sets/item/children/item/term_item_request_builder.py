@@ -13,9 +13,7 @@ if TYPE_CHECKING:
     from ...........models.o_data_errors import o_data_error
     from ...........models.term_store import term
     from .children import children_request_builder
-    from .children.item import term_item_request_builder
     from .relations import relations_request_builder
-    from .relations.item import relation_item_request_builder
     from .set import set_request_builder
 
 class TermItemRequestBuilder():
@@ -40,27 +38,11 @@ class TermItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def children_by_id(self,id: str) -> TermItemRequestBuilder:
-        """
-        Provides operations to manage the children property of the microsoft.graph.termStore.term entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: TermItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .children.item import term_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["term%2Did1"] = id
-        return TermItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[TermItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[TermItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property children for groups
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -73,7 +55,7 @@ class TermItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[TermItemRequestBuilderGetRequestConfiguration] = None) -> Optional[term.Term]:
         """
@@ -121,21 +103,6 @@ class TermItemRequestBuilder():
         from ...........models.term_store import term
 
         return await self.request_adapter.send_async(request_info, term.Term, error_mapping)
-    
-    def relations_by_id(self,id: str) -> relation_item_request_builder.RelationItemRequestBuilder:
-        """
-        Provides operations to manage the relations property of the microsoft.graph.termStore.term entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: relation_item_request_builder.RelationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .relations.item import relation_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["relation%2Did"] = id
-        return relation_item_request_builder.RelationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[TermItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .delta import delta_request_builder
+    from .item import chat_message_item_request_builder
 
 class MessagesRequestBuilder():
     """
@@ -36,6 +37,21 @@ class MessagesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_chat_message_id(self,chat_message_id: str) -> chat_message_item_request_builder.ChatMessageItemRequestBuilder:
+        """
+        Provides operations to manage the messages property of the microsoft.graph.chat entity.
+        Args:
+            chat_message_id: Unique identifier of the item
+        Returns: chat_message_item_request_builder.ChatMessageItemRequestBuilder
+        """
+        if chat_message_id is None:
+            raise Exception("chat_message_id cannot be undefined")
+        from .item import chat_message_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["chatMessage%2Did"] = chat_message_id
+        return chat_message_item_request_builder.ChatMessageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[chat_message_collection_response.ChatMessageCollectionResponse]:
         """
@@ -61,7 +77,7 @@ class MessagesRequestBuilder():
     
     async def post(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> Optional[chat_message.ChatMessage]:
         """
-        Send a new chatMessage in the specified channel or a chat.
+        Send a new chatMessage in the specified chat. This API can't create a new chat; you must use the list chats method to retrieve the ID of an existing chat before you can create a chat message.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +120,7 @@ class MessagesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Send a new chatMessage in the specified channel or a chat.
+        Send a new chatMessage in the specified chat. This API can't create a new chat; you must use the list chats method to retrieve the ID of an existing chat before you can create a chat message.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

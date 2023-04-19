@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .....models import simulation_automation
     from .....models.o_data_errors import o_data_error
     from .runs import runs_request_builder
-    from .runs.item import simulation_automation_run_item_request_builder
 
 class SimulationAutomationItemRequestBuilder():
     """
@@ -37,12 +36,11 @@ class SimulationAutomationItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[SimulationAutomationItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[SimulationAutomationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property simulationAutomations for security
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -55,7 +53,7 @@ class SimulationAutomationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[SimulationAutomationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[simulation_automation.SimulationAutomation]:
         """
@@ -103,21 +101,6 @@ class SimulationAutomationItemRequestBuilder():
         from .....models import simulation_automation
 
         return await self.request_adapter.send_async(request_info, simulation_automation.SimulationAutomation, error_mapping)
-    
-    def runs_by_id(self,id: str) -> simulation_automation_run_item_request_builder.SimulationAutomationRunItemRequestBuilder:
-        """
-        Provides operations to manage the runs property of the microsoft.graph.simulationAutomation entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: simulation_automation_run_item_request_builder.SimulationAutomationRunItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .runs.item import simulation_automation_run_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["simulationAutomationRun%2Did"] = id
-        return simulation_automation_run_item_request_builder.SimulationAutomationRunItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[SimulationAutomationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

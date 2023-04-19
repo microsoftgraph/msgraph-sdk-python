@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import on_premises_directory_synchronization, on_premises_directory_synchronization_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import on_premises_directory_synchronization_item_request_builder
 
 class OnPremisesSynchronizationRequestBuilder():
     """
@@ -35,6 +36,21 @@ class OnPremisesSynchronizationRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_on_premises_directory_synchronization_id(self,on_premises_directory_synchronization_id: str) -> on_premises_directory_synchronization_item_request_builder.OnPremisesDirectorySynchronizationItemRequestBuilder:
+        """
+        Provides operations to manage the onPremisesSynchronization property of the microsoft.graph.directory entity.
+        Args:
+            on_premises_directory_synchronization_id: Unique identifier of the item
+        Returns: on_premises_directory_synchronization_item_request_builder.OnPremisesDirectorySynchronizationItemRequestBuilder
+        """
+        if on_premises_directory_synchronization_id is None:
+            raise Exception("on_premises_directory_synchronization_id cannot be undefined")
+        from .item import on_premises_directory_synchronization_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["onPremisesDirectorySynchronization%2Did"] = on_premises_directory_synchronization_id
+        return on_premises_directory_synchronization_item_request_builder.OnPremisesDirectorySynchronizationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[OnPremisesSynchronizationRequestBuilderGetRequestConfiguration] = None) -> Optional[on_premises_directory_synchronization_collection_response.OnPremisesDirectorySynchronizationCollectionResponse]:
         """

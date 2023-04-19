@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .......models.o_data_errors import o_data_error
     from .......models.security import ediscovery_review_tag
     from .child_tags import child_tags_request_builder
-    from .child_tags.item import ediscovery_review_tag_item_request_builder
     from .parent import parent_request_builder
 
 class EdiscoveryReviewTagItemRequestBuilder():
@@ -38,27 +37,11 @@ class EdiscoveryReviewTagItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def child_tags_by_id(self,id: str) -> EdiscoveryReviewTagItemRequestBuilder:
-        """
-        Provides operations to manage the childTags property of the microsoft.graph.security.ediscoveryReviewTag entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: EdiscoveryReviewTagItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .child_tags.item import ediscovery_review_tag_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["ediscoveryReviewTag%2Did1"] = id
-        return EdiscoveryReviewTagItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property tags for security
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -71,7 +54,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_review_tag.EdiscoveryReviewTag]:
         """

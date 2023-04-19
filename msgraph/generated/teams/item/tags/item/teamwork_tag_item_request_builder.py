@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .....models import teamwork_tag
     from .....models.o_data_errors import o_data_error
     from .members import members_request_builder
-    from .members.item import teamwork_tag_member_item_request_builder
 
 class TeamworkTagItemRequestBuilder():
     """
@@ -37,12 +36,11 @@ class TeamworkTagItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[TeamworkTagItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[TeamworkTagItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property tags for teams
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -55,7 +53,7 @@ class TeamworkTagItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[TeamworkTagItemRequestBuilderGetRequestConfiguration] = None) -> Optional[teamwork_tag.TeamworkTag]:
         """
@@ -78,21 +76,6 @@ class TeamworkTagItemRequestBuilder():
         from .....models import teamwork_tag
 
         return await self.request_adapter.send_async(request_info, teamwork_tag.TeamworkTag, error_mapping)
-    
-    def members_by_id(self,id: str) -> teamwork_tag_member_item_request_builder.TeamworkTagMemberItemRequestBuilder:
-        """
-        Provides operations to manage the members property of the microsoft.graph.teamworkTag entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: teamwork_tag_member_item_request_builder.TeamworkTagMemberItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .members.item import teamwork_tag_member_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["teamworkTagMember%2Did"] = id
-        return teamwork_tag_member_item_request_builder.TeamworkTagMemberItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[teamwork_tag.TeamworkTag] = None, request_configuration: Optional[TeamworkTagItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[teamwork_tag.TeamworkTag]:
         """

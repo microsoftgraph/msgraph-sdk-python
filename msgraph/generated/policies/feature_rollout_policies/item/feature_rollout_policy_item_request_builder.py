@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ....models import feature_rollout_policy
     from ....models.o_data_errors import o_data_error
     from .applies_to import applies_to_request_builder
-    from .applies_to.item import directory_object_item_request_builder
 
 class FeatureRolloutPolicyItemRequestBuilder():
     """
@@ -37,27 +36,11 @@ class FeatureRolloutPolicyItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def applies_to_by_id(self,id: str) -> directory_object_item_request_builder.DirectoryObjectItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.policies.featureRolloutPolicies.item.appliesTo.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_object_item_request_builder.DirectoryObjectItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .applies_to.item import directory_object_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryObject%2Did"] = id
-        return directory_object_item_request_builder.DirectoryObjectItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property featureRolloutPolicies for policies
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -70,7 +53,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[feature_rollout_policy.FeatureRolloutPolicy]:
         """

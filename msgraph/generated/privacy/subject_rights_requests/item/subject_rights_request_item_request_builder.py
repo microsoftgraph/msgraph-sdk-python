@@ -15,7 +15,6 @@ if TYPE_CHECKING:
     from .get_final_attachment import get_final_attachment_request_builder
     from .get_final_report import get_final_report_request_builder
     from .notes import notes_request_builder
-    from .notes.item import authored_note_item_request_builder
     from .team import team_request_builder
 
 class SubjectRightsRequestItemRequestBuilder():
@@ -40,12 +39,11 @@ class SubjectRightsRequestItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[SubjectRightsRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[SubjectRightsRequestItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property subjectRightsRequests for privacy
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -58,7 +56,7 @@ class SubjectRightsRequestItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[SubjectRightsRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[subject_rights_request.SubjectRightsRequest]:
         """
@@ -81,21 +79,6 @@ class SubjectRightsRequestItemRequestBuilder():
         from ....models import subject_rights_request
 
         return await self.request_adapter.send_async(request_info, subject_rights_request.SubjectRightsRequest, error_mapping)
-    
-    def notes_by_id(self,id: str) -> authored_note_item_request_builder.AuthoredNoteItemRequestBuilder:
-        """
-        Provides operations to manage the notes property of the microsoft.graph.subjectRightsRequest entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: authored_note_item_request_builder.AuthoredNoteItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .notes.item import authored_note_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["authoredNote%2Did"] = id
-        return authored_note_item_request_builder.AuthoredNoteItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[subject_rights_request.SubjectRightsRequest] = None, request_configuration: Optional[SubjectRightsRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[subject_rights_request.SubjectRightsRequest]:
         """

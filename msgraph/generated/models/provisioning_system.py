@@ -10,7 +10,7 @@ from . import identity
 class ProvisioningSystem(identity.Identity):
     def __init__(self,) -> None:
         """
-        Instantiates a new ProvisioningSystem and sets the default values.
+        Instantiates a new provisioningSystem and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.provisioningSystem"

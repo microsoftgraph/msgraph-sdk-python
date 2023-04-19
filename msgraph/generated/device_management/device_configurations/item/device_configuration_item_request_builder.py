@@ -14,15 +14,11 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .assign import assign_request_builder
     from .assignments import assignments_request_builder
-    from .assignments.item import device_configuration_assignment_item_request_builder
     from .device_setting_state_summaries import device_setting_state_summaries_request_builder
-    from .device_setting_state_summaries.item import setting_state_device_summary_item_request_builder
     from .device_statuses import device_statuses_request_builder
-    from .device_statuses.item import device_configuration_device_status_item_request_builder
     from .device_status_overview import device_status_overview_request_builder
     from .get_oma_setting_plain_text_value_with_secret_reference_value_id import get_oma_setting_plain_text_value_with_secret_reference_value_id_request_builder
     from .user_statuses import user_statuses_request_builder
-    from .user_statuses.item import device_configuration_user_status_item_request_builder
     from .user_status_overview import user_status_overview_request_builder
 
 class DeviceConfigurationItemRequestBuilder():
@@ -47,27 +43,11 @@ class DeviceConfigurationItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def assignments_by_id(self,id: str) -> device_configuration_assignment_item_request_builder.DeviceConfigurationAssignmentItemRequestBuilder:
-        """
-        Provides operations to manage the assignments property of the microsoft.graph.deviceConfiguration entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: device_configuration_assignment_item_request_builder.DeviceConfigurationAssignmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .assignments.item import device_configuration_assignment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["deviceConfigurationAssignment%2Did"] = id
-        return device_configuration_assignment_item_request_builder.DeviceConfigurationAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property deviceConfigurations for deviceManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -80,37 +60,7 @@ class DeviceConfigurationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
-    
-    def device_setting_state_summaries_by_id(self,id: str) -> setting_state_device_summary_item_request_builder.SettingStateDeviceSummaryItemRequestBuilder:
-        """
-        Provides operations to manage the deviceSettingStateSummaries property of the microsoft.graph.deviceConfiguration entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: setting_state_device_summary_item_request_builder.SettingStateDeviceSummaryItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .device_setting_state_summaries.item import setting_state_device_summary_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["settingStateDeviceSummary%2Did"] = id
-        return setting_state_device_summary_item_request_builder.SettingStateDeviceSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def device_statuses_by_id(self,id: str) -> device_configuration_device_status_item_request_builder.DeviceConfigurationDeviceStatusItemRequestBuilder:
-        """
-        Provides operations to manage the deviceStatuses property of the microsoft.graph.deviceConfiguration entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: device_configuration_device_status_item_request_builder.DeviceConfigurationDeviceStatusItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .device_statuses.item import device_configuration_device_status_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["deviceConfigurationDeviceStatus%2Did"] = id
-        return device_configuration_device_status_item_request_builder.DeviceConfigurationDeviceStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[DeviceConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[device_configuration.DeviceConfiguration]:
         """
@@ -226,21 +176,6 @@ class DeviceConfigurationItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-    
-    def user_statuses_by_id(self,id: str) -> device_configuration_user_status_item_request_builder.DeviceConfigurationUserStatusItemRequestBuilder:
-        """
-        Provides operations to manage the userStatuses property of the microsoft.graph.deviceConfiguration entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: device_configuration_user_status_item_request_builder.DeviceConfigurationUserStatusItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .user_statuses.item import device_configuration_user_status_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["deviceConfigurationUserStatus%2Did"] = id
-        return device_configuration_user_status_item_request_builder.DeviceConfigurationUserStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     @property
     def assign(self) -> assign_request_builder.AssignRequestBuilder:

@@ -13,19 +13,12 @@ if TYPE_CHECKING:
     from ...models import entitlement_management
     from ...models.o_data_errors import o_data_error
     from .access_package_assignment_approvals import access_package_assignment_approvals_request_builder
-    from .access_package_assignment_approvals.item import approval_item_request_builder
     from .access_packages import access_packages_request_builder
-    from .access_packages.item import access_package_item_request_builder
     from .assignment_policies import assignment_policies_request_builder
-    from .assignment_policies.item import access_package_assignment_policy_item_request_builder
     from .assignment_requests import assignment_requests_request_builder
-    from .assignment_requests.item import access_package_assignment_request_item_request_builder
     from .assignments import assignments_request_builder
-    from .assignments.item import access_package_assignment_item_request_builder
     from .catalogs import catalogs_request_builder
-    from .catalogs.item import access_package_catalog_item_request_builder
     from .connected_organizations import connected_organizations_request_builder
-    from .connected_organizations.item import connected_organization_item_request_builder
     from .settings import settings_request_builder
 
 class EntitlementManagementRequestBuilder():
@@ -50,117 +43,11 @@ class EntitlementManagementRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def access_package_assignment_approvals_by_id(self,id: str) -> approval_item_request_builder.ApprovalItemRequestBuilder:
-        """
-        Provides operations to manage the accessPackageAssignmentApprovals property of the microsoft.graph.entitlementManagement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: approval_item_request_builder.ApprovalItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .access_package_assignment_approvals.item import approval_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["approval%2Did"] = id
-        return approval_item_request_builder.ApprovalItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def access_packages_by_id(self,id: str) -> access_package_item_request_builder.AccessPackageItemRequestBuilder:
-        """
-        Provides operations to manage the accessPackages property of the microsoft.graph.entitlementManagement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_package_item_request_builder.AccessPackageItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .access_packages.item import access_package_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessPackage%2Did"] = id
-        return access_package_item_request_builder.AccessPackageItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def assignment_policies_by_id(self,id: str) -> access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder:
-        """
-        Provides operations to manage the assignmentPolicies property of the microsoft.graph.entitlementManagement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .assignment_policies.item import access_package_assignment_policy_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessPackageAssignmentPolicy%2Did"] = id
-        return access_package_assignment_policy_item_request_builder.AccessPackageAssignmentPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def assignment_requests_by_id(self,id: str) -> access_package_assignment_request_item_request_builder.AccessPackageAssignmentRequestItemRequestBuilder:
-        """
-        Provides operations to manage the assignmentRequests property of the microsoft.graph.entitlementManagement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_package_assignment_request_item_request_builder.AccessPackageAssignmentRequestItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .assignment_requests.item import access_package_assignment_request_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessPackageAssignmentRequest%2Did"] = id
-        return access_package_assignment_request_item_request_builder.AccessPackageAssignmentRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def assignments_by_id(self,id: str) -> access_package_assignment_item_request_builder.AccessPackageAssignmentItemRequestBuilder:
-        """
-        Provides operations to manage the assignments property of the microsoft.graph.entitlementManagement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_package_assignment_item_request_builder.AccessPackageAssignmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .assignments.item import access_package_assignment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessPackageAssignment%2Did"] = id
-        return access_package_assignment_item_request_builder.AccessPackageAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def catalogs_by_id(self,id: str) -> access_package_catalog_item_request_builder.AccessPackageCatalogItemRequestBuilder:
-        """
-        Provides operations to manage the catalogs property of the microsoft.graph.entitlementManagement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_package_catalog_item_request_builder.AccessPackageCatalogItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .catalogs.item import access_package_catalog_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessPackageCatalog%2Did"] = id
-        return access_package_catalog_item_request_builder.AccessPackageCatalogItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def connected_organizations_by_id(self,id: str) -> connected_organization_item_request_builder.ConnectedOrganizationItemRequestBuilder:
-        """
-        Provides operations to manage the connectedOrganizations property of the microsoft.graph.entitlementManagement entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: connected_organization_item_request_builder.ConnectedOrganizationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .connected_organizations.item import connected_organization_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["connectedOrganization%2Did"] = id
-        return connected_organization_item_request_builder.ConnectedOrganizationItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[EntitlementManagementRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[EntitlementManagementRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property entitlementManagement for identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -173,7 +60,7 @@ class EntitlementManagementRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[EntitlementManagementRequestBuilderGetRequestConfiguration] = None) -> Optional[entitlement_management.EntitlementManagement]:
         """

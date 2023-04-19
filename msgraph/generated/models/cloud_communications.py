@@ -1,29 +1,46 @@
 from __future__ import annotations
-from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
+from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import call, entity, online_meeting, presence
+    from . import call, online_meeting, presence
     from .call_records import call_record
 
-from . import entity
-
-class CloudCommunications(entity.Entity):
+class CloudCommunications(AdditionalDataHolder, Parsable):
     def __init__(self,) -> None:
         """
         Instantiates a new CloudCommunications and sets the default values.
         """
-        super().__init__()
+        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        self._additional_data: Dict[str, Any] = {}
+
         # The callRecords property
         self._call_records: Optional[List[call_record.CallRecord]] = None
         # The calls property
         self._calls: Optional[List[call.Call]] = None
         # The OdataType property
-        self.odata_type: Optional[str] = None
+        self._odata_type: Optional[str] = None
         # The onlineMeetings property
         self._online_meetings: Optional[List[online_meeting.OnlineMeeting]] = None
         # The presences property
         self._presences: Optional[List[presence.Presence]] = None
+    
+    @property
+    def additional_data(self,) -> Dict[str, Any]:
+        """
+        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Returns: Dict[str, Any]
+        """
+        return self._additional_data
+    
+    @additional_data.setter
+    def additional_data(self,value: Dict[str, Any]) -> None:
+        """
+        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+        Args:
+            value: Value to set for the AdditionalData property.
+        """
+        self._additional_data = value
     
     @property
     def call_records(self,) -> Optional[List[call_record.CallRecord]]:
@@ -76,18 +93,34 @@ class CloudCommunications(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import call, entity, online_meeting, presence
+        from . import call, online_meeting, presence
         from .call_records import call_record
 
         fields: Dict[str, Callable[[Any], None]] = {
             "calls": lambda n : setattr(self, 'calls', n.get_collection_of_object_values(call.Call)),
             "callRecords": lambda n : setattr(self, 'call_records', n.get_collection_of_object_values(call_record.CallRecord)),
+            "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "onlineMeetings": lambda n : setattr(self, 'online_meetings', n.get_collection_of_object_values(online_meeting.OnlineMeeting)),
             "presences": lambda n : setattr(self, 'presences', n.get_collection_of_object_values(presence.Presence)),
         }
-        super_fields = super().get_field_deserializers()
-        fields.update(super_fields)
         return fields
+    
+    @property
+    def odata_type(self,) -> Optional[str]:
+        """
+        Gets the @odata.type property value. The OdataType property
+        Returns: Optional[str]
+        """
+        return self._odata_type
+    
+    @odata_type.setter
+    def odata_type(self,value: Optional[str] = None) -> None:
+        """
+        Sets the @odata.type property value. The OdataType property
+        Args:
+            value: Value to set for the odata_type property.
+        """
+        self._odata_type = value
     
     @property
     def online_meetings(self,) -> Optional[List[online_meeting.OnlineMeeting]]:
@@ -131,10 +164,11 @@ class CloudCommunications(entity.Entity):
         """
         if writer is None:
             raise Exception("writer cannot be undefined")
-        super().serialize(writer)
         writer.write_collection_of_object_values("calls", self.calls)
         writer.write_collection_of_object_values("callRecords", self.call_records)
+        writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("onlineMeetings", self.online_meetings)
         writer.write_collection_of_object_values("presences", self.presences)
+        writer.write_additional_data_value(self.additional_data)
     
 

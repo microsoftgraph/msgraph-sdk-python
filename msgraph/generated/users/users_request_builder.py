@@ -16,6 +16,7 @@ if TYPE_CHECKING:
     from .delta import delta_request_builder
     from .get_available_extension_properties import get_available_extension_properties_request_builder
     from .get_by_ids import get_by_ids_request_builder
+    from .item import user_item_request_builder
     from .validate_properties import validate_properties_request_builder
 
 class UsersRequestBuilder():
@@ -40,9 +41,24 @@ class UsersRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def by_user_id(self,user_id: str) -> user_item_request_builder.UserItemRequestBuilder:
+        """
+        Provides operations to manage the collection of user entities.
+        Args:
+            user_id: Unique identifier of the item
+        Returns: user_item_request_builder.UserItemRequestBuilder
+        """
+        if user_id is None:
+            raise Exception("user_id cannot be undefined")
+        from .item import user_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["user%2Did"] = user_id
+        return user_item_request_builder.UserItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def get(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> Optional[user_collection_response.UserCollectionResponse]:
         """
-        Retrieve the properties and relationships of user object.
+        Retrieve a list of user objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user_collection_response.UserCollectionResponse]
@@ -89,7 +105,7 @@ class UsersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of user object.
+        Retrieve a list of user objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -174,7 +190,7 @@ class UsersRequestBuilder():
     @dataclass
     class UsersRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of user object.
+        Retrieve a list of user objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

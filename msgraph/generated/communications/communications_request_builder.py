@@ -13,14 +13,10 @@ if TYPE_CHECKING:
     from ..models import cloud_communications
     from ..models.o_data_errors import o_data_error
     from .call_records import call_records_request_builder
-    from .call_records.item import call_record_item_request_builder
     from .calls import calls_request_builder
-    from .calls.item import call_item_request_builder
     from .get_presences_by_user_id import get_presences_by_user_id_request_builder
     from .online_meetings import online_meetings_request_builder
-    from .online_meetings.item import online_meeting_item_request_builder
     from .presences import presences_request_builder
-    from .presences.item import presence_item_request_builder
 
 class CommunicationsRequestBuilder():
     """
@@ -44,36 +40,6 @@ class CommunicationsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def call_records_by_id(self,id: str) -> call_record_item_request_builder.CallRecordItemRequestBuilder:
-        """
-        Provides operations to manage the callRecords property of the microsoft.graph.cloudCommunications entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: call_record_item_request_builder.CallRecordItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .call_records.item import call_record_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["callRecord%2Did"] = id
-        return call_record_item_request_builder.CallRecordItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def calls_by_id(self,id: str) -> call_item_request_builder.CallItemRequestBuilder:
-        """
-        Provides operations to manage the calls property of the microsoft.graph.cloudCommunications entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: call_item_request_builder.CallItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .calls.item import call_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["call%2Did"] = id
-        return call_item_request_builder.CallItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def get(self,request_configuration: Optional[CommunicationsRequestBuilderGetRequestConfiguration] = None) -> Optional[cloud_communications.CloudCommunications]:
         """
         Get communications
@@ -95,21 +61,6 @@ class CommunicationsRequestBuilder():
         from ..models import cloud_communications
 
         return await self.request_adapter.send_async(request_info, cloud_communications.CloudCommunications, error_mapping)
-    
-    def online_meetings_by_id(self,id: str) -> online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder:
-        """
-        Provides operations to manage the onlineMeetings property of the microsoft.graph.cloudCommunications entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .online_meetings.item import online_meeting_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["onlineMeeting%2Did"] = id
-        return online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[cloud_communications.CloudCommunications] = None, request_configuration: Optional[CommunicationsRequestBuilderPatchRequestConfiguration] = None) -> Optional[cloud_communications.CloudCommunications]:
         """
@@ -135,21 +86,6 @@ class CommunicationsRequestBuilder():
         from ..models import cloud_communications
 
         return await self.request_adapter.send_async(request_info, cloud_communications.CloudCommunications, error_mapping)
-    
-    def presences_by_id(self,id: str) -> presence_item_request_builder.PresenceItemRequestBuilder:
-        """
-        Provides operations to manage the presences property of the microsoft.graph.cloudCommunications entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: presence_item_request_builder.PresenceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .presences.item import presence_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["presence%2Did"] = id
-        return presence_item_request_builder.PresenceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_get_request_information(self,request_configuration: Optional[CommunicationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

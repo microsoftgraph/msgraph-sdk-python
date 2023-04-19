@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models.external_connectors import external_item, external_item_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import external_item_item_request_builder
 
 class ItemsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ItemsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_external_item_id(self,external_item_id: str) -> external_item_item_request_builder.ExternalItemItemRequestBuilder:
+        """
+        Provides operations to manage the items property of the microsoft.graph.externalConnectors.externalConnection entity.
+        Args:
+            external_item_id: Unique identifier of the item
+        Returns: external_item_item_request_builder.ExternalItemItemRequestBuilder
+        """
+        if external_item_id is None:
+            raise Exception("external_item_id cannot be undefined")
+        from .item import external_item_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["externalItem%2Did"] = external_item_id
+        return external_item_item_request_builder.ExternalItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[external_item_collection_response.ExternalItemCollectionResponse]:
         """

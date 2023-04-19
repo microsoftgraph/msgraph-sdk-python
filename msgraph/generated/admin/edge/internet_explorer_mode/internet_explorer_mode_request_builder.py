@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ....models import internet_explorer_mode
     from ....models.o_data_errors import o_data_error
     from .site_lists import site_lists_request_builder
-    from .site_lists.item import browser_site_list_item_request_builder
 
 class InternetExplorerModeRequestBuilder():
     """
@@ -37,12 +36,11 @@ class InternetExplorerModeRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[InternetExplorerModeRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[InternetExplorerModeRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property internetExplorerMode for admin
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -55,11 +53,11 @@ class InternetExplorerModeRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[InternetExplorerModeRequestBuilderGetRequestConfiguration] = None) -> Optional[internet_explorer_mode.InternetExplorerMode]:
         """
-        Get internetExplorerMode from admin
+        A container for Internet Explorer mode resources.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[internet_explorer_mode.InternetExplorerMode]
@@ -104,21 +102,6 @@ class InternetExplorerModeRequestBuilder():
 
         return await self.request_adapter.send_async(request_info, internet_explorer_mode.InternetExplorerMode, error_mapping)
     
-    def site_lists_by_id(self,id: str) -> browser_site_list_item_request_builder.BrowserSiteListItemRequestBuilder:
-        """
-        Provides operations to manage the siteLists property of the microsoft.graph.internetExplorerMode entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: browser_site_list_item_request_builder.BrowserSiteListItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .site_lists.item import browser_site_list_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["browserSiteList%2Did"] = id
-        return browser_site_list_item_request_builder.BrowserSiteListItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     def to_delete_request_information(self,request_configuration: Optional[InternetExplorerModeRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
         Delete navigation property internetExplorerMode for admin
@@ -137,7 +120,7 @@ class InternetExplorerModeRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[InternetExplorerModeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get internetExplorerMode from admin
+        A container for Internet Explorer mode resources.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -198,7 +181,7 @@ class InternetExplorerModeRequestBuilder():
     @dataclass
     class InternetExplorerModeRequestBuilderGetQueryParameters():
         """
-        Get internetExplorerMode from admin
+        A container for Internet Explorer mode resources.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

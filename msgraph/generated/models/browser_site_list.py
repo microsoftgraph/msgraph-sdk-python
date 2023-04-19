@@ -17,25 +17,25 @@ class BrowserSiteList(entity.Entity):
         Instantiates a new browserSiteList and sets the default values.
         """
         super().__init__()
-        # Description for the site list
+        # The description of the site list.
         self._description: Optional[str] = None
-        # Display name of this site list
+        # The name of the site list.
         self._display_name: Optional[str] = None
-        # Name of the admin who made the last update on the site list
+        # The user who last modified the site list.
         self._last_modified_by: Optional[identity_set.IdentitySet] = None
-        # The datetime that the admin last updated the site list.
+        # The date and time when the site list was last modified.
         self._last_modified_date_time: Optional[datetime] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # Name of the admin who published the site list
+        # The user who published the site list.
         self._published_by: Optional[identity_set.IdentitySet] = None
-        # The datetime that admin published the site list to users in their organization.
+        # The date and time when the site list was published.
         self._published_date_time: Optional[datetime] = None
-        # Admin can have multiple revisions of the site list and the revision is generated whenever admin create/update the site list.
+        # The current revision of the site list.
         self._revision: Optional[str] = None
-        # The sharedCookies property
+        # A collection of shared cookies defined for the site list.
         self._shared_cookies: Optional[List[browser_shared_cookie.BrowserSharedCookie]] = None
-        # The sites property
+        # A collection of sites defined for the site list.
         self._sites: Optional[List[browser_site.BrowserSite]] = None
         # The status property
         self._status: Optional[browser_site_list_status.BrowserSiteListStatus] = None
@@ -55,7 +55,7 @@ class BrowserSiteList(entity.Entity):
     @property
     def description(self,) -> Optional[str]:
         """
-        Gets the description property value. Description for the site list
+        Gets the description property value. The description of the site list.
         Returns: Optional[str]
         """
         return self._description
@@ -63,7 +63,7 @@ class BrowserSiteList(entity.Entity):
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
-        Sets the description property value. Description for the site list
+        Sets the description property value. The description of the site list.
         Args:
             value: Value to set for the description property.
         """
@@ -72,7 +72,7 @@ class BrowserSiteList(entity.Entity):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. Display name of this site list
+        Gets the displayName property value. The name of the site list.
         Returns: Optional[str]
         """
         return self._display_name
@@ -80,7 +80,7 @@ class BrowserSiteList(entity.Entity):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. Display name of this site list
+        Sets the displayName property value. The name of the site list.
         Args:
             value: Value to set for the display_name property.
         """
@@ -112,7 +112,7 @@ class BrowserSiteList(entity.Entity):
     @property
     def last_modified_by(self,) -> Optional[identity_set.IdentitySet]:
         """
-        Gets the lastModifiedBy property value. Name of the admin who made the last update on the site list
+        Gets the lastModifiedBy property value. The user who last modified the site list.
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._last_modified_by
@@ -120,7 +120,7 @@ class BrowserSiteList(entity.Entity):
     @last_modified_by.setter
     def last_modified_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
-        Sets the lastModifiedBy property value. Name of the admin who made the last update on the site list
+        Sets the lastModifiedBy property value. The user who last modified the site list.
         Args:
             value: Value to set for the last_modified_by property.
         """
@@ -129,7 +129,7 @@ class BrowserSiteList(entity.Entity):
     @property
     def last_modified_date_time(self,) -> Optional[datetime]:
         """
-        Gets the lastModifiedDateTime property value. The datetime that the admin last updated the site list.
+        Gets the lastModifiedDateTime property value. The date and time when the site list was last modified.
         Returns: Optional[datetime]
         """
         return self._last_modified_date_time
@@ -137,7 +137,7 @@ class BrowserSiteList(entity.Entity):
     @last_modified_date_time.setter
     def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the lastModifiedDateTime property value. The datetime that the admin last updated the site list.
+        Sets the lastModifiedDateTime property value. The date and time when the site list was last modified.
         Args:
             value: Value to set for the last_modified_date_time property.
         """
@@ -146,7 +146,7 @@ class BrowserSiteList(entity.Entity):
     @property
     def published_by(self,) -> Optional[identity_set.IdentitySet]:
         """
-        Gets the publishedBy property value. Name of the admin who published the site list
+        Gets the publishedBy property value. The user who published the site list.
         Returns: Optional[identity_set.IdentitySet]
         """
         return self._published_by
@@ -154,7 +154,7 @@ class BrowserSiteList(entity.Entity):
     @published_by.setter
     def published_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
         """
-        Sets the publishedBy property value. Name of the admin who published the site list
+        Sets the publishedBy property value. The user who published the site list.
         Args:
             value: Value to set for the published_by property.
         """
@@ -163,7 +163,7 @@ class BrowserSiteList(entity.Entity):
     @property
     def published_date_time(self,) -> Optional[datetime]:
         """
-        Gets the publishedDateTime property value. The datetime that admin published the site list to users in their organization.
+        Gets the publishedDateTime property value. The date and time when the site list was published.
         Returns: Optional[datetime]
         """
         return self._published_date_time
@@ -171,7 +171,7 @@ class BrowserSiteList(entity.Entity):
     @published_date_time.setter
     def published_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the publishedDateTime property value. The datetime that admin published the site list to users in their organization.
+        Sets the publishedDateTime property value. The date and time when the site list was published.
         Args:
             value: Value to set for the published_date_time property.
         """
@@ -180,7 +180,7 @@ class BrowserSiteList(entity.Entity):
     @property
     def revision(self,) -> Optional[str]:
         """
-        Gets the revision property value. Admin can have multiple revisions of the site list and the revision is generated whenever admin create/update the site list.
+        Gets the revision property value. The current revision of the site list.
         Returns: Optional[str]
         """
         return self._revision
@@ -188,7 +188,7 @@ class BrowserSiteList(entity.Entity):
     @revision.setter
     def revision(self,value: Optional[str] = None) -> None:
         """
-        Sets the revision property value. Admin can have multiple revisions of the site list and the revision is generated whenever admin create/update the site list.
+        Sets the revision property value. The current revision of the site list.
         Args:
             value: Value to set for the revision property.
         """
@@ -217,7 +217,7 @@ class BrowserSiteList(entity.Entity):
     @property
     def shared_cookies(self,) -> Optional[List[browser_shared_cookie.BrowserSharedCookie]]:
         """
-        Gets the sharedCookies property value. The sharedCookies property
+        Gets the sharedCookies property value. A collection of shared cookies defined for the site list.
         Returns: Optional[List[browser_shared_cookie.BrowserSharedCookie]]
         """
         return self._shared_cookies
@@ -225,7 +225,7 @@ class BrowserSiteList(entity.Entity):
     @shared_cookies.setter
     def shared_cookies(self,value: Optional[List[browser_shared_cookie.BrowserSharedCookie]] = None) -> None:
         """
-        Sets the sharedCookies property value. The sharedCookies property
+        Sets the sharedCookies property value. A collection of shared cookies defined for the site list.
         Args:
             value: Value to set for the shared_cookies property.
         """
@@ -234,7 +234,7 @@ class BrowserSiteList(entity.Entity):
     @property
     def sites(self,) -> Optional[List[browser_site.BrowserSite]]:
         """
-        Gets the sites property value. The sites property
+        Gets the sites property value. A collection of sites defined for the site list.
         Returns: Optional[List[browser_site.BrowserSite]]
         """
         return self._sites
@@ -242,7 +242,7 @@ class BrowserSiteList(entity.Entity):
     @sites.setter
     def sites(self,value: Optional[List[browser_site.BrowserSite]] = None) -> None:
         """
-        Sets the sites property value. The sites property
+        Sets the sites property value. A collection of sites defined for the site list.
         Args:
             value: Value to set for the sites property.
         """

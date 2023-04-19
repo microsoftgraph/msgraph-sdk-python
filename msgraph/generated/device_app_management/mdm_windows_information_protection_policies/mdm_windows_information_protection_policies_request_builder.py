@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import mdm_windows_information_protection_policy, mdm_windows_information_protection_policy_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import mdm_windows_information_protection_policy_item_request_builder
 
 class MdmWindowsInformationProtectionPoliciesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class MdmWindowsInformationProtectionPoliciesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_mdm_windows_information_protection_policy_id(self,mdm_windows_information_protection_policy_id: str) -> mdm_windows_information_protection_policy_item_request_builder.MdmWindowsInformationProtectionPolicyItemRequestBuilder:
+        """
+        Provides operations to manage the mdmWindowsInformationProtectionPolicies property of the microsoft.graph.deviceAppManagement entity.
+        Args:
+            mdm_windows_information_protection_policy_id: Unique identifier of the item
+        Returns: mdm_windows_information_protection_policy_item_request_builder.MdmWindowsInformationProtectionPolicyItemRequestBuilder
+        """
+        if mdm_windows_information_protection_policy_id is None:
+            raise Exception("mdm_windows_information_protection_policy_id cannot be undefined")
+        from .item import mdm_windows_information_protection_policy_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["mdmWindowsInformationProtectionPolicy%2Did"] = mdm_windows_information_protection_policy_id
+        return mdm_windows_information_protection_policy_item_request_builder.MdmWindowsInformationProtectionPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[MdmWindowsInformationProtectionPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[mdm_windows_information_protection_policy_collection_response.MdmWindowsInformationProtectionPolicyCollectionResponse]:
         """

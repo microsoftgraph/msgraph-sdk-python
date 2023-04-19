@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import call, call_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import call_item_request_builder
     from .log_teleconference_device_quality import log_teleconference_device_quality_request_builder
 
 class CallsRequestBuilder():
@@ -36,6 +37,21 @@ class CallsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_call_id(self,call_id: str) -> call_item_request_builder.CallItemRequestBuilder:
+        """
+        Provides operations to manage the calls property of the microsoft.graph.cloudCommunications entity.
+        Args:
+            call_id: Unique identifier of the item
+        Returns: call_item_request_builder.CallItemRequestBuilder
+        """
+        if call_id is None:
+            raise Exception("call_id cannot be undefined")
+        from .item import call_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["call%2Did"] = call_id
+        return call_item_request_builder.CallItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[CallsRequestBuilderGetRequestConfiguration] = None) -> Optional[call_collection_response.CallCollectionResponse]:
         """

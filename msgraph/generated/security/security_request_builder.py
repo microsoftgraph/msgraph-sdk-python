@@ -13,17 +13,12 @@ if TYPE_CHECKING:
     from ..models.o_data_errors import o_data_error
     from ..models.security import security
     from .alerts import alerts_request_builder
-    from .alerts.item import alert_item_request_builder
     from .alerts_v2 import alerts_v2_request_builder
-    from .alerts_v2.item import alert_item_request_builder
     from .attack_simulation import attack_simulation_request_builder
     from .cases import cases_request_builder
     from .incidents import incidents_request_builder
-    from .incidents.item import incident_item_request_builder
     from .secure_score_control_profiles import secure_score_control_profiles_request_builder
-    from .secure_score_control_profiles.item import secure_score_control_profile_item_request_builder
     from .secure_scores import secure_scores_request_builder
-    from .secure_scores.item import secure_score_item_request_builder
     from .security_run_hunting_query import security_run_hunting_query_request_builder
     from .triggers import triggers_request_builder
     from .trigger_types import trigger_types_request_builder
@@ -50,38 +45,6 @@ class SecurityRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def alerts_by_id(self,id: str) -> alert_item_request_builder.AlertItemRequestBuilder:
-        """
-        Provides operations to manage the alerts property of the microsoft.graph.security entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: alert_item_request_builder.AlertItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .alerts.item import alert_item_request_builder
-        from .alerts_v2.item import alert_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["alert%2Did"] = id
-        return alert_item_request_builder.AlertItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def alerts_v2_by_id(self,id: str) -> alert_item_request_builder.AlertItemRequestBuilder:
-        """
-        Provides operations to manage the alerts_v2 property of the microsoft.graph.security entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: alert_item_request_builder.AlertItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .alerts.item import alert_item_request_builder
-        from .alerts_v2.item import alert_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["alert%2Did"] = id
-        return alert_item_request_builder.AlertItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
     async def get(self,request_configuration: Optional[SecurityRequestBuilderGetRequestConfiguration] = None) -> Optional[security.Security]:
         """
         Get security
@@ -103,21 +66,6 @@ class SecurityRequestBuilder():
         from ..models.security import security
 
         return await self.request_adapter.send_async(request_info, security.Security, error_mapping)
-    
-    def incidents_by_id(self,id: str) -> incident_item_request_builder.IncidentItemRequestBuilder:
-        """
-        Provides operations to manage the incidents property of the microsoft.graph.security entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: incident_item_request_builder.IncidentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .incidents.item import incident_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["incident%2Did"] = id
-        return incident_item_request_builder.IncidentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[security.Security] = None, request_configuration: Optional[SecurityRequestBuilderPatchRequestConfiguration] = None) -> Optional[security.Security]:
         """
@@ -143,36 +91,6 @@ class SecurityRequestBuilder():
         from ..models.security import security
 
         return await self.request_adapter.send_async(request_info, security.Security, error_mapping)
-    
-    def secure_score_control_profiles_by_id(self,id: str) -> secure_score_control_profile_item_request_builder.SecureScoreControlProfileItemRequestBuilder:
-        """
-        Provides operations to manage the secureScoreControlProfiles property of the microsoft.graph.security entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: secure_score_control_profile_item_request_builder.SecureScoreControlProfileItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .secure_score_control_profiles.item import secure_score_control_profile_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["secureScoreControlProfile%2Did"] = id
-        return secure_score_control_profile_item_request_builder.SecureScoreControlProfileItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def secure_scores_by_id(self,id: str) -> secure_score_item_request_builder.SecureScoreItemRequestBuilder:
-        """
-        Provides operations to manage the secureScores property of the microsoft.graph.security entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: secure_score_item_request_builder.SecureScoreItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .secure_scores.item import secure_score_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["secureScore%2Did"] = id
-        return secure_score_item_request_builder.SecureScoreItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_get_request_information(self,request_configuration: Optional[SecurityRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

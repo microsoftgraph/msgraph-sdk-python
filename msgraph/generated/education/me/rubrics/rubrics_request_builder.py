@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import education_rubric, education_rubric_collection_response
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import education_rubric_item_request_builder
 
 class RubricsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class RubricsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_education_rubric_id(self,education_rubric_id: str) -> education_rubric_item_request_builder.EducationRubricItemRequestBuilder:
+        """
+        Provides operations to manage the rubrics property of the microsoft.graph.educationUser entity.
+        Args:
+            education_rubric_id: Unique identifier of the item
+        Returns: education_rubric_item_request_builder.EducationRubricItemRequestBuilder
+        """
+        if education_rubric_id is None:
+            raise Exception("education_rubric_id cannot be undefined")
+        from .item import education_rubric_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["educationRubric%2Did"] = education_rubric_id
+        return education_rubric_item_request_builder.EducationRubricItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RubricsRequestBuilderGetRequestConfiguration] = None) -> Optional[education_rubric_collection_response.EducationRubricCollectionResponse]:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .......models import offer_shift_request, offer_shift_request_collection_response
     from .......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import offer_shift_request_item_request_builder
 
 class OfferShiftRequestsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class OfferShiftRequestsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_offer_shift_request_id(self,offer_shift_request_id: str) -> offer_shift_request_item_request_builder.OfferShiftRequestItemRequestBuilder:
+        """
+        Provides operations to manage the offerShiftRequests property of the microsoft.graph.schedule entity.
+        Args:
+            offer_shift_request_id: Unique identifier of the item
+        Returns: offer_shift_request_item_request_builder.OfferShiftRequestItemRequestBuilder
+        """
+        if offer_shift_request_id is None:
+            raise Exception("offer_shift_request_id cannot be undefined")
+        from .item import offer_shift_request_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["offerShiftRequest%2Did"] = offer_shift_request_id
+        return offer_shift_request_item_request_builder.OfferShiftRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[OfferShiftRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[offer_shift_request_collection_response.OfferShiftRequestCollectionResponse]:
         """

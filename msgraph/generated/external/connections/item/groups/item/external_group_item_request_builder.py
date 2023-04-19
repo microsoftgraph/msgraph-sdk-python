@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ......models.external_connectors import external_group
     from ......models.o_data_errors import o_data_error
     from .members import members_request_builder
-    from .members.item import identity_item_request_builder
 
 class ExternalGroupItemRequestBuilder():
     """
@@ -37,12 +36,11 @@ class ExternalGroupItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ExternalGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[ExternalGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property groups for external
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -55,7 +53,7 @@ class ExternalGroupItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[ExternalGroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[external_group.ExternalGroup]:
         """
@@ -78,21 +76,6 @@ class ExternalGroupItemRequestBuilder():
         from ......models.external_connectors import external_group
 
         return await self.request_adapter.send_async(request_info, external_group.ExternalGroup, error_mapping)
-    
-    def members_by_id(self,id: str) -> identity_item_request_builder.IdentityItemRequestBuilder:
-        """
-        Provides operations to manage the members property of the microsoft.graph.externalConnectors.externalGroup entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: identity_item_request_builder.IdentityItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .members.item import identity_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["identity%2Did"] = id
-        return identity_item_request_builder.IdentityItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[external_group.ExternalGroup] = None, request_configuration: Optional[ExternalGroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[external_group.ExternalGroup]:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import presence, presence_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import presence_item_request_builder
 
 class PresencesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class PresencesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_presence_id(self,presence_id: str) -> presence_item_request_builder.PresenceItemRequestBuilder:
+        """
+        Provides operations to manage the presences property of the microsoft.graph.cloudCommunications entity.
+        Args:
+            presence_id: Unique identifier of the item
+        Returns: presence_item_request_builder.PresenceItemRequestBuilder
+        """
+        if presence_id is None:
+            raise Exception("presence_id cannot be undefined")
+        from .item import presence_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["presence%2Did"] = presence_id
+        return presence_item_request_builder.PresenceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[PresencesRequestBuilderGetRequestConfiguration] = None) -> Optional[presence_collection_response.PresenceCollectionResponse]:
         """

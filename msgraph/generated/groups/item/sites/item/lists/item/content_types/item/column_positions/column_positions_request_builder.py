@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..........models import column_definition_collection_response
     from ..........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import column_definition_item_request_builder
 
 class ColumnPositionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ColumnPositionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_column_definition_id(self,column_definition_id: str) -> column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder:
+        """
+        Provides operations to manage the columnPositions property of the microsoft.graph.contentType entity.
+        Args:
+            column_definition_id: Unique identifier of the item
+        Returns: column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder
+        """
+        if column_definition_id is None:
+            raise Exception("column_definition_id cannot be undefined")
+        from .item import column_definition_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["columnDefinition%2Did"] = column_definition_id
+        return column_definition_item_request_builder.ColumnDefinitionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ColumnPositionsRequestBuilderGetRequestConfiguration] = None) -> Optional[column_definition_collection_response.ColumnDefinitionCollectionResponse]:
         """

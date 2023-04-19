@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ..models.external_connectors import external_connection, external_connection_collection_response
     from ..models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import external_connection_item_request_builder
 
 class ConnectionsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class ConnectionsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_external_connection_id(self,external_connection_id: str) -> external_connection_item_request_builder.ExternalConnectionItemRequestBuilder:
+        """
+        Provides operations to manage the collection of externalConnection entities.
+        Args:
+            external_connection_id: Unique identifier of the item
+        Returns: external_connection_item_request_builder.ExternalConnectionItemRequestBuilder
+        """
+        if external_connection_id is None:
+            raise Exception("external_connection_id cannot be undefined")
+        from .item import external_connection_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["externalConnection%2Did"] = external_connection_id
+        return external_connection_item_request_builder.ExternalConnectionItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[ConnectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[external_connection_collection_response.ExternalConnectionCollectionResponse]:
         """

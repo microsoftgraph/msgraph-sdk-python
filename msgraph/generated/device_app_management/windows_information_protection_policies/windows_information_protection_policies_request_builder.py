@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import windows_information_protection_policy, windows_information_protection_policy_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import windows_information_protection_policy_item_request_builder
 
 class WindowsInformationProtectionPoliciesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class WindowsInformationProtectionPoliciesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_windows_information_protection_policy_id(self,windows_information_protection_policy_id: str) -> windows_information_protection_policy_item_request_builder.WindowsInformationProtectionPolicyItemRequestBuilder:
+        """
+        Provides operations to manage the windowsInformationProtectionPolicies property of the microsoft.graph.deviceAppManagement entity.
+        Args:
+            windows_information_protection_policy_id: Unique identifier of the item
+        Returns: windows_information_protection_policy_item_request_builder.WindowsInformationProtectionPolicyItemRequestBuilder
+        """
+        if windows_information_protection_policy_id is None:
+            raise Exception("windows_information_protection_policy_id cannot be undefined")
+        from .item import windows_information_protection_policy_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["windowsInformationProtectionPolicy%2Did"] = windows_information_protection_policy_id
+        return windows_information_protection_policy_item_request_builder.WindowsInformationProtectionPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[WindowsInformationProtectionPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[windows_information_protection_policy_collection_response.WindowsInformationProtectionPolicyCollectionResponse]:
         """

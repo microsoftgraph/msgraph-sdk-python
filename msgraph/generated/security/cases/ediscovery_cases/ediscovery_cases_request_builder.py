@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from ....models.security import ediscovery_case, ediscovery_case_collection_response
     from .count import count_request_builder
+    from .item import ediscovery_case_item_request_builder
 
 class EdiscoveryCasesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class EdiscoveryCasesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_ediscovery_case_id(self,ediscovery_case_id: str) -> ediscovery_case_item_request_builder.EdiscoveryCaseItemRequestBuilder:
+        """
+        Provides operations to manage the ediscoveryCases property of the microsoft.graph.security.casesRoot entity.
+        Args:
+            ediscovery_case_id: Unique identifier of the item
+        Returns: ediscovery_case_item_request_builder.EdiscoveryCaseItemRequestBuilder
+        """
+        if ediscovery_case_id is None:
+            raise Exception("ediscovery_case_id cannot be undefined")
+        from .item import ediscovery_case_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["ediscoveryCase%2Did"] = ediscovery_case_id
+        return ediscovery_case_item_request_builder.EdiscoveryCaseItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[EdiscoveryCasesRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_case_collection_response.EdiscoveryCaseCollectionResponse]:
         """

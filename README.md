@@ -101,9 +101,9 @@ request_adapter = GraphRequestAdapter(auth_provider)
 client = GraphServiceClient(request_adapter)
 
 async def get_user():
-    user = await client.users_by_id('userPrincipalName').get()
+    user = await client.users.by_user_id('userPrincipalName').get()
     if user:
-        print(user.display_name)
+      print(user.display_name)
 
 asyncio.run(get_user())
 ```
@@ -138,7 +138,7 @@ Failed requests raise `APIError` exceptions. You can handle these exceptions usi
 from kiota_abstractions.api_error import APIError
 async def get_user():
     try:
-        user = await client.users_by_id('userID').get()
+        user = await client.users.by_user_id('userID').get()
         print(user.user_principal_name, user.display_name, user.id)
     except APIError as e:
         print(f'Error: {e.error.message}')

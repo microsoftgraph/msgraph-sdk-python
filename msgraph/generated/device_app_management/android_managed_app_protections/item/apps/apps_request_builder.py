@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import managed_mobile_app, managed_mobile_app_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import managed_mobile_app_item_request_builder
 
 class AppsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class AppsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_managed_mobile_app_id(self,managed_mobile_app_id: str) -> managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder:
+        """
+        Provides operations to manage the apps property of the microsoft.graph.androidManagedAppProtection entity.
+        Args:
+            managed_mobile_app_id: Unique identifier of the item
+        Returns: managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder
+        """
+        if managed_mobile_app_id is None:
+            raise Exception("managed_mobile_app_id cannot be undefined")
+        from .item import managed_mobile_app_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["managedMobileApp%2Did"] = managed_mobile_app_id
+        return managed_mobile_app_item_request_builder.ManagedMobileAppItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AppsRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_mobile_app_collection_response.ManagedMobileAppCollectionResponse]:
         """

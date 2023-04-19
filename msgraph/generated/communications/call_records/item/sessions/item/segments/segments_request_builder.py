@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .......models.call_records import segment, segment_collection_response
     from .......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import segment_item_request_builder
 
 class SegmentsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class SegmentsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_segment_id(self,segment_id: str) -> segment_item_request_builder.SegmentItemRequestBuilder:
+        """
+        Provides operations to manage the segments property of the microsoft.graph.callRecords.session entity.
+        Args:
+            segment_id: Unique identifier of the item
+        Returns: segment_item_request_builder.SegmentItemRequestBuilder
+        """
+        if segment_id is None:
+            raise Exception("segment_id cannot be undefined")
+        from .item import segment_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["segment%2Did"] = segment_id
+        return segment_item_request_builder.SegmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SegmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[segment_collection_response.SegmentCollectionResponse]:
         """

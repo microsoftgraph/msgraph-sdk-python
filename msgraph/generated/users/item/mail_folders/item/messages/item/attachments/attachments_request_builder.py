@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ........models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .create_upload_session import create_upload_session_request_builder
+    from .item import attachment_item_request_builder
 
 class AttachmentsRequestBuilder():
     """
@@ -37,9 +38,24 @@ class AttachmentsRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def by_attachment_id(self,attachment_id: str) -> attachment_item_request_builder.AttachmentItemRequestBuilder:
+        """
+        Provides operations to manage the attachments property of the microsoft.graph.message entity.
+        Args:
+            attachment_id: Unique identifier of the item
+        Returns: attachment_item_request_builder.AttachmentItemRequestBuilder
+        """
+        if attachment_id is None:
+            raise Exception("attachment_id cannot be undefined")
+        from .item import attachment_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["attachment%2Did"] = attachment_id
+        return attachment_item_request_builder.AttachmentItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def get(self,request_configuration: Optional[AttachmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[attachment_collection_response.AttachmentCollectionResponse]:
         """
-        Retrieve a list of attachment objects attached to a message.
+        Retrieve a list of attachment objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[attachment_collection_response.AttachmentCollectionResponse]
@@ -61,7 +77,7 @@ class AttachmentsRequestBuilder():
     
     async def post(self,body: Optional[attachment.Attachment] = None, request_configuration: Optional[AttachmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[attachment.Attachment]:
         """
-        Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
+        Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -86,7 +102,7 @@ class AttachmentsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AttachmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of attachment objects attached to a message.
+        Retrieve a list of attachment objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +120,7 @@ class AttachmentsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[attachment.Attachment] = None, request_configuration: Optional[AttachmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to add an attachment to a message.  An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource.  You can add an attachment to an existing message by posting to its attachments collection, or you can add an attachment to a message that is being created and sent on the fly. This operation limits the size of the attachment you can add to under 3 MB.
+        Use this API to create a new Attachment. An attachment can be one of the following types: All these types of attachment resources are derived from the attachmentresource. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -144,7 +160,7 @@ class AttachmentsRequestBuilder():
     @dataclass
     class AttachmentsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of attachment objects attached to a message.
+        Retrieve a list of attachment objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

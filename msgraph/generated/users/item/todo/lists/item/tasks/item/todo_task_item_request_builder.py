@@ -13,15 +13,10 @@ if TYPE_CHECKING:
     from ........models import todo_task
     from ........models.o_data_errors import o_data_error
     from .attachments import attachments_request_builder
-    from .attachments.item import attachment_base_item_request_builder
     from .attachment_sessions import attachment_sessions_request_builder
-    from .attachment_sessions.item import attachment_session_item_request_builder
     from .checklist_items import checklist_items_request_builder
-    from .checklist_items.item import checklist_item_item_request_builder
     from .extensions import extensions_request_builder
-    from .extensions.item import extension_item_request_builder
     from .linked_resources import linked_resources_request_builder
-    from .linked_resources.item import linked_resource_item_request_builder
 
 class TodoTaskItemRequestBuilder():
     """
@@ -45,57 +40,11 @@ class TodoTaskItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def attachments_by_id(self,id: str) -> attachment_base_item_request_builder.AttachmentBaseItemRequestBuilder:
-        """
-        Provides operations to manage the attachments property of the microsoft.graph.todoTask entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: attachment_base_item_request_builder.AttachmentBaseItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .attachments.item import attachment_base_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["attachmentBase%2Did"] = id
-        return attachment_base_item_request_builder.AttachmentBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def attachment_sessions_by_id(self,id: str) -> attachment_session_item_request_builder.AttachmentSessionItemRequestBuilder:
-        """
-        Provides operations to manage the attachmentSessions property of the microsoft.graph.todoTask entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: attachment_session_item_request_builder.AttachmentSessionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .attachment_sessions.item import attachment_session_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["attachmentSession%2Did"] = id
-        return attachment_session_item_request_builder.AttachmentSessionItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def checklist_items_by_id(self,id: str) -> checklist_item_item_request_builder.ChecklistItemItemRequestBuilder:
-        """
-        Provides operations to manage the checklistItems property of the microsoft.graph.todoTask entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: checklist_item_item_request_builder.ChecklistItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .checklist_items.item import checklist_item_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["checklistItem%2Did"] = id
-        return checklist_item_item_request_builder.ChecklistItemItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[TodoTaskItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[TodoTaskItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property tasks for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -108,22 +57,7 @@ class TodoTaskItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
-    
-    def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
-        """
-        Provides operations to manage the extensions property of the microsoft.graph.todoTask entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: extension_item_request_builder.ExtensionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .extensions.item import extension_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["extension%2Did"] = id
-        return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[TodoTaskItemRequestBuilderGetRequestConfiguration] = None) -> Optional[todo_task.TodoTask]:
         """
@@ -146,21 +80,6 @@ class TodoTaskItemRequestBuilder():
         from ........models import todo_task
 
         return await self.request_adapter.send_async(request_info, todo_task.TodoTask, error_mapping)
-    
-    def linked_resources_by_id(self,id: str) -> linked_resource_item_request_builder.LinkedResourceItemRequestBuilder:
-        """
-        Provides operations to manage the linkedResources property of the microsoft.graph.todoTask entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: linked_resource_item_request_builder.LinkedResourceItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .linked_resources.item import linked_resource_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["linkedResource%2Did"] = id
-        return linked_resource_item_request_builder.LinkedResourceItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[todo_task.TodoTask] = None, request_configuration: Optional[TodoTaskItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[todo_task.TodoTask]:
         """

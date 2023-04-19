@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from .add import add_request_builder
     from .add_formula_local import add_formula_local_request_builder
     from .count import count_request_builder
+    from .item import workbook_named_item_item_request_builder
 
 class NamesRequestBuilder():
     """
@@ -37,6 +38,21 @@ class NamesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_workbook_named_item_id(self,workbook_named_item_id: str) -> workbook_named_item_item_request_builder.WorkbookNamedItemItemRequestBuilder:
+        """
+        Provides operations to manage the names property of the microsoft.graph.workbookWorksheet entity.
+        Args:
+            workbook_named_item_id: Unique identifier of the item
+        Returns: workbook_named_item_item_request_builder.WorkbookNamedItemItemRequestBuilder
+        """
+        if workbook_named_item_id is None:
+            raise Exception("workbook_named_item_id cannot be undefined")
+        from .item import workbook_named_item_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["workbookNamedItem%2Did"] = workbook_named_item_id
+        return workbook_named_item_item_request_builder.WorkbookNamedItemItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[NamesRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_named_item_collection_response.WorkbookNamedItemCollectionResponse]:
         """

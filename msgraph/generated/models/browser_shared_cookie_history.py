@@ -14,23 +14,23 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The comment of the cookie
+        # The comment for the shared cookie.
         self._comment: Optional[str] = None
-        # The name of the cookie
+        # The name of the cookie.
         self._display_name: Optional[str] = None
-        # Boolean attribute that determines whether a cookie is  a host-only or domain cookie
+        # Controls whether a cookie is a host-only or domain cookie.
         self._host_only: Optional[bool] = None
-        # The URL of the cookie
+        # The URL of the cookie.
         self._host_or_domain: Optional[str] = None
         # The lastModifiedBy property
         self._last_modified_by: Optional[identity_set.IdentitySet] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # The path of the cookie
+        # The path of the cookie.
         self._path: Optional[str] = None
-        # The time the cookie was published
+        # The date and time when the cookie was last published.
         self._published_date_time: Optional[datetime] = None
-        # Specifies how the cookies are shared between Microsoft Edge and Internet Explorer
+        # Specifies how the cookies are shared between Microsoft Edge and Internet Explorer. The possible values are: microsoftEdge, internetExplorer11, both, unknownFutureValue.
         self._source_environment: Optional[browser_shared_cookie_source_environment.BrowserSharedCookieSourceEnvironment] = None
     
     @property
@@ -53,7 +53,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
     @property
     def comment(self,) -> Optional[str]:
         """
-        Gets the comment property value. The comment of the cookie
+        Gets the comment property value. The comment for the shared cookie.
         Returns: Optional[str]
         """
         return self._comment
@@ -61,7 +61,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
     @comment.setter
     def comment(self,value: Optional[str] = None) -> None:
         """
-        Sets the comment property value. The comment of the cookie
+        Sets the comment property value. The comment for the shared cookie.
         Args:
             value: Value to set for the comment property.
         """
@@ -82,7 +82,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The name of the cookie
+        Gets the displayName property value. The name of the cookie.
         Returns: Optional[str]
         """
         return self._display_name
@@ -90,7 +90,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The name of the cookie
+        Sets the displayName property value. The name of the cookie.
         Args:
             value: Value to set for the display_name property.
         """
@@ -119,7 +119,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
     @property
     def host_only(self,) -> Optional[bool]:
         """
-        Gets the hostOnly property value. Boolean attribute that determines whether a cookie is  a host-only or domain cookie
+        Gets the hostOnly property value. Controls whether a cookie is a host-only or domain cookie.
         Returns: Optional[bool]
         """
         return self._host_only
@@ -127,7 +127,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
     @host_only.setter
     def host_only(self,value: Optional[bool] = None) -> None:
         """
-        Sets the hostOnly property value. Boolean attribute that determines whether a cookie is  a host-only or domain cookie
+        Sets the hostOnly property value. Controls whether a cookie is a host-only or domain cookie.
         Args:
             value: Value to set for the host_only property.
         """
@@ -136,7 +136,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
     @property
     def host_or_domain(self,) -> Optional[str]:
         """
-        Gets the hostOrDomain property value. The URL of the cookie
+        Gets the hostOrDomain property value. The URL of the cookie.
         Returns: Optional[str]
         """
         return self._host_or_domain
@@ -144,7 +144,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
     @host_or_domain.setter
     def host_or_domain(self,value: Optional[str] = None) -> None:
         """
-        Sets the hostOrDomain property value. The URL of the cookie
+        Sets the hostOrDomain property value. The URL of the cookie.
         Args:
             value: Value to set for the host_or_domain property.
         """
@@ -187,7 +187,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
     @property
     def path(self,) -> Optional[str]:
         """
-        Gets the path property value. The path of the cookie
+        Gets the path property value. The path of the cookie.
         Returns: Optional[str]
         """
         return self._path
@@ -195,7 +195,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
     @path.setter
     def path(self,value: Optional[str] = None) -> None:
         """
-        Sets the path property value. The path of the cookie
+        Sets the path property value. The path of the cookie.
         Args:
             value: Value to set for the path property.
         """
@@ -204,7 +204,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
     @property
     def published_date_time(self,) -> Optional[datetime]:
         """
-        Gets the publishedDateTime property value. The time the cookie was published
+        Gets the publishedDateTime property value. The date and time when the cookie was last published.
         Returns: Optional[datetime]
         """
         return self._published_date_time
@@ -212,7 +212,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
     @published_date_time.setter
     def published_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the publishedDateTime property value. The time the cookie was published
+        Sets the publishedDateTime property value. The date and time when the cookie was last published.
         Args:
             value: Value to set for the published_date_time property.
         """
@@ -240,7 +240,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
     @property
     def source_environment(self,) -> Optional[browser_shared_cookie_source_environment.BrowserSharedCookieSourceEnvironment]:
         """
-        Gets the sourceEnvironment property value. Specifies how the cookies are shared between Microsoft Edge and Internet Explorer
+        Gets the sourceEnvironment property value. Specifies how the cookies are shared between Microsoft Edge and Internet Explorer. The possible values are: microsoftEdge, internetExplorer11, both, unknownFutureValue.
         Returns: Optional[browser_shared_cookie_source_environment.BrowserSharedCookieSourceEnvironment]
         """
         return self._source_environment
@@ -248,7 +248,7 @@ class BrowserSharedCookieHistory(AdditionalDataHolder, Parsable):
     @source_environment.setter
     def source_environment(self,value: Optional[browser_shared_cookie_source_environment.BrowserSharedCookieSourceEnvironment] = None) -> None:
         """
-        Sets the sourceEnvironment property value. Specifies how the cookies are shared between Microsoft Edge and Internet Explorer
+        Sets the sourceEnvironment property value. Specifies how the cookies are shared between Microsoft Edge and Internet Explorer. The possible values are: microsoftEdge, internetExplorer11, both, unknownFutureValue.
         Args:
             value: Value to set for the source_environment property.
         """

@@ -13,13 +13,9 @@ if TYPE_CHECKING:
     from ....models import b2x_identity_user_flow
     from ....models.o_data_errors import o_data_error
     from .identity_providers import identity_providers_request_builder
-    from .identity_providers.item import identity_provider_item_request_builder
     from .languages import languages_request_builder
-    from .languages.item import user_flow_language_configuration_item_request_builder
     from .user_attribute_assignments import user_attribute_assignments_request_builder
-    from .user_attribute_assignments.item import identity_user_flow_attribute_assignment_item_request_builder
     from .user_flow_identity_providers import user_flow_identity_providers_request_builder
-    from .user_flow_identity_providers.item import identity_provider_base_item_request_builder
 
 class B2xIdentityUserFlowItemRequestBuilder():
     """
@@ -43,12 +39,11 @@ class B2xIdentityUserFlowItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property b2xUserFlows for identity
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -61,7 +56,7 @@ class B2xIdentityUserFlowItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderGetRequestConfiguration] = None) -> Optional[b2x_identity_user_flow.B2xIdentityUserFlow]:
         """
@@ -84,36 +79,6 @@ class B2xIdentityUserFlowItemRequestBuilder():
         from ....models import b2x_identity_user_flow
 
         return await self.request_adapter.send_async(request_info, b2x_identity_user_flow.B2xIdentityUserFlow, error_mapping)
-    
-    def identity_providers_by_id(self,id: str) -> identity_provider_item_request_builder.IdentityProviderItemRequestBuilder:
-        """
-        Provides operations to manage the identityProviders property of the microsoft.graph.b2xIdentityUserFlow entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: identity_provider_item_request_builder.IdentityProviderItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .identity_providers.item import identity_provider_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["identityProvider%2Did"] = id
-        return identity_provider_item_request_builder.IdentityProviderItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def languages_by_id(self,id: str) -> user_flow_language_configuration_item_request_builder.UserFlowLanguageConfigurationItemRequestBuilder:
-        """
-        Provides operations to manage the languages property of the microsoft.graph.b2xIdentityUserFlow entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: user_flow_language_configuration_item_request_builder.UserFlowLanguageConfigurationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .languages.item import user_flow_language_configuration_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["userFlowLanguageConfiguration%2Did"] = id
-        return user_flow_language_configuration_item_request_builder.UserFlowLanguageConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[b2x_identity_user_flow.B2xIdentityUserFlow] = None, request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[b2x_identity_user_flow.B2xIdentityUserFlow]:
         """
@@ -194,36 +159,6 @@ class B2xIdentityUserFlowItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
-    
-    def user_attribute_assignments_by_id(self,id: str) -> identity_user_flow_attribute_assignment_item_request_builder.IdentityUserFlowAttributeAssignmentItemRequestBuilder:
-        """
-        Provides operations to manage the userAttributeAssignments property of the microsoft.graph.b2xIdentityUserFlow entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: identity_user_flow_attribute_assignment_item_request_builder.IdentityUserFlowAttributeAssignmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .user_attribute_assignments.item import identity_user_flow_attribute_assignment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["identityUserFlowAttributeAssignment%2Did"] = id
-        return identity_user_flow_attribute_assignment_item_request_builder.IdentityUserFlowAttributeAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def user_flow_identity_providers_by_id(self,id: str) -> identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder:
-        """
-        Gets an item from the msgraph.generated.identity.b2xUserFlows.item.userFlowIdentityProviders.item collection
-        Args:
-            id: Unique identifier of the item
-        Returns: identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .user_flow_identity_providers.item import identity_provider_base_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["identityProviderBase%2Did"] = id
-        return identity_provider_base_item_request_builder.IdentityProviderBaseItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     @property
     def identity_providers(self) -> identity_providers_request_builder.IdentityProvidersRequestBuilder:

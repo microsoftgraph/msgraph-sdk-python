@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import localized_notification_message, localized_notification_message_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import localized_notification_message_item_request_builder
 
 class LocalizedNotificationMessagesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class LocalizedNotificationMessagesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_localized_notification_message_id(self,localized_notification_message_id: str) -> localized_notification_message_item_request_builder.LocalizedNotificationMessageItemRequestBuilder:
+        """
+        Provides operations to manage the localizedNotificationMessages property of the microsoft.graph.notificationMessageTemplate entity.
+        Args:
+            localized_notification_message_id: Unique identifier of the item
+        Returns: localized_notification_message_item_request_builder.LocalizedNotificationMessageItemRequestBuilder
+        """
+        if localized_notification_message_id is None:
+            raise Exception("localized_notification_message_id cannot be undefined")
+        from .item import localized_notification_message_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["localizedNotificationMessage%2Did"] = localized_notification_message_id
+        return localized_notification_message_item_request_builder.LocalizedNotificationMessageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[LocalizedNotificationMessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[localized_notification_message_collection_response.LocalizedNotificationMessageCollectionResponse]:
         """

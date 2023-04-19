@@ -13,11 +13,8 @@ if TYPE_CHECKING:
     from ....models import managed_app_registration
     from ....models.o_data_errors import o_data_error
     from .applied_policies import applied_policies_request_builder
-    from .applied_policies.item import managed_app_policy_item_request_builder
     from .intended_policies import intended_policies_request_builder
-    from .intended_policies.item import managed_app_policy_item_request_builder
     from .operations import operations_request_builder
-    from .operations.item import managed_app_operation_item_request_builder
 
 class ManagedAppRegistrationItemRequestBuilder():
     """
@@ -41,28 +38,11 @@ class ManagedAppRegistrationItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def applied_policies_by_id(self,id: str) -> managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder:
-        """
-        Provides operations to manage the appliedPolicies property of the microsoft.graph.managedAppRegistration entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .applied_policies.item import managed_app_policy_item_request_builder
-        from .intended_policies.item import managed_app_policy_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["managedAppPolicy%2Did"] = id
-        return managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[ManagedAppRegistrationItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[ManagedAppRegistrationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property managedAppRegistrations for deviceAppManagement
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -75,7 +55,7 @@ class ManagedAppRegistrationItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[ManagedAppRegistrationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_app_registration.ManagedAppRegistration]:
         """
@@ -98,37 +78,6 @@ class ManagedAppRegistrationItemRequestBuilder():
         from ....models import managed_app_registration
 
         return await self.request_adapter.send_async(request_info, managed_app_registration.ManagedAppRegistration, error_mapping)
-    
-    def intended_policies_by_id(self,id: str) -> managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder:
-        """
-        Provides operations to manage the intendedPolicies property of the microsoft.graph.managedAppRegistration entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .applied_policies.item import managed_app_policy_item_request_builder
-        from .intended_policies.item import managed_app_policy_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["managedAppPolicy%2Did"] = id
-        return managed_app_policy_item_request_builder.ManagedAppPolicyItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def operations_by_id(self,id: str) -> managed_app_operation_item_request_builder.ManagedAppOperationItemRequestBuilder:
-        """
-        Provides operations to manage the operations property of the microsoft.graph.managedAppRegistration entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: managed_app_operation_item_request_builder.ManagedAppOperationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .operations.item import managed_app_operation_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["managedAppOperation%2Did"] = id
-        return managed_app_operation_item_request_builder.ManagedAppOperationItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[managed_app_registration.ManagedAppRegistration] = None, request_configuration: Optional[ManagedAppRegistrationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[managed_app_registration.ManagedAppRegistration]:
         """

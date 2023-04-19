@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ........models import shared_with_channel_team_info, shared_with_channel_team_info_collection_response
     from ........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import shared_with_channel_team_info_item_request_builder
 
 class SharedWithTeamsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class SharedWithTeamsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_shared_with_channel_team_info_id(self,shared_with_channel_team_info_id: str) -> shared_with_channel_team_info_item_request_builder.SharedWithChannelTeamInfoItemRequestBuilder:
+        """
+        Provides operations to manage the sharedWithTeams property of the microsoft.graph.channel entity.
+        Args:
+            shared_with_channel_team_info_id: Unique identifier of the item
+        Returns: shared_with_channel_team_info_item_request_builder.SharedWithChannelTeamInfoItemRequestBuilder
+        """
+        if shared_with_channel_team_info_id is None:
+            raise Exception("shared_with_channel_team_info_id cannot be undefined")
+        from .item import shared_with_channel_team_info_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["sharedWithChannelTeamInfo%2Did"] = shared_with_channel_team_info_id
+        return shared_with_channel_team_info_item_request_builder.SharedWithChannelTeamInfoItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[SharedWithTeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[shared_with_channel_team_info_collection_response.SharedWithChannelTeamInfoCollectionResponse]:
         """

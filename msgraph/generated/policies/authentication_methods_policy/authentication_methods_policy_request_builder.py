@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ...models import authentication_methods_policy
     from ...models.o_data_errors import o_data_error
     from .authentication_method_configurations import authentication_method_configurations_request_builder
-    from .authentication_method_configurations.item import authentication_method_configuration_item_request_builder
 
 class AuthenticationMethodsPolicyRequestBuilder():
     """
@@ -37,27 +36,11 @@ class AuthenticationMethodsPolicyRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def authentication_method_configurations_by_id(self,id: str) -> authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder:
-        """
-        Provides operations to manage the authenticationMethodConfigurations property of the microsoft.graph.authenticationMethodsPolicy entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .authentication_method_configurations.item import authentication_method_configuration_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["authenticationMethodConfiguration%2Did"] = id
-        return authentication_method_configuration_item_request_builder.AuthenticationMethodConfigurationItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[AuthenticationMethodsPolicyRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[AuthenticationMethodsPolicyRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property authenticationMethodsPolicy for policies
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -70,7 +53,7 @@ class AuthenticationMethodsPolicyRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[AuthenticationMethodsPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_methods_policy.AuthenticationMethodsPolicy]:
         """

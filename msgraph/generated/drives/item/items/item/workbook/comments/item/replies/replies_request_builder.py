@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .........models import workbook_comment_reply, workbook_comment_reply_collection_response
     from .........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import workbook_comment_reply_item_request_builder
 
 class RepliesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class RepliesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_workbook_comment_reply_id(self,workbook_comment_reply_id: str) -> workbook_comment_reply_item_request_builder.WorkbookCommentReplyItemRequestBuilder:
+        """
+        Provides operations to manage the replies property of the microsoft.graph.workbookComment entity.
+        Args:
+            workbook_comment_reply_id: Unique identifier of the item
+        Returns: workbook_comment_reply_item_request_builder.WorkbookCommentReplyItemRequestBuilder
+        """
+        if workbook_comment_reply_id is None:
+            raise Exception("workbook_comment_reply_id cannot be undefined")
+        from .item import workbook_comment_reply_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["workbookCommentReply%2Did"] = workbook_comment_reply_id
+        return workbook_comment_reply_item_request_builder.WorkbookCommentReplyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RepliesRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_comment_reply_collection_response.WorkbookCommentReplyCollectionResponse]:
         """

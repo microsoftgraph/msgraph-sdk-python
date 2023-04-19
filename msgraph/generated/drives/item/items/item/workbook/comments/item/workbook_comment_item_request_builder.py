@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ........models import workbook_comment
     from ........models.o_data_errors import o_data_error
     from .replies import replies_request_builder
-    from .replies.item import workbook_comment_reply_item_request_builder
 
 class WorkbookCommentItemRequestBuilder():
     """
@@ -37,12 +36,11 @@ class WorkbookCommentItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[WorkbookCommentItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[WorkbookCommentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property comments for drives
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -55,7 +53,7 @@ class WorkbookCommentItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[WorkbookCommentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_comment.WorkbookComment]:
         """
@@ -103,21 +101,6 @@ class WorkbookCommentItemRequestBuilder():
         from ........models import workbook_comment
 
         return await self.request_adapter.send_async(request_info, workbook_comment.WorkbookComment, error_mapping)
-    
-    def replies_by_id(self,id: str) -> workbook_comment_reply_item_request_builder.WorkbookCommentReplyItemRequestBuilder:
-        """
-        Provides operations to manage the replies property of the microsoft.graph.workbookComment entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: workbook_comment_reply_item_request_builder.WorkbookCommentReplyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .replies.item import workbook_comment_reply_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["workbookCommentReply%2Did"] = id
-        return workbook_comment_reply_item_request_builder.WorkbookCommentReplyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookCommentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

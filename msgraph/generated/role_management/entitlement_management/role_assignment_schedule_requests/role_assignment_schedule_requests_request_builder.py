@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
+    from .item import unified_role_assignment_schedule_request_item_request_builder
 
 class RoleAssignmentScheduleRequestsRequestBuilder():
     """
@@ -36,6 +37,21 @@ class RoleAssignmentScheduleRequestsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_unified_role_assignment_schedule_request_id(self,unified_role_assignment_schedule_request_id: str) -> unified_role_assignment_schedule_request_item_request_builder.UnifiedRoleAssignmentScheduleRequestItemRequestBuilder:
+        """
+        Provides operations to manage the roleAssignmentScheduleRequests property of the microsoft.graph.rbacApplication entity.
+        Args:
+            unified_role_assignment_schedule_request_id: Unique identifier of the item
+        Returns: unified_role_assignment_schedule_request_item_request_builder.UnifiedRoleAssignmentScheduleRequestItemRequestBuilder
+        """
+        if unified_role_assignment_schedule_request_id is None:
+            raise Exception("unified_role_assignment_schedule_request_id cannot be undefined")
+        from .item import unified_role_assignment_schedule_request_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["unifiedRoleAssignmentScheduleRequest%2Did"] = unified_role_assignment_schedule_request_id
+        return unified_role_assignment_schedule_request_item_request_builder.UnifiedRoleAssignmentScheduleRequestItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
         """

@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import device_and_app_management_role_assignment, device_and_app_management_role_assignment_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import device_and_app_management_role_assignment_item_request_builder
 
 class RoleAssignmentsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class RoleAssignmentsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_device_and_app_management_role_assignment_id(self,device_and_app_management_role_assignment_id: str) -> device_and_app_management_role_assignment_item_request_builder.DeviceAndAppManagementRoleAssignmentItemRequestBuilder:
+        """
+        Provides operations to manage the roleAssignments property of the microsoft.graph.deviceManagement entity.
+        Args:
+            device_and_app_management_role_assignment_id: Unique identifier of the item
+        Returns: device_and_app_management_role_assignment_item_request_builder.DeviceAndAppManagementRoleAssignmentItemRequestBuilder
+        """
+        if device_and_app_management_role_assignment_id is None:
+            raise Exception("device_and_app_management_role_assignment_id cannot be undefined")
+        from .item import device_and_app_management_role_assignment_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["deviceAndAppManagementRoleAssignment%2Did"] = device_and_app_management_role_assignment_id
+        return device_and_app_management_role_assignment_item_request_builder.DeviceAndAppManagementRoleAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[RoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[device_and_app_management_role_assignment_collection_response.DeviceAndAppManagementRoleAssignmentCollectionResponse]:
         """

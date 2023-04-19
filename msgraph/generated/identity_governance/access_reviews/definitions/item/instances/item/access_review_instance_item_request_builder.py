@@ -16,13 +16,10 @@ if TYPE_CHECKING:
     from .apply_decisions import apply_decisions_request_builder
     from .batch_record_decisions import batch_record_decisions_request_builder
     from .contacted_reviewers import contacted_reviewers_request_builder
-    from .contacted_reviewers.item import access_review_reviewer_item_request_builder
     from .decisions import decisions_request_builder
-    from .decisions.item import access_review_instance_decision_item_item_request_builder
     from .reset_decisions import reset_decisions_request_builder
     from .send_reminder import send_reminder_request_builder
     from .stages import stages_request_builder
-    from .stages.item import access_review_stage_item_request_builder
     from .stop import stop_request_builder
 
 class AccessReviewInstanceItemRequestBuilder():
@@ -47,42 +44,11 @@ class AccessReviewInstanceItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def contacted_reviewers_by_id(self,id: str) -> access_review_reviewer_item_request_builder.AccessReviewReviewerItemRequestBuilder:
-        """
-        Provides operations to manage the contactedReviewers property of the microsoft.graph.accessReviewInstance entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_review_reviewer_item_request_builder.AccessReviewReviewerItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .contacted_reviewers.item import access_review_reviewer_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessReviewReviewer%2Did"] = id
-        return access_review_reviewer_item_request_builder.AccessReviewReviewerItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def decisions_by_id(self,id: str) -> access_review_instance_decision_item_item_request_builder.AccessReviewInstanceDecisionItemItemRequestBuilder:
-        """
-        Provides operations to manage the decisions property of the microsoft.graph.accessReviewInstance entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_review_instance_decision_item_item_request_builder.AccessReviewInstanceDecisionItemItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .decisions.item import access_review_instance_decision_item_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessReviewInstanceDecisionItem%2Did"] = id
-        return access_review_instance_decision_item_item_request_builder.AccessReviewInstanceDecisionItemItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[AccessReviewInstanceItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[AccessReviewInstanceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property instances for identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -95,7 +61,7 @@ class AccessReviewInstanceItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[AccessReviewInstanceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[access_review_instance.AccessReviewInstance]:
         """
@@ -143,21 +109,6 @@ class AccessReviewInstanceItemRequestBuilder():
         from .......models import access_review_instance
 
         return await self.request_adapter.send_async(request_info, access_review_instance.AccessReviewInstance, error_mapping)
-    
-    def stages_by_id(self,id: str) -> access_review_stage_item_request_builder.AccessReviewStageItemRequestBuilder:
-        """
-        Provides operations to manage the stages property of the microsoft.graph.accessReviewInstance entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: access_review_stage_item_request_builder.AccessReviewStageItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .stages.item import access_review_stage_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["accessReviewStage%2Did"] = id
-        return access_review_stage_item_request_builder.AccessReviewStageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[AccessReviewInstanceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

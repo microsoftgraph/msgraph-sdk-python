@@ -11,7 +11,7 @@ from . import entity
 class DelegatedAdminRelationship(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new delegatedAdminRelationship and sets the default values.
+        Instantiates a new DelegatedAdminRelationship and sets the default values.
         """
         super().__init__()
         # The access assignments associated with the delegated admin relationship.

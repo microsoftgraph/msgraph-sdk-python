@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from .....models import service_update_message
     from .....models.o_data_errors import o_data_error
     from .attachments import attachments_request_builder
-    from .attachments.item import service_announcement_attachment_item_request_builder
     from .attachments_archive import attachments_archive_request_builder
 
 class ServiceUpdateMessageItemRequestBuilder():
@@ -38,27 +37,11 @@ class ServiceUpdateMessageItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def attachments_by_id(self,id: str) -> service_announcement_attachment_item_request_builder.ServiceAnnouncementAttachmentItemRequestBuilder:
-        """
-        Provides operations to manage the attachments property of the microsoft.graph.serviceUpdateMessage entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: service_announcement_attachment_item_request_builder.ServiceAnnouncementAttachmentItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .attachments.item import service_announcement_attachment_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["serviceAnnouncementAttachment%2Did"] = id
-        return service_announcement_attachment_item_request_builder.ServiceAnnouncementAttachmentItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property messages for admin
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -71,7 +54,7 @@ class ServiceUpdateMessageItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[service_update_message.ServiceUpdateMessage]:
         """

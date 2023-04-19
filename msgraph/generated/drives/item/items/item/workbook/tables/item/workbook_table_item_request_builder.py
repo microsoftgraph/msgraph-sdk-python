@@ -14,14 +14,12 @@ if TYPE_CHECKING:
     from ........models.o_data_errors import o_data_error
     from .clear_filters import clear_filters_request_builder
     from .columns import columns_request_builder
-    from .columns.item import workbook_table_column_item_request_builder
     from .convert_to_range import convert_to_range_request_builder
     from .data_body_range import data_body_range_request_builder
     from .header_row_range import header_row_range_request_builder
     from .range import range_request_builder
     from .reapply_filters import reapply_filters_request_builder
     from .rows import rows_request_builder
-    from .rows.item import workbook_table_row_item_request_builder
     from .sort import sort_request_builder
     from .total_row_range import total_row_range_request_builder
     from .worksheet import worksheet_request_builder
@@ -48,27 +46,11 @@ class WorkbookTableItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    def columns_by_id(self,id: str) -> workbook_table_column_item_request_builder.WorkbookTableColumnItemRequestBuilder:
-        """
-        Provides operations to manage the columns property of the microsoft.graph.workbookTable entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: workbook_table_column_item_request_builder.WorkbookTableColumnItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .columns.item import workbook_table_column_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["workbookTableColumn%2Did"] = id
-        return workbook_table_column_item_request_builder.WorkbookTableColumnItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    async def delete(self,request_configuration: Optional[WorkbookTableItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[WorkbookTableItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property tables for drives
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -81,7 +63,7 @@ class WorkbookTableItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[WorkbookTableItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_table.WorkbookTable]:
         """
@@ -129,21 +111,6 @@ class WorkbookTableItemRequestBuilder():
         from ........models import workbook_table
 
         return await self.request_adapter.send_async(request_info, workbook_table.WorkbookTable, error_mapping)
-    
-    def rows_by_id(self,id: str) -> workbook_table_row_item_request_builder.WorkbookTableRowItemRequestBuilder:
-        """
-        Provides operations to manage the rows property of the microsoft.graph.workbookTable entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: workbook_table_row_item_request_builder.WorkbookTableRowItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .rows.item import workbook_table_row_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["workbookTableRow%2Did"] = id
-        return workbook_table_row_item_request_builder.WorkbookTableRowItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookTableItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

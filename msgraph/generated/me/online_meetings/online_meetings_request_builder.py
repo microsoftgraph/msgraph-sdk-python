@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
     from .create_or_get import create_or_get_request_builder
+    from .item import online_meeting_item_request_builder
 
 class OnlineMeetingsRequestBuilder():
     """
@@ -36,6 +37,21 @@ class OnlineMeetingsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_online_meeting_id(self,online_meeting_id: str) -> online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder:
+        """
+        Provides operations to manage the onlineMeetings property of the microsoft.graph.user entity.
+        Args:
+            online_meeting_id: Unique identifier of the item
+        Returns: online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder
+        """
+        if online_meeting_id is None:
+            raise Exception("online_meeting_id cannot be undefined")
+        from .item import online_meeting_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["onlineMeeting%2Did"] = online_meeting_id
+        return online_meeting_item_request_builder.OnlineMeetingItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[OnlineMeetingsRequestBuilderGetRequestConfiguration] = None) -> Optional[online_meeting_collection_response.OnlineMeetingCollectionResponse]:
         """

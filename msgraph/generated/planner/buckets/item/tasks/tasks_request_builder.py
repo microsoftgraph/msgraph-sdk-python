@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import planner_task, planner_task_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import planner_task_item_request_builder
 
 class TasksRequestBuilder():
     """
@@ -35,6 +36,21 @@ class TasksRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_planner_task_id(self,planner_task_id: str) -> planner_task_item_request_builder.PlannerTaskItemRequestBuilder:
+        """
+        Provides operations to manage the tasks property of the microsoft.graph.plannerBucket entity.
+        Args:
+            planner_task_id: Unique identifier of the item
+        Returns: planner_task_item_request_builder.PlannerTaskItemRequestBuilder
+        """
+        if planner_task_id is None:
+            raise Exception("planner_task_id cannot be undefined")
+        from .item import planner_task_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["plannerTask%2Did"] = planner_task_id
+        return planner_task_item_request_builder.PlannerTaskItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[TasksRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_task_collection_response.PlannerTaskCollectionResponse]:
         """

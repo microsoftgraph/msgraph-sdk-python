@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .......models import browser_site, browser_site_collection_response
     from .......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import browser_site_item_request_builder
 
 class SitesRequestBuilder():
     """
@@ -36,9 +37,24 @@ class SitesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    def by_browser_site_id(self,browser_site_id: str) -> browser_site_item_request_builder.BrowserSiteItemRequestBuilder:
+        """
+        Provides operations to manage the sites property of the microsoft.graph.browserSiteList entity.
+        Args:
+            browser_site_id: Unique identifier of the item
+        Returns: browser_site_item_request_builder.BrowserSiteItemRequestBuilder
+        """
+        if browser_site_id is None:
+            raise Exception("browser_site_id cannot be undefined")
+        from .item import browser_site_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["browserSite%2Did"] = browser_site_id
+        return browser_site_item_request_builder.BrowserSiteItemRequestBuilder(self.request_adapter, url_tpl_params)
+    
     async def get(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> Optional[browser_site_collection_response.BrowserSiteCollectionResponse]:
         """
-        Get sites from admin
+        Get a list of the browserSite objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[browser_site_collection_response.BrowserSiteCollectionResponse]
@@ -60,7 +76,7 @@ class SitesRequestBuilder():
     
     async def post(self,body: Optional[browser_site.BrowserSite] = None, request_configuration: Optional[SitesRequestBuilderPostRequestConfiguration] = None) -> Optional[browser_site.BrowserSite]:
         """
-        Create new navigation property to sites for admin
+        Create a new browserSite object in a browserSiteList.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -85,7 +101,7 @@ class SitesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get sites from admin
+        Get a list of the browserSite objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -103,7 +119,7 @@ class SitesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[browser_site.BrowserSite] = None, request_configuration: Optional[SitesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to sites for admin
+        Create a new browserSite object in a browserSiteList.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -134,7 +150,7 @@ class SitesRequestBuilder():
     @dataclass
     class SitesRequestBuilderGetQueryParameters():
         """
-        Get sites from admin
+        Get a list of the browserSite objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

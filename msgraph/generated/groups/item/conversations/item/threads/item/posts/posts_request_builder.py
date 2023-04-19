@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ........models import post_collection_response
     from ........models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import post_item_request_builder
 
 class PostsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class PostsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_post_id(self,post_id: str) -> post_item_request_builder.PostItemRequestBuilder:
+        """
+        Provides operations to manage the posts property of the microsoft.graph.conversationThread entity.
+        Args:
+            post_id: Unique identifier of the item
+        Returns: post_item_request_builder.PostItemRequestBuilder
+        """
+        if post_id is None:
+            raise Exception("post_id cannot be undefined")
+        from .item import post_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["post%2Did"] = post_id
+        return post_item_request_builder.PostItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[PostsRequestBuilderGetRequestConfiguration] = None) -> Optional[post_collection_response.PostCollectionResponse]:
         """

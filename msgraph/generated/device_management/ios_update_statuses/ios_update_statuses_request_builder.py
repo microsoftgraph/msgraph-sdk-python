@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import ios_update_device_status, ios_update_device_status_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import ios_update_device_status_item_request_builder
 
 class IosUpdateStatusesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class IosUpdateStatusesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_ios_update_device_status_id(self,ios_update_device_status_id: str) -> ios_update_device_status_item_request_builder.IosUpdateDeviceStatusItemRequestBuilder:
+        """
+        Provides operations to manage the iosUpdateStatuses property of the microsoft.graph.deviceManagement entity.
+        Args:
+            ios_update_device_status_id: Unique identifier of the item
+        Returns: ios_update_device_status_item_request_builder.IosUpdateDeviceStatusItemRequestBuilder
+        """
+        if ios_update_device_status_id is None:
+            raise Exception("ios_update_device_status_id cannot be undefined")
+        from .item import ios_update_device_status_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["iosUpdateDeviceStatus%2Did"] = ios_update_device_status_id
+        return ios_update_device_status_item_request_builder.IosUpdateDeviceStatusItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[IosUpdateStatusesRequestBuilderGetRequestConfiguration] = None) -> Optional[ios_update_device_status_collection_response.IosUpdateDeviceStatusCollectionResponse]:
         """

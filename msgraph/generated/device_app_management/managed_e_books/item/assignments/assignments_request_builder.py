@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .....models import managed_e_book_assignment, managed_e_book_assignment_collection_response
     from .....models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import managed_e_book_assignment_item_request_builder
 
 class AssignmentsRequestBuilder():
     """
@@ -35,6 +36,21 @@ class AssignmentsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_managed_e_book_assignment_id(self,managed_e_book_assignment_id: str) -> managed_e_book_assignment_item_request_builder.ManagedEBookAssignmentItemRequestBuilder:
+        """
+        Provides operations to manage the assignments property of the microsoft.graph.managedEBook entity.
+        Args:
+            managed_e_book_assignment_id: Unique identifier of the item
+        Returns: managed_e_book_assignment_item_request_builder.ManagedEBookAssignmentItemRequestBuilder
+        """
+        if managed_e_book_assignment_id is None:
+            raise Exception("managed_e_book_assignment_id cannot be undefined")
+        from .item import managed_e_book_assignment_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["managedEBookAssignment%2Did"] = managed_e_book_assignment_id
+        return managed_e_book_assignment_item_request_builder.ManagedEBookAssignmentItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[managed_e_book_assignment_collection_response.ManagedEBookAssignmentCollectionResponse]:
         """

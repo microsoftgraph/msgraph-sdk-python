@@ -13,12 +13,9 @@ if TYPE_CHECKING:
     from .....models import contact
     from .....models.o_data_errors import o_data_error
     from .extensions import extensions_request_builder
-    from .extensions.item import extension_item_request_builder
     from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-    from .multi_value_extended_properties.item import multi_value_legacy_extended_property_item_request_builder
     from .photo import photo_request_builder
     from .single_value_extended_properties import single_value_extended_properties_request_builder
-    from .single_value_extended_properties.item import single_value_legacy_extended_property_item_request_builder
 
 class ContactItemRequestBuilder():
     """
@@ -42,12 +39,11 @@ class ContactItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[ContactItemRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[ContactItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property contacts for users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -60,22 +56,7 @@ class ContactItemRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
-    
-    def extensions_by_id(self,id: str) -> extension_item_request_builder.ExtensionItemRequestBuilder:
-        """
-        Provides operations to manage the extensions property of the microsoft.graph.contact entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: extension_item_request_builder.ExtensionItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .extensions.item import extension_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["extension%2Did"] = id
-        return extension_item_request_builder.ExtensionItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[ContactItemRequestBuilderGetRequestConfiguration] = None) -> Optional[contact.Contact]:
         """
@@ -98,21 +79,6 @@ class ContactItemRequestBuilder():
         from .....models import contact
 
         return await self.request_adapter.send_async(request_info, contact.Contact, error_mapping)
-    
-    def multi_value_extended_properties_by_id(self,id: str) -> multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder:
-        """
-        Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.contact entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .multi_value_extended_properties.item import multi_value_legacy_extended_property_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["multiValueLegacyExtendedProperty%2Did"] = id
-        return multi_value_legacy_extended_property_item_request_builder.MultiValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def patch(self,body: Optional[contact.Contact] = None, request_configuration: Optional[ContactItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[contact.Contact]:
         """
@@ -138,21 +104,6 @@ class ContactItemRequestBuilder():
         from .....models import contact
 
         return await self.request_adapter.send_async(request_info, contact.Contact, error_mapping)
-    
-    def single_value_extended_properties_by_id(self,id: str) -> single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder:
-        """
-        Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.contact entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .single_value_extended_properties.item import single_value_legacy_extended_property_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["singleValueLegacyExtendedProperty%2Did"] = id
-        return single_value_legacy_extended_property_item_request_builder.SingleValueLegacyExtendedPropertyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[ContactItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

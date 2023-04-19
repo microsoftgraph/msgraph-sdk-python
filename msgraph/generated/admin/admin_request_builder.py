@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ..models.o_data_errors import o_data_error
     from .edge import edge_request_builder
     from .service_announcement import service_announcement_request_builder
+    from .sharepoint import sharepoint_request_builder
 
 class AdminRequestBuilder():
     """
@@ -140,6 +141,15 @@ class AdminRequestBuilder():
         from .service_announcement import service_announcement_request_builder
 
         return service_announcement_request_builder.ServiceAnnouncementRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def sharepoint(self) -> sharepoint_request_builder.SharepointRequestBuilder:
+        """
+        Provides operations to manage the sharepoint property of the microsoft.graph.admin entity.
+        """
+        from .sharepoint import sharepoint_request_builder
+
+        return sharepoint_request_builder.SharepointRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AdminRequestBuilderGetQueryParameters():

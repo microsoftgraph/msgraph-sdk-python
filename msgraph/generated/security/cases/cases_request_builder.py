@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ...models.o_data_errors import o_data_error
     from ...models.security import cases_root
     from .ediscovery_cases import ediscovery_cases_request_builder
-    from .ediscovery_cases.item import ediscovery_case_item_request_builder
 
 class CasesRequestBuilder():
     """
@@ -37,12 +36,11 @@ class CasesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[CasesRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[CasesRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property cases for security
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -55,22 +53,7 @@ class CasesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
-    
-    def ediscovery_cases_by_id(self,id: str) -> ediscovery_case_item_request_builder.EdiscoveryCaseItemRequestBuilder:
-        """
-        Provides operations to manage the ediscoveryCases property of the microsoft.graph.security.casesRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: ediscovery_case_item_request_builder.EdiscoveryCaseItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .ediscovery_cases.item import ediscovery_case_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["ediscoveryCase%2Did"] = id
-        return ediscovery_case_item_request_builder.EdiscoveryCaseItemRequestBuilder(self.request_adapter, url_tpl_params)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[CasesRequestBuilderGetRequestConfiguration] = None) -> Optional[cases_root.CasesRoot]:
         """

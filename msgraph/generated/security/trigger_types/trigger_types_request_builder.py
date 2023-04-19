@@ -13,7 +13,6 @@ if TYPE_CHECKING:
     from ...models.o_data_errors import o_data_error
     from ...models.security import trigger_types_root
     from .retention_event_types import retention_event_types_request_builder
-    from .retention_event_types.item import retention_event_type_item_request_builder
 
 class TriggerTypesRequestBuilder():
     """
@@ -37,12 +36,11 @@ class TriggerTypesRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def delete(self,request_configuration: Optional[TriggerTypesRequestBuilderDeleteRequestConfiguration] = None) -> bytes:
+    async def delete(self,request_configuration: Optional[TriggerTypesRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
         Delete navigation property triggerTypes for security
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: bytes
         """
         request_info = self.to_delete_request_information(
             request_configuration
@@ -55,7 +53,7 @@ class TriggerTypesRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "bytes", error_mapping)
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
     
     async def get(self,request_configuration: Optional[TriggerTypesRequestBuilderGetRequestConfiguration] = None) -> Optional[trigger_types_root.TriggerTypesRoot]:
         """
@@ -103,21 +101,6 @@ class TriggerTypesRequestBuilder():
         from ...models.security import trigger_types_root
 
         return await self.request_adapter.send_async(request_info, trigger_types_root.TriggerTypesRoot, error_mapping)
-    
-    def retention_event_types_by_id(self,id: str) -> retention_event_type_item_request_builder.RetentionEventTypeItemRequestBuilder:
-        """
-        Provides operations to manage the retentionEventTypes property of the microsoft.graph.security.triggerTypesRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: retention_event_type_item_request_builder.RetentionEventTypeItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .retention_event_types.item import retention_event_type_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["retentionEventType%2Did"] = id
-        return retention_event_type_item_request_builder.RetentionEventTypeItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_delete_request_information(self,request_configuration: Optional[TriggerTypesRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """

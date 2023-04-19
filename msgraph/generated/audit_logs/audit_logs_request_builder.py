@@ -13,11 +13,8 @@ if TYPE_CHECKING:
     from ..models import audit_log_root
     from ..models.o_data_errors import o_data_error
     from .directory_audits import directory_audits_request_builder
-    from .directory_audits.item import directory_audit_item_request_builder
     from .provisioning import provisioning_request_builder
-    from .provisioning.item import provisioning_object_summary_item_request_builder
     from .sign_ins import sign_ins_request_builder
-    from .sign_ins.item import sign_in_item_request_builder
 
 class AuditLogsRequestBuilder():
     """
@@ -40,21 +37,6 @@ class AuditLogsRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
-    
-    def directory_audits_by_id(self,id: str) -> directory_audit_item_request_builder.DirectoryAuditItemRequestBuilder:
-        """
-        Provides operations to manage the directoryAudits property of the microsoft.graph.auditLogRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: directory_audit_item_request_builder.DirectoryAuditItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .directory_audits.item import directory_audit_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["directoryAudit%2Did"] = id
-        return directory_audit_item_request_builder.DirectoryAuditItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[AuditLogsRequestBuilderGetRequestConfiguration] = None) -> Optional[audit_log_root.AuditLogRoot]:
         """
@@ -102,36 +84,6 @@ class AuditLogsRequestBuilder():
         from ..models import audit_log_root
 
         return await self.request_adapter.send_async(request_info, audit_log_root.AuditLogRoot, error_mapping)
-    
-    def provisioning_by_id(self,id: str) -> provisioning_object_summary_item_request_builder.ProvisioningObjectSummaryItemRequestBuilder:
-        """
-        Provides operations to manage the provisioning property of the microsoft.graph.auditLogRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: provisioning_object_summary_item_request_builder.ProvisioningObjectSummaryItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .provisioning.item import provisioning_object_summary_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["provisioningObjectSummary%2Did"] = id
-        return provisioning_object_summary_item_request_builder.ProvisioningObjectSummaryItemRequestBuilder(self.request_adapter, url_tpl_params)
-    
-    def sign_ins_by_id(self,id: str) -> sign_in_item_request_builder.SignInItemRequestBuilder:
-        """
-        Provides operations to manage the signIns property of the microsoft.graph.auditLogRoot entity.
-        Args:
-            id: Unique identifier of the item
-        Returns: sign_in_item_request_builder.SignInItemRequestBuilder
-        """
-        if id is None:
-            raise Exception("id cannot be undefined")
-        from .sign_ins.item import sign_in_item_request_builder
-
-        url_tpl_params = get_path_parameters(self.path_parameters)
-        url_tpl_params["signIn%2Did"] = id
-        return sign_in_item_request_builder.SignInItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     def to_get_request_information(self,request_configuration: Optional[AuditLogsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """

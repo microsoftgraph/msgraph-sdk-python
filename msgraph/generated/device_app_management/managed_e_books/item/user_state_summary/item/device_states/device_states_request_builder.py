@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from .......models import device_install_state, device_install_state_collection_response
     from .......models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import device_install_state_item_request_builder
 
 class DeviceStatesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class DeviceStatesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_device_install_state_id(self,device_install_state_id: str) -> device_install_state_item_request_builder.DeviceInstallStateItemRequestBuilder:
+        """
+        Provides operations to manage the deviceStates property of the microsoft.graph.userInstallStateSummary entity.
+        Args:
+            device_install_state_id: Unique identifier of the item
+        Returns: device_install_state_item_request_builder.DeviceInstallStateItemRequestBuilder
+        """
+        if device_install_state_id is None:
+            raise Exception("device_install_state_id cannot be undefined")
+        from .item import device_install_state_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["deviceInstallState%2Did"] = device_install_state_id
+        return device_install_state_item_request_builder.DeviceInstallStateItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[DeviceStatesRequestBuilderGetRequestConfiguration] = None) -> Optional[device_install_state_collection_response.DeviceInstallStateCollectionResponse]:
         """

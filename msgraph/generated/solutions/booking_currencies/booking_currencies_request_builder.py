@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ...models import booking_currency, booking_currency_collection_response
     from ...models.o_data_errors import o_data_error
     from .count import count_request_builder
+    from .item import booking_currency_item_request_builder
 
 class BookingCurrenciesRequestBuilder():
     """
@@ -35,6 +36,21 @@ class BookingCurrenciesRequestBuilder():
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
+    
+    def by_booking_currency_id(self,booking_currency_id: str) -> booking_currency_item_request_builder.BookingCurrencyItemRequestBuilder:
+        """
+        Provides operations to manage the bookingCurrencies property of the microsoft.graph.solutionsRoot entity.
+        Args:
+            booking_currency_id: Unique identifier of the item
+        Returns: booking_currency_item_request_builder.BookingCurrencyItemRequestBuilder
+        """
+        if booking_currency_id is None:
+            raise Exception("booking_currency_id cannot be undefined")
+        from .item import booking_currency_item_request_builder
+
+        url_tpl_params = get_path_parameters(self.path_parameters)
+        url_tpl_params["bookingCurrency%2Did"] = booking_currency_id
+        return booking_currency_item_request_builder.BookingCurrencyItemRequestBuilder(self.request_adapter, url_tpl_params)
     
     async def get(self,request_configuration: Optional[BookingCurrenciesRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_currency_collection_response.BookingCurrencyCollectionResponse]:
         """

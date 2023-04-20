@@ -102,7 +102,8 @@ client = GraphServiceClient(request_adapter)
 
 async def get_user():
     user = await client.users.by_user_id('userPrincipalName').get()
-    print(user.display_name)
+    if user:
+      print(user.display_name)
 
 asyncio.run(get_user())
 ```
@@ -124,7 +125,8 @@ client = GraphServiceClient(request_adapter)
 
 async def me():
     me = await client.me.get()
-    print(me.display_name)
+    if me:
+        print(me.display_name)
 
 asyncio.run(me())
 ```
@@ -150,6 +152,8 @@ asyncio.run(get_user())
 * [Overview](https://docs.microsoft.com/graph/overview)
 
 * [Microsoft Graph website](https://aka.ms/graph)
+
+* [Samples](samples)
 
 ## Upgrading
 

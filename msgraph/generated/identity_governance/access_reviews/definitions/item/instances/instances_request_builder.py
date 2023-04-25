@@ -68,7 +68,7 @@ class InstancesRequestBuilder():
     
     async def get(self,request_configuration: Optional[InstancesRequestBuilderGetRequestConfiguration] = None) -> Optional[access_review_instance_collection_response.AccessReviewInstanceCollectionResponse]:
         """
-        Get a list of the accessReviewInstance objects and their properties.
+        If the accessReviewScheduleDefinition is a recurring access review, instances represent each recurrence. A review that does not recur will have exactly one instance. Instances also represent each unique resource under review in the accessReviewScheduleDefinition. If a review has multiple resources and multiple instances, each resource will have a unique instance for each recurrence.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_review_instance_collection_response.AccessReviewInstanceCollectionResponse]
@@ -115,7 +115,7 @@ class InstancesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[InstancesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the accessReviewInstance objects and their properties.
+        If the accessReviewScheduleDefinition is a recurring access review, instances represent each recurrence. A review that does not recur will have exactly one instance. Instances also represent each unique resource under review in the accessReviewScheduleDefinition. If a review has multiple resources and multiple instances, each resource will have a unique instance for each recurrence.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -164,7 +164,7 @@ class InstancesRequestBuilder():
     @dataclass
     class InstancesRequestBuilderGetQueryParameters():
         """
-        Get a list of the accessReviewInstance objects and their properties.
+        If the accessReviewScheduleDefinition is a recurring access review, instances represent each recurrence. A review that does not recur will have exactly one instance. Instances also represent each unique resource under review in the accessReviewScheduleDefinition. If a review has multiple resources and multiple instances, each resource will have a unique instance for each recurrence.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

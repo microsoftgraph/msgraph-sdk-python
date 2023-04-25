@@ -10,7 +10,7 @@ from . import entity
 class Sharepoint(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new sharepoint and sets the default values.
+        Instantiates a new Sharepoint and sets the default values.
         """
         super().__init__()
         # The OdataType property

@@ -38,7 +38,7 @@ class AddFormulaLocalRequestBuilder():
     
     async def post(self,body: Optional[add_formula_local_post_request_body.AddFormulaLocalPostRequestBody] = None, request_configuration: Optional[AddFormulaLocalRequestBuilderPostRequestConfiguration] = None) -> Optional[workbook_named_item.WorkbookNamedItem]:
         """
-        Adds a new name to the collection of the given scope using the user's locale for the formula.
+        Invoke action addFormulaLocal
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class AddFormulaLocalRequestBuilder():
     
     def to_post_request_information(self,body: Optional[add_formula_local_post_request_body.AddFormulaLocalPostRequestBody] = None, request_configuration: Optional[AddFormulaLocalRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Adds a new name to the collection of the given scope using the user's locale for the formula.
+        Invoke action addFormulaLocal
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

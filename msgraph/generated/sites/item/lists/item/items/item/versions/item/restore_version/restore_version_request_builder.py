@@ -36,7 +36,7 @@ class RestoreVersionRequestBuilder():
     
     async def post(self,request_configuration: Optional[RestoreVersionRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Restore a previous version of a ListItem to be the current version. This will create a new version with the contents of the previous version, but preserves all existing versions of the item.
+        Invoke action restoreVersion
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class RestoreVersionRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[RestoreVersionRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Restore a previous version of a ListItem to be the current version. This will create a new version with the contents of the previous version, but preserves all existing versions of the item.
+        Invoke action restoreVersion
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -13,7 +13,7 @@ class AuthenticationCombinationConfiguration(entity.Entity):
         Instantiates a new AuthenticationCombinationConfiguration and sets the default values.
         """
         super().__init__()
-        # The appliesToCombinations property
+        # Which authentication method combinations this configuration applies to. Must be an allowedCombinations object that's defined for the authenticationStrengthPolicy. The only possible value for fido2combinationConfigurations is 'fido2'.
         self._applies_to_combinations: Optional[List[authentication_method_modes.AuthenticationMethodModes]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
@@ -21,7 +21,7 @@ class AuthenticationCombinationConfiguration(entity.Entity):
     @property
     def applies_to_combinations(self,) -> Optional[List[authentication_method_modes.AuthenticationMethodModes]]:
         """
-        Gets the appliesToCombinations property value. The appliesToCombinations property
+        Gets the appliesToCombinations property value. Which authentication method combinations this configuration applies to. Must be an allowedCombinations object that's defined for the authenticationStrengthPolicy. The only possible value for fido2combinationConfigurations is 'fido2'.
         Returns: Optional[List[authentication_method_modes.AuthenticationMethodModes]]
         """
         return self._applies_to_combinations
@@ -29,7 +29,7 @@ class AuthenticationCombinationConfiguration(entity.Entity):
     @applies_to_combinations.setter
     def applies_to_combinations(self,value: Optional[List[authentication_method_modes.AuthenticationMethodModes]] = None) -> None:
         """
-        Sets the appliesToCombinations property value. The appliesToCombinations property
+        Sets the appliesToCombinations property value. Which authentication method combinations this configuration applies to. Must be an allowedCombinations object that's defined for the authenticationStrengthPolicy. The only possible value for fido2combinationConfigurations is 'fido2'.
         Args:
             value: Value to set for the applies_to_combinations property.
         """

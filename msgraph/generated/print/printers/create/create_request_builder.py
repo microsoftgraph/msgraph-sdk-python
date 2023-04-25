@@ -37,7 +37,7 @@ class CreateRequestBuilder():
     
     async def post(self,body: Optional[create_post_request_body.CreatePostRequestBody] = None, request_configuration: Optional[CreateRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Create (register) a printer with the Universal Print service. This is a long-running operation and as such, it returns a printerCreateOperation that can be used to track and verify the registration of the printer. For help creating the required Certificate Signing Request (CSR) for creating printer, see the CSR generation code sample.
+        Invoke action create
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class CreateRequestBuilder():
     
     def to_post_request_information(self,body: Optional[create_post_request_body.CreatePostRequestBody] = None, request_configuration: Optional[CreateRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create (register) a printer with the Universal Print service. This is a long-running operation and as such, it returns a printerCreateOperation that can be used to track and verify the registration of the printer. For help creating the required Certificate Signing Request (CSR) for creating printer, see the CSR generation code sample.
+        Invoke action create
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

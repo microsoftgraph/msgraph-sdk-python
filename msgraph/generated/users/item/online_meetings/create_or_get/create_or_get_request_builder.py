@@ -38,7 +38,7 @@ class CreateOrGetRequestBuilder():
     
     async def post(self,body: Optional[create_or_get_post_request_body.CreateOrGetPostRequestBody] = None, request_configuration: Optional[CreateOrGetRequestBuilderPostRequestConfiguration] = None) -> Optional[online_meeting.OnlineMeeting]:
         """
-        Create an onlineMeeting object with a custom specified external ID. If the external ID already exists, this API will return the onlineMeeting object with that external ID. 
+        Invoke action createOrGet
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class CreateOrGetRequestBuilder():
     
     def to_post_request_information(self,body: Optional[create_or_get_post_request_body.CreateOrGetPostRequestBody] = None, request_configuration: Optional[CreateOrGetRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create an onlineMeeting object with a custom specified external ID. If the external ID already exists, this API will return the onlineMeeting object with that external ID. 
+        Invoke action createOrGet
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -54,7 +54,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder():
     
     async def get(self,request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[home_realm_discovery_policy_collection_response.HomeRealmDiscoveryPolicyCollectionResponse]:
         """
-        Get a list of homeRealmDiscoveryPolicy objects.
+        The policy to control Azure AD authentication behavior for federated users.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[home_realm_discovery_policy_collection_response.HomeRealmDiscoveryPolicyCollectionResponse]
@@ -76,7 +76,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder():
     
     async def post(self,body: Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]:
         """
-        Create a new homeRealmDiscoveryPolicy object.
+        Create new navigation property to homeRealmDiscoveryPolicies for policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of homeRealmDiscoveryPolicy objects.
+        The policy to control Azure AD authentication behavior for federated users.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new homeRealmDiscoveryPolicy object.
+        Create new navigation property to homeRealmDiscoveryPolicies for policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder():
     @dataclass
     class HomeRealmDiscoveryPoliciesRequestBuilderGetQueryParameters():
         """
-        Get a list of homeRealmDiscoveryPolicy objects.
+        The policy to control Azure AD authentication behavior for federated users.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -54,7 +54,7 @@ class MethodsRequestBuilder():
     
     async def get(self,request_configuration: Optional[MethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_method_collection_response.AuthenticationMethodCollectionResponse]:
         """
-        Retrieve a list of authentication methods registered to a user. The authentication methods are defined by the types derived from the authenticationMethod resource type, and only the methods supported on this API version. See Azure AD authentication methods API overview for a list of currently supported methods.
+        Represents all authentication methods registered to a user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authentication_method_collection_response.AuthenticationMethodCollectionResponse]
@@ -101,7 +101,7 @@ class MethodsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of authentication methods registered to a user. The authentication methods are defined by the types derived from the authenticationMethod resource type, and only the methods supported on this API version. See Azure AD authentication methods API overview for a list of currently supported methods.
+        Represents all authentication methods registered to a user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class MethodsRequestBuilder():
     @dataclass
     class MethodsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of authentication methods registered to a user. The authentication methods are defined by the types derived from the authenticationMethod resource type, and only the methods supported on this API version. See Azure AD authentication methods API overview for a list of currently supported methods.
+        Represents all authentication methods registered to a user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

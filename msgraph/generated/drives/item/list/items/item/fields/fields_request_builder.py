@@ -78,7 +78,7 @@ class FieldsRequestBuilder():
     
     async def patch(self,body: Optional[field_value_set.FieldValueSet] = None, request_configuration: Optional[FieldsRequestBuilderPatchRequestConfiguration] = None) -> Optional[field_value_set.FieldValueSet]:
         """
-        Update the properties on a **[listItem][]**.
+        Update the navigation property fields in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -137,7 +137,7 @@ class FieldsRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[field_value_set.FieldValueSet] = None, request_configuration: Optional[FieldsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties on a **[listItem][]**.
+        Update the navigation property fields in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

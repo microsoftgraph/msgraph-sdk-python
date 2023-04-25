@@ -78,7 +78,7 @@ class NoncustodialDataSourcesRequestBuilder():
     
     async def post(self,body: Optional[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource] = None, request_configuration: Optional[NoncustodialDataSourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource]:
         """
-        Create a new ediscoveryNoncustodialDataSource object.
+        Create new navigation property to noncustodialDataSources for security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -121,7 +121,7 @@ class NoncustodialDataSourcesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[ediscovery_noncustodial_data_source.EdiscoveryNoncustodialDataSource] = None, request_configuration: Optional[NoncustodialDataSourcesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new ediscoveryNoncustodialDataSource object.
+        Create new navigation property to noncustodialDataSources for security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

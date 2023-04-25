@@ -57,7 +57,7 @@ class LegendRequestBuilder():
     
     async def get(self,request_configuration: Optional[LegendRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_legend.WorkbookChartLegend]:
         """
-        Retrieve the properties and relationships of chartlegend object.
+        Represents the legend for the chart. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_chart_legend.WorkbookChartLegend]
@@ -79,7 +79,7 @@ class LegendRequestBuilder():
     
     async def patch(self,body: Optional[workbook_chart_legend.WorkbookChartLegend] = None, request_configuration: Optional[LegendRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart_legend.WorkbookChartLegend]:
         """
-        Update the properties of chartlegend object.
+        Update the navigation property legend in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -120,7 +120,7 @@ class LegendRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[LegendRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of chartlegend object.
+        Represents the legend for the chart. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class LegendRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[workbook_chart_legend.WorkbookChartLegend] = None, request_configuration: Optional[LegendRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of chartlegend object.
+        Update the navigation property legend in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class LegendRequestBuilder():
     @dataclass
     class LegendRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of chartlegend object.
+        Represents the legend for the chart. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

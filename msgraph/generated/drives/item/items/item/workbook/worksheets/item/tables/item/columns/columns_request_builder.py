@@ -56,7 +56,7 @@ class ColumnsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ColumnsRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_table_column_collection_response.WorkbookTableColumnCollectionResponse]:
         """
-        Retrieve a list of tablecolumn objects.
+        Represents a collection of all the columns in the table. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_table_column_collection_response.WorkbookTableColumnCollectionResponse]
@@ -91,7 +91,7 @@ class ColumnsRequestBuilder():
     
     async def post(self,body: Optional[workbook_table_column.WorkbookTableColumn] = None, request_configuration: Optional[ColumnsRequestBuilderPostRequestConfiguration] = None) -> Optional[workbook_table_column.WorkbookTableColumn]:
         """
-        Use this API to create a new TableColumn.
+        Create new navigation property to columns for drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -116,7 +116,7 @@ class ColumnsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ColumnsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of tablecolumn objects.
+        Represents a collection of all the columns in the table. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -134,7 +134,7 @@ class ColumnsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[workbook_table_column.WorkbookTableColumn] = None, request_configuration: Optional[ColumnsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new TableColumn.
+        Create new navigation property to columns for drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -174,7 +174,7 @@ class ColumnsRequestBuilder():
     @dataclass
     class ColumnsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of tablecolumn objects.
+        Represents a collection of all the columns in the table. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

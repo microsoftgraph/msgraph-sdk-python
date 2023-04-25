@@ -76,7 +76,7 @@ class FederationConfigurationRequestBuilder():
     
     async def post(self,body: Optional[internal_domain_federation.InternalDomainFederation] = None, request_configuration: Optional[FederationConfigurationRequestBuilderPostRequestConfiguration] = None) -> Optional[internal_domain_federation.InternalDomainFederation]:
         """
-        Create a new internalDomainFederation object.
+        Create new navigation property to federationConfiguration for domains
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class FederationConfigurationRequestBuilder():
     
     def to_post_request_information(self,body: Optional[internal_domain_federation.InternalDomainFederation] = None, request_configuration: Optional[FederationConfigurationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new internalDomainFederation object.
+        Create new navigation property to federationConfiguration for domains
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

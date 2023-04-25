@@ -55,7 +55,7 @@ class TasksRequestBuilder():
     
     async def get(self,request_configuration: Optional[TasksRequestBuilderGetRequestConfiguration] = None) -> Optional[todo_task_collection_response.TodoTaskCollectionResponse]:
         """
-        Get the **todoTask** resources from the **tasks** navigation property of a specified todoTaskList.
+        The tasks in this task list. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[todo_task_collection_response.TodoTaskCollectionResponse]
@@ -77,7 +77,7 @@ class TasksRequestBuilder():
     
     async def post(self,body: Optional[todo_task.TodoTask] = None, request_configuration: Optional[TasksRequestBuilderPostRequestConfiguration] = None) -> Optional[todo_task.TodoTask]:
         """
-        Create a new task object in a specified todoTaskList.
+        Create new navigation property to tasks for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class TasksRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TasksRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the **todoTask** resources from the **tasks** navigation property of a specified todoTaskList.
+        The tasks in this task list. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class TasksRequestBuilder():
     
     def to_post_request_information(self,body: Optional[todo_task.TodoTask] = None, request_configuration: Optional[TasksRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new task object in a specified todoTaskList.
+        Create new navigation property to tasks for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class TasksRequestBuilder():
     @dataclass
     class TasksRequestBuilderGetQueryParameters():
         """
-        Get the **todoTask** resources from the **tasks** navigation property of a specified todoTaskList.
+        The tasks in this task list. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -37,7 +37,7 @@ class ApplyRequestBuilder():
     
     async def post(self,body: Optional[apply_post_request_body.ApplyPostRequestBody] = None, request_configuration: Optional[ApplyRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Perform a sort operation.
+        Invoke action apply
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class ApplyRequestBuilder():
     
     def to_post_request_information(self,body: Optional[apply_post_request_body.ApplyPostRequestBody] = None, request_configuration: Optional[ApplyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Perform a sort operation.
+        Invoke action apply
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

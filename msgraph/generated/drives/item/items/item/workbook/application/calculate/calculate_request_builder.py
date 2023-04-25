@@ -37,7 +37,7 @@ class CalculateRequestBuilder():
     
     async def post(self,body: Optional[calculate_post_request_body.CalculatePostRequestBody] = None, request_configuration: Optional[CalculateRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Recalculate all currently opened workbooks in Excel.
+        Invoke action calculate
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class CalculateRequestBuilder():
     
     def to_post_request_information(self,body: Optional[calculate_post_request_body.CalculatePostRequestBody] = None, request_configuration: Optional[CalculateRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Recalculate all currently opened workbooks in Excel.
+        Invoke action calculate
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

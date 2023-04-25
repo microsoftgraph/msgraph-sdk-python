@@ -36,7 +36,7 @@ class AcceptRecommendationsRequestBuilder():
     
     async def post(self,request_configuration: Optional[AcceptRecommendationsRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Allows the acceptance of recommendations on all accessReviewInstanceDecisionItem objects that have not been reviewed on an accessReviewInstance object for which the calling user is a reviewer.
+        Invoke action acceptRecommendations
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class AcceptRecommendationsRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[AcceptRecommendationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Allows the acceptance of recommendations on all accessReviewInstanceDecisionItem objects that have not been reviewed on an accessReviewInstance object for which the calling user is a reviewer.
+        Invoke action acceptRecommendations
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

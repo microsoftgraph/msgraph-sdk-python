@@ -37,7 +37,7 @@ class GetPresencesByUserIdRequestBuilder():
     
     async def post(self,body: Optional[get_presences_by_user_id_post_request_body.GetPresencesByUserIdPostRequestBody] = None, request_configuration: Optional[GetPresencesByUserIdRequestBuilderPostRequestConfiguration] = None) -> Optional[get_presences_by_user_id_response.GetPresencesByUserIdResponse]:
         """
-        Get the presence information for multiple users.
+        Invoke action getPresencesByUserId
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -62,7 +62,7 @@ class GetPresencesByUserIdRequestBuilder():
     
     def to_post_request_information(self,body: Optional[get_presences_by_user_id_post_request_body.GetPresencesByUserIdPostRequestBody] = None, request_configuration: Optional[GetPresencesByUserIdRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the presence information for multiple users.
+        Invoke action getPresencesByUserId
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

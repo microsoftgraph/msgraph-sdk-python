@@ -54,7 +54,7 @@ class TabsRequestBuilder():
     
     async def get(self,request_configuration: Optional[TabsRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_tab_collection_response.TeamsTabCollectionResponse]:
         """
-        Retrieve the list of tabs in the specified channel within a team. 
+        A collection of all the tabs in the channel. A navigation property.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[teams_tab_collection_response.TeamsTabCollectionResponse]
@@ -101,7 +101,7 @@ class TabsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TabsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the list of tabs in the specified channel within a team. 
+        A collection of all the tabs in the channel. A navigation property.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class TabsRequestBuilder():
     @dataclass
     class TabsRequestBuilderGetQueryParameters():
         """
-        Retrieve the list of tabs in the specified channel within a team. 
+        A collection of all the tabs in the channel. A navigation property.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

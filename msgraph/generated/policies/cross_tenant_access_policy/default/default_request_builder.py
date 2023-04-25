@@ -57,7 +57,7 @@ class DefaultRequestBuilder():
     
     async def get(self,request_configuration: Optional[DefaultRequestBuilderGetRequestConfiguration] = None) -> Optional[cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault]:
         """
-        Read the default configuration of a cross-tenant access policy. This default configuration may be the service default assigned by Azure AD (**isServiceDefault** is `true`) or may be customized in your tenant (**isServiceDefault** is `false`).
+        Defines the default configuration for how your organization interacts with external Azure Active Directory organizations.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault]
@@ -79,7 +79,7 @@ class DefaultRequestBuilder():
     
     async def patch(self,body: Optional[cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault] = None, request_configuration: Optional[DefaultRequestBuilderPatchRequestConfiguration] = None) -> Optional[cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault]:
         """
-        Update the default configuration of a cross-tenant access policy.
+        Update the navigation property default in policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -120,7 +120,7 @@ class DefaultRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DefaultRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the default configuration of a cross-tenant access policy. This default configuration may be the service default assigned by Azure AD (**isServiceDefault** is `true`) or may be customized in your tenant (**isServiceDefault** is `false`).
+        Defines the default configuration for how your organization interacts with external Azure Active Directory organizations.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class DefaultRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[cross_tenant_access_policy_configuration_default.CrossTenantAccessPolicyConfigurationDefault] = None, request_configuration: Optional[DefaultRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the default configuration of a cross-tenant access policy.
+        Update the navigation property default in policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class DefaultRequestBuilder():
     @dataclass
     class DefaultRequestBuilderGetQueryParameters():
         """
-        Read the default configuration of a cross-tenant access policy. This default configuration may be the service default assigned by Azure AD (**isServiceDefault** is `true`) or may be customized in your tenant (**isServiceDefault** is `false`).
+        Defines the default configuration for how your organization interacts with external Azure Active Directory organizations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

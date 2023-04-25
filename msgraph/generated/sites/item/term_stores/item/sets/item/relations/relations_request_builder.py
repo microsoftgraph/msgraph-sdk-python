@@ -54,7 +54,7 @@ class RelationsRequestBuilder():
     
     async def get(self,request_configuration: Optional[RelationsRequestBuilderGetRequestConfiguration] = None) -> Optional[relation_collection_response.RelationCollectionResponse]:
         """
-        Get the different relation of a [term] or [set] from the relations navigation property.
+        Indicates which terms have been pinned or reused directly under the set.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[relation_collection_response.RelationCollectionResponse]
@@ -101,7 +101,7 @@ class RelationsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RelationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the different relation of a [term] or [set] from the relations navigation property.
+        Indicates which terms have been pinned or reused directly under the set.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class RelationsRequestBuilder():
     @dataclass
     class RelationsRequestBuilderGetQueryParameters():
         """
-        Get the different relation of a [term] or [set] from the relations navigation property.
+        Indicates which terms have been pinned or reused directly under the set.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

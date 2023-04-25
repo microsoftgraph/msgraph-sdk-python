@@ -54,7 +54,7 @@ class OverridesPagesRequestBuilder():
     
     async def get(self,request_configuration: Optional[OverridesPagesRequestBuilderGetRequestConfiguration] = None) -> Optional[user_flow_language_page_collection_response.UserFlowLanguagePageCollectionResponse]:
         """
-        Get the userFlowLanguagePage resources from the overridesPages navigation property. These pages are used to customize the values shown to the user during a user journey in a user flow.
+        Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user_flow_language_page_collection_response.UserFlowLanguagePageCollectionResponse]
@@ -101,7 +101,7 @@ class OverridesPagesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OverridesPagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the userFlowLanguagePage resources from the overridesPages navigation property. These pages are used to customize the values shown to the user during a user journey in a user flow.
+        Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class OverridesPagesRequestBuilder():
     @dataclass
     class OverridesPagesRequestBuilderGetQueryParameters():
         """
-        Get the userFlowLanguagePage resources from the overridesPages navigation property. These pages are used to customize the values shown to the user during a user journey in a user flow.
+        Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -54,7 +54,7 @@ class TimesOffRequestBuilder():
     
     async def get(self,request_configuration: Optional[TimesOffRequestBuilderGetRequestConfiguration] = None) -> Optional[time_off_collection_response.TimeOffCollectionResponse]:
         """
-        Get the list of timeOff instances in a schedule.
+        The instances of times off in the schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[time_off_collection_response.TimeOffCollectionResponse]
@@ -76,7 +76,7 @@ class TimesOffRequestBuilder():
     
     async def post(self,body: Optional[time_off.TimeOff] = None, request_configuration: Optional[TimesOffRequestBuilderPostRequestConfiguration] = None) -> Optional[time_off.TimeOff]:
         """
-        Create a new timeOff instance in a schedule.
+        Create new navigation property to timesOff for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class TimesOffRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TimesOffRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of timeOff instances in a schedule.
+        The instances of times off in the schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class TimesOffRequestBuilder():
     
     def to_post_request_information(self,body: Optional[time_off.TimeOff] = None, request_configuration: Optional[TimesOffRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new timeOff instance in a schedule.
+        Create new navigation property to timesOff for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class TimesOffRequestBuilder():
     @dataclass
     class TimesOffRequestBuilderGetQueryParameters():
         """
-        Get the list of timeOff instances in a schedule.
+        The instances of times off in the schedule.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

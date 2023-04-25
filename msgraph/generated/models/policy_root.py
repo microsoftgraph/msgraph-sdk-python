@@ -21,9 +21,9 @@ class PolicyRoot(entity.Entity):
         self._app_management_policies: Optional[List[app_management_policy.AppManagementPolicy]] = None
         # The policy configuration of the self-service sign-up experience of external users.
         self._authentication_flows_policy: Optional[authentication_flows_policy.AuthenticationFlowsPolicy] = None
-        # The authentication methods and the users that are allowed to use them to sign in and perform multi-factor authentication (MFA) in Azure Active Directory (Azure AD).
+        # The authentication methods and the users that are allowed to use them to sign in and perform multifactor authentication (MFA) in Azure Active Directory (Azure AD).
         self._authentication_methods_policy: Optional[authentication_methods_policy.AuthenticationMethodsPolicy] = None
-        # The authenticationStrengthPolicies property
+        # The authentication method combinations that are to be used in scenarios defined by Azure AD Conditional Access.
         self._authentication_strength_policies: Optional[List[authentication_strength_policy.AuthenticationStrengthPolicy]] = None
         # The policy that controls Azure AD authorization settings.
         self._authorization_policy: Optional[authorization_policy.AuthorizationPolicy] = None
@@ -125,7 +125,7 @@ class PolicyRoot(entity.Entity):
     @property
     def authentication_methods_policy(self,) -> Optional[authentication_methods_policy.AuthenticationMethodsPolicy]:
         """
-        Gets the authenticationMethodsPolicy property value. The authentication methods and the users that are allowed to use them to sign in and perform multi-factor authentication (MFA) in Azure Active Directory (Azure AD).
+        Gets the authenticationMethodsPolicy property value. The authentication methods and the users that are allowed to use them to sign in and perform multifactor authentication (MFA) in Azure Active Directory (Azure AD).
         Returns: Optional[authentication_methods_policy.AuthenticationMethodsPolicy]
         """
         return self._authentication_methods_policy
@@ -133,7 +133,7 @@ class PolicyRoot(entity.Entity):
     @authentication_methods_policy.setter
     def authentication_methods_policy(self,value: Optional[authentication_methods_policy.AuthenticationMethodsPolicy] = None) -> None:
         """
-        Sets the authenticationMethodsPolicy property value. The authentication methods and the users that are allowed to use them to sign in and perform multi-factor authentication (MFA) in Azure Active Directory (Azure AD).
+        Sets the authenticationMethodsPolicy property value. The authentication methods and the users that are allowed to use them to sign in and perform multifactor authentication (MFA) in Azure Active Directory (Azure AD).
         Args:
             value: Value to set for the authentication_methods_policy property.
         """
@@ -142,7 +142,7 @@ class PolicyRoot(entity.Entity):
     @property
     def authentication_strength_policies(self,) -> Optional[List[authentication_strength_policy.AuthenticationStrengthPolicy]]:
         """
-        Gets the authenticationStrengthPolicies property value. The authenticationStrengthPolicies property
+        Gets the authenticationStrengthPolicies property value. The authentication method combinations that are to be used in scenarios defined by Azure AD Conditional Access.
         Returns: Optional[List[authentication_strength_policy.AuthenticationStrengthPolicy]]
         """
         return self._authentication_strength_policies
@@ -150,7 +150,7 @@ class PolicyRoot(entity.Entity):
     @authentication_strength_policies.setter
     def authentication_strength_policies(self,value: Optional[List[authentication_strength_policy.AuthenticationStrengthPolicy]] = None) -> None:
         """
-        Sets the authenticationStrengthPolicies property value. The authenticationStrengthPolicies property
+        Sets the authenticationStrengthPolicies property value. The authentication method combinations that are to be used in scenarios defined by Azure AD Conditional Access.
         Args:
             value: Value to set for the authentication_strength_policies property.
         """

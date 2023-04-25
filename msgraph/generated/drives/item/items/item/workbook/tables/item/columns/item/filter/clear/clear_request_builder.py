@@ -36,7 +36,7 @@ class ClearRequestBuilder():
     
     async def post(self,request_configuration: Optional[ClearRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Clear the filter on the given column.
+        Invoke action clear
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class ClearRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[ClearRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Clear the filter on the given column.
+        Invoke action clear
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

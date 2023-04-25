@@ -37,7 +37,7 @@ class LastIndexOperationRequestBuilder():
     
     async def get(self,request_configuration: Optional[LastIndexOperationRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_index_operation.EdiscoveryIndexOperation]:
         """
-        Get a list of the ediscoveryIndexOperations associated with an ediscoveryCustodian.
+        Operation entity that represents the latest indexing for the custodian.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ediscovery_index_operation.EdiscoveryIndexOperation]
@@ -59,7 +59,7 @@ class LastIndexOperationRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[LastIndexOperationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the ediscoveryIndexOperations associated with an ediscoveryCustodian.
+        Operation entity that represents the latest indexing for the custodian.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -78,7 +78,7 @@ class LastIndexOperationRequestBuilder():
     @dataclass
     class LastIndexOperationRequestBuilderGetQueryParameters():
         """
-        Get a list of the ediscoveryIndexOperations associated with an ediscoveryCustodian.
+        Operation entity that represents the latest indexing for the custodian.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

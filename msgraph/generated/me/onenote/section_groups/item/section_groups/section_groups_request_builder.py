@@ -54,7 +54,7 @@ class SectionGroupsRequestBuilder():
     
     async def get(self,request_configuration: Optional[SectionGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[section_group_collection_response.SectionGroupCollectionResponse]:
         """
-        Retrieve a list of section groups from the specified section group.
+        The section groups in the section. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[section_group_collection_response.SectionGroupCollectionResponse]
@@ -76,7 +76,7 @@ class SectionGroupsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SectionGroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of section groups from the specified section group.
+        The section groups in the section. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class SectionGroupsRequestBuilder():
     @dataclass
     class SectionGroupsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of section groups from the specified section group.
+        The section groups in the section. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -38,7 +38,7 @@ class AddRequestBuilder():
     
     async def post(self,body: Optional[add_post_request_body.AddPostRequestBody] = None, request_configuration: Optional[AddRequestBuilderPostRequestConfiguration] = None) -> Optional[workbook_named_item.WorkbookNamedItem]:
         """
-        Adds a new name to the collection of the given scope using the user's locale for the formula.
+        Invoke action add
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class AddRequestBuilder():
     
     def to_post_request_information(self,body: Optional[add_post_request_body.AddPostRequestBody] = None, request_configuration: Optional[AddRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Adds a new name to the collection of the given scope using the user's locale for the formula.
+        Invoke action add
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

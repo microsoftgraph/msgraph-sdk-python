@@ -37,7 +37,7 @@ class SetSolidColorRequestBuilder():
     
     async def post(self,body: Optional[set_solid_color_post_request_body.SetSolidColorPostRequestBody] = None, request_configuration: Optional[SetSolidColorRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Sets the fill formatting of a chart element to a uniform color.
+        Invoke action setSolidColor
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class SetSolidColorRequestBuilder():
     
     def to_post_request_information(self,body: Optional[set_solid_color_post_request_body.SetSolidColorPostRequestBody] = None, request_configuration: Optional[SetSolidColorRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Sets the fill formatting of a chart element to a uniform color.
+        Invoke action setSolidColor
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

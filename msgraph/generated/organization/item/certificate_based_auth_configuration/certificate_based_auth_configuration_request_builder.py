@@ -54,7 +54,7 @@ class CertificateBasedAuthConfigurationRequestBuilder():
     
     async def get(self,request_configuration: Optional[CertificateBasedAuthConfigurationRequestBuilderGetRequestConfiguration] = None) -> Optional[certificate_based_auth_configuration_collection_response.CertificateBasedAuthConfigurationCollectionResponse]:
         """
-        Get a list of certificateBasedAuthConfiguration objects.
+        Navigation property to manage certificate-based authentication configuration. Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[certificate_based_auth_configuration_collection_response.CertificateBasedAuthConfigurationCollectionResponse]
@@ -76,7 +76,7 @@ class CertificateBasedAuthConfigurationRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CertificateBasedAuthConfigurationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of certificateBasedAuthConfiguration objects.
+        Navigation property to manage certificate-based authentication configuration. Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class CertificateBasedAuthConfigurationRequestBuilder():
     @dataclass
     class CertificateBasedAuthConfigurationRequestBuilderGetQueryParameters():
         """
-        Get a list of certificateBasedAuthConfiguration objects.
+        Navigation property to manage certificate-based authentication configuration. Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

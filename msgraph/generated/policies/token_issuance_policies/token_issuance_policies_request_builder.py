@@ -54,7 +54,7 @@ class TokenIssuancePoliciesRequestBuilder():
     
     async def get(self,request_configuration: Optional[TokenIssuancePoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[token_issuance_policy_collection_response.TokenIssuancePolicyCollectionResponse]:
         """
-        Get a list of tokenIssuancePolicy objects.
+        The policy that specifies the characteristics of SAML tokens issued by Azure AD.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[token_issuance_policy_collection_response.TokenIssuancePolicyCollectionResponse]
@@ -76,7 +76,7 @@ class TokenIssuancePoliciesRequestBuilder():
     
     async def post(self,body: Optional[token_issuance_policy.TokenIssuancePolicy] = None, request_configuration: Optional[TokenIssuancePoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[token_issuance_policy.TokenIssuancePolicy]:
         """
-        Create a new tokenIssuancePolicy object.
+        Create new navigation property to tokenIssuancePolicies for policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class TokenIssuancePoliciesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TokenIssuancePoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of tokenIssuancePolicy objects.
+        The policy that specifies the characteristics of SAML tokens issued by Azure AD.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class TokenIssuancePoliciesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[token_issuance_policy.TokenIssuancePolicy] = None, request_configuration: Optional[TokenIssuancePoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new tokenIssuancePolicy object.
+        Create new navigation property to tokenIssuancePolicies for policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class TokenIssuancePoliciesRequestBuilder():
     @dataclass
     class TokenIssuancePoliciesRequestBuilderGetQueryParameters():
         """
-        Get a list of tokenIssuancePolicy objects.
+        The policy that specifies the characteristics of SAML tokens issued by Azure AD.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

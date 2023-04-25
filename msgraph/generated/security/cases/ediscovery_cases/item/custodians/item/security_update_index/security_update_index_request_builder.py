@@ -36,7 +36,7 @@ class SecurityUpdateIndexRequestBuilder():
     
     async def post(self,request_configuration: Optional[SecurityUpdateIndexRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Trigger an indexOperation to make a custodian and associated sources searchable.
+        Invoke action updateIndex
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class SecurityUpdateIndexRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[SecurityUpdateIndexRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Trigger an indexOperation to make a custodian and associated sources searchable.
+        Invoke action updateIndex
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -68,7 +68,7 @@ class RoleAssignmentSchedulesRequestBuilder():
     
     async def get(self,request_configuration: Optional[RoleAssignmentSchedulesRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_assignment_schedule_collection_response.UnifiedRoleAssignmentScheduleCollectionResponse]:
         """
-        Get the schedules for active role assignment operations.
+        Schedules for active role assignment operations.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[unified_role_assignment_schedule_collection_response.UnifiedRoleAssignmentScheduleCollectionResponse]
@@ -115,7 +115,7 @@ class RoleAssignmentSchedulesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RoleAssignmentSchedulesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the schedules for active role assignment operations.
+        Schedules for active role assignment operations.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -164,7 +164,7 @@ class RoleAssignmentSchedulesRequestBuilder():
     @dataclass
     class RoleAssignmentSchedulesRequestBuilderGetQueryParameters():
         """
-        Get the schedules for active role assignment operations.
+        Schedules for active role assignment operations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

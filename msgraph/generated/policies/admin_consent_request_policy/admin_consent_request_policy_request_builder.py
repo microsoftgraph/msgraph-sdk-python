@@ -56,7 +56,7 @@ class AdminConsentRequestPolicyRequestBuilder():
     
     async def get(self,request_configuration: Optional[AdminConsentRequestPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[admin_consent_request_policy.AdminConsentRequestPolicy]:
         """
-        Read the properties and relationships of an adminConsentRequestPolicy object.
+        The policy by which consent requests are created and managed for the entire tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[admin_consent_request_policy.AdminConsentRequestPolicy]
@@ -78,7 +78,7 @@ class AdminConsentRequestPolicyRequestBuilder():
     
     async def patch(self,body: Optional[admin_consent_request_policy.AdminConsentRequestPolicy] = None, request_configuration: Optional[AdminConsentRequestPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[admin_consent_request_policy.AdminConsentRequestPolicy]:
         """
-        Update the properties of an adminConsentRequestPolicy object.
+        Update the navigation property adminConsentRequestPolicy in policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class AdminConsentRequestPolicyRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AdminConsentRequestPolicyRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of an adminConsentRequestPolicy object.
+        The policy by which consent requests are created and managed for the entire tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class AdminConsentRequestPolicyRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[admin_consent_request_policy.AdminConsentRequestPolicy] = None, request_configuration: Optional[AdminConsentRequestPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an adminConsentRequestPolicy object.
+        Update the navigation property adminConsentRequestPolicy in policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class AdminConsentRequestPolicyRequestBuilder():
     @dataclass
     class AdminConsentRequestPolicyRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of an adminConsentRequestPolicy object.
+        The policy by which consent requests are created and managed for the entire tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

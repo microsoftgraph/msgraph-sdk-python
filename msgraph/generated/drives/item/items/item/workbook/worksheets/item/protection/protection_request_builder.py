@@ -58,7 +58,7 @@ class ProtectionRequestBuilder():
     
     async def get(self,request_configuration: Optional[ProtectionRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_worksheet_protection.WorkbookWorksheetProtection]:
         """
-        Retrieve the properties and relationships of worksheetprotection object.
+        Returns sheet protection object for a worksheet. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_worksheet_protection.WorkbookWorksheetProtection]
@@ -121,7 +121,7 @@ class ProtectionRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ProtectionRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of worksheetprotection object.
+        Returns sheet protection object for a worksheet. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -191,7 +191,7 @@ class ProtectionRequestBuilder():
     @dataclass
     class ProtectionRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of worksheetprotection object.
+        Returns sheet protection object for a worksheet. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

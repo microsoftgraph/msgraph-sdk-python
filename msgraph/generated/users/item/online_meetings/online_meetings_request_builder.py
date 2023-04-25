@@ -55,7 +55,7 @@ class OnlineMeetingsRequestBuilder():
     
     async def get(self,request_configuration: Optional[OnlineMeetingsRequestBuilderGetRequestConfiguration] = None) -> Optional[online_meeting_collection_response.OnlineMeetingCollectionResponse]:
         """
-        Retrieve the properties and relationships of an onlineMeeting object. For example, you can: Teams live event attendee report is an online meeting artifact. For details, see Online meeting artifacts and permissions.
+        Get onlineMeetings from users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[online_meeting_collection_response.OnlineMeetingCollectionResponse]
@@ -77,7 +77,7 @@ class OnlineMeetingsRequestBuilder():
     
     async def post(self,body: Optional[online_meeting.OnlineMeeting] = None, request_configuration: Optional[OnlineMeetingsRequestBuilderPostRequestConfiguration] = None) -> Optional[online_meeting.OnlineMeeting]:
         """
-        Create an online meeting on behalf of a user.
+        Create new navigation property to onlineMeetings for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class OnlineMeetingsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OnlineMeetingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of an onlineMeeting object. For example, you can: Teams live event attendee report is an online meeting artifact. For details, see Online meeting artifacts and permissions.
+        Get onlineMeetings from users
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class OnlineMeetingsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[online_meeting.OnlineMeeting] = None, request_configuration: Optional[OnlineMeetingsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create an online meeting on behalf of a user.
+        Create new navigation property to onlineMeetings for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class OnlineMeetingsRequestBuilder():
     @dataclass
     class OnlineMeetingsRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of an onlineMeeting object. For example, you can: Teams live event attendee report is an online meeting artifact. For details, see Online meeting artifacts and permissions.
+        Get onlineMeetings from users
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

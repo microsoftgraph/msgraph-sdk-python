@@ -55,7 +55,7 @@ class ChildFoldersRequestBuilder():
     
     async def get(self,request_configuration: Optional[ChildFoldersRequestBuilderGetRequestConfiguration] = None) -> Optional[contact_folder_collection_response.ContactFolderCollectionResponse]:
         """
-        Get a collection of child folders under the specified contact folder.
+        The collection of child folders in the folder. Navigation property. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[contact_folder_collection_response.ContactFolderCollectionResponse]
@@ -77,7 +77,7 @@ class ChildFoldersRequestBuilder():
     
     async def post(self,body: Optional[contact_folder.ContactFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[contact_folder.ContactFolder]:
         """
-        Create a new contactFolder as a child of a specified folder.  You can also create a new contactFolder under the user's default contact folder.
+        Create new navigation property to childFolders for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class ChildFoldersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ChildFoldersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a collection of child folders under the specified contact folder.
+        The collection of child folders in the folder. Navigation property. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class ChildFoldersRequestBuilder():
     
     def to_post_request_information(self,body: Optional[contact_folder.ContactFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new contactFolder as a child of a specified folder.  You can also create a new contactFolder under the user's default contact folder.
+        Create new navigation property to childFolders for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class ChildFoldersRequestBuilder():
     @dataclass
     class ChildFoldersRequestBuilderGetQueryParameters():
         """
-        Get a collection of child folders under the specified contact folder.
+        The collection of child folders in the folder. Navigation property. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

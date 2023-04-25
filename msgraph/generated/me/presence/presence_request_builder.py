@@ -60,7 +60,7 @@ class PresenceRequestBuilder():
     
     async def get(self,request_configuration: Optional[PresenceRequestBuilderGetRequestConfiguration] = None) -> Optional[presence.Presence]:
         """
-        Get a user's presence information.
+        Get presence from me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[presence.Presence]
@@ -123,7 +123,7 @@ class PresenceRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PresenceRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a user's presence information.
+        Get presence from me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -211,7 +211,7 @@ class PresenceRequestBuilder():
     @dataclass
     class PresenceRequestBuilderGetQueryParameters():
         """
-        Get a user's presence information.
+        Get presence from me
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

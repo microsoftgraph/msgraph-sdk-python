@@ -37,7 +37,7 @@ class ConvertToRangeRequestBuilder():
     
     async def post(self,request_configuration: Optional[ConvertToRangeRequestBuilderPostRequestConfiguration] = None) -> Optional[workbook_range.WorkbookRange]:
         """
-        Converts the table into a normal range of cells. All data is preserved.
+        Invoke action convertToRange
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_range.WorkbookRange]
@@ -59,7 +59,7 @@ class ConvertToRangeRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[ConvertToRangeRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Converts the table into a normal range of cells. All data is preserved.
+        Invoke action convertToRange
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

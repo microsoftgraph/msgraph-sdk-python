@@ -56,7 +56,7 @@ class CategoriesRequestBuilder():
     
     async def get(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[education_category_collection_response.EducationCategoryCollectionResponse]:
         """
-        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
+        When set, enables users to easily find assignments of a given type.  Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_category_collection_response.EducationCategoryCollectionResponse]
@@ -103,7 +103,7 @@ class CategoriesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
+        When set, enables users to easily find assignments of a given type.  Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -170,7 +170,7 @@ class CategoriesRequestBuilder():
     @dataclass
     class CategoriesRequestBuilderGetQueryParameters():
         """
-        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
+        When set, enables users to easily find assignments of a given type.  Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

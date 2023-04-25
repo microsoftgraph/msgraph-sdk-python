@@ -54,7 +54,7 @@ class AcceptancesRequestBuilder():
     
     async def get(self,request_configuration: Optional[AcceptancesRequestBuilderGetRequestConfiguration] = None) -> Optional[agreement_acceptance_collection_response.AgreementAcceptanceCollectionResponse]:
         """
-        Get the details about the acceptance records for a specific agreement.
+        Read-only. Information about acceptances of this agreement.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[agreement_acceptance_collection_response.AgreementAcceptanceCollectionResponse]
@@ -101,7 +101,7 @@ class AcceptancesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AcceptancesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the details about the acceptance records for a specific agreement.
+        Read-only. Information about acceptances of this agreement.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class AcceptancesRequestBuilder():
     @dataclass
     class AcceptancesRequestBuilderGetQueryParameters():
         """
-        Get the details about the acceptance records for a specific agreement.
+        Read-only. Information about acceptances of this agreement.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

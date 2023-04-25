@@ -37,7 +37,7 @@ class ManagerRequestBuilder():
     
     async def get(self,request_configuration: Optional[ManagerRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object.DirectoryObject]:
         """
-        Get this organizational contact's manager.
+        Get manager from contacts
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[directory_object.DirectoryObject]
@@ -59,7 +59,7 @@ class ManagerRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ManagerRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get this organizational contact's manager.
+        Get manager from contacts
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -78,7 +78,7 @@ class ManagerRequestBuilder():
     @dataclass
     class ManagerRequestBuilderGetQueryParameters():
         """
-        Get this organizational contact's manager.
+        Get manager from contacts
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

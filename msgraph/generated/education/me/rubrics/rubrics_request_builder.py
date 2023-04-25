@@ -54,7 +54,7 @@ class RubricsRequestBuilder():
     
     async def get(self,request_configuration: Optional[RubricsRequestBuilderGetRequestConfiguration] = None) -> Optional[education_rubric_collection_response.EducationRubricCollectionResponse]:
         """
-        Retrieve a list of educationRubric objects.
+        When set, the grading rubric attached to the assignment.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_rubric_collection_response.EducationRubricCollectionResponse]
@@ -76,7 +76,7 @@ class RubricsRequestBuilder():
     
     async def post(self,body: Optional[education_rubric.EducationRubric] = None, request_configuration: Optional[RubricsRequestBuilderPostRequestConfiguration] = None) -> Optional[education_rubric.EducationRubric]:
         """
-        Create a new educationRubric object.
+        Create new navigation property to rubrics for education
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class RubricsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RubricsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of educationRubric objects.
+        When set, the grading rubric attached to the assignment.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class RubricsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[education_rubric.EducationRubric] = None, request_configuration: Optional[RubricsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new educationRubric object.
+        Create new navigation property to rubrics for education
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class RubricsRequestBuilder():
     @dataclass
     class RubricsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of educationRubric objects.
+        When set, the grading rubric attached to the assignment.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

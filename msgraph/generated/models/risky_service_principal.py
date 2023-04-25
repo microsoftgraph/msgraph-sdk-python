@@ -11,7 +11,7 @@ from . import entity
 class RiskyServicePrincipal(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new RiskyServicePrincipal and sets the default values.
+        Instantiates a new riskyServicePrincipal and sets the default values.
         """
         super().__init__()
         # The globally unique identifier for the associated application (its appId property), if any.

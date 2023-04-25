@@ -54,7 +54,7 @@ class ThreadsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ThreadsRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_thread_collection_response.ConversationThreadCollectionResponse]:
         """
-        Get all the threads in a group conversation. Note: You can also get all the threads of a group.
+        A collection of all the conversation threads in the conversation. A navigation property. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conversation_thread_collection_response.ConversationThreadCollectionResponse]
@@ -76,7 +76,7 @@ class ThreadsRequestBuilder():
     
     async def post(self,body: Optional[conversation_thread.ConversationThread] = None, request_configuration: Optional[ThreadsRequestBuilderPostRequestConfiguration] = None) -> Optional[conversation_thread.ConversationThread]:
         """
-        Create a new thread in the specified conversation.  A thread and post are created as specified. Use reply thread to further post to that thread. Or, if you get the post ID, you can also reply to that post in that thread. Note: You can also start a new conversation by first creating a thread.
+        Create new navigation property to threads for groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ThreadsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ThreadsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get all the threads in a group conversation. Note: You can also get all the threads of a group.
+        A collection of all the conversation threads in the conversation. A navigation property. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ThreadsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[conversation_thread.ConversationThread] = None, request_configuration: Optional[ThreadsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new thread in the specified conversation.  A thread and post are created as specified. Use reply thread to further post to that thread. Or, if you get the post ID, you can also reply to that post in that thread. Note: You can also start a new conversation by first creating a thread.
+        Create new navigation property to threads for groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class ThreadsRequestBuilder():
     @dataclass
     class ThreadsRequestBuilderGetQueryParameters():
         """
-        Get all the threads in a group conversation. Note: You can also get all the threads of a group.
+        A collection of all the conversation threads in the conversation. A navigation property. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

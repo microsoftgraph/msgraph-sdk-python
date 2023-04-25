@@ -37,7 +37,7 @@ class SendActivityNotificationRequestBuilder():
     
     async def post(self,body: Optional[send_activity_notification_post_request_body.SendActivityNotificationPostRequestBody] = None, request_configuration: Optional[SendActivityNotificationRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Send an activity feed notification to a user. For more details about sending notifications and the requirements for doing so, see sending Teams activity notifications.
+        Invoke action sendActivityNotification
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class SendActivityNotificationRequestBuilder():
     
     def to_post_request_information(self,body: Optional[send_activity_notification_post_request_body.SendActivityNotificationPostRequestBody] = None, request_configuration: Optional[SendActivityNotificationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Send an activity feed notification to a user. For more details about sending notifications and the requirements for doing so, see sending Teams activity notifications.
+        Invoke action sendActivityNotification
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

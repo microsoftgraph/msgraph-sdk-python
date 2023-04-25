@@ -13,15 +13,15 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The additionalInformation property
+        # Information about why the updateAllowedCombinations action was successful or failed.
         self._additional_information: Optional[str] = None
-        # The conditionalAccessReferences property
+        # References to existing Conditional Access policies that use this authentication strength.
         self._conditional_access_references: Optional[List[str]] = None
-        # The currentCombinations property
+        # The list of current authentication method combinations allowed by the authentication strength.
         self._current_combinations: Optional[List[authentication_method_modes.AuthenticationMethodModes]] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # The previousCombinations property
+        # The list of former authentication method combinations allowed by the authentication strength before they were updated through the updateAllowedCombinations action.
         self._previous_combinations: Optional[List[authentication_method_modes.AuthenticationMethodModes]] = None
     
     @property
@@ -44,7 +44,7 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, Parsable):
     @property
     def additional_information(self,) -> Optional[str]:
         """
-        Gets the additionalInformation property value. The additionalInformation property
+        Gets the additionalInformation property value. Information about why the updateAllowedCombinations action was successful or failed.
         Returns: Optional[str]
         """
         return self._additional_information
@@ -52,7 +52,7 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, Parsable):
     @additional_information.setter
     def additional_information(self,value: Optional[str] = None) -> None:
         """
-        Sets the additionalInformation property value. The additionalInformation property
+        Sets the additionalInformation property value. Information about why the updateAllowedCombinations action was successful or failed.
         Args:
             value: Value to set for the additional_information property.
         """
@@ -61,7 +61,7 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, Parsable):
     @property
     def conditional_access_references(self,) -> Optional[List[str]]:
         """
-        Gets the conditionalAccessReferences property value. The conditionalAccessReferences property
+        Gets the conditionalAccessReferences property value. References to existing Conditional Access policies that use this authentication strength.
         Returns: Optional[List[str]]
         """
         return self._conditional_access_references
@@ -69,7 +69,7 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, Parsable):
     @conditional_access_references.setter
     def conditional_access_references(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the conditionalAccessReferences property value. The conditionalAccessReferences property
+        Sets the conditionalAccessReferences property value. References to existing Conditional Access policies that use this authentication strength.
         Args:
             value: Value to set for the conditional_access_references property.
         """
@@ -90,7 +90,7 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, Parsable):
     @property
     def current_combinations(self,) -> Optional[List[authentication_method_modes.AuthenticationMethodModes]]:
         """
-        Gets the currentCombinations property value. The currentCombinations property
+        Gets the currentCombinations property value. The list of current authentication method combinations allowed by the authentication strength.
         Returns: Optional[List[authentication_method_modes.AuthenticationMethodModes]]
         """
         return self._current_combinations
@@ -98,7 +98,7 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, Parsable):
     @current_combinations.setter
     def current_combinations(self,value: Optional[List[authentication_method_modes.AuthenticationMethodModes]] = None) -> None:
         """
-        Sets the currentCombinations property value. The currentCombinations property
+        Sets the currentCombinations property value. The list of current authentication method combinations allowed by the authentication strength.
         Args:
             value: Value to set for the current_combinations property.
         """
@@ -140,7 +140,7 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, Parsable):
     @property
     def previous_combinations(self,) -> Optional[List[authentication_method_modes.AuthenticationMethodModes]]:
         """
-        Gets the previousCombinations property value. The previousCombinations property
+        Gets the previousCombinations property value. The list of former authentication method combinations allowed by the authentication strength before they were updated through the updateAllowedCombinations action.
         Returns: Optional[List[authentication_method_modes.AuthenticationMethodModes]]
         """
         return self._previous_combinations
@@ -148,7 +148,7 @@ class UpdateAllowedCombinationsResult(AdditionalDataHolder, Parsable):
     @previous_combinations.setter
     def previous_combinations(self,value: Optional[List[authentication_method_modes.AuthenticationMethodModes]] = None) -> None:
         """
-        Sets the previousCombinations property value. The previousCombinations property
+        Sets the previousCombinations property value. The list of former authentication method combinations allowed by the authentication strength before they were updated through the updateAllowedCombinations action.
         Args:
             value: Value to set for the previous_combinations property.
         """

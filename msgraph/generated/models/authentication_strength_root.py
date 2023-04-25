@@ -13,19 +13,19 @@ class AuthenticationStrengthRoot(entity.Entity):
         Instantiates a new AuthenticationStrengthRoot and sets the default values.
         """
         super().__init__()
-        # The authenticationMethodModes property
+        # Names and descriptions of all valid authentication method modes in the system.
         self._authentication_method_modes: Optional[List[authentication_method_mode_detail.AuthenticationMethodModeDetail]] = None
         # The combinations property
         self._combinations: Optional[List[authentication_method_modes.AuthenticationMethodModes]] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # The policies property
+        # A collection of authentication strength policies that exist for this tenant, including both built-in and custom policies.
         self._policies: Optional[List[authentication_strength_policy.AuthenticationStrengthPolicy]] = None
     
     @property
     def authentication_method_modes(self,) -> Optional[List[authentication_method_mode_detail.AuthenticationMethodModeDetail]]:
         """
-        Gets the authenticationMethodModes property value. The authenticationMethodModes property
+        Gets the authenticationMethodModes property value. Names and descriptions of all valid authentication method modes in the system.
         Returns: Optional[List[authentication_method_mode_detail.AuthenticationMethodModeDetail]]
         """
         return self._authentication_method_modes
@@ -33,7 +33,7 @@ class AuthenticationStrengthRoot(entity.Entity):
     @authentication_method_modes.setter
     def authentication_method_modes(self,value: Optional[List[authentication_method_mode_detail.AuthenticationMethodModeDetail]] = None) -> None:
         """
-        Sets the authenticationMethodModes property value. The authenticationMethodModes property
+        Sets the authenticationMethodModes property value. Names and descriptions of all valid authentication method modes in the system.
         Args:
             value: Value to set for the authentication_method_modes property.
         """
@@ -87,7 +87,7 @@ class AuthenticationStrengthRoot(entity.Entity):
     @property
     def policies(self,) -> Optional[List[authentication_strength_policy.AuthenticationStrengthPolicy]]:
         """
-        Gets the policies property value. The policies property
+        Gets the policies property value. A collection of authentication strength policies that exist for this tenant, including both built-in and custom policies.
         Returns: Optional[List[authentication_strength_policy.AuthenticationStrengthPolicy]]
         """
         return self._policies
@@ -95,7 +95,7 @@ class AuthenticationStrengthRoot(entity.Entity):
     @policies.setter
     def policies(self,value: Optional[List[authentication_strength_policy.AuthenticationStrengthPolicy]] = None) -> None:
         """
-        Sets the policies property value. The policies property
+        Sets the policies property value. A collection of authentication strength policies that exist for this tenant, including both built-in and custom policies.
         Args:
             value: Value to set for the policies property.
         """

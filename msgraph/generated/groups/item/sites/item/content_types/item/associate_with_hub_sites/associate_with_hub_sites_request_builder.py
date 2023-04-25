@@ -37,7 +37,7 @@ class AssociateWithHubSitesRequestBuilder():
     
     async def post(self,body: Optional[associate_with_hub_sites_post_request_body.AssociateWithHubSitesPostRequestBody] = None, request_configuration: Optional[AssociateWithHubSitesRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Associate a published [content type][contentType] present in a content type hub with a list of hub sites.
+        Invoke action associateWithHubSites
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class AssociateWithHubSitesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[associate_with_hub_sites_post_request_body.AssociateWithHubSitesPostRequestBody] = None, request_configuration: Optional[AssociateWithHubSitesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Associate a published [content type][contentType] present in a content type hub with a list of hub sites.
+        Invoke action associateWithHubSites
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -37,7 +37,7 @@ class DataBodyRangeRequestBuilder():
     
     async def get(self,request_configuration: Optional[DataBodyRangeRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_range.WorkbookRange]:
         """
-        Gets the range object associated with the data body of the column.
+        Invoke function dataBodyRange
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_range.WorkbookRange]
@@ -59,7 +59,7 @@ class DataBodyRangeRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DataBodyRangeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Gets the range object associated with the data body of the column.
+        Invoke function dataBodyRange
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

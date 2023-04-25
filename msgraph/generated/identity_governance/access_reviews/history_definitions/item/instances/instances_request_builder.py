@@ -54,7 +54,7 @@ class InstancesRequestBuilder():
     
     async def get(self,request_configuration: Optional[InstancesRequestBuilderGetRequestConfiguration] = None) -> Optional[access_review_history_instance_collection_response.AccessReviewHistoryInstanceCollectionResponse]:
         """
-        Retrieve the instances of an access review history definition created in the last 30 days.
+        If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that does not recur will have exactly one instance.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_review_history_instance_collection_response.AccessReviewHistoryInstanceCollectionResponse]
@@ -101,7 +101,7 @@ class InstancesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[InstancesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the instances of an access review history definition created in the last 30 days.
+        If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that does not recur will have exactly one instance.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class InstancesRequestBuilder():
     @dataclass
     class InstancesRequestBuilderGetQueryParameters():
         """
-        Retrieve the instances of an access review history definition created in the last 30 days.
+        If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that does not recur will have exactly one instance.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

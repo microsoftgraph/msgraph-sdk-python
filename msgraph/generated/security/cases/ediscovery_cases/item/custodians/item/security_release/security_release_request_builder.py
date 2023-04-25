@@ -36,7 +36,7 @@ class SecurityReleaseRequestBuilder():
     
     async def post(self,request_configuration: Optional[SecurityReleaseRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Release a custodian from a case. For details, see Release a custodian from a case.
+        Invoke action release
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class SecurityReleaseRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[SecurityReleaseRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Release a custodian from a case. For details, see Release a custodian from a case.
+        Invoke action release
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

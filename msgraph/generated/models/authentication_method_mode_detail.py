@@ -10,12 +10,12 @@ from . import entity
 class AuthenticationMethodModeDetail(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new AuthenticationMethodModeDetail and sets the default values.
+        Instantiates a new authenticationMethodModeDetail and sets the default values.
         """
         super().__init__()
         # The authenticationMethod property
         self._authentication_method: Optional[base_authentication_method.BaseAuthenticationMethod] = None
-        # The displayName property
+        # The display name of this mode
         self._display_name: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
@@ -52,7 +52,7 @@ class AuthenticationMethodModeDetail(entity.Entity):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The displayName property
+        Gets the displayName property value. The display name of this mode
         Returns: Optional[str]
         """
         return self._display_name
@@ -60,7 +60,7 @@ class AuthenticationMethodModeDetail(entity.Entity):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The displayName property
+        Sets the displayName property value. The display name of this mode
         Args:
             value: Value to set for the display_name property.
         """

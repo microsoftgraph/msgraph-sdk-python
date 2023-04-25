@@ -37,7 +37,7 @@ class SetVerifiedPublisherRequestBuilder():
     
     async def post(self,body: Optional[set_verified_publisher_post_request_body.SetVerifiedPublisherPostRequestBody] = None, request_configuration: Optional[SetVerifiedPublisherRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Set the verifiedPublisher on an application. For more information, including prerequisites to setting a verified publisher, see Publisher verification.
+        Invoke action setVerifiedPublisher
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class SetVerifiedPublisherRequestBuilder():
     
     def to_post_request_information(self,body: Optional[set_verified_publisher_post_request_body.SetVerifiedPublisherPostRequestBody] = None, request_configuration: Optional[SetVerifiedPublisherRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Set the verifiedPublisher on an application. For more information, including prerequisites to setting a verified publisher, see Publisher verification.
+        Invoke action setVerifiedPublisher
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

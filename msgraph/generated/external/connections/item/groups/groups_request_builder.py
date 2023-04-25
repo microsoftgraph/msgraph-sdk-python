@@ -76,7 +76,7 @@ class GroupsRequestBuilder():
     
     async def post(self,body: Optional[external_group.ExternalGroup] = None, request_configuration: Optional[GroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[external_group.ExternalGroup]:
         """
-        Create a new externalGroup object.
+        Create new navigation property to groups for external
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class GroupsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[external_group.ExternalGroup] = None, request_configuration: Optional[GroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new externalGroup object.
+        Create new navigation property to groups for external
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

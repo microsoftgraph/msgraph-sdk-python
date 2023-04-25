@@ -54,7 +54,7 @@ class PlansRequestBuilder():
     
     async def get(self,request_configuration: Optional[PlansRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_plan_collection_response.PlannerPlanCollectionResponse]:
         """
-        Retrieve a list of **plannerplan** objects shared with a user object.
+        Read-only. Nullable. Returns the plannerTasks assigned to the user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[planner_plan_collection_response.PlannerPlanCollectionResponse]
@@ -101,7 +101,7 @@ class PlansRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PlansRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of **plannerplan** objects shared with a user object.
+        Read-only. Nullable. Returns the plannerTasks assigned to the user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class PlansRequestBuilder():
     @dataclass
     class PlansRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of **plannerplan** objects shared with a user object.
+        Read-only. Nullable. Returns the plannerTasks assigned to the user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

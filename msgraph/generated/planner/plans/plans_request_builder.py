@@ -54,7 +54,7 @@ class PlansRequestBuilder():
     
     async def get(self,request_configuration: Optional[PlansRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_plan_collection_response.PlannerPlanCollectionResponse]:
         """
-        Retrieve a list of **plannerplan** objects.
+        Read-only. Nullable. Returns a collection of the specified plans
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[planner_plan_collection_response.PlannerPlanCollectionResponse]
@@ -76,7 +76,7 @@ class PlansRequestBuilder():
     
     async def post(self,body: Optional[planner_plan.PlannerPlan] = None, request_configuration: Optional[PlansRequestBuilderPostRequestConfiguration] = None) -> Optional[planner_plan.PlannerPlan]:
         """
-        Use this API to create a new **plannerPlan**.
+        Create new navigation property to plans for planner
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class PlansRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PlansRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of **plannerplan** objects.
+        Read-only. Nullable. Returns a collection of the specified plans
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class PlansRequestBuilder():
     
     def to_post_request_information(self,body: Optional[planner_plan.PlannerPlan] = None, request_configuration: Optional[PlansRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to create a new **plannerPlan**.
+        Create new navigation property to plans for planner
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class PlansRequestBuilder():
     @dataclass
     class PlansRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of **plannerplan** objects.
+        Read-only. Nullable. Returns a collection of the specified plans
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

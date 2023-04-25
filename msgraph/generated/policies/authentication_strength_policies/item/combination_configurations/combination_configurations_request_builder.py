@@ -54,7 +54,7 @@ class CombinationConfigurationsRequestBuilder():
     
     async def get(self,request_configuration: Optional[CombinationConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_combination_configuration_collection_response.AuthenticationCombinationConfigurationCollectionResponse]:
         """
-        Get combinationConfigurations from policies
+        Settings that may be used to require specific types or instances of an authentication method to be used when authenticating with a specified combination of authentication methods.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authentication_combination_configuration_collection_response.AuthenticationCombinationConfigurationCollectionResponse]
@@ -101,7 +101,7 @@ class CombinationConfigurationsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CombinationConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get combinationConfigurations from policies
+        Settings that may be used to require specific types or instances of an authentication method to be used when authenticating with a specified combination of authentication methods.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class CombinationConfigurationsRequestBuilder():
     @dataclass
     class CombinationConfigurationsRequestBuilderGetQueryParameters():
         """
-        Get combinationConfigurations from policies
+        Settings that may be used to require specific types or instances of an authentication method to be used when authenticating with a specified combination of authentication methods.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

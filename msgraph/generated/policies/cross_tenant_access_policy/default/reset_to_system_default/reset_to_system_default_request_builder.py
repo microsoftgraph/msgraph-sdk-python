@@ -36,7 +36,7 @@ class ResetToSystemDefaultRequestBuilder():
     
     async def post(self,request_configuration: Optional[ResetToSystemDefaultRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Reset any changes made to the default configuration in a cross-tenant access policy back to the system default.
+        Invoke action resetToSystemDefault
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class ResetToSystemDefaultRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[ResetToSystemDefaultRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Reset any changes made to the default configuration in a cross-tenant access policy back to the system default.
+        Invoke action resetToSystemDefault
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

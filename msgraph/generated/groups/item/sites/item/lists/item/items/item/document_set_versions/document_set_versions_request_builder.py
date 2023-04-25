@@ -54,7 +54,7 @@ class DocumentSetVersionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[DocumentSetVersionsRequestBuilderGetRequestConfiguration] = None) -> Optional[document_set_version_collection_response.DocumentSetVersionCollectionResponse]:
         """
-        Get a list of the versions of a document set item in a list.
+        Version information for a document set version created by a user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[document_set_version_collection_response.DocumentSetVersionCollectionResponse]
@@ -76,7 +76,7 @@ class DocumentSetVersionsRequestBuilder():
     
     async def post(self,body: Optional[document_set_version.DocumentSetVersion] = None, request_configuration: Optional[DocumentSetVersionsRequestBuilderPostRequestConfiguration] = None) -> Optional[document_set_version.DocumentSetVersion]:
         """
-        Create a new version of a document set item in a list.
+        Create new navigation property to documentSetVersions for groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class DocumentSetVersionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DocumentSetVersionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the versions of a document set item in a list.
+        Version information for a document set version created by a user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class DocumentSetVersionsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[document_set_version.DocumentSetVersion] = None, request_configuration: Optional[DocumentSetVersionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new version of a document set item in a list.
+        Create new navigation property to documentSetVersions for groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class DocumentSetVersionsRequestBuilder():
     @dataclass
     class DocumentSetVersionsRequestBuilderGetQueryParameters():
         """
-        Get a list of the versions of a document set item in a list.
+        Version information for a document set version created by a user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

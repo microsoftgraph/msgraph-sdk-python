@@ -10,7 +10,7 @@ from . import entity
 class AppCatalogs(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new appCatalogs and sets the default values.
+        Instantiates a new AppCatalogs and sets the default values.
         """
         super().__init__()
         # The OdataType property

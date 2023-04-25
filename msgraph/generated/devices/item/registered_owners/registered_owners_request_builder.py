@@ -59,7 +59,7 @@ class RegisteredOwnersRequestBuilder():
     
     async def get(self,request_configuration: Optional[RegisteredOwnersRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
         """
-        The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Currently, there can be only one owner. Read-only. Nullable. Supports $expand.
+        The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Read-only. Nullable. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]
@@ -81,7 +81,7 @@ class RegisteredOwnersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RegisteredOwnersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Currently, there can be only one owner. Read-only. Nullable. Supports $expand.
+        The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Read-only. Nullable. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -154,7 +154,7 @@ class RegisteredOwnersRequestBuilder():
     @dataclass
     class RegisteredOwnersRequestBuilderGetQueryParameters():
         """
-        The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Currently, there can be only one owner. Read-only. Nullable. Supports $expand.
+        The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Read-only. Nullable. Supports $expand.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

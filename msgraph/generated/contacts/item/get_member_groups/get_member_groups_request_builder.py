@@ -37,7 +37,7 @@ class GetMemberGroupsRequestBuilder():
     
     async def post(self,body: Optional[get_member_groups_post_request_body.GetMemberGroupsPostRequestBody] = None, request_configuration: Optional[GetMemberGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[get_member_groups_response.GetMemberGroupsResponse]:
         """
-        Return all the group IDs for the groups that the specified user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive.
+        Invoke action getMemberGroups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -62,7 +62,7 @@ class GetMemberGroupsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[get_member_groups_post_request_body.GetMemberGroupsPostRequestBody] = None, request_configuration: Optional[GetMemberGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Return all the group IDs for the groups that the specified user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive.
+        Invoke action getMemberGroups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

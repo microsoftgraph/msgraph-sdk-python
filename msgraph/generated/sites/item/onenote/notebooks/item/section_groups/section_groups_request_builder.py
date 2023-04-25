@@ -54,7 +54,7 @@ class SectionGroupsRequestBuilder():
     
     async def get(self,request_configuration: Optional[SectionGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[section_group_collection_response.SectionGroupCollectionResponse]:
         """
-        Retrieve a list of section groups from the specified notebook.
+        The section groups in the notebook. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[section_group_collection_response.SectionGroupCollectionResponse]
@@ -76,7 +76,7 @@ class SectionGroupsRequestBuilder():
     
     async def post(self,body: Optional[section_group.SectionGroup] = None, request_configuration: Optional[SectionGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[section_group.SectionGroup]:
         """
-        Create a new section group in the specified notebook.
+        Create new navigation property to sectionGroups for sites
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class SectionGroupsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SectionGroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of section groups from the specified notebook.
+        The section groups in the notebook. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class SectionGroupsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[section_group.SectionGroup] = None, request_configuration: Optional[SectionGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new section group in the specified notebook.
+        Create new navigation property to sectionGroups for sites
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class SectionGroupsRequestBuilder():
     @dataclass
     class SectionGroupsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of section groups from the specified notebook.
+        The section groups in the notebook. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

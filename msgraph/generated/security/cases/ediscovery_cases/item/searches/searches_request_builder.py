@@ -54,7 +54,7 @@ class SearchesRequestBuilder():
     
     async def get(self,request_configuration: Optional[SearchesRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_search_collection_response.EdiscoverySearchCollectionResponse]:
         """
-        Get the list of ediscoverySearch resources from an eDiscoveryCase object.
+        Returns a list of eDiscoverySearch objects associated with this case.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ediscovery_search_collection_response.EdiscoverySearchCollectionResponse]
@@ -76,7 +76,7 @@ class SearchesRequestBuilder():
     
     async def post(self,body: Optional[ediscovery_search.EdiscoverySearch] = None, request_configuration: Optional[SearchesRequestBuilderPostRequestConfiguration] = None) -> Optional[ediscovery_search.EdiscoverySearch]:
         """
-        Create a new ediscoverySearch object.
+        Create new navigation property to searches for security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class SearchesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SearchesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of ediscoverySearch resources from an eDiscoveryCase object.
+        Returns a list of eDiscoverySearch objects associated with this case.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class SearchesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[ediscovery_search.EdiscoverySearch] = None, request_configuration: Optional[SearchesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new ediscoverySearch object.
+        Create new navigation property to searches for security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class SearchesRequestBuilder():
     @dataclass
     class SearchesRequestBuilderGetQueryParameters():
         """
-        Get the list of ediscoverySearch resources from an eDiscoveryCase object.
+        Returns a list of eDiscoverySearch objects associated with this case.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

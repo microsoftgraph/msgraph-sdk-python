@@ -38,7 +38,7 @@ class DriveItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[DriveItemRequestBuilderGetRequestConfiguration] = None) -> Optional[drive_item.DriveItem]:
         """
-        Access a shared DriveItem or a collection of shared items by using a **shareId** or sharing URL. To use a sharing URL with this API, your app needs to transform the URL into a sharing token.
+        Used to access the underlying driveItem
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[drive_item.DriveItem]
@@ -60,7 +60,7 @@ class DriveItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DriveItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Access a shared DriveItem or a collection of shared items by using a **shareId** or sharing URL. To use a sharing URL with this API, your app needs to transform the URL into a sharing token.
+        Used to access the underlying driveItem
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -88,7 +88,7 @@ class DriveItemRequestBuilder():
     @dataclass
     class DriveItemRequestBuilderGetQueryParameters():
         """
-        Access a shared DriveItem or a collection of shared items by using a **shareId** or sharing URL. To use a sharing URL with this API, your app needs to transform the URL into a sharing token.
+        Used to access the underlying driveItem
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

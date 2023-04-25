@@ -54,7 +54,7 @@ class RequestsRequestBuilder():
     
     async def get(self,request_configuration: Optional[RequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_admin_relationship_request_collection_response.DelegatedAdminRelationshipRequestCollectionResponse]:
         """
-        Get a list of the delegatedAdminRelationshipRequest objects and their properties.
+        The requests associated with the delegated admin relationship.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[delegated_admin_relationship_request_collection_response.DelegatedAdminRelationshipRequestCollectionResponse]
@@ -76,7 +76,7 @@ class RequestsRequestBuilder():
     
     async def post(self,body: Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest] = None, request_configuration: Optional[RequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]:
         """
-        Create a new delegatedAdminRelationshipRequest object.
+        Create new navigation property to requests for tenantRelationships
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class RequestsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the delegatedAdminRelationshipRequest objects and their properties.
+        The requests associated with the delegated admin relationship.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class RequestsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest] = None, request_configuration: Optional[RequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new delegatedAdminRelationshipRequest object.
+        Create new navigation property to requests for tenantRelationships
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class RequestsRequestBuilder():
     @dataclass
     class RequestsRequestBuilderGetQueryParameters():
         """
-        Get a list of the delegatedAdminRelationshipRequest objects and their properties.
+        The requests associated with the delegated admin relationship.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

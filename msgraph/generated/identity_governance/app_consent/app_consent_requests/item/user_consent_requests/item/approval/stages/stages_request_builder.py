@@ -54,7 +54,7 @@ class StagesRequestBuilder():
     
     async def get(self,request_configuration: Optional[StagesRequestBuilderGetRequestConfiguration] = None) -> Optional[approval_stage_collection_response.ApprovalStageCollectionResponse]:
         """
-        In Azure AD entitlement management, list the approvalStage objects associated with an approval object. This call can be made by an approver, providing the identifier of the access package assignment request.
+        A collection of stages in the approval decision.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[approval_stage_collection_response.ApprovalStageCollectionResponse]
@@ -101,7 +101,7 @@ class StagesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[StagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        In Azure AD entitlement management, list the approvalStage objects associated with an approval object. This call can be made by an approver, providing the identifier of the access package assignment request.
+        A collection of stages in the approval decision.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class StagesRequestBuilder():
     @dataclass
     class StagesRequestBuilderGetQueryParameters():
         """
-        In Azure AD entitlement management, list the approvalStage objects associated with an approval object. This call can be made by an approver, providing the identifier of the access package assignment request.
+        A collection of stages in the approval decision.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

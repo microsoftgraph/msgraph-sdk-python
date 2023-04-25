@@ -54,7 +54,7 @@ class FeatureRolloutPoliciesRequestBuilder():
     
     async def get(self,request_configuration: Optional[FeatureRolloutPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[feature_rollout_policy_collection_response.FeatureRolloutPolicyCollectionResponse]:
         """
-        Retrieve a list of featureRolloutPolicy objects.
+        The feature rollout policy associated with a directory object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[feature_rollout_policy_collection_response.FeatureRolloutPolicyCollectionResponse]
@@ -76,7 +76,7 @@ class FeatureRolloutPoliciesRequestBuilder():
     
     async def post(self,body: Optional[feature_rollout_policy.FeatureRolloutPolicy] = None, request_configuration: Optional[FeatureRolloutPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[feature_rollout_policy.FeatureRolloutPolicy]:
         """
-        Create a new featureRolloutPolicy object.
+        Create new navigation property to featureRolloutPolicies for policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class FeatureRolloutPoliciesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[FeatureRolloutPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of featureRolloutPolicy objects.
+        The feature rollout policy associated with a directory object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class FeatureRolloutPoliciesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[feature_rollout_policy.FeatureRolloutPolicy] = None, request_configuration: Optional[FeatureRolloutPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new featureRolloutPolicy object.
+        Create new navigation property to featureRolloutPolicies for policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class FeatureRolloutPoliciesRequestBuilder():
     @dataclass
     class FeatureRolloutPoliciesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of featureRolloutPolicy objects.
+        The feature rollout policy associated with a directory object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -54,7 +54,7 @@ class SessionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[SessionsRequestBuilderGetRequestConfiguration] = None) -> Optional[session_collection_response.SessionCollectionResponse]:
         """
-        Retrieve the list of sessions associated with a callRecord object.
+        List of sessions involved in the call. Peer-to-peer calls typically only have one session, whereas group calls typically have at least one session per participant. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[session_collection_response.SessionCollectionResponse]
@@ -101,7 +101,7 @@ class SessionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SessionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the list of sessions associated with a callRecord object.
+        List of sessions involved in the call. Peer-to-peer calls typically only have one session, whereas group calls typically have at least one session per participant. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class SessionsRequestBuilder():
     @dataclass
     class SessionsRequestBuilderGetQueryParameters():
         """
-        Retrieve the list of sessions associated with a callRecord object.
+        List of sessions involved in the call. Peer-to-peer calls typically only have one session, whereas group calls typically have at least one session per participant. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

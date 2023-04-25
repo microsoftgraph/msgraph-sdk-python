@@ -54,7 +54,7 @@ class PoliciesRequestBuilder():
     
     async def get(self,request_configuration: Optional[PoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_strength_policy_collection_response.AuthenticationStrengthPolicyCollectionResponse]:
         """
-        Get policies from identity
+        A collection of authentication strength policies that exist for this tenant, including both built-in and custom policies.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authentication_strength_policy_collection_response.AuthenticationStrengthPolicyCollectionResponse]
@@ -101,7 +101,7 @@ class PoliciesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get policies from identity
+        A collection of authentication strength policies that exist for this tenant, including both built-in and custom policies.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class PoliciesRequestBuilder():
     @dataclass
     class PoliciesRequestBuilderGetQueryParameters():
         """
-        Get policies from identity
+        A collection of authentication strength policies that exist for this tenant, including both built-in and custom policies.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

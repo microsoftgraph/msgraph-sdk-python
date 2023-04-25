@@ -54,7 +54,7 @@ class FollowedSitesRequestBuilder():
     
     async def get(self,request_configuration: Optional[FollowedSitesRequestBuilderGetRequestConfiguration] = None) -> Optional[site_collection_response.SiteCollectionResponse]:
         """
-        List the sites that have been followed by the signed in user.
+        Get followedSites from me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[site_collection_response.SiteCollectionResponse]
@@ -76,7 +76,7 @@ class FollowedSitesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[FollowedSitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List the sites that have been followed by the signed in user.
+        Get followedSites from me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class FollowedSitesRequestBuilder():
     @dataclass
     class FollowedSitesRequestBuilderGetQueryParameters():
         """
-        List the sites that have been followed by the signed in user.
+        Get followedSites from me
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

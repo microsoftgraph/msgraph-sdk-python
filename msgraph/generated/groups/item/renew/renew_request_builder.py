@@ -36,7 +36,7 @@ class RenewRequestBuilder():
     
     async def post(self,request_configuration: Optional[RenewRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Renews a group's expiration. When a group is renewed, the group expiration is extended by the number of days defined in the policy.
+        Invoke action renew
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class RenewRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[RenewRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Renews a group's expiration. When a group is renewed, the group expiration is extended by the number of days defined in the policy.
+        Invoke action renew
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

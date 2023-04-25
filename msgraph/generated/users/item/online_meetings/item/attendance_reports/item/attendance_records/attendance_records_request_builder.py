@@ -54,7 +54,7 @@ class AttendanceRecordsRequestBuilder():
     
     async def get(self,request_configuration: Optional[AttendanceRecordsRequestBuilderGetRequestConfiguration] = None) -> Optional[attendance_record_collection_response.AttendanceRecordCollectionResponse]:
         """
-        Get a list of attendanceRecord objects and their properties.
+        List of attendance records of an attendance report. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[attendance_record_collection_response.AttendanceRecordCollectionResponse]
@@ -101,7 +101,7 @@ class AttendanceRecordsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AttendanceRecordsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of attendanceRecord objects and their properties.
+        List of attendance records of an attendance report. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class AttendanceRecordsRequestBuilder():
     @dataclass
     class AttendanceRecordsRequestBuilderGetQueryParameters():
         """
-        Get a list of attendanceRecord objects and their properties.
+        List of attendance records of an attendance report. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

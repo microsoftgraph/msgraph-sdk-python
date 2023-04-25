@@ -36,7 +36,7 @@ class SecurityResetToDefaultRequestBuilder():
     
     async def post(self,request_configuration: Optional[SecurityResetToDefaultRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Reset a caseSettings object to the default values.
+        Invoke action resetToDefault
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class SecurityResetToDefaultRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[SecurityResetToDefaultRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Reset a caseSettings object to the default values.
+        Invoke action resetToDefault
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

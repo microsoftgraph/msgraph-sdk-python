@@ -56,7 +56,7 @@ class AuthenticationMethodModeDetailItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AuthenticationMethodModeDetailItemRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_method_mode_detail.AuthenticationMethodModeDetail]:
         """
-        Get authenticationMethodModes from identity
+        Names and descriptions of all valid authentication method modes in the system.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authentication_method_mode_detail.AuthenticationMethodModeDetail]
@@ -119,7 +119,7 @@ class AuthenticationMethodModeDetailItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationMethodModeDetailItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get authenticationMethodModes from identity
+        Names and descriptions of all valid authentication method modes in the system.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class AuthenticationMethodModeDetailItemRequestBuilder():
     @dataclass
     class AuthenticationMethodModeDetailItemRequestBuilderGetQueryParameters():
         """
-        Get authenticationMethodModes from identity
+        Names and descriptions of all valid authentication method modes in the system.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

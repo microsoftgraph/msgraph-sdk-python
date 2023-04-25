@@ -55,7 +55,7 @@ class RejectedSendersRequestBuilder():
     
     async def get(self,request_configuration: Optional[RejectedSendersRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
         """
-        Users in the rejected senders list cannot post to conversations of the group (identified in the GET request URL). Make sure you do not specify the same user or group in the rejected senders and accepted senders lists, otherwise you will get an error.
+        The list of users or groups that are not allowed to create posts or calendar events in this group. Nullable
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]
@@ -77,7 +77,7 @@ class RejectedSendersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RejectedSendersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Users in the rejected senders list cannot post to conversations of the group (identified in the GET request URL). Make sure you do not specify the same user or group in the rejected senders and accepted senders lists, otherwise you will get an error.
+        The list of users or groups that are not allowed to create posts or calendar events in this group. Nullable
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class RejectedSendersRequestBuilder():
     @dataclass
     class RejectedSendersRequestBuilderGetQueryParameters():
         """
-        Users in the rejected senders list cannot post to conversations of the group (identified in the GET request URL). Make sure you do not specify the same user or group in the rejected senders and accepted senders lists, otherwise you will get an error.
+        The list of users or groups that are not allowed to create posts or calendar events in this group. Nullable
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

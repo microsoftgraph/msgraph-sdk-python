@@ -54,7 +54,7 @@ class ItemsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[list_item_collection_response.ListItemCollectionResponse]:
         """
-        Get the collection of [items][item] in a [list][].
+        All items contained in the list.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[list_item_collection_response.ListItemCollectionResponse]
@@ -76,7 +76,7 @@ class ItemsRequestBuilder():
     
     async def post(self,body: Optional[list_item.ListItem] = None, request_configuration: Optional[ItemsRequestBuilderPostRequestConfiguration] = None) -> Optional[list_item.ListItem]:
         """
-        Create a new [listItem][] in a [list][].
+        Create new navigation property to items for sites
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ItemsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the collection of [items][item] in a [list][].
+        All items contained in the list.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ItemsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[list_item.ListItem] = None, request_configuration: Optional[ItemsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new [listItem][] in a [list][].
+        Create new navigation property to items for sites
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class ItemsRequestBuilder():
     @dataclass
     class ItemsRequestBuilderGetQueryParameters():
         """
-        Get the collection of [items][item] in a [list][].
+        All items contained in the list.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

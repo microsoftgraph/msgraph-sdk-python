@@ -54,7 +54,7 @@ class InstalledAppsRequestBuilder():
     
     async def get(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_app_installation_collection_response.TeamsAppInstallationCollectionResponse]:
         """
-        Retrieve a list of apps installed in the specified team.
+        The apps installed in this team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[teams_app_installation_collection_response.TeamsAppInstallationCollectionResponse]
@@ -76,7 +76,7 @@ class InstalledAppsRequestBuilder():
     
     async def post(self,body: Optional[teams_app_installation.TeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[teams_app_installation.TeamsAppInstallation]:
         """
-        Install an app to the specified team.
+        Create new navigation property to installedApps for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class InstalledAppsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of apps installed in the specified team.
+        The apps installed in this team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class InstalledAppsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[teams_app_installation.TeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Install an app to the specified team.
+        Create new navigation property to installedApps for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class InstalledAppsRequestBuilder():
     @dataclass
     class InstalledAppsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of apps installed in the specified team.
+        The apps installed in this team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

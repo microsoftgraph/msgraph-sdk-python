@@ -37,7 +37,7 @@ class RefRequestBuilder():
     
     async def get(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None) -> Optional[string_collection_response.StringCollectionResponse]:
         """
-        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
+        When set, enables users to easily find assignments of a given type.  Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[string_collection_response.StringCollectionResponse]
@@ -81,7 +81,7 @@ class RefRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
+        When set, enables users to easily find assignments of a given type.  Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class RefRequestBuilder():
     @dataclass
     class RefRequestBuilderGetQueryParameters():
         """
-        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
+        When set, enables users to easily find assignments of a given type.  Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

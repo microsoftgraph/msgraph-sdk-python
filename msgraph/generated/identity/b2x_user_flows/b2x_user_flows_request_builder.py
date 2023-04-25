@@ -54,7 +54,7 @@ class B2xUserFlowsRequestBuilder():
     
     async def get(self,request_configuration: Optional[B2xUserFlowsRequestBuilderGetRequestConfiguration] = None) -> Optional[b2x_identity_user_flow_collection_response.B2xIdentityUserFlowCollectionResponse]:
         """
-        Retrieve a list of b2xIdentityUserFlow objects.
+        Represents entry point for B2X/self-service sign-up identity userflows.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[b2x_identity_user_flow_collection_response.B2xIdentityUserFlowCollectionResponse]
@@ -76,7 +76,7 @@ class B2xUserFlowsRequestBuilder():
     
     async def post(self,body: Optional[b2x_identity_user_flow.B2xIdentityUserFlow] = None, request_configuration: Optional[B2xUserFlowsRequestBuilderPostRequestConfiguration] = None) -> Optional[b2x_identity_user_flow.B2xIdentityUserFlow]:
         """
-        Create a new b2xIdentityUserFlow object.
+        Create new navigation property to b2xUserFlows for identity
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class B2xUserFlowsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[B2xUserFlowsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of b2xIdentityUserFlow objects.
+        Represents entry point for B2X/self-service sign-up identity userflows.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class B2xUserFlowsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[b2x_identity_user_flow.B2xIdentityUserFlow] = None, request_configuration: Optional[B2xUserFlowsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new b2xIdentityUserFlow object.
+        Create new navigation property to b2xUserFlows for identity
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class B2xUserFlowsRequestBuilder():
     @dataclass
     class B2xUserFlowsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of b2xIdentityUserFlow objects.
+        Represents entry point for B2X/self-service sign-up identity userflows.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

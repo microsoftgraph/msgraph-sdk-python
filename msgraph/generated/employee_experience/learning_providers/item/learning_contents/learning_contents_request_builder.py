@@ -54,7 +54,7 @@ class LearningContentsRequestBuilder():
     
     async def get(self,request_configuration: Optional[LearningContentsRequestBuilderGetRequestConfiguration] = None) -> Optional[learning_content_collection_response.LearningContentCollectionResponse]:
         """
-        Get a list of the learningContent resources and their properties. This list represents the metadata of the specified provider's content in Viva Learning.
+        Learning catalog items for the provider.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[learning_content_collection_response.LearningContentCollectionResponse]
@@ -101,7 +101,7 @@ class LearningContentsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[LearningContentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the learningContent resources and their properties. This list represents the metadata of the specified provider's content in Viva Learning.
+        Learning catalog items for the provider.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class LearningContentsRequestBuilder():
     @dataclass
     class LearningContentsRequestBuilderGetQueryParameters():
         """
-        Get a list of the learningContent resources and their properties. This list represents the metadata of the specified provider's content in Viva Learning.
+        Learning catalog items for the provider.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

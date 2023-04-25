@@ -38,7 +38,7 @@ class UserRequestBuilder():
     
     async def get(self,request_configuration: Optional[UserRequestBuilderGetRequestConfiguration] = None) -> Optional[user.User]:
         """
-        Retrieve the simple directory **user** that corresponds to this **educationUser**.
+        The directory user that corresponds to this user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user.User]
@@ -60,7 +60,7 @@ class UserRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[UserRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the simple directory **user** that corresponds to this **educationUser**.
+        The directory user that corresponds to this user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -88,7 +88,7 @@ class UserRequestBuilder():
     @dataclass
     class UserRequestBuilderGetQueryParameters():
         """
-        Retrieve the simple directory **user** that corresponds to this **educationUser**.
+        The directory user that corresponds to this user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

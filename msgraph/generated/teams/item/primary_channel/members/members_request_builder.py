@@ -55,7 +55,7 @@ class MembersRequestBuilder():
     
     async def get(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_member_collection_response.ConversationMemberCollectionResponse]:
         """
-        Retrieve a list of conversationMembers from a channel. This method supports federation. Only a user who is a member of the shared channel can retrieve the channel member list.
+        A collection of membership records associated with the channel.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conversation_member_collection_response.ConversationMemberCollectionResponse]
@@ -77,7 +77,7 @@ class MembersRequestBuilder():
     
     async def post(self,body: Optional[conversation_member.ConversationMember] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> Optional[conversation_member.ConversationMember]:
         """
-        Add a conversationMember to a channel. This operation is allowed only for channels with a **membershipType** value of `private` or `shared`.
+        Create new navigation property to members for teams
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class MembersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of conversationMembers from a channel. This method supports federation. Only a user who is a member of the shared channel can retrieve the channel member list.
+        A collection of membership records associated with the channel.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class MembersRequestBuilder():
     
     def to_post_request_information(self,body: Optional[conversation_member.ConversationMember] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add a conversationMember to a channel. This operation is allowed only for channels with a **membershipType** value of `private` or `shared`.
+        Create new navigation property to members for teams
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class MembersRequestBuilder():
     @dataclass
     class MembersRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of conversationMembers from a channel. This method supports federation. Only a user who is a member of the shared channel can retrieve the channel member list.
+        A collection of membership records associated with the channel.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

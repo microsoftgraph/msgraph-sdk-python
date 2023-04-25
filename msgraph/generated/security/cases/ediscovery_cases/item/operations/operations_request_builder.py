@@ -54,7 +54,7 @@ class OperationsRequestBuilder():
     
     async def get(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> Optional[case_operation_collection_response.CaseOperationCollectionResponse]:
         """
-        Get a list of the caseOperation objects and their properties.
+        Returns a list of case caseOperation objects for this case.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[case_operation_collection_response.CaseOperationCollectionResponse]
@@ -101,7 +101,7 @@ class OperationsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OperationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the caseOperation objects and their properties.
+        Returns a list of case caseOperation objects for this case.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class OperationsRequestBuilder():
     @dataclass
     class OperationsRequestBuilderGetQueryParameters():
         """
-        Get a list of the caseOperation objects and their properties.
+        Returns a list of case caseOperation objects for this case.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

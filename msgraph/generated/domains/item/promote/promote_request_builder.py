@@ -37,7 +37,7 @@ class PromoteRequestBuilder():
     
     async def post(self,request_configuration: Optional[PromoteRequestBuilderPostRequestConfiguration] = None) -> Optional[promote_response.PromoteResponse]:
         """
-        Promote a verified subdomain to the root domain. A verified domain has its **isVerified** property set to `true`.
+        Invoke action promote
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[promote_response.PromoteResponse]
@@ -59,7 +59,7 @@ class PromoteRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[PromoteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Promote a verified subdomain to the root domain. A verified domain has its **isVerified** property set to `true`.
+        Invoke action promote
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

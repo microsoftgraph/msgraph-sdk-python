@@ -54,7 +54,7 @@ class SharesRequestBuilder():
     
     async def get(self,request_configuration: Optional[SharesRequestBuilderGetRequestConfiguration] = None) -> Optional[printer_share_collection_response.PrinterShareCollectionResponse]:
         """
-        Retrieve a list of printer shares associated with the printer.
+        The list of printerShares that are associated with the printer. Currently, only one printerShare can be associated with the printer. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[printer_share_collection_response.PrinterShareCollectionResponse]
@@ -76,7 +76,7 @@ class SharesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SharesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of printer shares associated with the printer.
+        The list of printerShares that are associated with the printer. Currently, only one printerShare can be associated with the printer. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class SharesRequestBuilder():
     @dataclass
     class SharesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of printer shares associated with the printer.
+        The list of printerShares that are associated with the printer. Currently, only one printerShare can be associated with the printer. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

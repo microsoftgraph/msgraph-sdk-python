@@ -95,7 +95,7 @@ credential = ClientSecretCredential(
     'client_id',
     'client_secret'
 )
-scopes = ['User.Read']
+scopes = ['https://graph.microsoft.com/.default']
 auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
 request_adapter = GraphRequestAdapter(auth_provider)
 client = GraphServiceClient(request_adapter)

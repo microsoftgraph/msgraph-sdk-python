@@ -90,6 +90,11 @@ if TYPE_CHECKING:
     from .get_teams_device_usage_user_counts_with_period import get_teams_device_usage_user_counts_with_period_request_builder
     from .get_teams_device_usage_user_detail_with_date import get_teams_device_usage_user_detail_with_date_request_builder
     from .get_teams_device_usage_user_detail_with_period import get_teams_device_usage_user_detail_with_period_request_builder
+    from .get_teams_team_activity_counts_with_period import get_teams_team_activity_counts_with_period_request_builder
+    from .get_teams_team_activity_detail_with_date import get_teams_team_activity_detail_with_date_request_builder
+    from .get_teams_team_activity_detail_with_period import get_teams_team_activity_detail_with_period_request_builder
+    from .get_teams_team_activity_distribution_counts_with_period import get_teams_team_activity_distribution_counts_with_period_request_builder
+    from .get_teams_team_counts_with_period import get_teams_team_counts_with_period_request_builder
     from .get_teams_user_activity_counts_with_period import get_teams_user_activity_counts_with_period_request_builder
     from .get_teams_user_activity_user_counts_with_period import get_teams_user_activity_user_counts_with_period_request_builder
     from .get_teams_user_activity_user_detail_with_date import get_teams_user_activity_user_detail_with_date_request_builder
@@ -1080,6 +1085,71 @@ class ReportsRequestBuilder():
         from .get_teams_device_usage_user_detail_with_period import get_teams_device_usage_user_detail_with_period_request_builder
 
         return get_teams_device_usage_user_detail_with_period_request_builder.GetTeamsDeviceUsageUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
+    
+    def get_teams_team_activity_counts_with_period(self,period: Optional[str] = None) -> get_teams_team_activity_counts_with_period_request_builder.GetTeamsTeamActivityCountsWithPeriodRequestBuilder:
+        """
+        Provides operations to call the getTeamsTeamActivityCounts method.
+        Args:
+            period: Usage: period='{period}'
+        Returns: get_teams_team_activity_counts_with_period_request_builder.GetTeamsTeamActivityCountsWithPeriodRequestBuilder
+        """
+        if period is None:
+            raise Exception("period cannot be undefined")
+        from .get_teams_team_activity_counts_with_period import get_teams_team_activity_counts_with_period_request_builder
+
+        return get_teams_team_activity_counts_with_period_request_builder.GetTeamsTeamActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
+    
+    def get_teams_team_activity_detail_with_date(self,date: Optional[date] = None) -> get_teams_team_activity_detail_with_date_request_builder.GetTeamsTeamActivityDetailWithDateRequestBuilder:
+        """
+        Provides operations to call the getTeamsTeamActivityDetail method.
+        Args:
+            date: Usage: date={date}
+        Returns: get_teams_team_activity_detail_with_date_request_builder.GetTeamsTeamActivityDetailWithDateRequestBuilder
+        """
+        if date is None:
+            raise Exception("date cannot be undefined")
+        from .get_teams_team_activity_detail_with_date import get_teams_team_activity_detail_with_date_request_builder
+
+        return get_teams_team_activity_detail_with_date_request_builder.GetTeamsTeamActivityDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
+    
+    def get_teams_team_activity_detail_with_period(self,period: Optional[str] = None) -> get_teams_team_activity_detail_with_period_request_builder.GetTeamsTeamActivityDetailWithPeriodRequestBuilder:
+        """
+        Provides operations to call the getTeamsTeamActivityDetail method.
+        Args:
+            period: Usage: period='{period}'
+        Returns: get_teams_team_activity_detail_with_period_request_builder.GetTeamsTeamActivityDetailWithPeriodRequestBuilder
+        """
+        if period is None:
+            raise Exception("period cannot be undefined")
+        from .get_teams_team_activity_detail_with_period import get_teams_team_activity_detail_with_period_request_builder
+
+        return get_teams_team_activity_detail_with_period_request_builder.GetTeamsTeamActivityDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
+    
+    def get_teams_team_activity_distribution_counts_with_period(self,period: Optional[str] = None) -> get_teams_team_activity_distribution_counts_with_period_request_builder.GetTeamsTeamActivityDistributionCountsWithPeriodRequestBuilder:
+        """
+        Provides operations to call the getTeamsTeamActivityDistributionCounts method.
+        Args:
+            period: Usage: period='{period}'
+        Returns: get_teams_team_activity_distribution_counts_with_period_request_builder.GetTeamsTeamActivityDistributionCountsWithPeriodRequestBuilder
+        """
+        if period is None:
+            raise Exception("period cannot be undefined")
+        from .get_teams_team_activity_distribution_counts_with_period import get_teams_team_activity_distribution_counts_with_period_request_builder
+
+        return get_teams_team_activity_distribution_counts_with_period_request_builder.GetTeamsTeamActivityDistributionCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
+    
+    def get_teams_team_counts_with_period(self,period: Optional[str] = None) -> get_teams_team_counts_with_period_request_builder.GetTeamsTeamCountsWithPeriodRequestBuilder:
+        """
+        Provides operations to call the getTeamsTeamCounts method.
+        Args:
+            period: Usage: period='{period}'
+        Returns: get_teams_team_counts_with_period_request_builder.GetTeamsTeamCountsWithPeriodRequestBuilder
+        """
+        if period is None:
+            raise Exception("period cannot be undefined")
+        from .get_teams_team_counts_with_period import get_teams_team_counts_with_period_request_builder
+
+        return get_teams_team_counts_with_period_request_builder.GetTeamsTeamCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
     
     def get_teams_user_activity_counts_with_period(self,period: Optional[str] = None) -> get_teams_user_activity_counts_with_period_request_builder.GetTeamsUserActivityCountsWithPeriodRequestBuilder:
         """

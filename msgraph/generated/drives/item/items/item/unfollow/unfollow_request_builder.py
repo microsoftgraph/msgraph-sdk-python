@@ -36,7 +36,7 @@ class UnfollowRequestBuilder():
     
     async def post(self,request_configuration: Optional[UnfollowRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Unfollow a driveItem.
+        Invoke action unfollow
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class UnfollowRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[UnfollowRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Unfollow a driveItem.
+        Invoke action unfollow
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

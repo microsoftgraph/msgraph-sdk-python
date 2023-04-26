@@ -60,7 +60,7 @@ class ValueAxisRequestBuilder():
     
     async def get(self,request_configuration: Optional[ValueAxisRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_axis.WorkbookChartAxis]:
         """
-        Retrieve the properties and relationships of chartaxis object.
+        Represents the value axis in an axis. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_chart_axis.WorkbookChartAxis]
@@ -82,7 +82,7 @@ class ValueAxisRequestBuilder():
     
     async def patch(self,body: Optional[workbook_chart_axis.WorkbookChartAxis] = None, request_configuration: Optional[ValueAxisRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart_axis.WorkbookChartAxis]:
         """
-        Update the properties of chartaxis object.
+        Update the navigation property valueAxis in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -123,7 +123,7 @@ class ValueAxisRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ValueAxisRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of chartaxis object.
+        Represents the value axis in an axis. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +141,7 @@ class ValueAxisRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[workbook_chart_axis.WorkbookChartAxis] = None, request_configuration: Optional[ValueAxisRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of chartaxis object.
+        Update the navigation property valueAxis in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -211,7 +211,7 @@ class ValueAxisRequestBuilder():
     @dataclass
     class ValueAxisRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of chartaxis object.
+        Represents the value axis in an axis. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -36,7 +36,7 @@ class SecurityEstimateStatisticsRequestBuilder():
     
     async def post(self,request_configuration: Optional[SecurityEstimateStatisticsRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Run an estimate of the number of emails and documents in the eDiscovery search. To learn more about searches in eDiscovery, see Collect data for a case in eDiscovery (Premium).
+        Invoke action estimateStatistics
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class SecurityEstimateStatisticsRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[SecurityEstimateStatisticsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Run an estimate of the number of emails and documents in the eDiscovery search. To learn more about searches in eDiscovery, see Collect data for a case in eDiscovery (Premium).
+        Invoke action estimateStatistics
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -38,7 +38,7 @@ class GetNotebookFromWebUrlRequestBuilder():
     
     async def post(self,body: Optional[get_notebook_from_web_url_post_request_body.GetNotebookFromWebUrlPostRequestBody] = None, request_configuration: Optional[GetNotebookFromWebUrlRequestBuilderPostRequestConfiguration] = None) -> Optional[copy_notebook_model.CopyNotebookModel]:
         """
-        Retrieve the properties and relationships of a notebook object by using its URL path. The location can be user notebooks on Microsoft 365, group notebooks, or SharePoint site-hosted team notebooks on Microsoft 365.
+        Invoke action getNotebookFromWebUrl
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class GetNotebookFromWebUrlRequestBuilder():
     
     def to_post_request_information(self,body: Optional[get_notebook_from_web_url_post_request_body.GetNotebookFromWebUrlPostRequestBody] = None, request_configuration: Optional[GetNotebookFromWebUrlRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a notebook object by using its URL path. The location can be user notebooks on Microsoft 365, group notebooks, or SharePoint site-hosted team notebooks on Microsoft 365.
+        Invoke action getNotebookFromWebUrl
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

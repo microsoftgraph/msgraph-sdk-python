@@ -54,7 +54,7 @@ class GroupsRequestBuilder():
     
     async def get(self,request_configuration: Optional[GroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[group_collection_response.GroupCollectionResponse]:
         """
-        Get a list of group objects in a term store.
+        Collection of all groups available in the term store.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[group_collection_response.GroupCollectionResponse]
@@ -76,7 +76,7 @@ class GroupsRequestBuilder():
     
     async def post(self,body: Optional[group.Group] = None, request_configuration: Optional[GroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[group.Group]:
         """
-        Create a new group object in a term store.
+        Create new navigation property to groups for sites
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class GroupsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[GroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of group objects in a term store.
+        Collection of all groups available in the term store.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class GroupsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[group.Group] = None, request_configuration: Optional[GroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new group object in a term store.
+        Create new navigation property to groups for sites
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class GroupsRequestBuilder():
     @dataclass
     class GroupsRequestBuilderGetQueryParameters():
         """
-        Get a list of group objects in a term store.
+        Collection of all groups available in the term store.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

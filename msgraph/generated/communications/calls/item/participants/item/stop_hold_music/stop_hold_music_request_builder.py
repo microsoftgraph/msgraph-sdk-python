@@ -38,7 +38,7 @@ class StopHoldMusicRequestBuilder():
     
     async def post(self,body: Optional[stop_hold_music_post_request_body.StopHoldMusicPostRequestBody] = None, request_configuration: Optional[StopHoldMusicRequestBuilderPostRequestConfiguration] = None) -> Optional[stop_hold_music_operation.StopHoldMusicOperation]:
         """
-        Reincorporate a participant previously put on hold to the call.
+        Invoke action stopHoldMusic
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class StopHoldMusicRequestBuilder():
     
     def to_post_request_information(self,body: Optional[stop_hold_music_post_request_body.StopHoldMusicPostRequestBody] = None, request_configuration: Optional[StopHoldMusicRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Reincorporate a participant previously put on hold to the call.
+        Invoke action stopHoldMusic
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

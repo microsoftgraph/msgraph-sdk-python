@@ -53,7 +53,7 @@ class Device(directory_object.DirectoryObject):
         self._physical_ids: Optional[List[str]] = None
         # The profile type of the device. Possible values: RegisteredDevice (default), SecureVM, Printer, Shared, IoT.
         self._profile_type: Optional[str] = None
-        # The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Currently, there can be only one owner. Read-only. Nullable. Supports $expand.
+        # The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Read-only. Nullable. Supports $expand.
         self._registered_owners: Optional[List[directory_object.DirectoryObject]] = None
         # Collection of registered users of the device. For cloud joined devices and registered personal devices, registered users are set to the same value as registered owners at the time of registration. Read-only. Nullable. Supports $expand.
         self._registered_users: Optional[List[directory_object.DirectoryObject]] = None
@@ -439,7 +439,7 @@ class Device(directory_object.DirectoryObject):
     @property
     def registered_owners(self,) -> Optional[List[directory_object.DirectoryObject]]:
         """
-        Gets the registeredOwners property value. The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Currently, there can be only one owner. Read-only. Nullable. Supports $expand.
+        Gets the registeredOwners property value. The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Read-only. Nullable. Supports $expand.
         Returns: Optional[List[directory_object.DirectoryObject]]
         """
         return self._registered_owners
@@ -447,7 +447,7 @@ class Device(directory_object.DirectoryObject):
     @registered_owners.setter
     def registered_owners(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
         """
-        Sets the registeredOwners property value. The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Currently, there can be only one owner. Read-only. Nullable. Supports $expand.
+        Sets the registeredOwners property value. The user that cloud joined the device or registered their personal device. The registered owner is set at the time of registration. Read-only. Nullable. Supports $expand.
         Args:
             value: Value to set for the registered_owners property.
         """

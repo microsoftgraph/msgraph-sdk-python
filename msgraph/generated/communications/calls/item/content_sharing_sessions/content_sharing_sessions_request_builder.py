@@ -54,7 +54,7 @@ class ContentSharingSessionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ContentSharingSessionsRequestBuilderGetRequestConfiguration] = None) -> Optional[content_sharing_session_collection_response.ContentSharingSessionCollectionResponse]:
         """
-        Retrieve a list of contentSharingSession objects in a call.
+        Get contentSharingSessions from communications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[content_sharing_session_collection_response.ContentSharingSessionCollectionResponse]
@@ -101,7 +101,7 @@ class ContentSharingSessionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ContentSharingSessionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of contentSharingSession objects in a call.
+        Get contentSharingSessions from communications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class ContentSharingSessionsRequestBuilder():
     @dataclass
     class ContentSharingSessionsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of contentSharingSession objects in a call.
+        Get contentSharingSessions from communications
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -54,7 +54,7 @@ class RulesRequestBuilder():
     
     async def get(self,request_configuration: Optional[RulesRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_management_policy_rule_collection_response.UnifiedRoleManagementPolicyRuleCollectionResponse]:
         """
-        Get the rules or settings defined for a role management policy. The rules are a collection of following types that are derived from the unifiedRoleManagementPolicyRule object:+ unifiedRoleManagementPolicyApprovalRule+ unifiedRoleManagementPolicyAuthenticationContextRule+ unifiedRoleManagementPolicyEnablementRule+ unifiedRoleManagementPolicyExpirationRule+ unifiedRoleManagementPolicyNotificationRule
+        The collection of rules like approval rules and expiration rules. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[unified_role_management_policy_rule_collection_response.UnifiedRoleManagementPolicyRuleCollectionResponse]
@@ -101,7 +101,7 @@ class RulesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RulesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the rules or settings defined for a role management policy. The rules are a collection of following types that are derived from the unifiedRoleManagementPolicyRule object:+ unifiedRoleManagementPolicyApprovalRule+ unifiedRoleManagementPolicyAuthenticationContextRule+ unifiedRoleManagementPolicyEnablementRule+ unifiedRoleManagementPolicyExpirationRule+ unifiedRoleManagementPolicyNotificationRule
+        The collection of rules like approval rules and expiration rules. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class RulesRequestBuilder():
     @dataclass
     class RulesRequestBuilderGetQueryParameters():
         """
-        Get the rules or settings defined for a role management policy. The rules are a collection of following types that are derived from the unifiedRoleManagementPolicyRule object:+ unifiedRoleManagementPolicyApprovalRule+ unifiedRoleManagementPolicyAuthenticationContextRule+ unifiedRoleManagementPolicyEnablementRule+ unifiedRoleManagementPolicyExpirationRule+ unifiedRoleManagementPolicyNotificationRule
+        The collection of rules like approval rules and expiration rules. Supports $expand.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

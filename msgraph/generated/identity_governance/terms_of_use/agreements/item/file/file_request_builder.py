@@ -57,7 +57,7 @@ class FileRequestBuilder():
     
     async def get(self,request_configuration: Optional[FileRequestBuilderGetRequestConfiguration] = None) -> Optional[agreement_file.AgreementFile]:
         """
-        Retrieve the details of the default file for an agreement, including the language and version information. The file information is specified through the agreementFile object.
+        Default PDF linked to this agreement.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[agreement_file.AgreementFile]
@@ -120,7 +120,7 @@ class FileRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[FileRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the details of the default file for an agreement, including the language and version information. The file information is specified through the agreementFile object.
+        Default PDF linked to this agreement.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class FileRequestBuilder():
     @dataclass
     class FileRequestBuilderGetQueryParameters():
         """
-        Retrieve the details of the default file for an agreement, including the language and version information. The file information is specified through the agreementFile object.
+        Default PDF linked to this agreement.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

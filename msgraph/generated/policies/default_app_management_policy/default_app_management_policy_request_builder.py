@@ -56,7 +56,7 @@ class DefaultAppManagementPolicyRequestBuilder():
     
     async def get(self,request_configuration: Optional[DefaultAppManagementPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[tenant_app_management_policy.TenantAppManagementPolicy]:
         """
-        Read the properties of a tenantAppManagementPolicy object.
+        The tenant-wide policy that enforces app management restrictions for all applications and service principals.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[tenant_app_management_policy.TenantAppManagementPolicy]
@@ -78,7 +78,7 @@ class DefaultAppManagementPolicyRequestBuilder():
     
     async def patch(self,body: Optional[tenant_app_management_policy.TenantAppManagementPolicy] = None, request_configuration: Optional[DefaultAppManagementPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[tenant_app_management_policy.TenantAppManagementPolicy]:
         """
-        Update the properties of a tenantAppManagementPolicy object.
+        Update the navigation property defaultAppManagementPolicy in policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class DefaultAppManagementPolicyRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DefaultAppManagementPolicyRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties of a tenantAppManagementPolicy object.
+        The tenant-wide policy that enforces app management restrictions for all applications and service principals.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class DefaultAppManagementPolicyRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[tenant_app_management_policy.TenantAppManagementPolicy] = None, request_configuration: Optional[DefaultAppManagementPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of a tenantAppManagementPolicy object.
+        Update the navigation property defaultAppManagementPolicy in policies
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class DefaultAppManagementPolicyRequestBuilder():
     @dataclass
     class DefaultAppManagementPolicyRequestBuilderGetQueryParameters():
         """
-        Read the properties of a tenantAppManagementPolicy object.
+        The tenant-wide policy that enforces app management restrictions for all applications and service principals.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

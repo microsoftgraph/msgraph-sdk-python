@@ -14,7 +14,7 @@ class SearchQuery(AdditionalDataHolder, Parsable):
         self._odata_type: Optional[str] = None
         # The search query containing the search terms. Required.
         self._query_string: Optional[str] = None
-        # The queryTemplate property
+        # Provides a way to decorate the query string. Supports both KQL and query variables. Optional.
         self._query_template: Optional[str] = None
     
     @property
@@ -95,7 +95,7 @@ class SearchQuery(AdditionalDataHolder, Parsable):
     @property
     def query_template(self,) -> Optional[str]:
         """
-        Gets the queryTemplate property value. The queryTemplate property
+        Gets the queryTemplate property value. Provides a way to decorate the query string. Supports both KQL and query variables. Optional.
         Returns: Optional[str]
         """
         return self._query_template
@@ -103,7 +103,7 @@ class SearchQuery(AdditionalDataHolder, Parsable):
     @query_template.setter
     def query_template(self,value: Optional[str] = None) -> None:
         """
-        Sets the queryTemplate property value. The queryTemplate property
+        Sets the queryTemplate property value. Provides a way to decorate the query string. Supports both KQL and query variables. Optional.
         Args:
             value: Value to set for the query_template property.
         """

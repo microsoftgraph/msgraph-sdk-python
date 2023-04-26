@@ -57,7 +57,7 @@ class RubricRequestBuilder():
     
     async def get(self,request_configuration: Optional[RubricRequestBuilderGetRequestConfiguration] = None) -> Optional[education_rubric.EducationRubric]:
         """
-        Get the educationRubric object attached to an educationAssignment, if one exists. Only teachers, students, and applications with application permissions can perform this operation.
+        When set, the grading rubric attached to this assignment.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_rubric.EducationRubric]
@@ -120,7 +120,7 @@ class RubricRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RubricRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the educationRubric object attached to an educationAssignment, if one exists. Only teachers, students, and applications with application permissions can perform this operation.
+        When set, the grading rubric attached to this assignment.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class RubricRequestBuilder():
     @dataclass
     class RubricRequestBuilderGetQueryParameters():
         """
-        Get the educationRubric object attached to an educationAssignment, if one exists. Only teachers, students, and applications with application permissions can perform this operation.
+        When set, the grading rubric attached to this assignment.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

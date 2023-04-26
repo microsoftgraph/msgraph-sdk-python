@@ -54,7 +54,7 @@ class ExtensionPropertiesRequestBuilder():
     
     async def get(self,request_configuration: Optional[ExtensionPropertiesRequestBuilderGetRequestConfiguration] = None) -> Optional[extension_property_collection_response.ExtensionPropertyCollectionResponse]:
         """
-        Retrieve the list of directory extension definitions, represented by extensionProperty objects on an application.
+        Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[extension_property_collection_response.ExtensionPropertyCollectionResponse]
@@ -76,7 +76,7 @@ class ExtensionPropertiesRequestBuilder():
     
     async def post(self,body: Optional[extension_property.ExtensionProperty] = None, request_configuration: Optional[ExtensionPropertiesRequestBuilderPostRequestConfiguration] = None) -> Optional[extension_property.ExtensionProperty]:
         """
-        Create a new directory extension definition, represented by an extensionProperty object.
+        Create new navigation property to extensionProperties for applications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ExtensionPropertiesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ExtensionPropertiesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the list of directory extension definitions, represented by extensionProperty objects on an application.
+        Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ExtensionPropertiesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[extension_property.ExtensionProperty] = None, request_configuration: Optional[ExtensionPropertiesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new directory extension definition, represented by an extensionProperty object.
+        Create new navigation property to extensionProperties for applications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class ExtensionPropertiesRequestBuilder():
     @dataclass
     class ExtensionPropertiesRequestBuilderGetQueryParameters():
         """
-        Retrieve the list of directory extension definitions, represented by extensionProperty objects on an application.
+        Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

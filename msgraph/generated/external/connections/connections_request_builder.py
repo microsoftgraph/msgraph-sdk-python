@@ -54,7 +54,7 @@ class ConnectionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ConnectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[external_connection_collection_response.ExternalConnectionCollectionResponse]:
         """
-        Get a list of the externalConnection objects and their properties.
+        Get connections from external
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[external_connection_collection_response.ExternalConnectionCollectionResponse]
@@ -76,7 +76,7 @@ class ConnectionsRequestBuilder():
     
     async def post(self,body: Optional[external_connection.ExternalConnection] = None, request_configuration: Optional[ConnectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[external_connection.ExternalConnection]:
         """
-        Create a new externalConnection object.
+        Create new navigation property to connections for external
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ConnectionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ConnectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the externalConnection objects and their properties.
+        Get connections from external
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ConnectionsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[external_connection.ExternalConnection] = None, request_configuration: Optional[ConnectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new externalConnection object.
+        Create new navigation property to connections for external
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class ConnectionsRequestBuilder():
     @dataclass
     class ConnectionsRequestBuilderGetQueryParameters():
         """
-        Get a list of the externalConnection objects and their properties.
+        Get connections from external
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

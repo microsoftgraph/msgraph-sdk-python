@@ -55,7 +55,7 @@ class AcceptedSendersRequestBuilder():
     
     async def get(self,request_configuration: Optional[AcceptedSendersRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
         """
-        Users in the accepted senders list can post to conversations of the group (identified in the GET request URL).Make sure you do not specify the same user or group in the accepted senders and rejected senders lists, otherwise you will get an error.
+        The list of users or groups that are allowed to create post's or calendar events in this group. If this list is non-empty then only users or groups listed here are allowed to post.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]
@@ -77,7 +77,7 @@ class AcceptedSendersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AcceptedSendersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Users in the accepted senders list can post to conversations of the group (identified in the GET request URL).Make sure you do not specify the same user or group in the accepted senders and rejected senders lists, otherwise you will get an error.
+        The list of users or groups that are allowed to create post's or calendar events in this group. If this list is non-empty then only users or groups listed here are allowed to post.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class AcceptedSendersRequestBuilder():
     @dataclass
     class AcceptedSendersRequestBuilderGetQueryParameters():
         """
-        Users in the accepted senders list can post to conversations of the group (identified in the GET request URL).Make sure you do not specify the same user or group in the accepted senders and rejected senders lists, otherwise you will get an error.
+        The list of users or groups that are allowed to create post's or calendar events in this group. If this list is non-empty then only users or groups listed here are allowed to post.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

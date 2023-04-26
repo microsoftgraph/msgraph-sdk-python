@@ -57,7 +57,7 @@ class DataLabelsRequestBuilder():
     
     async def get(self,request_configuration: Optional[DataLabelsRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_data_labels.WorkbookChartDataLabels]:
         """
-        Retrieve the properties and relationships of chartdatalabels object.
+        Represents the datalabels on the chart. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_chart_data_labels.WorkbookChartDataLabels]
@@ -79,7 +79,7 @@ class DataLabelsRequestBuilder():
     
     async def patch(self,body: Optional[workbook_chart_data_labels.WorkbookChartDataLabels] = None, request_configuration: Optional[DataLabelsRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart_data_labels.WorkbookChartDataLabels]:
         """
-        Update the properties of chartdatalabels object.
+        Update the navigation property dataLabels in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -120,7 +120,7 @@ class DataLabelsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DataLabelsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of chartdatalabels object.
+        Represents the datalabels on the chart. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class DataLabelsRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[workbook_chart_data_labels.WorkbookChartDataLabels] = None, request_configuration: Optional[DataLabelsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of chartdatalabels object.
+        Update the navigation property dataLabels in drives
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class DataLabelsRequestBuilder():
     @dataclass
     class DataLabelsRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of chartdatalabels object.
+        Represents the datalabels on the chart. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -36,7 +36,7 @@ class ClearUserPreferredPresenceRequestBuilder():
     
     async def post(self,request_configuration: Optional[ClearUserPreferredPresenceRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Clear the preferred availability and activity status for a user.
+        Invoke action clearUserPreferredPresence
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class ClearUserPreferredPresenceRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[ClearUserPreferredPresenceRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Clear the preferred availability and activity status for a user.
+        Invoke action clearUserPreferredPresence
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

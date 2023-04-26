@@ -54,7 +54,7 @@ class PermissionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[PermissionsRequestBuilderGetRequestConfiguration] = None) -> Optional[permission_collection_response.PermissionCollectionResponse]:
         """
-        Get the permission resources from the permissions navigation property on a site.
+        The permissions associated with the site. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[permission_collection_response.PermissionCollectionResponse]
@@ -76,7 +76,7 @@ class PermissionsRequestBuilder():
     
     async def post(self,body: Optional[permission.Permission] = None, request_configuration: Optional[PermissionsRequestBuilderPostRequestConfiguration] = None) -> Optional[permission.Permission]:
         """
-        Create a new permission object on a site. 
+        Create new navigation property to permissions for sites
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class PermissionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PermissionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the permission resources from the permissions navigation property on a site.
+        The permissions associated with the site. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class PermissionsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[permission.Permission] = None, request_configuration: Optional[PermissionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new permission object on a site. 
+        Create new navigation property to permissions for sites
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class PermissionsRequestBuilder():
     @dataclass
     class PermissionsRequestBuilderGetQueryParameters():
         """
-        Get the permission resources from the permissions navigation property on a site.
+        The permissions associated with the site. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

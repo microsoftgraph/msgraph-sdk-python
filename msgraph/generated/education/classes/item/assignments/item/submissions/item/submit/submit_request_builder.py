@@ -37,7 +37,7 @@ class SubmitRequestBuilder():
     
     async def post(self,request_configuration: Optional[SubmitRequestBuilderPostRequestConfiguration] = None) -> Optional[education_submission.EducationSubmission]:
         """
-        Indicate that a student is done with the work and is ready to hand in the assignment. Only teachers, students, and applications with application permissions can perform this operation. This method changes the status of the submission from `working` to `submitted`. During the submit process, all the resources are copied to the **submittedResources** bucket. The teacher will be looking at the submitted resources list for grading. A teacher can also submit a student's assignment on their behalf.
+        Invoke action submit
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_submission.EducationSubmission]
@@ -59,7 +59,7 @@ class SubmitRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[SubmitRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Indicate that a student is done with the work and is ready to hand in the assignment. Only teachers, students, and applications with application permissions can perform this operation. This method changes the status of the submission from `working` to `submitted`. During the submit process, all the resources are copied to the **submittedResources** bucket. The teacher will be looking at the submitted resources list for grading. A teacher can also submit a student's assignment on their behalf.
+        Invoke action submit
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -54,7 +54,7 @@ class InstalledAppsRequestBuilder():
     
     async def get(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[user_scope_teams_app_installation_collection_response.UserScopeTeamsAppInstallationCollectionResponse]:
         """
-        Retrieve the list of apps installed in the personal scope of the specified user.
+        The apps installed in the personal scope of this user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user_scope_teams_app_installation_collection_response.UserScopeTeamsAppInstallationCollectionResponse]
@@ -76,7 +76,7 @@ class InstalledAppsRequestBuilder():
     
     async def post(self,body: Optional[user_scope_teams_app_installation.UserScopeTeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]:
         """
-        Install an app in the personal scope of the specified user.
+        Create new navigation property to installedApps for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class InstalledAppsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the list of apps installed in the personal scope of the specified user.
+        The apps installed in the personal scope of this user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class InstalledAppsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[user_scope_teams_app_installation.UserScopeTeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Install an app in the personal scope of the specified user.
+        Create new navigation property to installedApps for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class InstalledAppsRequestBuilder():
     @dataclass
     class InstalledAppsRequestBuilderGetQueryParameters():
         """
-        Retrieve the list of apps installed in the personal scope of the specified user.
+        The apps installed in the personal scope of this user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

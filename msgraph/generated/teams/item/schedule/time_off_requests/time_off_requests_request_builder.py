@@ -54,7 +54,7 @@ class TimeOffRequestsRequestBuilder():
     
     async def get(self,request_configuration: Optional[TimeOffRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[time_off_request_collection_response.TimeOffRequestCollectionResponse]:
         """
-        Retrieve a list of timeOffRequest objects in the team.
+        Get timeOffRequests from teams
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[time_off_request_collection_response.TimeOffRequestCollectionResponse]
@@ -101,7 +101,7 @@ class TimeOffRequestsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TimeOffRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of timeOffRequest objects in the team.
+        Get timeOffRequests from teams
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class TimeOffRequestsRequestBuilder():
     @dataclass
     class TimeOffRequestsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of timeOffRequest objects in the team.
+        Get timeOffRequests from teams
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -55,7 +55,7 @@ class MembersRequestBuilder():
     
     async def get(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_member_collection_response.ConversationMemberCollectionResponse]:
         """
-        List all conversation members in a chat. This method supports federation. For one-on-one chats, at least one chat member must belong to the tenant the request initiates from. For group chats, the chat must be initiated by a user in the tenant the request initiates from.
+        A collection of all the members in the chat. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conversation_member_collection_response.ConversationMemberCollectionResponse]
@@ -77,7 +77,7 @@ class MembersRequestBuilder():
     
     async def post(self,body: Optional[conversation_member.ConversationMember] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> Optional[conversation_member.ConversationMember]:
         """
-        Add a conversationMember to a chat.
+        Create new navigation property to members for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class MembersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List all conversation members in a chat. This method supports federation. For one-on-one chats, at least one chat member must belong to the tenant the request initiates from. For group chats, the chat must be initiated by a user in the tenant the request initiates from.
+        A collection of all the members in the chat. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class MembersRequestBuilder():
     
     def to_post_request_information(self,body: Optional[conversation_member.ConversationMember] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add a conversationMember to a chat.
+        Create new navigation property to members for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class MembersRequestBuilder():
     @dataclass
     class MembersRequestBuilderGetQueryParameters():
         """
-        List all conversation members in a chat. This method supports federation. For one-on-one chats, at least one chat member must belong to the tenant the request initiates from. For group chats, the chat must be initiated by a user in the tenant the request initiates from.
+        A collection of all the members in the chat. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

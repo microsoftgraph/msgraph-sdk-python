@@ -59,7 +59,7 @@ class InternalSponsorsRequestBuilder():
     
     async def get(self,request_configuration: Optional[InternalSponsorsRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
         """
-        Retrieve a list of a connectedOrganization's internal sponsors.  The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
+        Get internalSponsors from identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]
@@ -106,7 +106,7 @@ class InternalSponsorsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[InternalSponsorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of a connectedOrganization's internal sponsors.  The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
+        Get internalSponsors from identityGovernance
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -200,7 +200,7 @@ class InternalSponsorsRequestBuilder():
     @dataclass
     class InternalSponsorsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of a connectedOrganization's internal sponsors.  The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
+        Get internalSponsors from identityGovernance
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

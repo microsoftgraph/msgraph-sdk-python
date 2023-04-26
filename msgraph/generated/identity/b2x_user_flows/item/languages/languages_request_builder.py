@@ -54,7 +54,7 @@ class LanguagesRequestBuilder():
     
     async def get(self,request_configuration: Optional[LanguagesRequestBuilderGetRequestConfiguration] = None) -> Optional[user_flow_language_configuration_collection_response.UserFlowLanguageConfigurationCollectionResponse]:
         """
-        Retrieve a list of languages supported for customization in a B2X user flow.
+        The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You cannot create custom languages in self-service sign-up user flows.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user_flow_language_configuration_collection_response.UserFlowLanguageConfigurationCollectionResponse]
@@ -101,7 +101,7 @@ class LanguagesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[LanguagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of languages supported for customization in a B2X user flow.
+        The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You cannot create custom languages in self-service sign-up user flows.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class LanguagesRequestBuilder():
     @dataclass
     class LanguagesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of languages supported for customization in a B2X user flow.
+        The languages supported for customization within the user flow. Language customization is enabled by default in self-service sign-up user flow. You cannot create custom languages in self-service sign-up user flows.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

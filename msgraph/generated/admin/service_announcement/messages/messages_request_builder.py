@@ -60,7 +60,7 @@ class MessagesRequestBuilder():
     
     async def get(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[service_update_message_collection_response.ServiceUpdateMessageCollectionResponse]:
         """
-        Retrieve the serviceUpdateMessage resources from the **messages** navigation property. This operation retrieves all service update messages that exist for the tenant.
+        A collection of service messages for tenant. This property is a contained navigation property, it is nullable and readonly.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[service_update_message_collection_response.ServiceUpdateMessageCollectionResponse]
@@ -107,7 +107,7 @@ class MessagesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the serviceUpdateMessage resources from the **messages** navigation property. This operation retrieves all service update messages that exist for the tenant.
+        A collection of service messages for tenant. This property is a contained navigation property, it is nullable and readonly.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -210,7 +210,7 @@ class MessagesRequestBuilder():
     @dataclass
     class MessagesRequestBuilderGetQueryParameters():
         """
-        Retrieve the serviceUpdateMessage resources from the **messages** navigation property. This operation retrieves all service update messages that exist for the tenant.
+        A collection of service messages for tenant. This property is a contained navigation property, it is nullable and readonly.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

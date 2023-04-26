@@ -54,7 +54,7 @@ class SubmissionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[SubmissionsRequestBuilderGetRequestConfiguration] = None) -> Optional[education_submission_collection_response.EducationSubmissionCollectionResponse]:
         """
-        List all the submissions associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation. A teacher or an application with application permissions can get all the submissions while a student can only get submissions that they are associated with.
+        Once published, there is a submission object for each student representing their work and grade.  Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_submission_collection_response.EducationSubmissionCollectionResponse]
@@ -101,7 +101,7 @@ class SubmissionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SubmissionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List all the submissions associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation. A teacher or an application with application permissions can get all the submissions while a student can only get submissions that they are associated with.
+        Once published, there is a submission object for each student representing their work and grade.  Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class SubmissionsRequestBuilder():
     @dataclass
     class SubmissionsRequestBuilderGetQueryParameters():
         """
-        List all the submissions associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation. A teacher or an application with application permissions can get all the submissions while a student can only get submissions that they are associated with.
+        Once published, there is a submission object for each student representing their work and grade.  Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

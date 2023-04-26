@@ -36,7 +36,7 @@ class SecurityCloseRequestBuilder():
     
     async def post(self,request_configuration: Optional[SecurityCloseRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Close an eDiscovery case. For details, see Close a case.
+        Invoke action close
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class SecurityCloseRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[SecurityCloseRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Close an eDiscovery case. For details, see Close a case.
+        Invoke action close
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

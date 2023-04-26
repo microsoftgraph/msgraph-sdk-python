@@ -54,7 +54,7 @@ class MonthlyPrintUsageByPrinterRequestBuilder():
     
     async def get(self,request_configuration: Optional[MonthlyPrintUsageByPrinterRequestBuilderGetRequestConfiguration] = None) -> Optional[print_usage_by_printer_collection_response.PrintUsageByPrinterCollectionResponse]:
         """
-        Retrieve a list of monthly print usage summaries, grouped by printer.
+        Get monthlyPrintUsageByPrinter from reports
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_usage_by_printer_collection_response.PrintUsageByPrinterCollectionResponse]
@@ -101,7 +101,7 @@ class MonthlyPrintUsageByPrinterRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MonthlyPrintUsageByPrinterRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of monthly print usage summaries, grouped by printer.
+        Get monthlyPrintUsageByPrinter from reports
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class MonthlyPrintUsageByPrinterRequestBuilder():
     @dataclass
     class MonthlyPrintUsageByPrinterRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of monthly print usage summaries, grouped by printer.
+        Get monthlyPrintUsageByPrinter from reports
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

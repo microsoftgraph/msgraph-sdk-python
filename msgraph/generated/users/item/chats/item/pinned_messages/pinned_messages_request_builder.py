@@ -54,7 +54,7 @@ class PinnedMessagesRequestBuilder():
     
     async def get(self,request_configuration: Optional[PinnedMessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[pinned_chat_message_info_collection_response.PinnedChatMessageInfoCollectionResponse]:
         """
-        Get a list of pinnedChatMessages in a chat.
+        A collection of all the pinned messages in the chat. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[pinned_chat_message_info_collection_response.PinnedChatMessageInfoCollectionResponse]
@@ -76,7 +76,7 @@ class PinnedMessagesRequestBuilder():
     
     async def post(self,body: Optional[pinned_chat_message_info.PinnedChatMessageInfo] = None, request_configuration: Optional[PinnedMessagesRequestBuilderPostRequestConfiguration] = None) -> Optional[pinned_chat_message_info.PinnedChatMessageInfo]:
         """
-        Pin a chat message in the specified chat. This API cannot create a new chat; you must use the list chats method to retrieve the ID of an existing chat before you can pin a chat message.
+        Create new navigation property to pinnedMessages for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class PinnedMessagesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PinnedMessagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of pinnedChatMessages in a chat.
+        A collection of all the pinned messages in the chat. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class PinnedMessagesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[pinned_chat_message_info.PinnedChatMessageInfo] = None, request_configuration: Optional[PinnedMessagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Pin a chat message in the specified chat. This API cannot create a new chat; you must use the list chats method to retrieve the ID of an existing chat before you can pin a chat message.
+        Create new navigation property to pinnedMessages for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class PinnedMessagesRequestBuilder():
     @dataclass
     class PinnedMessagesRequestBuilderGetQueryParameters():
         """
-        Get a list of pinnedChatMessages in a chat.
+        A collection of all the pinned messages in the chat. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

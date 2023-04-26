@@ -54,7 +54,7 @@ class PermissionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[PermissionsRequestBuilderGetRequestConfiguration] = None) -> Optional[permission_collection_response.PermissionCollectionResponse]:
         """
-        List the effective sharing permissions on a driveItem.
+        The set of permissions for the item. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[permission_collection_response.PermissionCollectionResponse]
@@ -101,7 +101,7 @@ class PermissionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PermissionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List the effective sharing permissions on a driveItem.
+        The set of permissions for the item. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class PermissionsRequestBuilder():
     @dataclass
     class PermissionsRequestBuilderGetQueryParameters():
         """
-        List the effective sharing permissions on a driveItem.
+        The set of permissions for the item. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

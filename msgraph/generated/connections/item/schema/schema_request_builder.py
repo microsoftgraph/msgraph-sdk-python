@@ -56,7 +56,7 @@ class SchemaRequestBuilder():
     
     async def get(self,request_configuration: Optional[SchemaRequestBuilderGetRequestConfiguration] = None) -> Optional[schema.Schema]:
         """
-        Read the properties and relationships of a schema object.
+        Get schema from connections
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[schema.Schema]
@@ -119,7 +119,7 @@ class SchemaRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SchemaRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties and relationships of a schema object.
+        Get schema from connections
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class SchemaRequestBuilder():
     @dataclass
     class SchemaRequestBuilderGetQueryParameters():
         """
-        Read the properties and relationships of a schema object.
+        Get schema from connections
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

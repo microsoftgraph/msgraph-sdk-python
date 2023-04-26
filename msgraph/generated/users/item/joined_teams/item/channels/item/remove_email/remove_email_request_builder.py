@@ -36,7 +36,7 @@ class RemoveEmailRequestBuilder():
     
     async def post(self,request_configuration: Optional[RemoveEmailRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Remove the email address of a channel. You can remove an email address only if it was provisioned using the provisionEmail method or through the Microsoft Teams client.
+        Invoke action removeEmail
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class RemoveEmailRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[RemoveEmailRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove the email address of a channel. You can remove an email address only if it was provisioned using the provisionEmail method or through the Microsoft Teams client.
+        Invoke action removeEmail
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

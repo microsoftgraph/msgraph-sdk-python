@@ -55,7 +55,7 @@ class UsersRequestBuilder():
     
     async def get(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> Optional[education_user_collection_response.EducationUserCollectionResponse]:
         """
-        Get the educationUser resources associated with an educationSchool.
+        Users in the school. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_user_collection_response.EducationUserCollectionResponse]
@@ -77,7 +77,7 @@ class UsersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[UsersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the educationUser resources associated with an educationSchool.
+        Users in the school. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class UsersRequestBuilder():
     @dataclass
     class UsersRequestBuilderGetQueryParameters():
         """
-        Get the educationUser resources associated with an educationSchool.
+        Users in the school. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

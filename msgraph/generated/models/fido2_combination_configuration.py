@@ -14,13 +14,13 @@ class Fido2CombinationConfiguration(authentication_combination_configuration.Aut
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.fido2CombinationConfiguration"
-        # The allowedAAGUIDs property
+        # A list of AAGUIDs allowed to be used as part of the specified authentication method combinations.
         self._allowed_a_a_g_u_i_ds: Optional[List[str]] = None
     
     @property
     def allowed_a_a_g_u_i_ds(self,) -> Optional[List[str]]:
         """
-        Gets the allowedAAGUIDs property value. The allowedAAGUIDs property
+        Gets the allowedAAGUIDs property value. A list of AAGUIDs allowed to be used as part of the specified authentication method combinations.
         Returns: Optional[List[str]]
         """
         return self._allowed_a_a_g_u_i_ds
@@ -28,7 +28,7 @@ class Fido2CombinationConfiguration(authentication_combination_configuration.Aut
     @allowed_a_a_g_u_i_ds.setter
     def allowed_a_a_g_u_i_ds(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the allowedAAGUIDs property value. The allowedAAGUIDs property
+        Sets the allowedAAGUIDs property value. A list of AAGUIDs allowed to be used as part of the specified authentication method combinations.
         Args:
             value: Value to set for the allowed_a_a_g_u_i_ds property.
         """

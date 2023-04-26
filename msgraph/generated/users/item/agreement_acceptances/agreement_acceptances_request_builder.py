@@ -54,7 +54,7 @@ class AgreementAcceptancesRequestBuilder():
     
     async def get(self,request_configuration: Optional[AgreementAcceptancesRequestBuilderGetRequestConfiguration] = None) -> Optional[agreement_acceptance_collection_response.AgreementAcceptanceCollectionResponse]:
         """
-        Retrieve the signed-in user's agreementAcceptance objects.
+        The user's terms of use acceptance statuses. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[agreement_acceptance_collection_response.AgreementAcceptanceCollectionResponse]
@@ -76,7 +76,7 @@ class AgreementAcceptancesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AgreementAcceptancesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the signed-in user's agreementAcceptance objects.
+        The user's terms of use acceptance statuses. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class AgreementAcceptancesRequestBuilder():
     @dataclass
     class AgreementAcceptancesRequestBuilderGetQueryParameters():
         """
-        Retrieve the signed-in user's agreementAcceptance objects.
+        The user's terms of use acceptance statuses. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

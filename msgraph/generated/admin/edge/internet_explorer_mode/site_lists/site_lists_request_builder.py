@@ -54,7 +54,7 @@ class SiteListsRequestBuilder():
     
     async def get(self,request_configuration: Optional[SiteListsRequestBuilderGetRequestConfiguration] = None) -> Optional[browser_site_list_collection_response.BrowserSiteListCollectionResponse]:
         """
-        Get a list of the browserSiteList objects and their properties.
+        A collection of site lists to support Internet Explorer mode.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[browser_site_list_collection_response.BrowserSiteListCollectionResponse]
@@ -76,7 +76,7 @@ class SiteListsRequestBuilder():
     
     async def post(self,body: Optional[browser_site_list.BrowserSiteList] = None, request_configuration: Optional[SiteListsRequestBuilderPostRequestConfiguration] = None) -> Optional[browser_site_list.BrowserSiteList]:
         """
-        Create a new browserSiteList object to support Internet Explorer mode.
+        Create new navigation property to siteLists for admin
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class SiteListsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SiteListsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the browserSiteList objects and their properties.
+        A collection of site lists to support Internet Explorer mode.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class SiteListsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[browser_site_list.BrowserSiteList] = None, request_configuration: Optional[SiteListsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new browserSiteList object to support Internet Explorer mode.
+        Create new navigation property to siteLists for admin
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class SiteListsRequestBuilder():
     @dataclass
     class SiteListsRequestBuilderGetQueryParameters():
         """
-        Get a list of the browserSiteList objects and their properties.
+        A collection of site lists to support Internet Explorer mode.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

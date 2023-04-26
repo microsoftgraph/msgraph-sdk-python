@@ -54,7 +54,7 @@ class AuthenticationStrengthPoliciesRequestBuilder():
     
     async def get(self,request_configuration: Optional[AuthenticationStrengthPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_strength_policy_collection_response.AuthenticationStrengthPolicyCollectionResponse]:
         """
-        Get authenticationStrengthPolicies from policies
+        The authentication method combinations that are to be used in scenarios defined by Azure AD Conditional Access.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authentication_strength_policy_collection_response.AuthenticationStrengthPolicyCollectionResponse]
@@ -101,7 +101,7 @@ class AuthenticationStrengthPoliciesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationStrengthPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get authenticationStrengthPolicies from policies
+        The authentication method combinations that are to be used in scenarios defined by Azure AD Conditional Access.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class AuthenticationStrengthPoliciesRequestBuilder():
     @dataclass
     class AuthenticationStrengthPoliciesRequestBuilderGetQueryParameters():
         """
-        Get authenticationStrengthPolicies from policies
+        The authentication method combinations that are to be used in scenarios defined by Azure AD Conditional Access.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

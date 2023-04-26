@@ -56,7 +56,7 @@ class SettingsRequestBuilder():
     
     async def get(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[entitlement_management_settings.EntitlementManagementSettings]:
         """
-        Retrieve the properties of an entitlementManagementSettings object.
+        The settings that control the behavior of Azure AD entitlement management.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[entitlement_management_settings.EntitlementManagementSettings]
@@ -78,7 +78,7 @@ class SettingsRequestBuilder():
     
     async def patch(self,body: Optional[entitlement_management_settings.EntitlementManagementSettings] = None, request_configuration: Optional[SettingsRequestBuilderPatchRequestConfiguration] = None) -> Optional[entitlement_management_settings.EntitlementManagementSettings]:
         """
-        Update an existing entitlementManagementSettings object to change one or more of its properties.
+        Update the navigation property settings in identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class SettingsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties of an entitlementManagementSettings object.
+        The settings that control the behavior of Azure AD entitlement management.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class SettingsRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[entitlement_management_settings.EntitlementManagementSettings] = None, request_configuration: Optional[SettingsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update an existing entitlementManagementSettings object to change one or more of its properties.
+        Update the navigation property settings in identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class SettingsRequestBuilder():
     @dataclass
     class SettingsRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties of an entitlementManagementSettings object.
+        The settings that control the behavior of Azure AD entitlement management.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

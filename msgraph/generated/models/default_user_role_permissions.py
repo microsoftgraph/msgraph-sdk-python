@@ -14,7 +14,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         self._allowed_to_create_apps: Optional[bool] = None
         # Indicates whether the default user role can create security groups.
         self._allowed_to_create_security_groups: Optional[bool] = None
-        # The allowedToReadBitlockerKeysForOwnedDevice property
+        # Indicates whether the registered owners of a device can read their own BitLocker recovery keys with default user role.
         self._allowed_to_read_bitlocker_keys_for_owned_device: Optional[bool] = None
         # Indicates whether the default user role can read other users.
         self._allowed_to_read_other_users: Optional[bool] = None
@@ -77,7 +77,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
     @property
     def allowed_to_read_bitlocker_keys_for_owned_device(self,) -> Optional[bool]:
         """
-        Gets the allowedToReadBitlockerKeysForOwnedDevice property value. The allowedToReadBitlockerKeysForOwnedDevice property
+        Gets the allowedToReadBitlockerKeysForOwnedDevice property value. Indicates whether the registered owners of a device can read their own BitLocker recovery keys with default user role.
         Returns: Optional[bool]
         """
         return self._allowed_to_read_bitlocker_keys_for_owned_device
@@ -85,7 +85,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
     @allowed_to_read_bitlocker_keys_for_owned_device.setter
     def allowed_to_read_bitlocker_keys_for_owned_device(self,value: Optional[bool] = None) -> None:
         """
-        Sets the allowedToReadBitlockerKeysForOwnedDevice property value. The allowedToReadBitlockerKeysForOwnedDevice property
+        Sets the allowedToReadBitlockerKeysForOwnedDevice property value. Indicates whether the registered owners of a device can read their own BitLocker recovery keys with default user role.
         Args:
             value: Value to set for the allowed_to_read_bitlocker_keys_for_owned_device property.
         """

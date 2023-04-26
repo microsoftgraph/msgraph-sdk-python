@@ -54,7 +54,7 @@ class SubjectRightsRequestsRequestBuilder():
     
     async def get(self,request_configuration: Optional[SubjectRightsRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[subject_rights_request_collection_response.SubjectRightsRequestCollectionResponse]:
         """
-        Get a list of subjectRightsRequest objects and their properties.
+        Get subjectRightsRequests from privacy
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[subject_rights_request_collection_response.SubjectRightsRequestCollectionResponse]
@@ -76,7 +76,7 @@ class SubjectRightsRequestsRequestBuilder():
     
     async def post(self,body: Optional[subject_rights_request.SubjectRightsRequest] = None, request_configuration: Optional[SubjectRightsRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[subject_rights_request.SubjectRightsRequest]:
         """
-        Create a new subjectRightsRequest object.
+        Create new navigation property to subjectRightsRequests for privacy
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class SubjectRightsRequestsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SubjectRightsRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of subjectRightsRequest objects and their properties.
+        Get subjectRightsRequests from privacy
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class SubjectRightsRequestsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[subject_rights_request.SubjectRightsRequest] = None, request_configuration: Optional[SubjectRightsRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new subjectRightsRequest object.
+        Create new navigation property to subjectRightsRequests for privacy
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class SubjectRightsRequestsRequestBuilder():
     @dataclass
     class SubjectRightsRequestsRequestBuilderGetQueryParameters():
         """
-        Get a list of subjectRightsRequest objects and their properties.
+        Get subjectRightsRequests from privacy
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -37,7 +37,7 @@ class DriveRequestBuilder():
     
     async def get(self,request_configuration: Optional[DriveRequestBuilderGetRequestConfiguration] = None) -> Optional[drive.Drive]:
         """
-        Retrieve the properties and relationships of a Drive resource. A Drive is the top-level container for a file system, such as OneDrive or SharePoint document libraries.
+        The user's OneDrive. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[drive.Drive]
@@ -59,7 +59,7 @@ class DriveRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DriveRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a Drive resource. A Drive is the top-level container for a file system, such as OneDrive or SharePoint document libraries.
+        The user's OneDrive. Read-only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -78,7 +78,7 @@ class DriveRequestBuilder():
     @dataclass
     class DriveRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a Drive resource. A Drive is the top-level container for a file system, such as OneDrive or SharePoint document libraries.
+        The user's OneDrive. Read-only.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

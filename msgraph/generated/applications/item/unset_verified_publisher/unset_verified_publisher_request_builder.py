@@ -36,7 +36,7 @@ class UnsetVerifiedPublisherRequestBuilder():
     
     async def post(self,request_configuration: Optional[UnsetVerifiedPublisherRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Unset the verifiedPublisher previously set on an application, removing all verified publisher properties. For more information, see Publisher verification.
+        Invoke action unsetVerifiedPublisher
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class UnsetVerifiedPublisherRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[UnsetVerifiedPublisherRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Unset the verifiedPublisher previously set on an application, removing all verified publisher properties. For more information, see Publisher verification.
+        Invoke action unsetVerifiedPublisher
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

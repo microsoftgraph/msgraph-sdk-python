@@ -56,7 +56,7 @@ class ProgressTaskBoardFormatRequestBuilder():
     
     async def get(self,request_configuration: Optional[ProgressTaskBoardFormatRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_progress_task_board_task_format.PlannerProgressTaskBoardTaskFormat]:
         """
-        Retrieve the properties and relationships of **plannerProgressTaskBoardTaskFormat** object.
+        Read-only. Nullable. Used to render the task correctly in the task board view when grouped by progress.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[planner_progress_task_board_task_format.PlannerProgressTaskBoardTaskFormat]
@@ -119,7 +119,7 @@ class ProgressTaskBoardFormatRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ProgressTaskBoardFormatRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of **plannerProgressTaskBoardTaskFormat** object.
+        Read-only. Nullable. Used to render the task correctly in the task board view when grouped by progress.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class ProgressTaskBoardFormatRequestBuilder():
     @dataclass
     class ProgressTaskBoardFormatRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of **plannerProgressTaskBoardTaskFormat** object.
+        Read-only. Nullable. Used to render the task correctly in the task board view when grouped by progress.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

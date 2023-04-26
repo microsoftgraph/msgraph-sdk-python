@@ -54,7 +54,7 @@ class TabsRequestBuilder():
     
     async def get(self,request_configuration: Optional[TabsRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_tab_collection_response.TeamsTabCollectionResponse]:
         """
-        Retrieve the list of tabs in the specified chat.
+        A collection of all the tabs in the chat. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[teams_tab_collection_response.TeamsTabCollectionResponse]
@@ -76,7 +76,7 @@ class TabsRequestBuilder():
     
     async def post(self,body: Optional[teams_tab.TeamsTab] = None, request_configuration: Optional[TabsRequestBuilderPostRequestConfiguration] = None) -> Optional[teams_tab.TeamsTab]:
         """
-        Add (pin) a tab to the specified chat. The corresponding app must already be installed in the chat.
+        Create new navigation property to tabs for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class TabsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TabsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the list of tabs in the specified chat.
+        A collection of all the tabs in the chat. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class TabsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[teams_tab.TeamsTab] = None, request_configuration: Optional[TabsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add (pin) a tab to the specified chat. The corresponding app must already be installed in the chat.
+        Create new navigation property to tabs for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class TabsRequestBuilder():
     @dataclass
     class TabsRequestBuilderGetQueryParameters():
         """
-        Retrieve the list of tabs in the specified chat.
+        A collection of all the tabs in the chat. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

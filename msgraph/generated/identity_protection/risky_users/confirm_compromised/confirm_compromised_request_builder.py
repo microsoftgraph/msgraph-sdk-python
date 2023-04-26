@@ -37,7 +37,7 @@ class ConfirmCompromisedRequestBuilder():
     
     async def post(self,body: Optional[confirm_compromised_post_request_body.ConfirmCompromisedPostRequestBody] = None, request_configuration: Optional[ConfirmCompromisedRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Confirm one or more riskyUser objects as compromised. This action sets the targeted user's risk level to high.
+        Invoke action confirmCompromised
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class ConfirmCompromisedRequestBuilder():
     
     def to_post_request_information(self,body: Optional[confirm_compromised_post_request_body.ConfirmCompromisedPostRequestBody] = None, request_configuration: Optional[ConfirmCompromisedRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Confirm one or more riskyUser objects as compromised. This action sets the targeted user's risk level to high.
+        Invoke action confirmCompromised
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

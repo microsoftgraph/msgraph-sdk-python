@@ -68,7 +68,7 @@ class DefinitionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[DefinitionsRequestBuilderGetRequestConfiguration] = None) -> Optional[access_review_schedule_definition_collection_response.AccessReviewScheduleDefinitionCollectionResponse]:
         """
-        Get a list of the accessReviewScheduleDefinition objects and their properties.
+        Represents the template and scheduling for an access review.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_review_schedule_definition_collection_response.AccessReviewScheduleDefinitionCollectionResponse]
@@ -90,7 +90,7 @@ class DefinitionsRequestBuilder():
     
     async def post(self,body: Optional[access_review_schedule_definition.AccessReviewScheduleDefinition] = None, request_configuration: Optional[DefinitionsRequestBuilderPostRequestConfiguration] = None) -> Optional[access_review_schedule_definition.AccessReviewScheduleDefinition]:
         """
-        Create a new accessReviewScheduleDefinition object.
+        Create new navigation property to definitions for identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -115,7 +115,7 @@ class DefinitionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DefinitionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the accessReviewScheduleDefinition objects and their properties.
+        Represents the template and scheduling for an access review.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -133,7 +133,7 @@ class DefinitionsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[access_review_schedule_definition.AccessReviewScheduleDefinition] = None, request_configuration: Optional[DefinitionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new accessReviewScheduleDefinition object.
+        Create new navigation property to definitions for identityGovernance
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -164,7 +164,7 @@ class DefinitionsRequestBuilder():
     @dataclass
     class DefinitionsRequestBuilderGetQueryParameters():
         """
-        Get a list of the accessReviewScheduleDefinition objects and their properties.
+        Represents the template and scheduling for an access review.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -76,7 +76,7 @@ class AppRoleAssignmentsRequestBuilder():
     
     async def post(self,body: Optional[app_role_assignment.AppRoleAssignment] = None, request_configuration: Optional[AppRoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[app_role_assignment.AppRoleAssignment]:
         """
-        Use this API to assign an app role to a user. To grant an app role assignment to a user, you need three identifiers:
+        Create new navigation property to appRoleAssignments for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class AppRoleAssignmentsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[app_role_assignment.AppRoleAssignment] = None, request_configuration: Optional[AppRoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Use this API to assign an app role to a user. To grant an app role assignment to a user, you need three identifiers:
+        Create new navigation property to appRoleAssignments for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

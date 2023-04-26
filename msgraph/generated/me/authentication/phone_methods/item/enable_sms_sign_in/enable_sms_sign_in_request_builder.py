@@ -36,7 +36,7 @@ class EnableSmsSignInRequestBuilder():
     
     async def post(self,request_configuration: Optional[EnableSmsSignInRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Enable SMS sign-in for an existing `mobile` phone number registered to a user. To be successfully enabled:
+        Invoke action enableSmsSignIn
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class EnableSmsSignInRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[EnableSmsSignInRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Enable SMS sign-in for an existing `mobile` phone number registered to a user. To be successfully enabled:
+        Invoke action enableSmsSignIn
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

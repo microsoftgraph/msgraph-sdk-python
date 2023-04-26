@@ -10,7 +10,7 @@ from . import identity
 class EmailIdentity(identity.Identity):
     def __init__(self,) -> None:
         """
-        Instantiates a new emailIdentity and sets the default values.
+        Instantiates a new EmailIdentity and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.emailIdentity"

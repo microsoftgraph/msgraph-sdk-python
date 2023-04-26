@@ -37,7 +37,7 @@ class GetMemberObjectsRequestBuilder():
     
     async def post(self,body: Optional[get_member_objects_post_request_body.GetMemberObjectsPostRequestBody] = None, request_configuration: Optional[GetMemberObjectsRequestBuilderPostRequestConfiguration] = None) -> Optional[get_member_objects_response.GetMemberObjectsResponse]:
         """
-        Return all IDs for the groups, administrative units, and directory roles that a user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. **Note:** Only users and role-enabled groups can be members of directory roles.
+        Invoke action getMemberObjects
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -62,7 +62,7 @@ class GetMemberObjectsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[get_member_objects_post_request_body.GetMemberObjectsPostRequestBody] = None, request_configuration: Optional[GetMemberObjectsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Return all IDs for the groups, administrative units, and directory roles that a user, group, service principal, organizational contact, device, or directory object is a member of. This function is transitive. **Note:** Only users and role-enabled groups can be members of directory roles.
+        Invoke action getMemberObjects
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -55,7 +55,7 @@ class AllowedUsersRequestBuilder():
     
     async def get(self,request_configuration: Optional[AllowedUsersRequestBuilderGetRequestConfiguration] = None) -> Optional[user_collection_response.UserCollectionResponse]:
         """
-        Retrieve a list of users who have been granted access to submit print jobs to the associated printerShare.
+        The users who have access to print using the printer.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user_collection_response.UserCollectionResponse]
@@ -77,7 +77,7 @@ class AllowedUsersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AllowedUsersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of users who have been granted access to submit print jobs to the associated printerShare.
+        The users who have access to print using the printer.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class AllowedUsersRequestBuilder():
     @dataclass
     class AllowedUsersRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of users who have been granted access to submit print jobs to the associated printerShare.
+        The users who have access to print using the printer.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

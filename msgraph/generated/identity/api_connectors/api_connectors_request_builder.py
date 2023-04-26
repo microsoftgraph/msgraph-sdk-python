@@ -54,7 +54,7 @@ class ApiConnectorsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ApiConnectorsRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_api_connector_collection_response.IdentityApiConnectorCollectionResponse]:
         """
-        Read the properties of an identityApiConnector object.
+        Represents entry point for API connectors.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[identity_api_connector_collection_response.IdentityApiConnectorCollectionResponse]
@@ -76,7 +76,7 @@ class ApiConnectorsRequestBuilder():
     
     async def post(self,body: Optional[identity_api_connector.IdentityApiConnector] = None, request_configuration: Optional[ApiConnectorsRequestBuilderPostRequestConfiguration] = None) -> Optional[identity_api_connector.IdentityApiConnector]:
         """
-        Create a new identityApiConnector object.
+        Create new navigation property to apiConnectors for identity
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ApiConnectorsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ApiConnectorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read the properties of an identityApiConnector object.
+        Represents entry point for API connectors.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ApiConnectorsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[identity_api_connector.IdentityApiConnector] = None, request_configuration: Optional[ApiConnectorsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new identityApiConnector object.
+        Create new navigation property to apiConnectors for identity
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class ApiConnectorsRequestBuilder():
     @dataclass
     class ApiConnectorsRequestBuilderGetQueryParameters():
         """
-        Read the properties of an identityApiConnector object.
+        Represents entry point for API connectors.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -54,7 +54,7 @@ class ServicesRequestBuilder():
     
     async def get(self,request_configuration: Optional[ServicesRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_service_collection_response.BookingServiceCollectionResponse]:
         """
-        Get a list of bookingService objects in the specified bookingBusiness.
+        All the services offered by this business. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[booking_service_collection_response.BookingServiceCollectionResponse]
@@ -76,7 +76,7 @@ class ServicesRequestBuilder():
     
     async def post(self,body: Optional[booking_service.BookingService] = None, request_configuration: Optional[ServicesRequestBuilderPostRequestConfiguration] = None) -> Optional[booking_service.BookingService]:
         """
-        Create a new bookingService for the specified bookingBusiness.
+        Create new navigation property to services for solutions
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ServicesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ServicesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of bookingService objects in the specified bookingBusiness.
+        All the services offered by this business. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ServicesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[booking_service.BookingService] = None, request_configuration: Optional[ServicesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new bookingService for the specified bookingBusiness.
+        Create new navigation property to services for solutions
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class ServicesRequestBuilder():
     @dataclass
     class ServicesRequestBuilderGetQueryParameters():
         """
-        Get a list of bookingService objects in the specified bookingBusiness.
+        All the services offered by this business. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

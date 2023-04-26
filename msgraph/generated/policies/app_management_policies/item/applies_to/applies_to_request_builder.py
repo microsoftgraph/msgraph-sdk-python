@@ -54,7 +54,7 @@ class AppliesToRequestBuilder():
     
     async def get(self,request_configuration: Optional[AppliesToRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
         """
-        List application and service principal objects that are assigned an appManagementPolicy policy object.
+        Collection of applications and service principals to which the policy is applied.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]
@@ -76,7 +76,7 @@ class AppliesToRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AppliesToRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List application and service principal objects that are assigned an appManagementPolicy policy object.
+        Collection of applications and service principals to which the policy is applied.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class AppliesToRequestBuilder():
     @dataclass
     class AppliesToRequestBuilderGetQueryParameters():
         """
-        List application and service principal objects that are assigned an appManagementPolicy policy object.
+        Collection of applications and service principals to which the policy is applied.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

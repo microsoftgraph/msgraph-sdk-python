@@ -55,7 +55,7 @@ class ContactsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ContactsRequestBuilderGetRequestConfiguration] = None) -> Optional[contact_collection_response.ContactCollectionResponse]:
         """
-        Get a contact collection from the default Contacts folder of the signed-in user (`.../me/contacts`), or from the specified contact folder.
+        The contacts in the folder. Navigation property. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[contact_collection_response.ContactCollectionResponse]
@@ -77,7 +77,7 @@ class ContactsRequestBuilder():
     
     async def post(self,body: Optional[contact.Contact] = None, request_configuration: Optional[ContactsRequestBuilderPostRequestConfiguration] = None) -> Optional[contact.Contact]:
         """
-        Add a contact to the root Contacts folder or to the `contacts` endpoint of another contact folder.
+        Create new navigation property to contacts for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class ContactsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ContactsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a contact collection from the default Contacts folder of the signed-in user (`.../me/contacts`), or from the specified contact folder.
+        The contacts in the folder. Navigation property. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class ContactsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[contact.Contact] = None, request_configuration: Optional[ContactsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Add a contact to the root Contacts folder or to the `contacts` endpoint of another contact folder.
+        Create new navigation property to contacts for users
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class ContactsRequestBuilder():
     @dataclass
     class ContactsRequestBuilderGetQueryParameters():
         """
-        Get a contact collection from the default Contacts folder of the signed-in user (`.../me/contacts`), or from the specified contact folder.
+        The contacts in the folder. Navigation property. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

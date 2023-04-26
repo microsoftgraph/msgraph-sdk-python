@@ -37,7 +37,7 @@ class DismissRequestBuilder():
     
     async def post(self,body: Optional[dismiss_post_request_body.DismissPostRequestBody] = None, request_configuration: Optional[DismissRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Dismiss the risk of one or more riskyUser objects. This action sets the targeted user's risk level to none.
+        Invoke action dismiss
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class DismissRequestBuilder():
     
     def to_post_request_information(self,body: Optional[dismiss_post_request_body.DismissPostRequestBody] = None, request_configuration: Optional[DismissRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Dismiss the risk of one or more riskyUser objects. This action sets the targeted user's risk level to none.
+        Invoke action dismiss
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

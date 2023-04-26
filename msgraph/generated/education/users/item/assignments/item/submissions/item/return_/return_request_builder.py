@@ -37,7 +37,7 @@ class ReturnRequestBuilder():
     
     async def post(self,request_configuration: Optional[ReturnRequestBuilderPostRequestConfiguration] = None) -> Optional[education_submission.EducationSubmission]:
         """
-        Make the grade and feedback associated with this submission available to the student.  This action changes the status of the submission from 'submitted' to 'returned' and indicates that feedback is provided or grading is done. This action can only be done by the teacher.
+        Invoke action return
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_submission.EducationSubmission]
@@ -59,7 +59,7 @@ class ReturnRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[ReturnRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Make the grade and feedback associated with this submission available to the student.  This action changes the status of the submission from 'submitted' to 'returned' and indicates that feedback is provided or grading is done. This action can only be done by the teacher.
+        Invoke action return
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

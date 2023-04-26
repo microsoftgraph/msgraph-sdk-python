@@ -37,7 +37,7 @@ class HeaderRowRangeRequestBuilder():
     
     async def get(self,request_configuration: Optional[HeaderRowRangeRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_range.WorkbookRange]:
         """
-        Gets the range object associated with the header row of the column.
+        Invoke function headerRowRange
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_range.WorkbookRange]
@@ -59,7 +59,7 @@ class HeaderRowRangeRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[HeaderRowRangeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Gets the range object associated with the header row of the column.
+        Invoke function headerRowRange
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

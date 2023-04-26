@@ -55,7 +55,7 @@ class TokenIssuancePoliciesRequestBuilder():
     
     async def get(self,request_configuration: Optional[TokenIssuancePoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[token_issuance_policy_collection_response.TokenIssuancePolicyCollectionResponse]:
         """
-        List the tokenIssuancePolicy objects that are assigned to an application.
+        Get tokenIssuancePolicies from applications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[token_issuance_policy_collection_response.TokenIssuancePolicyCollectionResponse]
@@ -77,7 +77,7 @@ class TokenIssuancePoliciesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TokenIssuancePoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List the tokenIssuancePolicy objects that are assigned to an application.
+        Get tokenIssuancePolicies from applications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class TokenIssuancePoliciesRequestBuilder():
     @dataclass
     class TokenIssuancePoliciesRequestBuilderGetQueryParameters():
         """
-        List the tokenIssuancePolicy objects that are assigned to an application.
+        Get tokenIssuancePolicies from applications
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

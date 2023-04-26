@@ -37,7 +37,7 @@ class RefRequestBuilder():
     
     async def get(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None) -> Optional[string_collection_response.StringCollectionResponse]:
         """
-        Retrieve a list of the group objects that have been marked as incompatible on an accessPackage.  
+        The groups whose members are ineligible to be assigned this access package.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[string_collection_response.StringCollectionResponse]
@@ -81,7 +81,7 @@ class RefRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of the group objects that have been marked as incompatible on an accessPackage.  
+        The groups whose members are ineligible to be assigned this access package.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class RefRequestBuilder():
     @dataclass
     class RefRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of the group objects that have been marked as incompatible on an accessPackage.  
+        The groups whose members are ineligible to be assigned this access package.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

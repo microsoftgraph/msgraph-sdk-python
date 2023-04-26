@@ -37,7 +37,7 @@ class AcceptRequestBuilder():
     
     async def post(self,body: Optional[accept_post_request_body.AcceptPostRequestBody] = None, request_configuration: Optional[AcceptRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Accept the specified event in a user calendar.
+        Invoke action accept
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class AcceptRequestBuilder():
     
     def to_post_request_information(self,body: Optional[accept_post_request_body.AcceptPostRequestBody] = None, request_configuration: Optional[AcceptRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Accept the specified event in a user calendar.
+        Invoke action accept
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

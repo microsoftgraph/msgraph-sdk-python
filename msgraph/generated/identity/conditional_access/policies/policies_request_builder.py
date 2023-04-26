@@ -54,7 +54,7 @@ class PoliciesRequestBuilder():
     
     async def get(self,request_configuration: Optional[PoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[conditional_access_policy_collection_response.ConditionalAccessPolicyCollectionResponse]:
         """
-        Retrieve a list of conditionalAccessPolicy objects.
+        Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conditional_access_policy_collection_response.ConditionalAccessPolicyCollectionResponse]
@@ -76,7 +76,7 @@ class PoliciesRequestBuilder():
     
     async def post(self,body: Optional[conditional_access_policy.ConditionalAccessPolicy] = None, request_configuration: Optional[PoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[conditional_access_policy.ConditionalAccessPolicy]:
         """
-        Create a new conditionalAccessPolicy.
+        Create new navigation property to policies for identity
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class PoliciesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of conditionalAccessPolicy objects.
+        Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class PoliciesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[conditional_access_policy.ConditionalAccessPolicy] = None, request_configuration: Optional[PoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new conditionalAccessPolicy.
+        Create new navigation property to policies for identity
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class PoliciesRequestBuilder():
     @dataclass
     class PoliciesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of conditionalAccessPolicy objects.
+        Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

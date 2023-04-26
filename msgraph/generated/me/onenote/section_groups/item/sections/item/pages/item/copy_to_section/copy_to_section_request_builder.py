@@ -38,7 +38,7 @@ class CopyToSectionRequestBuilder():
     
     async def post(self,body: Optional[copy_to_section_post_request_body.CopyToSectionPostRequestBody] = None, request_configuration: Optional[CopyToSectionRequestBuilderPostRequestConfiguration] = None) -> Optional[onenote_operation.OnenoteOperation]:
         """
-        Copy a page to a specific section. For copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
+        Invoke action copyToSection
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class CopyToSectionRequestBuilder():
     
     def to_post_request_information(self,body: Optional[copy_to_section_post_request_body.CopyToSectionPostRequestBody] = None, request_configuration: Optional[CopyToSectionRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Copy a page to a specific section. For copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
+        Invoke action copyToSection
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

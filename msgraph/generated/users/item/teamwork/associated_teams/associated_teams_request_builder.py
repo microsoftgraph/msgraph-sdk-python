@@ -54,7 +54,7 @@ class AssociatedTeamsRequestBuilder():
     
     async def get(self,request_configuration: Optional[AssociatedTeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[associated_team_info_collection_response.AssociatedTeamInfoCollectionResponse]:
         """
-        Get the list of teams in Microsoft Teams that a user is associated with.Currently, a user can be associated with a team in two different ways:* A user can be a direct member of a team.* A user can be a member of a shared channel that is hosted inside a team.
+        The list of associatedTeamInfo objects that a user is associated with.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[associated_team_info_collection_response.AssociatedTeamInfoCollectionResponse]
@@ -101,7 +101,7 @@ class AssociatedTeamsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AssociatedTeamsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the list of teams in Microsoft Teams that a user is associated with.Currently, a user can be associated with a team in two different ways:* A user can be a direct member of a team.* A user can be a member of a shared channel that is hosted inside a team.
+        The list of associatedTeamInfo objects that a user is associated with.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class AssociatedTeamsRequestBuilder():
     @dataclass
     class AssociatedTeamsRequestBuilderGetQueryParameters():
         """
-        Get the list of teams in Microsoft Teams that a user is associated with.Currently, a user can be associated with a team in two different ways:* A user can be a direct member of a team.* A user can be a member of a shared channel that is hosted inside a team.
+        The list of associatedTeamInfo objects that a user is associated with.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

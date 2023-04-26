@@ -37,7 +37,7 @@ class CancelRequestBuilder():
     
     async def post(self,body: Optional[cancel_post_request_body.CancelPostRequestBody] = None, request_configuration: Optional[CancelRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Cancel the specified bookingAppointment in the specified bookingBusiness and send a message to the involved customer and staff members.
+        Cancels the giving booking appointment, sending a message to the involved parties.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class CancelRequestBuilder():
     
     def to_post_request_information(self,body: Optional[cancel_post_request_body.CancelPostRequestBody] = None, request_configuration: Optional[CancelRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Cancel the specified bookingAppointment in the specified bookingBusiness and send a message to the involved customer and staff members.
+        Cancels the giving booking appointment, sending a message to the involved parties.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

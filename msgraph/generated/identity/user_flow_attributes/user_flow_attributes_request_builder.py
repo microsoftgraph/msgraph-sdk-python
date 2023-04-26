@@ -54,7 +54,7 @@ class UserFlowAttributesRequestBuilder():
     
     async def get(self,request_configuration: Optional[UserFlowAttributesRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_user_flow_attribute_collection_response.IdentityUserFlowAttributeCollectionResponse]:
         """
-        Retrieve a list of identityUserFlowAttribute objects.
+        Represents entry point for identity userflow attributes.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[identity_user_flow_attribute_collection_response.IdentityUserFlowAttributeCollectionResponse]
@@ -76,7 +76,7 @@ class UserFlowAttributesRequestBuilder():
     
     async def post(self,body: Optional[identity_user_flow_attribute.IdentityUserFlowAttribute] = None, request_configuration: Optional[UserFlowAttributesRequestBuilderPostRequestConfiguration] = None) -> Optional[identity_user_flow_attribute.IdentityUserFlowAttribute]:
         """
-        Create a new identityUserFlowAttribute object.
+        Create new navigation property to userFlowAttributes for identity
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class UserFlowAttributesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[UserFlowAttributesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of identityUserFlowAttribute objects.
+        Represents entry point for identity userflow attributes.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class UserFlowAttributesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[identity_user_flow_attribute.IdentityUserFlowAttribute] = None, request_configuration: Optional[UserFlowAttributesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new identityUserFlowAttribute object.
+        Create new navigation property to userFlowAttributes for identity
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class UserFlowAttributesRequestBuilder():
     @dataclass
     class UserFlowAttributesRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of identityUserFlowAttribute objects.
+        Represents entry point for identity userflow attributes.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

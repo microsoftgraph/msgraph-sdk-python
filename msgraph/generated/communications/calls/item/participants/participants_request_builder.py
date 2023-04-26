@@ -55,7 +55,7 @@ class ParticipantsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ParticipantsRequestBuilderGetRequestConfiguration] = None) -> Optional[participant_collection_response.ParticipantCollectionResponse]:
         """
-        Retrieve a list of participant objects in the call.
+        Get participants from communications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[participant_collection_response.ParticipantCollectionResponse]
@@ -102,7 +102,7 @@ class ParticipantsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ParticipantsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of participant objects in the call.
+        Get participants from communications
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -160,7 +160,7 @@ class ParticipantsRequestBuilder():
     @dataclass
     class ParticipantsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of participant objects in the call.
+        Get participants from communications
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

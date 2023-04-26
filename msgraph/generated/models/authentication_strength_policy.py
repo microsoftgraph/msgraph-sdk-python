@@ -14,17 +14,17 @@ class AuthenticationStrengthPolicy(entity.Entity):
         Instantiates a new AuthenticationStrengthPolicy and sets the default values.
         """
         super().__init__()
-        # The allowedCombinations property
+        # A collection of authentication method modes that are required be used to satify this authentication strength.
         self._allowed_combinations: Optional[List[authentication_method_modes.AuthenticationMethodModes]] = None
-        # The combinationConfigurations property
+        # Settings that may be used to require specific types or instances of an authentication method to be used when authenticating with a specified combination of authentication methods.
         self._combination_configurations: Optional[List[authentication_combination_configuration.AuthenticationCombinationConfiguration]] = None
-        # The createdDateTime property
+        # The datetime when this policy was created.
         self._created_date_time: Optional[datetime] = None
-        # The description property
+        # The human-readable description of this policy.
         self._description: Optional[str] = None
-        # The displayName property
+        # The human-readable display name of this policy. Supports $filter (eq, ne, not , and in).
         self._display_name: Optional[str] = None
-        # The modifiedDateTime property
+        # The datetime when this policy was last modified.
         self._modified_date_time: Optional[datetime] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
@@ -36,7 +36,7 @@ class AuthenticationStrengthPolicy(entity.Entity):
     @property
     def allowed_combinations(self,) -> Optional[List[authentication_method_modes.AuthenticationMethodModes]]:
         """
-        Gets the allowedCombinations property value. The allowedCombinations property
+        Gets the allowedCombinations property value. A collection of authentication method modes that are required be used to satify this authentication strength.
         Returns: Optional[List[authentication_method_modes.AuthenticationMethodModes]]
         """
         return self._allowed_combinations
@@ -44,7 +44,7 @@ class AuthenticationStrengthPolicy(entity.Entity):
     @allowed_combinations.setter
     def allowed_combinations(self,value: Optional[List[authentication_method_modes.AuthenticationMethodModes]] = None) -> None:
         """
-        Sets the allowedCombinations property value. The allowedCombinations property
+        Sets the allowedCombinations property value. A collection of authentication method modes that are required be used to satify this authentication strength.
         Args:
             value: Value to set for the allowed_combinations property.
         """
@@ -53,7 +53,7 @@ class AuthenticationStrengthPolicy(entity.Entity):
     @property
     def combination_configurations(self,) -> Optional[List[authentication_combination_configuration.AuthenticationCombinationConfiguration]]:
         """
-        Gets the combinationConfigurations property value. The combinationConfigurations property
+        Gets the combinationConfigurations property value. Settings that may be used to require specific types or instances of an authentication method to be used when authenticating with a specified combination of authentication methods.
         Returns: Optional[List[authentication_combination_configuration.AuthenticationCombinationConfiguration]]
         """
         return self._combination_configurations
@@ -61,7 +61,7 @@ class AuthenticationStrengthPolicy(entity.Entity):
     @combination_configurations.setter
     def combination_configurations(self,value: Optional[List[authentication_combination_configuration.AuthenticationCombinationConfiguration]] = None) -> None:
         """
-        Sets the combinationConfigurations property value. The combinationConfigurations property
+        Sets the combinationConfigurations property value. Settings that may be used to require specific types or instances of an authentication method to be used when authenticating with a specified combination of authentication methods.
         Args:
             value: Value to set for the combination_configurations property.
         """
@@ -70,7 +70,7 @@ class AuthenticationStrengthPolicy(entity.Entity):
     @property
     def created_date_time(self,) -> Optional[datetime]:
         """
-        Gets the createdDateTime property value. The createdDateTime property
+        Gets the createdDateTime property value. The datetime when this policy was created.
         Returns: Optional[datetime]
         """
         return self._created_date_time
@@ -78,7 +78,7 @@ class AuthenticationStrengthPolicy(entity.Entity):
     @created_date_time.setter
     def created_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the createdDateTime property value. The createdDateTime property
+        Sets the createdDateTime property value. The datetime when this policy was created.
         Args:
             value: Value to set for the created_date_time property.
         """
@@ -99,7 +99,7 @@ class AuthenticationStrengthPolicy(entity.Entity):
     @property
     def description(self,) -> Optional[str]:
         """
-        Gets the description property value. The description property
+        Gets the description property value. The human-readable description of this policy.
         Returns: Optional[str]
         """
         return self._description
@@ -107,7 +107,7 @@ class AuthenticationStrengthPolicy(entity.Entity):
     @description.setter
     def description(self,value: Optional[str] = None) -> None:
         """
-        Sets the description property value. The description property
+        Sets the description property value. The human-readable description of this policy.
         Args:
             value: Value to set for the description property.
         """
@@ -116,7 +116,7 @@ class AuthenticationStrengthPolicy(entity.Entity):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The displayName property
+        Gets the displayName property value. The human-readable display name of this policy. Supports $filter (eq, ne, not , and in).
         Returns: Optional[str]
         """
         return self._display_name
@@ -124,7 +124,7 @@ class AuthenticationStrengthPolicy(entity.Entity):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The displayName property
+        Sets the displayName property value. The human-readable display name of this policy. Supports $filter (eq, ne, not , and in).
         Args:
             value: Value to set for the display_name property.
         """
@@ -154,7 +154,7 @@ class AuthenticationStrengthPolicy(entity.Entity):
     @property
     def modified_date_time(self,) -> Optional[datetime]:
         """
-        Gets the modifiedDateTime property value. The modifiedDateTime property
+        Gets the modifiedDateTime property value. The datetime when this policy was last modified.
         Returns: Optional[datetime]
         """
         return self._modified_date_time
@@ -162,7 +162,7 @@ class AuthenticationStrengthPolicy(entity.Entity):
     @modified_date_time.setter
     def modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the modifiedDateTime property value. The modifiedDateTime property
+        Sets the modifiedDateTime property value. The datetime when this policy was last modified.
         Args:
             value: Value to set for the modified_date_time property.
         """

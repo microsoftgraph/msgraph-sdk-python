@@ -3,7 +3,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import administrative_unit, directory_object, entity, identity_provider_base, on_premises_directory_synchronization
+    from . import administrative_unit, attribute_set, custom_security_attribute_definition, directory_object, entity, identity_provider_base, on_premises_directory_synchronization
 
 from . import entity
 
@@ -15,6 +15,10 @@ class Directory(entity.Entity):
         super().__init__()
         # Conceptual container for user and group directory objects.
         self._administrative_units: Optional[List[administrative_unit.AdministrativeUnit]] = None
+        # The attributeSets property
+        self._attribute_sets: Optional[List[attribute_set.AttributeSet]] = None
+        # The customSecurityAttributeDefinitions property
+        self._custom_security_attribute_definitions: Optional[List[custom_security_attribute_definition.CustomSecurityAttributeDefinition]] = None
         # Recently deleted items. Read-only. Nullable.
         self._deleted_items: Optional[List[directory_object.DirectoryObject]] = None
         # Configure domain federation with organizations whose identity provider (IdP) supports either the SAML or WS-Fed protocol.
@@ -41,6 +45,23 @@ class Directory(entity.Entity):
         """
         self._administrative_units = value
     
+    @property
+    def attribute_sets(self,) -> Optional[List[attribute_set.AttributeSet]]:
+        """
+        Gets the attributeSets property value. The attributeSets property
+        Returns: Optional[List[attribute_set.AttributeSet]]
+        """
+        return self._attribute_sets
+    
+    @attribute_sets.setter
+    def attribute_sets(self,value: Optional[List[attribute_set.AttributeSet]] = None) -> None:
+        """
+        Sets the attributeSets property value. The attributeSets property
+        Args:
+            value: Value to set for the attribute_sets property.
+        """
+        self._attribute_sets = value
+    
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Directory:
         """
@@ -52,6 +73,23 @@ class Directory(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Directory()
+    
+    @property
+    def custom_security_attribute_definitions(self,) -> Optional[List[custom_security_attribute_definition.CustomSecurityAttributeDefinition]]:
+        """
+        Gets the customSecurityAttributeDefinitions property value. The customSecurityAttributeDefinitions property
+        Returns: Optional[List[custom_security_attribute_definition.CustomSecurityAttributeDefinition]]
+        """
+        return self._custom_security_attribute_definitions
+    
+    @custom_security_attribute_definitions.setter
+    def custom_security_attribute_definitions(self,value: Optional[List[custom_security_attribute_definition.CustomSecurityAttributeDefinition]] = None) -> None:
+        """
+        Sets the customSecurityAttributeDefinitions property value. The customSecurityAttributeDefinitions property
+        Args:
+            value: Value to set for the custom_security_attribute_definitions property.
+        """
+        self._custom_security_attribute_definitions = value
     
     @property
     def deleted_items(self,) -> Optional[List[directory_object.DirectoryObject]]:
@@ -92,10 +130,12 @@ class Directory(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import administrative_unit, directory_object, entity, identity_provider_base, on_premises_directory_synchronization
+        from . import administrative_unit, attribute_set, custom_security_attribute_definition, directory_object, entity, identity_provider_base, on_premises_directory_synchronization
 
         fields: Dict[str, Callable[[Any], None]] = {
             "administrativeUnits": lambda n : setattr(self, 'administrative_units', n.get_collection_of_object_values(administrative_unit.AdministrativeUnit)),
+            "attributeSets": lambda n : setattr(self, 'attribute_sets', n.get_collection_of_object_values(attribute_set.AttributeSet)),
+            "customSecurityAttributeDefinitions": lambda n : setattr(self, 'custom_security_attribute_definitions', n.get_collection_of_object_values(custom_security_attribute_definition.CustomSecurityAttributeDefinition)),
             "deletedItems": lambda n : setattr(self, 'deleted_items', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "federationConfigurations": lambda n : setattr(self, 'federation_configurations', n.get_collection_of_object_values(identity_provider_base.IdentityProviderBase)),
             "onPremisesSynchronization": lambda n : setattr(self, 'on_premises_synchronization', n.get_collection_of_object_values(on_premises_directory_synchronization.OnPremisesDirectorySynchronization)),
@@ -131,6 +171,8 @@ class Directory(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("administrativeUnits", self.administrative_units)
+        writer.write_collection_of_object_values("attributeSets", self.attribute_sets)
+        writer.write_collection_of_object_values("customSecurityAttributeDefinitions", self.custom_security_attribute_definitions)
         writer.write_collection_of_object_values("deletedItems", self.deleted_items)
         writer.write_collection_of_object_values("federationConfigurations", self.federation_configurations)
         writer.write_collection_of_object_values("onPremisesSynchronization", self.on_premises_synchronization)

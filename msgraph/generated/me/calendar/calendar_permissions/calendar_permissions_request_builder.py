@@ -76,7 +76,7 @@ class CalendarPermissionsRequestBuilder():
     
     async def post(self,body: Optional[calendar_permission.CalendarPermission] = None, request_configuration: Optional[CalendarPermissionsRequestBuilderPostRequestConfiguration] = None) -> Optional[calendar_permission.CalendarPermission]:
         """
-        Create a calendarPermission resource to specify the identity and role of the user with whom the specified calendar is being shared or delegated.
+        Create new navigation property to calendarPermissions for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class CalendarPermissionsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[calendar_permission.CalendarPermission] = None, request_configuration: Optional[CalendarPermissionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a calendarPermission resource to specify the identity and role of the user with whom the specified calendar is being shared or delegated.
+        Create new navigation property to calendarPermissions for me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

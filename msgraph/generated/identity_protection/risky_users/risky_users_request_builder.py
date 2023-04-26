@@ -56,7 +56,7 @@ class RiskyUsersRequestBuilder():
     
     async def get(self,request_configuration: Optional[RiskyUsersRequestBuilderGetRequestConfiguration] = None) -> Optional[risky_user_collection_response.RiskyUserCollectionResponse]:
         """
-        Get a list of the riskyUser objects and their properties.
+        Users that are flagged as at-risk by Azure AD Identity Protection.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[risky_user_collection_response.RiskyUserCollectionResponse]
@@ -103,7 +103,7 @@ class RiskyUsersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RiskyUsersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of the riskyUser objects and their properties.
+        Users that are flagged as at-risk by Azure AD Identity Protection.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -170,7 +170,7 @@ class RiskyUsersRequestBuilder():
     @dataclass
     class RiskyUsersRequestBuilderGetQueryParameters():
         """
-        Get a list of the riskyUser objects and their properties.
+        Users that are flagged as at-risk by Azure AD Identity Protection.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

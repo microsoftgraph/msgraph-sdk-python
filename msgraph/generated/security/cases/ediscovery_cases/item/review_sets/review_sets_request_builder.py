@@ -54,7 +54,7 @@ class ReviewSetsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ReviewSetsRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_review_set_collection_response.EdiscoveryReviewSetCollectionResponse]:
         """
-        Get a list of ediscoveryReviewSet objects associated with an eDiscovery case.
+        Returns a list of eDiscoveryReviewSet objects in the case.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ediscovery_review_set_collection_response.EdiscoveryReviewSetCollectionResponse]
@@ -76,7 +76,7 @@ class ReviewSetsRequestBuilder():
     
     async def post(self,body: Optional[ediscovery_review_set.EdiscoveryReviewSet] = None, request_configuration: Optional[ReviewSetsRequestBuilderPostRequestConfiguration] = None) -> Optional[ediscovery_review_set.EdiscoveryReviewSet]:
         """
-        Create a new ediscoveryReviewSet object.
+        Create new navigation property to reviewSets for security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ReviewSetsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ReviewSetsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of ediscoveryReviewSet objects associated with an eDiscovery case.
+        Returns a list of eDiscoveryReviewSet objects in the case.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ReviewSetsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[ediscovery_review_set.EdiscoveryReviewSet] = None, request_configuration: Optional[ReviewSetsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new ediscoveryReviewSet object.
+        Create new navigation property to reviewSets for security
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class ReviewSetsRequestBuilder():
     @dataclass
     class ReviewSetsRequestBuilderGetQueryParameters():
         """
-        Get a list of ediscoveryReviewSet objects associated with an eDiscovery case.
+        Returns a list of eDiscoveryReviewSet objects in the case.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

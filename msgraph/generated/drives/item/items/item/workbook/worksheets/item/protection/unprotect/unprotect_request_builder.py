@@ -36,7 +36,7 @@ class UnprotectRequestBuilder():
     
     async def post(self,request_configuration: Optional[UnprotectRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Unprotect a worksheet
+        Invoke action unprotect
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class UnprotectRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[UnprotectRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Unprotect a worksheet
+        Invoke action unprotect
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

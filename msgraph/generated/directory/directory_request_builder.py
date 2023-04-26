@@ -13,6 +13,8 @@ if TYPE_CHECKING:
     from ..models import directory
     from ..models.o_data_errors import o_data_error
     from .administrative_units import administrative_units_request_builder
+    from .attribute_sets import attribute_sets_request_builder
+    from .custom_security_attribute_definitions import custom_security_attribute_definitions_request_builder
     from .deleted_items import deleted_items_request_builder
     from .federation_configurations import federation_configurations_request_builder
     from .on_premises_synchronization import on_premises_synchronization_request_builder
@@ -133,6 +135,24 @@ class DirectoryRequestBuilder():
         from .administrative_units import administrative_units_request_builder
 
         return administrative_units_request_builder.AdministrativeUnitsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def attribute_sets(self) -> attribute_sets_request_builder.AttributeSetsRequestBuilder:
+        """
+        Provides operations to manage the attributeSets property of the microsoft.graph.directory entity.
+        """
+        from .attribute_sets import attribute_sets_request_builder
+
+        return attribute_sets_request_builder.AttributeSetsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def custom_security_attribute_definitions(self) -> custom_security_attribute_definitions_request_builder.CustomSecurityAttributeDefinitionsRequestBuilder:
+        """
+        Provides operations to manage the customSecurityAttributeDefinitions property of the microsoft.graph.directory entity.
+        """
+        from .custom_security_attribute_definitions import custom_security_attribute_definitions_request_builder
+
+        return custom_security_attribute_definitions_request_builder.CustomSecurityAttributeDefinitionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def deleted_items(self) -> deleted_items_request_builder.DeletedItemsRequestBuilder:

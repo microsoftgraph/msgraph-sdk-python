@@ -37,7 +37,7 @@ class RemovePasswordRequestBuilder():
     
     async def post(self,body: Optional[remove_password_post_request_body.RemovePasswordPostRequestBody] = None, request_configuration: Optional[RemovePasswordRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Remove a password from a servicePrincipal object.
+        Invoke action removePassword
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class RemovePasswordRequestBuilder():
     
     def to_post_request_information(self,body: Optional[remove_password_post_request_body.RemovePasswordPostRequestBody] = None, request_configuration: Optional[RemovePasswordRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove a password from a servicePrincipal object.
+        Invoke action removePassword
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

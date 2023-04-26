@@ -77,7 +77,7 @@ class CallsRequestBuilder():
     
     async def post(self,body: Optional[call.Call] = None, request_configuration: Optional[CallsRequestBuilderPostRequestConfiguration] = None) -> Optional[call.Call]:
         """
-        Create call enables your bot to create a new outgoing peer-to-peer or group call, or join an existing meeting. You will need to register the calling bot and go through the list of permissions needed as mentioned below.
+        Create new navigation property to calls for communications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -120,7 +120,7 @@ class CallsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[call.Call] = None, request_configuration: Optional[CallsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create call enables your bot to create a new outgoing peer-to-peer or group call, or join an existing meeting. You will need to register the calling bot and go through the list of permissions needed as mentioned below.
+        Create new navigation property to calls for communications
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

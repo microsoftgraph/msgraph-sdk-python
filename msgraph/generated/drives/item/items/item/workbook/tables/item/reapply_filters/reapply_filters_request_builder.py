@@ -36,7 +36,7 @@ class ReapplyFiltersRequestBuilder():
     
     async def post(self,request_configuration: Optional[ReapplyFiltersRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Reapplies all the filters currently on the table.
+        Invoke action reapplyFilters
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class ReapplyFiltersRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[ReapplyFiltersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Reapplies all the filters currently on the table.
+        Invoke action reapplyFilters
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

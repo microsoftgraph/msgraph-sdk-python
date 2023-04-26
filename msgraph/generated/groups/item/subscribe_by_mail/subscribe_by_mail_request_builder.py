@@ -36,7 +36,7 @@ class SubscribeByMailRequestBuilder():
     
     async def post(self,request_configuration: Optional[SubscribeByMailRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Calling this method will enable the current user to receive email notifications for this group, about new posts, events, and files in that group. Supported for Microsoft 365 groups only.
+        Invoke action subscribeByMail
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class SubscribeByMailRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[SubscribeByMailRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Calling this method will enable the current user to receive email notifications for this group, about new posts, events, and files in that group. Supported for Microsoft 365 groups only.
+        Invoke action subscribeByMail
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

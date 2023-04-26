@@ -12,7 +12,7 @@ from . import directory_object
 class Application(directory_object.DirectoryObject):
     def __init__(self,) -> None:
         """
-        Instantiates a new application and sets the default values.
+        Instantiates a new Application and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.application"
@@ -90,7 +90,7 @@ class Application(directory_object.DirectoryObject):
         self._sign_in_audience: Optional[str] = None
         # Specifies settings for a single-page application, including sign out URLs and redirect URIs for authorization codes and access tokens.
         self._spa: Optional[spa_application.SpaApplication] = None
-        # Custom strings that can be used to categorize and identify the application. Not nullable. Strings added here will also appear in the tags property of any associated service principals.Supports $filter (eq, not, ge, le, startsWith).
+        # Custom strings that can be used to categorize and identify the application. Not nullable. Strings added here will also appear in the tags property of any associated service principals.Supports $filter (eq, not, ge, le, startsWith) and $search.
         self._tags: Optional[List[str]] = None
         # Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD encrypts all the tokens it emits by using the key this property points to. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
         self._token_encryption_key_id: Optional[UUID] = None
@@ -856,7 +856,7 @@ class Application(directory_object.DirectoryObject):
     @property
     def tags(self,) -> Optional[List[str]]:
         """
-        Gets the tags property value. Custom strings that can be used to categorize and identify the application. Not nullable. Strings added here will also appear in the tags property of any associated service principals.Supports $filter (eq, not, ge, le, startsWith).
+        Gets the tags property value. Custom strings that can be used to categorize and identify the application. Not nullable. Strings added here will also appear in the tags property of any associated service principals.Supports $filter (eq, not, ge, le, startsWith) and $search.
         Returns: Optional[List[str]]
         """
         return self._tags
@@ -864,7 +864,7 @@ class Application(directory_object.DirectoryObject):
     @tags.setter
     def tags(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the tags property value. Custom strings that can be used to categorize and identify the application. Not nullable. Strings added here will also appear in the tags property of any associated service principals.Supports $filter (eq, not, ge, le, startsWith).
+        Sets the tags property value. Custom strings that can be used to categorize and identify the application. Not nullable. Strings added here will also appear in the tags property of any associated service principals.Supports $filter (eq, not, ge, le, startsWith) and $search.
         Args:
             value: Value to set for the tags property.
         """

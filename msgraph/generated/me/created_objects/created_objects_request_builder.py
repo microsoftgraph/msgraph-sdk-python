@@ -55,7 +55,7 @@ class CreatedObjectsRequestBuilder():
     
     async def get(self,request_configuration: Optional[CreatedObjectsRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
         """
-        Get a list of directory objects that were created by the user. This API returns only those directory objects that were created by a user who isn't in any administrator role; otherwise, it returns an empty object.
+        Directory objects that were created by the user. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]
@@ -77,7 +77,7 @@ class CreatedObjectsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CreatedObjectsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a list of directory objects that were created by the user. This API returns only those directory objects that were created by a user who isn't in any administrator role; otherwise, it returns an empty object.
+        Directory objects that were created by the user. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class CreatedObjectsRequestBuilder():
     @dataclass
     class CreatedObjectsRequestBuilderGetQueryParameters():
         """
-        Get a list of directory objects that were created by the user. This API returns only those directory objects that were created by a user who isn't in any administrator role; otherwise, it returns an empty object.
+        Directory objects that were created by the user. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

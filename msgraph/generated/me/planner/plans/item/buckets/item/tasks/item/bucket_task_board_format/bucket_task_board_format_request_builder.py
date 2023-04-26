@@ -56,7 +56,7 @@ class BucketTaskBoardFormatRequestBuilder():
     
     async def get(self,request_configuration: Optional[BucketTaskBoardFormatRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_bucket_task_board_task_format.PlannerBucketTaskBoardTaskFormat]:
         """
-        Retrieve the properties and relationships of **plannerBucketTaskBoardTaskFormat** object.
+        Read-only. Nullable. Used to render the task correctly in the task board view when grouped by bucket.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[planner_bucket_task_board_task_format.PlannerBucketTaskBoardTaskFormat]
@@ -119,7 +119,7 @@ class BucketTaskBoardFormatRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[BucketTaskBoardFormatRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of **plannerBucketTaskBoardTaskFormat** object.
+        Read-only. Nullable. Used to render the task correctly in the task board view when grouped by bucket.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class BucketTaskBoardFormatRequestBuilder():
     @dataclass
     class BucketTaskBoardFormatRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of **plannerBucketTaskBoardTaskFormat** object.
+        Read-only. Nullable. Used to render the task correctly in the task board view when grouped by bucket.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

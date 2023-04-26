@@ -68,7 +68,7 @@ class DecisionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[DecisionsRequestBuilderGetRequestConfiguration] = None) -> Optional[access_review_instance_decision_item_collection_response.AccessReviewInstanceDecisionItemCollectionResponse]:
         """
-        Get the decisions from a stage in a multi-stage access review. The decisions in an accessReviewStage object are represented by an accessReviewInstanceDecisionItem object.
+        Each user reviewed in an accessReviewStage has a decision item representing if they were approved, denied, or not yet reviewed.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_review_instance_decision_item_collection_response.AccessReviewInstanceDecisionItemCollectionResponse]
@@ -115,7 +115,7 @@ class DecisionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DecisionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the decisions from a stage in a multi-stage access review. The decisions in an accessReviewStage object are represented by an accessReviewInstanceDecisionItem object.
+        Each user reviewed in an accessReviewStage has a decision item representing if they were approved, denied, or not yet reviewed.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -164,7 +164,7 @@ class DecisionsRequestBuilder():
     @dataclass
     class DecisionsRequestBuilderGetQueryParameters():
         """
-        Get the decisions from a stage in a multi-stage access review. The decisions in an accessReviewStage object are represented by an accessReviewInstanceDecisionItem object.
+        Each user reviewed in an accessReviewStage has a decision item representing if they were approved, denied, or not yet reviewed.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

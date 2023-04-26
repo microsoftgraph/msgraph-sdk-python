@@ -37,7 +37,7 @@ class UnfavoriteRequestBuilder():
     
     async def post(self,body: Optional[unfavorite_post_request_body.UnfavoritePostRequestBody] = None, request_configuration: Optional[UnfavoriteRequestBuilderPostRequestConfiguration] = None) -> Optional[unfavorite_response.UnfavoriteResponse]:
         """
-        Remove the favorite status of serviceUpdateMessages for the signed in user.
+        Invoke action unfavorite
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -62,7 +62,7 @@ class UnfavoriteRequestBuilder():
     
     def to_post_request_information(self,body: Optional[unfavorite_post_request_body.UnfavoritePostRequestBody] = None, request_configuration: Optional[UnfavoriteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Remove the favorite status of serviceUpdateMessages for the signed in user.
+        Invoke action unfavorite
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

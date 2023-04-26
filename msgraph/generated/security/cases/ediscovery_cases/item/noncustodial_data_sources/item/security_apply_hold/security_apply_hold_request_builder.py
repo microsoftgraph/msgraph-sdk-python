@@ -36,7 +36,7 @@ class SecurityApplyHoldRequestBuilder():
     
     async def post(self,request_configuration: Optional[SecurityApplyHoldRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Start the process of applying hold on eDiscovery non-custodial data sources. After the operation is created, you can get the status by retrieving the `Location` parameter from the response headers. The location provides a URL that will return an eDiscoveryHoldOperation object.
+        Invoke action applyHold
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class SecurityApplyHoldRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[SecurityApplyHoldRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Start the process of applying hold on eDiscovery non-custodial data sources. After the operation is created, you can get the status by retrieving the `Location` parameter from the response headers. The location provides a URL that will return an eDiscoveryHoldOperation object.
+        Invoke action applyHold
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

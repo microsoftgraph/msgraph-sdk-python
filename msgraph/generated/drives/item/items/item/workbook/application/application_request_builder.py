@@ -57,7 +57,7 @@ class ApplicationRequestBuilder():
     
     async def get(self,request_configuration: Optional[ApplicationRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_application.WorkbookApplication]:
         """
-        Retrieve the properties and relationships of a workbookApplication object.
+        Get application from drives
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_application.WorkbookApplication]
@@ -120,7 +120,7 @@ class ApplicationRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ApplicationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a workbookApplication object.
+        Get application from drives
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class ApplicationRequestBuilder():
     @dataclass
     class ApplicationRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a workbookApplication object.
+        Get application from drives
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

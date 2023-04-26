@@ -54,7 +54,7 @@ class ConversationsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ConversationsRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_collection_response.ConversationCollectionResponse]:
         """
-        Retrieve the list of conversations in this group.
+        The group's conversations.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conversation_collection_response.ConversationCollectionResponse]
@@ -76,7 +76,7 @@ class ConversationsRequestBuilder():
     
     async def post(self,body: Optional[conversation.Conversation] = None, request_configuration: Optional[ConversationsRequestBuilderPostRequestConfiguration] = None) -> Optional[conversation.Conversation]:
         """
-        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
+        Create new navigation property to conversations for groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ConversationsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ConversationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the list of conversations in this group.
+        The group's conversations.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ConversationsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[conversation.Conversation] = None, request_configuration: Optional[ConversationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
+        Create new navigation property to conversations for groups
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class ConversationsRequestBuilder():
     @dataclass
     class ConversationsRequestBuilderGetQueryParameters():
         """
-        Retrieve the list of conversations in this group.
+        The group's conversations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

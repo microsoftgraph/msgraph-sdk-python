@@ -54,7 +54,7 @@ class HostedContentsRequestBuilder():
     
     async def get(self,request_configuration: Optional[HostedContentsRequestBuilderGetRequestConfiguration] = None) -> Optional[chat_message_hosted_content_collection_response.ChatMessageHostedContentCollectionResponse]:
         """
-        Retrieve the list of chatMessageHostedContent objects from a message. This API only lists the hosted content objects. To get the content bytes, see get chatmessage hosted content
+        Content in a message hosted by Microsoft Teams - for example, images or code snippets.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[chat_message_hosted_content_collection_response.ChatMessageHostedContentCollectionResponse]
@@ -101,7 +101,7 @@ class HostedContentsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[HostedContentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the list of chatMessageHostedContent objects from a message. This API only lists the hosted content objects. To get the content bytes, see get chatmessage hosted content
+        Content in a message hosted by Microsoft Teams - for example, images or code snippets.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class HostedContentsRequestBuilder():
     @dataclass
     class HostedContentsRequestBuilderGetQueryParameters():
         """
-        Retrieve the list of chatMessageHostedContent objects from a message. This API only lists the hosted content objects. To get the content bytes, see get chatmessage hosted content
+        Content in a message hosted by Microsoft Teams - for example, images or code snippets.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

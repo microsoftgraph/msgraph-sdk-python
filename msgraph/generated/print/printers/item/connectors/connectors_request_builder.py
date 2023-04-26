@@ -54,7 +54,7 @@ class ConnectorsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ConnectorsRequestBuilderGetRequestConfiguration] = None) -> Optional[print_connector_collection_response.PrintConnectorCollectionResponse]:
         """
-        Retrieve a list of printConnectors associated with the printer.
+        The connectors that are associated with the printer.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_connector_collection_response.PrintConnectorCollectionResponse]
@@ -76,7 +76,7 @@ class ConnectorsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ConnectorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve a list of printConnectors associated with the printer.
+        The connectors that are associated with the printer.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class ConnectorsRequestBuilder():
     @dataclass
     class ConnectorsRequestBuilderGetQueryParameters():
         """
-        Retrieve a list of printConnectors associated with the printer.
+        The connectors that are associated with the printer.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

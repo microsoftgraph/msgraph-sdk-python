@@ -37,7 +37,7 @@ class ForceDeleteRequestBuilder():
     
     async def post(self,body: Optional[force_delete_post_request_body.ForceDeletePostRequestBody] = None, request_configuration: Optional[ForceDeleteRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Deletes a domain using an asynchronous long-running operation. Prior to calling forceDelete, you must update or remove any references to **Exchange** as the provisioning service. The following actions are performed as part of this operation: After the domain deletion completes, API operations for the deleted domain will return a HTTP 404 status code. To verify deletion of a domain, you can perform a get domain operation.
+        Invoke action forceDelete
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class ForceDeleteRequestBuilder():
     
     def to_post_request_information(self,body: Optional[force_delete_post_request_body.ForceDeletePostRequestBody] = None, request_configuration: Optional[ForceDeleteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Deletes a domain using an asynchronous long-running operation. Prior to calling forceDelete, you must update or remove any references to **Exchange** as the provisioning service. The following actions are performed as part of this operation: After the domain deletion completes, API operations for the deleted domain will return a HTTP 404 status code. To verify deletion of a domain, you can perform a get domain operation.
+        Invoke action forceDelete
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

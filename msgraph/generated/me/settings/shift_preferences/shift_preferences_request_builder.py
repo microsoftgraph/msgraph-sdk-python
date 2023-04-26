@@ -56,7 +56,7 @@ class ShiftPreferencesRequestBuilder():
     
     async def get(self,request_configuration: Optional[ShiftPreferencesRequestBuilderGetRequestConfiguration] = None) -> Optional[shift_preferences.ShiftPreferences]:
         """
-        Retrieve the properties and relationships of a shiftPreferences object by ID.
+        Get shiftPreferences from me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[shift_preferences.ShiftPreferences]
@@ -78,7 +78,7 @@ class ShiftPreferencesRequestBuilder():
     
     async def patch(self,body: Optional[shift_preferences.ShiftPreferences] = None, request_configuration: Optional[ShiftPreferencesRequestBuilderPatchRequestConfiguration] = None) -> Optional[shift_preferences.ShiftPreferences]:
         """
-        Update the properties and relationships of a shiftPreferences object.
+        Update the navigation property shiftPreferences in me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class ShiftPreferencesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ShiftPreferencesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of a shiftPreferences object by ID.
+        Get shiftPreferences from me
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class ShiftPreferencesRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[shift_preferences.ShiftPreferences] = None, request_configuration: Optional[ShiftPreferencesRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties and relationships of a shiftPreferences object.
+        Update the navigation property shiftPreferences in me
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class ShiftPreferencesRequestBuilder():
     @dataclass
     class ShiftPreferencesRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of a shiftPreferences object by ID.
+        Get shiftPreferences from me
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

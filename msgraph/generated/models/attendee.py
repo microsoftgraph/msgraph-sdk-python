@@ -10,7 +10,7 @@ from . import attendee_base
 class Attendee(attendee_base.AttendeeBase):
     def __init__(self,) -> None:
         """
-        Instantiates a new Attendee and sets the default values.
+        Instantiates a new attendee and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.attendee"

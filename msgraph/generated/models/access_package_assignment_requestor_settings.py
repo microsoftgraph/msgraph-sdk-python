@@ -13,19 +13,19 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # If false, the requestor is not permitted to include a schedule in their request.
+        # False indicates that the requestor is not permitted to include a schedule in their request.
         self._allow_custom_assignment_schedule: Optional[bool] = None
-        # If true, allows on-behalf-of requestors to create a request to add access for another principal.
+        # True allows on-behalf-of requestors to create a request to add access for another principal.
         self._enable_on_behalf_requestors_to_add_access: Optional[bool] = None
-        # If true, allows on-behalf-of requestors to create a request to remove access for another principal.
+        # True allows on-behalf-of requestors to create a request to remove access for another principal.
         self._enable_on_behalf_requestors_to_remove_access: Optional[bool] = None
-        # If true, allows on-behalf-of requestors to create a request to update access for another principal.
+        # True allows on-behalf-of requestors to create a request to update access for another principal.
         self._enable_on_behalf_requestors_to_update_access: Optional[bool] = None
-        # If true, allows requestors to create a request to add access for themselves.
+        # True allows requestors to create a request to add access for themselves.
         self._enable_targets_to_self_add_access: Optional[bool] = None
-        # If true, allows requestors to create a request to remove their access.
+        # True allows requestors to create a request to remove their access.
         self._enable_targets_to_self_remove_access: Optional[bool] = None
-        # If true, allows requestors to create a request to update their access.
+        # True allows requestors to create a request to update their access.
         self._enable_targets_to_self_update_access: Optional[bool] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
@@ -52,7 +52,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     @property
     def allow_custom_assignment_schedule(self,) -> Optional[bool]:
         """
-        Gets the allowCustomAssignmentSchedule property value. If false, the requestor is not permitted to include a schedule in their request.
+        Gets the allowCustomAssignmentSchedule property value. False indicates that the requestor is not permitted to include a schedule in their request.
         Returns: Optional[bool]
         """
         return self._allow_custom_assignment_schedule
@@ -60,7 +60,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     @allow_custom_assignment_schedule.setter
     def allow_custom_assignment_schedule(self,value: Optional[bool] = None) -> None:
         """
-        Sets the allowCustomAssignmentSchedule property value. If false, the requestor is not permitted to include a schedule in their request.
+        Sets the allowCustomAssignmentSchedule property value. False indicates that the requestor is not permitted to include a schedule in their request.
         Args:
             value: Value to set for the allow_custom_assignment_schedule property.
         """
@@ -81,7 +81,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     @property
     def enable_on_behalf_requestors_to_add_access(self,) -> Optional[bool]:
         """
-        Gets the enableOnBehalfRequestorsToAddAccess property value. If true, allows on-behalf-of requestors to create a request to add access for another principal.
+        Gets the enableOnBehalfRequestorsToAddAccess property value. True allows on-behalf-of requestors to create a request to add access for another principal.
         Returns: Optional[bool]
         """
         return self._enable_on_behalf_requestors_to_add_access
@@ -89,7 +89,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     @enable_on_behalf_requestors_to_add_access.setter
     def enable_on_behalf_requestors_to_add_access(self,value: Optional[bool] = None) -> None:
         """
-        Sets the enableOnBehalfRequestorsToAddAccess property value. If true, allows on-behalf-of requestors to create a request to add access for another principal.
+        Sets the enableOnBehalfRequestorsToAddAccess property value. True allows on-behalf-of requestors to create a request to add access for another principal.
         Args:
             value: Value to set for the enable_on_behalf_requestors_to_add_access property.
         """
@@ -98,7 +98,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     @property
     def enable_on_behalf_requestors_to_remove_access(self,) -> Optional[bool]:
         """
-        Gets the enableOnBehalfRequestorsToRemoveAccess property value. If true, allows on-behalf-of requestors to create a request to remove access for another principal.
+        Gets the enableOnBehalfRequestorsToRemoveAccess property value. True allows on-behalf-of requestors to create a request to remove access for another principal.
         Returns: Optional[bool]
         """
         return self._enable_on_behalf_requestors_to_remove_access
@@ -106,7 +106,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     @enable_on_behalf_requestors_to_remove_access.setter
     def enable_on_behalf_requestors_to_remove_access(self,value: Optional[bool] = None) -> None:
         """
-        Sets the enableOnBehalfRequestorsToRemoveAccess property value. If true, allows on-behalf-of requestors to create a request to remove access for another principal.
+        Sets the enableOnBehalfRequestorsToRemoveAccess property value. True allows on-behalf-of requestors to create a request to remove access for another principal.
         Args:
             value: Value to set for the enable_on_behalf_requestors_to_remove_access property.
         """
@@ -115,7 +115,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     @property
     def enable_on_behalf_requestors_to_update_access(self,) -> Optional[bool]:
         """
-        Gets the enableOnBehalfRequestorsToUpdateAccess property value. If true, allows on-behalf-of requestors to create a request to update access for another principal.
+        Gets the enableOnBehalfRequestorsToUpdateAccess property value. True allows on-behalf-of requestors to create a request to update access for another principal.
         Returns: Optional[bool]
         """
         return self._enable_on_behalf_requestors_to_update_access
@@ -123,7 +123,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     @enable_on_behalf_requestors_to_update_access.setter
     def enable_on_behalf_requestors_to_update_access(self,value: Optional[bool] = None) -> None:
         """
-        Sets the enableOnBehalfRequestorsToUpdateAccess property value. If true, allows on-behalf-of requestors to create a request to update access for another principal.
+        Sets the enableOnBehalfRequestorsToUpdateAccess property value. True allows on-behalf-of requestors to create a request to update access for another principal.
         Args:
             value: Value to set for the enable_on_behalf_requestors_to_update_access property.
         """
@@ -132,7 +132,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     @property
     def enable_targets_to_self_add_access(self,) -> Optional[bool]:
         """
-        Gets the enableTargetsToSelfAddAccess property value. If true, allows requestors to create a request to add access for themselves.
+        Gets the enableTargetsToSelfAddAccess property value. True allows requestors to create a request to add access for themselves.
         Returns: Optional[bool]
         """
         return self._enable_targets_to_self_add_access
@@ -140,7 +140,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     @enable_targets_to_self_add_access.setter
     def enable_targets_to_self_add_access(self,value: Optional[bool] = None) -> None:
         """
-        Sets the enableTargetsToSelfAddAccess property value. If true, allows requestors to create a request to add access for themselves.
+        Sets the enableTargetsToSelfAddAccess property value. True allows requestors to create a request to add access for themselves.
         Args:
             value: Value to set for the enable_targets_to_self_add_access property.
         """
@@ -149,7 +149,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     @property
     def enable_targets_to_self_remove_access(self,) -> Optional[bool]:
         """
-        Gets the enableTargetsToSelfRemoveAccess property value. If true, allows requestors to create a request to remove their access.
+        Gets the enableTargetsToSelfRemoveAccess property value. True allows requestors to create a request to remove their access.
         Returns: Optional[bool]
         """
         return self._enable_targets_to_self_remove_access
@@ -157,7 +157,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     @enable_targets_to_self_remove_access.setter
     def enable_targets_to_self_remove_access(self,value: Optional[bool] = None) -> None:
         """
-        Sets the enableTargetsToSelfRemoveAccess property value. If true, allows requestors to create a request to remove their access.
+        Sets the enableTargetsToSelfRemoveAccess property value. True allows requestors to create a request to remove their access.
         Args:
             value: Value to set for the enable_targets_to_self_remove_access property.
         """
@@ -166,7 +166,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     @property
     def enable_targets_to_self_update_access(self,) -> Optional[bool]:
         """
-        Gets the enableTargetsToSelfUpdateAccess property value. If true, allows requestors to create a request to update their access.
+        Gets the enableTargetsToSelfUpdateAccess property value. True allows requestors to create a request to update their access.
         Returns: Optional[bool]
         """
         return self._enable_targets_to_self_update_access
@@ -174,7 +174,7 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
     @enable_targets_to_self_update_access.setter
     def enable_targets_to_self_update_access(self,value: Optional[bool] = None) -> None:
         """
-        Sets the enableTargetsToSelfUpdateAccess property value. If true, allows requestors to create a request to update their access.
+        Sets the enableTargetsToSelfUpdateAccess property value. True allows requestors to create a request to update their access.
         Args:
             value: Value to set for the enable_targets_to_self_update_access property.
         """

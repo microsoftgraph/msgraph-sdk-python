@@ -10,7 +10,7 @@ from . import data_source
 class UserSource(data_source.DataSource):
     def __init__(self,) -> None:
         """
-        Instantiates a new UserSource and sets the default values.
+        Instantiates a new userSource and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.security.userSource"

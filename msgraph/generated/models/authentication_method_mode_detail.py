@@ -10,7 +10,7 @@ from . import entity
 class AuthenticationMethodModeDetail(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new authenticationMethodModeDetail and sets the default values.
+        Instantiates a new AuthenticationMethodModeDetail and sets the default values.
         """
         super().__init__()
         # The authenticationMethod property

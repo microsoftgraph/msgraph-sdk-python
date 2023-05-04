@@ -17,9 +17,9 @@ if TYPE_CHECKING:
     from .attack_simulation import attack_simulation_request_builder
     from .cases import cases_request_builder
     from .incidents import incidents_request_builder
+    from .microsoft_graph_security_run_hunting_query import microsoft_graph_security_run_hunting_query_request_builder
     from .secure_score_control_profiles import secure_score_control_profiles_request_builder
     from .secure_scores import secure_scores_request_builder
-    from .security_run_hunting_query import security_run_hunting_query_request_builder
     from .triggers import triggers_request_builder
     from .trigger_types import trigger_types_request_builder
 
@@ -177,6 +177,15 @@ class SecurityRequestBuilder():
         return incidents_request_builder.IncidentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def microsoft_graph_security_run_hunting_query(self) -> microsoft_graph_security_run_hunting_query_request_builder.MicrosoftGraphSecurityRunHuntingQueryRequestBuilder:
+        """
+        Provides operations to call the runHuntingQuery method.
+        """
+        from .microsoft_graph_security_run_hunting_query import microsoft_graph_security_run_hunting_query_request_builder
+
+        return microsoft_graph_security_run_hunting_query_request_builder.MicrosoftGraphSecurityRunHuntingQueryRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def secure_score_control_profiles(self) -> secure_score_control_profiles_request_builder.SecureScoreControlProfilesRequestBuilder:
         """
         Provides operations to manage the secureScoreControlProfiles property of the microsoft.graph.security entity.
@@ -193,15 +202,6 @@ class SecurityRequestBuilder():
         from .secure_scores import secure_scores_request_builder
 
         return secure_scores_request_builder.SecureScoresRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def security_run_hunting_query(self) -> security_run_hunting_query_request_builder.SecurityRunHuntingQueryRequestBuilder:
-        """
-        Provides operations to call the runHuntingQuery method.
-        """
-        from .security_run_hunting_query import security_run_hunting_query_request_builder
-
-        return security_run_hunting_query_request_builder.SecurityRunHuntingQueryRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def triggers(self) -> triggers_request_builder.TriggersRequestBuilder:

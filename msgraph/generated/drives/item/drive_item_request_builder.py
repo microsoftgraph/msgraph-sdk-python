@@ -13,8 +13,10 @@ if TYPE_CHECKING:
     from ...models import drive
     from ...models.o_data_errors import o_data_error
     from .bundles import bundles_request_builder
+    from .created_by_user import created_by_user_request_builder
     from .following import following_request_builder
     from .items import items_request_builder
+    from .last_modified_by_user import last_modified_by_user_request_builder
     from .list import list_request_builder
     from .recent import recent_request_builder
     from .root import root_request_builder
@@ -188,6 +190,15 @@ class DriveItemRequestBuilder():
         return bundles_request_builder.BundlesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def created_by_user(self) -> created_by_user_request_builder.CreatedByUserRequestBuilder:
+        """
+        Provides operations to manage the createdByUser property of the microsoft.graph.baseItem entity.
+        """
+        from .created_by_user import created_by_user_request_builder
+
+        return created_by_user_request_builder.CreatedByUserRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def following(self) -> following_request_builder.FollowingRequestBuilder:
         """
         Provides operations to manage the following property of the microsoft.graph.drive entity.
@@ -204,6 +215,15 @@ class DriveItemRequestBuilder():
         from .items import items_request_builder
 
         return items_request_builder.ItemsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def last_modified_by_user(self) -> last_modified_by_user_request_builder.LastModifiedByUserRequestBuilder:
+        """
+        Provides operations to manage the lastModifiedByUser property of the microsoft.graph.baseItem entity.
+        """
+        from .last_modified_by_user import last_modified_by_user_request_builder
+
+        return last_modified_by_user_request_builder.LastModifiedByUserRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def list(self) -> list_request_builder.ListRequestBuilder:

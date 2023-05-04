@@ -14,7 +14,7 @@ if TYPE_CHECKING:
     from ......models.security import ediscovery_review_tag, ediscovery_review_tag_collection_response
     from .count import count_request_builder
     from .item import ediscovery_review_tag_item_request_builder
-    from .security_as_hierarchy import security_as_hierarchy_request_builder
+    from .microsoft_graph_security_as_hierarchy import microsoft_graph_security_as_hierarchy_request_builder
 
 class TagsRequestBuilder():
     """
@@ -149,13 +149,13 @@ class TagsRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def security_as_hierarchy(self) -> security_as_hierarchy_request_builder.SecurityAsHierarchyRequestBuilder:
+    def microsoft_graph_security_as_hierarchy(self) -> microsoft_graph_security_as_hierarchy_request_builder.MicrosoftGraphSecurityAsHierarchyRequestBuilder:
         """
         Provides operations to call the asHierarchy method.
         """
-        from .security_as_hierarchy import security_as_hierarchy_request_builder
+        from .microsoft_graph_security_as_hierarchy import microsoft_graph_security_as_hierarchy_request_builder
 
-        return security_as_hierarchy_request_builder.SecurityAsHierarchyRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_as_hierarchy_request_builder.MicrosoftGraphSecurityAsHierarchyRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TagsRequestBuilderGetQueryParameters():

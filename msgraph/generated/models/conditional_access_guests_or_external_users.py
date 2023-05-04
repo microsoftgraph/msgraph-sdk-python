@@ -13,7 +13,7 @@ class ConditionalAccessGuestsOrExternalUsers(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The externalTenants property
+        # The tenant IDs of the selected types of external users. Either all B2B tenant or a collection of tenant IDs. External tenants can be specified only when the property guestOrExternalUserTypes is not null or an empty String.
         self._external_tenants: Optional[conditional_access_external_tenants.ConditionalAccessExternalTenants] = None
         # The guestOrExternalUserTypes property
         self._guest_or_external_user_types: Optional[conditional_access_guest_or_external_user_types.ConditionalAccessGuestOrExternalUserTypes] = None
@@ -52,7 +52,7 @@ class ConditionalAccessGuestsOrExternalUsers(AdditionalDataHolder, Parsable):
     @property
     def external_tenants(self,) -> Optional[conditional_access_external_tenants.ConditionalAccessExternalTenants]:
         """
-        Gets the externalTenants property value. The externalTenants property
+        Gets the externalTenants property value. The tenant IDs of the selected types of external users. Either all B2B tenant or a collection of tenant IDs. External tenants can be specified only when the property guestOrExternalUserTypes is not null or an empty String.
         Returns: Optional[conditional_access_external_tenants.ConditionalAccessExternalTenants]
         """
         return self._external_tenants
@@ -60,7 +60,7 @@ class ConditionalAccessGuestsOrExternalUsers(AdditionalDataHolder, Parsable):
     @external_tenants.setter
     def external_tenants(self,value: Optional[conditional_access_external_tenants.ConditionalAccessExternalTenants] = None) -> None:
         """
-        Sets the externalTenants property value. The externalTenants property
+        Sets the externalTenants property value. The tenant IDs of the selected types of external users. Either all B2B tenant or a collection of tenant IDs. External tenants can be specified only when the property guestOrExternalUserTypes is not null or an empty String.
         Args:
             value: Value to set for the external_tenants property.
         """

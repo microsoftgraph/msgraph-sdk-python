@@ -11,7 +11,7 @@ from . import data_source
 class UnifiedGroupSource(data_source.DataSource):
     def __init__(self,) -> None:
         """
-        Instantiates a new unifiedGroupSource and sets the default values.
+        Instantiates a new UnifiedGroupSource and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.security.unifiedGroupSource"

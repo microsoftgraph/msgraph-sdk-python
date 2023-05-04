@@ -14,71 +14,71 @@ class SharepointSettings(entity.Entity):
         Instantiates a new sharepointSettings and sets the default values.
         """
         super().__init__()
-        # The allowedDomainGuidsForSyncApp property
+        # Collection of trusted domain GUIDs for the OneDrive sync app.
         self._allowed_domain_guids_for_sync_app: Optional[List[UUID]] = None
-        # The availableManagedPathsForSiteCreation property
+        # Collection of managed paths available for site creation. Read-only.
         self._available_managed_paths_for_site_creation: Optional[List[str]] = None
-        # The deletedUserPersonalSiteRetentionPeriodInDays property
+        # The number of days for preserving a deleted user's OneDrive.
         self._deleted_user_personal_site_retention_period_in_days: Optional[int] = None
-        # The excludedFileExtensionsForSyncApp property
+        # Collection of file extensions not uploaded by the OneDrive sync app.
         self._excluded_file_extensions_for_sync_app: Optional[List[str]] = None
-        # The idleSessionSignOut property
+        # Specifies the idle session sign-out policies for the tenant.
         self._idle_session_sign_out: Optional[idle_session_sign_out.IdleSessionSignOut] = None
-        # The imageTaggingOption property
+        # Specifies the image tagging option for the tenant. Possible values are: disabled, basic, enhanced.
         self._image_tagging_option: Optional[image_tagging_choice.ImageTaggingChoice] = None
-        # The isCommentingOnSitePagesEnabled property
+        # Indicates whether comments are allowed on modern site pages in SharePoint.
         self._is_commenting_on_site_pages_enabled: Optional[bool] = None
-        # The isFileActivityNotificationEnabled property
+        # Indicates whether push notifications are enabled for OneDrive events.
         self._is_file_activity_notification_enabled: Optional[bool] = None
-        # The isLegacyAuthProtocolsEnabled property
+        # Indicates whether legacy authentication protocols are enabled for the tenant.
         self._is_legacy_auth_protocols_enabled: Optional[bool] = None
-        # The isLoopEnabled property
+        # Indicates whether if Fluid Framework is allowed on SharePoint sites.
         self._is_loop_enabled: Optional[bool] = None
-        # The isMacSyncAppEnabled property
+        # Indicates whether files can be synced using the OneDrive sync app for Mac.
         self._is_mac_sync_app_enabled: Optional[bool] = None
-        # The isRequireAcceptingUserToMatchInvitedUserEnabled property
+        # Indicates whether guests must sign in using the same account to which sharing invitations are sent.
         self._is_require_accepting_user_to_match_invited_user_enabled: Optional[bool] = None
-        # The isResharingByExternalUsersEnabled property
+        # Indicates whether guests are allowed to reshare files, folders, and sites they don't own.
         self._is_resharing_by_external_users_enabled: Optional[bool] = None
-        # The isSharePointMobileNotificationEnabled property
+        # Indicates whether mobile push notifications are enabled for SharePoint.
         self._is_share_point_mobile_notification_enabled: Optional[bool] = None
-        # The isSharePointNewsfeedEnabled property
+        # Indicates whether the newsfeed is allowed on the modern site pages in SharePoint.
         self._is_share_point_newsfeed_enabled: Optional[bool] = None
-        # The isSiteCreationEnabled property
+        # Indicates whether users are allowed to create sites.
         self._is_site_creation_enabled: Optional[bool] = None
-        # The isSiteCreationUIEnabled property
+        # Indicates whether the UI commands for creating sites are shown.
         self._is_site_creation_u_i_enabled: Optional[bool] = None
-        # The isSitePagesCreationEnabled property
+        # Indicates whether creating new modern pages is allowed on SharePoint sites.
         self._is_site_pages_creation_enabled: Optional[bool] = None
-        # The isSitesStorageLimitAutomatic property
+        # Indicates whether site storage space is automatically managed or if specific storage limits are set per site.
         self._is_sites_storage_limit_automatic: Optional[bool] = None
-        # The isSyncButtonHiddenOnPersonalSite property
+        # Indicates whether the sync button in OneDrive is hidden.
         self._is_sync_button_hidden_on_personal_site: Optional[bool] = None
-        # The isUnmanagedSyncAppForTenantRestricted property
+        # Indicates whether users are allowed to sync files only on PCs joined to specific domains.
         self._is_unmanaged_sync_app_for_tenant_restricted: Optional[bool] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # The personalSiteDefaultStorageLimitInMB property
+        # The default OneDrive storage limit for all new and existing users who are assigned a qualifying license. Measured in megabytes (MB).
         self._personal_site_default_storage_limit_in_m_b: Optional[int] = None
-        # The sharingAllowedDomainList property
+        # Collection of email domains that are allowed for sharing outside the organization.
         self._sharing_allowed_domain_list: Optional[List[str]] = None
-        # The sharingBlockedDomainList property
+        # Collection of email domains that are blocked for sharing outside the organization.
         self._sharing_blocked_domain_list: Optional[List[str]] = None
-        # The sharingCapability property
+        # Sharing capability for the tenant. Possible values are: disabled, externalUserSharingOnly, externalUserAndGuestSharing, existingExternalUserSharingOnly.
         self._sharing_capability: Optional[sharing_capabilities.SharingCapabilities] = None
-        # The sharingDomainRestrictionMode property
+        # Specifies the external sharing mode for domains. Possible values are: none, allowList, blockList.
         self._sharing_domain_restriction_mode: Optional[sharing_domain_restriction_mode.SharingDomainRestrictionMode] = None
-        # The siteCreationDefaultManagedPath property
+        # The value of the team site managed path. This is the path under which new team sites will be created.
         self._site_creation_default_managed_path: Optional[str] = None
-        # The siteCreationDefaultStorageLimitInMB property
+        # The default storage quota for a new site upon creation. Measured in megabytes (MB).
         self._site_creation_default_storage_limit_in_m_b: Optional[int] = None
-        # The tenantDefaultTimezone property
+        # The default timezone of a tenant for newly created sites. For a list of possible values, see SPRegionalSettings.TimeZones property.
         self._tenant_default_timezone: Optional[str] = None
     
     @property
     def allowed_domain_guids_for_sync_app(self,) -> Optional[List[UUID]]:
         """
-        Gets the allowedDomainGuidsForSyncApp property value. The allowedDomainGuidsForSyncApp property
+        Gets the allowedDomainGuidsForSyncApp property value. Collection of trusted domain GUIDs for the OneDrive sync app.
         Returns: Optional[List[UUID]]
         """
         return self._allowed_domain_guids_for_sync_app
@@ -86,7 +86,7 @@ class SharepointSettings(entity.Entity):
     @allowed_domain_guids_for_sync_app.setter
     def allowed_domain_guids_for_sync_app(self,value: Optional[List[UUID]] = None) -> None:
         """
-        Sets the allowedDomainGuidsForSyncApp property value. The allowedDomainGuidsForSyncApp property
+        Sets the allowedDomainGuidsForSyncApp property value. Collection of trusted domain GUIDs for the OneDrive sync app.
         Args:
             value: Value to set for the allowed_domain_guids_for_sync_app property.
         """
@@ -95,7 +95,7 @@ class SharepointSettings(entity.Entity):
     @property
     def available_managed_paths_for_site_creation(self,) -> Optional[List[str]]:
         """
-        Gets the availableManagedPathsForSiteCreation property value. The availableManagedPathsForSiteCreation property
+        Gets the availableManagedPathsForSiteCreation property value. Collection of managed paths available for site creation. Read-only.
         Returns: Optional[List[str]]
         """
         return self._available_managed_paths_for_site_creation
@@ -103,7 +103,7 @@ class SharepointSettings(entity.Entity):
     @available_managed_paths_for_site_creation.setter
     def available_managed_paths_for_site_creation(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the availableManagedPathsForSiteCreation property value. The availableManagedPathsForSiteCreation property
+        Sets the availableManagedPathsForSiteCreation property value. Collection of managed paths available for site creation. Read-only.
         Args:
             value: Value to set for the available_managed_paths_for_site_creation property.
         """
@@ -124,7 +124,7 @@ class SharepointSettings(entity.Entity):
     @property
     def deleted_user_personal_site_retention_period_in_days(self,) -> Optional[int]:
         """
-        Gets the deletedUserPersonalSiteRetentionPeriodInDays property value. The deletedUserPersonalSiteRetentionPeriodInDays property
+        Gets the deletedUserPersonalSiteRetentionPeriodInDays property value. The number of days for preserving a deleted user's OneDrive.
         Returns: Optional[int]
         """
         return self._deleted_user_personal_site_retention_period_in_days
@@ -132,7 +132,7 @@ class SharepointSettings(entity.Entity):
     @deleted_user_personal_site_retention_period_in_days.setter
     def deleted_user_personal_site_retention_period_in_days(self,value: Optional[int] = None) -> None:
         """
-        Sets the deletedUserPersonalSiteRetentionPeriodInDays property value. The deletedUserPersonalSiteRetentionPeriodInDays property
+        Sets the deletedUserPersonalSiteRetentionPeriodInDays property value. The number of days for preserving a deleted user's OneDrive.
         Args:
             value: Value to set for the deleted_user_personal_site_retention_period_in_days property.
         """
@@ -141,7 +141,7 @@ class SharepointSettings(entity.Entity):
     @property
     def excluded_file_extensions_for_sync_app(self,) -> Optional[List[str]]:
         """
-        Gets the excludedFileExtensionsForSyncApp property value. The excludedFileExtensionsForSyncApp property
+        Gets the excludedFileExtensionsForSyncApp property value. Collection of file extensions not uploaded by the OneDrive sync app.
         Returns: Optional[List[str]]
         """
         return self._excluded_file_extensions_for_sync_app
@@ -149,7 +149,7 @@ class SharepointSettings(entity.Entity):
     @excluded_file_extensions_for_sync_app.setter
     def excluded_file_extensions_for_sync_app(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the excludedFileExtensionsForSyncApp property value. The excludedFileExtensionsForSyncApp property
+        Sets the excludedFileExtensionsForSyncApp property value. Collection of file extensions not uploaded by the OneDrive sync app.
         Args:
             value: Value to set for the excluded_file_extensions_for_sync_app property.
         """
@@ -200,7 +200,7 @@ class SharepointSettings(entity.Entity):
     @property
     def idle_session_sign_out(self,) -> Optional[idle_session_sign_out.IdleSessionSignOut]:
         """
-        Gets the idleSessionSignOut property value. The idleSessionSignOut property
+        Gets the idleSessionSignOut property value. Specifies the idle session sign-out policies for the tenant.
         Returns: Optional[idle_session_sign_out.IdleSessionSignOut]
         """
         return self._idle_session_sign_out
@@ -208,7 +208,7 @@ class SharepointSettings(entity.Entity):
     @idle_session_sign_out.setter
     def idle_session_sign_out(self,value: Optional[idle_session_sign_out.IdleSessionSignOut] = None) -> None:
         """
-        Sets the idleSessionSignOut property value. The idleSessionSignOut property
+        Sets the idleSessionSignOut property value. Specifies the idle session sign-out policies for the tenant.
         Args:
             value: Value to set for the idle_session_sign_out property.
         """
@@ -217,7 +217,7 @@ class SharepointSettings(entity.Entity):
     @property
     def image_tagging_option(self,) -> Optional[image_tagging_choice.ImageTaggingChoice]:
         """
-        Gets the imageTaggingOption property value. The imageTaggingOption property
+        Gets the imageTaggingOption property value. Specifies the image tagging option for the tenant. Possible values are: disabled, basic, enhanced.
         Returns: Optional[image_tagging_choice.ImageTaggingChoice]
         """
         return self._image_tagging_option
@@ -225,7 +225,7 @@ class SharepointSettings(entity.Entity):
     @image_tagging_option.setter
     def image_tagging_option(self,value: Optional[image_tagging_choice.ImageTaggingChoice] = None) -> None:
         """
-        Sets the imageTaggingOption property value. The imageTaggingOption property
+        Sets the imageTaggingOption property value. Specifies the image tagging option for the tenant. Possible values are: disabled, basic, enhanced.
         Args:
             value: Value to set for the image_tagging_option property.
         """
@@ -234,7 +234,7 @@ class SharepointSettings(entity.Entity):
     @property
     def is_commenting_on_site_pages_enabled(self,) -> Optional[bool]:
         """
-        Gets the isCommentingOnSitePagesEnabled property value. The isCommentingOnSitePagesEnabled property
+        Gets the isCommentingOnSitePagesEnabled property value. Indicates whether comments are allowed on modern site pages in SharePoint.
         Returns: Optional[bool]
         """
         return self._is_commenting_on_site_pages_enabled
@@ -242,7 +242,7 @@ class SharepointSettings(entity.Entity):
     @is_commenting_on_site_pages_enabled.setter
     def is_commenting_on_site_pages_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isCommentingOnSitePagesEnabled property value. The isCommentingOnSitePagesEnabled property
+        Sets the isCommentingOnSitePagesEnabled property value. Indicates whether comments are allowed on modern site pages in SharePoint.
         Args:
             value: Value to set for the is_commenting_on_site_pages_enabled property.
         """
@@ -251,7 +251,7 @@ class SharepointSettings(entity.Entity):
     @property
     def is_file_activity_notification_enabled(self,) -> Optional[bool]:
         """
-        Gets the isFileActivityNotificationEnabled property value. The isFileActivityNotificationEnabled property
+        Gets the isFileActivityNotificationEnabled property value. Indicates whether push notifications are enabled for OneDrive events.
         Returns: Optional[bool]
         """
         return self._is_file_activity_notification_enabled
@@ -259,7 +259,7 @@ class SharepointSettings(entity.Entity):
     @is_file_activity_notification_enabled.setter
     def is_file_activity_notification_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isFileActivityNotificationEnabled property value. The isFileActivityNotificationEnabled property
+        Sets the isFileActivityNotificationEnabled property value. Indicates whether push notifications are enabled for OneDrive events.
         Args:
             value: Value to set for the is_file_activity_notification_enabled property.
         """
@@ -268,7 +268,7 @@ class SharepointSettings(entity.Entity):
     @property
     def is_legacy_auth_protocols_enabled(self,) -> Optional[bool]:
         """
-        Gets the isLegacyAuthProtocolsEnabled property value. The isLegacyAuthProtocolsEnabled property
+        Gets the isLegacyAuthProtocolsEnabled property value. Indicates whether legacy authentication protocols are enabled for the tenant.
         Returns: Optional[bool]
         """
         return self._is_legacy_auth_protocols_enabled
@@ -276,7 +276,7 @@ class SharepointSettings(entity.Entity):
     @is_legacy_auth_protocols_enabled.setter
     def is_legacy_auth_protocols_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isLegacyAuthProtocolsEnabled property value. The isLegacyAuthProtocolsEnabled property
+        Sets the isLegacyAuthProtocolsEnabled property value. Indicates whether legacy authentication protocols are enabled for the tenant.
         Args:
             value: Value to set for the is_legacy_auth_protocols_enabled property.
         """
@@ -285,7 +285,7 @@ class SharepointSettings(entity.Entity):
     @property
     def is_loop_enabled(self,) -> Optional[bool]:
         """
-        Gets the isLoopEnabled property value. The isLoopEnabled property
+        Gets the isLoopEnabled property value. Indicates whether if Fluid Framework is allowed on SharePoint sites.
         Returns: Optional[bool]
         """
         return self._is_loop_enabled
@@ -293,7 +293,7 @@ class SharepointSettings(entity.Entity):
     @is_loop_enabled.setter
     def is_loop_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isLoopEnabled property value. The isLoopEnabled property
+        Sets the isLoopEnabled property value. Indicates whether if Fluid Framework is allowed on SharePoint sites.
         Args:
             value: Value to set for the is_loop_enabled property.
         """
@@ -302,7 +302,7 @@ class SharepointSettings(entity.Entity):
     @property
     def is_mac_sync_app_enabled(self,) -> Optional[bool]:
         """
-        Gets the isMacSyncAppEnabled property value. The isMacSyncAppEnabled property
+        Gets the isMacSyncAppEnabled property value. Indicates whether files can be synced using the OneDrive sync app for Mac.
         Returns: Optional[bool]
         """
         return self._is_mac_sync_app_enabled
@@ -310,7 +310,7 @@ class SharepointSettings(entity.Entity):
     @is_mac_sync_app_enabled.setter
     def is_mac_sync_app_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isMacSyncAppEnabled property value. The isMacSyncAppEnabled property
+        Sets the isMacSyncAppEnabled property value. Indicates whether files can be synced using the OneDrive sync app for Mac.
         Args:
             value: Value to set for the is_mac_sync_app_enabled property.
         """
@@ -319,7 +319,7 @@ class SharepointSettings(entity.Entity):
     @property
     def is_require_accepting_user_to_match_invited_user_enabled(self,) -> Optional[bool]:
         """
-        Gets the isRequireAcceptingUserToMatchInvitedUserEnabled property value. The isRequireAcceptingUserToMatchInvitedUserEnabled property
+        Gets the isRequireAcceptingUserToMatchInvitedUserEnabled property value. Indicates whether guests must sign in using the same account to which sharing invitations are sent.
         Returns: Optional[bool]
         """
         return self._is_require_accepting_user_to_match_invited_user_enabled
@@ -327,7 +327,7 @@ class SharepointSettings(entity.Entity):
     @is_require_accepting_user_to_match_invited_user_enabled.setter
     def is_require_accepting_user_to_match_invited_user_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isRequireAcceptingUserToMatchInvitedUserEnabled property value. The isRequireAcceptingUserToMatchInvitedUserEnabled property
+        Sets the isRequireAcceptingUserToMatchInvitedUserEnabled property value. Indicates whether guests must sign in using the same account to which sharing invitations are sent.
         Args:
             value: Value to set for the is_require_accepting_user_to_match_invited_user_enabled property.
         """
@@ -336,7 +336,7 @@ class SharepointSettings(entity.Entity):
     @property
     def is_resharing_by_external_users_enabled(self,) -> Optional[bool]:
         """
-        Gets the isResharingByExternalUsersEnabled property value. The isResharingByExternalUsersEnabled property
+        Gets the isResharingByExternalUsersEnabled property value. Indicates whether guests are allowed to reshare files, folders, and sites they don't own.
         Returns: Optional[bool]
         """
         return self._is_resharing_by_external_users_enabled
@@ -344,7 +344,7 @@ class SharepointSettings(entity.Entity):
     @is_resharing_by_external_users_enabled.setter
     def is_resharing_by_external_users_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isResharingByExternalUsersEnabled property value. The isResharingByExternalUsersEnabled property
+        Sets the isResharingByExternalUsersEnabled property value. Indicates whether guests are allowed to reshare files, folders, and sites they don't own.
         Args:
             value: Value to set for the is_resharing_by_external_users_enabled property.
         """
@@ -353,7 +353,7 @@ class SharepointSettings(entity.Entity):
     @property
     def is_share_point_mobile_notification_enabled(self,) -> Optional[bool]:
         """
-        Gets the isSharePointMobileNotificationEnabled property value. The isSharePointMobileNotificationEnabled property
+        Gets the isSharePointMobileNotificationEnabled property value. Indicates whether mobile push notifications are enabled for SharePoint.
         Returns: Optional[bool]
         """
         return self._is_share_point_mobile_notification_enabled
@@ -361,7 +361,7 @@ class SharepointSettings(entity.Entity):
     @is_share_point_mobile_notification_enabled.setter
     def is_share_point_mobile_notification_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isSharePointMobileNotificationEnabled property value. The isSharePointMobileNotificationEnabled property
+        Sets the isSharePointMobileNotificationEnabled property value. Indicates whether mobile push notifications are enabled for SharePoint.
         Args:
             value: Value to set for the is_share_point_mobile_notification_enabled property.
         """
@@ -370,7 +370,7 @@ class SharepointSettings(entity.Entity):
     @property
     def is_share_point_newsfeed_enabled(self,) -> Optional[bool]:
         """
-        Gets the isSharePointNewsfeedEnabled property value. The isSharePointNewsfeedEnabled property
+        Gets the isSharePointNewsfeedEnabled property value. Indicates whether the newsfeed is allowed on the modern site pages in SharePoint.
         Returns: Optional[bool]
         """
         return self._is_share_point_newsfeed_enabled
@@ -378,7 +378,7 @@ class SharepointSettings(entity.Entity):
     @is_share_point_newsfeed_enabled.setter
     def is_share_point_newsfeed_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isSharePointNewsfeedEnabled property value. The isSharePointNewsfeedEnabled property
+        Sets the isSharePointNewsfeedEnabled property value. Indicates whether the newsfeed is allowed on the modern site pages in SharePoint.
         Args:
             value: Value to set for the is_share_point_newsfeed_enabled property.
         """
@@ -387,7 +387,7 @@ class SharepointSettings(entity.Entity):
     @property
     def is_site_creation_enabled(self,) -> Optional[bool]:
         """
-        Gets the isSiteCreationEnabled property value. The isSiteCreationEnabled property
+        Gets the isSiteCreationEnabled property value. Indicates whether users are allowed to create sites.
         Returns: Optional[bool]
         """
         return self._is_site_creation_enabled
@@ -395,7 +395,7 @@ class SharepointSettings(entity.Entity):
     @is_site_creation_enabled.setter
     def is_site_creation_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isSiteCreationEnabled property value. The isSiteCreationEnabled property
+        Sets the isSiteCreationEnabled property value. Indicates whether users are allowed to create sites.
         Args:
             value: Value to set for the is_site_creation_enabled property.
         """
@@ -404,7 +404,7 @@ class SharepointSettings(entity.Entity):
     @property
     def is_site_creation_u_i_enabled(self,) -> Optional[bool]:
         """
-        Gets the isSiteCreationUIEnabled property value. The isSiteCreationUIEnabled property
+        Gets the isSiteCreationUIEnabled property value. Indicates whether the UI commands for creating sites are shown.
         Returns: Optional[bool]
         """
         return self._is_site_creation_u_i_enabled
@@ -412,7 +412,7 @@ class SharepointSettings(entity.Entity):
     @is_site_creation_u_i_enabled.setter
     def is_site_creation_u_i_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isSiteCreationUIEnabled property value. The isSiteCreationUIEnabled property
+        Sets the isSiteCreationUIEnabled property value. Indicates whether the UI commands for creating sites are shown.
         Args:
             value: Value to set for the is_site_creation_u_i_enabled property.
         """
@@ -421,7 +421,7 @@ class SharepointSettings(entity.Entity):
     @property
     def is_site_pages_creation_enabled(self,) -> Optional[bool]:
         """
-        Gets the isSitePagesCreationEnabled property value. The isSitePagesCreationEnabled property
+        Gets the isSitePagesCreationEnabled property value. Indicates whether creating new modern pages is allowed on SharePoint sites.
         Returns: Optional[bool]
         """
         return self._is_site_pages_creation_enabled
@@ -429,7 +429,7 @@ class SharepointSettings(entity.Entity):
     @is_site_pages_creation_enabled.setter
     def is_site_pages_creation_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isSitePagesCreationEnabled property value. The isSitePagesCreationEnabled property
+        Sets the isSitePagesCreationEnabled property value. Indicates whether creating new modern pages is allowed on SharePoint sites.
         Args:
             value: Value to set for the is_site_pages_creation_enabled property.
         """
@@ -438,7 +438,7 @@ class SharepointSettings(entity.Entity):
     @property
     def is_sites_storage_limit_automatic(self,) -> Optional[bool]:
         """
-        Gets the isSitesStorageLimitAutomatic property value. The isSitesStorageLimitAutomatic property
+        Gets the isSitesStorageLimitAutomatic property value. Indicates whether site storage space is automatically managed or if specific storage limits are set per site.
         Returns: Optional[bool]
         """
         return self._is_sites_storage_limit_automatic
@@ -446,7 +446,7 @@ class SharepointSettings(entity.Entity):
     @is_sites_storage_limit_automatic.setter
     def is_sites_storage_limit_automatic(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isSitesStorageLimitAutomatic property value. The isSitesStorageLimitAutomatic property
+        Sets the isSitesStorageLimitAutomatic property value. Indicates whether site storage space is automatically managed or if specific storage limits are set per site.
         Args:
             value: Value to set for the is_sites_storage_limit_automatic property.
         """
@@ -455,7 +455,7 @@ class SharepointSettings(entity.Entity):
     @property
     def is_sync_button_hidden_on_personal_site(self,) -> Optional[bool]:
         """
-        Gets the isSyncButtonHiddenOnPersonalSite property value. The isSyncButtonHiddenOnPersonalSite property
+        Gets the isSyncButtonHiddenOnPersonalSite property value. Indicates whether the sync button in OneDrive is hidden.
         Returns: Optional[bool]
         """
         return self._is_sync_button_hidden_on_personal_site
@@ -463,7 +463,7 @@ class SharepointSettings(entity.Entity):
     @is_sync_button_hidden_on_personal_site.setter
     def is_sync_button_hidden_on_personal_site(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isSyncButtonHiddenOnPersonalSite property value. The isSyncButtonHiddenOnPersonalSite property
+        Sets the isSyncButtonHiddenOnPersonalSite property value. Indicates whether the sync button in OneDrive is hidden.
         Args:
             value: Value to set for the is_sync_button_hidden_on_personal_site property.
         """
@@ -472,7 +472,7 @@ class SharepointSettings(entity.Entity):
     @property
     def is_unmanaged_sync_app_for_tenant_restricted(self,) -> Optional[bool]:
         """
-        Gets the isUnmanagedSyncAppForTenantRestricted property value. The isUnmanagedSyncAppForTenantRestricted property
+        Gets the isUnmanagedSyncAppForTenantRestricted property value. Indicates whether users are allowed to sync files only on PCs joined to specific domains.
         Returns: Optional[bool]
         """
         return self._is_unmanaged_sync_app_for_tenant_restricted
@@ -480,7 +480,7 @@ class SharepointSettings(entity.Entity):
     @is_unmanaged_sync_app_for_tenant_restricted.setter
     def is_unmanaged_sync_app_for_tenant_restricted(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isUnmanagedSyncAppForTenantRestricted property value. The isUnmanagedSyncAppForTenantRestricted property
+        Sets the isUnmanagedSyncAppForTenantRestricted property value. Indicates whether users are allowed to sync files only on PCs joined to specific domains.
         Args:
             value: Value to set for the is_unmanaged_sync_app_for_tenant_restricted property.
         """
@@ -489,7 +489,7 @@ class SharepointSettings(entity.Entity):
     @property
     def personal_site_default_storage_limit_in_m_b(self,) -> Optional[int]:
         """
-        Gets the personalSiteDefaultStorageLimitInMB property value. The personalSiteDefaultStorageLimitInMB property
+        Gets the personalSiteDefaultStorageLimitInMB property value. The default OneDrive storage limit for all new and existing users who are assigned a qualifying license. Measured in megabytes (MB).
         Returns: Optional[int]
         """
         return self._personal_site_default_storage_limit_in_m_b
@@ -497,7 +497,7 @@ class SharepointSettings(entity.Entity):
     @personal_site_default_storage_limit_in_m_b.setter
     def personal_site_default_storage_limit_in_m_b(self,value: Optional[int] = None) -> None:
         """
-        Sets the personalSiteDefaultStorageLimitInMB property value. The personalSiteDefaultStorageLimitInMB property
+        Sets the personalSiteDefaultStorageLimitInMB property value. The default OneDrive storage limit for all new and existing users who are assigned a qualifying license. Measured in megabytes (MB).
         Args:
             value: Value to set for the personal_site_default_storage_limit_in_m_b property.
         """
@@ -545,7 +545,7 @@ class SharepointSettings(entity.Entity):
     @property
     def sharing_allowed_domain_list(self,) -> Optional[List[str]]:
         """
-        Gets the sharingAllowedDomainList property value. The sharingAllowedDomainList property
+        Gets the sharingAllowedDomainList property value. Collection of email domains that are allowed for sharing outside the organization.
         Returns: Optional[List[str]]
         """
         return self._sharing_allowed_domain_list
@@ -553,7 +553,7 @@ class SharepointSettings(entity.Entity):
     @sharing_allowed_domain_list.setter
     def sharing_allowed_domain_list(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the sharingAllowedDomainList property value. The sharingAllowedDomainList property
+        Sets the sharingAllowedDomainList property value. Collection of email domains that are allowed for sharing outside the organization.
         Args:
             value: Value to set for the sharing_allowed_domain_list property.
         """
@@ -562,7 +562,7 @@ class SharepointSettings(entity.Entity):
     @property
     def sharing_blocked_domain_list(self,) -> Optional[List[str]]:
         """
-        Gets the sharingBlockedDomainList property value. The sharingBlockedDomainList property
+        Gets the sharingBlockedDomainList property value. Collection of email domains that are blocked for sharing outside the organization.
         Returns: Optional[List[str]]
         """
         return self._sharing_blocked_domain_list
@@ -570,7 +570,7 @@ class SharepointSettings(entity.Entity):
     @sharing_blocked_domain_list.setter
     def sharing_blocked_domain_list(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the sharingBlockedDomainList property value. The sharingBlockedDomainList property
+        Sets the sharingBlockedDomainList property value. Collection of email domains that are blocked for sharing outside the organization.
         Args:
             value: Value to set for the sharing_blocked_domain_list property.
         """
@@ -579,7 +579,7 @@ class SharepointSettings(entity.Entity):
     @property
     def sharing_capability(self,) -> Optional[sharing_capabilities.SharingCapabilities]:
         """
-        Gets the sharingCapability property value. The sharingCapability property
+        Gets the sharingCapability property value. Sharing capability for the tenant. Possible values are: disabled, externalUserSharingOnly, externalUserAndGuestSharing, existingExternalUserSharingOnly.
         Returns: Optional[sharing_capabilities.SharingCapabilities]
         """
         return self._sharing_capability
@@ -587,7 +587,7 @@ class SharepointSettings(entity.Entity):
     @sharing_capability.setter
     def sharing_capability(self,value: Optional[sharing_capabilities.SharingCapabilities] = None) -> None:
         """
-        Sets the sharingCapability property value. The sharingCapability property
+        Sets the sharingCapability property value. Sharing capability for the tenant. Possible values are: disabled, externalUserSharingOnly, externalUserAndGuestSharing, existingExternalUserSharingOnly.
         Args:
             value: Value to set for the sharing_capability property.
         """
@@ -596,7 +596,7 @@ class SharepointSettings(entity.Entity):
     @property
     def sharing_domain_restriction_mode(self,) -> Optional[sharing_domain_restriction_mode.SharingDomainRestrictionMode]:
         """
-        Gets the sharingDomainRestrictionMode property value. The sharingDomainRestrictionMode property
+        Gets the sharingDomainRestrictionMode property value. Specifies the external sharing mode for domains. Possible values are: none, allowList, blockList.
         Returns: Optional[sharing_domain_restriction_mode.SharingDomainRestrictionMode]
         """
         return self._sharing_domain_restriction_mode
@@ -604,7 +604,7 @@ class SharepointSettings(entity.Entity):
     @sharing_domain_restriction_mode.setter
     def sharing_domain_restriction_mode(self,value: Optional[sharing_domain_restriction_mode.SharingDomainRestrictionMode] = None) -> None:
         """
-        Sets the sharingDomainRestrictionMode property value. The sharingDomainRestrictionMode property
+        Sets the sharingDomainRestrictionMode property value. Specifies the external sharing mode for domains. Possible values are: none, allowList, blockList.
         Args:
             value: Value to set for the sharing_domain_restriction_mode property.
         """
@@ -613,7 +613,7 @@ class SharepointSettings(entity.Entity):
     @property
     def site_creation_default_managed_path(self,) -> Optional[str]:
         """
-        Gets the siteCreationDefaultManagedPath property value. The siteCreationDefaultManagedPath property
+        Gets the siteCreationDefaultManagedPath property value. The value of the team site managed path. This is the path under which new team sites will be created.
         Returns: Optional[str]
         """
         return self._site_creation_default_managed_path
@@ -621,7 +621,7 @@ class SharepointSettings(entity.Entity):
     @site_creation_default_managed_path.setter
     def site_creation_default_managed_path(self,value: Optional[str] = None) -> None:
         """
-        Sets the siteCreationDefaultManagedPath property value. The siteCreationDefaultManagedPath property
+        Sets the siteCreationDefaultManagedPath property value. The value of the team site managed path. This is the path under which new team sites will be created.
         Args:
             value: Value to set for the site_creation_default_managed_path property.
         """
@@ -630,7 +630,7 @@ class SharepointSettings(entity.Entity):
     @property
     def site_creation_default_storage_limit_in_m_b(self,) -> Optional[int]:
         """
-        Gets the siteCreationDefaultStorageLimitInMB property value. The siteCreationDefaultStorageLimitInMB property
+        Gets the siteCreationDefaultStorageLimitInMB property value. The default storage quota for a new site upon creation. Measured in megabytes (MB).
         Returns: Optional[int]
         """
         return self._site_creation_default_storage_limit_in_m_b
@@ -638,7 +638,7 @@ class SharepointSettings(entity.Entity):
     @site_creation_default_storage_limit_in_m_b.setter
     def site_creation_default_storage_limit_in_m_b(self,value: Optional[int] = None) -> None:
         """
-        Sets the siteCreationDefaultStorageLimitInMB property value. The siteCreationDefaultStorageLimitInMB property
+        Sets the siteCreationDefaultStorageLimitInMB property value. The default storage quota for a new site upon creation. Measured in megabytes (MB).
         Args:
             value: Value to set for the site_creation_default_storage_limit_in_m_b property.
         """
@@ -647,7 +647,7 @@ class SharepointSettings(entity.Entity):
     @property
     def tenant_default_timezone(self,) -> Optional[str]:
         """
-        Gets the tenantDefaultTimezone property value. The tenantDefaultTimezone property
+        Gets the tenantDefaultTimezone property value. The default timezone of a tenant for newly created sites. For a list of possible values, see SPRegionalSettings.TimeZones property.
         Returns: Optional[str]
         """
         return self._tenant_default_timezone
@@ -655,7 +655,7 @@ class SharepointSettings(entity.Entity):
     @tenant_default_timezone.setter
     def tenant_default_timezone(self,value: Optional[str] = None) -> None:
         """
-        Sets the tenantDefaultTimezone property value. The tenantDefaultTimezone property
+        Sets the tenantDefaultTimezone property value. The default timezone of a tenant for newly created sites. For a list of possible values, see SPRegionalSettings.TimeZones property.
         Args:
             value: Value to set for the tenant_default_timezone property.
         """

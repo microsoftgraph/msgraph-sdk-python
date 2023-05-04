@@ -12,8 +12,8 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .......models.o_data_errors import o_data_error
     from .......models.security import ediscovery_review_set
+    from .microsoft_graph_security_add_to_review_set import microsoft_graph_security_add_to_review_set_request_builder
     from .queries import queries_request_builder
-    from .security_add_to_review_set import security_add_to_review_set_request_builder
 
 class EdiscoveryReviewSetItemRequestBuilder():
     """
@@ -159,6 +159,15 @@ class EdiscoveryReviewSetItemRequestBuilder():
         return request_info
     
     @property
+    def microsoft_graph_security_add_to_review_set(self) -> microsoft_graph_security_add_to_review_set_request_builder.MicrosoftGraphSecurityAddToReviewSetRequestBuilder:
+        """
+        Provides operations to call the addToReviewSet method.
+        """
+        from .microsoft_graph_security_add_to_review_set import microsoft_graph_security_add_to_review_set_request_builder
+
+        return microsoft_graph_security_add_to_review_set_request_builder.MicrosoftGraphSecurityAddToReviewSetRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def queries(self) -> queries_request_builder.QueriesRequestBuilder:
         """
         Provides operations to manage the queries property of the microsoft.graph.security.ediscoveryReviewSet entity.
@@ -166,15 +175,6 @@ class EdiscoveryReviewSetItemRequestBuilder():
         from .queries import queries_request_builder
 
         return queries_request_builder.QueriesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def security_add_to_review_set(self) -> security_add_to_review_set_request_builder.SecurityAddToReviewSetRequestBuilder:
-        """
-        Provides operations to call the addToReviewSet method.
-        """
-        from .security_add_to_review_set import security_add_to_review_set_request_builder
-
-        return security_add_to_review_set_request_builder.SecurityAddToReviewSetRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EdiscoveryReviewSetItemRequestBuilderDeleteRequestConfiguration():

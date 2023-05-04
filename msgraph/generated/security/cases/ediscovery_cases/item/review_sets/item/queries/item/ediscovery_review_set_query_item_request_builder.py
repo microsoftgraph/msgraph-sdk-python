@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .........models.o_data_errors import o_data_error
     from .........models.security import ediscovery_review_set_query
-    from .security_apply_tags import security_apply_tags_request_builder
+    from .microsoft_graph_security_apply_tags import microsoft_graph_security_apply_tags_request_builder
 
 class EdiscoveryReviewSetQueryItemRequestBuilder():
     """
@@ -158,13 +158,13 @@ class EdiscoveryReviewSetQueryItemRequestBuilder():
         return request_info
     
     @property
-    def security_apply_tags(self) -> security_apply_tags_request_builder.SecurityApplyTagsRequestBuilder:
+    def microsoft_graph_security_apply_tags(self) -> microsoft_graph_security_apply_tags_request_builder.MicrosoftGraphSecurityApplyTagsRequestBuilder:
         """
         Provides operations to call the applyTags method.
         """
-        from .security_apply_tags import security_apply_tags_request_builder
+        from .microsoft_graph_security_apply_tags import microsoft_graph_security_apply_tags_request_builder
 
-        return security_apply_tags_request_builder.SecurityApplyTagsRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_apply_tags_request_builder.MicrosoftGraphSecurityApplyTagsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EdiscoveryReviewSetQueryItemRequestBuilderDeleteRequestConfiguration():

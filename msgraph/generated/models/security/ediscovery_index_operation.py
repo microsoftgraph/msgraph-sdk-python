@@ -10,7 +10,7 @@ from . import case_operation
 class EdiscoveryIndexOperation(case_operation.CaseOperation):
     def __init__(self,) -> None:
         """
-        Instantiates a new EdiscoveryIndexOperation and sets the default values.
+        Instantiates a new ediscoveryIndexOperation and sets the default values.
         """
         super().__init__()
         # The OdataType property

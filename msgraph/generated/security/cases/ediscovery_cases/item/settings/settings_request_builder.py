@@ -12,7 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ......models.o_data_errors import o_data_error
     from ......models.security import ediscovery_case_settings
-    from .security_reset_to_default import security_reset_to_default_request_builder
+    from .microsoft_graph_security_reset_to_default import microsoft_graph_security_reset_to_default_request_builder
 
 class SettingsRequestBuilder():
     """
@@ -158,13 +158,13 @@ class SettingsRequestBuilder():
         return request_info
     
     @property
-    def security_reset_to_default(self) -> security_reset_to_default_request_builder.SecurityResetToDefaultRequestBuilder:
+    def microsoft_graph_security_reset_to_default(self) -> microsoft_graph_security_reset_to_default_request_builder.MicrosoftGraphSecurityResetToDefaultRequestBuilder:
         """
         Provides operations to call the resetToDefault method.
         """
-        from .security_reset_to_default import security_reset_to_default_request_builder
+        from .microsoft_graph_security_reset_to_default import microsoft_graph_security_reset_to_default_request_builder
 
-        return security_reset_to_default_request_builder.SecurityResetToDefaultRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_reset_to_default_request_builder.MicrosoftGraphSecurityResetToDefaultRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SettingsRequestBuilderDeleteRequestConfiguration():

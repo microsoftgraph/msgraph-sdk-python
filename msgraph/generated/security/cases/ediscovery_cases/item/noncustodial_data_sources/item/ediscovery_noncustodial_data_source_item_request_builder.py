@@ -14,10 +14,10 @@ if TYPE_CHECKING:
     from .......models.security import ediscovery_noncustodial_data_source
     from .data_source import data_source_request_builder
     from .last_index_operation import last_index_operation_request_builder
-    from .security_apply_hold import security_apply_hold_request_builder
-    from .security_release import security_release_request_builder
-    from .security_remove_hold import security_remove_hold_request_builder
-    from .security_update_index import security_update_index_request_builder
+    from .microsoft_graph_security_apply_hold import microsoft_graph_security_apply_hold_request_builder
+    from .microsoft_graph_security_release import microsoft_graph_security_release_request_builder
+    from .microsoft_graph_security_remove_hold import microsoft_graph_security_remove_hold_request_builder
+    from .microsoft_graph_security_update_index import microsoft_graph_security_update_index_request_builder
 
 class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
     """
@@ -181,40 +181,40 @@ class EdiscoveryNoncustodialDataSourceItemRequestBuilder():
         return last_index_operation_request_builder.LastIndexOperationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def security_apply_hold(self) -> security_apply_hold_request_builder.SecurityApplyHoldRequestBuilder:
+    def microsoft_graph_security_apply_hold(self) -> microsoft_graph_security_apply_hold_request_builder.MicrosoftGraphSecurityApplyHoldRequestBuilder:
         """
         Provides operations to call the applyHold method.
         """
-        from .security_apply_hold import security_apply_hold_request_builder
+        from .microsoft_graph_security_apply_hold import microsoft_graph_security_apply_hold_request_builder
 
-        return security_apply_hold_request_builder.SecurityApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_apply_hold_request_builder.MicrosoftGraphSecurityApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def security_release(self) -> security_release_request_builder.SecurityReleaseRequestBuilder:
+    def microsoft_graph_security_release(self) -> microsoft_graph_security_release_request_builder.MicrosoftGraphSecurityReleaseRequestBuilder:
         """
         Provides operations to call the release method.
         """
-        from .security_release import security_release_request_builder
+        from .microsoft_graph_security_release import microsoft_graph_security_release_request_builder
 
-        return security_release_request_builder.SecurityReleaseRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_release_request_builder.MicrosoftGraphSecurityReleaseRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def security_remove_hold(self) -> security_remove_hold_request_builder.SecurityRemoveHoldRequestBuilder:
+    def microsoft_graph_security_remove_hold(self) -> microsoft_graph_security_remove_hold_request_builder.MicrosoftGraphSecurityRemoveHoldRequestBuilder:
         """
         Provides operations to call the removeHold method.
         """
-        from .security_remove_hold import security_remove_hold_request_builder
+        from .microsoft_graph_security_remove_hold import microsoft_graph_security_remove_hold_request_builder
 
-        return security_remove_hold_request_builder.SecurityRemoveHoldRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_remove_hold_request_builder.MicrosoftGraphSecurityRemoveHoldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def security_update_index(self) -> security_update_index_request_builder.SecurityUpdateIndexRequestBuilder:
+    def microsoft_graph_security_update_index(self) -> microsoft_graph_security_update_index_request_builder.MicrosoftGraphSecurityUpdateIndexRequestBuilder:
         """
         Provides operations to call the updateIndex method.
         """
-        from .security_update_index import security_update_index_request_builder
+        from .microsoft_graph_security_update_index import microsoft_graph_security_update_index_request_builder
 
-        return security_update_index_request_builder.SecurityUpdateIndexRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_update_index_request_builder.MicrosoftGraphSecurityUpdateIndexRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class EdiscoveryNoncustodialDataSourceItemRequestBuilderDeleteRequestConfiguration():

@@ -10,7 +10,7 @@ from . import entity
 class AttributeSet(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new attributeSet and sets the default values.
+        Instantiates a new AttributeSet and sets the default values.
         """
         super().__init__()
         # The description property

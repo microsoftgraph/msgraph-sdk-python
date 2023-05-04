@@ -17,8 +17,6 @@ if TYPE_CHECKING:
     from .message_rules import message_rules_request_builder
     from .messages import messages_request_builder
     from .move import move_request_builder
-    from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-    from .single_value_extended_properties import single_value_extended_properties_request_builder
 
 class MailFolderItemRequestBuilder():
     """
@@ -207,24 +205,6 @@ class MailFolderItemRequestBuilder():
         from .move import move_request_builder
 
         return move_request_builder.MoveRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
-        """
-        Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.mailFolder entity.
-        """
-        from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-
-        return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
-        """
-        Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.mailFolder entity.
-        """
-        from .single_value_extended_properties import single_value_extended_properties_request_builder
-
-        return single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class MailFolderItemRequestBuilderDeleteRequestConfiguration():

@@ -11,7 +11,7 @@ from . import entity
 class AccessReviewInstance(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new accessReviewInstance and sets the default values.
+        Instantiates a new AccessReviewInstance and sets the default values.
         """
         super().__init__()
         # Returns the collection of reviewers who were contacted to complete this review. While the reviewers and fallbackReviewers properties of the accessReviewScheduleDefinition might specify group owners or managers as reviewers, contactedReviewers returns their individual identities. Supports $select. Read-only.

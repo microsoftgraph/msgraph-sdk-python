@@ -12,6 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models import device_and_app_management_role_assignment
     from ....models.o_data_errors import o_data_error
+    from .role_definition import role_definition_request_builder
 
 class DeviceAndAppManagementRoleAssignmentItemRequestBuilder():
     """
@@ -155,6 +156,15 @@ class DeviceAndAppManagementRoleAssignmentItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    @property
+    def role_definition(self) -> role_definition_request_builder.RoleDefinitionRequestBuilder:
+        """
+        Provides operations to manage the roleDefinition property of the microsoft.graph.roleAssignment entity.
+        """
+        from .role_definition import role_definition_request_builder
+
+        return role_definition_request_builder.RoleDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class DeviceAndAppManagementRoleAssignmentItemRequestBuilderDeleteRequestConfiguration():

@@ -10,7 +10,7 @@ from . import identity
 class TeamworkConversationIdentity(identity.Identity):
     def __init__(self,) -> None:
         """
-        Instantiates a new TeamworkConversationIdentity and sets the default values.
+        Instantiates a new teamworkConversationIdentity and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.teamworkConversationIdentity"

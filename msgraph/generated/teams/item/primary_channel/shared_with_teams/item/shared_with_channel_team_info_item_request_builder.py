@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ......models import shared_with_channel_team_info
     from ......models.o_data_errors import o_data_error
     from .allowed_members import allowed_members_request_builder
+    from .team import team_request_builder
 
 class SharedWithChannelTeamInfoItemRequestBuilder():
     """
@@ -165,6 +166,15 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
         from .allowed_members import allowed_members_request_builder
 
         return allowed_members_request_builder.AllowedMembersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def team(self) -> team_request_builder.TeamRequestBuilder:
+        """
+        Provides operations to manage the team property of the microsoft.graph.teamInfo entity.
+        """
+        from .team import team_request_builder
+
+        return team_request_builder.TeamRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class SharedWithChannelTeamInfoItemRequestBuilderDeleteRequestConfiguration():

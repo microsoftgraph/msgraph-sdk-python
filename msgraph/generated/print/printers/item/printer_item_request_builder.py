@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import printer
     from ....models.o_data_errors import o_data_error
     from .connectors import connectors_request_builder
+    from .jobs import jobs_request_builder
     from .restore_factory_defaults import restore_factory_defaults_request_builder
     from .shares import shares_request_builder
     from .task_triggers import task_triggers_request_builder
@@ -168,6 +169,15 @@ class PrinterItemRequestBuilder():
         from .connectors import connectors_request_builder
 
         return connectors_request_builder.ConnectorsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def jobs(self) -> jobs_request_builder.JobsRequestBuilder:
+        """
+        Provides operations to manage the jobs property of the microsoft.graph.printerBase entity.
+        """
+        from .jobs import jobs_request_builder
+
+        return jobs_request_builder.JobsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def restore_factory_defaults(self) -> restore_factory_defaults_request_builder.RestoreFactoryDefaultsRequestBuilder:

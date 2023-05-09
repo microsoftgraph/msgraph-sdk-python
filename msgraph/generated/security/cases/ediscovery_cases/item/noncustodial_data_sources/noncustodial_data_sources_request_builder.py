@@ -14,8 +14,8 @@ if TYPE_CHECKING:
     from ......models.security import ediscovery_noncustodial_data_source, ediscovery_noncustodial_data_source_collection_response
     from .count import count_request_builder
     from .item import ediscovery_noncustodial_data_source_item_request_builder
-    from .security_apply_hold import security_apply_hold_request_builder
-    from .security_remove_hold import security_remove_hold_request_builder
+    from .microsoft_graph_security_apply_hold import microsoft_graph_security_apply_hold_request_builder
+    from .microsoft_graph_security_remove_hold import microsoft_graph_security_remove_hold_request_builder
 
 class NoncustodialDataSourcesRequestBuilder():
     """
@@ -150,22 +150,22 @@ class NoncustodialDataSourcesRequestBuilder():
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def security_apply_hold(self) -> security_apply_hold_request_builder.SecurityApplyHoldRequestBuilder:
+    def microsoft_graph_security_apply_hold(self) -> microsoft_graph_security_apply_hold_request_builder.MicrosoftGraphSecurityApplyHoldRequestBuilder:
         """
         Provides operations to call the applyHold method.
         """
-        from .security_apply_hold import security_apply_hold_request_builder
+        from .microsoft_graph_security_apply_hold import microsoft_graph_security_apply_hold_request_builder
 
-        return security_apply_hold_request_builder.SecurityApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_apply_hold_request_builder.MicrosoftGraphSecurityApplyHoldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def security_remove_hold(self) -> security_remove_hold_request_builder.SecurityRemoveHoldRequestBuilder:
+    def microsoft_graph_security_remove_hold(self) -> microsoft_graph_security_remove_hold_request_builder.MicrosoftGraphSecurityRemoveHoldRequestBuilder:
         """
         Provides operations to call the removeHold method.
         """
-        from .security_remove_hold import security_remove_hold_request_builder
+        from .microsoft_graph_security_remove_hold import microsoft_graph_security_remove_hold_request_builder
 
-        return security_remove_hold_request_builder.SecurityRemoveHoldRequestBuilder(self.request_adapter, self.path_parameters)
+        return microsoft_graph_security_remove_hold_request_builder.MicrosoftGraphSecurityRemoveHoldRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class NoncustodialDataSourcesRequestBuilderGetQueryParameters():

@@ -12,6 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ...........models import document_set_version
     from ...........models.o_data_errors import o_data_error
+    from .fields import fields_request_builder
     from .restore import restore_request_builder
 
 class DocumentSetVersionItemRequestBuilder():
@@ -156,6 +157,15 @@ class DocumentSetVersionItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    @property
+    def fields(self) -> fields_request_builder.FieldsRequestBuilder:
+        """
+        Provides operations to manage the fields property of the microsoft.graph.listItemVersion entity.
+        """
+        from .fields import fields_request_builder
+
+        return fields_request_builder.FieldsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def restore(self) -> restore_request_builder.RestoreRequestBuilder:

@@ -15,9 +15,7 @@ if TYPE_CHECKING:
     from .attachments import attachments_request_builder
     from .extensions import extensions_request_builder
     from .forward import forward_request_builder
-    from .multi_value_extended_properties import multi_value_extended_properties_request_builder
     from .reply import reply_request_builder
-    from .single_value_extended_properties import single_value_extended_properties_request_builder
 
 class InReplyToRequestBuilder():
     """
@@ -109,15 +107,6 @@ class InReplyToRequestBuilder():
         return forward_request_builder.ForwardRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
-    def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
-        """
-        Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.post entity.
-        """
-        from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-
-        return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
     def reply(self) -> reply_request_builder.ReplyRequestBuilder:
         """
         Provides operations to call the reply method.
@@ -125,15 +114,6 @@ class InReplyToRequestBuilder():
         from .reply import reply_request_builder
 
         return reply_request_builder.ReplyRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
-        """
-        Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.post entity.
-        """
-        from .single_value_extended_properties import single_value_extended_properties_request_builder
-
-        return single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class InReplyToRequestBuilderGetQueryParameters():

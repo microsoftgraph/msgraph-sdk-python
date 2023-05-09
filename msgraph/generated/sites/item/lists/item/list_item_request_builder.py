@@ -14,8 +14,10 @@ if TYPE_CHECKING:
     from .....models.o_data_errors import o_data_error
     from .columns import columns_request_builder
     from .content_types import content_types_request_builder
+    from .created_by_user import created_by_user_request_builder
     from .drive import drive_request_builder
     from .items import items_request_builder
+    from .last_modified_by_user import last_modified_by_user_request_builder
     from .operations import operations_request_builder
     from .subscriptions import subscriptions_request_builder
 
@@ -181,6 +183,15 @@ class ListItemRequestBuilder():
         return content_types_request_builder.ContentTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def created_by_user(self) -> created_by_user_request_builder.CreatedByUserRequestBuilder:
+        """
+        Provides operations to manage the createdByUser property of the microsoft.graph.baseItem entity.
+        """
+        from .created_by_user import created_by_user_request_builder
+
+        return created_by_user_request_builder.CreatedByUserRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def drive(self) -> drive_request_builder.DriveRequestBuilder:
         """
         Provides operations to manage the drive property of the microsoft.graph.list entity.
@@ -197,6 +208,15 @@ class ListItemRequestBuilder():
         from .items import items_request_builder
 
         return items_request_builder.ItemsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def last_modified_by_user(self) -> last_modified_by_user_request_builder.LastModifiedByUserRequestBuilder:
+        """
+        Provides operations to manage the lastModifiedByUser property of the microsoft.graph.baseItem entity.
+        """
+        from .last_modified_by_user import last_modified_by_user_request_builder
+
+        return last_modified_by_user_request_builder.LastModifiedByUserRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def operations(self) -> operations_request_builder.OperationsRequestBuilder:

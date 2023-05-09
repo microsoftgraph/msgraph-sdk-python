@@ -12,6 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models import token_issuance_policy
     from ....models.o_data_errors import o_data_error
+    from .applies_to import applies_to_request_builder
 
 class TokenIssuancePolicyItemRequestBuilder():
     """
@@ -155,6 +156,15 @@ class TokenIssuancePolicyItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    @property
+    def applies_to(self) -> applies_to_request_builder.AppliesToRequestBuilder:
+        """
+        Provides operations to manage the appliesTo property of the microsoft.graph.stsPolicy entity.
+        """
+        from .applies_to import applies_to_request_builder
+
+        return applies_to_request_builder.AppliesToRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class TokenIssuancePolicyItemRequestBuilderDeleteRequestConfiguration():

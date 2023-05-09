@@ -11,7 +11,7 @@ from . import directory_object
 class Device(directory_object.DirectoryObject):
     def __init__(self,) -> None:
         """
-        Instantiates a new device and sets the default values.
+        Instantiates a new Device and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.device"
@@ -23,14 +23,20 @@ class Device(directory_object.DirectoryObject):
         self._approximate_last_sign_in_date_time: Optional[datetime] = None
         # The timestamp when the device is no longer deemed compliant. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
         self._compliance_expiration_date_time: Optional[datetime] = None
+        # User-defined property set by Intune to automatically add devices to groups and simplify managing devices.
+        self._device_category: Optional[str] = None
         # Unique identifier set by Azure Device Registration Service at the time of registration. This is an alternate key that can be used to reference the device object. Supports $filter (eq, ne, not, startsWith).
         self._device_id: Optional[str] = None
         # For internal use only. Set to null.
         self._device_metadata: Optional[str] = None
+        # Ownership of the device. This property is set by Intune. Possible values are: unknown, company, personal.
+        self._device_ownership: Optional[str] = None
         # For internal use only.
         self._device_version: Optional[int] = None
         # The display name for the device. Required. Supports $filter (eq, ne, not, ge, le, in, startsWith, and eq on null values), $search, and $orderBy.
         self._display_name: Optional[str] = None
+        # Enrollment profile applied to the device. For example, Apple Device Enrollment Profile, Device enrollment - Corporate device identifiers, or Windows Autopilot profile name. This property is set by Intune.
+        self._enrollment_profile_name: Optional[str] = None
         # The collection of open extensions defined for the device. Read-only. Nullable.
         self._extensions: Optional[List[extension.Extension]] = None
         # true if the device complies with Mobile Device Management (MDM) policies; otherwise, false. Read-only. This can only be updated by Intune for any device OS type or by an approved MDM app for Windows OS devices. Supports $filter (eq, ne, not).
@@ -57,6 +63,8 @@ class Device(directory_object.DirectoryObject):
         self._registered_owners: Optional[List[directory_object.DirectoryObject]] = None
         # Collection of registered users of the device. For cloud joined devices and registered personal devices, registered users are set to the same value as registered owners at the time of registration. Read-only. Nullable. Supports $expand.
         self._registered_users: Optional[List[directory_object.DirectoryObject]] = None
+        # Date and time of when the device was registered. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+        self._registration_date_time: Optional[datetime] = None
         # List of labels applied to the device by the system. Supports $filter (/$count eq 0, /$count ne 0).
         self._system_labels: Optional[List[str]] = None
         # Groups and administrative units that the device is a member of. This operation is transitive. Supports $expand.
@@ -145,6 +153,23 @@ class Device(directory_object.DirectoryObject):
         return Device()
     
     @property
+    def device_category(self,) -> Optional[str]:
+        """
+        Gets the deviceCategory property value. User-defined property set by Intune to automatically add devices to groups and simplify managing devices.
+        Returns: Optional[str]
+        """
+        return self._device_category
+    
+    @device_category.setter
+    def device_category(self,value: Optional[str] = None) -> None:
+        """
+        Sets the deviceCategory property value. User-defined property set by Intune to automatically add devices to groups and simplify managing devices.
+        Args:
+            value: Value to set for the device_category property.
+        """
+        self._device_category = value
+    
+    @property
     def device_id(self,) -> Optional[str]:
         """
         Gets the deviceId property value. Unique identifier set by Azure Device Registration Service at the time of registration. This is an alternate key that can be used to reference the device object. Supports $filter (eq, ne, not, startsWith).
@@ -177,6 +202,23 @@ class Device(directory_object.DirectoryObject):
             value: Value to set for the device_metadata property.
         """
         self._device_metadata = value
+    
+    @property
+    def device_ownership(self,) -> Optional[str]:
+        """
+        Gets the deviceOwnership property value. Ownership of the device. This property is set by Intune. Possible values are: unknown, company, personal.
+        Returns: Optional[str]
+        """
+        return self._device_ownership
+    
+    @device_ownership.setter
+    def device_ownership(self,value: Optional[str] = None) -> None:
+        """
+        Sets the deviceOwnership property value. Ownership of the device. This property is set by Intune. Possible values are: unknown, company, personal.
+        Args:
+            value: Value to set for the device_ownership property.
+        """
+        self._device_ownership = value
     
     @property
     def device_version(self,) -> Optional[int]:
@@ -213,6 +255,23 @@ class Device(directory_object.DirectoryObject):
         self._display_name = value
     
     @property
+    def enrollment_profile_name(self,) -> Optional[str]:
+        """
+        Gets the enrollmentProfileName property value. Enrollment profile applied to the device. For example, Apple Device Enrollment Profile, Device enrollment - Corporate device identifiers, or Windows Autopilot profile name. This property is set by Intune.
+        Returns: Optional[str]
+        """
+        return self._enrollment_profile_name
+    
+    @enrollment_profile_name.setter
+    def enrollment_profile_name(self,value: Optional[str] = None) -> None:
+        """
+        Sets the enrollmentProfileName property value. Enrollment profile applied to the device. For example, Apple Device Enrollment Profile, Device enrollment - Corporate device identifiers, or Windows Autopilot profile name. This property is set by Intune.
+        Args:
+            value: Value to set for the enrollment_profile_name property.
+        """
+        self._enrollment_profile_name = value
+    
+    @property
     def extensions(self,) -> Optional[List[extension.Extension]]:
         """
         Gets the extensions property value. The collection of open extensions defined for the device. Read-only. Nullable.
@@ -241,10 +300,13 @@ class Device(directory_object.DirectoryObject):
             "alternativeSecurityIds": lambda n : setattr(self, 'alternative_security_ids', n.get_collection_of_object_values(alternative_security_id.AlternativeSecurityId)),
             "approximateLastSignInDateTime": lambda n : setattr(self, 'approximate_last_sign_in_date_time', n.get_datetime_value()),
             "complianceExpirationDateTime": lambda n : setattr(self, 'compliance_expiration_date_time', n.get_datetime_value()),
+            "deviceCategory": lambda n : setattr(self, 'device_category', n.get_str_value()),
             "deviceId": lambda n : setattr(self, 'device_id', n.get_str_value()),
             "deviceMetadata": lambda n : setattr(self, 'device_metadata', n.get_str_value()),
+            "deviceOwnership": lambda n : setattr(self, 'device_ownership', n.get_str_value()),
             "deviceVersion": lambda n : setattr(self, 'device_version', n.get_int_value()),
             "displayName": lambda n : setattr(self, 'display_name', n.get_str_value()),
+            "enrollmentProfileName": lambda n : setattr(self, 'enrollment_profile_name', n.get_str_value()),
             "extensions": lambda n : setattr(self, 'extensions', n.get_collection_of_object_values(extension.Extension)),
             "isCompliant": lambda n : setattr(self, 'is_compliant', n.get_bool_value()),
             "isManaged": lambda n : setattr(self, 'is_managed', n.get_bool_value()),
@@ -258,6 +320,7 @@ class Device(directory_object.DirectoryObject):
             "profileType": lambda n : setattr(self, 'profile_type', n.get_str_value()),
             "registeredOwners": lambda n : setattr(self, 'registered_owners', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "registeredUsers": lambda n : setattr(self, 'registered_users', n.get_collection_of_object_values(directory_object.DirectoryObject)),
+            "registrationDateTime": lambda n : setattr(self, 'registration_date_time', n.get_datetime_value()),
             "systemLabels": lambda n : setattr(self, 'system_labels', n.get_collection_of_primitive_values(str)),
             "transitiveMemberOf": lambda n : setattr(self, 'transitive_member_of', n.get_collection_of_object_values(directory_object.DirectoryObject)),
             "trustType": lambda n : setattr(self, 'trust_type', n.get_str_value()),
@@ -470,6 +533,23 @@ class Device(directory_object.DirectoryObject):
         """
         self._registered_users = value
     
+    @property
+    def registration_date_time(self,) -> Optional[datetime]:
+        """
+        Gets the registrationDateTime property value. Date and time of when the device was registered. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+        Returns: Optional[datetime]
+        """
+        return self._registration_date_time
+    
+    @registration_date_time.setter
+    def registration_date_time(self,value: Optional[datetime] = None) -> None:
+        """
+        Sets the registrationDateTime property value. Date and time of when the device was registered. The timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+        Args:
+            value: Value to set for the registration_date_time property.
+        """
+        self._registration_date_time = value
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -483,10 +563,13 @@ class Device(directory_object.DirectoryObject):
         writer.write_collection_of_object_values("alternativeSecurityIds", self.alternative_security_ids)
         writer.write_datetime_value("approximateLastSignInDateTime", self.approximate_last_sign_in_date_time)
         writer.write_datetime_value("complianceExpirationDateTime", self.compliance_expiration_date_time)
+        writer.write_str_value("deviceCategory", self.device_category)
         writer.write_str_value("deviceId", self.device_id)
         writer.write_str_value("deviceMetadata", self.device_metadata)
+        writer.write_str_value("deviceOwnership", self.device_ownership)
         writer.write_int_value("deviceVersion", self.device_version)
         writer.write_str_value("displayName", self.display_name)
+        writer.write_str_value("enrollmentProfileName", self.enrollment_profile_name)
         writer.write_collection_of_object_values("extensions", self.extensions)
         writer.write_bool_value("isCompliant", self.is_compliant)
         writer.write_bool_value("isManaged", self.is_managed)
@@ -500,6 +583,7 @@ class Device(directory_object.DirectoryObject):
         writer.write_str_value("profileType", self.profile_type)
         writer.write_collection_of_object_values("registeredOwners", self.registered_owners)
         writer.write_collection_of_object_values("registeredUsers", self.registered_users)
+        writer.write_datetime_value("registrationDateTime", self.registration_date_time)
         writer.write_collection_of_primitive_values("systemLabels", self.system_labels)
         writer.write_collection_of_object_values("transitiveMemberOf", self.transitive_member_of)
         writer.write_str_value("trustType", self.trust_type)

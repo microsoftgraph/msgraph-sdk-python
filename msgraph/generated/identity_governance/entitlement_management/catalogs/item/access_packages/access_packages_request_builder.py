@@ -10,10 +10,9 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from ......models import access_package, access_package_collection_response
+    from ......models import access_package_collection_response
     from ......models.o_data_errors import o_data_error
     from .count import count_request_builder
-    from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
     from .item import access_package_item_request_builder
 
 class AccessPackagesRequestBuilder():
@@ -53,19 +52,6 @@ class AccessPackagesRequestBuilder():
         url_tpl_params["accessPackage%2Did"] = access_package_id
         return access_package_item_request_builder.AccessPackageItemRequestBuilder(self.request_adapter, url_tpl_params)
     
-    def filter_by_current_user_with_on(self,on: Optional[str] = None) -> filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder:
-        """
-        Provides operations to call the filterByCurrentUser method.
-        Args:
-            on: Usage: on='{on}'
-        Returns: filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder
-        """
-        if on is None:
-            raise Exception("on cannot be undefined")
-        from .filter_by_current_user_with_on import filter_by_current_user_with_on_request_builder
-
-        return filter_by_current_user_with_on_request_builder.FilterByCurrentUserWithOnRequestBuilder(self.request_adapter, self.path_parameters, on)
-    
     async def get(self,request_configuration: Optional[AccessPackagesRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_collection_response.AccessPackageCollectionResponse]:
         """
         The access packages in this catalog. Read-only. Nullable.
@@ -88,31 +74,6 @@ class AccessPackagesRequestBuilder():
 
         return await self.request_adapter.send_async(request_info, access_package_collection_response.AccessPackageCollectionResponse, error_mapping)
     
-    async def post(self,body: Optional[access_package.AccessPackage] = None, request_configuration: Optional[AccessPackagesRequestBuilderPostRequestConfiguration] = None) -> Optional[access_package.AccessPackage]:
-        """
-        Create new navigation property to accessPackages for identityGovernance
-        Args:
-            body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[access_package.AccessPackage]
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = self.to_post_request_information(
-            body, request_configuration
-        )
-        from ......models.o_data_errors import o_data_error
-
-        error_mapping: Dict[str, ParsableFactory] = {
-            "4XX": o_data_error.ODataError,
-            "5XX": o_data_error.ODataError,
-        }
-        if not self.request_adapter:
-            raise Exception("Http core is null") 
-        from ......models import access_package
-
-        return await self.request_adapter.send_async(request_info, access_package.AccessPackage, error_mapping)
-    
     def to_get_request_information(self,request_configuration: Optional[AccessPackagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The access packages in this catalog. Read-only. Nullable.
@@ -129,27 +90,6 @@ class AccessPackagesRequestBuilder():
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
-        return request_info
-    
-    def to_post_request_information(self,body: Optional[access_package.AccessPackage] = None, request_configuration: Optional[AccessPackagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
-        """
-        Create new navigation property to accessPackages for identityGovernance
-        Args:
-            body: The request body
-            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: RequestInformation
-        """
-        if body is None:
-            raise Exception("body cannot be undefined")
-        request_info = RequestInformation()
-        request_info.url_template = self.url_template
-        request_info.path_parameters = self.path_parameters
-        request_info.http_method = Method.POST
-        request_info.headers["Accept"] = ["application/json"]
-        if request_configuration:
-            request_info.add_request_headers(request_configuration.headers)
-            request_info.add_request_options(request_configuration.options)
-        request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
     @property
@@ -231,18 +171,6 @@ class AccessPackagesRequestBuilder():
 
         # Request query parameters
         query_parameters: Optional[AccessPackagesRequestBuilder.AccessPackagesRequestBuilderGetQueryParameters] = None
-
-    
-    @dataclass
-    class AccessPackagesRequestBuilderPostRequestConfiguration():
-        """
-        Configuration for the request such as headers, query parameters, and middleware options.
-        """
-        # Request headers
-        headers: Optional[Dict[str, Union[str, List[str]]]] = None
-
-        # Request options
-        options: Optional[List[RequestOption]] = None
 
     
 

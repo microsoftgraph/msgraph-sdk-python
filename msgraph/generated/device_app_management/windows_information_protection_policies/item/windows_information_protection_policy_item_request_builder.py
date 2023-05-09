@@ -12,6 +12,9 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models import windows_information_protection_policy
     from ....models.o_data_errors import o_data_error
+    from .assignments import assignments_request_builder
+    from .exempt_app_locker_files import exempt_app_locker_files_request_builder
+    from .protected_app_locker_files import protected_app_locker_files_request_builder
 
 class WindowsInformationProtectionPolicyItemRequestBuilder():
     """
@@ -155,6 +158,33 @@ class WindowsInformationProtectionPolicyItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    @property
+    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
+        """
+        Provides operations to manage the assignments property of the microsoft.graph.windowsInformationProtection entity.
+        """
+        from .assignments import assignments_request_builder
+
+        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def exempt_app_locker_files(self) -> exempt_app_locker_files_request_builder.ExemptAppLockerFilesRequestBuilder:
+        """
+        Provides operations to manage the exemptAppLockerFiles property of the microsoft.graph.windowsInformationProtection entity.
+        """
+        from .exempt_app_locker_files import exempt_app_locker_files_request_builder
+
+        return exempt_app_locker_files_request_builder.ExemptAppLockerFilesRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def protected_app_locker_files(self) -> protected_app_locker_files_request_builder.ProtectedAppLockerFilesRequestBuilder:
+        """
+        Provides operations to manage the protectedAppLockerFiles property of the microsoft.graph.windowsInformationProtection entity.
+        """
+        from .protected_app_locker_files import protected_app_locker_files_request_builder
+
+        return protected_app_locker_files_request_builder.ProtectedAppLockerFilesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class WindowsInformationProtectionPolicyItemRequestBuilderDeleteRequestConfiguration():

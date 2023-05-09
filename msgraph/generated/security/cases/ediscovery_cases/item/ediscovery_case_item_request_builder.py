@@ -13,12 +13,12 @@ if TYPE_CHECKING:
     from .....models.o_data_errors import o_data_error
     from .....models.security import ediscovery_case
     from .custodians import custodians_request_builder
+    from .microsoft_graph_security_close import microsoft_graph_security_close_request_builder
+    from .microsoft_graph_security_reopen import microsoft_graph_security_reopen_request_builder
     from .noncustodial_data_sources import noncustodial_data_sources_request_builder
     from .operations import operations_request_builder
     from .review_sets import review_sets_request_builder
     from .searches import searches_request_builder
-    from .security_close import security_close_request_builder
-    from .security_reopen import security_reopen_request_builder
     from .settings import settings_request_builder
     from .tags import tags_request_builder
 
@@ -175,6 +175,24 @@ class EdiscoveryCaseItemRequestBuilder():
         return custodians_request_builder.CustodiansRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def microsoft_graph_security_close(self) -> microsoft_graph_security_close_request_builder.MicrosoftGraphSecurityCloseRequestBuilder:
+        """
+        Provides operations to call the close method.
+        """
+        from .microsoft_graph_security_close import microsoft_graph_security_close_request_builder
+
+        return microsoft_graph_security_close_request_builder.MicrosoftGraphSecurityCloseRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def microsoft_graph_security_reopen(self) -> microsoft_graph_security_reopen_request_builder.MicrosoftGraphSecurityReopenRequestBuilder:
+        """
+        Provides operations to call the reopen method.
+        """
+        from .microsoft_graph_security_reopen import microsoft_graph_security_reopen_request_builder
+
+        return microsoft_graph_security_reopen_request_builder.MicrosoftGraphSecurityReopenRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def noncustodial_data_sources(self) -> noncustodial_data_sources_request_builder.NoncustodialDataSourcesRequestBuilder:
         """
         Provides operations to manage the noncustodialDataSources property of the microsoft.graph.security.ediscoveryCase entity.
@@ -209,24 +227,6 @@ class EdiscoveryCaseItemRequestBuilder():
         from .searches import searches_request_builder
 
         return searches_request_builder.SearchesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def security_close(self) -> security_close_request_builder.SecurityCloseRequestBuilder:
-        """
-        Provides operations to call the close method.
-        """
-        from .security_close import security_close_request_builder
-
-        return security_close_request_builder.SecurityCloseRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def security_reopen(self) -> security_reopen_request_builder.SecurityReopenRequestBuilder:
-        """
-        Provides operations to call the reopen method.
-        """
-        from .security_reopen import security_reopen_request_builder
-
-        return security_reopen_request_builder.SecurityReopenRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def settings(self) -> settings_request_builder.SettingsRequestBuilder:

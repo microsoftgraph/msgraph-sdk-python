@@ -13,8 +13,6 @@ if TYPE_CHECKING:
     from ......models import contact_folder
     from ......models.o_data_errors import o_data_error
     from .contacts import contacts_request_builder
-    from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-    from .single_value_extended_properties import single_value_extended_properties_request_builder
 
 class ContactFolderItemRequestBuilder():
     """
@@ -167,24 +165,6 @@ class ContactFolderItemRequestBuilder():
         from .contacts import contacts_request_builder
 
         return contacts_request_builder.ContactsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
-        """
-        Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.contactFolder entity.
-        """
-        from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-
-        return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
-        """
-        Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.contactFolder entity.
-        """
-        from .single_value_extended_properties import single_value_extended_properties_request_builder
-
-        return single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class ContactFolderItemRequestBuilderDeleteRequestConfiguration():

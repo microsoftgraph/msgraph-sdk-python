@@ -14,7 +14,7 @@ class ConditionalAccessEnumeratedExternalTenants(conditional_access_external_ten
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.conditionalAccessEnumeratedExternalTenants"
-        # The members property
+        # A collection of tenant IDs that define the scope of a policy targeting conditional access for guests and external users.
         self._members: Optional[List[str]] = None
     
     @staticmethod
@@ -46,7 +46,7 @@ class ConditionalAccessEnumeratedExternalTenants(conditional_access_external_ten
     @property
     def members(self,) -> Optional[List[str]]:
         """
-        Gets the members property value. The members property
+        Gets the members property value. A collection of tenant IDs that define the scope of a policy targeting conditional access for guests and external users.
         Returns: Optional[List[str]]
         """
         return self._members
@@ -54,7 +54,7 @@ class ConditionalAccessEnumeratedExternalTenants(conditional_access_external_ten
     @members.setter
     def members(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the members property value. The members property
+        Sets the members property value. A collection of tenant IDs that define the scope of a policy targeting conditional access for guests and external users.
         Args:
             value: Value to set for the members property.
         """

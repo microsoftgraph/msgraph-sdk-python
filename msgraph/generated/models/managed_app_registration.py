@@ -9,12 +9,9 @@ if TYPE_CHECKING:
 from . import entity
 
 class ManagedAppRegistration(entity.Entity):
-    """
-    The ManagedAppEntity is the base entity type for all other entity types under app management workflow.
-    """
     def __init__(self,) -> None:
         """
-        Instantiates a new managedAppRegistration and sets the default values.
+        Instantiates a new ManagedAppRegistration and sets the default values.
         """
         super().__init__()
         # The app package Identifier

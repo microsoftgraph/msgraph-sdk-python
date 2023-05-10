@@ -11,7 +11,7 @@ from . import entity
 class DirectoryObject(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new DirectoryObject and sets the default values.
+        Instantiates a new directoryObject and sets the default values.
         """
         super().__init__()
         # Date and time when this object was deleted. Always null when the object hasn't been deleted.

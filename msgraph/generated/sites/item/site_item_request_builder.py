@@ -15,6 +15,7 @@ if TYPE_CHECKING:
     from .analytics import analytics_request_builder
     from .columns import columns_request_builder
     from .content_types import content_types_request_builder
+    from .created_by_user import created_by_user_request_builder
     from .drive import drive_request_builder
     from .drives import drives_request_builder
     from .external_columns import external_columns_request_builder
@@ -23,6 +24,7 @@ if TYPE_CHECKING:
     from .get_applicable_content_types_for_list_with_list_id import get_applicable_content_types_for_list_with_list_id_request_builder
     from .get_by_path_with_path import get_by_path_with_path_request_builder
     from .items import items_request_builder
+    from .last_modified_by_user import last_modified_by_user_request_builder
     from .lists import lists_request_builder
     from .onenote import onenote_request_builder
     from .operations import operations_request_builder
@@ -212,6 +214,15 @@ class SiteItemRequestBuilder():
         return content_types_request_builder.ContentTypesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def created_by_user(self) -> created_by_user_request_builder.CreatedByUserRequestBuilder:
+        """
+        Provides operations to manage the createdByUser property of the microsoft.graph.baseItem entity.
+        """
+        from .created_by_user import created_by_user_request_builder
+
+        return created_by_user_request_builder.CreatedByUserRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def drive(self) -> drive_request_builder.DriveRequestBuilder:
         """
         Provides operations to manage the drive property of the microsoft.graph.site entity.
@@ -255,6 +266,15 @@ class SiteItemRequestBuilder():
         from .items import items_request_builder
 
         return items_request_builder.ItemsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def last_modified_by_user(self) -> last_modified_by_user_request_builder.LastModifiedByUserRequestBuilder:
+        """
+        Provides operations to manage the lastModifiedByUser property of the microsoft.graph.baseItem entity.
+        """
+        from .last_modified_by_user import last_modified_by_user_request_builder
+
+        return last_modified_by_user_request_builder.LastModifiedByUserRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def lists(self) -> lists_request_builder.ListsRequestBuilder:

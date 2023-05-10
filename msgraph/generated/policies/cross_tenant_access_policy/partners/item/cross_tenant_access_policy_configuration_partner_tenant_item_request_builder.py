@@ -12,6 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .....models import cross_tenant_access_policy_configuration_partner
     from .....models.o_data_errors import o_data_error
+    from .identity_synchronization import identity_synchronization_request_builder
 
 class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder():
     """
@@ -155,6 +156,15 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    @property
+    def identity_synchronization(self) -> identity_synchronization_request_builder.IdentitySynchronizationRequestBuilder:
+        """
+        Provides operations to manage the identitySynchronization property of the microsoft.graph.crossTenantAccessPolicyConfigurationPartner entity.
+        """
+        from .identity_synchronization import identity_synchronization_request_builder
+
+        return identity_synchronization_request_builder.IdentitySynchronizationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilderDeleteRequestConfiguration():

@@ -12,6 +12,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .....models import associated_team_info
     from .....models.o_data_errors import o_data_error
+    from .team import team_request_builder
 
 class AssociatedTeamInfoItemRequestBuilder():
     """
@@ -155,6 +156,15 @@ class AssociatedTeamInfoItemRequestBuilder():
             request_info.add_request_options(request_configuration.options)
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
+    
+    @property
+    def team(self) -> team_request_builder.TeamRequestBuilder:
+        """
+        Provides operations to manage the team property of the microsoft.graph.teamInfo entity.
+        """
+        from .team import team_request_builder
+
+        return team_request_builder.TeamRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class AssociatedTeamInfoItemRequestBuilderDeleteRequestConfiguration():

@@ -15,7 +15,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
 
         # Group IDs excluded from scope of policy.
         self._exclude_groups: Optional[List[str]] = None
-        # The excludeGuestsOrExternalUsers property
+        # Internal guests or external users excluded from the policy scope. Optionally populated.
         self._exclude_guests_or_external_users: Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers] = None
         # Role IDs excluded from scope of policy.
         self._exclude_roles: Optional[List[str]] = None
@@ -23,7 +23,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
         self._exclude_users: Optional[List[str]] = None
         # Group IDs in scope of policy unless explicitly excluded.
         self._include_groups: Optional[List[str]] = None
-        # The includeGuestsOrExternalUsers property
+        # Internal guests or external users included in the policy scope. Optionally populated.
         self._include_guests_or_external_users: Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers] = None
         # Role IDs in scope of policy unless explicitly excluded.
         self._include_roles: Optional[List[str]] = None
@@ -81,7 +81,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
     @property
     def exclude_guests_or_external_users(self,) -> Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers]:
         """
-        Gets the excludeGuestsOrExternalUsers property value. The excludeGuestsOrExternalUsers property
+        Gets the excludeGuestsOrExternalUsers property value. Internal guests or external users excluded from the policy scope. Optionally populated.
         Returns: Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers]
         """
         return self._exclude_guests_or_external_users
@@ -89,7 +89,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
     @exclude_guests_or_external_users.setter
     def exclude_guests_or_external_users(self,value: Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers] = None) -> None:
         """
-        Sets the excludeGuestsOrExternalUsers property value. The excludeGuestsOrExternalUsers property
+        Sets the excludeGuestsOrExternalUsers property value. Internal guests or external users excluded from the policy scope. Optionally populated.
         Args:
             value: Value to set for the exclude_guests_or_external_users property.
         """
@@ -169,7 +169,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
     @property
     def include_guests_or_external_users(self,) -> Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers]:
         """
-        Gets the includeGuestsOrExternalUsers property value. The includeGuestsOrExternalUsers property
+        Gets the includeGuestsOrExternalUsers property value. Internal guests or external users included in the policy scope. Optionally populated.
         Returns: Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers]
         """
         return self._include_guests_or_external_users
@@ -177,7 +177,7 @@ class ConditionalAccessUsers(AdditionalDataHolder, Parsable):
     @include_guests_or_external_users.setter
     def include_guests_or_external_users(self,value: Optional[conditional_access_guests_or_external_users.ConditionalAccessGuestsOrExternalUsers] = None) -> None:
         """
-        Sets the includeGuestsOrExternalUsers property value. The includeGuestsOrExternalUsers property
+        Sets the includeGuestsOrExternalUsers property value. Internal guests or external users included in the policy scope. Optionally populated.
         Args:
             value: Value to set for the include_guests_or_external_users property.
         """

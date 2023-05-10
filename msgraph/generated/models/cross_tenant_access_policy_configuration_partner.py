@@ -3,7 +3,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import cross_tenant_access_policy_b2_b_setting, cross_tenant_access_policy_inbound_trust, inbound_outbound_policy_configuration
+    from . import cross_tenant_access_policy_b2_b_setting, cross_tenant_access_policy_inbound_trust, cross_tenant_identity_sync_policy_partner, inbound_outbound_policy_configuration
 
 class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable):
     def __init__(self,) -> None:
@@ -23,6 +23,8 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         self._b2b_direct_connect_inbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
         # Defines your partner-specific configuration for users in your organization going outbound to access resources in another organization via Azure AD B2B direct connect.
         self._b2b_direct_connect_outbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
+        # The identitySynchronization property
+        self._identity_synchronization: Optional[cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner] = None
         # Determines the partner-specific configuration for trusting other Conditional Access claims from external Azure AD organizations.
         self._inbound_trust: Optional[cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust] = None
         # Identifies whether the partner-specific configuration is a Cloud Service Provider for your organization.
@@ -151,7 +153,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import cross_tenant_access_policy_b2_b_setting, cross_tenant_access_policy_inbound_trust, inbound_outbound_policy_configuration
+        from . import cross_tenant_access_policy_b2_b_setting, cross_tenant_access_policy_inbound_trust, cross_tenant_identity_sync_policy_partner, inbound_outbound_policy_configuration
 
         fields: Dict[str, Callable[[Any], None]] = {
             "automaticUserConsentSettings": lambda n : setattr(self, 'automatic_user_consent_settings', n.get_object_value(inbound_outbound_policy_configuration.InboundOutboundPolicyConfiguration)),
@@ -159,12 +161,30 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
             "b2bCollaborationOutbound": lambda n : setattr(self, 'b2b_collaboration_outbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
             "b2bDirectConnectInbound": lambda n : setattr(self, 'b2b_direct_connect_inbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
             "b2bDirectConnectOutbound": lambda n : setattr(self, 'b2b_direct_connect_outbound', n.get_object_value(cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting)),
+            "identitySynchronization": lambda n : setattr(self, 'identity_synchronization', n.get_object_value(cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner)),
             "inboundTrust": lambda n : setattr(self, 'inbound_trust', n.get_object_value(cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust)),
             "isServiceProvider": lambda n : setattr(self, 'is_service_provider', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "tenantId": lambda n : setattr(self, 'tenant_id', n.get_str_value()),
         }
         return fields
+    
+    @property
+    def identity_synchronization(self,) -> Optional[cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner]:
+        """
+        Gets the identitySynchronization property value. The identitySynchronization property
+        Returns: Optional[cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner]
+        """
+        return self._identity_synchronization
+    
+    @identity_synchronization.setter
+    def identity_synchronization(self,value: Optional[cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner] = None) -> None:
+        """
+        Sets the identitySynchronization property value. The identitySynchronization property
+        Args:
+            value: Value to set for the identity_synchronization property.
+        """
+        self._identity_synchronization = value
     
     @property
     def inbound_trust(self,) -> Optional[cross_tenant_access_policy_inbound_trust.CrossTenantAccessPolicyInboundTrust]:
@@ -230,6 +250,7 @@ class CrossTenantAccessPolicyConfigurationPartner(AdditionalDataHolder, Parsable
         writer.write_object_value("b2bCollaborationOutbound", self.b2b_collaboration_outbound)
         writer.write_object_value("b2bDirectConnectInbound", self.b2b_direct_connect_inbound)
         writer.write_object_value("b2bDirectConnectOutbound", self.b2b_direct_connect_outbound)
+        writer.write_object_value("identitySynchronization", self.identity_synchronization)
         writer.write_object_value("inboundTrust", self.inbound_trust)
         writer.write_bool_value("isServiceProvider", self.is_service_provider)
         writer.write_str_value("@odata.type", self.odata_type)

@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .allowed_groups import allowed_groups_request_builder
     from .allowed_users import allowed_users_request_builder
+    from .jobs import jobs_request_builder
     from .printer import printer_request_builder
 
 class PrinterShareItemRequestBuilder():
@@ -176,6 +177,15 @@ class PrinterShareItemRequestBuilder():
         from .allowed_users import allowed_users_request_builder
 
         return allowed_users_request_builder.AllowedUsersRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def jobs(self) -> jobs_request_builder.JobsRequestBuilder:
+        """
+        Provides operations to manage the jobs property of the microsoft.graph.printerBase entity.
+        """
+        from .jobs import jobs_request_builder
+
+        return jobs_request_builder.JobsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def printer(self) -> printer_request_builder.PrinterRequestBuilder:

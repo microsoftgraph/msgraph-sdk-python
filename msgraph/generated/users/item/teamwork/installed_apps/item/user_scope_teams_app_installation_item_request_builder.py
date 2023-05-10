@@ -13,6 +13,8 @@ if TYPE_CHECKING:
     from ......models import user_scope_teams_app_installation
     from ......models.o_data_errors import o_data_error
     from .chat import chat_request_builder
+    from .teams_app import teams_app_request_builder
+    from .teams_app_definition import teams_app_definition_request_builder
 
 class UserScopeTeamsAppInstallationItemRequestBuilder():
     """
@@ -165,6 +167,24 @@ class UserScopeTeamsAppInstallationItemRequestBuilder():
         from .chat import chat_request_builder
 
         return chat_request_builder.ChatRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def teams_app(self) -> teams_app_request_builder.TeamsAppRequestBuilder:
+        """
+        Provides operations to manage the teamsApp property of the microsoft.graph.teamsAppInstallation entity.
+        """
+        from .teams_app import teams_app_request_builder
+
+        return teams_app_request_builder.TeamsAppRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def teams_app_definition(self) -> teams_app_definition_request_builder.TeamsAppDefinitionRequestBuilder:
+        """
+        Provides operations to manage the teamsAppDefinition property of the microsoft.graph.teamsAppInstallation entity.
+        """
+        from .teams_app_definition import teams_app_definition_request_builder
+
+        return teams_app_definition_request_builder.TeamsAppDefinitionRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class UserScopeTeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration():

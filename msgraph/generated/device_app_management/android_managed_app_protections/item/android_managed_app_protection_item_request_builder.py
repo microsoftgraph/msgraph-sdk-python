@@ -13,6 +13,7 @@ if TYPE_CHECKING:
     from ....models import android_managed_app_protection
     from ....models.o_data_errors import o_data_error
     from .apps import apps_request_builder
+    from .assignments import assignments_request_builder
     from .deployment_summary import deployment_summary_request_builder
 
 class AndroidManagedAppProtectionItemRequestBuilder():
@@ -166,6 +167,15 @@ class AndroidManagedAppProtectionItemRequestBuilder():
         from .apps import apps_request_builder
 
         return apps_request_builder.AppsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def assignments(self) -> assignments_request_builder.AssignmentsRequestBuilder:
+        """
+        Provides operations to manage the assignments property of the microsoft.graph.targetedManagedAppProtection entity.
+        """
+        from .assignments import assignments_request_builder
+
+        return assignments_request_builder.AssignmentsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def deployment_summary(self) -> deployment_summary_request_builder.DeploymentSummaryRequestBuilder:

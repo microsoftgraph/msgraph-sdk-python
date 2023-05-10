@@ -11,7 +11,7 @@ from . import entity
 class AccessReviewScheduleDefinition(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new accessReviewScheduleDefinition and sets the default values.
+        Instantiates a new AccessReviewScheduleDefinition and sets the default values.
         """
         super().__init__()
         # Defines the list of additional users or group members to be notified of the access review progress.

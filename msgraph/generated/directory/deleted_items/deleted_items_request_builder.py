@@ -16,8 +16,11 @@ if TYPE_CHECKING:
     from .delta import delta_request_builder
     from .get_available_extension_properties import get_available_extension_properties_request_builder
     from .get_by_ids import get_by_ids_request_builder
+    from .graph_administrative_unit import graph_administrative_unit_request_builder
     from .graph_application import graph_application_request_builder
+    from .graph_device import graph_device_request_builder
     from .graph_group import graph_group_request_builder
+    from .graph_service_principal import graph_service_principal_request_builder
     from .graph_user import graph_user_request_builder
     from .item import directory_object_item_request_builder
     from .validate_properties import validate_properties_request_builder
@@ -182,6 +185,15 @@ class DeletedItemsRequestBuilder():
         return get_by_ids_request_builder.GetByIdsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def graph_administrative_unit(self) -> graph_administrative_unit_request_builder.GraphAdministrativeUnitRequestBuilder:
+        """
+        Casts the previous resource to administrativeUnit.
+        """
+        from .graph_administrative_unit import graph_administrative_unit_request_builder
+
+        return graph_administrative_unit_request_builder.GraphAdministrativeUnitRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def graph_application(self) -> graph_application_request_builder.GraphApplicationRequestBuilder:
         """
         Casts the previous resource to application.
@@ -191,6 +203,15 @@ class DeletedItemsRequestBuilder():
         return graph_application_request_builder.GraphApplicationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def graph_device(self) -> graph_device_request_builder.GraphDeviceRequestBuilder:
+        """
+        Casts the previous resource to device.
+        """
+        from .graph_device import graph_device_request_builder
+
+        return graph_device_request_builder.GraphDeviceRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def graph_group(self) -> graph_group_request_builder.GraphGroupRequestBuilder:
         """
         Casts the previous resource to group.
@@ -198,6 +219,15 @@ class DeletedItemsRequestBuilder():
         from .graph_group import graph_group_request_builder
 
         return graph_group_request_builder.GraphGroupRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_service_principal(self) -> graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder:
+        """
+        Casts the previous resource to servicePrincipal.
+        """
+        from .graph_service_principal import graph_service_principal_request_builder
+
+        return graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def graph_user(self) -> graph_user_request_builder.GraphUserRequestBuilder:

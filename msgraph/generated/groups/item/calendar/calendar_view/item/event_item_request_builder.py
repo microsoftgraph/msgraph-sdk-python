@@ -21,8 +21,6 @@ if TYPE_CHECKING:
     from .extensions import extensions_request_builder
     from .forward import forward_request_builder
     from .instances import instances_request_builder
-    from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-    from .single_value_extended_properties import single_value_extended_properties_request_builder
     from .snooze_reminder import snooze_reminder_request_builder
     from .tentatively_accept import tentatively_accept_request_builder
 
@@ -168,24 +166,6 @@ class EventItemRequestBuilder():
         from .instances import instances_request_builder
 
         return instances_request_builder.InstancesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def multi_value_extended_properties(self) -> multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder:
-        """
-        Provides operations to manage the multiValueExtendedProperties property of the microsoft.graph.event entity.
-        """
-        from .multi_value_extended_properties import multi_value_extended_properties_request_builder
-
-        return multi_value_extended_properties_request_builder.MultiValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def single_value_extended_properties(self) -> single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder:
-        """
-        Provides operations to manage the singleValueExtendedProperties property of the microsoft.graph.event entity.
-        """
-        from .single_value_extended_properties import single_value_extended_properties_request_builder
-
-        return single_value_extended_properties_request_builder.SingleValueExtendedPropertiesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def snooze_reminder(self) -> snooze_reminder_request_builder.SnoozeReminderRequestBuilder:

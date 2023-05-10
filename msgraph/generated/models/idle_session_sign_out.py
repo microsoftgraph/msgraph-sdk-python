@@ -10,13 +10,13 @@ class IdleSessionSignOut(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The isEnabled property
+        # Indicates whether the idle session sign-out policy is enabled.
         self._is_enabled: Optional[bool] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # The signOutAfterInSeconds property
+        # Number of seconds of inactivity after which a user is signed out.
         self._sign_out_after_in_seconds: Optional[int] = None
-        # The warnAfterInSeconds property
+        # Number of seconds of inactivity after which a user is notified that they'll be signed out.
         self._warn_after_in_seconds: Optional[int] = None
     
     @property
@@ -64,7 +64,7 @@ class IdleSessionSignOut(AdditionalDataHolder, Parsable):
     @property
     def is_enabled(self,) -> Optional[bool]:
         """
-        Gets the isEnabled property value. The isEnabled property
+        Gets the isEnabled property value. Indicates whether the idle session sign-out policy is enabled.
         Returns: Optional[bool]
         """
         return self._is_enabled
@@ -72,7 +72,7 @@ class IdleSessionSignOut(AdditionalDataHolder, Parsable):
     @is_enabled.setter
     def is_enabled(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isEnabled property value. The isEnabled property
+        Sets the isEnabled property value. Indicates whether the idle session sign-out policy is enabled.
         Args:
             value: Value to set for the is_enabled property.
         """
@@ -112,7 +112,7 @@ class IdleSessionSignOut(AdditionalDataHolder, Parsable):
     @property
     def sign_out_after_in_seconds(self,) -> Optional[int]:
         """
-        Gets the signOutAfterInSeconds property value. The signOutAfterInSeconds property
+        Gets the signOutAfterInSeconds property value. Number of seconds of inactivity after which a user is signed out.
         Returns: Optional[int]
         """
         return self._sign_out_after_in_seconds
@@ -120,7 +120,7 @@ class IdleSessionSignOut(AdditionalDataHolder, Parsable):
     @sign_out_after_in_seconds.setter
     def sign_out_after_in_seconds(self,value: Optional[int] = None) -> None:
         """
-        Sets the signOutAfterInSeconds property value. The signOutAfterInSeconds property
+        Sets the signOutAfterInSeconds property value. Number of seconds of inactivity after which a user is signed out.
         Args:
             value: Value to set for the sign_out_after_in_seconds property.
         """
@@ -129,7 +129,7 @@ class IdleSessionSignOut(AdditionalDataHolder, Parsable):
     @property
     def warn_after_in_seconds(self,) -> Optional[int]:
         """
-        Gets the warnAfterInSeconds property value. The warnAfterInSeconds property
+        Gets the warnAfterInSeconds property value. Number of seconds of inactivity after which a user is notified that they'll be signed out.
         Returns: Optional[int]
         """
         return self._warn_after_in_seconds
@@ -137,7 +137,7 @@ class IdleSessionSignOut(AdditionalDataHolder, Parsable):
     @warn_after_in_seconds.setter
     def warn_after_in_seconds(self,value: Optional[int] = None) -> None:
         """
-        Sets the warnAfterInSeconds property value. The warnAfterInSeconds property
+        Sets the warnAfterInSeconds property value. Number of seconds of inactivity after which a user is notified that they'll be signed out.
         Args:
             value: Value to set for the warn_after_in_seconds property.
         """

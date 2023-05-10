@@ -10,7 +10,7 @@ from . import entity
 class Place(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new place and sets the default values.
+        Instantiates a new Place and sets the default values.
         """
         super().__init__()
         # The street address of the place.

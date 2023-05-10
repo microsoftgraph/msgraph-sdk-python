@@ -13,7 +13,7 @@ class ConditionalAccessExternalTenants(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The membershipKind property
+        # The membership kind. Possible values are: all, enumerated, unknownFutureValue. The enumerated member references an conditionalAccessEnumeratedExternalTenants object.
         self._membership_kind: Optional[conditional_access_external_tenants_membership_kind.ConditionalAccessExternalTenantsMembershipKind] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
@@ -74,7 +74,7 @@ class ConditionalAccessExternalTenants(AdditionalDataHolder, Parsable):
     @property
     def membership_kind(self,) -> Optional[conditional_access_external_tenants_membership_kind.ConditionalAccessExternalTenantsMembershipKind]:
         """
-        Gets the membershipKind property value. The membershipKind property
+        Gets the membershipKind property value. The membership kind. Possible values are: all, enumerated, unknownFutureValue. The enumerated member references an conditionalAccessEnumeratedExternalTenants object.
         Returns: Optional[conditional_access_external_tenants_membership_kind.ConditionalAccessExternalTenantsMembershipKind]
         """
         return self._membership_kind
@@ -82,7 +82,7 @@ class ConditionalAccessExternalTenants(AdditionalDataHolder, Parsable):
     @membership_kind.setter
     def membership_kind(self,value: Optional[conditional_access_external_tenants_membership_kind.ConditionalAccessExternalTenantsMembershipKind] = None) -> None:
         """
-        Sets the membershipKind property value. The membershipKind property
+        Sets the membershipKind property value. The membership kind. Possible values are: all, enumerated, unknownFutureValue. The enumerated member references an conditionalAccessEnumeratedExternalTenants object.
         Args:
             value: Value to set for the membership_kind property.
         """

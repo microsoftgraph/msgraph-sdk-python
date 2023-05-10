@@ -16,8 +16,11 @@ if TYPE_CHECKING:
     from .check_member_objects import check_member_objects_request_builder
     from .get_member_groups import get_member_groups_request_builder
     from .get_member_objects import get_member_objects_request_builder
+    from .graph_administrative_unit import graph_administrative_unit_request_builder
     from .graph_application import graph_application_request_builder
+    from .graph_device import graph_device_request_builder
     from .graph_group import graph_group_request_builder
+    from .graph_service_principal import graph_service_principal_request_builder
     from .graph_user import graph_user_request_builder
     from .restore import restore_request_builder
 
@@ -201,6 +204,15 @@ class DirectoryObjectItemRequestBuilder():
         return get_member_objects_request_builder.GetMemberObjectsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def graph_administrative_unit(self) -> graph_administrative_unit_request_builder.GraphAdministrativeUnitRequestBuilder:
+        """
+        Casts the previous resource to administrativeUnit.
+        """
+        from .graph_administrative_unit import graph_administrative_unit_request_builder
+
+        return graph_administrative_unit_request_builder.GraphAdministrativeUnitRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def graph_application(self) -> graph_application_request_builder.GraphApplicationRequestBuilder:
         """
         Casts the previous resource to application.
@@ -210,6 +222,15 @@ class DirectoryObjectItemRequestBuilder():
         return graph_application_request_builder.GraphApplicationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def graph_device(self) -> graph_device_request_builder.GraphDeviceRequestBuilder:
+        """
+        Casts the previous resource to device.
+        """
+        from .graph_device import graph_device_request_builder
+
+        return graph_device_request_builder.GraphDeviceRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def graph_group(self) -> graph_group_request_builder.GraphGroupRequestBuilder:
         """
         Casts the previous resource to group.
@@ -217,6 +238,15 @@ class DirectoryObjectItemRequestBuilder():
         from .graph_group import graph_group_request_builder
 
         return graph_group_request_builder.GraphGroupRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def graph_service_principal(self) -> graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder:
+        """
+        Casts the previous resource to servicePrincipal.
+        """
+        from .graph_service_principal import graph_service_principal_request_builder
+
+        return graph_service_principal_request_builder.GraphServicePrincipalRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def graph_user(self) -> graph_user_request_builder.GraphUserRequestBuilder:

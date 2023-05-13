@@ -4,7 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-azure-identity = "1.12.0"
+azure-identity = "1.13.0"
 microsoft-kiota-abstractions = "0.5.1"
 microsoft-kiota-authentication-azure = "0.2.0"
 microsoft-kiota-http = "0.4.2"

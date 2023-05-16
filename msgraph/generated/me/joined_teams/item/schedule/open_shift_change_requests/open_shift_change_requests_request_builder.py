@@ -54,7 +54,7 @@ class OpenShiftChangeRequestsRequestBuilder():
     
     async def get(self,request_configuration: Optional[OpenShiftChangeRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[open_shift_change_request_collection_response.OpenShiftChangeRequestCollectionResponse]:
         """
-        The open shift requests in the schedule.
+        Retrieve a list of openShiftChangeRequest objects in a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[open_shift_change_request_collection_response.OpenShiftChangeRequestCollectionResponse]
@@ -76,7 +76,7 @@ class OpenShiftChangeRequestsRequestBuilder():
     
     async def post(self,body: Optional[open_shift_change_request.OpenShiftChangeRequest] = None, request_configuration: Optional[OpenShiftChangeRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[open_shift_change_request.OpenShiftChangeRequest]:
         """
-        Create new navigation property to openShiftChangeRequests for me
+        Create instance of an openShiftChangeRequest object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class OpenShiftChangeRequestsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OpenShiftChangeRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The open shift requests in the schedule.
+        Retrieve a list of openShiftChangeRequest objects in a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class OpenShiftChangeRequestsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[open_shift_change_request.OpenShiftChangeRequest] = None, request_configuration: Optional[OpenShiftChangeRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to openShiftChangeRequests for me
+        Create instance of an openShiftChangeRequest object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class OpenShiftChangeRequestsRequestBuilder():
     @dataclass
     class OpenShiftChangeRequestsRequestBuilderGetQueryParameters():
         """
-        The open shift requests in the schedule.
+        Retrieve a list of openShiftChangeRequest objects in a team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -56,7 +56,7 @@ class AssignmentDefaultsRequestBuilder():
     
     async def get(self,request_configuration: Optional[AssignmentDefaultsRequestBuilderGetRequestConfiguration] = None) -> Optional[education_assignment_defaults.EducationAssignmentDefaults]:
         """
-        Specifies class-level defaults respected by new assignments created in the class.
+        Read the properties and relationships of an educationAssignmentDefaults object.  These are the class-level assignment defaults respected by new assignments created in the class. Callers can continue to specify custom values on each **assignment** creation if they don't want the default behaviors. Only teachers can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_assignment_defaults.EducationAssignmentDefaults]
@@ -78,7 +78,7 @@ class AssignmentDefaultsRequestBuilder():
     
     async def patch(self,body: Optional[education_assignment_defaults.EducationAssignmentDefaults] = None, request_configuration: Optional[AssignmentDefaultsRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_assignment_defaults.EducationAssignmentDefaults]:
         """
-        Update the navigation property assignmentDefaults in education
+        Update the properties of an educationAssignmentDefaults object. Only teachers can update these settings.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class AssignmentDefaultsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AssignmentDefaultsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Specifies class-level defaults respected by new assignments created in the class.
+        Read the properties and relationships of an educationAssignmentDefaults object.  These are the class-level assignment defaults respected by new assignments created in the class. Callers can continue to specify custom values on each **assignment** creation if they don't want the default behaviors. Only teachers can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class AssignmentDefaultsRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[education_assignment_defaults.EducationAssignmentDefaults] = None, request_configuration: Optional[AssignmentDefaultsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property assignmentDefaults in education
+        Update the properties of an educationAssignmentDefaults object. Only teachers can update these settings.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class AssignmentDefaultsRequestBuilder():
     @dataclass
     class AssignmentDefaultsRequestBuilderGetQueryParameters():
         """
-        Specifies class-level defaults respected by new assignments created in the class.
+        Read the properties and relationships of an educationAssignmentDefaults object.  These are the class-level assignment defaults respected by new assignments created in the class. Callers can continue to specify custom values on each **assignment** creation if they don't want the default behaviors. Only teachers can perform this operation.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

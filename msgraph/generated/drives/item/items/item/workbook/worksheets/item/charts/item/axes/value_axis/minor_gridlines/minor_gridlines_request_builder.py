@@ -57,7 +57,7 @@ class MinorGridlinesRequestBuilder():
     
     async def get(self,request_configuration: Optional[MinorGridlinesRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_gridlines.WorkbookChartGridlines]:
         """
-        Returns a Gridlines object that represents the minor gridlines for the specified axis. Read-only.
+        Retrieve the properties and relationships of chartgridlines object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_chart_gridlines.WorkbookChartGridlines]
@@ -79,7 +79,7 @@ class MinorGridlinesRequestBuilder():
     
     async def patch(self,body: Optional[workbook_chart_gridlines.WorkbookChartGridlines] = None, request_configuration: Optional[MinorGridlinesRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart_gridlines.WorkbookChartGridlines]:
         """
-        Update the navigation property minorGridlines in drives
+        Update the properties of chartgridlines object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -120,7 +120,7 @@ class MinorGridlinesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MinorGridlinesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Returns a Gridlines object that represents the minor gridlines for the specified axis. Read-only.
+        Retrieve the properties and relationships of chartgridlines object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class MinorGridlinesRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[workbook_chart_gridlines.WorkbookChartGridlines] = None, request_configuration: Optional[MinorGridlinesRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property minorGridlines in drives
+        Update the properties of chartgridlines object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class MinorGridlinesRequestBuilder():
     @dataclass
     class MinorGridlinesRequestBuilderGetQueryParameters():
         """
-        Returns a Gridlines object that represents the minor gridlines for the specified axis. Read-only.
+        Retrieve the properties and relationships of chartgridlines object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

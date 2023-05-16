@@ -37,7 +37,7 @@ class TotalRowRangeRequestBuilder():
     
     async def get(self,request_configuration: Optional[TotalRowRangeRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_range.WorkbookRange]:
         """
-        Invoke function totalRowRange
+        Gets the range object associated with totals row of the table.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_range.WorkbookRange]
@@ -59,7 +59,7 @@ class TotalRowRangeRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TotalRowRangeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function totalRowRange
+        Gets the range object associated with totals row of the table.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

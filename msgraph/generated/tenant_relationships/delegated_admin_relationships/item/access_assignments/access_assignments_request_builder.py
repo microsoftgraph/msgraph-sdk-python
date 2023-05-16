@@ -54,7 +54,7 @@ class AccessAssignmentsRequestBuilder():
     
     async def get(self,request_configuration: Optional[AccessAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_admin_access_assignment_collection_response.DelegatedAdminAccessAssignmentCollectionResponse]:
         """
-        The access assignments associated with the delegated admin relationship.
+        Get a list of the delegatedAdminAccessAssignment objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[delegated_admin_access_assignment_collection_response.DelegatedAdminAccessAssignmentCollectionResponse]
@@ -76,7 +76,7 @@ class AccessAssignmentsRequestBuilder():
     
     async def post(self,body: Optional[delegated_admin_access_assignment.DelegatedAdminAccessAssignment] = None, request_configuration: Optional[AccessAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[delegated_admin_access_assignment.DelegatedAdminAccessAssignment]:
         """
-        Create new navigation property to accessAssignments for tenantRelationships
+        Create a new delegatedAdminAccessAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class AccessAssignmentsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AccessAssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The access assignments associated with the delegated admin relationship.
+        Get a list of the delegatedAdminAccessAssignment objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class AccessAssignmentsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[delegated_admin_access_assignment.DelegatedAdminAccessAssignment] = None, request_configuration: Optional[AccessAssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to accessAssignments for tenantRelationships
+        Create a new delegatedAdminAccessAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class AccessAssignmentsRequestBuilder():
     @dataclass
     class AccessAssignmentsRequestBuilderGetQueryParameters():
         """
-        The access assignments associated with the delegated admin relationship.
+        Get a list of the delegatedAdminAccessAssignment objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

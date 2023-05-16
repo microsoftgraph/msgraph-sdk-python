@@ -56,7 +56,7 @@ class DelegatedAdminRelationshipOperationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[DelegatedAdminRelationshipOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_admin_relationship_operation.DelegatedAdminRelationshipOperation]:
         """
-        The long running operations associated with the delegated admin relationship.
+        Read the properties of a delegatedAdminRelationshipOperation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[delegated_admin_relationship_operation.DelegatedAdminRelationshipOperation]
@@ -119,7 +119,7 @@ class DelegatedAdminRelationshipOperationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DelegatedAdminRelationshipOperationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The long running operations associated with the delegated admin relationship.
+        Read the properties of a delegatedAdminRelationshipOperation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class DelegatedAdminRelationshipOperationItemRequestBuilder():
     @dataclass
     class DelegatedAdminRelationshipOperationItemRequestBuilderGetQueryParameters():
         """
-        The long running operations associated with the delegated admin relationship.
+        Read the properties of a delegatedAdminRelationshipOperation object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

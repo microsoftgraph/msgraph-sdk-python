@@ -56,7 +56,7 @@ class IdentitySecurityDefaultsEnforcementPolicyRequestBuilder():
     
     async def get(self,request_configuration: Optional[IdentitySecurityDefaultsEnforcementPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy]:
         """
-        The policy that represents the security defaults that protect against common attacks.
+        Retrieve the properties of an identitySecurityDefaultsEnforcementPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy]
@@ -78,7 +78,7 @@ class IdentitySecurityDefaultsEnforcementPolicyRequestBuilder():
     
     async def patch(self,body: Optional[identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy] = None, request_configuration: Optional[IdentitySecurityDefaultsEnforcementPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy]:
         """
-        Update the navigation property identitySecurityDefaultsEnforcementPolicy in policies
+        Update the properties of an identitySecurityDefaultsEnforcementPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class IdentitySecurityDefaultsEnforcementPolicyRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[IdentitySecurityDefaultsEnforcementPolicyRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The policy that represents the security defaults that protect against common attacks.
+        Retrieve the properties of an identitySecurityDefaultsEnforcementPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class IdentitySecurityDefaultsEnforcementPolicyRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[identity_security_defaults_enforcement_policy.IdentitySecurityDefaultsEnforcementPolicy] = None, request_configuration: Optional[IdentitySecurityDefaultsEnforcementPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property identitySecurityDefaultsEnforcementPolicy in policies
+        Update the properties of an identitySecurityDefaultsEnforcementPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class IdentitySecurityDefaultsEnforcementPolicyRequestBuilder():
     @dataclass
     class IdentitySecurityDefaultsEnforcementPolicyRequestBuilderGetQueryParameters():
         """
-        The policy that represents the security defaults that protect against common attacks.
+        Retrieve the properties of an identitySecurityDefaultsEnforcementPolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

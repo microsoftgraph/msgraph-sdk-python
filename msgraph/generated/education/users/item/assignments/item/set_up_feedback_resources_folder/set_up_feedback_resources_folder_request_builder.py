@@ -37,7 +37,7 @@ class SetUpFeedbackResourcesFolderRequestBuilder():
     
     async def post(self,request_configuration: Optional[SetUpFeedbackResourcesFolderRequestBuilderPostRequestConfiguration] = None) -> Optional[education_assignment.EducationAssignment]:
         """
-        Invoke action setUpFeedbackResourcesFolder
+        Create a SharePoint folder to upload feedback files for a given educationSubmission. Only teachers can perform this operation. The teacher determines the resources to upload in the feedback resources folder of a submission.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_assignment.EducationAssignment]
@@ -59,7 +59,7 @@ class SetUpFeedbackResourcesFolderRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[SetUpFeedbackResourcesFolderRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action setUpFeedbackResourcesFolder
+        Create a SharePoint folder to upload feedback files for a given educationSubmission. Only teachers can perform this operation. The teacher determines the resources to upload in the feedback resources folder of a submission.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

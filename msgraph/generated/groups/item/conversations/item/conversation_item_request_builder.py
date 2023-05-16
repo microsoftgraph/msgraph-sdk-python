@@ -38,7 +38,7 @@ class ConversationItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ConversationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property conversations for groups
+        Delete conversation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -79,7 +79,7 @@ class ConversationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ConversationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property conversations for groups
+        Delete conversation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

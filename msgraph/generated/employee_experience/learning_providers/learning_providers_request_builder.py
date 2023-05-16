@@ -54,7 +54,7 @@ class LearningProvidersRequestBuilder():
     
     async def get(self,request_configuration: Optional[LearningProvidersRequestBuilderGetRequestConfiguration] = None) -> Optional[learning_provider_collection_response.LearningProviderCollectionResponse]:
         """
-        A collection of learning providers.
+        Get a list of the learningProvider resources registered in Viva Learning for a tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[learning_provider_collection_response.LearningProviderCollectionResponse]
@@ -76,7 +76,7 @@ class LearningProvidersRequestBuilder():
     
     async def post(self,body: Optional[learning_provider.LearningProvider] = None, request_configuration: Optional[LearningProvidersRequestBuilderPostRequestConfiguration] = None) -> Optional[learning_provider.LearningProvider]:
         """
-        Create new navigation property to learningProviders for employeeExperience
+        Create a new learningProvider object and register it with Viva Learning using the specified display name and logos for different themes.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class LearningProvidersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[LearningProvidersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of learning providers.
+        Get a list of the learningProvider resources registered in Viva Learning for a tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class LearningProvidersRequestBuilder():
     
     def to_post_request_information(self,body: Optional[learning_provider.LearningProvider] = None, request_configuration: Optional[LearningProvidersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to learningProviders for employeeExperience
+        Create a new learningProvider object and register it with Viva Learning using the specified display name and logos for different themes.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class LearningProvidersRequestBuilder():
     @dataclass
     class LearningProvidersRequestBuilderGetQueryParameters():
         """
-        A collection of learning providers.
+        Get a list of the learningProvider resources registered in Viva Learning for a tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

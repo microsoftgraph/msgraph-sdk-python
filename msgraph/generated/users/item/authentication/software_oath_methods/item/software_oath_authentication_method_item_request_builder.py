@@ -37,7 +37,7 @@ class SoftwareOathAuthenticationMethodItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[SoftwareOathAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property softwareOathMethods for users
+        Delete a user's Software OATH token authentication method object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class SoftwareOathAuthenticationMethodItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[SoftwareOathAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[software_oath_authentication_method.SoftwareOathAuthenticationMethod]:
         """
-        The software OATH TOTP applications registered to a user for authentication.
+        Retrieve a user's single Software OATH token authentication method object and its properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[software_oath_authentication_method.SoftwareOathAuthenticationMethod]
@@ -78,7 +78,7 @@ class SoftwareOathAuthenticationMethodItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[SoftwareOathAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property softwareOathMethods for users
+        Delete a user's Software OATH token authentication method object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -94,7 +94,7 @@ class SoftwareOathAuthenticationMethodItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SoftwareOathAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The software OATH TOTP applications registered to a user for authentication.
+        Retrieve a user's single Software OATH token authentication method object and its properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -125,7 +125,7 @@ class SoftwareOathAuthenticationMethodItemRequestBuilder():
     @dataclass
     class SoftwareOathAuthenticationMethodItemRequestBuilderGetQueryParameters():
         """
-        The software OATH TOTP applications registered to a user for authentication.
+        Retrieve a user's single Software OATH token authentication method object and its properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

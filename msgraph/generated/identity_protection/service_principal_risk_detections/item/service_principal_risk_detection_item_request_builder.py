@@ -56,7 +56,7 @@ class ServicePrincipalRiskDetectionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ServicePrincipalRiskDetectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[service_principal_risk_detection.ServicePrincipalRiskDetection]:
         """
-        Represents information about detected at-risk service principals in an Azure AD tenant.
+        Read the properties and relationships of a servicePrincipalRiskDetection object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[service_principal_risk_detection.ServicePrincipalRiskDetection]
@@ -119,7 +119,7 @@ class ServicePrincipalRiskDetectionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ServicePrincipalRiskDetectionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents information about detected at-risk service principals in an Azure AD tenant.
+        Read the properties and relationships of a servicePrincipalRiskDetection object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class ServicePrincipalRiskDetectionItemRequestBuilder():
     @dataclass
     class ServicePrincipalRiskDetectionItemRequestBuilderGetQueryParameters():
         """
-        Represents information about detected at-risk service principals in an Azure AD tenant.
+        Read the properties and relationships of a servicePrincipalRiskDetection object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

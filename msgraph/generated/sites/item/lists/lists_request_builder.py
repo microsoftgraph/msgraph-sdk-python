@@ -54,7 +54,7 @@ class ListsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ListsRequestBuilderGetRequestConfiguration] = None) -> Optional[list_collection_response.ListCollectionResponse]:
         """
-        The collection of lists under this site.
+        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include `system` in your `$select` statement.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[list_collection_response.ListCollectionResponse]
@@ -76,7 +76,7 @@ class ListsRequestBuilder():
     
     async def post(self,body: Optional[list.List] = None, request_configuration: Optional[ListsRequestBuilderPostRequestConfiguration] = None) -> Optional[list.List]:
         """
-        Create new navigation property to lists for sites
+        Create a new [list][] in a [site][].
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ListsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ListsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of lists under this site.
+        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include `system` in your `$select` statement.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ListsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[list.List] = None, request_configuration: Optional[ListsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to lists for sites
+        Create a new [list][] in a [site][].
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class ListsRequestBuilder():
     @dataclass
     class ListsRequestBuilderGetQueryParameters():
         """
-        The collection of lists under this site.
+        Get the collection of [lists][] for a [site][]. Lists with the [system][] facet are hidden by default.To list them, include `system` in your `$select` statement.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

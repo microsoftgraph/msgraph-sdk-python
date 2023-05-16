@@ -37,7 +37,7 @@ class EducationAssignmentResourceItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[EducationAssignmentResourceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property resources for education
+        Delete a specific educationAssignmentResource attached to an assignment. In general, only teachers in the class can remove a resource. However, teachers cannot remove resources marked as 'distributeToStudents', after the assignment has been published to students.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class EducationAssignmentResourceItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[EducationAssignmentResourceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[education_assignment_resource.EducationAssignmentResource]:
         """
-        Learning objects that are associated with this assignment.  Only teachers can modify this list. Nullable.
+        Get the properties of an education assignment resource associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_assignment_resource.EducationAssignmentResource]
@@ -103,7 +103,7 @@ class EducationAssignmentResourceItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[EducationAssignmentResourceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property resources for education
+        Delete a specific educationAssignmentResource attached to an assignment. In general, only teachers in the class can remove a resource. However, teachers cannot remove resources marked as 'distributeToStudents', after the assignment has been published to students.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class EducationAssignmentResourceItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[EducationAssignmentResourceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Learning objects that are associated with this assignment.  Only teachers can modify this list. Nullable.
+        Get the properties of an education assignment resource associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class EducationAssignmentResourceItemRequestBuilder():
     @dataclass
     class EducationAssignmentResourceItemRequestBuilderGetQueryParameters():
         """
-        Learning objects that are associated with this assignment.  Only teachers can modify this list. Nullable.
+        Get the properties of an education assignment resource associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

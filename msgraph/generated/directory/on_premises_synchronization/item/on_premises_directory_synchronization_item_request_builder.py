@@ -56,7 +56,7 @@ class OnPremisesDirectorySynchronizationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[OnPremisesDirectorySynchronizationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[on_premises_directory_synchronization.OnPremisesDirectorySynchronization]:
         """
-        A container for on-premises directory synchronization functionalities that are available for the organization.
+        Read the properties and relationships of an onPremisesDirectorySynchronization object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[on_premises_directory_synchronization.OnPremisesDirectorySynchronization]
@@ -78,7 +78,7 @@ class OnPremisesDirectorySynchronizationItemRequestBuilder():
     
     async def patch(self,body: Optional[on_premises_directory_synchronization.OnPremisesDirectorySynchronization] = None, request_configuration: Optional[OnPremisesDirectorySynchronizationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[on_premises_directory_synchronization.OnPremisesDirectorySynchronization]:
         """
-        Update the navigation property onPremisesSynchronization in directory
+        Update the properties of an onPremisesDirectorySynchronization object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class OnPremisesDirectorySynchronizationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OnPremisesDirectorySynchronizationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A container for on-premises directory synchronization functionalities that are available for the organization.
+        Read the properties and relationships of an onPremisesDirectorySynchronization object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class OnPremisesDirectorySynchronizationItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[on_premises_directory_synchronization.OnPremisesDirectorySynchronization] = None, request_configuration: Optional[OnPremisesDirectorySynchronizationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property onPremisesSynchronization in directory
+        Update the properties of an onPremisesDirectorySynchronization object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class OnPremisesDirectorySynchronizationItemRequestBuilder():
     @dataclass
     class OnPremisesDirectorySynchronizationItemRequestBuilderGetQueryParameters():
         """
-        A container for on-premises directory synchronization functionalities that are available for the organization.
+        Read the properties and relationships of an onPremisesDirectorySynchronization object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

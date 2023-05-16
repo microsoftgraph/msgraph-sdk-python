@@ -40,7 +40,7 @@ class BrowserSiteListItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[BrowserSiteListItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property siteLists for admin
+        Delete a browserSiteList object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -59,7 +59,7 @@ class BrowserSiteListItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[BrowserSiteListItemRequestBuilderGetRequestConfiguration] = None) -> Optional[browser_site_list.BrowserSiteList]:
         """
-        A collection of site lists to support Internet Explorer mode.
+        Get a browserSiteList that contains browserSite and browserSharedCookie resources.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[browser_site_list.BrowserSiteList]
@@ -81,7 +81,7 @@ class BrowserSiteListItemRequestBuilder():
     
     async def patch(self,body: Optional[browser_site_list.BrowserSiteList] = None, request_configuration: Optional[BrowserSiteListItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[browser_site_list.BrowserSiteList]:
         """
-        Update the navigation property siteLists in admin
+        Update the properties of a browserSiteList object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -106,7 +106,7 @@ class BrowserSiteListItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[BrowserSiteListItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property siteLists for admin
+        Delete a browserSiteList object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -122,7 +122,7 @@ class BrowserSiteListItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[BrowserSiteListItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of site lists to support Internet Explorer mode.
+        Get a browserSiteList that contains browserSite and browserSharedCookie resources.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +140,7 @@ class BrowserSiteListItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[browser_site_list.BrowserSiteList] = None, request_configuration: Optional[BrowserSiteListItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property siteLists in admin
+        Update the properties of a browserSiteList object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -201,7 +201,7 @@ class BrowserSiteListItemRequestBuilder():
     @dataclass
     class BrowserSiteListItemRequestBuilderGetQueryParameters():
         """
-        A collection of site lists to support Internet Explorer mode.
+        Get a browserSiteList that contains browserSite and browserSharedCookie resources.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

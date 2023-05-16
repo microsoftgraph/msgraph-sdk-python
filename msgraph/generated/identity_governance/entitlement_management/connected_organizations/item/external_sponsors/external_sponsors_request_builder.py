@@ -59,7 +59,7 @@ class ExternalSponsorsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ExternalSponsorsRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
         """
-        Get externalSponsors from identityGovernance
+        Retrieve a list of a connectedOrganization's external sponsors.  The external sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]
@@ -81,7 +81,7 @@ class ExternalSponsorsRequestBuilder():
     
     async def post(self,body: Optional[directory_object.DirectoryObject] = None, request_configuration: Optional[ExternalSponsorsRequestBuilderPostRequestConfiguration] = None) -> Optional[directory_object.DirectoryObject]:
         """
-        Create new navigation property to externalSponsors for identityGovernance
+        Add a user or a group to the connected organization's external sponsors. The external sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -106,7 +106,7 @@ class ExternalSponsorsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ExternalSponsorsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get externalSponsors from identityGovernance
+        Retrieve a list of a connectedOrganization's external sponsors.  The external sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -124,7 +124,7 @@ class ExternalSponsorsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[directory_object.DirectoryObject] = None, request_configuration: Optional[ExternalSponsorsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to externalSponsors for identityGovernance
+        Add a user or a group to the connected organization's external sponsors. The external sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -200,7 +200,7 @@ class ExternalSponsorsRequestBuilder():
     @dataclass
     class ExternalSponsorsRequestBuilderGetQueryParameters():
         """
-        Get externalSponsors from identityGovernance
+        Retrieve a list of a connectedOrganization's external sponsors.  The external sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

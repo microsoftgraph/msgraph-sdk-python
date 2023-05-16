@@ -54,7 +54,7 @@ class Alerts_v2RequestBuilder():
     
     async def get(self,request_configuration: Optional[Alerts_v2RequestBuilderGetRequestConfiguration] = None) -> Optional[alert_collection_response.AlertCollectionResponse]:
         """
-        A collection of alerts in Microsoft 365 Defender.
+        Get a list of alert resources that have been created to track suspicious activities in an organization. This operation lets you filter and sort through alerts to create an informed cyber security response. It exposes a collection of alerts that were flagged in your network, within the time range you specified in your environment retention policy. The most recent alerts are displayed at the top of the list.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[alert_collection_response.AlertCollectionResponse]
@@ -101,7 +101,7 @@ class Alerts_v2RequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[Alerts_v2RequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of alerts in Microsoft 365 Defender.
+        Get a list of alert resources that have been created to track suspicious activities in an organization. This operation lets you filter and sort through alerts to create an informed cyber security response. It exposes a collection of alerts that were flagged in your network, within the time range you specified in your environment retention policy. The most recent alerts are displayed at the top of the list.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class Alerts_v2RequestBuilder():
     @dataclass
     class Alerts_v2RequestBuilderGetQueryParameters():
         """
-        A collection of alerts in Microsoft 365 Defender.
+        Get a list of alert resources that have been created to track suspicious activities in an organization. This operation lets you filter and sort through alerts to create an informed cyber security response. It exposes a collection of alerts that were flagged in your network, within the time range you specified in your environment retention policy. The most recent alerts are displayed at the top of the list.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -37,7 +37,7 @@ class IdentityItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[IdentityItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property members for external
+        Delete an identity resource to remove the corresponding member from an externalGroup.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -103,7 +103,7 @@ class IdentityItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[IdentityItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property members for external
+        Delete an identity resource to remove the corresponding member from an externalGroup.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

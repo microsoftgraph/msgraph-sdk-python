@@ -10,7 +10,7 @@ class CrossTenantUserSyncInbound(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The isSyncAllowed property
+        # Defines whether user objects should be synchronized from the partner tenant. false causes any current user synchronization from the source tenant to the target tenant to stop. This property has no impact on existing users who have already been synchronized.
         self._is_sync_allowed: Optional[bool] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
@@ -58,7 +58,7 @@ class CrossTenantUserSyncInbound(AdditionalDataHolder, Parsable):
     @property
     def is_sync_allowed(self,) -> Optional[bool]:
         """
-        Gets the isSyncAllowed property value. The isSyncAllowed property
+        Gets the isSyncAllowed property value. Defines whether user objects should be synchronized from the partner tenant. false causes any current user synchronization from the source tenant to the target tenant to stop. This property has no impact on existing users who have already been synchronized.
         Returns: Optional[bool]
         """
         return self._is_sync_allowed
@@ -66,7 +66,7 @@ class CrossTenantUserSyncInbound(AdditionalDataHolder, Parsable):
     @is_sync_allowed.setter
     def is_sync_allowed(self,value: Optional[bool] = None) -> None:
         """
-        Sets the isSyncAllowed property value. The isSyncAllowed property
+        Sets the isSyncAllowed property value. Defines whether user objects should be synchronized from the partner tenant. false causes any current user synchronization from the source tenant to the target tenant to stop. This property has no impact on existing users who have already been synchronized.
         Args:
             value: Value to set for the is_sync_allowed property.
         """

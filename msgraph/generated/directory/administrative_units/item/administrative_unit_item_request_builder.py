@@ -40,7 +40,7 @@ class AdministrativeUnitItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[AdministrativeUnitItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property administrativeUnits for directory
+        Delete an administrativeUnit.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -59,7 +59,7 @@ class AdministrativeUnitItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AdministrativeUnitItemRequestBuilderGetRequestConfiguration] = None) -> Optional[administrative_unit.AdministrativeUnit]:
         """
-        Conceptual container for user and group directory objects.
+        Retrieve the properties and relationships of an administrativeUnit object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[administrative_unit.AdministrativeUnit]
@@ -81,7 +81,7 @@ class AdministrativeUnitItemRequestBuilder():
     
     async def patch(self,body: Optional[administrative_unit.AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[administrative_unit.AdministrativeUnit]:
         """
-        Update the navigation property administrativeUnits in directory
+        Update the properties of an administrativeUnit object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -106,7 +106,7 @@ class AdministrativeUnitItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[AdministrativeUnitItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property administrativeUnits for directory
+        Delete an administrativeUnit.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -122,7 +122,7 @@ class AdministrativeUnitItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AdministrativeUnitItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Conceptual container for user and group directory objects.
+        Retrieve the properties and relationships of an administrativeUnit object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +140,7 @@ class AdministrativeUnitItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[administrative_unit.AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property administrativeUnits in directory
+        Update the properties of an administrativeUnit object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -201,7 +201,7 @@ class AdministrativeUnitItemRequestBuilder():
     @dataclass
     class AdministrativeUnitItemRequestBuilderGetQueryParameters():
         """
-        Conceptual container for user and group directory objects.
+        Retrieve the properties and relationships of an administrativeUnit object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

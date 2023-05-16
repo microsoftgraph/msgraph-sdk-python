@@ -37,7 +37,7 @@ class ProvisionEmailRequestBuilder():
     
     async def post(self,request_configuration: Optional[ProvisionEmailRequestBuilderPostRequestConfiguration] = None) -> Optional[provision_channel_email_result.ProvisionChannelEmailResult]:
         """
-        Invoke action provisionEmail
+        Provision an email address for a channel. Microsoft Teams doesn't automatically provision an email address for a **channel** by default. To have Teams provision an email address, you can call **provisionEmail**, or through the Teams user interface, select **Get email address**, which triggers Teams to generate an email address if it has not already provisioned one. To remove the email address of a **channel**, use the removeEmail method.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[provision_channel_email_result.ProvisionChannelEmailResult]
@@ -59,7 +59,7 @@ class ProvisionEmailRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[ProvisionEmailRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action provisionEmail
+        Provision an email address for a channel. Microsoft Teams doesn't automatically provision an email address for a **channel** by default. To have Teams provision an email address, you can call **provisionEmail**, or through the Teams user interface, select **Get email address**, which triggers Teams to generate an email address if it has not already provisioned one. To remove the email address of a **channel**, use the removeEmail method.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

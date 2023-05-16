@@ -55,7 +55,7 @@ class TagsRequestBuilder():
     
     async def get(self,request_configuration: Optional[TagsRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_review_tag_collection_response.EdiscoveryReviewTagCollectionResponse]:
         """
-        Returns a list of ediscoveryReviewTag objects associated to this case.
+        Get a list of eDiscoveryReviewTag objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ediscovery_review_tag_collection_response.EdiscoveryReviewTagCollectionResponse]
@@ -77,7 +77,7 @@ class TagsRequestBuilder():
     
     async def post(self,body: Optional[ediscovery_review_tag.EdiscoveryReviewTag] = None, request_configuration: Optional[TagsRequestBuilderPostRequestConfiguration] = None) -> Optional[ediscovery_review_tag.EdiscoveryReviewTag]:
         """
-        Create new navigation property to tags for security
+        Create a new ediscoveryReviewTag object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class TagsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TagsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Returns a list of ediscoveryReviewTag objects associated to this case.
+        Get a list of eDiscoveryReviewTag objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class TagsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[ediscovery_review_tag.EdiscoveryReviewTag] = None, request_configuration: Optional[TagsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to tags for security
+        Create a new ediscoveryReviewTag object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class TagsRequestBuilder():
     @dataclass
     class TagsRequestBuilderGetQueryParameters():
         """
-        Returns a list of ediscoveryReviewTag objects associated to this case.
+        Get a list of eDiscoveryReviewTag objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

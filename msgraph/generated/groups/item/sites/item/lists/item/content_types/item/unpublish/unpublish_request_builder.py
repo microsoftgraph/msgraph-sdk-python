@@ -36,7 +36,7 @@ class UnpublishRequestBuilder():
     
     async def post(self,request_configuration: Optional[UnpublishRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action unpublish
+        Unpublish a [contentType][] from a content type hub site.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class UnpublishRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[UnpublishRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action unpublish
+        Unpublish a [contentType][] from a content type hub site.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

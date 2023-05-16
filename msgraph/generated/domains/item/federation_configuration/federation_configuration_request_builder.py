@@ -54,7 +54,7 @@ class FederationConfigurationRequestBuilder():
     
     async def get(self,request_configuration: Optional[FederationConfigurationRequestBuilderGetRequestConfiguration] = None) -> Optional[internal_domain_federation_collection_response.InternalDomainFederationCollectionResponse]:
         """
-        Domain settings configured by a customer when federated with Azure AD. Supports $expand.
+        Read the properties and relationships of an internalDomainFederation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[internal_domain_federation_collection_response.InternalDomainFederationCollectionResponse]
@@ -76,7 +76,7 @@ class FederationConfigurationRequestBuilder():
     
     async def post(self,body: Optional[internal_domain_federation.InternalDomainFederation] = None, request_configuration: Optional[FederationConfigurationRequestBuilderPostRequestConfiguration] = None) -> Optional[internal_domain_federation.InternalDomainFederation]:
         """
-        Create new navigation property to federationConfiguration for domains
+        Create a new internalDomainFederation object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class FederationConfigurationRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[FederationConfigurationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Domain settings configured by a customer when federated with Azure AD. Supports $expand.
+        Read the properties and relationships of an internalDomainFederation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class FederationConfigurationRequestBuilder():
     
     def to_post_request_information(self,body: Optional[internal_domain_federation.InternalDomainFederation] = None, request_configuration: Optional[FederationConfigurationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to federationConfiguration for domains
+        Create a new internalDomainFederation object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class FederationConfigurationRequestBuilder():
     @dataclass
     class FederationConfigurationRequestBuilderGetQueryParameters():
         """
-        Domain settings configured by a customer when federated with Azure AD. Supports $expand.
+        Read the properties and relationships of an internalDomainFederation object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

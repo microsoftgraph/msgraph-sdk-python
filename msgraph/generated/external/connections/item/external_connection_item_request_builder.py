@@ -41,7 +41,7 @@ class ExternalConnectionItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property connections for external
+        Deletes an externalConnection object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -60,7 +60,7 @@ class ExternalConnectionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[external_connection.ExternalConnection]:
         """
-        Get connections from external
+        Read the properties and relationships of an externalConnection object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[external_connection.ExternalConnection]
@@ -82,7 +82,7 @@ class ExternalConnectionItemRequestBuilder():
     
     async def patch(self,body: Optional[external_connection.ExternalConnection] = None, request_configuration: Optional[ExternalConnectionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[external_connection.ExternalConnection]:
         """
-        Update the navigation property connections in external
+        Update the properties of an externalConnection object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -107,7 +107,7 @@ class ExternalConnectionItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property connections for external
+        Deletes an externalConnection object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class ExternalConnectionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ExternalConnectionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get connections from external
+        Read the properties and relationships of an externalConnection object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +141,7 @@ class ExternalConnectionItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[external_connection.ExternalConnection] = None, request_configuration: Optional[ExternalConnectionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property connections in external
+        Update the properties of an externalConnection object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -211,7 +211,7 @@ class ExternalConnectionItemRequestBuilder():
     @dataclass
     class ExternalConnectionItemRequestBuilderGetQueryParameters():
         """
-        Get connections from external
+        Read the properties and relationships of an externalConnection object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

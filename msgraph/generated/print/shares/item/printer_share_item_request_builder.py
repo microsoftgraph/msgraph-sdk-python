@@ -41,7 +41,7 @@ class PrinterShareItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[PrinterShareItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property shares for print
+        Delete a printer share (unshare the associated printer). This action cannot be undone. If the printer is shared again in the future, any Windows users who had previously installed the printer will need to discover and reinstall it.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -60,7 +60,7 @@ class PrinterShareItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[PrinterShareItemRequestBuilderGetRequestConfiguration] = None) -> Optional[printer_share.PrinterShare]:
         """
-        The list of printer shares registered in the tenant.
+        Retrieve the properties and relationships of a printer share.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[printer_share.PrinterShare]
@@ -82,7 +82,7 @@ class PrinterShareItemRequestBuilder():
     
     async def patch(self,body: Optional[printer_share.PrinterShare] = None, request_configuration: Optional[PrinterShareItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[printer_share.PrinterShare]:
         """
-        Update the navigation property shares in print
+        Update the properties of a printer share. This method can be used to swap printers. For example, if a physical printer device breaks, an administrator can register a new printer device and update this printerShare to point to the new printer without requiring users to take any action.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -107,7 +107,7 @@ class PrinterShareItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[PrinterShareItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property shares for print
+        Delete a printer share (unshare the associated printer). This action cannot be undone. If the printer is shared again in the future, any Windows users who had previously installed the printer will need to discover and reinstall it.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class PrinterShareItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PrinterShareItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of printer shares registered in the tenant.
+        Retrieve the properties and relationships of a printer share.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +141,7 @@ class PrinterShareItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[printer_share.PrinterShare] = None, request_configuration: Optional[PrinterShareItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property shares in print
+        Update the properties of a printer share. This method can be used to swap printers. For example, if a physical printer device breaks, an administrator can register a new printer device and update this printerShare to point to the new printer without requiring users to take any action.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -211,7 +211,7 @@ class PrinterShareItemRequestBuilder():
     @dataclass
     class PrinterShareItemRequestBuilderGetQueryParameters():
         """
-        The list of printer shares registered in the tenant.
+        Retrieve the properties and relationships of a printer share.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

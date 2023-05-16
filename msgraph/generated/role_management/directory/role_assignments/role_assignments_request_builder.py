@@ -54,7 +54,7 @@ class RoleAssignmentsRequestBuilder():
     
     async def get(self,request_configuration: Optional[RoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_assignment_collection_response.UnifiedRoleAssignmentCollectionResponse]:
         """
-        Resource to grant access to users or groups.
+        Get a list of unifiedRoleAssignment objects for the RBAC provider. The following RBAC providers are currently supported:- directory (Azure AD)- entitlement management (Azure AD)
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[unified_role_assignment_collection_response.UnifiedRoleAssignmentCollectionResponse]
@@ -76,7 +76,7 @@ class RoleAssignmentsRequestBuilder():
     
     async def post(self,body: Optional[unified_role_assignment.UnifiedRoleAssignment] = None, request_configuration: Optional[RoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[unified_role_assignment.UnifiedRoleAssignment]:
         """
-        Create new navigation property to roleAssignments for roleManagement
+        Create a new unifiedRoleAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class RoleAssignmentsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RoleAssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Resource to grant access to users or groups.
+        Get a list of unifiedRoleAssignment objects for the RBAC provider. The following RBAC providers are currently supported:- directory (Azure AD)- entitlement management (Azure AD)
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class RoleAssignmentsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[unified_role_assignment.UnifiedRoleAssignment] = None, request_configuration: Optional[RoleAssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to roleAssignments for roleManagement
+        Create a new unifiedRoleAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class RoleAssignmentsRequestBuilder():
     @dataclass
     class RoleAssignmentsRequestBuilderGetQueryParameters():
         """
-        Resource to grant access to users or groups.
+        Get a list of unifiedRoleAssignment objects for the RBAC provider. The following RBAC providers are currently supported:- directory (Azure AD)- entitlement management (Azure AD)
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

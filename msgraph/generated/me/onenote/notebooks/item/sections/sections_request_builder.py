@@ -54,7 +54,7 @@ class SectionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[SectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[onenote_section_collection_response.OnenoteSectionCollectionResponse]:
         """
-        The sections in the notebook. Read-only. Nullable.
+        Retrieve a list of onenoteSection objects from the specified notebook.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[onenote_section_collection_response.OnenoteSectionCollectionResponse]
@@ -76,7 +76,7 @@ class SectionsRequestBuilder():
     
     async def post(self,body: Optional[onenote_section.OnenoteSection] = None, request_configuration: Optional[SectionsRequestBuilderPostRequestConfiguration] = None) -> Optional[onenote_section.OnenoteSection]:
         """
-        Create new navigation property to sections for me
+        Create a new onenoteSection in the specified notebook.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class SectionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The sections in the notebook. Read-only. Nullable.
+        Retrieve a list of onenoteSection objects from the specified notebook.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class SectionsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[onenote_section.OnenoteSection] = None, request_configuration: Optional[SectionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to sections for me
+        Create a new onenoteSection in the specified notebook.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class SectionsRequestBuilder():
     @dataclass
     class SectionsRequestBuilderGetQueryParameters():
         """
-        The sections in the notebook. Read-only. Nullable.
+        Retrieve a list of onenoteSection objects from the specified notebook.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

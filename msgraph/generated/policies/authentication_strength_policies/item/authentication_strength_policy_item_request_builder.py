@@ -40,7 +40,7 @@ class AuthenticationStrengthPolicyItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[AuthenticationStrengthPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property authenticationStrengthPolicies for policies
+        Delete a custom authenticationStrengthPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -59,7 +59,7 @@ class AuthenticationStrengthPolicyItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AuthenticationStrengthPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_strength_policy.AuthenticationStrengthPolicy]:
         """
-        The authentication method combinations that are to be used in scenarios defined by Azure AD Conditional Access.
+        Read the properties and relationships of an authenticationStrengthPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authentication_strength_policy.AuthenticationStrengthPolicy]
@@ -81,7 +81,7 @@ class AuthenticationStrengthPolicyItemRequestBuilder():
     
     async def patch(self,body: Optional[authentication_strength_policy.AuthenticationStrengthPolicy] = None, request_configuration: Optional[AuthenticationStrengthPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[authentication_strength_policy.AuthenticationStrengthPolicy]:
         """
-        Update the navigation property authenticationStrengthPolicies in policies
+        Update the properties of an authenticationStrengthPolicy object. You cannot update the allowed auth method combinations using this request. To do so, use the Update allowed combinations action.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -106,7 +106,7 @@ class AuthenticationStrengthPolicyItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[AuthenticationStrengthPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property authenticationStrengthPolicies for policies
+        Delete a custom authenticationStrengthPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -122,7 +122,7 @@ class AuthenticationStrengthPolicyItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationStrengthPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The authentication method combinations that are to be used in scenarios defined by Azure AD Conditional Access.
+        Read the properties and relationships of an authenticationStrengthPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +140,7 @@ class AuthenticationStrengthPolicyItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[authentication_strength_policy.AuthenticationStrengthPolicy] = None, request_configuration: Optional[AuthenticationStrengthPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property authenticationStrengthPolicies in policies
+        Update the properties of an authenticationStrengthPolicy object. You cannot update the allowed auth method combinations using this request. To do so, use the Update allowed combinations action.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -201,7 +201,7 @@ class AuthenticationStrengthPolicyItemRequestBuilder():
     @dataclass
     class AuthenticationStrengthPolicyItemRequestBuilderGetQueryParameters():
         """
-        The authentication method combinations that are to be used in scenarios defined by Azure AD Conditional Access.
+        Read the properties and relationships of an authenticationStrengthPolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

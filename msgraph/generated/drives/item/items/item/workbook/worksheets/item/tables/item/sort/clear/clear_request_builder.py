@@ -36,7 +36,7 @@ class ClearRequestBuilder():
     
     async def post(self,request_configuration: Optional[ClearRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action clear
+        Clears the sorting that is currently on the table. While this doesn't modify the table's ordering, it clears the state of the header buttons.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class ClearRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[ClearRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action clear
+        Clears the sorting that is currently on the table. While this doesn't modify the table's ordering, it clears the state of the header buttons.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

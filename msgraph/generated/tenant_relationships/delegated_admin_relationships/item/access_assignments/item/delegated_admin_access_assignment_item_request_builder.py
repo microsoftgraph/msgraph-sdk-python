@@ -37,7 +37,7 @@ class DelegatedAdminAccessAssignmentItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[DelegatedAdminAccessAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property accessAssignments for tenantRelationships
+        Delete a delegatedAdminAccessAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -103,7 +103,7 @@ class DelegatedAdminAccessAssignmentItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[DelegatedAdminAccessAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property accessAssignments for tenantRelationships
+        Delete a delegatedAdminAccessAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

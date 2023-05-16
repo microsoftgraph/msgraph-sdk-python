@@ -41,7 +41,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property roleAssignments for roleManagement
+        Delete a unifiedRoleAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -60,7 +60,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_assignment.UnifiedRoleAssignment]:
         """
-        Resource to grant access to users or groups.
+        Retrieve the properties and relationships of a unifiedRoleAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[unified_role_assignment.UnifiedRoleAssignment]
@@ -107,7 +107,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property roleAssignments for roleManagement
+        Delete a unifiedRoleAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[UnifiedRoleAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Resource to grant access to users or groups.
+        Retrieve the properties and relationships of a unifiedRoleAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -211,7 +211,7 @@ class UnifiedRoleAssignmentItemRequestBuilder():
     @dataclass
     class UnifiedRoleAssignmentItemRequestBuilderGetQueryParameters():
         """
-        Resource to grant access to users or groups.
+        Retrieve the properties and relationships of a unifiedRoleAssignment object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

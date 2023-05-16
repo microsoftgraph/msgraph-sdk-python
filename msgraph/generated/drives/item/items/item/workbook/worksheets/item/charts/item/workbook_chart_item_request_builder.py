@@ -50,7 +50,7 @@ class WorkbookChartItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[WorkbookChartItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property charts for drives
+        Deletes the chart object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -69,7 +69,7 @@ class WorkbookChartItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[WorkbookChartItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart.WorkbookChart]:
         """
-        Returns collection of charts that are part of the worksheet. Read-only.
+        Retrieve the properties and relationships of chart object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_chart.WorkbookChart]
@@ -139,7 +139,7 @@ class WorkbookChartItemRequestBuilder():
     
     async def patch(self,body: Optional[workbook_chart.WorkbookChart] = None, request_configuration: Optional[WorkbookChartItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart.WorkbookChart]:
         """
-        Update the navigation property charts in drives
+        Update the properties of chart object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -164,7 +164,7 @@ class WorkbookChartItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookChartItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property charts for drives
+        Deletes the chart object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -180,7 +180,7 @@ class WorkbookChartItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[WorkbookChartItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Returns collection of charts that are part of the worksheet. Read-only.
+        Retrieve the properties and relationships of chart object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -198,7 +198,7 @@ class WorkbookChartItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[workbook_chart.WorkbookChart] = None, request_configuration: Optional[WorkbookChartItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property charts in drives
+        Update the properties of chart object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -322,7 +322,7 @@ class WorkbookChartItemRequestBuilder():
     @dataclass
     class WorkbookChartItemRequestBuilderGetQueryParameters():
         """
-        Returns collection of charts that are part of the worksheet. Read-only.
+        Retrieve the properties and relationships of chart object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

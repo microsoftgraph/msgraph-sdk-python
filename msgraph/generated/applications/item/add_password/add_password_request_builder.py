@@ -38,7 +38,7 @@ class AddPasswordRequestBuilder():
     
     async def post(self,body: Optional[add_password_post_request_body.AddPasswordPostRequestBody] = None, request_configuration: Optional[AddPasswordRequestBuilderPostRequestConfiguration] = None) -> Optional[password_credential.PasswordCredential]:
         """
-        Invoke action addPassword
+        Adds a strong password or secret to an application.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class AddPasswordRequestBuilder():
     
     def to_post_request_information(self,body: Optional[add_password_post_request_body.AddPasswordPostRequestBody] = None, request_configuration: Optional[AddPasswordRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action addPassword
+        Adds a strong password or secret to an application.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -36,7 +36,7 @@ class MicrosoftGraphSecurityReopenRequestBuilder():
     
     async def post(self,request_configuration: Optional[MicrosoftGraphSecurityReopenRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action reopen
+        Reopen an eDiscovery case that was closed. For details, see Reopen a closed case.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class MicrosoftGraphSecurityReopenRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[MicrosoftGraphSecurityReopenRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action reopen
+        Reopen an eDiscovery case that was closed. For details, see Reopen a closed case.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

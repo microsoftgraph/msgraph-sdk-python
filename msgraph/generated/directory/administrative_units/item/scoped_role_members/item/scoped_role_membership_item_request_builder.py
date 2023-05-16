@@ -37,7 +37,7 @@ class ScopedRoleMembershipItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property scopedRoleMembers for directory
+        Remove an Azure Active Directory (Azure AD) role assignment with administrative unit scope.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class ScopedRoleMembershipItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderGetRequestConfiguration] = None) -> Optional[scoped_role_membership.ScopedRoleMembership]:
         """
-        Scoped-role members of this administrative unit.
+        Get an Azure Active Directory (Azure AD) role assignment with administrative unit scope.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[scoped_role_membership.ScopedRoleMembership]
@@ -103,7 +103,7 @@ class ScopedRoleMembershipItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property scopedRoleMembers for directory
+        Remove an Azure Active Directory (Azure AD) role assignment with administrative unit scope.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ScopedRoleMembershipItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ScopedRoleMembershipItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Scoped-role members of this administrative unit.
+        Get an Azure Active Directory (Azure AD) role assignment with administrative unit scope.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class ScopedRoleMembershipItemRequestBuilder():
     @dataclass
     class ScopedRoleMembershipItemRequestBuilderGetQueryParameters():
         """
-        Scoped-role members of this administrative unit.
+        Get an Azure Active Directory (Azure AD) role assignment with administrative unit scope.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

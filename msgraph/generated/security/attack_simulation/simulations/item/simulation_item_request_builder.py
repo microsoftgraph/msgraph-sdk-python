@@ -56,7 +56,7 @@ class SimulationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[SimulationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[simulation.Simulation]:
         """
-        Represents an attack simulation training campaign in a tenant.
+        Get an attack simulation campaign for a tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[simulation.Simulation]
@@ -119,7 +119,7 @@ class SimulationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SimulationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents an attack simulation training campaign in a tenant.
+        Get an attack simulation campaign for a tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class SimulationItemRequestBuilder():
     @dataclass
     class SimulationItemRequestBuilderGetQueryParameters():
         """
-        Represents an attack simulation training campaign in a tenant.
+        Get an attack simulation campaign for a tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

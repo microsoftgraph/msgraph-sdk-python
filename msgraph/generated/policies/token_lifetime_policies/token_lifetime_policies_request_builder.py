@@ -54,7 +54,7 @@ class TokenLifetimePoliciesRequestBuilder():
     
     async def get(self,request_configuration: Optional[TokenLifetimePoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[token_lifetime_policy_collection_response.TokenLifetimePolicyCollectionResponse]:
         """
-        The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Azure AD.
+        Get a list of tokenLifetimePolicy objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[token_lifetime_policy_collection_response.TokenLifetimePolicyCollectionResponse]
@@ -76,7 +76,7 @@ class TokenLifetimePoliciesRequestBuilder():
     
     async def post(self,body: Optional[token_lifetime_policy.TokenLifetimePolicy] = None, request_configuration: Optional[TokenLifetimePoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[token_lifetime_policy.TokenLifetimePolicy]:
         """
-        Create new navigation property to tokenLifetimePolicies for policies
+        Create a new tokenLifetimePolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class TokenLifetimePoliciesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TokenLifetimePoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Azure AD.
+        Get a list of tokenLifetimePolicy objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class TokenLifetimePoliciesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[token_lifetime_policy.TokenLifetimePolicy] = None, request_configuration: Optional[TokenLifetimePoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to tokenLifetimePolicies for policies
+        Create a new tokenLifetimePolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class TokenLifetimePoliciesRequestBuilder():
     @dataclass
     class TokenLifetimePoliciesRequestBuilderGetQueryParameters():
         """
-        The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Azure AD.
+        Get a list of tokenLifetimePolicy objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

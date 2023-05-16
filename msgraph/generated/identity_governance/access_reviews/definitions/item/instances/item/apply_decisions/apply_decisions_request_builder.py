@@ -36,7 +36,7 @@ class ApplyDecisionsRequestBuilder():
     
     async def post(self,request_configuration: Optional[ApplyDecisionsRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action applyDecisions
+        Apply review decisions on an accessReviewInstance if the decisions were not applied automatically because the autoApplyDecisionsEnabled property is `false` in the review's accessReviewScheduleSettings. The status of the accessReviewInstance must be `Completed` to call this method.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class ApplyDecisionsRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[ApplyDecisionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action applyDecisions
+        Apply review decisions on an accessReviewInstance if the decisions were not applied automatically because the autoApplyDecisionsEnabled property is `false` in the review's accessReviewScheduleSettings. The status of the accessReviewInstance must be `Completed` to call this method.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

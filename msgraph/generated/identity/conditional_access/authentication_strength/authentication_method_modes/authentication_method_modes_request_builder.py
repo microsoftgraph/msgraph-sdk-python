@@ -54,7 +54,7 @@ class AuthenticationMethodModesRequestBuilder():
     
     async def get(self,request_configuration: Optional[AuthenticationMethodModesRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_method_mode_detail_collection_response.AuthenticationMethodModeDetailCollectionResponse]:
         """
-        Names and descriptions of all valid authentication method modes in the system.
+        Get a list of all supported authentication methods, or all supported authentication method combinations as a list of **authenticationMethodModes** objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authentication_method_mode_detail_collection_response.AuthenticationMethodModeDetailCollectionResponse]
@@ -101,7 +101,7 @@ class AuthenticationMethodModesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationMethodModesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Names and descriptions of all valid authentication method modes in the system.
+        Get a list of all supported authentication methods, or all supported authentication method combinations as a list of **authenticationMethodModes** objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class AuthenticationMethodModesRequestBuilder():
     @dataclass
     class AuthenticationMethodModesRequestBuilderGetQueryParameters():
         """
-        Names and descriptions of all valid authentication method modes in the system.
+        Get a list of all supported authentication methods, or all supported authentication method combinations as a list of **authenticationMethodModes** objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

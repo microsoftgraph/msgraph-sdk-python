@@ -56,7 +56,7 @@ class PrintUsageByUserItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[PrintUsageByUserItemRequestBuilderGetRequestConfiguration] = None) -> Optional[print_usage_by_user.PrintUsageByUser]:
         """
-        Get dailyPrintUsageByUser from reports
+        Retrieve a user's usage summary for a particular time period. For descriptions of each endpoint, see printUsageByUser.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_usage_by_user.PrintUsageByUser]
@@ -119,7 +119,7 @@ class PrintUsageByUserItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PrintUsageByUserItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get dailyPrintUsageByUser from reports
+        Retrieve a user's usage summary for a particular time period. For descriptions of each endpoint, see printUsageByUser.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class PrintUsageByUserItemRequestBuilder():
     @dataclass
     class PrintUsageByUserItemRequestBuilderGetQueryParameters():
         """
-        Get dailyPrintUsageByUser from reports
+        Retrieve a user's usage summary for a particular time period. For descriptions of each endpoint, see printUsageByUser.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

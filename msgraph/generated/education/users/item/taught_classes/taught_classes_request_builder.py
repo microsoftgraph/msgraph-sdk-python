@@ -54,7 +54,7 @@ class TaughtClassesRequestBuilder():
     
     async def get(self,request_configuration: Optional[TaughtClassesRequestBuilderGetRequestConfiguration] = None) -> Optional[education_class_collection_response.EducationClassCollectionResponse]:
         """
-        Classes for which the user is a teacher.
+        Get the educationClass resources owned by an educationUser.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_class_collection_response.EducationClassCollectionResponse]
@@ -76,7 +76,7 @@ class TaughtClassesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TaughtClassesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Classes for which the user is a teacher.
+        Get the educationClass resources owned by an educationUser.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class TaughtClassesRequestBuilder():
     @dataclass
     class TaughtClassesRequestBuilderGetQueryParameters():
         """
-        Classes for which the user is a teacher.
+        Get the educationClass resources owned by an educationUser.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

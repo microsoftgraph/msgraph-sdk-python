@@ -37,7 +37,7 @@ class RefRequestBuilder():
     
     async def delete(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete ref of navigation property rubric for education
+        Remove an educationRubric from an educationAssignment. This method does not delete the rubric itself and can only be performed by teachers.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class RefRequestBuilder():
     
     async def get(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None) -> Optional[str]:
         """
-        When set, the grading rubric attached to this assignment.
+        Get the educationRubric object attached to an educationAssignment, if one exists. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[str]
@@ -76,7 +76,7 @@ class RefRequestBuilder():
     
     async def put(self,body: Optional[reference_update.ReferenceUpdate] = None, request_configuration: Optional[RefRequestBuilderPutRequestConfiguration] = None) -> None:
         """
-        Update the ref of navigation property rubric in education
+        Attach an existing educationRubric object to an educationAssignment. Only teachers can perform this operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +98,7 @@ class RefRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete ref of navigation property rubric for education
+        Remove an educationRubric from an educationAssignment. This method does not delete the rubric itself and can only be performed by teachers.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class RefRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        When set, the grading rubric attached to this assignment.
+        Get the educationRubric object attached to an educationAssignment, if one exists. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -131,7 +131,7 @@ class RefRequestBuilder():
     
     def to_put_request_information(self,body: Optional[reference_update.ReferenceUpdate] = None, request_configuration: Optional[RefRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the ref of navigation property rubric in education
+        Attach an existing educationRubric object to an educationAssignment. Only teachers can perform this operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

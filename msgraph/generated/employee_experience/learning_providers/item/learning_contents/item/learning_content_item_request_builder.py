@@ -37,7 +37,7 @@ class LearningContentItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[LearningContentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property learningContents for employeeExperience
+        Delete the specified learningContent resource that represents the metadata of the specified provider's ingested content.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class LearningContentItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[LearningContentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[learning_content.LearningContent]:
         """
-        Learning catalog items for the provider.
+        Get the specified learningContent resource which represents the metadata of the specified provider's ingested content.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[learning_content.LearningContent]
@@ -103,7 +103,7 @@ class LearningContentItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[LearningContentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property learningContents for employeeExperience
+        Delete the specified learningContent resource that represents the metadata of the specified provider's ingested content.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class LearningContentItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[LearningContentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Learning catalog items for the provider.
+        Get the specified learningContent resource which represents the metadata of the specified provider's ingested content.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class LearningContentItemRequestBuilder():
     @dataclass
     class LearningContentItemRequestBuilderGetQueryParameters():
         """
-        Learning catalog items for the provider.
+        Get the specified learningContent resource which represents the metadata of the specified provider's ingested content.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

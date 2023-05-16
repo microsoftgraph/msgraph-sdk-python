@@ -36,7 +36,7 @@ class ReapplyRequestBuilder():
     
     async def post(self,request_configuration: Optional[ReapplyRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action reapply
+        Reapplies the current sorting parameters to the table.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class ReapplyRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[ReapplyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action reapply
+        Reapplies the current sorting parameters to the table.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

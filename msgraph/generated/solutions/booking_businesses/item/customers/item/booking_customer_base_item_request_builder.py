@@ -37,7 +37,7 @@ class BookingCustomerBaseItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[BookingCustomerBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property customers for solutions
+        Delete the specified bookingCustomer object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class BookingCustomerBaseItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[BookingCustomerBaseItemRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_customer_base.BookingCustomerBase]:
         """
-        All the customers of this business. Read-only. Nullable.
+        Get the properties and relationships of a bookingCustomer object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[booking_customer_base.BookingCustomerBase]
@@ -78,7 +78,7 @@ class BookingCustomerBaseItemRequestBuilder():
     
     async def patch(self,body: Optional[booking_customer_base.BookingCustomerBase] = None, request_configuration: Optional[BookingCustomerBaseItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[booking_customer_base.BookingCustomerBase]:
         """
-        Update the navigation property customers in solutions
+        Update the properties of a bookingCustomer object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class BookingCustomerBaseItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[BookingCustomerBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property customers for solutions
+        Delete the specified bookingCustomer object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class BookingCustomerBaseItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[BookingCustomerBaseItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All the customers of this business. Read-only. Nullable.
+        Get the properties and relationships of a bookingCustomer object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class BookingCustomerBaseItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[booking_customer_base.BookingCustomerBase] = None, request_configuration: Optional[BookingCustomerBaseItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property customers in solutions
+        Update the properties of a bookingCustomer object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class BookingCustomerBaseItemRequestBuilder():
     @dataclass
     class BookingCustomerBaseItemRequestBuilderGetQueryParameters():
         """
-        All the customers of this business. Read-only. Nullable.
+        Get the properties and relationships of a bookingCustomer object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

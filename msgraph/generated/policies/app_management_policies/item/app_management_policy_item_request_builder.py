@@ -38,7 +38,7 @@ class AppManagementPolicyItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[AppManagementPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property appManagementPolicies for policies
+        Delete an appManagementPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class AppManagementPolicyItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AppManagementPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[app_management_policy.AppManagementPolicy]:
         """
-        The policies that enforce app management restrictions for specific applications and service principals, overriding the defaultAppManagementPolicy.
+        Read the properties of an appManagementPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[app_management_policy.AppManagementPolicy]
@@ -79,7 +79,7 @@ class AppManagementPolicyItemRequestBuilder():
     
     async def patch(self,body: Optional[app_management_policy.AppManagementPolicy] = None, request_configuration: Optional[AppManagementPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[app_management_policy.AppManagementPolicy]:
         """
-        Update the navigation property appManagementPolicies in policies
+        Update an appManagementPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class AppManagementPolicyItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[AppManagementPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property appManagementPolicies for policies
+        Delete an appManagementPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class AppManagementPolicyItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AppManagementPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The policies that enforce app management restrictions for specific applications and service principals, overriding the defaultAppManagementPolicy.
+        Read the properties of an appManagementPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class AppManagementPolicyItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[app_management_policy.AppManagementPolicy] = None, request_configuration: Optional[AppManagementPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property appManagementPolicies in policies
+        Update an appManagementPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class AppManagementPolicyItemRequestBuilder():
     @dataclass
     class AppManagementPolicyItemRequestBuilderGetQueryParameters():
         """
-        The policies that enforce app management restrictions for specific applications and service principals, overriding the defaultAppManagementPolicy.
+        Read the properties of an appManagementPolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

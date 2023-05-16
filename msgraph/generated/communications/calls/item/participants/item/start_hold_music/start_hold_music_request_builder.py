@@ -38,7 +38,7 @@ class StartHoldMusicRequestBuilder():
     
     async def post(self,body: Optional[start_hold_music_post_request_body.StartHoldMusicPostRequestBody] = None, request_configuration: Optional[StartHoldMusicRequestBuilderPostRequestConfiguration] = None) -> Optional[start_hold_music_operation.StartHoldMusicOperation]:
         """
-        Invoke action startHoldMusic
+        Put a participant on hold and play music in the background.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class StartHoldMusicRequestBuilder():
     
     def to_post_request_information(self,body: Optional[start_hold_music_post_request_body.StartHoldMusicPostRequestBody] = None, request_configuration: Optional[StartHoldMusicRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action startHoldMusic
+        Put a participant on hold and play music in the background.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

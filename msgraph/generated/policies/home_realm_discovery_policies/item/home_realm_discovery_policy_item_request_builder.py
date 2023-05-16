@@ -38,7 +38,7 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property homeRealmDiscoveryPolicies for policies
+        Delete a homeRealmDiscoveryPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]:
         """
-        The policy to control Azure AD authentication behavior for federated users.
+        Retrieve the properties and relationships of a homeRealmDiscoveryPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]
@@ -79,7 +79,7 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder():
     
     async def patch(self,body: Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy]:
         """
-        Update the navigation property homeRealmDiscoveryPolicies in policies
+        Update the properties of a homeRealmDiscoveryPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property homeRealmDiscoveryPolicies for policies
+        Delete a homeRealmDiscoveryPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The policy to control Azure AD authentication behavior for federated users.
+        Retrieve the properties and relationships of a homeRealmDiscoveryPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[home_realm_discovery_policy.HomeRealmDiscoveryPolicy] = None, request_configuration: Optional[HomeRealmDiscoveryPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property homeRealmDiscoveryPolicies in policies
+        Update the properties of a homeRealmDiscoveryPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class HomeRealmDiscoveryPolicyItemRequestBuilder():
     @dataclass
     class HomeRealmDiscoveryPolicyItemRequestBuilderGetQueryParameters():
         """
-        The policy to control Azure AD authentication behavior for federated users.
+        Retrieve the properties and relationships of a homeRealmDiscoveryPolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

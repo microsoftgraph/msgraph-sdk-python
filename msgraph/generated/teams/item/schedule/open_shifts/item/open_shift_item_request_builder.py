@@ -37,7 +37,7 @@ class OpenShiftItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[OpenShiftItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property openShifts for teams
+        Delete an openShift object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class OpenShiftItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[OpenShiftItemRequestBuilderGetRequestConfiguration] = None) -> Optional[open_shift.OpenShift]:
         """
-        The set of open shifts in a scheduling group in the schedule.
+        Retrieve the properties and relationships of an openshift object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[open_shift.OpenShift]
@@ -78,7 +78,7 @@ class OpenShiftItemRequestBuilder():
     
     async def patch(self,body: Optional[open_shift.OpenShift] = None, request_configuration: Optional[OpenShiftItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[open_shift.OpenShift]:
         """
-        Update the navigation property openShifts in teams
+        Update the properties of an openShift object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class OpenShiftItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[OpenShiftItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property openShifts for teams
+        Delete an openShift object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class OpenShiftItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OpenShiftItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The set of open shifts in a scheduling group in the schedule.
+        Retrieve the properties and relationships of an openshift object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class OpenShiftItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[open_shift.OpenShift] = None, request_configuration: Optional[OpenShiftItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property openShifts in teams
+        Update the properties of an openShift object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class OpenShiftItemRequestBuilder():
     @dataclass
     class OpenShiftItemRequestBuilderGetQueryParameters():
         """
-        The set of open shifts in a scheduling group in the schedule.
+        Retrieve the properties and relationships of an openshift object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

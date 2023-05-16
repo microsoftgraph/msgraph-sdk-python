@@ -13,7 +13,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
         Instantiates a new crossTenantAccessPolicyConfigurationDefault and sets the default values.
         """
         super().__init__()
-        # The automaticUserConsentSettings property
+        # Determines the default configuration for automatic user consent settings. The inboundAllowed and outboundAllowed properties are always false and cannot be updated in the default configuration. Read-only.
         self._automatic_user_consent_settings: Optional[inbound_outbound_policy_configuration.InboundOutboundPolicyConfiguration] = None
         # Defines your default configuration for users from other organizations accessing your resources via Azure AD B2B collaboration.
         self._b2b_collaboration_inbound: Optional[cross_tenant_access_policy_b2_b_setting.CrossTenantAccessPolicyB2BSetting] = None
@@ -33,7 +33,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
     @property
     def automatic_user_consent_settings(self,) -> Optional[inbound_outbound_policy_configuration.InboundOutboundPolicyConfiguration]:
         """
-        Gets the automaticUserConsentSettings property value. The automaticUserConsentSettings property
+        Gets the automaticUserConsentSettings property value. Determines the default configuration for automatic user consent settings. The inboundAllowed and outboundAllowed properties are always false and cannot be updated in the default configuration. Read-only.
         Returns: Optional[inbound_outbound_policy_configuration.InboundOutboundPolicyConfiguration]
         """
         return self._automatic_user_consent_settings
@@ -41,7 +41,7 @@ class CrossTenantAccessPolicyConfigurationDefault(entity.Entity):
     @automatic_user_consent_settings.setter
     def automatic_user_consent_settings(self,value: Optional[inbound_outbound_policy_configuration.InboundOutboundPolicyConfiguration] = None) -> None:
         """
-        Sets the automaticUserConsentSettings property value. The automaticUserConsentSettings property
+        Sets the automaticUserConsentSettings property value. Determines the default configuration for automatic user consent settings. The inboundAllowed and outboundAllowed properties are always false and cannot be updated in the default configuration. Read-only.
         Args:
             value: Value to set for the automatic_user_consent_settings property.
         """

@@ -54,7 +54,7 @@ class CalendarPermissionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[CalendarPermissionsRequestBuilderGetRequestConfiguration] = None) -> Optional[calendar_permission_collection_response.CalendarPermissionCollectionResponse]:
         """
-        The permissions of the users with whom the calendar is shared.
+        Get the specified permissions object of a user or group calendar that has been shared.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[calendar_permission_collection_response.CalendarPermissionCollectionResponse]
@@ -76,7 +76,7 @@ class CalendarPermissionsRequestBuilder():
     
     async def post(self,body: Optional[calendar_permission.CalendarPermission] = None, request_configuration: Optional[CalendarPermissionsRequestBuilderPostRequestConfiguration] = None) -> Optional[calendar_permission.CalendarPermission]:
         """
-        Create new navigation property to calendarPermissions for groups
+        Create a calendarPermission resource to specify the identity and role of the user with whom the specified calendar is being shared or delegated.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class CalendarPermissionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CalendarPermissionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The permissions of the users with whom the calendar is shared.
+        Get the specified permissions object of a user or group calendar that has been shared.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class CalendarPermissionsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[calendar_permission.CalendarPermission] = None, request_configuration: Optional[CalendarPermissionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to calendarPermissions for groups
+        Create a calendarPermission resource to specify the identity and role of the user with whom the specified calendar is being shared or delegated.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class CalendarPermissionsRequestBuilder():
     @dataclass
     class CalendarPermissionsRequestBuilderGetQueryParameters():
         """
-        The permissions of the users with whom the calendar is shared.
+        Get the specified permissions object of a user or group calendar that has been shared.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

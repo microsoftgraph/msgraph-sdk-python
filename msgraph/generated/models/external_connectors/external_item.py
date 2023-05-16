@@ -3,7 +3,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import acl, external_item_content, properties
+    from . import acl, external_activity, external_item_content, properties
     from .. import entity
 
 from .. import entity
@@ -16,6 +16,8 @@ class ExternalItem(entity.Entity):
         super().__init__()
         # An array of access control entries. Each entry specifies the access granted to a user or group. Required.
         self._acl: Optional[List[acl.Acl]] = None
+        # Returns a list of activities performed on the item. Write-only.
+        self._activities: Optional[List[external_activity.ExternalActivity]] = None
         # A plain-text  representation of the contents of the item. The text in this property is full-text indexed. Optional.
         self._content: Optional[external_item_content.ExternalItemContent] = None
         # The OdataType property
@@ -39,6 +41,23 @@ class ExternalItem(entity.Entity):
             value: Value to set for the acl property.
         """
         self._acl = value
+    
+    @property
+    def activities(self,) -> Optional[List[external_activity.ExternalActivity]]:
+        """
+        Gets the activities property value. Returns a list of activities performed on the item. Write-only.
+        Returns: Optional[List[external_activity.ExternalActivity]]
+        """
+        return self._activities
+    
+    @activities.setter
+    def activities(self,value: Optional[List[external_activity.ExternalActivity]] = None) -> None:
+        """
+        Sets the activities property value. Returns a list of activities performed on the item. Write-only.
+        Args:
+            value: Value to set for the activities property.
+        """
+        self._activities = value
     
     @property
     def content(self,) -> Optional[external_item_content.ExternalItemContent]:
@@ -74,11 +93,12 @@ class ExternalItem(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import acl, external_item_content, properties
+        from . import acl, external_activity, external_item_content, properties
         from .. import entity
 
         fields: Dict[str, Callable[[Any], None]] = {
             "acl": lambda n : setattr(self, 'acl', n.get_collection_of_object_values(acl.Acl)),
+            "activities": lambda n : setattr(self, 'activities', n.get_collection_of_object_values(external_activity.ExternalActivity)),
             "content": lambda n : setattr(self, 'content', n.get_object_value(external_item_content.ExternalItemContent)),
             "properties": lambda n : setattr(self, 'properties', n.get_object_value(properties.Properties)),
         }
@@ -113,6 +133,7 @@ class ExternalItem(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("acl", self.acl)
+        writer.write_collection_of_object_values("activities", self.activities)
         writer.write_object_value("content", self.content)
         writer.write_object_value("properties", self.properties)
     

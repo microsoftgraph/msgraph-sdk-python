@@ -37,7 +37,7 @@ class IdentityProviderBaseItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[IdentityProviderBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property identityProviders for identity
+        Delete an identity provider resource that is of the type specified by the **id** in the request. Among the types of providers derived from identityProviderBase, you can currently delete a socialIdentityProvider resource in Azure AD. In Azure AD B2C, this operation can currently delete a socialIdentityProvider, or an appleManagedIdentityProvider resource.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class IdentityProviderBaseItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[IdentityProviderBaseItemRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_provider_base.IdentityProviderBase]:
         """
-        Get identityProviders from identity
+        Get the properties and relationships of the specified identity provider configured in the tenant. Among the types of providers derived from identityProviderBase, you can currently get a socialIdentityProvider or a builtinIdentityProvider resource in Azure AD. In Azure AD B2C, this operation can currently get a socialIdentityProvider, or an appleManagedIdentityProvider resource.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[identity_provider_base.IdentityProviderBase]
@@ -78,7 +78,7 @@ class IdentityProviderBaseItemRequestBuilder():
     
     async def patch(self,body: Optional[identity_provider_base.IdentityProviderBase] = None, request_configuration: Optional[IdentityProviderBaseItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[identity_provider_base.IdentityProviderBase]:
         """
-        Update the navigation property identityProviders in identity
+        Update the properties of the specified identity provider configured in the tenant. Among the types of providers derived from identityProviderBase, you can currently update a socialIdentityProvider resource in Azure AD. In Azure AD B2C, this operation can currently update a socialIdentityProvider, or an appleManagedIdentityProvider resource.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class IdentityProviderBaseItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[IdentityProviderBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property identityProviders for identity
+        Delete an identity provider resource that is of the type specified by the **id** in the request. Among the types of providers derived from identityProviderBase, you can currently delete a socialIdentityProvider resource in Azure AD. In Azure AD B2C, this operation can currently delete a socialIdentityProvider, or an appleManagedIdentityProvider resource.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class IdentityProviderBaseItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[IdentityProviderBaseItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get identityProviders from identity
+        Get the properties and relationships of the specified identity provider configured in the tenant. Among the types of providers derived from identityProviderBase, you can currently get a socialIdentityProvider or a builtinIdentityProvider resource in Azure AD. In Azure AD B2C, this operation can currently get a socialIdentityProvider, or an appleManagedIdentityProvider resource.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class IdentityProviderBaseItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[identity_provider_base.IdentityProviderBase] = None, request_configuration: Optional[IdentityProviderBaseItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property identityProviders in identity
+        Update the properties of the specified identity provider configured in the tenant. Among the types of providers derived from identityProviderBase, you can currently update a socialIdentityProvider resource in Azure AD. In Azure AD B2C, this operation can currently update a socialIdentityProvider, or an appleManagedIdentityProvider resource.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class IdentityProviderBaseItemRequestBuilder():
     @dataclass
     class IdentityProviderBaseItemRequestBuilderGetQueryParameters():
         """
-        Get identityProviders from identity
+        Get the properties and relationships of the specified identity provider configured in the tenant. Among the types of providers derived from identityProviderBase, you can currently get a socialIdentityProvider or a builtinIdentityProvider resource in Azure AD. In Azure AD B2C, this operation can currently get a socialIdentityProvider, or an appleManagedIdentityProvider resource.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

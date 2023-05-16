@@ -56,7 +56,7 @@ class ContentSharingSessionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ContentSharingSessionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[content_sharing_session.ContentSharingSession]:
         """
-        Get contentSharingSessions from communications
+        Retrieve the properties of a contentSharingSession object in a call.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[content_sharing_session.ContentSharingSession]
@@ -119,7 +119,7 @@ class ContentSharingSessionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ContentSharingSessionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get contentSharingSessions from communications
+        Retrieve the properties of a contentSharingSession object in a call.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class ContentSharingSessionItemRequestBuilder():
     @dataclass
     class ContentSharingSessionItemRequestBuilderGetQueryParameters():
         """
-        Get contentSharingSessions from communications
+        Retrieve the properties of a contentSharingSession object in a call.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

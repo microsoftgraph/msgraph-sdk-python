@@ -37,7 +37,7 @@ class TeamworkTagMemberItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property members for users
+        Delete a member from a standard tag in a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class TeamworkTagMemberItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderGetRequestConfiguration] = None) -> Optional[teamwork_tag_member.TeamworkTagMember]:
         """
-        Users assigned to the tag.
+        Get the properties and relationships of a member of a standard tag in a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[teamwork_tag_member.TeamworkTagMember]
@@ -103,7 +103,7 @@ class TeamworkTagMemberItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property members for users
+        Delete a member from a standard tag in a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class TeamworkTagMemberItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TeamworkTagMemberItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Users assigned to the tag.
+        Get the properties and relationships of a member of a standard tag in a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class TeamworkTagMemberItemRequestBuilder():
     @dataclass
     class TeamworkTagMemberItemRequestBuilderGetQueryParameters():
         """
-        Users assigned to the tag.
+        Get the properties and relationships of a member of a standard tag in a team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

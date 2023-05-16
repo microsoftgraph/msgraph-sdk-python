@@ -46,7 +46,7 @@ class ListItemItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ListItemItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property items for shares
+        Removes an item from a [list][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -65,7 +65,7 @@ class ListItemItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ListItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[list_item.ListItem]:
         """
-        All items contained in the list.
+        Returns the metadata for an [item][] in a [list][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[list_item.ListItem]
@@ -131,7 +131,7 @@ class ListItemItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ListItemItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property items for shares
+        Removes an item from a [list][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +147,7 @@ class ListItemItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ListItemItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All items contained in the list.
+        Returns the metadata for an [item][] in a [list][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -271,7 +271,7 @@ class ListItemItemRequestBuilder():
     @dataclass
     class ListItemItemRequestBuilderGetQueryParameters():
         """
-        All items contained in the list.
+        Returns the metadata for an [item][] in a [list][].
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -54,7 +54,7 @@ class IssuesRequestBuilder():
     
     async def get(self,request_configuration: Optional[IssuesRequestBuilderGetRequestConfiguration] = None) -> Optional[service_health_issue_collection_response.ServiceHealthIssueCollectionResponse]:
         """
-        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
+        Retrieve serviceHealthIssue resources from the **issues** navigation property. This operation retrieves information about all service health issues that exist for the tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[service_health_issue_collection_response.ServiceHealthIssueCollectionResponse]
@@ -101,7 +101,7 @@ class IssuesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[IssuesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
+        Retrieve serviceHealthIssue resources from the **issues** navigation property. This operation retrieves information about all service health issues that exist for the tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class IssuesRequestBuilder():
     @dataclass
     class IssuesRequestBuilderGetQueryParameters():
         """
-        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
+        Retrieve serviceHealthIssue resources from the **issues** navigation property. This operation retrieves information about all service health issues that exist for the tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

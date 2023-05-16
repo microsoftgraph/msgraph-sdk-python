@@ -55,7 +55,7 @@ class WorksheetsRequestBuilder():
     
     async def get(self,request_configuration: Optional[WorksheetsRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_worksheet_collection_response.WorkbookWorksheetCollectionResponse]:
         """
-        Represents a collection of worksheets associated with the workbook. Read-only.
+        Retrieve a list of worksheet objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_worksheet_collection_response.WorkbookWorksheetCollectionResponse]
@@ -102,7 +102,7 @@ class WorksheetsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[WorksheetsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents a collection of worksheets associated with the workbook. Read-only.
+        Retrieve a list of worksheet objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -160,7 +160,7 @@ class WorksheetsRequestBuilder():
     @dataclass
     class WorksheetsRequestBuilderGetQueryParameters():
         """
-        Represents a collection of worksheets associated with the workbook. Read-only.
+        Retrieve a list of worksheet objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

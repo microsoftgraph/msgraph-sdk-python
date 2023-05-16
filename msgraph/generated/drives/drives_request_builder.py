@@ -12,7 +12,6 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ..models import drive, drive_collection_response
     from ..models.o_data_errors import o_data_error
-    from .count import count_request_builder
     from .item import drive_item_request_builder
 
 class DrivesRequestBuilder():
@@ -31,7 +30,7 @@ class DrivesRequestBuilder():
         if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/drives{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}"
+        self.url_template: str = "{+baseurl}/drives{?%24top,%24skip,%24search,%24filter,%24orderby,%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
@@ -138,15 +137,6 @@ class DrivesRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count import count_request_builder
-
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class DrivesRequestBuilderGetQueryParameters():
         """
@@ -161,8 +151,6 @@ class DrivesRequestBuilder():
             """
             if original_name is None:
                 raise Exception("original_name cannot be undefined")
-            if original_name == "count":
-                return "%24count"
             if original_name == "expand":
                 return "%24expand"
             if original_name == "filter":
@@ -179,9 +167,6 @@ class DrivesRequestBuilder():
                 return "%24top"
             return original_name
         
-        # Include count of items
-        count: Optional[bool] = None
-
         # Expand related entities
         expand: Optional[List[str]] = None
 

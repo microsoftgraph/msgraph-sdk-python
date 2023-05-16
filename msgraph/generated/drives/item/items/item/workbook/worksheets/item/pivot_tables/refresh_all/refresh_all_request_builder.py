@@ -36,7 +36,7 @@ class RefreshAllRequestBuilder():
     
     async def post(self,request_configuration: Optional[RefreshAllRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action refreshAll
+        Refreshes the PivotTable within a given worksheet.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class RefreshAllRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[RefreshAllRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action refreshAll
+        Refreshes the PivotTable within a given worksheet.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

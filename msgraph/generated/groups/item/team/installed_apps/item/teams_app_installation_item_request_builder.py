@@ -40,7 +40,7 @@ class TeamsAppInstallationItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[TeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property installedApps for groups
+        Uninstalls an app from the specified team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -59,7 +59,7 @@ class TeamsAppInstallationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[TeamsAppInstallationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_app_installation.TeamsAppInstallation]:
         """
-        The apps installed in this team.
+        Retrieve the app installed in the specified team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[teams_app_installation.TeamsAppInstallation]
@@ -106,7 +106,7 @@ class TeamsAppInstallationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[TeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property installedApps for groups
+        Uninstalls an app from the specified team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -122,7 +122,7 @@ class TeamsAppInstallationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TeamsAppInstallationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The apps installed in this team.
+        Retrieve the app installed in the specified team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -201,7 +201,7 @@ class TeamsAppInstallationItemRequestBuilder():
     @dataclass
     class TeamsAppInstallationItemRequestBuilderGetQueryParameters():
         """
-        The apps installed in this team.
+        Retrieve the app installed in the specified team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

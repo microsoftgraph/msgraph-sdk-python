@@ -38,7 +38,7 @@ class UserActivityItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[UserActivityItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property activities for users
+        Delete an existing user activity for your app.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -104,7 +104,7 @@ class UserActivityItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[UserActivityItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property activities for users
+        Delete an existing user activity for your app.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

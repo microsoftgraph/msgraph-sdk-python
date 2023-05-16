@@ -54,7 +54,7 @@ class OpenShiftsRequestBuilder():
     
     async def get(self,request_configuration: Optional[OpenShiftsRequestBuilderGetRequestConfiguration] = None) -> Optional[open_shift_collection_response.OpenShiftCollectionResponse]:
         """
-        The set of open shifts in a scheduling group in the schedule.
+        List openShift objects in a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[open_shift_collection_response.OpenShiftCollectionResponse]
@@ -76,7 +76,7 @@ class OpenShiftsRequestBuilder():
     
     async def post(self,body: Optional[open_shift.OpenShift] = None, request_configuration: Optional[OpenShiftsRequestBuilderPostRequestConfiguration] = None) -> Optional[open_shift.OpenShift]:
         """
-        Create new navigation property to openShifts for teams
+        Create an instance of an openShift object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class OpenShiftsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OpenShiftsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The set of open shifts in a scheduling group in the schedule.
+        List openShift objects in a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class OpenShiftsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[open_shift.OpenShift] = None, request_configuration: Optional[OpenShiftsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to openShifts for teams
+        Create an instance of an openShift object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class OpenShiftsRequestBuilder():
     @dataclass
     class OpenShiftsRequestBuilderGetQueryParameters():
         """
-        The set of open shifts in a scheduling group in the schedule.
+        List openShift objects in a team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

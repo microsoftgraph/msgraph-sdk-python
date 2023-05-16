@@ -11,7 +11,7 @@ from . import entity
 class EducationAssignmentDefaults(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new EducationAssignmentDefaults and sets the default values.
+        Instantiates a new educationAssignmentDefaults and sets the default values.
         """
         super().__init__()
         # Optional field to control adding assignments to students' and teachers' calendars when the assignment is published. The possible values are: none, studentsAndPublisher, studentsAndTeamOwners, unknownFutureValue, and studentsOnly. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: studentsOnly. The default value is none.

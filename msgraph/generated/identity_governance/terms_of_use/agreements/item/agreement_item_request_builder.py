@@ -40,7 +40,7 @@ class AgreementItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[AgreementItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property agreements for identityGovernance
+        Delete an agreement object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -59,7 +59,7 @@ class AgreementItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AgreementItemRequestBuilderGetRequestConfiguration] = None) -> Optional[agreement.Agreement]:
         """
-        Represents a tenant's customizable terms of use agreement that's created and managed with Azure Active Directory (Azure AD).
+        Retrieve the properties and relationships of an agreement object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[agreement.Agreement]
@@ -81,7 +81,7 @@ class AgreementItemRequestBuilder():
     
     async def patch(self,body: Optional[agreement.Agreement] = None, request_configuration: Optional[AgreementItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[agreement.Agreement]:
         """
-        Update the navigation property agreements in identityGovernance
+        Update the properties of an agreement object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -106,7 +106,7 @@ class AgreementItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[AgreementItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property agreements for identityGovernance
+        Delete an agreement object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -122,7 +122,7 @@ class AgreementItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AgreementItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents a tenant's customizable terms of use agreement that's created and managed with Azure Active Directory (Azure AD).
+        Retrieve the properties and relationships of an agreement object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +140,7 @@ class AgreementItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[agreement.Agreement] = None, request_configuration: Optional[AgreementItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property agreements in identityGovernance
+        Update the properties of an agreement object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -201,7 +201,7 @@ class AgreementItemRequestBuilder():
     @dataclass
     class AgreementItemRequestBuilderGetQueryParameters():
         """
-        Represents a tenant's customizable terms of use agreement that's created and managed with Azure Active Directory (Azure AD).
+        Retrieve the properties and relationships of an agreement object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

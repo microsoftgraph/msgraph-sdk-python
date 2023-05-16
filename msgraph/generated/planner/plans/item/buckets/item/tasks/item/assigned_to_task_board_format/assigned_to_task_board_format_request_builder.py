@@ -56,7 +56,7 @@ class AssignedToTaskBoardFormatRequestBuilder():
     
     async def get(self,request_configuration: Optional[AssignedToTaskBoardFormatRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_assigned_to_task_board_task_format.PlannerAssignedToTaskBoardTaskFormat]:
         """
-        Read-only. Nullable. Used to render the task correctly in the task board view when grouped by assignedTo.
+        Retrieve the properties and relationships of a **plannerAssignedToTaskBoardTaskFormat** object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[planner_assigned_to_task_board_task_format.PlannerAssignedToTaskBoardTaskFormat]
@@ -119,7 +119,7 @@ class AssignedToTaskBoardFormatRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AssignedToTaskBoardFormatRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read-only. Nullable. Used to render the task correctly in the task board view when grouped by assignedTo.
+        Retrieve the properties and relationships of a **plannerAssignedToTaskBoardTaskFormat** object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class AssignedToTaskBoardFormatRequestBuilder():
     @dataclass
     class AssignedToTaskBoardFormatRequestBuilderGetQueryParameters():
         """
-        Read-only. Nullable. Used to render the task correctly in the task board view when grouped by assignedTo.
+        Retrieve the properties and relationships of a **plannerAssignedToTaskBoardTaskFormat** object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

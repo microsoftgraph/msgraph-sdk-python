@@ -58,7 +58,7 @@ class EdiscoveryReviewSetItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[EdiscoveryReviewSetItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_review_set.EdiscoveryReviewSet]:
         """
-        Returns a list of eDiscoveryReviewSet objects in the case.
+        Read the properties and relationships of an ediscoveryReviewSet object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ediscovery_review_set.EdiscoveryReviewSet]
@@ -121,7 +121,7 @@ class EdiscoveryReviewSetItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[EdiscoveryReviewSetItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Returns a list of eDiscoveryReviewSet objects in the case.
+        Read the properties and relationships of an ediscoveryReviewSet object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -191,7 +191,7 @@ class EdiscoveryReviewSetItemRequestBuilder():
     @dataclass
     class EdiscoveryReviewSetItemRequestBuilderGetQueryParameters():
         """
-        Returns a list of eDiscoveryReviewSet objects in the case.
+        Read the properties and relationships of an ediscoveryReviewSet object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

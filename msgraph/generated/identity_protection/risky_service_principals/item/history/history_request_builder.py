@@ -54,7 +54,7 @@ class HistoryRequestBuilder():
     
     async def get(self,request_configuration: Optional[HistoryRequestBuilderGetRequestConfiguration] = None) -> Optional[risky_service_principal_history_item_collection_response.RiskyServicePrincipalHistoryItemCollectionResponse]:
         """
-        Represents the risk history of Azure AD service principals.
+        Get the risk history of a riskyServicePrincipal object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[risky_service_principal_history_item_collection_response.RiskyServicePrincipalHistoryItemCollectionResponse]
@@ -101,7 +101,7 @@ class HistoryRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[HistoryRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents the risk history of Azure AD service principals.
+        Get the risk history of a riskyServicePrincipal object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class HistoryRequestBuilder():
     @dataclass
     class HistoryRequestBuilderGetQueryParameters():
         """
-        Represents the risk history of Azure AD service principals.
+        Get the risk history of a riskyServicePrincipal object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

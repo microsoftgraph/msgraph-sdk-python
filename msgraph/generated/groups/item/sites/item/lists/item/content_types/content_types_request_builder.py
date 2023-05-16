@@ -57,7 +57,7 @@ class ContentTypesRequestBuilder():
     
     async def get(self,request_configuration: Optional[ContentTypesRequestBuilderGetRequestConfiguration] = None) -> Optional[content_type_collection_response.ContentTypeCollectionResponse]:
         """
-        The collection of content types present in this list.
+        Get the collection of [contentType][contentType] resources in a [list][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[content_type_collection_response.ContentTypeCollectionResponse]
@@ -104,7 +104,7 @@ class ContentTypesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ContentTypesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of content types present in this list.
+        Get the collection of [contentType][contentType] resources in a [list][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -180,7 +180,7 @@ class ContentTypesRequestBuilder():
     @dataclass
     class ContentTypesRequestBuilderGetQueryParameters():
         """
-        The collection of content types present in this list.
+        Get the collection of [contentType][contentType] resources in a [list][].
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

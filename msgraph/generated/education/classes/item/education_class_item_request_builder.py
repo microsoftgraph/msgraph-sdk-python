@@ -45,7 +45,7 @@ class EducationClassItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[EducationClassItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property classes for education
+        Delete an educationClass. Because a class is also a universal group, deleting a class deletes the group.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -64,7 +64,7 @@ class EducationClassItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[EducationClassItemRequestBuilderGetRequestConfiguration] = None) -> Optional[education_class.EducationClass]:
         """
-        Get classes from education
+        Retrieve a class from the system. A class is a universal group with a special property that indicates to the system that the group is a class. Group members represent the students; group admins represent the teachers in the class. If you're using the delegated token, the user will only see classes in which they are members.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_class.EducationClass]
@@ -86,7 +86,7 @@ class EducationClassItemRequestBuilder():
     
     async def patch(self,body: Optional[education_class.EducationClass] = None, request_configuration: Optional[EducationClassItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_class.EducationClass]:
         """
-        Update the navigation property classes in education
+        Update the properties of an educationClass object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -111,7 +111,7 @@ class EducationClassItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[EducationClassItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property classes for education
+        Delete an educationClass. Because a class is also a universal group, deleting a class deletes the group.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -127,7 +127,7 @@ class EducationClassItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[EducationClassItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get classes from education
+        Retrieve a class from the system. A class is a universal group with a special property that indicates to the system that the group is a class. Group members represent the students; group admins represent the teachers in the class. If you're using the delegated token, the user will only see classes in which they are members.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -145,7 +145,7 @@ class EducationClassItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[education_class.EducationClass] = None, request_configuration: Optional[EducationClassItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property classes in education
+        Update the properties of an educationClass object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -251,7 +251,7 @@ class EducationClassItemRequestBuilder():
     @dataclass
     class EducationClassItemRequestBuilderGetQueryParameters():
         """
-        Get classes from education
+        Retrieve a class from the system. A class is a universal group with a special property that indicates to the system that the group is a class. Group members represent the students; group admins represent the teachers in the class. If you're using the delegated token, the user will only see classes in which they are members.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

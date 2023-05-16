@@ -55,7 +55,7 @@ class CallItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[CallItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property calls for communications
+        Delete or hang up an active call. For group calls, this will only delete your call leg and the underlying group call will still continue.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -74,7 +74,7 @@ class CallItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[CallItemRequestBuilderGetRequestConfiguration] = None) -> Optional[call.Call]:
         """
-        Get calls from communications
+        Retrieve the properties and relationships of a call object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[call.Call]
@@ -121,7 +121,7 @@ class CallItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[CallItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property calls for communications
+        Delete or hang up an active call. For group calls, this will only delete your call leg and the underlying group call will still continue.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class CallItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CallItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get calls from communications
+        Retrieve the properties and relationships of a call object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -351,7 +351,7 @@ class CallItemRequestBuilder():
     @dataclass
     class CallItemRequestBuilderGetQueryParameters():
         """
-        Get calls from communications
+        Retrieve the properties and relationships of a call object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

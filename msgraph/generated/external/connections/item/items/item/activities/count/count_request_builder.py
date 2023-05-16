@@ -10,7 +10,7 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .......models.o_data_errors import o_data_error
+    from ........models.o_data_errors import o_data_error
 
 class CountRequestBuilder():
     """
@@ -28,7 +28,7 @@ class CountRequestBuilder():
         if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/sites/{site%2Did}/lists/{list%2Did}/items/$count{?%24search,%24filter}"
+        self.url_template: str = "{+baseurl}/external/connections/{externalConnection%2Did}/items/{externalItem%2Did}/activities/$count{?%24search,%24filter}"
 
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
@@ -44,7 +44,7 @@ class CountRequestBuilder():
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .......models.o_data_errors import o_data_error
+        from ........models.o_data_errors import o_data_error
 
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,

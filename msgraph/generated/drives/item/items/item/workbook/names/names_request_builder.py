@@ -56,7 +56,7 @@ class NamesRequestBuilder():
     
     async def get(self,request_configuration: Optional[NamesRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_named_item_collection_response.WorkbookNamedItemCollectionResponse]:
         """
-        Represents a collection of workbooks scoped named items (named ranges and constants). Read-only.
+        Retrieve a list of nameditem objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_named_item_collection_response.WorkbookNamedItemCollectionResponse]
@@ -103,7 +103,7 @@ class NamesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[NamesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents a collection of workbooks scoped named items (named ranges and constants). Read-only.
+        Retrieve a list of nameditem objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -170,7 +170,7 @@ class NamesRequestBuilder():
     @dataclass
     class NamesRequestBuilderGetQueryParameters():
         """
-        Represents a collection of workbooks scoped named items (named ranges and constants). Read-only.
+        Retrieve a list of nameditem objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

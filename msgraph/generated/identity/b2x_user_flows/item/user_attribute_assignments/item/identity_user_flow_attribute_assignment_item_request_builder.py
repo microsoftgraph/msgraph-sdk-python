@@ -38,7 +38,7 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[IdentityUserFlowAttributeAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property userAttributeAssignments for identity
+        Delete an identityUserFlowAttributeAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[IdentityUserFlowAttributeAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]:
         """
-        The user attribute assignments included in the user flow.
+        Read the properties and relationships of an identityUserFlowAttributeAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]
@@ -79,7 +79,7 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder():
     
     async def patch(self,body: Optional[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment] = None, request_configuration: Optional[IdentityUserFlowAttributeAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment]:
         """
-        Update the navigation property userAttributeAssignments in identity
+        Update the properties of a identityUserFlowAttributeAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[IdentityUserFlowAttributeAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property userAttributeAssignments for identity
+        Delete an identityUserFlowAttributeAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[IdentityUserFlowAttributeAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The user attribute assignments included in the user flow.
+        Read the properties and relationships of an identityUserFlowAttributeAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[identity_user_flow_attribute_assignment.IdentityUserFlowAttributeAssignment] = None, request_configuration: Optional[IdentityUserFlowAttributeAssignmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property userAttributeAssignments in identity
+        Update the properties of a identityUserFlowAttributeAssignment object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class IdentityUserFlowAttributeAssignmentItemRequestBuilder():
     @dataclass
     class IdentityUserFlowAttributeAssignmentItemRequestBuilderGetQueryParameters():
         """
-        The user attribute assignments included in the user flow.
+        Read the properties and relationships of an identityUserFlowAttributeAssignment object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -37,7 +37,7 @@ class GetByIdsRequestBuilder():
     
     async def post(self,body: Optional[get_by_ids_post_request_body.GetByIdsPostRequestBody] = None, request_configuration: Optional[GetByIdsRequestBuilderPostRequestConfiguration] = None) -> Optional[get_by_ids_response.GetByIdsResponse]:
         """
-        Invoke action getByIds
+        Return the directory objects specified in a list of IDs. Some common uses for this function are to:
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -62,7 +62,7 @@ class GetByIdsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[get_by_ids_post_request_body.GetByIdsPostRequestBody] = None, request_configuration: Optional[GetByIdsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action getByIds
+        Return the directory objects specified in a list of IDs. Some common uses for this function are to:
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

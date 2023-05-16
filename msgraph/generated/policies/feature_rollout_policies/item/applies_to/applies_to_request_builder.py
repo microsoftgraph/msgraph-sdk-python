@@ -81,7 +81,7 @@ class AppliesToRequestBuilder():
     
     async def post(self,body: Optional[directory_object.DirectoryObject] = None, request_configuration: Optional[AppliesToRequestBuilderPostRequestConfiguration] = None) -> Optional[directory_object.DirectoryObject]:
         """
-        Create new navigation property to appliesTo for policies
+        Add an appliesTo on a featureRolloutPolicy object to specify the directoryObject to which the featureRolloutPolicy should be applied.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -124,7 +124,7 @@ class AppliesToRequestBuilder():
     
     def to_post_request_information(self,body: Optional[directory_object.DirectoryObject] = None, request_configuration: Optional[AppliesToRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to appliesTo for policies
+        Add an appliesTo on a featureRolloutPolicy object to specify the directoryObject to which the featureRolloutPolicy should be applied.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

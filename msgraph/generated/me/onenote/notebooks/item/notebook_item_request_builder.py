@@ -59,7 +59,7 @@ class NotebookItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[NotebookItemRequestBuilderGetRequestConfiguration] = None) -> Optional[notebook.Notebook]:
         """
-        The collection of OneNote notebooks that are owned by the user or group. Read-only. Nullable.
+        Retrieve the properties and relationships of a notebook object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[notebook.Notebook]
@@ -122,7 +122,7 @@ class NotebookItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[NotebookItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of OneNote notebooks that are owned by the user or group. Read-only. Nullable.
+        Retrieve the properties and relationships of a notebook object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -201,7 +201,7 @@ class NotebookItemRequestBuilder():
     @dataclass
     class NotebookItemRequestBuilderGetQueryParameters():
         """
-        The collection of OneNote notebooks that are owned by the user or group. Read-only. Nullable.
+        Retrieve the properties and relationships of a notebook object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

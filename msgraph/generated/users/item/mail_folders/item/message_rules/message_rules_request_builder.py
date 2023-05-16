@@ -54,7 +54,7 @@ class MessageRulesRequestBuilder():
     
     async def get(self,request_configuration: Optional[MessageRulesRequestBuilderGetRequestConfiguration] = None) -> Optional[message_rule_collection_response.MessageRuleCollectionResponse]:
         """
-        The collection of rules that apply to the user's Inbox folder.
+        Get all the messageRule objects defined for the user's inbox.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[message_rule_collection_response.MessageRuleCollectionResponse]
@@ -76,7 +76,7 @@ class MessageRulesRequestBuilder():
     
     async def post(self,body: Optional[message_rule.MessageRule] = None, request_configuration: Optional[MessageRulesRequestBuilderPostRequestConfiguration] = None) -> Optional[message_rule.MessageRule]:
         """
-        Create new navigation property to messageRules for users
+        Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class MessageRulesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MessageRulesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of rules that apply to the user's Inbox folder.
+        Get all the messageRule objects defined for the user's inbox.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class MessageRulesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[message_rule.MessageRule] = None, request_configuration: Optional[MessageRulesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to messageRules for users
+        Create a messageRule object by specifying a set of conditions and actions.  Outlook carries out those actions if an incoming message in the user's Inbox meets the specified conditions.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class MessageRulesRequestBuilder():
     @dataclass
     class MessageRulesRequestBuilderGetQueryParameters():
         """
-        The collection of rules that apply to the user's Inbox folder.
+        Get all the messageRule objects defined for the user's inbox.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

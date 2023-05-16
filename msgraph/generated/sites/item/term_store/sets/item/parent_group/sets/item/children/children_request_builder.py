@@ -54,7 +54,7 @@ class ChildrenRequestBuilder():
     
     async def get(self,request_configuration: Optional[ChildrenRequestBuilderGetRequestConfiguration] = None) -> Optional[term_collection_response.TermCollectionResponse]:
         """
-        Children terms of set in term [store].
+        Get the first level children of a [set] or [term] resource using the children navigation property.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[term_collection_response.TermCollectionResponse]
@@ -76,7 +76,7 @@ class ChildrenRequestBuilder():
     
     async def post(self,body: Optional[term.Term] = None, request_configuration: Optional[ChildrenRequestBuilderPostRequestConfiguration] = None) -> Optional[term.Term]:
         """
-        Create new navigation property to children for sites
+        Create a new term object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ChildrenRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ChildrenRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Children terms of set in term [store].
+        Get the first level children of a [set] or [term] resource using the children navigation property.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ChildrenRequestBuilder():
     
     def to_post_request_information(self,body: Optional[term.Term] = None, request_configuration: Optional[ChildrenRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to children for sites
+        Create a new term object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class ChildrenRequestBuilder():
     @dataclass
     class ChildrenRequestBuilderGetQueryParameters():
         """
-        Children terms of set in term [store].
+        Get the first level children of a [set] or [term] resource using the children navigation property.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

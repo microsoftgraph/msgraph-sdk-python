@@ -57,7 +57,7 @@ class PrintServiceItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[PrintServiceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[print_service.PrintService]:
         """
-        The list of available Universal Print service endpoints.
+        Retrieve the properties and relationships of a print service.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_service.PrintService]
@@ -120,7 +120,7 @@ class PrintServiceItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PrintServiceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of available Universal Print service endpoints.
+        Retrieve the properties and relationships of a print service.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class PrintServiceItemRequestBuilder():
     @dataclass
     class PrintServiceItemRequestBuilderGetQueryParameters():
         """
-        The list of available Universal Print service endpoints.
+        Retrieve the properties and relationships of a print service.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

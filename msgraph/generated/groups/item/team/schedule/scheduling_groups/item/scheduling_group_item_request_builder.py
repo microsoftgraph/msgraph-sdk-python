@@ -37,7 +37,7 @@ class SchedulingGroupItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[SchedulingGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property schedulingGroups for groups
+        Mark a schedulingGroup as inactive by setting its **isActive** property.This method does not remove the schedulingGroup from the schedule. Existing shift instances assigned to the scheduling group remain part of the group.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class SchedulingGroupItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[SchedulingGroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[scheduling_group.SchedulingGroup]:
         """
-        The logical grouping of users in the schedule (usually by role).
+        Retrieve the properties and relationships of a schedulingGroup by ID.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[scheduling_group.SchedulingGroup]
@@ -78,7 +78,7 @@ class SchedulingGroupItemRequestBuilder():
     
     async def patch(self,body: Optional[scheduling_group.SchedulingGroup] = None, request_configuration: Optional[SchedulingGroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[scheduling_group.SchedulingGroup]:
         """
-        Update the navigation property schedulingGroups in groups
+        Replace an existing schedulingGroup. If the specified schedulingGroup doesn't exist, this method returns `404 Not found`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class SchedulingGroupItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[SchedulingGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property schedulingGroups for groups
+        Mark a schedulingGroup as inactive by setting its **isActive** property.This method does not remove the schedulingGroup from the schedule. Existing shift instances assigned to the scheduling group remain part of the group.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class SchedulingGroupItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SchedulingGroupItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The logical grouping of users in the schedule (usually by role).
+        Retrieve the properties and relationships of a schedulingGroup by ID.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class SchedulingGroupItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[scheduling_group.SchedulingGroup] = None, request_configuration: Optional[SchedulingGroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property schedulingGroups in groups
+        Replace an existing schedulingGroup. If the specified schedulingGroup doesn't exist, this method returns `404 Not found`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class SchedulingGroupItemRequestBuilder():
     @dataclass
     class SchedulingGroupItemRequestBuilderGetQueryParameters():
         """
-        The logical grouping of users in the schedule (usually by role).
+        Retrieve the properties and relationships of a schedulingGroup by ID.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -54,7 +54,7 @@ class TeamsAppsRequestBuilder():
     
     async def get(self,request_configuration: Optional[TeamsAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_app_collection_response.TeamsAppCollectionResponse]:
         """
-        Get teamsApps from appCatalogs
+        List apps from the Microsoft Teams app catalog.This includes apps from the Microsoft Teams store, as well as apps from your organization's app catalog (the tenant app catalog). To get apps from your organization's app catalog only, specify `organization` as the **distributionMethod** in the request.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[teams_app_collection_response.TeamsAppCollectionResponse]
@@ -76,7 +76,7 @@ class TeamsAppsRequestBuilder():
     
     async def post(self,body: Optional[teams_app.TeamsApp] = None, request_configuration: Optional[TeamsAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[teams_app.TeamsApp]:
         """
-        Create new navigation property to teamsApps for appCatalogs
+        Publish an app to the Microsoft Teams apps catalog.Specifically, this API publishes the app to your organization's catalog (the tenant app catalog);the created resource will have a **distributionMethod** property value of `organization`. The **requiresReview** property allows any user to submit an app for review by an administrator. Admins can approve or reject these apps via this API or the Microsoft Teams admin center.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class TeamsAppsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TeamsAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get teamsApps from appCatalogs
+        List apps from the Microsoft Teams app catalog.This includes apps from the Microsoft Teams store, as well as apps from your organization's app catalog (the tenant app catalog). To get apps from your organization's app catalog only, specify `organization` as the **distributionMethod** in the request.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class TeamsAppsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[teams_app.TeamsApp] = None, request_configuration: Optional[TeamsAppsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to teamsApps for appCatalogs
+        Publish an app to the Microsoft Teams apps catalog.Specifically, this API publishes the app to your organization's catalog (the tenant app catalog);the created resource will have a **distributionMethod** property value of `organization`. The **requiresReview** property allows any user to submit an app for review by an administrator. Admins can approve or reject these apps via this API or the Microsoft Teams admin center.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class TeamsAppsRequestBuilder():
     @dataclass
     class TeamsAppsRequestBuilderGetQueryParameters():
         """
-        Get teamsApps from appCatalogs
+        List apps from the Microsoft Teams app catalog.This includes apps from the Microsoft Teams store, as well as apps from your organization's app catalog (the tenant app catalog). To get apps from your organization's app catalog only, specify `organization` as the **distributionMethod** in the request.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

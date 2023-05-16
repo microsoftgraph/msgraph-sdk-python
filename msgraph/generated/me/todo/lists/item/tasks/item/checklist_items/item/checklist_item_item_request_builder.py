@@ -37,7 +37,7 @@ class ChecklistItemItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ChecklistItemItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property checklistItems for me
+        Delete a checklistItem object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class ChecklistItemItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ChecklistItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[checklist_item.ChecklistItem]:
         """
-        A collection of checklistItems linked to a task.
+        Read the properties and relationships of a checklistItem object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[checklist_item.ChecklistItem]
@@ -78,7 +78,7 @@ class ChecklistItemItemRequestBuilder():
     
     async def patch(self,body: Optional[checklist_item.ChecklistItem] = None, request_configuration: Optional[ChecklistItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[checklist_item.ChecklistItem]:
         """
-        Update the navigation property checklistItems in me
+        Update the properties of a checklistItem object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class ChecklistItemItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ChecklistItemItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property checklistItems for me
+        Delete a checklistItem object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ChecklistItemItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ChecklistItemItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of checklistItems linked to a task.
+        Read the properties and relationships of a checklistItem object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class ChecklistItemItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[checklist_item.ChecklistItem] = None, request_configuration: Optional[ChecklistItemItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property checklistItems in me
+        Update the properties of a checklistItem object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class ChecklistItemItemRequestBuilder():
     @dataclass
     class ChecklistItemItemRequestBuilderGetQueryParameters():
         """
-        A collection of checklistItems linked to a task.
+        Read the properties and relationships of a checklistItem object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

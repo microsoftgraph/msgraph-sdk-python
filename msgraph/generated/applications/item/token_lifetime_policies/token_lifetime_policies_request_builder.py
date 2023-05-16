@@ -55,7 +55,7 @@ class TokenLifetimePoliciesRequestBuilder():
     
     async def get(self,request_configuration: Optional[TokenLifetimePoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[token_lifetime_policy_collection_response.TokenLifetimePolicyCollectionResponse]:
         """
-        Get tokenLifetimePolicies from applications
+        List the tokenLifetimePolicy objects that are assigned to an application.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[token_lifetime_policy_collection_response.TokenLifetimePolicyCollectionResponse]
@@ -77,7 +77,7 @@ class TokenLifetimePoliciesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TokenLifetimePoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get tokenLifetimePolicies from applications
+        List the tokenLifetimePolicy objects that are assigned to an application.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class TokenLifetimePoliciesRequestBuilder():
     @dataclass
     class TokenLifetimePoliciesRequestBuilderGetQueryParameters():
         """
-        Get tokenLifetimePolicies from applications
+        List the tokenLifetimePolicy objects that are assigned to an application.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

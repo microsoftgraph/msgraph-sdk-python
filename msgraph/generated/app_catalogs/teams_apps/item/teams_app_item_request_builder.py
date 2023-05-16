@@ -38,7 +38,7 @@ class TeamsAppItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[TeamsAppItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property teamsApps for appCatalogs
+        Delete teamsApp
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -104,7 +104,7 @@ class TeamsAppItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[TeamsAppItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property teamsApps for appCatalogs
+        Delete teamsApp
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -38,7 +38,7 @@ class TokenIssuancePolicyItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property tokenIssuancePolicies for policies
+        Delete a tokenIssuancePolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -79,7 +79,7 @@ class TokenIssuancePolicyItemRequestBuilder():
     
     async def patch(self,body: Optional[token_issuance_policy.TokenIssuancePolicy] = None, request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[token_issuance_policy.TokenIssuancePolicy]:
         """
-        Update the navigation property tokenIssuancePolicies in policies
+        Update the properties of a tokenIssuancePolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class TokenIssuancePolicyItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property tokenIssuancePolicies for policies
+        Delete a tokenIssuancePolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class TokenIssuancePolicyItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[token_issuance_policy.TokenIssuancePolicy] = None, request_configuration: Optional[TokenIssuancePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property tokenIssuancePolicies in policies
+        Update the properties of a tokenIssuancePolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

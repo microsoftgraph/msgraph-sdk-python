@@ -54,7 +54,7 @@ class MicrosoftAuthenticatorMethodsRequestBuilder():
     
     async def get(self,request_configuration: Optional[MicrosoftAuthenticatorMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[microsoft_authenticator_authentication_method_collection_response.MicrosoftAuthenticatorAuthenticationMethodCollectionResponse]:
         """
-        The details of the Microsoft Authenticator app registered to a user for authentication.
+        Get a list of the microsoftAuthenticatorAuthenticationMethod objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[microsoft_authenticator_authentication_method_collection_response.MicrosoftAuthenticatorAuthenticationMethodCollectionResponse]
@@ -76,7 +76,7 @@ class MicrosoftAuthenticatorMethodsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MicrosoftAuthenticatorMethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The details of the Microsoft Authenticator app registered to a user for authentication.
+        Get a list of the microsoftAuthenticatorAuthenticationMethod objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class MicrosoftAuthenticatorMethodsRequestBuilder():
     @dataclass
     class MicrosoftAuthenticatorMethodsRequestBuilderGetQueryParameters():
         """
-        The details of the Microsoft Authenticator app registered to a user for authentication.
+        Get a list of the microsoftAuthenticatorAuthenticationMethod objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

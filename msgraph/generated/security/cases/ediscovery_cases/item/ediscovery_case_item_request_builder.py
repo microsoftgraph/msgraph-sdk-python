@@ -46,7 +46,7 @@ class EdiscoveryCaseItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[EdiscoveryCaseItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property ediscoveryCases for security
+        Delete an ediscoveryCase object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -65,7 +65,7 @@ class EdiscoveryCaseItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[EdiscoveryCaseItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_case.EdiscoveryCase]:
         """
-        Get ediscoveryCases from security
+        Read the properties and relationships of an ediscoveryCase object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ediscovery_case.EdiscoveryCase]
@@ -87,7 +87,7 @@ class EdiscoveryCaseItemRequestBuilder():
     
     async def patch(self,body: Optional[ediscovery_case.EdiscoveryCase] = None, request_configuration: Optional[EdiscoveryCaseItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ediscovery_case.EdiscoveryCase]:
         """
-        Update the navigation property ediscoveryCases in security
+        Update the properties of an ediscoveryCase object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +112,7 @@ class EdiscoveryCaseItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[EdiscoveryCaseItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property ediscoveryCases for security
+        Delete an ediscoveryCase object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -128,7 +128,7 @@ class EdiscoveryCaseItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[EdiscoveryCaseItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get ediscoveryCases from security
+        Read the properties and relationships of an ediscoveryCase object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -146,7 +146,7 @@ class EdiscoveryCaseItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[ediscovery_case.EdiscoveryCase] = None, request_configuration: Optional[EdiscoveryCaseItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property ediscoveryCases in security
+        Update the properties of an ediscoveryCase object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -261,7 +261,7 @@ class EdiscoveryCaseItemRequestBuilder():
     @dataclass
     class EdiscoveryCaseItemRequestBuilderGetQueryParameters():
         """
-        Get ediscoveryCases from security
+        Read the properties and relationships of an ediscoveryCase object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

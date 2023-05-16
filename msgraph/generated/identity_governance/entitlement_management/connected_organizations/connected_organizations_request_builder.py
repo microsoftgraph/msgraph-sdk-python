@@ -54,7 +54,7 @@ class ConnectedOrganizationsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ConnectedOrganizationsRequestBuilderGetRequestConfiguration] = None) -> Optional[connected_organization_collection_response.ConnectedOrganizationCollectionResponse]:
         """
-        References to a directory or domain of another organization whose users can request access.
+        Retrieve a list of connectedOrganization objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[connected_organization_collection_response.ConnectedOrganizationCollectionResponse]
@@ -101,7 +101,7 @@ class ConnectedOrganizationsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ConnectedOrganizationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        References to a directory or domain of another organization whose users can request access.
+        Retrieve a list of connectedOrganization objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class ConnectedOrganizationsRequestBuilder():
     @dataclass
     class ConnectedOrganizationsRequestBuilderGetQueryParameters():
         """
-        References to a directory or domain of another organization whose users can request access.
+        Retrieve a list of connectedOrganization objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

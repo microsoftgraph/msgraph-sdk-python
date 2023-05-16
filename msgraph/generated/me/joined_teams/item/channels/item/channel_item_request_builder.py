@@ -46,7 +46,7 @@ class ChannelItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ChannelItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property channels for me
+        Delete the channel.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -65,7 +65,7 @@ class ChannelItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ChannelItemRequestBuilderGetRequestConfiguration] = None) -> Optional[channel.Channel]:
         """
-        The collection of channels and messages associated with the team.
+        Retrieve the properties and relationships of a channel. This method supports federation. Only a user who is a member of the shared channel can retrieve channel information.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[channel.Channel]
@@ -87,7 +87,7 @@ class ChannelItemRequestBuilder():
     
     async def patch(self,body: Optional[channel.Channel] = None, request_configuration: Optional[ChannelItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[channel.Channel]:
         """
-        Update the navigation property channels in me
+        Update the properties of the specified channel.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -112,7 +112,7 @@ class ChannelItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ChannelItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property channels for me
+        Delete the channel.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -128,7 +128,7 @@ class ChannelItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ChannelItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of channels and messages associated with the team.
+        Retrieve the properties and relationships of a channel. This method supports federation. Only a user who is a member of the shared channel can retrieve channel information.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -146,7 +146,7 @@ class ChannelItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[channel.Channel] = None, request_configuration: Optional[ChannelItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property channels in me
+        Update the properties of the specified channel.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -261,7 +261,7 @@ class ChannelItemRequestBuilder():
     @dataclass
     class ChannelItemRequestBuilderGetQueryParameters():
         """
-        The collection of channels and messages associated with the team.
+        Retrieve the properties and relationships of a channel. This method supports federation. Only a user who is a member of the shared channel can retrieve channel information.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

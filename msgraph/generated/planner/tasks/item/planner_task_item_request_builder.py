@@ -41,7 +41,7 @@ class PlannerTaskItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[PlannerTaskItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property tasks for planner
+        Delete a plannerTask object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -60,7 +60,7 @@ class PlannerTaskItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[PlannerTaskItemRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_task.PlannerTask]:
         """
-        Read-only. Nullable. Returns a collection of the specified tasks
+        Retrieve the properties and relationships of plannerTask object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[planner_task.PlannerTask]
@@ -107,7 +107,7 @@ class PlannerTaskItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[PlannerTaskItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property tasks for planner
+        Delete a plannerTask object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class PlannerTaskItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PlannerTaskItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read-only. Nullable. Returns a collection of the specified tasks
+        Retrieve the properties and relationships of plannerTask object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -211,7 +211,7 @@ class PlannerTaskItemRequestBuilder():
     @dataclass
     class PlannerTaskItemRequestBuilderGetQueryParameters():
         """
-        Read-only. Nullable. Returns a collection of the specified tasks
+        Retrieve the properties and relationships of plannerTask object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

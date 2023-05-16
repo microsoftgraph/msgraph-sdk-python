@@ -54,7 +54,7 @@ class AppointmentsRequestBuilder():
     
     async def get(self,request_configuration: Optional[AppointmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_appointment_collection_response.BookingAppointmentCollectionResponse]:
         """
-        All the appointments of this business. Read-only. Nullable.
+        Get a list of bookingAppointment objects for the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[booking_appointment_collection_response.BookingAppointmentCollectionResponse]
@@ -76,7 +76,7 @@ class AppointmentsRequestBuilder():
     
     async def post(self,body: Optional[booking_appointment.BookingAppointment] = None, request_configuration: Optional[AppointmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[booking_appointment.BookingAppointment]:
         """
-        Create new navigation property to appointments for solutions
+        Create a new bookingAppointment for the specified bookingBusiness.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class AppointmentsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AppointmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All the appointments of this business. Read-only. Nullable.
+        Get a list of bookingAppointment objects for the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class AppointmentsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[booking_appointment.BookingAppointment] = None, request_configuration: Optional[AppointmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to appointments for solutions
+        Create a new bookingAppointment for the specified bookingBusiness.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class AppointmentsRequestBuilder():
     @dataclass
     class AppointmentsRequestBuilderGetQueryParameters():
         """
-        All the appointments of this business. Read-only. Nullable.
+        Get a list of bookingAppointment objects for the specified bookingBusiness.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

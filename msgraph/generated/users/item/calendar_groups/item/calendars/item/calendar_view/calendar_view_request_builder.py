@@ -55,7 +55,7 @@ class CalendarViewRequestBuilder():
     
     async def get(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> Optional[event_collection_response.EventCollectionResponse]:
         """
-        The calendar view for the calendar. Navigation property. Read-only.
+        Get the occurrences, exceptions and single instances of events in a calendar view defined by a time range,from a user's default calendar `(../me/calendarView)` or some other calendar of the user's.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[event_collection_response.EventCollectionResponse]
@@ -77,7 +77,7 @@ class CalendarViewRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CalendarViewRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The calendar view for the calendar. Navigation property. Read-only.
+        Get the occurrences, exceptions and single instances of events in a calendar view defined by a time range,from a user's default calendar `(../me/calendarView)` or some other calendar of the user's.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class CalendarViewRequestBuilder():
     @dataclass
     class CalendarViewRequestBuilderGetQueryParameters():
         """
-        The calendar view for the calendar. Navigation property. Read-only.
+        Get the occurrences, exceptions and single instances of events in a calendar view defined by a time range,from a user's default calendar `(../me/calendarView)` or some other calendar of the user's.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

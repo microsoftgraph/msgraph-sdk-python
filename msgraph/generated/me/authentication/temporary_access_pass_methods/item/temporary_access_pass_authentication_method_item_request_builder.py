@@ -37,7 +37,7 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[TemporaryAccessPassAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property temporaryAccessPassMethods for me
+        Delete a users's temporaryAccessPassAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[TemporaryAccessPassAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]:
         """
-        Represents a Temporary Access Pass registered to a user for authentication through time-limited passcodes.
+        Retrieve a user's single temporaryAccessPassAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]
@@ -78,7 +78,7 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[TemporaryAccessPassAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property temporaryAccessPassMethods for me
+        Delete a users's temporaryAccessPassAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -94,7 +94,7 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TemporaryAccessPassAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents a Temporary Access Pass registered to a user for authentication through time-limited passcodes.
+        Retrieve a user's single temporaryAccessPassAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -125,7 +125,7 @@ class TemporaryAccessPassAuthenticationMethodItemRequestBuilder():
     @dataclass
     class TemporaryAccessPassAuthenticationMethodItemRequestBuilderGetQueryParameters():
         """
-        Represents a Temporary Access Pass registered to a user for authentication through time-limited passcodes.
+        Retrieve a user's single temporaryAccessPassAuthenticationMethod object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -38,7 +38,7 @@ class RubricRequestBuilder():
     
     async def delete(self,request_configuration: Optional[RubricRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property rubric for education
+        Remove an educationRubric from an educationAssignment. This method does not delete the rubric itself and can only be performed by teachers.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class RubricRequestBuilder():
     
     async def get(self,request_configuration: Optional[RubricRequestBuilderGetRequestConfiguration] = None) -> Optional[education_rubric.EducationRubric]:
         """
-        When set, the grading rubric attached to this assignment.
+        Get the educationRubric object attached to an educationAssignment, if one exists. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_rubric.EducationRubric]
@@ -79,7 +79,7 @@ class RubricRequestBuilder():
     
     async def patch(self,body: Optional[education_rubric.EducationRubric] = None, request_configuration: Optional[RubricRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_rubric.EducationRubric]:
         """
-        Update the navigation property rubric in education
+        Attach an existing educationRubric object to an educationAssignment. Only teachers can perform this operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class RubricRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[RubricRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property rubric for education
+        Remove an educationRubric from an educationAssignment. This method does not delete the rubric itself and can only be performed by teachers.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class RubricRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RubricRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        When set, the grading rubric attached to this assignment.
+        Get the educationRubric object attached to an educationAssignment, if one exists. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class RubricRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[education_rubric.EducationRubric] = None, request_configuration: Optional[RubricRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property rubric in education
+        Attach an existing educationRubric object to an educationAssignment. Only teachers can perform this operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class RubricRequestBuilder():
     @dataclass
     class RubricRequestBuilderGetQueryParameters():
         """
-        When set, the grading rubric attached to this assignment.
+        Get the educationRubric object attached to an educationAssignment, if one exists. Only teachers, students, and applications with application permissions can perform this operation.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

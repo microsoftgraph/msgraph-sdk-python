@@ -37,7 +37,7 @@ class VerifyRequestBuilder():
     
     async def post(self,request_configuration: Optional[VerifyRequestBuilderPostRequestConfiguration] = None) -> Optional[domain.Domain]:
         """
-        Invoke action verify
+        Validates the ownership of the domain.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[domain.Domain]
@@ -59,7 +59,7 @@ class VerifyRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[VerifyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action verify
+        Validates the ownership of the domain.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -38,7 +38,7 @@ class ExternalGroupItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ExternalGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property groups for external
+        Delete an externalGroup object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class ExternalGroupItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ExternalGroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[external_group.ExternalGroup]:
         """
-        Get groups from external
+        Get an externalGroup object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[external_group.ExternalGroup]
@@ -79,7 +79,7 @@ class ExternalGroupItemRequestBuilder():
     
     async def patch(self,body: Optional[external_group.ExternalGroup] = None, request_configuration: Optional[ExternalGroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[external_group.ExternalGroup]:
         """
-        Update the navigation property groups in external
+        Update the properties of an externalGroup object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class ExternalGroupItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ExternalGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property groups for external
+        Delete an externalGroup object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class ExternalGroupItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ExternalGroupItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get groups from external
+        Get an externalGroup object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class ExternalGroupItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[external_group.ExternalGroup] = None, request_configuration: Optional[ExternalGroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property groups in external
+        Update the properties of an externalGroup object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class ExternalGroupItemRequestBuilder():
     @dataclass
     class ExternalGroupItemRequestBuilderGetQueryParameters():
         """
-        Get groups from external
+        Get an externalGroup object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

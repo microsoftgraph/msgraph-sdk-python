@@ -37,7 +37,7 @@ class BookingServiceItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[BookingServiceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property services for solutions
+        Delete a bookingService object in the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class BookingServiceItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[BookingServiceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_service.BookingService]:
         """
-        All the services offered by this business. Read-only. Nullable.
+        Get the properties and relationships of a bookingService object in the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[booking_service.BookingService]
@@ -78,7 +78,7 @@ class BookingServiceItemRequestBuilder():
     
     async def patch(self,body: Optional[booking_service.BookingService] = None, request_configuration: Optional[BookingServiceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[booking_service.BookingService]:
         """
-        Update the navigation property services in solutions
+        Update the properties of a bookingService object in the specified bookingBusiness. The following are some examples you can customize for a service:- Price- Typical length of an appointment- Reminders- Any time buffer to set up before or finish up after the service- Scheduling policy parameters, such as minimum notice to book or cancel, and whether customers can select specific staff members for an appointment.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class BookingServiceItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[BookingServiceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property services for solutions
+        Delete a bookingService object in the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class BookingServiceItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[BookingServiceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All the services offered by this business. Read-only. Nullable.
+        Get the properties and relationships of a bookingService object in the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class BookingServiceItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[booking_service.BookingService] = None, request_configuration: Optional[BookingServiceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property services in solutions
+        Update the properties of a bookingService object in the specified bookingBusiness. The following are some examples you can customize for a service:- Price- Typical length of an appointment- Reminders- Any time buffer to set up before or finish up after the service- Scheduling policy parameters, such as minimum notice to book or cancel, and whether customers can select specific staff members for an appointment.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class BookingServiceItemRequestBuilder():
     @dataclass
     class BookingServiceItemRequestBuilderGetQueryParameters():
         """
-        All the services offered by this business. Read-only. Nullable.
+        Get the properties and relationships of a bookingService object in the specified bookingBusiness.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

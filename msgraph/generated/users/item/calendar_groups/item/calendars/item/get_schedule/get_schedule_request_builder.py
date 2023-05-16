@@ -37,7 +37,7 @@ class GetScheduleRequestBuilder():
     
     async def post(self,body: Optional[get_schedule_post_request_body.GetSchedulePostRequestBody] = None, request_configuration: Optional[GetScheduleRequestBuilderPostRequestConfiguration] = None) -> Optional[get_schedule_response.GetScheduleResponse]:
         """
-        Invoke action getSchedule
+        Get the free/busy availability information for a collection of users, distributions lists, or resources (rooms or equipment) for a specified time period.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -62,7 +62,7 @@ class GetScheduleRequestBuilder():
     
     def to_post_request_information(self,body: Optional[get_schedule_post_request_body.GetSchedulePostRequestBody] = None, request_configuration: Optional[GetScheduleRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action getSchedule
+        Get the free/busy availability information for a collection of users, distributions lists, or resources (rooms or equipment) for a specified time period.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

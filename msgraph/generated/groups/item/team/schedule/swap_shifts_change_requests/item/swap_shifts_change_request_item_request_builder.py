@@ -56,7 +56,7 @@ class SwapShiftsChangeRequestItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[SwapShiftsChangeRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[swap_shifts_change_request.SwapShiftsChangeRequest]:
         """
-        Get swapShiftsChangeRequests from groups
+        Retrieve the properties and relationships of a swapShiftsChangeRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[swap_shifts_change_request.SwapShiftsChangeRequest]
@@ -119,7 +119,7 @@ class SwapShiftsChangeRequestItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SwapShiftsChangeRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get swapShiftsChangeRequests from groups
+        Retrieve the properties and relationships of a swapShiftsChangeRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class SwapShiftsChangeRequestItemRequestBuilder():
     @dataclass
     class SwapShiftsChangeRequestItemRequestBuilderGetQueryParameters():
         """
-        Get swapShiftsChangeRequests from groups
+        Retrieve the properties and relationships of a swapShiftsChangeRequest object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

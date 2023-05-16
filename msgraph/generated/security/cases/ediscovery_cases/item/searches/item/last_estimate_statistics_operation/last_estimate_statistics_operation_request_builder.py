@@ -37,7 +37,7 @@ class LastEstimateStatisticsOperationRequestBuilder():
     
     async def get(self,request_configuration: Optional[LastEstimateStatisticsOperationRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_estimate_operation.EdiscoveryEstimateOperation]:
         """
-        The last estimate operation associated with the eDiscovery search.
+        Get the last  ediscoveryEstimateOperation objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ediscovery_estimate_operation.EdiscoveryEstimateOperation]
@@ -59,7 +59,7 @@ class LastEstimateStatisticsOperationRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[LastEstimateStatisticsOperationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The last estimate operation associated with the eDiscovery search.
+        Get the last  ediscoveryEstimateOperation objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -78,7 +78,7 @@ class LastEstimateStatisticsOperationRequestBuilder():
     @dataclass
     class LastEstimateStatisticsOperationRequestBuilderGetQueryParameters():
         """
-        The last estimate operation associated with the eDiscovery search.
+        Get the last  ediscoveryEstimateOperation objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

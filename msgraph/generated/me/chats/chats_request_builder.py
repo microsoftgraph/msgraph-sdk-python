@@ -55,7 +55,7 @@ class ChatsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ChatsRequestBuilderGetRequestConfiguration] = None) -> Optional[chat_collection_response.ChatCollectionResponse]:
         """
-        Get chats from me
+        Retrieve the list of chats that the user is part of. This method supports federation. When a user ID is provided, the calling application must belong to the same tenant that the user belongs to.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[chat_collection_response.ChatCollectionResponse]
@@ -102,7 +102,7 @@ class ChatsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ChatsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get chats from me
+        Retrieve the list of chats that the user is part of. This method supports federation. When a user ID is provided, the calling application must belong to the same tenant that the user belongs to.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -160,7 +160,7 @@ class ChatsRequestBuilder():
     @dataclass
     class ChatsRequestBuilderGetQueryParameters():
         """
-        Get chats from me
+        Retrieve the list of chats that the user is part of. This method supports federation. When a user ID is provided, the calling application must belong to the same tenant that the user belongs to.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -38,7 +38,7 @@ class CopyToNotebookRequestBuilder():
     
     async def post(self,body: Optional[copy_to_notebook_post_request_body.CopyToNotebookPostRequestBody] = None, request_configuration: Optional[CopyToNotebookRequestBuilderPostRequestConfiguration] = None) -> Optional[onenote_operation.OnenoteOperation]:
         """
-        Invoke action copyToNotebook
+        For Copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class CopyToNotebookRequestBuilder():
     
     def to_post_request_information(self,body: Optional[copy_to_notebook_post_request_body.CopyToNotebookPostRequestBody] = None, request_configuration: Optional[CopyToNotebookRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action copyToNotebook
+        For Copy operations, you follow an asynchronous calling pattern:  First call the Copy action, and then poll the operation endpoint for the result.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

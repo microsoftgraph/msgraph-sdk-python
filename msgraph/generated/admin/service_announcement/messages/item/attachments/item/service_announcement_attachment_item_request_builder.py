@@ -57,7 +57,7 @@ class ServiceAnnouncementAttachmentItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ServiceAnnouncementAttachmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[service_announcement_attachment.ServiceAnnouncementAttachment]:
         """
-        A collection of serviceAnnouncementAttachments.
+        Read the properties and relationships of a serviceAnnouncementAttachment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[service_announcement_attachment.ServiceAnnouncementAttachment]
@@ -120,7 +120,7 @@ class ServiceAnnouncementAttachmentItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ServiceAnnouncementAttachmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of serviceAnnouncementAttachments.
+        Read the properties and relationships of a serviceAnnouncementAttachment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class ServiceAnnouncementAttachmentItemRequestBuilder():
     @dataclass
     class ServiceAnnouncementAttachmentItemRequestBuilderGetQueryParameters():
         """
-        A collection of serviceAnnouncementAttachments.
+        Read the properties and relationships of a serviceAnnouncementAttachment object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

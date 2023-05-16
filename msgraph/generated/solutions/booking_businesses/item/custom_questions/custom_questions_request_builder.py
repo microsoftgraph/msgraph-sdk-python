@@ -54,7 +54,7 @@ class CustomQuestionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[CustomQuestionsRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_custom_question_collection_response.BookingCustomQuestionCollectionResponse]:
         """
-        All the custom questions of this business. Read-only. Nullable.
+        Get the bookingCustomQuestion resources associated with a bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[booking_custom_question_collection_response.BookingCustomQuestionCollectionResponse]
@@ -76,7 +76,7 @@ class CustomQuestionsRequestBuilder():
     
     async def post(self,body: Optional[booking_custom_question.BookingCustomQuestion] = None, request_configuration: Optional[CustomQuestionsRequestBuilderPostRequestConfiguration] = None) -> Optional[booking_custom_question.BookingCustomQuestion]:
         """
-        Create new navigation property to customQuestions for solutions
+        Create a new bookingCustomQuestion object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class CustomQuestionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CustomQuestionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All the custom questions of this business. Read-only. Nullable.
+        Get the bookingCustomQuestion resources associated with a bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class CustomQuestionsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[booking_custom_question.BookingCustomQuestion] = None, request_configuration: Optional[CustomQuestionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to customQuestions for solutions
+        Create a new bookingCustomQuestion object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class CustomQuestionsRequestBuilder():
     @dataclass
     class CustomQuestionsRequestBuilderGetQueryParameters():
         """
-        All the custom questions of this business. Read-only. Nullable.
+        Get the bookingCustomQuestion resources associated with a bookingBusiness.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

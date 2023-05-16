@@ -55,7 +55,7 @@ class IncompatibleGroupsRequestBuilder():
     
     async def get(self,request_configuration: Optional[IncompatibleGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[group_collection_response.GroupCollectionResponse]:
         """
-        The groups whose members are ineligible to be assigned this access package.
+        Retrieve a list of the group objects that have been marked as incompatible on an accessPackage.  
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[group_collection_response.GroupCollectionResponse]
@@ -77,7 +77,7 @@ class IncompatibleGroupsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[IncompatibleGroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The groups whose members are ineligible to be assigned this access package.
+        Retrieve a list of the group objects that have been marked as incompatible on an accessPackage.  
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class IncompatibleGroupsRequestBuilder():
     @dataclass
     class IncompatibleGroupsRequestBuilderGetQueryParameters():
         """
-        The groups whose members are ineligible to be assigned this access package.
+        Retrieve a list of the group objects that have been marked as incompatible on an accessPackage.  
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -43,7 +43,7 @@ class OnenotePageItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[OnenotePageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property pages for me
+        Delete a OneNote page.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -109,7 +109,7 @@ class OnenotePageItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[OnenotePageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property pages for me
+        Delete a OneNote page.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

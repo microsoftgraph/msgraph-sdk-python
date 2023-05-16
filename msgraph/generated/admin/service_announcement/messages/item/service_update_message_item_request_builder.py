@@ -58,7 +58,7 @@ class ServiceUpdateMessageItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[service_update_message.ServiceUpdateMessage]:
         """
-        A collection of service messages for tenant. This property is a contained navigation property, it is nullable and readonly.
+        Retrieve the properties and relationships of a serviceUpdateMessage object. This operation retrieves a specified service update message for the tenant. The operation returns an error if the message does not exist for the tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[service_update_message.ServiceUpdateMessage]
@@ -121,7 +121,7 @@ class ServiceUpdateMessageItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ServiceUpdateMessageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of service messages for tenant. This property is a contained navigation property, it is nullable and readonly.
+        Retrieve the properties and relationships of a serviceUpdateMessage object. This operation retrieves a specified service update message for the tenant. The operation returns an error if the message does not exist for the tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -191,7 +191,7 @@ class ServiceUpdateMessageItemRequestBuilder():
     @dataclass
     class ServiceUpdateMessageItemRequestBuilderGetQueryParameters():
         """
-        A collection of service messages for tenant. This property is a contained navigation property, it is nullable and readonly.
+        Retrieve the properties and relationships of a serviceUpdateMessage object. This operation retrieves a specified service update message for the tenant. The operation returns an error if the message does not exist for the tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

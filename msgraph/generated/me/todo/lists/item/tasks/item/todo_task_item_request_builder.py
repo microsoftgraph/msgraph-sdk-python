@@ -42,7 +42,7 @@ class TodoTaskItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[TodoTaskItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property tasks for me
+        Deletes a todoTask object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -61,7 +61,7 @@ class TodoTaskItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[TodoTaskItemRequestBuilderGetRequestConfiguration] = None) -> Optional[todo_task.TodoTask]:
         """
-        The tasks in this task list. Read-only. Nullable.
+        Read the properties and relationships of a todoTask object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[todo_task.TodoTask]
@@ -83,7 +83,7 @@ class TodoTaskItemRequestBuilder():
     
     async def patch(self,body: Optional[todo_task.TodoTask] = None, request_configuration: Optional[TodoTaskItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[todo_task.TodoTask]:
         """
-        Update the navigation property tasks in me
+        Update the properties of a todoTask object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -108,7 +108,7 @@ class TodoTaskItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[TodoTaskItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property tasks for me
+        Deletes a todoTask object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -124,7 +124,7 @@ class TodoTaskItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TodoTaskItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The tasks in this task list. Read-only. Nullable.
+        Read the properties and relationships of a todoTask object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -142,7 +142,7 @@ class TodoTaskItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[todo_task.TodoTask] = None, request_configuration: Optional[TodoTaskItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property tasks in me
+        Update the properties of a todoTask object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -221,7 +221,7 @@ class TodoTaskItemRequestBuilder():
     @dataclass
     class TodoTaskItemRequestBuilderGetQueryParameters():
         """
-        The tasks in this task list. Read-only. Nullable.
+        Read the properties and relationships of a todoTask object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -38,7 +38,7 @@ class FilesFolderRequestBuilder():
     
     async def get(self,request_configuration: Optional[FilesFolderRequestBuilderGetRequestConfiguration] = None) -> Optional[drive_item.DriveItem]:
         """
-        Metadata for the location where the channel's files are stored.
+        Get the metadata for the location where the files of a channel are stored. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[drive_item.DriveItem]
@@ -60,7 +60,7 @@ class FilesFolderRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[FilesFolderRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Metadata for the location where the channel's files are stored.
+        Get the metadata for the location where the files of a channel are stored. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -88,7 +88,7 @@ class FilesFolderRequestBuilder():
     @dataclass
     class FilesFolderRequestBuilderGetQueryParameters():
         """
-        Metadata for the location where the channel's files are stored.
+        Get the metadata for the location where the files of a channel are stored. 
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

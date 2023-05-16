@@ -36,7 +36,7 @@ class MicrosoftGraphSecurityReleaseRequestBuilder():
     
     async def post(self,request_configuration: Optional[MicrosoftGraphSecurityReleaseRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action release
+        Release a custodian from a case. For details, see Release a custodian from a case.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class MicrosoftGraphSecurityReleaseRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[MicrosoftGraphSecurityReleaseRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action release
+        Release a custodian from a case. For details, see Release a custodian from a case.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

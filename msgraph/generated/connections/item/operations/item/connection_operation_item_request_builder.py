@@ -56,7 +56,7 @@ class ConnectionOperationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ConnectionOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[connection_operation.ConnectionOperation]:
         """
-        Get operations from connections
+        Read the properties and relationships of a connectionOperation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[connection_operation.ConnectionOperation]
@@ -119,7 +119,7 @@ class ConnectionOperationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ConnectionOperationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get operations from connections
+        Read the properties and relationships of a connectionOperation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class ConnectionOperationItemRequestBuilder():
     @dataclass
     class ConnectionOperationItemRequestBuilderGetQueryParameters():
         """
-        Get operations from connections
+        Read the properties and relationships of a connectionOperation object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

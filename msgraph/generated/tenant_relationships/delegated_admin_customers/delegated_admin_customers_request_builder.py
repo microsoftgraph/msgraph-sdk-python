@@ -54,7 +54,7 @@ class DelegatedAdminCustomersRequestBuilder():
     
     async def get(self,request_configuration: Optional[DelegatedAdminCustomersRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_admin_customer_collection_response.DelegatedAdminCustomerCollectionResponse]:
         """
-        The customer who has a delegated admin relationship with a Microsoft partner.
+        Get a list of the delegatedAdminCustomer objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[delegated_admin_customer_collection_response.DelegatedAdminCustomerCollectionResponse]
@@ -101,7 +101,7 @@ class DelegatedAdminCustomersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DelegatedAdminCustomersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The customer who has a delegated admin relationship with a Microsoft partner.
+        Get a list of the delegatedAdminCustomer objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class DelegatedAdminCustomersRequestBuilder():
     @dataclass
     class DelegatedAdminCustomersRequestBuilderGetQueryParameters():
         """
-        The customer who has a delegated admin relationship with a Microsoft partner.
+        Get a list of the delegatedAdminCustomer objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

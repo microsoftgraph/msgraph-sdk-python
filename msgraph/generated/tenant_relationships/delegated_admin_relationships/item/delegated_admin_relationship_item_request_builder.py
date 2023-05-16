@@ -40,7 +40,7 @@ class DelegatedAdminRelationshipItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property delegatedAdminRelationships for tenantRelationships
+        Delete a delegatedAdminRelationship object. A relationship can only be deleted if it's in the 'created' status. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -59,7 +59,7 @@ class DelegatedAdminRelationshipItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_admin_relationship.DelegatedAdminRelationship]:
         """
-        The details of the delegated administrative privileges that a Microsoft partner has in a customer tenant.
+        Read the properties of a delegatedAdminRelationship object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[delegated_admin_relationship.DelegatedAdminRelationship]
@@ -81,7 +81,7 @@ class DelegatedAdminRelationshipItemRequestBuilder():
     
     async def patch(self,body: Optional[delegated_admin_relationship.DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[delegated_admin_relationship.DelegatedAdminRelationship]:
         """
-        Update the navigation property delegatedAdminRelationships in tenantRelationships
+        Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the `created` **status**.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -106,7 +106,7 @@ class DelegatedAdminRelationshipItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property delegatedAdminRelationships for tenantRelationships
+        Delete a delegatedAdminRelationship object. A relationship can only be deleted if it's in the 'created' status. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -122,7 +122,7 @@ class DelegatedAdminRelationshipItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The details of the delegated administrative privileges that a Microsoft partner has in a customer tenant.
+        Read the properties of a delegatedAdminRelationship object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +140,7 @@ class DelegatedAdminRelationshipItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[delegated_admin_relationship.DelegatedAdminRelationship] = None, request_configuration: Optional[DelegatedAdminRelationshipItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property delegatedAdminRelationships in tenantRelationships
+        Update the properties of a delegatedAdminRelationship object. A relationship can only be updated if it's in the `created` **status**.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -201,7 +201,7 @@ class DelegatedAdminRelationshipItemRequestBuilder():
     @dataclass
     class DelegatedAdminRelationshipItemRequestBuilderGetQueryParameters():
         """
-        The details of the delegated administrative privileges that a Microsoft partner has in a customer tenant.
+        Read the properties of a delegatedAdminRelationship object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

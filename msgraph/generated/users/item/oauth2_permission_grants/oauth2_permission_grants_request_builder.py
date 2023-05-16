@@ -54,7 +54,7 @@ class Oauth2PermissionGrantsRequestBuilder():
     
     async def get(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> Optional[o_auth2_permission_grant_collection_response.OAuth2PermissionGrantCollectionResponse]:
         """
-        Get oauth2PermissionGrants from users
+        Retrieve a list of oAuth2PermissionGrant entities, which represent delegated permissions granted to enable a client application to access an API on behalf of the user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[o_auth2_permission_grant_collection_response.OAuth2PermissionGrantCollectionResponse]
@@ -76,7 +76,7 @@ class Oauth2PermissionGrantsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get oauth2PermissionGrants from users
+        Retrieve a list of oAuth2PermissionGrant entities, which represent delegated permissions granted to enable a client application to access an API on behalf of the user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class Oauth2PermissionGrantsRequestBuilder():
     @dataclass
     class Oauth2PermissionGrantsRequestBuilderGetQueryParameters():
         """
-        Get oauth2PermissionGrants from users
+        Retrieve a list of oAuth2PermissionGrant entities, which represent delegated permissions granted to enable a client application to access an API on behalf of the user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

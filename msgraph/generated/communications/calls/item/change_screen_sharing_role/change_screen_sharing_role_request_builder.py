@@ -37,7 +37,7 @@ class ChangeScreenSharingRoleRequestBuilder():
     
     async def post(self,body: Optional[change_screen_sharing_role_post_request_body.ChangeScreenSharingRolePostRequestBody] = None, request_configuration: Optional[ChangeScreenSharingRoleRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action changeScreenSharingRole
+        Allow applications to share screen content with the participants of a group call.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class ChangeScreenSharingRoleRequestBuilder():
     
     def to_post_request_information(self,body: Optional[change_screen_sharing_role_post_request_body.ChangeScreenSharingRolePostRequestBody] = None, request_configuration: Optional[ChangeScreenSharingRoleRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action changeScreenSharingRole
+        Allow applications to share screen content with the participants of a group call.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

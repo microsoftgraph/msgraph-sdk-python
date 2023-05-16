@@ -37,7 +37,7 @@ class InferenceClassificationOverrideItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property overrides for users
+        Delete an override specified by its ID.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -78,7 +78,7 @@ class InferenceClassificationOverrideItemRequestBuilder():
     
     async def patch(self,body: Optional[inference_classification_override.InferenceClassificationOverride] = None, request_configuration: Optional[InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[inference_classification_override.InferenceClassificationOverride]:
         """
-        Update the navigation property overrides in users
+        Change the **classifyAs** field of an override as specified. You cannot use PATCH to change any other fields in an inferenceClassificationOverride instance. If an override exists for a sender and the sender changes his/her display name, you can use POST to force an update to the name field in the existing override. If an override exists for a sender and the sender changes his/her SMTP address, deleting the existing override and creating a new one withthe new SMTP address is the only way to 'update' the override for this sender.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class InferenceClassificationOverrideItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[InferenceClassificationOverrideItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property overrides for users
+        Delete an override specified by its ID.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class InferenceClassificationOverrideItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[inference_classification_override.InferenceClassificationOverride] = None, request_configuration: Optional[InferenceClassificationOverrideItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property overrides in users
+        Change the **classifyAs** field of an override as specified. You cannot use PATCH to change any other fields in an inferenceClassificationOverride instance. If an override exists for a sender and the sender changes his/her display name, you can use POST to force an update to the name field in the existing override. If an override exists for a sender and the sender changes his/her SMTP address, deleting the existing override and creating a new one withthe new SMTP address is the only way to 'update' the override for this sender.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

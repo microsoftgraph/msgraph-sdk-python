@@ -36,7 +36,7 @@ class CloseSessionRequestBuilder():
     
     async def post(self,request_configuration: Optional[CloseSessionRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action closeSession
+        Use this API to close an existing workbook session.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class CloseSessionRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[CloseSessionRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action closeSession
+        Use this API to close an existing workbook session.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

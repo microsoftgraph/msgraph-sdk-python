@@ -56,7 +56,7 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AccessReviewInstanceDecisionItemItemRequestBuilderGetRequestConfiguration] = None) -> Optional[access_review_instance_decision_item.AccessReviewInstanceDecisionItem]:
         """
-        Each user reviewed in an accessReviewInstance has a decision item representing if they were approved, denied, or not yet reviewed.
+        Read the properties and relationships of an accessReviewInstanceDecisionItem object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_review_instance_decision_item.AccessReviewInstanceDecisionItem]
@@ -119,7 +119,7 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AccessReviewInstanceDecisionItemItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Each user reviewed in an accessReviewInstance has a decision item representing if they were approved, denied, or not yet reviewed.
+        Read the properties and relationships of an accessReviewInstanceDecisionItem object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder():
     @dataclass
     class AccessReviewInstanceDecisionItemItemRequestBuilderGetQueryParameters():
         """
-        Each user reviewed in an accessReviewInstance has a decision item representing if they were approved, denied, or not yet reviewed.
+        Read the properties and relationships of an accessReviewInstanceDecisionItem object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

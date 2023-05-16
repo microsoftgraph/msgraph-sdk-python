@@ -56,7 +56,7 @@ class MemberOfRequestBuilder():
     
     async def get(self,request_configuration: Optional[MemberOfRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
         """
-        Get memberOf from contacts
+        Groups that this contact is a member of. Read-only. Nullable. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]
@@ -78,7 +78,7 @@ class MemberOfRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MemberOfRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get memberOf from contacts
+        Groups that this contact is a member of. Read-only. Nullable. Supports $expand.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -124,7 +124,7 @@ class MemberOfRequestBuilder():
     @dataclass
     class MemberOfRequestBuilderGetQueryParameters():
         """
-        Get memberOf from contacts
+        Groups that this contact is a member of. Read-only. Nullable. Supports $expand.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

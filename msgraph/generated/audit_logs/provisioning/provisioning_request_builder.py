@@ -54,7 +54,7 @@ class ProvisioningRequestBuilder():
     
     async def get(self,request_configuration: Optional[ProvisioningRequestBuilderGetRequestConfiguration] = None) -> Optional[provisioning_object_summary_collection_response.ProvisioningObjectSummaryCollectionResponse]:
         """
-        Get provisioning from auditLogs
+        Get all provisioning events that occurred in your tenant, such as the deletion of a group in a target application or the creation of a user when provisioning user accounts from your HR system. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[provisioning_object_summary_collection_response.ProvisioningObjectSummaryCollectionResponse]
@@ -101,7 +101,7 @@ class ProvisioningRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ProvisioningRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get provisioning from auditLogs
+        Get all provisioning events that occurred in your tenant, such as the deletion of a group in a target application or the creation of a user when provisioning user accounts from your HR system. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class ProvisioningRequestBuilder():
     @dataclass
     class ProvisioningRequestBuilderGetQueryParameters():
         """
-        Get provisioning from auditLogs
+        Get all provisioning events that occurred in your tenant, such as the deletion of a group in a target application or the creation of a user when provisioning user accounts from your HR system. 
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

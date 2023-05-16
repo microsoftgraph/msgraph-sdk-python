@@ -55,7 +55,7 @@ class PrintersRequestBuilder():
     
     async def get(self,request_configuration: Optional[PrintersRequestBuilderGetRequestConfiguration] = None) -> Optional[printer_collection_response.PrinterCollectionResponse]:
         """
-        The list of printers registered in the tenant.
+        Retrieve the list of **printers** that are registered in the tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[printer_collection_response.PrinterCollectionResponse]
@@ -102,7 +102,7 @@ class PrintersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PrintersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of printers registered in the tenant.
+        Retrieve the list of **printers** that are registered in the tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -160,7 +160,7 @@ class PrintersRequestBuilder():
     @dataclass
     class PrintersRequestBuilderGetQueryParameters():
         """
-        The list of printers registered in the tenant.
+        Retrieve the list of **printers** that are registered in the tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

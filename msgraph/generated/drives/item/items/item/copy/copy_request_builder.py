@@ -38,7 +38,7 @@ class CopyRequestBuilder():
     
     async def post(self,body: Optional[copy_post_request_body.CopyPostRequestBody] = None, request_configuration: Optional[CopyRequestBuilderPostRequestConfiguration] = None) -> Optional[drive_item.DriveItem]:
         """
-        Invoke action copy
+        Asynchronously creates a copy of an [driveItem][item-resource] (including any children), under a new parent item or with a new name.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class CopyRequestBuilder():
     
     def to_post_request_information(self,body: Optional[copy_post_request_body.CopyPostRequestBody] = None, request_configuration: Optional[CopyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action copy
+        Asynchronously creates a copy of an [driveItem][item-resource] (including any children), under a new parent item or with a new name.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

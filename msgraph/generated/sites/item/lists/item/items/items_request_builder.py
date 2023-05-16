@@ -12,7 +12,6 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ......models import list_item, list_item_collection_response
     from ......models.o_data_errors import o_data_error
-    from .count import count_request_builder
     from .item import list_item_item_request_builder
 
 class ItemsRequestBuilder():
@@ -31,7 +30,7 @@ class ItemsRequestBuilder():
         if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/sites/{site%2Did}/lists/{list%2Did}/items{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}"
+        self.url_template: str = "{+baseurl}/sites/{site%2Did}/lists/{list%2Did}/items{?%24top,%24skip,%24search,%24filter,%24orderby,%24select,%24expand}"
 
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
@@ -54,7 +53,7 @@ class ItemsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[list_item_collection_response.ListItemCollectionResponse]:
         """
-        All items contained in the list.
+        Get the collection of [items][item] in a [list][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[list_item_collection_response.ListItemCollectionResponse]
@@ -76,7 +75,7 @@ class ItemsRequestBuilder():
     
     async def post(self,body: Optional[list_item.ListItem] = None, request_configuration: Optional[ItemsRequestBuilderPostRequestConfiguration] = None) -> Optional[list_item.ListItem]:
         """
-        Create new navigation property to items for sites
+        Create a new [listItem][] in a [list][].
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +100,7 @@ class ItemsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ItemsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All items contained in the list.
+        Get the collection of [items][item] in a [list][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +118,7 @@ class ItemsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[list_item.ListItem] = None, request_configuration: Optional[ItemsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to items for sites
+        Create a new [listItem][] in a [list][].
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -138,19 +137,10 @@ class ItemsRequestBuilder():
         request_info.set_content_from_parsable(self.request_adapter, "application/json", body)
         return request_info
     
-    @property
-    def count(self) -> count_request_builder.CountRequestBuilder:
-        """
-        Provides operations to count the resources in the collection.
-        """
-        from .count import count_request_builder
-
-        return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
-    
     @dataclass
     class ItemsRequestBuilderGetQueryParameters():
         """
-        All items contained in the list.
+        Get the collection of [items][item] in a [list][].
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -161,8 +151,6 @@ class ItemsRequestBuilder():
             """
             if original_name is None:
                 raise Exception("original_name cannot be undefined")
-            if original_name == "count":
-                return "%24count"
             if original_name == "expand":
                 return "%24expand"
             if original_name == "filter":
@@ -179,9 +167,6 @@ class ItemsRequestBuilder():
                 return "%24top"
             return original_name
         
-        # Include count of items
-        count: Optional[bool] = None
-
         # Expand related entities
         expand: Optional[List[str]] = None
 

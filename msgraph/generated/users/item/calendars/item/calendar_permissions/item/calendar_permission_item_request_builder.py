@@ -37,7 +37,7 @@ class CalendarPermissionItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[CalendarPermissionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property calendarPermissions for users
+        Delete calendarPermission.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class CalendarPermissionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[CalendarPermissionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[calendar_permission.CalendarPermission]:
         """
-        The permissions of the users with whom the calendar is shared.
+        Get the specified permissions object of a user or group calendar that has been shared.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[calendar_permission.CalendarPermission]
@@ -78,7 +78,7 @@ class CalendarPermissionItemRequestBuilder():
     
     async def patch(self,body: Optional[calendar_permission.CalendarPermission] = None, request_configuration: Optional[CalendarPermissionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[calendar_permission.CalendarPermission]:
         """
-        Update the navigation property calendarPermissions in users
+        Update the permissions assigned to an existing sharee or delegate, through the corresponding <b>calendarPermission</b> object for a calendar.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class CalendarPermissionItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[CalendarPermissionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property calendarPermissions for users
+        Delete calendarPermission.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class CalendarPermissionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CalendarPermissionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The permissions of the users with whom the calendar is shared.
+        Get the specified permissions object of a user or group calendar that has been shared.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class CalendarPermissionItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[calendar_permission.CalendarPermission] = None, request_configuration: Optional[CalendarPermissionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property calendarPermissions in users
+        Update the permissions assigned to an existing sharee or delegate, through the corresponding <b>calendarPermission</b> object for a calendar.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class CalendarPermissionItemRequestBuilder():
     @dataclass
     class CalendarPermissionItemRequestBuilderGetQueryParameters():
         """
-        The permissions of the users with whom the calendar is shared.
+        Get the specified permissions object of a user or group calendar that has been shared.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -55,7 +55,7 @@ class AdministrativeUnitsRequestBuilder():
     
     async def get(self,request_configuration: Optional[AdministrativeUnitsRequestBuilderGetRequestConfiguration] = None) -> Optional[administrative_unit_collection_response.AdministrativeUnitCollectionResponse]:
         """
-        Conceptual container for user and group directory objects.
+        Retrieve a list of administrativeUnit objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[administrative_unit_collection_response.AdministrativeUnitCollectionResponse]
@@ -77,7 +77,7 @@ class AdministrativeUnitsRequestBuilder():
     
     async def post(self,body: Optional[administrative_unit.AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitsRequestBuilderPostRequestConfiguration] = None) -> Optional[administrative_unit.AdministrativeUnit]:
         """
-        Create new navigation property to administrativeUnits for directory
+        Use this API to create a new administrativeUnit.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class AdministrativeUnitsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AdministrativeUnitsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Conceptual container for user and group directory objects.
+        Retrieve a list of administrativeUnit objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class AdministrativeUnitsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[administrative_unit.AdministrativeUnit] = None, request_configuration: Optional[AdministrativeUnitsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to administrativeUnits for directory
+        Use this API to create a new administrativeUnit.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class AdministrativeUnitsRequestBuilder():
     @dataclass
     class AdministrativeUnitsRequestBuilderGetQueryParameters():
         """
-        Conceptual container for user and group directory objects.
+        Retrieve a list of administrativeUnit objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

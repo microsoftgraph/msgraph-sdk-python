@@ -9,9 +9,12 @@ if TYPE_CHECKING:
 from . import entity
 
 class ManagedDevice(entity.Entity):
+    """
+    Devices that are managed or pre-enrolled through Intune
+    """
     def __init__(self,) -> None:
         """
-        Instantiates a new ManagedDevice and sets the default values.
+        Instantiates a new managedDevice and sets the default values.
         """
         super().__init__()
         # The code that allows the Activation Lock on managed device to be bypassed. Default, is Null (Non-Default property) for this property when returned as part of managedDevice entity in LIST call. Individual GET call with select query options is needed to retrieve actual values. Supports: $select. $Search is not supported. Read-only. This property is read-only.

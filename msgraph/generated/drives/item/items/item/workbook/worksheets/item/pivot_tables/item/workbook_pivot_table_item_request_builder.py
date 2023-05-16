@@ -58,7 +58,7 @@ class WorkbookPivotTableItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[WorkbookPivotTableItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_pivot_table.WorkbookPivotTable]:
         """
-        Collection of PivotTables that are part of the worksheet.
+        Retrieve the properties and relationships of workbookPivotTable object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_pivot_table.WorkbookPivotTable]
@@ -121,7 +121,7 @@ class WorkbookPivotTableItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[WorkbookPivotTableItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Collection of PivotTables that are part of the worksheet.
+        Retrieve the properties and relationships of workbookPivotTable object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -191,7 +191,7 @@ class WorkbookPivotTableItemRequestBuilder():
     @dataclass
     class WorkbookPivotTableItemRequestBuilderGetQueryParameters():
         """
-        Collection of PivotTables that are part of the worksheet.
+        Retrieve the properties and relationships of workbookPivotTable object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

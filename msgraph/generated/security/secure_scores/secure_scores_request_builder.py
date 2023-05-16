@@ -54,7 +54,7 @@ class SecureScoresRequestBuilder():
     
     async def get(self,request_configuration: Optional[SecureScoresRequestBuilderGetRequestConfiguration] = None) -> Optional[secure_score_collection_response.SecureScoreCollectionResponse]:
         """
-        Get secureScores from security
+        Retrieve a list of secureScore objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[secure_score_collection_response.SecureScoreCollectionResponse]
@@ -101,7 +101,7 @@ class SecureScoresRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SecureScoresRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get secureScores from security
+        Retrieve a list of secureScore objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class SecureScoresRequestBuilder():
     @dataclass
     class SecureScoresRequestBuilderGetQueryParameters():
         """
-        Get secureScores from security
+        Retrieve a list of secureScore objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -57,7 +57,7 @@ class IncidentItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[IncidentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[incident.Incident]:
         """
-        A collection of incidents in Microsoft 365 Defender, each of which is a set of correlated alerts and associated metadata that reflects the story of an attack.
+        Retrieve the properties and relationships of an incident object. Attacks are typically inflicted on different types of entities, such as devices, users, and mailboxes, resulting in multiple alert objects. Microsoft 365 Defender correlates alerts with the same attack techniques or the same attacker into an **incident**. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[incident.Incident]
@@ -79,7 +79,7 @@ class IncidentItemRequestBuilder():
     
     async def patch(self,body: Optional[incident.Incident] = None, request_configuration: Optional[IncidentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[incident.Incident]:
         """
-        Update the navigation property incidents in security
+        Update the properties of an incident object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -120,7 +120,7 @@ class IncidentItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[IncidentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of incidents in Microsoft 365 Defender, each of which is a set of correlated alerts and associated metadata that reflects the story of an attack.
+        Retrieve the properties and relationships of an incident object. Attacks are typically inflicted on different types of entities, such as devices, users, and mailboxes, resulting in multiple alert objects. Microsoft 365 Defender correlates alerts with the same attack techniques or the same attacker into an **incident**. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class IncidentItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[incident.Incident] = None, request_configuration: Optional[IncidentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property incidents in security
+        Update the properties of an incident object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class IncidentItemRequestBuilder():
     @dataclass
     class IncidentItemRequestBuilderGetQueryParameters():
         """
-        A collection of incidents in Microsoft 365 Defender, each of which is a set of correlated alerts and associated metadata that reflects the story of an attack.
+        Retrieve the properties and relationships of an incident object. Attacks are typically inflicted on different types of entities, such as devices, users, and mailboxes, resulting in multiple alert objects. Microsoft 365 Defender correlates alerts with the same attack techniques or the same attacker into an **incident**. 
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

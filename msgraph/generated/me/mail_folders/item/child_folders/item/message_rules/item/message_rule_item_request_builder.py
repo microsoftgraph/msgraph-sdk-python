@@ -37,7 +37,7 @@ class MessageRuleItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[MessageRuleItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property messageRules for me
+        Delete the specified messageRule object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class MessageRuleItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[MessageRuleItemRequestBuilderGetRequestConfiguration] = None) -> Optional[message_rule.MessageRule]:
         """
-        The collection of rules that apply to the user's Inbox folder.
+        Get the properties and relationships of a messageRule object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[message_rule.MessageRule]
@@ -78,7 +78,7 @@ class MessageRuleItemRequestBuilder():
     
     async def patch(self,body: Optional[message_rule.MessageRule] = None, request_configuration: Optional[MessageRuleItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[message_rule.MessageRule]:
         """
-        Update the navigation property messageRules in me
+        Change writable properties on a messageRule object and save the changes.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class MessageRuleItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[MessageRuleItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property messageRules for me
+        Delete the specified messageRule object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class MessageRuleItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MessageRuleItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of rules that apply to the user's Inbox folder.
+        Get the properties and relationships of a messageRule object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class MessageRuleItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[message_rule.MessageRule] = None, request_configuration: Optional[MessageRuleItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property messageRules in me
+        Change writable properties on a messageRule object and save the changes.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class MessageRuleItemRequestBuilder():
     @dataclass
     class MessageRuleItemRequestBuilderGetQueryParameters():
         """
-        The collection of rules that apply to the user's Inbox folder.
+        Get the properties and relationships of a messageRule object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

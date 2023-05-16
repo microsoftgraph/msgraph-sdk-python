@@ -56,7 +56,7 @@ class AlertItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AlertItemRequestBuilderGetRequestConfiguration] = None) -> Optional[alert.Alert]:
         """
-        A collection of alerts in Microsoft 365 Defender.
+        Get the properties and relationships of an alert in an organization based on the specified alert **id** property.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[alert.Alert]
@@ -78,7 +78,7 @@ class AlertItemRequestBuilder():
     
     async def patch(self,body: Optional[alert.Alert] = None, request_configuration: Optional[AlertItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[alert.Alert]:
         """
-        Update the navigation property alerts_v2 in security
+        Update the properties of an alert object in an organization based on the specified alert **id** property.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class AlertItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AlertItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of alerts in Microsoft 365 Defender.
+        Get the properties and relationships of an alert in an organization based on the specified alert **id** property.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class AlertItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[alert.Alert] = None, request_configuration: Optional[AlertItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property alerts_v2 in security
+        Update the properties of an alert object in an organization based on the specified alert **id** property.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class AlertItemRequestBuilder():
     @dataclass
     class AlertItemRequestBuilderGetQueryParameters():
         """
-        A collection of alerts in Microsoft 365 Defender.
+        Get the properties and relationships of an alert in an organization based on the specified alert **id** property.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

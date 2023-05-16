@@ -55,7 +55,7 @@ class ContactFoldersRequestBuilder():
     
     async def get(self,request_configuration: Optional[ContactFoldersRequestBuilderGetRequestConfiguration] = None) -> Optional[contact_folder_collection_response.ContactFolderCollectionResponse]:
         """
-        The user's contacts folders. Read-only. Nullable.
+        Get the contact folder collection in the default Contacts folder of the signed-in user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[contact_folder_collection_response.ContactFolderCollectionResponse]
@@ -77,7 +77,7 @@ class ContactFoldersRequestBuilder():
     
     async def post(self,body: Optional[contact_folder.ContactFolder] = None, request_configuration: Optional[ContactFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[contact_folder.ContactFolder]:
         """
-        Create new navigation property to contactFolders for me
+        Create a new contactFolder under the user's default contacts folder. You can also create a new contactfolder as a child of any specified contact folder.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class ContactFoldersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ContactFoldersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The user's contacts folders. Read-only. Nullable.
+        Get the contact folder collection in the default Contacts folder of the signed-in user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class ContactFoldersRequestBuilder():
     
     def to_post_request_information(self,body: Optional[contact_folder.ContactFolder] = None, request_configuration: Optional[ContactFoldersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to contactFolders for me
+        Create a new contactFolder under the user's default contacts folder. You can also create a new contactfolder as a child of any specified contact folder.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class ContactFoldersRequestBuilder():
     @dataclass
     class ContactFoldersRequestBuilderGetQueryParameters():
         """
-        The user's contacts folders. Read-only. Nullable.
+        Get the contact folder collection in the default Contacts folder of the signed-in user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

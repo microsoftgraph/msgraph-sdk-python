@@ -37,7 +37,7 @@ class AttachmentItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[AttachmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property attachments for users
+        Delete an attachment from a user calendar event, mail message, or group post.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -78,7 +78,7 @@ class AttachmentItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[AttachmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property attachments for users
+        Delete an attachment from a user calendar event, mail message, or group post.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

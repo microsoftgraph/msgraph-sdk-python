@@ -54,7 +54,7 @@ class DelegatedPermissionClassificationsRequestBuilder():
     
     async def get(self,request_configuration: Optional[DelegatedPermissionClassificationsRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_permission_classification_collection_response.DelegatedPermissionClassificationCollectionResponse]:
         """
-        Get delegatedPermissionClassifications from servicePrincipals
+        Retrieve the list of delegatedPermissionClassification currently configured for the delegated permissions exposed by an API.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[delegated_permission_classification_collection_response.DelegatedPermissionClassificationCollectionResponse]
@@ -76,7 +76,7 @@ class DelegatedPermissionClassificationsRequestBuilder():
     
     async def post(self,body: Optional[delegated_permission_classification.DelegatedPermissionClassification] = None, request_configuration: Optional[DelegatedPermissionClassificationsRequestBuilderPostRequestConfiguration] = None) -> Optional[delegated_permission_classification.DelegatedPermissionClassification]:
         """
-        Create new navigation property to delegatedPermissionClassifications for servicePrincipals
+        Classify a delegated permission by adding a delegatedPermissionClassification to the servicePrincipal representing the API.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class DelegatedPermissionClassificationsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DelegatedPermissionClassificationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get delegatedPermissionClassifications from servicePrincipals
+        Retrieve the list of delegatedPermissionClassification currently configured for the delegated permissions exposed by an API.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class DelegatedPermissionClassificationsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[delegated_permission_classification.DelegatedPermissionClassification] = None, request_configuration: Optional[DelegatedPermissionClassificationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to delegatedPermissionClassifications for servicePrincipals
+        Classify a delegated permission by adding a delegatedPermissionClassification to the servicePrincipal representing the API.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class DelegatedPermissionClassificationsRequestBuilder():
     @dataclass
     class DelegatedPermissionClassificationsRequestBuilderGetQueryParameters():
         """
-        Get delegatedPermissionClassifications from servicePrincipals
+        Retrieve the list of delegatedPermissionClassification currently configured for the delegated permissions exposed by an API.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

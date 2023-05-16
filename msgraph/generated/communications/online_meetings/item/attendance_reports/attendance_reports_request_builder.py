@@ -54,7 +54,7 @@ class AttendanceReportsRequestBuilder():
     
     async def get(self,request_configuration: Optional[AttendanceReportsRequestBuilderGetRequestConfiguration] = None) -> Optional[meeting_attendance_report_collection_response.MeetingAttendanceReportCollectionResponse]:
         """
-        The attendance reports of an online meeting. Read-only.
+        Get a list of meetingAttendanceReport objects for an onlineMeeting. Each time an online meeting ends, an attendance report is generated for that session.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[meeting_attendance_report_collection_response.MeetingAttendanceReportCollectionResponse]
@@ -101,7 +101,7 @@ class AttendanceReportsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AttendanceReportsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The attendance reports of an online meeting. Read-only.
+        Get a list of meetingAttendanceReport objects for an onlineMeeting. Each time an online meeting ends, an attendance report is generated for that session.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class AttendanceReportsRequestBuilder():
     @dataclass
     class AttendanceReportsRequestBuilderGetQueryParameters():
         """
-        The attendance reports of an online meeting. Read-only.
+        Get a list of meetingAttendanceReport objects for an onlineMeeting. Each time an online meeting ends, an attendance report is generated for that session.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

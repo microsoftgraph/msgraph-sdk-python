@@ -54,7 +54,7 @@ class GroupsRequestBuilder():
     
     async def get(self,request_configuration: Optional[GroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[external_group_collection_response.ExternalGroupCollectionResponse]:
         """
-        Get groups from connections
+        Get an externalGroup object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[external_group_collection_response.ExternalGroupCollectionResponse]
@@ -76,7 +76,7 @@ class GroupsRequestBuilder():
     
     async def post(self,body: Optional[external_group.ExternalGroup] = None, request_configuration: Optional[GroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[external_group.ExternalGroup]:
         """
-        Create new navigation property to groups for connections
+        Create a new externalGroup object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class GroupsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[GroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get groups from connections
+        Get an externalGroup object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class GroupsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[external_group.ExternalGroup] = None, request_configuration: Optional[GroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to groups for connections
+        Create a new externalGroup object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class GroupsRequestBuilder():
     @dataclass
     class GroupsRequestBuilderGetQueryParameters():
         """
-        Get groups from connections
+        Get an externalGroup object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -37,7 +37,7 @@ class AbortRequestBuilder():
     
     async def post(self,body: Optional[abort_post_request_body.AbortPostRequestBody] = None, request_configuration: Optional[AbortRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action abort
+        Abort a print job. Only applications using application permissions can abort a print job. Aborting a print job will only succeed if there is a printTask in a `processing` state on the associated print job, started by a trigger that the requesting app created. For details about how to register a task trigger, see Extending Universal Print to support pull printing.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class AbortRequestBuilder():
     
     def to_post_request_information(self,body: Optional[abort_post_request_body.AbortPostRequestBody] = None, request_configuration: Optional[AbortRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action abort
+        Abort a print job. Only applications using application permissions can abort a print job. Aborting a print job will only succeed if there is a printTask in a `processing` state on the associated print job, started by a trigger that the requesting app created. For details about how to register a task trigger, see Extending Universal Print to support pull printing.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

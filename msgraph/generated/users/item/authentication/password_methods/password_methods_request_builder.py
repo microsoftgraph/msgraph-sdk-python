@@ -54,7 +54,7 @@ class PasswordMethodsRequestBuilder():
     
     async def get(self,request_configuration: Optional[PasswordMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[password_authentication_method_collection_response.PasswordAuthenticationMethodCollectionResponse]:
         """
-        Represents the password that's registered to a user for authentication. For security, the password itself will never be returned in the object, but action can be taken to reset a password.
+        Retrieve a list of the passwords registered to a user, represented by a passwordAuthenticationMethod object. This will return exactly one object, as a user can have exactly one password. For security, the password itself will never be returned in the object and the **password** property is always `null`.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[password_authentication_method_collection_response.PasswordAuthenticationMethodCollectionResponse]
@@ -101,7 +101,7 @@ class PasswordMethodsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PasswordMethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents the password that's registered to a user for authentication. For security, the password itself will never be returned in the object, but action can be taken to reset a password.
+        Retrieve a list of the passwords registered to a user, represented by a passwordAuthenticationMethod object. This will return exactly one object, as a user can have exactly one password. For security, the password itself will never be returned in the object and the **password** property is always `null`.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class PasswordMethodsRequestBuilder():
     @dataclass
     class PasswordMethodsRequestBuilderGetQueryParameters():
         """
-        Represents the password that's registered to a user for authentication. For security, the password itself will never be returned in the object, but action can be taken to reset a password.
+        Retrieve a list of the passwords registered to a user, represented by a passwordAuthenticationMethod object. This will return exactly one object, as a user can have exactly one password. For security, the password itself will never be returned in the object and the **password** property is always `null`.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

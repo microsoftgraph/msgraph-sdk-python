@@ -37,7 +37,7 @@ class HideForUserRequestBuilder():
     
     async def post(self,body: Optional[hide_for_user_post_request_body.HideForUserPostRequestBody] = None, request_configuration: Optional[HideForUserRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action hideForUser
+        Hide a chat for a user.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class HideForUserRequestBuilder():
     
     def to_post_request_information(self,body: Optional[hide_for_user_post_request_body.HideForUserPostRequestBody] = None, request_configuration: Optional[HideForUserRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action hideForUser
+        Hide a chat for a user.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -55,7 +55,7 @@ class PointsRequestBuilder():
     
     async def get(self,request_configuration: Optional[PointsRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_point_collection_response.WorkbookChartPointCollectionResponse]:
         """
-        Represents a collection of all points in the series. Read-only.
+        Retrieve a list of chartpoints objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_chart_point_collection_response.WorkbookChartPointCollectionResponse]
@@ -90,7 +90,7 @@ class PointsRequestBuilder():
     
     async def post(self,body: Optional[workbook_chart_point.WorkbookChartPoint] = None, request_configuration: Optional[PointsRequestBuilderPostRequestConfiguration] = None) -> Optional[workbook_chart_point.WorkbookChartPoint]:
         """
-        Create new navigation property to points for drives
+        Use this API to create a new ChartPoints.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -115,7 +115,7 @@ class PointsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PointsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents a collection of all points in the series. Read-only.
+        Retrieve a list of chartpoints objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -133,7 +133,7 @@ class PointsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[workbook_chart_point.WorkbookChartPoint] = None, request_configuration: Optional[PointsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to points for drives
+        Use this API to create a new ChartPoints.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -164,7 +164,7 @@ class PointsRequestBuilder():
     @dataclass
     class PointsRequestBuilderGetQueryParameters():
         """
-        Represents a collection of all points in the series. Read-only.
+        Retrieve a list of chartpoints objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

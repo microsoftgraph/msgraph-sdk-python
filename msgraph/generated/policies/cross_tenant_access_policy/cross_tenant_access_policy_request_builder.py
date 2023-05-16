@@ -58,7 +58,7 @@ class CrossTenantAccessPolicyRequestBuilder():
     
     async def get(self,request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[cross_tenant_access_policy.CrossTenantAccessPolicy]:
         """
-        The custom rules that define an access scenario when interacting with external Azure AD tenants.
+        Read the properties and relationships of a crossTenantAccessPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy]
@@ -80,7 +80,7 @@ class CrossTenantAccessPolicyRequestBuilder():
     
     async def patch(self,body: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy] = None, request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[cross_tenant_access_policy.CrossTenantAccessPolicy]:
         """
-        Update the navigation property crossTenantAccessPolicy in policies
+        Update the properties of a cross-tenant access policy.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -121,7 +121,7 @@ class CrossTenantAccessPolicyRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The custom rules that define an access scenario when interacting with external Azure AD tenants.
+        Read the properties and relationships of a crossTenantAccessPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -139,7 +139,7 @@ class CrossTenantAccessPolicyRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[cross_tenant_access_policy.CrossTenantAccessPolicy] = None, request_configuration: Optional[CrossTenantAccessPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property crossTenantAccessPolicy in policies
+        Update the properties of a cross-tenant access policy.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -191,7 +191,7 @@ class CrossTenantAccessPolicyRequestBuilder():
     @dataclass
     class CrossTenantAccessPolicyRequestBuilderGetQueryParameters():
         """
-        The custom rules that define an access scenario when interacting with external Azure AD tenants.
+        Read the properties and relationships of a crossTenantAccessPolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

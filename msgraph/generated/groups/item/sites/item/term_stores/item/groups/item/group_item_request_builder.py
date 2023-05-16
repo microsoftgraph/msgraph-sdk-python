@@ -38,7 +38,7 @@ class GroupItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[GroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property groups for groups
+        Delete a group object in a term [store].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class GroupItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[GroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[group.Group]:
         """
-        Collection of all groups available in the term store.
+        Read the properties and relationships of a term store group object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[group.Group]
@@ -104,7 +104,7 @@ class GroupItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[GroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property groups for groups
+        Delete a group object in a term [store].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class GroupItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[GroupItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Collection of all groups available in the term store.
+        Read the properties and relationships of a term store group object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class GroupItemRequestBuilder():
     @dataclass
     class GroupItemRequestBuilderGetQueryParameters():
         """
-        Collection of all groups available in the term store.
+        Read the properties and relationships of a term store group object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

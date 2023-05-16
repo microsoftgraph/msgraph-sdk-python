@@ -54,7 +54,7 @@ class SitesRequestBuilder():
     
     async def get(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> Optional[site_collection_response.SiteCollectionResponse]:
         """
-        The collection of the sub-sites under this site.
+        Get a collection of subsites defined for a [site][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[site_collection_response.SiteCollectionResponse]
@@ -76,7 +76,7 @@ class SitesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of the sub-sites under this site.
+        Get a collection of subsites defined for a [site][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class SitesRequestBuilder():
     @dataclass
     class SitesRequestBuilderGetQueryParameters():
         """
-        The collection of the sub-sites under this site.
+        Get a collection of subsites defined for a [site][].
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

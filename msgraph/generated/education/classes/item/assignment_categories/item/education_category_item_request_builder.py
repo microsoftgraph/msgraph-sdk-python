@@ -37,7 +37,7 @@ class EducationCategoryItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[EducationCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property assignmentCategories for education
+        Delete an existing category. Only teachers can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class EducationCategoryItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[EducationCategoryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[education_category.EducationCategory]:
         """
-        All categories associated with this class. Nullable.
+        Retrieve an educationCategory object. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_category.EducationCategory]
@@ -103,7 +103,7 @@ class EducationCategoryItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[EducationCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property assignmentCategories for education
+        Delete an existing category. Only teachers can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class EducationCategoryItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[EducationCategoryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All categories associated with this class. Nullable.
+        Retrieve an educationCategory object. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class EducationCategoryItemRequestBuilder():
     @dataclass
     class EducationCategoryItemRequestBuilderGetQueryParameters():
         """
-        All categories associated with this class. Nullable.
+        Retrieve an educationCategory object. Only teachers, students, and applications with application permissions can perform this operation.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

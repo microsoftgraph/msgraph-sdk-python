@@ -37,7 +37,7 @@ class IdentitySynchronizationRequestBuilder():
     
     async def delete(self,request_configuration: Optional[IdentitySynchronizationRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property identitySynchronization for policies
+        Delete the user synchronization policy for a partner-specific configuration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class IdentitySynchronizationRequestBuilder():
     
     async def get(self,request_configuration: Optional[IdentitySynchronizationRequestBuilderGetRequestConfiguration] = None) -> Optional[cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner]:
         """
-        Get identitySynchronization from policies
+        Get the user synchronization policy of a partner-specific configuration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner]
@@ -78,7 +78,7 @@ class IdentitySynchronizationRequestBuilder():
     
     async def patch(self,body: Optional[cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner] = None, request_configuration: Optional[IdentitySynchronizationRequestBuilderPatchRequestConfiguration] = None) -> Optional[cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner]:
         """
-        Update the navigation property identitySynchronization in policies
+        Update the user synchronization policy of a partner-specific configuration.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class IdentitySynchronizationRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[IdentitySynchronizationRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property identitySynchronization for policies
+        Delete the user synchronization policy for a partner-specific configuration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class IdentitySynchronizationRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[IdentitySynchronizationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get identitySynchronization from policies
+        Get the user synchronization policy of a partner-specific configuration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class IdentitySynchronizationRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner] = None, request_configuration: Optional[IdentitySynchronizationRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property identitySynchronization in policies
+        Update the user synchronization policy of a partner-specific configuration.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class IdentitySynchronizationRequestBuilder():
     @dataclass
     class IdentitySynchronizationRequestBuilderGetQueryParameters():
         """
-        Get identitySynchronization from policies
+        Get the user synchronization policy of a partner-specific configuration.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

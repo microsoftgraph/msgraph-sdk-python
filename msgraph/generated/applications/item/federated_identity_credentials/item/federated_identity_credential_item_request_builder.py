@@ -37,7 +37,7 @@ class FederatedIdentityCredentialItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[FederatedIdentityCredentialItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property federatedIdentityCredentials for applications
+        Delete a federatedIdentityCredential object from an application.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class FederatedIdentityCredentialItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[FederatedIdentityCredentialItemRequestBuilderGetRequestConfiguration] = None) -> Optional[federated_identity_credential.FederatedIdentityCredential]:
         """
-        Federated identities for applications. Supports $expand and $filter (startsWith, /$count eq 0, /$count ne 0).
+        Read the properties and relationships of a federatedIdentityCredential object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[federated_identity_credential.FederatedIdentityCredential]
@@ -78,7 +78,7 @@ class FederatedIdentityCredentialItemRequestBuilder():
     
     async def patch(self,body: Optional[federated_identity_credential.FederatedIdentityCredential] = None, request_configuration: Optional[FederatedIdentityCredentialItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[federated_identity_credential.FederatedIdentityCredential]:
         """
-        Update the navigation property federatedIdentityCredentials in applications
+        Update the properties of a federatedIdentityCredential object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class FederatedIdentityCredentialItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[FederatedIdentityCredentialItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property federatedIdentityCredentials for applications
+        Delete a federatedIdentityCredential object from an application.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class FederatedIdentityCredentialItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[FederatedIdentityCredentialItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Federated identities for applications. Supports $expand and $filter (startsWith, /$count eq 0, /$count ne 0).
+        Read the properties and relationships of a federatedIdentityCredential object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class FederatedIdentityCredentialItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[federated_identity_credential.FederatedIdentityCredential] = None, request_configuration: Optional[FederatedIdentityCredentialItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property federatedIdentityCredentials in applications
+        Update the properties of a federatedIdentityCredential object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class FederatedIdentityCredentialItemRequestBuilder():
     @dataclass
     class FederatedIdentityCredentialItemRequestBuilderGetQueryParameters():
         """
-        Federated identities for applications. Supports $expand and $filter (startsWith, /$count eq 0, /$count ne 0).
+        Read the properties and relationships of a federatedIdentityCredential object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

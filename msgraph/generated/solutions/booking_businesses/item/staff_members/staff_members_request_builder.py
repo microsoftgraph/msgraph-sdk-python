@@ -54,7 +54,7 @@ class StaffMembersRequestBuilder():
     
     async def get(self,request_configuration: Optional[StaffMembersRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_staff_member_base_collection_response.BookingStaffMemberBaseCollectionResponse]:
         """
-        All the staff members that provide services in this business. Read-only. Nullable.
+        Get a list of bookingStaffMember objects in the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[booking_staff_member_base_collection_response.BookingStaffMemberBaseCollectionResponse]
@@ -76,7 +76,7 @@ class StaffMembersRequestBuilder():
     
     async def post(self,body: Optional[booking_staff_member_base.BookingStaffMemberBase] = None, request_configuration: Optional[StaffMembersRequestBuilderPostRequestConfiguration] = None) -> Optional[booking_staff_member_base.BookingStaffMemberBase]:
         """
-        Create new navigation property to staffMembers for solutions
+        Create a new bookingStaffMember in the specified bookingBusiness.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class StaffMembersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[StaffMembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All the staff members that provide services in this business. Read-only. Nullable.
+        Get a list of bookingStaffMember objects in the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class StaffMembersRequestBuilder():
     
     def to_post_request_information(self,body: Optional[booking_staff_member_base.BookingStaffMemberBase] = None, request_configuration: Optional[StaffMembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to staffMembers for solutions
+        Create a new bookingStaffMember in the specified bookingBusiness.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class StaffMembersRequestBuilder():
     @dataclass
     class StaffMembersRequestBuilderGetQueryParameters():
         """
-        All the staff members that provide services in this business. Read-only. Nullable.
+        Get a list of bookingStaffMember objects in the specified bookingBusiness.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

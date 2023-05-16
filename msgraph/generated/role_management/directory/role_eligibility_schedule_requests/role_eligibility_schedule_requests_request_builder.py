@@ -68,7 +68,7 @@ class RoleEligibilityScheduleRequestsRequestBuilder():
     
     async def get(self,request_configuration: Optional[RoleEligibilityScheduleRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_eligibility_schedule_request_collection_response.UnifiedRoleEligibilityScheduleRequestCollectionResponse]:
         """
-        Requests for role eligibilities for principals through PIM.
+        In PIM, retrieve the requests for role eligibilities for principals made through the unifiedRoleEligibilityScheduleRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[unified_role_eligibility_schedule_request_collection_response.UnifiedRoleEligibilityScheduleRequestCollectionResponse]
@@ -90,7 +90,7 @@ class RoleEligibilityScheduleRequestsRequestBuilder():
     
     async def post(self,body: Optional[unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest] = None, request_configuration: Optional[RoleEligibilityScheduleRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest]:
         """
-        Create new navigation property to roleEligibilityScheduleRequests for roleManagement
+        In PIM, request for a role eligibility for a principal through the unifiedRoleEligibilityScheduleRequest object. This operation allows both admins and eligible users to add, revoke, or extend eligible assignments.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -115,7 +115,7 @@ class RoleEligibilityScheduleRequestsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RoleEligibilityScheduleRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Requests for role eligibilities for principals through PIM.
+        In PIM, retrieve the requests for role eligibilities for principals made through the unifiedRoleEligibilityScheduleRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -133,7 +133,7 @@ class RoleEligibilityScheduleRequestsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest] = None, request_configuration: Optional[RoleEligibilityScheduleRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to roleEligibilityScheduleRequests for roleManagement
+        In PIM, request for a role eligibility for a principal through the unifiedRoleEligibilityScheduleRequest object. This operation allows both admins and eligible users to add, revoke, or extend eligible assignments.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -164,7 +164,7 @@ class RoleEligibilityScheduleRequestsRequestBuilder():
     @dataclass
     class RoleEligibilityScheduleRequestsRequestBuilderGetQueryParameters():
         """
-        Requests for role eligibilities for principals through PIM.
+        In PIM, retrieve the requests for role eligibilities for principals made through the unifiedRoleEligibilityScheduleRequest object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

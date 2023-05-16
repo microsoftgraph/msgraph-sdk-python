@@ -54,7 +54,7 @@ class RiskDetectionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[RiskDetectionsRequestBuilderGetRequestConfiguration] = None) -> Optional[risk_detection_collection_response.RiskDetectionCollectionResponse]:
         """
-        Risk detection in Azure AD Identity Protection and the associated information about the detection.
+        Get a list of the riskDetection objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[risk_detection_collection_response.RiskDetectionCollectionResponse]
@@ -101,7 +101,7 @@ class RiskDetectionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RiskDetectionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Risk detection in Azure AD Identity Protection and the associated information about the detection.
+        Get a list of the riskDetection objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class RiskDetectionsRequestBuilder():
     @dataclass
     class RiskDetectionsRequestBuilderGetQueryParameters():
         """
-        Risk detection in Azure AD Identity Protection and the associated information about the detection.
+        Get a list of the riskDetection objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -38,7 +38,7 @@ class AssignLicenseRequestBuilder():
     
     async def post(self,body: Optional[assign_license_post_request_body.AssignLicensePostRequestBody] = None, request_configuration: Optional[AssignLicenseRequestBuilderPostRequestConfiguration] = None) -> Optional[user.User]:
         """
-        Invoke action assignLicense
+        Add or remove subscriptions for the user. You can also enable and disable specific plans associated with a subscription.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class AssignLicenseRequestBuilder():
     
     def to_post_request_information(self,body: Optional[assign_license_post_request_body.AssignLicensePostRequestBody] = None, request_configuration: Optional[AssignLicenseRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action assignLicense
+        Add or remove subscriptions for the user. You can also enable and disable specific plans associated with a subscription.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

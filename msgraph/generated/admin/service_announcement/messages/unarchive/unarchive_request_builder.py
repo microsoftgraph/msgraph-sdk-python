@@ -37,7 +37,7 @@ class UnarchiveRequestBuilder():
     
     async def post(self,body: Optional[unarchive_post_request_body.UnarchivePostRequestBody] = None, request_configuration: Optional[UnarchiveRequestBuilderPostRequestConfiguration] = None) -> Optional[unarchive_response.UnarchiveResponse]:
         """
-        Invoke action unarchive
+        Unarchive a list of serviceUpdateMessages for the signed in user.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -62,7 +62,7 @@ class UnarchiveRequestBuilder():
     
     def to_post_request_information(self,body: Optional[unarchive_post_request_body.UnarchivePostRequestBody] = None, request_configuration: Optional[UnarchiveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action unarchive
+        Unarchive a list of serviceUpdateMessages for the signed in user.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

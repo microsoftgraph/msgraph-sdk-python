@@ -55,7 +55,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder():
     
     async def get(self,request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[home_realm_discovery_policy_collection_response.HomeRealmDiscoveryPolicyCollectionResponse]:
         """
-        The homeRealmDiscoveryPolicies assigned to this service principal. Supports $expand.
+        List the homeRealmDiscoveryPolicy objects that are assigned to a servicePrincipal.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[home_realm_discovery_policy_collection_response.HomeRealmDiscoveryPolicyCollectionResponse]
@@ -77,7 +77,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[HomeRealmDiscoveryPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The homeRealmDiscoveryPolicies assigned to this service principal. Supports $expand.
+        List the homeRealmDiscoveryPolicy objects that are assigned to a servicePrincipal.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class HomeRealmDiscoveryPoliciesRequestBuilder():
     @dataclass
     class HomeRealmDiscoveryPoliciesRequestBuilderGetQueryParameters():
         """
-        The homeRealmDiscoveryPolicies assigned to this service principal. Supports $expand.
+        List the homeRealmDiscoveryPolicy objects that are assigned to a servicePrincipal.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

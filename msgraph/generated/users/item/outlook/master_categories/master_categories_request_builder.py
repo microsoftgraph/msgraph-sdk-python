@@ -54,7 +54,7 @@ class MasterCategoriesRequestBuilder():
     
     async def get(self,request_configuration: Optional[MasterCategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[outlook_category_collection_response.OutlookCategoryCollectionResponse]:
         """
-        A list of categories defined for the user.
+        Get all the categories that have been defined for the user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[outlook_category_collection_response.OutlookCategoryCollectionResponse]
@@ -76,7 +76,7 @@ class MasterCategoriesRequestBuilder():
     
     async def post(self,body: Optional[outlook_category.OutlookCategory] = None, request_configuration: Optional[MasterCategoriesRequestBuilderPostRequestConfiguration] = None) -> Optional[outlook_category.OutlookCategory]:
         """
-        Create new navigation property to masterCategories for users
+        Create an outlookCategory object in the user's master list of categories.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class MasterCategoriesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MasterCategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A list of categories defined for the user.
+        Get all the categories that have been defined for the user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class MasterCategoriesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[outlook_category.OutlookCategory] = None, request_configuration: Optional[MasterCategoriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to masterCategories for users
+        Create an outlookCategory object in the user's master list of categories.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class MasterCategoriesRequestBuilder():
     @dataclass
     class MasterCategoriesRequestBuilderGetQueryParameters():
         """
-        A list of categories defined for the user.
+        Get all the categories that have been defined for the user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

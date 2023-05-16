@@ -37,7 +37,7 @@ class PrintConnectorItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[PrintConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property connectors for print
+        Delete (unregister) a **printConnector**.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class PrintConnectorItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[PrintConnectorItemRequestBuilderGetRequestConfiguration] = None) -> Optional[print_connector.PrintConnector]:
         """
-        The list of available print connectors.
+        Retrieve the properties and relationships of a **printConnector** object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_connector.PrintConnector]
@@ -78,7 +78,7 @@ class PrintConnectorItemRequestBuilder():
     
     async def patch(self,body: Optional[print_connector.PrintConnector] = None, request_configuration: Optional[PrintConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[print_connector.PrintConnector]:
         """
-        Update the navigation property connectors in print
+        Update the properties of a **printConnector** object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class PrintConnectorItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[PrintConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property connectors for print
+        Delete (unregister) a **printConnector**.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class PrintConnectorItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PrintConnectorItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of available print connectors.
+        Retrieve the properties and relationships of a **printConnector** object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class PrintConnectorItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[print_connector.PrintConnector] = None, request_configuration: Optional[PrintConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property connectors in print
+        Update the properties of a **printConnector** object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class PrintConnectorItemRequestBuilder():
     @dataclass
     class PrintConnectorItemRequestBuilderGetQueryParameters():
         """
-        The list of available print connectors.
+        Retrieve the properties and relationships of a **printConnector** object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

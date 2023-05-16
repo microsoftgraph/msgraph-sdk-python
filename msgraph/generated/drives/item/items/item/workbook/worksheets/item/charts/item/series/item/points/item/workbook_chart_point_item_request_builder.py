@@ -57,7 +57,7 @@ class WorkbookChartPointItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[WorkbookChartPointItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_point.WorkbookChartPoint]:
         """
-        Represents a collection of all points in the series. Read-only.
+        Retrieve the properties and relationships of chartpoint object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_chart_point.WorkbookChartPoint]
@@ -120,7 +120,7 @@ class WorkbookChartPointItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[WorkbookChartPointItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents a collection of all points in the series. Read-only.
+        Retrieve the properties and relationships of chartpoint object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class WorkbookChartPointItemRequestBuilder():
     @dataclass
     class WorkbookChartPointItemRequestBuilderGetQueryParameters():
         """
-        Represents a collection of all points in the series. Read-only.
+        Retrieve the properties and relationships of chartpoint object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

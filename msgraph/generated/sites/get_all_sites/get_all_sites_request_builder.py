@@ -10,15 +10,16 @@ from kiota_abstractions.serialization import Parsable, ParsableFactory
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from .........models.o_data_errors import o_data_error
+    from . import get_all_sites_response
+    from ...models.o_data_errors import o_data_error
 
-class CountRequestBuilder():
+class GetAllSitesRequestBuilder():
     """
-    Provides operations to count the resources in the collection.
+    Provides operations to call the getAllSites method.
     """
     def __init__(self,request_adapter: RequestAdapter, path_parameters: Optional[Union[Dict[str, Any], str]] = None) -> None:
         """
-        Instantiates a new CountRequestBuilder and sets the default values.
+        Instantiates a new GetAllSitesRequestBuilder and sets the default values.
         Args:
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
@@ -28,23 +29,23 @@ class CountRequestBuilder():
         if request_adapter is None:
             raise Exception("request_adapter cannot be undefined")
         # Url template to use to build the URL for the current request builder
-        self.url_template: str = "{+baseurl}/groups/{group%2Did}/sites/{site%2Did}/lists/{list%2Did}/items/$count{?%24search,%24filter}"
+        self.url_template: str = "{+baseurl}/sites/getAllSites(){?%24top,%24skip,%24search,%24filter,%24count,%24select,%24orderby}"
 
         url_tpl_params = get_path_parameters(path_parameters)
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
-    async def get(self,request_configuration: Optional[CountRequestBuilderGetRequestConfiguration] = None) -> Optional[int]:
+    async def get(self,request_configuration: Optional[GetAllSitesRequestBuilderGetRequestConfiguration] = None) -> Optional[get_all_sites_response.GetAllSitesResponse]:
         """
-        Get the number of the resource
+        Invoke function getAllSites
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
-        Returns: Optional[int]
+        Returns: Optional[get_all_sites_response.GetAllSitesResponse]
         """
         request_info = self.to_get_request_information(
             request_configuration
         )
-        from .........models.o_data_errors import o_data_error
+        from ...models.o_data_errors import o_data_error
 
         error_mapping: Dict[str, ParsableFactory] = {
             "4XX": o_data_error.ODataError,
@@ -52,11 +53,13 @@ class CountRequestBuilder():
         }
         if not self.request_adapter:
             raise Exception("Http core is null") 
-        return await self.request_adapter.send_primitive_async(request_info, "int", error_mapping)
+        from . import get_all_sites_response
+
+        return await self.request_adapter.send_async(request_info, get_all_sites_response.GetAllSitesResponse, error_mapping)
     
-    def to_get_request_information(self,request_configuration: Optional[CountRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
+    def to_get_request_information(self,request_configuration: Optional[GetAllSitesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the number of the resource
+        Invoke function getAllSites
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -65,7 +68,7 @@ class CountRequestBuilder():
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
         request_info.http_method = Method.GET
-        request_info.headers["Accept"] = ["text/plain"]
+        request_info.headers["Accept"] = ["application/json"]
         if request_configuration:
             request_info.add_request_headers(request_configuration.headers)
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
@@ -73,9 +76,9 @@ class CountRequestBuilder():
         return request_info
     
     @dataclass
-    class CountRequestBuilderGetQueryParameters():
+    class GetAllSitesRequestBuilderGetQueryParameters():
         """
-        Get the number of the resource
+        Invoke function getAllSites
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -86,21 +89,46 @@ class CountRequestBuilder():
             """
             if original_name is None:
                 raise Exception("original_name cannot be undefined")
+            if original_name == "count":
+                return "%24count"
             if original_name == "filter":
                 return "%24filter"
+            if original_name == "orderby":
+                return "%24orderby"
             if original_name == "search":
                 return "%24search"
+            if original_name == "select":
+                return "%24select"
+            if original_name == "skip":
+                return "%24skip"
+            if original_name == "top":
+                return "%24top"
             return original_name
         
+        # Include count of items
+        count: Optional[bool] = None
+
         # Filter items by property values
         filter: Optional[str] = None
+
+        # Order items by property values
+        orderby: Optional[List[str]] = None
 
         # Search items by search phrases
         search: Optional[str] = None
 
+        # Select properties to be returned
+        select: Optional[List[str]] = None
+
+        # Skip the first n items
+        skip: Optional[int] = None
+
+        # Show only the first n items
+        top: Optional[int] = None
+
     
     @dataclass
-    class CountRequestBuilderGetRequestConfiguration():
+    class GetAllSitesRequestBuilderGetRequestConfiguration():
         """
         Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -111,7 +139,7 @@ class CountRequestBuilder():
         options: Optional[List[RequestOption]] = None
 
         # Request query parameters
-        query_parameters: Optional[CountRequestBuilder.CountRequestBuilderGetQueryParameters] = None
+        query_parameters: Optional[GetAllSitesRequestBuilder.GetAllSitesRequestBuilderGetQueryParameters] = None
 
     
 

@@ -56,7 +56,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]:
         """
-        The collection of rules like approval rules and expiration rules. Supports $expand.
+        Retrieve a rule or settings defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object:+ unifiedRoleManagementPolicyApprovalRule+ unifiedRoleManagementPolicyAuthenticationContextRule+ unifiedRoleManagementPolicyEnablementRule+ unifiedRoleManagementPolicyExpirationRule+ unifiedRoleManagementPolicyNotificationRule
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]
@@ -78,7 +78,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
     
     async def patch(self,body: Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule]:
         """
-        Update the navigation property rules in policies
+        Update a rule defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object: For more information about rules for Azure AD roles and examples of updating rules, see the following articles:
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of rules like approval rules and expiration rules. Supports $expand.
+        Retrieve a rule or settings defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object:+ unifiedRoleManagementPolicyApprovalRule+ unifiedRoleManagementPolicyAuthenticationContextRule+ unifiedRoleManagementPolicyEnablementRule+ unifiedRoleManagementPolicyExpirationRule+ unifiedRoleManagementPolicyNotificationRule
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule] = None, request_configuration: Optional[UnifiedRoleManagementPolicyRuleItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property rules in policies
+        Update a rule defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object: For more information about rules for Azure AD roles and examples of updating rules, see the following articles:
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class UnifiedRoleManagementPolicyRuleItemRequestBuilder():
     @dataclass
     class UnifiedRoleManagementPolicyRuleItemRequestBuilderGetQueryParameters():
         """
-        The collection of rules like approval rules and expiration rules. Supports $expand.
+        Retrieve a rule or settings defined for a role management policy. The rule can be one of the following types that are derived from the unifiedRoleManagementPolicyRule object:+ unifiedRoleManagementPolicyApprovalRule+ unifiedRoleManagementPolicyAuthenticationContextRule+ unifiedRoleManagementPolicyEnablementRule+ unifiedRoleManagementPolicyExpirationRule+ unifiedRoleManagementPolicyNotificationRule
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

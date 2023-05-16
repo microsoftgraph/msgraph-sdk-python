@@ -38,7 +38,7 @@ class PlayPromptRequestBuilder():
     
     async def post(self,body: Optional[play_prompt_post_request_body.PlayPromptPostRequestBody] = None, request_configuration: Optional[PlayPromptRequestBuilderPostRequestConfiguration] = None) -> Optional[play_prompt_operation.PlayPromptOperation]:
         """
-        Invoke action playPrompt
+        Play a prompt in the call. For more information about how to handle operations, see commsOperation
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class PlayPromptRequestBuilder():
     
     def to_post_request_information(self,body: Optional[play_prompt_post_request_body.PlayPromptPostRequestBody] = None, request_configuration: Optional[PlayPromptRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action playPrompt
+        Play a prompt in the call. For more information about how to handle operations, see commsOperation
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -37,7 +37,7 @@ class ArchiveRequestBuilder():
     
     async def post(self,body: Optional[archive_post_request_body.ArchivePostRequestBody] = None, request_configuration: Optional[ArchiveRequestBuilderPostRequestConfiguration] = None) -> Optional[archive_response.ArchiveResponse]:
         """
-        Invoke action archive
+        Archive a list of serviceUpdateMessages for the signed in user.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -62,7 +62,7 @@ class ArchiveRequestBuilder():
     
     def to_post_request_information(self,body: Optional[archive_post_request_body.ArchivePostRequestBody] = None, request_configuration: Optional[ArchiveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action archive
+        Archive a list of serviceUpdateMessages for the signed in user.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

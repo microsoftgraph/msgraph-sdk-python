@@ -54,7 +54,7 @@ class ShiftsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ShiftsRequestBuilderGetRequestConfiguration] = None) -> Optional[shift_collection_response.ShiftCollectionResponse]:
         """
-        The shifts in the schedule.
+        Get the list of shift instances in a schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[shift_collection_response.ShiftCollectionResponse]
@@ -76,7 +76,7 @@ class ShiftsRequestBuilder():
     
     async def post(self,body: Optional[shift.Shift] = None, request_configuration: Optional[ShiftsRequestBuilderPostRequestConfiguration] = None) -> Optional[shift.Shift]:
         """
-        Create new navigation property to shifts for groups
+        Create a new shift instance in a schedule. The duration of a shift cannot be less than 1 minute or longer than 24 hours.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ShiftsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ShiftsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The shifts in the schedule.
+        Get the list of shift instances in a schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ShiftsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[shift.Shift] = None, request_configuration: Optional[ShiftsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to shifts for groups
+        Create a new shift instance in a schedule. The duration of a shift cannot be less than 1 minute or longer than 24 hours.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class ShiftsRequestBuilder():
     @dataclass
     class ShiftsRequestBuilderGetQueryParameters():
         """
-        The shifts in the schedule.
+        Get the list of shift instances in a schedule.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

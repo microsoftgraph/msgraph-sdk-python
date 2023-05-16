@@ -36,7 +36,7 @@ class SendRequestBuilder():
     
     async def post(self,request_configuration: Optional[SendRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action send
+        Send an existing draft message.  The draft message can be a new message draft, reply draft, reply-all draft, or a forward draft. This method saves the message in the **Sent Items** folder. Alternatively, send a new message in a single operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class SendRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[SendRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action send
+        Send an existing draft message.  The draft message can be a new message draft, reply draft, reply-all draft, or a forward draft. This method saves the message in the **Sent Items** folder. Alternatively, send a new message in a single operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

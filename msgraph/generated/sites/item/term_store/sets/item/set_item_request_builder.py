@@ -41,7 +41,7 @@ class SetItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[SetItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property sets for sites
+        Delete a set object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -60,7 +60,7 @@ class SetItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[SetItemRequestBuilderGetRequestConfiguration] = None) -> Optional[set.Set]:
         """
-        Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
+        Read the properties and relationships of a set object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[set.Set]
@@ -82,7 +82,7 @@ class SetItemRequestBuilder():
     
     async def patch(self,body: Optional[set.Set] = None, request_configuration: Optional[SetItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[set.Set]:
         """
-        Update the navigation property sets in sites
+        Update the properties of a set object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -107,7 +107,7 @@ class SetItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[SetItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property sets for sites
+        Delete a set object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class SetItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SetItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
+        Read the properties and relationships of a set object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +141,7 @@ class SetItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[set.Set] = None, request_configuration: Optional[SetItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property sets in sites
+        Update the properties of a set object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -211,7 +211,7 @@ class SetItemRequestBuilder():
     @dataclass
     class SetItemRequestBuilderGetQueryParameters():
         """
-        Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
+        Read the properties and relationships of a set object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

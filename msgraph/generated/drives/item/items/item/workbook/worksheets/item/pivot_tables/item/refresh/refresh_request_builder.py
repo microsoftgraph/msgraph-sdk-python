@@ -36,7 +36,7 @@ class RefreshRequestBuilder():
     
     async def post(self,request_configuration: Optional[RefreshRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action refresh
+        Refreshes the PivotTable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class RefreshRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[RefreshRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action refresh
+        Refreshes the PivotTable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

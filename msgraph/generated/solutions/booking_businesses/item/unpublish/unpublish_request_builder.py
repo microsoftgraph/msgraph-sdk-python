@@ -36,7 +36,7 @@ class UnpublishRequestBuilder():
     
     async def post(self,request_configuration: Optional[UnpublishRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Prevents the general public from seeing the scheduling page of this business.
+        Make the scheduling page of this business not available to external customers. Set the **isPublished** property to `false`, and the **publicUrl** property to `null`.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class UnpublishRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[UnpublishRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Prevents the general public from seeing the scheduling page of this business.
+        Make the scheduling page of this business not available to external customers. Set the **isPublished** property to `false`, and the **publicUrl** property to `null`.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

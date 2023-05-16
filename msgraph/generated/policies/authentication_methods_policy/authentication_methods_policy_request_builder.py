@@ -57,7 +57,7 @@ class AuthenticationMethodsPolicyRequestBuilder():
     
     async def get(self,request_configuration: Optional[AuthenticationMethodsPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_methods_policy.AuthenticationMethodsPolicy]:
         """
-        The authentication methods and the users that are allowed to use them to sign in and perform multifactor authentication (MFA) in Azure Active Directory (Azure AD).
+        Read the properties and relationships of an authenticationMethodsPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authentication_methods_policy.AuthenticationMethodsPolicy]
@@ -79,7 +79,7 @@ class AuthenticationMethodsPolicyRequestBuilder():
     
     async def patch(self,body: Optional[authentication_methods_policy.AuthenticationMethodsPolicy] = None, request_configuration: Optional[AuthenticationMethodsPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[authentication_methods_policy.AuthenticationMethodsPolicy]:
         """
-        Update the navigation property authenticationMethodsPolicy in policies
+        Update the properties of an authenticationMethodsPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -120,7 +120,7 @@ class AuthenticationMethodsPolicyRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationMethodsPolicyRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The authentication methods and the users that are allowed to use them to sign in and perform multifactor authentication (MFA) in Azure Active Directory (Azure AD).
+        Read the properties and relationships of an authenticationMethodsPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class AuthenticationMethodsPolicyRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[authentication_methods_policy.AuthenticationMethodsPolicy] = None, request_configuration: Optional[AuthenticationMethodsPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property authenticationMethodsPolicy in policies
+        Update the properties of an authenticationMethodsPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class AuthenticationMethodsPolicyRequestBuilder():
     @dataclass
     class AuthenticationMethodsPolicyRequestBuilderGetQueryParameters():
         """
-        The authentication methods and the users that are allowed to use them to sign in and perform multifactor authentication (MFA) in Azure Active Directory (Azure AD).
+        Read the properties and relationships of an authenticationMethodsPolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

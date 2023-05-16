@@ -56,7 +56,7 @@ class FontRequestBuilder():
     
     async def get(self,request_configuration: Optional[FontRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_font.WorkbookChartFont]:
         """
-        Represents the font attributes (font name, font size, color, etc.) for a chart axis element. Read-only.
+        Retrieve the properties and relationships of chartfont object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_chart_font.WorkbookChartFont]
@@ -78,7 +78,7 @@ class FontRequestBuilder():
     
     async def patch(self,body: Optional[workbook_chart_font.WorkbookChartFont] = None, request_configuration: Optional[FontRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart_font.WorkbookChartFont]:
         """
-        Update the navigation property font in drives
+        Update the properties of chartfont object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class FontRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[FontRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents the font attributes (font name, font size, color, etc.) for a chart axis element. Read-only.
+        Retrieve the properties and relationships of chartfont object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class FontRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[workbook_chart_font.WorkbookChartFont] = None, request_configuration: Optional[FontRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property font in drives
+        Update the properties of chartfont object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class FontRequestBuilder():
     @dataclass
     class FontRequestBuilderGetQueryParameters():
         """
-        Represents the font attributes (font name, font size, color, etc.) for a chart axis element. Read-only.
+        Retrieve the properties and relationships of chartfont object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

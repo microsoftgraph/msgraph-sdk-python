@@ -54,7 +54,7 @@ class ScopedMembersRequestBuilder():
     
     async def get(self,request_configuration: Optional[ScopedMembersRequestBuilderGetRequestConfiguration] = None) -> Optional[scoped_role_membership_collection_response.ScopedRoleMembershipCollectionResponse]:
         """
-        Members of this directory role that are scoped to administrative units. Read-only. Nullable.
+        Retrieve a list of scopedRoleMembership objects for a directory role.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[scoped_role_membership_collection_response.ScopedRoleMembershipCollectionResponse]
@@ -101,7 +101,7 @@ class ScopedMembersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ScopedMembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Members of this directory role that are scoped to administrative units. Read-only. Nullable.
+        Retrieve a list of scopedRoleMembership objects for a directory role.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class ScopedMembersRequestBuilder():
     @dataclass
     class ScopedMembersRequestBuilderGetQueryParameters():
         """
-        Members of this directory role that are scoped to administrative units. Read-only. Nullable.
+        Retrieve a list of scopedRoleMembership objects for a directory role.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

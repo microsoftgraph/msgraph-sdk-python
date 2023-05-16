@@ -57,7 +57,7 @@ class SimulationAutomationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[SimulationAutomationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[simulation_automation.SimulationAutomation]:
         """
-        Represents simulation automation created to run on a tenant.
+        Get an attack simulation automation for a tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[simulation_automation.SimulationAutomation]
@@ -120,7 +120,7 @@ class SimulationAutomationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SimulationAutomationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents simulation automation created to run on a tenant.
+        Get an attack simulation automation for a tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class SimulationAutomationItemRequestBuilder():
     @dataclass
     class SimulationAutomationItemRequestBuilderGetQueryParameters():
         """
-        Represents simulation automation created to run on a tenant.
+        Get an attack simulation automation for a tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

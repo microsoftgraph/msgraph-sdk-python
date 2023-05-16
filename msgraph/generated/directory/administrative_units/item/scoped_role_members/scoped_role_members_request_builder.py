@@ -54,7 +54,7 @@ class ScopedRoleMembersRequestBuilder():
     
     async def get(self,request_configuration: Optional[ScopedRoleMembersRequestBuilderGetRequestConfiguration] = None) -> Optional[scoped_role_membership_collection_response.ScopedRoleMembershipCollectionResponse]:
         """
-        Scoped-role members of this administrative unit.
+        List Azure Active Directory (Azure AD) role assignments with administrative unit scope.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[scoped_role_membership_collection_response.ScopedRoleMembershipCollectionResponse]
@@ -76,7 +76,7 @@ class ScopedRoleMembersRequestBuilder():
     
     async def post(self,body: Optional[scoped_role_membership.ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembersRequestBuilderPostRequestConfiguration] = None) -> Optional[scoped_role_membership.ScopedRoleMembership]:
         """
-        Create new navigation property to scopedRoleMembers for directory
+        Assign an Azure Active Directory (Azure AD) role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Azure AD roles with administrative unit scope.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ScopedRoleMembersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ScopedRoleMembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Scoped-role members of this administrative unit.
+        List Azure Active Directory (Azure AD) role assignments with administrative unit scope.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ScopedRoleMembersRequestBuilder():
     
     def to_post_request_information(self,body: Optional[scoped_role_membership.ScopedRoleMembership] = None, request_configuration: Optional[ScopedRoleMembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to scopedRoleMembers for directory
+        Assign an Azure Active Directory (Azure AD) role with administrative unit scope. For a list of roles that can be assigned with administrative unit scope, see Assign Azure AD roles with administrative unit scope.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class ScopedRoleMembersRequestBuilder():
     @dataclass
     class ScopedRoleMembersRequestBuilderGetQueryParameters():
         """
-        Scoped-role members of this administrative unit.
+        List Azure Active Directory (Azure AD) role assignments with administrative unit scope.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -39,7 +39,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property sharedWithTeams for teams
+        Unshare a channel with a team by deleting the corresponding sharedWithChannelTeamInfo resource. This operation is allowed only for channels with a **membershipType** value of `shared`.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -58,7 +58,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderGetRequestConfiguration] = None) -> Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo]:
         """
-        A collection of teams with which a channel is shared.
+        Get a team that has been shared with a specified channel. This operation is allowed only for channels with a **membershipType** value of `shared`.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[shared_with_channel_team_info.SharedWithChannelTeamInfo]
@@ -105,7 +105,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property sharedWithTeams for teams
+        Unshare a channel with a team by deleting the corresponding sharedWithChannelTeamInfo resource. This operation is allowed only for channels with a **membershipType** value of `shared`.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -121,7 +121,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SharedWithChannelTeamInfoItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of teams with which a channel is shared.
+        Get a team that has been shared with a specified channel. This operation is allowed only for channels with a **membershipType** value of `shared`.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -191,7 +191,7 @@ class SharedWithChannelTeamInfoItemRequestBuilder():
     @dataclass
     class SharedWithChannelTeamInfoItemRequestBuilderGetQueryParameters():
         """
-        A collection of teams with which a channel is shared.
+        Get a team that has been shared with a specified channel. This operation is allowed only for channels with a **membershipType** value of `shared`.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

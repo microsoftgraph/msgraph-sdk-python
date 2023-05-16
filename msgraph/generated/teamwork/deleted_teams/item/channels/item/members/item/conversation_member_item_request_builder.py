@@ -37,7 +37,7 @@ class ConversationMemberItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ConversationMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property members for teamwork
+        Delete a conversationMember from a channel. This operation is allowed only for channels with a **membershipType** value of `private` or `shared`.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class ConversationMemberItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ConversationMemberItemRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_member.ConversationMember]:
         """
-        A collection of membership records associated with the channel.
+        Get a conversationMember from a channel.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conversation_member.ConversationMember]
@@ -78,7 +78,7 @@ class ConversationMemberItemRequestBuilder():
     
     async def patch(self,body: Optional[conversation_member.ConversationMember] = None, request_configuration: Optional[ConversationMemberItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[conversation_member.ConversationMember]:
         """
-        Update the navigation property members in teamwork
+        Update the role of a conversationMember in a team or channel.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class ConversationMemberItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ConversationMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property members for teamwork
+        Delete a conversationMember from a channel. This operation is allowed only for channels with a **membershipType** value of `private` or `shared`.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ConversationMemberItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ConversationMemberItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of membership records associated with the channel.
+        Get a conversationMember from a channel.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class ConversationMemberItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[conversation_member.ConversationMember] = None, request_configuration: Optional[ConversationMemberItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property members in teamwork
+        Update the role of a conversationMember in a team or channel.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class ConversationMemberItemRequestBuilder():
     @dataclass
     class ConversationMemberItemRequestBuilderGetQueryParameters():
         """
-        A collection of membership records associated with the channel.
+        Get a conversationMember from a channel.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

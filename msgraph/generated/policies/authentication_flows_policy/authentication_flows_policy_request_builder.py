@@ -56,7 +56,7 @@ class AuthenticationFlowsPolicyRequestBuilder():
     
     async def get(self,request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_flows_policy.AuthenticationFlowsPolicy]:
         """
-        The policy configuration of the self-service sign-up experience of external users.
+        Read the properties and relationships of an authenticationFlowsPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authentication_flows_policy.AuthenticationFlowsPolicy]
@@ -78,7 +78,7 @@ class AuthenticationFlowsPolicyRequestBuilder():
     
     async def patch(self,body: Optional[authentication_flows_policy.AuthenticationFlowsPolicy] = None, request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderPatchRequestConfiguration] = None) -> Optional[authentication_flows_policy.AuthenticationFlowsPolicy]:
         """
-        Update the navigation property authenticationFlowsPolicy in policies
+        Update the **selfServiceSignUp** property of an authenticationFlowsPolicy object. The properties **id**, **type**, and **description** cannot be modified.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class AuthenticationFlowsPolicyRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The policy configuration of the self-service sign-up experience of external users.
+        Read the properties and relationships of an authenticationFlowsPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class AuthenticationFlowsPolicyRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[authentication_flows_policy.AuthenticationFlowsPolicy] = None, request_configuration: Optional[AuthenticationFlowsPolicyRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property authenticationFlowsPolicy in policies
+        Update the **selfServiceSignUp** property of an authenticationFlowsPolicy object. The properties **id**, **type**, and **description** cannot be modified.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class AuthenticationFlowsPolicyRequestBuilder():
     @dataclass
     class AuthenticationFlowsPolicyRequestBuilderGetQueryParameters():
         """
-        The policy configuration of the self-service sign-up experience of external users.
+        Read the properties and relationships of an authenticationFlowsPolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

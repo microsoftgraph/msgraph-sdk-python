@@ -54,7 +54,7 @@ class CustodianSourcesRequestBuilder():
     
     async def get(self,request_configuration: Optional[CustodianSourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[data_source_collection_response.DataSourceCollectionResponse]:
         """
-        Custodian sources that are included in the eDiscovery search.
+        Get the list of custodial data sources associated with an eDiscovery search.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[data_source_collection_response.DataSourceCollectionResponse]
@@ -76,7 +76,7 @@ class CustodianSourcesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CustodianSourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Custodian sources that are included in the eDiscovery search.
+        Get the list of custodial data sources associated with an eDiscovery search.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class CustodianSourcesRequestBuilder():
     @dataclass
     class CustodianSourcesRequestBuilderGetQueryParameters():
         """
-        Custodian sources that are included in the eDiscovery search.
+        Get the list of custodial data sources associated with an eDiscovery search.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

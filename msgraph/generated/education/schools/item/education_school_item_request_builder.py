@@ -40,7 +40,7 @@ class EducationSchoolItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[EducationSchoolItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property schools for education
+        Delete a school.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -59,7 +59,7 @@ class EducationSchoolItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[EducationSchoolItemRequestBuilderGetRequestConfiguration] = None) -> Optional[education_school.EducationSchool]:
         """
-        Get schools from education
+        Read the properties and relationships of an educationSchool object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_school.EducationSchool]
@@ -81,7 +81,7 @@ class EducationSchoolItemRequestBuilder():
     
     async def patch(self,body: Optional[education_school.EducationSchool] = None, request_configuration: Optional[EducationSchoolItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_school.EducationSchool]:
         """
-        Update the navigation property schools in education
+        Update the properties of an educationSchool object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -106,7 +106,7 @@ class EducationSchoolItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[EducationSchoolItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property schools for education
+        Delete a school.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -122,7 +122,7 @@ class EducationSchoolItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[EducationSchoolItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get schools from education
+        Read the properties and relationships of an educationSchool object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +140,7 @@ class EducationSchoolItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[education_school.EducationSchool] = None, request_configuration: Optional[EducationSchoolItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property schools in education
+        Update the properties of an educationSchool object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -201,7 +201,7 @@ class EducationSchoolItemRequestBuilder():
     @dataclass
     class EducationSchoolItemRequestBuilderGetQueryParameters():
         """
-        Get schools from education
+        Read the properties and relationships of an educationSchool object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

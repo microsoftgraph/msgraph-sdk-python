@@ -37,7 +37,7 @@ class IdentityUserFlowAttributeItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property userFlowAttributes for identity
+        Delete an identityUserFlowAttribute. Only custom user flow attributes can be deleted.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class IdentityUserFlowAttributeItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_user_flow_attribute.IdentityUserFlowAttribute]:
         """
-        Represents entry point for identity userflow attributes.
+        Retrieve the properties and relationships of a identityUserFlowAttribute object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[identity_user_flow_attribute.IdentityUserFlowAttribute]
@@ -78,7 +78,7 @@ class IdentityUserFlowAttributeItemRequestBuilder():
     
     async def patch(self,body: Optional[identity_user_flow_attribute.IdentityUserFlowAttribute] = None, request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[identity_user_flow_attribute.IdentityUserFlowAttribute]:
         """
-        Update the navigation property userFlowAttributes in identity
+        Update the properties of a identityUserFlowAttribute object. Only custom user flow attributes can be updated.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class IdentityUserFlowAttributeItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property userFlowAttributes for identity
+        Delete an identityUserFlowAttribute. Only custom user flow attributes can be deleted.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class IdentityUserFlowAttributeItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents entry point for identity userflow attributes.
+        Retrieve the properties and relationships of a identityUserFlowAttribute object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class IdentityUserFlowAttributeItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[identity_user_flow_attribute.IdentityUserFlowAttribute] = None, request_configuration: Optional[IdentityUserFlowAttributeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property userFlowAttributes in identity
+        Update the properties of a identityUserFlowAttribute object. Only custom user flow attributes can be updated.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class IdentityUserFlowAttributeItemRequestBuilder():
     @dataclass
     class IdentityUserFlowAttributeItemRequestBuilderGetQueryParameters():
         """
-        Represents entry point for identity userflow attributes.
+        Retrieve the properties and relationships of a identityUserFlowAttribute object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

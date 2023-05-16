@@ -54,7 +54,7 @@ class SchoolsRequestBuilder():
     
     async def get(self,request_configuration: Optional[SchoolsRequestBuilderGetRequestConfiguration] = None) -> Optional[education_school_collection_response.EducationSchoolCollectionResponse]:
         """
-        All schools that this class is associated with. Nullable.
+        Retrieve a list of schools in which the class is taught.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_school_collection_response.EducationSchoolCollectionResponse]
@@ -76,7 +76,7 @@ class SchoolsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SchoolsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All schools that this class is associated with. Nullable.
+        Retrieve a list of schools in which the class is taught.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class SchoolsRequestBuilder():
     @dataclass
     class SchoolsRequestBuilderGetQueryParameters():
         """
-        All schools that this class is associated with. Nullable.
+        Retrieve a list of schools in which the class is taught.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

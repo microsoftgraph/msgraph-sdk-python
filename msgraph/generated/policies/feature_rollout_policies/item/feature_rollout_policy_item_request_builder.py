@@ -38,7 +38,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property featureRolloutPolicies for policies
+        Delete a featureRolloutPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[feature_rollout_policy.FeatureRolloutPolicy]:
         """
-        The feature rollout policy associated with a directory object.
+        Retrieve the properties and relationships of a featureRolloutPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[feature_rollout_policy.FeatureRolloutPolicy]
@@ -79,7 +79,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
     
     async def patch(self,body: Optional[feature_rollout_policy.FeatureRolloutPolicy] = None, request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[feature_rollout_policy.FeatureRolloutPolicy]:
         """
-        Update the navigation property featureRolloutPolicies in policies
+        Update the properties of featureRolloutPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property featureRolloutPolicies for policies
+        Delete a featureRolloutPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The feature rollout policy associated with a directory object.
+        Retrieve the properties and relationships of a featureRolloutPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[feature_rollout_policy.FeatureRolloutPolicy] = None, request_configuration: Optional[FeatureRolloutPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property featureRolloutPolicies in policies
+        Update the properties of featureRolloutPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class FeatureRolloutPolicyItemRequestBuilder():
     @dataclass
     class FeatureRolloutPolicyItemRequestBuilderGetQueryParameters():
         """
-        The feature rollout policy associated with a directory object.
+        Retrieve the properties and relationships of a featureRolloutPolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

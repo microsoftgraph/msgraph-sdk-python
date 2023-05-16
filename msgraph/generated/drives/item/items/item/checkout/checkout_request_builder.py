@@ -36,7 +36,7 @@ class CheckoutRequestBuilder():
     
     async def post(self,request_configuration: Optional[CheckoutRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action checkout
+        Check out a **driveItem** resource to prevent others from editing the document, and prevent your changes from being visible until the documented is checked in.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class CheckoutRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[CheckoutRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action checkout
+        Check out a **driveItem** resource to prevent others from editing the document, and prevent your changes from being visible until the documented is checked in.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

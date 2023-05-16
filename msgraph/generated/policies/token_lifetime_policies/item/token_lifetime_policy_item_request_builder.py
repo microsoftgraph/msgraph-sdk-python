@@ -38,7 +38,7 @@ class TokenLifetimePolicyItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property tokenLifetimePolicies for policies
+        Delete a tokenLifetimePolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class TokenLifetimePolicyItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[token_lifetime_policy.TokenLifetimePolicy]:
         """
-        The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Azure AD.
+        Retrieve the properties and relationships of a tokenLifetimePolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[token_lifetime_policy.TokenLifetimePolicy]
@@ -79,7 +79,7 @@ class TokenLifetimePolicyItemRequestBuilder():
     
     async def patch(self,body: Optional[token_lifetime_policy.TokenLifetimePolicy] = None, request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[token_lifetime_policy.TokenLifetimePolicy]:
         """
-        Update the navigation property tokenLifetimePolicies in policies
+        Update the properties of a tokenLifetimePolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class TokenLifetimePolicyItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property tokenLifetimePolicies for policies
+        Delete a tokenLifetimePolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class TokenLifetimePolicyItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Azure AD.
+        Retrieve the properties and relationships of a tokenLifetimePolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class TokenLifetimePolicyItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[token_lifetime_policy.TokenLifetimePolicy] = None, request_configuration: Optional[TokenLifetimePolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property tokenLifetimePolicies in policies
+        Update the properties of a tokenLifetimePolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class TokenLifetimePolicyItemRequestBuilder():
     @dataclass
     class TokenLifetimePolicyItemRequestBuilderGetQueryParameters():
         """
-        The policy that controls the lifetime of a JWT access token, an ID token, or a SAML 1.1/2.0 token issued by Azure AD.
+        Retrieve the properties and relationships of a tokenLifetimePolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from .....models.o_data_errors import o_data_error
     from .attendance_reports import attendance_reports_request_builder
     from .attendee_report import attendee_report_request_builder
+    from .get_virtual_appointment_join_web_url import get_virtual_appointment_join_web_url_request_builder
 
 class OnlineMeetingItemRequestBuilder():
     """
@@ -39,7 +40,7 @@ class OnlineMeetingItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[OnlineMeetingItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property onlineMeetings for users
+        Delete an onlineMeeting object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -58,7 +59,7 @@ class OnlineMeetingItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[OnlineMeetingItemRequestBuilderGetRequestConfiguration] = None) -> Optional[online_meeting.OnlineMeeting]:
         """
-        Get onlineMeetings from users
+        Retrieve the properties and relationships of an onlineMeeting object. For example, you can: Teams live event attendee report is an online meeting artifact. For details, see Online meeting artifacts and permissions.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[online_meeting.OnlineMeeting]
@@ -80,7 +81,7 @@ class OnlineMeetingItemRequestBuilder():
     
     async def patch(self,body: Optional[online_meeting.OnlineMeeting] = None, request_configuration: Optional[OnlineMeetingItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[online_meeting.OnlineMeeting]:
         """
-        Update the navigation property onlineMeetings in users
+        Update the properties of the specified onlineMeeting object. Please see Request body section for the list of properties that support updating.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -105,7 +106,7 @@ class OnlineMeetingItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[OnlineMeetingItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property onlineMeetings for users
+        Delete an onlineMeeting object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -121,7 +122,7 @@ class OnlineMeetingItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OnlineMeetingItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get onlineMeetings from users
+        Retrieve the properties and relationships of an onlineMeeting object. For example, you can: Teams live event attendee report is an online meeting artifact. For details, see Online meeting artifacts and permissions.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -139,7 +140,7 @@ class OnlineMeetingItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[online_meeting.OnlineMeeting] = None, request_configuration: Optional[OnlineMeetingItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property onlineMeetings in users
+        Update the properties of the specified onlineMeeting object. Please see Request body section for the list of properties that support updating.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -176,6 +177,15 @@ class OnlineMeetingItemRequestBuilder():
 
         return attendee_report_request_builder.AttendeeReportRequestBuilder(self.request_adapter, self.path_parameters)
     
+    @property
+    def get_virtual_appointment_join_web_url(self) -> get_virtual_appointment_join_web_url_request_builder.GetVirtualAppointmentJoinWebUrlRequestBuilder:
+        """
+        Provides operations to call the getVirtualAppointmentJoinWebUrl method.
+        """
+        from .get_virtual_appointment_join_web_url import get_virtual_appointment_join_web_url_request_builder
+
+        return get_virtual_appointment_join_web_url_request_builder.GetVirtualAppointmentJoinWebUrlRequestBuilder(self.request_adapter, self.path_parameters)
+    
     @dataclass
     class OnlineMeetingItemRequestBuilderDeleteRequestConfiguration():
         """
@@ -191,7 +201,7 @@ class OnlineMeetingItemRequestBuilder():
     @dataclass
     class OnlineMeetingItemRequestBuilderGetQueryParameters():
         """
-        Get onlineMeetings from users
+        Retrieve the properties and relationships of an onlineMeeting object. For example, you can: Teams live event attendee report is an online meeting artifact. For details, see Online meeting artifacts and permissions.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

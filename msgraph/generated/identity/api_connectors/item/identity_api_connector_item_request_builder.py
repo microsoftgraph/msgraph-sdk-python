@@ -38,7 +38,7 @@ class IdentityApiConnectorItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[IdentityApiConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property apiConnectors for identity
+        Delete an identityApiConnector object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class IdentityApiConnectorItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[IdentityApiConnectorItemRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_api_connector.IdentityApiConnector]:
         """
-        Represents entry point for API connectors.
+        Read the properties of an identityApiConnector object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[identity_api_connector.IdentityApiConnector]
@@ -79,7 +79,7 @@ class IdentityApiConnectorItemRequestBuilder():
     
     async def patch(self,body: Optional[identity_api_connector.IdentityApiConnector] = None, request_configuration: Optional[IdentityApiConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[identity_api_connector.IdentityApiConnector]:
         """
-        Update the navigation property apiConnectors in identity
+        Update the properties of an identityApiConnector object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class IdentityApiConnectorItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[IdentityApiConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property apiConnectors for identity
+        Delete an identityApiConnector object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class IdentityApiConnectorItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[IdentityApiConnectorItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents entry point for API connectors.
+        Read the properties of an identityApiConnector object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class IdentityApiConnectorItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[identity_api_connector.IdentityApiConnector] = None, request_configuration: Optional[IdentityApiConnectorItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property apiConnectors in identity
+        Update the properties of an identityApiConnector object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class IdentityApiConnectorItemRequestBuilder():
     @dataclass
     class IdentityApiConnectorItemRequestBuilderGetQueryParameters():
         """
-        Represents entry point for API connectors.
+        Read the properties of an identityApiConnector object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

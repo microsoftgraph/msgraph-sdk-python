@@ -54,7 +54,7 @@ class SharesRequestBuilder():
     
     async def get(self,request_configuration: Optional[SharesRequestBuilderGetRequestConfiguration] = None) -> Optional[printer_share_collection_response.PrinterShareCollectionResponse]:
         """
-        The list of printer shares registered in the tenant.
+        Retrieve a list of **printerShares**.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[printer_share_collection_response.PrinterShareCollectionResponse]
@@ -76,7 +76,7 @@ class SharesRequestBuilder():
     
     async def post(self,body: Optional[printer_share.PrinterShare] = None, request_configuration: Optional[SharesRequestBuilderPostRequestConfiguration] = None) -> Optional[printer_share.PrinterShare]:
         """
-        Create new navigation property to shares for print
+        Create a new **printerShare** for the specified printer.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class SharesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SharesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of printer shares registered in the tenant.
+        Retrieve a list of **printerShares**.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class SharesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[printer_share.PrinterShare] = None, request_configuration: Optional[SharesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to shares for print
+        Create a new **printerShare** for the specified printer.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class SharesRequestBuilder():
     @dataclass
     class SharesRequestBuilderGetQueryParameters():
         """
-        The list of printer shares registered in the tenant.
+        Retrieve a list of **printerShares**.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

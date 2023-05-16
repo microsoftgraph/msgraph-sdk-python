@@ -54,7 +54,7 @@ class ServiceConfigurationRecordsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ServiceConfigurationRecordsRequestBuilderGetRequestConfiguration] = None) -> Optional[domain_dns_record_collection_response.DomainDnsRecordCollectionResponse]:
         """
-        DNS records the customer adds to the DNS zone file of the domain before the domain can be used by Microsoft Online services. Read-only, Nullable. Supports $expand.
+        Retrieves a list of domainDnsRecord objects needed to enable services for the domain. Use the returned list to add records to the zone file of the domain. This can be done through the domain registrar or DNS server configuration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[domain_dns_record_collection_response.DomainDnsRecordCollectionResponse]
@@ -101,7 +101,7 @@ class ServiceConfigurationRecordsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ServiceConfigurationRecordsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        DNS records the customer adds to the DNS zone file of the domain before the domain can be used by Microsoft Online services. Read-only, Nullable. Supports $expand.
+        Retrieves a list of domainDnsRecord objects needed to enable services for the domain. Use the returned list to add records to the zone file of the domain. This can be done through the domain registrar or DNS server configuration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class ServiceConfigurationRecordsRequestBuilder():
     @dataclass
     class ServiceConfigurationRecordsRequestBuilderGetQueryParameters():
         """
-        DNS records the customer adds to the DNS zone file of the domain before the domain can be used by Microsoft Online services. Read-only, Nullable. Supports $expand.
+        Retrieves a list of domainDnsRecord objects needed to enable services for the domain. Use the returned list to add records to the zone file of the domain. This can be done through the domain registrar or DNS server configuration.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

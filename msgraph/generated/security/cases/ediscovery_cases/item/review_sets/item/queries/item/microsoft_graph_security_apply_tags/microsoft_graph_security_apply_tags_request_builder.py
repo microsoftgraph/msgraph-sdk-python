@@ -37,7 +37,7 @@ class MicrosoftGraphSecurityApplyTagsRequestBuilder():
     
     async def post(self,body: Optional[apply_tags_post_request_body.ApplyTagsPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityApplyTagsRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action applyTags
+        Apply tags to files in an eDiscovery review set. For details, see Tag documents in a review set in eDiscovery.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class MicrosoftGraphSecurityApplyTagsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[apply_tags_post_request_body.ApplyTagsPostRequestBody] = None, request_configuration: Optional[MicrosoftGraphSecurityApplyTagsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action applyTags
+        Apply tags to files in an eDiscovery review set. For details, see Tag documents in a review set in eDiscovery.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -63,7 +63,7 @@ class UnifiedRoleAssignmentScheduleRequestItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[UnifiedRoleAssignmentScheduleRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest]:
         """
-        Requests for active role assignments to principals through PIM.
+        In PIM, read the details of a request for an active and persistent role assignment made through the unifiedRoleAssignmentScheduleRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest]
@@ -126,7 +126,7 @@ class UnifiedRoleAssignmentScheduleRequestItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[UnifiedRoleAssignmentScheduleRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Requests for active role assignments to principals through PIM.
+        In PIM, read the details of a request for an active and persistent role assignment made through the unifiedRoleAssignmentScheduleRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -241,7 +241,7 @@ class UnifiedRoleAssignmentScheduleRequestItemRequestBuilder():
     @dataclass
     class UnifiedRoleAssignmentScheduleRequestItemRequestBuilderGetQueryParameters():
         """
-        Requests for active role assignments to principals through PIM.
+        In PIM, read the details of a request for an active and persistent role assignment made through the unifiedRoleAssignmentScheduleRequest object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

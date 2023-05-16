@@ -56,7 +56,7 @@ class RichLongRunningOperationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[RichLongRunningOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[rich_long_running_operation.RichLongRunningOperation]:
         """
-        The collection of long-running operations on the site.
+        Get the status of a rich long-running operation on a site or a list.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[rich_long_running_operation.RichLongRunningOperation]
@@ -119,7 +119,7 @@ class RichLongRunningOperationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RichLongRunningOperationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of long-running operations on the site.
+        Get the status of a rich long-running operation on a site or a list.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class RichLongRunningOperationItemRequestBuilder():
     @dataclass
     class RichLongRunningOperationItemRequestBuilderGetQueryParameters():
         """
-        The collection of long-running operations on the site.
+        Get the status of a rich long-running operation on a site or a list.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

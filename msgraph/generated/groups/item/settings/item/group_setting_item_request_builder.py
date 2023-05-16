@@ -56,7 +56,7 @@ class GroupSettingItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[GroupSettingItemRequestBuilderGetRequestConfiguration] = None) -> Optional[group_setting.GroupSetting]:
         """
-        Settings that can govern this group's behavior, like whether members can invite guest users to the group. Nullable.
+        Retrieve the properties of a specific group setting object. The setting can be a tenant-level or group-specific setting.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[group_setting.GroupSetting]
@@ -78,7 +78,7 @@ class GroupSettingItemRequestBuilder():
     
     async def patch(self,body: Optional[group_setting.GroupSetting] = None, request_configuration: Optional[GroupSettingItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[group_setting.GroupSetting]:
         """
-        Update the navigation property settings in groups
+        Update the properties of a groupSetting object for tenant-wide group settings or a specific group setting.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class GroupSettingItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[GroupSettingItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Settings that can govern this group's behavior, like whether members can invite guest users to the group. Nullable.
+        Retrieve the properties of a specific group setting object. The setting can be a tenant-level or group-specific setting.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class GroupSettingItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[group_setting.GroupSetting] = None, request_configuration: Optional[GroupSettingItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property settings in groups
+        Update the properties of a groupSetting object for tenant-wide group settings or a specific group setting.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class GroupSettingItemRequestBuilder():
     @dataclass
     class GroupSettingItemRequestBuilderGetQueryParameters():
         """
-        Settings that can govern this group's behavior, like whether members can invite guest users to the group. Nullable.
+        Retrieve the properties of a specific group setting object. The setting can be a tenant-level or group-specific setting.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

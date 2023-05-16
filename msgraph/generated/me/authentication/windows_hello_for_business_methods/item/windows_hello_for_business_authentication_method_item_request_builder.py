@@ -38,7 +38,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property windowsHelloForBusinessMethods for me
+        Deletes a windowsHelloForBusinessAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]:
         """
-        Represents the Windows Hello for Business authentication method registered to a user for authentication.
+        Read the properties and relationships of a windowsHelloForBusinessAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[windows_hello_for_business_authentication_method.WindowsHelloForBusinessAuthenticationMethod]
@@ -79,7 +79,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property windowsHelloForBusinessMethods for me
+        Deletes a windowsHelloForBusinessAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -95,7 +95,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents the Windows Hello for Business authentication method registered to a user for authentication.
+        Read the properties and relationships of a windowsHelloForBusinessAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,7 +135,7 @@ class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilder():
     @dataclass
     class WindowsHelloForBusinessAuthenticationMethodItemRequestBuilderGetQueryParameters():
         """
-        Represents the Windows Hello for Business authentication method registered to a user for authentication.
+        Read the properties and relationships of a windowsHelloForBusinessAuthenticationMethod object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

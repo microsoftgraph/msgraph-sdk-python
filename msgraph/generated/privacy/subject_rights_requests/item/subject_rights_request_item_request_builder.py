@@ -60,7 +60,7 @@ class SubjectRightsRequestItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[SubjectRightsRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[subject_rights_request.SubjectRightsRequest]:
         """
-        Get subjectRightsRequests from privacy
+        Read the properties and relationships of a subjectRightsRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[subject_rights_request.SubjectRightsRequest]
@@ -82,7 +82,7 @@ class SubjectRightsRequestItemRequestBuilder():
     
     async def patch(self,body: Optional[subject_rights_request.SubjectRightsRequest] = None, request_configuration: Optional[SubjectRightsRequestItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[subject_rights_request.SubjectRightsRequest]:
         """
-        Update the navigation property subjectRightsRequests in privacy
+        Update the properties of a subjectRightsRequest object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -123,7 +123,7 @@ class SubjectRightsRequestItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SubjectRightsRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get subjectRightsRequests from privacy
+        Read the properties and relationships of a subjectRightsRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +141,7 @@ class SubjectRightsRequestItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[subject_rights_request.SubjectRightsRequest] = None, request_configuration: Optional[SubjectRightsRequestItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property subjectRightsRequests in privacy
+        Update the properties of a subjectRightsRequest object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -211,7 +211,7 @@ class SubjectRightsRequestItemRequestBuilder():
     @dataclass
     class SubjectRightsRequestItemRequestBuilderGetQueryParameters():
         """
-        Get subjectRightsRequests from privacy
+        Read the properties and relationships of a subjectRightsRequest object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

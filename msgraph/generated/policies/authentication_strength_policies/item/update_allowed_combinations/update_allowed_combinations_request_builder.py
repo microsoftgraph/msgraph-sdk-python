@@ -38,7 +38,7 @@ class UpdateAllowedCombinationsRequestBuilder():
     
     async def post(self,body: Optional[update_allowed_combinations_post_request_body.UpdateAllowedCombinationsPostRequestBody] = None, request_configuration: Optional[UpdateAllowedCombinationsRequestBuilderPostRequestConfiguration] = None) -> Optional[update_allowed_combinations_result.UpdateAllowedCombinationsResult]:
         """
-        Invoke action updateAllowedCombinations
+        Update the allowedCombinations property of an authenticationStrengthPolicy object. To update other properties of an authenticationStrengthPolicy object, use the Update authenticationStrengthPolicy method.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class UpdateAllowedCombinationsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[update_allowed_combinations_post_request_body.UpdateAllowedCombinationsPostRequestBody] = None, request_configuration: Optional[UpdateAllowedCombinationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action updateAllowedCombinations
+        Update the allowedCombinations property of an authenticationStrengthPolicy object. To update other properties of an authenticationStrengthPolicy object, use the Update authenticationStrengthPolicy method.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

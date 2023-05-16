@@ -54,7 +54,7 @@ class ColumnsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ColumnsRequestBuilderGetRequestConfiguration] = None) -> Optional[column_definition_collection_response.ColumnDefinitionCollectionResponse]:
         """
-        The collection of column definitions for this contentType.
+        Get the collection of columns represented as [columnDefinition][columnDefinition] resources in a [content type][contentType].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[column_definition_collection_response.ColumnDefinitionCollectionResponse]
@@ -76,7 +76,7 @@ class ColumnsRequestBuilder():
     
     async def post(self,body: Optional[column_definition.ColumnDefinition] = None, request_configuration: Optional[ColumnsRequestBuilderPostRequestConfiguration] = None) -> Optional[column_definition.ColumnDefinition]:
         """
-        Create new navigation property to columns for shares
+        Add a column to a [content type][contentType] in a site, or a list with a request that specifies a [columnDefinition][columnDefinition].
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ColumnsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ColumnsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of column definitions for this contentType.
+        Get the collection of columns represented as [columnDefinition][columnDefinition] resources in a [content type][contentType].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ColumnsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[column_definition.ColumnDefinition] = None, request_configuration: Optional[ColumnsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to columns for shares
+        Add a column to a [content type][contentType] in a site, or a list with a request that specifies a [columnDefinition][columnDefinition].
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class ColumnsRequestBuilder():
     @dataclass
     class ColumnsRequestBuilderGetQueryParameters():
         """
-        The collection of column definitions for this contentType.
+        Get the collection of columns represented as [columnDefinition][columnDefinition] resources in a [content type][contentType].
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -37,7 +37,7 @@ class SetOrderRequestBuilder():
     
     async def post(self,body: Optional[set_order_post_request_body.SetOrderPostRequestBody] = None, request_configuration: Optional[SetOrderRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action setOrder
+        Set the order of identityUserFlowAttributeAssignments being collected within a user flow.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class SetOrderRequestBuilder():
     
     def to_post_request_information(self,body: Optional[set_order_post_request_body.SetOrderPostRequestBody] = None, request_configuration: Optional[SetOrderRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action setOrder
+        Set the order of identityUserFlowAttributeAssignments being collected within a user flow.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

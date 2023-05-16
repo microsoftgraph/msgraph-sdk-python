@@ -36,7 +36,7 @@ class ReauthorizeRequestBuilder():
     
     async def post(self,request_configuration: Optional[ReauthorizeRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action reauthorize
+        Reauthorize a subscription when you receive a **reauthorizationRequired** challenge.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class ReauthorizeRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[ReauthorizeRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action reauthorize
+        Reauthorize a subscription when you receive a **reauthorizationRequired** challenge.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

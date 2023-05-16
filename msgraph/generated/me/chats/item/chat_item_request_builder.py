@@ -67,7 +67,7 @@ class ChatItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ChatItemRequestBuilderGetRequestConfiguration] = None) -> Optional[chat.Chat]:
         """
-        Get chats from me
+        Retrieve a single chat (without its messages). This method supports federation. To access a chat, at least one chat member must belong to the tenant the request initiated from.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[chat.Chat]
@@ -130,7 +130,7 @@ class ChatItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ChatItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get chats from me
+        Retrieve a single chat (without its messages). This method supports federation. To access a chat, at least one chat member must belong to the tenant the request initiated from.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -281,7 +281,7 @@ class ChatItemRequestBuilder():
     @dataclass
     class ChatItemRequestBuilderGetQueryParameters():
         """
-        Get chats from me
+        Retrieve a single chat (without its messages). This method supports federation. To access a chat, at least one chat member must belong to the tenant the request initiated from.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

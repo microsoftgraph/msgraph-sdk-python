@@ -55,7 +55,7 @@ class SeriesRequestBuilder():
     
     async def get(self,request_configuration: Optional[SeriesRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_series_collection_response.WorkbookChartSeriesCollectionResponse]:
         """
-        Represents either a single series or collection of series in the chart. Read-only.
+        Retrieve a list of chartseries objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_chart_series_collection_response.WorkbookChartSeriesCollectionResponse]
@@ -90,7 +90,7 @@ class SeriesRequestBuilder():
     
     async def post(self,body: Optional[workbook_chart_series.WorkbookChartSeries] = None, request_configuration: Optional[SeriesRequestBuilderPostRequestConfiguration] = None) -> Optional[workbook_chart_series.WorkbookChartSeries]:
         """
-        Create new navigation property to series for drives
+        Use this API to create a new ChartSeries.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -115,7 +115,7 @@ class SeriesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SeriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents either a single series or collection of series in the chart. Read-only.
+        Retrieve a list of chartseries objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -133,7 +133,7 @@ class SeriesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[workbook_chart_series.WorkbookChartSeries] = None, request_configuration: Optional[SeriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to series for drives
+        Use this API to create a new ChartSeries.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -164,7 +164,7 @@ class SeriesRequestBuilder():
     @dataclass
     class SeriesRequestBuilderGetQueryParameters():
         """
-        Represents either a single series or collection of series in the chart. Read-only.
+        Retrieve a list of chartseries objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

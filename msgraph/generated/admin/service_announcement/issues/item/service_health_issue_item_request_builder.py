@@ -57,7 +57,7 @@ class ServiceHealthIssueItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ServiceHealthIssueItemRequestBuilderGetRequestConfiguration] = None) -> Optional[service_health_issue.ServiceHealthIssue]:
         """
-        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
+        Retrieve the properties and relationships of a serviceHealthIssue object. This operation retrieves a specified service health issue for tenant. The operation returns an error if the issue does not exist for the tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[service_health_issue.ServiceHealthIssue]
@@ -120,7 +120,7 @@ class ServiceHealthIssueItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ServiceHealthIssueItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
+        Retrieve the properties and relationships of a serviceHealthIssue object. This operation retrieves a specified service health issue for tenant. The operation returns an error if the issue does not exist for the tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class ServiceHealthIssueItemRequestBuilder():
     @dataclass
     class ServiceHealthIssueItemRequestBuilderGetQueryParameters():
         """
-        A collection of service issues for tenant. This property is a contained navigation property, it is nullable and readonly.
+        Retrieve the properties and relationships of a serviceHealthIssue object. This operation retrieves a specified service health issue for tenant. The operation returns an error if the issue does not exist for the tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

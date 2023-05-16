@@ -54,7 +54,7 @@ class InstalledAppsRequestBuilder():
     
     async def get(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_app_installation_collection_response.TeamsAppInstallationCollectionResponse]:
         """
-        A collection of all the apps in the chat. Nullable.
+        List all app installations within a chat.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[teams_app_installation_collection_response.TeamsAppInstallationCollectionResponse]
@@ -76,7 +76,7 @@ class InstalledAppsRequestBuilder():
     
     async def post(self,body: Optional[teams_app_installation.TeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> Optional[teams_app_installation.TeamsAppInstallation]:
         """
-        Create new navigation property to installedApps for chats
+        Install a teamsApp to the specified chat.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class InstalledAppsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[InstalledAppsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of all the apps in the chat. Nullable.
+        List all app installations within a chat.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class InstalledAppsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[teams_app_installation.TeamsAppInstallation] = None, request_configuration: Optional[InstalledAppsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to installedApps for chats
+        Install a teamsApp to the specified chat.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class InstalledAppsRequestBuilder():
     @dataclass
     class InstalledAppsRequestBuilderGetQueryParameters():
         """
-        A collection of all the apps in the chat. Nullable.
+        List all app installations within a chat.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

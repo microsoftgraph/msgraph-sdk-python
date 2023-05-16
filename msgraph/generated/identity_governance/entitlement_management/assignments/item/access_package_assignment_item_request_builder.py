@@ -60,7 +60,7 @@ class AccessPackageAssignmentItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AccessPackageAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_assignment.AccessPackageAssignment]:
         """
-        The assignment of an access package to a subject for a period of time.
+        In Azure AD entitlement management, retrieve the properties and relationships of an accessPackageAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_package_assignment.AccessPackageAssignment]
@@ -123,7 +123,7 @@ class AccessPackageAssignmentItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AccessPackageAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The assignment of an access package to a subject for a period of time.
+        In Azure AD entitlement management, retrieve the properties and relationships of an accessPackageAssignment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -211,7 +211,7 @@ class AccessPackageAssignmentItemRequestBuilder():
     @dataclass
     class AccessPackageAssignmentItemRequestBuilderGetQueryParameters():
         """
-        The assignment of an access package to a subject for a period of time.
+        In Azure AD entitlement management, retrieve the properties and relationships of an accessPackageAssignment object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

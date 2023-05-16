@@ -39,7 +39,7 @@ class ContactItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ContactItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property contacts for users
+        Delete a contact.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -58,7 +58,7 @@ class ContactItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ContactItemRequestBuilderGetRequestConfiguration] = None) -> Optional[contact.Contact]:
         """
-        The user's contacts. Read-only. Nullable.
+        Retrieve the properties and relationships of a contact object. There are two scenarios where an app can get a contact in another user's contact folder:
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[contact.Contact]
@@ -80,7 +80,7 @@ class ContactItemRequestBuilder():
     
     async def patch(self,body: Optional[contact.Contact] = None, request_configuration: Optional[ContactItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[contact.Contact]:
         """
-        Update the navigation property contacts in users
+        Update the properties of a contact object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -105,7 +105,7 @@ class ContactItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ContactItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property contacts for users
+        Delete a contact.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -121,7 +121,7 @@ class ContactItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ContactItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The user's contacts. Read-only. Nullable.
+        Retrieve the properties and relationships of a contact object. There are two scenarios where an app can get a contact in another user's contact folder:
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -139,7 +139,7 @@ class ContactItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[contact.Contact] = None, request_configuration: Optional[ContactItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property contacts in users
+        Update the properties of a contact object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -191,7 +191,7 @@ class ContactItemRequestBuilder():
     @dataclass
     class ContactItemRequestBuilderGetQueryParameters():
         """
-        The user's contacts. Read-only. Nullable.
+        Retrieve the properties and relationships of a contact object. There are two scenarios where an app can get a contact in another user's contact folder:
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

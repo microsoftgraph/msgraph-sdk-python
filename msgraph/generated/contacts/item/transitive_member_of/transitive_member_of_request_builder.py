@@ -56,7 +56,7 @@ class TransitiveMemberOfRequestBuilder():
     
     async def get(self,request_configuration: Optional[TransitiveMemberOfRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
         """
-        Get transitiveMemberOf from contacts
+        Groups that this contact is a member of, including groups that the contact is nested under. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]
@@ -78,7 +78,7 @@ class TransitiveMemberOfRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TransitiveMemberOfRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get transitiveMemberOf from contacts
+        Groups that this contact is a member of, including groups that the contact is nested under. Read-only. Nullable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -124,7 +124,7 @@ class TransitiveMemberOfRequestBuilder():
     @dataclass
     class TransitiveMemberOfRequestBuilderGetQueryParameters():
         """
-        Get transitiveMemberOf from contacts
+        Groups that this contact is a member of, including groups that the contact is nested under. Read-only. Nullable.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

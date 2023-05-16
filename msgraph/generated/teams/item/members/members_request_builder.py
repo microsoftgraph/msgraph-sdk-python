@@ -55,7 +55,7 @@ class MembersRequestBuilder():
     
     async def get(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_member_collection_response.ConversationMemberCollectionResponse]:
         """
-        Members and owners of the team.
+        Get the conversationMember collection of a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conversation_member_collection_response.ConversationMemberCollectionResponse]
@@ -77,7 +77,7 @@ class MembersRequestBuilder():
     
     async def post(self,body: Optional[conversation_member.ConversationMember] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> Optional[conversation_member.ConversationMember]:
         """
-        Create new navigation property to members for teams
+        Add a new conversationMember to a team.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class MembersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Members and owners of the team.
+        Get the conversationMember collection of a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class MembersRequestBuilder():
     
     def to_post_request_information(self,body: Optional[conversation_member.ConversationMember] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to members for teams
+        Add a new conversationMember to a team.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class MembersRequestBuilder():
     @dataclass
     class MembersRequestBuilderGetQueryParameters():
         """
-        Members and owners of the team.
+        Get the conversationMember collection of a team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

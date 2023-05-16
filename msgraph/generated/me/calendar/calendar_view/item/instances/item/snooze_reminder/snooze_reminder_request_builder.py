@@ -37,7 +37,7 @@ class SnoozeReminderRequestBuilder():
     
     async def post(self,body: Optional[snooze_reminder_post_request_body.SnoozeReminderPostRequestBody] = None, request_configuration: Optional[SnoozeReminderRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action snoozeReminder
+        Postpone a reminder for an event in a user calendar until a new time.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class SnoozeReminderRequestBuilder():
     
     def to_post_request_information(self,body: Optional[snooze_reminder_post_request_body.SnoozeReminderPostRequestBody] = None, request_configuration: Optional[SnoozeReminderRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action snoozeReminder
+        Postpone a reminder for an event in a user calendar until a new time.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

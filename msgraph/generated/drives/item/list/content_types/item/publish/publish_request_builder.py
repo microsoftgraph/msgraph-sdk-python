@@ -36,7 +36,7 @@ class PublishRequestBuilder():
     
     async def post(self,request_configuration: Optional[PublishRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action publish
+        Publishes a [contentType][] present in the content type hub site.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class PublishRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[PublishRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action publish
+        Publishes a [contentType][] present in the content type hub site.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

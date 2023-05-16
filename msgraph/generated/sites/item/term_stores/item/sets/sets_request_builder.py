@@ -54,7 +54,7 @@ class SetsRequestBuilder():
     
     async def get(self,request_configuration: Optional[SetsRequestBuilderGetRequestConfiguration] = None) -> Optional[set_collection_response.SetCollectionResponse]:
         """
-        Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
+        Read the properties and relationships of a set object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[set_collection_response.SetCollectionResponse]
@@ -101,7 +101,7 @@ class SetsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SetsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
+        Read the properties and relationships of a set object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class SetsRequestBuilder():
     @dataclass
     class SetsRequestBuilderGetQueryParameters():
         """
-        Collection of all sets available in the term store. This relationship can only be used to load a specific term set.
+        Read the properties and relationships of a set object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

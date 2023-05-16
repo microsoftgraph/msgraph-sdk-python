@@ -55,7 +55,7 @@ class CallsRequestBuilder():
     
     async def get(self,request_configuration: Optional[CallsRequestBuilderGetRequestConfiguration] = None) -> Optional[call_collection_response.CallCollectionResponse]:
         """
-        Get calls from communications
+        Retrieve the properties and relationships of a call object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[call_collection_response.CallCollectionResponse]
@@ -77,7 +77,7 @@ class CallsRequestBuilder():
     
     async def post(self,body: Optional[call.Call] = None, request_configuration: Optional[CallsRequestBuilderPostRequestConfiguration] = None) -> Optional[call.Call]:
         """
-        Create new navigation property to calls for communications
+        Create call enables your bot to create a new outgoing peer-to-peer or group call, or join an existing meeting. You will need to register the calling bot and go through the list of permissions needed as mentioned below.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class CallsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CallsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get calls from communications
+        Retrieve the properties and relationships of a call object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class CallsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[call.Call] = None, request_configuration: Optional[CallsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to calls for communications
+        Create call enables your bot to create a new outgoing peer-to-peer or group call, or join an existing meeting. You will need to register the calling bot and go through the list of permissions needed as mentioned below.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class CallsRequestBuilder():
     @dataclass
     class CallsRequestBuilderGetQueryParameters():
         """
-        Get calls from communications
+        Retrieve the properties and relationships of a call object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

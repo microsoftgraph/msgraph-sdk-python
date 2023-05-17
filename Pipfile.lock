@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "325bbfd08f04730ae9f086fb9f702294e98ca7c902c05aa9c38e8ade365daa93"
+            "sha256": "8f600c7cebea423c7f27d591c1ed0c56e3c30cd5d6e5bd723618c73864e928e5"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -494,11 +494,11 @@
         },
         "microsoft-kiota-http": {
             "hashes": [
-                "sha256:608693ccc601dc634dbbbd17b1a366765b188c5eeb10b93e1ca51a6a1443a925",
-                "sha256:eadece6c5ca9d8434e40fa76b6e0642da11e35951e2789f36ac0814290be4add"
+                "sha256:7c2f1981f12ca2f0c763a4848ef0a7bef398ef8fc379c4fb7596bce905f257e2",
+                "sha256:ebc1a3288d24c1eb80dc3bea37067810efbec3aed07944c50d96f83db4171a22"
             ],
             "index": "pypi",
-            "version": "==0.4.2"
+            "version": "==0.4.3"
         },
         "microsoft-kiota-serialization-json": {
             "hashes": [
@@ -784,11 +784,11 @@
     "develop": {
         "astroid": {
             "hashes": [
-                "sha256:a1b8543ef9d36ea777194bc9b17f5f8678d2c56ee6a45b2c2f17eec96f242347",
-                "sha256:c81e1c7fbac615037744d067a9bb5f9aeb655edf59b63ee8b59585475d6f80d8"
+                "sha256:078e5212f9885fa85fbb0cf0101978a336190aadea6e13305409d099f71b2324",
+                "sha256:1039262575027b441137ab4a62a793a9b43defb42c32d5670f38686207cd780f"
             ],
             "markers": "python_full_version >= '3.7.2'",
-            "version": "==2.15.4"
+            "version": "==2.15.5"
         },
         "build": {
             "hashes": [

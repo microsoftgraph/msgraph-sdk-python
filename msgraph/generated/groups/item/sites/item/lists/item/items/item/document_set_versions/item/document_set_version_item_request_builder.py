@@ -39,7 +39,7 @@ class DocumentSetVersionItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[DocumentSetVersionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property documentSetVersions for groups
+        Delete a version of a document set in a list.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -58,7 +58,7 @@ class DocumentSetVersionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[DocumentSetVersionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[document_set_version.DocumentSetVersion]:
         """
-        Version information for a document set version created by a user.
+        Read the properties and relationships of a documentSetVersion object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[document_set_version.DocumentSetVersion]
@@ -105,7 +105,7 @@ class DocumentSetVersionItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[DocumentSetVersionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property documentSetVersions for groups
+        Delete a version of a document set in a list.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -121,7 +121,7 @@ class DocumentSetVersionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DocumentSetVersionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Version information for a document set version created by a user.
+        Read the properties and relationships of a documentSetVersion object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -191,7 +191,7 @@ class DocumentSetVersionItemRequestBuilder():
     @dataclass
     class DocumentSetVersionItemRequestBuilderGetQueryParameters():
         """
-        Version information for a document set version created by a user.
+        Read the properties and relationships of a documentSetVersion object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

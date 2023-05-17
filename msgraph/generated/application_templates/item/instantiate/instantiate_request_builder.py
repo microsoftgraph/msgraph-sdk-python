@@ -38,7 +38,7 @@ class InstantiateRequestBuilder():
     
     async def post(self,body: Optional[instantiate_post_request_body.InstantiatePostRequestBody] = None, request_configuration: Optional[InstantiateRequestBuilderPostRequestConfiguration] = None) -> Optional[application_service_principal.ApplicationServicePrincipal]:
         """
-        Invoke action instantiate
+        Add an instance of an application from the Azure AD application gallery into your directory. You can also use this API to instantiate non-gallery apps. Use the following ID for the **applicationTemplate** object: `8adf8e6e-67b2-4cf2-a259-e3dc5476c621`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class InstantiateRequestBuilder():
     
     def to_post_request_information(self,body: Optional[instantiate_post_request_body.InstantiatePostRequestBody] = None, request_configuration: Optional[InstantiateRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action instantiate
+        Add an instance of an application from the Azure AD application gallery into your directory. You can also use this API to instantiate non-gallery apps. Use the following ID for the **applicationTemplate** object: `8adf8e6e-67b2-4cf2-a259-e3dc5476c621`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

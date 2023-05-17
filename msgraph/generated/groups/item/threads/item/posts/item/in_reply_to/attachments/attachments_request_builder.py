@@ -55,7 +55,7 @@ class AttachmentsRequestBuilder():
     
     async def get(self,request_configuration: Optional[AttachmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[attachment_collection_response.AttachmentCollectionResponse]:
         """
-        Read-only. Nullable. Supports $expand.
+        Retrieve a list of attachment objects attached to a post.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[attachment_collection_response.AttachmentCollectionResponse]
@@ -102,7 +102,7 @@ class AttachmentsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AttachmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read-only. Nullable. Supports $expand.
+        Retrieve a list of attachment objects attached to a post.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -160,7 +160,7 @@ class AttachmentsRequestBuilder():
     @dataclass
     class AttachmentsRequestBuilderGetQueryParameters():
         """
-        Read-only. Nullable. Supports $expand.
+        Retrieve a list of attachment objects attached to a post.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -37,7 +37,7 @@ class SetPositionRequestBuilder():
     
     async def post(self,body: Optional[set_position_post_request_body.SetPositionPostRequestBody] = None, request_configuration: Optional[SetPositionRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action setPosition
+        Positions the chart relative to cells on the worksheet.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class SetPositionRequestBuilder():
     
     def to_post_request_information(self,body: Optional[set_position_post_request_body.SetPositionPostRequestBody] = None, request_configuration: Optional[SetPositionRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action setPosition
+        Positions the chart relative to cells on the worksheet.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

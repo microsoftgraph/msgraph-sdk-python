@@ -54,7 +54,7 @@ class NotesRequestBuilder():
     
     async def get(self,request_configuration: Optional[NotesRequestBuilderGetRequestConfiguration] = None) -> Optional[authored_note_collection_response.AuthoredNoteCollectionResponse]:
         """
-        List of notes associcated with the request.
+        Get the list of authored notes assoicated with a subject rights request. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authored_note_collection_response.AuthoredNoteCollectionResponse]
@@ -76,7 +76,7 @@ class NotesRequestBuilder():
     
     async def post(self,body: Optional[authored_note.AuthoredNote] = None, request_configuration: Optional[NotesRequestBuilderPostRequestConfiguration] = None) -> Optional[authored_note.AuthoredNote]:
         """
-        Create new navigation property to notes for privacy
+        Create a new authoredNote object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class NotesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[NotesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List of notes associcated with the request.
+        Get the list of authored notes assoicated with a subject rights request. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class NotesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[authored_note.AuthoredNote] = None, request_configuration: Optional[NotesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to notes for privacy
+        Create a new authoredNote object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class NotesRequestBuilder():
     @dataclass
     class NotesRequestBuilderGetQueryParameters():
         """
-        List of notes associcated with the request.
+        Get the list of authored notes assoicated with a subject rights request. 
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

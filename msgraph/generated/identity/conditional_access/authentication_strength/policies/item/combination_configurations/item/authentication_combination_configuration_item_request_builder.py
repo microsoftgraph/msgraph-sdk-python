@@ -37,7 +37,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[AuthenticationCombinationConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property combinationConfigurations for identity
+        Delete an authenticationCombinationConfiguration  for a custom authenticationStrengthPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AuthenticationCombinationConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_combination_configuration.AuthenticationCombinationConfiguration]:
         """
-        Settings that may be used to require specific types or instances of an authentication method to be used when authenticating with a specified combination of authentication methods.
+        Read the properties and relationships of an authenticationCombinationConfiguration object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authentication_combination_configuration.AuthenticationCombinationConfiguration]
@@ -78,7 +78,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder():
     
     async def patch(self,body: Optional[authentication_combination_configuration.AuthenticationCombinationConfiguration] = None, request_configuration: Optional[AuthenticationCombinationConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[authentication_combination_configuration.AuthenticationCombinationConfiguration]:
         """
-        Update the navigation property combinationConfigurations in identity
+        Update the properties of an authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be updated as they are the only type of authenticationCombinationConfiguration that may be created.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[AuthenticationCombinationConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property combinationConfigurations for identity
+        Delete an authenticationCombinationConfiguration  for a custom authenticationStrengthPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationCombinationConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Settings that may be used to require specific types or instances of an authentication method to be used when authenticating with a specified combination of authentication methods.
+        Read the properties and relationships of an authenticationCombinationConfiguration object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[authentication_combination_configuration.AuthenticationCombinationConfiguration] = None, request_configuration: Optional[AuthenticationCombinationConfigurationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property combinationConfigurations in identity
+        Update the properties of an authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be updated as they are the only type of authenticationCombinationConfiguration that may be created.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class AuthenticationCombinationConfigurationItemRequestBuilder():
     @dataclass
     class AuthenticationCombinationConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Settings that may be used to require specific types or instances of an authentication method to be used when authenticating with a specified combination of authentication methods.
+        Read the properties and relationships of an authenticationCombinationConfiguration object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

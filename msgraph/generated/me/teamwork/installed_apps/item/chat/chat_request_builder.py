@@ -37,7 +37,7 @@ class ChatRequestBuilder():
     
     async def get(self,request_configuration: Optional[ChatRequestBuilderGetRequestConfiguration] = None) -> Optional[chat.Chat]:
         """
-        The chat between the user and Teams app.
+        Retrieve the chat of the specified user and Teams app.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[chat.Chat]
@@ -59,7 +59,7 @@ class ChatRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ChatRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The chat between the user and Teams app.
+        Retrieve the chat of the specified user and Teams app.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -78,7 +78,7 @@ class ChatRequestBuilder():
     @dataclass
     class ChatRequestBuilderGetQueryParameters():
         """
-        The chat between the user and Teams app.
+        Retrieve the chat of the specified user and Teams app.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

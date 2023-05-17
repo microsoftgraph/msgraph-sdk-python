@@ -54,7 +54,7 @@ class AllChannelsRequestBuilder():
     
     async def get(self,request_configuration: Optional[AllChannelsRequestBuilderGetRequestConfiguration] = None) -> Optional[channel_collection_response.ChannelCollectionResponse]:
         """
-        List of channels either hosted in or shared with the team (incoming channels).
+        Get the list of channels either in this team or shared with this team (incoming channels).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[channel_collection_response.ChannelCollectionResponse]
@@ -76,7 +76,7 @@ class AllChannelsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AllChannelsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List of channels either hosted in or shared with the team (incoming channels).
+        Get the list of channels either in this team or shared with this team (incoming channels).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class AllChannelsRequestBuilder():
     @dataclass
     class AllChannelsRequestBuilderGetQueryParameters():
         """
-        List of channels either hosted in or shared with the team (incoming channels).
+        Get the list of channels either in this team or shared with this team (incoming channels).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -38,7 +38,7 @@ class AddLargeGalleryViewRequestBuilder():
     
     async def post(self,body: Optional[add_large_gallery_view_post_request_body.AddLargeGalleryViewPostRequestBody] = None, request_configuration: Optional[AddLargeGalleryViewRequestBuilderPostRequestConfiguration] = None) -> Optional[add_large_gallery_view_operation.AddLargeGalleryViewOperation]:
         """
-        Invoke action addLargeGalleryView
+        Add the large gallery view to a call.  For details about how to identify a large gallery view participant in a roster so that you can retrieve the relevant data to subscribe to the video feed, see Identify large gallery view participants in a roster.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class AddLargeGalleryViewRequestBuilder():
     
     def to_post_request_information(self,body: Optional[add_large_gallery_view_post_request_body.AddLargeGalleryViewPostRequestBody] = None, request_configuration: Optional[AddLargeGalleryViewRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action addLargeGalleryView
+        Add the large gallery view to a call.  For details about how to identify a large gallery view participant in a roster so that you can retrieve the relevant data to subscribe to the video feed, see Identify large gallery view participants in a roster.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

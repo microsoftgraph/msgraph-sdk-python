@@ -47,7 +47,7 @@ class ContentTypeItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ContentTypeItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property contentTypes for sites
+        Remove a [content type][contentType] from a [list][] or a [site][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -66,7 +66,7 @@ class ContentTypeItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ContentTypeItemRequestBuilderGetRequestConfiguration] = None) -> Optional[content_type.ContentType]:
         """
-        The collection of content types defined for this site.
+        Retrieve the metadata for a [content type][contentType] in a [site][] or a [list][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[content_type.ContentType]
@@ -88,7 +88,7 @@ class ContentTypeItemRequestBuilder():
     
     async def patch(self,body: Optional[content_type.ContentType] = None, request_configuration: Optional[ContentTypeItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[content_type.ContentType]:
         """
-        Update the navigation property contentTypes in sites
+        Update a [content type][contentType].
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -113,7 +113,7 @@ class ContentTypeItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ContentTypeItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property contentTypes for sites
+        Remove a [content type][contentType] from a [list][] or a [site][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -129,7 +129,7 @@ class ContentTypeItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ContentTypeItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of content types defined for this site.
+        Retrieve the metadata for a [content type][contentType] in a [site][] or a [list][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -147,7 +147,7 @@ class ContentTypeItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[content_type.ContentType] = None, request_configuration: Optional[ContentTypeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property contentTypes in sites
+        Update a [content type][contentType].
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -271,7 +271,7 @@ class ContentTypeItemRequestBuilder():
     @dataclass
     class ContentTypeItemRequestBuilderGetQueryParameters():
         """
-        The collection of content types defined for this site.
+        Retrieve the metadata for a [content type][contentType] in a [site][] or a [list][].
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

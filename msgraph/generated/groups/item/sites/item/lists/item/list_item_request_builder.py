@@ -64,7 +64,7 @@ class ListItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ListItemRequestBuilderGetRequestConfiguration] = None) -> Optional[list.List]:
         """
-        The collection of lists under this site.
+        Returns the metadata for a [list][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[list.List]
@@ -127,7 +127,7 @@ class ListItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ListItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of lists under this site.
+        Returns the metadata for a [list][].
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -251,7 +251,7 @@ class ListItemRequestBuilder():
     @dataclass
     class ListItemRequestBuilderGetQueryParameters():
         """
-        The collection of lists under this site.
+        Returns the metadata for a [list][].
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

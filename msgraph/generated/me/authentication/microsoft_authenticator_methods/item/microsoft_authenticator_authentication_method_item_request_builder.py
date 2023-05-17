@@ -38,7 +38,7 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property microsoftAuthenticatorMethods for me
+        Deletes a microsoftAuthenticatorAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[microsoft_authenticator_authentication_method.MicrosoftAuthenticatorAuthenticationMethod]:
         """
-        The details of the Microsoft Authenticator app registered to a user for authentication.
+        Read the properties and relationships of a microsoftAuthenticatorAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[microsoft_authenticator_authentication_method.MicrosoftAuthenticatorAuthenticationMethod]
@@ -79,7 +79,7 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property microsoftAuthenticatorMethods for me
+        Deletes a microsoftAuthenticatorAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -95,7 +95,7 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The details of the Microsoft Authenticator app registered to a user for authentication.
+        Read the properties and relationships of a microsoftAuthenticatorAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,7 +135,7 @@ class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilder():
     @dataclass
     class MicrosoftAuthenticatorAuthenticationMethodItemRequestBuilderGetQueryParameters():
         """
-        The details of the Microsoft Authenticator app registered to a user for authentication.
+        Read the properties and relationships of a microsoftAuthenticatorAuthenticationMethod object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

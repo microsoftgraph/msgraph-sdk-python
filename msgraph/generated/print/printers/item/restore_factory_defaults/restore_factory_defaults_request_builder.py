@@ -36,7 +36,7 @@ class RestoreFactoryDefaultsRequestBuilder():
     
     async def post(self,request_configuration: Optional[RestoreFactoryDefaultsRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action restoreFactoryDefaults
+        Restore a printer's default settings to the values specified by the manufacturer.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class RestoreFactoryDefaultsRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[RestoreFactoryDefaultsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action restoreFactoryDefaults
+        Restore a printer's default settings to the values specified by the manufacturer.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

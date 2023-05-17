@@ -56,7 +56,7 @@ class TablesRequestBuilder():
     
     async def get(self,request_configuration: Optional[TablesRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_table_collection_response.WorkbookTableCollectionResponse]:
         """
-        Collection of tables that are part of the worksheet. Read-only.
+        Retrieve a list of table objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_table_collection_response.WorkbookTableCollectionResponse]
@@ -116,7 +116,7 @@ class TablesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TablesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Collection of tables that are part of the worksheet. Read-only.
+        Retrieve a list of table objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -174,7 +174,7 @@ class TablesRequestBuilder():
     @dataclass
     class TablesRequestBuilderGetQueryParameters():
         """
-        Collection of tables that are part of the worksheet. Read-only.
+        Retrieve a list of table objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

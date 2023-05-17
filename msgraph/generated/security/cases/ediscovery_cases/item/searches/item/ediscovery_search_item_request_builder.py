@@ -44,7 +44,7 @@ class EdiscoverySearchItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[EdiscoverySearchItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property searches for security
+        Delete an ediscoverySearch object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -63,7 +63,7 @@ class EdiscoverySearchItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[EdiscoverySearchItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_search.EdiscoverySearch]:
         """
-        Returns a list of eDiscoverySearch objects associated with this case.
+        Read the properties and relationships of an ediscoverySearch object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ediscovery_search.EdiscoverySearch]
@@ -85,7 +85,7 @@ class EdiscoverySearchItemRequestBuilder():
     
     async def patch(self,body: Optional[ediscovery_search.EdiscoverySearch] = None, request_configuration: Optional[EdiscoverySearchItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ediscovery_search.EdiscoverySearch]:
         """
-        Update the navigation property searches in security
+        Update the properties of an ediscoverySearch object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -110,7 +110,7 @@ class EdiscoverySearchItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[EdiscoverySearchItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property searches for security
+        Delete an ediscoverySearch object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -126,7 +126,7 @@ class EdiscoverySearchItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[EdiscoverySearchItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Returns a list of eDiscoverySearch objects associated with this case.
+        Read the properties and relationships of an ediscoverySearch object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -144,7 +144,7 @@ class EdiscoverySearchItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[ediscovery_search.EdiscoverySearch] = None, request_configuration: Optional[EdiscoverySearchItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property searches in security
+        Update the properties of an ediscoverySearch object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -241,7 +241,7 @@ class EdiscoverySearchItemRequestBuilder():
     @dataclass
     class EdiscoverySearchItemRequestBuilderGetQueryParameters():
         """
-        Returns a list of eDiscoverySearch objects associated with this case.
+        Read the properties and relationships of an ediscoverySearch object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

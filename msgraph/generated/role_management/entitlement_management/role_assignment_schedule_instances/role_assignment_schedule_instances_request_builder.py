@@ -68,7 +68,7 @@ class RoleAssignmentScheduleInstancesRequestBuilder():
     
     async def get(self,request_configuration: Optional[RoleAssignmentScheduleInstancesRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_assignment_schedule_instance_collection_response.UnifiedRoleAssignmentScheduleInstanceCollectionResponse]:
         """
-        Instances for active role assignments.
+        Get the instances of active role assignments in your tenant. The active assignments include those made through assignments and activation requests, and directly through the role assignments API.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[unified_role_assignment_schedule_instance_collection_response.UnifiedRoleAssignmentScheduleInstanceCollectionResponse]
@@ -115,7 +115,7 @@ class RoleAssignmentScheduleInstancesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RoleAssignmentScheduleInstancesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Instances for active role assignments.
+        Get the instances of active role assignments in your tenant. The active assignments include those made through assignments and activation requests, and directly through the role assignments API.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -164,7 +164,7 @@ class RoleAssignmentScheduleInstancesRequestBuilder():
     @dataclass
     class RoleAssignmentScheduleInstancesRequestBuilderGetQueryParameters():
         """
-        Instances for active role assignments.
+        Get the instances of active role assignments in your tenant. The active assignments include those made through assignments and activation requests, and directly through the role assignments API.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -38,7 +38,7 @@ class PrintTaskTriggerItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[PrintTaskTriggerItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property taskTriggers for print
+        Delete the task trigger of a printer to prevent related print events from triggering tasks on the specified printer.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class PrintTaskTriggerItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[PrintTaskTriggerItemRequestBuilderGetRequestConfiguration] = None) -> Optional[print_task_trigger.PrintTaskTrigger]:
         """
-        A list of task triggers that are associated with the printer.
+        Get a task trigger from a printer. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_task_trigger.PrintTaskTrigger]
@@ -104,7 +104,7 @@ class PrintTaskTriggerItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[PrintTaskTriggerItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property taskTriggers for print
+        Delete the task trigger of a printer to prevent related print events from triggering tasks on the specified printer.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class PrintTaskTriggerItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PrintTaskTriggerItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A list of task triggers that are associated with the printer.
+        Get a task trigger from a printer. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class PrintTaskTriggerItemRequestBuilder():
     @dataclass
     class PrintTaskTriggerItemRequestBuilderGetQueryParameters():
         """
-        A list of task triggers that are associated with the printer.
+        Get a task trigger from a printer. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

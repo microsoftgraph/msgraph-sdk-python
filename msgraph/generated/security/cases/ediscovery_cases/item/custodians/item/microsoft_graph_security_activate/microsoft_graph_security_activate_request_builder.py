@@ -36,7 +36,7 @@ class MicrosoftGraphSecurityActivateRequestBuilder():
     
     async def post(self,request_configuration: Optional[MicrosoftGraphSecurityActivateRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action activate
+        Activate a custodian that has been released from a case to make them part of the case again. For details, see Manage custodians in an eDiscovery (Premium) case.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class MicrosoftGraphSecurityActivateRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[MicrosoftGraphSecurityActivateRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action activate
+        Activate a custodian that has been released from a case to make them part of the case again. For details, see Manage custodians in an eDiscovery (Premium) case.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

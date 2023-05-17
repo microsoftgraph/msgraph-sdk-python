@@ -78,7 +78,7 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder():
     
     async def patch(self,body: Optional[access_review_instance_decision_item.AccessReviewInstanceDecisionItem] = None, request_configuration: Optional[AccessReviewInstanceDecisionItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[access_review_instance_decision_item.AccessReviewInstanceDecisionItem]:
         """
-        Update the navigation property decisions in identityGovernance
+        Update access decisions, known as accessReviewInstanceDecisionItems, for which the user is the reviewer.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -137,7 +137,7 @@ class AccessReviewInstanceDecisionItemItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[access_review_instance_decision_item.AccessReviewInstanceDecisionItem] = None, request_configuration: Optional[AccessReviewInstanceDecisionItemItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property decisions in identityGovernance
+        Update access decisions, known as accessReviewInstanceDecisionItems, for which the user is the reviewer.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

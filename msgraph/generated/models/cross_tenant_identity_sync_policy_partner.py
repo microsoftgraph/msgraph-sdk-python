@@ -13,13 +13,13 @@ class CrossTenantIdentitySyncPolicyPartner(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The displayName property
+        # Display name for the cross-tenant user synchronization policy. Use the name of the partner Azure AD (Azure Active Directory) tenant to easily identify the policy. Optional.
         self._display_name: Optional[str] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # The tenantId property
+        # Tenant identifier for the partner Azure AD organization. Read-only.
         self._tenant_id: Optional[str] = None
-        # The userSyncInbound property
+        # Defines whether users can be synchronized from the partner tenant. Key.
         self._user_sync_inbound: Optional[cross_tenant_user_sync_inbound.CrossTenantUserSyncInbound] = None
     
     @property
@@ -54,7 +54,7 @@ class CrossTenantIdentitySyncPolicyPartner(AdditionalDataHolder, Parsable):
     @property
     def display_name(self,) -> Optional[str]:
         """
-        Gets the displayName property value. The displayName property
+        Gets the displayName property value. Display name for the cross-tenant user synchronization policy. Use the name of the partner Azure AD (Azure Active Directory) tenant to easily identify the policy. Optional.
         Returns: Optional[str]
         """
         return self._display_name
@@ -62,7 +62,7 @@ class CrossTenantIdentitySyncPolicyPartner(AdditionalDataHolder, Parsable):
     @display_name.setter
     def display_name(self,value: Optional[str] = None) -> None:
         """
-        Sets the displayName property value. The displayName property
+        Sets the displayName property value. Display name for the cross-tenant user synchronization policy. Use the name of the partner Azure AD (Azure Active Directory) tenant to easily identify the policy. Optional.
         Args:
             value: Value to set for the display_name property.
         """
@@ -117,7 +117,7 @@ class CrossTenantIdentitySyncPolicyPartner(AdditionalDataHolder, Parsable):
     @property
     def tenant_id(self,) -> Optional[str]:
         """
-        Gets the tenantId property value. The tenantId property
+        Gets the tenantId property value. Tenant identifier for the partner Azure AD organization. Read-only.
         Returns: Optional[str]
         """
         return self._tenant_id
@@ -125,7 +125,7 @@ class CrossTenantIdentitySyncPolicyPartner(AdditionalDataHolder, Parsable):
     @tenant_id.setter
     def tenant_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the tenantId property value. The tenantId property
+        Sets the tenantId property value. Tenant identifier for the partner Azure AD organization. Read-only.
         Args:
             value: Value to set for the tenant_id property.
         """
@@ -134,7 +134,7 @@ class CrossTenantIdentitySyncPolicyPartner(AdditionalDataHolder, Parsable):
     @property
     def user_sync_inbound(self,) -> Optional[cross_tenant_user_sync_inbound.CrossTenantUserSyncInbound]:
         """
-        Gets the userSyncInbound property value. The userSyncInbound property
+        Gets the userSyncInbound property value. Defines whether users can be synchronized from the partner tenant. Key.
         Returns: Optional[cross_tenant_user_sync_inbound.CrossTenantUserSyncInbound]
         """
         return self._user_sync_inbound
@@ -142,7 +142,7 @@ class CrossTenantIdentitySyncPolicyPartner(AdditionalDataHolder, Parsable):
     @user_sync_inbound.setter
     def user_sync_inbound(self,value: Optional[cross_tenant_user_sync_inbound.CrossTenantUserSyncInbound] = None) -> None:
         """
-        Sets the userSyncInbound property value. The userSyncInbound property
+        Sets the userSyncInbound property value. Defines whether users can be synchronized from the partner tenant. Key.
         Args:
             value: Value to set for the user_sync_inbound property.
         """

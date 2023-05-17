@@ -54,7 +54,7 @@ class SchedulingGroupsRequestBuilder():
     
     async def get(self,request_configuration: Optional[SchedulingGroupsRequestBuilderGetRequestConfiguration] = None) -> Optional[scheduling_group_collection_response.SchedulingGroupCollectionResponse]:
         """
-        The logical grouping of users in the schedule (usually by role).
+        Get the list of schedulingGroups in this schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[scheduling_group_collection_response.SchedulingGroupCollectionResponse]
@@ -76,7 +76,7 @@ class SchedulingGroupsRequestBuilder():
     
     async def post(self,body: Optional[scheduling_group.SchedulingGroup] = None, request_configuration: Optional[SchedulingGroupsRequestBuilderPostRequestConfiguration] = None) -> Optional[scheduling_group.SchedulingGroup]:
         """
-        Create new navigation property to schedulingGroups for users
+        Create a new schedulingGroup.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class SchedulingGroupsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SchedulingGroupsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The logical grouping of users in the schedule (usually by role).
+        Get the list of schedulingGroups in this schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class SchedulingGroupsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[scheduling_group.SchedulingGroup] = None, request_configuration: Optional[SchedulingGroupsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to schedulingGroups for users
+        Create a new schedulingGroup.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class SchedulingGroupsRequestBuilder():
     @dataclass
     class SchedulingGroupsRequestBuilderGetQueryParameters():
         """
-        The logical grouping of users in the schedule (usually by role).
+        Get the list of schedulingGroups in this schedule.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

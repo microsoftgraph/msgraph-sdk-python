@@ -54,7 +54,7 @@ class PermissionGrantPoliciesRequestBuilder():
     
     async def get(self,request_configuration: Optional[PermissionGrantPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[permission_grant_policy_collection_response.PermissionGrantPolicyCollectionResponse]:
         """
-        The policy that specifies the conditions under which consent can be granted.
+        Retrieve the list of permissionGrantPolicy objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[permission_grant_policy_collection_response.PermissionGrantPolicyCollectionResponse]
@@ -76,7 +76,7 @@ class PermissionGrantPoliciesRequestBuilder():
     
     async def post(self,body: Optional[permission_grant_policy.PermissionGrantPolicy] = None, request_configuration: Optional[PermissionGrantPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[permission_grant_policy.PermissionGrantPolicy]:
         """
-        Create new navigation property to permissionGrantPolicies for policies
+        Creates a permissionGrantPolicy. A permission grant policy is used to describe the conditions under which permissions can be granted (for example, during application consent). After creating the permission grant policy, you can add include condition sets to add matching rules, and add exclude condition sets to add exclusion rules.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class PermissionGrantPoliciesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PermissionGrantPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The policy that specifies the conditions under which consent can be granted.
+        Retrieve the list of permissionGrantPolicy objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class PermissionGrantPoliciesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[permission_grant_policy.PermissionGrantPolicy] = None, request_configuration: Optional[PermissionGrantPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to permissionGrantPolicies for policies
+        Creates a permissionGrantPolicy. A permission grant policy is used to describe the conditions under which permissions can be granted (for example, during application consent). After creating the permission grant policy, you can add include condition sets to add matching rules, and add exclude condition sets to add exclusion rules.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class PermissionGrantPoliciesRequestBuilder():
     @dataclass
     class PermissionGrantPoliciesRequestBuilderGetQueryParameters():
         """
-        The policy that specifies the conditions under which consent can be granted.
+        Retrieve the list of permissionGrantPolicy objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

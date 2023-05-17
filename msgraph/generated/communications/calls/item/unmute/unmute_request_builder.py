@@ -38,7 +38,7 @@ class UnmuteRequestBuilder():
     
     async def post(self,body: Optional[unmute_post_request_body.UnmutePostRequestBody] = None, request_configuration: Optional[UnmuteRequestBuilderPostRequestConfiguration] = None) -> Optional[unmute_participant_operation.UnmuteParticipantOperation]:
         """
-        Invoke action unmute
+        Allow the application to unmute itself. This is a server unmute, meaning that the server will start sending audio packets for this participant to other participants again. For more information about how to handle unmute operations, see unmuteParticipantOperation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class UnmuteRequestBuilder():
     
     def to_post_request_information(self,body: Optional[unmute_post_request_body.UnmutePostRequestBody] = None, request_configuration: Optional[UnmuteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action unmute
+        Allow the application to unmute itself. This is a server unmute, meaning that the server will start sending audio packets for this participant to other participants again. For more information about how to handle unmute operations, see unmuteParticipantOperation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

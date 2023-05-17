@@ -40,7 +40,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property localizations for branding
+        Delete a localized branding object. To delete the organizationalBrandingLocalization object, all images (Stream types) must first be removed from the object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -59,7 +59,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[organizational_branding_localization.OrganizationalBrandingLocalization]:
         """
-        Add different branding based on a locale.
+        Read the properties and relationships of an organizationalBrandingLocalization object. To retrieve a localization branding object, specify the value of **id** in the URL.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[organizational_branding_localization.OrganizationalBrandingLocalization]
@@ -81,7 +81,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
     
     async def patch(self,body: Optional[organizational_branding_localization.OrganizationalBrandingLocalization] = None, request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[organizational_branding_localization.OrganizationalBrandingLocalization]:
         """
-        Update the navigation property localizations in branding
+        Update the properties of an organizationalBrandingLocalization object for a specific localization.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -106,7 +106,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property localizations for branding
+        Delete a localized branding object. To delete the organizationalBrandingLocalization object, all images (Stream types) must first be removed from the object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -122,7 +122,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Add different branding based on a locale.
+        Read the properties and relationships of an organizationalBrandingLocalization object. To retrieve a localization branding object, specify the value of **id** in the URL.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +140,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[organizational_branding_localization.OrganizationalBrandingLocalization] = None, request_configuration: Optional[OrganizationalBrandingLocalizationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property localizations in branding
+        Update the properties of an organizationalBrandingLocalization object for a specific localization.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -201,7 +201,7 @@ class OrganizationalBrandingLocalizationItemRequestBuilder():
     @dataclass
     class OrganizationalBrandingLocalizationItemRequestBuilderGetQueryParameters():
         """
-        Add different branding based on a locale.
+        Read the properties and relationships of an organizationalBrandingLocalization object. To retrieve a localization branding object, specify the value of **id** in the URL.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

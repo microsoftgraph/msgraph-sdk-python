@@ -60,7 +60,7 @@ class ChatMessageItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ChatMessageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[chat_message.ChatMessage]:
         """
-        A collection of all the messages in the chat. Nullable.
+        Retrieve a single message or a message reply in a channel or a chat.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[chat_message.ChatMessage]
@@ -123,7 +123,7 @@ class ChatMessageItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ChatMessageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of all the messages in the chat. Nullable.
+        Retrieve a single message or a message reply in a channel or a chat.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -211,7 +211,7 @@ class ChatMessageItemRequestBuilder():
     @dataclass
     class ChatMessageItemRequestBuilderGetQueryParameters():
         """
-        A collection of all the messages in the chat. Nullable.
+        Retrieve a single message or a message reply in a channel or a chat.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

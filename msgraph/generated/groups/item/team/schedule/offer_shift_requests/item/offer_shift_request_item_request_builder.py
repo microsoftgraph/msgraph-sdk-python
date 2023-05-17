@@ -56,7 +56,7 @@ class OfferShiftRequestItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[OfferShiftRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[offer_shift_request.OfferShiftRequest]:
         """
-        Get offerShiftRequests from groups
+        Retrieve the properties and relationships of an offerShiftRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[offer_shift_request.OfferShiftRequest]
@@ -119,7 +119,7 @@ class OfferShiftRequestItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OfferShiftRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get offerShiftRequests from groups
+        Retrieve the properties and relationships of an offerShiftRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class OfferShiftRequestItemRequestBuilder():
     @dataclass
     class OfferShiftRequestItemRequestBuilderGetQueryParameters():
         """
-        Get offerShiftRequests from groups
+        Retrieve the properties and relationships of an offerShiftRequest object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

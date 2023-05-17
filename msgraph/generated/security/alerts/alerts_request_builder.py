@@ -54,7 +54,7 @@ class AlertsRequestBuilder():
     
     async def get(self,request_configuration: Optional[AlertsRequestBuilderGetRequestConfiguration] = None) -> Optional[alert_collection_response.AlertCollectionResponse]:
         """
-        Get alerts from security
+        Retrieve a list of alert objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[alert_collection_response.AlertCollectionResponse]
@@ -101,7 +101,7 @@ class AlertsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AlertsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get alerts from security
+        Retrieve a list of alert objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class AlertsRequestBuilder():
     @dataclass
     class AlertsRequestBuilderGetQueryParameters():
         """
-        Get alerts from security
+        Retrieve a list of alert objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

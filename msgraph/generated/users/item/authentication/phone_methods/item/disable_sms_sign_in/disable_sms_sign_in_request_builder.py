@@ -36,7 +36,7 @@ class DisableSmsSignInRequestBuilder():
     
     async def post(self,request_configuration: Optional[DisableSmsSignInRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action disableSmsSignIn
+        Disable SMS sign-in for an existing `mobile` phone number registered to a user. The number will no longer be available for SMS sign-in, which can prevent your user from signing in.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class DisableSmsSignInRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[DisableSmsSignInRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action disableSmsSignIn
+        Disable SMS sign-in for an existing `mobile` phone number registered to a user. The number will no longer be available for SMS sign-in, which can prevent your user from signing in.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

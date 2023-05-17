@@ -57,7 +57,7 @@ class CallRecordItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[CallRecordItemRequestBuilderGetRequestConfiguration] = None) -> Optional[call_record.CallRecord]:
         """
-        Get callRecords from communications
+        Retrieve the properties and relationships of a callRecord object. There are two ways to get the **id** of a **callRecord**:
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[call_record.CallRecord]
@@ -120,7 +120,7 @@ class CallRecordItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CallRecordItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get callRecords from communications
+        Retrieve the properties and relationships of a callRecord object. There are two ways to get the **id** of a **callRecord**:
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class CallRecordItemRequestBuilder():
     @dataclass
     class CallRecordItemRequestBuilderGetQueryParameters():
         """
-        Get callRecords from communications
+        Retrieve the properties and relationships of a callRecord object. There are two ways to get the **id** of a **callRecord**:
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

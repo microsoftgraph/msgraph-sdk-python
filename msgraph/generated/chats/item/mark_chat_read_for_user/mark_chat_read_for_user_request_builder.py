@@ -37,7 +37,7 @@ class MarkChatReadForUserRequestBuilder():
     
     async def post(self,body: Optional[mark_chat_read_for_user_post_request_body.MarkChatReadForUserPostRequestBody] = None, request_configuration: Optional[MarkChatReadForUserRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action markChatReadForUser
+        Mark a chat as read for a user.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class MarkChatReadForUserRequestBuilder():
     
     def to_post_request_information(self,body: Optional[mark_chat_read_for_user_post_request_body.MarkChatReadForUserPostRequestBody] = None, request_configuration: Optional[MarkChatReadForUserRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action markChatReadForUser
+        Mark a chat as read for a user.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

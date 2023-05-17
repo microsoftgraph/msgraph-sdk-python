@@ -38,7 +38,7 @@ class TeamsTabItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[TeamsTabItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property tabs for chats
+        Remove (unpin) a tab from the specified chat. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class TeamsTabItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[TeamsTabItemRequestBuilderGetRequestConfiguration] = None) -> Optional[teams_tab.TeamsTab]:
         """
-        A collection of all the tabs in the chat. Nullable.
+        Retrieve the properties and relationships of the specified tab in a chat. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[teams_tab.TeamsTab]
@@ -79,7 +79,7 @@ class TeamsTabItemRequestBuilder():
     
     async def patch(self,body: Optional[teams_tab.TeamsTab] = None, request_configuration: Optional[TeamsTabItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[teams_tab.TeamsTab]:
         """
-        Update the navigation property tabs in chats
+        Update the properties of the specified tab in a chat. This can be used to configure the content of the tab.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class TeamsTabItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[TeamsTabItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property tabs for chats
+        Remove (unpin) a tab from the specified chat. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class TeamsTabItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TeamsTabItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of all the tabs in the chat. Nullable.
+        Retrieve the properties and relationships of the specified tab in a chat. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class TeamsTabItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[teams_tab.TeamsTab] = None, request_configuration: Optional[TeamsTabItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property tabs in chats
+        Update the properties of the specified tab in a chat. This can be used to configure the content of the tab.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class TeamsTabItemRequestBuilder():
     @dataclass
     class TeamsTabItemRequestBuilderGetQueryParameters():
         """
-        A collection of all the tabs in the chat. Nullable.
+        Retrieve the properties and relationships of the specified tab in a chat. 
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

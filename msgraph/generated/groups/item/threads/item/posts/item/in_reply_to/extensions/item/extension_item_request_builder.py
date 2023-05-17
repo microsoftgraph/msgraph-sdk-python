@@ -56,7 +56,7 @@ class ExtensionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ExtensionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[extension.Extension]:
         """
-        The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
+        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[extension.Extension]
@@ -78,7 +78,7 @@ class ExtensionItemRequestBuilder():
     
     async def patch(self,body: Optional[extension.Extension] = None, request_configuration: Optional[ExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[extension.Extension]:
         """
-        Update the navigation property extensions in groups
+        Update an open extension (openTypeExtension object) with the properties in the request body: The data in an extension can be primitive types, or arrays of primitive types. See the table in the Permissions section for the list of resources that support open extensions.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class ExtensionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ExtensionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
+        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class ExtensionItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[extension.Extension] = None, request_configuration: Optional[ExtensionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property extensions in groups
+        Update an open extension (openTypeExtension object) with the properties in the request body: The data in an extension can be primitive types, or arrays of primitive types. See the table in the Permissions section for the list of resources that support open extensions.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class ExtensionItemRequestBuilder():
     @dataclass
     class ExtensionItemRequestBuilderGetQueryParameters():
         """
-        The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
+        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

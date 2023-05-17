@@ -64,7 +64,7 @@ class DeletedItemsRequestBuilder():
     
     async def get(self,request_configuration: Optional[DeletedItemsRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]:
         """
-        Recently deleted items. Read-only. Nullable.
+        Retrieve the properties of a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[directory_object_collection_response.DirectoryObjectCollectionResponse]
@@ -111,7 +111,7 @@ class DeletedItemsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DeletedItemsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Recently deleted items. Read-only. Nullable.
+        Retrieve the properties of a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -250,7 +250,7 @@ class DeletedItemsRequestBuilder():
     @dataclass
     class DeletedItemsRequestBuilderGetQueryParameters():
         """
-        Recently deleted items. Read-only. Nullable.
+        Retrieve the properties of a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

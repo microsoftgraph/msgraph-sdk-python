@@ -56,7 +56,7 @@ class RiskyServicePrincipalsRequestBuilder():
     
     async def get(self,request_configuration: Optional[RiskyServicePrincipalsRequestBuilderGetRequestConfiguration] = None) -> Optional[risky_service_principal_collection_response.RiskyServicePrincipalCollectionResponse]:
         """
-        Azure AD service principals that are at risk.
+        Retrieve the properties and relationships of riskyServicePrincipal objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[risky_service_principal_collection_response.RiskyServicePrincipalCollectionResponse]
@@ -103,7 +103,7 @@ class RiskyServicePrincipalsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RiskyServicePrincipalsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Azure AD service principals that are at risk.
+        Retrieve the properties and relationships of riskyServicePrincipal objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -170,7 +170,7 @@ class RiskyServicePrincipalsRequestBuilder():
     @dataclass
     class RiskyServicePrincipalsRequestBuilderGetQueryParameters():
         """
-        Azure AD service principals that are at risk.
+        Retrieve the properties and relationships of riskyServicePrincipal objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

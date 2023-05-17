@@ -37,7 +37,7 @@ class ForwardRequestBuilder():
     
     async def post(self,body: Optional[forward_post_request_body.ForwardPostRequestBody] = None, request_configuration: Optional[ForwardRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action forward
+        Forward a post to a recipient. You can specify both the parent conversation and thread in the request, or, you can specify just the parent thread without the parent conversation. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class ForwardRequestBuilder():
     
     def to_post_request_information(self,body: Optional[forward_post_request_body.ForwardPostRequestBody] = None, request_configuration: Optional[ForwardRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action forward
+        Forward a post to a recipient. You can specify both the parent conversation and thread in the request, or, you can specify just the parent thread without the parent conversation. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

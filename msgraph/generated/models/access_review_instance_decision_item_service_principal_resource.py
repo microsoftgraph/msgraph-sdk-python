@@ -14,13 +14,13 @@ class AccessReviewInstanceDecisionItemServicePrincipalResource(access_review_ins
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.accessReviewInstanceDecisionItemServicePrincipalResource"
-        # The appId property
+        # The globally unique identifier of the application to which access has been granted.
         self._app_id: Optional[str] = None
     
     @property
     def app_id(self,) -> Optional[str]:
         """
-        Gets the appId property value. The appId property
+        Gets the appId property value. The globally unique identifier of the application to which access has been granted.
         Returns: Optional[str]
         """
         return self._app_id
@@ -28,7 +28,7 @@ class AccessReviewInstanceDecisionItemServicePrincipalResource(access_review_ins
     @app_id.setter
     def app_id(self,value: Optional[str] = None) -> None:
         """
-        Sets the appId property value. The appId property
+        Sets the appId property value. The globally unique identifier of the application to which access has been granted.
         Args:
             value: Value to set for the app_id property.
         """

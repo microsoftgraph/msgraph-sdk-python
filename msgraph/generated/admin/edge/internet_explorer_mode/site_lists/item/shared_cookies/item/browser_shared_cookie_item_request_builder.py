@@ -37,7 +37,7 @@ class BrowserSharedCookieItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[BrowserSharedCookieItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property sharedCookies for admin
+        Delete a browserSharedCookie from a browserSiteList.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class BrowserSharedCookieItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[BrowserSharedCookieItemRequestBuilderGetRequestConfiguration] = None) -> Optional[browser_shared_cookie.BrowserSharedCookie]:
         """
-        A collection of shared cookies defined for the site list.
+        Get a session cookie that can be shared between a Microsoft Edge process and an Internet Explorer process, while using Internet Explorer mode.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[browser_shared_cookie.BrowserSharedCookie]
@@ -78,7 +78,7 @@ class BrowserSharedCookieItemRequestBuilder():
     
     async def patch(self,body: Optional[browser_shared_cookie.BrowserSharedCookie] = None, request_configuration: Optional[BrowserSharedCookieItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[browser_shared_cookie.BrowserSharedCookie]:
         """
-        Update the navigation property sharedCookies in admin
+        Update the properties of a browserSharedCookie object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class BrowserSharedCookieItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[BrowserSharedCookieItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property sharedCookies for admin
+        Delete a browserSharedCookie from a browserSiteList.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class BrowserSharedCookieItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[BrowserSharedCookieItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of shared cookies defined for the site list.
+        Get a session cookie that can be shared between a Microsoft Edge process and an Internet Explorer process, while using Internet Explorer mode.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class BrowserSharedCookieItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[browser_shared_cookie.BrowserSharedCookie] = None, request_configuration: Optional[BrowserSharedCookieItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property sharedCookies in admin
+        Update the properties of a browserSharedCookie object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class BrowserSharedCookieItemRequestBuilder():
     @dataclass
     class BrowserSharedCookieItemRequestBuilderGetQueryParameters():
         """
-        A collection of shared cookies defined for the site list.
+        Get a session cookie that can be shared between a Microsoft Edge process and an Internet Explorer process, while using Internet Explorer mode.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

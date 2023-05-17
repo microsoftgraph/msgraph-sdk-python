@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .attendance_reports import attendance_reports_request_builder
     from .attendee_report import attendee_report_request_builder
+    from .get_virtual_appointment_join_web_url import get_virtual_appointment_join_web_url_request_builder
 
 class OnlineMeetingItemRequestBuilder():
     """
@@ -175,6 +176,15 @@ class OnlineMeetingItemRequestBuilder():
         from .attendee_report import attendee_report_request_builder
 
         return attendee_report_request_builder.AttendeeReportRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_virtual_appointment_join_web_url(self) -> get_virtual_appointment_join_web_url_request_builder.GetVirtualAppointmentJoinWebUrlRequestBuilder:
+        """
+        Provides operations to call the getVirtualAppointmentJoinWebUrl method.
+        """
+        from .get_virtual_appointment_join_web_url import get_virtual_appointment_join_web_url_request_builder
+
+        return get_virtual_appointment_join_web_url_request_builder.GetVirtualAppointmentJoinWebUrlRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class OnlineMeetingItemRequestBuilderDeleteRequestConfiguration():

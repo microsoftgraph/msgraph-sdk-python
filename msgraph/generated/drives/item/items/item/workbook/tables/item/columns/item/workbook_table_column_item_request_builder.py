@@ -42,7 +42,7 @@ class WorkbookTableColumnItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[WorkbookTableColumnItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property columns for drives
+        Deletes the column from the table.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -61,7 +61,7 @@ class WorkbookTableColumnItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[WorkbookTableColumnItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_table_column.WorkbookTableColumn]:
         """
-        Represents a collection of all the columns in the table. Read-only.
+        Retrieve the properties and relationships of tablecolumn object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_table_column.WorkbookTableColumn]
@@ -83,7 +83,7 @@ class WorkbookTableColumnItemRequestBuilder():
     
     async def patch(self,body: Optional[workbook_table_column.WorkbookTableColumn] = None, request_configuration: Optional[WorkbookTableColumnItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_table_column.WorkbookTableColumn]:
         """
-        Update the navigation property columns in drives
+        Update the properties of tablecolumn object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -108,7 +108,7 @@ class WorkbookTableColumnItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookTableColumnItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property columns for drives
+        Deletes the column from the table.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -124,7 +124,7 @@ class WorkbookTableColumnItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[WorkbookTableColumnItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents a collection of all the columns in the table. Read-only.
+        Retrieve the properties and relationships of tablecolumn object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -142,7 +142,7 @@ class WorkbookTableColumnItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[workbook_table_column.WorkbookTableColumn] = None, request_configuration: Optional[WorkbookTableColumnItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property columns in drives
+        Update the properties of tablecolumn object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -221,7 +221,7 @@ class WorkbookTableColumnItemRequestBuilder():
     @dataclass
     class WorkbookTableColumnItemRequestBuilderGetQueryParameters():
         """
-        Represents a collection of all the columns in the table. Read-only.
+        Retrieve the properties and relationships of tablecolumn object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

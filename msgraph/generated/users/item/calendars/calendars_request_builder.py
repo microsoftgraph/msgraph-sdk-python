@@ -54,7 +54,7 @@ class CalendarsRequestBuilder():
     
     async def get(self,request_configuration: Optional[CalendarsRequestBuilderGetRequestConfiguration] = None) -> Optional[calendar_collection_response.CalendarCollectionResponse]:
         """
-        The user's calendars. Read-only. Nullable.
+        Get all the user's calendars (`/calendars` navigation property), get the calendars from the default calendar group or from a specific calendar group. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[calendar_collection_response.CalendarCollectionResponse]
@@ -76,7 +76,7 @@ class CalendarsRequestBuilder():
     
     async def post(self,body: Optional[calendar.Calendar] = None, request_configuration: Optional[CalendarsRequestBuilderPostRequestConfiguration] = None) -> Optional[calendar.Calendar]:
         """
-        Create new navigation property to calendars for users
+        Create a new calendar for a user.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class CalendarsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CalendarsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The user's calendars. Read-only. Nullable.
+        Get all the user's calendars (`/calendars` navigation property), get the calendars from the default calendar group or from a specific calendar group. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class CalendarsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[calendar.Calendar] = None, request_configuration: Optional[CalendarsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to calendars for users
+        Create a new calendar for a user.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class CalendarsRequestBuilder():
     @dataclass
     class CalendarsRequestBuilderGetQueryParameters():
         """
-        The user's calendars. Read-only. Nullable.
+        Get all the user's calendars (`/calendars` navigation property), get the calendars from the default calendar group or from a specific calendar group. 
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

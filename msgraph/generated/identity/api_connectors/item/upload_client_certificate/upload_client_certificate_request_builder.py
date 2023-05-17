@@ -38,7 +38,7 @@ class UploadClientCertificateRequestBuilder():
     
     async def post(self,body: Optional[upload_client_certificate_post_request_body.UploadClientCertificatePostRequestBody] = None, request_configuration: Optional[UploadClientCertificateRequestBuilderPostRequestConfiguration] = None) -> Optional[identity_api_connector.IdentityApiConnector]:
         """
-        Invoke action uploadClientCertificate
+        Upload a PKCS 12 format key (.pfx) to an API connector's authentication configuration. The input is a base-64 encoded value of the PKCS 12 certificate contents. This method returns an apiConnector.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class UploadClientCertificateRequestBuilder():
     
     def to_post_request_information(self,body: Optional[upload_client_certificate_post_request_body.UploadClientCertificatePostRequestBody] = None, request_configuration: Optional[UploadClientCertificateRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action uploadClientCertificate
+        Upload a PKCS 12 format key (.pfx) to an API connector's authentication configuration. The input is a base-64 encoded value of the PKCS 12 certificate contents. This method returns an apiConnector.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

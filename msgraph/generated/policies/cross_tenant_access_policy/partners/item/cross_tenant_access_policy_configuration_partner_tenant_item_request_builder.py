@@ -38,7 +38,7 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property partners for policies
+        Delete a partner-specific configuration in a cross-tenant access policy. If a configuration includes a user synchronization policy, you must first delete the user synchronization policy before you can delete the partner-specific configuration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilderGetRequestConfiguration] = None) -> Optional[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner]:
         """
-        Defines partner-specific configurations for external Azure Active Directory organizations.
+        Read the properties and relationships of a partner-specific configuration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner]
@@ -79,7 +79,7 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder():
     
     async def patch(self,body: Optional[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner] = None, request_configuration: Optional[CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner]:
         """
-        Update the navigation property partners in policies
+        Update the properties of a partner-specific configuration.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property partners for policies
+        Delete a partner-specific configuration in a cross-tenant access policy. If a configuration includes a user synchronization policy, you must first delete the user synchronization policy before you can delete the partner-specific configuration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Defines partner-specific configurations for external Azure Active Directory organizations.
+        Read the properties and relationships of a partner-specific configuration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[cross_tenant_access_policy_configuration_partner.CrossTenantAccessPolicyConfigurationPartner] = None, request_configuration: Optional[CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property partners in policies
+        Update the properties of a partner-specific configuration.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilder():
     @dataclass
     class CrossTenantAccessPolicyConfigurationPartnerTenantItemRequestBuilderGetQueryParameters():
         """
-        Defines partner-specific configurations for external Azure Active Directory organizations.
+        Read the properties and relationships of a partner-specific configuration.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

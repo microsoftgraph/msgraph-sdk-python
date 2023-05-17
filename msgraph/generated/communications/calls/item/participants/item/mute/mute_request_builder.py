@@ -38,7 +38,7 @@ class MuteRequestBuilder():
     
     async def post(self,body: Optional[mute_post_request_body.MutePostRequestBody] = None, request_configuration: Optional[MuteRequestBuilderPostRequestConfiguration] = None) -> Optional[mute_participant_operation.MuteParticipantOperation]:
         """
-        Invoke action mute
+        Mute a specific participant in the call. This is a server mute, meaning that the server will drop all audio packets for this participant, even if the participant continues to stream audio. For more information about how to handle mute operations, see muteParticipantOperation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class MuteRequestBuilder():
     
     def to_post_request_information(self,body: Optional[mute_post_request_body.MutePostRequestBody] = None, request_configuration: Optional[MuteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action mute
+        Mute a specific participant in the call. This is a server mute, meaning that the server will drop all audio packets for this participant, even if the participant continues to stream audio. For more information about how to handle mute operations, see muteParticipantOperation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

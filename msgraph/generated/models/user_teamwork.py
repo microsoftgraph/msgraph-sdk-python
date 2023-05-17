@@ -10,7 +10,7 @@ from . import entity
 class UserTeamwork(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new UserTeamwork and sets the default values.
+        Instantiates a new userTeamwork and sets the default values.
         """
         super().__init__()
         # The list of associatedTeamInfo objects that a user is associated with.

@@ -78,7 +78,7 @@ class AssignmentSettingsRequestBuilder():
     
     async def patch(self,body: Optional[education_assignment_settings.EducationAssignmentSettings] = None, request_configuration: Optional[AssignmentSettingsRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_assignment_settings.EducationAssignmentSettings]:
         """
-        Update the navigation property assignmentSettings in education
+        Update the properties of an educationAssignmentSettings object. Only Teachers can update these settings.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -137,7 +137,7 @@ class AssignmentSettingsRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[education_assignment_settings.EducationAssignmentSettings] = None, request_configuration: Optional[AssignmentSettingsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property assignmentSettings in education
+        Update the properties of an educationAssignmentSettings object. Only Teachers can update these settings.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

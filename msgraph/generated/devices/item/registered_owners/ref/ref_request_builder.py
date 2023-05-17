@@ -59,7 +59,7 @@ class RefRequestBuilder():
     
     async def post(self,body: Optional[reference_create.ReferenceCreate] = None, request_configuration: Optional[RefRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Create new navigation property ref to registeredOwners for devices
+        Add a user as a registered owner of the device.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -99,7 +99,7 @@ class RefRequestBuilder():
     
     def to_post_request_information(self,body: Optional[reference_create.ReferenceCreate] = None, request_configuration: Optional[RefRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property ref to registeredOwners for devices
+        Add a user as a registered owner of the device.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

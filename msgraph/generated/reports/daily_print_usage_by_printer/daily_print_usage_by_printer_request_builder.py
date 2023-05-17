@@ -54,7 +54,7 @@ class DailyPrintUsageByPrinterRequestBuilder():
     
     async def get(self,request_configuration: Optional[DailyPrintUsageByPrinterRequestBuilderGetRequestConfiguration] = None) -> Optional[print_usage_by_printer_collection_response.PrintUsageByPrinterCollectionResponse]:
         """
-        Get dailyPrintUsageByPrinter from reports
+        Retrieve a list of daily print usage summaries, grouped by printer.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_usage_by_printer_collection_response.PrintUsageByPrinterCollectionResponse]
@@ -101,7 +101,7 @@ class DailyPrintUsageByPrinterRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DailyPrintUsageByPrinterRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get dailyPrintUsageByPrinter from reports
+        Retrieve a list of daily print usage summaries, grouped by printer.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class DailyPrintUsageByPrinterRequestBuilder():
     @dataclass
     class DailyPrintUsageByPrinterRequestBuilderGetQueryParameters():
         """
-        Get dailyPrintUsageByPrinter from reports
+        Retrieve a list of daily print usage summaries, grouped by printer.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

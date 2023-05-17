@@ -37,7 +37,7 @@ class TimeOffReasonItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[TimeOffReasonItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property timeOffReasons for me
+        Mark a timeOffReason as inactive by setting the **isActive** property. Every team must include at least one timeoff reason. This method does not remove the specified timeOffReason instance. timeOffItem instances that have been assigned this reason remain assigned to this reason.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class TimeOffReasonItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[TimeOffReasonItemRequestBuilderGetRequestConfiguration] = None) -> Optional[time_off_reason.TimeOffReason]:
         """
-        The set of reasons for a time off in the schedule.
+        Retrieve the properties and relationships of a timeOffReason object by ID.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[time_off_reason.TimeOffReason]
@@ -78,7 +78,7 @@ class TimeOffReasonItemRequestBuilder():
     
     async def patch(self,body: Optional[time_off_reason.TimeOffReason] = None, request_configuration: Optional[TimeOffReasonItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[time_off_reason.TimeOffReason]:
         """
-        Update the navigation property timeOffReasons in me
+        Replace an existing timeOffReason. If the specified timeOffReason doesn't exist, this method returns `404 Not found`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class TimeOffReasonItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[TimeOffReasonItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property timeOffReasons for me
+        Mark a timeOffReason as inactive by setting the **isActive** property. Every team must include at least one timeoff reason. This method does not remove the specified timeOffReason instance. timeOffItem instances that have been assigned this reason remain assigned to this reason.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class TimeOffReasonItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TimeOffReasonItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The set of reasons for a time off in the schedule.
+        Retrieve the properties and relationships of a timeOffReason object by ID.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class TimeOffReasonItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[time_off_reason.TimeOffReason] = None, request_configuration: Optional[TimeOffReasonItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property timeOffReasons in me
+        Replace an existing timeOffReason. If the specified timeOffReason doesn't exist, this method returns `404 Not found`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class TimeOffReasonItemRequestBuilder():
     @dataclass
     class TimeOffReasonItemRequestBuilderGetQueryParameters():
         """
-        The set of reasons for a time off in the schedule.
+        Retrieve the properties and relationships of a timeOffReason object by ID.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

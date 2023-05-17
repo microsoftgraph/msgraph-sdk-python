@@ -37,7 +37,7 @@ class ShiftItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ShiftItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property shifts for me
+        Delete a shift from the schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class ShiftItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ShiftItemRequestBuilderGetRequestConfiguration] = None) -> Optional[shift.Shift]:
         """
-        The shifts in the schedule.
+        Retrieve the properties and relationships of a shift object by ID.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[shift.Shift]
@@ -78,7 +78,7 @@ class ShiftItemRequestBuilder():
     
     async def patch(self,body: Optional[shift.Shift] = None, request_configuration: Optional[ShiftItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[shift.Shift]:
         """
-        Update the navigation property shifts in me
+        Replace an existing shift. If the specified shift doesn't exist, this method returns `404 Not found`. The duration of a shift cannot be less than 1 minute or longer than 24 hours.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class ShiftItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ShiftItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property shifts for me
+        Delete a shift from the schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ShiftItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ShiftItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The shifts in the schedule.
+        Retrieve the properties and relationships of a shift object by ID.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class ShiftItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[shift.Shift] = None, request_configuration: Optional[ShiftItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property shifts in me
+        Replace an existing shift. If the specified shift doesn't exist, this method returns `404 Not found`. The duration of a shift cannot be less than 1 minute or longer than 24 hours.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class ShiftItemRequestBuilder():
     @dataclass
     class ShiftItemRequestBuilderGetQueryParameters():
         """
-        The shifts in the schedule.
+        Retrieve the properties and relationships of a shift object by ID.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

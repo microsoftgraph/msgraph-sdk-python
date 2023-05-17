@@ -40,7 +40,7 @@ class ParticipantItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ParticipantItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property participants for communications
+        Delete a specific participant in a call. In some situations, it is appropriate for an application to remove a participant from an active call. This action can be done before or after the participant answers the call. When an active caller is removed, they are immediately dropped from the call with no pre- or post-removal notification. When an invited participant is removed, any outstanding add participant request is canceled. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -59,7 +59,7 @@ class ParticipantItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ParticipantItemRequestBuilderGetRequestConfiguration] = None) -> Optional[participant.Participant]:
         """
-        Get participants from communications
+        Retrieve the properties and relationships of a **participant** object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[participant.Participant]
@@ -106,7 +106,7 @@ class ParticipantItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ParticipantItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property participants for communications
+        Delete a specific participant in a call. In some situations, it is appropriate for an application to remove a participant from an active call. This action can be done before or after the participant answers the call. When an active caller is removed, they are immediately dropped from the call with no pre- or post-removal notification. When an invited participant is removed, any outstanding add participant request is canceled. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -122,7 +122,7 @@ class ParticipantItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ParticipantItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get participants from communications
+        Retrieve the properties and relationships of a **participant** object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -201,7 +201,7 @@ class ParticipantItemRequestBuilder():
     @dataclass
     class ParticipantItemRequestBuilderGetQueryParameters():
         """
-        Get participants from communications
+        Retrieve the properties and relationships of a **participant** object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

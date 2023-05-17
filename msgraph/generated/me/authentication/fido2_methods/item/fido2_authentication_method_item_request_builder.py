@@ -37,7 +37,7 @@ class Fido2AuthenticationMethodItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[Fido2AuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property fido2Methods for me
+        Deletes a user's FIDO2 Security Key Authentication Method object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class Fido2AuthenticationMethodItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[Fido2AuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[fido2_authentication_method.Fido2AuthenticationMethod]:
         """
-        Represents the FIDO2 security keys registered to a user for authentication.
+        Retrieve a user's single FIDO2 Security Key Authentication Method object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[fido2_authentication_method.Fido2AuthenticationMethod]
@@ -78,7 +78,7 @@ class Fido2AuthenticationMethodItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[Fido2AuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property fido2Methods for me
+        Deletes a user's FIDO2 Security Key Authentication Method object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -94,7 +94,7 @@ class Fido2AuthenticationMethodItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[Fido2AuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents the FIDO2 security keys registered to a user for authentication.
+        Retrieve a user's single FIDO2 Security Key Authentication Method object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -125,7 +125,7 @@ class Fido2AuthenticationMethodItemRequestBuilder():
     @dataclass
     class Fido2AuthenticationMethodItemRequestBuilderGetQueryParameters():
         """
-        Represents the FIDO2 security keys registered to a user for authentication.
+        Retrieve a user's single FIDO2 Security Key Authentication Method object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

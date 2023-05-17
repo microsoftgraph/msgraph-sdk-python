@@ -37,7 +37,7 @@ class ConditionalAccessPolicyItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property policies for identity
+        Delete a conditionalAccessPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class ConditionalAccessPolicyItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[conditional_access_policy.ConditionalAccessPolicy]:
         """
-        Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
+        Retrieve the properties and relationships of a conditionalAccessPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conditional_access_policy.ConditionalAccessPolicy]
@@ -78,7 +78,7 @@ class ConditionalAccessPolicyItemRequestBuilder():
     
     async def patch(self,body: Optional[conditional_access_policy.ConditionalAccessPolicy] = None, request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[conditional_access_policy.ConditionalAccessPolicy]:
         """
-        Update the navigation property policies in identity
+        Update the properties of a conditionalAccessPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class ConditionalAccessPolicyItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property policies for identity
+        Delete a conditionalAccessPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ConditionalAccessPolicyItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
+        Retrieve the properties and relationships of a conditionalAccessPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class ConditionalAccessPolicyItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[conditional_access_policy.ConditionalAccessPolicy] = None, request_configuration: Optional[ConditionalAccessPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property policies in identity
+        Update the properties of a conditionalAccessPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class ConditionalAccessPolicyItemRequestBuilder():
     @dataclass
     class ConditionalAccessPolicyItemRequestBuilderGetQueryParameters():
         """
-        Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
+        Retrieve the properties and relationships of a conditionalAccessPolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

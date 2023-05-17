@@ -54,7 +54,7 @@ class CertificateBasedAuthConfigurationRequestBuilder():
     
     async def get(self,request_configuration: Optional[CertificateBasedAuthConfigurationRequestBuilderGetRequestConfiguration] = None) -> Optional[certificate_based_auth_configuration_collection_response.CertificateBasedAuthConfigurationCollectionResponse]:
         """
-        Navigation property to manage certificate-based authentication configuration. Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
+        Get a list of certificateBasedAuthConfiguration objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[certificate_based_auth_configuration_collection_response.CertificateBasedAuthConfigurationCollectionResponse]
@@ -76,7 +76,7 @@ class CertificateBasedAuthConfigurationRequestBuilder():
     
     async def post(self,body: Optional[certificate_based_auth_configuration.CertificateBasedAuthConfiguration] = None, request_configuration: Optional[CertificateBasedAuthConfigurationRequestBuilderPostRequestConfiguration] = None) -> Optional[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]:
         """
-        Create new navigation property to certificateBasedAuthConfiguration for organization
+        Create a new certificateBasedAuthConfiguration object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class CertificateBasedAuthConfigurationRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CertificateBasedAuthConfigurationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Navigation property to manage certificate-based authentication configuration. Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
+        Get a list of certificateBasedAuthConfiguration objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class CertificateBasedAuthConfigurationRequestBuilder():
     
     def to_post_request_information(self,body: Optional[certificate_based_auth_configuration.CertificateBasedAuthConfiguration] = None, request_configuration: Optional[CertificateBasedAuthConfigurationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to certificateBasedAuthConfiguration for organization
+        Create a new certificateBasedAuthConfiguration object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class CertificateBasedAuthConfigurationRequestBuilder():
     @dataclass
     class CertificateBasedAuthConfigurationRequestBuilderGetQueryParameters():
         """
-        Navigation property to manage certificate-based authentication configuration. Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
+        Get a list of certificateBasedAuthConfiguration objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -38,7 +38,7 @@ class RootRequestBuilder():
     
     async def get(self,request_configuration: Optional[RootRequestBuilderGetRequestConfiguration] = None) -> Optional[drive_item.DriveItem]:
         """
-        The root folder of the drive. Read-only.
+        Retrieve the metadata for a driveItem in a drive by file system path or ID.`item-id` is the ID of a driveItem. It may also be the unique ID of a SharePoint list item.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[drive_item.DriveItem]
@@ -60,7 +60,7 @@ class RootRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RootRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The root folder of the drive. Read-only.
+        Retrieve the metadata for a driveItem in a drive by file system path or ID.`item-id` is the ID of a driveItem. It may also be the unique ID of a SharePoint list item.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -88,7 +88,7 @@ class RootRequestBuilder():
     @dataclass
     class RootRequestBuilderGetQueryParameters():
         """
-        The root folder of the drive. Read-only.
+        Retrieve the metadata for a driveItem in a drive by file system path or ID.`item-id` is the ID of a driveItem. It may also be the unique ID of a SharePoint list item.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

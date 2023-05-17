@@ -54,7 +54,7 @@ class NamedLocationsRequestBuilder():
     
     async def get(self,request_configuration: Optional[NamedLocationsRequestBuilderGetRequestConfiguration] = None) -> Optional[named_location_collection_response.NamedLocationCollectionResponse]:
         """
-        Read-only. Nullable. Returns a collection of the specified named locations.
+        Get a list of namedLocation objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[named_location_collection_response.NamedLocationCollectionResponse]
@@ -76,7 +76,7 @@ class NamedLocationsRequestBuilder():
     
     async def post(self,body: Optional[named_location.NamedLocation] = None, request_configuration: Optional[NamedLocationsRequestBuilderPostRequestConfiguration] = None) -> Optional[named_location.NamedLocation]:
         """
-        Create new navigation property to namedLocations for identity
+        Create a new namedLocation object. Named locations can be either ipNamedLocation or countryNamedLocation objects.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class NamedLocationsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[NamedLocationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read-only. Nullable. Returns a collection of the specified named locations.
+        Get a list of namedLocation objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class NamedLocationsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[named_location.NamedLocation] = None, request_configuration: Optional[NamedLocationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to namedLocations for identity
+        Create a new namedLocation object. Named locations can be either ipNamedLocation or countryNamedLocation objects.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class NamedLocationsRequestBuilder():
     @dataclass
     class NamedLocationsRequestBuilderGetQueryParameters():
         """
-        Read-only. Nullable. Returns a collection of the specified named locations.
+        Get a list of namedLocation objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

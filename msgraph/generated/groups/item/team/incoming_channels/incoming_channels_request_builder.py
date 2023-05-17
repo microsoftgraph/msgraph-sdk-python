@@ -54,7 +54,7 @@ class IncomingChannelsRequestBuilder():
     
     async def get(self,request_configuration: Optional[IncomingChannelsRequestBuilderGetRequestConfiguration] = None) -> Optional[channel_collection_response.ChannelCollectionResponse]:
         """
-        List of channels shared with the team.
+        Get the list of incoming channels (channels shared with a team).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[channel_collection_response.ChannelCollectionResponse]
@@ -76,7 +76,7 @@ class IncomingChannelsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[IncomingChannelsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List of channels shared with the team.
+        Get the list of incoming channels (channels shared with a team).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class IncomingChannelsRequestBuilder():
     @dataclass
     class IncomingChannelsRequestBuilderGetQueryParameters():
         """
-        List of channels shared with the team.
+        Get the list of incoming channels (channels shared with a team).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

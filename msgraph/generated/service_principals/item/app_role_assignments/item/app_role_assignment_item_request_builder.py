@@ -37,7 +37,7 @@ class AppRoleAssignmentItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[AppRoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property appRoleAssignments for servicePrincipals
+        Deletes an appRoleAssignment that a service principal has been granted. App roles which are assigned to service principals are also known as application permissions. Deleting an app role assignment for a service principal is equivalent to revoking the app-only permission grant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -103,7 +103,7 @@ class AppRoleAssignmentItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[AppRoleAssignmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property appRoleAssignments for servicePrincipals
+        Deletes an appRoleAssignment that a service principal has been granted. App roles which are assigned to service principals are also known as application permissions. Deleting an app role assignment for a service principal is equivalent to revoking the app-only permission grant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

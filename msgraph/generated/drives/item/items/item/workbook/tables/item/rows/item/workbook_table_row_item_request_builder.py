@@ -38,7 +38,7 @@ class WorkbookTableRowItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[WorkbookTableRowItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property rows for drives
+        Deletes the row from the table.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class WorkbookTableRowItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[WorkbookTableRowItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_table_row.WorkbookTableRow]:
         """
-        Represents a collection of all the rows in the table. Read-only.
+        Retrieve the properties and relationships of tablerow object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_table_row.WorkbookTableRow]
@@ -79,7 +79,7 @@ class WorkbookTableRowItemRequestBuilder():
     
     async def patch(self,body: Optional[workbook_table_row.WorkbookTableRow] = None, request_configuration: Optional[WorkbookTableRowItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_table_row.WorkbookTableRow]:
         """
-        Update the navigation property rows in drives
+        Update the properties of tablerow object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class WorkbookTableRowItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookTableRowItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property rows for drives
+        Deletes the row from the table.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class WorkbookTableRowItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[WorkbookTableRowItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents a collection of all the rows in the table. Read-only.
+        Retrieve the properties and relationships of tablerow object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class WorkbookTableRowItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[workbook_table_row.WorkbookTableRow] = None, request_configuration: Optional[WorkbookTableRowItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property rows in drives
+        Update the properties of tablerow object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class WorkbookTableRowItemRequestBuilder():
     @dataclass
     class WorkbookTableRowItemRequestBuilderGetQueryParameters():
         """
-        Represents a collection of all the rows in the table. Read-only.
+        Retrieve the properties and relationships of tablerow object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

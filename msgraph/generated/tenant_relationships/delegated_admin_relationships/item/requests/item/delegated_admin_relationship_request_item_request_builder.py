@@ -56,7 +56,7 @@ class DelegatedAdminRelationshipRequestItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[DelegatedAdminRelationshipRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]:
         """
-        The requests associated with the delegated admin relationship.
+        Read the properties and relationships of a delegatedAdminRelationshipRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[delegated_admin_relationship_request.DelegatedAdminRelationshipRequest]
@@ -119,7 +119,7 @@ class DelegatedAdminRelationshipRequestItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DelegatedAdminRelationshipRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The requests associated with the delegated admin relationship.
+        Read the properties and relationships of a delegatedAdminRelationshipRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class DelegatedAdminRelationshipRequestItemRequestBuilder():
     @dataclass
     class DelegatedAdminRelationshipRequestItemRequestBuilderGetQueryParameters():
         """
-        The requests associated with the delegated admin relationship.
+        Read the properties and relationships of a delegatedAdminRelationshipRequest object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

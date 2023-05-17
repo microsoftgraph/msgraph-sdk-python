@@ -76,7 +76,7 @@ class MembersRequestBuilder():
     
     async def post(self,body: Optional[identity.Identity] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> Optional[identity.Identity]:
         """
-        Create new navigation property to members for connections
+        Create an identity resource for a new member in an externalGroup.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class MembersRequestBuilder():
     
     def to_post_request_information(self,body: Optional[identity.Identity] = None, request_configuration: Optional[MembersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to members for connections
+        Create an identity resource for a new member in an externalGroup.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

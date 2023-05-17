@@ -37,7 +37,7 @@ class PermissionGrantConditionSetItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property includes for policies
+        Deletes a permissionGrantConditionSet from the **includes** collection of a permissionGrantPolicy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -103,7 +103,7 @@ class PermissionGrantConditionSetItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[PermissionGrantConditionSetItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property includes for policies
+        Deletes a permissionGrantConditionSet from the **includes** collection of a permissionGrantPolicy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -37,7 +37,7 @@ class SetDataRequestBuilder():
     
     async def post(self,body: Optional[set_data_post_request_body.SetDataPostRequestBody] = None, request_configuration: Optional[SetDataRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action setData
+        Resets the source data for the chart.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class SetDataRequestBuilder():
     
     def to_post_request_information(self,body: Optional[set_data_post_request_body.SetDataPostRequestBody] = None, request_configuration: Optional[SetDataRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action setData
+        Resets the source data for the chart.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

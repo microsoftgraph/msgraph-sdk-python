@@ -55,7 +55,7 @@ class DeletedTeamsRequestBuilder():
     
     async def get(self,request_configuration: Optional[DeletedTeamsRequestBuilderGetRequestConfiguration] = None) -> Optional[deleted_team_collection_response.DeletedTeamCollectionResponse]:
         """
-        The deleted team.
+        Get a list of the deletedTeam objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[deleted_team_collection_response.DeletedTeamCollectionResponse]
@@ -102,7 +102,7 @@ class DeletedTeamsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DeletedTeamsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The deleted team.
+        Get a list of the deletedTeam objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -160,7 +160,7 @@ class DeletedTeamsRequestBuilder():
     @dataclass
     class DeletedTeamsRequestBuilderGetQueryParameters():
         """
-        The deleted team.
+        Get a list of the deletedTeam objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

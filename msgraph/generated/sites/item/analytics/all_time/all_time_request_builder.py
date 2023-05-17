@@ -37,7 +37,7 @@ class AllTimeRequestBuilder():
     
     async def get(self,request_configuration: Optional[AllTimeRequestBuilderGetRequestConfiguration] = None) -> Optional[item_activity_stat.ItemActivityStat]:
         """
-        Get allTime from sites
+        Get [itemAnalytics][] about the views that took place under this resource.The **itemAnalytics** resource is a convenient way to get activity stats for `allTime` and the `lastSevenDays`.For a custom time range or interval, use the [getActivitiesByInterval][] API.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[item_activity_stat.ItemActivityStat]
@@ -59,7 +59,7 @@ class AllTimeRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AllTimeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get allTime from sites
+        Get [itemAnalytics][] about the views that took place under this resource.The **itemAnalytics** resource is a convenient way to get activity stats for `allTime` and the `lastSevenDays`.For a custom time range or interval, use the [getActivitiesByInterval][] API.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -78,7 +78,7 @@ class AllTimeRequestBuilder():
     @dataclass
     class AllTimeRequestBuilderGetQueryParameters():
         """
-        Get allTime from sites
+        Get [itemAnalytics][] about the views that took place under this resource.The **itemAnalytics** resource is a convenient way to get activity stats for `allTime` and the `lastSevenDays`.For a custom time range or interval, use the [getActivitiesByInterval][] API.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

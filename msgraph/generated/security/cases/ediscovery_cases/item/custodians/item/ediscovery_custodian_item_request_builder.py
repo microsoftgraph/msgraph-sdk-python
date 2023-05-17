@@ -65,7 +65,7 @@ class EdiscoveryCustodianItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[EdiscoveryCustodianItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_custodian.EdiscoveryCustodian]:
         """
-        Returns a list of case ediscoveryCustodian objects for this case.
+        Read the properties and relationships of an ediscoveryCustodian object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ediscovery_custodian.EdiscoveryCustodian]
@@ -128,7 +128,7 @@ class EdiscoveryCustodianItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[EdiscoveryCustodianItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Returns a list of case ediscoveryCustodian objects for this case.
+        Read the properties and relationships of an ediscoveryCustodian object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -261,7 +261,7 @@ class EdiscoveryCustodianItemRequestBuilder():
     @dataclass
     class EdiscoveryCustodianItemRequestBuilderGetQueryParameters():
         """
-        Returns a list of case ediscoveryCustodian objects for this case.
+        Read the properties and relationships of an ediscoveryCustodian object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

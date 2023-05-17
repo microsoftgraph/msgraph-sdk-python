@@ -37,7 +37,7 @@ class RefRequestBuilder():
     
     async def delete(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete ref of navigation property manager for me
+        Remove a user's manager.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class RefRequestBuilder():
     
     async def get(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None) -> Optional[str]:
         """
-        The user or contact that is this user's manager. Read-only. (HTTP Methods: GET, PUT, DELETE.). Supports $expand.
+        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[str]
@@ -76,7 +76,7 @@ class RefRequestBuilder():
     
     async def put(self,body: Optional[reference_update.ReferenceUpdate] = None, request_configuration: Optional[RefRequestBuilderPutRequestConfiguration] = None) -> None:
         """
-        Update the ref of navigation property manager in me
+        Assign a user's manager.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -98,7 +98,7 @@ class RefRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete ref of navigation property manager for me
+        Remove a user's manager.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class RefRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RefRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The user or contact that is this user's manager. Read-only. (HTTP Methods: GET, PUT, DELETE.). Supports $expand.
+        Returns the user or organizational contact assigned as the user's manager. Optionally, you can expand the manager's chain up to the root node.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -131,7 +131,7 @@ class RefRequestBuilder():
     
     def to_put_request_information(self,body: Optional[reference_update.ReferenceUpdate] = None, request_configuration: Optional[RefRequestBuilderPutRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the ref of navigation property manager in me
+        Assign a user's manager.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

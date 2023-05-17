@@ -54,7 +54,7 @@ class ThreatAssessmentRequestsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[threat_assessment_request_collection_response.ThreatAssessmentRequestCollectionResponse]:
         """
-        Get threatAssessmentRequests from informationProtection
+        Retrieve a list of threatAssessmentRequest objects. A threat assessment request can be one of the following types:
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[threat_assessment_request_collection_response.ThreatAssessmentRequestCollectionResponse]
@@ -76,7 +76,7 @@ class ThreatAssessmentRequestsRequestBuilder():
     
     async def post(self,body: Optional[threat_assessment_request.ThreatAssessmentRequest] = None, request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderPostRequestConfiguration] = None) -> Optional[threat_assessment_request.ThreatAssessmentRequest]:
         """
-        Create new navigation property to threatAssessmentRequests for informationProtection
+        Create a new threat assessment request. A threat assessment request can be one of the following types:
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ThreatAssessmentRequestsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get threatAssessmentRequests from informationProtection
+        Retrieve a list of threatAssessmentRequest objects. A threat assessment request can be one of the following types:
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ThreatAssessmentRequestsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[threat_assessment_request.ThreatAssessmentRequest] = None, request_configuration: Optional[ThreatAssessmentRequestsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to threatAssessmentRequests for informationProtection
+        Create a new threat assessment request. A threat assessment request can be one of the following types:
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class ThreatAssessmentRequestsRequestBuilder():
     @dataclass
     class ThreatAssessmentRequestsRequestBuilderGetQueryParameters():
         """
-        Get threatAssessmentRequests from informationProtection
+        Retrieve a list of threatAssessmentRequest objects. A threat assessment request can be one of the following types:
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

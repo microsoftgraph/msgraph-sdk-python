@@ -36,7 +36,7 @@ class UnsubscribeByMailRequestBuilder():
     
     async def post(self,request_configuration: Optional[UnsubscribeByMailRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action unsubscribeByMail
+        Calling this method will prevent the current user from receiving email notifications for this group about new posts, events, and files in that group. Supported for Microsoft 365 groups only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class UnsubscribeByMailRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[UnsubscribeByMailRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action unsubscribeByMail
+        Calling this method will prevent the current user from receiving email notifications for this group about new posts, events, and files in that group. Supported for Microsoft 365 groups only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

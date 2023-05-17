@@ -57,7 +57,7 @@ class ChatMessageHostedContentItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[chat_message_hosted_content.ChatMessageHostedContent]:
         """
-        Content in a message hosted by Microsoft Teams - for example, images or code snippets.
+        Retrieve the properties and relationships of chatMessageHostedContent object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[chat_message_hosted_content.ChatMessageHostedContent]
@@ -120,7 +120,7 @@ class ChatMessageHostedContentItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ChatMessageHostedContentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Content in a message hosted by Microsoft Teams - for example, images or code snippets.
+        Retrieve the properties and relationships of chatMessageHostedContent object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class ChatMessageHostedContentItemRequestBuilder():
     @dataclass
     class ChatMessageHostedContentItemRequestBuilderGetQueryParameters():
         """
-        Content in a message hosted by Microsoft Teams - for example, images or code snippets.
+        Retrieve the properties and relationships of chatMessageHostedContent object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

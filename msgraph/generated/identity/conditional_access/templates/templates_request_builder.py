@@ -54,7 +54,7 @@ class TemplatesRequestBuilder():
     
     async def get(self,request_configuration: Optional[TemplatesRequestBuilderGetRequestConfiguration] = None) -> Optional[conditional_access_template_collection_response.ConditionalAccessTemplateCollectionResponse]:
         """
-        Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
+        Get a list of the conditionalAccessTemplate objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conditional_access_template_collection_response.ConditionalAccessTemplateCollectionResponse]
@@ -76,7 +76,7 @@ class TemplatesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TemplatesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
+        Get a list of the conditionalAccessTemplate objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class TemplatesRequestBuilder():
     @dataclass
     class TemplatesRequestBuilderGetQueryParameters():
         """
-        Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
+        Get a list of the conditionalAccessTemplate objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

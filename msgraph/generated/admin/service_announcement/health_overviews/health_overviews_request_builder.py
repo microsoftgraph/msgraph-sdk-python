@@ -54,7 +54,7 @@ class HealthOverviewsRequestBuilder():
     
     async def get(self,request_configuration: Optional[HealthOverviewsRequestBuilderGetRequestConfiguration] = None) -> Optional[service_health_collection_response.ServiceHealthCollectionResponse]:
         """
-        A collection of service health information for tenant. This property is a contained navigation property, it is nullable and readonly.
+        Retrieve the serviceHealth resources from the **healthOverviews** navigation property. This operation provides the health report of all subscribed services for a tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[service_health_collection_response.ServiceHealthCollectionResponse]
@@ -101,7 +101,7 @@ class HealthOverviewsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[HealthOverviewsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of service health information for tenant. This property is a contained navigation property, it is nullable and readonly.
+        Retrieve the serviceHealth resources from the **healthOverviews** navigation property. This operation provides the health report of all subscribed services for a tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class HealthOverviewsRequestBuilder():
     @dataclass
     class HealthOverviewsRequestBuilderGetQueryParameters():
         """
-        A collection of service health information for tenant. This property is a contained navigation property, it is nullable and readonly.
+        Retrieve the serviceHealth resources from the **healthOverviews** navigation property. This operation provides the health report of all subscribed services for a tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

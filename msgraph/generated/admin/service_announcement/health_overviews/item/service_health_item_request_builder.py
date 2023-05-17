@@ -57,7 +57,7 @@ class ServiceHealthItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ServiceHealthItemRequestBuilderGetRequestConfiguration] = None) -> Optional[service_health.ServiceHealth]:
         """
-        A collection of service health information for tenant. This property is a contained navigation property, it is nullable and readonly.
+        Retrieve the properties and relationships of a serviceHealth object. This operation provides the health information of a specified service for a tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[service_health.ServiceHealth]
@@ -120,7 +120,7 @@ class ServiceHealthItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ServiceHealthItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of service health information for tenant. This property is a contained navigation property, it is nullable and readonly.
+        Retrieve the properties and relationships of a serviceHealth object. This operation provides the health information of a specified service for a tenant.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class ServiceHealthItemRequestBuilder():
     @dataclass
     class ServiceHealthItemRequestBuilderGetQueryParameters():
         """
-        A collection of service health information for tenant. This property is a contained navigation property, it is nullable and readonly.
+        Retrieve the properties and relationships of a serviceHealth object. This operation provides the health information of a specified service for a tenant.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

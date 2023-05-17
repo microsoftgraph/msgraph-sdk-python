@@ -38,7 +38,7 @@ class UnifiedRoleDefinitionItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[UnifiedRoleDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property roleDefinitions for roleManagement
+        Delete a unifiedRoleDefinition object. You cannot delete built-in roles. This feature requires an Azure AD Premium P1 or P2 license.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class UnifiedRoleDefinitionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[UnifiedRoleDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_definition.UnifiedRoleDefinition]:
         """
-        Resource representing the roles allowed by RBAC providers and the permissions assigned to the roles.
+        Read the properties and relationships of a unifiedRoleDefinition object. The following role-based access control (RBAC) providers are currently supported:
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[unified_role_definition.UnifiedRoleDefinition]
@@ -79,7 +79,7 @@ class UnifiedRoleDefinitionItemRequestBuilder():
     
     async def patch(self,body: Optional[unified_role_definition.UnifiedRoleDefinition] = None, request_configuration: Optional[UnifiedRoleDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[unified_role_definition.UnifiedRoleDefinition]:
         """
-        Update the navigation property roleDefinitions in roleManagement
+        Update the properties of a unifiedRoleDefinition object. You cannot update built-in roles. This feature requires an Azure AD Premium P1 or P2 license.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class UnifiedRoleDefinitionItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[UnifiedRoleDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property roleDefinitions for roleManagement
+        Delete a unifiedRoleDefinition object. You cannot delete built-in roles. This feature requires an Azure AD Premium P1 or P2 license.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class UnifiedRoleDefinitionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[UnifiedRoleDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Resource representing the roles allowed by RBAC providers and the permissions assigned to the roles.
+        Read the properties and relationships of a unifiedRoleDefinition object. The following role-based access control (RBAC) providers are currently supported:
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class UnifiedRoleDefinitionItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[unified_role_definition.UnifiedRoleDefinition] = None, request_configuration: Optional[UnifiedRoleDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property roleDefinitions in roleManagement
+        Update the properties of a unifiedRoleDefinition object. You cannot update built-in roles. This feature requires an Azure AD Premium P1 or P2 license.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class UnifiedRoleDefinitionItemRequestBuilder():
     @dataclass
     class UnifiedRoleDefinitionItemRequestBuilderGetQueryParameters():
         """
-        Resource representing the roles allowed by RBAC providers and the permissions assigned to the roles.
+        Read the properties and relationships of a unifiedRoleDefinition object. The following role-based access control (RBAC) providers are currently supported:
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

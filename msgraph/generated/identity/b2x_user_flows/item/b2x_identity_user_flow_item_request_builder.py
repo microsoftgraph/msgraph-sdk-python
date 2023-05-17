@@ -41,7 +41,7 @@ class B2xIdentityUserFlowItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property b2xUserFlows for identity
+        Delete a b2xIdentityUserFlow object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -60,7 +60,7 @@ class B2xIdentityUserFlowItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderGetRequestConfiguration] = None) -> Optional[b2x_identity_user_flow.B2xIdentityUserFlow]:
         """
-        Represents entry point for B2X/self-service sign-up identity userflows.
+        Retrieve the properties and relationships of a b2xIdentityUserFlow object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[b2x_identity_user_flow.B2xIdentityUserFlow]
@@ -107,7 +107,7 @@ class B2xIdentityUserFlowItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property b2xUserFlows for identity
+        Delete a b2xIdentityUserFlow object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -123,7 +123,7 @@ class B2xIdentityUserFlowItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[B2xIdentityUserFlowItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents entry point for B2X/self-service sign-up identity userflows.
+        Retrieve the properties and relationships of a b2xIdentityUserFlow object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -211,7 +211,7 @@ class B2xIdentityUserFlowItemRequestBuilder():
     @dataclass
     class B2xIdentityUserFlowItemRequestBuilderGetQueryParameters():
         """
-        Represents entry point for B2X/self-service sign-up identity userflows.
+        Retrieve the properties and relationships of a b2xIdentityUserFlow object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

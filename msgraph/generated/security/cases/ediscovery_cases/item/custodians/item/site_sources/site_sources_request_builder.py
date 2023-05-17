@@ -54,7 +54,7 @@ class SiteSourcesRequestBuilder():
     
     async def get(self,request_configuration: Optional[SiteSourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[site_source_collection_response.SiteSourceCollectionResponse]:
         """
-        Data source entity for SharePoint sites associated with the custodian.
+        Get a list of the siteSource objects associated with an ediscoveryCustodian.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[site_source_collection_response.SiteSourceCollectionResponse]
@@ -76,7 +76,7 @@ class SiteSourcesRequestBuilder():
     
     async def post(self,body: Optional[site_source.SiteSource] = None, request_configuration: Optional[SiteSourcesRequestBuilderPostRequestConfiguration] = None) -> Optional[site_source.SiteSource]:
         """
-        Create new navigation property to siteSources for security
+        Create a new siteSource object associated with an eDiscovery custodian.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class SiteSourcesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SiteSourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Data source entity for SharePoint sites associated with the custodian.
+        Get a list of the siteSource objects associated with an ediscoveryCustodian.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class SiteSourcesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[site_source.SiteSource] = None, request_configuration: Optional[SiteSourcesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to siteSources for security
+        Create a new siteSource object associated with an eDiscovery custodian.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class SiteSourcesRequestBuilder():
     @dataclass
     class SiteSourcesRequestBuilderGetQueryParameters():
         """
-        Data source entity for SharePoint sites associated with the custodian.
+        Get a list of the siteSource objects associated with an ediscoveryCustodian.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

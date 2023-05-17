@@ -37,7 +37,7 @@ class EmailAuthenticationMethodItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property emailMethods for me
+        Deletes a user's emailAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class EmailAuthenticationMethodItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> Optional[email_authentication_method.EmailAuthenticationMethod]:
         """
-        The email address registered to a user for authentication.
+        Retrieve a user's single email authentication method object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[email_authentication_method.EmailAuthenticationMethod]
@@ -78,7 +78,7 @@ class EmailAuthenticationMethodItemRequestBuilder():
     
     async def patch(self,body: Optional[email_authentication_method.EmailAuthenticationMethod] = None, request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[email_authentication_method.EmailAuthenticationMethod]:
         """
-        Update the navigation property emailMethods in me
+        Update a user's email address represented by an emailAuthenticationMethod object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class EmailAuthenticationMethodItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property emailMethods for me
+        Deletes a user's emailAuthenticationMethod object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class EmailAuthenticationMethodItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The email address registered to a user for authentication.
+        Retrieve a user's single email authentication method object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class EmailAuthenticationMethodItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[email_authentication_method.EmailAuthenticationMethod] = None, request_configuration: Optional[EmailAuthenticationMethodItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property emailMethods in me
+        Update a user's email address represented by an emailAuthenticationMethod object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class EmailAuthenticationMethodItemRequestBuilder():
     @dataclass
     class EmailAuthenticationMethodItemRequestBuilderGetQueryParameters():
         """
-        The email address registered to a user for authentication.
+        Retrieve a user's single email authentication method object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

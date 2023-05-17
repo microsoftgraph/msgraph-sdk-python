@@ -37,7 +37,7 @@ class SetPresenceRequestBuilder():
     
     async def post(self,body: Optional[set_presence_post_request_body.SetPresencePostRequestBody] = None, request_configuration: Optional[SetPresenceRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action setPresence
+        Set the state of a user's presence session as an application.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class SetPresenceRequestBuilder():
     
     def to_post_request_information(self,body: Optional[set_presence_post_request_body.SetPresencePostRequestBody] = None, request_configuration: Optional[SetPresenceRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action setPresence
+        Set the state of a user's presence session as an application.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

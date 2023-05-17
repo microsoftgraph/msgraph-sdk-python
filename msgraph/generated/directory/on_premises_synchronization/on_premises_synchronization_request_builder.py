@@ -54,7 +54,7 @@ class OnPremisesSynchronizationRequestBuilder():
     
     async def get(self,request_configuration: Optional[OnPremisesSynchronizationRequestBuilderGetRequestConfiguration] = None) -> Optional[on_premises_directory_synchronization_collection_response.OnPremisesDirectorySynchronizationCollectionResponse]:
         """
-        A container for on-premises directory synchronization functionalities that are available for the organization.
+        Read the properties and relationships of an onPremisesDirectorySynchronization object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[on_premises_directory_synchronization_collection_response.OnPremisesDirectorySynchronizationCollectionResponse]
@@ -101,7 +101,7 @@ class OnPremisesSynchronizationRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OnPremisesSynchronizationRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A container for on-premises directory synchronization functionalities that are available for the organization.
+        Read the properties and relationships of an onPremisesDirectorySynchronization object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class OnPremisesSynchronizationRequestBuilder():
     @dataclass
     class OnPremisesSynchronizationRequestBuilderGetQueryParameters():
         """
-        A container for on-premises directory synchronization functionalities that are available for the organization.
+        Read the properties and relationships of an onPremisesDirectorySynchronization object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

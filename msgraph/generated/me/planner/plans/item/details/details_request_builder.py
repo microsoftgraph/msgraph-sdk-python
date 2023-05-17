@@ -56,7 +56,7 @@ class DetailsRequestBuilder():
     
     async def get(self,request_configuration: Optional[DetailsRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_plan_details.PlannerPlanDetails]:
         """
-        Read-only. Nullable. Additional details about the plan.
+        Retrieve the properties and relationships of a **plannerPlanDetails** object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[planner_plan_details.PlannerPlanDetails]
@@ -119,7 +119,7 @@ class DetailsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DetailsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read-only. Nullable. Additional details about the plan.
+        Retrieve the properties and relationships of a **plannerPlanDetails** object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class DetailsRequestBuilder():
     @dataclass
     class DetailsRequestBuilderGetQueryParameters():
         """
-        Read-only. Nullable. Additional details about the plan.
+        Retrieve the properties and relationships of a **plannerPlanDetails** object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

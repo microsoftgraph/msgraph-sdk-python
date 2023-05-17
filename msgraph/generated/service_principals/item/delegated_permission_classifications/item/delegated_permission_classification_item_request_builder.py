@@ -37,7 +37,7 @@ class DelegatedPermissionClassificationItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[DelegatedPermissionClassificationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property delegatedPermissionClassifications for servicePrincipals
+        Deletes a delegatedPermissionClassification which had previously been set for a delegated permission.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -103,7 +103,7 @@ class DelegatedPermissionClassificationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[DelegatedPermissionClassificationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property delegatedPermissionClassifications for servicePrincipals
+        Deletes a delegatedPermissionClassification which had previously been set for a delegated permission.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

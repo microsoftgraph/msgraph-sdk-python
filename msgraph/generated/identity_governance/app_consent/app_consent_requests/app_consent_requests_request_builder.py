@@ -68,7 +68,7 @@ class AppConsentRequestsRequestBuilder():
     
     async def get(self,request_configuration: Optional[AppConsentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[app_consent_request_collection_response.AppConsentRequestCollectionResponse]:
         """
-        A collection of userConsentRequest objects for a specific application.
+        Retrieve appConsentRequest objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[app_consent_request_collection_response.AppConsentRequestCollectionResponse]
@@ -115,7 +115,7 @@ class AppConsentRequestsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AppConsentRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of userConsentRequest objects for a specific application.
+        Retrieve appConsentRequest objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -164,7 +164,7 @@ class AppConsentRequestsRequestBuilder():
     @dataclass
     class AppConsentRequestsRequestBuilderGetQueryParameters():
         """
-        A collection of userConsentRequest objects for a specific application.
+        Retrieve appConsentRequest objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

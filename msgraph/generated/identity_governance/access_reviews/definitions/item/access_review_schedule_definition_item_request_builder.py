@@ -39,7 +39,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property definitions for identityGovernance
+        Deletes an accessReviewScheduleDefinition object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -58,7 +58,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[access_review_schedule_definition.AccessReviewScheduleDefinition]:
         """
-        Represents the template and scheduling for an access review.
+        Read the properties and relationships of an accessReviewScheduleDefinition object. To retrieve the instances of the access review series, use the list accessReviewInstance API.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_review_schedule_definition.AccessReviewScheduleDefinition]
@@ -80,7 +80,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
     
     async def patch(self,body: Optional[access_review_schedule_definition.AccessReviewScheduleDefinition] = None, request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[access_review_schedule_definition.AccessReviewScheduleDefinition]:
         """
-        Update the navigation property definitions in identityGovernance
+        Update an existing accessReviewScheduleDefinition object to change one or more of its properties.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -105,7 +105,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property definitions for identityGovernance
+        Deletes an accessReviewScheduleDefinition object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -121,7 +121,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents the template and scheduling for an access review.
+        Read the properties and relationships of an accessReviewScheduleDefinition object. To retrieve the instances of the access review series, use the list accessReviewInstance API.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -139,7 +139,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[access_review_schedule_definition.AccessReviewScheduleDefinition] = None, request_configuration: Optional[AccessReviewScheduleDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property definitions in identityGovernance
+        Update an existing accessReviewScheduleDefinition object to change one or more of its properties.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -191,7 +191,7 @@ class AccessReviewScheduleDefinitionItemRequestBuilder():
     @dataclass
     class AccessReviewScheduleDefinitionItemRequestBuilderGetQueryParameters():
         """
-        Represents the template and scheduling for an access review.
+        Read the properties and relationships of an accessReviewScheduleDefinition object. To retrieve the instances of the access review series, use the list accessReviewInstance API.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

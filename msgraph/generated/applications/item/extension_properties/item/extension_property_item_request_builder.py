@@ -37,7 +37,7 @@ class ExtensionPropertyItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ExtensionPropertyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property extensionProperties for applications
+        Delete a directory extension definition represented by an extensionProperty object. You can delete only directory extensions that aren't synced from on-premises active directory (AD).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class ExtensionPropertyItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ExtensionPropertyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[extension_property.ExtensionProperty]:
         """
-        Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
+        Read a directory extension definition represented by an extensionProperty object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[extension_property.ExtensionProperty]
@@ -103,7 +103,7 @@ class ExtensionPropertyItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ExtensionPropertyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property extensionProperties for applications
+        Delete a directory extension definition represented by an extensionProperty object. You can delete only directory extensions that aren't synced from on-premises active directory (AD).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ExtensionPropertyItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ExtensionPropertyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
+        Read a directory extension definition represented by an extensionProperty object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class ExtensionPropertyItemRequestBuilder():
     @dataclass
     class ExtensionPropertyItemRequestBuilderGetQueryParameters():
         """
-        Read-only. Nullable. Supports $expand and $filter (/$count eq 0, /$count ne 0).
+        Read a directory extension definition represented by an extensionProperty object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

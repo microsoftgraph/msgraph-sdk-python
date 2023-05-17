@@ -36,7 +36,7 @@ class RefRequestBuilder():
     
     async def delete(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete ref of navigation property homeRealmDiscoveryPolicies for servicePrincipals
+        Remove a homeRealmDiscoveryPolicy from a servicePrincipal.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class RefRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete ref of navigation property homeRealmDiscoveryPolicies for servicePrincipals
+        Remove a homeRealmDiscoveryPolicy from a servicePrincipal.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -73,7 +73,7 @@ class RefRequestBuilder():
     @dataclass
     class RefRequestBuilderDeleteQueryParameters():
         """
-        Delete ref of navigation property homeRealmDiscoveryPolicies for servicePrincipals
+        Remove a homeRealmDiscoveryPolicy from a servicePrincipal.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

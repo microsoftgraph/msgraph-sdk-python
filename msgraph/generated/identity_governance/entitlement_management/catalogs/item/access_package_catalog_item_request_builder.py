@@ -38,7 +38,7 @@ class AccessPackageCatalogItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property catalogs for identityGovernance
+        Delete an accessPackageCatalog.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class AccessPackageCatalogItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_catalog.AccessPackageCatalog]:
         """
-        A container for access packages.
+        Retrieve the properties and relationships of an accessPackageCatalog object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_package_catalog.AccessPackageCatalog]
@@ -79,7 +79,7 @@ class AccessPackageCatalogItemRequestBuilder():
     
     async def patch(self,body: Optional[access_package_catalog.AccessPackageCatalog] = None, request_configuration: Optional[AccessPackageCatalogItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[access_package_catalog.AccessPackageCatalog]:
         """
-        Update the navigation property catalogs in identityGovernance
+        Update an existing accessPackageCatalog object to change one or more of its properties, such as the display name or description.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class AccessPackageCatalogItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property catalogs for identityGovernance
+        Delete an accessPackageCatalog.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class AccessPackageCatalogItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AccessPackageCatalogItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A container for access packages.
+        Retrieve the properties and relationships of an accessPackageCatalog object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class AccessPackageCatalogItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[access_package_catalog.AccessPackageCatalog] = None, request_configuration: Optional[AccessPackageCatalogItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property catalogs in identityGovernance
+        Update an existing accessPackageCatalog object to change one or more of its properties, such as the display name or description.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class AccessPackageCatalogItemRequestBuilder():
     @dataclass
     class AccessPackageCatalogItemRequestBuilderGetQueryParameters():
         """
-        A container for access packages.
+        Retrieve the properties and relationships of an accessPackageCatalog object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

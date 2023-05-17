@@ -56,7 +56,7 @@ class ApprovalStageItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ApprovalStageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[approval_stage.ApprovalStage]:
         """
-        A collection of stages in the approval decision.
+        In Azure AD entitlement management, retrieve the properties of an approvalStage object. An approval stage is contained within an approval object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[approval_stage.ApprovalStage]
@@ -78,7 +78,7 @@ class ApprovalStageItemRequestBuilder():
     
     async def patch(self,body: Optional[approval_stage.ApprovalStage] = None, request_configuration: Optional[ApprovalStageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[approval_stage.ApprovalStage]:
         """
-        Update the navigation property stages in identityGovernance
+        In Azure AD entitlement management, approve or deny an approvalStage object in an approval.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class ApprovalStageItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ApprovalStageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of stages in the approval decision.
+        In Azure AD entitlement management, retrieve the properties of an approvalStage object. An approval stage is contained within an approval object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class ApprovalStageItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[approval_stage.ApprovalStage] = None, request_configuration: Optional[ApprovalStageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property stages in identityGovernance
+        In Azure AD entitlement management, approve or deny an approvalStage object in an approval.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class ApprovalStageItemRequestBuilder():
     @dataclass
     class ApprovalStageItemRequestBuilderGetQueryParameters():
         """
-        A collection of stages in the approval decision.
+        In Azure AD entitlement management, retrieve the properties of an approvalStage object. An approval stage is contained within an approval object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

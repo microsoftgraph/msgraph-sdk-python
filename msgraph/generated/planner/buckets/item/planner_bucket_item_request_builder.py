@@ -38,7 +38,7 @@ class PlannerBucketItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[PlannerBucketItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property buckets for planner
+        Delete **plannerBucket**.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class PlannerBucketItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[PlannerBucketItemRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_bucket.PlannerBucket]:
         """
-        Read-only. Nullable. Returns a collection of the specified buckets
+        Retrieve the properties and relationships of a plannerBucket object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[planner_bucket.PlannerBucket]
@@ -104,7 +104,7 @@ class PlannerBucketItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[PlannerBucketItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property buckets for planner
+        Delete **plannerBucket**.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class PlannerBucketItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PlannerBucketItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read-only. Nullable. Returns a collection of the specified buckets
+        Retrieve the properties and relationships of a plannerBucket object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class PlannerBucketItemRequestBuilder():
     @dataclass
     class PlannerBucketItemRequestBuilderGetQueryParameters():
         """
-        Read-only. Nullable. Returns a collection of the specified buckets
+        Retrieve the properties and relationships of a plannerBucket object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

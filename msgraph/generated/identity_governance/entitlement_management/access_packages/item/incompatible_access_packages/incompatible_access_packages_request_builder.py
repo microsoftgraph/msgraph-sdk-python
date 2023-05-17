@@ -55,7 +55,7 @@ class IncompatibleAccessPackagesRequestBuilder():
     
     async def get(self,request_configuration: Optional[IncompatibleAccessPackagesRequestBuilderGetRequestConfiguration] = None) -> Optional[access_package_collection_response.AccessPackageCollectionResponse]:
         """
-        The access packages whose assigned users are ineligible to be assigned this access package.
+        Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.  
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_package_collection_response.AccessPackageCollectionResponse]
@@ -77,7 +77,7 @@ class IncompatibleAccessPackagesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[IncompatibleAccessPackagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The access packages whose assigned users are ineligible to be assigned this access package.
+        Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.  
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class IncompatibleAccessPackagesRequestBuilder():
     @dataclass
     class IncompatibleAccessPackagesRequestBuilderGetQueryParameters():
         """
-        The access packages whose assigned users are ineligible to be assigned this access package.
+        Retrieve a list of the accessPackage objects that have been marked as incompatible on an accessPackage.  
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

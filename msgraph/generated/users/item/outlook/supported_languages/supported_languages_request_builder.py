@@ -37,7 +37,7 @@ class SupportedLanguagesRequestBuilder():
     
     async def get(self,request_configuration: Optional[SupportedLanguagesRequestBuilderGetRequestConfiguration] = None) -> Optional[supported_languages_response.SupportedLanguagesResponse]:
         """
-        Invoke function supportedLanguages
+        Get the list of locales and languages that are supported for the user, as configured on the user's mailbox server. When setting up an Outlook client, the user selects the preferred language from this supported list. You can subsequently get the preferred language by getting the user's mailbox settings.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[supported_languages_response.SupportedLanguagesResponse]
@@ -59,7 +59,7 @@ class SupportedLanguagesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SupportedLanguagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke function supportedLanguages
+        Get the list of locales and languages that are supported for the user, as configured on the user's mailbox server. When setting up an Outlook client, the user selects the preferred language from this supported list. You can subsequently get the preferred language by getting the user's mailbox settings.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -78,7 +78,7 @@ class SupportedLanguagesRequestBuilder():
     @dataclass
     class SupportedLanguagesRequestBuilderGetQueryParameters():
         """
-        Invoke function supportedLanguages
+        Get the list of locales and languages that are supported for the user, as configured on the user's mailbox server. When setting up an Outlook client, the user selects the preferred language from this supported list. You can subsequently get the preferred language by getting the user's mailbox settings.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

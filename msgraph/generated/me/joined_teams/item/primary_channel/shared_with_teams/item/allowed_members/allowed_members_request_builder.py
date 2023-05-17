@@ -54,7 +54,7 @@ class AllowedMembersRequestBuilder():
     
     async def get(self,request_configuration: Optional[AllowedMembersRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_member_collection_response.ConversationMemberCollectionResponse]:
         """
-        A collection of team members who have access to the shared channel.
+        Get the list of conversationMembers who can access a shared channel. This method does not return the following conversationMembers from the team:- Users with `Guest` role- Users who are externally authenticated in the tenant
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conversation_member_collection_response.ConversationMemberCollectionResponse]
@@ -76,7 +76,7 @@ class AllowedMembersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AllowedMembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of team members who have access to the shared channel.
+        Get the list of conversationMembers who can access a shared channel. This method does not return the following conversationMembers from the team:- Users with `Guest` role- Users who are externally authenticated in the tenant
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class AllowedMembersRequestBuilder():
     @dataclass
     class AllowedMembersRequestBuilderGetQueryParameters():
         """
-        A collection of team members who have access to the shared channel.
+        Get the list of conversationMembers who can access a shared channel. This method does not return the following conversationMembers from the team:- Users with `Guest` role- Users who are externally authenticated in the tenant
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

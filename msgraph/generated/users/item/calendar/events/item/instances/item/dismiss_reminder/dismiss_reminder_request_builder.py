@@ -36,7 +36,7 @@ class DismissReminderRequestBuilder():
     
     async def post(self,request_configuration: Optional[DismissReminderRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action dismissReminder
+        Dismiss a reminder that has been triggered for an event in a user calendar.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class DismissReminderRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[DismissReminderRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action dismissReminder
+        Dismiss a reminder that has been triggered for an event in a user calendar.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

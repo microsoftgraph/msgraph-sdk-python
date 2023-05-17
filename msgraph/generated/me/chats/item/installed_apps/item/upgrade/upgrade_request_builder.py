@@ -36,7 +36,7 @@ class UpgradeRequestBuilder():
     
     async def post(self,request_configuration: Optional[UpgradeRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action upgrade
+        Upgrade an app installation within a chat.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class UpgradeRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[UpgradeRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action upgrade
+        Upgrade an app installation within a chat.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

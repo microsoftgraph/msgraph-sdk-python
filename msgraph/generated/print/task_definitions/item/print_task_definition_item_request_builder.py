@@ -38,7 +38,7 @@ class PrintTaskDefinitionItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property taskDefinitions for print
+        Delete a **taskDefinition**. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class PrintTaskDefinitionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[print_task_definition.PrintTaskDefinition]:
         """
-        List of abstract definition for a task that can be triggered when various events occur within Universal Print.
+        Get details about a task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_task_definition.PrintTaskDefinition]
@@ -79,7 +79,7 @@ class PrintTaskDefinitionItemRequestBuilder():
     
     async def patch(self,body: Optional[print_task_definition.PrintTaskDefinition] = None, request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[print_task_definition.PrintTaskDefinition]:
         """
-        Update the navigation property taskDefinitions in print
+        Update a task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class PrintTaskDefinitionItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property taskDefinitions for print
+        Delete a **taskDefinition**. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class PrintTaskDefinitionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List of abstract definition for a task that can be triggered when various events occur within Universal Print.
+        Get details about a task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class PrintTaskDefinitionItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[print_task_definition.PrintTaskDefinition] = None, request_configuration: Optional[PrintTaskDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property taskDefinitions in print
+        Update a task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class PrintTaskDefinitionItemRequestBuilder():
     @dataclass
     class PrintTaskDefinitionItemRequestBuilderGetQueryParameters():
         """
-        List of abstract definition for a task that can be triggered when various events occur within Universal Print.
+        Get details about a task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -54,7 +54,7 @@ class OfferShiftRequestsRequestBuilder():
     
     async def get(self,request_configuration: Optional[OfferShiftRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[offer_shift_request_collection_response.OfferShiftRequestCollectionResponse]:
         """
-        Get offerShiftRequests from users
+        Retrieve the properties and relationships of all offerShiftRequest objects in a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[offer_shift_request_collection_response.OfferShiftRequestCollectionResponse]
@@ -101,7 +101,7 @@ class OfferShiftRequestsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OfferShiftRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get offerShiftRequests from users
+        Retrieve the properties and relationships of all offerShiftRequest objects in a team.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class OfferShiftRequestsRequestBuilder():
     @dataclass
     class OfferShiftRequestsRequestBuilderGetQueryParameters():
         """
-        Get offerShiftRequests from users
+        Retrieve the properties and relationships of all offerShiftRequest objects in a team.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

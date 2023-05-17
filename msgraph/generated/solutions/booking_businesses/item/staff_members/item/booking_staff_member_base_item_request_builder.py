@@ -37,7 +37,7 @@ class BookingStaffMemberBaseItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[BookingStaffMemberBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property staffMembers for solutions
+        Delete a bookingStaffMember in the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class BookingStaffMemberBaseItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[BookingStaffMemberBaseItemRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_staff_member_base.BookingStaffMemberBase]:
         """
-        All the staff members that provide services in this business. Read-only. Nullable.
+        Get the properties and relationships of a bookingStaffMember in the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[booking_staff_member_base.BookingStaffMemberBase]
@@ -78,7 +78,7 @@ class BookingStaffMemberBaseItemRequestBuilder():
     
     async def patch(self,body: Optional[booking_staff_member_base.BookingStaffMemberBase] = None, request_configuration: Optional[BookingStaffMemberBaseItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[booking_staff_member_base.BookingStaffMemberBase]:
         """
-        Update the navigation property staffMembers in solutions
+        Update the properties of a bookingStaffMember in the specified bookingBusiness.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class BookingStaffMemberBaseItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[BookingStaffMemberBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property staffMembers for solutions
+        Delete a bookingStaffMember in the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class BookingStaffMemberBaseItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[BookingStaffMemberBaseItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All the staff members that provide services in this business. Read-only. Nullable.
+        Get the properties and relationships of a bookingStaffMember in the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class BookingStaffMemberBaseItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[booking_staff_member_base.BookingStaffMemberBase] = None, request_configuration: Optional[BookingStaffMemberBaseItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property staffMembers in solutions
+        Update the properties of a bookingStaffMember in the specified bookingBusiness.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class BookingStaffMemberBaseItemRequestBuilder():
     @dataclass
     class BookingStaffMemberBaseItemRequestBuilderGetQueryParameters():
         """
-        All the staff members that provide services in this business. Read-only. Nullable.
+        Get the properties and relationships of a bookingStaffMember in the specified bookingBusiness.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

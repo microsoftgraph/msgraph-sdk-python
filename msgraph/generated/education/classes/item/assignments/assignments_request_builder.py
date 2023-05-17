@@ -55,7 +55,7 @@ class AssignmentsRequestBuilder():
     
     async def get(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> Optional[education_assignment_collection_response.EducationAssignmentCollectionResponse]:
         """
-        All assignments associated with this class. Nullable.
+        Retrieve a list of assignment objects. Only teachers, students, and applications with application permissions can perform this operation. A teacher or an application executing with application permissions can see all assignment objects for the class. Students can only see assignments that are assigned to them.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_assignment_collection_response.EducationAssignmentCollectionResponse]
@@ -77,7 +77,7 @@ class AssignmentsRequestBuilder():
     
     async def post(self,body: Optional[education_assignment.EducationAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> Optional[education_assignment.EducationAssignment]:
         """
-        Create new navigation property to assignments for education
+        Create a new assignment. Only teachers in a class can create an assignment. Assignments start in the Draft state, which means that students will not see the assignment until publication.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class AssignmentsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AssignmentsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All assignments associated with this class. Nullable.
+        Retrieve a list of assignment objects. Only teachers, students, and applications with application permissions can perform this operation. A teacher or an application executing with application permissions can see all assignment objects for the class. Students can only see assignments that are assigned to them.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class AssignmentsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[education_assignment.EducationAssignment] = None, request_configuration: Optional[AssignmentsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to assignments for education
+        Create a new assignment. Only teachers in a class can create an assignment. Assignments start in the Draft state, which means that students will not see the assignment until publication.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class AssignmentsRequestBuilder():
     @dataclass
     class AssignmentsRequestBuilderGetQueryParameters():
         """
-        All assignments associated with this class. Nullable.
+        Retrieve a list of assignment objects. Only teachers, students, and applications with application permissions can perform this operation. A teacher or an application executing with application permissions can see all assignment objects for the class. Students can only see assignments that are assigned to them.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -36,7 +36,7 @@ class MicrosoftGraphSecurityUpdateIndexRequestBuilder():
     
     async def post(self,request_configuration: Optional[MicrosoftGraphSecurityUpdateIndexRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action updateIndex
+        Trigger an indexOperation to make a non-custodial data source and its associated data source searchable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class MicrosoftGraphSecurityUpdateIndexRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[MicrosoftGraphSecurityUpdateIndexRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action updateIndex
+        Trigger an indexOperation to make a non-custodial data source and its associated data source searchable.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

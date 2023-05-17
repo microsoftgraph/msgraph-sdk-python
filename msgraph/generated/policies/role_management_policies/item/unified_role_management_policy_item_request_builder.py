@@ -58,7 +58,7 @@ class UnifiedRoleManagementPolicyItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[UnifiedRoleManagementPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_management_policy.UnifiedRoleManagementPolicy]:
         """
-        Specifies the various policies associated with scopes and roles.
+        Retrieve the details of a role management policy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[unified_role_management_policy.UnifiedRoleManagementPolicy]
@@ -121,7 +121,7 @@ class UnifiedRoleManagementPolicyItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[UnifiedRoleManagementPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Specifies the various policies associated with scopes and roles.
+        Retrieve the details of a role management policy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -191,7 +191,7 @@ class UnifiedRoleManagementPolicyItemRequestBuilder():
     @dataclass
     class UnifiedRoleManagementPolicyItemRequestBuilderGetQueryParameters():
         """
-        Specifies the various policies associated with scopes and roles.
+        Retrieve the details of a role management policy.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -57,7 +57,7 @@ class AccessReviewHistoryDefinitionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AccessReviewHistoryDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[access_review_history_definition.AccessReviewHistoryDefinition]:
         """
-        Represents a collection of access review history data and the scopes used to collect that data.
+        Retrieve an accessReviewHistoryDefinition object by its identifier. All the properties of the access review history definition object are returned. If the definition is 30 days or older, a `404 Not Found` error is returned.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[access_review_history_definition.AccessReviewHistoryDefinition]
@@ -120,7 +120,7 @@ class AccessReviewHistoryDefinitionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AccessReviewHistoryDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents a collection of access review history data and the scopes used to collect that data.
+        Retrieve an accessReviewHistoryDefinition object by its identifier. All the properties of the access review history definition object are returned. If the definition is 30 days or older, a `404 Not Found` error is returned.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class AccessReviewHistoryDefinitionItemRequestBuilder():
     @dataclass
     class AccessReviewHistoryDefinitionItemRequestBuilderGetQueryParameters():
         """
-        Represents a collection of access review history data and the scopes used to collect that data.
+        Retrieve an accessReviewHistoryDefinition object by its identifier. All the properties of the access review history definition object are returned. If the definition is 30 days or older, a `404 Not Found` error is returned.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

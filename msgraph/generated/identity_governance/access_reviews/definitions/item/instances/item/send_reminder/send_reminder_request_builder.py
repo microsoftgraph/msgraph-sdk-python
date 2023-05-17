@@ -36,7 +36,7 @@ class SendReminderRequestBuilder():
     
     async def post(self,request_configuration: Optional[SendReminderRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action sendReminder
+        Send a reminder to the reviewers of an active accessReviewInstance.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class SendReminderRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[SendReminderRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action sendReminder
+        Send a reminder to the reviewers of an active accessReviewInstance.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

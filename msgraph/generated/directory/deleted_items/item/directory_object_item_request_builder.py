@@ -48,7 +48,7 @@ class DirectoryObjectItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property deletedItems for directory
+        Permanently delete a recently deleted application, group, servicePrincipal, or user object from deleted items. After an item is permanently deleted, it **cannot** be restored. Administrative units **cannot** be permanently deleted by using the **deletedItems** API. Soft-deleted administrative units will be permanently deleted 30 days after initial deletion unless they are restored.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -67,7 +67,7 @@ class DirectoryObjectItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderGetRequestConfiguration] = None) -> Optional[directory_object.DirectoryObject]:
         """
-        Recently deleted items. Read-only. Nullable.
+        Retrieve the properties of a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[directory_object.DirectoryObject]
@@ -114,7 +114,7 @@ class DirectoryObjectItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property deletedItems for directory
+        Permanently delete a recently deleted application, group, servicePrincipal, or user object from deleted items. After an item is permanently deleted, it **cannot** be restored. Administrative units **cannot** be permanently deleted by using the **deletedItems** API. Soft-deleted administrative units will be permanently deleted 30 days after initial deletion unless they are restored.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +130,7 @@ class DirectoryObjectItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DirectoryObjectItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Recently deleted items. Read-only. Nullable.
+        Retrieve the properties of a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -281,7 +281,7 @@ class DirectoryObjectItemRequestBuilder():
     @dataclass
     class DirectoryObjectItemRequestBuilderGetQueryParameters():
         """
-        Recently deleted items. Read-only. Nullable.
+        Retrieve the properties of a recently deleted application, group, servicePrincipal, administrative unit, or user object from deleted items.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

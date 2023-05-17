@@ -36,7 +36,7 @@ class RemoveFavoriteRequestBuilder():
     
     async def post(self,request_configuration: Optional[RemoveFavoriteRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action removeFavorite
+        Remove the group from the list of the current user's favorite groups. Supported for Microsoft 365 groups only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class RemoveFavoriteRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[RemoveFavoriteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action removeFavorite
+        Remove the group from the list of the current user's favorite groups. Supported for Microsoft 365 groups only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

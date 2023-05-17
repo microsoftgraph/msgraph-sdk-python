@@ -39,7 +39,7 @@ class ConnectedOrganizationItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ConnectedOrganizationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property connectedOrganizations for identityGovernance
+        Delete a connectedOrganization object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -58,7 +58,7 @@ class ConnectedOrganizationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ConnectedOrganizationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[connected_organization.ConnectedOrganization]:
         """
-        References to a directory or domain of another organization whose users can request access.
+        Retrieve the properties and relationships of a connectedOrganization object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[connected_organization.ConnectedOrganization]
@@ -80,7 +80,7 @@ class ConnectedOrganizationItemRequestBuilder():
     
     async def patch(self,body: Optional[connected_organization.ConnectedOrganization] = None, request_configuration: Optional[ConnectedOrganizationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[connected_organization.ConnectedOrganization]:
         """
-        Update the navigation property connectedOrganizations in identityGovernance
+        Update a connectedOrganization object to change one or more of its properties.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -105,7 +105,7 @@ class ConnectedOrganizationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ConnectedOrganizationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property connectedOrganizations for identityGovernance
+        Delete a connectedOrganization object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -121,7 +121,7 @@ class ConnectedOrganizationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ConnectedOrganizationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        References to a directory or domain of another organization whose users can request access.
+        Retrieve the properties and relationships of a connectedOrganization object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -139,7 +139,7 @@ class ConnectedOrganizationItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[connected_organization.ConnectedOrganization] = None, request_configuration: Optional[ConnectedOrganizationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property connectedOrganizations in identityGovernance
+        Update a connectedOrganization object to change one or more of its properties.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -191,7 +191,7 @@ class ConnectedOrganizationItemRequestBuilder():
     @dataclass
     class ConnectedOrganizationItemRequestBuilderGetQueryParameters():
         """
-        References to a directory or domain of another organization whose users can request access.
+        Retrieve the properties and relationships of a connectedOrganization object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -54,7 +54,7 @@ class TasksRequestBuilder():
     
     async def get(self,request_configuration: Optional[TasksRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_task_collection_response.PlannerTaskCollectionResponse]:
         """
-        Read-only. Nullable. The collection of tasks in the bucket.
+        Retrieve a list of plannerTask objects associated to a plannerBucket object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[planner_task_collection_response.PlannerTaskCollectionResponse]
@@ -101,7 +101,7 @@ class TasksRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TasksRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read-only. Nullable. The collection of tasks in the bucket.
+        Retrieve a list of plannerTask objects associated to a plannerBucket object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class TasksRequestBuilder():
     @dataclass
     class TasksRequestBuilderGetQueryParameters():
         """
-        Read-only. Nullable. The collection of tasks in the bucket.
+        Retrieve a list of plannerTask objects associated to a plannerBucket object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

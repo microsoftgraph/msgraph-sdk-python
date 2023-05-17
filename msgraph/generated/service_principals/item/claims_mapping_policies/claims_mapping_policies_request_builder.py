@@ -55,7 +55,7 @@ class ClaimsMappingPoliciesRequestBuilder():
     
     async def get(self,request_configuration: Optional[ClaimsMappingPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[claims_mapping_policy_collection_response.ClaimsMappingPolicyCollectionResponse]:
         """
-        The claimsMappingPolicies assigned to this service principal. Supports $expand.
+        List the claimsMappingPolicy objects that are assigned to a servicePrincipal.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[claims_mapping_policy_collection_response.ClaimsMappingPolicyCollectionResponse]
@@ -77,7 +77,7 @@ class ClaimsMappingPoliciesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ClaimsMappingPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The claimsMappingPolicies assigned to this service principal. Supports $expand.
+        List the claimsMappingPolicy objects that are assigned to a servicePrincipal.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class ClaimsMappingPoliciesRequestBuilder():
     @dataclass
     class ClaimsMappingPoliciesRequestBuilderGetQueryParameters():
         """
-        The claimsMappingPolicies assigned to this service principal. Supports $expand.
+        List the claimsMappingPolicy objects that are assigned to a servicePrincipal.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

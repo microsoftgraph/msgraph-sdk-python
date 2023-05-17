@@ -14,6 +14,7 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .add import add_request_builder
     from .count import count_request_builder
+    from .get_all_sites import get_all_sites_request_builder
     from .item import site_item_request_builder
     from .remove import remove_request_builder
 
@@ -111,6 +112,15 @@ class SitesRequestBuilder():
         from .count import count_request_builder
 
         return count_request_builder.CountRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def get_all_sites(self) -> get_all_sites_request_builder.GetAllSitesRequestBuilder:
+        """
+        Provides operations to call the getAllSites method.
+        """
+        from .get_all_sites import get_all_sites_request_builder
+
+        return get_all_sites_request_builder.GetAllSitesRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def remove(self) -> remove_request_builder.RemoveRequestBuilder:

@@ -37,7 +37,7 @@ class ChangePasswordRequestBuilder():
     
     async def post(self,body: Optional[change_password_post_request_body.ChangePasswordPostRequestBody] = None, request_configuration: Optional[ChangePasswordRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action changePassword
+        Enable the user to update their password. Any user can update their password without belonging to any administrator role.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class ChangePasswordRequestBuilder():
     
     def to_post_request_information(self,body: Optional[change_password_post_request_body.ChangePasswordPostRequestBody] = None, request_configuration: Optional[ChangePasswordRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action changePassword
+        Enable the user to update their password. Any user can update their password without belonging to any administrator role.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -54,7 +54,7 @@ class TaskDefinitionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[TaskDefinitionsRequestBuilderGetRequestConfiguration] = None) -> Optional[print_task_definition_collection_response.PrintTaskDefinitionCollectionResponse]:
         """
-        List of abstract definition for a task that can be triggered when various events occur within Universal Print.
+        Retrieve a list of task definitions that the requesting app defined in the tenant. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_task_definition_collection_response.PrintTaskDefinitionCollectionResponse]
@@ -76,7 +76,7 @@ class TaskDefinitionsRequestBuilder():
     
     async def post(self,body: Optional[print_task_definition.PrintTaskDefinition] = None, request_configuration: Optional[TaskDefinitionsRequestBuilderPostRequestConfiguration] = None) -> Optional[print_task_definition.PrintTaskDefinition]:
         """
-        Create new navigation property to taskDefinitions for print
+        Create a new task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class TaskDefinitionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TaskDefinitionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        List of abstract definition for a task that can be triggered when various events occur within Universal Print.
+        Retrieve a list of task definitions that the requesting app defined in the tenant. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class TaskDefinitionsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[print_task_definition.PrintTaskDefinition] = None, request_configuration: Optional[TaskDefinitionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to taskDefinitions for print
+        Create a new task definition. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class TaskDefinitionsRequestBuilder():
     @dataclass
     class TaskDefinitionsRequestBuilderGetQueryParameters():
         """
-        List of abstract definition for a task that can be triggered when various events occur within Universal Print.
+        Retrieve a list of task definitions that the requesting app defined in the tenant. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

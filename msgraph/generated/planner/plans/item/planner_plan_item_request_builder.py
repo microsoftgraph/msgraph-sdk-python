@@ -40,7 +40,7 @@ class PlannerPlanItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[PlannerPlanItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property plans for planner
+        Delete a plannerPlan object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -59,7 +59,7 @@ class PlannerPlanItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[PlannerPlanItemRequestBuilderGetRequestConfiguration] = None) -> Optional[planner_plan.PlannerPlan]:
         """
-        Read-only. Nullable. Returns a collection of the specified plans
+        Retrieve the properties and relationships of a plannerplan object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[planner_plan.PlannerPlan]
@@ -81,7 +81,7 @@ class PlannerPlanItemRequestBuilder():
     
     async def patch(self,body: Optional[planner_plan.PlannerPlan] = None, request_configuration: Optional[PlannerPlanItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[planner_plan.PlannerPlan]:
         """
-        Update the navigation property plans in planner
+        Update the properties of a **plannerPlan** object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -106,7 +106,7 @@ class PlannerPlanItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[PlannerPlanItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property plans for planner
+        Delete a plannerPlan object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -122,7 +122,7 @@ class PlannerPlanItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PlannerPlanItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read-only. Nullable. Returns a collection of the specified plans
+        Retrieve the properties and relationships of a plannerplan object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +140,7 @@ class PlannerPlanItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[planner_plan.PlannerPlan] = None, request_configuration: Optional[PlannerPlanItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property plans in planner
+        Update the properties of a **plannerPlan** object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -201,7 +201,7 @@ class PlannerPlanItemRequestBuilder():
     @dataclass
     class PlannerPlanItemRequestBuilderGetQueryParameters():
         """
-        Read-only. Nullable. Returns a collection of the specified plans
+        Retrieve the properties and relationships of a plannerplan object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

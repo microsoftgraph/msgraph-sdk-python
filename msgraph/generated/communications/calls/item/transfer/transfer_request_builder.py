@@ -37,7 +37,7 @@ class TransferRequestBuilder():
     
     async def post(self,body: Optional[transfer_post_request_body.TransferPostRequestBody] = None, request_configuration: Optional[TransferRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action transfer
+        Transfer an active peer-to-peer call or group call. A consultative transfer means that the transferor can inform the person they want to transfer the call to (the transferee), before the transfer is made. This is opposed to transfering the call directly.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class TransferRequestBuilder():
     
     def to_post_request_information(self,body: Optional[transfer_post_request_body.TransferPostRequestBody] = None, request_configuration: Optional[TransferRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action transfer
+        Transfer an active peer-to-peer call or group call. A consultative transfer means that the transferor can inform the person they want to transfer the call to (the transferee), before the transfer is made. This is opposed to transfering the call directly.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

@@ -38,7 +38,7 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ActivityBasedTimeoutPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property activityBasedTimeoutPolicies for policies
+        Delete an activityBasedTimeoutPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ActivityBasedTimeoutPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[activity_based_timeout_policy.ActivityBasedTimeoutPolicy]:
         """
-        The policy that controls the idle time out for web sessions for applications.
+        Get the properties of an activityBasedTimeoutPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[activity_based_timeout_policy.ActivityBasedTimeoutPolicy]
@@ -79,7 +79,7 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder():
     
     async def patch(self,body: Optional[activity_based_timeout_policy.ActivityBasedTimeoutPolicy] = None, request_configuration: Optional[ActivityBasedTimeoutPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[activity_based_timeout_policy.ActivityBasedTimeoutPolicy]:
         """
-        Update the navigation property activityBasedTimeoutPolicies in policies
+        Update the properties of an activityBasedTimeoutPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ActivityBasedTimeoutPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property activityBasedTimeoutPolicies for policies
+        Delete an activityBasedTimeoutPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ActivityBasedTimeoutPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The policy that controls the idle time out for web sessions for applications.
+        Get the properties of an activityBasedTimeoutPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[activity_based_timeout_policy.ActivityBasedTimeoutPolicy] = None, request_configuration: Optional[ActivityBasedTimeoutPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property activityBasedTimeoutPolicies in policies
+        Update the properties of an activityBasedTimeoutPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class ActivityBasedTimeoutPolicyItemRequestBuilder():
     @dataclass
     class ActivityBasedTimeoutPolicyItemRequestBuilderGetQueryParameters():
         """
-        The policy that controls the idle time out for web sessions for applications.
+        Get the properties of an activityBasedTimeoutPolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

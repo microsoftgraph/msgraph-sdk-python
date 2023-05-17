@@ -37,7 +37,7 @@ class LinkedResourceItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[LinkedResourceItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property linkedResources for me
+        Deletes a linkedResource object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class LinkedResourceItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[LinkedResourceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[linked_resource.LinkedResource]:
         """
-        A collection of resources linked to the task.
+        Read the properties and relationships of a linkedResource object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[linked_resource.LinkedResource]
@@ -78,7 +78,7 @@ class LinkedResourceItemRequestBuilder():
     
     async def patch(self,body: Optional[linked_resource.LinkedResource] = None, request_configuration: Optional[LinkedResourceItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[linked_resource.LinkedResource]:
         """
-        Update the navigation property linkedResources in me
+        Update the properties of a linkedResource object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class LinkedResourceItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[LinkedResourceItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property linkedResources for me
+        Deletes a linkedResource object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class LinkedResourceItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[LinkedResourceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of resources linked to the task.
+        Read the properties and relationships of a linkedResource object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class LinkedResourceItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[linked_resource.LinkedResource] = None, request_configuration: Optional[LinkedResourceItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property linkedResources in me
+        Update the properties of a linkedResource object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class LinkedResourceItemRequestBuilder():
     @dataclass
     class LinkedResourceItemRequestBuilderGetQueryParameters():
         """
-        A collection of resources linked to the task.
+        Read the properties and relationships of a linkedResource object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

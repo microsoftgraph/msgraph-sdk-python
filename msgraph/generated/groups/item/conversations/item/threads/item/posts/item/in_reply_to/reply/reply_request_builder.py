@@ -37,7 +37,7 @@ class ReplyRequestBuilder():
     
     async def post(self,body: Optional[reply_post_request_body.ReplyPostRequestBody] = None, request_configuration: Optional[ReplyRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action reply
+        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class ReplyRequestBuilder():
     
     def to_post_request_information(self,body: Optional[reply_post_request_body.ReplyPostRequestBody] = None, request_configuration: Optional[ReplyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action reply
+        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

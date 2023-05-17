@@ -37,7 +37,7 @@ class BookingCustomQuestionItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[BookingCustomQuestionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property customQuestions for solutions
+        Delete a bookingCustomQuestion object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class BookingCustomQuestionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[BookingCustomQuestionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_custom_question.BookingCustomQuestion]:
         """
-        All the custom questions of this business. Read-only. Nullable.
+        Read the properties and relationships of a bookingCustomQuestion object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[booking_custom_question.BookingCustomQuestion]
@@ -78,7 +78,7 @@ class BookingCustomQuestionItemRequestBuilder():
     
     async def patch(self,body: Optional[booking_custom_question.BookingCustomQuestion] = None, request_configuration: Optional[BookingCustomQuestionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[booking_custom_question.BookingCustomQuestion]:
         """
-        Update the navigation property customQuestions in solutions
+        Update the properties of a bookingCustomQuestion object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class BookingCustomQuestionItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[BookingCustomQuestionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property customQuestions for solutions
+        Delete a bookingCustomQuestion object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class BookingCustomQuestionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[BookingCustomQuestionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All the custom questions of this business. Read-only. Nullable.
+        Read the properties and relationships of a bookingCustomQuestion object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class BookingCustomQuestionItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[booking_custom_question.BookingCustomQuestion] = None, request_configuration: Optional[BookingCustomQuestionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property customQuestions in solutions
+        Update the properties of a bookingCustomQuestion object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class BookingCustomQuestionItemRequestBuilder():
     @dataclass
     class BookingCustomQuestionItemRequestBuilderGetQueryParameters():
         """
-        All the custom questions of this business. Read-only. Nullable.
+        Read the properties and relationships of a bookingCustomQuestion object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

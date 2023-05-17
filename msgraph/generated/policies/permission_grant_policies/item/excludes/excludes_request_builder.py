@@ -54,7 +54,7 @@ class ExcludesRequestBuilder():
     
     async def get(self,request_configuration: Optional[ExcludesRequestBuilderGetRequestConfiguration] = None) -> Optional[permission_grant_condition_set_collection_response.PermissionGrantConditionSetCollectionResponse]:
         """
-        Condition sets which are excluded in this permission grant policy. Automatically expanded on GET.
+        Retrieve the condition sets which are *excluded* in a permissionGrantPolicy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[permission_grant_condition_set_collection_response.PermissionGrantConditionSetCollectionResponse]
@@ -76,7 +76,7 @@ class ExcludesRequestBuilder():
     
     async def post(self,body: Optional[permission_grant_condition_set.PermissionGrantConditionSet] = None, request_configuration: Optional[ExcludesRequestBuilderPostRequestConfiguration] = None) -> Optional[permission_grant_condition_set.PermissionGrantConditionSet]:
         """
-        Create new navigation property to excludes for policies
+        Add conditions under which a permission grant event is *excluded* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the **excludes** collection of a  permissionGrantPolicy.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ExcludesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ExcludesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Condition sets which are excluded in this permission grant policy. Automatically expanded on GET.
+        Retrieve the condition sets which are *excluded* in a permissionGrantPolicy.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ExcludesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[permission_grant_condition_set.PermissionGrantConditionSet] = None, request_configuration: Optional[ExcludesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to excludes for policies
+        Add conditions under which a permission grant event is *excluded* in a permission grant policy. You do this by adding a permissionGrantConditionSet to the **excludes** collection of a  permissionGrantPolicy.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class ExcludesRequestBuilder():
     @dataclass
     class ExcludesRequestBuilderGetQueryParameters():
         """
-        Condition sets which are excluded in this permission grant policy. Automatically expanded on GET.
+        Retrieve the condition sets which are *excluded* in a permissionGrantPolicy.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

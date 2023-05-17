@@ -58,7 +58,7 @@ class WorkbookChartSeriesItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_chart_series.WorkbookChartSeries]:
         """
-        Represents either a single series or collection of series in the chart. Read-only.
+        Retrieve the properties and relationships of chartseries object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_chart_series.WorkbookChartSeries]
@@ -80,7 +80,7 @@ class WorkbookChartSeriesItemRequestBuilder():
     
     async def patch(self,body: Optional[workbook_chart_series.WorkbookChartSeries] = None, request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_chart_series.WorkbookChartSeries]:
         """
-        Update the navigation property series in drives
+        Update the properties of chartseries object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -121,7 +121,7 @@ class WorkbookChartSeriesItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents either a single series or collection of series in the chart. Read-only.
+        Retrieve the properties and relationships of chartseries object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -139,7 +139,7 @@ class WorkbookChartSeriesItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[workbook_chart_series.WorkbookChartSeries] = None, request_configuration: Optional[WorkbookChartSeriesItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property series in drives
+        Update the properties of chartseries object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -191,7 +191,7 @@ class WorkbookChartSeriesItemRequestBuilder():
     @dataclass
     class WorkbookChartSeriesItemRequestBuilderGetQueryParameters():
         """
-        Represents either a single series or collection of series in the chart. Read-only.
+        Retrieve the properties and relationships of chartseries object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

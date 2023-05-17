@@ -37,7 +37,7 @@ class WorkforceIntegrationItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[WorkforceIntegrationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property workforceIntegrations for teamwork
+        Delete an instance of a workforceIntegration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class WorkforceIntegrationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[WorkforceIntegrationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workforce_integration.WorkforceIntegration]:
         """
-        Get workforceIntegrations from teamwork
+        Retrieve the properties and relationships of a workforceIntegration object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workforce_integration.WorkforceIntegration]
@@ -78,7 +78,7 @@ class WorkforceIntegrationItemRequestBuilder():
     
     async def patch(self,body: Optional[workforce_integration.WorkforceIntegration] = None, request_configuration: Optional[WorkforceIntegrationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workforce_integration.WorkforceIntegration]:
         """
-        Update the navigation property workforceIntegrations in teamwork
+        Update the properties of a workforceIntegration object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class WorkforceIntegrationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[WorkforceIntegrationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property workforceIntegrations for teamwork
+        Delete an instance of a workforceIntegration.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class WorkforceIntegrationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[WorkforceIntegrationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get workforceIntegrations from teamwork
+        Retrieve the properties and relationships of a workforceIntegration object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class WorkforceIntegrationItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[workforce_integration.WorkforceIntegration] = None, request_configuration: Optional[WorkforceIntegrationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property workforceIntegrations in teamwork
+        Update the properties of a workforceIntegration object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class WorkforceIntegrationItemRequestBuilder():
     @dataclass
     class WorkforceIntegrationItemRequestBuilderGetQueryParameters():
         """
-        Get workforceIntegrations from teamwork
+        Retrieve the properties and relationships of a workforceIntegration object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

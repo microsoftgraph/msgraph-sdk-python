@@ -37,7 +37,7 @@ class FollowRequestBuilder():
     
     async def post(self,request_configuration: Optional[FollowRequestBuilderPostRequestConfiguration] = None) -> Optional[drive_item.DriveItem]:
         """
-        Invoke action follow
+        Follow a driveItem.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[drive_item.DriveItem]
@@ -59,7 +59,7 @@ class FollowRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[FollowRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action follow
+        Follow a driveItem.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

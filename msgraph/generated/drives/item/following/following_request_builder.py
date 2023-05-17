@@ -54,7 +54,7 @@ class FollowingRequestBuilder():
     
     async def get(self,request_configuration: Optional[FollowingRequestBuilderGetRequestConfiguration] = None) -> Optional[drive_item_collection_response.DriveItemCollectionResponse]:
         """
-        The list of items the user is following. Only in OneDrive for Business.
+        List the items that have been followed by the signed in user.This collection includes items that are in the user's drive as well as items they have access to from other drives.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[drive_item_collection_response.DriveItemCollectionResponse]
@@ -76,7 +76,7 @@ class FollowingRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[FollowingRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of items the user is following. Only in OneDrive for Business.
+        List the items that have been followed by the signed in user.This collection includes items that are in the user's drive as well as items they have access to from other drives.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class FollowingRequestBuilder():
     @dataclass
     class FollowingRequestBuilderGetQueryParameters():
         """
-        The list of items the user is following. Only in OneDrive for Business.
+        List the items that have been followed by the signed in user.This collection includes items that are in the user's drive as well as items they have access to from other drives.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -37,7 +37,7 @@ class AddRequestBuilder():
     
     async def post(self,body: Optional[add_post_request_body.AddPostRequestBody] = None, request_configuration: Optional[AddRequestBuilderPostRequestConfiguration] = None) -> Optional[add_response.AddResponse]:
         """
-        Invoke action add
+        Follow a user's site or multiple sites.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -62,7 +62,7 @@ class AddRequestBuilder():
     
     def to_post_request_information(self,body: Optional[add_post_request_body.AddPostRequestBody] = None, request_configuration: Optional[AddRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action add
+        Follow a user's site or multiple sites.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

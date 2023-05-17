@@ -37,7 +37,7 @@ class ProtectRequestBuilder():
     
     async def post(self,body: Optional[protect_post_request_body.ProtectPostRequestBody] = None, request_configuration: Optional[ProtectRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action protect
+        Protect a worksheet. It throws if the worksheet has been protected.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class ProtectRequestBuilder():
     
     def to_post_request_information(self,body: Optional[protect_post_request_body.ProtectPostRequestBody] = None, request_configuration: Optional[ProtectRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action protect
+        Protect a worksheet. It throws if the worksheet has been protected.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

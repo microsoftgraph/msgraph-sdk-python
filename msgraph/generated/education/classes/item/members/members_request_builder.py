@@ -55,7 +55,7 @@ class MembersRequestBuilder():
     
     async def get(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> Optional[education_user_collection_response.EducationUserCollectionResponse]:
         """
-        All users in the class. Nullable.
+        Retrieves the educationUser members of an educationClass.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_user_collection_response.EducationUserCollectionResponse]
@@ -77,7 +77,7 @@ class MembersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MembersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All users in the class. Nullable.
+        Retrieves the educationUser members of an educationClass.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -114,7 +114,7 @@ class MembersRequestBuilder():
     @dataclass
     class MembersRequestBuilderGetQueryParameters():
         """
-        All users in the class. Nullable.
+        Retrieves the educationUser members of an educationClass.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

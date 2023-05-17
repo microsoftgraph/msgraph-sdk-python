@@ -55,7 +55,7 @@ class ListsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ListsRequestBuilderGetRequestConfiguration] = None) -> Optional[todo_task_list_collection_response.TodoTaskListCollectionResponse]:
         """
-        The task lists in the users mailbox.
+        Get a list of the todoTaskList objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[todo_task_list_collection_response.TodoTaskListCollectionResponse]
@@ -77,7 +77,7 @@ class ListsRequestBuilder():
     
     async def post(self,body: Optional[todo_task_list.TodoTaskList] = None, request_configuration: Optional[ListsRequestBuilderPostRequestConfiguration] = None) -> Optional[todo_task_list.TodoTaskList]:
         """
-        Create new navigation property to lists for users
+        Create a new lists object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class ListsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ListsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The task lists in the users mailbox.
+        Get a list of the todoTaskList objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class ListsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[todo_task_list.TodoTaskList] = None, request_configuration: Optional[ListsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to lists for users
+        Create a new lists object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class ListsRequestBuilder():
     @dataclass
     class ListsRequestBuilderGetQueryParameters():
         """
-        The task lists in the users mailbox.
+        Get a list of the todoTaskList objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

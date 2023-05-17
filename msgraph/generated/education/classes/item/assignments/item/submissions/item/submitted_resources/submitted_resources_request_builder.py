@@ -54,7 +54,7 @@ class SubmittedResourcesRequestBuilder():
     
     async def get(self,request_configuration: Optional[SubmittedResourcesRequestBuilderGetRequestConfiguration] = None) -> Optional[education_submission_resource_collection_response.EducationSubmissionResourceCollectionResponse]:
         """
-        Get submittedResources from education
+        List the educationSubmissionResource objects that have officially been submitted for grading. Only teachers, students, and applications with application permissions can perform this operation. The student who owns the submission cannot change the submitted list without resubmitting the assignment. This is a wrapper around the real resource and can contain a pointer back to the actual assignment resource if this resource was copied from the assignment.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_submission_resource_collection_response.EducationSubmissionResourceCollectionResponse]
@@ -101,7 +101,7 @@ class SubmittedResourcesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SubmittedResourcesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get submittedResources from education
+        List the educationSubmissionResource objects that have officially been submitted for grading. Only teachers, students, and applications with application permissions can perform this operation. The student who owns the submission cannot change the submitted list without resubmitting the assignment. This is a wrapper around the real resource and can contain a pointer back to the actual assignment resource if this resource was copied from the assignment.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class SubmittedResourcesRequestBuilder():
     @dataclass
     class SubmittedResourcesRequestBuilderGetQueryParameters():
         """
-        Get submittedResources from education
+        List the educationSubmissionResource objects that have officially been submitted for grading. Only teachers, students, and applications with application permissions can perform this operation. The student who owns the submission cannot change the submitted list without resubmitting the assignment. This is a wrapper around the real resource and can contain a pointer back to the actual assignment resource if this resource was copied from the assignment.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

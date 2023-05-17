@@ -38,7 +38,7 @@ class AttachmentBaseItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[AttachmentBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property attachments for me
+        Delete a taskFileAttachment object from a todoTask resource.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class AttachmentBaseItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AttachmentBaseItemRequestBuilderGetRequestConfiguration] = None) -> Optional[attachment_base.AttachmentBase]:
         """
-        A collection of file attachments for the task.
+        Read the properties and relationships of a taskFileAttachment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[attachment_base.AttachmentBase]
@@ -79,7 +79,7 @@ class AttachmentBaseItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[AttachmentBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property attachments for me
+        Delete a taskFileAttachment object from a todoTask resource.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -95,7 +95,7 @@ class AttachmentBaseItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AttachmentBaseItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of file attachments for the task.
+        Read the properties and relationships of a taskFileAttachment object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,7 +135,7 @@ class AttachmentBaseItemRequestBuilder():
     @dataclass
     class AttachmentBaseItemRequestBuilderGetQueryParameters():
         """
-        A collection of file attachments for the task.
+        Read the properties and relationships of a taskFileAttachment object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

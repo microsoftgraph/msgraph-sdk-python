@@ -54,7 +54,7 @@ class TermsRequestBuilder():
     
     async def get(self,request_configuration: Optional[TermsRequestBuilderGetRequestConfiguration] = None) -> Optional[term_collection_response.TermCollectionResponse]:
         """
-        All the terms under the set.
+        Read the properties and relationships of a term object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[term_collection_response.TermCollectionResponse]
@@ -101,7 +101,7 @@ class TermsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TermsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All the terms under the set.
+        Read the properties and relationships of a term object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class TermsRequestBuilder():
     @dataclass
     class TermsRequestBuilderGetQueryParameters():
         """
-        All the terms under the set.
+        Read the properties and relationships of a term object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

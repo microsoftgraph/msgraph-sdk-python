@@ -54,7 +54,7 @@ class ExtensionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ExtensionsRequestBuilderGetRequestConfiguration] = None) -> Optional[extension_collection_response.ExtensionCollectionResponse]:
         """
-        The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
+        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[extension_collection_response.ExtensionCollectionResponse]
@@ -101,7 +101,7 @@ class ExtensionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ExtensionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
+        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class ExtensionsRequestBuilder():
     @dataclass
     class ExtensionsRequestBuilderGetQueryParameters():
         """
-        The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
+        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

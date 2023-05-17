@@ -58,7 +58,7 @@ class ListItemVersionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ListItemVersionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[list_item_version.ListItemVersion]:
         """
-        The list of previous versions of the list item.
+        Retrieve the metadata for a specific version of a ListItem.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[list_item_version.ListItemVersion]
@@ -121,7 +121,7 @@ class ListItemVersionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ListItemVersionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of previous versions of the list item.
+        Retrieve the metadata for a specific version of a ListItem.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -191,7 +191,7 @@ class ListItemVersionItemRequestBuilder():
     @dataclass
     class ListItemVersionItemRequestBuilderGetQueryParameters():
         """
-        The list of previous versions of the list item.
+        Retrieve the metadata for a specific version of a ListItem.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

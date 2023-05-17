@@ -35,6 +35,25 @@ class IdentityProviderItemRequestBuilder():
         self.path_parameters = url_tpl_params
         self.request_adapter = request_adapter
     
+    async def delete(self,request_configuration: Optional[IdentityProviderItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
+        """
+        Delete an identity provider from a b2xIdentityUserFlow object. For self-service sign-up user flows, the values can be `Google-OAUTH` or `Facebook-OAUTH`.
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        request_info = self.to_delete_request_information(
+            request_configuration
+        )
+        from ......models.o_data_errors import o_data_error
+
+        error_mapping: Dict[str, ParsableFactory] = {
+            "4XX": o_data_error.ODataError,
+            "5XX": o_data_error.ODataError,
+        }
+        if not self.request_adapter:
+            raise Exception("Http core is null") 
+        return await self.request_adapter.send_no_response_content_async(request_info, error_mapping)
+    
     async def get(self,request_configuration: Optional[IdentityProviderItemRequestBuilderGetRequestConfiguration] = None) -> Optional[identity_provider.IdentityProvider]:
         """
         The identity providers included in the user flow.
@@ -57,6 +76,22 @@ class IdentityProviderItemRequestBuilder():
 
         return await self.request_adapter.send_async(request_info, identity_provider.IdentityProvider, error_mapping)
     
+    def to_delete_request_information(self,request_configuration: Optional[IdentityProviderItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
+        """
+        Delete an identity provider from a b2xIdentityUserFlow object. For self-service sign-up user flows, the values can be `Google-OAUTH` or `Facebook-OAUTH`.
+        Args:
+            requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
+        Returns: RequestInformation
+        """
+        request_info = RequestInformation()
+        request_info.url_template = self.url_template
+        request_info.path_parameters = self.path_parameters
+        request_info.http_method = Method.DELETE
+        if request_configuration:
+            request_info.add_request_headers(request_configuration.headers)
+            request_info.add_request_options(request_configuration.options)
+        return request_info
+    
     def to_get_request_information(self,request_configuration: Optional[IdentityProviderItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
         The identity providers included in the user flow.
@@ -74,6 +109,18 @@ class IdentityProviderItemRequestBuilder():
             request_info.set_query_string_parameters_from_raw_object(request_configuration.query_parameters)
             request_info.add_request_options(request_configuration.options)
         return request_info
+    
+    @dataclass
+    class IdentityProviderItemRequestBuilderDeleteRequestConfiguration():
+        """
+        Configuration for the request such as headers, query parameters, and middleware options.
+        """
+        # Request headers
+        headers: Optional[Dict[str, Union[str, List[str]]]] = None
+
+        # Request options
+        options: Optional[List[RequestOption]] = None
+
     
     @dataclass
     class IdentityProviderItemRequestBuilderGetQueryParameters():

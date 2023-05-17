@@ -48,7 +48,7 @@ class EventItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[EventItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property events for groups
+        Delete an event object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -67,7 +67,7 @@ class EventItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[EventItemRequestBuilderGetRequestConfiguration] = None) -> Optional[event.Event]:
         """
-        The group's calendar events.
+        Get an event object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[event.Event]
@@ -114,7 +114,7 @@ class EventItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[EventItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property events for groups
+        Delete an event object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +130,7 @@ class EventItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[EventItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The group's calendar events.
+        Get an event object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -281,7 +281,7 @@ class EventItemRequestBuilder():
     @dataclass
     class EventItemRequestBuilderGetQueryParameters():
         """
-        The group's calendar events.
+        Get an event object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

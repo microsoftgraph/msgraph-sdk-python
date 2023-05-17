@@ -54,7 +54,7 @@ class EdiscoveryCasesRequestBuilder():
     
     async def get(self,request_configuration: Optional[EdiscoveryCasesRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_case_collection_response.EdiscoveryCaseCollectionResponse]:
         """
-        Get ediscoveryCases from security
+        Get a list of the ediscoveryCase objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ediscovery_case_collection_response.EdiscoveryCaseCollectionResponse]
@@ -76,7 +76,7 @@ class EdiscoveryCasesRequestBuilder():
     
     async def post(self,body: Optional[ediscovery_case.EdiscoveryCase] = None, request_configuration: Optional[EdiscoveryCasesRequestBuilderPostRequestConfiguration] = None) -> Optional[ediscovery_case.EdiscoveryCase]:
         """
-        Create new navigation property to ediscoveryCases for security
+        Create a new ediscoveryCase object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class EdiscoveryCasesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[EdiscoveryCasesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get ediscoveryCases from security
+        Get a list of the ediscoveryCase objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class EdiscoveryCasesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[ediscovery_case.EdiscoveryCase] = None, request_configuration: Optional[EdiscoveryCasesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to ediscoveryCases for security
+        Create a new ediscoveryCase object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class EdiscoveryCasesRequestBuilder():
     @dataclass
     class EdiscoveryCasesRequestBuilderGetQueryParameters():
         """
-        Get ediscoveryCases from security
+        Get a list of the ediscoveryCase objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

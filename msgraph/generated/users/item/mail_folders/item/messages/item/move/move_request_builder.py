@@ -38,7 +38,7 @@ class MoveRequestBuilder():
     
     async def post(self,body: Optional[move_post_request_body.MovePostRequestBody] = None, request_configuration: Optional[MoveRequestBuilderPostRequestConfiguration] = None) -> Optional[message.Message]:
         """
-        Invoke action move
+        Move a message to another folder within the specified user's mailbox. This creates a new copy of the message in the destination folder and removes the original message.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class MoveRequestBuilder():
     
     def to_post_request_information(self,body: Optional[move_post_request_body.MovePostRequestBody] = None, request_configuration: Optional[MoveRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action move
+        Move a message to another folder within the specified user's mailbox. This creates a new copy of the message in the destination folder and removes the original message.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

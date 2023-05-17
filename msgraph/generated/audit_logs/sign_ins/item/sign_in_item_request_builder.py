@@ -56,7 +56,7 @@ class SignInItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[SignInItemRequestBuilderGetRequestConfiguration] = None) -> Optional[sign_in.SignIn]:
         """
-        Get signIns from auditLogs
+        Retrieve a specific Azure AD user sign-in event for your tenant. Sign-ins that are interactive in nature (where a username/password is passed as part of auth token) and successful federated sign-ins are currently included in the sign-in logs.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[sign_in.SignIn]
@@ -119,7 +119,7 @@ class SignInItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SignInItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get signIns from auditLogs
+        Retrieve a specific Azure AD user sign-in event for your tenant. Sign-ins that are interactive in nature (where a username/password is passed as part of auth token) and successful federated sign-ins are currently included in the sign-in logs.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class SignInItemRequestBuilder():
     @dataclass
     class SignInItemRequestBuilderGetQueryParameters():
         """
-        Get signIns from auditLogs
+        Retrieve a specific Azure AD user sign-in event for your tenant. Sign-ins that are interactive in nature (where a username/password is passed as part of auth token) and successful federated sign-ins are currently included in the sign-in logs.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -57,7 +57,7 @@ class ThreatAssessmentRequestItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ThreatAssessmentRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[threat_assessment_request.ThreatAssessmentRequest]:
         """
-        Get threatAssessmentRequests from informationProtection
+        Retrieve the properties and relationships of a specified threatAssessmentRequest object. A threat assessment request can be one of the following types:
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[threat_assessment_request.ThreatAssessmentRequest]
@@ -120,7 +120,7 @@ class ThreatAssessmentRequestItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ThreatAssessmentRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get threatAssessmentRequests from informationProtection
+        Retrieve the properties and relationships of a specified threatAssessmentRequest object. A threat assessment request can be one of the following types:
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class ThreatAssessmentRequestItemRequestBuilder():
     @dataclass
     class ThreatAssessmentRequestItemRequestBuilderGetQueryParameters():
         """
-        Get threatAssessmentRequests from informationProtection
+        Retrieve the properties and relationships of a specified threatAssessmentRequest object. A threat assessment request can be one of the following types:
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

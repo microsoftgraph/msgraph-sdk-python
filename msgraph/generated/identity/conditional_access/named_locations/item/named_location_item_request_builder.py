@@ -37,7 +37,7 @@ class NamedLocationItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[NamedLocationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property namedLocations for identity
+        Delete an ipNamedLocation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class NamedLocationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[NamedLocationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[named_location.NamedLocation]:
         """
-        Read-only. Nullable. Returns a collection of the specified named locations.
+        Retrieve the properties and relationships of a countryNamedLocation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[named_location.NamedLocation]
@@ -78,7 +78,7 @@ class NamedLocationItemRequestBuilder():
     
     async def patch(self,body: Optional[named_location.NamedLocation] = None, request_configuration: Optional[NamedLocationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[named_location.NamedLocation]:
         """
-        Update the navigation property namedLocations in identity
+        Update the properties of an ipNamedLocation object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class NamedLocationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[NamedLocationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property namedLocations for identity
+        Delete an ipNamedLocation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class NamedLocationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[NamedLocationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read-only. Nullable. Returns a collection of the specified named locations.
+        Retrieve the properties and relationships of a countryNamedLocation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class NamedLocationItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[named_location.NamedLocation] = None, request_configuration: Optional[NamedLocationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property namedLocations in identity
+        Update the properties of an ipNamedLocation object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class NamedLocationItemRequestBuilder():
     @dataclass
     class NamedLocationItemRequestBuilderGetQueryParameters():
         """
-        Read-only. Nullable. Returns a collection of the specified named locations.
+        Retrieve the properties and relationships of a countryNamedLocation object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

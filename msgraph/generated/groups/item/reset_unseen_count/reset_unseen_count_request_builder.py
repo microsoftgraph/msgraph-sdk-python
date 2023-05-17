@@ -36,7 +36,7 @@ class ResetUnseenCountRequestBuilder():
     
     async def post(self,request_configuration: Optional[ResetUnseenCountRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action resetUnseenCount
+        Reset the unseenCount of all the posts that the current user has not seen since their last visit. Supported for Microsoft 365 groups only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class ResetUnseenCountRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[ResetUnseenCountRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action resetUnseenCount
+        Reset the unseenCount of all the posts that the current user has not seen since their last visit. Supported for Microsoft 365 groups only.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

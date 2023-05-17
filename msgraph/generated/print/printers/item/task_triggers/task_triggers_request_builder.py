@@ -54,7 +54,7 @@ class TaskTriggersRequestBuilder():
     
     async def get(self,request_configuration: Optional[TaskTriggersRequestBuilderGetRequestConfiguration] = None) -> Optional[print_task_trigger_collection_response.PrintTaskTriggerCollectionResponse]:
         """
-        A list of task triggers that are associated with the printer.
+        Retrieve a list of task triggers associated with the printer. The list of task triggers defines which tasks will be triggered as a result of events that occur during printing. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_task_trigger_collection_response.PrintTaskTriggerCollectionResponse]
@@ -76,7 +76,7 @@ class TaskTriggersRequestBuilder():
     
     async def post(self,body: Optional[print_task_trigger.PrintTaskTrigger] = None, request_configuration: Optional[TaskTriggersRequestBuilderPostRequestConfiguration] = None) -> Optional[print_task_trigger.PrintTaskTrigger]:
         """
-        Create new navigation property to taskTriggers for print
+        Create a new task trigger on the specified printer. Currently, only **one** task trigger can be specified per printer, but this limit might be removed in the future. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class TaskTriggersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TaskTriggersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A list of task triggers that are associated with the printer.
+        Retrieve a list of task triggers associated with the printer. The list of task triggers defines which tasks will be triggered as a result of events that occur during printing. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class TaskTriggersRequestBuilder():
     
     def to_post_request_information(self,body: Optional[print_task_trigger.PrintTaskTrigger] = None, request_configuration: Optional[TaskTriggersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to taskTriggers for print
+        Create a new task trigger on the specified printer. Currently, only **one** task trigger can be specified per printer, but this limit might be removed in the future. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class TaskTriggersRequestBuilder():
     @dataclass
     class TaskTriggersRequestBuilderGetQueryParameters():
         """
-        A list of task triggers that are associated with the printer.
+        Retrieve a list of task triggers associated with the printer. The list of task triggers defines which tasks will be triggered as a result of events that occur during printing. For details about how to use this API to add pull printing support to Universal Print, see Extending Universal Print to support pull printing.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -54,7 +54,7 @@ class DrivesRequestBuilder():
     
     async def get(self,request_configuration: Optional[DrivesRequestBuilderGetRequestConfiguration] = None) -> Optional[drive_collection_response.DriveCollectionResponse]:
         """
-        A collection of drives available for this user. Read-only.
+        Retrieve the list of Drive resources available for a target User, Group, or Site.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[drive_collection_response.DriveCollectionResponse]
@@ -76,7 +76,7 @@ class DrivesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DrivesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of drives available for this user. Read-only.
+        Retrieve the list of Drive resources available for a target User, Group, or Site.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class DrivesRequestBuilder():
     @dataclass
     class DrivesRequestBuilderGetQueryParameters():
         """
-        A collection of drives available for this user. Read-only.
+        Retrieve the list of Drive resources available for a target User, Group, or Site.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

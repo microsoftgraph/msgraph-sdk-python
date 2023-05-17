@@ -37,7 +37,7 @@ class GetApplicablePolicyRequirementsRequestBuilder():
     
     async def post(self,request_configuration: Optional[GetApplicablePolicyRequirementsRequestBuilderPostRequestConfiguration] = None) -> Optional[get_applicable_policy_requirements_response.GetApplicablePolicyRequirementsResponse]:
         """
-        Invoke action getApplicablePolicyRequirements
+        In Azure AD entitlement management, this action retrieves a list of accessPackageAssignmentRequestRequirements objects that the currently signed-in user can use to create an accessPackageAssignmentRequest.  Each requirement object corresponds to an access package assignment policy that the currently signed-in user is allowed to request an assignment for.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[get_applicable_policy_requirements_response.GetApplicablePolicyRequirementsResponse]
@@ -59,7 +59,7 @@ class GetApplicablePolicyRequirementsRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[GetApplicablePolicyRequirementsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action getApplicablePolicyRequirements
+        In Azure AD entitlement management, this action retrieves a list of accessPackageAssignmentRequestRequirements objects that the currently signed-in user can use to create an accessPackageAssignmentRequest.  Each requirement object corresponds to an access package assignment policy that the currently signed-in user is allowed to request an assignment for.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -37,7 +37,7 @@ class InternalDomainFederationItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[InternalDomainFederationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property federationConfiguration for domains
+        Delete an internalDomainFederation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class InternalDomainFederationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[InternalDomainFederationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[internal_domain_federation.InternalDomainFederation]:
         """
-        Domain settings configured by a customer when federated with Azure AD. Supports $expand.
+        Read the properties and relationships of an internalDomainFederation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[internal_domain_federation.InternalDomainFederation]
@@ -78,7 +78,7 @@ class InternalDomainFederationItemRequestBuilder():
     
     async def patch(self,body: Optional[internal_domain_federation.InternalDomainFederation] = None, request_configuration: Optional[InternalDomainFederationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[internal_domain_federation.InternalDomainFederation]:
         """
-        Update the navigation property federationConfiguration in domains
+        Update the properties of an internalDomainFederation object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class InternalDomainFederationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[InternalDomainFederationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property federationConfiguration for domains
+        Delete an internalDomainFederation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class InternalDomainFederationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[InternalDomainFederationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Domain settings configured by a customer when federated with Azure AD. Supports $expand.
+        Read the properties and relationships of an internalDomainFederation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class InternalDomainFederationItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[internal_domain_federation.InternalDomainFederation] = None, request_configuration: Optional[InternalDomainFederationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property federationConfiguration in domains
+        Update the properties of an internalDomainFederation object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class InternalDomainFederationItemRequestBuilder():
     @dataclass
     class InternalDomainFederationItemRequestBuilderGetQueryParameters():
         """
-        Domain settings configured by a customer when federated with Azure AD. Supports $expand.
+        Read the properties and relationships of an internalDomainFederation object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -57,7 +57,7 @@ class UnifiedRoleManagementPolicyAssignmentItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[UnifiedRoleManagementPolicyAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment]:
         """
-        The assignment of a role management policy to a role definition object.
+        Get the details of a role management policy assignment including the policy and rules associated with the Azure AD role.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[unified_role_management_policy_assignment.UnifiedRoleManagementPolicyAssignment]
@@ -120,7 +120,7 @@ class UnifiedRoleManagementPolicyAssignmentItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[UnifiedRoleManagementPolicyAssignmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The assignment of a role management policy to a role definition object.
+        Get the details of a role management policy assignment including the policy and rules associated with the Azure AD role.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class UnifiedRoleManagementPolicyAssignmentItemRequestBuilder():
     @dataclass
     class UnifiedRoleManagementPolicyAssignmentItemRequestBuilderGetQueryParameters():
         """
-        The assignment of a role management policy to a role definition object.
+        Get the details of a role management policy assignment including the policy and rules associated with the Azure AD role.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

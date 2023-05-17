@@ -54,7 +54,7 @@ class ServiceManagementDetailsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ServiceManagementDetailsRequestBuilderGetRequestConfiguration] = None) -> Optional[delegated_admin_service_management_detail_collection_response.DelegatedAdminServiceManagementDetailCollectionResponse]:
         """
-        Contains the management details of a service in the customer tenant that's managed by delegated administration.
+        Get a list of the delegatedAdminServiceManagementDetail objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[delegated_admin_service_management_detail_collection_response.DelegatedAdminServiceManagementDetailCollectionResponse]
@@ -101,7 +101,7 @@ class ServiceManagementDetailsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ServiceManagementDetailsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Contains the management details of a service in the customer tenant that's managed by delegated administration.
+        Get a list of the delegatedAdminServiceManagementDetail objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class ServiceManagementDetailsRequestBuilder():
     @dataclass
     class ServiceManagementDetailsRequestBuilderGetQueryParameters():
         """
-        Contains the management details of a service in the customer tenant that's managed by delegated administration.
+        Get a list of the delegatedAdminServiceManagementDetail objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

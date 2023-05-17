@@ -56,7 +56,7 @@ class PrintOperationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[PrintOperationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[print_operation.PrintOperation]:
         """
-        The list of print long running operations.
+        Retrieve the properties and relationships of a printOperation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_operation.PrintOperation]
@@ -119,7 +119,7 @@ class PrintOperationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PrintOperationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of print long running operations.
+        Retrieve the properties and relationships of a printOperation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class PrintOperationItemRequestBuilder():
     @dataclass
     class PrintOperationItemRequestBuilderGetQueryParameters():
         """
-        The list of print long running operations.
+        Retrieve the properties and relationships of a printOperation object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

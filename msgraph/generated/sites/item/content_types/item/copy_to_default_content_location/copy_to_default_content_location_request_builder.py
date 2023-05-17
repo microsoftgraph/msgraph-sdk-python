@@ -37,7 +37,7 @@ class CopyToDefaultContentLocationRequestBuilder():
     
     async def post(self,body: Optional[copy_to_default_content_location_post_request_body.CopyToDefaultContentLocationPostRequestBody] = None, request_configuration: Optional[CopyToDefaultContentLocationRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action copyToDefaultContentLocation
+        Copy a file to a default content location in a [content type][contentType]. The file can then be added as a default file or template via a POST operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class CopyToDefaultContentLocationRequestBuilder():
     
     def to_post_request_information(self,body: Optional[copy_to_default_content_location_post_request_body.CopyToDefaultContentLocationPostRequestBody] = None, request_configuration: Optional[CopyToDefaultContentLocationRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action copyToDefaultContentLocation
+        Copy a file to a default content location in a [content type][contentType]. The file can then be added as a default file or template via a POST operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

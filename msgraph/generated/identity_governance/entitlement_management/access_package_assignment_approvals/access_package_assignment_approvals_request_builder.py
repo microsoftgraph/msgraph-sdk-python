@@ -68,7 +68,7 @@ class AccessPackageAssignmentApprovalsRequestBuilder():
     
     async def get(self,request_configuration: Optional[AccessPackageAssignmentApprovalsRequestBuilderGetRequestConfiguration] = None) -> Optional[approval_collection_response.ApprovalCollectionResponse]:
         """
-        Approval stages for decisions associated with access package assignment requests.
+        In Azure AD entitlement management, retrieve the properties of an approval object.  This call can be made by an approver, providing the identifier of the access package assignment request.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[approval_collection_response.ApprovalCollectionResponse]
@@ -115,7 +115,7 @@ class AccessPackageAssignmentApprovalsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AccessPackageAssignmentApprovalsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Approval stages for decisions associated with access package assignment requests.
+        In Azure AD entitlement management, retrieve the properties of an approval object.  This call can be made by an approver, providing the identifier of the access package assignment request.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -164,7 +164,7 @@ class AccessPackageAssignmentApprovalsRequestBuilder():
     @dataclass
     class AccessPackageAssignmentApprovalsRequestBuilderGetQueryParameters():
         """
-        Approval stages for decisions associated with access package assignment requests.
+        In Azure AD entitlement management, retrieve the properties of an approval object.  This call can be made by an approver, providing the identifier of the access package assignment request.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

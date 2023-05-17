@@ -43,7 +43,7 @@ class EducationUserItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[EducationUserItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property users for education
+        Delete a user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -62,7 +62,7 @@ class EducationUserItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[EducationUserItemRequestBuilderGetRequestConfiguration] = None) -> Optional[education_user.EducationUser]:
         """
-        Get users from education
+        Read the properties and relationships of an educationUser object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_user.EducationUser]
@@ -84,7 +84,7 @@ class EducationUserItemRequestBuilder():
     
     async def patch(self,body: Optional[education_user.EducationUser] = None, request_configuration: Optional[EducationUserItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_user.EducationUser]:
         """
-        Update the navigation property users in education
+        Update the properties of an educationUser object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -109,7 +109,7 @@ class EducationUserItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[EducationUserItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property users for education
+        Delete a user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -125,7 +125,7 @@ class EducationUserItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[EducationUserItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get users from education
+        Read the properties and relationships of an educationUser object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -143,7 +143,7 @@ class EducationUserItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[education_user.EducationUser] = None, request_configuration: Optional[EducationUserItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property users in education
+        Update the properties of an educationUser object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -231,7 +231,7 @@ class EducationUserItemRequestBuilder():
     @dataclass
     class EducationUserItemRequestBuilderGetQueryParameters():
         """
-        Get users from education
+        Read the properties and relationships of an educationUser object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

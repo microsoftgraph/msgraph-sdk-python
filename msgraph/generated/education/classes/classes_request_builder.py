@@ -55,7 +55,7 @@ class ClassesRequestBuilder():
     
     async def get(self,request_configuration: Optional[ClassesRequestBuilderGetRequestConfiguration] = None) -> Optional[education_class_collection_response.EducationClassCollectionResponse]:
         """
-        Get classes from education
+        Get a list of the educationClass objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_class_collection_response.EducationClassCollectionResponse]
@@ -77,7 +77,7 @@ class ClassesRequestBuilder():
     
     async def post(self,body: Optional[education_class.EducationClass] = None, request_configuration: Optional[ClassesRequestBuilderPostRequestConfiguration] = None) -> Optional[education_class.EducationClass]:
         """
-        Create new navigation property to classes for education
+        Create a new educationClass object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class ClassesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ClassesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get classes from education
+        Get a list of the educationClass objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class ClassesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[education_class.EducationClass] = None, request_configuration: Optional[ClassesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to classes for education
+        Create a new educationClass object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class ClassesRequestBuilder():
     @dataclass
     class ClassesRequestBuilderGetQueryParameters():
         """
-        Get classes from education
+        Get a list of the educationClass objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

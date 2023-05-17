@@ -38,7 +38,7 @@ class UpdateRecordingStatusRequestBuilder():
     
     async def post(self,body: Optional[update_recording_status_post_request_body.UpdateRecordingStatusPostRequestBody] = None, request_configuration: Optional[UpdateRecordingStatusRequestBuilderPostRequestConfiguration] = None) -> Optional[update_recording_status_operation.UpdateRecordingStatusOperation]:
         """
-        Invoke action updateRecordingStatus
+        Update the application's recording status associated with a call. This requires the use of the Teams policy-based recording solution.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class UpdateRecordingStatusRequestBuilder():
     
     def to_post_request_information(self,body: Optional[update_recording_status_post_request_body.UpdateRecordingStatusPostRequestBody] = None, request_configuration: Optional[UpdateRecordingStatusRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action updateRecordingStatus
+        Update the application's recording status associated with a call. This requires the use of the Teams policy-based recording solution.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

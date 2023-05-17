@@ -36,7 +36,7 @@ class PublishRequestBuilder():
     
     async def post(self,request_configuration: Optional[PublishRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Makes the scheduling page of this business available to the general public.
+        Make the scheduling page of a business available to external customers. Set the **isPublished** property to `true`, and the **publicUrl** property to the URL of the scheduling page.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class PublishRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[PublishRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Makes the scheduling page of this business available to the general public.
+        Make the scheduling page of a business available to external customers. Set the **isPublished** property to `true`, and the **publicUrl** property to the URL of the scheduling page.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

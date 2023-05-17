@@ -38,7 +38,7 @@ class PinnedChatMessageInfoItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[PinnedChatMessageInfoItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property pinnedMessages for users
+        Unpin a message from a chat.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -104,7 +104,7 @@ class PinnedChatMessageInfoItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[PinnedChatMessageInfoItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property pinnedMessages for users
+        Unpin a message from a chat.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

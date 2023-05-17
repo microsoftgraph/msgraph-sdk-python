@@ -17,15 +17,15 @@ class AuthorizationPolicy(policy_base.PolicyBase):
         self.odata_type = "#microsoft.graph.authorizationPolicy"
         # Indicates whether a user can join the tenant by email validation.
         self._allow_email_verified_users_to_join_organization: Optional[bool] = None
-        # Indicates who can invite external users to the organization. Possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.  everyone is the default setting for all cloud environments except US Government. See more in the table below.
+        # Indicates who can invite external users to the organization. Possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.  everyone is the default setting for all cloud environments except US Government. For more details, see allowInvitesFrom values.
         self._allow_invites_from: Optional[allow_invites_from.AllowInvitesFrom] = None
-        # The allowUserConsentForRiskyApps property
+        # Indicates whether user consent for risky apps is allowed. We recommend to keep this as false. Default value is false.
         self._allow_user_consent_for_risky_apps: Optional[bool] = None
         # Indicates whether users can sign up for email based subscriptions.
         self._allowed_to_sign_up_email_based_subscriptions: Optional[bool] = None
-        # Indicates whether the Self-Serve Password Reset feature can be used by users on the tenant.
+        # Indicates whether users can use the Self-Serve Password Reset feature on the tenant.
         self._allowed_to_use_s_s_p_r: Optional[bool] = None
-        # To disable the use of MSOL PowerShell set this property to true. This will also disable user-based access to the legacy service endpoint used by MSOL PowerShell. This does not affect Azure AD Connect or Microsoft Graph.
+        # To disable the use of MSOL PowerShell, set this property to true. This also disables user-based access to the legacy service endpoint used by MSOL PowerShell. This does not affect Azure Active Directory Connect or Microsoft Graph.
         self._block_msol_power_shell: Optional[bool] = None
         # The defaultUserRolePermissions property
         self._default_user_role_permissions: Optional[default_user_role_permissions.DefaultUserRolePermissions] = None
@@ -52,7 +52,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
     @property
     def allow_invites_from(self,) -> Optional[allow_invites_from.AllowInvitesFrom]:
         """
-        Gets the allowInvitesFrom property value. Indicates who can invite external users to the organization. Possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.  everyone is the default setting for all cloud environments except US Government. See more in the table below.
+        Gets the allowInvitesFrom property value. Indicates who can invite external users to the organization. Possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.  everyone is the default setting for all cloud environments except US Government. For more details, see allowInvitesFrom values.
         Returns: Optional[allow_invites_from.AllowInvitesFrom]
         """
         return self._allow_invites_from
@@ -60,7 +60,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
     @allow_invites_from.setter
     def allow_invites_from(self,value: Optional[allow_invites_from.AllowInvitesFrom] = None) -> None:
         """
-        Sets the allowInvitesFrom property value. Indicates who can invite external users to the organization. Possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.  everyone is the default setting for all cloud environments except US Government. See more in the table below.
+        Sets the allowInvitesFrom property value. Indicates who can invite external users to the organization. Possible values are: none, adminsAndGuestInviters, adminsGuestInvitersAndAllMembers, everyone.  everyone is the default setting for all cloud environments except US Government. For more details, see allowInvitesFrom values.
         Args:
             value: Value to set for the allow_invites_from property.
         """
@@ -69,7 +69,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
     @property
     def allow_user_consent_for_risky_apps(self,) -> Optional[bool]:
         """
-        Gets the allowUserConsentForRiskyApps property value. The allowUserConsentForRiskyApps property
+        Gets the allowUserConsentForRiskyApps property value. Indicates whether user consent for risky apps is allowed. We recommend to keep this as false. Default value is false.
         Returns: Optional[bool]
         """
         return self._allow_user_consent_for_risky_apps
@@ -77,7 +77,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
     @allow_user_consent_for_risky_apps.setter
     def allow_user_consent_for_risky_apps(self,value: Optional[bool] = None) -> None:
         """
-        Sets the allowUserConsentForRiskyApps property value. The allowUserConsentForRiskyApps property
+        Sets the allowUserConsentForRiskyApps property value. Indicates whether user consent for risky apps is allowed. We recommend to keep this as false. Default value is false.
         Args:
             value: Value to set for the allow_user_consent_for_risky_apps property.
         """
@@ -103,7 +103,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
     @property
     def allowed_to_use_s_s_p_r(self,) -> Optional[bool]:
         """
-        Gets the allowedToUseSSPR property value. Indicates whether the Self-Serve Password Reset feature can be used by users on the tenant.
+        Gets the allowedToUseSSPR property value. Indicates whether users can use the Self-Serve Password Reset feature on the tenant.
         Returns: Optional[bool]
         """
         return self._allowed_to_use_s_s_p_r
@@ -111,7 +111,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
     @allowed_to_use_s_s_p_r.setter
     def allowed_to_use_s_s_p_r(self,value: Optional[bool] = None) -> None:
         """
-        Sets the allowedToUseSSPR property value. Indicates whether the Self-Serve Password Reset feature can be used by users on the tenant.
+        Sets the allowedToUseSSPR property value. Indicates whether users can use the Self-Serve Password Reset feature on the tenant.
         Args:
             value: Value to set for the allowed_to_use_s_s_p_r property.
         """
@@ -120,7 +120,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
     @property
     def block_msol_power_shell(self,) -> Optional[bool]:
         """
-        Gets the blockMsolPowerShell property value. To disable the use of MSOL PowerShell set this property to true. This will also disable user-based access to the legacy service endpoint used by MSOL PowerShell. This does not affect Azure AD Connect or Microsoft Graph.
+        Gets the blockMsolPowerShell property value. To disable the use of MSOL PowerShell, set this property to true. This also disables user-based access to the legacy service endpoint used by MSOL PowerShell. This does not affect Azure Active Directory Connect or Microsoft Graph.
         Returns: Optional[bool]
         """
         return self._block_msol_power_shell
@@ -128,7 +128,7 @@ class AuthorizationPolicy(policy_base.PolicyBase):
     @block_msol_power_shell.setter
     def block_msol_power_shell(self,value: Optional[bool] = None) -> None:
         """
-        Sets the blockMsolPowerShell property value. To disable the use of MSOL PowerShell set this property to true. This will also disable user-based access to the legacy service endpoint used by MSOL PowerShell. This does not affect Azure AD Connect or Microsoft Graph.
+        Sets the blockMsolPowerShell property value. To disable the use of MSOL PowerShell, set this property to true. This also disables user-based access to the legacy service endpoint used by MSOL PowerShell. This does not affect Azure Active Directory Connect or Microsoft Graph.
         Args:
             value: Value to set for the block_msol_power_shell property.
         """

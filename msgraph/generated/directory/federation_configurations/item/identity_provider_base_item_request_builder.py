@@ -37,7 +37,7 @@ class IdentityProviderBaseItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[IdentityProviderBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property federationConfigurations for directory
+        Delete a samlOrWsFedExternalDomainFederation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -103,7 +103,7 @@ class IdentityProviderBaseItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[IdentityProviderBaseItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property federationConfigurations for directory
+        Delete a samlOrWsFedExternalDomainFederation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

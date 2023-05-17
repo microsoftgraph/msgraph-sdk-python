@@ -55,7 +55,7 @@ class MessagesRequestBuilder():
     
     async def get(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[message_collection_response.MessageCollectionResponse]:
         """
-        The collection of messages in the mailFolder.
+        Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[message_collection_response.MessageCollectionResponse]
@@ -77,7 +77,7 @@ class MessagesRequestBuilder():
     
     async def post(self,body: Optional[message.Message] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> Optional[message.Message]:
         """
-        Create new navigation property to messages for me
+        Use this API to create a new Message in a mailfolder.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class MessagesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of messages in the mailFolder.
+        Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class MessagesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[message.Message] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to messages for me
+        Use this API to create a new Message in a mailfolder.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class MessagesRequestBuilder():
     @dataclass
     class MessagesRequestBuilderGetQueryParameters():
         """
-        The collection of messages in the mailFolder.
+        Get all the messages in the specified user's mailbox, or those messages in a specified folder in the mailbox.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

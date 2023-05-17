@@ -54,7 +54,7 @@ class CombinationConfigurationsRequestBuilder():
     
     async def get(self,request_configuration: Optional[CombinationConfigurationsRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_combination_configuration_collection_response.AuthenticationCombinationConfigurationCollectionResponse]:
         """
-        Settings that may be used to require specific types or instances of an authentication method to be used when authenticating with a specified combination of authentication methods.
+        Get the authenticationCombinationConfiguration objects for an authentication strength policy. authenticationCombinationConfiguration represents requirements placed on specific authentication method combinations that require specified variants of those authentication methods to be used when authenticating. Currently, only fido2combinationConfigurations objects are supported. authenticationCombinationConfiguration objects are supported only for custom authentication strengths.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authentication_combination_configuration_collection_response.AuthenticationCombinationConfigurationCollectionResponse]
@@ -76,7 +76,7 @@ class CombinationConfigurationsRequestBuilder():
     
     async def post(self,body: Optional[authentication_combination_configuration.AuthenticationCombinationConfiguration] = None, request_configuration: Optional[CombinationConfigurationsRequestBuilderPostRequestConfiguration] = None) -> Optional[authentication_combination_configuration.AuthenticationCombinationConfiguration]:
         """
-        Create new navigation property to combinationConfigurations for policies
+        Create a new authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be created, and these may only be created for custom authentication strength policies.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class CombinationConfigurationsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CombinationConfigurationsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Settings that may be used to require specific types or instances of an authentication method to be used when authenticating with a specified combination of authentication methods.
+        Get the authenticationCombinationConfiguration objects for an authentication strength policy. authenticationCombinationConfiguration represents requirements placed on specific authentication method combinations that require specified variants of those authentication methods to be used when authenticating. Currently, only fido2combinationConfigurations objects are supported. authenticationCombinationConfiguration objects are supported only for custom authentication strengths.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class CombinationConfigurationsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[authentication_combination_configuration.AuthenticationCombinationConfiguration] = None, request_configuration: Optional[CombinationConfigurationsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to combinationConfigurations for policies
+        Create a new authenticationCombinationConfiguration object. In use, only fido2combinationConfigurations may be created, and these may only be created for custom authentication strength policies.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class CombinationConfigurationsRequestBuilder():
     @dataclass
     class CombinationConfigurationsRequestBuilderGetQueryParameters():
         """
-        Settings that may be used to require specific types or instances of an authentication method to be used when authenticating with a specified combination of authentication methods.
+        Get the authenticationCombinationConfiguration objects for an authentication strength policy. authenticationCombinationConfiguration represents requirements placed on specific authentication method combinations that require specified variants of those authentication methods to be used when authenticating. Currently, only fido2combinationConfigurations objects are supported. authenticationCombinationConfiguration objects are supported only for custom authentication strengths.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

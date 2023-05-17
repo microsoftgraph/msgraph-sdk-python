@@ -36,7 +36,7 @@ class RefRequestBuilder():
     
     async def delete(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete ref of navigation property internalSponsors for identityGovernance
+        Remove a user or a group from the connected organization's internal sponsors. The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class RefRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[RefRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete ref of navigation property internalSponsors for identityGovernance
+        Remove a user or a group from the connected organization's internal sponsors. The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -73,7 +73,7 @@ class RefRequestBuilder():
     @dataclass
     class RefRequestBuilderDeleteQueryParameters():
         """
-        Delete ref of navigation property internalSponsors for identityGovernance
+        Remove a user or a group from the connected organization's internal sponsors. The internal sponsors are a set of users who can approve requests on behalf of other users from that connected organization.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

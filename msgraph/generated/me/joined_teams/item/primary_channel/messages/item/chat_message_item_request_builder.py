@@ -60,7 +60,7 @@ class ChatMessageItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ChatMessageItemRequestBuilderGetRequestConfiguration] = None) -> Optional[chat_message.ChatMessage]:
         """
-        A collection of all the messages in the channel. A navigation property. Nullable.
+        Retrieve a single message or a message reply in a channel or a chat.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[chat_message.ChatMessage]
@@ -82,7 +82,7 @@ class ChatMessageItemRequestBuilder():
     
     async def patch(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[ChatMessageItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[chat_message.ChatMessage]:
         """
-        Update the navigation property messages in me
+        Update a chatMessage object. With the exception of the **policyViolation** property, all properties of a **chatMessage** can be updated in delegated permissions scenarios.Only the **policyViolation** property of a **chatMessage** can be updated in application permissions scenarios. The update only works for chats where members are Microsoft Teams users. If one of the participants is using Skype, the operation will fail. This method does not support federation. Only the user in the tenant who sent the message can perform data loss prevention (DLP) updates on the specified chat message.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -123,7 +123,7 @@ class ChatMessageItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ChatMessageItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of all the messages in the channel. A navigation property. Nullable.
+        Retrieve a single message or a message reply in a channel or a chat.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -141,7 +141,7 @@ class ChatMessageItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[ChatMessageItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property messages in me
+        Update a chatMessage object. With the exception of the **policyViolation** property, all properties of a **chatMessage** can be updated in delegated permissions scenarios.Only the **policyViolation** property of a **chatMessage** can be updated in application permissions scenarios. The update only works for chats where members are Microsoft Teams users. If one of the participants is using Skype, the operation will fail. This method does not support federation. Only the user in the tenant who sent the message can perform data loss prevention (DLP) updates on the specified chat message.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -211,7 +211,7 @@ class ChatMessageItemRequestBuilder():
     @dataclass
     class ChatMessageItemRequestBuilderGetQueryParameters():
         """
-        A collection of all the messages in the channel. A navigation property. Nullable.
+        Retrieve a single message or a message reply in a channel or a chat.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

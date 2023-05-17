@@ -38,7 +38,7 @@ class BookingAppointmentItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[BookingAppointmentItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property appointments for solutions
+        Delete a bookingAppointment in the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class BookingAppointmentItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[BookingAppointmentItemRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_appointment.BookingAppointment]:
         """
-        All the appointments of this business. Read-only. Nullable.
+        Get the properties and relationships of a bookingAppointment object in the specified bookingBusiness. The **startDateTime** and **endDateTime** properties are always returned in UTC.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[booking_appointment.BookingAppointment]
@@ -79,7 +79,7 @@ class BookingAppointmentItemRequestBuilder():
     
     async def patch(self,body: Optional[booking_appointment.BookingAppointment] = None, request_configuration: Optional[BookingAppointmentItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[booking_appointment.BookingAppointment]:
         """
-        Update the navigation property appointments in solutions
+        Update the properties of a bookingAppointment object in the specified bookingBusiness.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class BookingAppointmentItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[BookingAppointmentItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property appointments for solutions
+        Delete a bookingAppointment in the specified bookingBusiness.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class BookingAppointmentItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[BookingAppointmentItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All the appointments of this business. Read-only. Nullable.
+        Get the properties and relationships of a bookingAppointment object in the specified bookingBusiness. The **startDateTime** and **endDateTime** properties are always returned in UTC.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class BookingAppointmentItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[booking_appointment.BookingAppointment] = None, request_configuration: Optional[BookingAppointmentItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property appointments in solutions
+        Update the properties of a bookingAppointment object in the specified bookingBusiness.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class BookingAppointmentItemRequestBuilder():
     @dataclass
     class BookingAppointmentItemRequestBuilderGetQueryParameters():
         """
-        All the appointments of this business. Read-only. Nullable.
+        Get the properties and relationships of a bookingAppointment object in the specified bookingBusiness. The **startDateTime** and **endDateTime** properties are always returned in UTC.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -10,11 +10,11 @@ class InboundOutboundPolicyConfiguration(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # The inboundAllowed property
+        # Defines whether external users coming inbound are allowed.
         self._inbound_allowed: Optional[bool] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # The outboundAllowed property
+        # Defines whether internal users are allowed to go outbound.
         self._outbound_allowed: Optional[bool] = None
     
     @property
@@ -61,7 +61,7 @@ class InboundOutboundPolicyConfiguration(AdditionalDataHolder, Parsable):
     @property
     def inbound_allowed(self,) -> Optional[bool]:
         """
-        Gets the inboundAllowed property value. The inboundAllowed property
+        Gets the inboundAllowed property value. Defines whether external users coming inbound are allowed.
         Returns: Optional[bool]
         """
         return self._inbound_allowed
@@ -69,7 +69,7 @@ class InboundOutboundPolicyConfiguration(AdditionalDataHolder, Parsable):
     @inbound_allowed.setter
     def inbound_allowed(self,value: Optional[bool] = None) -> None:
         """
-        Sets the inboundAllowed property value. The inboundAllowed property
+        Sets the inboundAllowed property value. Defines whether external users coming inbound are allowed.
         Args:
             value: Value to set for the inbound_allowed property.
         """
@@ -95,7 +95,7 @@ class InboundOutboundPolicyConfiguration(AdditionalDataHolder, Parsable):
     @property
     def outbound_allowed(self,) -> Optional[bool]:
         """
-        Gets the outboundAllowed property value. The outboundAllowed property
+        Gets the outboundAllowed property value. Defines whether internal users are allowed to go outbound.
         Returns: Optional[bool]
         """
         return self._outbound_allowed
@@ -103,7 +103,7 @@ class InboundOutboundPolicyConfiguration(AdditionalDataHolder, Parsable):
     @outbound_allowed.setter
     def outbound_allowed(self,value: Optional[bool] = None) -> None:
         """
-        Sets the outboundAllowed property value. The outboundAllowed property
+        Sets the outboundAllowed property value. Defines whether internal users are allowed to go outbound.
         Args:
             value: Value to set for the outbound_allowed property.
         """

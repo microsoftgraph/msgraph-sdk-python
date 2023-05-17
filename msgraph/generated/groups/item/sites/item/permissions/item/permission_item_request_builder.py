@@ -38,7 +38,7 @@ class PermissionItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[PermissionItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property permissions for groups
+        Delete a permission object on a site.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class PermissionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[PermissionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[permission.Permission]:
         """
-        The permissions associated with the site. Nullable.
+        Retrieve the properties and relationships of a permission object on a site.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[permission.Permission]
@@ -79,7 +79,7 @@ class PermissionItemRequestBuilder():
     
     async def patch(self,body: Optional[permission.Permission] = None, request_configuration: Optional[PermissionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[permission.Permission]:
         """
-        Update the navigation property permissions in groups
+        Update an application permission object on a site. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class PermissionItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[PermissionItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property permissions for groups
+        Delete a permission object on a site.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class PermissionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PermissionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The permissions associated with the site. Nullable.
+        Retrieve the properties and relationships of a permission object on a site.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class PermissionItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[permission.Permission] = None, request_configuration: Optional[PermissionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property permissions in groups
+        Update an application permission object on a site. 
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class PermissionItemRequestBuilder():
     @dataclass
     class PermissionItemRequestBuilderGetQueryParameters():
         """
-        The permissions associated with the site. Nullable.
+        Retrieve the properties and relationships of a permission object on a site.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

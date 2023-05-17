@@ -54,7 +54,7 @@ class Oauth2PermissionGrantsRequestBuilder():
     
     async def get(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> Optional[o_auth2_permission_grant_collection_response.OAuth2PermissionGrantCollectionResponse]:
         """
-        Delegated permission grants authorizing this service principal to access an API on behalf of a signed-in user. Read-only. Nullable.
+        Retrieve a list of oAuth2PermissionGrant entities, representing delegated permissions granted to the service principal (representing the client application) to access an API on behalf of a user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[o_auth2_permission_grant_collection_response.OAuth2PermissionGrantCollectionResponse]
@@ -76,7 +76,7 @@ class Oauth2PermissionGrantsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[Oauth2PermissionGrantsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Delegated permission grants authorizing this service principal to access an API on behalf of a signed-in user. Read-only. Nullable.
+        Retrieve a list of oAuth2PermissionGrant entities, representing delegated permissions granted to the service principal (representing the client application) to access an API on behalf of a user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class Oauth2PermissionGrantsRequestBuilder():
     @dataclass
     class Oauth2PermissionGrantsRequestBuilderGetQueryParameters():
         """
-        Delegated permission grants authorizing this service principal to access an API on behalf of a signed-in user. Read-only. Nullable.
+        Retrieve a list of oAuth2PermissionGrant entities, representing delegated permissions granted to the service principal (representing the client application) to access an API on behalf of a user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

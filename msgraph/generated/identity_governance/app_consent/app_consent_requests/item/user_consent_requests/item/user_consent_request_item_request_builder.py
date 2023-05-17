@@ -57,7 +57,7 @@ class UserConsentRequestItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[UserConsentRequestItemRequestBuilderGetRequestConfiguration] = None) -> Optional[user_consent_request.UserConsentRequest]:
         """
-        A list of pending user consent requests. Supports $filter (eq).
+        Read the properties and relationships of a userConsentRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user_consent_request.UserConsentRequest]
@@ -120,7 +120,7 @@ class UserConsentRequestItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[UserConsentRequestItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A list of pending user consent requests. Supports $filter (eq).
+        Read the properties and relationships of a userConsentRequest object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -181,7 +181,7 @@ class UserConsentRequestItemRequestBuilder():
     @dataclass
     class UserConsentRequestItemRequestBuilderGetQueryParameters():
         """
-        A list of pending user consent requests. Supports $filter (eq).
+        Read the properties and relationships of a userConsentRequest object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

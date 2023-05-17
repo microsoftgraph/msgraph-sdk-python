@@ -54,7 +54,7 @@ class PeopleRequestBuilder():
     
     async def get(self,request_configuration: Optional[PeopleRequestBuilderGetRequestConfiguration] = None) -> Optional[person_collection_response.PersonCollectionResponse]:
         """
-        People that are relevant to the user. Read-only. Nullable.
+        Retrieve a collection of person objects ordered by their relevance to the user, which is determined by the user's communication and collaboration patterns, and business relationships. You can get this information via the People API. For examples, see the Examples section and the article Use the People API to get information about the people most relevant to you.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[person_collection_response.PersonCollectionResponse]
@@ -76,7 +76,7 @@ class PeopleRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PeopleRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        People that are relevant to the user. Read-only. Nullable.
+        Retrieve a collection of person objects ordered by their relevance to the user, which is determined by the user's communication and collaboration patterns, and business relationships. You can get this information via the People API. For examples, see the Examples section and the article Use the People API to get information about the people most relevant to you.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class PeopleRequestBuilder():
     @dataclass
     class PeopleRequestBuilderGetQueryParameters():
         """
-        People that are relevant to the user. Read-only. Nullable.
+        Retrieve a collection of person objects ordered by their relevance to the user, which is determined by the user's communication and collaboration patterns, and business relationships. You can get this information via the People API. For examples, see the Examples section and the article Use the People API to get information about the people most relevant to you.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

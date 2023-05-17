@@ -38,7 +38,7 @@ class TeamworkTagItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[TeamworkTagItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property tags for teams
+        Delete a tag object permanently.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class TeamworkTagItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[TeamworkTagItemRequestBuilderGetRequestConfiguration] = None) -> Optional[teamwork_tag.TeamworkTag]:
         """
-        The tags associated with the team.
+        Read the properties and relationships of a tag object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[teamwork_tag.TeamworkTag]
@@ -79,7 +79,7 @@ class TeamworkTagItemRequestBuilder():
     
     async def patch(self,body: Optional[teamwork_tag.TeamworkTag] = None, request_configuration: Optional[TeamworkTagItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[teamwork_tag.TeamworkTag]:
         """
-        Update the navigation property tags in teams
+        Update the properties of a tag object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class TeamworkTagItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[TeamworkTagItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property tags for teams
+        Delete a tag object permanently.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class TeamworkTagItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TeamworkTagItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The tags associated with the team.
+        Read the properties and relationships of a tag object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class TeamworkTagItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[teamwork_tag.TeamworkTag] = None, request_configuration: Optional[TeamworkTagItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property tags in teams
+        Update the properties of a tag object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class TeamworkTagItemRequestBuilder():
     @dataclass
     class TeamworkTagItemRequestBuilderGetQueryParameters():
         """
-        The tags associated with the team.
+        Read the properties and relationships of a tag object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

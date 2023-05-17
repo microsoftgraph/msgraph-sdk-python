@@ -58,7 +58,7 @@ class DriveItemVersionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[DriveItemVersionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[drive_item_version.DriveItemVersion]:
         """
-        The list of previous versions of the item. For more info, see [getting previous versions][]. Read-only. Nullable.
+        Retrieve the metadata for a specific version of a DriveItem.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[drive_item_version.DriveItemVersion]
@@ -121,7 +121,7 @@ class DriveItemVersionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[DriveItemVersionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The list of previous versions of the item. For more info, see [getting previous versions][]. Read-only. Nullable.
+        Retrieve the metadata for a specific version of a DriveItem.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -191,7 +191,7 @@ class DriveItemVersionItemRequestBuilder():
     @dataclass
     class DriveItemVersionItemRequestBuilderGetQueryParameters():
         """
-        The list of previous versions of the item. For more info, see [getting previous versions][]. Read-only. Nullable.
+        Retrieve the metadata for a specific version of a DriveItem.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -37,7 +37,7 @@ class BrowserSiteItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[BrowserSiteItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property sites for admin
+        Delete a browserSite from a browserSiteList.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class BrowserSiteItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[BrowserSiteItemRequestBuilderGetRequestConfiguration] = None) -> Optional[browser_site.BrowserSite]:
         """
-        A collection of sites defined for the site list.
+        Get a browserSite that resides on a browserSiteList.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[browser_site.BrowserSite]
@@ -78,7 +78,7 @@ class BrowserSiteItemRequestBuilder():
     
     async def patch(self,body: Optional[browser_site.BrowserSite] = None, request_configuration: Optional[BrowserSiteItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[browser_site.BrowserSite]:
         """
-        Update the navigation property sites in admin
+        Update the properties of a browserSite object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class BrowserSiteItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[BrowserSiteItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property sites for admin
+        Delete a browserSite from a browserSiteList.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class BrowserSiteItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[BrowserSiteItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of sites defined for the site list.
+        Get a browserSite that resides on a browserSiteList.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class BrowserSiteItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[browser_site.BrowserSite] = None, request_configuration: Optional[BrowserSiteItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property sites in admin
+        Update the properties of a browserSite object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class BrowserSiteItemRequestBuilder():
     @dataclass
     class BrowserSiteItemRequestBuilderGetQueryParameters():
         """
-        A collection of sites defined for the site list.
+        Get a browserSite that resides on a browserSiteList.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

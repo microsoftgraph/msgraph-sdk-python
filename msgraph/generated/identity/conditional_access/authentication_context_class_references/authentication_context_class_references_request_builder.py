@@ -54,7 +54,7 @@ class AuthenticationContextClassReferencesRequestBuilder():
     
     async def get(self,request_configuration: Optional[AuthenticationContextClassReferencesRequestBuilderGetRequestConfiguration] = None) -> Optional[authentication_context_class_reference_collection_response.AuthenticationContextClassReferenceCollectionResponse]:
         """
-        Read-only. Nullable. Returns a collection of the specified authentication context class references.
+        Retrieve a list of authenticationContextClassReference objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[authentication_context_class_reference_collection_response.AuthenticationContextClassReferenceCollectionResponse]
@@ -101,7 +101,7 @@ class AuthenticationContextClassReferencesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AuthenticationContextClassReferencesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Read-only. Nullable. Returns a collection of the specified authentication context class references.
+        Retrieve a list of authenticationContextClassReference objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class AuthenticationContextClassReferencesRequestBuilder():
     @dataclass
     class AuthenticationContextClassReferencesRequestBuilderGetQueryParameters():
         """
-        Read-only. Nullable. Returns a collection of the specified authentication context class references.
+        Retrieve a list of authenticationContextClassReference objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

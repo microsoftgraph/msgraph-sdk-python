@@ -54,7 +54,7 @@ class RecoveryKeysRequestBuilder():
     
     async def get(self,request_configuration: Optional[RecoveryKeysRequestBuilderGetRequestConfiguration] = None) -> Optional[bitlocker_recovery_key_collection_response.BitlockerRecoveryKeyCollectionResponse]:
         """
-        The recovery keys associated with the bitlocker entity.
+        Get a list of the bitlockerRecoveryKey objects and their properties.  This operation does not return the **key** property. For information about how to read the **key** property, see Get bitlockerRecoveryKey.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[bitlocker_recovery_key_collection_response.BitlockerRecoveryKeyCollectionResponse]
@@ -76,7 +76,7 @@ class RecoveryKeysRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RecoveryKeysRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The recovery keys associated with the bitlocker entity.
+        Get a list of the bitlockerRecoveryKey objects and their properties.  This operation does not return the **key** property. For information about how to read the **key** property, see Get bitlockerRecoveryKey.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class RecoveryKeysRequestBuilder():
     @dataclass
     class RecoveryKeysRequestBuilderGetQueryParameters():
         """
-        The recovery keys associated with the bitlocker entity.
+        Get a list of the bitlockerRecoveryKey objects and their properties.  This operation does not return the **key** property. For information about how to read the **key** property, see Get bitlockerRecoveryKey.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -37,7 +37,7 @@ class TimeOffItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[TimeOffItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property timesOff for teams
+        Delete a timeOff instance from a schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class TimeOffItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[TimeOffItemRequestBuilderGetRequestConfiguration] = None) -> Optional[time_off.TimeOff]:
         """
-        The instances of times off in the schedule.
+        Retrieve the properties and relationships of a timeOff object by ID.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[time_off.TimeOff]
@@ -78,7 +78,7 @@ class TimeOffItemRequestBuilder():
     
     async def patch(self,body: Optional[time_off.TimeOff] = None, request_configuration: Optional[TimeOffItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[time_off.TimeOff]:
         """
-        Update the navigation property timesOff in teams
+        Replace an existing timeOff object. If the specified timeOff object doesn't exist, this method returns `404 Not found`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class TimeOffItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[TimeOffItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property timesOff for teams
+        Delete a timeOff instance from a schedule.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class TimeOffItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TimeOffItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The instances of times off in the schedule.
+        Retrieve the properties and relationships of a timeOff object by ID.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class TimeOffItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[time_off.TimeOff] = None, request_configuration: Optional[TimeOffItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property timesOff in teams
+        Replace an existing timeOff object. If the specified timeOff object doesn't exist, this method returns `404 Not found`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class TimeOffItemRequestBuilder():
     @dataclass
     class TimeOffItemRequestBuilderGetQueryParameters():
         """
-        The instances of times off in the schedule.
+        Retrieve the properties and relationships of a timeOff object by ID.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

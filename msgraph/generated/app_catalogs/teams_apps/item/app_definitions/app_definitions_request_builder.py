@@ -76,7 +76,7 @@ class AppDefinitionsRequestBuilder():
     
     async def post(self,body: Optional[teams_app_definition.TeamsAppDefinition] = None, request_configuration: Optional[AppDefinitionsRequestBuilderPostRequestConfiguration] = None) -> Optional[teams_app_definition.TeamsAppDefinition]:
         """
-        Create new navigation property to appDefinitions for appCatalogs
+        Update an app previously published to the Microsoft Teams app catalog. To update an app, the **distributionMethod** property for the app must be set to `organization`. This API specifically updates an app published to your organization's app catalog (the tenant app catalog).
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class AppDefinitionsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[teams_app_definition.TeamsAppDefinition] = None, request_configuration: Optional[AppDefinitionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to appDefinitions for appCatalogs
+        Update an app previously published to the Microsoft Teams app catalog. To update an app, the **distributionMethod** property for the app must be set to `organization`. This API specifically updates an app published to your organization's app catalog (the tenant app catalog).
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

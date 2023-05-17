@@ -79,7 +79,7 @@ class ActivityHistoryItemItemRequestBuilder():
     
     async def patch(self,body: Optional[activity_history_item.ActivityHistoryItem] = None, request_configuration: Optional[ActivityHistoryItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[activity_history_item.ActivityHistoryItem]:
         """
-        Update the navigation property historyItems in me
+        Delete an existing history item for an existing user activity.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -138,7 +138,7 @@ class ActivityHistoryItemItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[activity_history_item.ActivityHistoryItem] = None, request_configuration: Optional[ActivityHistoryItemItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property historyItems in me
+        Delete an existing history item for an existing user activity.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

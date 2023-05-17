@@ -76,7 +76,7 @@ class FilesRequestBuilder():
     
     async def post(self,body: Optional[agreement_file_localization.AgreementFileLocalization] = None, request_configuration: Optional[FilesRequestBuilderPostRequestConfiguration] = None) -> Optional[agreement_file_localization.AgreementFileLocalization]:
         """
-        Create new navigation property to files for identityGovernance
+        Create a new localized agreement file.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class FilesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[agreement_file_localization.AgreementFileLocalization] = None, request_configuration: Optional[FilesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to files for identityGovernance
+        Create a new localized agreement file.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

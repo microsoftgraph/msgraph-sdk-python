@@ -54,7 +54,7 @@ class PhotosRequestBuilder():
     
     async def get(self,request_configuration: Optional[PhotosRequestBuilderGetRequestConfiguration] = None) -> Optional[profile_photo_collection_response.ProfilePhotoCollectionResponse]:
         """
-        The profile photos owned by the group. Read-only. Nullable.
+        Retrieve a list of profilePhoto objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[profile_photo_collection_response.ProfilePhotoCollectionResponse]
@@ -76,7 +76,7 @@ class PhotosRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PhotosRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The profile photos owned by the group. Read-only. Nullable.
+        Retrieve a list of profilePhoto objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -104,7 +104,7 @@ class PhotosRequestBuilder():
     @dataclass
     class PhotosRequestBuilderGetQueryParameters():
         """
-        The profile photos owned by the group. Read-only. Nullable.
+        Retrieve a list of profilePhoto objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

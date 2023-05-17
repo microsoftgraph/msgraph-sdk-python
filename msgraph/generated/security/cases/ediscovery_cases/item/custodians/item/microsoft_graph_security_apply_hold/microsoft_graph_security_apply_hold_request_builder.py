@@ -36,7 +36,7 @@ class MicrosoftGraphSecurityApplyHoldRequestBuilder():
     
     async def post(self,request_configuration: Optional[MicrosoftGraphSecurityApplyHoldRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action applyHold
+        Start the process of applying hold on eDiscovery custodians. After the operation is created, you can get the status by retrieving the `Location` parameter from the response headers. The location provides a URL that will return an eDiscoveryHoldOperation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class MicrosoftGraphSecurityApplyHoldRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[MicrosoftGraphSecurityApplyHoldRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action applyHold
+        Start the process of applying hold on eDiscovery custodians. After the operation is created, you can get the status by retrieving the `Location` parameter from the response headers. The location provides a URL that will return an eDiscoveryHoldOperation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

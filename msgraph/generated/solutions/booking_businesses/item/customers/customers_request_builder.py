@@ -54,7 +54,7 @@ class CustomersRequestBuilder():
     
     async def get(self,request_configuration: Optional[CustomersRequestBuilderGetRequestConfiguration] = None) -> Optional[booking_customer_base_collection_response.BookingCustomerBaseCollectionResponse]:
         """
-        All the customers of this business. Read-only. Nullable.
+        Get a list of bookingCustomer objects of a business.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[booking_customer_base_collection_response.BookingCustomerBaseCollectionResponse]
@@ -76,7 +76,7 @@ class CustomersRequestBuilder():
     
     async def post(self,body: Optional[booking_customer_base.BookingCustomerBase] = None, request_configuration: Optional[CustomersRequestBuilderPostRequestConfiguration] = None) -> Optional[booking_customer_base.BookingCustomerBase]:
         """
-        Create new navigation property to customers for solutions
+        Create a new bookingCustomer object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class CustomersRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CustomersRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All the customers of this business. Read-only. Nullable.
+        Get a list of bookingCustomer objects of a business.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class CustomersRequestBuilder():
     
     def to_post_request_information(self,body: Optional[booking_customer_base.BookingCustomerBase] = None, request_configuration: Optional[CustomersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to customers for solutions
+        Create a new bookingCustomer object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class CustomersRequestBuilder():
     @dataclass
     class CustomersRequestBuilderGetQueryParameters():
         """
-        All the customers of this business. Read-only. Nullable.
+        Get a list of bookingCustomer objects of a business.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -37,7 +37,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property certificateBasedAuthConfiguration for organization
+        Delete a certificateBasedAuthConfiguration object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]:
         """
-        Navigation property to manage certificate-based authentication configuration. Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
+        Get the properties of a certificateBasedAuthConfiguration object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[certificate_based_auth_configuration.CertificateBasedAuthConfiguration]
@@ -78,7 +78,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property certificateBasedAuthConfiguration for organization
+        Delete a certificateBasedAuthConfiguration object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -94,7 +94,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CertificateBasedAuthConfigurationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Navigation property to manage certificate-based authentication configuration. Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
+        Get the properties of a certificateBasedAuthConfiguration object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -125,7 +125,7 @@ class CertificateBasedAuthConfigurationItemRequestBuilder():
     @dataclass
     class CertificateBasedAuthConfigurationItemRequestBuilderGetQueryParameters():
         """
-        Navigation property to manage certificate-based authentication configuration. Only a single instance of certificateBasedAuthConfiguration can be created in the collection.
+        Get the properties of a certificateBasedAuthConfiguration object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

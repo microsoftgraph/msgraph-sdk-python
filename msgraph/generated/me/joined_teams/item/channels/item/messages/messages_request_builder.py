@@ -55,7 +55,7 @@ class MessagesRequestBuilder():
     
     async def get(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> Optional[chat_message_collection_response.ChatMessageCollectionResponse]:
         """
-        A collection of all the messages in the channel. A navigation property. Nullable.
+        Retrieve the list of messages (without the replies) in a channel of a team.  To get the replies for a message, call the list message replies or the get message reply API.  This method supports federation. To list channel messages in application context, the request must be made from the tenant that the channel owner belongs to (represented by the **tenantId** property on the channel).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[chat_message_collection_response.ChatMessageCollectionResponse]
@@ -77,7 +77,7 @@ class MessagesRequestBuilder():
     
     async def post(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> Optional[chat_message.ChatMessage]:
         """
-        Create new navigation property to messages for me
+        Send a new chatMessage in the specified channel or a chat.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class MessagesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[MessagesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of all the messages in the channel. A navigation property. Nullable.
+        Retrieve the list of messages (without the replies) in a channel of a team.  To get the replies for a message, call the list message replies or the get message reply API.  This method supports federation. To list channel messages in application context, the request must be made from the tenant that the channel owner belongs to (represented by the **tenantId** property on the channel).
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class MessagesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[chat_message.ChatMessage] = None, request_configuration: Optional[MessagesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to messages for me
+        Send a new chatMessage in the specified channel or a chat.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class MessagesRequestBuilder():
     @dataclass
     class MessagesRequestBuilderGetQueryParameters():
         """
-        A collection of all the messages in the channel. A navigation property. Nullable.
+        Retrieve the list of messages (without the replies) in a channel of a team.  To get the replies for a message, call the list message replies or the get message reply API.  This method supports federation. To list channel messages in application context, the request must be made from the tenant that the channel owner belongs to (represented by the **tenantId** property on the channel).
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

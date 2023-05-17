@@ -54,7 +54,7 @@ class AppManagementPoliciesRequestBuilder():
     
     async def get(self,request_configuration: Optional[AppManagementPoliciesRequestBuilderGetRequestConfiguration] = None) -> Optional[app_management_policy_collection_response.AppManagementPolicyCollectionResponse]:
         """
-        The policies that enforce app management restrictions for specific applications and service principals, overriding the defaultAppManagementPolicy.
+        Retrieve a list of appManagementPolicy objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[app_management_policy_collection_response.AppManagementPolicyCollectionResponse]
@@ -76,7 +76,7 @@ class AppManagementPoliciesRequestBuilder():
     
     async def post(self,body: Optional[app_management_policy.AppManagementPolicy] = None, request_configuration: Optional[AppManagementPoliciesRequestBuilderPostRequestConfiguration] = None) -> Optional[app_management_policy.AppManagementPolicy]:
         """
-        Create new navigation property to appManagementPolicies for policies
+        Create an appManagementPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class AppManagementPoliciesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AppManagementPoliciesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The policies that enforce app management restrictions for specific applications and service principals, overriding the defaultAppManagementPolicy.
+        Retrieve a list of appManagementPolicy objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class AppManagementPoliciesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[app_management_policy.AppManagementPolicy] = None, request_configuration: Optional[AppManagementPoliciesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to appManagementPolicies for policies
+        Create an appManagementPolicy object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class AppManagementPoliciesRequestBuilder():
     @dataclass
     class AppManagementPoliciesRequestBuilderGetQueryParameters():
         """
-        The policies that enforce app management restrictions for specific applications and service principals, overriding the defaultAppManagementPolicy.
+        Retrieve a list of appManagementPolicy objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

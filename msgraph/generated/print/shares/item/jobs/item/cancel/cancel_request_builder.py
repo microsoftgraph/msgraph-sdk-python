@@ -36,7 +36,7 @@ class CancelRequestBuilder():
     
     async def post(self,request_configuration: Optional[CancelRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action cancel
+        Cancel a print job. Print jobs can be canceled only on behalf of a user, using delegated permissions.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class CancelRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[CancelRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action cancel
+        Cancel a print job. Print jobs can be canceled only on behalf of a user, using delegated permissions.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

@@ -38,7 +38,7 @@ class CalendarGroupItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[CalendarGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property calendarGroups for users
+        Delete a calendar group other than the default calendar group.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -57,7 +57,7 @@ class CalendarGroupItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[CalendarGroupItemRequestBuilderGetRequestConfiguration] = None) -> Optional[calendar_group.CalendarGroup]:
         """
-        The user's calendar groups. Read-only. Nullable.
+        Retrieve the properties and relationships of a calendar group object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[calendar_group.CalendarGroup]
@@ -79,7 +79,7 @@ class CalendarGroupItemRequestBuilder():
     
     async def patch(self,body: Optional[calendar_group.CalendarGroup] = None, request_configuration: Optional[CalendarGroupItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[calendar_group.CalendarGroup]:
         """
-        Update the navigation property calendarGroups in users
+        Update the properties of calendargroup object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -104,7 +104,7 @@ class CalendarGroupItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[CalendarGroupItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property calendarGroups for users
+        Delete a calendar group other than the default calendar group.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class CalendarGroupItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CalendarGroupItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The user's calendar groups. Read-only. Nullable.
+        Retrieve the properties and relationships of a calendar group object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class CalendarGroupItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[calendar_group.CalendarGroup] = None, request_configuration: Optional[CalendarGroupItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property calendarGroups in users
+        Update the properties of calendargroup object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class CalendarGroupItemRequestBuilder():
     @dataclass
     class CalendarGroupItemRequestBuilderGetQueryParameters():
         """
-        The user's calendar groups. Read-only. Nullable.
+        Retrieve the properties and relationships of a calendar group object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

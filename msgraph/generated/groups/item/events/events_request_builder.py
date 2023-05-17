@@ -55,7 +55,7 @@ class EventsRequestBuilder():
     
     async def get(self,request_configuration: Optional[EventsRequestBuilderGetRequestConfiguration] = None) -> Optional[event_collection_response.EventCollectionResponse]:
         """
-        The group's calendar events.
+        Retrieve a list of event objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[event_collection_response.EventCollectionResponse]
@@ -77,7 +77,7 @@ class EventsRequestBuilder():
     
     async def post(self,body: Optional[event.Event] = None, request_configuration: Optional[EventsRequestBuilderPostRequestConfiguration] = None) -> Optional[event.Event]:
         """
-        Create new navigation property to events for groups
+        Use this API to create a new event.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class EventsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[EventsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The group's calendar events.
+        Retrieve a list of event objects.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class EventsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[event.Event] = None, request_configuration: Optional[EventsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to events for groups
+        Use this API to create a new event.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -160,7 +160,7 @@ class EventsRequestBuilder():
     @dataclass
     class EventsRequestBuilderGetQueryParameters():
         """
-        The group's calendar events.
+        Retrieve a list of event objects.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

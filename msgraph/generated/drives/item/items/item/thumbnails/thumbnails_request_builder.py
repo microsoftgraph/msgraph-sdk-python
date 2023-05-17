@@ -54,7 +54,7 @@ class ThumbnailsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ThumbnailsRequestBuilderGetRequestConfiguration] = None) -> Optional[thumbnail_set_collection_response.ThumbnailSetCollectionResponse]:
         """
-        Collection containing [ThumbnailSet][] objects associated with the item. For more info, see [getting thumbnails][]. Read-only. Nullable.
+        Retrieve a collection of ThumbnailSet resources for a DriveItem resource. A DriveItem can be represented by zero or more ThumbnailSet resources.Each **thumbnailSet** can have one or more **thumbnail** objects, which are images that represent the item.For example, a **thumbnailSet** may include **thumbnail** objects, such as common ones including `small`, `medium`, or `large`. There are many ways to work with thumbnails on OneDrive.Here are the most common ones:
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[thumbnail_set_collection_response.ThumbnailSetCollectionResponse]
@@ -101,7 +101,7 @@ class ThumbnailsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ThumbnailsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Collection containing [ThumbnailSet][] objects associated with the item. For more info, see [getting thumbnails][]. Read-only. Nullable.
+        Retrieve a collection of ThumbnailSet resources for a DriveItem resource. A DriveItem can be represented by zero or more ThumbnailSet resources.Each **thumbnailSet** can have one or more **thumbnail** objects, which are images that represent the item.For example, a **thumbnailSet** may include **thumbnail** objects, such as common ones including `small`, `medium`, or `large`. There are many ways to work with thumbnails on OneDrive.Here are the most common ones:
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class ThumbnailsRequestBuilder():
     @dataclass
     class ThumbnailsRequestBuilderGetQueryParameters():
         """
-        Collection containing [ThumbnailSet][] objects associated with the item. For more info, see [getting thumbnails][]. Read-only. Nullable.
+        Retrieve a collection of ThumbnailSet resources for a DriveItem resource. A DriveItem can be represented by zero or more ThumbnailSet resources.Each **thumbnailSet** can have one or more **thumbnail** objects, which are images that represent the item.For example, a **thumbnailSet** may include **thumbnail** objects, such as common ones including `small`, `medium`, or `large`. There are many ways to work with thumbnails on OneDrive.Here are the most common ones:
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

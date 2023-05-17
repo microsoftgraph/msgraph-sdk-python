@@ -40,7 +40,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property installedApps for me
+        Uninstall an app from the personal scope of the specified user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -59,7 +59,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]:
         """
-        The apps installed in the personal scope of this user.
+        Retrieve the app installed in the personal scope of the specified user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]
@@ -106,7 +106,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property installedApps for me
+        Uninstall an app from the personal scope of the specified user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -122,7 +122,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[UserScopeTeamsAppInstallationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The apps installed in the personal scope of this user.
+        Retrieve the app installed in the personal scope of the specified user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -201,7 +201,7 @@ class UserScopeTeamsAppInstallationItemRequestBuilder():
     @dataclass
     class UserScopeTeamsAppInstallationItemRequestBuilderGetQueryParameters():
         """
-        The apps installed in the personal scope of this user.
+        Retrieve the app installed in the personal scope of the specified user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

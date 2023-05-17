@@ -59,7 +59,7 @@ class SortRequestBuilder():
     
     async def get(self,request_configuration: Optional[SortRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_table_sort.WorkbookTableSort]:
         """
-        Represents the sorting for the table. Read-only.
+        Retrieve the properties and relationships of tablesort object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_table_sort.WorkbookTableSort]
@@ -122,7 +122,7 @@ class SortRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SortRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents the sorting for the table. Read-only.
+        Retrieve the properties and relationships of tablesort object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -201,7 +201,7 @@ class SortRequestBuilder():
     @dataclass
     class SortRequestBuilderGetQueryParameters():
         """
-        Represents the sorting for the table. Read-only.
+        Retrieve the properties and relationships of tablesort object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

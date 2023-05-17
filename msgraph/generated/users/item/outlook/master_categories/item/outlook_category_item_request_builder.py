@@ -37,7 +37,7 @@ class OutlookCategoryItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[OutlookCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property masterCategories for users
+        Delete the specified outlookCategory object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class OutlookCategoryItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[OutlookCategoryItemRequestBuilderGetRequestConfiguration] = None) -> Optional[outlook_category.OutlookCategory]:
         """
-        A list of categories defined for the user.
+        Get the properties and relationships of the specified outlookCategory object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[outlook_category.OutlookCategory]
@@ -78,7 +78,7 @@ class OutlookCategoryItemRequestBuilder():
     
     async def patch(self,body: Optional[outlook_category.OutlookCategory] = None, request_configuration: Optional[OutlookCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[outlook_category.OutlookCategory]:
         """
-        Update the navigation property masterCategories in users
+        Update the writable property, **color**, of the specified outlookCategory object. You cannot modify the **displayName** property once you have created the category.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class OutlookCategoryItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[OutlookCategoryItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property masterCategories for users
+        Delete the specified outlookCategory object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class OutlookCategoryItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[OutlookCategoryItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A list of categories defined for the user.
+        Get the properties and relationships of the specified outlookCategory object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class OutlookCategoryItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[outlook_category.OutlookCategory] = None, request_configuration: Optional[OutlookCategoryItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property masterCategories in users
+        Update the writable property, **color**, of the specified outlookCategory object. You cannot modify the **displayName** property once you have created the category.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class OutlookCategoryItemRequestBuilder():
     @dataclass
     class OutlookCategoryItemRequestBuilderGetQueryParameters():
         """
-        A list of categories defined for the user.
+        Get the properties and relationships of the specified outlookCategory object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

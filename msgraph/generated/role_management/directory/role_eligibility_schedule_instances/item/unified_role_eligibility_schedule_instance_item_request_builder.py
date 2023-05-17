@@ -60,7 +60,7 @@ class UnifiedRoleEligibilityScheduleInstanceItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[UnifiedRoleEligibilityScheduleInstanceItemRequestBuilderGetRequestConfiguration] = None) -> Optional[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]:
         """
-        Instances for role eligibility requests.
+        Get the instance of a role eligibility.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]
@@ -123,7 +123,7 @@ class UnifiedRoleEligibilityScheduleInstanceItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[UnifiedRoleEligibilityScheduleInstanceItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Instances for role eligibility requests.
+        Get the instance of a role eligibility.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -211,7 +211,7 @@ class UnifiedRoleEligibilityScheduleInstanceItemRequestBuilder():
     @dataclass
     class UnifiedRoleEligibilityScheduleInstanceItemRequestBuilderGetQueryParameters():
         """
-        Instances for role eligibility requests.
+        Get the instance of a role eligibility.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

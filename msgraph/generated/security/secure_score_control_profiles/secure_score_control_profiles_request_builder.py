@@ -54,7 +54,7 @@ class SecureScoreControlProfilesRequestBuilder():
     
     async def get(self,request_configuration: Optional[SecureScoreControlProfilesRequestBuilderGetRequestConfiguration] = None) -> Optional[secure_score_control_profile_collection_response.SecureScoreControlProfileCollectionResponse]:
         """
-        Get secureScoreControlProfiles from security
+        Retrieve the properties and relationships of a secureScoreControlProfiles object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[secure_score_control_profile_collection_response.SecureScoreControlProfileCollectionResponse]
@@ -101,7 +101,7 @@ class SecureScoreControlProfilesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SecureScoreControlProfilesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get secureScoreControlProfiles from security
+        Retrieve the properties and relationships of a secureScoreControlProfiles object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -150,7 +150,7 @@ class SecureScoreControlProfilesRequestBuilder():
     @dataclass
     class SecureScoreControlProfilesRequestBuilderGetQueryParameters():
         """
-        Get secureScoreControlProfiles from security
+        Retrieve the properties and relationships of a secureScoreControlProfiles object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

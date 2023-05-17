@@ -55,7 +55,7 @@ class CalendarRequestBuilder():
     
     async def get(self,request_configuration: Optional[CalendarRequestBuilderGetRequestConfiguration] = None) -> Optional[calendar.Calendar]:
         """
-        The user's primary calendar. Read-only.
+        Get the properties and relationships of a calendar object. The calendar can be one for a user, or the default calendar of a Microsoft 365 group. There are two scenarios where an app can get another user's calendar:
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[calendar.Calendar]
@@ -77,7 +77,7 @@ class CalendarRequestBuilder():
     
     async def patch(self,body: Optional[calendar.Calendar] = None, request_configuration: Optional[CalendarRequestBuilderPatchRequestConfiguration] = None) -> Optional[calendar.Calendar]:
         """
-        Update the navigation property calendar in users
+        Update the properties of a calendar object. The calendar can be one for a user, or the default calendar of a Microsoft 365 group.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -102,7 +102,7 @@ class CalendarRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CalendarRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The user's primary calendar. Read-only.
+        Get the properties and relationships of a calendar object. The calendar can be one for a user, or the default calendar of a Microsoft 365 group. There are two scenarios where an app can get another user's calendar:
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -120,7 +120,7 @@ class CalendarRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[calendar.Calendar] = None, request_configuration: Optional[CalendarRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property calendar in users
+        Update the properties of a calendar object. The calendar can be one for a user, or the default calendar of a Microsoft 365 group.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -178,7 +178,7 @@ class CalendarRequestBuilder():
     @dataclass
     class CalendarRequestBuilderGetQueryParameters():
         """
-        The user's primary calendar. Read-only.
+        Get the properties and relationships of a calendar object. The calendar can be one for a user, or the default calendar of a Microsoft 365 group. There are two scenarios where an app can get another user's calendar:
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

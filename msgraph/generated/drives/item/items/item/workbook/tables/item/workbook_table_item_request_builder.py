@@ -48,7 +48,7 @@ class WorkbookTableItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[WorkbookTableItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property tables for drives
+        Deletes the table.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -67,7 +67,7 @@ class WorkbookTableItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[WorkbookTableItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_table.WorkbookTable]:
         """
-        Represents a collection of tables associated with the workbook. Read-only.
+        Retrieve the properties and relationships of table object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_table.WorkbookTable]
@@ -89,7 +89,7 @@ class WorkbookTableItemRequestBuilder():
     
     async def patch(self,body: Optional[workbook_table.WorkbookTable] = None, request_configuration: Optional[WorkbookTableItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_table.WorkbookTable]:
         """
-        Update the navigation property tables in drives
+        Update the properties of table object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -114,7 +114,7 @@ class WorkbookTableItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookTableItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property tables for drives
+        Deletes the table.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -130,7 +130,7 @@ class WorkbookTableItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[WorkbookTableItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents a collection of tables associated with the workbook. Read-only.
+        Retrieve the properties and relationships of table object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -148,7 +148,7 @@ class WorkbookTableItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[workbook_table.WorkbookTable] = None, request_configuration: Optional[WorkbookTableItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property tables in drives
+        Update the properties of table object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -281,7 +281,7 @@ class WorkbookTableItemRequestBuilder():
     @dataclass
     class WorkbookTableItemRequestBuilderGetQueryParameters():
         """
-        Represents a collection of tables associated with the workbook. Read-only.
+        Retrieve the properties and relationships of table object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

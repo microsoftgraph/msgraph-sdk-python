@@ -40,7 +40,7 @@ class TermItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[TermItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property terms for groups
+        Delete a term object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -59,7 +59,7 @@ class TermItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[TermItemRequestBuilderGetRequestConfiguration] = None) -> Optional[term.Term]:
         """
-        All the terms under the set.
+        Read the properties and relationships of a term object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[term.Term]
@@ -81,7 +81,7 @@ class TermItemRequestBuilder():
     
     async def patch(self,body: Optional[term.Term] = None, request_configuration: Optional[TermItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[term.Term]:
         """
-        Update the navigation property terms in groups
+        Update the properties of a term object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -106,7 +106,7 @@ class TermItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[TermItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property terms for groups
+        Delete a term object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -122,7 +122,7 @@ class TermItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TermItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        All the terms under the set.
+        Read the properties and relationships of a term object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -140,7 +140,7 @@ class TermItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[term.Term] = None, request_configuration: Optional[TermItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property terms in groups
+        Update the properties of a term object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -201,7 +201,7 @@ class TermItemRequestBuilder():
     @dataclass
     class TermItemRequestBuilderGetQueryParameters():
         """
-        All the terms under the set.
+        Read the properties and relationships of a term object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

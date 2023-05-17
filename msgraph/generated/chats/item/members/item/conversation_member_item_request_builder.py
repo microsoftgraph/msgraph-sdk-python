@@ -37,7 +37,7 @@ class ConversationMemberItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ConversationMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property members for chats
+        Remove a conversationMember from a chat.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -56,7 +56,7 @@ class ConversationMemberItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ConversationMemberItemRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_member.ConversationMember]:
         """
-        A collection of all the members in the chat. Nullable.
+        Retrieve a conversationMember from a chat or channel.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conversation_member.ConversationMember]
@@ -103,7 +103,7 @@ class ConversationMemberItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ConversationMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property members for chats
+        Remove a conversationMember from a chat.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ConversationMemberItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ConversationMemberItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A collection of all the members in the chat. Nullable.
+        Retrieve a conversationMember from a chat or channel.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class ConversationMemberItemRequestBuilder():
     @dataclass
     class ConversationMemberItemRequestBuilderGetQueryParameters():
         """
-        A collection of all the members in the chat. Nullable.
+        Retrieve a conversationMember from a chat or channel.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

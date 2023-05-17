@@ -54,7 +54,7 @@ class TemporaryAccessPassMethodsRequestBuilder():
     
     async def get(self,request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderGetRequestConfiguration] = None) -> Optional[temporary_access_pass_authentication_method_collection_response.TemporaryAccessPassAuthenticationMethodCollectionResponse]:
         """
-        Represents a Temporary Access Pass registered to a user for authentication through time-limited passcodes.
+        Retrieve a list of a user's temporaryAccessPassAuthenticationMethod objects and their properties. This API will only return a single object in the collection as a user can have only one Temporary Access Pass method.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[temporary_access_pass_authentication_method_collection_response.TemporaryAccessPassAuthenticationMethodCollectionResponse]
@@ -76,7 +76,7 @@ class TemporaryAccessPassMethodsRequestBuilder():
     
     async def post(self,body: Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod] = None, request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderPostRequestConfiguration] = None) -> Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod]:
         """
-        Create new navigation property to temporaryAccessPassMethods for me
+        Create a new temporaryAccessPassAuthenticationMethod object on a user. A user can only have one Temporary Access Pass that's usable within its specified lifetime. If the user requires a new Temporary Access Pass while the current Temporary Access Pass is valid, the admin can create a new Temporary Access Pass for the user, the previous Temporary Access Pass will be deleted, and a new Temporary Access Pass will be created.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class TemporaryAccessPassMethodsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents a Temporary Access Pass registered to a user for authentication through time-limited passcodes.
+        Retrieve a list of a user's temporaryAccessPassAuthenticationMethod objects and their properties. This API will only return a single object in the collection as a user can have only one Temporary Access Pass method.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class TemporaryAccessPassMethodsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[temporary_access_pass_authentication_method.TemporaryAccessPassAuthenticationMethod] = None, request_configuration: Optional[TemporaryAccessPassMethodsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to temporaryAccessPassMethods for me
+        Create a new temporaryAccessPassAuthenticationMethod object on a user. A user can only have one Temporary Access Pass that's usable within its specified lifetime. If the user requires a new Temporary Access Pass while the current Temporary Access Pass is valid, the admin can create a new Temporary Access Pass for the user, the previous Temporary Access Pass will be deleted, and a new Temporary Access Pass will be created.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class TemporaryAccessPassMethodsRequestBuilder():
     @dataclass
     class TemporaryAccessPassMethodsRequestBuilderGetQueryParameters():
         """
-        Represents a Temporary Access Pass registered to a user for authentication through time-limited passcodes.
+        Retrieve a list of a user's temporaryAccessPassAuthenticationMethod objects and their properties. This API will only return a single object in the collection as a user can have only one Temporary Access Pass method.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

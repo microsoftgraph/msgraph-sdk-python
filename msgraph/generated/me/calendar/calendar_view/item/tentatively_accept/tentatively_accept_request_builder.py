@@ -37,7 +37,7 @@ class TentativelyAcceptRequestBuilder():
     
     async def post(self,body: Optional[tentatively_accept_post_request_body.TentativelyAcceptPostRequestBody] = None, request_configuration: Optional[TentativelyAcceptRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action tentativelyAccept
+        Tentatively accept the specified event in a user calendar. If the event allows proposals for new times, on responding tentative to the event, an invitee can choose to suggest an alternative time by including the **proposedNewTime** parameter. For more information on how to propose a time, and how to receive and accept a new time proposal, see Propose new meeting times.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -59,7 +59,7 @@ class TentativelyAcceptRequestBuilder():
     
     def to_post_request_information(self,body: Optional[tentatively_accept_post_request_body.TentativelyAcceptPostRequestBody] = None, request_configuration: Optional[TentativelyAcceptRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action tentativelyAccept
+        Tentatively accept the specified event in a user calendar. If the event allows proposals for new times, on responding tentative to the event, an invitee can choose to suggest an alternative time by including the **proposedNewTime** parameter. For more information on how to propose a time, and how to receive and accept a new time proposal, see Propose new meeting times.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

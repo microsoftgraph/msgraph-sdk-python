@@ -68,7 +68,7 @@ class UserConsentRequestsRequestBuilder():
     
     async def get(self,request_configuration: Optional[UserConsentRequestsRequestBuilderGetRequestConfiguration] = None) -> Optional[user_consent_request_collection_response.UserConsentRequestCollectionResponse]:
         """
-        A list of pending user consent requests. Supports $filter (eq).
+        Retrieve a collection of userConsentRequest objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[user_consent_request_collection_response.UserConsentRequestCollectionResponse]
@@ -115,7 +115,7 @@ class UserConsentRequestsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[UserConsentRequestsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        A list of pending user consent requests. Supports $filter (eq).
+        Retrieve a collection of userConsentRequest objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -164,7 +164,7 @@ class UserConsentRequestsRequestBuilder():
     @dataclass
     class UserConsentRequestsRequestBuilderGetQueryParameters():
         """
-        A list of pending user consent requests. Supports $filter (eq).
+        Retrieve a collection of userConsentRequest objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

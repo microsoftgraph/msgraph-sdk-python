@@ -64,7 +64,7 @@ class DriveItemItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[DriveItemItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property items for drives
+        Delete a DriveItem by using its ID or path.Note that deleting items using this method will move the items to the recycle bin instead of permanently deleting the item.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -137,7 +137,7 @@ class DriveItemItemRequestBuilder():
     
     async def patch(self,body: Optional[drive_item.DriveItem] = None, request_configuration: Optional[DriveItemItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[drive_item.DriveItem]:
         """
-        Update the navigation property items in drives
+        Update the metadata for a driveItem by ID or path. You can also use update to move an item to another parent by updating the item's **parentReference** property.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -175,7 +175,7 @@ class DriveItemItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[DriveItemItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property items for drives
+        Delete a DriveItem by using its ID or path.Note that deleting items using this method will move the items to the recycle bin instead of permanently deleting the item.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -209,7 +209,7 @@ class DriveItemItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[drive_item.DriveItem] = None, request_configuration: Optional[DriveItemItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property items in drives
+        Update the metadata for a driveItem by ID or path. You can also use update to move an item to another parent by updating the item's **parentReference** property.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

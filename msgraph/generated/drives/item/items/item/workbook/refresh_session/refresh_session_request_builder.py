@@ -36,7 +36,7 @@ class RefreshSessionRequestBuilder():
     
     async def post(self,request_configuration: Optional[RefreshSessionRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action refreshSession
+        Use this API to refresh an existing workbook session. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class RefreshSessionRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[RefreshSessionRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action refreshSession
+        Use this API to refresh an existing workbook session. 
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

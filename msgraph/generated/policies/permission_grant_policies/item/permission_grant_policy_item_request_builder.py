@@ -39,7 +39,7 @@ class PermissionGrantPolicyItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[PermissionGrantPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property permissionGrantPolicies for policies
+        Delete a permissionGrantPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -58,7 +58,7 @@ class PermissionGrantPolicyItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[PermissionGrantPolicyItemRequestBuilderGetRequestConfiguration] = None) -> Optional[permission_grant_policy.PermissionGrantPolicy]:
         """
-        The policy that specifies the conditions under which consent can be granted.
+        Retrieve a single permissionGrantPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[permission_grant_policy.PermissionGrantPolicy]
@@ -80,7 +80,7 @@ class PermissionGrantPolicyItemRequestBuilder():
     
     async def patch(self,body: Optional[permission_grant_policy.PermissionGrantPolicy] = None, request_configuration: Optional[PermissionGrantPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[permission_grant_policy.PermissionGrantPolicy]:
         """
-        Update the navigation property permissionGrantPolicies in policies
+        Update properties of a  permissionGrantPolicy.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -105,7 +105,7 @@ class PermissionGrantPolicyItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[PermissionGrantPolicyItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property permissionGrantPolicies for policies
+        Delete a permissionGrantPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -121,7 +121,7 @@ class PermissionGrantPolicyItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PermissionGrantPolicyItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The policy that specifies the conditions under which consent can be granted.
+        Retrieve a single permissionGrantPolicy object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -139,7 +139,7 @@ class PermissionGrantPolicyItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[permission_grant_policy.PermissionGrantPolicy] = None, request_configuration: Optional[PermissionGrantPolicyItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property permissionGrantPolicies in policies
+        Update properties of a  permissionGrantPolicy.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -191,7 +191,7 @@ class PermissionGrantPolicyItemRequestBuilder():
     @dataclass
     class PermissionGrantPolicyItemRequestBuilderGetQueryParameters():
         """
-        The policy that specifies the conditions under which consent can be granted.
+        Retrieve a single permissionGrantPolicy object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

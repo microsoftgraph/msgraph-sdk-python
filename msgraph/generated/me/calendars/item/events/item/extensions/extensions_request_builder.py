@@ -54,7 +54,7 @@ class ExtensionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[ExtensionsRequestBuilderGetRequestConfiguration] = None) -> Optional[extension_collection_response.ExtensionCollectionResponse]:
         """
-        The collection of open extensions defined for the event. Nullable.
+        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[extension_collection_response.ExtensionCollectionResponse]
@@ -76,7 +76,7 @@ class ExtensionsRequestBuilder():
     
     async def post(self,body: Optional[extension.Extension] = None, request_configuration: Optional[ExtensionsRequestBuilderPostRequestConfiguration] = None) -> Optional[extension.Extension]:
         """
-        Create new navigation property to extensions for me
+        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class ExtensionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ExtensionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The collection of open extensions defined for the event. Nullable.
+        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class ExtensionsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[extension.Extension] = None, request_configuration: Optional[ExtensionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to extensions for me
+        Create an open extension (openTypeExtension object) and add custom properties in a new or existing instance of a resource. You can create an open extension in a resource instance and store custom data to it all in the same operation, except for specific resources. See known limitations of open extensions for more information. The table in the Permissions section lists the resources that support open extensions.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class ExtensionsRequestBuilder():
     @dataclass
     class ExtensionsRequestBuilderGetQueryParameters():
         """
-        The collection of open extensions defined for the event. Nullable.
+        Get an open extension (openTypeExtension object) identified by name or fully qualified name. The table in the Permissions section lists the resources that support open extensions. The following table lists the three scenarios where you can get an open extension from a supported resource instance.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

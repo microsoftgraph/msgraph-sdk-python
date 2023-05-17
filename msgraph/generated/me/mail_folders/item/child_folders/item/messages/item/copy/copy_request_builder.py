@@ -38,7 +38,7 @@ class CopyRequestBuilder():
     
     async def post(self,body: Optional[copy_post_request_body.CopyPostRequestBody] = None, request_configuration: Optional[CopyRequestBuilderPostRequestConfiguration] = None) -> Optional[message.Message]:
         """
-        Invoke action copy
+        Copy a message to a folder within the user's mailbox.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -63,7 +63,7 @@ class CopyRequestBuilder():
     
     def to_post_request_information(self,body: Optional[copy_post_request_body.CopyPostRequestBody] = None, request_configuration: Optional[CopyRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action copy
+        Copy a message to a folder within the user's mailbox.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

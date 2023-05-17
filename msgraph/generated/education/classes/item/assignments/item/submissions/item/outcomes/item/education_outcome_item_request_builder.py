@@ -37,7 +37,7 @@ class EducationOutcomeItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[EducationOutcomeItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property outcomes for education
+        Delete a feedback resource from a submission. This can only be done by a teacher.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -78,7 +78,7 @@ class EducationOutcomeItemRequestBuilder():
     
     async def patch(self,body: Optional[education_outcome.EducationOutcome] = None, request_configuration: Optional[EducationOutcomeItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[education_outcome.EducationOutcome]:
         """
-        Update the navigation property outcomes in education
+        Update the properties of an educationOutcome object. Only teachers can perform this operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class EducationOutcomeItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[EducationOutcomeItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property outcomes for education
+        Delete a feedback resource from a submission. This can only be done by a teacher.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class EducationOutcomeItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[education_outcome.EducationOutcome] = None, request_configuration: Optional[EducationOutcomeItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property outcomes in education
+        Update the properties of an educationOutcome object. Only teachers can perform this operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

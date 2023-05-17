@@ -37,7 +37,7 @@ class GetStaffAvailabilityRequestBuilder():
     
     async def post(self,body: Optional[get_staff_availability_post_request_body.GetStaffAvailabilityPostRequestBody] = None, request_configuration: Optional[GetStaffAvailabilityRequestBuilderPostRequestConfiguration] = None) -> Optional[get_staff_availability_response.GetStaffAvailabilityResponse]:
         """
-        Invoke action getStaffAvailability
+        Get the availability information of staff members of a Microsoft Bookings calendar.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -62,7 +62,7 @@ class GetStaffAvailabilityRequestBuilder():
     
     def to_post_request_information(self,body: Optional[get_staff_availability_post_request_body.GetStaffAvailabilityPostRequestBody] = None, request_configuration: Optional[GetStaffAvailabilityRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action getStaffAvailability
+        Get the availability information of staff members of a Microsoft Bookings calendar.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

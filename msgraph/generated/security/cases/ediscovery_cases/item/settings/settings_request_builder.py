@@ -57,7 +57,7 @@ class SettingsRequestBuilder():
     
     async def get(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_case_settings.EdiscoveryCaseSettings]:
         """
-        Returns a list of eDIscoverySettings objects in the case.
+        Read the properties and relationships of an ediscoveryCaseSettings object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ediscovery_case_settings.EdiscoveryCaseSettings]
@@ -79,7 +79,7 @@ class SettingsRequestBuilder():
     
     async def patch(self,body: Optional[ediscovery_case_settings.EdiscoveryCaseSettings] = None, request_configuration: Optional[SettingsRequestBuilderPatchRequestConfiguration] = None) -> Optional[ediscovery_case_settings.EdiscoveryCaseSettings]:
         """
-        Update the navigation property settings in security
+        Update the properties of an ediscoveryCaseSettings object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -120,7 +120,7 @@ class SettingsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[SettingsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Returns a list of eDIscoverySettings objects in the case.
+        Read the properties and relationships of an ediscoveryCaseSettings object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class SettingsRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[ediscovery_case_settings.EdiscoveryCaseSettings] = None, request_configuration: Optional[SettingsRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property settings in security
+        Update the properties of an ediscoveryCaseSettings object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class SettingsRequestBuilder():
     @dataclass
     class SettingsRequestBuilderGetQueryParameters():
         """
-        Returns a list of eDIscoverySettings objects in the case.
+        Read the properties and relationships of an ediscoveryCaseSettings object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

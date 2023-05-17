@@ -56,7 +56,7 @@ class PrintServiceEndpointItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[PrintServiceEndpointItemRequestBuilderGetRequestConfiguration] = None) -> Optional[print_service_endpoint.PrintServiceEndpoint]:
         """
-        Endpoints that can be used to access the service. Read-only. Nullable.
+        Retrieve the properties and relationships of a print service endpoint.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[print_service_endpoint.PrintServiceEndpoint]
@@ -119,7 +119,7 @@ class PrintServiceEndpointItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[PrintServiceEndpointItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Endpoints that can be used to access the service. Read-only. Nullable.
+        Retrieve the properties and relationships of a print service endpoint.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -171,7 +171,7 @@ class PrintServiceEndpointItemRequestBuilder():
     @dataclass
     class PrintServiceEndpointItemRequestBuilderGetQueryParameters():
         """
-        Endpoints that can be used to access the service. Read-only. Nullable.
+        Retrieve the properties and relationships of a print service endpoint.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

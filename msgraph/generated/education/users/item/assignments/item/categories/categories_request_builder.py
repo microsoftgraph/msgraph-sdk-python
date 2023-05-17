@@ -56,7 +56,7 @@ class CategoriesRequestBuilder():
     
     async def get(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None) -> Optional[education_category_collection_response.EducationCategoryCollectionResponse]:
         """
-        When set, enables users to easily find assignments of a given type.  Read-only. Nullable.
+        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[education_category_collection_response.EducationCategoryCollectionResponse]
@@ -78,7 +78,7 @@ class CategoriesRequestBuilder():
     
     async def post(self,body: Optional[education_category.EducationCategory] = None, request_configuration: Optional[CategoriesRequestBuilderPostRequestConfiguration] = None) -> Optional[education_category.EducationCategory]:
         """
-        Create new navigation property to categories for education
+        Add one or more existing educationCategory objects to the specified  educationAssignment. Only teachers can perform this operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class CategoriesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CategoriesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        When set, enables users to easily find assignments of a given type.  Read-only. Nullable.
+        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -121,7 +121,7 @@ class CategoriesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[education_category.EducationCategory] = None, request_configuration: Optional[CategoriesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to categories for education
+        Add one or more existing educationCategory objects to the specified  educationAssignment. Only teachers can perform this operation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -170,7 +170,7 @@ class CategoriesRequestBuilder():
     @dataclass
     class CategoriesRequestBuilderGetQueryParameters():
         """
-        When set, enables users to easily find assignments of a given type.  Read-only. Nullable.
+        List all the categories associated with an assignment. Only teachers, students, and applications with application permissions can perform this operation.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

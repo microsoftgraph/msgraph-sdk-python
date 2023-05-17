@@ -39,7 +39,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property tags for security
+        Remove an ediscoveryReviewTag object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -58,7 +58,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderGetRequestConfiguration] = None) -> Optional[ediscovery_review_tag.EdiscoveryReviewTag]:
         """
-        Returns a list of ediscoveryReviewTag objects associated to this case.
+        Read the properties and relationships of an ediscoveryReviewTag object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[ediscovery_review_tag.EdiscoveryReviewTag]
@@ -80,7 +80,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
     
     async def patch(self,body: Optional[ediscovery_review_tag.EdiscoveryReviewTag] = None, request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[ediscovery_review_tag.EdiscoveryReviewTag]:
         """
-        Update the navigation property tags in security
+        Update the properties of an ediscoveryReviewTag object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -105,7 +105,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property tags for security
+        Remove an ediscoveryReviewTag object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -121,7 +121,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Returns a list of ediscoveryReviewTag objects associated to this case.
+        Read the properties and relationships of an ediscoveryReviewTag object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -139,7 +139,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[ediscovery_review_tag.EdiscoveryReviewTag] = None, request_configuration: Optional[EdiscoveryReviewTagItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property tags in security
+        Update the properties of an ediscoveryReviewTag object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -191,7 +191,7 @@ class EdiscoveryReviewTagItemRequestBuilder():
     @dataclass
     class EdiscoveryReviewTagItemRequestBuilderGetQueryParameters():
         """
-        Returns a list of ediscoveryReviewTag objects associated to this case.
+        Read the properties and relationships of an ediscoveryReviewTag object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

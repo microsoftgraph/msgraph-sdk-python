@@ -63,7 +63,7 @@ class WorkbookWorksheetItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete navigation property worksheets for drives
+        Deletes the worksheet from the workbook.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -82,7 +82,7 @@ class WorkbookWorksheetItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_worksheet.WorkbookWorksheet]:
         """
-        Represents a collection of worksheets associated with the workbook. Read-only.
+        Retrieve the properties and relationships of worksheet object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_worksheet.WorkbookWorksheet]
@@ -104,7 +104,7 @@ class WorkbookWorksheetItemRequestBuilder():
     
     async def patch(self,body: Optional[workbook_worksheet.WorkbookWorksheet] = None, request_configuration: Optional[WorkbookWorksheetItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[workbook_worksheet.WorkbookWorksheet]:
         """
-        Update the navigation property worksheets in drives
+        Update the properties of worksheet object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -142,7 +142,7 @@ class WorkbookWorksheetItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete navigation property worksheets for drives
+        Deletes the worksheet from the workbook.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -158,7 +158,7 @@ class WorkbookWorksheetItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[WorkbookWorksheetItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Represents a collection of worksheets associated with the workbook. Read-only.
+        Retrieve the properties and relationships of worksheet object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -176,7 +176,7 @@ class WorkbookWorksheetItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[workbook_worksheet.WorkbookWorksheet] = None, request_configuration: Optional[WorkbookWorksheetItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property worksheets in drives
+        Update the properties of worksheet object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -286,7 +286,7 @@ class WorkbookWorksheetItemRequestBuilder():
     @dataclass
     class WorkbookWorksheetItemRequestBuilderGetQueryParameters():
         """
-        Represents a collection of worksheets associated with the workbook. Read-only.
+        Retrieve the properties and relationships of worksheet object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

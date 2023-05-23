@@ -10,7 +10,7 @@ from . import team_info
 class AssociatedTeamInfo(team_info.TeamInfo):
     def __init__(self,) -> None:
         """
-        Instantiates a new associatedTeamInfo and sets the default values.
+        Instantiates a new AssociatedTeamInfo and sets the default values.
         """
         super().__init__()
         # The OdataType property

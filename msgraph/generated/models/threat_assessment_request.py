@@ -11,7 +11,7 @@ from . import entity
 class ThreatAssessmentRequest(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new ThreatAssessmentRequest and sets the default values.
+        Instantiates a new threatAssessmentRequest and sets the default values.
         """
         super().__init__()
         # The category property

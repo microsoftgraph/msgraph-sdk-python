@@ -17,6 +17,8 @@ class SearchHit(AdditionalDataHolder, Parsable):
         self._content_source: Optional[str] = None
         # The internal identifier for the item. The format of the identifier varies based on the entity type. For details, see hitId format.
         self._hit_id: Optional[str] = None
+        # The isCollapsed property
+        self._is_collapsed: Optional[bool] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
         # The rank or the order of the result.
@@ -84,6 +86,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "contentSource": lambda n : setattr(self, 'content_source', n.get_str_value()),
             "hitId": lambda n : setattr(self, 'hit_id', n.get_str_value()),
+            "isCollapsed": lambda n : setattr(self, 'is_collapsed', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "rank": lambda n : setattr(self, 'rank', n.get_int_value()),
             "resource": lambda n : setattr(self, 'resource', n.get_object_value(entity.Entity)),
@@ -108,6 +111,23 @@ class SearchHit(AdditionalDataHolder, Parsable):
             value: Value to set for the hit_id property.
         """
         self._hit_id = value
+    
+    @property
+    def is_collapsed(self,) -> Optional[bool]:
+        """
+        Gets the isCollapsed property value. The isCollapsed property
+        Returns: Optional[bool]
+        """
+        return self._is_collapsed
+    
+    @is_collapsed.setter
+    def is_collapsed(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the isCollapsed property value. The isCollapsed property
+        Args:
+            value: Value to set for the is_collapsed property.
+        """
+        self._is_collapsed = value
     
     @property
     def odata_type(self,) -> Optional[str]:
@@ -187,6 +207,7 @@ class SearchHit(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_str_value("contentSource", self.content_source)
         writer.write_str_value("hitId", self.hit_id)
+        writer.write_bool_value("isCollapsed", self.is_collapsed)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("rank", self.rank)
         writer.write_object_value("resource", self.resource)

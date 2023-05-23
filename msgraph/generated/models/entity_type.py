@@ -10,6 +10,8 @@ class EntityType(Enum):
     ListItem = "listItem",
     Drive = "drive",
     UnknownFutureValue = "unknownFutureValue",
+    Acronym = "acronym",
+    Bookmark = "bookmark",
     ChatMessage = "chatMessage",
     Person = "person",
 

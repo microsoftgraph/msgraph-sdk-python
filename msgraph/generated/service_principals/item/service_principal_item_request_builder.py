@@ -35,6 +35,7 @@ if TYPE_CHECKING:
     from .remove_key import remove_key_request_builder
     from .remove_password import remove_password_request_builder
     from .restore import restore_request_builder
+    from .synchronization import synchronization_request_builder
     from .token_issuance_policies import token_issuance_policies_request_builder
     from .token_lifetime_policies import token_lifetime_policies_request_builder
     from .transitive_member_of import transitive_member_of_request_builder
@@ -388,6 +389,15 @@ class ServicePrincipalItemRequestBuilder():
         from .restore import restore_request_builder
 
         return restore_request_builder.RestoreRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def synchronization(self) -> synchronization_request_builder.SynchronizationRequestBuilder:
+        """
+        Provides operations to manage the synchronization property of the microsoft.graph.servicePrincipal entity.
+        """
+        from .synchronization import synchronization_request_builder
+
+        return synchronization_request_builder.SynchronizationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def token_issuance_policies(self) -> token_issuance_policies_request_builder.TokenIssuancePoliciesRequestBuilder:

@@ -4,7 +4,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from . import add_in, app_management_policy, app_role, app_role_assignment, claims_mapping_policy, delegated_permission_classification, directory_object, endpoint, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, o_auth2_permission_grant, password_credential, permission_scope, resource_specific_permission, saml_single_sign_on_settings, token_issuance_policy, token_lifetime_policy, verified_publisher
+    from . import add_in, app_management_policy, app_role, app_role_assignment, claims_mapping_policy, delegated_permission_classification, directory_object, endpoint, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, o_auth2_permission_grant, password_credential, permission_scope, resource_specific_permission, saml_single_sign_on_settings, synchronization, token_issuance_policy, token_lifetime_policy, verified_publisher
 
 from . import directory_object
 
@@ -101,6 +101,8 @@ class ServicePrincipal(directory_object.DirectoryObject):
         self._service_principal_type: Optional[str] = None
         # Specifies the Microsoft accounts that are supported for the current application. Read-only. Supported values are:AzureADMyOrg: Users with a Microsoft work or school account in my organization's Azure AD tenant (single-tenant).AzureADMultipleOrgs: Users with a Microsoft work or school account in any organization's Azure AD tenant (multi-tenant).AzureADandPersonalMicrosoftAccount: Users with a personal Microsoft account, or a work or school account in any organization's Azure AD tenant.PersonalMicrosoftAccount: Users with a personal Microsoft account only.
         self._sign_in_audience: Optional[str] = None
+        # The synchronization property
+        self._synchronization: Optional[synchronization.Synchronization] = None
         # Custom strings that can be used to categorize and identify the service principal. Not nullable. The value is the union of strings set here and on the associated application entity's tags property.Supports $filter (eq, not, ge, le, startsWith).
         self._tags: Optional[List[str]] = None
         # Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD issues tokens for this application encrypted using the key specified by this property. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
@@ -488,7 +490,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import add_in, app_management_policy, app_role, app_role_assignment, claims_mapping_policy, delegated_permission_classification, directory_object, endpoint, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, o_auth2_permission_grant, password_credential, permission_scope, resource_specific_permission, saml_single_sign_on_settings, token_issuance_policy, token_lifetime_policy, verified_publisher
+        from . import add_in, app_management_policy, app_role, app_role_assignment, claims_mapping_policy, delegated_permission_classification, directory_object, endpoint, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, o_auth2_permission_grant, password_credential, permission_scope, resource_specific_permission, saml_single_sign_on_settings, synchronization, token_issuance_policy, token_lifetime_policy, verified_publisher
 
         fields: Dict[str, Callable[[Any], None]] = {
             "accountEnabled": lambda n : setattr(self, 'account_enabled', n.get_bool_value()),
@@ -534,6 +536,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
             "servicePrincipalNames": lambda n : setattr(self, 'service_principal_names', n.get_collection_of_primitive_values(str)),
             "servicePrincipalType": lambda n : setattr(self, 'service_principal_type', n.get_str_value()),
             "signInAudience": lambda n : setattr(self, 'sign_in_audience', n.get_str_value()),
+            "synchronization": lambda n : setattr(self, 'synchronization', n.get_object_value(synchronization.Synchronization)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
             "tokenEncryptionKeyId": lambda n : setattr(self, 'token_encryption_key_id', n.get_uuid_value()),
             "tokenIssuancePolicies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(token_issuance_policy.TokenIssuancePolicy)),
@@ -920,6 +923,7 @@ class ServicePrincipal(directory_object.DirectoryObject):
         writer.write_collection_of_primitive_values("servicePrincipalNames", self.service_principal_names)
         writer.write_str_value("servicePrincipalType", self.service_principal_type)
         writer.write_str_value("signInAudience", self.sign_in_audience)
+        writer.write_object_value("synchronization", self.synchronization)
         writer.write_collection_of_primitive_values("tags", self.tags)
         writer.write_uuid_value("tokenEncryptionKeyId", self.token_encryption_key_id)
         writer.write_collection_of_object_values("tokenIssuancePolicies", self.token_issuance_policies)
@@ -977,6 +981,23 @@ class ServicePrincipal(directory_object.DirectoryObject):
             value: Value to set for the sign_in_audience property.
         """
         self._sign_in_audience = value
+    
+    @property
+    def synchronization(self,) -> Optional[synchronization.Synchronization]:
+        """
+        Gets the synchronization property value. The synchronization property
+        Returns: Optional[synchronization.Synchronization]
+        """
+        return self._synchronization
+    
+    @synchronization.setter
+    def synchronization(self,value: Optional[synchronization.Synchronization] = None) -> None:
+        """
+        Sets the synchronization property value. The synchronization property
+        Args:
+            value: Value to set for the synchronization property.
+        """
+        self._synchronization = value
     
     @property
     def tags(self,) -> Optional[List[str]]:

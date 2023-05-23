@@ -9,12 +9,9 @@ if TYPE_CHECKING:
 from . import entity
 
 class DeviceManagementTroubleshootingEvent(entity.Entity):
-    """
-    Event representing an general failure.
-    """
     def __init__(self,) -> None:
         """
-        Instantiates a new deviceManagementTroubleshootingEvent and sets the default values.
+        Instantiates a new DeviceManagementTroubleshootingEvent and sets the default values.
         """
         super().__init__()
         # Id used for tracing the failure in the service.

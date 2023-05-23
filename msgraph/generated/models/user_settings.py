@@ -10,7 +10,7 @@ from . import entity
 class UserSettings(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new userSettings and sets the default values.
+        Instantiates a new UserSettings and sets the default values.
         """
         super().__init__()
         # The contributionToContentDiscoveryAsOrganizationDisabled property

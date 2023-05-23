@@ -29,6 +29,7 @@ if TYPE_CHECKING:
     from .remove_password import remove_password_request_builder
     from .restore import restore_request_builder
     from .set_verified_publisher import set_verified_publisher_request_builder
+    from .synchronization import synchronization_request_builder
     from .token_issuance_policies import token_issuance_policies_request_builder
     from .token_lifetime_policies import token_lifetime_policies_request_builder
     from .unset_verified_publisher import unset_verified_publisher_request_builder
@@ -328,6 +329,15 @@ class ApplicationItemRequestBuilder():
         from .set_verified_publisher import set_verified_publisher_request_builder
 
         return set_verified_publisher_request_builder.SetVerifiedPublisherRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def synchronization(self) -> synchronization_request_builder.SynchronizationRequestBuilder:
+        """
+        Provides operations to manage the synchronization property of the microsoft.graph.application entity.
+        """
+        from .synchronization import synchronization_request_builder
+
+        return synchronization_request_builder.SynchronizationRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def token_issuance_policies(self) -> token_issuance_policies_request_builder.TokenIssuancePoliciesRequestBuilder:

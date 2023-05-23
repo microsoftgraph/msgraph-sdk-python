@@ -11,7 +11,7 @@ from . import entity
 class PrintConnector(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new PrintConnector and sets the default values.
+        Instantiates a new printConnector and sets the default values.
         """
         super().__init__()
         # The connector's version.

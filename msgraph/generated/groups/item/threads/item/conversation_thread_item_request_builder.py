@@ -58,7 +58,7 @@ class ConversationThreadItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ConversationThreadItemRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_thread.ConversationThread]:
         """
-        Get a specific thread that belongs to a group. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. 
+        Get a thread object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conversation_thread.ConversationThread]
@@ -121,7 +121,7 @@ class ConversationThreadItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ConversationThreadItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a specific thread that belongs to a group. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. 
+        Get a thread object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -191,7 +191,7 @@ class ConversationThreadItemRequestBuilder():
     @dataclass
     class ConversationThreadItemRequestBuilderGetQueryParameters():
         """
-        Get a specific thread that belongs to a group. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. 
+        Get a thread object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

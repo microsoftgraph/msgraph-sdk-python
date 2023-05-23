@@ -10,7 +10,7 @@ from . import search
 class EdiscoveryReviewSetQuery(search.Search):
     def __init__(self,) -> None:
         """
-        Instantiates a new EdiscoveryReviewSetQuery and sets the default values.
+        Instantiates a new ediscoveryReviewSetQuery and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.security.ediscoveryReviewSetQuery"

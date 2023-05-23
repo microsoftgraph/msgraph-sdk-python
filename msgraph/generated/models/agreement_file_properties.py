@@ -11,7 +11,7 @@ from . import entity
 class AgreementFileProperties(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new agreementFileProperties and sets the default values.
+        Instantiates a new AgreementFileProperties and sets the default values.
         """
         super().__init__()
         # The date time representing when the file was created.The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.

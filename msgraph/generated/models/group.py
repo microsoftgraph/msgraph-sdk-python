@@ -11,7 +11,7 @@ from . import directory_object
 class Group(directory_object.DirectoryObject):
     def __init__(self,) -> None:
         """
-        Instantiates a new group and sets the default values.
+        Instantiates a new Group and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.group"
@@ -49,7 +49,7 @@ class Group(directory_object.DirectoryObject):
         self._drives: Optional[List[drive.Drive]] = None
         # The group's calendar events.
         self._events: Optional[List[event.Event]] = None
-        # Timestamp of when the group is set to expire. The value cannot be modified and is automatically populated when the group is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, not, ge, le, in). Read-only.
+        # Timestamp of when the group is set to expire. Is null for security groups but for Microsoft 365 groups, it represents when the group is set to expire as defined in the groupLifecyclePolicy. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, not, ge, le, in). Read-only.
         self._expiration_date_time: Optional[datetime] = None
         # The collection of open extensions defined for the group. Read-only. Nullable.
         self._extensions: Optional[List[extension.Extension]] = None
@@ -450,7 +450,7 @@ class Group(directory_object.DirectoryObject):
     @property
     def expiration_date_time(self,) -> Optional[datetime]:
         """
-        Gets the expirationDateTime property value. Timestamp of when the group is set to expire. The value cannot be modified and is automatically populated when the group is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, not, ge, le, in). Read-only.
+        Gets the expirationDateTime property value. Timestamp of when the group is set to expire. Is null for security groups but for Microsoft 365 groups, it represents when the group is set to expire as defined in the groupLifecyclePolicy. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, not, ge, le, in). Read-only.
         Returns: Optional[datetime]
         """
         return self._expiration_date_time
@@ -458,7 +458,7 @@ class Group(directory_object.DirectoryObject):
     @expiration_date_time.setter
     def expiration_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the expirationDateTime property value. Timestamp of when the group is set to expire. The value cannot be modified and is automatically populated when the group is created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, not, ge, le, in). Read-only.
+        Sets the expirationDateTime property value. Timestamp of when the group is set to expire. Is null for security groups but for Microsoft 365 groups, it represents when the group is set to expire as defined in the groupLifecyclePolicy. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Returned by default. Supports $filter (eq, ne, not, ge, le, in). Read-only.
         Args:
             value: Value to set for the expiration_date_time property.
         """

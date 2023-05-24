@@ -44,7 +44,7 @@ class ChatMessage(entity.Entity):
         self._locale: Optional[str] = None
         # List of entities mentioned in the chat message. Supported entities are: user, bot, team, and channel.
         self._mentions: Optional[List[chat_message_mention.ChatMessageMention]] = None
-        # The messageHistory property
+        # List of activity history of a message item, including modification time and actions, such as reactionAdded, reactionRemoved, or reaction changes, on the message.
         self._message_history: Optional[List[chat_message_history_item.ChatMessageHistoryItem]] = None
         # The messageType property
         self._message_type: Optional[chat_message_type.ChatMessageType] = None
@@ -372,7 +372,7 @@ class ChatMessage(entity.Entity):
     @property
     def message_history(self,) -> Optional[List[chat_message_history_item.ChatMessageHistoryItem]]:
         """
-        Gets the messageHistory property value. The messageHistory property
+        Gets the messageHistory property value. List of activity history of a message item, including modification time and actions, such as reactionAdded, reactionRemoved, or reaction changes, on the message.
         Returns: Optional[List[chat_message_history_item.ChatMessageHistoryItem]]
         """
         return self._message_history
@@ -380,7 +380,7 @@ class ChatMessage(entity.Entity):
     @message_history.setter
     def message_history(self,value: Optional[List[chat_message_history_item.ChatMessageHistoryItem]] = None) -> None:
         """
-        Sets the messageHistory property value. The messageHistory property
+        Sets the messageHistory property value. List of activity history of a message item, including modification time and actions, such as reactionAdded, reactionRemoved, or reaction changes, on the message.
         Args:
             value: Value to set for the message_history property.
         """

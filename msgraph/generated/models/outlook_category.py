@@ -13,7 +13,7 @@ class OutlookCategory(entity.Entity):
         Instantiates a new outlookCategory and sets the default values.
         """
         super().__init__()
-        # A pre-set color constant that characterizes a category, and that is mapped to one of 25 predefined colors. See the note below.
+        # A pre-set color constant that characterizes a category, and that is mapped to one of 25 predefined colors. For more details, see the following note.
         self._color: Optional[category_color.CategoryColor] = None
         # A unique name that identifies a category in the user's mailbox. After a category is created, the name cannot be changed. Read-only.
         self._display_name: Optional[str] = None
@@ -23,7 +23,7 @@ class OutlookCategory(entity.Entity):
     @property
     def color(self,) -> Optional[category_color.CategoryColor]:
         """
-        Gets the color property value. A pre-set color constant that characterizes a category, and that is mapped to one of 25 predefined colors. See the note below.
+        Gets the color property value. A pre-set color constant that characterizes a category, and that is mapped to one of 25 predefined colors. For more details, see the following note.
         Returns: Optional[category_color.CategoryColor]
         """
         return self._color
@@ -31,7 +31,7 @@ class OutlookCategory(entity.Entity):
     @color.setter
     def color(self,value: Optional[category_color.CategoryColor] = None) -> None:
         """
-        Sets the color property value. A pre-set color constant that characterizes a category, and that is mapped to one of 25 predefined colors. See the note below.
+        Sets the color property value. A pre-set color constant that characterizes a category, and that is mapped to one of 25 predefined colors. For more details, see the following note.
         Args:
             value: Value to set for the color property.
         """

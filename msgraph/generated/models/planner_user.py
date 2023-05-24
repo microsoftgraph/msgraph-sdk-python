@@ -10,7 +10,7 @@ from . import entity
 class PlannerUser(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new plannerUser and sets the default values.
+        Instantiates a new PlannerUser and sets the default values.
         """
         super().__init__()
         # The OdataType property

@@ -16,11 +16,11 @@ class ChatMessageHistoryItem(AdditionalDataHolder, Parsable):
 
         # The actions property
         self._actions: Optional[chat_message_actions.ChatMessageActions] = None
-        # The modifiedDateTime property
+        # The date and time when the message was modified.
         self._modified_date_time: Optional[datetime] = None
         # The OdataType property
         self._odata_type: Optional[str] = None
-        # The reaction property
+        # The reaction in the modified message.
         self._reaction: Optional[chat_message_reaction.ChatMessageReaction] = None
     
     @property
@@ -87,7 +87,7 @@ class ChatMessageHistoryItem(AdditionalDataHolder, Parsable):
     @property
     def modified_date_time(self,) -> Optional[datetime]:
         """
-        Gets the modifiedDateTime property value. The modifiedDateTime property
+        Gets the modifiedDateTime property value. The date and time when the message was modified.
         Returns: Optional[datetime]
         """
         return self._modified_date_time
@@ -95,7 +95,7 @@ class ChatMessageHistoryItem(AdditionalDataHolder, Parsable):
     @modified_date_time.setter
     def modified_date_time(self,value: Optional[datetime] = None) -> None:
         """
-        Sets the modifiedDateTime property value. The modifiedDateTime property
+        Sets the modifiedDateTime property value. The date and time when the message was modified.
         Args:
             value: Value to set for the modified_date_time property.
         """
@@ -121,7 +121,7 @@ class ChatMessageHistoryItem(AdditionalDataHolder, Parsable):
     @property
     def reaction(self,) -> Optional[chat_message_reaction.ChatMessageReaction]:
         """
-        Gets the reaction property value. The reaction property
+        Gets the reaction property value. The reaction in the modified message.
         Returns: Optional[chat_message_reaction.ChatMessageReaction]
         """
         return self._reaction
@@ -129,7 +129,7 @@ class ChatMessageHistoryItem(AdditionalDataHolder, Parsable):
     @reaction.setter
     def reaction(self,value: Optional[chat_message_reaction.ChatMessageReaction] = None) -> None:
         """
-        Sets the reaction property value. The reaction property
+        Sets the reaction property value. The reaction in the modified message.
         Args:
             value: Value to set for the reaction property.
         """

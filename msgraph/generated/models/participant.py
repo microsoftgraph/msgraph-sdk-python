@@ -3,7 +3,7 @@ from kiota_abstractions.serialization import Parsable, ParseNode, SerializationW
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import entity, media_stream, participant_info, recording_info
+    from . import entity, media_stream, online_meeting_restricted, participant_info, recording_info
 
 from . import entity
 
@@ -27,6 +27,8 @@ class Participant(entity.Entity):
         self.odata_type: Optional[str] = None
         # Information about whether the participant has recording capability.
         self._recording_info: Optional[recording_info.RecordingInfo] = None
+        # Indicates the reason or reasons media content from this participant is restricted.
+        self._restricted_experience: Optional[online_meeting_restricted.OnlineMeetingRestricted] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Participant:
@@ -45,7 +47,7 @@ class Participant(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import entity, media_stream, participant_info, recording_info
+        from . import entity, media_stream, online_meeting_restricted, participant_info, recording_info
 
         fields: Dict[str, Callable[[Any], None]] = {
             "info": lambda n : setattr(self, 'info', n.get_object_value(participant_info.ParticipantInfo)),
@@ -54,6 +56,7 @@ class Participant(entity.Entity):
             "mediaStreams": lambda n : setattr(self, 'media_streams', n.get_collection_of_object_values(media_stream.MediaStream)),
             "metadata": lambda n : setattr(self, 'metadata', n.get_str_value()),
             "recordingInfo": lambda n : setattr(self, 'recording_info', n.get_object_value(recording_info.RecordingInfo)),
+            "restrictedExperience": lambda n : setattr(self, 'restricted_experience', n.get_object_value(online_meeting_restricted.OnlineMeetingRestricted)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -161,6 +164,23 @@ class Participant(entity.Entity):
         """
         self._recording_info = value
     
+    @property
+    def restricted_experience(self,) -> Optional[online_meeting_restricted.OnlineMeetingRestricted]:
+        """
+        Gets the restrictedExperience property value. Indicates the reason or reasons media content from this participant is restricted.
+        Returns: Optional[online_meeting_restricted.OnlineMeetingRestricted]
+        """
+        return self._restricted_experience
+    
+    @restricted_experience.setter
+    def restricted_experience(self,value: Optional[online_meeting_restricted.OnlineMeetingRestricted] = None) -> None:
+        """
+        Sets the restrictedExperience property value. Indicates the reason or reasons media content from this participant is restricted.
+        Args:
+            value: Value to set for the restricted_experience property.
+        """
+        self._restricted_experience = value
+    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -176,5 +196,6 @@ class Participant(entity.Entity):
         writer.write_collection_of_object_values("mediaStreams", self.media_streams)
         writer.write_str_value("metadata", self.metadata)
         writer.write_object_value("recordingInfo", self.recording_info)
+        writer.write_object_value("restrictedExperience", self.restricted_experience)
     
 

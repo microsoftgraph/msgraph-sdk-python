@@ -11,7 +11,7 @@ from . import entity
 class AuthoredNote(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new authoredNote and sets the default values.
+        Instantiates a new AuthoredNote and sets the default values.
         """
         super().__init__()
         # Identity information about the note's author.

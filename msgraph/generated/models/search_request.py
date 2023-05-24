@@ -3,7 +3,7 @@ from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, Par
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
-    from . import aggregation_option, entity_type, result_template_option, search_alteration_options, search_query, share_point_one_drive_options, sort_property
+    from . import aggregation_option, collapse_property, entity_type, result_template_option, search_alteration_options, search_query, share_point_one_drive_options, sort_property
 
 class SearchRequest(AdditionalDataHolder, Parsable):
     def __init__(self,) -> None:
@@ -17,6 +17,8 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         self._aggregation_filters: Optional[List[str]] = None
         # The aggregations property
         self._aggregations: Optional[List[aggregation_option.AggregationOption]] = None
+        # The collapseProperties property
+        self._collapse_properties: Optional[List[collapse_property.CollapseProperty]] = None
         # The contentSources property
         self._content_sources: Optional[List[str]] = None
         # The enableTopResults property
@@ -94,6 +96,23 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             value: Value to set for the aggregations property.
         """
         self._aggregations = value
+    
+    @property
+    def collapse_properties(self,) -> Optional[List[collapse_property.CollapseProperty]]:
+        """
+        Gets the collapseProperties property value. The collapseProperties property
+        Returns: Optional[List[collapse_property.CollapseProperty]]
+        """
+        return self._collapse_properties
+    
+    @collapse_properties.setter
+    def collapse_properties(self,value: Optional[List[collapse_property.CollapseProperty]] = None) -> None:
+        """
+        Sets the collapseProperties property value. The collapseProperties property
+        Args:
+            value: Value to set for the collapse_properties property.
+        """
+        self._collapse_properties = value
     
     @property
     def content_sources(self,) -> Optional[List[str]]:
@@ -197,11 +216,12 @@ class SearchRequest(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import aggregation_option, entity_type, result_template_option, search_alteration_options, search_query, share_point_one_drive_options, sort_property
+        from . import aggregation_option, collapse_property, entity_type, result_template_option, search_alteration_options, search_query, share_point_one_drive_options, sort_property
 
         fields: Dict[str, Callable[[Any], None]] = {
             "aggregations": lambda n : setattr(self, 'aggregations', n.get_collection_of_object_values(aggregation_option.AggregationOption)),
             "aggregationFilters": lambda n : setattr(self, 'aggregation_filters', n.get_collection_of_primitive_values(str)),
+            "collapseProperties": lambda n : setattr(self, 'collapse_properties', n.get_collection_of_object_values(collapse_property.CollapseProperty)),
             "contentSources": lambda n : setattr(self, 'content_sources', n.get_collection_of_primitive_values(str)),
             "enableTopResults": lambda n : setattr(self, 'enable_top_results', n.get_bool_value()),
             "entityTypes": lambda n : setattr(self, 'entity_types', n.get_collection_of_enum_values(entity_type.EntityType)),
@@ -313,6 +333,7 @@ class SearchRequest(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_collection_of_object_values("aggregations", self.aggregations)
         writer.write_collection_of_primitive_values("aggregationFilters", self.aggregation_filters)
+        writer.write_collection_of_object_values("collapseProperties", self.collapse_properties)
         writer.write_collection_of_primitive_values("contentSources", self.content_sources)
         writer.write_bool_value("enableTopResults", self.enable_top_results)
         writer.write_enum_value("entityTypes", self.entity_types)

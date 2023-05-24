@@ -10,7 +10,7 @@ from . import entity
 class Authentication(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new authentication and sets the default values.
+        Instantiates a new Authentication and sets the default values.
         """
         super().__init__()
         # The email address registered to a user for authentication.

@@ -78,7 +78,7 @@ class IdentitySynchronizationRequestBuilder():
     
     async def patch(self,body: Optional[cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner] = None, request_configuration: Optional[IdentitySynchronizationRequestBuilderPatchRequestConfiguration] = None) -> Optional[cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner]:
         """
-        Update the user synchronization policy of a partner-specific configuration.
+        Create a cross-tenant user synchronization policy for a partner-specific configuration.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -137,7 +137,7 @@ class IdentitySynchronizationRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner] = None, request_configuration: Optional[IdentitySynchronizationRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the user synchronization policy of a partner-specific configuration.
+        Create a cross-tenant user synchronization policy for a partner-specific configuration.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

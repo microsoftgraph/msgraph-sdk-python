@@ -14,6 +14,10 @@ class SubscribedSku(entity.Entity):
         Instantiates a new SubscribedSku and sets the default values.
         """
         super().__init__()
+        # The accountId property
+        self._account_id: Optional[str] = None
+        # The accountName property
+        self._account_name: Optional[str] = None
         # For example, 'User' or 'Company'.
         self._applies_to: Optional[str] = None
         # Possible values are: Enabled, Warning, Suspended, Deleted, LockedOut. The capabilityStatus is Enabled if the prepaidUnits property has at least 1 unit that is enabled, and LockedOut if the customer cancelled their subscription.
@@ -30,6 +34,42 @@ class SubscribedSku(entity.Entity):
         self._sku_id: Optional[UUID] = None
         # The SKU part number; for example: 'AAD_PREMIUM' or 'RMSBASIC'. To get a list of commercial subscriptions that an organization has acquired, see List subscribedSkus.
         self._sku_part_number: Optional[str] = None
+        # The subscriptionIds property
+        self._subscription_ids: Optional[List[str]] = None
+    
+    @property
+    def account_id(self,) -> Optional[str]:
+        """
+        Gets the accountId property value. The accountId property
+        Returns: Optional[str]
+        """
+        return self._account_id
+    
+    @account_id.setter
+    def account_id(self,value: Optional[str] = None) -> None:
+        """
+        Sets the accountId property value. The accountId property
+        Args:
+            value: Value to set for the account_id property.
+        """
+        self._account_id = value
+    
+    @property
+    def account_name(self,) -> Optional[str]:
+        """
+        Gets the accountName property value. The accountName property
+        Returns: Optional[str]
+        """
+        return self._account_name
+    
+    @account_name.setter
+    def account_name(self,value: Optional[str] = None) -> None:
+        """
+        Sets the accountName property value. The accountName property
+        Args:
+            value: Value to set for the account_name property.
+        """
+        self._account_name = value
     
     @property
     def applies_to(self,) -> Optional[str]:
@@ -102,6 +142,8 @@ class SubscribedSku(entity.Entity):
         from . import entity, license_units_detail, service_plan_info
 
         fields: Dict[str, Callable[[Any], None]] = {
+            "accountId": lambda n : setattr(self, 'account_id', n.get_str_value()),
+            "accountName": lambda n : setattr(self, 'account_name', n.get_str_value()),
             "appliesTo": lambda n : setattr(self, 'applies_to', n.get_str_value()),
             "capabilityStatus": lambda n : setattr(self, 'capability_status', n.get_str_value()),
             "consumedUnits": lambda n : setattr(self, 'consumed_units', n.get_int_value()),
@@ -109,6 +151,7 @@ class SubscribedSku(entity.Entity):
             "servicePlans": lambda n : setattr(self, 'service_plans', n.get_collection_of_object_values(service_plan_info.ServicePlanInfo)),
             "skuId": lambda n : setattr(self, 'sku_id', n.get_uuid_value()),
             "skuPartNumber": lambda n : setattr(self, 'sku_part_number', n.get_str_value()),
+            "subscriptionIds": lambda n : setattr(self, 'subscription_ids', n.get_collection_of_primitive_values(str)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
@@ -140,6 +183,8 @@ class SubscribedSku(entity.Entity):
         if writer is None:
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
+        writer.write_str_value("accountId", self.account_id)
+        writer.write_str_value("accountName", self.account_name)
         writer.write_str_value("appliesTo", self.applies_to)
         writer.write_str_value("capabilityStatus", self.capability_status)
         writer.write_int_value("consumedUnits", self.consumed_units)
@@ -147,6 +192,7 @@ class SubscribedSku(entity.Entity):
         writer.write_collection_of_object_values("servicePlans", self.service_plans)
         writer.write_uuid_value("skuId", self.sku_id)
         writer.write_str_value("skuPartNumber", self.sku_part_number)
+        writer.write_collection_of_primitive_values("subscriptionIds", self.subscription_ids)
     
     @property
     def service_plans(self,) -> Optional[List[service_plan_info.ServicePlanInfo]]:
@@ -198,5 +244,22 @@ class SubscribedSku(entity.Entity):
             value: Value to set for the sku_part_number property.
         """
         self._sku_part_number = value
+    
+    @property
+    def subscription_ids(self,) -> Optional[List[str]]:
+        """
+        Gets the subscriptionIds property value. The subscriptionIds property
+        Returns: Optional[List[str]]
+        """
+        return self._subscription_ids
+    
+    @subscription_ids.setter
+    def subscription_ids(self,value: Optional[List[str]] = None) -> None:
+        """
+        Sets the subscriptionIds property value. The subscriptionIds property
+        Args:
+            value: Value to set for the subscription_ids property.
+        """
+        self._subscription_ids = value
     
 

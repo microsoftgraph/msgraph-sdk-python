@@ -14,6 +14,8 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         self._allowed_to_create_apps: Optional[bool] = None
         # Indicates whether the default user role can create security groups. This setting corresponds to the The Users can create security groups in Azure portals, API or PowerShell setting in the group settings menu in the Azure portal.
         self._allowed_to_create_security_groups: Optional[bool] = None
+        # Indicates whether the default user role can create tenants.
+        self._allowed_to_create_tenants: Optional[bool] = None
         # Indicates whether the registered owners of a device can read their own BitLocker recovery keys with default user role.
         self._allowed_to_read_bitlocker_keys_for_owned_device: Optional[bool] = None
         # Indicates whether the default user role can read other users.
@@ -75,6 +77,23 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         self._allowed_to_create_security_groups = value
     
     @property
+    def allowed_to_create_tenants(self,) -> Optional[bool]:
+        """
+        Gets the allowedToCreateTenants property value. Indicates whether the default user role can create tenants.
+        Returns: Optional[bool]
+        """
+        return self._allowed_to_create_tenants
+    
+    @allowed_to_create_tenants.setter
+    def allowed_to_create_tenants(self,value: Optional[bool] = None) -> None:
+        """
+        Sets the allowedToCreateTenants property value. Indicates whether the default user role can create tenants.
+        Args:
+            value: Value to set for the allowed_to_create_tenants property.
+        """
+        self._allowed_to_create_tenants = value
+    
+    @property
     def allowed_to_read_bitlocker_keys_for_owned_device(self,) -> Optional[bool]:
         """
         Gets the allowedToReadBitlockerKeysForOwnedDevice property value. Indicates whether the registered owners of a device can read their own BitLocker recovery keys with default user role.
@@ -128,6 +147,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         fields: Dict[str, Callable[[Any], None]] = {
             "allowedToCreateApps": lambda n : setattr(self, 'allowed_to_create_apps', n.get_bool_value()),
             "allowedToCreateSecurityGroups": lambda n : setattr(self, 'allowed_to_create_security_groups', n.get_bool_value()),
+            "allowedToCreateTenants": lambda n : setattr(self, 'allowed_to_create_tenants', n.get_bool_value()),
             "allowedToReadBitlockerKeysForOwnedDevice": lambda n : setattr(self, 'allowed_to_read_bitlocker_keys_for_owned_device', n.get_bool_value()),
             "allowedToReadOtherUsers": lambda n : setattr(self, 'allowed_to_read_other_users', n.get_bool_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
@@ -179,6 +199,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
             raise Exception("writer cannot be undefined")
         writer.write_bool_value("allowedToCreateApps", self.allowed_to_create_apps)
         writer.write_bool_value("allowedToCreateSecurityGroups", self.allowed_to_create_security_groups)
+        writer.write_bool_value("allowedToCreateTenants", self.allowed_to_create_tenants)
         writer.write_bool_value("allowedToReadBitlockerKeysForOwnedDevice", self.allowed_to_read_bitlocker_keys_for_owned_device)
         writer.write_bool_value("allowedToReadOtherUsers", self.allowed_to_read_other_users)
         writer.write_str_value("@odata.type", self.odata_type)

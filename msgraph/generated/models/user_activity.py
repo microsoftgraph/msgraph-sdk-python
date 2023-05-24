@@ -11,7 +11,7 @@ from . import entity
 class UserActivity(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new userActivity and sets the default values.
+        Instantiates a new UserActivity and sets the default values.
         """
         super().__init__()
         # Required. URL used to launch the activity in the best native experience represented by the appId. Might launch a web-based app if no native app exists.

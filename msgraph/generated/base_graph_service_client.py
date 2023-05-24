@@ -41,6 +41,8 @@ if TYPE_CHECKING:
     from .education import education_request_builder
     from .employee_experience import employee_experience_request_builder
     from .external import external_request_builder
+    from .filter_operators import filter_operators_request_builder
+    from .functions import functions_request_builder
     from .group_lifecycle_policies import group_lifecycle_policies_request_builder
     from .groups import groups_request_builder
     from .group_settings import group_settings_request_builder
@@ -384,6 +386,24 @@ class BaseGraphServiceClient():
         from .external import external_request_builder
 
         return external_request_builder.ExternalRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def filter_operators(self) -> filter_operators_request_builder.FilterOperatorsRequestBuilder:
+        """
+        Provides operations to manage the collection of filterOperatorSchema entities.
+        """
+        from .filter_operators import filter_operators_request_builder
+
+        return filter_operators_request_builder.FilterOperatorsRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def functions(self) -> functions_request_builder.FunctionsRequestBuilder:
+        """
+        Provides operations to manage the collection of attributeMappingFunctionSchema entities.
+        """
+        from .functions import functions_request_builder
+
+        return functions_request_builder.FunctionsRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def group_lifecycle_policies(self) -> group_lifecycle_policies_request_builder.GroupLifecyclePoliciesRequestBuilder:

@@ -5,7 +5,7 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
 if TYPE_CHECKING:
-    from . import add_in, api_application, app_management_policy, app_role, certification, directory_object, extension_property, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, optional_claims, parental_control_settings, password_credential, public_client_application, request_signature_verification, required_resource_access, spa_application, token_issuance_policy, token_lifetime_policy, verified_publisher, web_application
+    from . import add_in, api_application, app_management_policy, app_role, certification, directory_object, extension_property, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, optional_claims, parental_control_settings, password_credential, public_client_application, request_signature_verification, required_resource_access, spa_application, synchronization, token_issuance_policy, token_lifetime_policy, verified_publisher, web_application
 
 from . import directory_object
 
@@ -90,6 +90,8 @@ class Application(directory_object.DirectoryObject):
         self._sign_in_audience: Optional[str] = None
         # Specifies settings for a single-page application, including sign out URLs and redirect URIs for authorization codes and access tokens.
         self._spa: Optional[spa_application.SpaApplication] = None
+        # The synchronization property
+        self._synchronization: Optional[synchronization.Synchronization] = None
         # Custom strings that can be used to categorize and identify the application. Not nullable. Strings added here will also appear in the tags property of any associated service principals.Supports $filter (eq, not, ge, le, startsWith) and $search.
         self._tags: Optional[List[str]] = None
         # Specifies the keyId of a public key from the keyCredentials collection. When configured, Azure AD encrypts all the tokens it emits by using the key this property points to. The application code that receives the encrypted token must use the matching private key to decrypt the token before it can be used for the signed-in user.
@@ -375,7 +377,7 @@ class Application(directory_object.DirectoryObject):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
-        from . import add_in, api_application, app_management_policy, app_role, certification, directory_object, extension_property, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, optional_claims, parental_control_settings, password_credential, public_client_application, request_signature_verification, required_resource_access, spa_application, token_issuance_policy, token_lifetime_policy, verified_publisher, web_application
+        from . import add_in, api_application, app_management_policy, app_role, certification, directory_object, extension_property, federated_identity_credential, home_realm_discovery_policy, informational_url, key_credential, optional_claims, parental_control_settings, password_credential, public_client_application, request_signature_verification, required_resource_access, spa_application, synchronization, token_issuance_policy, token_lifetime_policy, verified_publisher, web_application
 
         fields: Dict[str, Callable[[Any], None]] = {
             "addIns": lambda n : setattr(self, 'add_ins', n.get_collection_of_object_values(add_in.AddIn)),
@@ -415,6 +417,7 @@ class Application(directory_object.DirectoryObject):
             "serviceManagementReference": lambda n : setattr(self, 'service_management_reference', n.get_str_value()),
             "signInAudience": lambda n : setattr(self, 'sign_in_audience', n.get_str_value()),
             "spa": lambda n : setattr(self, 'spa', n.get_object_value(spa_application.SpaApplication)),
+            "synchronization": lambda n : setattr(self, 'synchronization', n.get_object_value(synchronization.Synchronization)),
             "tags": lambda n : setattr(self, 'tags', n.get_collection_of_primitive_values(str)),
             "tokenEncryptionKeyId": lambda n : setattr(self, 'token_encryption_key_id', n.get_uuid_value()),
             "tokenIssuancePolicies": lambda n : setattr(self, 'token_issuance_policies', n.get_collection_of_object_values(token_issuance_policy.TokenIssuancePolicy)),
@@ -795,6 +798,7 @@ class Application(directory_object.DirectoryObject):
         writer.write_str_value("serviceManagementReference", self.service_management_reference)
         writer.write_str_value("signInAudience", self.sign_in_audience)
         writer.write_object_value("spa", self.spa)
+        writer.write_object_value("synchronization", self.synchronization)
         writer.write_collection_of_primitive_values("tags", self.tags)
         writer.write_uuid_value("tokenEncryptionKeyId", self.token_encryption_key_id)
         writer.write_collection_of_object_values("tokenIssuancePolicies", self.token_issuance_policies)
@@ -852,6 +856,23 @@ class Application(directory_object.DirectoryObject):
             value: Value to set for the spa property.
         """
         self._spa = value
+    
+    @property
+    def synchronization(self,) -> Optional[synchronization.Synchronization]:
+        """
+        Gets the synchronization property value. The synchronization property
+        Returns: Optional[synchronization.Synchronization]
+        """
+        return self._synchronization
+    
+    @synchronization.setter
+    def synchronization(self,value: Optional[synchronization.Synchronization] = None) -> None:
+        """
+        Sets the synchronization property value. The synchronization property
+        Args:
+            value: Value to set for the synchronization property.
+        """
+        self._synchronization = value
     
     @property
     def tags(self,) -> Optional[List[str]]:

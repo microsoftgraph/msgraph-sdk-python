@@ -36,7 +36,7 @@ credential = ClientSecretCredential(
     client_secret='CLIENT_SECRET',
 )
 scopes = ['https://graph.microsoft.com/.default']
-client = GraphServiceClient(credentials=credentials, scopes=scopes)
+client = GraphServiceClient(credentials=credential, scopes=scopes)
 ```
 
 The above example uses default scopes for [app-only access](https://learn.microsoft.com/en-us/graph/permissions-overview?tabs=http#application-permissions).  If using [delegated access](https://learn.microsoft.com/en-us/graph/permissions-overview#delegated-permissions) you can provide custom scopes:
@@ -51,7 +51,7 @@ credential=DeviceCodeCredential(
     tenant_id='TENANT_ID',
 )
 scopes = ['User.Read', 'Mail.Read']
-client = GraphServiceClient(credentials=credentials, scopes=scopes)
+client = GraphServiceClient(credentials=credential, scopes=scopes)
 ```
 
 ## 3. Make requests against the service
@@ -73,7 +73,7 @@ credential = ClientSecretCredential(
     'client_secret'
 )
 scopes = ['https://graph.microsoft.com/.default']
-client = GraphServiceClient(credentials=credentials, scopes=scopes)
+client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 async def get_user():
     user = await client.users.by_user_id('userPrincipalName').get()
@@ -92,7 +92,7 @@ from msgraph import GraphServiceClient
 
 credential = InteractiveBrowserCredential()
 scopes=['User.Read']
-client = GraphServiceClient(credentials=credentials, scopes=scopes,)
+client = GraphServiceClient(credentials=credential, scopes=scopes,)
 
 async def me():
     me = await client.me.get()

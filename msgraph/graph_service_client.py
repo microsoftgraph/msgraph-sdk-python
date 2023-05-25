@@ -23,8 +23,8 @@ class GraphServiceClient(BaseGraphServiceClient):
             tokenCredential to use for authentication. 
             scopes (Optional[List[str]]): The scopes to use for authentication.
             Defaults to ['https://graph.microsoft.com/.default'].
-            request_adapter (Optional[GraphRequestAdapter], optional): The
-            request adapter to use for requests. Defaults to None.
+            request_adapter (Optional[GraphRequestAdapter], optional): The request
+            adapter to use for requests. Defaults to None.
         """
         
         if not request_adapter:

@@ -19,60 +19,39 @@ pip install msgraph-sdk
 
 Register your application by following the steps at [Register your app with the Microsoft Identity Platform](https://docs.microsoft.com/graph/auth-register-app-v2).
 
-### 2.2 Create an AuthenticationProvider object
+### 2.2 Initialize a GraphServiceClient object
 
-An instance of the **GraphServiceClient** class handles building client. To create a new instance of this class, you need to provide an instance of **AuthenticationProvider**, which can authenticate requests to Microsoft Graph.
+You must create **GraphServiceClient** object to make requests against the service. To create a new instance of this class, you need to provide credentials and scopes, which can authenticate requests to Microsoft Graph.
 
 > **Note**: For authentication we support both `sync` and `async` credential classes from `azure.identity`. Please see the azure identity [docs](https://learn.microsoft.com/en-us/python/api/azure-identity/azure.identity?view=azure-python) for more information.
 
 ```py
-# Example using async credentials.
-from azure.identity.aio import DefaultAzureCredential
-from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
-
-credential=DefaultAzureCredential()
-auth_provider = AzureIdentityAuthenticationProvider(credential)
-```
-
-The above example uses default scopes for [app-only access](https://learn.microsoft.com/en-us/graph/permissions-overview#delegated-permissions).  If using [delegated access](https://learn.microsoft.com/en-us/graph/permissions-overview#delegated-permissions) you can provide custom scopes:
-
-```py
-scopes = ['User.Read', 'Mail.Read']
-credential=DeviceCodeCredential()
-auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
-```
-
-### 2.3 Initialise a GraphRequestAdapter object
-
-The SDK uses an adapter object that handles the HTTP concerns. This HTTP adapter object is used to build the Graph client for making requests.
-
-To initialise one using the authentication provider created in the previous step:
-
-```py
-from msgraph import GraphRequestAdapter
-
-adapter = GraphRequestAdapter(auth_provider)
-```
-
-We currently use [HTTPX](https://www.python-httpx.org/) as our HTTP client. You can pass your custom configured `httpx.AsyncClient` using:
-
-```py
-import httpx
-from msgraph import GraphRequestAdapter
-from msgraph_core import GraphClientFactory
-
-http_client = GraphClientFactory.create_with_default_middleware(client=httpx.AsyncClient())
-request_adapter = GraphRequestAdapter(auth_provider, http_client)
-```
-
-### 2.3 Get a GraphServiceClient object
-
-You must get a **GraphServiceClient** object to make requests against the service.
-
-```py
+# Example using async credentials and application access.
+from azure.identity.aio import ClientSecretCredential
 from msgraph import GraphServiceClient
 
-client = GraphServiceClient(request_adapter)
+credential = ClientSecretCredential(
+    tenant_id='TENANT_ID',
+    client_id='CLIENT_ID',
+    client_secret='CLIENT_SECRET',
+)
+scopes = ['https://graph.microsoft.com/.default']
+client = GraphServiceClient(credentials, scopes=scopes)
+```
+
+The above example uses default scopes for [app-only access](https://learn.microsoft.com/en-us/graph/permissions-overview?tabs=http#application-permissions).  If using [delegated access](https://learn.microsoft.com/en-us/graph/permissions-overview#delegated-permissions) you can provide custom scopes:
+
+```py
+# Example using sync credentials and delegated access.
+from azure.identity import DeviceCodeCredential
+from msgraph import GraphServiceClient
+
+credential=DeviceCodeCredential(
+    client_id='CLIENT_ID',
+    tenant_id='TENANT_ID',
+)
+scopes = ['User.Read', 'Mail.Read']
+client = GraphServiceClient(credentials, scopes=scopes)
 ```
 
 ## 3. Make requests against the service
@@ -86,8 +65,6 @@ The following is a complete example that shows how to fetch a user from Microsof
 ```py
 import asyncio
 from azure.identity.aio import ClientSecretCredential
-from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
-from msgraph import GraphRequestAdapter
 from msgraph import GraphServiceClient
 
 credential = ClientSecretCredential(
@@ -96,9 +73,7 @@ credential = ClientSecretCredential(
     'client_secret'
 )
 scopes = ['https://graph.microsoft.com/.default']
-auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
-request_adapter = GraphRequestAdapter(auth_provider)
-client = GraphServiceClient(request_adapter)
+client = GraphServiceClient(credentials, scopes=scopes)
 
 async def get_user():
     user = await client.users.by_user_id('userPrincipalName').get()
@@ -108,20 +83,16 @@ async def get_user():
 asyncio.run(get_user())
 ```
 
-Note that to calling `me` requires a signed-in user and therefore delegated permissions. See [Authenticating Users](https://learn.microsoft.com/en-us/python/api/overview/azure/identity-readme?view=azure-python#authenticate-users)) for more:
+Note that to calling `me` requires a signed-in user and therefore delegated permissions. See [Authenticating Users](https://learn.microsoft.com/en-us/python/api/overview/azure/identity-readme?view=azure-python#authenticate-users) for more:
 
 ```py
 import asyncio
 from azure.identity import InteractiveBrowserCredential
-from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
-from msgraph import GraphRequestAdapter
 from msgraph import GraphServiceClient
 
 credential = InteractiveBrowserCredential()
 scopes=['User.Read']
-auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
-request_adapter = GraphRequestAdapter(auth_provider)
-client = GraphServiceClient(request_adapter)
+client = GraphServiceClient(credentials, scopes=scopes,)
 
 async def me():
     me = await client.me.get()

@@ -5,22 +5,17 @@ import asyncio
 
 from azure.identity import EnvironmentCredential
 from kiota_abstractions.api_error import APIError
-from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
-from msgraph import GraphRequestAdapter
 from msgraph import GraphServiceClient
 
 # Set the event loop policy for Windows
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-# Create authentication provider object. Used to authenticate request
+# Create a credential object. Used to authenticate requests
 credential=EnvironmentCredential()
-auth_provider = AzureIdentityAuthenticationProvider(credential)
+scopes = ['https://graph.microsoft.com/.default']
 
-# Initialize a request adapter. Handles the HTTP concerns.
-request_adapter = GraphRequestAdapter(auth_provider)
-
-# Get a service client.
-client = GraphServiceClient(request_adapter)
+# Create an API client with the credentials and scopes
+client = GraphServiceClient(credentials, scopes=scopes)
 ```
 
 ## 1. LIST ALL APPLICATIONS IN THE TENANT (GET /applications)

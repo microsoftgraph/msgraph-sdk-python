@@ -19,8 +19,7 @@ credential = ClientSecretCredential(
 scopes = ['https://graph.microsoft.com/.default']
 
 # Create an API client with the credentials and scopes.
-client = GraphServiceClient(credentials, scopes=scopes)
-```
+client = GraphServiceClient(credentials=credential, scopes=scopes)
 ```
 
 ## 1. LIST ALL DRIVES (GET /drives)

@@ -21,7 +21,7 @@ credential = DeviceCodeCredential(
 scopes = ["User.Read"]
 
 # Create an API client with the credentials and scopes.
-client = GraphServiceClient(credential, scopes=scopes)
+client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 # GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():
@@ -51,7 +51,7 @@ credential = InteractiveBrowserCredential()
 scopes = ["User.Read"]
 
 # Create an API client with the credentials and scopes.
-client = GraphServiceClient(credential, scopes=scopes)
+client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 # GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():
@@ -87,7 +87,7 @@ credential = ClientSecretCredential(
 scopes = ['https://graph.microsoft.com/.default']
 
 # Create an API client with the credentials and scopes.
-client = GraphServiceClient(credential, scopes=scopes)
+client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 # GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():
@@ -117,7 +117,7 @@ credential = EnvironmentCredential()
 scopes = ['https://graph.microsoft.com/.default']
 
 # Create an API client with the credentials and scopes.
-client = GraphServiceClient(credential, scopes=scopes)
+client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 # GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():

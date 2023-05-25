@@ -10,10 +10,10 @@ from .graph_request_adapter import GraphRequestAdapter
 class GraphServiceClient(BaseGraphServiceClient):
     def __init__(
         self,
-        credentials: Union[TokenCredential, AsyncTokenCredential],
-        scopes: Optional[List[str]],
-        base_url: Optional[str] = None,
-        client: Optional[AsyncClient] = None
+        credentials: Optional[Union[TokenCredential, AsyncTokenCredential]] = None,
+        scopes: Optional[List[str]] = None,
+        request_adapter: Optional[GraphRequestAdapter] = None
+        
     ) -> None:
         """Constructs a client instance to use for making requests to the 
         Microsoft Graph v.1.0 API.
@@ -23,24 +23,19 @@ class GraphServiceClient(BaseGraphServiceClient):
             tokenCredential to use for authentication. 
             scopes (Optional[List[str]]): The scopes to use for authentication.
             Defaults to ['https://graph.microsoft.com/.default'].
-            base_url (Optional[str], optional): The base url to use for
-            requests. Defaults to https://graph.microsoft.com/v1.0.
-            client (Optional[AsyncClient], optional): A custom httpx.AsyncClient
-            to use for http requests. Defaults to None.
+            request_adapter (Optional[GraphRequestAdapter], optional): The
+            request adapter to use for requests. Defaults to None.
         """
         
-        if scopes:
-            auth_provider = AzureIdentityAuthenticationProvider(credentials, scopes)
-        else:
-            auth_provider = AzureIdentityAuthenticationProvider(credentials)
-        
-        if client:
-            request_adapter = GraphRequestAdapter(auth_provider, client)
-        else:
+        if not request_adapter:
+            if not credentials:
+                raise ValueError("Missing request adapter or valid credentials")
+            
+            if scopes:
+                auth_provider = AzureIdentityAuthenticationProvider(credentials, scopes)
+            else:
+                auth_provider = AzureIdentityAuthenticationProvider(credentials)
+    
             request_adapter = GraphRequestAdapter(auth_provider)
-        
-        if base_url:
-            request_adapter.base_url = base_url
-        
         
         super().__init__(request_adapter)

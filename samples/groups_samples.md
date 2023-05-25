@@ -19,7 +19,7 @@ credential = ClientSecretCredential(
 scopes = ['https://graph.microsoft.com/.default']
 
 # Create an API client with the credentials and scopes.
-client = GraphServiceClient(credential, scopes=scopes)
+client = GraphServiceClient(credentials=credential, scopes=scopes)
 ```
 
 ## 1. LIST ALL GROUPS IN THE TENANT (GET /groups)

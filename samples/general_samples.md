@@ -18,7 +18,7 @@ credentials = AuthorizationCodeCredential(
     redirect_uri: str
 )
 scopes = ['User.Read', 'Mail.ReadWrite']
-client = GraphServiceClient(credentials, scopes=scopes)
+client = GraphServiceClient(credentials=credentials, scopes=scopes)
 ```
 
 ## 2. Creating a Graph client using a custom `httpx.AsyncClient` instance
@@ -28,7 +28,8 @@ from msgraph import GraphRequestAdapter
 from msgraph_core import GraphClientFactory
 
 http_client = GraphClientFactory.create_with_default_middleware(client=httpx.AsyncClient())
-client = GraphServiceClient(credentials, scopes=scopes, client=http_client)
+request_adapter = GraphRequestAdapter(auth_provider, http_client)
+client = GraphServiceClient(request_adapter=request_adapter)
 ```
 
 ## 3. Get an item from the Microsoft Graph API
@@ -159,7 +160,7 @@ credential = ClientSecretCredential(
     'client_secret'
 )
 scopes = ['Mail.Send']
-client = GraphServiceClient(credential, scopes=scopes)
+client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 async def send_mail():
     try:

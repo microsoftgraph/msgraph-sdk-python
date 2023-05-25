@@ -11,11 +11,11 @@ from msgraph import GraphServiceClient
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
 # Create a credential object. Used to authenticate requests
-credential=EnvironmentCredential()
+credentials = EnvironmentCredential()
 scopes = ['https://graph.microsoft.com/.default']
 
 # Create an API client with the credentials and scopes
-client = GraphServiceClient(credentials, scopes=scopes)
+client = GraphServiceClient(credentials=credentials, scopes=scopes)
 ```
 
 ## 1. LIST ALL APPLICATIONS IN THE TENANT (GET /applications)

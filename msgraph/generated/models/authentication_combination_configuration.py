@@ -10,7 +10,7 @@ from . import entity
 class AuthenticationCombinationConfiguration(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new authenticationCombinationConfiguration and sets the default values.
+        Instantiates a new AuthenticationCombinationConfiguration and sets the default values.
         """
         super().__init__()
         # Which authentication method combinations this configuration applies to. Must be an allowedCombinations object that's defined for the authenticationStrengthPolicy. The only possible value for fido2combinationConfigurations is 'fido2'.

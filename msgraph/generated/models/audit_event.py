@@ -10,12 +10,9 @@ if TYPE_CHECKING:
 from . import entity
 
 class AuditEvent(entity.Entity):
-    """
-    A class containing the properties for Audit Event.
-    """
     def __init__(self,) -> None:
         """
-        Instantiates a new auditEvent and sets the default values.
+        Instantiates a new AuditEvent and sets the default values.
         """
         super().__init__()
         # Friendly name of the activity.

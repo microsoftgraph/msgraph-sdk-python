@@ -18,7 +18,7 @@ class ConversationMember(entity.Entity):
         self._display_name: Optional[str] = None
         # The OdataType property
         self.odata_type: Optional[str] = None
-        # The roles for that user. This property only contains additional qualifiers when relevant - for example, if the member has owner privileges, the roles property contains owner as one of the values. Similarly, if the member is a guest, the roles property contains guest as one of the values. A basic member should not have any values specified in the roles property.
+        # The roles for that user. This property contains additional qualifiers only when relevant - for example, if the member has owner privileges, the roles property contains owner as one of the values. Similarly, if the member is an in-tenant guest, the roles property contains guest as one of the values. A basic member should not have any values specified in the roles property. An Out-of-tenant external member is assigned the owner role.
         self._roles: Optional[List[str]] = None
         # The timestamp denoting how far back a conversation's history is shared with the conversation member. This property is settable only for members of a chat.
         self._visible_history_start_date_time: Optional[datetime] = None
@@ -98,7 +98,7 @@ class ConversationMember(entity.Entity):
     @property
     def roles(self,) -> Optional[List[str]]:
         """
-        Gets the roles property value. The roles for that user. This property only contains additional qualifiers when relevant - for example, if the member has owner privileges, the roles property contains owner as one of the values. Similarly, if the member is a guest, the roles property contains guest as one of the values. A basic member should not have any values specified in the roles property.
+        Gets the roles property value. The roles for that user. This property contains additional qualifiers only when relevant - for example, if the member has owner privileges, the roles property contains owner as one of the values. Similarly, if the member is an in-tenant guest, the roles property contains guest as one of the values. A basic member should not have any values specified in the roles property. An Out-of-tenant external member is assigned the owner role.
         Returns: Optional[List[str]]
         """
         return self._roles
@@ -106,7 +106,7 @@ class ConversationMember(entity.Entity):
     @roles.setter
     def roles(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the roles property value. The roles for that user. This property only contains additional qualifiers when relevant - for example, if the member has owner privileges, the roles property contains owner as one of the values. Similarly, if the member is a guest, the roles property contains guest as one of the values. A basic member should not have any values specified in the roles property.
+        Sets the roles property value. The roles for that user. This property contains additional qualifiers only when relevant - for example, if the member has owner privileges, the roles property contains owner as one of the values. Similarly, if the member is an in-tenant guest, the roles property contains guest as one of the values. A basic member should not have any values specified in the roles property. An Out-of-tenant external member is assigned the owner role.
         Args:
             value: Value to set for the roles property.
         """

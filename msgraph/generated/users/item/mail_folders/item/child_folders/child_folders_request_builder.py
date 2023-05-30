@@ -77,7 +77,7 @@ class ChildFoldersRequestBuilder():
     
     async def post(self,body: Optional[mail_folder.MailFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> Optional[mail_folder.MailFolder]:
         """
-        Create a new mailSearchFolder in the specified user's mailbox.
+        Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -120,7 +120,7 @@ class ChildFoldersRequestBuilder():
     
     def to_post_request_information(self,body: Optional[mail_folder.MailFolder] = None, request_configuration: Optional[ChildFoldersRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a new mailSearchFolder in the specified user's mailbox.
+        Use this API to create a new child mailFolder. If you intend a new folder to be hidden, you must set the **isHidden** property to `true` on creation.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

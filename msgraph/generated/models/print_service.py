@@ -10,7 +10,7 @@ from . import entity
 class PrintService(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new PrintService and sets the default values.
+        Instantiates a new printService and sets the default values.
         """
         super().__init__()
         # Endpoints that can be used to access the service. Read-only. Nullable.

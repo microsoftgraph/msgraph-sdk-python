@@ -49,7 +49,7 @@ class MessageItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[MessageItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete eventMessage.
+        Delete a message in the specified user's mailbox, or delete a relationship of the message.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -115,7 +115,7 @@ class MessageItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[MessageItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete eventMessage.
+        Delete a message in the specified user's mailbox, or delete a relationship of the message.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

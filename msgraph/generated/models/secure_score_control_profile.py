@@ -44,7 +44,7 @@ class SecureScoreControlProfile(entity.Entity):
         self._remediation_impact: Optional[str] = None
         # Service that owns the control (Exchange, Sharepoint, Azure AD).
         self._service: Optional[str] = None
-        # List of threats the control mitigates (accountBreach,dataDeletion,dataExfiltration,dataSpillage,
+        # List of threats the control mitigates (accountBreach, dataDeletion, dataExfiltration, dataSpillage,
         self._threats: Optional[List[str]] = None
         # The tier property
         self._tier: Optional[str] = None
@@ -369,7 +369,7 @@ class SecureScoreControlProfile(entity.Entity):
     @property
     def threats(self,) -> Optional[List[str]]:
         """
-        Gets the threats property value. List of threats the control mitigates (accountBreach,dataDeletion,dataExfiltration,dataSpillage,
+        Gets the threats property value. List of threats the control mitigates (accountBreach, dataDeletion, dataExfiltration, dataSpillage,
         Returns: Optional[List[str]]
         """
         return self._threats
@@ -377,7 +377,7 @@ class SecureScoreControlProfile(entity.Entity):
     @threats.setter
     def threats(self,value: Optional[List[str]] = None) -> None:
         """
-        Sets the threats property value. List of threats the control mitigates (accountBreach,dataDeletion,dataExfiltration,dataSpillage,
+        Sets the threats property value. List of threats the control mitigates (accountBreach, dataDeletion, dataExfiltration, dataSpillage,
         Args:
             value: Value to set for the threats property.
         """

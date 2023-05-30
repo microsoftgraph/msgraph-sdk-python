@@ -10,11 +10,11 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
         # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
         self._additional_data: Dict[str, Any] = {}
 
-        # Indicates whether the default user role can create applications.
+        # Indicates whether the default user role can create applications. This setting corresponds to the Users can register applications setting in the User settings menu in the Azure portal.
         self._allowed_to_create_apps: Optional[bool] = None
-        # Indicates whether the default user role can create security groups. This setting corresponds to the The Users can create security groups in Azure portals, API or PowerShell setting in the group settings menu in the Azure portal.
+        # Indicates whether the default user role can create security groups. This setting corresponds to the following menus in the Azure portal:  The Users can create security groups in Azure portals, API or PowerShell setting in the Group settings menu.  Users can create security groups setting in the User settings menu.
         self._allowed_to_create_security_groups: Optional[bool] = None
-        # Indicates whether the default user role can create tenants.
+        # Indicates whether the default user role can create tenants. This setting corresponds to the Restrict non-admin users from creating tenants setting in the User settings menu in the Azure portal.  When this setting is false, users assigned the Tenant Creator role can still create tenants.
         self._allowed_to_create_tenants: Optional[bool] = None
         # Indicates whether the registered owners of a device can read their own BitLocker recovery keys with default user role.
         self._allowed_to_read_bitlocker_keys_for_owned_device: Optional[bool] = None
@@ -45,7 +45,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
     @property
     def allowed_to_create_apps(self,) -> Optional[bool]:
         """
-        Gets the allowedToCreateApps property value. Indicates whether the default user role can create applications.
+        Gets the allowedToCreateApps property value. Indicates whether the default user role can create applications. This setting corresponds to the Users can register applications setting in the User settings menu in the Azure portal.
         Returns: Optional[bool]
         """
         return self._allowed_to_create_apps
@@ -53,7 +53,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
     @allowed_to_create_apps.setter
     def allowed_to_create_apps(self,value: Optional[bool] = None) -> None:
         """
-        Sets the allowedToCreateApps property value. Indicates whether the default user role can create applications.
+        Sets the allowedToCreateApps property value. Indicates whether the default user role can create applications. This setting corresponds to the Users can register applications setting in the User settings menu in the Azure portal.
         Args:
             value: Value to set for the allowed_to_create_apps property.
         """
@@ -62,7 +62,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
     @property
     def allowed_to_create_security_groups(self,) -> Optional[bool]:
         """
-        Gets the allowedToCreateSecurityGroups property value. Indicates whether the default user role can create security groups. This setting corresponds to the The Users can create security groups in Azure portals, API or PowerShell setting in the group settings menu in the Azure portal.
+        Gets the allowedToCreateSecurityGroups property value. Indicates whether the default user role can create security groups. This setting corresponds to the following menus in the Azure portal:  The Users can create security groups in Azure portals, API or PowerShell setting in the Group settings menu.  Users can create security groups setting in the User settings menu.
         Returns: Optional[bool]
         """
         return self._allowed_to_create_security_groups
@@ -70,7 +70,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
     @allowed_to_create_security_groups.setter
     def allowed_to_create_security_groups(self,value: Optional[bool] = None) -> None:
         """
-        Sets the allowedToCreateSecurityGroups property value. Indicates whether the default user role can create security groups. This setting corresponds to the The Users can create security groups in Azure portals, API or PowerShell setting in the group settings menu in the Azure portal.
+        Sets the allowedToCreateSecurityGroups property value. Indicates whether the default user role can create security groups. This setting corresponds to the following menus in the Azure portal:  The Users can create security groups in Azure portals, API or PowerShell setting in the Group settings menu.  Users can create security groups setting in the User settings menu.
         Args:
             value: Value to set for the allowed_to_create_security_groups property.
         """
@@ -79,7 +79,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
     @property
     def allowed_to_create_tenants(self,) -> Optional[bool]:
         """
-        Gets the allowedToCreateTenants property value. Indicates whether the default user role can create tenants.
+        Gets the allowedToCreateTenants property value. Indicates whether the default user role can create tenants. This setting corresponds to the Restrict non-admin users from creating tenants setting in the User settings menu in the Azure portal.  When this setting is false, users assigned the Tenant Creator role can still create tenants.
         Returns: Optional[bool]
         """
         return self._allowed_to_create_tenants
@@ -87,7 +87,7 @@ class DefaultUserRolePermissions(AdditionalDataHolder, Parsable):
     @allowed_to_create_tenants.setter
     def allowed_to_create_tenants(self,value: Optional[bool] = None) -> None:
         """
-        Sets the allowedToCreateTenants property value. Indicates whether the default user role can create tenants.
+        Sets the allowedToCreateTenants property value. Indicates whether the default user role can create tenants. This setting corresponds to the Restrict non-admin users from creating tenants setting in the User settings menu in the Azure portal.  When this setting is false, users assigned the Tenant Creator role can still create tenants.
         Args:
             value: Value to set for the allowed_to_create_tenants property.
         """

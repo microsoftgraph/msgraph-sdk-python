@@ -4,7 +4,7 @@
 # See License in the project root for license information.
 # -----------------------------------
 
-from typing import List, Optional, TYPE_CHECKING, Union'
+from typing import List, Optional, TYPE_CHECKING, Union
 from azure.core.credentials import TokenCredential
 from azure.core.credentials_async import AsyncTokenCredential
 from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider

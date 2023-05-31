@@ -9,9 +9,12 @@ if TYPE_CHECKING:
 from . import device_configuration
 
 class SharedPCConfiguration(device_configuration.DeviceConfiguration):
+    """
+    This topic provides descriptions of the declared methods, properties and relationships exposed by the sharedPCConfiguration resource.
+    """
     def __init__(self,) -> None:
         """
-        Instantiates a new SharedPCConfiguration and sets the default values.
+        Instantiates a new sharedPCConfiguration and sets the default values.
         """
         super().__init__()
         self.odata_type = "#microsoft.graph.sharedPCConfiguration"

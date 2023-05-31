@@ -10,7 +10,7 @@ from . import entity
 class CustomSecurityAttributeDefinition(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new customSecurityAttributeDefinition and sets the default values.
+        Instantiates a new CustomSecurityAttributeDefinition and sets the default values.
         """
         super().__init__()
         # The allowedValues property

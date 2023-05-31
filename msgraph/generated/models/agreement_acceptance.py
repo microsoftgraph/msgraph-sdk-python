@@ -11,7 +11,7 @@ from . import entity
 class AgreementAcceptance(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new AgreementAcceptance and sets the default values.
+        Instantiates a new agreementAcceptance and sets the default values.
         """
         super().__init__()
         # The identifier of the agreement file accepted by the user.

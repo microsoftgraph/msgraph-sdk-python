@@ -57,7 +57,7 @@ class ConversationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ConversationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation.Conversation]:
         """
-        Retrieve the properties and relationships of conversation object.
+        The group's conversations.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conversation.Conversation]
@@ -95,7 +95,7 @@ class ConversationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ConversationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of conversation object.
+        The group's conversations.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,7 +135,7 @@ class ConversationItemRequestBuilder():
     @dataclass
     class ConversationItemRequestBuilderGetQueryParameters():
         """
-        Retrieve the properties and relationships of conversation object.
+        The group's conversations.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

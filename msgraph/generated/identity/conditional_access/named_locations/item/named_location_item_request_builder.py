@@ -37,7 +37,7 @@ class NamedLocationItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[NamedLocationItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a namedLocation object.
+        Delete a countryNamedLocation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -78,7 +78,7 @@ class NamedLocationItemRequestBuilder():
     
     async def patch(self,body: Optional[named_location.NamedLocation] = None, request_configuration: Optional[NamedLocationItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[named_location.NamedLocation]:
         """
-        Update the properties of an ipNamedLocation object.
+        Update the properties of a countryNamedLocation object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class NamedLocationItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[NamedLocationItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a namedLocation object.
+        Delete a countryNamedLocation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class NamedLocationItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[named_location.NamedLocation] = None, request_configuration: Optional[NamedLocationItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the properties of an ipNamedLocation object.
+        Update the properties of a countryNamedLocation object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

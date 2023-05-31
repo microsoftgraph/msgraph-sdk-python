@@ -10,7 +10,7 @@ from . import entity
 class LearningProvider(entity.Entity):
     def __init__(self,) -> None:
         """
-        Instantiates a new LearningProvider and sets the default values.
+        Instantiates a new learningProvider and sets the default values.
         """
         super().__init__()
         # The display name that appears in Viva Learning. Required.

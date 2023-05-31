@@ -5,6 +5,14 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.0.0a13] - 2023-05-25
+
+### Added
+
+### Changed
+
+- Simplified the creation of a graph client. [#180](https://github.com/microsoftgraph/msgraph-sdk-python/issues/180)
+
 ## [1.0.0a12] - 2023-04-19
 
 ### Added

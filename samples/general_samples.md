@@ -6,23 +6,19 @@ This creates a default Graph client that uses `https://graph.microsoft.com` as t
 ```py
 from azure.identity import AuthorizationCodeCredential
 from kiota_abstactions.api_error import APIError
-from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
-from msgraph import GraphRequestAdapter
 from msgraph import GraphServiceClient
 
 # Set the event loop policy for Windows
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-AuthorizationCodeCredential(
+credentials = AuthorizationCodeCredential(
     tenant_id: str,
     client_id: str,
     authorization_code: str,
     redirect_uri: str
 )
 scopes = ['User.Read', 'Mail.ReadWrite']
-auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
-request_adapter = GraphRequestAdapter(auth_provider)
-client = GraphServiceClient(request_adapter)
+client = GraphServiceClient(credentials=credentials, scopes=scopes)
 ```
 
 ## 2. Creating a Graph client using a custom `httpx.AsyncClient` instance
@@ -33,6 +29,7 @@ from msgraph_core import GraphClientFactory
 
 http_client = GraphClientFactory.create_with_default_middleware(client=httpx.AsyncClient())
 request_adapter = GraphRequestAdapter(auth_provider, http_client)
+client = GraphServiceClient(request_adapter=request_adapter)
 ```
 
 ## 3. Get an item from the Microsoft Graph API
@@ -144,8 +141,6 @@ Ensure you have the [right permissions](https://docs.microsoft.com/en-us/graph/a
 
 ```py
 from kiota_abstractions.api_error import APIError
-from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
-from msgraph import GraphRequestAdapter
 from msgraph import GraphServiceClient
 
 from msgraph.generated.me.send_mail.send_mail_post_request_body import SendMailPostRequestBody
@@ -165,9 +160,7 @@ credential = ClientSecretCredential(
     'client_secret'
 )
 scopes = ['Mail.Send']
-auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
-request_adapter = GraphRequestAdapter(auth_provider)
-client = GraphServiceClient(request_adapter)
+client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 async def send_mail():
     try:

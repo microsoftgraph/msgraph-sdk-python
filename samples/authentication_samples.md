@@ -7,26 +7,21 @@ import asyncio
 
 from azure.identity import DeviceCodeCredential
 from kiota_abstractions.api_error import APIError
-from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
-from msgraph import GraphRequestAdapter, GraphServiceClient
+from msgraph import GraphServiceClient
 
 # Set the event loop policy for Windows
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-# Create authentication provider object. Used to authenticate requests
+# Create a credential object. Used to authenticate requests
 credential = DeviceCodeCredential(
     client_id='CLIENT_ID',
     tenant_id='TENANT_ID',
     )
 
 scopes = ["User.Read"]
-auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
 
-# Initialize a request adapter with the auth provider.
-request_adapter = GraphRequestAdapter(auth_provider)
-
-# Create an API client with the request adapter.
-client = GraphServiceClient(request_adapter)
+# Create an API client with the credentials and scopes.
+client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 # GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():
@@ -46,22 +41,17 @@ asyncio.run(get_user())
 import asyncio
 from azure.identity import InteractiveBrowserCredential
 from kiota_abstractions.api_error import APIError
-from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
-from msgraph import GraphRequestAdapter, GraphServiceClient
+from msgraph import GraphServiceClient
 
 # Set the event loop policy for Windows
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-# Create authentication provider object. Used to authenticate requests
+# Create a credential object. Used to authenticate requests 
 credential = InteractiveBrowserCredential()
 scopes = ["User.Read"]
-auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
 
-# Initialize a request adapter with the auth provider.
-request_adapter = GraphRequestAdapter(auth_provider)
-
-# Create an API client with the request adapter.
-client = GraphServiceClient(request_adapter)
+# Create an API client with the credentials and scopes.
+client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 # GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():
@@ -83,26 +73,21 @@ import asyncio
 
 from azure.identity import ClientSecretCredential
 from kiota_abstractions.api_error import APIError
-from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
-from msgraph import GraphRequestAdapter, GraphServiceClient
+from msgraph import GraphServiceClient
 
 # Set the event loop policy for Windows
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy()) 
 
-# Create authentication provider object. Used to authenticate request
+# Create a credential object. Used to authenticate requests
 credential = ClientSecretCredential(
     tenant_id='TENANT_ID',
     client_id='CLIENT_ID',
     client_secret='CLIENT_SECRET'
 )
 scopes = ['https://graph.microsoft.com/.default']
-auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
 
-# Initialize a request adapter with the auth provider.
-request_adapter = GraphRequestAdapter(auth_provider)
-
-# Create an API client with the request adapter.
-client = GraphServiceClient(request_adapter)
+# Create an API client with the credentials and scopes.
+client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 # GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():
@@ -122,22 +107,17 @@ import asyncio
 
 from azure.identity.aio import EnvironmentCredential
 from kiota_abstractions.api_error import APIError
-from kiota_authentication_azure.azure_identity_authentication_provider import AzureIdentityAuthenticationProvider
-from msgraph import GraphRequestAdapter, GraphServiceClient
+from msgraph import GraphServiceClient
 
 # Set the event loop policy for Windows
 asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-# Create authentication provider object. Used to authenticate request
+# Create a credential object. Used to authenticate requests
 credential = EnvironmentCredential()
 scopes = ['https://graph.microsoft.com/.default']
-auth_provider = AzureIdentityAuthenticationProvider(credential, scopes=scopes)
 
-# Initialize a request adapter with the auth provider.
-request_adapter = GraphRequestAdapter(auth_provider)
-
-# Create an API client with the request adapter.
-client = GraphServiceClient(request_adapter)
+# Create an API client with the credentials and scopes.
+client = GraphServiceClient(credentials=credential, scopes=scopes)
 
 # GET A USER USING THE USER ID (GET /users/{id})
 async def get_user():

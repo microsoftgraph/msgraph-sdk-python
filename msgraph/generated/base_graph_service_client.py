@@ -54,7 +54,6 @@ if TYPE_CHECKING:
     from .information_protection import information_protection_request_builder
     from .invitations import invitations_request_builder
     from .localizations import localizations_request_builder
-    from .me import me_request_builder
     from .oauth2_permission_grants import oauth2_permission_grants_request_builder
     from .organization import organization_request_builder
     from .permission_grants import permission_grants_request_builder
@@ -503,15 +502,6 @@ class BaseGraphServiceClient():
         from .localizations import localizations_request_builder
 
         return localizations_request_builder.LocalizationsRequestBuilder(self.request_adapter, self.path_parameters)
-    
-    @property
-    def me(self) -> me_request_builder.MeRequestBuilder:
-        """
-        Provides operations to manage the user singleton.
-        """
-        from .me import me_request_builder
-
-        return me_request_builder.MeRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
     def oauth2_permission_grants(self) -> oauth2_permission_grants_request_builder.Oauth2PermissionGrantsRequestBuilder:

@@ -1,3 +1,9 @@
+# ------------------------------------
+# Copyright (c) Microsoft Corporation. All Rights Reserved.
+# Licensed under the MIT License. 
+# See License in the project root for license information.
+# -----------------------------------
+
 from typing import List, Optional, TYPE_CHECKING, Union'
 from azure.core.credentials import TokenCredential
 from azure.core.credentials_async import AsyncTokenCredential
@@ -6,6 +12,9 @@ from httpx import AsyncClient
 
 from .generated.base_graph_service_client import BaseGraphServiceClient
 from .graph_request_adapter import GraphRequestAdapter
+
+if TYPE_CHECKING:
+    from .generated.users.item.user_item_request_builder import UserItemRequestBuilder
 
 class GraphServiceClient(BaseGraphServiceClient):
     def __init__(
@@ -39,3 +48,15 @@ class GraphServiceClient(BaseGraphServiceClient):
             request_adapter = GraphRequestAdapter(auth_provider)
         
         super().__init__(request_adapter)
+        
+    @property
+    def me(self) -> UserItemRequestBuilder:
+        """
+        Maps requests to /me endpoint to /users/{{user-id}}
+        """
+        from .generated.users.item.user_item_request_builder import UserItemRequestBuilder
+        
+        url_tpl_parameters = self.path_parameters
+        url_tpl_parameters["user%2Did"] = "me-token-to-replace"
+
+        return UserItemRequestBuilder(self.request_adapter, url_tpl_parameters)

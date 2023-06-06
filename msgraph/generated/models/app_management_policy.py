@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,36 +8,15 @@ if TYPE_CHECKING:
 
 from . import policy_base
 
+@dataclass
 class AppManagementPolicy(policy_base.PolicyBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AppManagementPolicy and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.appManagementPolicy"
-        # Collection of applications and service principals to which the policy is applied.
-        self._applies_to: Optional[List[directory_object.DirectoryObject]] = None
-        # Denotes whether the policy is enabled.
-        self._is_enabled: Optional[bool] = None
-        # Restrictions that apply to an application or service principal object.
-        self._restrictions: Optional[app_management_configuration.AppManagementConfiguration] = None
-    
-    @property
-    def applies_to(self,) -> Optional[List[directory_object.DirectoryObject]]:
-        """
-        Gets the appliesTo property value. Collection of applications and service principals to which the policy is applied.
-        Returns: Optional[List[directory_object.DirectoryObject]]
-        """
-        return self._applies_to
-    
-    @applies_to.setter
-    def applies_to(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
-        """
-        Sets the appliesTo property value. Collection of applications and service principals to which the policy is applied.
-        Args:
-            value: Value to set for the applies_to property.
-        """
-        self._applies_to = value
+    odata_type = "#microsoft.graph.appManagementPolicy"
+    # Collection of applications and service principals to which the policy is applied.
+    applies_to: Optional[List[directory_object.DirectoryObject]] = None
+    # Denotes whether the policy is enabled.
+    is_enabled: Optional[bool] = None
+    # Restrictions that apply to an application or service principal object.
+    restrictions: Optional[app_management_configuration.AppManagementConfiguration] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppManagementPolicy:
@@ -65,40 +45,6 @@ class AppManagementPolicy(policy_base.PolicyBase):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def is_enabled(self,) -> Optional[bool]:
-        """
-        Gets the isEnabled property value. Denotes whether the policy is enabled.
-        Returns: Optional[bool]
-        """
-        return self._is_enabled
-    
-    @is_enabled.setter
-    def is_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isEnabled property value. Denotes whether the policy is enabled.
-        Args:
-            value: Value to set for the is_enabled property.
-        """
-        self._is_enabled = value
-    
-    @property
-    def restrictions(self,) -> Optional[app_management_configuration.AppManagementConfiguration]:
-        """
-        Gets the restrictions property value. Restrictions that apply to an application or service principal object.
-        Returns: Optional[app_management_configuration.AppManagementConfiguration]
-        """
-        return self._restrictions
-    
-    @restrictions.setter
-    def restrictions(self,value: Optional[app_management_configuration.AppManagementConfiguration] = None) -> None:
-        """
-        Sets the restrictions property value. Restrictions that apply to an application or service principal object.
-        Args:
-            value: Value to set for the restrictions property.
-        """
-        self._restrictions = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

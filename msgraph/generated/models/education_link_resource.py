@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import education_resource
 
+@dataclass
 class EducationLinkResource(education_resource.EducationResource):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EducationLinkResource and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.educationLinkResource"
-        # URL to the resource.
-        self._link: Optional[str] = None
+    odata_type = "#microsoft.graph.educationLinkResource"
+    # URL to the resource.
+    link: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationLinkResource:
@@ -42,23 +39,6 @@ class EducationLinkResource(education_resource.EducationResource):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def link(self,) -> Optional[str]:
-        """
-        Gets the link property value. URL to the resource.
-        Returns: Optional[str]
-        """
-        return self._link
-    
-    @link.setter
-    def link(self,value: Optional[str] = None) -> None:
-        """
-        Sets the link property value. URL to the resource.
-        Args:
-            value: Value to set for the link property.
-        """
-        self._link = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

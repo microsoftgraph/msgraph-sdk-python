@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import device_enrollment_configuration
 
+@dataclass
 class DeviceEnrollmentLimitConfiguration(device_enrollment_configuration.DeviceEnrollmentConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new DeviceEnrollmentLimitConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.deviceEnrollmentLimitConfiguration"
-        # The maximum number of devices that a user can enroll
-        self._limit: Optional[int] = None
+    odata_type = "#microsoft.graph.deviceEnrollmentLimitConfiguration"
+    # The maximum number of devices that a user can enroll
+    limit: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceEnrollmentLimitConfiguration:
@@ -42,23 +39,6 @@ class DeviceEnrollmentLimitConfiguration(device_enrollment_configuration.DeviceE
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def limit(self,) -> Optional[int]:
-        """
-        Gets the limit property value. The maximum number of devices that a user can enroll
-        Returns: Optional[int]
-        """
-        return self._limit
-    
-    @limit.setter
-    def limit(self,value: Optional[int] = None) -> None:
-        """
-        Sets the limit property value. The maximum number of devices that a user can enroll
-        Args:
-            value: Value to set for the limit property.
-        """
-        self._limit = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

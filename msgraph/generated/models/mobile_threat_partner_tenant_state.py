@@ -1,6 +1,6 @@
 from enum import Enum
 
-class MobileThreatPartnerTenantState(Enum):
+class MobileThreatPartnerTenantState(str, Enum):
     # Partner is unavailable.
     Unavailable = "unavailable",
     # Partner is available.

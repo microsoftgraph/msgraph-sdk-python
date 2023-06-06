@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class DeviceManagementReports(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceManagementReports and sets the default values.
-        """
-        super().__init__()
-        # Entity representing a job to export a report
-        self._export_jobs: Optional[List[device_management_export_job.DeviceManagementExportJob]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # Entity representing a job to export a report
+    export_jobs: Optional[List[device_management_export_job.DeviceManagementExportJob]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceManagementReports:
@@ -29,23 +26,6 @@ class DeviceManagementReports(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceManagementReports()
-    
-    @property
-    def export_jobs(self,) -> Optional[List[device_management_export_job.DeviceManagementExportJob]]:
-        """
-        Gets the exportJobs property value. Entity representing a job to export a report
-        Returns: Optional[List[device_management_export_job.DeviceManagementExportJob]]
-        """
-        return self._export_jobs
-    
-    @export_jobs.setter
-    def export_jobs(self,value: Optional[List[device_management_export_job.DeviceManagementExportJob]] = None) -> None:
-        """
-        Sets the exportJobs property value. Entity representing a job to export a report
-        Args:
-            value: Value to set for the export_jobs property.
-        """
-        self._export_jobs = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """

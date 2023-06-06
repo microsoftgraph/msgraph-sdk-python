@@ -1,6 +1,6 @@
 from enum import Enum
 
-class OnlineMeetingRole(Enum):
+class OnlineMeetingRole(str, Enum):
     Attendee = "attendee",
     Presenter = "presenter",
     UnknownFutureValue = "unknownFutureValue",

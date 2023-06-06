@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class AttendanceInterval(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new attendanceInterval and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Duration of the meeting interval in seconds; that is, the difference between joinDateTime and leaveDateTime.
-        self._duration_in_seconds: Optional[int] = None
-        # The time the attendee joined in UTC.
-        self._join_date_time: Optional[datetime] = None
-        # The time the attendee left in UTC.
-        self._leave_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Duration of the meeting interval in seconds; that is, the difference between joinDateTime and leaveDateTime.
+    duration_in_seconds: Optional[int] = None
+    # The time the attendee joined in UTC.
+    join_date_time: Optional[datetime] = None
+    # The time the attendee left in UTC.
+    leave_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttendanceInterval:
@@ -49,23 +30,6 @@ class AttendanceInterval(AdditionalDataHolder, Parsable):
             raise Exception("parse_node cannot be undefined")
         return AttendanceInterval()
     
-    @property
-    def duration_in_seconds(self,) -> Optional[int]:
-        """
-        Gets the durationInSeconds property value. Duration of the meeting interval in seconds; that is, the difference between joinDateTime and leaveDateTime.
-        Returns: Optional[int]
-        """
-        return self._duration_in_seconds
-    
-    @duration_in_seconds.setter
-    def duration_in_seconds(self,value: Optional[int] = None) -> None:
-        """
-        Sets the durationInSeconds property value. Duration of the meeting interval in seconds; that is, the difference between joinDateTime and leaveDateTime.
-        Args:
-            value: Value to set for the duration_in_seconds property.
-        """
-        self._duration_in_seconds = value
-    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -78,57 +42,6 @@ class AttendanceInterval(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def join_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the joinDateTime property value. The time the attendee joined in UTC.
-        Returns: Optional[datetime]
-        """
-        return self._join_date_time
-    
-    @join_date_time.setter
-    def join_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the joinDateTime property value. The time the attendee joined in UTC.
-        Args:
-            value: Value to set for the join_date_time property.
-        """
-        self._join_date_time = value
-    
-    @property
-    def leave_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the leaveDateTime property value. The time the attendee left in UTC.
-        Returns: Optional[datetime]
-        """
-        return self._leave_date_time
-    
-    @leave_date_time.setter
-    def leave_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the leaveDateTime property value. The time the attendee left in UTC.
-        Args:
-            value: Value to set for the leave_date_time property.
-        """
-        self._leave_date_time = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

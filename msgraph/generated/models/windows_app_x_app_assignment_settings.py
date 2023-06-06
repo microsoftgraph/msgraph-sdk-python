@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import mobile_app_assignment_settings
 
+@dataclass
 class WindowsAppXAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsAppXAppAssignmentSettings and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsAppXAppAssignmentSettings"
-        # When TRUE, indicates that device execution context will be used for the AppX mobile app. When FALSE, indicates that user context will be used for the AppX mobile app. By default, this property is set to FALSE. Once this property has been set to TRUE it cannot be changed.
-        self._use_device_context: Optional[bool] = None
+    odata_type = "#microsoft.graph.windowsAppXAppAssignmentSettings"
+    # When TRUE, indicates that device execution context will be used for the AppX mobile app. When FALSE, indicates that user context will be used for the AppX mobile app. By default, this property is set to FALSE. Once this property has been set to TRUE it cannot be changed.
+    use_device_context: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsAppXAppAssignmentSettings:
@@ -53,22 +50,5 @@ class WindowsAppXAppAssignmentSettings(mobile_app_assignment_settings.MobileAppA
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("useDeviceContext", self.use_device_context)
-    
-    @property
-    def use_device_context(self,) -> Optional[bool]:
-        """
-        Gets the useDeviceContext property value. When TRUE, indicates that device execution context will be used for the AppX mobile app. When FALSE, indicates that user context will be used for the AppX mobile app. By default, this property is set to FALSE. Once this property has been set to TRUE it cannot be changed.
-        Returns: Optional[bool]
-        """
-        return self._use_device_context
-    
-    @use_device_context.setter
-    def use_device_context(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the useDeviceContext property value. When TRUE, indicates that device execution context will be used for the AppX mobile app. When FALSE, indicates that user context will be used for the AppX mobile app. By default, this property is set to FALSE. Once this property has been set to TRUE it cannot be changed.
-        Args:
-            value: Value to set for the use_device_context property.
-        """
-        self._use_device_context = value
     
 

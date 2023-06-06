@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,21 +8,17 @@ if TYPE_CHECKING:
 
 from . import authentication_method_configuration
 
+@dataclass
 class Fido2AuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Fido2AuthenticationMethodConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.fido2AuthenticationMethodConfiguration"
-        # A collection of groups that are enabled to use the authentication method.
-        self._include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
-        # Determines whether attestation must be enforced for FIDO2 security key registration.
-        self._is_attestation_enforced: Optional[bool] = None
-        # Determines if users can register new FIDO2 security keys.
-        self._is_self_service_registration_allowed: Optional[bool] = None
-        # Controls whether key restrictions are enforced on FIDO2 security keys, either allowing or disallowing certain key types as defined by Authenticator Attestation GUID (AAGUID), an identifier that indicates the type (e.g. make and model) of the authenticator.
-        self._key_restrictions: Optional[fido2_key_restrictions.Fido2KeyRestrictions] = None
+    odata_type = "#microsoft.graph.fido2AuthenticationMethodConfiguration"
+    # A collection of groups that are enabled to use the authentication method.
+    include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
+    # Determines whether attestation must be enforced for FIDO2 security key registration.
+    is_attestation_enforced: Optional[bool] = None
+    # Determines if users can register new FIDO2 security keys.
+    is_self_service_registration_allowed: Optional[bool] = None
+    # Controls whether key restrictions are enforced on FIDO2 security keys, either allowing or disallowing certain key types as defined by Authenticator Attestation GUID (AAGUID), an identifier that indicates the type (e.g. make and model) of the authenticator.
+    key_restrictions: Optional[fido2_key_restrictions.Fido2KeyRestrictions] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Fido2AuthenticationMethodConfiguration:
@@ -51,74 +48,6 @@ class Fido2AuthenticationMethodConfiguration(authentication_method_configuration
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def include_targets(self,) -> Optional[List[authentication_method_target.AuthenticationMethodTarget]]:
-        """
-        Gets the includeTargets property value. A collection of groups that are enabled to use the authentication method.
-        Returns: Optional[List[authentication_method_target.AuthenticationMethodTarget]]
-        """
-        return self._include_targets
-    
-    @include_targets.setter
-    def include_targets(self,value: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None) -> None:
-        """
-        Sets the includeTargets property value. A collection of groups that are enabled to use the authentication method.
-        Args:
-            value: Value to set for the include_targets property.
-        """
-        self._include_targets = value
-    
-    @property
-    def is_attestation_enforced(self,) -> Optional[bool]:
-        """
-        Gets the isAttestationEnforced property value. Determines whether attestation must be enforced for FIDO2 security key registration.
-        Returns: Optional[bool]
-        """
-        return self._is_attestation_enforced
-    
-    @is_attestation_enforced.setter
-    def is_attestation_enforced(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isAttestationEnforced property value. Determines whether attestation must be enforced for FIDO2 security key registration.
-        Args:
-            value: Value to set for the is_attestation_enforced property.
-        """
-        self._is_attestation_enforced = value
-    
-    @property
-    def is_self_service_registration_allowed(self,) -> Optional[bool]:
-        """
-        Gets the isSelfServiceRegistrationAllowed property value. Determines if users can register new FIDO2 security keys.
-        Returns: Optional[bool]
-        """
-        return self._is_self_service_registration_allowed
-    
-    @is_self_service_registration_allowed.setter
-    def is_self_service_registration_allowed(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isSelfServiceRegistrationAllowed property value. Determines if users can register new FIDO2 security keys.
-        Args:
-            value: Value to set for the is_self_service_registration_allowed property.
-        """
-        self._is_self_service_registration_allowed = value
-    
-    @property
-    def key_restrictions(self,) -> Optional[fido2_key_restrictions.Fido2KeyRestrictions]:
-        """
-        Gets the keyRestrictions property value. Controls whether key restrictions are enforced on FIDO2 security keys, either allowing or disallowing certain key types as defined by Authenticator Attestation GUID (AAGUID), an identifier that indicates the type (e.g. make and model) of the authenticator.
-        Returns: Optional[fido2_key_restrictions.Fido2KeyRestrictions]
-        """
-        return self._key_restrictions
-    
-    @key_restrictions.setter
-    def key_restrictions(self,value: Optional[fido2_key_restrictions.Fido2KeyRestrictions] = None) -> None:
-        """
-        Sets the keyRestrictions property value. Controls whether key restrictions are enforced on FIDO2 security keys, either allowing or disallowing certain key types as defined by Authenticator Attestation GUID (AAGUID), an identifier that indicates the type (e.g. make and model) of the authenticator.
-        Args:
-            value: Value to set for the key_restrictions property.
-        """
-        self._key_restrictions = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

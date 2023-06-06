@@ -1,38 +1,19 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class BookingQuestionAssignment(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new bookingQuestionAssignment and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The ID of the custom question.
-        self._is_required: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Indicates whether it is mandatory to answer the custom question.
-        self._question_id: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The ID of the custom question.
+    is_required: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Indicates whether it is mandatory to answer the custom question.
+    question_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingQuestionAssignment:
@@ -57,57 +38,6 @@ class BookingQuestionAssignment(AdditionalDataHolder, Parsable):
             "questionId": lambda n : setattr(self, 'question_id', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def is_required(self,) -> Optional[bool]:
-        """
-        Gets the isRequired property value. The ID of the custom question.
-        Returns: Optional[bool]
-        """
-        return self._is_required
-    
-    @is_required.setter
-    def is_required(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isRequired property value. The ID of the custom question.
-        Args:
-            value: Value to set for the is_required property.
-        """
-        self._is_required = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def question_id(self,) -> Optional[str]:
-        """
-        Gets the questionId property value. Indicates whether it is mandatory to answer the custom question.
-        Returns: Optional[str]
-        """
-        return self._question_id
-    
-    @question_id.setter
-    def question_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the questionId property value. Indicates whether it is mandatory to answer the custom question.
-        Args:
-            value: Value to set for the question_id property.
-        """
-        self._question_id = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

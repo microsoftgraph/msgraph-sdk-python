@@ -1,6 +1,6 @@
 from enum import Enum
 
-class MessageActionFlag(Enum):
+class MessageActionFlag(str, Enum):
     Any = "any",
     Call = "call",
     DoNotForward = "doNotForward",

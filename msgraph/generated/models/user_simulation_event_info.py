@@ -1,62 +1,26 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new userSimulationEventInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Browser information from where the simulation event was initiated by a user in an attack simulation and training campaign.
-        self._browser: Optional[str] = None
-        # Date and time of the simulation event by a user in an attack simulation and training campaign.
-        self._event_date_time: Optional[datetime] = None
-        # Name of the simulation event by a user in an attack simulation and training campaign.
-        self._event_name: Optional[str] = None
-        # IP address from where the simulation event was initiated by a user in an attack simulation and training campaign.
-        self._ip_address: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The operating system, platform, and device details from where the simulation event was initiated by a user in an attack simulation and training campaign.
-        self._os_platform_device_details: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def browser(self,) -> Optional[str]:
-        """
-        Gets the browser property value. Browser information from where the simulation event was initiated by a user in an attack simulation and training campaign.
-        Returns: Optional[str]
-        """
-        return self._browser
-    
-    @browser.setter
-    def browser(self,value: Optional[str] = None) -> None:
-        """
-        Sets the browser property value. Browser information from where the simulation event was initiated by a user in an attack simulation and training campaign.
-        Args:
-            value: Value to set for the browser property.
-        """
-        self._browser = value
+    # Browser information from where the simulation event was initiated by a user in an attack simulation and training campaign.
+    browser: Optional[str] = None
+    # Date and time of the simulation event by a user in an attack simulation and training campaign.
+    event_date_time: Optional[datetime] = None
+    # Name of the simulation event by a user in an attack simulation and training campaign.
+    event_name: Optional[str] = None
+    # IP address from where the simulation event was initiated by a user in an attack simulation and training campaign.
+    ip_address: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The operating system, platform, and device details from where the simulation event was initiated by a user in an attack simulation and training campaign.
+    os_platform_device_details: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserSimulationEventInfo:
@@ -69,40 +33,6 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserSimulationEventInfo()
-    
-    @property
-    def event_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the eventDateTime property value. Date and time of the simulation event by a user in an attack simulation and training campaign.
-        Returns: Optional[datetime]
-        """
-        return self._event_date_time
-    
-    @event_date_time.setter
-    def event_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the eventDateTime property value. Date and time of the simulation event by a user in an attack simulation and training campaign.
-        Args:
-            value: Value to set for the event_date_time property.
-        """
-        self._event_date_time = value
-    
-    @property
-    def event_name(self,) -> Optional[str]:
-        """
-        Gets the eventName property value. Name of the simulation event by a user in an attack simulation and training campaign.
-        Returns: Optional[str]
-        """
-        return self._event_name
-    
-    @event_name.setter
-    def event_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the eventName property value. Name of the simulation event by a user in an attack simulation and training campaign.
-        Args:
-            value: Value to set for the event_name property.
-        """
-        self._event_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -118,57 +48,6 @@ class UserSimulationEventInfo(AdditionalDataHolder, Parsable):
             "osPlatformDeviceDetails": lambda n : setattr(self, 'os_platform_device_details', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def ip_address(self,) -> Optional[str]:
-        """
-        Gets the ipAddress property value. IP address from where the simulation event was initiated by a user in an attack simulation and training campaign.
-        Returns: Optional[str]
-        """
-        return self._ip_address
-    
-    @ip_address.setter
-    def ip_address(self,value: Optional[str] = None) -> None:
-        """
-        Sets the ipAddress property value. IP address from where the simulation event was initiated by a user in an attack simulation and training campaign.
-        Args:
-            value: Value to set for the ip_address property.
-        """
-        self._ip_address = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def os_platform_device_details(self,) -> Optional[str]:
-        """
-        Gets the osPlatformDeviceDetails property value. The operating system, platform, and device details from where the simulation event was initiated by a user in an attack simulation and training campaign.
-        Returns: Optional[str]
-        """
-        return self._os_platform_device_details
-    
-    @os_platform_device_details.setter
-    def os_platform_device_details(self,value: Optional[str] = None) -> None:
-        """
-        Sets the osPlatformDeviceDetails property value. The operating system, platform, and device details from where the simulation event was initiated by a user in an attack simulation and training campaign.
-        Args:
-            value: Value to set for the os_platform_device_details property.
-        """
-        self._os_platform_device_details = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

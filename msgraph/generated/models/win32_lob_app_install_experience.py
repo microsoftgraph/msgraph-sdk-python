@@ -1,44 +1,25 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import run_as_account_type, win32_lob_app_restart_behavior
 
+@dataclass
 class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
     """
     Contains installation experience properties for a Win32 App
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new win32LobAppInstallExperience and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Indicates the type of restart action.
-        self._device_restart_behavior: Optional[win32_lob_app_restart_behavior.Win32LobAppRestartBehavior] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Indicates the type of execution context the app runs in.
-        self._run_as_account: Optional[run_as_account_type.RunAsAccountType] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Indicates the type of restart action.
+    device_restart_behavior: Optional[win32_lob_app_restart_behavior.Win32LobAppRestartBehavior] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Indicates the type of execution context the app runs in.
+    run_as_account: Optional[run_as_account_type.RunAsAccountType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppInstallExperience:
@@ -51,23 +32,6 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Win32LobAppInstallExperience()
-    
-    @property
-    def device_restart_behavior(self,) -> Optional[win32_lob_app_restart_behavior.Win32LobAppRestartBehavior]:
-        """
-        Gets the deviceRestartBehavior property value. Indicates the type of restart action.
-        Returns: Optional[win32_lob_app_restart_behavior.Win32LobAppRestartBehavior]
-        """
-        return self._device_restart_behavior
-    
-    @device_restart_behavior.setter
-    def device_restart_behavior(self,value: Optional[win32_lob_app_restart_behavior.Win32LobAppRestartBehavior] = None) -> None:
-        """
-        Sets the deviceRestartBehavior property value. Indicates the type of restart action.
-        Args:
-            value: Value to set for the device_restart_behavior property.
-        """
-        self._device_restart_behavior = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -82,40 +46,6 @@ class Win32LobAppInstallExperience(AdditionalDataHolder, Parsable):
             "runAsAccount": lambda n : setattr(self, 'run_as_account', n.get_enum_value(run_as_account_type.RunAsAccountType)),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def run_as_account(self,) -> Optional[run_as_account_type.RunAsAccountType]:
-        """
-        Gets the runAsAccount property value. Indicates the type of execution context the app runs in.
-        Returns: Optional[run_as_account_type.RunAsAccountType]
-        """
-        return self._run_as_account
-    
-    @run_as_account.setter
-    def run_as_account(self,value: Optional[run_as_account_type.RunAsAccountType] = None) -> None:
-        """
-        Sets the runAsAccount property value. Indicates the type of execution context the app runs in.
-        Args:
-            value: Value to set for the run_as_account property.
-        """
-        self._run_as_account = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

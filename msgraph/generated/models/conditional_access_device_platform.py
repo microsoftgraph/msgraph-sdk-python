@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ConditionalAccessDevicePlatform(Enum):
+class ConditionalAccessDevicePlatform(str, Enum):
     Android = "android",
     IOS = "iOS",
     Windows = "windows",

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,39 +8,18 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class WorkbookRangeBorder(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookRangeBorder and sets the default values.
-        """
-        super().__init__()
-        # HTML color code representing the color of the border line, of the form #RRGGBB (e.g. 'FFA500') or as a named HTML color (e.g. 'orange').
-        self._color: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Constant value that indicates the specific side of the border. The possible values are: EdgeTop, EdgeBottom, EdgeLeft, EdgeRight, InsideVertical, InsideHorizontal, DiagonalDown, DiagonalUp. Read-only.
-        self._side_index: Optional[str] = None
-        # One of the constants of line style specifying the line style for the border. The possible values are: None, Continuous, Dash, DashDot, DashDotDot, Dot, Double, SlantDashDot.
-        self._style: Optional[str] = None
-        # Specifies the weight of the border around a range. The possible values are: Hairline, Thin, Medium, Thick.
-        self._weight: Optional[str] = None
-    
-    @property
-    def color(self,) -> Optional[str]:
-        """
-        Gets the color property value. HTML color code representing the color of the border line, of the form #RRGGBB (e.g. 'FFA500') or as a named HTML color (e.g. 'orange').
-        Returns: Optional[str]
-        """
-        return self._color
-    
-    @color.setter
-    def color(self,value: Optional[str] = None) -> None:
-        """
-        Sets the color property value. HTML color code representing the color of the border line, of the form #RRGGBB (e.g. 'FFA500') or as a named HTML color (e.g. 'orange').
-        Args:
-            value: Value to set for the color property.
-        """
-        self._color = value
+    # HTML color code representing the color of the border line, of the form #RRGGBB (e.g. 'FFA500') or as a named HTML color (e.g. 'orange').
+    color: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Constant value that indicates the specific side of the border. The possible values are: EdgeTop, EdgeBottom, EdgeLeft, EdgeRight, InsideVertical, InsideHorizontal, DiagonalDown, DiagonalUp. Read-only.
+    side_index: Optional[str] = None
+    # One of the constants of line style specifying the line style for the border. The possible values are: None, Continuous, Dash, DashDot, DashDotDot, Dot, Double, SlantDashDot.
+    style: Optional[str] = None
+    # Specifies the weight of the border around a range. The possible values are: Hairline, Thin, Medium, Thick.
+    weight: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookRangeBorder:
@@ -83,56 +63,5 @@ class WorkbookRangeBorder(entity.Entity):
         writer.write_str_value("sideIndex", self.side_index)
         writer.write_str_value("style", self.style)
         writer.write_str_value("weight", self.weight)
-    
-    @property
-    def side_index(self,) -> Optional[str]:
-        """
-        Gets the sideIndex property value. Constant value that indicates the specific side of the border. The possible values are: EdgeTop, EdgeBottom, EdgeLeft, EdgeRight, InsideVertical, InsideHorizontal, DiagonalDown, DiagonalUp. Read-only.
-        Returns: Optional[str]
-        """
-        return self._side_index
-    
-    @side_index.setter
-    def side_index(self,value: Optional[str] = None) -> None:
-        """
-        Sets the sideIndex property value. Constant value that indicates the specific side of the border. The possible values are: EdgeTop, EdgeBottom, EdgeLeft, EdgeRight, InsideVertical, InsideHorizontal, DiagonalDown, DiagonalUp. Read-only.
-        Args:
-            value: Value to set for the side_index property.
-        """
-        self._side_index = value
-    
-    @property
-    def style(self,) -> Optional[str]:
-        """
-        Gets the style property value. One of the constants of line style specifying the line style for the border. The possible values are: None, Continuous, Dash, DashDot, DashDotDot, Dot, Double, SlantDashDot.
-        Returns: Optional[str]
-        """
-        return self._style
-    
-    @style.setter
-    def style(self,value: Optional[str] = None) -> None:
-        """
-        Sets the style property value. One of the constants of line style specifying the line style for the border. The possible values are: None, Continuous, Dash, DashDot, DashDotDot, Dot, Double, SlantDashDot.
-        Args:
-            value: Value to set for the style property.
-        """
-        self._style = value
-    
-    @property
-    def weight(self,) -> Optional[str]:
-        """
-        Gets the weight property value. Specifies the weight of the border around a range. The possible values are: Hairline, Thin, Medium, Thick.
-        Returns: Optional[str]
-        """
-        return self._weight
-    
-    @weight.setter
-    def weight(self,value: Optional[str] = None) -> None:
-        """
-        Sets the weight property value. Specifies the weight of the border around a range. The possible values are: Hairline, Thin, Medium, Thick.
-        Args:
-            value: Value to set for the weight property.
-        """
-        self._weight = value
     
 

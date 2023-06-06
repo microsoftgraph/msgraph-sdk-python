@@ -1,37 +1,18 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import call_ended_event_message_detail, call_recording_event_message_detail, call_started_event_message_detail, call_transcript_event_message_detail, channel_added_event_message_detail, channel_deleted_event_message_detail, channel_description_updated_event_message_detail, channel_renamed_event_message_detail, channel_set_as_favorite_by_default_event_message_detail, channel_unset_as_favorite_by_default_event_message_detail, chat_renamed_event_message_detail, conversation_member_role_updated_event_message_detail, meeting_policy_updated_event_message_detail, members_added_event_message_detail, members_deleted_event_message_detail, members_joined_event_message_detail, members_left_event_message_detail, message_pinned_event_message_detail, message_unpinned_event_message_detail, tab_updated_event_message_detail, teams_app_installed_event_message_detail, teams_app_removed_event_message_detail, teams_app_upgraded_event_message_detail, team_archived_event_message_detail, team_created_event_message_detail, team_description_updated_event_message_detail, team_joining_disabled_event_message_detail, team_joining_enabled_event_message_detail, team_renamed_event_message_detail, team_unarchived_event_message_detail
 
+@dataclass
 class EventMessageDetail(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new eventMessageDetail and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EventMessageDetail:
@@ -179,23 +160,6 @@ class EventMessageDetail(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

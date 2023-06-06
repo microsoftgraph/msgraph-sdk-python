@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -36,7 +36,7 @@ class UndoSoftDeleteRequestBuilder():
     
     async def post(self,request_configuration: Optional[UndoSoftDeleteRequestBuilderPostRequestConfiguration] = None) -> None:
         """
-        Invoke action undoSoftDelete
+        Undo soft deletion of a single chatMessage or a chat message reply in a channel or a chat.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -55,7 +55,7 @@ class UndoSoftDeleteRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[UndoSoftDeleteRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action undoSoftDelete
+        Undo soft deletion of a single chatMessage or a chat message reply in a channel or a chat.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

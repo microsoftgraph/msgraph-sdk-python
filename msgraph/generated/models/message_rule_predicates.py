@@ -1,148 +1,78 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import importance, message_action_flag, recipient, sensitivity, size_range
 
+@dataclass
 class MessageRulePredicates(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new messageRulePredicates and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
-        self._body_contains: Optional[List[str]] = None
-        # Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
-        self._body_or_subject_contains: Optional[List[str]] = None
-        # Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
-        self._categories: Optional[List[str]] = None
-        # Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-        self._from_addresses: Optional[List[recipient.Recipient]] = None
-        # Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
-        self._has_attachments: Optional[bool] = None
-        # Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
-        self._header_contains: Optional[List[str]] = None
-        # The importance that is stamped on an incoming message in order for the condition or exception to apply: low, normal, high.
-        self._importance: Optional[importance.Importance] = None
-        # Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
-        self._is_approval_request: Optional[bool] = None
-        # Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
-        self._is_automatic_forward: Optional[bool] = None
-        # Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.
-        self._is_automatic_reply: Optional[bool] = None
-        # Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.
-        self._is_encrypted: Optional[bool] = None
-        # Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.
-        self._is_meeting_request: Optional[bool] = None
-        # Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.
-        self._is_meeting_response: Optional[bool] = None
-        # Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.
-        self._is_non_delivery_report: Optional[bool] = None
-        # Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.
-        self._is_permission_controlled: Optional[bool] = None
-        # Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.
-        self._is_read_receipt: Optional[bool] = None
-        # Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.
-        self._is_signed: Optional[bool] = None
-        # Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
-        self._is_voicemail: Optional[bool] = None
-        # Represents the flag-for-action value that appears on an incoming message in order for the condition or exception to apply. The possible values are: any, call, doNotForward, followUp, fyi, forward, noResponseNecessary, read, reply, replyToAll, review.
-        self._message_action_flag: Optional[message_action_flag.MessageActionFlag] = None
-        # Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
-        self._not_sent_to_me: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
-        self._recipient_contains: Optional[List[str]] = None
-        # Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
-        self._sender_contains: Optional[List[str]] = None
-        # Represents the sensitivity level that must be stamped on an incoming message in order for the condition or exception to apply. The possible values are: normal, personal, private, confidential.
-        self._sensitivity: Optional[sensitivity.Sensitivity] = None
-        # Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
-        self._sent_cc_me: Optional[bool] = None
-        # Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
-        self._sent_only_to_me: Optional[bool] = None
-        # Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-        self._sent_to_addresses: Optional[List[recipient.Recipient]] = None
-        # Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
-        self._sent_to_me: Optional[bool] = None
-        # Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
-        self._sent_to_or_cc_me: Optional[bool] = None
-        # Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
-        self._subject_contains: Optional[List[str]] = None
-        # Represents the minimum and maximum sizes (in kilobytes) that an incoming message must fall in between in order for the condition or exception to apply.
-        self._within_size_range: Optional[size_range.SizeRange] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def body_contains(self,) -> Optional[List[str]]:
-        """
-        Gets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
-        Returns: Optional[List[str]]
-        """
-        return self._body_contains
-    
-    @body_contains.setter
-    def body_contains(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the bodyContains property value. Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the body_contains property.
-        """
-        self._body_contains = value
-    
-    @property
-    def body_or_subject_contains(self,) -> Optional[List[str]]:
-        """
-        Gets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
-        Returns: Optional[List[str]]
-        """
-        return self._body_or_subject_contains
-    
-    @body_or_subject_contains.setter
-    def body_or_subject_contains(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the bodyOrSubjectContains property value. Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the body_or_subject_contains property.
-        """
-        self._body_or_subject_contains = value
-    
-    @property
-    def categories(self,) -> Optional[List[str]]:
-        """
-        Gets the categories property value. Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
-        Returns: Optional[List[str]]
-        """
-        return self._categories
-    
-    @categories.setter
-    def categories(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the categories property value. Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the categories property.
-        """
-        self._categories = value
+    # Represents the strings that should appear in the body of an incoming message in order for the condition or exception to apply.
+    body_contains: Optional[List[str]] = None
+    # Represents the strings that should appear in the body or subject of an incoming message in order for the condition or exception to apply.
+    body_or_subject_contains: Optional[List[str]] = None
+    # Represents the categories that an incoming message should be labeled with in order for the condition or exception to apply.
+    categories: Optional[List[str]] = None
+    # Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
+    from_addresses: Optional[List[recipient.Recipient]] = None
+    # Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
+    has_attachments: Optional[bool] = None
+    # Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
+    header_contains: Optional[List[str]] = None
+    # The importance that is stamped on an incoming message in order for the condition or exception to apply: low, normal, high.
+    importance: Optional[importance.Importance] = None
+    # Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
+    is_approval_request: Optional[bool] = None
+    # Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
+    is_automatic_forward: Optional[bool] = None
+    # Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.
+    is_automatic_reply: Optional[bool] = None
+    # Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.
+    is_encrypted: Optional[bool] = None
+    # Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.
+    is_meeting_request: Optional[bool] = None
+    # Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.
+    is_meeting_response: Optional[bool] = None
+    # Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.
+    is_non_delivery_report: Optional[bool] = None
+    # Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.
+    is_permission_controlled: Optional[bool] = None
+    # Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.
+    is_read_receipt: Optional[bool] = None
+    # Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.
+    is_signed: Optional[bool] = None
+    # Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
+    is_voicemail: Optional[bool] = None
+    # Represents the flag-for-action value that appears on an incoming message in order for the condition or exception to apply. The possible values are: any, call, doNotForward, followUp, fyi, forward, noResponseNecessary, read, reply, replyToAll, review.
+    message_action_flag: Optional[message_action_flag.MessageActionFlag] = None
+    # Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
+    not_sent_to_me: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
+    recipient_contains: Optional[List[str]] = None
+    # Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
+    sender_contains: Optional[List[str]] = None
+    # Represents the sensitivity level that must be stamped on an incoming message in order for the condition or exception to apply. The possible values are: normal, personal, private, confidential.
+    sensitivity: Optional[sensitivity.Sensitivity] = None
+    # Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
+    sent_cc_me: Optional[bool] = None
+    # Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
+    sent_only_to_me: Optional[bool] = None
+    # Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
+    sent_to_addresses: Optional[List[recipient.Recipient]] = None
+    # Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
+    sent_to_me: Optional[bool] = None
+    # Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
+    sent_to_or_cc_me: Optional[bool] = None
+    # Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
+    subject_contains: Optional[List[str]] = None
+    # Represents the minimum and maximum sizes (in kilobytes) that an incoming message must fall in between in order for the condition or exception to apply.
+    within_size_range: Optional[size_range.SizeRange] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MessageRulePredicates:
@@ -155,23 +85,6 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MessageRulePredicates()
-    
-    @property
-    def from_addresses(self,) -> Optional[List[recipient.Recipient]]:
-        """
-        Gets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-        Returns: Optional[List[recipient.Recipient]]
-        """
-        return self._from_addresses
-    
-    @from_addresses.setter
-    def from_addresses(self,value: Optional[List[recipient.Recipient]] = None) -> None:
-        """
-        Sets the fromAddresses property value. Represents the specific sender email addresses of an incoming message in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the from_addresses property.
-        """
-        self._from_addresses = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -215,431 +128,6 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def has_attachments(self,) -> Optional[bool]:
-        """
-        Gets the hasAttachments property value. Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._has_attachments
-    
-    @has_attachments.setter
-    def has_attachments(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the hasAttachments property value. Indicates whether an incoming message must have attachments in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the has_attachments property.
-        """
-        self._has_attachments = value
-    
-    @property
-    def header_contains(self,) -> Optional[List[str]]:
-        """
-        Gets the headerContains property value. Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
-        Returns: Optional[List[str]]
-        """
-        return self._header_contains
-    
-    @header_contains.setter
-    def header_contains(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the headerContains property value. Represents the strings that appear in the headers of an incoming message in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the header_contains property.
-        """
-        self._header_contains = value
-    
-    @property
-    def importance(self,) -> Optional[importance.Importance]:
-        """
-        Gets the importance property value. The importance that is stamped on an incoming message in order for the condition or exception to apply: low, normal, high.
-        Returns: Optional[importance.Importance]
-        """
-        return self._importance
-    
-    @importance.setter
-    def importance(self,value: Optional[importance.Importance] = None) -> None:
-        """
-        Sets the importance property value. The importance that is stamped on an incoming message in order for the condition or exception to apply: low, normal, high.
-        Args:
-            value: Value to set for the importance property.
-        """
-        self._importance = value
-    
-    @property
-    def is_approval_request(self,) -> Optional[bool]:
-        """
-        Gets the isApprovalRequest property value. Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._is_approval_request
-    
-    @is_approval_request.setter
-    def is_approval_request(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isApprovalRequest property value. Indicates whether an incoming message must be an approval request in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the is_approval_request property.
-        """
-        self._is_approval_request = value
-    
-    @property
-    def is_automatic_forward(self,) -> Optional[bool]:
-        """
-        Gets the isAutomaticForward property value. Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._is_automatic_forward
-    
-    @is_automatic_forward.setter
-    def is_automatic_forward(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isAutomaticForward property value. Indicates whether an incoming message must be automatically forwarded in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the is_automatic_forward property.
-        """
-        self._is_automatic_forward = value
-    
-    @property
-    def is_automatic_reply(self,) -> Optional[bool]:
-        """
-        Gets the isAutomaticReply property value. Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._is_automatic_reply
-    
-    @is_automatic_reply.setter
-    def is_automatic_reply(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isAutomaticReply property value. Indicates whether an incoming message must be an auto reply in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the is_automatic_reply property.
-        """
-        self._is_automatic_reply = value
-    
-    @property
-    def is_encrypted(self,) -> Optional[bool]:
-        """
-        Gets the isEncrypted property value. Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._is_encrypted
-    
-    @is_encrypted.setter
-    def is_encrypted(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isEncrypted property value. Indicates whether an incoming message must be encrypted in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the is_encrypted property.
-        """
-        self._is_encrypted = value
-    
-    @property
-    def is_meeting_request(self,) -> Optional[bool]:
-        """
-        Gets the isMeetingRequest property value. Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._is_meeting_request
-    
-    @is_meeting_request.setter
-    def is_meeting_request(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isMeetingRequest property value. Indicates whether an incoming message must be a meeting request in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the is_meeting_request property.
-        """
-        self._is_meeting_request = value
-    
-    @property
-    def is_meeting_response(self,) -> Optional[bool]:
-        """
-        Gets the isMeetingResponse property value. Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._is_meeting_response
-    
-    @is_meeting_response.setter
-    def is_meeting_response(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isMeetingResponse property value. Indicates whether an incoming message must be a meeting response in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the is_meeting_response property.
-        """
-        self._is_meeting_response = value
-    
-    @property
-    def is_non_delivery_report(self,) -> Optional[bool]:
-        """
-        Gets the isNonDeliveryReport property value. Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._is_non_delivery_report
-    
-    @is_non_delivery_report.setter
-    def is_non_delivery_report(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isNonDeliveryReport property value. Indicates whether an incoming message must be a non-delivery report in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the is_non_delivery_report property.
-        """
-        self._is_non_delivery_report = value
-    
-    @property
-    def is_permission_controlled(self,) -> Optional[bool]:
-        """
-        Gets the isPermissionControlled property value. Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._is_permission_controlled
-    
-    @is_permission_controlled.setter
-    def is_permission_controlled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isPermissionControlled property value. Indicates whether an incoming message must be permission controlled (RMS-protected) in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the is_permission_controlled property.
-        """
-        self._is_permission_controlled = value
-    
-    @property
-    def is_read_receipt(self,) -> Optional[bool]:
-        """
-        Gets the isReadReceipt property value. Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._is_read_receipt
-    
-    @is_read_receipt.setter
-    def is_read_receipt(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isReadReceipt property value. Indicates whether an incoming message must be a read receipt in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the is_read_receipt property.
-        """
-        self._is_read_receipt = value
-    
-    @property
-    def is_signed(self,) -> Optional[bool]:
-        """
-        Gets the isSigned property value. Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._is_signed
-    
-    @is_signed.setter
-    def is_signed(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isSigned property value. Indicates whether an incoming message must be S/MIME-signed in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the is_signed property.
-        """
-        self._is_signed = value
-    
-    @property
-    def is_voicemail(self,) -> Optional[bool]:
-        """
-        Gets the isVoicemail property value. Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._is_voicemail
-    
-    @is_voicemail.setter
-    def is_voicemail(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isVoicemail property value. Indicates whether an incoming message must be a voice mail in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the is_voicemail property.
-        """
-        self._is_voicemail = value
-    
-    @property
-    def message_action_flag(self,) -> Optional[message_action_flag.MessageActionFlag]:
-        """
-        Gets the messageActionFlag property value. Represents the flag-for-action value that appears on an incoming message in order for the condition or exception to apply. The possible values are: any, call, doNotForward, followUp, fyi, forward, noResponseNecessary, read, reply, replyToAll, review.
-        Returns: Optional[message_action_flag.MessageActionFlag]
-        """
-        return self._message_action_flag
-    
-    @message_action_flag.setter
-    def message_action_flag(self,value: Optional[message_action_flag.MessageActionFlag] = None) -> None:
-        """
-        Sets the messageActionFlag property value. Represents the flag-for-action value that appears on an incoming message in order for the condition or exception to apply. The possible values are: any, call, doNotForward, followUp, fyi, forward, noResponseNecessary, read, reply, replyToAll, review.
-        Args:
-            value: Value to set for the message_action_flag property.
-        """
-        self._message_action_flag = value
-    
-    @property
-    def not_sent_to_me(self,) -> Optional[bool]:
-        """
-        Gets the notSentToMe property value. Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._not_sent_to_me
-    
-    @not_sent_to_me.setter
-    def not_sent_to_me(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the notSentToMe property value. Indicates whether the owner of the mailbox must not be a recipient of an incoming message in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the not_sent_to_me property.
-        """
-        self._not_sent_to_me = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def recipient_contains(self,) -> Optional[List[str]]:
-        """
-        Gets the recipientContains property value. Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
-        Returns: Optional[List[str]]
-        """
-        return self._recipient_contains
-    
-    @recipient_contains.setter
-    def recipient_contains(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the recipientContains property value. Represents the strings that appear in either the toRecipients or ccRecipients properties of an incoming message in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the recipient_contains property.
-        """
-        self._recipient_contains = value
-    
-    @property
-    def sender_contains(self,) -> Optional[List[str]]:
-        """
-        Gets the senderContains property value. Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
-        Returns: Optional[List[str]]
-        """
-        return self._sender_contains
-    
-    @sender_contains.setter
-    def sender_contains(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the senderContains property value. Represents the strings that appear in the from property of an incoming message in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the sender_contains property.
-        """
-        self._sender_contains = value
-    
-    @property
-    def sensitivity(self,) -> Optional[sensitivity.Sensitivity]:
-        """
-        Gets the sensitivity property value. Represents the sensitivity level that must be stamped on an incoming message in order for the condition or exception to apply. The possible values are: normal, personal, private, confidential.
-        Returns: Optional[sensitivity.Sensitivity]
-        """
-        return self._sensitivity
-    
-    @sensitivity.setter
-    def sensitivity(self,value: Optional[sensitivity.Sensitivity] = None) -> None:
-        """
-        Sets the sensitivity property value. Represents the sensitivity level that must be stamped on an incoming message in order for the condition or exception to apply. The possible values are: normal, personal, private, confidential.
-        Args:
-            value: Value to set for the sensitivity property.
-        """
-        self._sensitivity = value
-    
-    @property
-    def sent_cc_me(self,) -> Optional[bool]:
-        """
-        Gets the sentCcMe property value. Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._sent_cc_me
-    
-    @sent_cc_me.setter
-    def sent_cc_me(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the sentCcMe property value. Indicates whether the owner of the mailbox must be in the ccRecipients property of an incoming message in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the sent_cc_me property.
-        """
-        self._sent_cc_me = value
-    
-    @property
-    def sent_only_to_me(self,) -> Optional[bool]:
-        """
-        Gets the sentOnlyToMe property value. Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._sent_only_to_me
-    
-    @sent_only_to_me.setter
-    def sent_only_to_me(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the sentOnlyToMe property value. Indicates whether the owner of the mailbox must be the only recipient in an incoming message in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the sent_only_to_me property.
-        """
-        self._sent_only_to_me = value
-    
-    @property
-    def sent_to_addresses(self,) -> Optional[List[recipient.Recipient]]:
-        """
-        Gets the sentToAddresses property value. Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-        Returns: Optional[List[recipient.Recipient]]
-        """
-        return self._sent_to_addresses
-    
-    @sent_to_addresses.setter
-    def sent_to_addresses(self,value: Optional[List[recipient.Recipient]] = None) -> None:
-        """
-        Sets the sentToAddresses property value. Represents the email addresses that an incoming message must have been sent to in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the sent_to_addresses property.
-        """
-        self._sent_to_addresses = value
-    
-    @property
-    def sent_to_me(self,) -> Optional[bool]:
-        """
-        Gets the sentToMe property value. Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._sent_to_me
-    
-    @sent_to_me.setter
-    def sent_to_me(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the sentToMe property value. Indicates whether the owner of the mailbox must be in the toRecipients property of an incoming message in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the sent_to_me property.
-        """
-        self._sent_to_me = value
-    
-    @property
-    def sent_to_or_cc_me(self,) -> Optional[bool]:
-        """
-        Gets the sentToOrCcMe property value. Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
-        Returns: Optional[bool]
-        """
-        return self._sent_to_or_cc_me
-    
-    @sent_to_or_cc_me.setter
-    def sent_to_or_cc_me(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the sentToOrCcMe property value. Indicates whether the owner of the mailbox must be in either a toRecipients or ccRecipients property of an incoming message in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the sent_to_or_cc_me property.
-        """
-        self._sent_to_or_cc_me = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -680,39 +168,5 @@ class MessageRulePredicates(AdditionalDataHolder, Parsable):
         writer.write_collection_of_primitive_values("subjectContains", self.subject_contains)
         writer.write_object_value("withinSizeRange", self.within_size_range)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def subject_contains(self,) -> Optional[List[str]]:
-        """
-        Gets the subjectContains property value. Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
-        Returns: Optional[List[str]]
-        """
-        return self._subject_contains
-    
-    @subject_contains.setter
-    def subject_contains(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the subjectContains property value. Represents the strings that appear in the subject of an incoming message in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the subject_contains property.
-        """
-        self._subject_contains = value
-    
-    @property
-    def within_size_range(self,) -> Optional[size_range.SizeRange]:
-        """
-        Gets the withinSizeRange property value. Represents the minimum and maximum sizes (in kilobytes) that an incoming message must fall in between in order for the condition or exception to apply.
-        Returns: Optional[size_range.SizeRange]
-        """
-        return self._within_size_range
-    
-    @within_size_range.setter
-    def within_size_range(self,value: Optional[size_range.SizeRange] = None) -> None:
-        """
-        Sets the withinSizeRange property value. Represents the minimum and maximum sizes (in kilobytes) that an incoming message must fall in between in order for the condition or exception to apply.
-        Args:
-            value: Value to set for the within_size_range property.
-        """
-        self._within_size_range = value
     
 

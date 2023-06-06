@@ -1,54 +1,18 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .......models.external_connectors import external_activity
 
+@dataclass
 class AddActivitiesPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new addActivitiesPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The activities property
-        self._activities: Optional[List[external_activity.ExternalActivity]] = None
-    
-    @property
-    def activities(self,) -> Optional[List[external_activity.ExternalActivity]]:
-        """
-        Gets the activities property value. The activities property
-        Returns: Optional[List[external_activity.ExternalActivity]]
-        """
-        return self._activities
-    
-    @activities.setter
-    def activities(self,value: Optional[List[external_activity.ExternalActivity]] = None) -> None:
-        """
-        Sets the activities property value. The activities property
-        Args:
-            value: Value to set for the activities property.
-        """
-        self._activities = value
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The activities property
+    activities: Optional[List[external_activity.ExternalActivity]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddActivitiesPostRequestBody:

@@ -1,70 +1,17 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class CheckinPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new checkinPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The checkInAs property
-        self._check_in_as: Optional[str] = None
-        # The comment property
-        self._comment: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def check_in_as(self,) -> Optional[str]:
-        """
-        Gets the checkInAs property value. The checkInAs property
-        Returns: Optional[str]
-        """
-        return self._check_in_as
-    
-    @check_in_as.setter
-    def check_in_as(self,value: Optional[str] = None) -> None:
-        """
-        Sets the checkInAs property value. The checkInAs property
-        Args:
-            value: Value to set for the check_in_as property.
-        """
-        self._check_in_as = value
-    
-    @property
-    def comment(self,) -> Optional[str]:
-        """
-        Gets the comment property value. The comment property
-        Returns: Optional[str]
-        """
-        return self._comment
-    
-    @comment.setter
-    def comment(self,value: Optional[str] = None) -> None:
-        """
-        Sets the comment property value. The comment property
-        Args:
-            value: Value to set for the comment property.
-        """
-        self._comment = value
+    # The checkInAs property
+    check_in_as: Optional[str] = None
+    # The comment property
+    comment: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CheckinPostRequestBody:

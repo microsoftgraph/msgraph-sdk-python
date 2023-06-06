@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -8,15 +9,11 @@ if TYPE_CHECKING:
 
 from . import data_source
 
+@dataclass
 class SiteSource(data_source.DataSource):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new SiteSource and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.security.siteSource"
-        # The site property
-        self._site: Optional[site.Site] = None
+    odata_type = "#microsoft.graph.security.siteSource"
+    # The site property
+    site: Optional[site.Site] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SiteSource:
@@ -55,22 +52,5 @@ class SiteSource(data_source.DataSource):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("site", self.site)
-    
-    @property
-    def site(self,) -> Optional[site.Site]:
-        """
-        Gets the site property value. The site property
-        Returns: Optional[site.Site]
-        """
-        return self._site
-    
-    @site.setter
-    def site(self,value: Optional[site.Site] = None) -> None:
-        """
-        Sets the site property value. The site property
-        Args:
-            value: Value to set for the site property.
-        """
-        self._site = value
     
 

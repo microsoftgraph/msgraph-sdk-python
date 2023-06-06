@@ -1,6 +1,6 @@
 from enum import Enum
 
-class NetworkConnectionType(Enum):
+class NetworkConnectionType(str, Enum):
     Unknown = "unknown",
     Wired = "wired",
     Wifi = "wifi",

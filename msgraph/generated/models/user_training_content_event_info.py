@@ -1,79 +1,26 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new userTrainingContentEventInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Browser of the user from where the training event was generated.
-        self._browser: Optional[str] = None
-        # Date and time of the training content playback by the user.
-        self._content_date_time: Optional[datetime] = None
-        # IP address of the user for the training event.
-        self._ip_address: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The operating system, platform, and device details of the user for the training event.
-        self._os_platform_device_details: Optional[str] = None
-        # Potential improvement in the tenant security posture after completion of the training by the user.
-        self._potential_score_impact: Optional[float] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def browser(self,) -> Optional[str]:
-        """
-        Gets the browser property value. Browser of the user from where the training event was generated.
-        Returns: Optional[str]
-        """
-        return self._browser
-    
-    @browser.setter
-    def browser(self,value: Optional[str] = None) -> None:
-        """
-        Sets the browser property value. Browser of the user from where the training event was generated.
-        Args:
-            value: Value to set for the browser property.
-        """
-        self._browser = value
-    
-    @property
-    def content_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the contentDateTime property value. Date and time of the training content playback by the user.
-        Returns: Optional[datetime]
-        """
-        return self._content_date_time
-    
-    @content_date_time.setter
-    def content_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the contentDateTime property value. Date and time of the training content playback by the user.
-        Args:
-            value: Value to set for the content_date_time property.
-        """
-        self._content_date_time = value
+    # Browser of the user from where the training event was generated.
+    browser: Optional[str] = None
+    # Date and time of the training content playback by the user.
+    content_date_time: Optional[datetime] = None
+    # IP address of the user for the training event.
+    ip_address: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The operating system, platform, and device details of the user for the training event.
+    os_platform_device_details: Optional[str] = None
+    # Potential improvement in the tenant security posture after completion of the training by the user.
+    potential_score_impact: Optional[float] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserTrainingContentEventInfo:
@@ -101,74 +48,6 @@ class UserTrainingContentEventInfo(AdditionalDataHolder, Parsable):
             "potentialScoreImpact": lambda n : setattr(self, 'potential_score_impact', n.get_float_value()),
         }
         return fields
-    
-    @property
-    def ip_address(self,) -> Optional[str]:
-        """
-        Gets the ipAddress property value. IP address of the user for the training event.
-        Returns: Optional[str]
-        """
-        return self._ip_address
-    
-    @ip_address.setter
-    def ip_address(self,value: Optional[str] = None) -> None:
-        """
-        Sets the ipAddress property value. IP address of the user for the training event.
-        Args:
-            value: Value to set for the ip_address property.
-        """
-        self._ip_address = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def os_platform_device_details(self,) -> Optional[str]:
-        """
-        Gets the osPlatformDeviceDetails property value. The operating system, platform, and device details of the user for the training event.
-        Returns: Optional[str]
-        """
-        return self._os_platform_device_details
-    
-    @os_platform_device_details.setter
-    def os_platform_device_details(self,value: Optional[str] = None) -> None:
-        """
-        Sets the osPlatformDeviceDetails property value. The operating system, platform, and device details of the user for the training event.
-        Args:
-            value: Value to set for the os_platform_device_details property.
-        """
-        self._os_platform_device_details = value
-    
-    @property
-    def potential_score_impact(self,) -> Optional[float]:
-        """
-        Gets the potentialScoreImpact property value. Potential improvement in the tenant security posture after completion of the training by the user.
-        Returns: Optional[float]
-        """
-        return self._potential_score_impact
-    
-    @potential_score_impact.setter
-    def potential_score_impact(self,value: Optional[float] = None) -> None:
-        """
-        Sets the potentialScoreImpact property value. Potential improvement in the tenant security posture after completion of the training by the user.
-        Args:
-            value: Value to set for the potential_score_impact property.
-        """
-        self._potential_score_impact = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import identity
 
+@dataclass
 class TeamworkApplicationIdentity(identity.Identity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new TeamworkApplicationIdentity and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.teamworkApplicationIdentity"
-        # Type of application that is referenced. Possible values are: aadApplication, bot, tenantBot, office365Connector, outgoingWebhook, and unknownFutureValue.
-        self._application_identity_type: Optional[teamwork_application_identity_type.TeamworkApplicationIdentityType] = None
-    
-    @property
-    def application_identity_type(self,) -> Optional[teamwork_application_identity_type.TeamworkApplicationIdentityType]:
-        """
-        Gets the applicationIdentityType property value. Type of application that is referenced. Possible values are: aadApplication, bot, tenantBot, office365Connector, outgoingWebhook, and unknownFutureValue.
-        Returns: Optional[teamwork_application_identity_type.TeamworkApplicationIdentityType]
-        """
-        return self._application_identity_type
-    
-    @application_identity_type.setter
-    def application_identity_type(self,value: Optional[teamwork_application_identity_type.TeamworkApplicationIdentityType] = None) -> None:
-        """
-        Sets the applicationIdentityType property value. Type of application that is referenced. Possible values are: aadApplication, bot, tenantBot, office365Connector, outgoingWebhook, and unknownFutureValue.
-        Args:
-            value: Value to set for the application_identity_type property.
-        """
-        self._application_identity_type = value
+    odata_type = "#microsoft.graph.teamworkApplicationIdentity"
+    # Type of application that is referenced. Possible values are: aadApplication, bot, tenantBot, office365Connector, outgoingWebhook, and unknownFutureValue.
+    application_identity_type: Optional[teamwork_application_identity_type.TeamworkApplicationIdentityType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkApplicationIdentity:

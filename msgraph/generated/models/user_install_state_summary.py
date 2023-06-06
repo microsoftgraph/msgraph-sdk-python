@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,27 +8,23 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class UserInstallStateSummary(entity.Entity):
     """
     Contains properties for the installation state summary for a user.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new userInstallStateSummary and sets the default values.
-        """
-        super().__init__()
-        # The install state of the eBook.
-        self._device_states: Optional[List[device_install_state.DeviceInstallState]] = None
-        # Failed Device Count.
-        self._failed_device_count: Optional[int] = None
-        # Installed Device Count.
-        self._installed_device_count: Optional[int] = None
-        # Not installed device count.
-        self._not_installed_device_count: Optional[int] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # User name.
-        self._user_name: Optional[str] = None
+    # The install state of the eBook.
+    device_states: Optional[List[device_install_state.DeviceInstallState]] = None
+    # Failed Device Count.
+    failed_device_count: Optional[int] = None
+    # Installed Device Count.
+    installed_device_count: Optional[int] = None
+    # Not installed device count.
+    not_installed_device_count: Optional[int] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # User name.
+    user_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserInstallStateSummary:
@@ -40,40 +37,6 @@ class UserInstallStateSummary(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserInstallStateSummary()
-    
-    @property
-    def device_states(self,) -> Optional[List[device_install_state.DeviceInstallState]]:
-        """
-        Gets the deviceStates property value. The install state of the eBook.
-        Returns: Optional[List[device_install_state.DeviceInstallState]]
-        """
-        return self._device_states
-    
-    @device_states.setter
-    def device_states(self,value: Optional[List[device_install_state.DeviceInstallState]] = None) -> None:
-        """
-        Sets the deviceStates property value. The install state of the eBook.
-        Args:
-            value: Value to set for the device_states property.
-        """
-        self._device_states = value
-    
-    @property
-    def failed_device_count(self,) -> Optional[int]:
-        """
-        Gets the failedDeviceCount property value. Failed Device Count.
-        Returns: Optional[int]
-        """
-        return self._failed_device_count
-    
-    @failed_device_count.setter
-    def failed_device_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the failedDeviceCount property value. Failed Device Count.
-        Args:
-            value: Value to set for the failed_device_count property.
-        """
-        self._failed_device_count = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -93,40 +56,6 @@ class UserInstallStateSummary(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def installed_device_count(self,) -> Optional[int]:
-        """
-        Gets the installedDeviceCount property value. Installed Device Count.
-        Returns: Optional[int]
-        """
-        return self._installed_device_count
-    
-    @installed_device_count.setter
-    def installed_device_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the installedDeviceCount property value. Installed Device Count.
-        Args:
-            value: Value to set for the installed_device_count property.
-        """
-        self._installed_device_count = value
-    
-    @property
-    def not_installed_device_count(self,) -> Optional[int]:
-        """
-        Gets the notInstalledDeviceCount property value. Not installed device count.
-        Returns: Optional[int]
-        """
-        return self._not_installed_device_count
-    
-    @not_installed_device_count.setter
-    def not_installed_device_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the notInstalledDeviceCount property value. Not installed device count.
-        Args:
-            value: Value to set for the not_installed_device_count property.
-        """
-        self._not_installed_device_count = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -141,22 +70,5 @@ class UserInstallStateSummary(entity.Entity):
         writer.write_int_value("installedDeviceCount", self.installed_device_count)
         writer.write_int_value("notInstalledDeviceCount", self.not_installed_device_count)
         writer.write_str_value("userName", self.user_name)
-    
-    @property
-    def user_name(self,) -> Optional[str]:
-        """
-        Gets the userName property value. User name.
-        Returns: Optional[str]
-        """
-        return self._user_name
-    
-    @user_name.setter
-    def user_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userName property value. User name.
-        Args:
-            value: Value to set for the user_name property.
-        """
-        self._user_name = value
     
 

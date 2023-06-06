@@ -1,6 +1,6 @@
 from enum import Enum
 
-class TeamsAppDistributionMethod(Enum):
+class TeamsAppDistributionMethod(str, Enum):
     Store = "store",
     Organization = "organization",
     Sideloaded = "sideloaded",

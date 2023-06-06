@@ -1,65 +1,29 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
     """
     This type represents the set of policies that dictate how bookings can be created in a Booking Calendar.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new bookingSchedulingPolicy and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # True if to allow customers to choose a specific person for the booking.
-        self._allow_staff_selection: Optional[bool] = None
-        # Maximum number of days in advance that a booking can be made. It follows the ISO 8601 format.
-        self._maximum_advance: Optional[timedelta] = None
-        # The minimum amount of time before which bookings and cancellations must be made. It follows the ISO 8601 format.
-        self._minimum_lead_time: Optional[timedelta] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # True to notify the business via email when a booking is created or changed. Use the email address specified in the email property of the bookingBusiness entity for the business.
-        self._send_confirmations_to_owner: Optional[bool] = None
-        # Duration of each time slot, denoted in ISO 8601 format.
-        self._time_slot_interval: Optional[timedelta] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def allow_staff_selection(self,) -> Optional[bool]:
-        """
-        Gets the allowStaffSelection property value. True if to allow customers to choose a specific person for the booking.
-        Returns: Optional[bool]
-        """
-        return self._allow_staff_selection
-    
-    @allow_staff_selection.setter
-    def allow_staff_selection(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowStaffSelection property value. True if to allow customers to choose a specific person for the booking.
-        Args:
-            value: Value to set for the allow_staff_selection property.
-        """
-        self._allow_staff_selection = value
+    # True if to allow customers to choose a specific person for the booking.
+    allow_staff_selection: Optional[bool] = None
+    # Maximum number of days in advance that a booking can be made. It follows the ISO 8601 format.
+    maximum_advance: Optional[timedelta] = None
+    # The minimum amount of time before which bookings and cancellations must be made. It follows the ISO 8601 format.
+    minimum_lead_time: Optional[timedelta] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # True to notify the business via email when a booking is created or changed. Use the email address specified in the email property of the bookingBusiness entity for the business.
+    send_confirmations_to_owner: Optional[bool] = None
+    # Duration of each time slot, denoted in ISO 8601 format.
+    time_slot_interval: Optional[timedelta] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingSchedulingPolicy:
@@ -88,74 +52,6 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def maximum_advance(self,) -> Optional[timedelta]:
-        """
-        Gets the maximumAdvance property value. Maximum number of days in advance that a booking can be made. It follows the ISO 8601 format.
-        Returns: Optional[timedelta]
-        """
-        return self._maximum_advance
-    
-    @maximum_advance.setter
-    def maximum_advance(self,value: Optional[timedelta] = None) -> None:
-        """
-        Sets the maximumAdvance property value. Maximum number of days in advance that a booking can be made. It follows the ISO 8601 format.
-        Args:
-            value: Value to set for the maximum_advance property.
-        """
-        self._maximum_advance = value
-    
-    @property
-    def minimum_lead_time(self,) -> Optional[timedelta]:
-        """
-        Gets the minimumLeadTime property value. The minimum amount of time before which bookings and cancellations must be made. It follows the ISO 8601 format.
-        Returns: Optional[timedelta]
-        """
-        return self._minimum_lead_time
-    
-    @minimum_lead_time.setter
-    def minimum_lead_time(self,value: Optional[timedelta] = None) -> None:
-        """
-        Sets the minimumLeadTime property value. The minimum amount of time before which bookings and cancellations must be made. It follows the ISO 8601 format.
-        Args:
-            value: Value to set for the minimum_lead_time property.
-        """
-        self._minimum_lead_time = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def send_confirmations_to_owner(self,) -> Optional[bool]:
-        """
-        Gets the sendConfirmationsToOwner property value. True to notify the business via email when a booking is created or changed. Use the email address specified in the email property of the bookingBusiness entity for the business.
-        Returns: Optional[bool]
-        """
-        return self._send_confirmations_to_owner
-    
-    @send_confirmations_to_owner.setter
-    def send_confirmations_to_owner(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the sendConfirmationsToOwner property value. True to notify the business via email when a booking is created or changed. Use the email address specified in the email property of the bookingBusiness entity for the business.
-        Args:
-            value: Value to set for the send_confirmations_to_owner property.
-        """
-        self._send_confirmations_to_owner = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -171,22 +67,5 @@ class BookingSchedulingPolicy(AdditionalDataHolder, Parsable):
         writer.write_bool_value("sendConfirmationsToOwner", self.send_confirmations_to_owner)
         writer.write_timedelta_value("timeSlotInterval", self.time_slot_interval)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def time_slot_interval(self,) -> Optional[timedelta]:
-        """
-        Gets the timeSlotInterval property value. Duration of each time slot, denoted in ISO 8601 format.
-        Returns: Optional[timedelta]
-        """
-        return self._time_slot_interval
-    
-    @time_slot_interval.setter
-    def time_slot_interval(self,value: Optional[timedelta] = None) -> None:
-        """
-        Sets the timeSlotInterval property value. Duration of each time slot, denoted in ISO 8601 format.
-        Args:
-            value: Value to set for the time_slot_interval property.
-        """
-        self._time_slot_interval = value
     
 

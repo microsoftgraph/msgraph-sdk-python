@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,38 +8,17 @@ if TYPE_CHECKING:
 
 from . import mobile_lob_app
 
+@dataclass
 class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsMobileMSI and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsMobileMSI"
-        # The command line.
-        self._command_line: Optional[str] = None
-        # A boolean to control whether the app's version will be used to detect the app after it is installed on a device. Set this to true for Windows Mobile MSI Line of Business (LoB) apps that use a self update feature.
-        self._ignore_version_detection: Optional[bool] = None
-        # The product code.
-        self._product_code: Optional[str] = None
-        # The product version of Windows Mobile MSI Line of Business (LoB) app.
-        self._product_version: Optional[str] = None
-    
-    @property
-    def command_line(self,) -> Optional[str]:
-        """
-        Gets the commandLine property value. The command line.
-        Returns: Optional[str]
-        """
-        return self._command_line
-    
-    @command_line.setter
-    def command_line(self,value: Optional[str] = None) -> None:
-        """
-        Sets the commandLine property value. The command line.
-        Args:
-            value: Value to set for the command_line property.
-        """
-        self._command_line = value
+    odata_type = "#microsoft.graph.windowsMobileMSI"
+    # The command line.
+    command_line: Optional[str] = None
+    # A boolean to control whether the app's version will be used to detect the app after it is installed on a device. Set this to true for Windows Mobile MSI Line of Business (LoB) apps that use a self update feature.
+    ignore_version_detection: Optional[bool] = None
+    # The product code.
+    product_code: Optional[str] = None
+    # The product version of Windows Mobile MSI Line of Business (LoB) app.
+    product_version: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsMobileMSI:
@@ -68,57 +48,6 @@ class WindowsMobileMSI(mobile_lob_app.MobileLobApp):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def ignore_version_detection(self,) -> Optional[bool]:
-        """
-        Gets the ignoreVersionDetection property value. A boolean to control whether the app's version will be used to detect the app after it is installed on a device. Set this to true for Windows Mobile MSI Line of Business (LoB) apps that use a self update feature.
-        Returns: Optional[bool]
-        """
-        return self._ignore_version_detection
-    
-    @ignore_version_detection.setter
-    def ignore_version_detection(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the ignoreVersionDetection property value. A boolean to control whether the app's version will be used to detect the app after it is installed on a device. Set this to true for Windows Mobile MSI Line of Business (LoB) apps that use a self update feature.
-        Args:
-            value: Value to set for the ignore_version_detection property.
-        """
-        self._ignore_version_detection = value
-    
-    @property
-    def product_code(self,) -> Optional[str]:
-        """
-        Gets the productCode property value. The product code.
-        Returns: Optional[str]
-        """
-        return self._product_code
-    
-    @product_code.setter
-    def product_code(self,value: Optional[str] = None) -> None:
-        """
-        Sets the productCode property value. The product code.
-        Args:
-            value: Value to set for the product_code property.
-        """
-        self._product_code = value
-    
-    @property
-    def product_version(self,) -> Optional[str]:
-        """
-        Gets the productVersion property value. The product version of Windows Mobile MSI Line of Business (LoB) app.
-        Returns: Optional[str]
-        """
-        return self._product_version
-    
-    @product_version.setter
-    def product_version(self,value: Optional[str] = None) -> None:
-        """
-        Sets the productVersion property value. The product version of Windows Mobile MSI Line of Business (LoB) app.
-        Args:
-            value: Value to set for the product_version property.
-        """
-        self._product_version = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -8,68 +9,30 @@ if TYPE_CHECKING:
 
 from .. import entity
 
+@dataclass
 class ExternalConnection(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new externalConnection and sets the default values.
-        """
-        super().__init__()
-        # Collects configurable settings related to activities involving connector content.
-        self._activity_settings: Optional[activity_settings.ActivitySettings] = None
-        # Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.
-        self._configuration: Optional[configuration.Configuration] = None
-        # Description of the connection displayed in the Microsoft 365 admin center. Optional.
-        self._description: Optional[str] = None
-        # The groups property
-        self._groups: Optional[List[external_group.ExternalGroup]] = None
-        # The items property
-        self._items: Optional[List[external_item.ExternalItem]] = None
-        # The display name of the connection to be displayed in the Microsoft 365 admin center. Maximum length of 128 characters. Required.
-        self._name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The operations property
-        self._operations: Optional[List[connection_operation.ConnectionOperation]] = None
-        # The schema property
-        self._schema: Optional[schema.Schema] = None
-        # The settings configuring the search experience for content in this connection, such as the display templates for search results.
-        self._search_settings: Optional[search_settings.SearchSettings] = None
-        # Indicates the current state of the connection. Possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.
-        self._state: Optional[connection_state.ConnectionState] = None
-    
-    @property
-    def activity_settings(self,) -> Optional[activity_settings.ActivitySettings]:
-        """
-        Gets the activitySettings property value. Collects configurable settings related to activities involving connector content.
-        Returns: Optional[activity_settings.ActivitySettings]
-        """
-        return self._activity_settings
-    
-    @activity_settings.setter
-    def activity_settings(self,value: Optional[activity_settings.ActivitySettings] = None) -> None:
-        """
-        Sets the activitySettings property value. Collects configurable settings related to activities involving connector content.
-        Args:
-            value: Value to set for the activity_settings property.
-        """
-        self._activity_settings = value
-    
-    @property
-    def configuration(self,) -> Optional[configuration.Configuration]:
-        """
-        Gets the configuration property value. Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.
-        Returns: Optional[configuration.Configuration]
-        """
-        return self._configuration
-    
-    @configuration.setter
-    def configuration(self,value: Optional[configuration.Configuration] = None) -> None:
-        """
-        Sets the configuration property value. Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.
-        Args:
-            value: Value to set for the configuration property.
-        """
-        self._configuration = value
+    # Collects configurable settings related to activities involving connector content.
+    activity_settings: Optional[activity_settings.ActivitySettings] = None
+    # Specifies additional application IDs that are allowed to manage the connection and to index content in the connection. Optional.
+    configuration: Optional[configuration.Configuration] = None
+    # Description of the connection displayed in the Microsoft 365 admin center. Optional.
+    description: Optional[str] = None
+    # The groups property
+    groups: Optional[List[external_group.ExternalGroup]] = None
+    # The items property
+    items: Optional[List[external_item.ExternalItem]] = None
+    # The display name of the connection to be displayed in the Microsoft 365 admin center. Maximum length of 128 characters. Required.
+    name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The operations property
+    operations: Optional[List[connection_operation.ConnectionOperation]] = None
+    # The schema property
+    schema: Optional[schema.Schema] = None
+    # The settings configuring the search experience for content in this connection, such as the display templates for search results.
+    search_settings: Optional[search_settings.SearchSettings] = None
+    # Indicates the current state of the connection. Possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.
+    state: Optional[connection_state.ConnectionState] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExternalConnection:
@@ -82,23 +45,6 @@ class ExternalConnection(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ExternalConnection()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. Description of the connection displayed in the Microsoft 365 admin center. Optional.
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. Description of the connection displayed in the Microsoft 365 admin center. Optional.
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -124,108 +70,6 @@ class ExternalConnection(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def groups(self,) -> Optional[List[external_group.ExternalGroup]]:
-        """
-        Gets the groups property value. The groups property
-        Returns: Optional[List[external_group.ExternalGroup]]
-        """
-        return self._groups
-    
-    @groups.setter
-    def groups(self,value: Optional[List[external_group.ExternalGroup]] = None) -> None:
-        """
-        Sets the groups property value. The groups property
-        Args:
-            value: Value to set for the groups property.
-        """
-        self._groups = value
-    
-    @property
-    def items(self,) -> Optional[List[external_item.ExternalItem]]:
-        """
-        Gets the items property value. The items property
-        Returns: Optional[List[external_item.ExternalItem]]
-        """
-        return self._items
-    
-    @items.setter
-    def items(self,value: Optional[List[external_item.ExternalItem]] = None) -> None:
-        """
-        Sets the items property value. The items property
-        Args:
-            value: Value to set for the items property.
-        """
-        self._items = value
-    
-    @property
-    def name(self,) -> Optional[str]:
-        """
-        Gets the name property value. The display name of the connection to be displayed in the Microsoft 365 admin center. Maximum length of 128 characters. Required.
-        Returns: Optional[str]
-        """
-        return self._name
-    
-    @name.setter
-    def name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the name property value. The display name of the connection to be displayed in the Microsoft 365 admin center. Maximum length of 128 characters. Required.
-        Args:
-            value: Value to set for the name property.
-        """
-        self._name = value
-    
-    @property
-    def operations(self,) -> Optional[List[connection_operation.ConnectionOperation]]:
-        """
-        Gets the operations property value. The operations property
-        Returns: Optional[List[connection_operation.ConnectionOperation]]
-        """
-        return self._operations
-    
-    @operations.setter
-    def operations(self,value: Optional[List[connection_operation.ConnectionOperation]] = None) -> None:
-        """
-        Sets the operations property value. The operations property
-        Args:
-            value: Value to set for the operations property.
-        """
-        self._operations = value
-    
-    @property
-    def schema(self,) -> Optional[schema.Schema]:
-        """
-        Gets the schema property value. The schema property
-        Returns: Optional[schema.Schema]
-        """
-        return self._schema
-    
-    @schema.setter
-    def schema(self,value: Optional[schema.Schema] = None) -> None:
-        """
-        Sets the schema property value. The schema property
-        Args:
-            value: Value to set for the schema property.
-        """
-        self._schema = value
-    
-    @property
-    def search_settings(self,) -> Optional[search_settings.SearchSettings]:
-        """
-        Gets the searchSettings property value. The settings configuring the search experience for content in this connection, such as the display templates for search results.
-        Returns: Optional[search_settings.SearchSettings]
-        """
-        return self._search_settings
-    
-    @search_settings.setter
-    def search_settings(self,value: Optional[search_settings.SearchSettings] = None) -> None:
-        """
-        Sets the searchSettings property value. The settings configuring the search experience for content in this connection, such as the display templates for search results.
-        Args:
-            value: Value to set for the search_settings property.
-        """
-        self._search_settings = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -244,22 +88,5 @@ class ExternalConnection(entity.Entity):
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_object_value("schema", self.schema)
         writer.write_object_value("searchSettings", self.search_settings)
-    
-    @property
-    def state(self,) -> Optional[connection_state.ConnectionState]:
-        """
-        Gets the state property value. Indicates the current state of the connection. Possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.
-        Returns: Optional[connection_state.ConnectionState]
-        """
-        return self._state
-    
-    @state.setter
-    def state(self,value: Optional[connection_state.ConnectionState] = None) -> None:
-        """
-        Sets the state property value. Indicates the current state of the connection. Possible values are: draft, ready, obsolete, limitExceeded, unknownFutureValue.
-        Args:
-            value: Value to set for the state property.
-        """
-        self._state = value
     
 

@@ -1,55 +1,19 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class PrivacyProfile(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new privacyProfile and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # A valid smtp email address for the privacy statement contact. Not required.
-        self._contact_email: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # A valid URL format that begins with http:// or https://. Maximum length is 255 characters. The URL that directs to the company's privacy statement. Not required.
-        self._statement_url: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def contact_email(self,) -> Optional[str]:
-        """
-        Gets the contactEmail property value. A valid smtp email address for the privacy statement contact. Not required.
-        Returns: Optional[str]
-        """
-        return self._contact_email
-    
-    @contact_email.setter
-    def contact_email(self,value: Optional[str] = None) -> None:
-        """
-        Sets the contactEmail property value. A valid smtp email address for the privacy statement contact. Not required.
-        Args:
-            value: Value to set for the contact_email property.
-        """
-        self._contact_email = value
+    # A valid smtp email address for the privacy statement contact. Not required.
+    contact_email: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # A valid URL format that begins with http:// or https://. Maximum length is 255 characters. The URL that directs to the company's privacy statement. Not required.
+    statement_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrivacyProfile:
@@ -75,23 +39,6 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -104,22 +51,5 @@ class PrivacyProfile(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("statementUrl", self.statement_url)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def statement_url(self,) -> Optional[str]:
-        """
-        Gets the statementUrl property value. A valid URL format that begins with http:// or https://. Maximum length is 255 characters. The URL that directs to the company's privacy statement. Not required.
-        Returns: Optional[str]
-        """
-        return self._statement_url
-    
-    @statement_url.setter
-    def statement_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the statementUrl property value. A valid URL format that begins with http:// or https://. Maximum length is 255 characters. The URL that directs to the company's privacy statement. Not required.
-        Args:
-            value: Value to set for the statement_url property.
-        """
-        self._statement_url = value
     
 

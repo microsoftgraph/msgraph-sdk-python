@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ContactRelationship(Enum):
+class ContactRelationship(str, Enum):
     Parent = "parent",
     Relative = "relative",
     Aide = "aide",

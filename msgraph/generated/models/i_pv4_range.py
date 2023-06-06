@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import ip_range
 
+@dataclass
 class IPv4Range(ip_range.IpRange):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IPv4Range and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.iPv4Range"
-        # Lower address.
-        self._lower_address: Optional[str] = None
-        # Upper address.
-        self._upper_address: Optional[str] = None
+    odata_type = "#microsoft.graph.iPv4Range"
+    # Lower address.
+    lower_address: Optional[str] = None
+    # Upper address.
+    upper_address: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IPv4Range:
@@ -46,23 +43,6 @@ class IPv4Range(ip_range.IpRange):
         fields.update(super_fields)
         return fields
     
-    @property
-    def lower_address(self,) -> Optional[str]:
-        """
-        Gets the lowerAddress property value. Lower address.
-        Returns: Optional[str]
-        """
-        return self._lower_address
-    
-    @lower_address.setter
-    def lower_address(self,value: Optional[str] = None) -> None:
-        """
-        Sets the lowerAddress property value. Lower address.
-        Args:
-            value: Value to set for the lower_address property.
-        """
-        self._lower_address = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -74,22 +54,5 @@ class IPv4Range(ip_range.IpRange):
         super().serialize(writer)
         writer.write_str_value("lowerAddress", self.lower_address)
         writer.write_str_value("upperAddress", self.upper_address)
-    
-    @property
-    def upper_address(self,) -> Optional[str]:
-        """
-        Gets the upperAddress property value. Upper address.
-        Returns: Optional[str]
-        """
-        return self._upper_address
-    
-    @upper_address.setter
-    def upper_address(self,value: Optional[str] = None) -> None:
-        """
-        Sets the upperAddress property value. Upper address.
-        Args:
-            value: Value to set for the upper_address property.
-        """
-        self._upper_address = value
     
 

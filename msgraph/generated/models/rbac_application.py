@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,28 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class RbacApplication(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new RbacApplication and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The resourceNamespaces property
-        self._resource_namespaces: Optional[List[unified_rbac_resource_namespace.UnifiedRbacResourceNamespace]] = None
-        # Instances for active role assignments.
-        self._role_assignment_schedule_instances: Optional[List[unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance]] = None
-        # Requests for active role assignments to principals through PIM.
-        self._role_assignment_schedule_requests: Optional[List[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest]] = None
-        # Schedules for active role assignment operations.
-        self._role_assignment_schedules: Optional[List[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule]] = None
-        # Resource to grant access to users or groups.
-        self._role_assignments: Optional[List[unified_role_assignment.UnifiedRoleAssignment]] = None
-        # Resource representing the roles allowed by RBAC providers and the permissions assigned to the roles.
-        self._role_definitions: Optional[List[unified_role_definition.UnifiedRoleDefinition]] = None
-        # Instances for role eligibility requests.
-        self._role_eligibility_schedule_instances: Optional[List[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]] = None
-        # Requests for role eligibilities for principals through PIM.
-        self._role_eligibility_schedule_requests: Optional[List[unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest]] = None
-        # Schedules for role eligibility operations.
-        self._role_eligibility_schedules: Optional[List[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The resourceNamespaces property
+    resource_namespaces: Optional[List[unified_rbac_resource_namespace.UnifiedRbacResourceNamespace]] = None
+    # Instances for active role assignments.
+    role_assignment_schedule_instances: Optional[List[unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance]] = None
+    # Requests for active role assignments to principals through PIM.
+    role_assignment_schedule_requests: Optional[List[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest]] = None
+    # Schedules for active role assignment operations.
+    role_assignment_schedules: Optional[List[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule]] = None
+    # Resource to grant access to users or groups.
+    role_assignments: Optional[List[unified_role_assignment.UnifiedRoleAssignment]] = None
+    # Resource representing the roles allowed by RBAC providers and the permissions assigned to the roles.
+    role_definitions: Optional[List[unified_role_definition.UnifiedRoleDefinition]] = None
+    # Instances for role eligibility requests.
+    role_eligibility_schedule_instances: Optional[List[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]] = None
+    # Requests for role eligibilities for principals through PIM.
+    role_eligibility_schedule_requests: Optional[List[unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest]] = None
+    # Schedules for role eligibility operations.
+    role_eligibility_schedules: Optional[List[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RbacApplication:
@@ -67,159 +64,6 @@ class RbacApplication(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def resource_namespaces(self,) -> Optional[List[unified_rbac_resource_namespace.UnifiedRbacResourceNamespace]]:
-        """
-        Gets the resourceNamespaces property value. The resourceNamespaces property
-        Returns: Optional[List[unified_rbac_resource_namespace.UnifiedRbacResourceNamespace]]
-        """
-        return self._resource_namespaces
-    
-    @resource_namespaces.setter
-    def resource_namespaces(self,value: Optional[List[unified_rbac_resource_namespace.UnifiedRbacResourceNamespace]] = None) -> None:
-        """
-        Sets the resourceNamespaces property value. The resourceNamespaces property
-        Args:
-            value: Value to set for the resource_namespaces property.
-        """
-        self._resource_namespaces = value
-    
-    @property
-    def role_assignment_schedule_instances(self,) -> Optional[List[unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance]]:
-        """
-        Gets the roleAssignmentScheduleInstances property value. Instances for active role assignments.
-        Returns: Optional[List[unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance]]
-        """
-        return self._role_assignment_schedule_instances
-    
-    @role_assignment_schedule_instances.setter
-    def role_assignment_schedule_instances(self,value: Optional[List[unified_role_assignment_schedule_instance.UnifiedRoleAssignmentScheduleInstance]] = None) -> None:
-        """
-        Sets the roleAssignmentScheduleInstances property value. Instances for active role assignments.
-        Args:
-            value: Value to set for the role_assignment_schedule_instances property.
-        """
-        self._role_assignment_schedule_instances = value
-    
-    @property
-    def role_assignment_schedule_requests(self,) -> Optional[List[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest]]:
-        """
-        Gets the roleAssignmentScheduleRequests property value. Requests for active role assignments to principals through PIM.
-        Returns: Optional[List[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest]]
-        """
-        return self._role_assignment_schedule_requests
-    
-    @role_assignment_schedule_requests.setter
-    def role_assignment_schedule_requests(self,value: Optional[List[unified_role_assignment_schedule_request.UnifiedRoleAssignmentScheduleRequest]] = None) -> None:
-        """
-        Sets the roleAssignmentScheduleRequests property value. Requests for active role assignments to principals through PIM.
-        Args:
-            value: Value to set for the role_assignment_schedule_requests property.
-        """
-        self._role_assignment_schedule_requests = value
-    
-    @property
-    def role_assignment_schedules(self,) -> Optional[List[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule]]:
-        """
-        Gets the roleAssignmentSchedules property value. Schedules for active role assignment operations.
-        Returns: Optional[List[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule]]
-        """
-        return self._role_assignment_schedules
-    
-    @role_assignment_schedules.setter
-    def role_assignment_schedules(self,value: Optional[List[unified_role_assignment_schedule.UnifiedRoleAssignmentSchedule]] = None) -> None:
-        """
-        Sets the roleAssignmentSchedules property value. Schedules for active role assignment operations.
-        Args:
-            value: Value to set for the role_assignment_schedules property.
-        """
-        self._role_assignment_schedules = value
-    
-    @property
-    def role_assignments(self,) -> Optional[List[unified_role_assignment.UnifiedRoleAssignment]]:
-        """
-        Gets the roleAssignments property value. Resource to grant access to users or groups.
-        Returns: Optional[List[unified_role_assignment.UnifiedRoleAssignment]]
-        """
-        return self._role_assignments
-    
-    @role_assignments.setter
-    def role_assignments(self,value: Optional[List[unified_role_assignment.UnifiedRoleAssignment]] = None) -> None:
-        """
-        Sets the roleAssignments property value. Resource to grant access to users or groups.
-        Args:
-            value: Value to set for the role_assignments property.
-        """
-        self._role_assignments = value
-    
-    @property
-    def role_definitions(self,) -> Optional[List[unified_role_definition.UnifiedRoleDefinition]]:
-        """
-        Gets the roleDefinitions property value. Resource representing the roles allowed by RBAC providers and the permissions assigned to the roles.
-        Returns: Optional[List[unified_role_definition.UnifiedRoleDefinition]]
-        """
-        return self._role_definitions
-    
-    @role_definitions.setter
-    def role_definitions(self,value: Optional[List[unified_role_definition.UnifiedRoleDefinition]] = None) -> None:
-        """
-        Sets the roleDefinitions property value. Resource representing the roles allowed by RBAC providers and the permissions assigned to the roles.
-        Args:
-            value: Value to set for the role_definitions property.
-        """
-        self._role_definitions = value
-    
-    @property
-    def role_eligibility_schedule_instances(self,) -> Optional[List[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]]:
-        """
-        Gets the roleEligibilityScheduleInstances property value. Instances for role eligibility requests.
-        Returns: Optional[List[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]]
-        """
-        return self._role_eligibility_schedule_instances
-    
-    @role_eligibility_schedule_instances.setter
-    def role_eligibility_schedule_instances(self,value: Optional[List[unified_role_eligibility_schedule_instance.UnifiedRoleEligibilityScheduleInstance]] = None) -> None:
-        """
-        Sets the roleEligibilityScheduleInstances property value. Instances for role eligibility requests.
-        Args:
-            value: Value to set for the role_eligibility_schedule_instances property.
-        """
-        self._role_eligibility_schedule_instances = value
-    
-    @property
-    def role_eligibility_schedule_requests(self,) -> Optional[List[unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest]]:
-        """
-        Gets the roleEligibilityScheduleRequests property value. Requests for role eligibilities for principals through PIM.
-        Returns: Optional[List[unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest]]
-        """
-        return self._role_eligibility_schedule_requests
-    
-    @role_eligibility_schedule_requests.setter
-    def role_eligibility_schedule_requests(self,value: Optional[List[unified_role_eligibility_schedule_request.UnifiedRoleEligibilityScheduleRequest]] = None) -> None:
-        """
-        Sets the roleEligibilityScheduleRequests property value. Requests for role eligibilities for principals through PIM.
-        Args:
-            value: Value to set for the role_eligibility_schedule_requests property.
-        """
-        self._role_eligibility_schedule_requests = value
-    
-    @property
-    def role_eligibility_schedules(self,) -> Optional[List[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]]:
-        """
-        Gets the roleEligibilitySchedules property value. Schedules for role eligibility operations.
-        Returns: Optional[List[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]]
-        """
-        return self._role_eligibility_schedules
-    
-    @role_eligibility_schedules.setter
-    def role_eligibility_schedules(self,value: Optional[List[unified_role_eligibility_schedule.UnifiedRoleEligibilitySchedule]] = None) -> None:
-        """
-        Sets the roleEligibilitySchedules property value. Schedules for role eligibility operations.
-        Args:
-            value: Value to set for the role_eligibility_schedules property.
-        """
-        self._role_eligibility_schedules = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

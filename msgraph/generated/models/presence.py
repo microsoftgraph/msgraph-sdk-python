@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,52 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class Presence(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new presence and sets the default values.
-        """
-        super().__init__()
-        # The supplemental information to a user's availability. Possible values are Available, Away, BeRightBack, Busy, DoNotDisturb, InACall, InAConferenceCall, Inactive, InAMeeting, Offline, OffWork, OutOfOffice, PresenceUnknown, Presenting, UrgentInterruptionsOnly.
-        self._activity: Optional[str] = None
-        # The base presence information for a user. Possible values are Available, AvailableIdle,  Away, BeRightBack, Busy, BusyIdle, DoNotDisturb, Offline, PresenceUnknown
-        self._availability: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def activity(self,) -> Optional[str]:
-        """
-        Gets the activity property value. The supplemental information to a user's availability. Possible values are Available, Away, BeRightBack, Busy, DoNotDisturb, InACall, InAConferenceCall, Inactive, InAMeeting, Offline, OffWork, OutOfOffice, PresenceUnknown, Presenting, UrgentInterruptionsOnly.
-        Returns: Optional[str]
-        """
-        return self._activity
-    
-    @activity.setter
-    def activity(self,value: Optional[str] = None) -> None:
-        """
-        Sets the activity property value. The supplemental information to a user's availability. Possible values are Available, Away, BeRightBack, Busy, DoNotDisturb, InACall, InAConferenceCall, Inactive, InAMeeting, Offline, OffWork, OutOfOffice, PresenceUnknown, Presenting, UrgentInterruptionsOnly.
-        Args:
-            value: Value to set for the activity property.
-        """
-        self._activity = value
-    
-    @property
-    def availability(self,) -> Optional[str]:
-        """
-        Gets the availability property value. The base presence information for a user. Possible values are Available, AvailableIdle,  Away, BeRightBack, Busy, BusyIdle, DoNotDisturb, Offline, PresenceUnknown
-        Returns: Optional[str]
-        """
-        return self._availability
-    
-    @availability.setter
-    def availability(self,value: Optional[str] = None) -> None:
-        """
-        Sets the availability property value. The base presence information for a user. Possible values are Available, AvailableIdle,  Away, BeRightBack, Busy, BusyIdle, DoNotDisturb, Offline, PresenceUnknown
-        Args:
-            value: Value to set for the availability property.
-        """
-        self._availability = value
+    # The supplemental information to a user's availability. Possible values are Available, Away, BeRightBack, Busy, DoNotDisturb, InACall, InAConferenceCall, Inactive, InAMeeting, Offline, OffWork, OutOfOffice, PresenceUnknown, Presenting, UrgentInterruptionsOnly.
+    activity: Optional[str] = None
+    # The base presence information for a user. Possible values are Available, AvailableIdle,  Away, BeRightBack, Busy, BusyIdle, DoNotDisturb, Offline, PresenceUnknown
+    availability: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Presence:

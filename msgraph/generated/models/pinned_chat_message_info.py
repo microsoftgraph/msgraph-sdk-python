@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class PinnedChatMessageInfo(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new pinnedChatMessageInfo and sets the default values.
-        """
-        super().__init__()
-        # Represents details about the chat message that is pinned.
-        self._message: Optional[chat_message.ChatMessage] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # Represents details about the chat message that is pinned.
+    message: Optional[chat_message.ChatMessage] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PinnedChatMessageInfo:
@@ -43,23 +40,6 @@ class PinnedChatMessageInfo(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def message(self,) -> Optional[chat_message.ChatMessage]:
-        """
-        Gets the message property value. Represents details about the chat message that is pinned.
-        Returns: Optional[chat_message.ChatMessage]
-        """
-        return self._message
-    
-    @message.setter
-    def message(self,value: Optional[chat_message.ChatMessage] = None) -> None:
-        """
-        Sets the message property value. Represents details about the chat message that is pinned.
-        Args:
-            value: Value to set for the message property.
-        """
-        self._message = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

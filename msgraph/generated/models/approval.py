@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class Approval(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new approval and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # A collection of stages in the approval decision.
-        self._stages: Optional[List[approval_stage.ApprovalStage]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # A collection of stages in the approval decision.
+    stages: Optional[List[approval_stage.ApprovalStage]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Approval:
@@ -54,22 +51,5 @@ class Approval(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("stages", self.stages)
-    
-    @property
-    def stages(self,) -> Optional[List[approval_stage.ApprovalStage]]:
-        """
-        Gets the stages property value. A collection of stages in the approval decision.
-        Returns: Optional[List[approval_stage.ApprovalStage]]
-        """
-        return self._stages
-    
-    @stages.setter
-    def stages(self,value: Optional[List[approval_stage.ApprovalStage]] = None) -> None:
-        """
-        Sets the stages property value. A collection of stages in the approval decision.
-        Args:
-            value: Value to set for the stages property.
-        """
-        self._stages = value
     
 

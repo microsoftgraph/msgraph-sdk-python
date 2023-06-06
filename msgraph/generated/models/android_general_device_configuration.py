@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,347 +8,105 @@ if TYPE_CHECKING:
 
 from . import device_configuration
 
+@dataclass
 class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AndroidGeneralDeviceConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.androidGeneralDeviceConfiguration"
-        # Indicates whether or not to block clipboard sharing to copy and paste between applications.
-        self._apps_block_clipboard_sharing: Optional[bool] = None
-        # Indicates whether or not to block copy and paste within applications.
-        self._apps_block_copy_paste: Optional[bool] = None
-        # Indicates whether or not to block the YouTube app.
-        self._apps_block_you_tube: Optional[bool] = None
-        # List of apps to be hidden on the KNOX device. This collection can contain a maximum of 500 elements.
-        self._apps_hide_list: Optional[List[app_list_item.AppListItem]] = None
-        # List of apps which can be installed on the KNOX device. This collection can contain a maximum of 500 elements.
-        self._apps_install_allow_list: Optional[List[app_list_item.AppListItem]] = None
-        # List of apps which are blocked from being launched on the KNOX device. This collection can contain a maximum of 500 elements.
-        self._apps_launch_block_list: Optional[List[app_list_item.AppListItem]] = None
-        # Indicates whether or not to block Bluetooth.
-        self._bluetooth_blocked: Optional[bool] = None
-        # Indicates whether or not to block the use of the camera.
-        self._camera_blocked: Optional[bool] = None
-        # Indicates whether or not to block data roaming.
-        self._cellular_block_data_roaming: Optional[bool] = None
-        # Indicates whether or not to block SMS/MMS messaging.
-        self._cellular_block_messaging: Optional[bool] = None
-        # Indicates whether or not to block voice roaming.
-        self._cellular_block_voice_roaming: Optional[bool] = None
-        # Indicates whether or not to block syncing Wi-Fi tethering.
-        self._cellular_block_wi_fi_tethering: Optional[bool] = None
-        # Possible values of the compliance app list.
-        self._compliant_app_list_type: Optional[app_list_type.AppListType] = None
-        # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
-        self._compliant_apps_list: Optional[List[app_list_item.AppListItem]] = None
-        # Indicates whether or not to allow device sharing mode.
-        self._device_sharing_allowed: Optional[bool] = None
-        # Indicates whether or not to block diagnostic data submission.
-        self._diagnostic_data_block_submission: Optional[bool] = None
-        # Indicates whether or not to block user performing a factory reset.
-        self._factory_reset_blocked: Optional[bool] = None
-        # Indicates whether or not to block Google account auto sync.
-        self._google_account_block_auto_sync: Optional[bool] = None
-        # Indicates whether or not to block the Google Play store.
-        self._google_play_store_blocked: Optional[bool] = None
-        # A list of apps that will be allowed to run when the device is in Kiosk Mode. This collection can contain a maximum of 500 elements.
-        self._kiosk_mode_apps: Optional[List[app_list_item.AppListItem]] = None
-        # Indicates whether or not to block the screen sleep button while in Kiosk Mode.
-        self._kiosk_mode_block_sleep_button: Optional[bool] = None
-        # Indicates whether or not to block the volume buttons while in Kiosk Mode.
-        self._kiosk_mode_block_volume_buttons: Optional[bool] = None
-        # Indicates whether or not to block location services.
-        self._location_services_blocked: Optional[bool] = None
-        # Indicates whether or not to block Near-Field Communication.
-        self._nfc_blocked: Optional[bool] = None
-        # Indicates whether or not to block fingerprint unlock.
-        self._password_block_fingerprint_unlock: Optional[bool] = None
-        # Indicates whether or not to block Smart Lock and other trust agents.
-        self._password_block_trust_agents: Optional[bool] = None
-        # Number of days before the password expires. Valid values 1 to 365
-        self._password_expiration_days: Optional[int] = None
-        # Minimum length of passwords. Valid values 4 to 16
-        self._password_minimum_length: Optional[int] = None
-        # Minutes of inactivity before the screen times out.
-        self._password_minutes_of_inactivity_before_screen_timeout: Optional[int] = None
-        # Number of previous passwords to block. Valid values 0 to 24
-        self._password_previous_password_block_count: Optional[int] = None
-        # Indicates whether or not to require a password.
-        self._password_required: Optional[bool] = None
-        # Android required password type.
-        self._password_required_type: Optional[android_required_password_type.AndroidRequiredPasswordType] = None
-        # Number of sign in failures allowed before factory reset. Valid values 1 to 16
-        self._password_sign_in_failure_count_before_factory_reset: Optional[int] = None
-        # Indicates whether or not to block powering off the device.
-        self._power_off_blocked: Optional[bool] = None
-        # Indicates whether or not to block screenshots.
-        self._screen_capture_blocked: Optional[bool] = None
-        # Require the Android Verify apps feature is turned on.
-        self._security_require_verify_apps: Optional[bool] = None
-        # Indicates whether or not to block Google Backup.
-        self._storage_block_google_backup: Optional[bool] = None
-        # Indicates whether or not to block removable storage usage.
-        self._storage_block_removable_storage: Optional[bool] = None
-        # Indicates whether or not to require device encryption.
-        self._storage_require_device_encryption: Optional[bool] = None
-        # Indicates whether or not to require removable storage encryption.
-        self._storage_require_removable_storage_encryption: Optional[bool] = None
-        # Indicates whether or not to block the use of the Voice Assistant.
-        self._voice_assistant_blocked: Optional[bool] = None
-        # Indicates whether or not to block voice dialing.
-        self._voice_dialing_blocked: Optional[bool] = None
-        # Indicates whether or not to block the web browser's auto fill feature.
-        self._web_browser_block_autofill: Optional[bool] = None
-        # Indicates whether or not to block JavaScript within the web browser.
-        self._web_browser_block_java_script: Optional[bool] = None
-        # Indicates whether or not to block popups within the web browser.
-        self._web_browser_block_popups: Optional[bool] = None
-        # Indicates whether or not to block the web browser.
-        self._web_browser_blocked: Optional[bool] = None
-        # Web Browser Cookie Settings.
-        self._web_browser_cookie_settings: Optional[web_browser_cookie_settings.WebBrowserCookieSettings] = None
-        # Indicates whether or not to block syncing Wi-Fi.
-        self._wi_fi_blocked: Optional[bool] = None
-    
-    @property
-    def apps_block_clipboard_sharing(self,) -> Optional[bool]:
-        """
-        Gets the appsBlockClipboardSharing property value. Indicates whether or not to block clipboard sharing to copy and paste between applications.
-        Returns: Optional[bool]
-        """
-        return self._apps_block_clipboard_sharing
-    
-    @apps_block_clipboard_sharing.setter
-    def apps_block_clipboard_sharing(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the appsBlockClipboardSharing property value. Indicates whether or not to block clipboard sharing to copy and paste between applications.
-        Args:
-            value: Value to set for the apps_block_clipboard_sharing property.
-        """
-        self._apps_block_clipboard_sharing = value
-    
-    @property
-    def apps_block_copy_paste(self,) -> Optional[bool]:
-        """
-        Gets the appsBlockCopyPaste property value. Indicates whether or not to block copy and paste within applications.
-        Returns: Optional[bool]
-        """
-        return self._apps_block_copy_paste
-    
-    @apps_block_copy_paste.setter
-    def apps_block_copy_paste(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the appsBlockCopyPaste property value. Indicates whether or not to block copy and paste within applications.
-        Args:
-            value: Value to set for the apps_block_copy_paste property.
-        """
-        self._apps_block_copy_paste = value
-    
-    @property
-    def apps_block_you_tube(self,) -> Optional[bool]:
-        """
-        Gets the appsBlockYouTube property value. Indicates whether or not to block the YouTube app.
-        Returns: Optional[bool]
-        """
-        return self._apps_block_you_tube
-    
-    @apps_block_you_tube.setter
-    def apps_block_you_tube(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the appsBlockYouTube property value. Indicates whether or not to block the YouTube app.
-        Args:
-            value: Value to set for the apps_block_you_tube property.
-        """
-        self._apps_block_you_tube = value
-    
-    @property
-    def apps_hide_list(self,) -> Optional[List[app_list_item.AppListItem]]:
-        """
-        Gets the appsHideList property value. List of apps to be hidden on the KNOX device. This collection can contain a maximum of 500 elements.
-        Returns: Optional[List[app_list_item.AppListItem]]
-        """
-        return self._apps_hide_list
-    
-    @apps_hide_list.setter
-    def apps_hide_list(self,value: Optional[List[app_list_item.AppListItem]] = None) -> None:
-        """
-        Sets the appsHideList property value. List of apps to be hidden on the KNOX device. This collection can contain a maximum of 500 elements.
-        Args:
-            value: Value to set for the apps_hide_list property.
-        """
-        self._apps_hide_list = value
-    
-    @property
-    def apps_install_allow_list(self,) -> Optional[List[app_list_item.AppListItem]]:
-        """
-        Gets the appsInstallAllowList property value. List of apps which can be installed on the KNOX device. This collection can contain a maximum of 500 elements.
-        Returns: Optional[List[app_list_item.AppListItem]]
-        """
-        return self._apps_install_allow_list
-    
-    @apps_install_allow_list.setter
-    def apps_install_allow_list(self,value: Optional[List[app_list_item.AppListItem]] = None) -> None:
-        """
-        Sets the appsInstallAllowList property value. List of apps which can be installed on the KNOX device. This collection can contain a maximum of 500 elements.
-        Args:
-            value: Value to set for the apps_install_allow_list property.
-        """
-        self._apps_install_allow_list = value
-    
-    @property
-    def apps_launch_block_list(self,) -> Optional[List[app_list_item.AppListItem]]:
-        """
-        Gets the appsLaunchBlockList property value. List of apps which are blocked from being launched on the KNOX device. This collection can contain a maximum of 500 elements.
-        Returns: Optional[List[app_list_item.AppListItem]]
-        """
-        return self._apps_launch_block_list
-    
-    @apps_launch_block_list.setter
-    def apps_launch_block_list(self,value: Optional[List[app_list_item.AppListItem]] = None) -> None:
-        """
-        Sets the appsLaunchBlockList property value. List of apps which are blocked from being launched on the KNOX device. This collection can contain a maximum of 500 elements.
-        Args:
-            value: Value to set for the apps_launch_block_list property.
-        """
-        self._apps_launch_block_list = value
-    
-    @property
-    def bluetooth_blocked(self,) -> Optional[bool]:
-        """
-        Gets the bluetoothBlocked property value. Indicates whether or not to block Bluetooth.
-        Returns: Optional[bool]
-        """
-        return self._bluetooth_blocked
-    
-    @bluetooth_blocked.setter
-    def bluetooth_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the bluetoothBlocked property value. Indicates whether or not to block Bluetooth.
-        Args:
-            value: Value to set for the bluetooth_blocked property.
-        """
-        self._bluetooth_blocked = value
-    
-    @property
-    def camera_blocked(self,) -> Optional[bool]:
-        """
-        Gets the cameraBlocked property value. Indicates whether or not to block the use of the camera.
-        Returns: Optional[bool]
-        """
-        return self._camera_blocked
-    
-    @camera_blocked.setter
-    def camera_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the cameraBlocked property value. Indicates whether or not to block the use of the camera.
-        Args:
-            value: Value to set for the camera_blocked property.
-        """
-        self._camera_blocked = value
-    
-    @property
-    def cellular_block_data_roaming(self,) -> Optional[bool]:
-        """
-        Gets the cellularBlockDataRoaming property value. Indicates whether or not to block data roaming.
-        Returns: Optional[bool]
-        """
-        return self._cellular_block_data_roaming
-    
-    @cellular_block_data_roaming.setter
-    def cellular_block_data_roaming(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the cellularBlockDataRoaming property value. Indicates whether or not to block data roaming.
-        Args:
-            value: Value to set for the cellular_block_data_roaming property.
-        """
-        self._cellular_block_data_roaming = value
-    
-    @property
-    def cellular_block_messaging(self,) -> Optional[bool]:
-        """
-        Gets the cellularBlockMessaging property value. Indicates whether or not to block SMS/MMS messaging.
-        Returns: Optional[bool]
-        """
-        return self._cellular_block_messaging
-    
-    @cellular_block_messaging.setter
-    def cellular_block_messaging(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the cellularBlockMessaging property value. Indicates whether or not to block SMS/MMS messaging.
-        Args:
-            value: Value to set for the cellular_block_messaging property.
-        """
-        self._cellular_block_messaging = value
-    
-    @property
-    def cellular_block_voice_roaming(self,) -> Optional[bool]:
-        """
-        Gets the cellularBlockVoiceRoaming property value. Indicates whether or not to block voice roaming.
-        Returns: Optional[bool]
-        """
-        return self._cellular_block_voice_roaming
-    
-    @cellular_block_voice_roaming.setter
-    def cellular_block_voice_roaming(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the cellularBlockVoiceRoaming property value. Indicates whether or not to block voice roaming.
-        Args:
-            value: Value to set for the cellular_block_voice_roaming property.
-        """
-        self._cellular_block_voice_roaming = value
-    
-    @property
-    def cellular_block_wi_fi_tethering(self,) -> Optional[bool]:
-        """
-        Gets the cellularBlockWiFiTethering property value. Indicates whether or not to block syncing Wi-Fi tethering.
-        Returns: Optional[bool]
-        """
-        return self._cellular_block_wi_fi_tethering
-    
-    @cellular_block_wi_fi_tethering.setter
-    def cellular_block_wi_fi_tethering(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the cellularBlockWiFiTethering property value. Indicates whether or not to block syncing Wi-Fi tethering.
-        Args:
-            value: Value to set for the cellular_block_wi_fi_tethering property.
-        """
-        self._cellular_block_wi_fi_tethering = value
-    
-    @property
-    def compliant_app_list_type(self,) -> Optional[app_list_type.AppListType]:
-        """
-        Gets the compliantAppListType property value. Possible values of the compliance app list.
-        Returns: Optional[app_list_type.AppListType]
-        """
-        return self._compliant_app_list_type
-    
-    @compliant_app_list_type.setter
-    def compliant_app_list_type(self,value: Optional[app_list_type.AppListType] = None) -> None:
-        """
-        Sets the compliantAppListType property value. Possible values of the compliance app list.
-        Args:
-            value: Value to set for the compliant_app_list_type property.
-        """
-        self._compliant_app_list_type = value
-    
-    @property
-    def compliant_apps_list(self,) -> Optional[List[app_list_item.AppListItem]]:
-        """
-        Gets the compliantAppsList property value. List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
-        Returns: Optional[List[app_list_item.AppListItem]]
-        """
-        return self._compliant_apps_list
-    
-    @compliant_apps_list.setter
-    def compliant_apps_list(self,value: Optional[List[app_list_item.AppListItem]] = None) -> None:
-        """
-        Sets the compliantAppsList property value. List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
-        Args:
-            value: Value to set for the compliant_apps_list property.
-        """
-        self._compliant_apps_list = value
+    odata_type = "#microsoft.graph.androidGeneralDeviceConfiguration"
+    # Indicates whether or not to block clipboard sharing to copy and paste between applications.
+    apps_block_clipboard_sharing: Optional[bool] = None
+    # Indicates whether or not to block copy and paste within applications.
+    apps_block_copy_paste: Optional[bool] = None
+    # Indicates whether or not to block the YouTube app.
+    apps_block_you_tube: Optional[bool] = None
+    # List of apps to be hidden on the KNOX device. This collection can contain a maximum of 500 elements.
+    apps_hide_list: Optional[List[app_list_item.AppListItem]] = None
+    # List of apps which can be installed on the KNOX device. This collection can contain a maximum of 500 elements.
+    apps_install_allow_list: Optional[List[app_list_item.AppListItem]] = None
+    # List of apps which are blocked from being launched on the KNOX device. This collection can contain a maximum of 500 elements.
+    apps_launch_block_list: Optional[List[app_list_item.AppListItem]] = None
+    # Indicates whether or not to block Bluetooth.
+    bluetooth_blocked: Optional[bool] = None
+    # Indicates whether or not to block the use of the camera.
+    camera_blocked: Optional[bool] = None
+    # Indicates whether or not to block data roaming.
+    cellular_block_data_roaming: Optional[bool] = None
+    # Indicates whether or not to block SMS/MMS messaging.
+    cellular_block_messaging: Optional[bool] = None
+    # Indicates whether or not to block voice roaming.
+    cellular_block_voice_roaming: Optional[bool] = None
+    # Indicates whether or not to block syncing Wi-Fi tethering.
+    cellular_block_wi_fi_tethering: Optional[bool] = None
+    # Possible values of the compliance app list.
+    compliant_app_list_type: Optional[app_list_type.AppListType] = None
+    # List of apps in the compliance (either allow list or block list, controlled by CompliantAppListType). This collection can contain a maximum of 10000 elements.
+    compliant_apps_list: Optional[List[app_list_item.AppListItem]] = None
+    # Indicates whether or not to allow device sharing mode.
+    device_sharing_allowed: Optional[bool] = None
+    # Indicates whether or not to block diagnostic data submission.
+    diagnostic_data_block_submission: Optional[bool] = None
+    # Indicates whether or not to block user performing a factory reset.
+    factory_reset_blocked: Optional[bool] = None
+    # Indicates whether or not to block Google account auto sync.
+    google_account_block_auto_sync: Optional[bool] = None
+    # Indicates whether or not to block the Google Play store.
+    google_play_store_blocked: Optional[bool] = None
+    # A list of apps that will be allowed to run when the device is in Kiosk Mode. This collection can contain a maximum of 500 elements.
+    kiosk_mode_apps: Optional[List[app_list_item.AppListItem]] = None
+    # Indicates whether or not to block the screen sleep button while in Kiosk Mode.
+    kiosk_mode_block_sleep_button: Optional[bool] = None
+    # Indicates whether or not to block the volume buttons while in Kiosk Mode.
+    kiosk_mode_block_volume_buttons: Optional[bool] = None
+    # Indicates whether or not to block location services.
+    location_services_blocked: Optional[bool] = None
+    # Indicates whether or not to block Near-Field Communication.
+    nfc_blocked: Optional[bool] = None
+    # Indicates whether or not to block fingerprint unlock.
+    password_block_fingerprint_unlock: Optional[bool] = None
+    # Indicates whether or not to block Smart Lock and other trust agents.
+    password_block_trust_agents: Optional[bool] = None
+    # Number of days before the password expires. Valid values 1 to 365
+    password_expiration_days: Optional[int] = None
+    # Minimum length of passwords. Valid values 4 to 16
+    password_minimum_length: Optional[int] = None
+    # Minutes of inactivity before the screen times out.
+    password_minutes_of_inactivity_before_screen_timeout: Optional[int] = None
+    # Number of previous passwords to block. Valid values 0 to 24
+    password_previous_password_block_count: Optional[int] = None
+    # Indicates whether or not to require a password.
+    password_required: Optional[bool] = None
+    # Android required password type.
+    password_required_type: Optional[android_required_password_type.AndroidRequiredPasswordType] = None
+    # Number of sign in failures allowed before factory reset. Valid values 1 to 16
+    password_sign_in_failure_count_before_factory_reset: Optional[int] = None
+    # Indicates whether or not to block powering off the device.
+    power_off_blocked: Optional[bool] = None
+    # Indicates whether or not to block screenshots.
+    screen_capture_blocked: Optional[bool] = None
+    # Require the Android Verify apps feature is turned on.
+    security_require_verify_apps: Optional[bool] = None
+    # Indicates whether or not to block Google Backup.
+    storage_block_google_backup: Optional[bool] = None
+    # Indicates whether or not to block removable storage usage.
+    storage_block_removable_storage: Optional[bool] = None
+    # Indicates whether or not to require device encryption.
+    storage_require_device_encryption: Optional[bool] = None
+    # Indicates whether or not to require removable storage encryption.
+    storage_require_removable_storage_encryption: Optional[bool] = None
+    # Indicates whether or not to block the use of the Voice Assistant.
+    voice_assistant_blocked: Optional[bool] = None
+    # Indicates whether or not to block voice dialing.
+    voice_dialing_blocked: Optional[bool] = None
+    # Indicates whether or not to block the web browser's auto fill feature.
+    web_browser_block_autofill: Optional[bool] = None
+    # Indicates whether or not to block JavaScript within the web browser.
+    web_browser_block_java_script: Optional[bool] = None
+    # Indicates whether or not to block popups within the web browser.
+    web_browser_block_popups: Optional[bool] = None
+    # Indicates whether or not to block the web browser.
+    web_browser_blocked: Optional[bool] = None
+    # Web Browser Cookie Settings.
+    web_browser_cookie_settings: Optional[web_browser_cookie_settings.WebBrowserCookieSettings] = None
+    # Indicates whether or not to block syncing Wi-Fi.
+    wi_fi_blocked: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AndroidGeneralDeviceConfiguration:
@@ -360,57 +119,6 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AndroidGeneralDeviceConfiguration()
-    
-    @property
-    def device_sharing_allowed(self,) -> Optional[bool]:
-        """
-        Gets the deviceSharingAllowed property value. Indicates whether or not to allow device sharing mode.
-        Returns: Optional[bool]
-        """
-        return self._device_sharing_allowed
-    
-    @device_sharing_allowed.setter
-    def device_sharing_allowed(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the deviceSharingAllowed property value. Indicates whether or not to allow device sharing mode.
-        Args:
-            value: Value to set for the device_sharing_allowed property.
-        """
-        self._device_sharing_allowed = value
-    
-    @property
-    def diagnostic_data_block_submission(self,) -> Optional[bool]:
-        """
-        Gets the diagnosticDataBlockSubmission property value. Indicates whether or not to block diagnostic data submission.
-        Returns: Optional[bool]
-        """
-        return self._diagnostic_data_block_submission
-    
-    @diagnostic_data_block_submission.setter
-    def diagnostic_data_block_submission(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the diagnosticDataBlockSubmission property value. Indicates whether or not to block diagnostic data submission.
-        Args:
-            value: Value to set for the diagnostic_data_block_submission property.
-        """
-        self._diagnostic_data_block_submission = value
-    
-    @property
-    def factory_reset_blocked(self,) -> Optional[bool]:
-        """
-        Gets the factoryResetBlocked property value. Indicates whether or not to block user performing a factory reset.
-        Returns: Optional[bool]
-        """
-        return self._factory_reset_blocked
-    
-    @factory_reset_blocked.setter
-    def factory_reset_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the factoryResetBlocked property value. Indicates whether or not to block user performing a factory reset.
-        Args:
-            value: Value to set for the factory_reset_blocked property.
-        """
-        self._factory_reset_blocked = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -473,329 +181,6 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         fields.update(super_fields)
         return fields
     
-    @property
-    def google_account_block_auto_sync(self,) -> Optional[bool]:
-        """
-        Gets the googleAccountBlockAutoSync property value. Indicates whether or not to block Google account auto sync.
-        Returns: Optional[bool]
-        """
-        return self._google_account_block_auto_sync
-    
-    @google_account_block_auto_sync.setter
-    def google_account_block_auto_sync(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the googleAccountBlockAutoSync property value. Indicates whether or not to block Google account auto sync.
-        Args:
-            value: Value to set for the google_account_block_auto_sync property.
-        """
-        self._google_account_block_auto_sync = value
-    
-    @property
-    def google_play_store_blocked(self,) -> Optional[bool]:
-        """
-        Gets the googlePlayStoreBlocked property value. Indicates whether or not to block the Google Play store.
-        Returns: Optional[bool]
-        """
-        return self._google_play_store_blocked
-    
-    @google_play_store_blocked.setter
-    def google_play_store_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the googlePlayStoreBlocked property value. Indicates whether or not to block the Google Play store.
-        Args:
-            value: Value to set for the google_play_store_blocked property.
-        """
-        self._google_play_store_blocked = value
-    
-    @property
-    def kiosk_mode_apps(self,) -> Optional[List[app_list_item.AppListItem]]:
-        """
-        Gets the kioskModeApps property value. A list of apps that will be allowed to run when the device is in Kiosk Mode. This collection can contain a maximum of 500 elements.
-        Returns: Optional[List[app_list_item.AppListItem]]
-        """
-        return self._kiosk_mode_apps
-    
-    @kiosk_mode_apps.setter
-    def kiosk_mode_apps(self,value: Optional[List[app_list_item.AppListItem]] = None) -> None:
-        """
-        Sets the kioskModeApps property value. A list of apps that will be allowed to run when the device is in Kiosk Mode. This collection can contain a maximum of 500 elements.
-        Args:
-            value: Value to set for the kiosk_mode_apps property.
-        """
-        self._kiosk_mode_apps = value
-    
-    @property
-    def kiosk_mode_block_sleep_button(self,) -> Optional[bool]:
-        """
-        Gets the kioskModeBlockSleepButton property value. Indicates whether or not to block the screen sleep button while in Kiosk Mode.
-        Returns: Optional[bool]
-        """
-        return self._kiosk_mode_block_sleep_button
-    
-    @kiosk_mode_block_sleep_button.setter
-    def kiosk_mode_block_sleep_button(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the kioskModeBlockSleepButton property value. Indicates whether or not to block the screen sleep button while in Kiosk Mode.
-        Args:
-            value: Value to set for the kiosk_mode_block_sleep_button property.
-        """
-        self._kiosk_mode_block_sleep_button = value
-    
-    @property
-    def kiosk_mode_block_volume_buttons(self,) -> Optional[bool]:
-        """
-        Gets the kioskModeBlockVolumeButtons property value. Indicates whether or not to block the volume buttons while in Kiosk Mode.
-        Returns: Optional[bool]
-        """
-        return self._kiosk_mode_block_volume_buttons
-    
-    @kiosk_mode_block_volume_buttons.setter
-    def kiosk_mode_block_volume_buttons(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the kioskModeBlockVolumeButtons property value. Indicates whether or not to block the volume buttons while in Kiosk Mode.
-        Args:
-            value: Value to set for the kiosk_mode_block_volume_buttons property.
-        """
-        self._kiosk_mode_block_volume_buttons = value
-    
-    @property
-    def location_services_blocked(self,) -> Optional[bool]:
-        """
-        Gets the locationServicesBlocked property value. Indicates whether or not to block location services.
-        Returns: Optional[bool]
-        """
-        return self._location_services_blocked
-    
-    @location_services_blocked.setter
-    def location_services_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the locationServicesBlocked property value. Indicates whether or not to block location services.
-        Args:
-            value: Value to set for the location_services_blocked property.
-        """
-        self._location_services_blocked = value
-    
-    @property
-    def nfc_blocked(self,) -> Optional[bool]:
-        """
-        Gets the nfcBlocked property value. Indicates whether or not to block Near-Field Communication.
-        Returns: Optional[bool]
-        """
-        return self._nfc_blocked
-    
-    @nfc_blocked.setter
-    def nfc_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the nfcBlocked property value. Indicates whether or not to block Near-Field Communication.
-        Args:
-            value: Value to set for the nfc_blocked property.
-        """
-        self._nfc_blocked = value
-    
-    @property
-    def password_block_fingerprint_unlock(self,) -> Optional[bool]:
-        """
-        Gets the passwordBlockFingerprintUnlock property value. Indicates whether or not to block fingerprint unlock.
-        Returns: Optional[bool]
-        """
-        return self._password_block_fingerprint_unlock
-    
-    @password_block_fingerprint_unlock.setter
-    def password_block_fingerprint_unlock(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the passwordBlockFingerprintUnlock property value. Indicates whether or not to block fingerprint unlock.
-        Args:
-            value: Value to set for the password_block_fingerprint_unlock property.
-        """
-        self._password_block_fingerprint_unlock = value
-    
-    @property
-    def password_block_trust_agents(self,) -> Optional[bool]:
-        """
-        Gets the passwordBlockTrustAgents property value. Indicates whether or not to block Smart Lock and other trust agents.
-        Returns: Optional[bool]
-        """
-        return self._password_block_trust_agents
-    
-    @password_block_trust_agents.setter
-    def password_block_trust_agents(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the passwordBlockTrustAgents property value. Indicates whether or not to block Smart Lock and other trust agents.
-        Args:
-            value: Value to set for the password_block_trust_agents property.
-        """
-        self._password_block_trust_agents = value
-    
-    @property
-    def password_expiration_days(self,) -> Optional[int]:
-        """
-        Gets the passwordExpirationDays property value. Number of days before the password expires. Valid values 1 to 365
-        Returns: Optional[int]
-        """
-        return self._password_expiration_days
-    
-    @password_expiration_days.setter
-    def password_expiration_days(self,value: Optional[int] = None) -> None:
-        """
-        Sets the passwordExpirationDays property value. Number of days before the password expires. Valid values 1 to 365
-        Args:
-            value: Value to set for the password_expiration_days property.
-        """
-        self._password_expiration_days = value
-    
-    @property
-    def password_minimum_length(self,) -> Optional[int]:
-        """
-        Gets the passwordMinimumLength property value. Minimum length of passwords. Valid values 4 to 16
-        Returns: Optional[int]
-        """
-        return self._password_minimum_length
-    
-    @password_minimum_length.setter
-    def password_minimum_length(self,value: Optional[int] = None) -> None:
-        """
-        Sets the passwordMinimumLength property value. Minimum length of passwords. Valid values 4 to 16
-        Args:
-            value: Value to set for the password_minimum_length property.
-        """
-        self._password_minimum_length = value
-    
-    @property
-    def password_minutes_of_inactivity_before_screen_timeout(self,) -> Optional[int]:
-        """
-        Gets the passwordMinutesOfInactivityBeforeScreenTimeout property value. Minutes of inactivity before the screen times out.
-        Returns: Optional[int]
-        """
-        return self._password_minutes_of_inactivity_before_screen_timeout
-    
-    @password_minutes_of_inactivity_before_screen_timeout.setter
-    def password_minutes_of_inactivity_before_screen_timeout(self,value: Optional[int] = None) -> None:
-        """
-        Sets the passwordMinutesOfInactivityBeforeScreenTimeout property value. Minutes of inactivity before the screen times out.
-        Args:
-            value: Value to set for the password_minutes_of_inactivity_before_screen_timeout property.
-        """
-        self._password_minutes_of_inactivity_before_screen_timeout = value
-    
-    @property
-    def password_previous_password_block_count(self,) -> Optional[int]:
-        """
-        Gets the passwordPreviousPasswordBlockCount property value. Number of previous passwords to block. Valid values 0 to 24
-        Returns: Optional[int]
-        """
-        return self._password_previous_password_block_count
-    
-    @password_previous_password_block_count.setter
-    def password_previous_password_block_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the passwordPreviousPasswordBlockCount property value. Number of previous passwords to block. Valid values 0 to 24
-        Args:
-            value: Value to set for the password_previous_password_block_count property.
-        """
-        self._password_previous_password_block_count = value
-    
-    @property
-    def password_required(self,) -> Optional[bool]:
-        """
-        Gets the passwordRequired property value. Indicates whether or not to require a password.
-        Returns: Optional[bool]
-        """
-        return self._password_required
-    
-    @password_required.setter
-    def password_required(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the passwordRequired property value. Indicates whether or not to require a password.
-        Args:
-            value: Value to set for the password_required property.
-        """
-        self._password_required = value
-    
-    @property
-    def password_required_type(self,) -> Optional[android_required_password_type.AndroidRequiredPasswordType]:
-        """
-        Gets the passwordRequiredType property value. Android required password type.
-        Returns: Optional[android_required_password_type.AndroidRequiredPasswordType]
-        """
-        return self._password_required_type
-    
-    @password_required_type.setter
-    def password_required_type(self,value: Optional[android_required_password_type.AndroidRequiredPasswordType] = None) -> None:
-        """
-        Sets the passwordRequiredType property value. Android required password type.
-        Args:
-            value: Value to set for the password_required_type property.
-        """
-        self._password_required_type = value
-    
-    @property
-    def password_sign_in_failure_count_before_factory_reset(self,) -> Optional[int]:
-        """
-        Gets the passwordSignInFailureCountBeforeFactoryReset property value. Number of sign in failures allowed before factory reset. Valid values 1 to 16
-        Returns: Optional[int]
-        """
-        return self._password_sign_in_failure_count_before_factory_reset
-    
-    @password_sign_in_failure_count_before_factory_reset.setter
-    def password_sign_in_failure_count_before_factory_reset(self,value: Optional[int] = None) -> None:
-        """
-        Sets the passwordSignInFailureCountBeforeFactoryReset property value. Number of sign in failures allowed before factory reset. Valid values 1 to 16
-        Args:
-            value: Value to set for the password_sign_in_failure_count_before_factory_reset property.
-        """
-        self._password_sign_in_failure_count_before_factory_reset = value
-    
-    @property
-    def power_off_blocked(self,) -> Optional[bool]:
-        """
-        Gets the powerOffBlocked property value. Indicates whether or not to block powering off the device.
-        Returns: Optional[bool]
-        """
-        return self._power_off_blocked
-    
-    @power_off_blocked.setter
-    def power_off_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the powerOffBlocked property value. Indicates whether or not to block powering off the device.
-        Args:
-            value: Value to set for the power_off_blocked property.
-        """
-        self._power_off_blocked = value
-    
-    @property
-    def screen_capture_blocked(self,) -> Optional[bool]:
-        """
-        Gets the screenCaptureBlocked property value. Indicates whether or not to block screenshots.
-        Returns: Optional[bool]
-        """
-        return self._screen_capture_blocked
-    
-    @screen_capture_blocked.setter
-    def screen_capture_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the screenCaptureBlocked property value. Indicates whether or not to block screenshots.
-        Args:
-            value: Value to set for the screen_capture_blocked property.
-        """
-        self._screen_capture_blocked = value
-    
-    @property
-    def security_require_verify_apps(self,) -> Optional[bool]:
-        """
-        Gets the securityRequireVerifyApps property value. Require the Android Verify apps feature is turned on.
-        Returns: Optional[bool]
-        """
-        return self._security_require_verify_apps
-    
-    @security_require_verify_apps.setter
-    def security_require_verify_apps(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the securityRequireVerifyApps property value. Require the Android Verify apps feature is turned on.
-        Args:
-            value: Value to set for the security_require_verify_apps property.
-        """
-        self._security_require_verify_apps = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -853,209 +238,5 @@ class AndroidGeneralDeviceConfiguration(device_configuration.DeviceConfiguration
         writer.write_bool_value("webBrowserBlockPopups", self.web_browser_block_popups)
         writer.write_enum_value("webBrowserCookieSettings", self.web_browser_cookie_settings)
         writer.write_bool_value("wiFiBlocked", self.wi_fi_blocked)
-    
-    @property
-    def storage_block_google_backup(self,) -> Optional[bool]:
-        """
-        Gets the storageBlockGoogleBackup property value. Indicates whether or not to block Google Backup.
-        Returns: Optional[bool]
-        """
-        return self._storage_block_google_backup
-    
-    @storage_block_google_backup.setter
-    def storage_block_google_backup(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the storageBlockGoogleBackup property value. Indicates whether or not to block Google Backup.
-        Args:
-            value: Value to set for the storage_block_google_backup property.
-        """
-        self._storage_block_google_backup = value
-    
-    @property
-    def storage_block_removable_storage(self,) -> Optional[bool]:
-        """
-        Gets the storageBlockRemovableStorage property value. Indicates whether or not to block removable storage usage.
-        Returns: Optional[bool]
-        """
-        return self._storage_block_removable_storage
-    
-    @storage_block_removable_storage.setter
-    def storage_block_removable_storage(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the storageBlockRemovableStorage property value. Indicates whether or not to block removable storage usage.
-        Args:
-            value: Value to set for the storage_block_removable_storage property.
-        """
-        self._storage_block_removable_storage = value
-    
-    @property
-    def storage_require_device_encryption(self,) -> Optional[bool]:
-        """
-        Gets the storageRequireDeviceEncryption property value. Indicates whether or not to require device encryption.
-        Returns: Optional[bool]
-        """
-        return self._storage_require_device_encryption
-    
-    @storage_require_device_encryption.setter
-    def storage_require_device_encryption(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the storageRequireDeviceEncryption property value. Indicates whether or not to require device encryption.
-        Args:
-            value: Value to set for the storage_require_device_encryption property.
-        """
-        self._storage_require_device_encryption = value
-    
-    @property
-    def storage_require_removable_storage_encryption(self,) -> Optional[bool]:
-        """
-        Gets the storageRequireRemovableStorageEncryption property value. Indicates whether or not to require removable storage encryption.
-        Returns: Optional[bool]
-        """
-        return self._storage_require_removable_storage_encryption
-    
-    @storage_require_removable_storage_encryption.setter
-    def storage_require_removable_storage_encryption(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the storageRequireRemovableStorageEncryption property value. Indicates whether or not to require removable storage encryption.
-        Args:
-            value: Value to set for the storage_require_removable_storage_encryption property.
-        """
-        self._storage_require_removable_storage_encryption = value
-    
-    @property
-    def voice_assistant_blocked(self,) -> Optional[bool]:
-        """
-        Gets the voiceAssistantBlocked property value. Indicates whether or not to block the use of the Voice Assistant.
-        Returns: Optional[bool]
-        """
-        return self._voice_assistant_blocked
-    
-    @voice_assistant_blocked.setter
-    def voice_assistant_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the voiceAssistantBlocked property value. Indicates whether or not to block the use of the Voice Assistant.
-        Args:
-            value: Value to set for the voice_assistant_blocked property.
-        """
-        self._voice_assistant_blocked = value
-    
-    @property
-    def voice_dialing_blocked(self,) -> Optional[bool]:
-        """
-        Gets the voiceDialingBlocked property value. Indicates whether or not to block voice dialing.
-        Returns: Optional[bool]
-        """
-        return self._voice_dialing_blocked
-    
-    @voice_dialing_blocked.setter
-    def voice_dialing_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the voiceDialingBlocked property value. Indicates whether or not to block voice dialing.
-        Args:
-            value: Value to set for the voice_dialing_blocked property.
-        """
-        self._voice_dialing_blocked = value
-    
-    @property
-    def web_browser_block_autofill(self,) -> Optional[bool]:
-        """
-        Gets the webBrowserBlockAutofill property value. Indicates whether or not to block the web browser's auto fill feature.
-        Returns: Optional[bool]
-        """
-        return self._web_browser_block_autofill
-    
-    @web_browser_block_autofill.setter
-    def web_browser_block_autofill(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the webBrowserBlockAutofill property value. Indicates whether or not to block the web browser's auto fill feature.
-        Args:
-            value: Value to set for the web_browser_block_autofill property.
-        """
-        self._web_browser_block_autofill = value
-    
-    @property
-    def web_browser_block_java_script(self,) -> Optional[bool]:
-        """
-        Gets the webBrowserBlockJavaScript property value. Indicates whether or not to block JavaScript within the web browser.
-        Returns: Optional[bool]
-        """
-        return self._web_browser_block_java_script
-    
-    @web_browser_block_java_script.setter
-    def web_browser_block_java_script(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the webBrowserBlockJavaScript property value. Indicates whether or not to block JavaScript within the web browser.
-        Args:
-            value: Value to set for the web_browser_block_java_script property.
-        """
-        self._web_browser_block_java_script = value
-    
-    @property
-    def web_browser_block_popups(self,) -> Optional[bool]:
-        """
-        Gets the webBrowserBlockPopups property value. Indicates whether or not to block popups within the web browser.
-        Returns: Optional[bool]
-        """
-        return self._web_browser_block_popups
-    
-    @web_browser_block_popups.setter
-    def web_browser_block_popups(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the webBrowserBlockPopups property value. Indicates whether or not to block popups within the web browser.
-        Args:
-            value: Value to set for the web_browser_block_popups property.
-        """
-        self._web_browser_block_popups = value
-    
-    @property
-    def web_browser_blocked(self,) -> Optional[bool]:
-        """
-        Gets the webBrowserBlocked property value. Indicates whether or not to block the web browser.
-        Returns: Optional[bool]
-        """
-        return self._web_browser_blocked
-    
-    @web_browser_blocked.setter
-    def web_browser_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the webBrowserBlocked property value. Indicates whether or not to block the web browser.
-        Args:
-            value: Value to set for the web_browser_blocked property.
-        """
-        self._web_browser_blocked = value
-    
-    @property
-    def web_browser_cookie_settings(self,) -> Optional[web_browser_cookie_settings.WebBrowserCookieSettings]:
-        """
-        Gets the webBrowserCookieSettings property value. Web Browser Cookie Settings.
-        Returns: Optional[web_browser_cookie_settings.WebBrowserCookieSettings]
-        """
-        return self._web_browser_cookie_settings
-    
-    @web_browser_cookie_settings.setter
-    def web_browser_cookie_settings(self,value: Optional[web_browser_cookie_settings.WebBrowserCookieSettings] = None) -> None:
-        """
-        Sets the webBrowserCookieSettings property value. Web Browser Cookie Settings.
-        Args:
-            value: Value to set for the web_browser_cookie_settings property.
-        """
-        self._web_browser_cookie_settings = value
-    
-    @property
-    def wi_fi_blocked(self,) -> Optional[bool]:
-        """
-        Gets the wiFiBlocked property value. Indicates whether or not to block syncing Wi-Fi.
-        Returns: Optional[bool]
-        """
-        return self._wi_fi_blocked
-    
-    @wi_fi_blocked.setter
-    def wi_fi_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the wiFiBlocked property value. Indicates whether or not to block syncing Wi-Fi.
-        Args:
-            value: Value to set for the wi_fi_blocked property.
-        """
-        self._wi_fi_blocked = value
     
 

@@ -1,45 +1,26 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import identity_set
 
+@dataclass
 class IncomingContext(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new incomingContext and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The ID of the participant that is under observation. Read-only.
-        self._observed_participant_id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The identity that the call is happening on behalf of.
-        self._on_behalf_of: Optional[identity_set.IdentitySet] = None
-        # The ID of the participant that triggered the incoming call. Read-only.
-        self._source_participant_id: Optional[str] = None
-        # The identity that transferred the call.
-        self._transferor: Optional[identity_set.IdentitySet] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The ID of the participant that is under observation. Read-only.
+    observed_participant_id: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The identity that the call is happening on behalf of.
+    on_behalf_of: Optional[identity_set.IdentitySet] = None
+    # The ID of the participant that triggered the incoming call. Read-only.
+    source_participant_id: Optional[str] = None
+    # The identity that transferred the call.
+    transferor: Optional[identity_set.IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IncomingContext:
@@ -69,57 +50,6 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def observed_participant_id(self,) -> Optional[str]:
-        """
-        Gets the observedParticipantId property value. The ID of the participant that is under observation. Read-only.
-        Returns: Optional[str]
-        """
-        return self._observed_participant_id
-    
-    @observed_participant_id.setter
-    def observed_participant_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the observedParticipantId property value. The ID of the participant that is under observation. Read-only.
-        Args:
-            value: Value to set for the observed_participant_id property.
-        """
-        self._observed_participant_id = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def on_behalf_of(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the onBehalfOf property value. The identity that the call is happening on behalf of.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._on_behalf_of
-    
-    @on_behalf_of.setter
-    def on_behalf_of(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the onBehalfOf property value. The identity that the call is happening on behalf of.
-        Args:
-            value: Value to set for the on_behalf_of property.
-        """
-        self._on_behalf_of = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -134,39 +64,5 @@ class IncomingContext(AdditionalDataHolder, Parsable):
         writer.write_str_value("sourceParticipantId", self.source_participant_id)
         writer.write_object_value("transferor", self.transferor)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def source_participant_id(self,) -> Optional[str]:
-        """
-        Gets the sourceParticipantId property value. The ID of the participant that triggered the incoming call. Read-only.
-        Returns: Optional[str]
-        """
-        return self._source_participant_id
-    
-    @source_participant_id.setter
-    def source_participant_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the sourceParticipantId property value. The ID of the participant that triggered the incoming call. Read-only.
-        Args:
-            value: Value to set for the source_participant_id property.
-        """
-        self._source_participant_id = value
-    
-    @property
-    def transferor(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the transferor property value. The identity that transferred the call.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._transferor
-    
-    @transferor.setter
-    def transferor(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the transferor property value. The identity that transferred the call.
-        Args:
-            value: Value to set for the transferor property.
-        """
-        self._transferor = value
     
 

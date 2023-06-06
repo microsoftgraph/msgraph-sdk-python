@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ConditionalAccessClientApp(Enum):
+class ConditionalAccessClientApp(str, Enum):
     All = "all",
     Browser = "browser",
     MobileAppsAndDesktopClients = "mobileAppsAndDesktopClients",

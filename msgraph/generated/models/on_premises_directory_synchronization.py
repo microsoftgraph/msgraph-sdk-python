@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,35 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class OnPremisesDirectorySynchronization(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new onPremisesDirectorySynchronization and sets the default values.
-        """
-        super().__init__()
-        # Consists of configurations that can be fine-tuned and impact the on-premises directory synchronization process for a tenant.
-        self._configuration: Optional[on_premises_directory_synchronization_configuration.OnPremisesDirectorySynchronizationConfiguration] = None
-        # The features property
-        self._features: Optional[on_premises_directory_synchronization_feature.OnPremisesDirectorySynchronizationFeature] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def configuration(self,) -> Optional[on_premises_directory_synchronization_configuration.OnPremisesDirectorySynchronizationConfiguration]:
-        """
-        Gets the configuration property value. Consists of configurations that can be fine-tuned and impact the on-premises directory synchronization process for a tenant.
-        Returns: Optional[on_premises_directory_synchronization_configuration.OnPremisesDirectorySynchronizationConfiguration]
-        """
-        return self._configuration
-    
-    @configuration.setter
-    def configuration(self,value: Optional[on_premises_directory_synchronization_configuration.OnPremisesDirectorySynchronizationConfiguration] = None) -> None:
-        """
-        Sets the configuration property value. Consists of configurations that can be fine-tuned and impact the on-premises directory synchronization process for a tenant.
-        Args:
-            value: Value to set for the configuration property.
-        """
-        self._configuration = value
+    # Consists of configurations that can be fine-tuned and impact the on-premises directory synchronization process for a tenant.
+    configuration: Optional[on_premises_directory_synchronization_configuration.OnPremisesDirectorySynchronizationConfiguration] = None
+    # The features property
+    features: Optional[on_premises_directory_synchronization_feature.OnPremisesDirectorySynchronizationFeature] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnPremisesDirectorySynchronization:
@@ -48,23 +28,6 @@ class OnPremisesDirectorySynchronization(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OnPremisesDirectorySynchronization()
-    
-    @property
-    def features(self,) -> Optional[on_premises_directory_synchronization_feature.OnPremisesDirectorySynchronizationFeature]:
-        """
-        Gets the features property value. The features property
-        Returns: Optional[on_premises_directory_synchronization_feature.OnPremisesDirectorySynchronizationFeature]
-        """
-        return self._features
-    
-    @features.setter
-    def features(self,value: Optional[on_premises_directory_synchronization_feature.OnPremisesDirectorySynchronizationFeature] = None) -> None:
-        """
-        Sets the features property value. The features property
-        Args:
-            value: Value to set for the features property.
-        """
-        self._features = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """

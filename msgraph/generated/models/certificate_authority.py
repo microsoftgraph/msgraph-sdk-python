@@ -1,80 +1,27 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class CertificateAuthority(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new certificateAuthority and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Required. The base64 encoded string representing the public certificate.
-        self._certificate: Optional[bytes] = None
-        # The URL of the certificate revocation list.
-        self._certificate_revocation_list_url: Optional[str] = None
-        # The URL contains the list of all revoked certificates since the last time a full certificate revocaton list was created.
-        self._delta_certificate_revocation_list_url: Optional[str] = None
-        # Required. true if the trusted certificate is a root authority, false if the trusted certificate is an intermediate authority.
-        self._is_root_authority: Optional[bool] = None
-        # The issuer of the certificate, calculated from the certificate value. Read-only.
-        self._issuer: Optional[str] = None
-        # The subject key identifier of the certificate, calculated from the certificate value. Read-only.
-        self._issuer_ski: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def certificate(self,) -> Optional[bytes]:
-        """
-        Gets the certificate property value. Required. The base64 encoded string representing the public certificate.
-        Returns: Optional[bytes]
-        """
-        return self._certificate
-    
-    @certificate.setter
-    def certificate(self,value: Optional[bytes] = None) -> None:
-        """
-        Sets the certificate property value. Required. The base64 encoded string representing the public certificate.
-        Args:
-            value: Value to set for the certificate property.
-        """
-        self._certificate = value
-    
-    @property
-    def certificate_revocation_list_url(self,) -> Optional[str]:
-        """
-        Gets the certificateRevocationListUrl property value. The URL of the certificate revocation list.
-        Returns: Optional[str]
-        """
-        return self._certificate_revocation_list_url
-    
-    @certificate_revocation_list_url.setter
-    def certificate_revocation_list_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the certificateRevocationListUrl property value. The URL of the certificate revocation list.
-        Args:
-            value: Value to set for the certificate_revocation_list_url property.
-        """
-        self._certificate_revocation_list_url = value
+    # Required. The base64 encoded string representing the public certificate.
+    certificate: Optional[bytes] = None
+    # The URL of the certificate revocation list.
+    certificate_revocation_list_url: Optional[str] = None
+    # The URL contains the list of all revoked certificates since the last time a full certificate revocaton list was created.
+    delta_certificate_revocation_list_url: Optional[str] = None
+    # Required. true if the trusted certificate is a root authority, false if the trusted certificate is an intermediate authority.
+    is_root_authority: Optional[bool] = None
+    # The issuer of the certificate, calculated from the certificate value. Read-only.
+    issuer: Optional[str] = None
+    # The subject key identifier of the certificate, calculated from the certificate value. Read-only.
+    issuer_ski: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CertificateAuthority:
@@ -87,23 +34,6 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CertificateAuthority()
-    
-    @property
-    def delta_certificate_revocation_list_url(self,) -> Optional[str]:
-        """
-        Gets the deltaCertificateRevocationListUrl property value. The URL contains the list of all revoked certificates since the last time a full certificate revocaton list was created.
-        Returns: Optional[str]
-        """
-        return self._delta_certificate_revocation_list_url
-    
-    @delta_certificate_revocation_list_url.setter
-    def delta_certificate_revocation_list_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the deltaCertificateRevocationListUrl property value. The URL contains the list of all revoked certificates since the last time a full certificate revocaton list was created.
-        Args:
-            value: Value to set for the delta_certificate_revocation_list_url property.
-        """
-        self._delta_certificate_revocation_list_url = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -120,74 +50,6 @@ class CertificateAuthority(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def is_root_authority(self,) -> Optional[bool]:
-        """
-        Gets the isRootAuthority property value. Required. true if the trusted certificate is a root authority, false if the trusted certificate is an intermediate authority.
-        Returns: Optional[bool]
-        """
-        return self._is_root_authority
-    
-    @is_root_authority.setter
-    def is_root_authority(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isRootAuthority property value. Required. true if the trusted certificate is a root authority, false if the trusted certificate is an intermediate authority.
-        Args:
-            value: Value to set for the is_root_authority property.
-        """
-        self._is_root_authority = value
-    
-    @property
-    def issuer(self,) -> Optional[str]:
-        """
-        Gets the issuer property value. The issuer of the certificate, calculated from the certificate value. Read-only.
-        Returns: Optional[str]
-        """
-        return self._issuer
-    
-    @issuer.setter
-    def issuer(self,value: Optional[str] = None) -> None:
-        """
-        Sets the issuer property value. The issuer of the certificate, calculated from the certificate value. Read-only.
-        Args:
-            value: Value to set for the issuer property.
-        """
-        self._issuer = value
-    
-    @property
-    def issuer_ski(self,) -> Optional[str]:
-        """
-        Gets the issuerSki property value. The subject key identifier of the certificate, calculated from the certificate value. Read-only.
-        Returns: Optional[str]
-        """
-        return self._issuer_ski
-    
-    @issuer_ski.setter
-    def issuer_ski(self,value: Optional[str] = None) -> None:
-        """
-        Sets the issuerSki property value. The subject key identifier of the certificate, calculated from the certificate value. Read-only.
-        Args:
-            value: Value to set for the issuer_ski property.
-        """
-        self._issuer_ski = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

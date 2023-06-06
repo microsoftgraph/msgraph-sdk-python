@@ -1,50 +1,31 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import windows_information_protection_desktop_app, windows_information_protection_store_app
 
+@dataclass
 class WindowsInformationProtectionApp(AdditionalDataHolder, Parsable):
     """
     App for Windows information protection
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new windowsInformationProtectionApp and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # If true, app is denied protection or exemption.
-        self._denied: Optional[bool] = None
-        # The app's description.
-        self._description: Optional[str] = None
-        # App display name.
-        self._display_name: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The product name.
-        self._product_name: Optional[str] = None
-        # The publisher name
-        self._publisher_name: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # If true, app is denied protection or exemption.
+    denied: Optional[bool] = None
+    # The app's description.
+    description: Optional[str] = None
+    # App display name.
+    display_name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The product name.
+    product_name: Optional[str] = None
+    # The publisher name
+    publisher_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionApp:
@@ -69,57 +50,6 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, Parsable):
                 return windows_information_protection_store_app.WindowsInformationProtectionStoreApp()
         return WindowsInformationProtectionApp()
     
-    @property
-    def denied(self,) -> Optional[bool]:
-        """
-        Gets the denied property value. If true, app is denied protection or exemption.
-        Returns: Optional[bool]
-        """
-        return self._denied
-    
-    @denied.setter
-    def denied(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the denied property value. If true, app is denied protection or exemption.
-        Args:
-            value: Value to set for the denied property.
-        """
-        self._denied = value
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. The app's description.
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. The app's description.
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. App display name.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. App display name.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -136,57 +66,6 @@ class WindowsInformationProtectionApp(AdditionalDataHolder, Parsable):
             "publisherName": lambda n : setattr(self, 'publisher_name', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def product_name(self,) -> Optional[str]:
-        """
-        Gets the productName property value. The product name.
-        Returns: Optional[str]
-        """
-        return self._product_name
-    
-    @product_name.setter
-    def product_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the productName property value. The product name.
-        Args:
-            value: Value to set for the product_name property.
-        """
-        self._product_name = value
-    
-    @property
-    def publisher_name(self,) -> Optional[str]:
-        """
-        Gets the publisherName property value. The publisher name
-        Returns: Optional[str]
-        """
-        return self._publisher_name
-    
-    @publisher_name.setter
-    def publisher_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the publisherName property value. The publisher name
-        Args:
-            value: Value to set for the publisher_name property.
-        """
-        self._publisher_name = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

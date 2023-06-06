@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import device_configuration
 
+@dataclass
 class Windows10EnterpriseModernAppManagementConfiguration(device_configuration.DeviceConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Windows10EnterpriseModernAppManagementConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windows10EnterpriseModernAppManagementConfiguration"
-        # Indicates whether or not to uninstall a fixed list of built-in Windows apps.
-        self._uninstall_built_in_apps: Optional[bool] = None
+    odata_type = "#microsoft.graph.windows10EnterpriseModernAppManagementConfiguration"
+    # Indicates whether or not to uninstall a fixed list of built-in Windows apps.
+    uninstall_built_in_apps: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10EnterpriseModernAppManagementConfiguration:
@@ -53,22 +50,5 @@ class Windows10EnterpriseModernAppManagementConfiguration(device_configuration.D
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("uninstallBuiltInApps", self.uninstall_built_in_apps)
-    
-    @property
-    def uninstall_built_in_apps(self,) -> Optional[bool]:
-        """
-        Gets the uninstallBuiltInApps property value. Indicates whether or not to uninstall a fixed list of built-in Windows apps.
-        Returns: Optional[bool]
-        """
-        return self._uninstall_built_in_apps
-    
-    @uninstall_built_in_apps.setter
-    def uninstall_built_in_apps(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the uninstallBuiltInApps property value. Indicates whether or not to uninstall a fixed list of built-in Windows apps.
-        Args:
-            value: Value to set for the uninstall_built_in_apps property.
-        """
-        self._uninstall_built_in_apps = value
     
 

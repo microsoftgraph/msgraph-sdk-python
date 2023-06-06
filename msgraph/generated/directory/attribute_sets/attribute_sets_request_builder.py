@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -54,7 +54,7 @@ class AttributeSetsRequestBuilder():
     
     async def get(self,request_configuration: Optional[AttributeSetsRequestBuilderGetRequestConfiguration] = None) -> Optional[attribute_set_collection_response.AttributeSetCollectionResponse]:
         """
-        Get attributeSets from directory
+        Get a list of the attributeSet objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[attribute_set_collection_response.AttributeSetCollectionResponse]
@@ -76,7 +76,7 @@ class AttributeSetsRequestBuilder():
     
     async def post(self,body: Optional[attribute_set.AttributeSet] = None, request_configuration: Optional[AttributeSetsRequestBuilderPostRequestConfiguration] = None) -> Optional[attribute_set.AttributeSet]:
         """
-        Create new navigation property to attributeSets for directory
+        Create a new attributeSet object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class AttributeSetsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AttributeSetsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get attributeSets from directory
+        Get a list of the attributeSet objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class AttributeSetsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[attribute_set.AttributeSet] = None, request_configuration: Optional[AttributeSetsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to attributeSets for directory
+        Create a new attributeSet object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class AttributeSetsRequestBuilder():
     @dataclass
     class AttributeSetsRequestBuilderGetQueryParameters():
         """
-        Get attributeSets from directory
+        Get a list of the attributeSet objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

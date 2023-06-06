@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import named_location
 
+@dataclass
 class IpNamedLocation(named_location.NamedLocation):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IpNamedLocation and sets the default values.
-        """
-        super().__init__()
-        # List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC5969. Required.
-        self._ip_ranges: Optional[List[ip_range.IpRange]] = None
-        # true if this location is explicitly trusted. Optional. Default value is false.
-        self._is_trusted: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC5969. Required.
+    ip_ranges: Optional[List[ip_range.IpRange]] = None
+    # true if this location is explicitly trusted. Optional. Default value is false.
+    is_trusted: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IpNamedLocation:
@@ -46,40 +43,6 @@ class IpNamedLocation(named_location.NamedLocation):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def ip_ranges(self,) -> Optional[List[ip_range.IpRange]]:
-        """
-        Gets the ipRanges property value. List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC5969. Required.
-        Returns: Optional[List[ip_range.IpRange]]
-        """
-        return self._ip_ranges
-    
-    @ip_ranges.setter
-    def ip_ranges(self,value: Optional[List[ip_range.IpRange]] = None) -> None:
-        """
-        Sets the ipRanges property value. List of IP address ranges in IPv4 CIDR format (e.g. 1.2.3.4/32) or any allowable IPv6 format from IETF RFC5969. Required.
-        Args:
-            value: Value to set for the ip_ranges property.
-        """
-        self._ip_ranges = value
-    
-    @property
-    def is_trusted(self,) -> Optional[bool]:
-        """
-        Gets the isTrusted property value. true if this location is explicitly trusted. Optional. Default value is false.
-        Returns: Optional[bool]
-        """
-        return self._is_trusted
-    
-    @is_trusted.setter
-    def is_trusted(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isTrusted property value. true if this location is explicitly trusted. Optional. Default value is false.
-        Args:
-            value: Value to set for the is_trusted property.
-        """
-        self._is_trusted = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

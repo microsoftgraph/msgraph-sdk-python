@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -6,153 +7,31 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from . import print_job_processing_state, user_identity
 
+@dataclass
 class ArchivedPrintJob(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new archivedPrintJob and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # True if the job was acquired by a printer; false otherwise. Read-only.
-        self._acquired_by_printer: Optional[bool] = None
-        # The dateTimeOffset when the job was acquired by the printer, if any. Read-only.
-        self._acquired_date_time: Optional[datetime] = None
-        # The dateTimeOffset when the job was completed, canceled or aborted. Read-only.
-        self._completion_date_time: Optional[datetime] = None
-        # The number of copies that were printed. Read-only.
-        self._copies_printed: Optional[int] = None
-        # The user who created the print job. Read-only.
-        self._created_by: Optional[user_identity.UserIdentity] = None
-        # The dateTimeOffset when the job was created. Read-only.
-        self._created_date_time: Optional[datetime] = None
-        # The archived print job's GUID. Read-only.
-        self._id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The printer ID that the job was queued for. Read-only.
-        self._printer_id: Optional[str] = None
-        # The processingState property
-        self._processing_state: Optional[print_job_processing_state.PrintJobProcessingState] = None
-    
-    @property
-    def acquired_by_printer(self,) -> Optional[bool]:
-        """
-        Gets the acquiredByPrinter property value. True if the job was acquired by a printer; false otherwise. Read-only.
-        Returns: Optional[bool]
-        """
-        return self._acquired_by_printer
-    
-    @acquired_by_printer.setter
-    def acquired_by_printer(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the acquiredByPrinter property value. True if the job was acquired by a printer; false otherwise. Read-only.
-        Args:
-            value: Value to set for the acquired_by_printer property.
-        """
-        self._acquired_by_printer = value
-    
-    @property
-    def acquired_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the acquiredDateTime property value. The dateTimeOffset when the job was acquired by the printer, if any. Read-only.
-        Returns: Optional[datetime]
-        """
-        return self._acquired_date_time
-    
-    @acquired_date_time.setter
-    def acquired_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the acquiredDateTime property value. The dateTimeOffset when the job was acquired by the printer, if any. Read-only.
-        Args:
-            value: Value to set for the acquired_date_time property.
-        """
-        self._acquired_date_time = value
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def completion_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the completionDateTime property value. The dateTimeOffset when the job was completed, canceled or aborted. Read-only.
-        Returns: Optional[datetime]
-        """
-        return self._completion_date_time
-    
-    @completion_date_time.setter
-    def completion_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the completionDateTime property value. The dateTimeOffset when the job was completed, canceled or aborted. Read-only.
-        Args:
-            value: Value to set for the completion_date_time property.
-        """
-        self._completion_date_time = value
-    
-    @property
-    def copies_printed(self,) -> Optional[int]:
-        """
-        Gets the copiesPrinted property value. The number of copies that were printed. Read-only.
-        Returns: Optional[int]
-        """
-        return self._copies_printed
-    
-    @copies_printed.setter
-    def copies_printed(self,value: Optional[int] = None) -> None:
-        """
-        Sets the copiesPrinted property value. The number of copies that were printed. Read-only.
-        Args:
-            value: Value to set for the copies_printed property.
-        """
-        self._copies_printed = value
-    
-    @property
-    def created_by(self,) -> Optional[user_identity.UserIdentity]:
-        """
-        Gets the createdBy property value. The user who created the print job. Read-only.
-        Returns: Optional[user_identity.UserIdentity]
-        """
-        return self._created_by
-    
-    @created_by.setter
-    def created_by(self,value: Optional[user_identity.UserIdentity] = None) -> None:
-        """
-        Sets the createdBy property value. The user who created the print job. Read-only.
-        Args:
-            value: Value to set for the created_by property.
-        """
-        self._created_by = value
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. The dateTimeOffset when the job was created. Read-only.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. The dateTimeOffset when the job was created. Read-only.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    # True if the job was acquired by a printer; false otherwise. Read-only.
+    acquired_by_printer: Optional[bool] = None
+    # The dateTimeOffset when the job was acquired by the printer, if any. Read-only.
+    acquired_date_time: Optional[datetime] = None
+    # The dateTimeOffset when the job was completed, canceled or aborted. Read-only.
+    completion_date_time: Optional[datetime] = None
+    # The number of copies that were printed. Read-only.
+    copies_printed: Optional[int] = None
+    # The user who created the print job. Read-only.
+    created_by: Optional[user_identity.UserIdentity] = None
+    # The dateTimeOffset when the job was created. Read-only.
+    created_date_time: Optional[datetime] = None
+    # The archived print job's GUID. Read-only.
+    id: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The printer ID that the job was queued for. Read-only.
+    printer_id: Optional[str] = None
+    # The processingState property
+    processing_state: Optional[print_job_processing_state.PrintJobProcessingState] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ArchivedPrintJob:
@@ -186,74 +65,6 @@ class ArchivedPrintJob(AdditionalDataHolder, Parsable):
             "processingState": lambda n : setattr(self, 'processing_state', n.get_enum_value(print_job_processing_state.PrintJobProcessingState)),
         }
         return fields
-    
-    @property
-    def id(self,) -> Optional[str]:
-        """
-        Gets the id property value. The archived print job's GUID. Read-only.
-        Returns: Optional[str]
-        """
-        return self._id
-    
-    @id.setter
-    def id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the id property value. The archived print job's GUID. Read-only.
-        Args:
-            value: Value to set for the id property.
-        """
-        self._id = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def printer_id(self,) -> Optional[str]:
-        """
-        Gets the printerId property value. The printer ID that the job was queued for. Read-only.
-        Returns: Optional[str]
-        """
-        return self._printer_id
-    
-    @printer_id.setter
-    def printer_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the printerId property value. The printer ID that the job was queued for. Read-only.
-        Args:
-            value: Value to set for the printer_id property.
-        """
-        self._printer_id = value
-    
-    @property
-    def processing_state(self,) -> Optional[print_job_processing_state.PrintJobProcessingState]:
-        """
-        Gets the processingState property value. The processingState property
-        Returns: Optional[print_job_processing_state.PrintJobProcessingState]
-        """
-        return self._processing_state
-    
-    @processing_state.setter
-    def processing_state(self,value: Optional[print_job_processing_state.PrintJobProcessingState] = None) -> None:
-        """
-        Sets the processingState property value. The processingState property
-        Args:
-            value: Value to set for the processing_state property.
-        """
-        self._processing_state = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

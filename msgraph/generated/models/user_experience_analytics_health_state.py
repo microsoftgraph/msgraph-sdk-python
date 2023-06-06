@@ -1,6 +1,6 @@
 from enum import Enum
 
-class UserExperienceAnalyticsHealthState(Enum):
+class UserExperienceAnalyticsHealthState(str, Enum):
     Unknown = "unknown",
     InsufficientData = "insufficientData",
     NeedsAttention = "needsAttention",

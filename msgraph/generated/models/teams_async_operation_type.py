@@ -1,6 +1,6 @@
 from enum import Enum
 
-class TeamsAsyncOperationType(Enum):
+class TeamsAsyncOperationType(str, Enum):
     Invalid = "invalid",
     CloneTeam = "cloneTeam",
     ArchiveTeam = "archiveTeam",

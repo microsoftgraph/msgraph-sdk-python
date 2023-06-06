@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DeviceManagementSubscriptionState(Enum):
+class DeviceManagementSubscriptionState(str, Enum):
     # Pending
     Pending = "pending",
     # Active

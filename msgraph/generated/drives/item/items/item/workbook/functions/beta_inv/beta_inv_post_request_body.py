@@ -1,113 +1,26 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import json
 
+@dataclass
 class Beta_InvPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new beta_InvPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The A property
-        self._a: Optional[json.Json] = None
-        # The alpha property
-        self._alpha: Optional[json.Json] = None
-        # The B property
-        self._b: Optional[json.Json] = None
-        # The beta property
-        self._beta: Optional[json.Json] = None
-        # The probability property
-        self._probability: Optional[json.Json] = None
-    
-    @property
-    def a(self,) -> Optional[json.Json]:
-        """
-        Gets the a property value. The A property
-        Returns: Optional[json.Json]
-        """
-        return self._a
-    
-    @a.setter
-    def a(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the a property value. The A property
-        Args:
-            value: Value to set for the A property.
-        """
-        self._a = value
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def alpha(self,) -> Optional[json.Json]:
-        """
-        Gets the alpha property value. The alpha property
-        Returns: Optional[json.Json]
-        """
-        return self._alpha
-    
-    @alpha.setter
-    def alpha(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the alpha property value. The alpha property
-        Args:
-            value: Value to set for the alpha property.
-        """
-        self._alpha = value
-    
-    @property
-    def b(self,) -> Optional[json.Json]:
-        """
-        Gets the b property value. The B property
-        Returns: Optional[json.Json]
-        """
-        return self._b
-    
-    @b.setter
-    def b(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the b property value. The B property
-        Args:
-            value: Value to set for the B property.
-        """
-        self._b = value
-    
-    @property
-    def beta(self,) -> Optional[json.Json]:
-        """
-        Gets the beta property value. The beta property
-        Returns: Optional[json.Json]
-        """
-        return self._beta
-    
-    @beta.setter
-    def beta(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the beta property value. The beta property
-        Args:
-            value: Value to set for the beta property.
-        """
-        self._beta = value
+    # The A property
+    a: Optional[json.Json] = None
+    # The alpha property
+    alpha: Optional[json.Json] = None
+    # The B property
+    b: Optional[json.Json] = None
+    # The beta property
+    beta: Optional[json.Json] = None
+    # The probability property
+    probability: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Beta_InvPostRequestBody:
@@ -136,23 +49,6 @@ class Beta_InvPostRequestBody(AdditionalDataHolder, Parsable):
             "probability": lambda n : setattr(self, 'probability', n.get_object_value(json.Json)),
         }
         return fields
-    
-    @property
-    def probability(self,) -> Optional[json.Json]:
-        """
-        Gets the probability property value. The probability property
-        Returns: Optional[json.Json]
-        """
-        return self._probability
-    
-    @probability.setter
-    def probability(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the probability property value. The probability property
-        Args:
-            value: Value to set for the probability property.
-        """
-        self._probability = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

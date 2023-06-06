@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,33 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class DeletedTeam(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new DeletedTeam and sets the default values.
-        """
-        super().__init__()
-        # The channels that are either shared with this deleted team or created in this deleted team.
-        self._channels: Optional[List[channel.Channel]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def channels(self,) -> Optional[List[channel.Channel]]:
-        """
-        Gets the channels property value. The channels that are either shared with this deleted team or created in this deleted team.
-        Returns: Optional[List[channel.Channel]]
-        """
-        return self._channels
-    
-    @channels.setter
-    def channels(self,value: Optional[List[channel.Channel]] = None) -> None:
-        """
-        Sets the channels property value. The channels that are either shared with this deleted team or created in this deleted team.
-        Args:
-            value: Value to set for the channels property.
-        """
-        self._channels = value
+    # The channels that are either shared with this deleted team or created in this deleted team.
+    channels: Optional[List[channel.Channel]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeletedTeam:

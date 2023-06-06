@@ -1,60 +1,24 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class Win32LobAppRestartSettings(AdditionalDataHolder, Parsable):
     """
     Contains properties describing restart coordination following an app installation.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new win32LobAppRestartSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The number of minutes before the restart time to display the countdown dialog for pending restarts.
-        self._countdown_display_before_restart_in_minutes: Optional[int] = None
-        # The number of minutes to wait before restarting the device after an app installation.
-        self._grace_period_in_minutes: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The number of minutes to snooze the restart notification dialog when the snooze button is selected.
-        self._restart_notification_snooze_duration_in_minutes: Optional[int] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def countdown_display_before_restart_in_minutes(self,) -> Optional[int]:
-        """
-        Gets the countdownDisplayBeforeRestartInMinutes property value. The number of minutes before the restart time to display the countdown dialog for pending restarts.
-        Returns: Optional[int]
-        """
-        return self._countdown_display_before_restart_in_minutes
-    
-    @countdown_display_before_restart_in_minutes.setter
-    def countdown_display_before_restart_in_minutes(self,value: Optional[int] = None) -> None:
-        """
-        Sets the countdownDisplayBeforeRestartInMinutes property value. The number of minutes before the restart time to display the countdown dialog for pending restarts.
-        Args:
-            value: Value to set for the countdown_display_before_restart_in_minutes property.
-        """
-        self._countdown_display_before_restart_in_minutes = value
+    # The number of minutes before the restart time to display the countdown dialog for pending restarts.
+    countdown_display_before_restart_in_minutes: Optional[int] = None
+    # The number of minutes to wait before restarting the device after an app installation.
+    grace_period_in_minutes: Optional[int] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The number of minutes to snooze the restart notification dialog when the snooze button is selected.
+    restart_notification_snooze_duration_in_minutes: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppRestartSettings:
@@ -80,57 +44,6 @@ class Win32LobAppRestartSettings(AdditionalDataHolder, Parsable):
             "restartNotificationSnoozeDurationInMinutes": lambda n : setattr(self, 'restart_notification_snooze_duration_in_minutes', n.get_int_value()),
         }
         return fields
-    
-    @property
-    def grace_period_in_minutes(self,) -> Optional[int]:
-        """
-        Gets the gracePeriodInMinutes property value. The number of minutes to wait before restarting the device after an app installation.
-        Returns: Optional[int]
-        """
-        return self._grace_period_in_minutes
-    
-    @grace_period_in_minutes.setter
-    def grace_period_in_minutes(self,value: Optional[int] = None) -> None:
-        """
-        Sets the gracePeriodInMinutes property value. The number of minutes to wait before restarting the device after an app installation.
-        Args:
-            value: Value to set for the grace_period_in_minutes property.
-        """
-        self._grace_period_in_minutes = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def restart_notification_snooze_duration_in_minutes(self,) -> Optional[int]:
-        """
-        Gets the restartNotificationSnoozeDurationInMinutes property value. The number of minutes to snooze the restart notification dialog when the snooze button is selected.
-        Returns: Optional[int]
-        """
-        return self._restart_notification_snooze_duration_in_minutes
-    
-    @restart_notification_snooze_duration_in_minutes.setter
-    def restart_notification_snooze_duration_in_minutes(self,value: Optional[int] = None) -> None:
-        """
-        Sets the restartNotificationSnoozeDurationInMinutes property value. The number of minutes to snooze the restart notification dialog when the snooze button is selected.
-        Args:
-            value: Value to set for the restart_notification_snooze_duration_in_minutes property.
-        """
-        self._restart_notification_snooze_duration_in_minutes = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

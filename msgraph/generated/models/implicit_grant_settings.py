@@ -1,38 +1,19 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class ImplicitGrantSettings(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new implicitGrantSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Specifies whether this web application can request an access token using the OAuth 2.0 implicit flow.
-        self._enable_access_token_issuance: Optional[bool] = None
-        # Specifies whether this web application can request an ID token using the OAuth 2.0 implicit flow.
-        self._enable_id_token_issuance: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Specifies whether this web application can request an access token using the OAuth 2.0 implicit flow.
+    enable_access_token_issuance: Optional[bool] = None
+    # Specifies whether this web application can request an ID token using the OAuth 2.0 implicit flow.
+    enable_id_token_issuance: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ImplicitGrantSettings:
@@ -46,40 +27,6 @@ class ImplicitGrantSettings(AdditionalDataHolder, Parsable):
             raise Exception("parse_node cannot be undefined")
         return ImplicitGrantSettings()
     
-    @property
-    def enable_access_token_issuance(self,) -> Optional[bool]:
-        """
-        Gets the enableAccessTokenIssuance property value. Specifies whether this web application can request an access token using the OAuth 2.0 implicit flow.
-        Returns: Optional[bool]
-        """
-        return self._enable_access_token_issuance
-    
-    @enable_access_token_issuance.setter
-    def enable_access_token_issuance(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the enableAccessTokenIssuance property value. Specifies whether this web application can request an access token using the OAuth 2.0 implicit flow.
-        Args:
-            value: Value to set for the enable_access_token_issuance property.
-        """
-        self._enable_access_token_issuance = value
-    
-    @property
-    def enable_id_token_issuance(self,) -> Optional[bool]:
-        """
-        Gets the enableIdTokenIssuance property value. Specifies whether this web application can request an ID token using the OAuth 2.0 implicit flow.
-        Returns: Optional[bool]
-        """
-        return self._enable_id_token_issuance
-    
-    @enable_id_token_issuance.setter
-    def enable_id_token_issuance(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the enableIdTokenIssuance property value. Specifies whether this web application can request an ID token using the OAuth 2.0 implicit flow.
-        Args:
-            value: Value to set for the enable_id_token_issuance property.
-        """
-        self._enable_id_token_issuance = value
-    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -91,23 +38,6 @@ class ImplicitGrantSettings(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

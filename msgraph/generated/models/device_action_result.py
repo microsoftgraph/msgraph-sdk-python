@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -6,78 +7,24 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from . import action_state, delete_user_from_shared_apple_device_action_result, locate_device_action_result, remote_lock_action_result, reset_passcode_action_result, windows_defender_scan_action_result
 
+@dataclass
 class DeviceActionResult(AdditionalDataHolder, Parsable):
     """
     Device action result
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceActionResult and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Action name
-        self._action_name: Optional[str] = None
-        # State of the action on the device
-        self._action_state: Optional[action_state.ActionState] = None
-        # Time the action state was last updated
-        self._last_updated_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Time the action was initiated
-        self._start_date_time: Optional[datetime] = None
-    
-    @property
-    def action_name(self,) -> Optional[str]:
-        """
-        Gets the actionName property value. Action name
-        Returns: Optional[str]
-        """
-        return self._action_name
-    
-    @action_name.setter
-    def action_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the actionName property value. Action name
-        Args:
-            value: Value to set for the action_name property.
-        """
-        self._action_name = value
-    
-    @property
-    def action_state(self,) -> Optional[action_state.ActionState]:
-        """
-        Gets the actionState property value. State of the action on the device
-        Returns: Optional[action_state.ActionState]
-        """
-        return self._action_state
-    
-    @action_state.setter
-    def action_state(self,value: Optional[action_state.ActionState] = None) -> None:
-        """
-        Sets the actionState property value. State of the action on the device
-        Args:
-            value: Value to set for the action_state property.
-        """
-        self._action_state = value
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Action name
+    action_name: Optional[str] = None
+    # State of the action on the device
+    action_state: Optional[action_state.ActionState] = None
+    # Time the action state was last updated
+    last_updated_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Time the action was initiated
+    start_date_time: Optional[datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceActionResult:
@@ -130,40 +77,6 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def last_updated_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastUpdatedDateTime property value. Time the action state was last updated
-        Returns: Optional[datetime]
-        """
-        return self._last_updated_date_time
-    
-    @last_updated_date_time.setter
-    def last_updated_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastUpdatedDateTime property value. Time the action state was last updated
-        Args:
-            value: Value to set for the last_updated_date_time property.
-        """
-        self._last_updated_date_time = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -178,22 +91,5 @@ class DeviceActionResult(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def start_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the startDateTime property value. Time the action was initiated
-        Returns: Optional[datetime]
-        """
-        return self._start_date_time
-    
-    @start_date_time.setter
-    def start_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the startDateTime property value. Time the action was initiated
-        Args:
-            value: Value to set for the start_date_time property.
-        """
-        self._start_date_time = value
     
 

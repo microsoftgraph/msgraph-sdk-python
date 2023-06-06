@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class AttributeSet(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AttributeSet and sets the default values.
-        """
-        super().__init__()
-        # The description property
-        self._description: Optional[str] = None
-        # The maxAttributesPerSet property
-        self._max_attributes_per_set: Optional[int] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # Description of the attribute set. Can be up to 128 characters long and include Unicode characters. Can be changed later.
+    description: Optional[str] = None
+    # Maximum number of custom security attributes that can be defined in this attribute set. Default value is null. If not specified, the administrator can add up to the maximum of 500 active attributes per tenant. Can be changed later.
+    max_attributes_per_set: Optional[int] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttributeSet:
@@ -31,23 +28,6 @@ class AttributeSet(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttributeSet()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. The description property
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. The description property
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -63,23 +43,6 @@ class AttributeSet(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def max_attributes_per_set(self,) -> Optional[int]:
-        """
-        Gets the maxAttributesPerSet property value. The maxAttributesPerSet property
-        Returns: Optional[int]
-        """
-        return self._max_attributes_per_set
-    
-    @max_attributes_per_set.setter
-    def max_attributes_per_set(self,value: Optional[int] = None) -> None:
-        """
-        Sets the maxAttributesPerSet property value. The maxAttributesPerSet property
-        Args:
-            value: Value to set for the max_attributes_per_set property.
-        """
-        self._max_attributes_per_set = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

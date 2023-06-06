@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -14,8 +14,12 @@ if TYPE_CHECKING:
     from ....models.o_data_errors import o_data_error
     from .background_image import background_image_request_builder
     from .banner_logo import banner_logo_request_builder
+    from .custom_c_s_s import custom_c_s_s_request_builder
+    from .favicon import favicon_request_builder
+    from .header_logo import header_logo_request_builder
     from .localizations import localizations_request_builder
     from .square_logo import square_logo_request_builder
+    from .square_logo_dark import square_logo_dark_request_builder
 
 class BrandingRequestBuilder():
     """
@@ -179,6 +183,33 @@ class BrandingRequestBuilder():
         return banner_logo_request_builder.BannerLogoRequestBuilder(self.request_adapter, self.path_parameters)
     
     @property
+    def custom_c_s_s(self) -> custom_c_s_s_request_builder.CustomCSSRequestBuilder:
+        """
+        Provides operations to manage the media for the organization entity.
+        """
+        from .custom_c_s_s import custom_c_s_s_request_builder
+
+        return custom_c_s_s_request_builder.CustomCSSRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def favicon(self) -> favicon_request_builder.FaviconRequestBuilder:
+        """
+        Provides operations to manage the media for the organization entity.
+        """
+        from .favicon import favicon_request_builder
+
+        return favicon_request_builder.FaviconRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def header_logo(self) -> header_logo_request_builder.HeaderLogoRequestBuilder:
+        """
+        Provides operations to manage the media for the organization entity.
+        """
+        from .header_logo import header_logo_request_builder
+
+        return header_logo_request_builder.HeaderLogoRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
     def localizations(self) -> localizations_request_builder.LocalizationsRequestBuilder:
         """
         Provides operations to manage the localizations property of the microsoft.graph.organizationalBranding entity.
@@ -195,6 +226,15 @@ class BrandingRequestBuilder():
         from .square_logo import square_logo_request_builder
 
         return square_logo_request_builder.SquareLogoRequestBuilder(self.request_adapter, self.path_parameters)
+    
+    @property
+    def square_logo_dark(self) -> square_logo_dark_request_builder.SquareLogoDarkRequestBuilder:
+        """
+        Provides operations to manage the media for the organization entity.
+        """
+        from .square_logo_dark import square_logo_dark_request_builder
+
+        return square_logo_dark_request_builder.SquareLogoDarkRequestBuilder(self.request_adapter, self.path_parameters)
     
     @dataclass
     class BrandingRequestBuilderDeleteRequestConfiguration():

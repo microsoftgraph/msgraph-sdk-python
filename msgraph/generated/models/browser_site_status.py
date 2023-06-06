@@ -1,6 +1,6 @@
 from enum import Enum
 
-class BrowserSiteStatus(Enum):
+class BrowserSiteStatus(str, Enum):
     # A site that has been published
     Published = "published",
     # A site that has been added pending publish

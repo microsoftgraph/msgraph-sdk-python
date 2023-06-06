@@ -1,43 +1,24 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import feedback_token_set, user_feedback_rating
 
+@dataclass
 class UserFeedback(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new userFeedback and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The rating property
-        self._rating: Optional[user_feedback_rating.UserFeedbackRating] = None
-        # The feedback text provided by the user of this endpoint for the session.
-        self._text: Optional[str] = None
-        # The set of feedback tokens provided by the user of this endpoint for the session. This is a set of Boolean properties. The property names should not be relied upon since they may change depending on what tokens are offered to the user.
-        self._tokens: Optional[feedback_token_set.FeedbackTokenSet] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The rating property
+    rating: Optional[user_feedback_rating.UserFeedbackRating] = None
+    # The feedback text provided by the user of this endpoint for the session.
+    text: Optional[str] = None
+    # The set of feedback tokens provided by the user of this endpoint for the session. This is a set of Boolean properties. The property names should not be relied upon since they may change depending on what tokens are offered to the user.
+    tokens: Optional[feedback_token_set.FeedbackTokenSet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserFeedback:
@@ -66,40 +47,6 @@ class UserFeedback(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def rating(self,) -> Optional[user_feedback_rating.UserFeedbackRating]:
-        """
-        Gets the rating property value. The rating property
-        Returns: Optional[user_feedback_rating.UserFeedbackRating]
-        """
-        return self._rating
-    
-    @rating.setter
-    def rating(self,value: Optional[user_feedback_rating.UserFeedbackRating] = None) -> None:
-        """
-        Sets the rating property value. The rating property
-        Args:
-            value: Value to set for the rating property.
-        """
-        self._rating = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -113,39 +60,5 @@ class UserFeedback(AdditionalDataHolder, Parsable):
         writer.write_str_value("text", self.text)
         writer.write_object_value("tokens", self.tokens)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def text(self,) -> Optional[str]:
-        """
-        Gets the text property value. The feedback text provided by the user of this endpoint for the session.
-        Returns: Optional[str]
-        """
-        return self._text
-    
-    @text.setter
-    def text(self,value: Optional[str] = None) -> None:
-        """
-        Sets the text property value. The feedback text provided by the user of this endpoint for the session.
-        Args:
-            value: Value to set for the text property.
-        """
-        self._text = value
-    
-    @property
-    def tokens(self,) -> Optional[feedback_token_set.FeedbackTokenSet]:
-        """
-        Gets the tokens property value. The set of feedback tokens provided by the user of this endpoint for the session. This is a set of Boolean properties. The property names should not be relied upon since they may change depending on what tokens are offered to the user.
-        Returns: Optional[feedback_token_set.FeedbackTokenSet]
-        """
-        return self._tokens
-    
-    @tokens.setter
-    def tokens(self,value: Optional[feedback_token_set.FeedbackTokenSet] = None) -> None:
-        """
-        Sets the tokens property value. The set of feedback tokens provided by the user of this endpoint for the session. This is a set of Boolean properties. The property names should not be relied upon since they may change depending on what tokens are offered to the user.
-        Args:
-            value: Value to set for the tokens property.
-        """
-        self._tokens = value
     
 

@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import filter_mode
 
+@dataclass
 class ConditionalAccessFilter(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new conditionalAccessFilter and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The mode property
-        self._mode: Optional[filter_mode.FilterMode] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Rule syntax is similar to that used for membership rules for groups in Azure Active Directory (Azure AD). For details, see rules with multiple expressions
-        self._rule: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The mode property
+    mode: Optional[filter_mode.FilterMode] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Rule syntax is similar to that used for membership rules for groups in Azure Active Directory (Azure AD). For details, see rules with multiple expressions
+    rule: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessFilter:
@@ -62,57 +43,6 @@ class ConditionalAccessFilter(AdditionalDataHolder, Parsable):
             "rule": lambda n : setattr(self, 'rule', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def mode(self,) -> Optional[filter_mode.FilterMode]:
-        """
-        Gets the mode property value. The mode property
-        Returns: Optional[filter_mode.FilterMode]
-        """
-        return self._mode
-    
-    @mode.setter
-    def mode(self,value: Optional[filter_mode.FilterMode] = None) -> None:
-        """
-        Sets the mode property value. The mode property
-        Args:
-            value: Value to set for the mode property.
-        """
-        self._mode = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def rule(self,) -> Optional[str]:
-        """
-        Gets the rule property value. Rule syntax is similar to that used for membership rules for groups in Azure Active Directory (Azure AD). For details, see rules with multiple expressions
-        Returns: Optional[str]
-        """
-        return self._rule
-    
-    @rule.setter
-    def rule(self,value: Optional[str] = None) -> None:
-        """
-        Sets the rule property value. Rule syntax is similar to that used for membership rules for groups in Azure Active Directory (Azure AD). For details, see rules with multiple expressions
-        Args:
-            value: Value to set for the rule property.
-        """
-        self._rule = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

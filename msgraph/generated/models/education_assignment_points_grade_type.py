@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import education_assignment_grade_type
 
+@dataclass
 class EducationAssignmentPointsGradeType(education_assignment_grade_type.EducationAssignmentGradeType):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EducationAssignmentPointsGradeType and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.educationAssignmentPointsGradeType"
-        # Max points possible for this assignment.
-        self._max_points: Optional[float] = None
+    odata_type = "#microsoft.graph.educationAssignmentPointsGradeType"
+    # Max points possible for this assignment.
+    max_points: Optional[float] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationAssignmentPointsGradeType:
@@ -42,23 +39,6 @@ class EducationAssignmentPointsGradeType(education_assignment_grade_type.Educati
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def max_points(self,) -> Optional[float]:
-        """
-        Gets the maxPoints property value. Max points possible for this assignment.
-        Returns: Optional[float]
-        """
-        return self._max_points
-    
-    @max_points.setter
-    def max_points(self,value: Optional[float] = None) -> None:
-        """
-        Sets the maxPoints property value. Max points possible for this assignment.
-        Args:
-            value: Value to set for the max_points property.
-        """
-        self._max_points = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

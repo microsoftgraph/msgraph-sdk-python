@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -8,16 +9,12 @@ if TYPE_CHECKING:
 
 from . import external_activity
 
+@dataclass
 class ExternalActivityResult(external_activity.ExternalActivity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ExternalActivityResult and sets the default values.
-        """
-        super().__init__()
-        # Error information that explains the failure to process an external activity.
-        self._error: Optional[public_error.PublicError] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # Error information that explains the failure to process an external activity.
+    error: Optional[public_error.PublicError] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ExternalActivityResult:
@@ -30,23 +27,6 @@ class ExternalActivityResult(external_activity.ExternalActivity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ExternalActivityResult()
-    
-    @property
-    def error(self,) -> Optional[public_error.PublicError]:
-        """
-        Gets the error property value. Error information that explains the failure to process an external activity.
-        Returns: Optional[public_error.PublicError]
-        """
-        return self._error
-    
-    @error.setter
-    def error(self,value: Optional[public_error.PublicError] = None) -> None:
-        """
-        Sets the error property value. Error information that explains the failure to process an external activity.
-        Args:
-            value: Value to set for the error property.
-        """
-        self._error = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """

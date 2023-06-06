@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AccessPackageRequestType(Enum):
+class AccessPackageRequestType(str, Enum):
     NotSpecified = "notSpecified",
     UserAdd = "userAdd",
     UserUpdate = "userUpdate",

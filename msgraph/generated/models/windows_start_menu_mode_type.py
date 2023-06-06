@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WindowsStartMenuModeType(Enum):
+class WindowsStartMenuModeType(str, Enum):
     # User defined. Default value.
     UserDefined = "userDefined",
     # Full screen.

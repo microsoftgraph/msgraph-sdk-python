@@ -1,36 +1,17 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class AssociateWithHubSitesPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new associateWithHubSitesPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The hubSiteUrls property
-        self._hub_site_urls: Optional[List[str]] = None
-        # The propagateToExistingLists property
-        self._propagate_to_existing_lists: Optional[bool] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The hubSiteUrls property
+    hub_site_urls: Optional[List[str]] = None
+    # The propagateToExistingLists property
+    propagate_to_existing_lists: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssociateWithHubSitesPostRequestBody:
@@ -54,40 +35,6 @@ class AssociateWithHubSitesPostRequestBody(AdditionalDataHolder, Parsable):
             "propagateToExistingLists": lambda n : setattr(self, 'propagate_to_existing_lists', n.get_bool_value()),
         }
         return fields
-    
-    @property
-    def hub_site_urls(self,) -> Optional[List[str]]:
-        """
-        Gets the hubSiteUrls property value. The hubSiteUrls property
-        Returns: Optional[List[str]]
-        """
-        return self._hub_site_urls
-    
-    @hub_site_urls.setter
-    def hub_site_urls(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the hubSiteUrls property value. The hubSiteUrls property
-        Args:
-            value: Value to set for the hub_site_urls property.
-        """
-        self._hub_site_urls = value
-    
-    @property
-    def propagate_to_existing_lists(self,) -> Optional[bool]:
-        """
-        Gets the propagateToExistingLists property value. The propagateToExistingLists property
-        Returns: Optional[bool]
-        """
-        return self._propagate_to_existing_lists
-    
-    @propagate_to_existing_lists.setter
-    def propagate_to_existing_lists(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the propagateToExistingLists property value. The propagateToExistingLists property
-        Args:
-            value: Value to set for the propagate_to_existing_lists property.
-        """
-        self._propagate_to_existing_lists = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

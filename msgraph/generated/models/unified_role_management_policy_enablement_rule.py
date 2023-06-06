@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import unified_role_management_policy_rule
 
+@dataclass
 class UnifiedRoleManagementPolicyEnablementRule(unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new UnifiedRoleManagementPolicyEnablementRule and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.unifiedRoleManagementPolicyEnablementRule"
-        # The collection of rules that are enabled for this policy rule. For example, MultiFactorAuthentication, Ticketing, and Justification.
-        self._enabled_rules: Optional[List[str]] = None
+    odata_type = "#microsoft.graph.unifiedRoleManagementPolicyEnablementRule"
+    # The collection of rules that are enabled for this policy rule. For example, MultiFactorAuthentication, Ticketing, and Justification.
+    enabled_rules: Optional[List[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleManagementPolicyEnablementRule:
@@ -28,23 +25,6 @@ class UnifiedRoleManagementPolicyEnablementRule(unified_role_management_policy_r
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleManagementPolicyEnablementRule()
-    
-    @property
-    def enabled_rules(self,) -> Optional[List[str]]:
-        """
-        Gets the enabledRules property value. The collection of rules that are enabled for this policy rule. For example, MultiFactorAuthentication, Ticketing, and Justification.
-        Returns: Optional[List[str]]
-        """
-        return self._enabled_rules
-    
-    @enabled_rules.setter
-    def enabled_rules(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the enabledRules property value. The collection of rules that are enabled for this policy rule. For example, MultiFactorAuthentication, Ticketing, and Justification.
-        Args:
-            value: Value to set for the enabled_rules property.
-        """
-        self._enabled_rules = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """

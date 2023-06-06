@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import user_agent
 
+@dataclass
 class ServiceUserAgent(user_agent.UserAgent):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ServiceUserAgent and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.callRecords.serviceUserAgent"
-        # The role property
-        self._role: Optional[service_role.ServiceRole] = None
+    odata_type = "#microsoft.graph.callRecords.serviceUserAgent"
+    # The role property
+    role: Optional[service_role.ServiceRole] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceUserAgent:
@@ -42,23 +39,6 @@ class ServiceUserAgent(user_agent.UserAgent):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def role(self,) -> Optional[service_role.ServiceRole]:
-        """
-        Gets the role property value. The role property
-        Returns: Optional[service_role.ServiceRole]
-        """
-        return self._role
-    
-    @role.setter
-    def role(self,value: Optional[service_role.ServiceRole] = None) -> None:
-        """
-        Sets the role property value. The role property
-        Args:
-            value: Value to set for the role property.
-        """
-        self._role = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

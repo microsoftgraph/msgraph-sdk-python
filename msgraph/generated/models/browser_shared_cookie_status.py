@@ -1,6 +1,6 @@
 from enum import Enum
 
-class BrowserSharedCookieStatus(Enum):
+class BrowserSharedCookieStatus(str, Enum):
     # A sharedcookie that has been published
     Published = "published",
     # A sharedcookie that has been added pending publish

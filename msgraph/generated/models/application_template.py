@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,47 +8,26 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ApplicationTemplate(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ApplicationTemplate and sets the default values.
-        """
-        super().__init__()
-        # The list of categories for the application. Supported values can be: Collaboration, Business Management, Consumer, Content management, CRM, Data services, Developer services, E-commerce, Education, ERP, Finance, Health, Human resources, IT infrastructure, Mail, Management, Marketing, Media, Productivity, Project management, Telecommunications, Tools, Travel, and Web design & hosting.
-        self._categories: Optional[List[str]] = None
-        # A description of the application.
-        self._description: Optional[str] = None
-        # The name of the application.
-        self._display_name: Optional[str] = None
-        # The home page URL of the application.
-        self._home_page_url: Optional[str] = None
-        # The URL to get the logo for this application.
-        self._logo_url: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The name of the publisher for this application.
-        self._publisher: Optional[str] = None
-        # The list of provisioning modes supported by this application. The only valid value is sync.
-        self._supported_provisioning_types: Optional[List[str]] = None
-        # The list of single sign-on modes supported by this application. The supported values are oidc, password, saml, and notSupported.
-        self._supported_single_sign_on_modes: Optional[List[str]] = None
-    
-    @property
-    def categories(self,) -> Optional[List[str]]:
-        """
-        Gets the categories property value. The list of categories for the application. Supported values can be: Collaboration, Business Management, Consumer, Content management, CRM, Data services, Developer services, E-commerce, Education, ERP, Finance, Health, Human resources, IT infrastructure, Mail, Management, Marketing, Media, Productivity, Project management, Telecommunications, Tools, Travel, and Web design & hosting.
-        Returns: Optional[List[str]]
-        """
-        return self._categories
-    
-    @categories.setter
-    def categories(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the categories property value. The list of categories for the application. Supported values can be: Collaboration, Business Management, Consumer, Content management, CRM, Data services, Developer services, E-commerce, Education, ERP, Finance, Health, Human resources, IT infrastructure, Mail, Management, Marketing, Media, Productivity, Project management, Telecommunications, Tools, Travel, and Web design & hosting.
-        Args:
-            value: Value to set for the categories property.
-        """
-        self._categories = value
+    # The list of categories for the application. Supported values can be: Collaboration, Business Management, Consumer, Content management, CRM, Data services, Developer services, E-commerce, Education, ERP, Finance, Health, Human resources, IT infrastructure, Mail, Management, Marketing, Media, Productivity, Project management, Telecommunications, Tools, Travel, and Web design & hosting.
+    categories: Optional[List[str]] = None
+    # A description of the application.
+    description: Optional[str] = None
+    # The name of the application.
+    display_name: Optional[str] = None
+    # The home page URL of the application.
+    home_page_url: Optional[str] = None
+    # The URL to get the logo for this application.
+    logo_url: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The name of the publisher for this application.
+    publisher: Optional[str] = None
+    # The list of provisioning modes supported by this application. The only valid value is sync.
+    supported_provisioning_types: Optional[List[str]] = None
+    # The list of single sign-on modes supported by this application. The supported values are oidc, password, saml, and notSupported.
+    supported_single_sign_on_modes: Optional[List[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApplicationTemplate:
@@ -60,40 +40,6 @@ class ApplicationTemplate(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ApplicationTemplate()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. A description of the application.
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. A description of the application.
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The name of the application.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The name of the application.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -116,57 +62,6 @@ class ApplicationTemplate(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def home_page_url(self,) -> Optional[str]:
-        """
-        Gets the homePageUrl property value. The home page URL of the application.
-        Returns: Optional[str]
-        """
-        return self._home_page_url
-    
-    @home_page_url.setter
-    def home_page_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the homePageUrl property value. The home page URL of the application.
-        Args:
-            value: Value to set for the home_page_url property.
-        """
-        self._home_page_url = value
-    
-    @property
-    def logo_url(self,) -> Optional[str]:
-        """
-        Gets the logoUrl property value. The URL to get the logo for this application.
-        Returns: Optional[str]
-        """
-        return self._logo_url
-    
-    @logo_url.setter
-    def logo_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the logoUrl property value. The URL to get the logo for this application.
-        Args:
-            value: Value to set for the logo_url property.
-        """
-        self._logo_url = value
-    
-    @property
-    def publisher(self,) -> Optional[str]:
-        """
-        Gets the publisher property value. The name of the publisher for this application.
-        Returns: Optional[str]
-        """
-        return self._publisher
-    
-    @publisher.setter
-    def publisher(self,value: Optional[str] = None) -> None:
-        """
-        Sets the publisher property value. The name of the publisher for this application.
-        Args:
-            value: Value to set for the publisher property.
-        """
-        self._publisher = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -184,39 +79,5 @@ class ApplicationTemplate(entity.Entity):
         writer.write_str_value("publisher", self.publisher)
         writer.write_collection_of_primitive_values("supportedProvisioningTypes", self.supported_provisioning_types)
         writer.write_collection_of_primitive_values("supportedSingleSignOnModes", self.supported_single_sign_on_modes)
-    
-    @property
-    def supported_provisioning_types(self,) -> Optional[List[str]]:
-        """
-        Gets the supportedProvisioningTypes property value. The list of provisioning modes supported by this application. The only valid value is sync.
-        Returns: Optional[List[str]]
-        """
-        return self._supported_provisioning_types
-    
-    @supported_provisioning_types.setter
-    def supported_provisioning_types(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the supportedProvisioningTypes property value. The list of provisioning modes supported by this application. The only valid value is sync.
-        Args:
-            value: Value to set for the supported_provisioning_types property.
-        """
-        self._supported_provisioning_types = value
-    
-    @property
-    def supported_single_sign_on_modes(self,) -> Optional[List[str]]:
-        """
-        Gets the supportedSingleSignOnModes property value. The list of single sign-on modes supported by this application. The supported values are oidc, password, saml, and notSupported.
-        Returns: Optional[List[str]]
-        """
-        return self._supported_single_sign_on_modes
-    
-    @supported_single_sign_on_modes.setter
-    def supported_single_sign_on_modes(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the supportedSingleSignOnModes property value. The list of single sign-on modes supported by this application. The supported values are oidc, password, saml, and notSupported.
-        Args:
-            value: Value to set for the supported_single_sign_on_modes property.
-        """
-        self._supported_single_sign_on_modes = value
     
 

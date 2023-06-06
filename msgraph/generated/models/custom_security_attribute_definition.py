@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,66 +8,28 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class CustomSecurityAttributeDefinition(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new CustomSecurityAttributeDefinition and sets the default values.
-        """
-        super().__init__()
-        # The allowedValues property
-        self._allowed_values: Optional[List[allowed_value.AllowedValue]] = None
-        # The attributeSet property
-        self._attribute_set: Optional[str] = None
-        # The description property
-        self._description: Optional[str] = None
-        # The isCollection property
-        self._is_collection: Optional[bool] = None
-        # The isSearchable property
-        self._is_searchable: Optional[bool] = None
-        # The name property
-        self._name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The status property
-        self._status: Optional[str] = None
-        # The type property
-        self._type: Optional[str] = None
-        # The usePreDefinedValuesOnly property
-        self._use_pre_defined_values_only: Optional[bool] = None
-    
-    @property
-    def allowed_values(self,) -> Optional[List[allowed_value.AllowedValue]]:
-        """
-        Gets the allowedValues property value. The allowedValues property
-        Returns: Optional[List[allowed_value.AllowedValue]]
-        """
-        return self._allowed_values
-    
-    @allowed_values.setter
-    def allowed_values(self,value: Optional[List[allowed_value.AllowedValue]] = None) -> None:
-        """
-        Sets the allowedValues property value. The allowedValues property
-        Args:
-            value: Value to set for the allowed_values property.
-        """
-        self._allowed_values = value
-    
-    @property
-    def attribute_set(self,) -> Optional[str]:
-        """
-        Gets the attributeSet property value. The attributeSet property
-        Returns: Optional[str]
-        """
-        return self._attribute_set
-    
-    @attribute_set.setter
-    def attribute_set(self,value: Optional[str] = None) -> None:
-        """
-        Sets the attributeSet property value. The attributeSet property
-        Args:
-            value: Value to set for the attribute_set property.
-        """
-        self._attribute_set = value
+    # Values that are predefined for this custom security attribute. This navigation property is not returned by default and must be specified in an $expand query. For example, /directory/customSecurityAttributeDefinitions?$expand=allowedValues.
+    allowed_values: Optional[List[allowed_value.AllowedValue]] = None
+    # Name of the attribute set. Case insensitive.
+    attribute_set: Optional[str] = None
+    # Description of the custom security attribute. Can be up to 128 characters long and include Unicode characters. Can be changed later.
+    description: Optional[str] = None
+    # Indicates whether multiple values can be assigned to the custom security attribute. Cannot be changed later. If type is set to Boolean, isCollection cannot be set to true.
+    is_collection: Optional[bool] = None
+    # Indicates whether custom security attribute values are indexed for searching on objects that are assigned attribute values. Cannot be changed later.
+    is_searchable: Optional[bool] = None
+    # Name of the custom security attribute. Must be unique within an attribute set. Can be up to 32 characters long and include Unicode characters. Cannot contain spaces or special characters. Cannot be changed later. Case insensitive.
+    name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Specifies whether the custom security attribute is active or deactivated. Acceptable values are: Available and Deprecated. Can be changed later.
+    status: Optional[str] = None
+    # Data type for the custom security attribute values. Supported types are: Boolean, Integer, and String. Cannot be changed later.
+    type: Optional[str] = None
+    # Indicates whether only predefined values can be assigned to the custom security attribute. If set to false, free-form values are allowed. Can later be changed from true to false, but cannot be changed from false to true. If type is set to Boolean, usePreDefinedValuesOnly cannot be set to true.
+    use_pre_defined_values_only: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CustomSecurityAttributeDefinition:
@@ -79,23 +42,6 @@ class CustomSecurityAttributeDefinition(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CustomSecurityAttributeDefinition()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. The description property
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. The description property
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -119,57 +65,6 @@ class CustomSecurityAttributeDefinition(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def is_collection(self,) -> Optional[bool]:
-        """
-        Gets the isCollection property value. The isCollection property
-        Returns: Optional[bool]
-        """
-        return self._is_collection
-    
-    @is_collection.setter
-    def is_collection(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isCollection property value. The isCollection property
-        Args:
-            value: Value to set for the is_collection property.
-        """
-        self._is_collection = value
-    
-    @property
-    def is_searchable(self,) -> Optional[bool]:
-        """
-        Gets the isSearchable property value. The isSearchable property
-        Returns: Optional[bool]
-        """
-        return self._is_searchable
-    
-    @is_searchable.setter
-    def is_searchable(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isSearchable property value. The isSearchable property
-        Args:
-            value: Value to set for the is_searchable property.
-        """
-        self._is_searchable = value
-    
-    @property
-    def name(self,) -> Optional[str]:
-        """
-        Gets the name property value. The name property
-        Returns: Optional[str]
-        """
-        return self._name
-    
-    @name.setter
-    def name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the name property value. The name property
-        Args:
-            value: Value to set for the name property.
-        """
-        self._name = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -188,56 +83,5 @@ class CustomSecurityAttributeDefinition(entity.Entity):
         writer.write_str_value("status", self.status)
         writer.write_str_value("type", self.type)
         writer.write_bool_value("usePreDefinedValuesOnly", self.use_pre_defined_values_only)
-    
-    @property
-    def status(self,) -> Optional[str]:
-        """
-        Gets the status property value. The status property
-        Returns: Optional[str]
-        """
-        return self._status
-    
-    @status.setter
-    def status(self,value: Optional[str] = None) -> None:
-        """
-        Sets the status property value. The status property
-        Args:
-            value: Value to set for the status property.
-        """
-        self._status = value
-    
-    @property
-    def type(self,) -> Optional[str]:
-        """
-        Gets the type property value. The type property
-        Returns: Optional[str]
-        """
-        return self._type
-    
-    @type.setter
-    def type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the type property value. The type property
-        Args:
-            value: Value to set for the type property.
-        """
-        self._type = value
-    
-    @property
-    def use_pre_defined_values_only(self,) -> Optional[bool]:
-        """
-        Gets the usePreDefinedValuesOnly property value. The usePreDefinedValuesOnly property
-        Returns: Optional[bool]
-        """
-        return self._use_pre_defined_values_only
-    
-    @use_pre_defined_values_only.setter
-    def use_pre_defined_values_only(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the usePreDefinedValuesOnly property value. The usePreDefinedValuesOnly property
-        Args:
-            value: Value to set for the use_pre_defined_values_only property.
-        """
-        self._use_pre_defined_values_only = value
     
 

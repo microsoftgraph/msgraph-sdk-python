@@ -1,6 +1,6 @@
 from enum import Enum
 
-class InternetSiteSecurityLevel(Enum):
+class InternetSiteSecurityLevel(str, Enum):
     # User Defined, default value, no intent.
     UserDefined = "userDefined",
     # Medium.

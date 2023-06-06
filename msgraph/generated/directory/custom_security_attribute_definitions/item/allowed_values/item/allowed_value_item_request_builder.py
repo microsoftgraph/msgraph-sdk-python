@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -56,7 +56,7 @@ class AllowedValueItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AllowedValueItemRequestBuilderGetRequestConfiguration] = None) -> Optional[allowed_value.AllowedValue]:
         """
-        Get allowedValues from directory
+        Read the properties and relationships of an allowedValue object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[allowed_value.AllowedValue]
@@ -78,7 +78,7 @@ class AllowedValueItemRequestBuilder():
     
     async def patch(self,body: Optional[allowed_value.AllowedValue] = None, request_configuration: Optional[AllowedValueItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[allowed_value.AllowedValue]:
         """
-        Update the navigation property allowedValues in directory
+        Update the properties of an allowedValue object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -119,7 +119,7 @@ class AllowedValueItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AllowedValueItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get allowedValues from directory
+        Read the properties and relationships of an allowedValue object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class AllowedValueItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[allowed_value.AllowedValue] = None, request_configuration: Optional[AllowedValueItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property allowedValues in directory
+        Update the properties of an allowedValue object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -171,7 +171,7 @@ class AllowedValueItemRequestBuilder():
     @dataclass
     class AllowedValueItemRequestBuilderGetQueryParameters():
         """
-        Get allowedValues from directory
+        Read the properties and relationships of an allowedValue object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

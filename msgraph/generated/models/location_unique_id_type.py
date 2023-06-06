@@ -1,6 +1,6 @@
 from enum import Enum
 
-class LocationUniqueIdType(Enum):
+class LocationUniqueIdType(str, Enum):
     Unknown = "unknown",
     LocationStore = "locationStore",
     Directory = "directory",

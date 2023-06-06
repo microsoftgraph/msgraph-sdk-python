@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SimulationAutomationRunStatus(Enum):
+class SimulationAutomationRunStatus(str, Enum):
     Unknown = "unknown",
     Running = "running",
     Succeeded = "succeeded",

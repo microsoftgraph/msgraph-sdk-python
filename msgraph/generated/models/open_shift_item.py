@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import shift_item
 
+@dataclass
 class OpenShiftItem(shift_item.ShiftItem):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new OpenShiftItem and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.openShiftItem"
-        # Count of the number of slots for the given open shift.
-        self._open_slot_count: Optional[int] = None
+    odata_type = "#microsoft.graph.openShiftItem"
+    # Count of the number of slots for the given open shift.
+    open_slot_count: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OpenShiftItem:
@@ -42,23 +39,6 @@ class OpenShiftItem(shift_item.ShiftItem):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def open_slot_count(self,) -> Optional[int]:
-        """
-        Gets the openSlotCount property value. Count of the number of slots for the given open shift.
-        Returns: Optional[int]
-        """
-        return self._open_slot_count
-    
-    @open_slot_count.setter
-    def open_slot_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the openSlotCount property value. Count of the number of slots for the given open shift.
-        Args:
-            value: Value to set for the open_slot_count property.
-        """
-        self._open_slot_count = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

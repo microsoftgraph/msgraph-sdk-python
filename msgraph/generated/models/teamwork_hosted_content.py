@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,52 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class TeamworkHostedContent(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new teamworkHostedContent and sets the default values.
-        """
-        super().__init__()
-        # Write only. Bytes for the hosted content (such as images).
-        self._content_bytes: Optional[bytes] = None
-        # Write only. Content type. sicj as image/png, image/jpg.
-        self._content_type: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def content_bytes(self,) -> Optional[bytes]:
-        """
-        Gets the contentBytes property value. Write only. Bytes for the hosted content (such as images).
-        Returns: Optional[bytes]
-        """
-        return self._content_bytes
-    
-    @content_bytes.setter
-    def content_bytes(self,value: Optional[bytes] = None) -> None:
-        """
-        Sets the contentBytes property value. Write only. Bytes for the hosted content (such as images).
-        Args:
-            value: Value to set for the content_bytes property.
-        """
-        self._content_bytes = value
-    
-    @property
-    def content_type(self,) -> Optional[str]:
-        """
-        Gets the contentType property value. Write only. Content type. sicj as image/png, image/jpg.
-        Returns: Optional[str]
-        """
-        return self._content_type
-    
-    @content_type.setter
-    def content_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the contentType property value. Write only. Content type. sicj as image/png, image/jpg.
-        Args:
-            value: Value to set for the content_type property.
-        """
-        self._content_type = value
+    # Write only. Bytes for the hosted content (such as images).
+    content_bytes: Optional[bytes] = None
+    # Write only. Content type. sicj as image/png, image/jpg.
+    content_type: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkHostedContent:

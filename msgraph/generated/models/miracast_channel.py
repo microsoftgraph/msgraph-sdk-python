@@ -1,6 +1,6 @@
 from enum import Enum
 
-class MiracastChannel(Enum):
+class MiracastChannel(str, Enum):
     # User Defined, default value, no intent.
     UserDefined = "userDefined",
     # One.

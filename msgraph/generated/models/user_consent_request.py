@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,35 +8,14 @@ if TYPE_CHECKING:
 
 from . import request
 
+@dataclass
 class UserConsentRequest(request.Request):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new UserConsentRequest and sets the default values.
-        """
-        super().__init__()
-        # Approval decisions associated with a request.
-        self._approval: Optional[approval.Approval] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The user's justification for requiring access to the app. Supports $filter (eq only) and $orderby.
-        self._reason: Optional[str] = None
-    
-    @property
-    def approval(self,) -> Optional[approval.Approval]:
-        """
-        Gets the approval property value. Approval decisions associated with a request.
-        Returns: Optional[approval.Approval]
-        """
-        return self._approval
-    
-    @approval.setter
-    def approval(self,value: Optional[approval.Approval] = None) -> None:
-        """
-        Sets the approval property value. Approval decisions associated with a request.
-        Args:
-            value: Value to set for the approval property.
-        """
-        self._approval = value
+    # Approval decisions associated with a request.
+    approval: Optional[approval.Approval] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The user's justification for requiring access to the app. Supports $filter (eq only) and $orderby.
+    reason: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserConsentRequest:
@@ -63,23 +43,6 @@ class UserConsentRequest(request.Request):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def reason(self,) -> Optional[str]:
-        """
-        Gets the reason property value. The user's justification for requiring access to the app. Supports $filter (eq only) and $orderby.
-        Returns: Optional[str]
-        """
-        return self._reason
-    
-    @reason.setter
-    def reason(self,value: Optional[str] = None) -> None:
-        """
-        Sets the reason property value. The user's justification for requiring access to the app. Supports $filter (eq only) and $orderby.
-        Args:
-            value: Value to set for the reason property.
-        """
-        self._reason = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

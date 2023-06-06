@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import edge_search_engine_base
 
+@dataclass
 class EdgeSearchEngineCustom(edge_search_engine_base.EdgeSearchEngineBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EdgeSearchEngineCustom and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.edgeSearchEngineCustom"
-        # Points to a https link containing the OpenSearch xml file that contains, at minimum, the short name and the URL to the search Engine.
-        self._edge_search_engine_open_search_xml_url: Optional[str] = None
+    odata_type = "#microsoft.graph.edgeSearchEngineCustom"
+    # Points to a https link containing the OpenSearch xml file that contains, at minimum, the short name and the URL to the search Engine.
+    edge_search_engine_open_search_xml_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdgeSearchEngineCustom:
@@ -28,23 +25,6 @@ class EdgeSearchEngineCustom(edge_search_engine_base.EdgeSearchEngineBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EdgeSearchEngineCustom()
-    
-    @property
-    def edge_search_engine_open_search_xml_url(self,) -> Optional[str]:
-        """
-        Gets the edgeSearchEngineOpenSearchXmlUrl property value. Points to a https link containing the OpenSearch xml file that contains, at minimum, the short name and the URL to the search Engine.
-        Returns: Optional[str]
-        """
-        return self._edge_search_engine_open_search_xml_url
-    
-    @edge_search_engine_open_search_xml_url.setter
-    def edge_search_engine_open_search_xml_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the edgeSearchEngineOpenSearchXmlUrl property value. Points to a https link containing the OpenSearch xml file that contains, at minimum, the short name and the URL to the search Engine.
-        Args:
-            value: Value to set for the edge_search_engine_open_search_xml_url property.
-        """
-        self._edge_search_engine_open_search_xml_url = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """

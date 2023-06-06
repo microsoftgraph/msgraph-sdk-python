@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DayOfWeek(Enum):
+class DayOfWeek(str, Enum):
     Sunday = "sunday",
     Monday = "monday",
     Tuesday = "tuesday",

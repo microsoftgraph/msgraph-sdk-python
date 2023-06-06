@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,53 +8,15 @@ if TYPE_CHECKING:
 
 from . import event_message_detail
 
+@dataclass
 class ChannelDescriptionUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ChannelDescriptionUpdatedEventMessageDetail and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.channelDescriptionUpdatedEventMessageDetail"
-        # The updated description of the channel.
-        self._channel_description: Optional[str] = None
-        # Unique identifier of the channel.
-        self._channel_id: Optional[str] = None
-        # Initiator of the event.
-        self._initiator: Optional[identity_set.IdentitySet] = None
-    
-    @property
-    def channel_description(self,) -> Optional[str]:
-        """
-        Gets the channelDescription property value. The updated description of the channel.
-        Returns: Optional[str]
-        """
-        return self._channel_description
-    
-    @channel_description.setter
-    def channel_description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the channelDescription property value. The updated description of the channel.
-        Args:
-            value: Value to set for the channel_description property.
-        """
-        self._channel_description = value
-    
-    @property
-    def channel_id(self,) -> Optional[str]:
-        """
-        Gets the channelId property value. Unique identifier of the channel.
-        Returns: Optional[str]
-        """
-        return self._channel_id
-    
-    @channel_id.setter
-    def channel_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the channelId property value. Unique identifier of the channel.
-        Args:
-            value: Value to set for the channel_id property.
-        """
-        self._channel_id = value
+    odata_type = "#microsoft.graph.channelDescriptionUpdatedEventMessageDetail"
+    # The updated description of the channel.
+    channel_description: Optional[str] = None
+    # Unique identifier of the channel.
+    channel_id: Optional[str] = None
+    # Initiator of the event.
+    initiator: Optional[identity_set.IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChannelDescriptionUpdatedEventMessageDetail:
@@ -82,23 +45,6 @@ class ChannelDescriptionUpdatedEventMessageDetail(event_message_detail.EventMess
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def initiator(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the initiator property value. Initiator of the event.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._initiator
-    
-    @initiator.setter
-    def initiator(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the initiator property value. Initiator of the event.
-        Args:
-            value: Value to set for the initiator property.
-        """
-        self._initiator = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

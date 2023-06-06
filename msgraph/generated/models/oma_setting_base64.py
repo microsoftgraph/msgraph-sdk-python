@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import oma_setting
 
+@dataclass
 class OmaSettingBase64(oma_setting.OmaSetting):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new OmaSettingBase64 and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.omaSettingBase64"
-        # File name associated with the Value property (.cer
-        self._file_name: Optional[str] = None
-        # Value. (Base64 encoded string)
-        self._value: Optional[str] = None
+    odata_type = "#microsoft.graph.omaSettingBase64"
+    # File name associated with the Value property (.cer
+    file_name: Optional[str] = None
+    # Value. (Base64 encoded string)
+    value: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OmaSettingBase64:
@@ -30,23 +27,6 @@ class OmaSettingBase64(oma_setting.OmaSetting):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return OmaSettingBase64()
-    
-    @property
-    def file_name(self,) -> Optional[str]:
-        """
-        Gets the fileName property value. File name associated with the Value property (.cer
-        Returns: Optional[str]
-        """
-        return self._file_name
-    
-    @file_name.setter
-    def file_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the fileName property value. File name associated with the Value property (.cer
-        Args:
-            value: Value to set for the file_name property.
-        """
-        self._file_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -74,22 +54,5 @@ class OmaSettingBase64(oma_setting.OmaSetting):
         super().serialize(writer)
         writer.write_str_value("fileName", self.file_name)
         writer.write_str_value("value", self.value)
-    
-    @property
-    def value(self,) -> Optional[str]:
-        """
-        Gets the value property value. Value. (Base64 encoded string)
-        Returns: Optional[str]
-        """
-        return self._value
-    
-    @value.setter
-    def value(self,value: Optional[str] = None) -> None:
-        """
-        Sets the value property value. Value. (Base64 encoded string)
-        Args:
-            value: Value to set for the value property.
-        """
-        self._value = value
     
 

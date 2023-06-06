@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,38 +9,17 @@ if TYPE_CHECKING:
 
 from . import authentication_method
 
+@dataclass
 class WindowsHelloForBusinessAuthenticationMethod(authentication_method.AuthenticationMethod):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsHelloForBusinessAuthenticationMethod and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsHelloForBusinessAuthenticationMethod"
-        # The date and time that this Windows Hello for Business key was registered.
-        self._created_date_time: Optional[datetime] = None
-        # The registered device on which this Windows Hello for Business key resides. Supports $expand. When you get a user's Windows Hello for Business registration information, this property is returned only on a single GET and when you specify ?$expand. For example, GET /users/admin@contoso.com/authentication/windowsHelloForBusinessMethods/_jpuR-TGZtk6aQCLF3BQjA2?$expand=device.
-        self._device: Optional[device.Device] = None
-        # The name of the device on which Windows Hello for Business is registered
-        self._display_name: Optional[str] = None
-        # Key strength of this Windows Hello for Business key. Possible values are: normal, weak, unknown.
-        self._key_strength: Optional[authentication_method_key_strength.AuthenticationMethodKeyStrength] = None
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. The date and time that this Windows Hello for Business key was registered.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. The date and time that this Windows Hello for Business key was registered.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    odata_type = "#microsoft.graph.windowsHelloForBusinessAuthenticationMethod"
+    # The date and time that this Windows Hello for Business key was registered.
+    created_date_time: Optional[datetime] = None
+    # The registered device on which this Windows Hello for Business key resides. Supports $expand. When you get a user's Windows Hello for Business registration information, this property is returned only on a single GET and when you specify ?$expand. For example, GET /users/admin@contoso.com/authentication/windowsHelloForBusinessMethods/_jpuR-TGZtk6aQCLF3BQjA2?$expand=device.
+    device: Optional[device.Device] = None
+    # The name of the device on which Windows Hello for Business is registered
+    display_name: Optional[str] = None
+    # Key strength of this Windows Hello for Business key. Possible values are: normal, weak, unknown.
+    key_strength: Optional[authentication_method_key_strength.AuthenticationMethodKeyStrength] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsHelloForBusinessAuthenticationMethod:
@@ -52,40 +32,6 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsHelloForBusinessAuthenticationMethod()
-    
-    @property
-    def device(self,) -> Optional[device.Device]:
-        """
-        Gets the device property value. The registered device on which this Windows Hello for Business key resides. Supports $expand. When you get a user's Windows Hello for Business registration information, this property is returned only on a single GET and when you specify ?$expand. For example, GET /users/admin@contoso.com/authentication/windowsHelloForBusinessMethods/_jpuR-TGZtk6aQCLF3BQjA2?$expand=device.
-        Returns: Optional[device.Device]
-        """
-        return self._device
-    
-    @device.setter
-    def device(self,value: Optional[device.Device] = None) -> None:
-        """
-        Sets the device property value. The registered device on which this Windows Hello for Business key resides. Supports $expand. When you get a user's Windows Hello for Business registration information, this property is returned only on a single GET and when you specify ?$expand. For example, GET /users/admin@contoso.com/authentication/windowsHelloForBusinessMethods/_jpuR-TGZtk6aQCLF3BQjA2?$expand=device.
-        Args:
-            value: Value to set for the device property.
-        """
-        self._device = value
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The name of the device on which Windows Hello for Business is registered
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The name of the device on which Windows Hello for Business is registered
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -103,23 +49,6 @@ class WindowsHelloForBusinessAuthenticationMethod(authentication_method.Authenti
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def key_strength(self,) -> Optional[authentication_method_key_strength.AuthenticationMethodKeyStrength]:
-        """
-        Gets the keyStrength property value. Key strength of this Windows Hello for Business key. Possible values are: normal, weak, unknown.
-        Returns: Optional[authentication_method_key_strength.AuthenticationMethodKeyStrength]
-        """
-        return self._key_strength
-    
-    @key_strength.setter
-    def key_strength(self,value: Optional[authentication_method_key_strength.AuthenticationMethodKeyStrength] = None) -> None:
-        """
-        Sets the keyStrength property value. Key strength of this Windows Hello for Business key. Possible values are: normal, weak, unknown.
-        Args:
-            value: Value to set for the key_strength property.
-        """
-        self._key_strength = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

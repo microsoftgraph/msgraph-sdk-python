@@ -1,64 +1,45 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import compliance_status, setting_source
 
+@dataclass
 class DeviceCompliancePolicySettingState(AdditionalDataHolder, Parsable):
     """
     Device Compilance Policy Setting State for a given device.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceCompliancePolicySettingState and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Current value of setting on device
-        self._current_value: Optional[str] = None
-        # Error code for the setting
-        self._error_code: Optional[int] = None
-        # Error description
-        self._error_description: Optional[str] = None
-        # Name of setting instance that is being reported.
-        self._instance_display_name: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The setting that is being reported
-        self._setting: Optional[str] = None
-        # Localized/user friendly setting name that is being reported
-        self._setting_name: Optional[str] = None
-        # Contributing policies
-        self._sources: Optional[List[setting_source.SettingSource]] = None
-        # The state property
-        self._state: Optional[compliance_status.ComplianceStatus] = None
-        # UserEmail
-        self._user_email: Optional[str] = None
-        # UserId
-        self._user_id: Optional[str] = None
-        # UserName
-        self._user_name: Optional[str] = None
-        # UserPrincipalName.
-        self._user_principal_name: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Current value of setting on device
+    current_value: Optional[str] = None
+    # Error code for the setting
+    error_code: Optional[int] = None
+    # Error description
+    error_description: Optional[str] = None
+    # Name of setting instance that is being reported.
+    instance_display_name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The setting that is being reported
+    setting: Optional[str] = None
+    # Localized/user friendly setting name that is being reported
+    setting_name: Optional[str] = None
+    # Contributing policies
+    sources: Optional[List[setting_source.SettingSource]] = None
+    # The state property
+    state: Optional[compliance_status.ComplianceStatus] = None
+    # UserEmail
+    user_email: Optional[str] = None
+    # UserId
+    user_id: Optional[str] = None
+    # UserName
+    user_name: Optional[str] = None
+    # UserPrincipalName.
+    user_principal_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceCompliancePolicySettingState:
@@ -71,57 +52,6 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceCompliancePolicySettingState()
-    
-    @property
-    def current_value(self,) -> Optional[str]:
-        """
-        Gets the currentValue property value. Current value of setting on device
-        Returns: Optional[str]
-        """
-        return self._current_value
-    
-    @current_value.setter
-    def current_value(self,value: Optional[str] = None) -> None:
-        """
-        Sets the currentValue property value. Current value of setting on device
-        Args:
-            value: Value to set for the current_value property.
-        """
-        self._current_value = value
-    
-    @property
-    def error_code(self,) -> Optional[int]:
-        """
-        Gets the errorCode property value. Error code for the setting
-        Returns: Optional[int]
-        """
-        return self._error_code
-    
-    @error_code.setter
-    def error_code(self,value: Optional[int] = None) -> None:
-        """
-        Sets the errorCode property value. Error code for the setting
-        Args:
-            value: Value to set for the error_code property.
-        """
-        self._error_code = value
-    
-    @property
-    def error_description(self,) -> Optional[str]:
-        """
-        Gets the errorDescription property value. Error description
-        Returns: Optional[str]
-        """
-        return self._error_description
-    
-    @error_description.setter
-    def error_description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the errorDescription property value. Error description
-        Args:
-            value: Value to set for the error_description property.
-        """
-        self._error_description = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -147,40 +77,6 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def instance_display_name(self,) -> Optional[str]:
-        """
-        Gets the instanceDisplayName property value. Name of setting instance that is being reported.
-        Returns: Optional[str]
-        """
-        return self._instance_display_name
-    
-    @instance_display_name.setter
-    def instance_display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the instanceDisplayName property value. Name of setting instance that is being reported.
-        Args:
-            value: Value to set for the instance_display_name property.
-        """
-        self._instance_display_name = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -203,141 +99,5 @@ class DeviceCompliancePolicySettingState(AdditionalDataHolder, Parsable):
         writer.write_str_value("userName", self.user_name)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def setting(self,) -> Optional[str]:
-        """
-        Gets the setting property value. The setting that is being reported
-        Returns: Optional[str]
-        """
-        return self._setting
-    
-    @setting.setter
-    def setting(self,value: Optional[str] = None) -> None:
-        """
-        Sets the setting property value. The setting that is being reported
-        Args:
-            value: Value to set for the setting property.
-        """
-        self._setting = value
-    
-    @property
-    def setting_name(self,) -> Optional[str]:
-        """
-        Gets the settingName property value. Localized/user friendly setting name that is being reported
-        Returns: Optional[str]
-        """
-        return self._setting_name
-    
-    @setting_name.setter
-    def setting_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the settingName property value. Localized/user friendly setting name that is being reported
-        Args:
-            value: Value to set for the setting_name property.
-        """
-        self._setting_name = value
-    
-    @property
-    def sources(self,) -> Optional[List[setting_source.SettingSource]]:
-        """
-        Gets the sources property value. Contributing policies
-        Returns: Optional[List[setting_source.SettingSource]]
-        """
-        return self._sources
-    
-    @sources.setter
-    def sources(self,value: Optional[List[setting_source.SettingSource]] = None) -> None:
-        """
-        Sets the sources property value. Contributing policies
-        Args:
-            value: Value to set for the sources property.
-        """
-        self._sources = value
-    
-    @property
-    def state(self,) -> Optional[compliance_status.ComplianceStatus]:
-        """
-        Gets the state property value. The state property
-        Returns: Optional[compliance_status.ComplianceStatus]
-        """
-        return self._state
-    
-    @state.setter
-    def state(self,value: Optional[compliance_status.ComplianceStatus] = None) -> None:
-        """
-        Sets the state property value. The state property
-        Args:
-            value: Value to set for the state property.
-        """
-        self._state = value
-    
-    @property
-    def user_email(self,) -> Optional[str]:
-        """
-        Gets the userEmail property value. UserEmail
-        Returns: Optional[str]
-        """
-        return self._user_email
-    
-    @user_email.setter
-    def user_email(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userEmail property value. UserEmail
-        Args:
-            value: Value to set for the user_email property.
-        """
-        self._user_email = value
-    
-    @property
-    def user_id(self,) -> Optional[str]:
-        """
-        Gets the userId property value. UserId
-        Returns: Optional[str]
-        """
-        return self._user_id
-    
-    @user_id.setter
-    def user_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userId property value. UserId
-        Args:
-            value: Value to set for the user_id property.
-        """
-        self._user_id = value
-    
-    @property
-    def user_name(self,) -> Optional[str]:
-        """
-        Gets the userName property value. UserName
-        Returns: Optional[str]
-        """
-        return self._user_name
-    
-    @user_name.setter
-    def user_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userName property value. UserName
-        Args:
-            value: Value to set for the user_name property.
-        """
-        self._user_name = value
-    
-    @property
-    def user_principal_name(self,) -> Optional[str]:
-        """
-        Gets the userPrincipalName property value. UserPrincipalName.
-        Returns: Optional[str]
-        """
-        return self._user_principal_name
-    
-    @user_principal_name.setter
-    def user_principal_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userPrincipalName property value. UserPrincipalName.
-        Args:
-            value: Value to set for the user_principal_name property.
-        """
-        self._user_principal_name = value
     
 

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DelegatedAdminRelationshipOperationType(Enum):
+class DelegatedAdminRelationshipOperationType(str, Enum):
     DelegatedAdminAccessAssignmentUpdate = "delegatedAdminAccessAssignmentUpdate",
     UnknownFutureValue = "unknownFutureValue",
 

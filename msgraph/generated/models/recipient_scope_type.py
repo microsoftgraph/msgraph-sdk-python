@@ -1,6 +1,6 @@
 from enum import Enum
 
-class RecipientScopeType(Enum):
+class RecipientScopeType(str, Enum):
     None_ = "none",
     Internal = "internal",
     External = "external",

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ConditionalAccessGuestOrExternalUserTypes(Enum):
+class ConditionalAccessGuestOrExternalUserTypes(str, Enum):
     None_ = "none",
     InternalGuest = "internalGuest",
     B2bCollaborationGuest = "b2bCollaborationGuest",

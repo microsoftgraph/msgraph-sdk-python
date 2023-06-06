@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class WorkbookChartAxisFormat(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookChartAxisFormat and sets the default values.
-        """
-        super().__init__()
-        # Represents the font attributes (font name, font size, color, etc.) for a chart axis element. Read-only.
-        self._font: Optional[workbook_chart_font.WorkbookChartFont] = None
-        # Represents chart line formatting. Read-only.
-        self._line: Optional[workbook_chart_line_format.WorkbookChartLineFormat] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # Represents the font attributes (font name, font size, color, etc.) for a chart axis element. Read-only.
+    font: Optional[workbook_chart_font.WorkbookChartFont] = None
+    # Represents chart line formatting. Read-only.
+    line: Optional[workbook_chart_line_format.WorkbookChartLineFormat] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartAxisFormat:
@@ -31,23 +28,6 @@ class WorkbookChartAxisFormat(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartAxisFormat()
-    
-    @property
-    def font(self,) -> Optional[workbook_chart_font.WorkbookChartFont]:
-        """
-        Gets the font property value. Represents the font attributes (font name, font size, color, etc.) for a chart axis element. Read-only.
-        Returns: Optional[workbook_chart_font.WorkbookChartFont]
-        """
-        return self._font
-    
-    @font.setter
-    def font(self,value: Optional[workbook_chart_font.WorkbookChartFont] = None) -> None:
-        """
-        Sets the font property value. Represents the font attributes (font name, font size, color, etc.) for a chart axis element. Read-only.
-        Args:
-            value: Value to set for the font property.
-        """
-        self._font = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -63,23 +43,6 @@ class WorkbookChartAxisFormat(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def line(self,) -> Optional[workbook_chart_line_format.WorkbookChartLineFormat]:
-        """
-        Gets the line property value. Represents chart line formatting. Read-only.
-        Returns: Optional[workbook_chart_line_format.WorkbookChartLineFormat]
-        """
-        return self._line
-    
-    @line.setter
-    def line(self,value: Optional[workbook_chart_line_format.WorkbookChartLineFormat] = None) -> None:
-        """
-        Sets the line property value. Represents chart line formatting. Read-only.
-        Args:
-            value: Value to set for the line property.
-        """
-        self._line = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

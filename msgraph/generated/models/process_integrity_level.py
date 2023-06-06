@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ProcessIntegrityLevel(Enum):
+class ProcessIntegrityLevel(str, Enum):
     Unknown = "unknown",
     Untrusted = "untrusted",
     Low = "low",

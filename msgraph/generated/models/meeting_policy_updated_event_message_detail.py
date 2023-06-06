@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,19 +8,15 @@ if TYPE_CHECKING:
 
 from . import event_message_detail
 
+@dataclass
 class MeetingPolicyUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new MeetingPolicyUpdatedEventMessageDetail and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.meetingPolicyUpdatedEventMessageDetail"
-        # Initiator of the event.
-        self._initiator: Optional[identity_set.IdentitySet] = None
-        # Represents whether the meeting chat is enabled or not.
-        self._meeting_chat_enabled: Optional[bool] = None
-        # Unique identifier of the meeting chat.
-        self._meeting_chat_id: Optional[str] = None
+    odata_type = "#microsoft.graph.meetingPolicyUpdatedEventMessageDetail"
+    # Initiator of the event.
+    initiator: Optional[identity_set.IdentitySet] = None
+    # Represents whether the meeting chat is enabled or not.
+    meeting_chat_enabled: Optional[bool] = None
+    # Unique identifier of the meeting chat.
+    meeting_chat_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MeetingPolicyUpdatedEventMessageDetail:
@@ -48,57 +45,6 @@ class MeetingPolicyUpdatedEventMessageDetail(event_message_detail.EventMessageDe
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def initiator(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the initiator property value. Initiator of the event.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._initiator
-    
-    @initiator.setter
-    def initiator(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the initiator property value. Initiator of the event.
-        Args:
-            value: Value to set for the initiator property.
-        """
-        self._initiator = value
-    
-    @property
-    def meeting_chat_enabled(self,) -> Optional[bool]:
-        """
-        Gets the meetingChatEnabled property value. Represents whether the meeting chat is enabled or not.
-        Returns: Optional[bool]
-        """
-        return self._meeting_chat_enabled
-    
-    @meeting_chat_enabled.setter
-    def meeting_chat_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the meetingChatEnabled property value. Represents whether the meeting chat is enabled or not.
-        Args:
-            value: Value to set for the meeting_chat_enabled property.
-        """
-        self._meeting_chat_enabled = value
-    
-    @property
-    def meeting_chat_id(self,) -> Optional[str]:
-        """
-        Gets the meetingChatId property value. Unique identifier of the meeting chat.
-        Returns: Optional[str]
-        """
-        return self._meeting_chat_id
-    
-    @meeting_chat_id.setter
-    def meeting_chat_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the meetingChatId property value. Unique identifier of the meeting chat.
-        Args:
-            value: Value to set for the meeting_chat_id property.
-        """
-        self._meeting_chat_id = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

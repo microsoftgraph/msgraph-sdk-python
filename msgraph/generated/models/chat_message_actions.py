@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ChatMessageActions(Enum):
+class ChatMessageActions(str, Enum):
     ReactionAdded = "reactionAdded",
     ReactionRemoved = "reactionRemoved",
     ActionUndefined = "actionUndefined",

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import identity
 
+@dataclass
 class ServicePrincipalIdentity(identity.Identity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ServicePrincipalIdentity and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.servicePrincipalIdentity"
-        # The application identifier of the service principal.
-        self._app_id: Optional[str] = None
-    
-    @property
-    def app_id(self,) -> Optional[str]:
-        """
-        Gets the appId property value. The application identifier of the service principal.
-        Returns: Optional[str]
-        """
-        return self._app_id
-    
-    @app_id.setter
-    def app_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the appId property value. The application identifier of the service principal.
-        Args:
-            value: Value to set for the app_id property.
-        """
-        self._app_id = value
+    odata_type = "#microsoft.graph.servicePrincipalIdentity"
+    # The application identifier of the service principal.
+    app_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServicePrincipalIdentity:

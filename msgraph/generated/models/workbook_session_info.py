@@ -1,38 +1,19 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class WorkbookSessionInfo(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookSessionInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Id of the workbook session.
-        self._id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # true for persistent session. false for non-persistent session (view mode)
-        self._persist_changes: Optional[bool] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Id of the workbook session.
+    id: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # true for persistent session. false for non-persistent session (view mode)
+    persist_changes: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookSessionInfo:
@@ -57,57 +38,6 @@ class WorkbookSessionInfo(AdditionalDataHolder, Parsable):
             "persistChanges": lambda n : setattr(self, 'persist_changes', n.get_bool_value()),
         }
         return fields
-    
-    @property
-    def id(self,) -> Optional[str]:
-        """
-        Gets the id property value. Id of the workbook session.
-        Returns: Optional[str]
-        """
-        return self._id
-    
-    @id.setter
-    def id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the id property value. Id of the workbook session.
-        Args:
-            value: Value to set for the id property.
-        """
-        self._id = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def persist_changes(self,) -> Optional[bool]:
-        """
-        Gets the persistChanges property value. true for persistent session. false for non-persistent session (view mode)
-        Returns: Optional[bool]
-        """
-        return self._persist_changes
-    
-    @persist_changes.setter
-    def persist_changes(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the persistChanges property value. true for persistent session. false for non-persistent session (view mode)
-        Args:
-            value: Value to set for the persist_changes property.
-        """
-        self._persist_changes = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

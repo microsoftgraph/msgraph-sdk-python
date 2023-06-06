@@ -1,38 +1,19 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class FreeBusyError(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new freeBusyError and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Describes the error.
-        self._message: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The response code from querying for the availability of the user, distribution list, or resource.
-        self._response_code: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Describes the error.
+    message: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The response code from querying for the availability of the user, distribution list, or resource.
+    response_code: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FreeBusyError:
@@ -57,57 +38,6 @@ class FreeBusyError(AdditionalDataHolder, Parsable):
             "responseCode": lambda n : setattr(self, 'response_code', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def message(self,) -> Optional[str]:
-        """
-        Gets the message property value. Describes the error.
-        Returns: Optional[str]
-        """
-        return self._message
-    
-    @message.setter
-    def message(self,value: Optional[str] = None) -> None:
-        """
-        Sets the message property value. Describes the error.
-        Args:
-            value: Value to set for the message property.
-        """
-        self._message = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def response_code(self,) -> Optional[str]:
-        """
-        Gets the responseCode property value. The response code from querying for the availability of the user, distribution list, or resource.
-        Returns: Optional[str]
-        """
-        return self._response_code
-    
-    @response_code.setter
-    def response_code(self,value: Optional[str] = None) -> None:
-        """
-        Sets the responseCode property value. The response code from querying for the availability of the user, distribution list, or resource.
-        Args:
-            value: Value to set for the response_code property.
-        """
-        self._response_code = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

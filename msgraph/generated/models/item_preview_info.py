@@ -1,40 +1,21 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class ItemPreviewInfo(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new itemPreviewInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The getUrl property
-        self._get_url: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The postParameters property
-        self._post_parameters: Optional[str] = None
-        # The postUrl property
-        self._post_url: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The getUrl property
+    get_url: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The postParameters property
+    post_parameters: Optional[str] = None
+    # The postUrl property
+    post_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemPreviewInfo:
@@ -48,23 +29,6 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
             raise Exception("parse_node cannot be undefined")
         return ItemPreviewInfo()
     
-    @property
-    def get_url(self,) -> Optional[str]:
-        """
-        Gets the getUrl property value. The getUrl property
-        Returns: Optional[str]
-        """
-        return self._get_url
-    
-    @get_url.setter
-    def get_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the getUrl property value. The getUrl property
-        Args:
-            value: Value to set for the get_url property.
-        """
-        self._get_url = value
-    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,57 +41,6 @@ class ItemPreviewInfo(AdditionalDataHolder, Parsable):
             "postUrl": lambda n : setattr(self, 'post_url', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def post_parameters(self,) -> Optional[str]:
-        """
-        Gets the postParameters property value. The postParameters property
-        Returns: Optional[str]
-        """
-        return self._post_parameters
-    
-    @post_parameters.setter
-    def post_parameters(self,value: Optional[str] = None) -> None:
-        """
-        Sets the postParameters property value. The postParameters property
-        Args:
-            value: Value to set for the post_parameters property.
-        """
-        self._post_parameters = value
-    
-    @property
-    def post_url(self,) -> Optional[str]:
-        """
-        Gets the postUrl property value. The postUrl property
-        Returns: Optional[str]
-        """
-        return self._post_url
-    
-    @post_url.setter
-    def post_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the postUrl property value. The postUrl property
-        Args:
-            value: Value to set for the post_url property.
-        """
-        self._post_url = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

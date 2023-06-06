@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,56 +9,35 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class DeviceComplianceSettingState(entity.Entity):
     """
     Device compliance setting State for a given device.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceComplianceSettingState and sets the default values.
-        """
-        super().__init__()
-        # The DateTime when device compliance grace period expires
-        self._compliance_grace_period_expiration_date_time: Optional[datetime] = None
-        # The Device Id that is being reported
-        self._device_id: Optional[str] = None
-        # The device model that is being reported
-        self._device_model: Optional[str] = None
-        # The Device Name that is being reported
-        self._device_name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The setting class name and property name.
-        self._setting: Optional[str] = None
-        # The Setting Name that is being reported
-        self._setting_name: Optional[str] = None
-        # The state property
-        self._state: Optional[compliance_status.ComplianceStatus] = None
-        # The User email address that is being reported
-        self._user_email: Optional[str] = None
-        # The user Id that is being reported
-        self._user_id: Optional[str] = None
-        # The User Name that is being reported
-        self._user_name: Optional[str] = None
-        # The User PrincipalName that is being reported
-        self._user_principal_name: Optional[str] = None
-    
-    @property
-    def compliance_grace_period_expiration_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the complianceGracePeriodExpirationDateTime property value. The DateTime when device compliance grace period expires
-        Returns: Optional[datetime]
-        """
-        return self._compliance_grace_period_expiration_date_time
-    
-    @compliance_grace_period_expiration_date_time.setter
-    def compliance_grace_period_expiration_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the complianceGracePeriodExpirationDateTime property value. The DateTime when device compliance grace period expires
-        Args:
-            value: Value to set for the compliance_grace_period_expiration_date_time property.
-        """
-        self._compliance_grace_period_expiration_date_time = value
+    # The DateTime when device compliance grace period expires
+    compliance_grace_period_expiration_date_time: Optional[datetime] = None
+    # The Device Id that is being reported
+    device_id: Optional[str] = None
+    # The device model that is being reported
+    device_model: Optional[str] = None
+    # The Device Name that is being reported
+    device_name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The setting class name and property name.
+    setting: Optional[str] = None
+    # The Setting Name that is being reported
+    setting_name: Optional[str] = None
+    # The state property
+    state: Optional[compliance_status.ComplianceStatus] = None
+    # The User email address that is being reported
+    user_email: Optional[str] = None
+    # The user Id that is being reported
+    user_id: Optional[str] = None
+    # The User Name that is being reported
+    user_name: Optional[str] = None
+    # The User PrincipalName that is being reported
+    user_principal_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceComplianceSettingState:
@@ -70,57 +50,6 @@ class DeviceComplianceSettingState(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceComplianceSettingState()
-    
-    @property
-    def device_id(self,) -> Optional[str]:
-        """
-        Gets the deviceId property value. The Device Id that is being reported
-        Returns: Optional[str]
-        """
-        return self._device_id
-    
-    @device_id.setter
-    def device_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the deviceId property value. The Device Id that is being reported
-        Args:
-            value: Value to set for the device_id property.
-        """
-        self._device_id = value
-    
-    @property
-    def device_model(self,) -> Optional[str]:
-        """
-        Gets the deviceModel property value. The device model that is being reported
-        Returns: Optional[str]
-        """
-        return self._device_model
-    
-    @device_model.setter
-    def device_model(self,value: Optional[str] = None) -> None:
-        """
-        Sets the deviceModel property value. The device model that is being reported
-        Args:
-            value: Value to set for the device_model property.
-        """
-        self._device_model = value
-    
-    @property
-    def device_name(self,) -> Optional[str]:
-        """
-        Gets the deviceName property value. The Device Name that is being reported
-        Returns: Optional[str]
-        """
-        return self._device_name
-    
-    @device_name.setter
-    def device_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the deviceName property value. The Device Name that is being reported
-        Args:
-            value: Value to set for the device_name property.
-        """
-        self._device_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -166,124 +95,5 @@ class DeviceComplianceSettingState(entity.Entity):
         writer.write_str_value("userId", self.user_id)
         writer.write_str_value("userName", self.user_name)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
-    
-    @property
-    def setting(self,) -> Optional[str]:
-        """
-        Gets the setting property value. The setting class name and property name.
-        Returns: Optional[str]
-        """
-        return self._setting
-    
-    @setting.setter
-    def setting(self,value: Optional[str] = None) -> None:
-        """
-        Sets the setting property value. The setting class name and property name.
-        Args:
-            value: Value to set for the setting property.
-        """
-        self._setting = value
-    
-    @property
-    def setting_name(self,) -> Optional[str]:
-        """
-        Gets the settingName property value. The Setting Name that is being reported
-        Returns: Optional[str]
-        """
-        return self._setting_name
-    
-    @setting_name.setter
-    def setting_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the settingName property value. The Setting Name that is being reported
-        Args:
-            value: Value to set for the setting_name property.
-        """
-        self._setting_name = value
-    
-    @property
-    def state(self,) -> Optional[compliance_status.ComplianceStatus]:
-        """
-        Gets the state property value. The state property
-        Returns: Optional[compliance_status.ComplianceStatus]
-        """
-        return self._state
-    
-    @state.setter
-    def state(self,value: Optional[compliance_status.ComplianceStatus] = None) -> None:
-        """
-        Sets the state property value. The state property
-        Args:
-            value: Value to set for the state property.
-        """
-        self._state = value
-    
-    @property
-    def user_email(self,) -> Optional[str]:
-        """
-        Gets the userEmail property value. The User email address that is being reported
-        Returns: Optional[str]
-        """
-        return self._user_email
-    
-    @user_email.setter
-    def user_email(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userEmail property value. The User email address that is being reported
-        Args:
-            value: Value to set for the user_email property.
-        """
-        self._user_email = value
-    
-    @property
-    def user_id(self,) -> Optional[str]:
-        """
-        Gets the userId property value. The user Id that is being reported
-        Returns: Optional[str]
-        """
-        return self._user_id
-    
-    @user_id.setter
-    def user_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userId property value. The user Id that is being reported
-        Args:
-            value: Value to set for the user_id property.
-        """
-        self._user_id = value
-    
-    @property
-    def user_name(self,) -> Optional[str]:
-        """
-        Gets the userName property value. The User Name that is being reported
-        Returns: Optional[str]
-        """
-        return self._user_name
-    
-    @user_name.setter
-    def user_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userName property value. The User Name that is being reported
-        Args:
-            value: Value to set for the user_name property.
-        """
-        self._user_name = value
-    
-    @property
-    def user_principal_name(self,) -> Optional[str]:
-        """
-        Gets the userPrincipalName property value. The User PrincipalName that is being reported
-        Returns: Optional[str]
-        """
-        return self._user_principal_name
-    
-    @user_principal_name.setter
-    def user_principal_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userPrincipalName property value. The User PrincipalName that is being reported
-        Args:
-            value: Value to set for the user_principal_name property.
-        """
-        self._user_principal_name = value
     
 

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,32 +9,28 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class RiskyUser(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new riskyUser and sets the default values.
-        """
-        super().__init__()
-        # The activity related to user risk level change
-        self._history: Optional[List[risky_user_history_item.RiskyUserHistoryItem]] = None
-        # Indicates whether the user is deleted. Possible values are: true, false.
-        self._is_deleted: Optional[bool] = None
-        # Indicates whether a user's risky state is being processed by the backend.
-        self._is_processing: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Details of the detected risk. Possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue.
-        self._risk_detail: Optional[risk_detail.RiskDetail] = None
-        # The date and time that the risky user was last updated.  The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._risk_last_updated_date_time: Optional[datetime] = None
-        # Level of the detected risky user. Possible values are: low, medium, high, hidden, none, unknownFutureValue.
-        self._risk_level: Optional[risk_level.RiskLevel] = None
-        # State of the user's risk. Possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
-        self._risk_state: Optional[risk_state.RiskState] = None
-        # Risky user display name.
-        self._user_display_name: Optional[str] = None
-        # Risky user principal name.
-        self._user_principal_name: Optional[str] = None
+    # The activity related to user risk level change
+    history: Optional[List[risky_user_history_item.RiskyUserHistoryItem]] = None
+    # Indicates whether the user is deleted. Possible values are: true, false.
+    is_deleted: Optional[bool] = None
+    # Indicates whether a user's risky state is being processed by the backend.
+    is_processing: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Details of the detected risk. Possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue.
+    risk_detail: Optional[risk_detail.RiskDetail] = None
+    # The date and time that the risky user was last updated.  The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    risk_last_updated_date_time: Optional[datetime] = None
+    # Level of the detected risky user. Possible values are: low, medium, high, hidden, none, unknownFutureValue.
+    risk_level: Optional[risk_level.RiskLevel] = None
+    # State of the user's risk. Possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
+    risk_state: Optional[risk_state.RiskState] = None
+    # Risky user display name.
+    user_display_name: Optional[str] = None
+    # Risky user principal name.
+    user_principal_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RiskyUser:
@@ -76,125 +73,6 @@ class RiskyUser(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def history(self,) -> Optional[List[risky_user_history_item.RiskyUserHistoryItem]]:
-        """
-        Gets the history property value. The activity related to user risk level change
-        Returns: Optional[List[risky_user_history_item.RiskyUserHistoryItem]]
-        """
-        return self._history
-    
-    @history.setter
-    def history(self,value: Optional[List[risky_user_history_item.RiskyUserHistoryItem]] = None) -> None:
-        """
-        Sets the history property value. The activity related to user risk level change
-        Args:
-            value: Value to set for the history property.
-        """
-        self._history = value
-    
-    @property
-    def is_deleted(self,) -> Optional[bool]:
-        """
-        Gets the isDeleted property value. Indicates whether the user is deleted. Possible values are: true, false.
-        Returns: Optional[bool]
-        """
-        return self._is_deleted
-    
-    @is_deleted.setter
-    def is_deleted(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isDeleted property value. Indicates whether the user is deleted. Possible values are: true, false.
-        Args:
-            value: Value to set for the is_deleted property.
-        """
-        self._is_deleted = value
-    
-    @property
-    def is_processing(self,) -> Optional[bool]:
-        """
-        Gets the isProcessing property value. Indicates whether a user's risky state is being processed by the backend.
-        Returns: Optional[bool]
-        """
-        return self._is_processing
-    
-    @is_processing.setter
-    def is_processing(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isProcessing property value. Indicates whether a user's risky state is being processed by the backend.
-        Args:
-            value: Value to set for the is_processing property.
-        """
-        self._is_processing = value
-    
-    @property
-    def risk_detail(self,) -> Optional[risk_detail.RiskDetail]:
-        """
-        Gets the riskDetail property value. Details of the detected risk. Possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue.
-        Returns: Optional[risk_detail.RiskDetail]
-        """
-        return self._risk_detail
-    
-    @risk_detail.setter
-    def risk_detail(self,value: Optional[risk_detail.RiskDetail] = None) -> None:
-        """
-        Sets the riskDetail property value. Details of the detected risk. Possible values are: none, adminGeneratedTemporaryPassword, userPerformedSecuredPasswordChange, userPerformedSecuredPasswordReset, adminConfirmedSigninSafe, aiConfirmedSigninSafe, userPassedMFADrivenByRiskBasedPolicy, adminDismissedAllRiskForUser, adminConfirmedSigninCompromised, hidden, adminConfirmedUserCompromised, unknownFutureValue.
-        Args:
-            value: Value to set for the risk_detail property.
-        """
-        self._risk_detail = value
-    
-    @property
-    def risk_last_updated_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the riskLastUpdatedDateTime property value. The date and time that the risky user was last updated.  The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        Returns: Optional[datetime]
-        """
-        return self._risk_last_updated_date_time
-    
-    @risk_last_updated_date_time.setter
-    def risk_last_updated_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the riskLastUpdatedDateTime property value. The date and time that the risky user was last updated.  The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        Args:
-            value: Value to set for the risk_last_updated_date_time property.
-        """
-        self._risk_last_updated_date_time = value
-    
-    @property
-    def risk_level(self,) -> Optional[risk_level.RiskLevel]:
-        """
-        Gets the riskLevel property value. Level of the detected risky user. Possible values are: low, medium, high, hidden, none, unknownFutureValue.
-        Returns: Optional[risk_level.RiskLevel]
-        """
-        return self._risk_level
-    
-    @risk_level.setter
-    def risk_level(self,value: Optional[risk_level.RiskLevel] = None) -> None:
-        """
-        Sets the riskLevel property value. Level of the detected risky user. Possible values are: low, medium, high, hidden, none, unknownFutureValue.
-        Args:
-            value: Value to set for the risk_level property.
-        """
-        self._risk_level = value
-    
-    @property
-    def risk_state(self,) -> Optional[risk_state.RiskState]:
-        """
-        Gets the riskState property value. State of the user's risk. Possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
-        Returns: Optional[risk_state.RiskState]
-        """
-        return self._risk_state
-    
-    @risk_state.setter
-    def risk_state(self,value: Optional[risk_state.RiskState] = None) -> None:
-        """
-        Sets the riskState property value. State of the user's risk. Possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
-        Args:
-            value: Value to set for the risk_state property.
-        """
-        self._risk_state = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -213,39 +91,5 @@ class RiskyUser(entity.Entity):
         writer.write_enum_value("riskState", self.risk_state)
         writer.write_str_value("userDisplayName", self.user_display_name)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
-    
-    @property
-    def user_display_name(self,) -> Optional[str]:
-        """
-        Gets the userDisplayName property value. Risky user display name.
-        Returns: Optional[str]
-        """
-        return self._user_display_name
-    
-    @user_display_name.setter
-    def user_display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userDisplayName property value. Risky user display name.
-        Args:
-            value: Value to set for the user_display_name property.
-        """
-        self._user_display_name = value
-    
-    @property
-    def user_principal_name(self,) -> Optional[str]:
-        """
-        Gets the userPrincipalName property value. Risky user principal name.
-        Returns: Optional[str]
-        """
-        return self._user_principal_name
-    
-    @user_principal_name.setter
-    def user_principal_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userPrincipalName property value. Risky user principal name.
-        Args:
-            value: Value to set for the user_principal_name property.
-        """
-        self._user_principal_name = value
     
 

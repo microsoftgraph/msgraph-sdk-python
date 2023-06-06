@@ -1,45 +1,26 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
     """
     Platform specific enrollment restrictions
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceEnrollmentPlatformRestriction and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Max OS version supported
-        self._os_maximum_version: Optional[str] = None
-        # Min OS version supported
-        self._os_minimum_version: Optional[str] = None
-        # Block personally owned devices from enrolling
-        self._personal_device_enrollment_blocked: Optional[bool] = None
-        # Block the platform from enrolling
-        self._platform_blocked: Optional[bool] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Max OS version supported
+    os_maximum_version: Optional[str] = None
+    # Min OS version supported
+    os_minimum_version: Optional[str] = None
+    # Block personally owned devices from enrolling
+    personal_device_enrollment_blocked: Optional[bool] = None
+    # Block the platform from enrolling
+    platform_blocked: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceEnrollmentPlatformRestriction:
@@ -66,91 +47,6 @@ class DeviceEnrollmentPlatformRestriction(AdditionalDataHolder, Parsable):
             "platformBlocked": lambda n : setattr(self, 'platform_blocked', n.get_bool_value()),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def os_maximum_version(self,) -> Optional[str]:
-        """
-        Gets the osMaximumVersion property value. Max OS version supported
-        Returns: Optional[str]
-        """
-        return self._os_maximum_version
-    
-    @os_maximum_version.setter
-    def os_maximum_version(self,value: Optional[str] = None) -> None:
-        """
-        Sets the osMaximumVersion property value. Max OS version supported
-        Args:
-            value: Value to set for the os_maximum_version property.
-        """
-        self._os_maximum_version = value
-    
-    @property
-    def os_minimum_version(self,) -> Optional[str]:
-        """
-        Gets the osMinimumVersion property value. Min OS version supported
-        Returns: Optional[str]
-        """
-        return self._os_minimum_version
-    
-    @os_minimum_version.setter
-    def os_minimum_version(self,value: Optional[str] = None) -> None:
-        """
-        Sets the osMinimumVersion property value. Min OS version supported
-        Args:
-            value: Value to set for the os_minimum_version property.
-        """
-        self._os_minimum_version = value
-    
-    @property
-    def personal_device_enrollment_blocked(self,) -> Optional[bool]:
-        """
-        Gets the personalDeviceEnrollmentBlocked property value. Block personally owned devices from enrolling
-        Returns: Optional[bool]
-        """
-        return self._personal_device_enrollment_blocked
-    
-    @personal_device_enrollment_blocked.setter
-    def personal_device_enrollment_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the personalDeviceEnrollmentBlocked property value. Block personally owned devices from enrolling
-        Args:
-            value: Value to set for the personal_device_enrollment_blocked property.
-        """
-        self._personal_device_enrollment_blocked = value
-    
-    @property
-    def platform_blocked(self,) -> Optional[bool]:
-        """
-        Gets the platformBlocked property value. Block the platform from enrolling
-        Returns: Optional[bool]
-        """
-        return self._platform_blocked
-    
-    @platform_blocked.setter
-    def platform_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the platformBlocked property value. Block the platform from enrolling
-        Args:
-            value: Value to set for the platform_blocked property.
-        """
-        self._platform_blocked = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

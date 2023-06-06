@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import access_review_instance_decision_item_resource
 
+@dataclass
 class AccessReviewInstanceDecisionItemServicePrincipalResource(access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AccessReviewInstanceDecisionItemServicePrincipalResource and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.accessReviewInstanceDecisionItemServicePrincipalResource"
-        # The globally unique identifier of the application to which access has been granted.
-        self._app_id: Optional[str] = None
-    
-    @property
-    def app_id(self,) -> Optional[str]:
-        """
-        Gets the appId property value. The globally unique identifier of the application to which access has been granted.
-        Returns: Optional[str]
-        """
-        return self._app_id
-    
-    @app_id.setter
-    def app_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the appId property value. The globally unique identifier of the application to which access has been granted.
-        Args:
-            value: Value to set for the app_id property.
-        """
-        self._app_id = value
+    odata_type = "#microsoft.graph.accessReviewInstanceDecisionItemServicePrincipalResource"
+    # The globally unique identifier of the application to which access has been granted.
+    app_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewInstanceDecisionItemServicePrincipalResource:

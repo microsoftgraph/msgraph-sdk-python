@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -6,77 +7,23 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from . import education_excel_resource, education_external_resource, education_file_resource, education_link_resource, education_media_resource, education_power_point_resource, education_teams_app_resource, education_word_resource, identity_set
 
+@dataclass
 class EducationResource(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new educationResource and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The individual who created the resource.
-        self._created_by: Optional[identity_set.IdentitySet] = None
-        # Moment in time when the resource was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._created_date_time: Optional[datetime] = None
-        # Display name of resource.
-        self._display_name: Optional[str] = None
-        # The last user to modify the resource.
-        self._last_modified_by: Optional[identity_set.IdentitySet] = None
-        # Moment in time when the resource was last modified.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def created_by(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the createdBy property value. The individual who created the resource.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._created_by
-    
-    @created_by.setter
-    def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the createdBy property value. The individual who created the resource.
-        Args:
-            value: Value to set for the created_by property.
-        """
-        self._created_by = value
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. Moment in time when the resource was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. Moment in time when the resource was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    # The individual who created the resource.
+    created_by: Optional[identity_set.IdentitySet] = None
+    # Moment in time when the resource was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    created_date_time: Optional[datetime] = None
+    # Display name of resource.
+    display_name: Optional[str] = None
+    # The last user to modify the resource.
+    last_modified_by: Optional[identity_set.IdentitySet] = None
+    # Moment in time when the resource was last modified.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    last_modified_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationResource:
@@ -125,23 +72,6 @@ class EducationResource(AdditionalDataHolder, Parsable):
                 return education_word_resource.EducationWordResource()
         return EducationResource()
     
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Display name of resource.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Display name of resource.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -158,57 +88,6 @@ class EducationResource(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def last_modified_by(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the lastModifiedBy property value. The last user to modify the resource.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._last_modified_by
-    
-    @last_modified_by.setter
-    def last_modified_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the lastModifiedBy property value. The last user to modify the resource.
-        Args:
-            value: Value to set for the last_modified_by property.
-        """
-        self._last_modified_by = value
-    
-    @property
-    def last_modified_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastModifiedDateTime property value. Moment in time when the resource was last modified.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        Returns: Optional[datetime]
-        """
-        return self._last_modified_date_time
-    
-    @last_modified_date_time.setter
-    def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastModifiedDateTime property value. Moment in time when the resource was last modified.  The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        Args:
-            value: Value to set for the last_modified_date_time property.
-        """
-        self._last_modified_date_time = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

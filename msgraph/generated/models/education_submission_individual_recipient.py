@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import education_submission_recipient
 
+@dataclass
 class EducationSubmissionIndividualRecipient(education_submission_recipient.EducationSubmissionRecipient):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EducationSubmissionIndividualRecipient and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.educationSubmissionIndividualRecipient"
-        # User ID of the user to whom the submission is assigned.
-        self._user_id: Optional[str] = None
+    odata_type = "#microsoft.graph.educationSubmissionIndividualRecipient"
+    # User ID of the user to whom the submission is assigned.
+    user_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationSubmissionIndividualRecipient:
@@ -53,22 +50,5 @@ class EducationSubmissionIndividualRecipient(education_submission_recipient.Educ
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("userId", self.user_id)
-    
-    @property
-    def user_id(self,) -> Optional[str]:
-        """
-        Gets the userId property value. User ID of the user to whom the submission is assigned.
-        Returns: Optional[str]
-        """
-        return self._user_id
-    
-    @user_id.setter
-    def user_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userId property value. User ID of the user to whom the submission is assigned.
-        Args:
-            value: Value to set for the user_id property.
-        """
-        self._user_id = value
     
 

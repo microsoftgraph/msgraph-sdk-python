@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PrinterProcessingState(Enum):
+class PrinterProcessingState(str, Enum):
     Unknown = "unknown",
     Idle = "idle",
     Processing = "processing",

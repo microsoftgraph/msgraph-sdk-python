@@ -1,6 +1,6 @@
 from enum import Enum
 
-class LocationType(Enum):
+class LocationType(str, Enum):
     Default = "default",
     ConferenceRoom = "conferenceRoom",
     HomeAddress = "homeAddress",

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -8,102 +9,47 @@ if TYPE_CHECKING:
 
 from . import base_item
 
+@dataclass
 class Site(base_item.BaseItem):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new site and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.site"
-        # Analytics about the view activities that took place in this site.
-        self._analytics: Optional[item_analytics.ItemAnalytics] = None
-        # The collection of column definitions reusable across lists under this site.
-        self._columns: Optional[List[column_definition.ColumnDefinition]] = None
-        # The collection of content types defined for this site.
-        self._content_types: Optional[List[content_type.ContentType]] = None
-        # The full title for the site. Read-only.
-        self._display_name: Optional[str] = None
-        # The default drive (document library) for this site.
-        self._drive: Optional[drive.Drive] = None
-        # The collection of drives (document libraries) under this site.
-        self._drives: Optional[List[drive.Drive]] = None
-        # The error property
-        self._error: Optional[public_error.PublicError] = None
-        # The externalColumns property
-        self._external_columns: Optional[List[column_definition.ColumnDefinition]] = None
-        # Used to address any item contained in this site. This collection can't be enumerated.
-        self._items: Optional[List[base_item.BaseItem]] = None
-        # The collection of lists under this site.
-        self._lists: Optional[List[list.List]] = None
-        # Calls the OneNote service for notebook related operations.
-        self._onenote: Optional[onenote.Onenote] = None
-        # The collection of long-running operations on the site.
-        self._operations: Optional[List[rich_long_running_operation.RichLongRunningOperation]] = None
-        # The permissions associated with the site. Nullable.
-        self._permissions: Optional[List[permission.Permission]] = None
-        # If present, indicates that this is the root site in the site collection. Read-only.
-        self._root: Optional[root.Root] = None
-        # Returns identifiers useful for SharePoint REST compatibility. Read-only.
-        self._sharepoint_ids: Optional[sharepoint_ids.SharepointIds] = None
-        # Provides details about the site's site collection. Available only on the root site. Read-only.
-        self._site_collection: Optional[site_collection.SiteCollection] = None
-        # The collection of the sub-sites under this site.
-        self._sites: Optional[List[Site]] = None
-        # The default termStore under this site.
-        self._term_store: Optional[store.Store] = None
-        # The collection of termStores under this site.
-        self._term_stores: Optional[List[store.Store]] = None
-    
-    @property
-    def analytics(self,) -> Optional[item_analytics.ItemAnalytics]:
-        """
-        Gets the analytics property value. Analytics about the view activities that took place in this site.
-        Returns: Optional[item_analytics.ItemAnalytics]
-        """
-        return self._analytics
-    
-    @analytics.setter
-    def analytics(self,value: Optional[item_analytics.ItemAnalytics] = None) -> None:
-        """
-        Sets the analytics property value. Analytics about the view activities that took place in this site.
-        Args:
-            value: Value to set for the analytics property.
-        """
-        self._analytics = value
-    
-    @property
-    def columns(self,) -> Optional[List[column_definition.ColumnDefinition]]:
-        """
-        Gets the columns property value. The collection of column definitions reusable across lists under this site.
-        Returns: Optional[List[column_definition.ColumnDefinition]]
-        """
-        return self._columns
-    
-    @columns.setter
-    def columns(self,value: Optional[List[column_definition.ColumnDefinition]] = None) -> None:
-        """
-        Sets the columns property value. The collection of column definitions reusable across lists under this site.
-        Args:
-            value: Value to set for the columns property.
-        """
-        self._columns = value
-    
-    @property
-    def content_types(self,) -> Optional[List[content_type.ContentType]]:
-        """
-        Gets the contentTypes property value. The collection of content types defined for this site.
-        Returns: Optional[List[content_type.ContentType]]
-        """
-        return self._content_types
-    
-    @content_types.setter
-    def content_types(self,value: Optional[List[content_type.ContentType]] = None) -> None:
-        """
-        Sets the contentTypes property value. The collection of content types defined for this site.
-        Args:
-            value: Value to set for the content_types property.
-        """
-        self._content_types = value
+    odata_type = "#microsoft.graph.site"
+    # Analytics about the view activities that took place in this site.
+    analytics: Optional[item_analytics.ItemAnalytics] = None
+    # The collection of column definitions reusable across lists under this site.
+    columns: Optional[List[column_definition.ColumnDefinition]] = None
+    # The collection of content types defined for this site.
+    content_types: Optional[List[content_type.ContentType]] = None
+    # The full title for the site. Read-only.
+    display_name: Optional[str] = None
+    # The default drive (document library) for this site.
+    drive: Optional[drive.Drive] = None
+    # The collection of drives (document libraries) under this site.
+    drives: Optional[List[drive.Drive]] = None
+    # The error property
+    error: Optional[public_error.PublicError] = None
+    # The externalColumns property
+    external_columns: Optional[List[column_definition.ColumnDefinition]] = None
+    # Used to address any item contained in this site. This collection can't be enumerated.
+    items: Optional[List[base_item.BaseItem]] = None
+    # The collection of lists under this site.
+    lists: Optional[List[list.List]] = None
+    # Calls the OneNote service for notebook related operations.
+    onenote: Optional[onenote.Onenote] = None
+    # The collection of long-running operations on the site.
+    operations: Optional[List[rich_long_running_operation.RichLongRunningOperation]] = None
+    # The permissions associated with the site. Nullable.
+    permissions: Optional[List[permission.Permission]] = None
+    # If present, indicates that this is the root site in the site collection. Read-only.
+    root: Optional[root.Root] = None
+    # Returns identifiers useful for SharePoint REST compatibility. Read-only.
+    sharepoint_ids: Optional[sharepoint_ids.SharepointIds] = None
+    # Provides details about the site's site collection. Available only on the root site. Read-only.
+    site_collection: Optional[site_collection.SiteCollection] = None
+    # The collection of the sub-sites under this site.
+    sites: Optional[List[Site]] = None
+    # The default termStore under this site.
+    term_store: Optional[store.Store] = None
+    # The collection of termStores under this site.
+    term_stores: Optional[List[store.Store]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Site:
@@ -116,91 +62,6 @@ class Site(base_item.BaseItem):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Site()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The full title for the site. Read-only.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The full title for the site. Read-only.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
-    @property
-    def drive(self,) -> Optional[drive.Drive]:
-        """
-        Gets the drive property value. The default drive (document library) for this site.
-        Returns: Optional[drive.Drive]
-        """
-        return self._drive
-    
-    @drive.setter
-    def drive(self,value: Optional[drive.Drive] = None) -> None:
-        """
-        Sets the drive property value. The default drive (document library) for this site.
-        Args:
-            value: Value to set for the drive property.
-        """
-        self._drive = value
-    
-    @property
-    def drives(self,) -> Optional[List[drive.Drive]]:
-        """
-        Gets the drives property value. The collection of drives (document libraries) under this site.
-        Returns: Optional[List[drive.Drive]]
-        """
-        return self._drives
-    
-    @drives.setter
-    def drives(self,value: Optional[List[drive.Drive]] = None) -> None:
-        """
-        Sets the drives property value. The collection of drives (document libraries) under this site.
-        Args:
-            value: Value to set for the drives property.
-        """
-        self._drives = value
-    
-    @property
-    def error(self,) -> Optional[public_error.PublicError]:
-        """
-        Gets the error property value. The error property
-        Returns: Optional[public_error.PublicError]
-        """
-        return self._error
-    
-    @error.setter
-    def error(self,value: Optional[public_error.PublicError] = None) -> None:
-        """
-        Sets the error property value. The error property
-        Args:
-            value: Value to set for the error property.
-        """
-        self._error = value
-    
-    @property
-    def external_columns(self,) -> Optional[List[column_definition.ColumnDefinition]]:
-        """
-        Gets the externalColumns property value. The externalColumns property
-        Returns: Optional[List[column_definition.ColumnDefinition]]
-        """
-        return self._external_columns
-    
-    @external_columns.setter
-    def external_columns(self,value: Optional[List[column_definition.ColumnDefinition]] = None) -> None:
-        """
-        Sets the externalColumns property value. The externalColumns property
-        Args:
-            value: Value to set for the external_columns property.
-        """
-        self._external_columns = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -235,108 +96,6 @@ class Site(base_item.BaseItem):
         fields.update(super_fields)
         return fields
     
-    @property
-    def items(self,) -> Optional[List[base_item.BaseItem]]:
-        """
-        Gets the items property value. Used to address any item contained in this site. This collection can't be enumerated.
-        Returns: Optional[List[base_item.BaseItem]]
-        """
-        return self._items
-    
-    @items.setter
-    def items(self,value: Optional[List[base_item.BaseItem]] = None) -> None:
-        """
-        Sets the items property value. Used to address any item contained in this site. This collection can't be enumerated.
-        Args:
-            value: Value to set for the items property.
-        """
-        self._items = value
-    
-    @property
-    def lists(self,) -> Optional[List[list.List]]:
-        """
-        Gets the lists property value. The collection of lists under this site.
-        Returns: Optional[List[list.List]]
-        """
-        return self._lists
-    
-    @lists.setter
-    def lists(self,value: Optional[List[list.List]] = None) -> None:
-        """
-        Sets the lists property value. The collection of lists under this site.
-        Args:
-            value: Value to set for the lists property.
-        """
-        self._lists = value
-    
-    @property
-    def onenote(self,) -> Optional[onenote.Onenote]:
-        """
-        Gets the onenote property value. Calls the OneNote service for notebook related operations.
-        Returns: Optional[onenote.Onenote]
-        """
-        return self._onenote
-    
-    @onenote.setter
-    def onenote(self,value: Optional[onenote.Onenote] = None) -> None:
-        """
-        Sets the onenote property value. Calls the OneNote service for notebook related operations.
-        Args:
-            value: Value to set for the onenote property.
-        """
-        self._onenote = value
-    
-    @property
-    def operations(self,) -> Optional[List[rich_long_running_operation.RichLongRunningOperation]]:
-        """
-        Gets the operations property value. The collection of long-running operations on the site.
-        Returns: Optional[List[rich_long_running_operation.RichLongRunningOperation]]
-        """
-        return self._operations
-    
-    @operations.setter
-    def operations(self,value: Optional[List[rich_long_running_operation.RichLongRunningOperation]] = None) -> None:
-        """
-        Sets the operations property value. The collection of long-running operations on the site.
-        Args:
-            value: Value to set for the operations property.
-        """
-        self._operations = value
-    
-    @property
-    def permissions(self,) -> Optional[List[permission.Permission]]:
-        """
-        Gets the permissions property value. The permissions associated with the site. Nullable.
-        Returns: Optional[List[permission.Permission]]
-        """
-        return self._permissions
-    
-    @permissions.setter
-    def permissions(self,value: Optional[List[permission.Permission]] = None) -> None:
-        """
-        Sets the permissions property value. The permissions associated with the site. Nullable.
-        Args:
-            value: Value to set for the permissions property.
-        """
-        self._permissions = value
-    
-    @property
-    def root(self,) -> Optional[root.Root]:
-        """
-        Gets the root property value. If present, indicates that this is the root site in the site collection. Read-only.
-        Returns: Optional[root.Root]
-        """
-        return self._root
-    
-    @root.setter
-    def root(self,value: Optional[root.Root] = None) -> None:
-        """
-        Sets the root property value. If present, indicates that this is the root site in the site collection. Read-only.
-        Args:
-            value: Value to set for the root property.
-        """
-        self._root = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -365,90 +124,5 @@ class Site(base_item.BaseItem):
         writer.write_object_value("siteCollection", self.site_collection)
         writer.write_object_value("termStore", self.term_store)
         writer.write_collection_of_object_values("termStores", self.term_stores)
-    
-    @property
-    def sharepoint_ids(self,) -> Optional[sharepoint_ids.SharepointIds]:
-        """
-        Gets the sharepointIds property value. Returns identifiers useful for SharePoint REST compatibility. Read-only.
-        Returns: Optional[sharepoint_ids.SharepointIds]
-        """
-        return self._sharepoint_ids
-    
-    @sharepoint_ids.setter
-    def sharepoint_ids(self,value: Optional[sharepoint_ids.SharepointIds] = None) -> None:
-        """
-        Sets the sharepointIds property value. Returns identifiers useful for SharePoint REST compatibility. Read-only.
-        Args:
-            value: Value to set for the sharepoint_ids property.
-        """
-        self._sharepoint_ids = value
-    
-    @property
-    def site_collection(self,) -> Optional[site_collection.SiteCollection]:
-        """
-        Gets the siteCollection property value. Provides details about the site's site collection. Available only on the root site. Read-only.
-        Returns: Optional[site_collection.SiteCollection]
-        """
-        return self._site_collection
-    
-    @site_collection.setter
-    def site_collection(self,value: Optional[site_collection.SiteCollection] = None) -> None:
-        """
-        Sets the siteCollection property value. Provides details about the site's site collection. Available only on the root site. Read-only.
-        Args:
-            value: Value to set for the site_collection property.
-        """
-        self._site_collection = value
-    
-    @property
-    def sites(self,) -> Optional[List[Site]]:
-        """
-        Gets the sites property value. The collection of the sub-sites under this site.
-        Returns: Optional[List[Site]]
-        """
-        return self._sites
-    
-    @sites.setter
-    def sites(self,value: Optional[List[Site]] = None) -> None:
-        """
-        Sets the sites property value. The collection of the sub-sites under this site.
-        Args:
-            value: Value to set for the sites property.
-        """
-        self._sites = value
-    
-    @property
-    def term_store(self,) -> Optional[store.Store]:
-        """
-        Gets the termStore property value. The default termStore under this site.
-        Returns: Optional[store.Store]
-        """
-        return self._term_store
-    
-    @term_store.setter
-    def term_store(self,value: Optional[store.Store] = None) -> None:
-        """
-        Sets the termStore property value. The default termStore under this site.
-        Args:
-            value: Value to set for the term_store property.
-        """
-        self._term_store = value
-    
-    @property
-    def term_stores(self,) -> Optional[List[store.Store]]:
-        """
-        Gets the termStores property value. The collection of termStores under this site.
-        Returns: Optional[List[store.Store]]
-        """
-        return self._term_stores
-    
-    @term_stores.setter
-    def term_stores(self,value: Optional[List[store.Store]] = None) -> None:
-        """
-        Sets the termStores property value. The collection of termStores under this site.
-        Args:
-            value: Value to set for the term_stores property.
-        """
-        self._term_stores = value
     
 

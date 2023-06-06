@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,91 +8,19 @@ if TYPE_CHECKING:
 
 from . import device_configuration
 
+@dataclass
 class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Windows10SecureAssessmentConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windows10SecureAssessmentConfiguration"
-        # Indicates whether or not to allow the app from printing during the test.
-        self._allow_printing: Optional[bool] = None
-        # Indicates whether or not to allow screen capture capability during a test.
-        self._allow_screen_capture: Optional[bool] = None
-        # Indicates whether or not to allow text suggestions during the test.
-        self._allow_text_suggestion: Optional[bool] = None
-        # The account used to configure the Windows device for taking the test. The user can be a domain account (domain/user), an AAD account (username@tenant.com) or a local account (username).
-        self._configuration_account: Optional[str] = None
-        # Url link to an assessment that's automatically loaded when the secure assessment browser is launched. It has to be a valid Url (http[s]://msdn.microsoft.com/).
-        self._launch_uri: Optional[str] = None
-    
-    @property
-    def allow_printing(self,) -> Optional[bool]:
-        """
-        Gets the allowPrinting property value. Indicates whether or not to allow the app from printing during the test.
-        Returns: Optional[bool]
-        """
-        return self._allow_printing
-    
-    @allow_printing.setter
-    def allow_printing(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowPrinting property value. Indicates whether or not to allow the app from printing during the test.
-        Args:
-            value: Value to set for the allow_printing property.
-        """
-        self._allow_printing = value
-    
-    @property
-    def allow_screen_capture(self,) -> Optional[bool]:
-        """
-        Gets the allowScreenCapture property value. Indicates whether or not to allow screen capture capability during a test.
-        Returns: Optional[bool]
-        """
-        return self._allow_screen_capture
-    
-    @allow_screen_capture.setter
-    def allow_screen_capture(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowScreenCapture property value. Indicates whether or not to allow screen capture capability during a test.
-        Args:
-            value: Value to set for the allow_screen_capture property.
-        """
-        self._allow_screen_capture = value
-    
-    @property
-    def allow_text_suggestion(self,) -> Optional[bool]:
-        """
-        Gets the allowTextSuggestion property value. Indicates whether or not to allow text suggestions during the test.
-        Returns: Optional[bool]
-        """
-        return self._allow_text_suggestion
-    
-    @allow_text_suggestion.setter
-    def allow_text_suggestion(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowTextSuggestion property value. Indicates whether or not to allow text suggestions during the test.
-        Args:
-            value: Value to set for the allow_text_suggestion property.
-        """
-        self._allow_text_suggestion = value
-    
-    @property
-    def configuration_account(self,) -> Optional[str]:
-        """
-        Gets the configurationAccount property value. The account used to configure the Windows device for taking the test. The user can be a domain account (domain/user), an AAD account (username@tenant.com) or a local account (username).
-        Returns: Optional[str]
-        """
-        return self._configuration_account
-    
-    @configuration_account.setter
-    def configuration_account(self,value: Optional[str] = None) -> None:
-        """
-        Sets the configurationAccount property value. The account used to configure the Windows device for taking the test. The user can be a domain account (domain/user), an AAD account (username@tenant.com) or a local account (username).
-        Args:
-            value: Value to set for the configuration_account property.
-        """
-        self._configuration_account = value
+    odata_type = "#microsoft.graph.windows10SecureAssessmentConfiguration"
+    # Indicates whether or not to allow the app from printing during the test.
+    allow_printing: Optional[bool] = None
+    # Indicates whether or not to allow screen capture capability during a test.
+    allow_screen_capture: Optional[bool] = None
+    # Indicates whether or not to allow text suggestions during the test.
+    allow_text_suggestion: Optional[bool] = None
+    # The account used to configure the Windows device for taking the test. The user can be a domain account (domain/user), an AAD account (username@tenant.com) or a local account (username).
+    configuration_account: Optional[str] = None
+    # Url link to an assessment that's automatically loaded when the secure assessment browser is launched. It has to be a valid Url (http[s]://msdn.microsoft.com/).
+    launch_uri: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10SecureAssessmentConfiguration:
@@ -122,23 +51,6 @@ class Windows10SecureAssessmentConfiguration(device_configuration.DeviceConfigur
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def launch_uri(self,) -> Optional[str]:
-        """
-        Gets the launchUri property value. Url link to an assessment that's automatically loaded when the secure assessment browser is launched. It has to be a valid Url (http[s]://msdn.microsoft.com/).
-        Returns: Optional[str]
-        """
-        return self._launch_uri
-    
-    @launch_uri.setter
-    def launch_uri(self,value: Optional[str] = None) -> None:
-        """
-        Sets the launchUri property value. Url link to an assessment that's automatically loaded when the secure assessment browser is launched. It has to be a valid Url (http[s]://msdn.microsoft.com/).
-        Args:
-            value: Value to set for the launch_uri property.
-        """
-        self._launch_uri = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

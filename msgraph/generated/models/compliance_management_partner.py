@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,69 +9,31 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ComplianceManagementPartner(entity.Entity):
     """
     Compliance management partner for all platforms
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new complianceManagementPartner and sets the default values.
-        """
-        super().__init__()
-        # User groups which enroll Android devices through partner.
-        self._android_enrollment_assignments: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]] = None
-        # Partner onboarded for Android devices.
-        self._android_onboarded: Optional[bool] = None
-        # Partner display name
-        self._display_name: Optional[str] = None
-        # User groups which enroll ios devices through partner.
-        self._ios_enrollment_assignments: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]] = None
-        # Partner onboarded for ios devices.
-        self._ios_onboarded: Optional[bool] = None
-        # Timestamp of last heartbeat after admin onboarded to the compliance management partner
-        self._last_heartbeat_date_time: Optional[datetime] = None
-        # User groups which enroll Mac devices through partner.
-        self._mac_os_enrollment_assignments: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]] = None
-        # Partner onboarded for Mac devices.
-        self._mac_os_onboarded: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Partner state of this tenant.
-        self._partner_state: Optional[device_management_partner_tenant_state.DeviceManagementPartnerTenantState] = None
-    
-    @property
-    def android_enrollment_assignments(self,) -> Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]]:
-        """
-        Gets the androidEnrollmentAssignments property value. User groups which enroll Android devices through partner.
-        Returns: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]]
-        """
-        return self._android_enrollment_assignments
-    
-    @android_enrollment_assignments.setter
-    def android_enrollment_assignments(self,value: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]] = None) -> None:
-        """
-        Sets the androidEnrollmentAssignments property value. User groups which enroll Android devices through partner.
-        Args:
-            value: Value to set for the android_enrollment_assignments property.
-        """
-        self._android_enrollment_assignments = value
-    
-    @property
-    def android_onboarded(self,) -> Optional[bool]:
-        """
-        Gets the androidOnboarded property value. Partner onboarded for Android devices.
-        Returns: Optional[bool]
-        """
-        return self._android_onboarded
-    
-    @android_onboarded.setter
-    def android_onboarded(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the androidOnboarded property value. Partner onboarded for Android devices.
-        Args:
-            value: Value to set for the android_onboarded property.
-        """
-        self._android_onboarded = value
+    # User groups which enroll Android devices through partner.
+    android_enrollment_assignments: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]] = None
+    # Partner onboarded for Android devices.
+    android_onboarded: Optional[bool] = None
+    # Partner display name
+    display_name: Optional[str] = None
+    # User groups which enroll ios devices through partner.
+    ios_enrollment_assignments: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]] = None
+    # Partner onboarded for ios devices.
+    ios_onboarded: Optional[bool] = None
+    # Timestamp of last heartbeat after admin onboarded to the compliance management partner
+    last_heartbeat_date_time: Optional[datetime] = None
+    # User groups which enroll Mac devices through partner.
+    mac_os_enrollment_assignments: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]] = None
+    # Partner onboarded for Mac devices.
+    mac_os_onboarded: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Partner state of this tenant.
+    partner_state: Optional[device_management_partner_tenant_state.DeviceManagementPartnerTenantState] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ComplianceManagementPartner:
@@ -83,23 +46,6 @@ class ComplianceManagementPartner(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ComplianceManagementPartner()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Partner display name
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Partner display name
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -122,108 +68,6 @@ class ComplianceManagementPartner(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def ios_enrollment_assignments(self,) -> Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]]:
-        """
-        Gets the iosEnrollmentAssignments property value. User groups which enroll ios devices through partner.
-        Returns: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]]
-        """
-        return self._ios_enrollment_assignments
-    
-    @ios_enrollment_assignments.setter
-    def ios_enrollment_assignments(self,value: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]] = None) -> None:
-        """
-        Sets the iosEnrollmentAssignments property value. User groups which enroll ios devices through partner.
-        Args:
-            value: Value to set for the ios_enrollment_assignments property.
-        """
-        self._ios_enrollment_assignments = value
-    
-    @property
-    def ios_onboarded(self,) -> Optional[bool]:
-        """
-        Gets the iosOnboarded property value. Partner onboarded for ios devices.
-        Returns: Optional[bool]
-        """
-        return self._ios_onboarded
-    
-    @ios_onboarded.setter
-    def ios_onboarded(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the iosOnboarded property value. Partner onboarded for ios devices.
-        Args:
-            value: Value to set for the ios_onboarded property.
-        """
-        self._ios_onboarded = value
-    
-    @property
-    def last_heartbeat_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastHeartbeatDateTime property value. Timestamp of last heartbeat after admin onboarded to the compliance management partner
-        Returns: Optional[datetime]
-        """
-        return self._last_heartbeat_date_time
-    
-    @last_heartbeat_date_time.setter
-    def last_heartbeat_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastHeartbeatDateTime property value. Timestamp of last heartbeat after admin onboarded to the compliance management partner
-        Args:
-            value: Value to set for the last_heartbeat_date_time property.
-        """
-        self._last_heartbeat_date_time = value
-    
-    @property
-    def mac_os_enrollment_assignments(self,) -> Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]]:
-        """
-        Gets the macOsEnrollmentAssignments property value. User groups which enroll Mac devices through partner.
-        Returns: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]]
-        """
-        return self._mac_os_enrollment_assignments
-    
-    @mac_os_enrollment_assignments.setter
-    def mac_os_enrollment_assignments(self,value: Optional[List[compliance_management_partner_assignment.ComplianceManagementPartnerAssignment]] = None) -> None:
-        """
-        Sets the macOsEnrollmentAssignments property value. User groups which enroll Mac devices through partner.
-        Args:
-            value: Value to set for the mac_os_enrollment_assignments property.
-        """
-        self._mac_os_enrollment_assignments = value
-    
-    @property
-    def mac_os_onboarded(self,) -> Optional[bool]:
-        """
-        Gets the macOsOnboarded property value. Partner onboarded for Mac devices.
-        Returns: Optional[bool]
-        """
-        return self._mac_os_onboarded
-    
-    @mac_os_onboarded.setter
-    def mac_os_onboarded(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the macOsOnboarded property value. Partner onboarded for Mac devices.
-        Args:
-            value: Value to set for the mac_os_onboarded property.
-        """
-        self._mac_os_onboarded = value
-    
-    @property
-    def partner_state(self,) -> Optional[device_management_partner_tenant_state.DeviceManagementPartnerTenantState]:
-        """
-        Gets the partnerState property value. Partner state of this tenant.
-        Returns: Optional[device_management_partner_tenant_state.DeviceManagementPartnerTenantState]
-        """
-        return self._partner_state
-    
-    @partner_state.setter
-    def partner_state(self,value: Optional[device_management_partner_tenant_state.DeviceManagementPartnerTenantState] = None) -> None:
-        """
-        Sets the partnerState property value. Partner state of this tenant.
-        Args:
-            value: Value to set for the partner_state property.
-        """
-        self._partner_state = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

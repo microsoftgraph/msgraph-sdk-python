@@ -1,6 +1,6 @@
 from enum import Enum
 
-class EducationFeedbackResourceOutcomeStatus(Enum):
+class EducationFeedbackResourceOutcomeStatus(str, Enum):
     NotPublished = "notPublished",
     PendingPublish = "pendingPublish",
     Published = "published",

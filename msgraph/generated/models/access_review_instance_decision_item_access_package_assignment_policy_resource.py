@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,51 +8,13 @@ if TYPE_CHECKING:
 
 from . import access_review_instance_decision_item_resource
 
+@dataclass
 class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.accessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource"
-        # Display name of the access package to which access has been granted.
-        self._access_package_display_name: Optional[str] = None
-        # Identifier of the access package to which access has been granted.
-        self._access_package_id: Optional[str] = None
-    
-    @property
-    def access_package_display_name(self,) -> Optional[str]:
-        """
-        Gets the accessPackageDisplayName property value. Display name of the access package to which access has been granted.
-        Returns: Optional[str]
-        """
-        return self._access_package_display_name
-    
-    @access_package_display_name.setter
-    def access_package_display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the accessPackageDisplayName property value. Display name of the access package to which access has been granted.
-        Args:
-            value: Value to set for the access_package_display_name property.
-        """
-        self._access_package_display_name = value
-    
-    @property
-    def access_package_id(self,) -> Optional[str]:
-        """
-        Gets the accessPackageId property value. Identifier of the access package to which access has been granted.
-        Returns: Optional[str]
-        """
-        return self._access_package_id
-    
-    @access_package_id.setter
-    def access_package_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the accessPackageId property value. Identifier of the access package to which access has been granted.
-        Args:
-            value: Value to set for the access_package_id property.
-        """
-        self._access_package_id = value
+    odata_type = "#microsoft.graph.accessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource"
+    # Display name of the access package to which access has been granted.
+    access_package_display_name: Optional[str] = None
+    # Identifier of the access package to which access has been granted.
+    access_package_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource:

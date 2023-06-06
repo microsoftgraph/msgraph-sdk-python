@@ -1,37 +1,18 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ......models import drive_item_uploadable_properties
 
+@dataclass
 class CreateUploadSessionPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new createUploadSessionPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The item property
-        self._item: Optional[drive_item_uploadable_properties.DriveItemUploadableProperties] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The item property
+    item: Optional[drive_item_uploadable_properties.DriveItemUploadableProperties] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CreateUploadSessionPostRequestBody:
@@ -56,23 +37,6 @@ class CreateUploadSessionPostRequestBody(AdditionalDataHolder, Parsable):
             "item": lambda n : setattr(self, 'item', n.get_object_value(drive_item_uploadable_properties.DriveItemUploadableProperties)),
         }
         return fields
-    
-    @property
-    def item(self,) -> Optional[drive_item_uploadable_properties.DriveItemUploadableProperties]:
-        """
-        Gets the item property value. The item property
-        Returns: Optional[drive_item_uploadable_properties.DriveItemUploadableProperties]
-        """
-        return self._item
-    
-    @item.setter
-    def item(self,value: Optional[drive_item_uploadable_properties.DriveItemUploadableProperties] = None) -> None:
-        """
-        Sets the item property value. The item property
-        Args:
-            value: Value to set for the item property.
-        """
-        self._item = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

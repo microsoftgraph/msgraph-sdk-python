@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WindowsUserAccountControlSettings(Enum):
+class WindowsUserAccountControlSettings(str, Enum):
     # User Defined, default value, no intent.
     UserDefined = "userDefined",
     # Always notify.

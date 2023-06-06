@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,19 +9,15 @@ if TYPE_CHECKING:
 
 from . import schedule_change_request
 
+@dataclass
 class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new TimeOffRequest and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.timeOffRequest"
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._end_date_time: Optional[datetime] = None
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._start_date_time: Optional[datetime] = None
-        # The reason for the time off.
-        self._time_off_reason_id: Optional[str] = None
+    odata_type = "#microsoft.graph.timeOffRequest"
+    # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    end_date_time: Optional[datetime] = None
+    # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    start_date_time: Optional[datetime] = None
+    # The reason for the time off.
+    time_off_reason_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TimeOffRequest:
@@ -33,23 +30,6 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TimeOffRequest()
-    
-    @property
-    def end_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the endDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Returns: Optional[datetime]
-        """
-        return self._end_date_time
-    
-    @end_date_time.setter
-    def end_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the endDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Args:
-            value: Value to set for the end_date_time property.
-        """
-        self._end_date_time = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -79,39 +59,5 @@ class TimeOffRequest(schedule_change_request.ScheduleChangeRequest):
         writer.write_datetime_value("endDateTime", self.end_date_time)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("timeOffReasonId", self.time_off_reason_id)
-    
-    @property
-    def start_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the startDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Returns: Optional[datetime]
-        """
-        return self._start_date_time
-    
-    @start_date_time.setter
-    def start_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the startDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Args:
-            value: Value to set for the start_date_time property.
-        """
-        self._start_date_time = value
-    
-    @property
-    def time_off_reason_id(self,) -> Optional[str]:
-        """
-        Gets the timeOffReasonId property value. The reason for the time off.
-        Returns: Optional[str]
-        """
-        return self._time_off_reason_id
-    
-    @time_off_reason_id.setter
-    def time_off_reason_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the timeOffReasonId property value. The reason for the time off.
-        Args:
-            value: Value to set for the time_off_reason_id property.
-        """
-        self._time_off_reason_id = value
     
 

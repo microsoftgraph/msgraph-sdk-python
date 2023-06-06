@@ -1,6 +1,6 @@
 from enum import Enum
 
-class EducationSubmissionStatus(Enum):
+class EducationSubmissionStatus(str, Enum):
     Working = "working",
     Submitted = "submitted",
     Released = "released",

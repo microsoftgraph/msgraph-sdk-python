@@ -1,6 +1,6 @@
 from enum import Enum
 
-class TimeOffReasonIconType(Enum):
+class TimeOffReasonIconType(str, Enum):
     None_ = "none",
     Car = "car",
     Calendar = "calendar",

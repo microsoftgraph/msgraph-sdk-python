@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DeviceManagementExchangeAccessState(Enum):
+class DeviceManagementExchangeAccessState(str, Enum):
     # No access state discovered from Exchange
     None_ = "none",
     # Device access state to Exchange is unknown

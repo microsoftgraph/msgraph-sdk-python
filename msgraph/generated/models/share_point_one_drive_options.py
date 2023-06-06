@@ -1,39 +1,20 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import search_content
 
+@dataclass
 class SharePointOneDriveOptions(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new sharePointOneDriveOptions and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The type of search content. The possible values are: sharedContent, privateContent, unknownFutureValue. Read-only.
-        self._include_content: Optional[search_content.SearchContent] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The type of search content. The possible values are: sharedContent, privateContent, unknownFutureValue. Read-only.
+    include_content: Optional[search_content.SearchContent] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharePointOneDriveOptions:
@@ -59,40 +40,6 @@ class SharePointOneDriveOptions(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def include_content(self,) -> Optional[search_content.SearchContent]:
-        """
-        Gets the includeContent property value. The type of search content. The possible values are: sharedContent, privateContent, unknownFutureValue. Read-only.
-        Returns: Optional[search_content.SearchContent]
-        """
-        return self._include_content
-    
-    @include_content.setter
-    def include_content(self,value: Optional[search_content.SearchContent] = None) -> None:
-        """
-        Sets the includeContent property value. The type of search content. The possible values are: sharedContent, privateContent, unknownFutureValue. Read-only.
-        Args:
-            value: Value to set for the include_content property.
-        """
-        self._include_content = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

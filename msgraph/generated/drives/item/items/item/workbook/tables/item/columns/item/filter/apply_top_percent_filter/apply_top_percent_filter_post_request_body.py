@@ -1,34 +1,15 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class ApplyTopPercentFilterPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new applyTopPercentFilterPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The percent property
-        self._percent: Optional[int] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The percent property
+    percent: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApplyTopPercentFilterPostRequestBody:
@@ -51,23 +32,6 @@ class ApplyTopPercentFilterPostRequestBody(AdditionalDataHolder, Parsable):
             "percent": lambda n : setattr(self, 'percent', n.get_int_value()),
         }
         return fields
-    
-    @property
-    def percent(self,) -> Optional[int]:
-        """
-        Gets the percent property value. The percent property
-        Returns: Optional[int]
-        """
-        return self._percent
-    
-    @percent.setter
-    def percent(self,value: Optional[int] = None) -> None:
-        """
-        Sets the percent property value. The percent property
-        Args:
-            value: Value to set for the percent property.
-        """
-        self._percent = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,22 +8,18 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class UserFlowLanguageConfiguration(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new userFlowLanguageConfiguration and sets the default values.
-        """
-        super().__init__()
-        # Collection of pages with the default content to display in a user flow for a specified language. This collection does not allow any kind of modification.
-        self._default_pages: Optional[List[user_flow_language_page.UserFlowLanguagePage]] = None
-        # The language name to display. This property is read-only.
-        self._display_name: Optional[str] = None
-        # Indicates whether the language is enabled within the user flow.
-        self._is_enabled: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
-        self._overrides_pages: Optional[List[user_flow_language_page.UserFlowLanguagePage]] = None
+    # Collection of pages with the default content to display in a user flow for a specified language. This collection does not allow any kind of modification.
+    default_pages: Optional[List[user_flow_language_page.UserFlowLanguagePage]] = None
+    # The language name to display. This property is read-only.
+    display_name: Optional[str] = None
+    # Indicates whether the language is enabled within the user flow.
+    is_enabled: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
+    overrides_pages: Optional[List[user_flow_language_page.UserFlowLanguagePage]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserFlowLanguageConfiguration:
@@ -35,40 +32,6 @@ class UserFlowLanguageConfiguration(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserFlowLanguageConfiguration()
-    
-    @property
-    def default_pages(self,) -> Optional[List[user_flow_language_page.UserFlowLanguagePage]]:
-        """
-        Gets the defaultPages property value. Collection of pages with the default content to display in a user flow for a specified language. This collection does not allow any kind of modification.
-        Returns: Optional[List[user_flow_language_page.UserFlowLanguagePage]]
-        """
-        return self._default_pages
-    
-    @default_pages.setter
-    def default_pages(self,value: Optional[List[user_flow_language_page.UserFlowLanguagePage]] = None) -> None:
-        """
-        Sets the defaultPages property value. Collection of pages with the default content to display in a user flow for a specified language. This collection does not allow any kind of modification.
-        Args:
-            value: Value to set for the default_pages property.
-        """
-        self._default_pages = value
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The language name to display. This property is read-only.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The language name to display. This property is read-only.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -86,40 +49,6 @@ class UserFlowLanguageConfiguration(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def is_enabled(self,) -> Optional[bool]:
-        """
-        Gets the isEnabled property value. Indicates whether the language is enabled within the user flow.
-        Returns: Optional[bool]
-        """
-        return self._is_enabled
-    
-    @is_enabled.setter
-    def is_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isEnabled property value. Indicates whether the language is enabled within the user flow.
-        Args:
-            value: Value to set for the is_enabled property.
-        """
-        self._is_enabled = value
-    
-    @property
-    def overrides_pages(self,) -> Optional[List[user_flow_language_page.UserFlowLanguagePage]]:
-        """
-        Gets the overridesPages property value. Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
-        Returns: Optional[List[user_flow_language_page.UserFlowLanguagePage]]
-        """
-        return self._overrides_pages
-    
-    @overrides_pages.setter
-    def overrides_pages(self,value: Optional[List[user_flow_language_page.UserFlowLanguagePage]] = None) -> None:
-        """
-        Sets the overridesPages property value. Collection of pages with the overrides messages to display in a user flow for a specified language. This collection only allows to modify the content of the page, any other modification is not allowed (creation or deletion of pages).
-        Args:
-            value: Value to set for the overrides_pages property.
-        """
-        self._overrides_pages = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

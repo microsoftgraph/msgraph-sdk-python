@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class PlannerProgressTaskBoardTaskFormat(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new plannerProgressTaskBoardTaskFormat and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Hint value used to order the task on the progress view of the task board. For details about the supported format, see Using order hints in Planner.
-        self._order_hint: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Hint value used to order the task on the progress view of the task board. For details about the supported format, see Using order hints in Planner.
+    order_hint: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerProgressTaskBoardTaskFormat:
@@ -43,23 +40,6 @@ class PlannerProgressTaskBoardTaskFormat(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def order_hint(self,) -> Optional[str]:
-        """
-        Gets the orderHint property value. Hint value used to order the task on the progress view of the task board. For details about the supported format, see Using order hints in Planner.
-        Returns: Optional[str]
-        """
-        return self._order_hint
-    
-    @order_hint.setter
-    def order_hint(self,value: Optional[str] = None) -> None:
-        """
-        Sets the orderHint property value. Hint value used to order the task on the progress view of the task board. For details about the supported format, see Using order hints in Planner.
-        Args:
-            value: Value to set for the order_hint property.
-        """
-        self._order_hint = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

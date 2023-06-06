@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DefenderCloudBlockLevelType(Enum):
+class DefenderCloudBlockLevelType(str, Enum):
     # Default value, uses the default Windows Defender Antivirus blocking level and provides strong detection without increasing the risk of detecting legitimate files
     NotConfigured = "notConfigured",
     # High applies a strong level of detection.

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class OperationResult(Enum):
+class OperationResult(str, Enum):
     Success = "success",
     Failure = "failure",
     Timeout = "timeout",

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,37 +8,16 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ScopedRoleMembership(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new scopedRoleMembership and sets the default values.
-        """
-        super().__init__()
-        # Unique identifier for the administrative unit that the directory role is scoped to
-        self._administrative_unit_id: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Unique identifier for the directory role that the member is in.
-        self._role_id: Optional[str] = None
-        # The roleMemberInfo property
-        self._role_member_info: Optional[identity.Identity] = None
-    
-    @property
-    def administrative_unit_id(self,) -> Optional[str]:
-        """
-        Gets the administrativeUnitId property value. Unique identifier for the administrative unit that the directory role is scoped to
-        Returns: Optional[str]
-        """
-        return self._administrative_unit_id
-    
-    @administrative_unit_id.setter
-    def administrative_unit_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the administrativeUnitId property value. Unique identifier for the administrative unit that the directory role is scoped to
-        Args:
-            value: Value to set for the administrative_unit_id property.
-        """
-        self._administrative_unit_id = value
+    # Unique identifier for the administrative unit that the directory role is scoped to
+    administrative_unit_id: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Unique identifier for the directory role that the member is in.
+    role_id: Optional[str] = None
+    # The roleMemberInfo property
+    role_member_info: Optional[identity.Identity] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScopedRoleMembership:
@@ -66,40 +46,6 @@ class ScopedRoleMembership(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def role_id(self,) -> Optional[str]:
-        """
-        Gets the roleId property value. Unique identifier for the directory role that the member is in.
-        Returns: Optional[str]
-        """
-        return self._role_id
-    
-    @role_id.setter
-    def role_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the roleId property value. Unique identifier for the directory role that the member is in.
-        Args:
-            value: Value to set for the role_id property.
-        """
-        self._role_id = value
-    
-    @property
-    def role_member_info(self,) -> Optional[identity.Identity]:
-        """
-        Gets the roleMemberInfo property value. The roleMemberInfo property
-        Returns: Optional[identity.Identity]
-        """
-        return self._role_member_info
-    
-    @role_member_info.setter
-    def role_member_info(self,value: Optional[identity.Identity] = None) -> None:
-        """
-        Sets the roleMemberInfo property value. The roleMemberInfo property
-        Args:
-            value: Value to set for the role_member_info property.
-        """
-        self._role_member_info = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

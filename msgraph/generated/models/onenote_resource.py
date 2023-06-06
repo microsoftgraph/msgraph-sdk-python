@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,51 +8,13 @@ if TYPE_CHECKING:
 
 from . import onenote_entity_base_model
 
+@dataclass
 class OnenoteResource(onenote_entity_base_model.OnenoteEntityBaseModel):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new OnenoteResource and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.onenoteResource"
-        # The content stream
-        self._content: Optional[bytes] = None
-        # The URL for downloading the content
-        self._content_url: Optional[str] = None
-    
-    @property
-    def content(self,) -> Optional[bytes]:
-        """
-        Gets the content property value. The content stream
-        Returns: Optional[bytes]
-        """
-        return self._content
-    
-    @content.setter
-    def content(self,value: Optional[bytes] = None) -> None:
-        """
-        Sets the content property value. The content stream
-        Args:
-            value: Value to set for the content property.
-        """
-        self._content = value
-    
-    @property
-    def content_url(self,) -> Optional[str]:
-        """
-        Gets the contentUrl property value. The URL for downloading the content
-        Returns: Optional[str]
-        """
-        return self._content_url
-    
-    @content_url.setter
-    def content_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the contentUrl property value. The URL for downloading the content
-        Args:
-            value: Value to set for the content_url property.
-        """
-        self._content_url = value
+    odata_type = "#microsoft.graph.onenoteResource"
+    # The content stream
+    content: Optional[bytes] = None
+    # The URL for downloading the content
+    content_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnenoteResource:

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class Todo(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Todo and sets the default values.
-        """
-        super().__init__()
-        # The task lists in the users mailbox.
-        self._lists: Optional[List[todo_task_list.TodoTaskList]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # The task lists in the users mailbox.
+    lists: Optional[List[todo_task_list.TodoTaskList]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Todo:
@@ -43,23 +40,6 @@ class Todo(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def lists(self,) -> Optional[List[todo_task_list.TodoTaskList]]:
-        """
-        Gets the lists property value. The task lists in the users mailbox.
-        Returns: Optional[List[todo_task_list.TodoTaskList]]
-        """
-        return self._lists
-    
-    @lists.setter
-    def lists(self,value: Optional[List[todo_task_list.TodoTaskList]] = None) -> None:
-        """
-        Sets the lists property value. The task lists in the users mailbox.
-        Args:
-            value: Value to set for the lists property.
-        """
-        self._lists = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

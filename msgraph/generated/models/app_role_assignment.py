@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -9,61 +10,23 @@ if TYPE_CHECKING:
 
 from . import directory_object
 
+@dataclass
 class AppRoleAssignment(directory_object.DirectoryObject):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new appRoleAssignment and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.appRoleAssignment"
-        # The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
-        self._app_role_id: Optional[UUID] = None
-        # The time when the app role assignment was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-        self._created_date_time: Optional[datetime] = None
-        # The display name of the user, group, or service principal that was granted the app role assignment. Read-only. Supports $filter (eq and startswith).
-        self._principal_display_name: Optional[str] = None
-        # The unique identifier (id) for the user, security group, or service principal being granted the app role. Security groups with dynamic memberships are supported. Required on create.
-        self._principal_id: Optional[UUID] = None
-        # The type of the assigned principal. This can either be User, Group, or ServicePrincipal. Read-only.
-        self._principal_type: Optional[str] = None
-        # The display name of the resource app's service principal to which the assignment is made.
-        self._resource_display_name: Optional[str] = None
-        # The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
-        self._resource_id: Optional[UUID] = None
-    
-    @property
-    def app_role_id(self,) -> Optional[UUID]:
-        """
-        Gets the appRoleId property value. The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
-        Returns: Optional[UUID]
-        """
-        return self._app_role_id
-    
-    @app_role_id.setter
-    def app_role_id(self,value: Optional[UUID] = None) -> None:
-        """
-        Sets the appRoleId property value. The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
-        Args:
-            value: Value to set for the app_role_id property.
-        """
-        self._app_role_id = value
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. The time when the app role assignment was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. The time when the app role assignment was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    odata_type = "#microsoft.graph.appRoleAssignment"
+    # The identifier (id) for the app role which is assigned to the principal. This app role must be exposed in the appRoles property on the resource application's service principal (resourceId). If the resource application has not declared any app roles, a default app role ID of 00000000-0000-0000-0000-000000000000 can be specified to signal that the principal is assigned to the resource app without any specific app roles. Required on create.
+    app_role_id: Optional[UUID] = None
+    # The time when the app role assignment was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z. Read-only.
+    created_date_time: Optional[datetime] = None
+    # The display name of the user, group, or service principal that was granted the app role assignment. Read-only. Supports $filter (eq and startswith).
+    principal_display_name: Optional[str] = None
+    # The unique identifier (id) for the user, security group, or service principal being granted the app role. Security groups with dynamic memberships are supported. Required on create.
+    principal_id: Optional[UUID] = None
+    # The type of the assigned principal. This can either be User, Group, or ServicePrincipal. Read-only.
+    principal_type: Optional[str] = None
+    # The display name of the resource app's service principal to which the assignment is made.
+    resource_display_name: Optional[str] = None
+    # The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
+    resource_id: Optional[UUID] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppRoleAssignment:
@@ -96,91 +59,6 @@ class AppRoleAssignment(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def principal_display_name(self,) -> Optional[str]:
-        """
-        Gets the principalDisplayName property value. The display name of the user, group, or service principal that was granted the app role assignment. Read-only. Supports $filter (eq and startswith).
-        Returns: Optional[str]
-        """
-        return self._principal_display_name
-    
-    @principal_display_name.setter
-    def principal_display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the principalDisplayName property value. The display name of the user, group, or service principal that was granted the app role assignment. Read-only. Supports $filter (eq and startswith).
-        Args:
-            value: Value to set for the principal_display_name property.
-        """
-        self._principal_display_name = value
-    
-    @property
-    def principal_id(self,) -> Optional[UUID]:
-        """
-        Gets the principalId property value. The unique identifier (id) for the user, security group, or service principal being granted the app role. Security groups with dynamic memberships are supported. Required on create.
-        Returns: Optional[UUID]
-        """
-        return self._principal_id
-    
-    @principal_id.setter
-    def principal_id(self,value: Optional[UUID] = None) -> None:
-        """
-        Sets the principalId property value. The unique identifier (id) for the user, security group, or service principal being granted the app role. Security groups with dynamic memberships are supported. Required on create.
-        Args:
-            value: Value to set for the principal_id property.
-        """
-        self._principal_id = value
-    
-    @property
-    def principal_type(self,) -> Optional[str]:
-        """
-        Gets the principalType property value. The type of the assigned principal. This can either be User, Group, or ServicePrincipal. Read-only.
-        Returns: Optional[str]
-        """
-        return self._principal_type
-    
-    @principal_type.setter
-    def principal_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the principalType property value. The type of the assigned principal. This can either be User, Group, or ServicePrincipal. Read-only.
-        Args:
-            value: Value to set for the principal_type property.
-        """
-        self._principal_type = value
-    
-    @property
-    def resource_display_name(self,) -> Optional[str]:
-        """
-        Gets the resourceDisplayName property value. The display name of the resource app's service principal to which the assignment is made.
-        Returns: Optional[str]
-        """
-        return self._resource_display_name
-    
-    @resource_display_name.setter
-    def resource_display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the resourceDisplayName property value. The display name of the resource app's service principal to which the assignment is made.
-        Args:
-            value: Value to set for the resource_display_name property.
-        """
-        self._resource_display_name = value
-    
-    @property
-    def resource_id(self,) -> Optional[UUID]:
-        """
-        Gets the resourceId property value. The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
-        Returns: Optional[UUID]
-        """
-        return self._resource_id
-    
-    @resource_id.setter
-    def resource_id(self,value: Optional[UUID] = None) -> None:
-        """
-        Sets the resourceId property value. The unique identifier (id) for the resource service principal for which the assignment is made. Required on create. Supports $filter (eq only).
-        Args:
-            value: Value to set for the resource_id property.
-        """
-        self._resource_id = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

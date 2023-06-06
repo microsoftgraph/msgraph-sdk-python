@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import education_assignment_grade
 
+@dataclass
 class EducationAssignmentPointsGrade(education_assignment_grade.EducationAssignmentGrade):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EducationAssignmentPointsGrade and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.educationAssignmentPointsGrade"
-        # Number of points a teacher is giving this submission object.
-        self._points: Optional[float] = None
+    odata_type = "#microsoft.graph.educationAssignmentPointsGrade"
+    # Number of points a teacher is giving this submission object.
+    points: Optional[float] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationAssignmentPointsGrade:
@@ -42,23 +39,6 @@ class EducationAssignmentPointsGrade(education_assignment_grade.EducationAssignm
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def points(self,) -> Optional[float]:
-        """
-        Gets the points property value. Number of points a teacher is giving this submission object.
-        Returns: Optional[float]
-        """
-        return self._points
-    
-    @points.setter
-    def points(self,value: Optional[float] = None) -> None:
-        """
-        Sets the points property value. Number of points a teacher is giving this submission object.
-        Args:
-            value: Value to set for the points property.
-        """
-        self._points = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

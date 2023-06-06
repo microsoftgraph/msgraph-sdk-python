@@ -1,6 +1,6 @@
 from enum import Enum
 
-class RatingNewZealandMoviesType(Enum):
+class RatingNewZealandMoviesType(str, Enum):
     # Default value, allow all movies content
     AllAllowed = "allAllowed",
     # Do not allow any movies content

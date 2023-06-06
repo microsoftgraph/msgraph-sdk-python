@@ -1,43 +1,24 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import location_constraint_item
 
+@dataclass
 class LocationConstraint(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new locationConstraint and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The client requests the service to include in the response a meeting location for the meeting. If this is true and all the resources are busy, findMeetingTimes will not return any meeting time suggestions. If this is false and all the resources are busy, findMeetingTimes would still look for meeting times without locations.
-        self._is_required: Optional[bool] = None
-        # Constraint information for one or more locations that the client requests for the meeting.
-        self._locations: Optional[List[location_constraint_item.LocationConstraintItem]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The client requests the service to suggest one or more meeting locations.
-        self._suggest_location: Optional[bool] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The client requests the service to include in the response a meeting location for the meeting. If this is true and all the resources are busy, findMeetingTimes will not return any meeting time suggestions. If this is false and all the resources are busy, findMeetingTimes would still look for meeting times without locations.
+    is_required: Optional[bool] = None
+    # Constraint information for one or more locations that the client requests for the meeting.
+    locations: Optional[List[location_constraint_item.LocationConstraintItem]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The client requests the service to suggest one or more meeting locations.
+    suggest_location: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LocationConstraint:
@@ -66,57 +47,6 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def is_required(self,) -> Optional[bool]:
-        """
-        Gets the isRequired property value. The client requests the service to include in the response a meeting location for the meeting. If this is true and all the resources are busy, findMeetingTimes will not return any meeting time suggestions. If this is false and all the resources are busy, findMeetingTimes would still look for meeting times without locations.
-        Returns: Optional[bool]
-        """
-        return self._is_required
-    
-    @is_required.setter
-    def is_required(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isRequired property value. The client requests the service to include in the response a meeting location for the meeting. If this is true and all the resources are busy, findMeetingTimes will not return any meeting time suggestions. If this is false and all the resources are busy, findMeetingTimes would still look for meeting times without locations.
-        Args:
-            value: Value to set for the is_required property.
-        """
-        self._is_required = value
-    
-    @property
-    def locations(self,) -> Optional[List[location_constraint_item.LocationConstraintItem]]:
-        """
-        Gets the locations property value. Constraint information for one or more locations that the client requests for the meeting.
-        Returns: Optional[List[location_constraint_item.LocationConstraintItem]]
-        """
-        return self._locations
-    
-    @locations.setter
-    def locations(self,value: Optional[List[location_constraint_item.LocationConstraintItem]] = None) -> None:
-        """
-        Sets the locations property value. Constraint information for one or more locations that the client requests for the meeting.
-        Args:
-            value: Value to set for the locations property.
-        """
-        self._locations = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -130,22 +60,5 @@ class LocationConstraint(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("suggestLocation", self.suggest_location)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def suggest_location(self,) -> Optional[bool]:
-        """
-        Gets the suggestLocation property value. The client requests the service to suggest one or more meeting locations.
-        Returns: Optional[bool]
-        """
-        return self._suggest_location
-    
-    @suggest_location.setter
-    def suggest_location(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the suggestLocation property value. The client requests the service to suggest one or more meeting locations.
-        Args:
-            value: Value to set for the suggest_location property.
-        """
-        self._suggest_location = value
     
 

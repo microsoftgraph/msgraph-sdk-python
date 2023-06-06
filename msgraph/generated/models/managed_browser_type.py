@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ManagedBrowserType(Enum):
+class ManagedBrowserType(str, Enum):
     # Not configured
     NotConfigured = "notConfigured",
     # Microsoft Edge

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class BrowserSiteListStatus(Enum):
+class BrowserSiteListStatus(str, Enum):
     # A site list that has not yet been published
     Draft = "draft",
     # A site list that has been published with no pending changes.

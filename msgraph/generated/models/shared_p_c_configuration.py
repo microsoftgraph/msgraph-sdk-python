@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,91 +9,36 @@ if TYPE_CHECKING:
 
 from . import device_configuration
 
+@dataclass
 class SharedPCConfiguration(device_configuration.DeviceConfiguration):
     """
     This topic provides descriptions of the declared methods, properties and relationships exposed by the sharedPCConfiguration resource.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new sharedPCConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.sharedPCConfiguration"
-        # Specifies how accounts are managed on a shared PC. Only applies when disableAccountManager is false.
-        self._account_manager_policy: Optional[shared_p_c_account_manager_policy.SharedPCAccountManagerPolicy] = None
-        # Specifies whether local storage is allowed on a shared PC.
-        self._allow_local_storage: Optional[bool] = None
-        # Type of accounts that are allowed to share the PC.
-        self._allowed_accounts: Optional[shared_p_c_allowed_account_type.SharedPCAllowedAccountType] = None
-        # Disables the account manager for shared PC mode.
-        self._disable_account_manager: Optional[bool] = None
-        # Specifies whether the default shared PC education environment policies should be disabled. For Windows 10 RS2 and later, this policy will be applied without setting Enabled to true.
-        self._disable_edu_policies: Optional[bool] = None
-        # Specifies whether the default shared PC power policies should be disabled.
-        self._disable_power_policies: Optional[bool] = None
-        # Disables the requirement to sign in whenever the device wakes up from sleep mode.
-        self._disable_sign_in_on_resume: Optional[bool] = None
-        # Enables shared PC mode and applies the shared pc policies.
-        self._enabled: Optional[bool] = None
-        # Specifies the time in seconds that a device must sit idle before the PC goes to sleep. Setting this value to 0 prevents the sleep timeout from occurring.
-        self._idle_time_before_sleep_in_seconds: Optional[int] = None
-        # Specifies the display text for the account shown on the sign-in screen which launches the app specified by SetKioskAppUserModelId. Only applies when KioskAppUserModelId is set.
-        self._kiosk_app_display_name: Optional[str] = None
-        # Specifies the application user model ID of the app to use with assigned access.
-        self._kiosk_app_user_model_id: Optional[str] = None
-        # Specifies the daily start time of maintenance hour.
-        self._maintenance_start_time: Optional[time] = None
-    
-    @property
-    def account_manager_policy(self,) -> Optional[shared_p_c_account_manager_policy.SharedPCAccountManagerPolicy]:
-        """
-        Gets the accountManagerPolicy property value. Specifies how accounts are managed on a shared PC. Only applies when disableAccountManager is false.
-        Returns: Optional[shared_p_c_account_manager_policy.SharedPCAccountManagerPolicy]
-        """
-        return self._account_manager_policy
-    
-    @account_manager_policy.setter
-    def account_manager_policy(self,value: Optional[shared_p_c_account_manager_policy.SharedPCAccountManagerPolicy] = None) -> None:
-        """
-        Sets the accountManagerPolicy property value. Specifies how accounts are managed on a shared PC. Only applies when disableAccountManager is false.
-        Args:
-            value: Value to set for the account_manager_policy property.
-        """
-        self._account_manager_policy = value
-    
-    @property
-    def allow_local_storage(self,) -> Optional[bool]:
-        """
-        Gets the allowLocalStorage property value. Specifies whether local storage is allowed on a shared PC.
-        Returns: Optional[bool]
-        """
-        return self._allow_local_storage
-    
-    @allow_local_storage.setter
-    def allow_local_storage(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowLocalStorage property value. Specifies whether local storage is allowed on a shared PC.
-        Args:
-            value: Value to set for the allow_local_storage property.
-        """
-        self._allow_local_storage = value
-    
-    @property
-    def allowed_accounts(self,) -> Optional[shared_p_c_allowed_account_type.SharedPCAllowedAccountType]:
-        """
-        Gets the allowedAccounts property value. Type of accounts that are allowed to share the PC.
-        Returns: Optional[shared_p_c_allowed_account_type.SharedPCAllowedAccountType]
-        """
-        return self._allowed_accounts
-    
-    @allowed_accounts.setter
-    def allowed_accounts(self,value: Optional[shared_p_c_allowed_account_type.SharedPCAllowedAccountType] = None) -> None:
-        """
-        Sets the allowedAccounts property value. Type of accounts that are allowed to share the PC.
-        Args:
-            value: Value to set for the allowed_accounts property.
-        """
-        self._allowed_accounts = value
+    odata_type = "#microsoft.graph.sharedPCConfiguration"
+    # Specifies how accounts are managed on a shared PC. Only applies when disableAccountManager is false.
+    account_manager_policy: Optional[shared_p_c_account_manager_policy.SharedPCAccountManagerPolicy] = None
+    # Specifies whether local storage is allowed on a shared PC.
+    allow_local_storage: Optional[bool] = None
+    # Type of accounts that are allowed to share the PC.
+    allowed_accounts: Optional[shared_p_c_allowed_account_type.SharedPCAllowedAccountType] = None
+    # Disables the account manager for shared PC mode.
+    disable_account_manager: Optional[bool] = None
+    # Specifies whether the default shared PC education environment policies should be disabled. For Windows 10 RS2 and later, this policy will be applied without setting Enabled to true.
+    disable_edu_policies: Optional[bool] = None
+    # Specifies whether the default shared PC power policies should be disabled.
+    disable_power_policies: Optional[bool] = None
+    # Disables the requirement to sign in whenever the device wakes up from sleep mode.
+    disable_sign_in_on_resume: Optional[bool] = None
+    # Enables shared PC mode and applies the shared pc policies.
+    enabled: Optional[bool] = None
+    # Specifies the time in seconds that a device must sit idle before the PC goes to sleep. Setting this value to 0 prevents the sleep timeout from occurring.
+    idle_time_before_sleep_in_seconds: Optional[int] = None
+    # Specifies the display text for the account shown on the sign-in screen which launches the app specified by SetKioskAppUserModelId. Only applies when KioskAppUserModelId is set.
+    kiosk_app_display_name: Optional[str] = None
+    # Specifies the application user model ID of the app to use with assigned access.
+    kiosk_app_user_model_id: Optional[str] = None
+    # Specifies the daily start time of maintenance hour.
+    maintenance_start_time: Optional[time] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharedPCConfiguration:
@@ -105,91 +51,6 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SharedPCConfiguration()
-    
-    @property
-    def disable_account_manager(self,) -> Optional[bool]:
-        """
-        Gets the disableAccountManager property value. Disables the account manager for shared PC mode.
-        Returns: Optional[bool]
-        """
-        return self._disable_account_manager
-    
-    @disable_account_manager.setter
-    def disable_account_manager(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the disableAccountManager property value. Disables the account manager for shared PC mode.
-        Args:
-            value: Value to set for the disable_account_manager property.
-        """
-        self._disable_account_manager = value
-    
-    @property
-    def disable_edu_policies(self,) -> Optional[bool]:
-        """
-        Gets the disableEduPolicies property value. Specifies whether the default shared PC education environment policies should be disabled. For Windows 10 RS2 and later, this policy will be applied without setting Enabled to true.
-        Returns: Optional[bool]
-        """
-        return self._disable_edu_policies
-    
-    @disable_edu_policies.setter
-    def disable_edu_policies(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the disableEduPolicies property value. Specifies whether the default shared PC education environment policies should be disabled. For Windows 10 RS2 and later, this policy will be applied without setting Enabled to true.
-        Args:
-            value: Value to set for the disable_edu_policies property.
-        """
-        self._disable_edu_policies = value
-    
-    @property
-    def disable_power_policies(self,) -> Optional[bool]:
-        """
-        Gets the disablePowerPolicies property value. Specifies whether the default shared PC power policies should be disabled.
-        Returns: Optional[bool]
-        """
-        return self._disable_power_policies
-    
-    @disable_power_policies.setter
-    def disable_power_policies(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the disablePowerPolicies property value. Specifies whether the default shared PC power policies should be disabled.
-        Args:
-            value: Value to set for the disable_power_policies property.
-        """
-        self._disable_power_policies = value
-    
-    @property
-    def disable_sign_in_on_resume(self,) -> Optional[bool]:
-        """
-        Gets the disableSignInOnResume property value. Disables the requirement to sign in whenever the device wakes up from sleep mode.
-        Returns: Optional[bool]
-        """
-        return self._disable_sign_in_on_resume
-    
-    @disable_sign_in_on_resume.setter
-    def disable_sign_in_on_resume(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the disableSignInOnResume property value. Disables the requirement to sign in whenever the device wakes up from sleep mode.
-        Args:
-            value: Value to set for the disable_sign_in_on_resume property.
-        """
-        self._disable_sign_in_on_resume = value
-    
-    @property
-    def enabled(self,) -> Optional[bool]:
-        """
-        Gets the enabled property value. Enables shared PC mode and applies the shared pc policies.
-        Returns: Optional[bool]
-        """
-        return self._enabled
-    
-    @enabled.setter
-    def enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the enabled property value. Enables shared PC mode and applies the shared pc policies.
-        Args:
-            value: Value to set for the enabled property.
-        """
-        self._enabled = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -215,74 +76,6 @@ class SharedPCConfiguration(device_configuration.DeviceConfiguration):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def idle_time_before_sleep_in_seconds(self,) -> Optional[int]:
-        """
-        Gets the idleTimeBeforeSleepInSeconds property value. Specifies the time in seconds that a device must sit idle before the PC goes to sleep. Setting this value to 0 prevents the sleep timeout from occurring.
-        Returns: Optional[int]
-        """
-        return self._idle_time_before_sleep_in_seconds
-    
-    @idle_time_before_sleep_in_seconds.setter
-    def idle_time_before_sleep_in_seconds(self,value: Optional[int] = None) -> None:
-        """
-        Sets the idleTimeBeforeSleepInSeconds property value. Specifies the time in seconds that a device must sit idle before the PC goes to sleep. Setting this value to 0 prevents the sleep timeout from occurring.
-        Args:
-            value: Value to set for the idle_time_before_sleep_in_seconds property.
-        """
-        self._idle_time_before_sleep_in_seconds = value
-    
-    @property
-    def kiosk_app_display_name(self,) -> Optional[str]:
-        """
-        Gets the kioskAppDisplayName property value. Specifies the display text for the account shown on the sign-in screen which launches the app specified by SetKioskAppUserModelId. Only applies when KioskAppUserModelId is set.
-        Returns: Optional[str]
-        """
-        return self._kiosk_app_display_name
-    
-    @kiosk_app_display_name.setter
-    def kiosk_app_display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the kioskAppDisplayName property value. Specifies the display text for the account shown on the sign-in screen which launches the app specified by SetKioskAppUserModelId. Only applies when KioskAppUserModelId is set.
-        Args:
-            value: Value to set for the kiosk_app_display_name property.
-        """
-        self._kiosk_app_display_name = value
-    
-    @property
-    def kiosk_app_user_model_id(self,) -> Optional[str]:
-        """
-        Gets the kioskAppUserModelId property value. Specifies the application user model ID of the app to use with assigned access.
-        Returns: Optional[str]
-        """
-        return self._kiosk_app_user_model_id
-    
-    @kiosk_app_user_model_id.setter
-    def kiosk_app_user_model_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the kioskAppUserModelId property value. Specifies the application user model ID of the app to use with assigned access.
-        Args:
-            value: Value to set for the kiosk_app_user_model_id property.
-        """
-        self._kiosk_app_user_model_id = value
-    
-    @property
-    def maintenance_start_time(self,) -> Optional[time]:
-        """
-        Gets the maintenanceStartTime property value. Specifies the daily start time of maintenance hour.
-        Returns: Optional[time]
-        """
-        return self._maintenance_start_time
-    
-    @maintenance_start_time.setter
-    def maintenance_start_time(self,value: Optional[time] = None) -> None:
-        """
-        Sets the maintenanceStartTime property value. Specifies the daily start time of maintenance hour.
-        Args:
-            value: Value to set for the maintenance_start_time property.
-        """
-        self._maintenance_start_time = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

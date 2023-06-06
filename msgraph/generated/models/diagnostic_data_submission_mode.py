@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DiagnosticDataSubmissionMode(Enum):
+class DiagnosticDataSubmissionMode(str, Enum):
     # Allow the user to set.
     UserDefined = "userDefined",
     # No telemetry data is sent from OS components. Note: This value is only applicable to enterprise and server devices. Using this setting on other devices is equivalent to setting the value of 1.

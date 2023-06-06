@@ -1,37 +1,18 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models import teleconference_device_quality
 
+@dataclass
 class LogTeleconferenceDeviceQualityPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new logTeleconferenceDeviceQualityPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The quality property
-        self._quality: Optional[teleconference_device_quality.TeleconferenceDeviceQuality] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The quality property
+    quality: Optional[teleconference_device_quality.TeleconferenceDeviceQuality] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LogTeleconferenceDeviceQualityPostRequestBody:
@@ -56,23 +37,6 @@ class LogTeleconferenceDeviceQualityPostRequestBody(AdditionalDataHolder, Parsab
             "quality": lambda n : setattr(self, 'quality', n.get_object_value(teleconference_device_quality.TeleconferenceDeviceQuality)),
         }
         return fields
-    
-    @property
-    def quality(self,) -> Optional[teleconference_device_quality.TeleconferenceDeviceQuality]:
-        """
-        Gets the quality property value. The quality property
-        Returns: Optional[teleconference_device_quality.TeleconferenceDeviceQuality]
-        """
-        return self._quality
-    
-    @quality.setter
-    def quality(self,value: Optional[teleconference_device_quality.TeleconferenceDeviceQuality] = None) -> None:
-        """
-        Sets the quality property value. The quality property
-        Args:
-            value: Value to set for the quality property.
-        """
-        self._quality = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

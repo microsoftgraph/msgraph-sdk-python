@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DeviceManagementPartnerTenantState(Enum):
+class DeviceManagementPartnerTenantState(str, Enum):
     # Partner state is unknown.
     Unknown = "unknown",
     # Partner is unavailable.

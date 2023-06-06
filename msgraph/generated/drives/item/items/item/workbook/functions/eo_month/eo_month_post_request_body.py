@@ -1,39 +1,20 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import json
 
+@dataclass
 class EoMonthPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new eoMonthPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The months property
-        self._months: Optional[json.Json] = None
-        # The startDate property
-        self._start_date: Optional[json.Json] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The months property
+    months: Optional[json.Json] = None
+    # The startDate property
+    start_date: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EoMonthPostRequestBody:
@@ -60,23 +41,6 @@ class EoMonthPostRequestBody(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def months(self,) -> Optional[json.Json]:
-        """
-        Gets the months property value. The months property
-        Returns: Optional[json.Json]
-        """
-        return self._months
-    
-    @months.setter
-    def months(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the months property value. The months property
-        Args:
-            value: Value to set for the months property.
-        """
-        self._months = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -88,22 +52,5 @@ class EoMonthPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_object_value("months", self.months)
         writer.write_object_value("startDate", self.start_date)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def start_date(self,) -> Optional[json.Json]:
-        """
-        Gets the startDate property value. The startDate property
-        Returns: Optional[json.Json]
-        """
-        return self._start_date
-    
-    @start_date.setter
-    def start_date(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the startDate property value. The startDate property
-        Args:
-            value: Value to set for the start_date property.
-        """
-        self._start_date = value
     
 

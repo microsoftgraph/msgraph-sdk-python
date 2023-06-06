@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WindowsInformationProtectionPinCharacterRequirements(Enum):
+class WindowsInformationProtectionPinCharacterRequirements(str, Enum):
     # Not allow
     NotAllow = "notAllow",
     # Require atleast one

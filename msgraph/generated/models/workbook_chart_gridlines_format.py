@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class WorkbookChartGridlinesFormat(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookChartGridlinesFormat and sets the default values.
-        """
-        super().__init__()
-        # Represents chart line formatting. Read-only.
-        self._line: Optional[workbook_chart_line_format.WorkbookChartLineFormat] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # Represents chart line formatting. Read-only.
+    line: Optional[workbook_chart_line_format.WorkbookChartLineFormat] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartGridlinesFormat:
@@ -43,23 +40,6 @@ class WorkbookChartGridlinesFormat(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def line(self,) -> Optional[workbook_chart_line_format.WorkbookChartLineFormat]:
-        """
-        Gets the line property value. Represents chart line formatting. Read-only.
-        Returns: Optional[workbook_chart_line_format.WorkbookChartLineFormat]
-        """
-        return self._line
-    
-    @line.setter
-    def line(self,value: Optional[workbook_chart_line_format.WorkbookChartLineFormat] = None) -> None:
-        """
-        Sets the line property value. Represents chart line formatting. Read-only.
-        Args:
-            value: Value to set for the line property.
-        """
-        self._line = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

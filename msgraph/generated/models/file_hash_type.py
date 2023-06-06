@@ -1,6 +1,6 @@
 from enum import Enum
 
-class FileHashType(Enum):
+class FileHashType(str, Enum):
     Unknown = "unknown",
     Sha1 = "sha1",
     Sha256 = "sha256",

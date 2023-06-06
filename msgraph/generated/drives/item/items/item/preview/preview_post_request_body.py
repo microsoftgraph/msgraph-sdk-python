@@ -1,36 +1,17 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class PreviewPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new previewPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The page property
-        self._page: Optional[str] = None
-        # The zoom property
-        self._zoom: Optional[float] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The page property
+    page: Optional[str] = None
+    # The zoom property
+    zoom: Optional[float] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PreviewPostRequestBody:
@@ -55,23 +36,6 @@ class PreviewPostRequestBody(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def page(self,) -> Optional[str]:
-        """
-        Gets the page property value. The page property
-        Returns: Optional[str]
-        """
-        return self._page
-    
-    @page.setter
-    def page(self,value: Optional[str] = None) -> None:
-        """
-        Sets the page property value. The page property
-        Args:
-            value: Value to set for the page property.
-        """
-        self._page = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -83,22 +47,5 @@ class PreviewPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_str_value("page", self.page)
         writer.write_float_value("zoom", self.zoom)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def zoom(self,) -> Optional[float]:
-        """
-        Gets the zoom property value. The zoom property
-        Returns: Optional[float]
-        """
-        return self._zoom
-    
-    @zoom.setter
-    def zoom(self,value: Optional[float] = None) -> None:
-        """
-        Sets the zoom property value. The zoom property
-        Args:
-            value: Value to set for the zoom property.
-        """
-        self._zoom = value
     
 

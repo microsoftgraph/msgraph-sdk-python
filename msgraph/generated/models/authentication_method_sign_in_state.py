@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AuthenticationMethodSignInState(Enum):
+class AuthenticationMethodSignInState(str, Enum):
     NotSupported = "notSupported",
     NotAllowedByPolicy = "notAllowedByPolicy",
     NotEnabled = "notEnabled",

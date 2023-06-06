@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class WindowsInformationProtectionResourceCollection(AdditionalDataHolder, Parsable):
     """
     Windows Information Protection Resource Collection
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new windowsInformationProtectionResourceCollection and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Display name
-        self._display_name: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Collection of resources
-        self._resources: Optional[List[str]] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Display name
+    display_name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Collection of resources
+    resources: Optional[List[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionResourceCollection:
@@ -49,23 +30,6 @@ class WindowsInformationProtectionResourceCollection(AdditionalDataHolder, Parsa
             raise Exception("parse_node cannot be undefined")
         return WindowsInformationProtectionResourceCollection()
     
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Display name
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Display name
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -77,40 +41,6 @@ class WindowsInformationProtectionResourceCollection(AdditionalDataHolder, Parsa
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_primitive_values(str)),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def resources(self,) -> Optional[List[str]]:
-        """
-        Gets the resources property value. Collection of resources
-        Returns: Optional[List[str]]
-        """
-        return self._resources
-    
-    @resources.setter
-    def resources(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the resources property value. Collection of resources
-        Args:
-            value: Value to set for the resources property.
-        """
-        self._resources = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,36 +8,15 @@ if TYPE_CHECKING:
 
 from . import threat_assessment_request
 
+@dataclass
 class EmailFileAssessmentRequest(threat_assessment_request.ThreatAssessmentRequest):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EmailFileAssessmentRequest and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.emailFileAssessmentRequest"
-        # Base64 encoded .eml email file content. The file content cannot fetch back because it isn't stored.
-        self._content_data: Optional[str] = None
-        # The reason for mail routed to its destination. Possible values are: none, mailFlowRule, safeSender, blockedSender, advancedSpamFiltering, domainAllowList, domainBlockList, notInAddressBook, firstTimeSender, autoPurgeToInbox, autoPurgeToJunk, autoPurgeToDeleted, outbound, notJunk, junk.
-        self._destination_routing_reason: Optional[mail_destination_routing_reason.MailDestinationRoutingReason] = None
-        # The mail recipient whose policies are used to assess the mail.
-        self._recipient_email: Optional[str] = None
-    
-    @property
-    def content_data(self,) -> Optional[str]:
-        """
-        Gets the contentData property value. Base64 encoded .eml email file content. The file content cannot fetch back because it isn't stored.
-        Returns: Optional[str]
-        """
-        return self._content_data
-    
-    @content_data.setter
-    def content_data(self,value: Optional[str] = None) -> None:
-        """
-        Sets the contentData property value. Base64 encoded .eml email file content. The file content cannot fetch back because it isn't stored.
-        Args:
-            value: Value to set for the content_data property.
-        """
-        self._content_data = value
+    odata_type = "#microsoft.graph.emailFileAssessmentRequest"
+    # Base64 encoded .eml email file content. The file content cannot fetch back because it isn't stored.
+    content_data: Optional[str] = None
+    # The reason for mail routed to its destination. Possible values are: none, mailFlowRule, safeSender, blockedSender, advancedSpamFiltering, domainAllowList, domainBlockList, notInAddressBook, firstTimeSender, autoPurgeToInbox, autoPurgeToJunk, autoPurgeToDeleted, outbound, notJunk, junk.
+    destination_routing_reason: Optional[mail_destination_routing_reason.MailDestinationRoutingReason] = None
+    # The mail recipient whose policies are used to assess the mail.
+    recipient_email: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EmailFileAssessmentRequest:
@@ -49,23 +29,6 @@ class EmailFileAssessmentRequest(threat_assessment_request.ThreatAssessmentReque
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EmailFileAssessmentRequest()
-    
-    @property
-    def destination_routing_reason(self,) -> Optional[mail_destination_routing_reason.MailDestinationRoutingReason]:
-        """
-        Gets the destinationRoutingReason property value. The reason for mail routed to its destination. Possible values are: none, mailFlowRule, safeSender, blockedSender, advancedSpamFiltering, domainAllowList, domainBlockList, notInAddressBook, firstTimeSender, autoPurgeToInbox, autoPurgeToJunk, autoPurgeToDeleted, outbound, notJunk, junk.
-        Returns: Optional[mail_destination_routing_reason.MailDestinationRoutingReason]
-        """
-        return self._destination_routing_reason
-    
-    @destination_routing_reason.setter
-    def destination_routing_reason(self,value: Optional[mail_destination_routing_reason.MailDestinationRoutingReason] = None) -> None:
-        """
-        Sets the destinationRoutingReason property value. The reason for mail routed to its destination. Possible values are: none, mailFlowRule, safeSender, blockedSender, advancedSpamFiltering, domainAllowList, domainBlockList, notInAddressBook, firstTimeSender, autoPurgeToInbox, autoPurgeToJunk, autoPurgeToDeleted, outbound, notJunk, junk.
-        Args:
-            value: Value to set for the destination_routing_reason property.
-        """
-        self._destination_routing_reason = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -82,23 +45,6 @@ class EmailFileAssessmentRequest(threat_assessment_request.ThreatAssessmentReque
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def recipient_email(self,) -> Optional[str]:
-        """
-        Gets the recipientEmail property value. The mail recipient whose policies are used to assess the mail.
-        Returns: Optional[str]
-        """
-        return self._recipient_email
-    
-    @recipient_email.setter
-    def recipient_email(self,value: Optional[str] = None) -> None:
-        """
-        Sets the recipientEmail property value. The mail recipient whose policies are used to assess the mail.
-        Args:
-            value: Value to set for the recipient_email property.
-        """
-        self._recipient_email = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

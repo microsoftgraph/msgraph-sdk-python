@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -9,43 +10,22 @@ if TYPE_CHECKING:
 
 from .. import entity
 
+@dataclass
 class Group(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new group and sets the default values.
-        """
-        super().__init__()
-        # Date and time of the group creation. Read-only.
-        self._created_date_time: Optional[datetime] = None
-        # Description that gives details on the term usage.
-        self._description: Optional[str] = None
-        # Name of the group.
-        self._display_name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # ID of the parent site of this group.
-        self._parent_site_id: Optional[str] = None
-        # Returns the type of the group. Possible values are: global, system, and siteCollection.
-        self._scope: Optional[term_group_scope.TermGroupScope] = None
-        # All sets under the group in a term [store].
-        self._sets: Optional[List[set.Set]] = None
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. Date and time of the group creation. Read-only.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. Date and time of the group creation. Read-only.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    # Date and time of the group creation. Read-only.
+    created_date_time: Optional[datetime] = None
+    # Description that gives details on the term usage.
+    description: Optional[str] = None
+    # Name of the group.
+    display_name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # ID of the parent site of this group.
+    parent_site_id: Optional[str] = None
+    # Returns the type of the group. Possible values are: global, system, and siteCollection.
+    scope: Optional[term_group_scope.TermGroupScope] = None
+    # All sets under the group in a term [store].
+    sets: Optional[List[set.Set]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Group:
@@ -58,40 +38,6 @@ class Group(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Group()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. Description that gives details on the term usage.
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. Description that gives details on the term usage.
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Name of the group.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Name of the group.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -113,40 +59,6 @@ class Group(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def parent_site_id(self,) -> Optional[str]:
-        """
-        Gets the parentSiteId property value. ID of the parent site of this group.
-        Returns: Optional[str]
-        """
-        return self._parent_site_id
-    
-    @parent_site_id.setter
-    def parent_site_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the parentSiteId property value. ID of the parent site of this group.
-        Args:
-            value: Value to set for the parent_site_id property.
-        """
-        self._parent_site_id = value
-    
-    @property
-    def scope(self,) -> Optional[term_group_scope.TermGroupScope]:
-        """
-        Gets the scope property value. Returns the type of the group. Possible values are: global, system, and siteCollection.
-        Returns: Optional[term_group_scope.TermGroupScope]
-        """
-        return self._scope
-    
-    @scope.setter
-    def scope(self,value: Optional[term_group_scope.TermGroupScope] = None) -> None:
-        """
-        Sets the scope property value. Returns the type of the group. Possible values are: global, system, and siteCollection.
-        Args:
-            value: Value to set for the scope property.
-        """
-        self._scope = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -162,22 +74,5 @@ class Group(entity.Entity):
         writer.write_str_value("parentSiteId", self.parent_site_id)
         writer.write_enum_value("scope", self.scope)
         writer.write_collection_of_object_values("sets", self.sets)
-    
-    @property
-    def sets(self,) -> Optional[List[set.Set]]:
-        """
-        Gets the sets property value. All sets under the group in a term [store].
-        Returns: Optional[List[set.Set]]
-        """
-        return self._sets
-    
-    @sets.setter
-    def sets(self,value: Optional[List[set.Set]] = None) -> None:
-        """
-        Sets the sets property value. All sets under the group in a term [store].
-        Args:
-            value: Value to set for the sets property.
-        """
-        self._sets = value
     
 

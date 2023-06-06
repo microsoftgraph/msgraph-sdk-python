@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import cross_tenant_access_policy_target_type
 
+@dataclass
 class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new crossTenantAccessPolicyTarget and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The unique identifier of the user, group, or application; one of the following keywords: AllUsers and AllApplications; or for targets that are applications, you may use reserved values.
-        self._target: Optional[str] = None
-        # The type of resource that you want to target. The possible values are: user, group, application, unknownFutureValue.
-        self._target_type: Optional[cross_tenant_access_policy_target_type.CrossTenantAccessPolicyTargetType] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The unique identifier of the user, group, or application; one of the following keywords: AllUsers and AllApplications; or for targets that are applications, you may use reserved values.
+    target: Optional[str] = None
+    # The type of resource that you want to target. The possible values are: user, group, application, unknownFutureValue.
+    target_type: Optional[cross_tenant_access_policy_target_type.CrossTenantAccessPolicyTargetType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicyTarget:
@@ -63,23 +44,6 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -92,39 +56,5 @@ class CrossTenantAccessPolicyTarget(AdditionalDataHolder, Parsable):
         writer.write_str_value("target", self.target)
         writer.write_enum_value("targetType", self.target_type)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def target(self,) -> Optional[str]:
-        """
-        Gets the target property value. The unique identifier of the user, group, or application; one of the following keywords: AllUsers and AllApplications; or for targets that are applications, you may use reserved values.
-        Returns: Optional[str]
-        """
-        return self._target
-    
-    @target.setter
-    def target(self,value: Optional[str] = None) -> None:
-        """
-        Sets the target property value. The unique identifier of the user, group, or application; one of the following keywords: AllUsers and AllApplications; or for targets that are applications, you may use reserved values.
-        Args:
-            value: Value to set for the target property.
-        """
-        self._target = value
-    
-    @property
-    def target_type(self,) -> Optional[cross_tenant_access_policy_target_type.CrossTenantAccessPolicyTargetType]:
-        """
-        Gets the targetType property value. The type of resource that you want to target. The possible values are: user, group, application, unknownFutureValue.
-        Returns: Optional[cross_tenant_access_policy_target_type.CrossTenantAccessPolicyTargetType]
-        """
-        return self._target_type
-    
-    @target_type.setter
-    def target_type(self,value: Optional[cross_tenant_access_policy_target_type.CrossTenantAccessPolicyTargetType] = None) -> None:
-        """
-        Sets the targetType property value. The type of resource that you want to target. The possible values are: user, group, application, unknownFutureValue.
-        Args:
-            value: Value to set for the target_type property.
-        """
-        self._target_type = value
     
 

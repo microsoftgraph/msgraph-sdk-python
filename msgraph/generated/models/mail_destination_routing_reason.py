@@ -1,6 +1,6 @@
 from enum import Enum
 
-class MailDestinationRoutingReason(Enum):
+class MailDestinationRoutingReason(str, Enum):
     None_ = "none",
     MailFlowRule = "mailFlowRule",
     SafeSender = "safeSender",

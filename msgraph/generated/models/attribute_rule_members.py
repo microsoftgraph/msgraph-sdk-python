@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import subject_set
 
+@dataclass
 class AttributeRuleMembers(subject_set.SubjectSet):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AttributeRuleMembers and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.attributeRuleMembers"
-        # A description of the membership rule.
-        self._description: Optional[str] = None
-        # Determines the allowed target users for this policy. For more information about the syntax of the membership rule, see Membership Rules syntax.
-        self._membership_rule: Optional[str] = None
+    odata_type = "#microsoft.graph.attributeRuleMembers"
+    # A description of the membership rule.
+    description: Optional[str] = None
+    # Determines the allowed target users for this policy. For more information about the syntax of the membership rule, see Membership Rules syntax.
+    membership_rule: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttributeRuleMembers:
@@ -30,23 +27,6 @@ class AttributeRuleMembers(subject_set.SubjectSet):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttributeRuleMembers()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. A description of the membership rule.
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. A description of the membership rule.
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -62,23 +42,6 @@ class AttributeRuleMembers(subject_set.SubjectSet):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def membership_rule(self,) -> Optional[str]:
-        """
-        Gets the membershipRule property value. Determines the allowed target users for this policy. For more information about the syntax of the membership rule, see Membership Rules syntax.
-        Returns: Optional[str]
-        """
-        return self._membership_rule
-    
-    @membership_rule.setter
-    def membership_rule(self,value: Optional[str] = None) -> None:
-        """
-        Sets the membershipRule property value. Determines the allowed target users for this policy. For more information about the syntax of the membership rule, see Membership Rules syntax.
-        Args:
-            value: Value to set for the membership_rule property.
-        """
-        self._membership_rule = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

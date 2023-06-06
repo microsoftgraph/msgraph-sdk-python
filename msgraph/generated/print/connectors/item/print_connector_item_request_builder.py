@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -37,7 +37,7 @@ class PrintConnectorItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[PrintConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete (unregister) a **printConnector**.
+        Delete (unregister) a printConnector.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -103,7 +103,7 @@ class PrintConnectorItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[PrintConnectorItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete (unregister) a **printConnector**.
+        Delete (unregister) a printConnector.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

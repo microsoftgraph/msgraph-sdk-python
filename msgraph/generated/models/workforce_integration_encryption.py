@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import workforce_integration_encryption_protocol
 
+@dataclass
 class WorkforceIntegrationEncryption(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workforceIntegrationEncryption and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Possible values are: sharedSecret, unknownFutureValue.
-        self._protocol: Optional[workforce_integration_encryption_protocol.WorkforceIntegrationEncryptionProtocol] = None
-        # Encryption shared secret.
-        self._secret: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Possible values are: sharedSecret, unknownFutureValue.
+    protocol: Optional[workforce_integration_encryption_protocol.WorkforceIntegrationEncryptionProtocol] = None
+    # Encryption shared secret.
+    secret: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkforceIntegrationEncryption:
@@ -62,57 +43,6 @@ class WorkforceIntegrationEncryption(AdditionalDataHolder, Parsable):
             "secret": lambda n : setattr(self, 'secret', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def protocol(self,) -> Optional[workforce_integration_encryption_protocol.WorkforceIntegrationEncryptionProtocol]:
-        """
-        Gets the protocol property value. Possible values are: sharedSecret, unknownFutureValue.
-        Returns: Optional[workforce_integration_encryption_protocol.WorkforceIntegrationEncryptionProtocol]
-        """
-        return self._protocol
-    
-    @protocol.setter
-    def protocol(self,value: Optional[workforce_integration_encryption_protocol.WorkforceIntegrationEncryptionProtocol] = None) -> None:
-        """
-        Sets the protocol property value. Possible values are: sharedSecret, unknownFutureValue.
-        Args:
-            value: Value to set for the protocol property.
-        """
-        self._protocol = value
-    
-    @property
-    def secret(self,) -> Optional[str]:
-        """
-        Gets the secret property value. Encryption shared secret.
-        Returns: Optional[str]
-        """
-        return self._secret
-    
-    @secret.setter
-    def secret(self,value: Optional[str] = None) -> None:
-        """
-        Sets the secret property value. Encryption shared secret.
-        Args:
-            value: Value to set for the secret property.
-        """
-        self._secret = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

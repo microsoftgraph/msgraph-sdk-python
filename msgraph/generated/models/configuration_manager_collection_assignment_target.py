@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import device_and_app_management_assignment_target
 
+@dataclass
 class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ConfigurationManagerCollectionAssignmentTarget and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.configurationManagerCollectionAssignmentTarget"
-        # The collection Id that is the target of the assignment.
-        self._collection_id: Optional[str] = None
-    
-    @property
-    def collection_id(self,) -> Optional[str]:
-        """
-        Gets the collectionId property value. The collection Id that is the target of the assignment.
-        Returns: Optional[str]
-        """
-        return self._collection_id
-    
-    @collection_id.setter
-    def collection_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the collectionId property value. The collection Id that is the target of the assignment.
-        Args:
-            value: Value to set for the collection_id property.
-        """
-        self._collection_id = value
+    odata_type = "#microsoft.graph.configurationManagerCollectionAssignmentTarget"
+    # The collection Id that is the target of the assignment.
+    collection_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConfigurationManagerCollectionAssignmentTarget:

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -9,43 +10,22 @@ if TYPE_CHECKING:
 
 from .. import entity
 
+@dataclass
 class Case(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new case and sets the default values.
-        """
-        super().__init__()
-        # The createdDateTime property
-        self._created_date_time: Optional[datetime] = None
-        # The description property
-        self._description: Optional[str] = None
-        # The displayName property
-        self._display_name: Optional[str] = None
-        # The lastModifiedBy property
-        self._last_modified_by: Optional[identity_set.IdentitySet] = None
-        # The lastModifiedDateTime property
-        self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The status property
-        self._status: Optional[case_status.CaseStatus] = None
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. The createdDateTime property
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. The createdDateTime property
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    # The createdDateTime property
+    created_date_time: Optional[datetime] = None
+    # The description property
+    description: Optional[str] = None
+    # The displayName property
+    display_name: Optional[str] = None
+    # The lastModifiedBy property
+    last_modified_by: Optional[identity_set.IdentitySet] = None
+    # The lastModifiedDateTime property
+    last_modified_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The status property
+    status: Optional[case_status.CaseStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Case:
@@ -65,40 +45,6 @@ class Case(entity.Entity):
 
                 return ediscovery_case.EdiscoveryCase()
         return Case()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. The description property
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. The description property
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The displayName property
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The displayName property
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -120,40 +66,6 @@ class Case(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def last_modified_by(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the lastModifiedBy property value. The lastModifiedBy property
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._last_modified_by
-    
-    @last_modified_by.setter
-    def last_modified_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the lastModifiedBy property value. The lastModifiedBy property
-        Args:
-            value: Value to set for the last_modified_by property.
-        """
-        self._last_modified_by = value
-    
-    @property
-    def last_modified_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastModifiedDateTime property value. The lastModifiedDateTime property
-        Returns: Optional[datetime]
-        """
-        return self._last_modified_date_time
-    
-    @last_modified_date_time.setter
-    def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
-        Args:
-            value: Value to set for the last_modified_date_time property.
-        """
-        self._last_modified_date_time = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -169,22 +81,5 @@ class Case(entity.Entity):
         writer.write_object_value("lastModifiedBy", self.last_modified_by)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_enum_value("status", self.status)
-    
-    @property
-    def status(self,) -> Optional[case_status.CaseStatus]:
-        """
-        Gets the status property value. The status property
-        Returns: Optional[case_status.CaseStatus]
-        """
-        return self._status
-    
-    @status.setter
-    def status(self,value: Optional[case_status.CaseStatus] = None) -> None:
-        """
-        Sets the status property value. The status property
-        Args:
-            value: Value to set for the status property.
-        """
-        self._status = value
     
 

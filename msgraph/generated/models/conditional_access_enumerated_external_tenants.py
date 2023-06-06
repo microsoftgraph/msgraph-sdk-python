@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import conditional_access_external_tenants
 
+@dataclass
 class ConditionalAccessEnumeratedExternalTenants(conditional_access_external_tenants.ConditionalAccessExternalTenants):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ConditionalAccessEnumeratedExternalTenants and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.conditionalAccessEnumeratedExternalTenants"
-        # A collection of tenant IDs that define the scope of a policy targeting conditional access for guests and external users.
-        self._members: Optional[List[str]] = None
+    odata_type = "#microsoft.graph.conditionalAccessEnumeratedExternalTenants"
+    # A collection of tenant IDs that define the scope of a policy targeting conditional access for guests and external users.
+    members: Optional[List[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessEnumeratedExternalTenants:
@@ -42,23 +39,6 @@ class ConditionalAccessEnumeratedExternalTenants(conditional_access_external_ten
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def members(self,) -> Optional[List[str]]:
-        """
-        Gets the members property value. A collection of tenant IDs that define the scope of a policy targeting conditional access for guests and external users.
-        Returns: Optional[List[str]]
-        """
-        return self._members
-    
-    @members.setter
-    def members(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the members property value. A collection of tenant IDs that define the scope of a policy targeting conditional access for guests and external users.
-        Args:
-            value: Value to set for the members property.
-        """
-        self._members = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

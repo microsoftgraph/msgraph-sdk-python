@@ -1,6 +1,6 @@
 from enum import Enum
 
-class Sensitivity(Enum):
+class Sensitivity(str, Enum):
     Normal = "normal",
     Personal = "personal",
     Private = "private",

@@ -1,39 +1,20 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import identity_set
 
+@dataclass
 class CallParticipantInfo(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new callParticipantInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Identity of the call participant.
-        self._participant: Optional[identity_set.IdentitySet] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Identity of the call participant.
+    participant: Optional[identity_set.IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallParticipantInfo:
@@ -59,40 +40,6 @@ class CallParticipantInfo(AdditionalDataHolder, Parsable):
             "participant": lambda n : setattr(self, 'participant', n.get_object_value(identity_set.IdentitySet)),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def participant(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the participant property value. Identity of the call participant.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._participant
-    
-    @participant.setter
-    def participant(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the participant property value. Identity of the call participant.
-        Args:
-            value: Value to set for the participant property.
-        """
-        self._participant = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

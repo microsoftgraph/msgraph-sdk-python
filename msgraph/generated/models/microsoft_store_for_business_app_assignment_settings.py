@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import mobile_app_assignment_settings
 
+@dataclass
 class MicrosoftStoreForBusinessAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new MicrosoftStoreForBusinessAppAssignmentSettings and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.microsoftStoreForBusinessAppAssignmentSettings"
-        # Whether or not to use device execution context for Microsoft Store for Business mobile app.
-        self._use_device_context: Optional[bool] = None
+    odata_type = "#microsoft.graph.microsoftStoreForBusinessAppAssignmentSettings"
+    # Whether or not to use device execution context for Microsoft Store for Business mobile app.
+    use_device_context: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MicrosoftStoreForBusinessAppAssignmentSettings:
@@ -53,22 +50,5 @@ class MicrosoftStoreForBusinessAppAssignmentSettings(mobile_app_assignment_setti
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("useDeviceContext", self.use_device_context)
-    
-    @property
-    def use_device_context(self,) -> Optional[bool]:
-        """
-        Gets the useDeviceContext property value. Whether or not to use device execution context for Microsoft Store for Business mobile app.
-        Returns: Optional[bool]
-        """
-        return self._use_device_context
-    
-    @use_device_context.setter
-    def use_device_context(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the useDeviceContext property value. Whether or not to use device execution context for Microsoft Store for Business mobile app.
-        Args:
-            value: Value to set for the use_device_context property.
-        """
-        self._use_device_context = value
     
 

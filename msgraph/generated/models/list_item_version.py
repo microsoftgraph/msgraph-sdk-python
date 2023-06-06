@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import base_item_version
 
+@dataclass
 class ListItemVersion(base_item_version.BaseItemVersion):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ListItemVersion and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.listItemVersion"
-        # A collection of the fields and values for this version of the list item.
-        self._fields: Optional[field_value_set.FieldValueSet] = None
+    odata_type = "#microsoft.graph.listItemVersion"
+    # A collection of the fields and values for this version of the list item.
+    fields: Optional[field_value_set.FieldValueSet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ListItemVersion:
@@ -35,23 +32,6 @@ class ListItemVersion(base_item_version.BaseItemVersion):
 
                 return document_set_version.DocumentSetVersion()
         return ListItemVersion()
-    
-    @property
-    def fields(self,) -> Optional[field_value_set.FieldValueSet]:
-        """
-        Gets the fields property value. A collection of the fields and values for this version of the list item.
-        Returns: Optional[field_value_set.FieldValueSet]
-        """
-        return self._fields
-    
-    @fields.setter
-    def fields(self,value: Optional[field_value_set.FieldValueSet] = None) -> None:
-        """
-        Sets the fields property value. A collection of the fields and values for this version of the list item.
-        Args:
-            value: Value to set for the fields property.
-        """
-        self._fields = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """

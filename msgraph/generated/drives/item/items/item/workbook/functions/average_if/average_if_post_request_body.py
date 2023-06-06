@@ -1,58 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import json
 
+@dataclass
 class AverageIfPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new averageIfPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The averageRange property
-        self._average_range: Optional[json.Json] = None
-        # The criteria property
-        self._criteria: Optional[json.Json] = None
-        # The range property
-        self._range: Optional[json.Json] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def average_range(self,) -> Optional[json.Json]:
-        """
-        Gets the averageRange property value. The averageRange property
-        Returns: Optional[json.Json]
-        """
-        return self._average_range
-    
-    @average_range.setter
-    def average_range(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the averageRange property value. The averageRange property
-        Args:
-            value: Value to set for the average_range property.
-        """
-        self._average_range = value
+    # The averageRange property
+    average_range: Optional[json.Json] = None
+    # The criteria property
+    criteria: Optional[json.Json] = None
+    # The range property
+    range: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AverageIfPostRequestBody:
@@ -65,23 +29,6 @@ class AverageIfPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AverageIfPostRequestBody()
-    
-    @property
-    def criteria(self,) -> Optional[json.Json]:
-        """
-        Gets the criteria property value. The criteria property
-        Returns: Optional[json.Json]
-        """
-        return self._criteria
-    
-    @criteria.setter
-    def criteria(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the criteria property value. The criteria property
-        Args:
-            value: Value to set for the criteria property.
-        """
-        self._criteria = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -96,23 +43,6 @@ class AverageIfPostRequestBody(AdditionalDataHolder, Parsable):
             "range": lambda n : setattr(self, 'range', n.get_object_value(json.Json)),
         }
         return fields
-    
-    @property
-    def range(self,) -> Optional[json.Json]:
-        """
-        Gets the range property value. The range property
-        Returns: Optional[json.Json]
-        """
-        return self._range
-    
-    @range.setter
-    def range(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the range property value. The range property
-        Args:
-            value: Value to set for the range property.
-        """
-        self._range = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

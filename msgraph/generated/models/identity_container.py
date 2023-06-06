@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,75 +8,20 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class IdentityContainer(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IdentityContainer and sets the default values.
-        """
-        super().__init__()
-        # Represents entry point for API connectors.
-        self._api_connectors: Optional[List[identity_api_connector.IdentityApiConnector]] = None
-        # Represents entry point for B2X/self-service sign-up identity userflows.
-        self._b2x_user_flows: Optional[List[b2x_identity_user_flow.B2xIdentityUserFlow]] = None
-        # the entry point for the Conditional Access (CA) object model.
-        self._conditional_access: Optional[conditional_access_root.ConditionalAccessRoot] = None
-        # The identityProviders property
-        self._identity_providers: Optional[List[identity_provider_base.IdentityProviderBase]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Represents entry point for identity userflow attributes.
-        self._user_flow_attributes: Optional[List[identity_user_flow_attribute.IdentityUserFlowAttribute]] = None
-    
-    @property
-    def api_connectors(self,) -> Optional[List[identity_api_connector.IdentityApiConnector]]:
-        """
-        Gets the apiConnectors property value. Represents entry point for API connectors.
-        Returns: Optional[List[identity_api_connector.IdentityApiConnector]]
-        """
-        return self._api_connectors
-    
-    @api_connectors.setter
-    def api_connectors(self,value: Optional[List[identity_api_connector.IdentityApiConnector]] = None) -> None:
-        """
-        Sets the apiConnectors property value. Represents entry point for API connectors.
-        Args:
-            value: Value to set for the api_connectors property.
-        """
-        self._api_connectors = value
-    
-    @property
-    def b2x_user_flows(self,) -> Optional[List[b2x_identity_user_flow.B2xIdentityUserFlow]]:
-        """
-        Gets the b2xUserFlows property value. Represents entry point for B2X/self-service sign-up identity userflows.
-        Returns: Optional[List[b2x_identity_user_flow.B2xIdentityUserFlow]]
-        """
-        return self._b2x_user_flows
-    
-    @b2x_user_flows.setter
-    def b2x_user_flows(self,value: Optional[List[b2x_identity_user_flow.B2xIdentityUserFlow]] = None) -> None:
-        """
-        Sets the b2xUserFlows property value. Represents entry point for B2X/self-service sign-up identity userflows.
-        Args:
-            value: Value to set for the b2x_user_flows property.
-        """
-        self._b2x_user_flows = value
-    
-    @property
-    def conditional_access(self,) -> Optional[conditional_access_root.ConditionalAccessRoot]:
-        """
-        Gets the conditionalAccess property value. the entry point for the Conditional Access (CA) object model.
-        Returns: Optional[conditional_access_root.ConditionalAccessRoot]
-        """
-        return self._conditional_access
-    
-    @conditional_access.setter
-    def conditional_access(self,value: Optional[conditional_access_root.ConditionalAccessRoot] = None) -> None:
-        """
-        Sets the conditionalAccess property value. the entry point for the Conditional Access (CA) object model.
-        Args:
-            value: Value to set for the conditional_access property.
-        """
-        self._conditional_access = value
+    # Represents entry point for API connectors.
+    api_connectors: Optional[List[identity_api_connector.IdentityApiConnector]] = None
+    # Represents entry point for B2X/self-service sign-up identity userflows.
+    b2x_user_flows: Optional[List[b2x_identity_user_flow.B2xIdentityUserFlow]] = None
+    # the entry point for the Conditional Access (CA) object model.
+    conditional_access: Optional[conditional_access_root.ConditionalAccessRoot] = None
+    # The identityProviders property
+    identity_providers: Optional[List[identity_provider_base.IdentityProviderBase]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Represents entry point for identity userflow attributes.
+    user_flow_attributes: Optional[List[identity_user_flow_attribute.IdentityUserFlowAttribute]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdentityContainer:
@@ -107,23 +53,6 @@ class IdentityContainer(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def identity_providers(self,) -> Optional[List[identity_provider_base.IdentityProviderBase]]:
-        """
-        Gets the identityProviders property value. The identityProviders property
-        Returns: Optional[List[identity_provider_base.IdentityProviderBase]]
-        """
-        return self._identity_providers
-    
-    @identity_providers.setter
-    def identity_providers(self,value: Optional[List[identity_provider_base.IdentityProviderBase]] = None) -> None:
-        """
-        Sets the identityProviders property value. The identityProviders property
-        Args:
-            value: Value to set for the identity_providers property.
-        """
-        self._identity_providers = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -138,22 +67,5 @@ class IdentityContainer(entity.Entity):
         writer.write_object_value("conditionalAccess", self.conditional_access)
         writer.write_collection_of_object_values("identityProviders", self.identity_providers)
         writer.write_collection_of_object_values("userFlowAttributes", self.user_flow_attributes)
-    
-    @property
-    def user_flow_attributes(self,) -> Optional[List[identity_user_flow_attribute.IdentityUserFlowAttribute]]:
-        """
-        Gets the userFlowAttributes property value. Represents entry point for identity userflow attributes.
-        Returns: Optional[List[identity_user_flow_attribute.IdentityUserFlowAttribute]]
-        """
-        return self._user_flow_attributes
-    
-    @user_flow_attributes.setter
-    def user_flow_attributes(self,value: Optional[List[identity_user_flow_attribute.IdentityUserFlowAttribute]] = None) -> None:
-        """
-        Sets the userFlowAttributes property value. Represents entry point for identity userflow attributes.
-        Args:
-            value: Value to set for the user_flow_attributes property.
-        """
-        self._user_flow_attributes = value
     
 

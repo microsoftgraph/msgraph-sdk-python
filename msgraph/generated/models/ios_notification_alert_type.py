@@ -1,6 +1,6 @@
 from enum import Enum
 
-class IosNotificationAlertType(Enum):
+class IosNotificationAlertType(str, Enum):
     # Device default value, no intent.
     DeviceDefault = "deviceDefault",
     # Banner.

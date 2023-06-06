@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import mobile_app
 
+@dataclass
 class MacOSMicrosoftEdgeApp(mobile_app.MobileApp):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new MacOSMicrosoftEdgeApp and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.macOSMicrosoftEdgeApp"
-        # The enum to specify the channels for Microsoft Edge apps.
-        self._channel: Optional[microsoft_edge_channel.MicrosoftEdgeChannel] = None
-    
-    @property
-    def channel(self,) -> Optional[microsoft_edge_channel.MicrosoftEdgeChannel]:
-        """
-        Gets the channel property value. The enum to specify the channels for Microsoft Edge apps.
-        Returns: Optional[microsoft_edge_channel.MicrosoftEdgeChannel]
-        """
-        return self._channel
-    
-    @channel.setter
-    def channel(self,value: Optional[microsoft_edge_channel.MicrosoftEdgeChannel] = None) -> None:
-        """
-        Sets the channel property value. The enum to specify the channels for Microsoft Edge apps.
-        Args:
-            value: Value to set for the channel property.
-        """
-        self._channel = value
+    odata_type = "#microsoft.graph.macOSMicrosoftEdgeApp"
+    # The enum to specify the channels for Microsoft Edge apps.
+    channel: Optional[microsoft_edge_channel.MicrosoftEdgeChannel] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MacOSMicrosoftEdgeApp:

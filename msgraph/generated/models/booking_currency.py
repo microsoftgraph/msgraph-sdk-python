@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class BookingCurrency(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new BookingCurrency and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The currency symbol. For example, the currency symbol for the US dollar and for the Australian dollar is $.
-        self._symbol: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The currency symbol. For example, the currency symbol for the US dollar and for the Australian dollar is $.
+    symbol: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingCurrency:
@@ -54,22 +51,5 @@ class BookingCurrency(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("symbol", self.symbol)
-    
-    @property
-    def symbol(self,) -> Optional[str]:
-        """
-        Gets the symbol property value. The currency symbol. For example, the currency symbol for the US dollar and for the Australian dollar is $.
-        Returns: Optional[str]
-        """
-        return self._symbol
-    
-    @symbol.setter
-    def symbol(self,value: Optional[str] = None) -> None:
-        """
-        Sets the symbol property value. The currency symbol. For example, the currency symbol for the US dollar and for the Australian dollar is $.
-        Args:
-            value: Value to set for the symbol property.
-        """
-        self._symbol = value
     
 

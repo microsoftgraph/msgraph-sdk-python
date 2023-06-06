@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WindowsUpdateNotificationDisplayOption(Enum):
+class WindowsUpdateNotificationDisplayOption(str, Enum):
     # Not configured
     NotConfigured = "notConfigured",
     # Use the default Windows Update notifications.

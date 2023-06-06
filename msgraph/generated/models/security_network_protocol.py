@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SecurityNetworkProtocol(Enum):
+class SecurityNetworkProtocol(str, Enum):
     Unknown = "unknown",
     Ip = "ip",
     Icmp = "icmp",

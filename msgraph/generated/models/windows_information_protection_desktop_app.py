@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,70 +8,15 @@ if TYPE_CHECKING:
 
 from . import windows_information_protection_app
 
+@dataclass
 class WindowsInformationProtectionDesktopApp(windows_information_protection_app.WindowsInformationProtectionApp):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsInformationProtectionDesktopApp and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsInformationProtectionDesktopApp"
-        # The binary name.
-        self._binary_name: Optional[str] = None
-        # The high binary version.
-        self._binary_version_high: Optional[str] = None
-        # The lower binary version.
-        self._binary_version_low: Optional[str] = None
-    
-    @property
-    def binary_name(self,) -> Optional[str]:
-        """
-        Gets the binaryName property value. The binary name.
-        Returns: Optional[str]
-        """
-        return self._binary_name
-    
-    @binary_name.setter
-    def binary_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the binaryName property value. The binary name.
-        Args:
-            value: Value to set for the binary_name property.
-        """
-        self._binary_name = value
-    
-    @property
-    def binary_version_high(self,) -> Optional[str]:
-        """
-        Gets the binaryVersionHigh property value. The high binary version.
-        Returns: Optional[str]
-        """
-        return self._binary_version_high
-    
-    @binary_version_high.setter
-    def binary_version_high(self,value: Optional[str] = None) -> None:
-        """
-        Sets the binaryVersionHigh property value. The high binary version.
-        Args:
-            value: Value to set for the binary_version_high property.
-        """
-        self._binary_version_high = value
-    
-    @property
-    def binary_version_low(self,) -> Optional[str]:
-        """
-        Gets the binaryVersionLow property value. The lower binary version.
-        Returns: Optional[str]
-        """
-        return self._binary_version_low
-    
-    @binary_version_low.setter
-    def binary_version_low(self,value: Optional[str] = None) -> None:
-        """
-        Sets the binaryVersionLow property value. The lower binary version.
-        Args:
-            value: Value to set for the binary_version_low property.
-        """
-        self._binary_version_low = value
+    odata_type = "#microsoft.graph.windowsInformationProtectionDesktopApp"
+    # The binary name.
+    binary_name: Optional[str] = None
+    # The high binary version.
+    binary_version_high: Optional[str] = None
+    # The lower binary version.
+    binary_version_low: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionDesktopApp:

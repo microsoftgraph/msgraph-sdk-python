@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import agreement_file_properties
 
+@dataclass
 class AgreementFileLocalization(agreement_file_properties.AgreementFileProperties):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new agreementFileLocalization and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Read-only. Customized versions of the terms of use agreement in the Azure AD tenant.
-        self._versions: Optional[List[agreement_file_version.AgreementFileVersion]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Read-only. Customized versions of the terms of use agreement in the Azure AD tenant.
+    versions: Optional[List[agreement_file_version.AgreementFileVersion]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AgreementFileLocalization:
@@ -54,22 +51,5 @@ class AgreementFileLocalization(agreement_file_properties.AgreementFilePropertie
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("versions", self.versions)
-    
-    @property
-    def versions(self,) -> Optional[List[agreement_file_version.AgreementFileVersion]]:
-        """
-        Gets the versions property value. Read-only. Customized versions of the terms of use agreement in the Azure AD tenant.
-        Returns: Optional[List[agreement_file_version.AgreementFileVersion]]
-        """
-        return self._versions
-    
-    @versions.setter
-    def versions(self,value: Optional[List[agreement_file_version.AgreementFileVersion]] = None) -> None:
-        """
-        Sets the versions property value. Read-only. Customized versions of the terms of use agreement in the Azure AD tenant.
-        Args:
-            value: Value to set for the versions property.
-        """
-        self._versions = value
     
 

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DefenderMonitorFileActivity(Enum):
+class DefenderMonitorFileActivity(str, Enum):
     # User Defined, default value, no intent.
     UserDefined = "userDefined",
     # Disable monitoring file activity.

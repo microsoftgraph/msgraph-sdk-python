@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ConnectionOperationStatus(Enum):
+class ConnectionOperationStatus(str, Enum):
     Unspecified = "unspecified",
     Inprogress = "inprogress",
     Completed = "completed",

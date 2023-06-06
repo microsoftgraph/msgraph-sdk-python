@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,58 +8,20 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ConditionalAccessRoot(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ConditionalAccessRoot and sets the default values.
-        """
-        super().__init__()
-        # Read-only. Nullable. Returns a collection of the specified authentication context class references.
-        self._authentication_context_class_references: Optional[List[authentication_context_class_reference.AuthenticationContextClassReference]] = None
-        # The authenticationStrength property
-        self._authentication_strength: Optional[authentication_strength_root.AuthenticationStrengthRoot] = None
-        # Read-only. Nullable. Returns a collection of the specified named locations.
-        self._named_locations: Optional[List[named_location.NamedLocation]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
-        self._policies: Optional[List[conditional_access_policy.ConditionalAccessPolicy]] = None
-        # Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
-        self._templates: Optional[List[conditional_access_template.ConditionalAccessTemplate]] = None
-    
-    @property
-    def authentication_context_class_references(self,) -> Optional[List[authentication_context_class_reference.AuthenticationContextClassReference]]:
-        """
-        Gets the authenticationContextClassReferences property value. Read-only. Nullable. Returns a collection of the specified authentication context class references.
-        Returns: Optional[List[authentication_context_class_reference.AuthenticationContextClassReference]]
-        """
-        return self._authentication_context_class_references
-    
-    @authentication_context_class_references.setter
-    def authentication_context_class_references(self,value: Optional[List[authentication_context_class_reference.AuthenticationContextClassReference]] = None) -> None:
-        """
-        Sets the authenticationContextClassReferences property value. Read-only. Nullable. Returns a collection of the specified authentication context class references.
-        Args:
-            value: Value to set for the authentication_context_class_references property.
-        """
-        self._authentication_context_class_references = value
-    
-    @property
-    def authentication_strength(self,) -> Optional[authentication_strength_root.AuthenticationStrengthRoot]:
-        """
-        Gets the authenticationStrength property value. The authenticationStrength property
-        Returns: Optional[authentication_strength_root.AuthenticationStrengthRoot]
-        """
-        return self._authentication_strength
-    
-    @authentication_strength.setter
-    def authentication_strength(self,value: Optional[authentication_strength_root.AuthenticationStrengthRoot] = None) -> None:
-        """
-        Sets the authenticationStrength property value. The authenticationStrength property
-        Args:
-            value: Value to set for the authentication_strength property.
-        """
-        self._authentication_strength = value
+    # Read-only. Nullable. Returns a collection of the specified authentication context class references.
+    authentication_context_class_references: Optional[List[authentication_context_class_reference.AuthenticationContextClassReference]] = None
+    # The authenticationStrength property
+    authentication_strength: Optional[authentication_strength_root.AuthenticationStrengthRoot] = None
+    # Read-only. Nullable. Returns a collection of the specified named locations.
+    named_locations: Optional[List[named_location.NamedLocation]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
+    policies: Optional[List[conditional_access_policy.ConditionalAccessPolicy]] = None
+    # Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
+    templates: Optional[List[conditional_access_template.ConditionalAccessTemplate]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessRoot:
@@ -90,40 +53,6 @@ class ConditionalAccessRoot(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def named_locations(self,) -> Optional[List[named_location.NamedLocation]]:
-        """
-        Gets the namedLocations property value. Read-only. Nullable. Returns a collection of the specified named locations.
-        Returns: Optional[List[named_location.NamedLocation]]
-        """
-        return self._named_locations
-    
-    @named_locations.setter
-    def named_locations(self,value: Optional[List[named_location.NamedLocation]] = None) -> None:
-        """
-        Sets the namedLocations property value. Read-only. Nullable. Returns a collection of the specified named locations.
-        Args:
-            value: Value to set for the named_locations property.
-        """
-        self._named_locations = value
-    
-    @property
-    def policies(self,) -> Optional[List[conditional_access_policy.ConditionalAccessPolicy]]:
-        """
-        Gets the policies property value. Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
-        Returns: Optional[List[conditional_access_policy.ConditionalAccessPolicy]]
-        """
-        return self._policies
-    
-    @policies.setter
-    def policies(self,value: Optional[List[conditional_access_policy.ConditionalAccessPolicy]] = None) -> None:
-        """
-        Sets the policies property value. Read-only. Nullable. Returns a collection of the specified Conditional Access (CA) policies.
-        Args:
-            value: Value to set for the policies property.
-        """
-        self._policies = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -138,22 +67,5 @@ class ConditionalAccessRoot(entity.Entity):
         writer.write_collection_of_object_values("namedLocations", self.named_locations)
         writer.write_collection_of_object_values("policies", self.policies)
         writer.write_collection_of_object_values("templates", self.templates)
-    
-    @property
-    def templates(self,) -> Optional[List[conditional_access_template.ConditionalAccessTemplate]]:
-        """
-        Gets the templates property value. Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
-        Returns: Optional[List[conditional_access_template.ConditionalAccessTemplate]]
-        """
-        return self._templates
-    
-    @templates.setter
-    def templates(self,value: Optional[List[conditional_access_template.ConditionalAccessTemplate]] = None) -> None:
-        """
-        Sets the templates property value. Read-only. Nullable. Returns a collection of the specified Conditional Access templates.
-        Args:
-            value: Value to set for the templates property.
-        """
-        self._templates = value
     
 

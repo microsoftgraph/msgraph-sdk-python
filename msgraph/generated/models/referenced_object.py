@@ -1,38 +1,19 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class ReferencedObject(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new referencedObject and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The referencedObjectName property
-        self._referenced_object_name: Optional[str] = None
-        # The referencedProperty property
-        self._referenced_property: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The referencedObjectName property
+    referenced_object_name: Optional[str] = None
+    # The referencedProperty property
+    referenced_property: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ReferencedObject:
@@ -57,57 +38,6 @@ class ReferencedObject(AdditionalDataHolder, Parsable):
             "referencedProperty": lambda n : setattr(self, 'referenced_property', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def referenced_object_name(self,) -> Optional[str]:
-        """
-        Gets the referencedObjectName property value. The referencedObjectName property
-        Returns: Optional[str]
-        """
-        return self._referenced_object_name
-    
-    @referenced_object_name.setter
-    def referenced_object_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the referencedObjectName property value. The referencedObjectName property
-        Args:
-            value: Value to set for the referenced_object_name property.
-        """
-        self._referenced_object_name = value
-    
-    @property
-    def referenced_property(self,) -> Optional[str]:
-        """
-        Gets the referencedProperty property value. The referencedProperty property
-        Returns: Optional[str]
-        """
-        return self._referenced_property
-    
-    @referenced_property.setter
-    def referenced_property(self,value: Optional[str] = None) -> None:
-        """
-        Sets the referencedProperty property value. The referencedProperty property
-        Args:
-            value: Value to set for the referenced_property property.
-        """
-        self._referenced_property = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

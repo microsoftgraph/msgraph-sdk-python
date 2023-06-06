@@ -1,6 +1,6 @@
 from enum import Enum
 
-class QuarantineReason(Enum):
+class QuarantineReason(str, Enum):
     EncounteredBaseEscrowThreshold = "EncounteredBaseEscrowThreshold",
     EncounteredTotalEscrowThreshold = "EncounteredTotalEscrowThreshold",
     EncounteredEscrowProportionThreshold = "EncounteredEscrowProportionThreshold",

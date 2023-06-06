@@ -1,38 +1,19 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class CollapseProperty(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new collapseProperty and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The fields property
-        self._fields: Optional[List[str]] = None
-        # The limit property
-        self._limit: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Defines the collapse group to trim results. The properties in this collection must be sortable/refinable properties. Required.
+    fields: Optional[List[str]] = None
+    # Defines a maximum limit count for this field. This numeric value must be a positive integer. Required.
+    limit: Optional[int] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CollapseProperty:
@@ -46,23 +27,6 @@ class CollapseProperty(AdditionalDataHolder, Parsable):
             raise Exception("parse_node cannot be undefined")
         return CollapseProperty()
     
-    @property
-    def fields(self,) -> Optional[List[str]]:
-        """
-        Gets the fields property value. The fields property
-        Returns: Optional[List[str]]
-        """
-        return self._fields
-    
-    @fields.setter
-    def fields(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the fields property value. The fields property
-        Args:
-            value: Value to set for the fields property.
-        """
-        self._fields = value
-    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -74,40 +38,6 @@ class CollapseProperty(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def limit(self,) -> Optional[int]:
-        """
-        Gets the limit property value. The limit property
-        Returns: Optional[int]
-        """
-        return self._limit
-    
-    @limit.setter
-    def limit(self,value: Optional[int] = None) -> None:
-        """
-        Sets the limit property value. The limit property
-        Args:
-            value: Value to set for the limit property.
-        """
-        self._limit = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

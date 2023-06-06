@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AppLockerApplicationControlType(Enum):
+class AppLockerApplicationControlType(str, Enum):
     # Device default value, no Application Control type selected.
     NotConfigured = "notConfigured",
     # Enforce Windows component and store apps.

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AccessPackageSubjectType(Enum):
+class AccessPackageSubjectType(str, Enum):
     NotSpecified = "notSpecified",
     User = "user",
     ServicePrincipal = "servicePrincipal",

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DelegatedAdminRelationshipRequestStatus(Enum):
+class DelegatedAdminRelationshipRequestStatus(str, Enum):
     Created = "created",
     Pending = "pending",
     Succeeded = "succeeded",

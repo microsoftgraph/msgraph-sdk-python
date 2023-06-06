@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..........models import json
 
+@dataclass
 class AddPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new addPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The seriesBy property
-        self._series_by: Optional[str] = None
-        # The sourceData property
-        self._source_data: Optional[json.Json] = None
-        # The type property
-        self._type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The seriesBy property
+    series_by: Optional[str] = None
+    # The sourceData property
+    source_data: Optional[json.Json] = None
+    # The type property
+    type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddPostRequestBody:
@@ -75,56 +56,5 @@ class AddPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_object_value("sourceData", self.source_data)
         writer.write_str_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def series_by(self,) -> Optional[str]:
-        """
-        Gets the seriesBy property value. The seriesBy property
-        Returns: Optional[str]
-        """
-        return self._series_by
-    
-    @series_by.setter
-    def series_by(self,value: Optional[str] = None) -> None:
-        """
-        Sets the seriesBy property value. The seriesBy property
-        Args:
-            value: Value to set for the series_by property.
-        """
-        self._series_by = value
-    
-    @property
-    def source_data(self,) -> Optional[json.Json]:
-        """
-        Gets the sourceData property value. The sourceData property
-        Returns: Optional[json.Json]
-        """
-        return self._source_data
-    
-    @source_data.setter
-    def source_data(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the sourceData property value. The sourceData property
-        Args:
-            value: Value to set for the source_data property.
-        """
-        self._source_data = value
-    
-    @property
-    def type(self,) -> Optional[str]:
-        """
-        Gets the type property value. The type property
-        Returns: Optional[str]
-        """
-        return self._type
-    
-    @type.setter
-    def type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the type property value. The type property
-        Args:
-            value: Value to set for the type property.
-        """
-        self._type = value
     
 

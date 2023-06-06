@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,20 +8,16 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class WorkbookChartSeries(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookChartSeries and sets the default values.
-        """
-        super().__init__()
-        # Represents the formatting of a chart series, which includes fill and line formatting. Read-only.
-        self._format: Optional[workbook_chart_series_format.WorkbookChartSeriesFormat] = None
-        # Represents the name of a series in a chart.
-        self._name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Represents a collection of all points in the series. Read-only.
-        self._points: Optional[List[workbook_chart_point.WorkbookChartPoint]] = None
+    # Represents the formatting of a chart series, which includes fill and line formatting. Read-only.
+    format: Optional[workbook_chart_series_format.WorkbookChartSeriesFormat] = None
+    # Represents the name of a series in a chart.
+    name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Represents a collection of all points in the series. Read-only.
+    points: Optional[List[workbook_chart_point.WorkbookChartPoint]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartSeries:
@@ -33,23 +30,6 @@ class WorkbookChartSeries(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartSeries()
-    
-    @property
-    def format(self,) -> Optional[workbook_chart_series_format.WorkbookChartSeriesFormat]:
-        """
-        Gets the format property value. Represents the formatting of a chart series, which includes fill and line formatting. Read-only.
-        Returns: Optional[workbook_chart_series_format.WorkbookChartSeriesFormat]
-        """
-        return self._format
-    
-    @format.setter
-    def format(self,value: Optional[workbook_chart_series_format.WorkbookChartSeriesFormat] = None) -> None:
-        """
-        Sets the format property value. Represents the formatting of a chart series, which includes fill and line formatting. Read-only.
-        Args:
-            value: Value to set for the format property.
-        """
-        self._format = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -66,40 +46,6 @@ class WorkbookChartSeries(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def name(self,) -> Optional[str]:
-        """
-        Gets the name property value. Represents the name of a series in a chart.
-        Returns: Optional[str]
-        """
-        return self._name
-    
-    @name.setter
-    def name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the name property value. Represents the name of a series in a chart.
-        Args:
-            value: Value to set for the name property.
-        """
-        self._name = value
-    
-    @property
-    def points(self,) -> Optional[List[workbook_chart_point.WorkbookChartPoint]]:
-        """
-        Gets the points property value. Represents a collection of all points in the series. Read-only.
-        Returns: Optional[List[workbook_chart_point.WorkbookChartPoint]]
-        """
-        return self._points
-    
-    @points.setter
-    def points(self,value: Optional[List[workbook_chart_point.WorkbookChartPoint]] = None) -> None:
-        """
-        Sets the points property value. Represents a collection of all points in the series. Read-only.
-        Args:
-            value: Value to set for the points property.
-        """
-        self._points = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

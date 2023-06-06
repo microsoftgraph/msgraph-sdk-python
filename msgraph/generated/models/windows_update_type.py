@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WindowsUpdateType(Enum):
+class WindowsUpdateType(str, Enum):
     # Allow the user to set.
     UserDefined = "userDefined",
     # Semi-annual Channel (Targeted). Device gets all applicable feature updates from Semi-annual Channel (Targeted).

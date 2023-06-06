@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,51 +9,13 @@ if TYPE_CHECKING:
 
 from . import windows_update_install_schedule_type
 
+@dataclass
 class WindowsUpdateActiveHoursInstall(windows_update_install_schedule_type.WindowsUpdateInstallScheduleType):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsUpdateActiveHoursInstall and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsUpdateActiveHoursInstall"
-        # Active Hours End
-        self._active_hours_end: Optional[time] = None
-        # Active Hours Start
-        self._active_hours_start: Optional[time] = None
-    
-    @property
-    def active_hours_end(self,) -> Optional[time]:
-        """
-        Gets the activeHoursEnd property value. Active Hours End
-        Returns: Optional[time]
-        """
-        return self._active_hours_end
-    
-    @active_hours_end.setter
-    def active_hours_end(self,value: Optional[time] = None) -> None:
-        """
-        Sets the activeHoursEnd property value. Active Hours End
-        Args:
-            value: Value to set for the active_hours_end property.
-        """
-        self._active_hours_end = value
-    
-    @property
-    def active_hours_start(self,) -> Optional[time]:
-        """
-        Gets the activeHoursStart property value. Active Hours Start
-        Returns: Optional[time]
-        """
-        return self._active_hours_start
-    
-    @active_hours_start.setter
-    def active_hours_start(self,value: Optional[time] = None) -> None:
-        """
-        Sets the activeHoursStart property value. Active Hours Start
-        Args:
-            value: Value to set for the active_hours_start property.
-        """
-        self._active_hours_start = value
+    odata_type = "#microsoft.graph.windowsUpdateActiveHoursInstall"
+    # Active Hours End
+    active_hours_end: Optional[time] = None
+    # Active Hours Start
+    active_hours_start: Optional[time] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsUpdateActiveHoursInstall:

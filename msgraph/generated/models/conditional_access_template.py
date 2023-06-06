@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,22 +8,18 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ConditionalAccessTemplate(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new conditionalAccessTemplate and sets the default values.
-        """
-        super().__init__()
-        # The user-friendly name of the template.
-        self._description: Optional[str] = None
-        # The details property
-        self._details: Optional[conditional_access_policy_detail.ConditionalAccessPolicyDetail] = None
-        # The user-friendly name of the template.
-        self._name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The scenarios property
-        self._scenarios: Optional[template_scenarios.TemplateScenarios] = None
+    # The user-friendly name of the template.
+    description: Optional[str] = None
+    # The details property
+    details: Optional[conditional_access_policy_detail.ConditionalAccessPolicyDetail] = None
+    # The user-friendly name of the template.
+    name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The scenarios property
+    scenarios: Optional[template_scenarios.TemplateScenarios] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConditionalAccessTemplate:
@@ -35,40 +32,6 @@ class ConditionalAccessTemplate(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ConditionalAccessTemplate()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. The user-friendly name of the template.
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. The user-friendly name of the template.
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
-    
-    @property
-    def details(self,) -> Optional[conditional_access_policy_detail.ConditionalAccessPolicyDetail]:
-        """
-        Gets the details property value. The details property
-        Returns: Optional[conditional_access_policy_detail.ConditionalAccessPolicyDetail]
-        """
-        return self._details
-    
-    @details.setter
-    def details(self,value: Optional[conditional_access_policy_detail.ConditionalAccessPolicyDetail] = None) -> None:
-        """
-        Sets the details property value. The details property
-        Args:
-            value: Value to set for the details property.
-        """
-        self._details = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -86,40 +49,6 @@ class ConditionalAccessTemplate(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def name(self,) -> Optional[str]:
-        """
-        Gets the name property value. The user-friendly name of the template.
-        Returns: Optional[str]
-        """
-        return self._name
-    
-    @name.setter
-    def name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the name property value. The user-friendly name of the template.
-        Args:
-            value: Value to set for the name property.
-        """
-        self._name = value
-    
-    @property
-    def scenarios(self,) -> Optional[template_scenarios.TemplateScenarios]:
-        """
-        Gets the scenarios property value. The scenarios property
-        Returns: Optional[template_scenarios.TemplateScenarios]
-        """
-        return self._scenarios
-    
-    @scenarios.setter
-    def scenarios(self,value: Optional[template_scenarios.TemplateScenarios] = None) -> None:
-        """
-        Sets the scenarios property value. The scenarios property
-        Args:
-            value: Value to set for the scenarios property.
-        """
-        self._scenarios = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

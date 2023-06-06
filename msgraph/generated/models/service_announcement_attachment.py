@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,58 +9,20 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ServiceAnnouncementAttachment(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new serviceAnnouncementAttachment and sets the default values.
-        """
-        super().__init__()
-        # The attachment content.
-        self._content: Optional[bytes] = None
-        # The contentType property
-        self._content_type: Optional[str] = None
-        # The lastModifiedDateTime property
-        self._last_modified_date_time: Optional[datetime] = None
-        # The name property
-        self._name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The size property
-        self._size: Optional[int] = None
-    
-    @property
-    def content(self,) -> Optional[bytes]:
-        """
-        Gets the content property value. The attachment content.
-        Returns: Optional[bytes]
-        """
-        return self._content
-    
-    @content.setter
-    def content(self,value: Optional[bytes] = None) -> None:
-        """
-        Sets the content property value. The attachment content.
-        Args:
-            value: Value to set for the content property.
-        """
-        self._content = value
-    
-    @property
-    def content_type(self,) -> Optional[str]:
-        """
-        Gets the contentType property value. The contentType property
-        Returns: Optional[str]
-        """
-        return self._content_type
-    
-    @content_type.setter
-    def content_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the contentType property value. The contentType property
-        Args:
-            value: Value to set for the content_type property.
-        """
-        self._content_type = value
+    # The attachment content.
+    content: Optional[bytes] = None
+    # The contentType property
+    content_type: Optional[str] = None
+    # The lastModifiedDateTime property
+    last_modified_date_time: Optional[datetime] = None
+    # The name property
+    name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The size property
+    size: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceAnnouncementAttachment:
@@ -91,40 +54,6 @@ class ServiceAnnouncementAttachment(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def last_modified_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastModifiedDateTime property value. The lastModifiedDateTime property
-        Returns: Optional[datetime]
-        """
-        return self._last_modified_date_time
-    
-    @last_modified_date_time.setter
-    def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastModifiedDateTime property value. The lastModifiedDateTime property
-        Args:
-            value: Value to set for the last_modified_date_time property.
-        """
-        self._last_modified_date_time = value
-    
-    @property
-    def name(self,) -> Optional[str]:
-        """
-        Gets the name property value. The name property
-        Returns: Optional[str]
-        """
-        return self._name
-    
-    @name.setter
-    def name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the name property value. The name property
-        Args:
-            value: Value to set for the name property.
-        """
-        self._name = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -139,22 +68,5 @@ class ServiceAnnouncementAttachment(entity.Entity):
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("name", self.name)
         writer.write_int_value("size", self.size)
-    
-    @property
-    def size(self,) -> Optional[int]:
-        """
-        Gets the size property value. The size property
-        Returns: Optional[int]
-        """
-        return self._size
-    
-    @size.setter
-    def size(self,value: Optional[int] = None) -> None:
-        """
-        Sets the size property value. The size property
-        Args:
-            value: Value to set for the size property.
-        """
-        self._size = value
     
 

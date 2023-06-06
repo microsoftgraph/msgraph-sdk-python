@@ -1,95 +1,25 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class LookupColumn(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new lookupColumn and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Indicates whether multiple values can be selected from the source.
-        self._allow_multiple_values: Optional[bool] = None
-        # Indicates whether values in the column should be able to exceed the standard limit of 255 characters.
-        self._allow_unlimited_length: Optional[bool] = None
-        # The name of the lookup source column.
-        self._column_name: Optional[str] = None
-        # The unique identifier of the lookup source list.
-        self._list_id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # If specified, this column is a secondary lookup, pulling an additional field from the list item looked up by the primary lookup. Use the list item looked up by the primary as the source for the column named here.
-        self._primary_lookup_column_id: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def allow_multiple_values(self,) -> Optional[bool]:
-        """
-        Gets the allowMultipleValues property value. Indicates whether multiple values can be selected from the source.
-        Returns: Optional[bool]
-        """
-        return self._allow_multiple_values
-    
-    @allow_multiple_values.setter
-    def allow_multiple_values(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowMultipleValues property value. Indicates whether multiple values can be selected from the source.
-        Args:
-            value: Value to set for the allow_multiple_values property.
-        """
-        self._allow_multiple_values = value
-    
-    @property
-    def allow_unlimited_length(self,) -> Optional[bool]:
-        """
-        Gets the allowUnlimitedLength property value. Indicates whether values in the column should be able to exceed the standard limit of 255 characters.
-        Returns: Optional[bool]
-        """
-        return self._allow_unlimited_length
-    
-    @allow_unlimited_length.setter
-    def allow_unlimited_length(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowUnlimitedLength property value. Indicates whether values in the column should be able to exceed the standard limit of 255 characters.
-        Args:
-            value: Value to set for the allow_unlimited_length property.
-        """
-        self._allow_unlimited_length = value
-    
-    @property
-    def column_name(self,) -> Optional[str]:
-        """
-        Gets the columnName property value. The name of the lookup source column.
-        Returns: Optional[str]
-        """
-        return self._column_name
-    
-    @column_name.setter
-    def column_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the columnName property value. The name of the lookup source column.
-        Args:
-            value: Value to set for the column_name property.
-        """
-        self._column_name = value
+    # Indicates whether multiple values can be selected from the source.
+    allow_multiple_values: Optional[bool] = None
+    # Indicates whether values in the column should be able to exceed the standard limit of 255 characters.
+    allow_unlimited_length: Optional[bool] = None
+    # The name of the lookup source column.
+    column_name: Optional[str] = None
+    # The unique identifier of the lookup source list.
+    list_id: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # If specified, this column is a secondary lookup, pulling an additional field from the list item looked up by the primary lookup. Use the list item looked up by the primary as the source for the column named here.
+    primary_lookup_column_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LookupColumn:
@@ -117,57 +47,6 @@ class LookupColumn(AdditionalDataHolder, Parsable):
             "primaryLookupColumnId": lambda n : setattr(self, 'primary_lookup_column_id', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def list_id(self,) -> Optional[str]:
-        """
-        Gets the listId property value. The unique identifier of the lookup source list.
-        Returns: Optional[str]
-        """
-        return self._list_id
-    
-    @list_id.setter
-    def list_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the listId property value. The unique identifier of the lookup source list.
-        Args:
-            value: Value to set for the list_id property.
-        """
-        self._list_id = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def primary_lookup_column_id(self,) -> Optional[str]:
-        """
-        Gets the primaryLookupColumnId property value. If specified, this column is a secondary lookup, pulling an additional field from the list item looked up by the primary lookup. Use the list item looked up by the primary as the source for the column named here.
-        Returns: Optional[str]
-        """
-        return self._primary_lookup_column_id
-    
-    @primary_lookup_column_id.setter
-    def primary_lookup_column_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the primaryLookupColumnId property value. If specified, this column is a secondary lookup, pulling an additional field from the list item looked up by the primary lookup. Use the list item looked up by the primary as the source for the column named here.
-        Args:
-            value: Value to set for the primary_lookup_column_id property.
-        """
-        self._primary_lookup_column_id = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

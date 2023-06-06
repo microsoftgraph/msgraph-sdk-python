@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SharingDomainRestrictionMode(Enum):
+class SharingDomainRestrictionMode(str, Enum):
     None_ = "none",
     AllowList = "allowList",
     BlockList = "blockList",

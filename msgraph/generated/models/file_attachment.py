@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,70 +8,15 @@ if TYPE_CHECKING:
 
 from . import attachment
 
+@dataclass
 class FileAttachment(attachment.Attachment):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new FileAttachment and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.fileAttachment"
-        # The base64-encoded contents of the file.
-        self._content_bytes: Optional[bytes] = None
-        # The ID of the attachment in the Exchange store.
-        self._content_id: Optional[str] = None
-        # Do not use this property as it is not supported.
-        self._content_location: Optional[str] = None
-    
-    @property
-    def content_bytes(self,) -> Optional[bytes]:
-        """
-        Gets the contentBytes property value. The base64-encoded contents of the file.
-        Returns: Optional[bytes]
-        """
-        return self._content_bytes
-    
-    @content_bytes.setter
-    def content_bytes(self,value: Optional[bytes] = None) -> None:
-        """
-        Sets the contentBytes property value. The base64-encoded contents of the file.
-        Args:
-            value: Value to set for the content_bytes property.
-        """
-        self._content_bytes = value
-    
-    @property
-    def content_id(self,) -> Optional[str]:
-        """
-        Gets the contentId property value. The ID of the attachment in the Exchange store.
-        Returns: Optional[str]
-        """
-        return self._content_id
-    
-    @content_id.setter
-    def content_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the contentId property value. The ID of the attachment in the Exchange store.
-        Args:
-            value: Value to set for the content_id property.
-        """
-        self._content_id = value
-    
-    @property
-    def content_location(self,) -> Optional[str]:
-        """
-        Gets the contentLocation property value. Do not use this property as it is not supported.
-        Returns: Optional[str]
-        """
-        return self._content_location
-    
-    @content_location.setter
-    def content_location(self,value: Optional[str] = None) -> None:
-        """
-        Sets the contentLocation property value. Do not use this property as it is not supported.
-        Args:
-            value: Value to set for the content_location property.
-        """
-        self._content_location = value
+    odata_type = "#microsoft.graph.fileAttachment"
+    # The base64-encoded contents of the file.
+    content_bytes: Optional[bytes] = None
+    # The ID of the attachment in the Exchange store.
+    content_id: Optional[str] = None
+    # Do not use this property as it is not supported.
+    content_location: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FileAttachment:

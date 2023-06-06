@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,24 +8,20 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class DomainDnsRecord(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new domainDnsRecord and sets the default values.
-        """
-        super().__init__()
-        # If false, this record must be configured by the customer at the DNS host for Microsoft Online Services to operate correctly with the domain.
-        self._is_optional: Optional[bool] = None
-        # Value used when configuring the name of the DNS record at the DNS host.
-        self._label: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Indicates what type of DNS record this entity represents.The value can be one of the following: CName, Mx, Srv, Txt.
-        self._record_type: Optional[str] = None
-        # Microsoft Online Service or feature that has a dependency on this DNS record.Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune.
-        self._supported_service: Optional[str] = None
-        # Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable.
-        self._ttl: Optional[int] = None
+    # If false, this record must be configured by the customer at the DNS host for Microsoft Online Services to operate correctly with the domain.
+    is_optional: Optional[bool] = None
+    # Value used when configuring the name of the DNS record at the DNS host.
+    label: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Indicates what type of DNS record this entity represents.The value can be one of the following: CName, Mx, Srv, Txt.
+    record_type: Optional[str] = None
+    # Microsoft Online Service or feature that has a dependency on this DNS record.Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune.
+    supported_service: Optional[str] = None
+    # Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable.
+    ttl: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DomainDnsRecord:
@@ -79,57 +76,6 @@ class DomainDnsRecord(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def is_optional(self,) -> Optional[bool]:
-        """
-        Gets the isOptional property value. If false, this record must be configured by the customer at the DNS host for Microsoft Online Services to operate correctly with the domain.
-        Returns: Optional[bool]
-        """
-        return self._is_optional
-    
-    @is_optional.setter
-    def is_optional(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isOptional property value. If false, this record must be configured by the customer at the DNS host for Microsoft Online Services to operate correctly with the domain.
-        Args:
-            value: Value to set for the is_optional property.
-        """
-        self._is_optional = value
-    
-    @property
-    def label(self,) -> Optional[str]:
-        """
-        Gets the label property value. Value used when configuring the name of the DNS record at the DNS host.
-        Returns: Optional[str]
-        """
-        return self._label
-    
-    @label.setter
-    def label(self,value: Optional[str] = None) -> None:
-        """
-        Sets the label property value. Value used when configuring the name of the DNS record at the DNS host.
-        Args:
-            value: Value to set for the label property.
-        """
-        self._label = value
-    
-    @property
-    def record_type(self,) -> Optional[str]:
-        """
-        Gets the recordType property value. Indicates what type of DNS record this entity represents.The value can be one of the following: CName, Mx, Srv, Txt.
-        Returns: Optional[str]
-        """
-        return self._record_type
-    
-    @record_type.setter
-    def record_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the recordType property value. Indicates what type of DNS record this entity represents.The value can be one of the following: CName, Mx, Srv, Txt.
-        Args:
-            value: Value to set for the record_type property.
-        """
-        self._record_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -144,39 +90,5 @@ class DomainDnsRecord(entity.Entity):
         writer.write_str_value("recordType", self.record_type)
         writer.write_str_value("supportedService", self.supported_service)
         writer.write_int_value("ttl", self.ttl)
-    
-    @property
-    def supported_service(self,) -> Optional[str]:
-        """
-        Gets the supportedService property value. Microsoft Online Service or feature that has a dependency on this DNS record.Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune.
-        Returns: Optional[str]
-        """
-        return self._supported_service
-    
-    @supported_service.setter
-    def supported_service(self,value: Optional[str] = None) -> None:
-        """
-        Sets the supportedService property value. Microsoft Online Service or feature that has a dependency on this DNS record.Can be one of the following values: null, Email, Sharepoint, EmailInternalRelayOnly, OfficeCommunicationsOnline, SharePointDefaultDomain, FullRedelegation, SharePointPublic, OrgIdAuthentication, Yammer, Intune.
-        Args:
-            value: Value to set for the supported_service property.
-        """
-        self._supported_service = value
-    
-    @property
-    def ttl(self,) -> Optional[int]:
-        """
-        Gets the ttl property value. Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable.
-        Returns: Optional[int]
-        """
-        return self._ttl
-    
-    @ttl.setter
-    def ttl(self,value: Optional[int] = None) -> None:
-        """
-        Sets the ttl property value. Value to use when configuring the time-to-live (ttl) property of the DNS record at the DNS host. Not nullable.
-        Args:
-            value: Value to set for the ttl property.
-        """
-        self._ttl = value
     
 

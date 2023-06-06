@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,40 +8,19 @@ if TYPE_CHECKING:
 
 from . import directory_object
 
+@dataclass
 class Endpoint(directory_object.DirectoryObject):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new endpoint and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.endpoint"
-        # The capability property
-        self._capability: Optional[str] = None
-        # The providerId property
-        self._provider_id: Optional[str] = None
-        # The providerName property
-        self._provider_name: Optional[str] = None
-        # The providerResourceId property
-        self._provider_resource_id: Optional[str] = None
-        # The uri property
-        self._uri: Optional[str] = None
-    
-    @property
-    def capability(self,) -> Optional[str]:
-        """
-        Gets the capability property value. The capability property
-        Returns: Optional[str]
-        """
-        return self._capability
-    
-    @capability.setter
-    def capability(self,value: Optional[str] = None) -> None:
-        """
-        Sets the capability property value. The capability property
-        Args:
-            value: Value to set for the capability property.
-        """
-        self._capability = value
+    odata_type = "#microsoft.graph.endpoint"
+    # The capability property
+    capability: Optional[str] = None
+    # The providerId property
+    provider_id: Optional[str] = None
+    # The providerName property
+    provider_name: Optional[str] = None
+    # The providerResourceId property
+    provider_resource_id: Optional[str] = None
+    # The uri property
+    uri: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Endpoint:
@@ -72,57 +52,6 @@ class Endpoint(directory_object.DirectoryObject):
         fields.update(super_fields)
         return fields
     
-    @property
-    def provider_id(self,) -> Optional[str]:
-        """
-        Gets the providerId property value. The providerId property
-        Returns: Optional[str]
-        """
-        return self._provider_id
-    
-    @provider_id.setter
-    def provider_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the providerId property value. The providerId property
-        Args:
-            value: Value to set for the provider_id property.
-        """
-        self._provider_id = value
-    
-    @property
-    def provider_name(self,) -> Optional[str]:
-        """
-        Gets the providerName property value. The providerName property
-        Returns: Optional[str]
-        """
-        return self._provider_name
-    
-    @provider_name.setter
-    def provider_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the providerName property value. The providerName property
-        Args:
-            value: Value to set for the provider_name property.
-        """
-        self._provider_name = value
-    
-    @property
-    def provider_resource_id(self,) -> Optional[str]:
-        """
-        Gets the providerResourceId property value. The providerResourceId property
-        Returns: Optional[str]
-        """
-        return self._provider_resource_id
-    
-    @provider_resource_id.setter
-    def provider_resource_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the providerResourceId property value. The providerResourceId property
-        Args:
-            value: Value to set for the provider_resource_id property.
-        """
-        self._provider_resource_id = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -137,22 +66,5 @@ class Endpoint(directory_object.DirectoryObject):
         writer.write_str_value("providerName", self.provider_name)
         writer.write_str_value("providerResourceId", self.provider_resource_id)
         writer.write_str_value("uri", self.uri)
-    
-    @property
-    def uri(self,) -> Optional[str]:
-        """
-        Gets the uri property value. The uri property
-        Returns: Optional[str]
-        """
-        return self._uri
-    
-    @uri.setter
-    def uri(self,value: Optional[str] = None) -> None:
-        """
-        Sets the uri property value. The uri property
-        Args:
-            value: Value to set for the uri property.
-        """
-        self._uri = value
     
 

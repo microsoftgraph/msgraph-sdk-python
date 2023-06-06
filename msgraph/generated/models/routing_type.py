@@ -1,6 +1,6 @@
 from enum import Enum
 
-class RoutingType(Enum):
+class RoutingType(str, Enum):
     Forwarded = "forwarded",
     Lookup = "lookup",
     SelfFork = "selfFork",

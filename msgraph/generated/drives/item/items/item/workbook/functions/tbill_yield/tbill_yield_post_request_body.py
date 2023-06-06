@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import json
 
+@dataclass
 class TbillYieldPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new tbillYieldPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The maturity property
-        self._maturity: Optional[json.Json] = None
-        # The pr property
-        self._pr: Optional[json.Json] = None
-        # The settlement property
-        self._settlement: Optional[json.Json] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The maturity property
+    maturity: Optional[json.Json] = None
+    # The pr property
+    pr: Optional[json.Json] = None
+    # The settlement property
+    settlement: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TbillYieldPostRequestBody:
@@ -63,40 +44,6 @@ class TbillYieldPostRequestBody(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def maturity(self,) -> Optional[json.Json]:
-        """
-        Gets the maturity property value. The maturity property
-        Returns: Optional[json.Json]
-        """
-        return self._maturity
-    
-    @maturity.setter
-    def maturity(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the maturity property value. The maturity property
-        Args:
-            value: Value to set for the maturity property.
-        """
-        self._maturity = value
-    
-    @property
-    def pr(self,) -> Optional[json.Json]:
-        """
-        Gets the pr property value. The pr property
-        Returns: Optional[json.Json]
-        """
-        return self._pr
-    
-    @pr.setter
-    def pr(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the pr property value. The pr property
-        Args:
-            value: Value to set for the pr property.
-        """
-        self._pr = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -109,22 +56,5 @@ class TbillYieldPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_object_value("pr", self.pr)
         writer.write_object_value("settlement", self.settlement)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def settlement(self,) -> Optional[json.Json]:
-        """
-        Gets the settlement property value. The settlement property
-        Returns: Optional[json.Json]
-        """
-        return self._settlement
-    
-    @settlement.setter
-    def settlement(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the settlement property value. The settlement property
-        Args:
-            value: Value to set for the settlement property.
-        """
-        self._settlement = value
     
 

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class IdentityUserFlowAttributeInputType(Enum):
+class IdentityUserFlowAttributeInputType(str, Enum):
     TextBox = "textBox",
     DateTimeDropdown = "dateTimeDropdown",
     RadioSingleSelect = "radioSingleSelect",

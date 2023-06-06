@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class EducationAssignmentResource(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new educationAssignmentResource and sets the default values.
-        """
-        super().__init__()
-        # Indicates whether this resource should be copied to each student submission for modification and submission. Required
-        self._distribute_for_student_work: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Resource object that has been associated with this assignment.
-        self._resource: Optional[education_resource.EducationResource] = None
+    # Indicates whether this resource should be copied to each student submission for modification and submission. Required
+    distribute_for_student_work: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Resource object that has been associated with this assignment.
+    resource: Optional[education_resource.EducationResource] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationAssignmentResource:
@@ -31,23 +28,6 @@ class EducationAssignmentResource(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationAssignmentResource()
-    
-    @property
-    def distribute_for_student_work(self,) -> Optional[bool]:
-        """
-        Gets the distributeForStudentWork property value. Indicates whether this resource should be copied to each student submission for modification and submission. Required
-        Returns: Optional[bool]
-        """
-        return self._distribute_for_student_work
-    
-    @distribute_for_student_work.setter
-    def distribute_for_student_work(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the distributeForStudentWork property value. Indicates whether this resource should be copied to each student submission for modification and submission. Required
-        Args:
-            value: Value to set for the distribute_for_student_work property.
-        """
-        self._distribute_for_student_work = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -63,23 +43,6 @@ class EducationAssignmentResource(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def resource(self,) -> Optional[education_resource.EducationResource]:
-        """
-        Gets the resource property value. Resource object that has been associated with this assignment.
-        Returns: Optional[education_resource.EducationResource]
-        """
-        return self._resource
-    
-    @resource.setter
-    def resource(self,value: Optional[education_resource.EducationResource] = None) -> None:
-        """
-        Sets the resource property value. Resource object that has been associated with this assignment.
-        Args:
-            value: Value to set for the resource property.
-        """
-        self._resource = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

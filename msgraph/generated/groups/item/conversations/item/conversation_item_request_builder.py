@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -57,7 +57,7 @@ class ConversationItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ConversationItemRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation.Conversation]:
         """
-        The group's conversations.
+        Retrieve the properties and relationships of conversation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conversation.Conversation]
@@ -95,7 +95,7 @@ class ConversationItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ConversationItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        The group's conversations.
+        Retrieve the properties and relationships of conversation object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -135,7 +135,7 @@ class ConversationItemRequestBuilder():
     @dataclass
     class ConversationItemRequestBuilderGetQueryParameters():
         """
-        The group's conversations.
+        Retrieve the properties and relationships of conversation object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

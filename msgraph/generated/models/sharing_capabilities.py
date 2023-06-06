@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SharingCapabilities(Enum):
+class SharingCapabilities(str, Enum):
     Disabled = "disabled",
     ExternalUserSharingOnly = "externalUserSharingOnly",
     ExternalUserAndGuestSharing = "externalUserAndGuestSharing",

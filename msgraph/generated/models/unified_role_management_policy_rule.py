@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class UnifiedRoleManagementPolicyRule(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new unifiedRoleManagementPolicyRule and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Defines details of scope that's targeted by role management policy rule. The details can include the principal type, the role assignment type, and actions affecting a role. Supports $filter (eq, ne).
-        self._target: Optional[unified_role_management_policy_rule_target.UnifiedRoleManagementPolicyRuleTarget] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Defines details of scope that's targeted by role management policy rule. The details can include the principal type, the role assignment type, and actions affecting a role. Supports $filter (eq, ne).
+    target: Optional[unified_role_management_policy_rule_target.UnifiedRoleManagementPolicyRuleTarget] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleManagementPolicyRule:
@@ -77,22 +74,5 @@ class UnifiedRoleManagementPolicyRule(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("target", self.target)
-    
-    @property
-    def target(self,) -> Optional[unified_role_management_policy_rule_target.UnifiedRoleManagementPolicyRuleTarget]:
-        """
-        Gets the target property value. Defines details of scope that's targeted by role management policy rule. The details can include the principal type, the role assignment type, and actions affecting a role. Supports $filter (eq, ne).
-        Returns: Optional[unified_role_management_policy_rule_target.UnifiedRoleManagementPolicyRuleTarget]
-        """
-        return self._target
-    
-    @target.setter
-    def target(self,value: Optional[unified_role_management_policy_rule_target.UnifiedRoleManagementPolicyRuleTarget] = None) -> None:
-        """
-        Sets the target property value. Defines details of scope that's targeted by role management policy rule. The details can include the principal type, the role assignment type, and actions affecting a role. Supports $filter (eq, ne).
-        Args:
-            value: Value to set for the target property.
-        """
-        self._target = value
     
 

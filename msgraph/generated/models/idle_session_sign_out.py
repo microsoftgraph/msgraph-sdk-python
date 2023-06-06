@@ -1,40 +1,21 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class IdleSessionSignOut(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new idleSessionSignOut and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Indicates whether the idle session sign-out policy is enabled.
-        self._is_enabled: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Number of seconds of inactivity after which a user is signed out.
-        self._sign_out_after_in_seconds: Optional[int] = None
-        # Number of seconds of inactivity after which a user is notified that they'll be signed out.
-        self._warn_after_in_seconds: Optional[int] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Indicates whether the idle session sign-out policy is enabled.
+    is_enabled: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Number of seconds of inactivity after which a user is signed out.
+    sign_out_after_in_seconds: Optional[int] = None
+    # Number of seconds of inactivity after which a user is notified that they'll be signed out.
+    warn_after_in_seconds: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IdleSessionSignOut:
@@ -61,40 +42,6 @@ class IdleSessionSignOut(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def is_enabled(self,) -> Optional[bool]:
-        """
-        Gets the isEnabled property value. Indicates whether the idle session sign-out policy is enabled.
-        Returns: Optional[bool]
-        """
-        return self._is_enabled
-    
-    @is_enabled.setter
-    def is_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isEnabled property value. Indicates whether the idle session sign-out policy is enabled.
-        Args:
-            value: Value to set for the is_enabled property.
-        """
-        self._is_enabled = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -108,39 +55,5 @@ class IdleSessionSignOut(AdditionalDataHolder, Parsable):
         writer.write_int_value("signOutAfterInSeconds", self.sign_out_after_in_seconds)
         writer.write_int_value("warnAfterInSeconds", self.warn_after_in_seconds)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def sign_out_after_in_seconds(self,) -> Optional[int]:
-        """
-        Gets the signOutAfterInSeconds property value. Number of seconds of inactivity after which a user is signed out.
-        Returns: Optional[int]
-        """
-        return self._sign_out_after_in_seconds
-    
-    @sign_out_after_in_seconds.setter
-    def sign_out_after_in_seconds(self,value: Optional[int] = None) -> None:
-        """
-        Sets the signOutAfterInSeconds property value. Number of seconds of inactivity after which a user is signed out.
-        Args:
-            value: Value to set for the sign_out_after_in_seconds property.
-        """
-        self._sign_out_after_in_seconds = value
-    
-    @property
-    def warn_after_in_seconds(self,) -> Optional[int]:
-        """
-        Gets the warnAfterInSeconds property value. Number of seconds of inactivity after which a user is notified that they'll be signed out.
-        Returns: Optional[int]
-        """
-        return self._warn_after_in_seconds
-    
-    @warn_after_in_seconds.setter
-    def warn_after_in_seconds(self,value: Optional[int] = None) -> None:
-        """
-        Sets the warnAfterInSeconds property value. Number of seconds of inactivity after which a user is notified that they'll be signed out.
-        Args:
-            value: Value to set for the warn_after_in_seconds property.
-        """
-        self._warn_after_in_seconds = value
     
 

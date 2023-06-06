@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import identity
 
+@dataclass
 class TeamworkConversationIdentity(identity.Identity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new TeamworkConversationIdentity and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.teamworkConversationIdentity"
-        # Type of conversation. Possible values are: team, channel, chat, and unknownFutureValue.
-        self._conversation_identity_type: Optional[teamwork_conversation_identity_type.TeamworkConversationIdentityType] = None
-    
-    @property
-    def conversation_identity_type(self,) -> Optional[teamwork_conversation_identity_type.TeamworkConversationIdentityType]:
-        """
-        Gets the conversationIdentityType property value. Type of conversation. Possible values are: team, channel, chat, and unknownFutureValue.
-        Returns: Optional[teamwork_conversation_identity_type.TeamworkConversationIdentityType]
-        """
-        return self._conversation_identity_type
-    
-    @conversation_identity_type.setter
-    def conversation_identity_type(self,value: Optional[teamwork_conversation_identity_type.TeamworkConversationIdentityType] = None) -> None:
-        """
-        Sets the conversationIdentityType property value. Type of conversation. Possible values are: team, channel, chat, and unknownFutureValue.
-        Args:
-            value: Value to set for the conversation_identity_type property.
-        """
-        self._conversation_identity_type = value
+    odata_type = "#microsoft.graph.teamworkConversationIdentity"
+    # Type of conversation. Possible values are: team, channel, chat, and unknownFutureValue.
+    conversation_identity_type: Optional[teamwork_conversation_identity_type.TeamworkConversationIdentityType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkConversationIdentity:

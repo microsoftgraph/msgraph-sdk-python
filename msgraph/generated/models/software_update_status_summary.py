@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,112 +8,40 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class SoftwareUpdateStatusSummary(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new softwareUpdateStatusSummary and sets the default values.
-        """
-        super().__init__()
-        # Number of compliant devices.
-        self._compliant_device_count: Optional[int] = None
-        # Number of compliant users.
-        self._compliant_user_count: Optional[int] = None
-        # Number of conflict devices.
-        self._conflict_device_count: Optional[int] = None
-        # Number of conflict users.
-        self._conflict_user_count: Optional[int] = None
-        # The name of the policy.
-        self._display_name: Optional[str] = None
-        # Number of devices had error.
-        self._error_device_count: Optional[int] = None
-        # Number of users had error.
-        self._error_user_count: Optional[int] = None
-        # Number of non compliant devices.
-        self._non_compliant_device_count: Optional[int] = None
-        # Number of non compliant users.
-        self._non_compliant_user_count: Optional[int] = None
-        # Number of not applicable devices.
-        self._not_applicable_device_count: Optional[int] = None
-        # Number of not applicable users.
-        self._not_applicable_user_count: Optional[int] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Number of remediated devices.
-        self._remediated_device_count: Optional[int] = None
-        # Number of remediated users.
-        self._remediated_user_count: Optional[int] = None
-        # Number of unknown devices.
-        self._unknown_device_count: Optional[int] = None
-        # Number of unknown users.
-        self._unknown_user_count: Optional[int] = None
-    
-    @property
-    def compliant_device_count(self,) -> Optional[int]:
-        """
-        Gets the compliantDeviceCount property value. Number of compliant devices.
-        Returns: Optional[int]
-        """
-        return self._compliant_device_count
-    
-    @compliant_device_count.setter
-    def compliant_device_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the compliantDeviceCount property value. Number of compliant devices.
-        Args:
-            value: Value to set for the compliant_device_count property.
-        """
-        self._compliant_device_count = value
-    
-    @property
-    def compliant_user_count(self,) -> Optional[int]:
-        """
-        Gets the compliantUserCount property value. Number of compliant users.
-        Returns: Optional[int]
-        """
-        return self._compliant_user_count
-    
-    @compliant_user_count.setter
-    def compliant_user_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the compliantUserCount property value. Number of compliant users.
-        Args:
-            value: Value to set for the compliant_user_count property.
-        """
-        self._compliant_user_count = value
-    
-    @property
-    def conflict_device_count(self,) -> Optional[int]:
-        """
-        Gets the conflictDeviceCount property value. Number of conflict devices.
-        Returns: Optional[int]
-        """
-        return self._conflict_device_count
-    
-    @conflict_device_count.setter
-    def conflict_device_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the conflictDeviceCount property value. Number of conflict devices.
-        Args:
-            value: Value to set for the conflict_device_count property.
-        """
-        self._conflict_device_count = value
-    
-    @property
-    def conflict_user_count(self,) -> Optional[int]:
-        """
-        Gets the conflictUserCount property value. Number of conflict users.
-        Returns: Optional[int]
-        """
-        return self._conflict_user_count
-    
-    @conflict_user_count.setter
-    def conflict_user_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the conflictUserCount property value. Number of conflict users.
-        Args:
-            value: Value to set for the conflict_user_count property.
-        """
-        self._conflict_user_count = value
+    # Number of compliant devices.
+    compliant_device_count: Optional[int] = None
+    # Number of compliant users.
+    compliant_user_count: Optional[int] = None
+    # Number of conflict devices.
+    conflict_device_count: Optional[int] = None
+    # Number of conflict users.
+    conflict_user_count: Optional[int] = None
+    # The name of the policy.
+    display_name: Optional[str] = None
+    # Number of devices had error.
+    error_device_count: Optional[int] = None
+    # Number of users had error.
+    error_user_count: Optional[int] = None
+    # Number of non compliant devices.
+    non_compliant_device_count: Optional[int] = None
+    # Number of non compliant users.
+    non_compliant_user_count: Optional[int] = None
+    # Number of not applicable devices.
+    not_applicable_device_count: Optional[int] = None
+    # Number of not applicable users.
+    not_applicable_user_count: Optional[int] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Number of remediated devices.
+    remediated_device_count: Optional[int] = None
+    # Number of remediated users.
+    remediated_user_count: Optional[int] = None
+    # Number of unknown devices.
+    unknown_device_count: Optional[int] = None
+    # Number of unknown users.
+    unknown_user_count: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SoftwareUpdateStatusSummary:
@@ -125,57 +54,6 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return SoftwareUpdateStatusSummary()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The name of the policy.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The name of the policy.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
-    @property
-    def error_device_count(self,) -> Optional[int]:
-        """
-        Gets the errorDeviceCount property value. Number of devices had error.
-        Returns: Optional[int]
-        """
-        return self._error_device_count
-    
-    @error_device_count.setter
-    def error_device_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the errorDeviceCount property value. Number of devices had error.
-        Args:
-            value: Value to set for the error_device_count property.
-        """
-        self._error_device_count = value
-    
-    @property
-    def error_user_count(self,) -> Optional[int]:
-        """
-        Gets the errorUserCount property value. Number of users had error.
-        Returns: Optional[int]
-        """
-        return self._error_user_count
-    
-    @error_user_count.setter
-    def error_user_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the errorUserCount property value. Number of users had error.
-        Args:
-            value: Value to set for the error_user_count property.
-        """
-        self._error_user_count = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -205,108 +83,6 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def non_compliant_device_count(self,) -> Optional[int]:
-        """
-        Gets the nonCompliantDeviceCount property value. Number of non compliant devices.
-        Returns: Optional[int]
-        """
-        return self._non_compliant_device_count
-    
-    @non_compliant_device_count.setter
-    def non_compliant_device_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the nonCompliantDeviceCount property value. Number of non compliant devices.
-        Args:
-            value: Value to set for the non_compliant_device_count property.
-        """
-        self._non_compliant_device_count = value
-    
-    @property
-    def non_compliant_user_count(self,) -> Optional[int]:
-        """
-        Gets the nonCompliantUserCount property value. Number of non compliant users.
-        Returns: Optional[int]
-        """
-        return self._non_compliant_user_count
-    
-    @non_compliant_user_count.setter
-    def non_compliant_user_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the nonCompliantUserCount property value. Number of non compliant users.
-        Args:
-            value: Value to set for the non_compliant_user_count property.
-        """
-        self._non_compliant_user_count = value
-    
-    @property
-    def not_applicable_device_count(self,) -> Optional[int]:
-        """
-        Gets the notApplicableDeviceCount property value. Number of not applicable devices.
-        Returns: Optional[int]
-        """
-        return self._not_applicable_device_count
-    
-    @not_applicable_device_count.setter
-    def not_applicable_device_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the notApplicableDeviceCount property value. Number of not applicable devices.
-        Args:
-            value: Value to set for the not_applicable_device_count property.
-        """
-        self._not_applicable_device_count = value
-    
-    @property
-    def not_applicable_user_count(self,) -> Optional[int]:
-        """
-        Gets the notApplicableUserCount property value. Number of not applicable users.
-        Returns: Optional[int]
-        """
-        return self._not_applicable_user_count
-    
-    @not_applicable_user_count.setter
-    def not_applicable_user_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the notApplicableUserCount property value. Number of not applicable users.
-        Args:
-            value: Value to set for the not_applicable_user_count property.
-        """
-        self._not_applicable_user_count = value
-    
-    @property
-    def remediated_device_count(self,) -> Optional[int]:
-        """
-        Gets the remediatedDeviceCount property value. Number of remediated devices.
-        Returns: Optional[int]
-        """
-        return self._remediated_device_count
-    
-    @remediated_device_count.setter
-    def remediated_device_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the remediatedDeviceCount property value. Number of remediated devices.
-        Args:
-            value: Value to set for the remediated_device_count property.
-        """
-        self._remediated_device_count = value
-    
-    @property
-    def remediated_user_count(self,) -> Optional[int]:
-        """
-        Gets the remediatedUserCount property value. Number of remediated users.
-        Returns: Optional[int]
-        """
-        return self._remediated_user_count
-    
-    @remediated_user_count.setter
-    def remediated_user_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the remediatedUserCount property value. Number of remediated users.
-        Args:
-            value: Value to set for the remediated_user_count property.
-        """
-        self._remediated_user_count = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -331,39 +107,5 @@ class SoftwareUpdateStatusSummary(entity.Entity):
         writer.write_int_value("remediatedUserCount", self.remediated_user_count)
         writer.write_int_value("unknownDeviceCount", self.unknown_device_count)
         writer.write_int_value("unknownUserCount", self.unknown_user_count)
-    
-    @property
-    def unknown_device_count(self,) -> Optional[int]:
-        """
-        Gets the unknownDeviceCount property value. Number of unknown devices.
-        Returns: Optional[int]
-        """
-        return self._unknown_device_count
-    
-    @unknown_device_count.setter
-    def unknown_device_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the unknownDeviceCount property value. Number of unknown devices.
-        Args:
-            value: Value to set for the unknown_device_count property.
-        """
-        self._unknown_device_count = value
-    
-    @property
-    def unknown_user_count(self,) -> Optional[int]:
-        """
-        Gets the unknownUserCount property value. Number of unknown users.
-        Returns: Optional[int]
-        """
-        return self._unknown_user_count
-    
-    @unknown_user_count.setter
-    def unknown_user_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the unknownUserCount property value. Number of unknown users.
-        Args:
-            value: Value to set for the unknown_user_count property.
-        """
-        self._unknown_user_count = value
     
 

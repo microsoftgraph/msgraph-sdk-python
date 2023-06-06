@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -37,7 +37,7 @@ class ConversationMemberItemRequestBuilder():
     
     async def delete(self,request_configuration: Optional[ConversationMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> None:
         """
-        Delete a conversationMember from a channel.
+        Delete a conversationMember from a channel. This operation is allowed only for channels with a **membershipType** value of `private` or `shared`.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         """
@@ -78,7 +78,7 @@ class ConversationMemberItemRequestBuilder():
     
     async def patch(self,body: Optional[conversation_member.ConversationMember] = None, request_configuration: Optional[ConversationMemberItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[conversation_member.ConversationMember]:
         """
-        Update the role of a conversationMember in a team or channel.
+        Update the role of a conversationMember in a channel. This operation is allowed only for channels with a **membershipType** value of `private` or `shared`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -103,7 +103,7 @@ class ConversationMemberItemRequestBuilder():
     
     def to_delete_request_information(self,request_configuration: Optional[ConversationMemberItemRequestBuilderDeleteRequestConfiguration] = None) -> RequestInformation:
         """
-        Delete a conversationMember from a channel.
+        Delete a conversationMember from a channel. This operation is allowed only for channels with a **membershipType** value of `private` or `shared`.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -137,7 +137,7 @@ class ConversationMemberItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[conversation_member.ConversationMember] = None, request_configuration: Optional[ConversationMemberItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the role of a conversationMember in a team or channel.
+        Update the role of a conversationMember in a channel. This operation is allowed only for channels with a **membershipType** value of `private` or `shared`.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

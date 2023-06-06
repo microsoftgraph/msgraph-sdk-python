@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,35 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class EducationSubmissionResource(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new educationSubmissionResource and sets the default values.
-        """
-        super().__init__()
-        # Pointer to the assignment from which this resource was copied. If this is null, the student uploaded the resource.
-        self._assignment_resource_url: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Resource object.
-        self._resource: Optional[education_resource.EducationResource] = None
-    
-    @property
-    def assignment_resource_url(self,) -> Optional[str]:
-        """
-        Gets the assignmentResourceUrl property value. Pointer to the assignment from which this resource was copied. If this is null, the student uploaded the resource.
-        Returns: Optional[str]
-        """
-        return self._assignment_resource_url
-    
-    @assignment_resource_url.setter
-    def assignment_resource_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the assignmentResourceUrl property value. Pointer to the assignment from which this resource was copied. If this is null, the student uploaded the resource.
-        Args:
-            value: Value to set for the assignment_resource_url property.
-        """
-        self._assignment_resource_url = value
+    # Pointer to the assignment from which this resource was copied. If this is null, the student uploaded the resource.
+    assignment_resource_url: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Resource object.
+    resource: Optional[education_resource.EducationResource] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationSubmissionResource:
@@ -63,23 +43,6 @@ class EducationSubmissionResource(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def resource(self,) -> Optional[education_resource.EducationResource]:
-        """
-        Gets the resource property value. Resource object.
-        Returns: Optional[education_resource.EducationResource]
-        """
-        return self._resource
-    
-    @resource.setter
-    def resource(self,value: Optional[education_resource.EducationResource] = None) -> None:
-        """
-        Sets the resource property value. Resource object.
-        Args:
-            value: Value to set for the resource property.
-        """
-        self._resource = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

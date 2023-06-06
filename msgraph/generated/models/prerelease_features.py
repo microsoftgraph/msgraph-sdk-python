@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PrereleaseFeatures(Enum):
+class PrereleaseFeatures(str, Enum):
     # User Defined, default value, no intent.
     UserDefined = "userDefined",
     # Settings only pre-release features.

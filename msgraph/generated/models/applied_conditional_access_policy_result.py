@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AppliedConditionalAccessPolicyResult(Enum):
+class AppliedConditionalAccessPolicyResult(str, Enum):
     Success = "success",
     Failure = "failure",
     NotApplied = "notApplied",

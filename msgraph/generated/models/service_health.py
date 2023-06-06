@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,20 +8,16 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ServiceHealth(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new serviceHealth and sets the default values.
-        """
-        super().__init__()
-        # A collection of issues that happened on the service, with detailed information for each issue.
-        self._issues: Optional[List[service_health_issue.ServiceHealthIssue]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The service name. Use the list healthOverviews operation to get exact string names for services subscribed by the tenant.
-        self._service: Optional[str] = None
-        # The status property
-        self._status: Optional[service_health_status.ServiceHealthStatus] = None
+    # A collection of issues that happened on the service, with detailed information for each issue.
+    issues: Optional[List[service_health_issue.ServiceHealthIssue]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The service name. Use the list healthOverviews operation to get exact string names for services subscribed by the tenant.
+    service: Optional[str] = None
+    # The status property
+    status: Optional[service_health_status.ServiceHealthStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceHealth:
@@ -50,23 +47,6 @@ class ServiceHealth(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def issues(self,) -> Optional[List[service_health_issue.ServiceHealthIssue]]:
-        """
-        Gets the issues property value. A collection of issues that happened on the service, with detailed information for each issue.
-        Returns: Optional[List[service_health_issue.ServiceHealthIssue]]
-        """
-        return self._issues
-    
-    @issues.setter
-    def issues(self,value: Optional[List[service_health_issue.ServiceHealthIssue]] = None) -> None:
-        """
-        Sets the issues property value. A collection of issues that happened on the service, with detailed information for each issue.
-        Args:
-            value: Value to set for the issues property.
-        """
-        self._issues = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -79,39 +59,5 @@ class ServiceHealth(entity.Entity):
         writer.write_collection_of_object_values("issues", self.issues)
         writer.write_str_value("service", self.service)
         writer.write_enum_value("status", self.status)
-    
-    @property
-    def service(self,) -> Optional[str]:
-        """
-        Gets the service property value. The service name. Use the list healthOverviews operation to get exact string names for services subscribed by the tenant.
-        Returns: Optional[str]
-        """
-        return self._service
-    
-    @service.setter
-    def service(self,value: Optional[str] = None) -> None:
-        """
-        Sets the service property value. The service name. Use the list healthOverviews operation to get exact string names for services subscribed by the tenant.
-        Args:
-            value: Value to set for the service property.
-        """
-        self._service = value
-    
-    @property
-    def status(self,) -> Optional[service_health_status.ServiceHealthStatus]:
-        """
-        Gets the status property value. The status property
-        Returns: Optional[service_health_status.ServiceHealthStatus]
-        """
-        return self._status
-    
-    @status.setter
-    def status(self,value: Optional[service_health_status.ServiceHealthStatus] = None) -> None:
-        """
-        Sets the status property value. The status property
-        Args:
-            value: Value to set for the status property.
-        """
-        self._status = value
     
 

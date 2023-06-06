@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,57 +8,19 @@ if TYPE_CHECKING:
 
 from . import managed_app_configuration
 
+@dataclass
 class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new TargetedManagedAppConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.targetedManagedAppConfiguration"
-        # List of apps to which the policy is deployed.
-        self._apps: Optional[List[managed_mobile_app.ManagedMobileApp]] = None
-        # Navigation property to list of inclusion and exclusion groups to which the policy is deployed.
-        self._assignments: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]] = None
-        # Count of apps to which the current policy is deployed.
-        self._deployed_app_count: Optional[int] = None
-        # Navigation property to deployment summary of the configuration.
-        self._deployment_summary: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None
-        # Indicates if the policy is deployed to any inclusion groups or not.
-        self._is_assigned: Optional[bool] = None
-    
-    @property
-    def apps(self,) -> Optional[List[managed_mobile_app.ManagedMobileApp]]:
-        """
-        Gets the apps property value. List of apps to which the policy is deployed.
-        Returns: Optional[List[managed_mobile_app.ManagedMobileApp]]
-        """
-        return self._apps
-    
-    @apps.setter
-    def apps(self,value: Optional[List[managed_mobile_app.ManagedMobileApp]] = None) -> None:
-        """
-        Sets the apps property value. List of apps to which the policy is deployed.
-        Args:
-            value: Value to set for the apps property.
-        """
-        self._apps = value
-    
-    @property
-    def assignments(self,) -> Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]]:
-        """
-        Gets the assignments property value. Navigation property to list of inclusion and exclusion groups to which the policy is deployed.
-        Returns: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]]
-        """
-        return self._assignments
-    
-    @assignments.setter
-    def assignments(self,value: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]] = None) -> None:
-        """
-        Sets the assignments property value. Navigation property to list of inclusion and exclusion groups to which the policy is deployed.
-        Args:
-            value: Value to set for the assignments property.
-        """
-        self._assignments = value
+    odata_type = "#microsoft.graph.targetedManagedAppConfiguration"
+    # List of apps to which the policy is deployed.
+    apps: Optional[List[managed_mobile_app.ManagedMobileApp]] = None
+    # Navigation property to list of inclusion and exclusion groups to which the policy is deployed.
+    assignments: Optional[List[targeted_managed_app_policy_assignment.TargetedManagedAppPolicyAssignment]] = None
+    # Count of apps to which the current policy is deployed.
+    deployed_app_count: Optional[int] = None
+    # Navigation property to deployment summary of the configuration.
+    deployment_summary: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None
+    # Indicates if the policy is deployed to any inclusion groups or not.
+    is_assigned: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TargetedManagedAppConfiguration:
@@ -70,40 +33,6 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return TargetedManagedAppConfiguration()
-    
-    @property
-    def deployed_app_count(self,) -> Optional[int]:
-        """
-        Gets the deployedAppCount property value. Count of apps to which the current policy is deployed.
-        Returns: Optional[int]
-        """
-        return self._deployed_app_count
-    
-    @deployed_app_count.setter
-    def deployed_app_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the deployedAppCount property value. Count of apps to which the current policy is deployed.
-        Args:
-            value: Value to set for the deployed_app_count property.
-        """
-        self._deployed_app_count = value
-    
-    @property
-    def deployment_summary(self,) -> Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary]:
-        """
-        Gets the deploymentSummary property value. Navigation property to deployment summary of the configuration.
-        Returns: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary]
-        """
-        return self._deployment_summary
-    
-    @deployment_summary.setter
-    def deployment_summary(self,value: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None) -> None:
-        """
-        Sets the deploymentSummary property value. Navigation property to deployment summary of the configuration.
-        Args:
-            value: Value to set for the deployment_summary property.
-        """
-        self._deployment_summary = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -122,23 +51,6 @@ class TargetedManagedAppConfiguration(managed_app_configuration.ManagedAppConfig
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def is_assigned(self,) -> Optional[bool]:
-        """
-        Gets the isAssigned property value. Indicates if the policy is deployed to any inclusion groups or not.
-        Returns: Optional[bool]
-        """
-        return self._is_assigned
-    
-    @is_assigned.setter
-    def is_assigned(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isAssigned property value. Indicates if the policy is deployed to any inclusion groups or not.
-        Args:
-            value: Value to set for the is_assigned property.
-        """
-        self._is_assigned = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

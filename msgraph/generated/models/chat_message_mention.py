@@ -1,43 +1,24 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import chat_message_mentioned_identity_set
 
+@dataclass
 class ChatMessageMention(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new chatMessageMention and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Index of an entity being mentioned in the specified chatMessage. Matches the {index} value in the corresponding <at id='{index}'> tag in the message body.
-        self._id: Optional[int] = None
-        # String used to represent the mention. For example, a user's display name, a team name.
-        self._mention_text: Optional[str] = None
-        # The entity (user, application, team, or channel) that was @mentioned.
-        self._mentioned: Optional[chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Index of an entity being mentioned in the specified chatMessage. Matches the {index} value in the corresponding <at id='{index}'> tag in the message body.
+    id: Optional[int] = None
+    # String used to represent the mention. For example, a user's display name, a team name.
+    mention_text: Optional[str] = None
+    # The entity (user, application, team, or channel) that was @mentioned.
+    mentioned: Optional[chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessageMention:
@@ -65,74 +46,6 @@ class ChatMessageMention(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def id(self,) -> Optional[int]:
-        """
-        Gets the id property value. Index of an entity being mentioned in the specified chatMessage. Matches the {index} value in the corresponding <at id='{index}'> tag in the message body.
-        Returns: Optional[int]
-        """
-        return self._id
-    
-    @id.setter
-    def id(self,value: Optional[int] = None) -> None:
-        """
-        Sets the id property value. Index of an entity being mentioned in the specified chatMessage. Matches the {index} value in the corresponding <at id='{index}'> tag in the message body.
-        Args:
-            value: Value to set for the id property.
-        """
-        self._id = value
-    
-    @property
-    def mention_text(self,) -> Optional[str]:
-        """
-        Gets the mentionText property value. String used to represent the mention. For example, a user's display name, a team name.
-        Returns: Optional[str]
-        """
-        return self._mention_text
-    
-    @mention_text.setter
-    def mention_text(self,value: Optional[str] = None) -> None:
-        """
-        Sets the mentionText property value. String used to represent the mention. For example, a user's display name, a team name.
-        Args:
-            value: Value to set for the mention_text property.
-        """
-        self._mention_text = value
-    
-    @property
-    def mentioned(self,) -> Optional[chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet]:
-        """
-        Gets the mentioned property value. The entity (user, application, team, or channel) that was @mentioned.
-        Returns: Optional[chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet]
-        """
-        return self._mentioned
-    
-    @mentioned.setter
-    def mentioned(self,value: Optional[chat_message_mentioned_identity_set.ChatMessageMentionedIdentitySet] = None) -> None:
-        """
-        Sets the mentioned property value. The entity (user, application, team, or channel) that was @mentioned.
-        Args:
-            value: Value to set for the mentioned property.
-        """
-        self._mentioned = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

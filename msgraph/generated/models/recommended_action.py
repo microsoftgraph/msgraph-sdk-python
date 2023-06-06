@@ -1,57 +1,21 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class RecommendedAction(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new recommendedAction and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Web URL to the recommended action.
-        self._action_web_url: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Potential improvement in the tenant security score from the recommended action.
-        self._potential_score_impact: Optional[float] = None
-        # Title of the recommended action.
-        self._title: Optional[str] = None
-    
-    @property
-    def action_web_url(self,) -> Optional[str]:
-        """
-        Gets the actionWebUrl property value. Web URL to the recommended action.
-        Returns: Optional[str]
-        """
-        return self._action_web_url
-    
-    @action_web_url.setter
-    def action_web_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the actionWebUrl property value. Web URL to the recommended action.
-        Args:
-            value: Value to set for the action_web_url property.
-        """
-        self._action_web_url = value
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Web URL to the recommended action.
+    action_web_url: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Potential improvement in the tenant security score from the recommended action.
+    potential_score_impact: Optional[float] = None
+    # Title of the recommended action.
+    title: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecommendedAction:
@@ -78,40 +42,6 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def potential_score_impact(self,) -> Optional[float]:
-        """
-        Gets the potentialScoreImpact property value. Potential improvement in the tenant security score from the recommended action.
-        Returns: Optional[float]
-        """
-        return self._potential_score_impact
-    
-    @potential_score_impact.setter
-    def potential_score_impact(self,value: Optional[float] = None) -> None:
-        """
-        Sets the potentialScoreImpact property value. Potential improvement in the tenant security score from the recommended action.
-        Args:
-            value: Value to set for the potential_score_impact property.
-        """
-        self._potential_score_impact = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -125,22 +55,5 @@ class RecommendedAction(AdditionalDataHolder, Parsable):
         writer.write_float_value("potentialScoreImpact", self.potential_score_impact)
         writer.write_str_value("title", self.title)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def title(self,) -> Optional[str]:
-        """
-        Gets the title property value. Title of the recommended action.
-        Returns: Optional[str]
-        """
-        return self._title
-    
-    @title.setter
-    def title(self,value: Optional[str] = None) -> None:
-        """
-        Sets the title property value. Title of the recommended action.
-        Args:
-            value: Value to set for the title property.
-        """
-        self._title = value
     
 

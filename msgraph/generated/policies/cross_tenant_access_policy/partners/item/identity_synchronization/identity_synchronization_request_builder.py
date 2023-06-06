@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -78,7 +78,7 @@ class IdentitySynchronizationRequestBuilder():
     
     async def patch(self,body: Optional[cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner] = None, request_configuration: Optional[IdentitySynchronizationRequestBuilderPatchRequestConfiguration] = None) -> Optional[cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner]:
         """
-        Create a cross-tenant user synchronization policy for a partner-specific configuration.
+        Update the user synchronization policy of a partner-specific configuration.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -137,7 +137,7 @@ class IdentitySynchronizationRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[cross_tenant_identity_sync_policy_partner.CrossTenantIdentitySyncPolicyPartner] = None, request_configuration: Optional[IdentitySynchronizationRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Create a cross-tenant user synchronization policy for a partner-specific configuration.
+        Update the user synchronization policy of a partner-specific configuration.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.

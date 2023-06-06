@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,19 +8,15 @@ if TYPE_CHECKING:
 
 from . import access_review_scope
 
+@dataclass
 class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AccessReviewQueryScope and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.accessReviewQueryScope"
-        # The query representing what will be reviewed in an access review.
-        self._query: Optional[str] = None
-        # In the scenario where reviewers need to be specified dynamically, this property is used to indicate the relative source of the query. This property is only required if a relative query is specified. For example, ./manager.
-        self._query_root: Optional[str] = None
-        # Indicates the type of query. Types include MicrosoftGraph and ARM.
-        self._query_type: Optional[str] = None
+    odata_type = "#microsoft.graph.accessReviewQueryScope"
+    # The query representing what will be reviewed in an access review.
+    query: Optional[str] = None
+    # In the scenario where reviewers need to be specified dynamically, this property is used to indicate the relative source of the query. This property is only required if a relative query is specified. For example, ./manager.
+    query_root: Optional[str] = None
+    # Indicates the type of query. Types include MicrosoftGraph and ARM.
+    query_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewQueryScope:
@@ -55,57 +52,6 @@ class AccessReviewQueryScope(access_review_scope.AccessReviewScope):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def query(self,) -> Optional[str]:
-        """
-        Gets the query property value. The query representing what will be reviewed in an access review.
-        Returns: Optional[str]
-        """
-        return self._query
-    
-    @query.setter
-    def query(self,value: Optional[str] = None) -> None:
-        """
-        Sets the query property value. The query representing what will be reviewed in an access review.
-        Args:
-            value: Value to set for the query property.
-        """
-        self._query = value
-    
-    @property
-    def query_root(self,) -> Optional[str]:
-        """
-        Gets the queryRoot property value. In the scenario where reviewers need to be specified dynamically, this property is used to indicate the relative source of the query. This property is only required if a relative query is specified. For example, ./manager.
-        Returns: Optional[str]
-        """
-        return self._query_root
-    
-    @query_root.setter
-    def query_root(self,value: Optional[str] = None) -> None:
-        """
-        Sets the queryRoot property value. In the scenario where reviewers need to be specified dynamically, this property is used to indicate the relative source of the query. This property is only required if a relative query is specified. For example, ./manager.
-        Args:
-            value: Value to set for the query_root property.
-        """
-        self._query_root = value
-    
-    @property
-    def query_type(self,) -> Optional[str]:
-        """
-        Gets the queryType property value. Indicates the type of query. Types include MicrosoftGraph and ARM.
-        Returns: Optional[str]
-        """
-        return self._query_type
-    
-    @query_type.setter
-    def query_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the queryType property value. Indicates the type of query. Types include MicrosoftGraph and ARM.
-        Args:
-            value: Value to set for the query_type property.
-        """
-        self._query_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

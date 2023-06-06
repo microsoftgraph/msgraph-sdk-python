@@ -1,6 +1,6 @@
 from enum import Enum
 
-class InstallIntent(Enum):
+class InstallIntent(str, Enum):
     # Available install intent.
     Available = "available",
     # Required install intent.

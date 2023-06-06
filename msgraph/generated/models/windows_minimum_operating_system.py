@@ -1,43 +1,24 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class WindowsMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     """
     The minimum operating system required for a Windows mobile app.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new windowsMinimumOperatingSystem and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Windows version 10.0 or later.
-        self._v10_0: Optional[bool] = None
-        # Windows version 8.0 or later.
-        self._v8_0: Optional[bool] = None
-        # Windows version 8.1 or later.
-        self._v8_1: Optional[bool] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Windows version 10.0 or later.
+    v10_0: Optional[bool] = None
+    # Windows version 8.0 or later.
+    v8_0: Optional[bool] = None
+    # Windows version 8.1 or later.
+    v8_1: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsMinimumOperatingSystem:
@@ -64,23 +45,6 @@ class WindowsMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -94,56 +58,5 @@ class WindowsMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         writer.write_bool_value("v8_0", self.v8_0)
         writer.write_bool_value("v8_1", self.v8_1)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def v10_0(self,) -> Optional[bool]:
-        """
-        Gets the v10_0 property value. Windows version 10.0 or later.
-        Returns: Optional[bool]
-        """
-        return self._v10_0
-    
-    @v10_0.setter
-    def v10_0(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v10_0 property value. Windows version 10.0 or later.
-        Args:
-            value: Value to set for the v10_0 property.
-        """
-        self._v10_0 = value
-    
-    @property
-    def v8_0(self,) -> Optional[bool]:
-        """
-        Gets the v8_0 property value. Windows version 8.0 or later.
-        Returns: Optional[bool]
-        """
-        return self._v8_0
-    
-    @v8_0.setter
-    def v8_0(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v8_0 property value. Windows version 8.0 or later.
-        Args:
-            value: Value to set for the v8_0 property.
-        """
-        self._v8_0 = value
-    
-    @property
-    def v8_1(self,) -> Optional[bool]:
-        """
-        Gets the v8_1 property value. Windows version 8.1 or later.
-        Returns: Optional[bool]
-        """
-        return self._v8_1
-    
-    @v8_1.setter
-    def v8_1(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v8_1 property value. Windows version 8.1 or later.
-        Args:
-            value: Value to set for the v8_1 property.
-        """
-        self._v8_1 = value
     
 

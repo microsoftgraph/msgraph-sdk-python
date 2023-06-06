@@ -1,58 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import cross_tenant_access_policy_target, cross_tenant_access_policy_target_configuration_access_type
 
+@dataclass
 class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new crossTenantAccessPolicyTargetConfiguration and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Defines whether access is allowed or blocked. The possible values are: allowed, blocked, unknownFutureValue.
-        self._access_type: Optional[cross_tenant_access_policy_target_configuration_access_type.CrossTenantAccessPolicyTargetConfigurationAccessType] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Specifies whether to target users, groups, or applications with this rule.
-        self._targets: Optional[List[cross_tenant_access_policy_target.CrossTenantAccessPolicyTarget]] = None
-    
-    @property
-    def access_type(self,) -> Optional[cross_tenant_access_policy_target_configuration_access_type.CrossTenantAccessPolicyTargetConfigurationAccessType]:
-        """
-        Gets the accessType property value. Defines whether access is allowed or blocked. The possible values are: allowed, blocked, unknownFutureValue.
-        Returns: Optional[cross_tenant_access_policy_target_configuration_access_type.CrossTenantAccessPolicyTargetConfigurationAccessType]
-        """
-        return self._access_type
-    
-    @access_type.setter
-    def access_type(self,value: Optional[cross_tenant_access_policy_target_configuration_access_type.CrossTenantAccessPolicyTargetConfigurationAccessType] = None) -> None:
-        """
-        Sets the accessType property value. Defines whether access is allowed or blocked. The possible values are: allowed, blocked, unknownFutureValue.
-        Args:
-            value: Value to set for the access_type property.
-        """
-        self._access_type = value
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Defines whether access is allowed or blocked. The possible values are: allowed, blocked, unknownFutureValue.
+    access_type: Optional[cross_tenant_access_policy_target_configuration_access_type.CrossTenantAccessPolicyTargetConfigurationAccessType] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Specifies whether to target users, groups, or applications with this rule.
+    targets: Optional[List[cross_tenant_access_policy_target.CrossTenantAccessPolicyTarget]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CrossTenantAccessPolicyTargetConfiguration:
@@ -80,23 +44,6 @@ class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, Parsable)
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -109,22 +56,5 @@ class CrossTenantAccessPolicyTargetConfiguration(AdditionalDataHolder, Parsable)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("targets", self.targets)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def targets(self,) -> Optional[List[cross_tenant_access_policy_target.CrossTenantAccessPolicyTarget]]:
-        """
-        Gets the targets property value. Specifies whether to target users, groups, or applications with this rule.
-        Returns: Optional[List[cross_tenant_access_policy_target.CrossTenantAccessPolicyTarget]]
-        """
-        return self._targets
-    
-    @targets.setter
-    def targets(self,value: Optional[List[cross_tenant_access_policy_target.CrossTenantAccessPolicyTarget]] = None) -> None:
-        """
-        Sets the targets property value. Specifies whether to target users, groups, or applications with this rule.
-        Args:
-            value: Value to set for the targets property.
-        """
-        self._targets = value
     
 

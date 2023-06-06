@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import managed_app_status
 
+@dataclass
 class ManagedAppStatusRaw(managed_app_status.ManagedAppStatus):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ManagedAppStatusRaw and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.managedAppStatusRaw"
-        # Status report content.
-        self._content: Optional[json.Json] = None
-    
-    @property
-    def content(self,) -> Optional[json.Json]:
-        """
-        Gets the content property value. Status report content.
-        Returns: Optional[json.Json]
-        """
-        return self._content
-    
-    @content.setter
-    def content(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the content property value. Status report content.
-        Args:
-            value: Value to set for the content property.
-        """
-        self._content = value
+    odata_type = "#microsoft.graph.managedAppStatusRaw"
+    # Status report content.
+    content: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedAppStatusRaw:

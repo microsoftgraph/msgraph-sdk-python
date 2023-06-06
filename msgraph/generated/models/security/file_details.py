@@ -1,50 +1,31 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class FileDetails(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new fileDetails and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The name of the file.
-        self._file_name: Optional[str] = None
-        # The file path (location) of the file instance.
-        self._file_path: Optional[str] = None
-        # The publisher of the file.
-        self._file_publisher: Optional[str] = None
-        # The size of the file in bytes.
-        self._file_size: Optional[int] = None
-        # The certificate authority (CA) that issued the certificate.
-        self._issuer: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The Sha1 cryptographic hash of the file content.
-        self._sha1: Optional[str] = None
-        # The Sha256 cryptographic hash of the file content.
-        self._sha256: Optional[str] = None
-        # The signer of the signed file.
-        self._signer: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The name of the file.
+    file_name: Optional[str] = None
+    # The file path (location) of the file instance.
+    file_path: Optional[str] = None
+    # The publisher of the file.
+    file_publisher: Optional[str] = None
+    # The size of the file in bytes.
+    file_size: Optional[int] = None
+    # The certificate authority (CA) that issued the certificate.
+    issuer: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The Sha1 cryptographic hash of the file content.
+    sha1: Optional[str] = None
+    # The Sha256 cryptographic hash of the file content.
+    sha256: Optional[str] = None
+    # The signer of the signed file.
+    signer: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FileDetails:
@@ -57,74 +38,6 @@ class FileDetails(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return FileDetails()
-    
-    @property
-    def file_name(self,) -> Optional[str]:
-        """
-        Gets the fileName property value. The name of the file.
-        Returns: Optional[str]
-        """
-        return self._file_name
-    
-    @file_name.setter
-    def file_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the fileName property value. The name of the file.
-        Args:
-            value: Value to set for the file_name property.
-        """
-        self._file_name = value
-    
-    @property
-    def file_path(self,) -> Optional[str]:
-        """
-        Gets the filePath property value. The file path (location) of the file instance.
-        Returns: Optional[str]
-        """
-        return self._file_path
-    
-    @file_path.setter
-    def file_path(self,value: Optional[str] = None) -> None:
-        """
-        Sets the filePath property value. The file path (location) of the file instance.
-        Args:
-            value: Value to set for the file_path property.
-        """
-        self._file_path = value
-    
-    @property
-    def file_publisher(self,) -> Optional[str]:
-        """
-        Gets the filePublisher property value. The publisher of the file.
-        Returns: Optional[str]
-        """
-        return self._file_publisher
-    
-    @file_publisher.setter
-    def file_publisher(self,value: Optional[str] = None) -> None:
-        """
-        Sets the filePublisher property value. The publisher of the file.
-        Args:
-            value: Value to set for the file_publisher property.
-        """
-        self._file_publisher = value
-    
-    @property
-    def file_size(self,) -> Optional[int]:
-        """
-        Gets the fileSize property value. The size of the file in bytes.
-        Returns: Optional[int]
-        """
-        return self._file_size
-    
-    @file_size.setter
-    def file_size(self,value: Optional[int] = None) -> None:
-        """
-        Sets the fileSize property value. The size of the file in bytes.
-        Args:
-            value: Value to set for the file_size property.
-        """
-        self._file_size = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -144,40 +57,6 @@ class FileDetails(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def issuer(self,) -> Optional[str]:
-        """
-        Gets the issuer property value. The certificate authority (CA) that issued the certificate.
-        Returns: Optional[str]
-        """
-        return self._issuer
-    
-    @issuer.setter
-    def issuer(self,value: Optional[str] = None) -> None:
-        """
-        Sets the issuer property value. The certificate authority (CA) that issued the certificate.
-        Args:
-            value: Value to set for the issuer property.
-        """
-        self._issuer = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -196,56 +75,5 @@ class FileDetails(AdditionalDataHolder, Parsable):
         writer.write_str_value("sha256", self.sha256)
         writer.write_str_value("signer", self.signer)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def sha1(self,) -> Optional[str]:
-        """
-        Gets the sha1 property value. The Sha1 cryptographic hash of the file content.
-        Returns: Optional[str]
-        """
-        return self._sha1
-    
-    @sha1.setter
-    def sha1(self,value: Optional[str] = None) -> None:
-        """
-        Sets the sha1 property value. The Sha1 cryptographic hash of the file content.
-        Args:
-            value: Value to set for the sha1 property.
-        """
-        self._sha1 = value
-    
-    @property
-    def sha256(self,) -> Optional[str]:
-        """
-        Gets the sha256 property value. The Sha256 cryptographic hash of the file content.
-        Returns: Optional[str]
-        """
-        return self._sha256
-    
-    @sha256.setter
-    def sha256(self,value: Optional[str] = None) -> None:
-        """
-        Sets the sha256 property value. The Sha256 cryptographic hash of the file content.
-        Args:
-            value: Value to set for the sha256 property.
-        """
-        self._sha256 = value
-    
-    @property
-    def signer(self,) -> Optional[str]:
-        """
-        Gets the signer property value. The signer of the signed file.
-        Returns: Optional[str]
-        """
-        return self._signer
-    
-    @signer.setter
-    def signer(self,value: Optional[str] = None) -> None:
-        """
-        Sets the signer property value. The signer of the signed file.
-        Args:
-            value: Value to set for the signer property.
-        """
-        self._signer = value
     
 

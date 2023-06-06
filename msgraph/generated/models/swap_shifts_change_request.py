@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import offer_shift_request
 
+@dataclass
 class SwapShiftsChangeRequest(offer_shift_request.OfferShiftRequest):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new SwapShiftsChangeRequest and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.swapShiftsChangeRequest"
-        # ShiftId for the recipient user with whom the request is to swap.
-        self._recipient_shift_id: Optional[str] = None
+    odata_type = "#microsoft.graph.swapShiftsChangeRequest"
+    # ShiftId for the recipient user with whom the request is to swap.
+    recipient_shift_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SwapShiftsChangeRequest:
@@ -42,23 +39,6 @@ class SwapShiftsChangeRequest(offer_shift_request.OfferShiftRequest):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def recipient_shift_id(self,) -> Optional[str]:
-        """
-        Gets the recipientShiftId property value. ShiftId for the recipient user with whom the request is to swap.
-        Returns: Optional[str]
-        """
-        return self._recipient_shift_id
-    
-    @recipient_shift_id.setter
-    def recipient_shift_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the recipientShiftId property value. ShiftId for the recipient user with whom the request is to swap.
-        Args:
-            value: Value to set for the recipient_shift_id property.
-        """
-        self._recipient_shift_id = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

@@ -1,70 +1,34 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import subject_set
 
+@dataclass
 class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new accessPackageAssignmentRequestorSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # False indicates that the requestor is not permitted to include a schedule in their request.
-        self._allow_custom_assignment_schedule: Optional[bool] = None
-        # True allows on-behalf-of requestors to create a request to add access for another principal.
-        self._enable_on_behalf_requestors_to_add_access: Optional[bool] = None
-        # True allows on-behalf-of requestors to create a request to remove access for another principal.
-        self._enable_on_behalf_requestors_to_remove_access: Optional[bool] = None
-        # True allows on-behalf-of requestors to create a request to update access for another principal.
-        self._enable_on_behalf_requestors_to_update_access: Optional[bool] = None
-        # True allows requestors to create a request to add access for themselves.
-        self._enable_targets_to_self_add_access: Optional[bool] = None
-        # True allows requestors to create a request to remove their access.
-        self._enable_targets_to_self_remove_access: Optional[bool] = None
-        # True allows requestors to create a request to update their access.
-        self._enable_targets_to_self_update_access: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The principals who can request on-behalf-of others.
-        self._on_behalf_requestors: Optional[List[subject_set.SubjectSet]] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def allow_custom_assignment_schedule(self,) -> Optional[bool]:
-        """
-        Gets the allowCustomAssignmentSchedule property value. False indicates that the requestor is not permitted to include a schedule in their request.
-        Returns: Optional[bool]
-        """
-        return self._allow_custom_assignment_schedule
-    
-    @allow_custom_assignment_schedule.setter
-    def allow_custom_assignment_schedule(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowCustomAssignmentSchedule property value. False indicates that the requestor is not permitted to include a schedule in their request.
-        Args:
-            value: Value to set for the allow_custom_assignment_schedule property.
-        """
-        self._allow_custom_assignment_schedule = value
+    # False indicates that the requestor is not permitted to include a schedule in their request.
+    allow_custom_assignment_schedule: Optional[bool] = None
+    # True allows on-behalf-of requestors to create a request to add access for another principal.
+    enable_on_behalf_requestors_to_add_access: Optional[bool] = None
+    # True allows on-behalf-of requestors to create a request to remove access for another principal.
+    enable_on_behalf_requestors_to_remove_access: Optional[bool] = None
+    # True allows on-behalf-of requestors to create a request to update access for another principal.
+    enable_on_behalf_requestors_to_update_access: Optional[bool] = None
+    # True allows requestors to create a request to add access for themselves.
+    enable_targets_to_self_add_access: Optional[bool] = None
+    # True allows requestors to create a request to remove their access.
+    enable_targets_to_self_remove_access: Optional[bool] = None
+    # True allows requestors to create a request to update their access.
+    enable_targets_to_self_update_access: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The principals who can request on-behalf-of others.
+    on_behalf_requestors: Optional[List[subject_set.SubjectSet]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageAssignmentRequestorSettings:
@@ -77,108 +41,6 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AccessPackageAssignmentRequestorSettings()
-    
-    @property
-    def enable_on_behalf_requestors_to_add_access(self,) -> Optional[bool]:
-        """
-        Gets the enableOnBehalfRequestorsToAddAccess property value. True allows on-behalf-of requestors to create a request to add access for another principal.
-        Returns: Optional[bool]
-        """
-        return self._enable_on_behalf_requestors_to_add_access
-    
-    @enable_on_behalf_requestors_to_add_access.setter
-    def enable_on_behalf_requestors_to_add_access(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the enableOnBehalfRequestorsToAddAccess property value. True allows on-behalf-of requestors to create a request to add access for another principal.
-        Args:
-            value: Value to set for the enable_on_behalf_requestors_to_add_access property.
-        """
-        self._enable_on_behalf_requestors_to_add_access = value
-    
-    @property
-    def enable_on_behalf_requestors_to_remove_access(self,) -> Optional[bool]:
-        """
-        Gets the enableOnBehalfRequestorsToRemoveAccess property value. True allows on-behalf-of requestors to create a request to remove access for another principal.
-        Returns: Optional[bool]
-        """
-        return self._enable_on_behalf_requestors_to_remove_access
-    
-    @enable_on_behalf_requestors_to_remove_access.setter
-    def enable_on_behalf_requestors_to_remove_access(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the enableOnBehalfRequestorsToRemoveAccess property value. True allows on-behalf-of requestors to create a request to remove access for another principal.
-        Args:
-            value: Value to set for the enable_on_behalf_requestors_to_remove_access property.
-        """
-        self._enable_on_behalf_requestors_to_remove_access = value
-    
-    @property
-    def enable_on_behalf_requestors_to_update_access(self,) -> Optional[bool]:
-        """
-        Gets the enableOnBehalfRequestorsToUpdateAccess property value. True allows on-behalf-of requestors to create a request to update access for another principal.
-        Returns: Optional[bool]
-        """
-        return self._enable_on_behalf_requestors_to_update_access
-    
-    @enable_on_behalf_requestors_to_update_access.setter
-    def enable_on_behalf_requestors_to_update_access(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the enableOnBehalfRequestorsToUpdateAccess property value. True allows on-behalf-of requestors to create a request to update access for another principal.
-        Args:
-            value: Value to set for the enable_on_behalf_requestors_to_update_access property.
-        """
-        self._enable_on_behalf_requestors_to_update_access = value
-    
-    @property
-    def enable_targets_to_self_add_access(self,) -> Optional[bool]:
-        """
-        Gets the enableTargetsToSelfAddAccess property value. True allows requestors to create a request to add access for themselves.
-        Returns: Optional[bool]
-        """
-        return self._enable_targets_to_self_add_access
-    
-    @enable_targets_to_self_add_access.setter
-    def enable_targets_to_self_add_access(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the enableTargetsToSelfAddAccess property value. True allows requestors to create a request to add access for themselves.
-        Args:
-            value: Value to set for the enable_targets_to_self_add_access property.
-        """
-        self._enable_targets_to_self_add_access = value
-    
-    @property
-    def enable_targets_to_self_remove_access(self,) -> Optional[bool]:
-        """
-        Gets the enableTargetsToSelfRemoveAccess property value. True allows requestors to create a request to remove their access.
-        Returns: Optional[bool]
-        """
-        return self._enable_targets_to_self_remove_access
-    
-    @enable_targets_to_self_remove_access.setter
-    def enable_targets_to_self_remove_access(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the enableTargetsToSelfRemoveAccess property value. True allows requestors to create a request to remove their access.
-        Args:
-            value: Value to set for the enable_targets_to_self_remove_access property.
-        """
-        self._enable_targets_to_self_remove_access = value
-    
-    @property
-    def enable_targets_to_self_update_access(self,) -> Optional[bool]:
-        """
-        Gets the enableTargetsToSelfUpdateAccess property value. True allows requestors to create a request to update their access.
-        Returns: Optional[bool]
-        """
-        return self._enable_targets_to_self_update_access
-    
-    @enable_targets_to_self_update_access.setter
-    def enable_targets_to_self_update_access(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the enableTargetsToSelfUpdateAccess property value. True allows requestors to create a request to update their access.
-        Args:
-            value: Value to set for the enable_targets_to_self_update_access property.
-        """
-        self._enable_targets_to_self_update_access = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -199,40 +61,6 @@ class AccessPackageAssignmentRequestorSettings(AdditionalDataHolder, Parsable):
             "onBehalfRequestors": lambda n : setattr(self, 'on_behalf_requestors', n.get_collection_of_object_values(subject_set.SubjectSet)),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def on_behalf_requestors(self,) -> Optional[List[subject_set.SubjectSet]]:
-        """
-        Gets the onBehalfRequestors property value. The principals who can request on-behalf-of others.
-        Returns: Optional[List[subject_set.SubjectSet]]
-        """
-        return self._on_behalf_requestors
-    
-    @on_behalf_requestors.setter
-    def on_behalf_requestors(self,value: Optional[List[subject_set.SubjectSet]] = None) -> None:
-        """
-        Sets the onBehalfRequestors property value. The principals who can request on-behalf-of others.
-        Args:
-            value: Value to set for the on_behalf_requestors property.
-        """
-        self._on_behalf_requestors = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

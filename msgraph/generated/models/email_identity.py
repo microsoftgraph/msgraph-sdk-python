@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import identity
 
+@dataclass
 class EmailIdentity(identity.Identity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EmailIdentity and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.emailIdentity"
-        # Email address of the user.
-        self._email: Optional[str] = None
+    odata_type = "#microsoft.graph.emailIdentity"
+    # Email address of the user.
+    email: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EmailIdentity:
@@ -28,23 +25,6 @@ class EmailIdentity(identity.Identity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EmailIdentity()
-    
-    @property
-    def email(self,) -> Optional[str]:
-        """
-        Gets the email property value. Email address of the user.
-        Returns: Optional[str]
-        """
-        return self._email
-    
-    @email.setter
-    def email(self,value: Optional[str] = None) -> None:
-        """
-        Sets the email property value. Email address of the user.
-        Args:
-            value: Value to set for the email property.
-        """
-        self._email = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """

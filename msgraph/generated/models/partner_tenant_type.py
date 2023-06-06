@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PartnerTenantType(Enum):
+class PartnerTenantType(str, Enum):
     MicrosoftSupport = "microsoftSupport",
     SyndicatePartner = "syndicatePartner",
     BreadthPartner = "breadthPartner",

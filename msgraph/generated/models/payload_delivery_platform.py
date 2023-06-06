@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PayloadDeliveryPlatform(Enum):
+class PayloadDeliveryPlatform(str, Enum):
     Unknown = "unknown",
     Sms = "sms",
     Email = "email",

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class MdmAuthority(Enum):
+class MdmAuthority(str, Enum):
     # Unknown
     Unknown = "unknown",
     # Intune

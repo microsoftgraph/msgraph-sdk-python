@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class OutlookUser(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new outlookUser and sets the default values.
-        """
-        super().__init__()
-        # A list of categories defined for the user.
-        self._master_categories: Optional[List[outlook_category.OutlookCategory]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # A list of categories defined for the user.
+    master_categories: Optional[List[outlook_category.OutlookCategory]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OutlookUser:
@@ -43,23 +40,6 @@ class OutlookUser(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def master_categories(self,) -> Optional[List[outlook_category.OutlookCategory]]:
-        """
-        Gets the masterCategories property value. A list of categories defined for the user.
-        Returns: Optional[List[outlook_category.OutlookCategory]]
-        """
-        return self._master_categories
-    
-    @master_categories.setter
-    def master_categories(self,value: Optional[List[outlook_category.OutlookCategory]] = None) -> None:
-        """
-        Sets the masterCategories property value. A list of categories defined for the user.
-        Args:
-            value: Value to set for the master_categories property.
-        """
-        self._master_categories = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

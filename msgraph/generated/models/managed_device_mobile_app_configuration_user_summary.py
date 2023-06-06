@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,45 +9,24 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ManagedDeviceMobileAppConfigurationUserSummary(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new managedDeviceMobileAppConfigurationUserSummary and sets the default values.
-        """
-        super().__init__()
-        # Version of the policy for that overview
-        self._configuration_version: Optional[int] = None
-        # Number of error Users
-        self._error_count: Optional[int] = None
-        # Number of failed Users
-        self._failed_count: Optional[int] = None
-        # Last update time
-        self._last_update_date_time: Optional[datetime] = None
-        # Number of not applicable users
-        self._not_applicable_count: Optional[int] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Number of pending Users
-        self._pending_count: Optional[int] = None
-        # Number of succeeded Users
-        self._success_count: Optional[int] = None
-    
-    @property
-    def configuration_version(self,) -> Optional[int]:
-        """
-        Gets the configurationVersion property value. Version of the policy for that overview
-        Returns: Optional[int]
-        """
-        return self._configuration_version
-    
-    @configuration_version.setter
-    def configuration_version(self,value: Optional[int] = None) -> None:
-        """
-        Sets the configurationVersion property value. Version of the policy for that overview
-        Args:
-            value: Value to set for the configuration_version property.
-        """
-        self._configuration_version = value
+    # Version of the policy for that overview
+    configuration_version: Optional[int] = None
+    # Number of error Users
+    error_count: Optional[int] = None
+    # Number of failed Users
+    failed_count: Optional[int] = None
+    # Last update time
+    last_update_date_time: Optional[datetime] = None
+    # Number of not applicable users
+    not_applicable_count: Optional[int] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Number of pending Users
+    pending_count: Optional[int] = None
+    # Number of succeeded Users
+    success_count: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedDeviceMobileAppConfigurationUserSummary:
@@ -59,40 +39,6 @@ class ManagedDeviceMobileAppConfigurationUserSummary(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ManagedDeviceMobileAppConfigurationUserSummary()
-    
-    @property
-    def error_count(self,) -> Optional[int]:
-        """
-        Gets the errorCount property value. Number of error Users
-        Returns: Optional[int]
-        """
-        return self._error_count
-    
-    @error_count.setter
-    def error_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the errorCount property value. Number of error Users
-        Args:
-            value: Value to set for the error_count property.
-        """
-        self._error_count = value
-    
-    @property
-    def failed_count(self,) -> Optional[int]:
-        """
-        Gets the failedCount property value. Number of failed Users
-        Returns: Optional[int]
-        """
-        return self._failed_count
-    
-    @failed_count.setter
-    def failed_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the failedCount property value. Number of failed Users
-        Args:
-            value: Value to set for the failed_count property.
-        """
-        self._failed_count = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -114,57 +60,6 @@ class ManagedDeviceMobileAppConfigurationUserSummary(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def last_update_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastUpdateDateTime property value. Last update time
-        Returns: Optional[datetime]
-        """
-        return self._last_update_date_time
-    
-    @last_update_date_time.setter
-    def last_update_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastUpdateDateTime property value. Last update time
-        Args:
-            value: Value to set for the last_update_date_time property.
-        """
-        self._last_update_date_time = value
-    
-    @property
-    def not_applicable_count(self,) -> Optional[int]:
-        """
-        Gets the notApplicableCount property value. Number of not applicable users
-        Returns: Optional[int]
-        """
-        return self._not_applicable_count
-    
-    @not_applicable_count.setter
-    def not_applicable_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the notApplicableCount property value. Number of not applicable users
-        Args:
-            value: Value to set for the not_applicable_count property.
-        """
-        self._not_applicable_count = value
-    
-    @property
-    def pending_count(self,) -> Optional[int]:
-        """
-        Gets the pendingCount property value. Number of pending Users
-        Returns: Optional[int]
-        """
-        return self._pending_count
-    
-    @pending_count.setter
-    def pending_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the pendingCount property value. Number of pending Users
-        Args:
-            value: Value to set for the pending_count property.
-        """
-        self._pending_count = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -181,22 +76,5 @@ class ManagedDeviceMobileAppConfigurationUserSummary(entity.Entity):
         writer.write_int_value("notApplicableCount", self.not_applicable_count)
         writer.write_int_value("pendingCount", self.pending_count)
         writer.write_int_value("successCount", self.success_count)
-    
-    @property
-    def success_count(self,) -> Optional[int]:
-        """
-        Gets the successCount property value. Number of succeeded Users
-        Returns: Optional[int]
-        """
-        return self._success_count
-    
-    @success_count.setter
-    def success_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the successCount property value. Number of succeeded Users
-        Args:
-            value: Value to set for the success_count property.
-        """
-        self._success_count = value
     
 

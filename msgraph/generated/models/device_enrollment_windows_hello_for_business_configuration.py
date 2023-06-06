@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,37 +8,33 @@ if TYPE_CHECKING:
 
 from . import device_enrollment_configuration
 
+@dataclass
 class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_configuration.DeviceEnrollmentConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new DeviceEnrollmentWindowsHelloForBusinessConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.deviceEnrollmentWindowsHelloForBusinessConfiguration"
-        # Possible values of a property
-        self._enhanced_biometrics_state: Optional[enablement.Enablement] = None
-        # Controls the period of time (in days) that a PIN can be used before the system requires the user to change it. This must be set between 0 and 730, inclusive. If set to 0, the user's PIN will never expire
-        self._pin_expiration_in_days: Optional[int] = None
-        # Windows Hello for Business pin usage options
-        self._pin_lowercase_characters_usage: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage] = None
-        # Controls the maximum number of characters allowed for the Windows Hello for Business PIN. This value must be between 4 and 127, inclusive. This value must be greater than or equal to the value set for the minimum PIN.
-        self._pin_maximum_length: Optional[int] = None
-        # Controls the minimum number of characters required for the Windows Hello for Business PIN.  This value must be between 4 and 127, inclusive, and less than or equal to the value set for the maximum PIN.
-        self._pin_minimum_length: Optional[int] = None
-        # Controls the ability to prevent users from using past PINs. This must be set between 0 and 50, inclusive, and the current PIN of the user is included in that count. If set to 0, previous PINs are not stored. PIN history is not preserved through a PIN reset.
-        self._pin_previous_block_count: Optional[int] = None
-        # Windows Hello for Business pin usage options
-        self._pin_special_characters_usage: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage] = None
-        # Windows Hello for Business pin usage options
-        self._pin_uppercase_characters_usage: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage] = None
-        # Controls the use of Remote Windows Hello for Business. Remote Windows Hello for Business provides the ability for a portable, registered device to be usable as a companion for desktop authentication. The desktop must be Azure AD joined and the companion device must have a Windows Hello for Business PIN.
-        self._remote_passport_enabled: Optional[bool] = None
-        # Controls whether to require a Trusted Platform Module (TPM) for provisioning Windows Hello for Business. A TPM provides an additional security benefit in that data stored on it cannot be used on other devices. If set to False, all devices can provision Windows Hello for Business even if there is not a usable TPM.
-        self._security_device_required: Optional[bool] = None
-        # Possible values of a property
-        self._state: Optional[enablement.Enablement] = None
-        # Controls the use of biometric gestures, such as face and fingerprint, as an alternative to the Windows Hello for Business PIN.  If set to False, biometric gestures are not allowed. Users must still configure a PIN as a backup in case of failures.
-        self._unlock_with_biometrics_enabled: Optional[bool] = None
+    odata_type = "#microsoft.graph.deviceEnrollmentWindowsHelloForBusinessConfiguration"
+    # Possible values of a property
+    enhanced_biometrics_state: Optional[enablement.Enablement] = None
+    # Controls the period of time (in days) that a PIN can be used before the system requires the user to change it. This must be set between 0 and 730, inclusive. If set to 0, the user's PIN will never expire
+    pin_expiration_in_days: Optional[int] = None
+    # Windows Hello for Business pin usage options
+    pin_lowercase_characters_usage: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage] = None
+    # Controls the maximum number of characters allowed for the Windows Hello for Business PIN. This value must be between 4 and 127, inclusive. This value must be greater than or equal to the value set for the minimum PIN.
+    pin_maximum_length: Optional[int] = None
+    # Controls the minimum number of characters required for the Windows Hello for Business PIN.  This value must be between 4 and 127, inclusive, and less than or equal to the value set for the maximum PIN.
+    pin_minimum_length: Optional[int] = None
+    # Controls the ability to prevent users from using past PINs. This must be set between 0 and 50, inclusive, and the current PIN of the user is included in that count. If set to 0, previous PINs are not stored. PIN history is not preserved through a PIN reset.
+    pin_previous_block_count: Optional[int] = None
+    # Windows Hello for Business pin usage options
+    pin_special_characters_usage: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage] = None
+    # Windows Hello for Business pin usage options
+    pin_uppercase_characters_usage: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage] = None
+    # Controls the use of Remote Windows Hello for Business. Remote Windows Hello for Business provides the ability for a portable, registered device to be usable as a companion for desktop authentication. The desktop must be Azure AD joined and the companion device must have a Windows Hello for Business PIN.
+    remote_passport_enabled: Optional[bool] = None
+    # Controls whether to require a Trusted Platform Module (TPM) for provisioning Windows Hello for Business. A TPM provides an additional security benefit in that data stored on it cannot be used on other devices. If set to False, all devices can provision Windows Hello for Business even if there is not a usable TPM.
+    security_device_required: Optional[bool] = None
+    # Possible values of a property
+    state: Optional[enablement.Enablement] = None
+    # Controls the use of biometric gestures, such as face and fingerprint, as an alternative to the Windows Hello for Business PIN.  If set to False, biometric gestures are not allowed. Users must still configure a PIN as a backup in case of failures.
+    unlock_with_biometrics_enabled: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceEnrollmentWindowsHelloForBusinessConfiguration:
@@ -50,23 +47,6 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceEnrollmentWindowsHelloForBusinessConfiguration()
-    
-    @property
-    def enhanced_biometrics_state(self,) -> Optional[enablement.Enablement]:
-        """
-        Gets the enhancedBiometricsState property value. Possible values of a property
-        Returns: Optional[enablement.Enablement]
-        """
-        return self._enhanced_biometrics_state
-    
-    @enhanced_biometrics_state.setter
-    def enhanced_biometrics_state(self,value: Optional[enablement.Enablement] = None) -> None:
-        """
-        Sets the enhancedBiometricsState property value. Possible values of a property
-        Args:
-            value: Value to set for the enhanced_biometrics_state property.
-        """
-        self._enhanced_biometrics_state = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -93,159 +73,6 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         fields.update(super_fields)
         return fields
     
-    @property
-    def pin_expiration_in_days(self,) -> Optional[int]:
-        """
-        Gets the pinExpirationInDays property value. Controls the period of time (in days) that a PIN can be used before the system requires the user to change it. This must be set between 0 and 730, inclusive. If set to 0, the user's PIN will never expire
-        Returns: Optional[int]
-        """
-        return self._pin_expiration_in_days
-    
-    @pin_expiration_in_days.setter
-    def pin_expiration_in_days(self,value: Optional[int] = None) -> None:
-        """
-        Sets the pinExpirationInDays property value. Controls the period of time (in days) that a PIN can be used before the system requires the user to change it. This must be set between 0 and 730, inclusive. If set to 0, the user's PIN will never expire
-        Args:
-            value: Value to set for the pin_expiration_in_days property.
-        """
-        self._pin_expiration_in_days = value
-    
-    @property
-    def pin_lowercase_characters_usage(self,) -> Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage]:
-        """
-        Gets the pinLowercaseCharactersUsage property value. Windows Hello for Business pin usage options
-        Returns: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage]
-        """
-        return self._pin_lowercase_characters_usage
-    
-    @pin_lowercase_characters_usage.setter
-    def pin_lowercase_characters_usage(self,value: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage] = None) -> None:
-        """
-        Sets the pinLowercaseCharactersUsage property value. Windows Hello for Business pin usage options
-        Args:
-            value: Value to set for the pin_lowercase_characters_usage property.
-        """
-        self._pin_lowercase_characters_usage = value
-    
-    @property
-    def pin_maximum_length(self,) -> Optional[int]:
-        """
-        Gets the pinMaximumLength property value. Controls the maximum number of characters allowed for the Windows Hello for Business PIN. This value must be between 4 and 127, inclusive. This value must be greater than or equal to the value set for the minimum PIN.
-        Returns: Optional[int]
-        """
-        return self._pin_maximum_length
-    
-    @pin_maximum_length.setter
-    def pin_maximum_length(self,value: Optional[int] = None) -> None:
-        """
-        Sets the pinMaximumLength property value. Controls the maximum number of characters allowed for the Windows Hello for Business PIN. This value must be between 4 and 127, inclusive. This value must be greater than or equal to the value set for the minimum PIN.
-        Args:
-            value: Value to set for the pin_maximum_length property.
-        """
-        self._pin_maximum_length = value
-    
-    @property
-    def pin_minimum_length(self,) -> Optional[int]:
-        """
-        Gets the pinMinimumLength property value. Controls the minimum number of characters required for the Windows Hello for Business PIN.  This value must be between 4 and 127, inclusive, and less than or equal to the value set for the maximum PIN.
-        Returns: Optional[int]
-        """
-        return self._pin_minimum_length
-    
-    @pin_minimum_length.setter
-    def pin_minimum_length(self,value: Optional[int] = None) -> None:
-        """
-        Sets the pinMinimumLength property value. Controls the minimum number of characters required for the Windows Hello for Business PIN.  This value must be between 4 and 127, inclusive, and less than or equal to the value set for the maximum PIN.
-        Args:
-            value: Value to set for the pin_minimum_length property.
-        """
-        self._pin_minimum_length = value
-    
-    @property
-    def pin_previous_block_count(self,) -> Optional[int]:
-        """
-        Gets the pinPreviousBlockCount property value. Controls the ability to prevent users from using past PINs. This must be set between 0 and 50, inclusive, and the current PIN of the user is included in that count. If set to 0, previous PINs are not stored. PIN history is not preserved through a PIN reset.
-        Returns: Optional[int]
-        """
-        return self._pin_previous_block_count
-    
-    @pin_previous_block_count.setter
-    def pin_previous_block_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the pinPreviousBlockCount property value. Controls the ability to prevent users from using past PINs. This must be set between 0 and 50, inclusive, and the current PIN of the user is included in that count. If set to 0, previous PINs are not stored. PIN history is not preserved through a PIN reset.
-        Args:
-            value: Value to set for the pin_previous_block_count property.
-        """
-        self._pin_previous_block_count = value
-    
-    @property
-    def pin_special_characters_usage(self,) -> Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage]:
-        """
-        Gets the pinSpecialCharactersUsage property value. Windows Hello for Business pin usage options
-        Returns: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage]
-        """
-        return self._pin_special_characters_usage
-    
-    @pin_special_characters_usage.setter
-    def pin_special_characters_usage(self,value: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage] = None) -> None:
-        """
-        Sets the pinSpecialCharactersUsage property value. Windows Hello for Business pin usage options
-        Args:
-            value: Value to set for the pin_special_characters_usage property.
-        """
-        self._pin_special_characters_usage = value
-    
-    @property
-    def pin_uppercase_characters_usage(self,) -> Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage]:
-        """
-        Gets the pinUppercaseCharactersUsage property value. Windows Hello for Business pin usage options
-        Returns: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage]
-        """
-        return self._pin_uppercase_characters_usage
-    
-    @pin_uppercase_characters_usage.setter
-    def pin_uppercase_characters_usage(self,value: Optional[windows_hello_for_business_pin_usage.WindowsHelloForBusinessPinUsage] = None) -> None:
-        """
-        Sets the pinUppercaseCharactersUsage property value. Windows Hello for Business pin usage options
-        Args:
-            value: Value to set for the pin_uppercase_characters_usage property.
-        """
-        self._pin_uppercase_characters_usage = value
-    
-    @property
-    def remote_passport_enabled(self,) -> Optional[bool]:
-        """
-        Gets the remotePassportEnabled property value. Controls the use of Remote Windows Hello for Business. Remote Windows Hello for Business provides the ability for a portable, registered device to be usable as a companion for desktop authentication. The desktop must be Azure AD joined and the companion device must have a Windows Hello for Business PIN.
-        Returns: Optional[bool]
-        """
-        return self._remote_passport_enabled
-    
-    @remote_passport_enabled.setter
-    def remote_passport_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the remotePassportEnabled property value. Controls the use of Remote Windows Hello for Business. Remote Windows Hello for Business provides the ability for a portable, registered device to be usable as a companion for desktop authentication. The desktop must be Azure AD joined and the companion device must have a Windows Hello for Business PIN.
-        Args:
-            value: Value to set for the remote_passport_enabled property.
-        """
-        self._remote_passport_enabled = value
-    
-    @property
-    def security_device_required(self,) -> Optional[bool]:
-        """
-        Gets the securityDeviceRequired property value. Controls whether to require a Trusted Platform Module (TPM) for provisioning Windows Hello for Business. A TPM provides an additional security benefit in that data stored on it cannot be used on other devices. If set to False, all devices can provision Windows Hello for Business even if there is not a usable TPM.
-        Returns: Optional[bool]
-        """
-        return self._security_device_required
-    
-    @security_device_required.setter
-    def security_device_required(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the securityDeviceRequired property value. Controls whether to require a Trusted Platform Module (TPM) for provisioning Windows Hello for Business. A TPM provides an additional security benefit in that data stored on it cannot be used on other devices. If set to False, all devices can provision Windows Hello for Business even if there is not a usable TPM.
-        Args:
-            value: Value to set for the security_device_required property.
-        """
-        self._security_device_required = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -267,39 +94,5 @@ class DeviceEnrollmentWindowsHelloForBusinessConfiguration(device_enrollment_con
         writer.write_bool_value("securityDeviceRequired", self.security_device_required)
         writer.write_enum_value("state", self.state)
         writer.write_bool_value("unlockWithBiometricsEnabled", self.unlock_with_biometrics_enabled)
-    
-    @property
-    def state(self,) -> Optional[enablement.Enablement]:
-        """
-        Gets the state property value. Possible values of a property
-        Returns: Optional[enablement.Enablement]
-        """
-        return self._state
-    
-    @state.setter
-    def state(self,value: Optional[enablement.Enablement] = None) -> None:
-        """
-        Sets the state property value. Possible values of a property
-        Args:
-            value: Value to set for the state property.
-        """
-        self._state = value
-    
-    @property
-    def unlock_with_biometrics_enabled(self,) -> Optional[bool]:
-        """
-        Gets the unlockWithBiometricsEnabled property value. Controls the use of biometric gestures, such as face and fingerprint, as an alternative to the Windows Hello for Business PIN.  If set to False, biometric gestures are not allowed. Users must still configure a PIN as a backup in case of failures.
-        Returns: Optional[bool]
-        """
-        return self._unlock_with_biometrics_enabled
-    
-    @unlock_with_biometrics_enabled.setter
-    def unlock_with_biometrics_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the unlockWithBiometricsEnabled property value. Controls the use of biometric gestures, such as face and fingerprint, as an alternative to the Windows Hello for Business PIN.  If set to False, biometric gestures are not allowed. Users must still configure a PIN as a backup in case of failures.
-        Args:
-            value: Value to set for the unlock_with_biometrics_enabled property.
-        """
-        self._unlock_with_biometrics_enabled = value
     
 

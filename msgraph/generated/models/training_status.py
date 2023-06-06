@@ -1,6 +1,6 @@
 from enum import Enum
 
-class TrainingStatus(Enum):
+class TrainingStatus(str, Enum):
     Unknown = "unknown",
     Assigned = "assigned",
     InProgress = "inProgress",

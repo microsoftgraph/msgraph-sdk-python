@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import education_assignment_recipient
 
+@dataclass
 class EducationAssignmentIndividualRecipient(education_assignment_recipient.EducationAssignmentRecipient):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EducationAssignmentIndividualRecipient and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.educationAssignmentIndividualRecipient"
-        # A collection of IDs of the recipients.
-        self._recipients: Optional[List[str]] = None
+    odata_type = "#microsoft.graph.educationAssignmentIndividualRecipient"
+    # A collection of IDs of the recipients.
+    recipients: Optional[List[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationAssignmentIndividualRecipient:
@@ -42,23 +39,6 @@ class EducationAssignmentIndividualRecipient(education_assignment_recipient.Educ
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def recipients(self,) -> Optional[List[str]]:
-        """
-        Gets the recipients property value. A collection of IDs of the recipients.
-        Returns: Optional[List[str]]
-        """
-        return self._recipients
-    
-    @recipients.setter
-    def recipients(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the recipients property value. A collection of IDs of the recipients.
-        Args:
-            value: Value to set for the recipients property.
-        """
-        self._recipients = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

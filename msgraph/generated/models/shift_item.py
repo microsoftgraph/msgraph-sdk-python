@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,37 +8,16 @@ if TYPE_CHECKING:
 
 from . import schedule_entity
 
+@dataclass
 class ShiftItem(schedule_entity.ScheduleEntity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ShiftItem and sets the default values.
-        """
-        super().__init__()
-        # An incremental part of a shift which can cover details of when and where an employee is during their shift. For example, an assignment or a scheduled break or lunch. Required.
-        self._activities: Optional[List[shift_activity.ShiftActivity]] = None
-        # The shift label of the shiftItem.
-        self._display_name: Optional[str] = None
-        # The shift notes for the shiftItem.
-        self._notes: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def activities(self,) -> Optional[List[shift_activity.ShiftActivity]]:
-        """
-        Gets the activities property value. An incremental part of a shift which can cover details of when and where an employee is during their shift. For example, an assignment or a scheduled break or lunch. Required.
-        Returns: Optional[List[shift_activity.ShiftActivity]]
-        """
-        return self._activities
-    
-    @activities.setter
-    def activities(self,value: Optional[List[shift_activity.ShiftActivity]] = None) -> None:
-        """
-        Sets the activities property value. An incremental part of a shift which can cover details of when and where an employee is during their shift. For example, an assignment or a scheduled break or lunch. Required.
-        Args:
-            value: Value to set for the activities property.
-        """
-        self._activities = value
+    # An incremental part of a shift which can cover details of when and where an employee is during their shift. For example, an assignment or a scheduled break or lunch. Required.
+    activities: Optional[List[shift_activity.ShiftActivity]] = None
+    # The shift label of the shiftItem.
+    display_name: Optional[str] = None
+    # The shift notes for the shiftItem.
+    notes: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ShiftItem:
@@ -58,23 +38,6 @@ class ShiftItem(schedule_entity.ScheduleEntity):
                 return open_shift_item.OpenShiftItem()
         return ShiftItem()
     
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The shift label of the shiftItem.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The shift label of the shiftItem.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -90,23 +53,6 @@ class ShiftItem(schedule_entity.ScheduleEntity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def notes(self,) -> Optional[str]:
-        """
-        Gets the notes property value. The shift notes for the shiftItem.
-        Returns: Optional[str]
-        """
-        return self._notes
-    
-    @notes.setter
-    def notes(self,value: Optional[str] = None) -> None:
-        """
-        Sets the notes property value. The shift notes for the shiftItem.
-        Args:
-            value: Value to set for the notes property.
-        """
-        self._notes = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,94 +9,22 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class Request(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new request and sets the default values.
-        """
-        super().__init__()
-        # The identifier of the approval of the request.
-        self._approval_id: Optional[str] = None
-        # The request completion date time.
-        self._completed_date_time: Optional[datetime] = None
-        # The principal that created the request.
-        self._created_by: Optional[identity_set.IdentitySet] = None
-        # The request creation date time.
-        self._created_date_time: Optional[datetime] = None
-        # Free text field to define any custom data for the request. Not used.
-        self._custom_data: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The status of the request. Not nullable. The possible values are: Canceled, Denied, Failed, Granted, PendingAdminDecision, PendingApproval, PendingProvisioning, PendingScheduleCreation, Provisioned, Revoked, and ScheduleCreated. Not nullable.
-        self._status: Optional[str] = None
-    
-    @property
-    def approval_id(self,) -> Optional[str]:
-        """
-        Gets the approvalId property value. The identifier of the approval of the request.
-        Returns: Optional[str]
-        """
-        return self._approval_id
-    
-    @approval_id.setter
-    def approval_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the approvalId property value. The identifier of the approval of the request.
-        Args:
-            value: Value to set for the approval_id property.
-        """
-        self._approval_id = value
-    
-    @property
-    def completed_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the completedDateTime property value. The request completion date time.
-        Returns: Optional[datetime]
-        """
-        return self._completed_date_time
-    
-    @completed_date_time.setter
-    def completed_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the completedDateTime property value. The request completion date time.
-        Args:
-            value: Value to set for the completed_date_time property.
-        """
-        self._completed_date_time = value
-    
-    @property
-    def created_by(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the createdBy property value. The principal that created the request.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._created_by
-    
-    @created_by.setter
-    def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the createdBy property value. The principal that created the request.
-        Args:
-            value: Value to set for the created_by property.
-        """
-        self._created_by = value
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. The request creation date time.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. The request creation date time.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    # The identifier of the approval of the request.
+    approval_id: Optional[str] = None
+    # The request completion date time.
+    completed_date_time: Optional[datetime] = None
+    # The principal that created the request.
+    created_by: Optional[identity_set.IdentitySet] = None
+    # The request creation date time.
+    created_date_time: Optional[datetime] = None
+    # Free text field to define any custom data for the request. Not used.
+    custom_data: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The status of the request. Not nullable. The possible values are: Canceled, Denied, Failed, Granted, PendingAdminDecision, PendingApproval, PendingProvisioning, PendingScheduleCreation, Provisioned, Revoked, and ScheduleCreated. Not nullable.
+    status: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Request:
@@ -123,23 +52,6 @@ class Request(entity.Entity):
 
                 return user_consent_request.UserConsentRequest()
         return Request()
-    
-    @property
-    def custom_data(self,) -> Optional[str]:
-        """
-        Gets the customData property value. Free text field to define any custom data for the request. Not used.
-        Returns: Optional[str]
-        """
-        return self._custom_data
-    
-    @custom_data.setter
-    def custom_data(self,value: Optional[str] = None) -> None:
-        """
-        Sets the customData property value. Free text field to define any custom data for the request. Not used.
-        Args:
-            value: Value to set for the custom_data property.
-        """
-        self._custom_data = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -175,22 +87,5 @@ class Request(entity.Entity):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("customData", self.custom_data)
         writer.write_str_value("status", self.status)
-    
-    @property
-    def status(self,) -> Optional[str]:
-        """
-        Gets the status property value. The status of the request. Not nullable. The possible values are: Canceled, Denied, Failed, Granted, PendingAdminDecision, PendingApproval, PendingProvisioning, PendingScheduleCreation, Provisioned, Revoked, and ScheduleCreated. Not nullable.
-        Returns: Optional[str]
-        """
-        return self._status
-    
-    @status.setter
-    def status(self,value: Optional[str] = None) -> None:
-        """
-        Sets the status property value. The status of the request. Not nullable. The possible values are: Canceled, Denied, Failed, Granted, PendingAdminDecision, PendingApproval, PendingProvisioning, PendingScheduleCreation, Provisioned, Revoked, and ScheduleCreated. Not nullable.
-        Args:
-            value: Value to set for the status property.
-        """
-        self._status = value
     
 

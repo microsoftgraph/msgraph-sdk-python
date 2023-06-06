@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,52 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class WorkbookCommentReply(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookCommentReply and sets the default values.
-        """
-        super().__init__()
-        # The content of a comment reply.
-        self._content: Optional[str] = None
-        # Indicates the type for the comment reply.
-        self._content_type: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def content(self,) -> Optional[str]:
-        """
-        Gets the content property value. The content of a comment reply.
-        Returns: Optional[str]
-        """
-        return self._content
-    
-    @content.setter
-    def content(self,value: Optional[str] = None) -> None:
-        """
-        Sets the content property value. The content of a comment reply.
-        Args:
-            value: Value to set for the content property.
-        """
-        self._content = value
-    
-    @property
-    def content_type(self,) -> Optional[str]:
-        """
-        Gets the contentType property value. Indicates the type for the comment reply.
-        Returns: Optional[str]
-        """
-        return self._content_type
-    
-    @content_type.setter
-    def content_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the contentType property value. Indicates the type for the comment reply.
-        Args:
-            value: Value to set for the content_type property.
-        """
-        self._content_type = value
+    # The content of a comment reply.
+    content: Optional[str] = None
+    # Indicates the type for the comment reply.
+    content_type: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookCommentReply:

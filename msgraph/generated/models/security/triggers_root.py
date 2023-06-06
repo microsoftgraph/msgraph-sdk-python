@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -8,16 +9,12 @@ if TYPE_CHECKING:
 
 from .. import entity
 
+@dataclass
 class TriggersRoot(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new triggersRoot and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The retentionEvents property
-        self._retention_events: Optional[List[retention_event.RetentionEvent]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The retentionEvents property
+    retention_events: Optional[List[retention_event.RetentionEvent]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TriggersRoot:
@@ -45,23 +42,6 @@ class TriggersRoot(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def retention_events(self,) -> Optional[List[retention_event.RetentionEvent]]:
-        """
-        Gets the retentionEvents property value. The retentionEvents property
-        Returns: Optional[List[retention_event.RetentionEvent]]
-        """
-        return self._retention_events
-    
-    @retention_events.setter
-    def retention_events(self,value: Optional[List[retention_event.RetentionEvent]] = None) -> None:
-        """
-        Sets the retentionEvents property value. The retentionEvents property
-        Args:
-            value: Value to set for the retention_events property.
-        """
-        self._retention_events = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

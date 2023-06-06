@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PstnCallDurationSource(Enum):
+class PstnCallDurationSource(str, Enum):
     Microsoft = "microsoft",
     Operator = "operator",
 

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import teamwork_notification_recipient
 
+@dataclass
 class ChatMembersNotificationRecipient(teamwork_notification_recipient.TeamworkNotificationRecipient):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ChatMembersNotificationRecipient and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.chatMembersNotificationRecipient"
-        # The unique identifier for the chat whose members should receive the notifications.
-        self._chat_id: Optional[str] = None
-    
-    @property
-    def chat_id(self,) -> Optional[str]:
-        """
-        Gets the chatId property value. The unique identifier for the chat whose members should receive the notifications.
-        Returns: Optional[str]
-        """
-        return self._chat_id
-    
-    @chat_id.setter
-    def chat_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the chatId property value. The unique identifier for the chat whose members should receive the notifications.
-        Args:
-            value: Value to set for the chat_id property.
-        """
-        self._chat_id = value
+    odata_type = "#microsoft.graph.chatMembersNotificationRecipient"
+    # The unique identifier for the chat whose members should receive the notifications.
+    chat_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMembersNotificationRecipient:

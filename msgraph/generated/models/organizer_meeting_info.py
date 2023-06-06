@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import meeting_info
 
+@dataclass
 class OrganizerMeetingInfo(meeting_info.MeetingInfo):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new OrganizerMeetingInfo and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.organizerMeetingInfo"
-        # The organizer property
-        self._organizer: Optional[identity_set.IdentitySet] = None
+    odata_type = "#microsoft.graph.organizerMeetingInfo"
+    # The organizer property
+    organizer: Optional[identity_set.IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OrganizerMeetingInfo:
@@ -42,23 +39,6 @@ class OrganizerMeetingInfo(meeting_info.MeetingInfo):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def organizer(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the organizer property value. The organizer property
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._organizer
-    
-    @organizer.setter
-    def organizer(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the organizer property value. The organizer property
-        Args:
-            value: Value to set for the organizer property.
-        """
-        self._organizer = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

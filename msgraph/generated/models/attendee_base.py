@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import recipient
 
+@dataclass
 class AttendeeBase(recipient.Recipient):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AttendeeBase and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.attendeeBase"
-        # The type of attendee. The possible values are: required, optional, resource. Currently if the attendee is a person, findMeetingTimes always considers the person is of the Required type.
-        self._type: Optional[attendee_type.AttendeeType] = None
+    odata_type = "#microsoft.graph.attendeeBase"
+    # The type of attendee. The possible values are: required, optional, resource. Currently if the attendee is a person, findMeetingTimes always considers the person is of the Required type.
+    type: Optional[attendee_type.AttendeeType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttendeeBase:
@@ -60,22 +57,5 @@ class AttendeeBase(recipient.Recipient):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_enum_value("type", self.type)
-    
-    @property
-    def type(self,) -> Optional[attendee_type.AttendeeType]:
-        """
-        Gets the type property value. The type of attendee. The possible values are: required, optional, resource. Currently if the attendee is a person, findMeetingTimes always considers the person is of the Required type.
-        Returns: Optional[attendee_type.AttendeeType]
-        """
-        return self._type
-    
-    @type.setter
-    def type(self,value: Optional[attendee_type.AttendeeType] = None) -> None:
-        """
-        Sets the type property value. The type of attendee. The possible values are: required, optional, resource. Currently if the attendee is a person, findMeetingTimes always considers the person is of the Required type.
-        Args:
-            value: Value to set for the type property.
-        """
-        self._type = value
     
 

@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
+@dataclass
 class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new validatePropertiesPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The displayName property
-        self._display_name: Optional[str] = None
-        # The entityType property
-        self._entity_type: Optional[str] = None
-        # The mailNickname property
-        self._mail_nickname: Optional[str] = None
-        # The onBehalfOfUserId property
-        self._on_behalf_of_user_id: Optional[UUID] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The displayName property
+    display_name: Optional[str] = None
+    # The entityType property
+    entity_type: Optional[str] = None
+    # The mailNickname property
+    mail_nickname: Optional[str] = None
+    # The onBehalfOfUserId property
+    on_behalf_of_user_id: Optional[UUID] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ValidatePropertiesPostRequestBody:
@@ -49,40 +30,6 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             raise Exception("parse_node cannot be undefined")
         return ValidatePropertiesPostRequestBody()
     
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The displayName property
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The displayName property
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
-    @property
-    def entity_type(self,) -> Optional[str]:
-        """
-        Gets the entityType property value. The entityType property
-        Returns: Optional[str]
-        """
-        return self._entity_type
-    
-    @entity_type.setter
-    def entity_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the entityType property value. The entityType property
-        Args:
-            value: Value to set for the entity_type property.
-        """
-        self._entity_type = value
-    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -95,40 +42,6 @@ class ValidatePropertiesPostRequestBody(AdditionalDataHolder, Parsable):
             "onBehalfOfUserId": lambda n : setattr(self, 'on_behalf_of_user_id', n.get_uuid_value()),
         }
         return fields
-    
-    @property
-    def mail_nickname(self,) -> Optional[str]:
-        """
-        Gets the mailNickname property value. The mailNickname property
-        Returns: Optional[str]
-        """
-        return self._mail_nickname
-    
-    @mail_nickname.setter
-    def mail_nickname(self,value: Optional[str] = None) -> None:
-        """
-        Sets the mailNickname property value. The mailNickname property
-        Args:
-            value: Value to set for the mail_nickname property.
-        """
-        self._mail_nickname = value
-    
-    @property
-    def on_behalf_of_user_id(self,) -> Optional[UUID]:
-        """
-        Gets the onBehalfOfUserId property value. The onBehalfOfUserId property
-        Returns: Optional[UUID]
-        """
-        return self._on_behalf_of_user_id
-    
-    @on_behalf_of_user_id.setter
-    def on_behalf_of_user_id(self,value: Optional[UUID] = None) -> None:
-        """
-        Sets the onBehalfOfUserId property value. The onBehalfOfUserId property
-        Args:
-            value: Value to set for the on_behalf_of_user_id property.
-        """
-        self._on_behalf_of_user_id = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

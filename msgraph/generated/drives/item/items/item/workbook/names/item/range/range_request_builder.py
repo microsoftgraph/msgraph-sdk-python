@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -37,7 +37,7 @@ class RangeRequestBuilder():
     
     async def get(self,request_configuration: Optional[RangeRequestBuilderGetRequestConfiguration] = None) -> Optional[workbook_range.WorkbookRange]:
         """
-        Retrieve the properties and relationships of range object.
+        Returns the range object that is associated with the name. Throws an exception if the named item's type is not a range.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_range.WorkbookRange]
@@ -59,7 +59,7 @@ class RangeRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RangeRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve the properties and relationships of range object.
+        Returns the range object that is associated with the name. Throws an exception if the named item's type is not a range.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

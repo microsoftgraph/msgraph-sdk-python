@@ -1,37 +1,18 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import json
 
+@dataclass
 class Norm_S_InvPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new norm_S_InvPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The probability property
-        self._probability: Optional[json.Json] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The probability property
+    probability: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Norm_S_InvPostRequestBody:
@@ -56,23 +37,6 @@ class Norm_S_InvPostRequestBody(AdditionalDataHolder, Parsable):
             "probability": lambda n : setattr(self, 'probability', n.get_object_value(json.Json)),
         }
         return fields
-    
-    @property
-    def probability(self,) -> Optional[json.Json]:
-        """
-        Gets the probability property value. The probability property
-        Returns: Optional[json.Json]
-        """
-        return self._probability
-    
-    @probability.setter
-    def probability(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the probability property value. The probability property
-        Args:
-            value: Value to set for the probability property.
-        """
-        self._probability = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

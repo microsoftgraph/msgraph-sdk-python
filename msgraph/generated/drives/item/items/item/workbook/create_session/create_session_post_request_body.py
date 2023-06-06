@@ -1,34 +1,15 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class CreateSessionPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new createSessionPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The persistChanges property
-        self._persist_changes: Optional[bool] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The persistChanges property
+    persist_changes: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CreateSessionPostRequestBody:
@@ -51,23 +32,6 @@ class CreateSessionPostRequestBody(AdditionalDataHolder, Parsable):
             "persistChanges": lambda n : setattr(self, 'persist_changes', n.get_bool_value()),
         }
         return fields
-    
-    @property
-    def persist_changes(self,) -> Optional[bool]:
-        """
-        Gets the persistChanges property value. The persistChanges property
-        Returns: Optional[bool]
-        """
-        return self._persist_changes
-    
-    @persist_changes.setter
-    def persist_changes(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the persistChanges property value. The persistChanges property
-        Args:
-            value: Value to set for the persist_changes property.
-        """
-        self._persist_changes = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

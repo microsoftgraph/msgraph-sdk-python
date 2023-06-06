@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,37 +8,16 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class GroupLifecyclePolicy(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new groupLifecyclePolicy and sets the default values.
-        """
-        super().__init__()
-        # List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.
-        self._alternate_notification_emails: Optional[str] = None
-        # Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.
-        self._group_lifetime_in_days: Optional[int] = None
-        # The group type for which the expiration policy applies. Possible values are All, Selected or None.
-        self._managed_group_types: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def alternate_notification_emails(self,) -> Optional[str]:
-        """
-        Gets the alternateNotificationEmails property value. List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.
-        Returns: Optional[str]
-        """
-        return self._alternate_notification_emails
-    
-    @alternate_notification_emails.setter
-    def alternate_notification_emails(self,value: Optional[str] = None) -> None:
-        """
-        Sets the alternateNotificationEmails property value. List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.
-        Args:
-            value: Value to set for the alternate_notification_emails property.
-        """
-        self._alternate_notification_emails = value
+    # List of email address to send notifications for groups without owners. Multiple email address can be defined by separating email address with a semicolon.
+    alternate_notification_emails: Optional[str] = None
+    # Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.
+    group_lifetime_in_days: Optional[int] = None
+    # The group type for which the expiration policy applies. Possible values are All, Selected or None.
+    managed_group_types: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GroupLifecyclePolicy:
@@ -66,40 +46,6 @@ class GroupLifecyclePolicy(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def group_lifetime_in_days(self,) -> Optional[int]:
-        """
-        Gets the groupLifetimeInDays property value. Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.
-        Returns: Optional[int]
-        """
-        return self._group_lifetime_in_days
-    
-    @group_lifetime_in_days.setter
-    def group_lifetime_in_days(self,value: Optional[int] = None) -> None:
-        """
-        Sets the groupLifetimeInDays property value. Number of days before a group expires and needs to be renewed. Once renewed, the group expiration is extended by the number of days defined.
-        Args:
-            value: Value to set for the group_lifetime_in_days property.
-        """
-        self._group_lifetime_in_days = value
-    
-    @property
-    def managed_group_types(self,) -> Optional[str]:
-        """
-        Gets the managedGroupTypes property value. The group type for which the expiration policy applies. Possible values are All, Selected or None.
-        Returns: Optional[str]
-        """
-        return self._managed_group_types
-    
-    @managed_group_types.setter
-    def managed_group_types(self,value: Optional[str] = None) -> None:
-        """
-        Sets the managedGroupTypes property value. The group type for which the expiration policy applies. Possible values are All, Selected or None.
-        Args:
-            value: Value to set for the managed_group_types property.
-        """
-        self._managed_group_types = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

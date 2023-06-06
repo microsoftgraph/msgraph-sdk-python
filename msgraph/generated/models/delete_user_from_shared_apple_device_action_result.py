@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import device_action_result
 
+@dataclass
 class DeleteUserFromSharedAppleDeviceActionResult(device_action_result.DeviceActionResult):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new DeleteUserFromSharedAppleDeviceActionResult and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # User principal name of the user to be deleted
-        self._user_principal_name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # User principal name of the user to be deleted
+    user_principal_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeleteUserFromSharedAppleDeviceActionResult:
@@ -54,22 +51,5 @@ class DeleteUserFromSharedAppleDeviceActionResult(device_action_result.DeviceAct
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
-    
-    @property
-    def user_principal_name(self,) -> Optional[str]:
-        """
-        Gets the userPrincipalName property value. User principal name of the user to be deleted
-        Returns: Optional[str]
-        """
-        return self._user_principal_name
-    
-    @user_principal_name.setter
-    def user_principal_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userPrincipalName property value. User principal name of the user to be deleted
-        Args:
-            value: Value to set for the user_principal_name property.
-        """
-        self._user_principal_name = value
     
 

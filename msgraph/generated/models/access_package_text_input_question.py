@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import access_package_question
 
+@dataclass
 class AccessPackageTextInputQuestion(access_package_question.AccessPackageQuestion):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AccessPackageTextInputQuestion and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.accessPackageTextInputQuestion"
-        # Indicates whether the answer will be in single or multiple line format.
-        self._is_single_line_question: Optional[bool] = None
-        # The regular expression pattern which any answer to this question must match.
-        self._regex_pattern: Optional[str] = None
+    odata_type = "#microsoft.graph.accessPackageTextInputQuestion"
+    # Indicates whether the answer will be in single or multiple line format.
+    is_single_line_question: Optional[bool] = None
+    # The regular expression pattern which any answer to this question must match.
+    regex_pattern: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageTextInputQuestion:
@@ -45,40 +42,6 @@ class AccessPackageTextInputQuestion(access_package_question.AccessPackageQuesti
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def is_single_line_question(self,) -> Optional[bool]:
-        """
-        Gets the isSingleLineQuestion property value. Indicates whether the answer will be in single or multiple line format.
-        Returns: Optional[bool]
-        """
-        return self._is_single_line_question
-    
-    @is_single_line_question.setter
-    def is_single_line_question(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isSingleLineQuestion property value. Indicates whether the answer will be in single or multiple line format.
-        Args:
-            value: Value to set for the is_single_line_question property.
-        """
-        self._is_single_line_question = value
-    
-    @property
-    def regex_pattern(self,) -> Optional[str]:
-        """
-        Gets the regexPattern property value. The regular expression pattern which any answer to this question must match.
-        Returns: Optional[str]
-        """
-        return self._regex_pattern
-    
-    @regex_pattern.setter
-    def regex_pattern(self,value: Optional[str] = None) -> None:
-        """
-        Sets the regexPattern property value. The regular expression pattern which any answer to this question must match.
-        Args:
-            value: Value to set for the regex_pattern property.
-        """
-        self._regex_pattern = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

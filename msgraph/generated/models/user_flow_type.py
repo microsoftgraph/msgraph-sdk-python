@@ -1,6 +1,6 @@
 from enum import Enum
 
-class UserFlowType(Enum):
+class UserFlowType(str, Enum):
     SignUp = "signUp",
     SignIn = "signIn",
     SignUpOrSignIn = "signUpOrSignIn",

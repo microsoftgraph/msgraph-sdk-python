@@ -1,39 +1,20 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models import message
 
+@dataclass
 class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new sendMailPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The Message property
-        self._message: Optional[message.Message] = None
-        # The SaveToSentItems property
-        self._save_to_sent_items: Optional[bool] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The Message property
+    message: Optional[message.Message] = None
+    # The SaveToSentItems property
+    save_to_sent_items: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SendMailPostRequestBody:
@@ -59,40 +40,6 @@ class SendMailPostRequestBody(AdditionalDataHolder, Parsable):
             "SaveToSentItems": lambda n : setattr(self, 'save_to_sent_items', n.get_bool_value()),
         }
         return fields
-    
-    @property
-    def message(self,) -> Optional[message.Message]:
-        """
-        Gets the message property value. The Message property
-        Returns: Optional[message.Message]
-        """
-        return self._message
-    
-    @message.setter
-    def message(self,value: Optional[message.Message] = None) -> None:
-        """
-        Sets the message property value. The Message property
-        Args:
-            value: Value to set for the Message property.
-        """
-        self._message = value
-    
-    @property
-    def save_to_sent_items(self,) -> Optional[bool]:
-        """
-        Gets the saveToSentItems property value. The SaveToSentItems property
-        Returns: Optional[bool]
-        """
-        return self._save_to_sent_items
-    
-    @save_to_sent_items.setter
-    def save_to_sent_items(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the saveToSentItems property value. The SaveToSentItems property
-        Args:
-            value: Value to set for the save_to_sent_items property.
-        """
-        self._save_to_sent_items = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

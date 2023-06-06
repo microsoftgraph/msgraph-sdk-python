@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import ip_range
 
+@dataclass
 class IPv4CidrRange(ip_range.IpRange):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IPv4CidrRange and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.iPv4CidrRange"
-        # IPv4 address in CIDR notation. Not nullable.
-        self._cidr_address: Optional[str] = None
-    
-    @property
-    def cidr_address(self,) -> Optional[str]:
-        """
-        Gets the cidrAddress property value. IPv4 address in CIDR notation. Not nullable.
-        Returns: Optional[str]
-        """
-        return self._cidr_address
-    
-    @cidr_address.setter
-    def cidr_address(self,value: Optional[str] = None) -> None:
-        """
-        Sets the cidrAddress property value. IPv4 address in CIDR notation. Not nullable.
-        Args:
-            value: Value to set for the cidr_address property.
-        """
-        self._cidr_address = value
+    odata_type = "#microsoft.graph.iPv4CidrRange"
+    # IPv4 address in CIDR notation. Not nullable.
+    cidr_address: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IPv4CidrRange:

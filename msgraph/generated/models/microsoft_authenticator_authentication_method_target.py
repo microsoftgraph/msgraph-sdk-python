@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,33 +8,12 @@ if TYPE_CHECKING:
 
 from . import authentication_method_target
 
+@dataclass
 class MicrosoftAuthenticatorAuthenticationMethodTarget(authentication_method_target.AuthenticationMethodTarget):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new MicrosoftAuthenticatorAuthenticationMethodTarget and sets the default values.
-        """
-        super().__init__()
-        # The authenticationMode property
-        self._authentication_mode: Optional[microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def authentication_mode(self,) -> Optional[microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode]:
-        """
-        Gets the authenticationMode property value. The authenticationMode property
-        Returns: Optional[microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode]
-        """
-        return self._authentication_mode
-    
-    @authentication_mode.setter
-    def authentication_mode(self,value: Optional[microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode] = None) -> None:
-        """
-        Sets the authenticationMode property value. The authenticationMode property
-        Args:
-            value: Value to set for the authentication_mode property.
-        """
-        self._authentication_mode = value
+    # The authenticationMode property
+    authentication_mode: Optional[microsoft_authenticator_authentication_mode.MicrosoftAuthenticatorAuthenticationMode] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MicrosoftAuthenticatorAuthenticationMethodTarget:

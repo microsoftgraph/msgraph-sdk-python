@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import comms_operation
 
+@dataclass
 class RecordOperation(comms_operation.CommsOperation):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new RecordOperation and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The access token required to retrieve the recording.
-        self._recording_access_token: Optional[str] = None
-        # The location where the recording is located.
-        self._recording_location: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The access token required to retrieve the recording.
+    recording_access_token: Optional[str] = None
+    # The location where the recording is located.
+    recording_location: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecordOperation:
@@ -46,40 +43,6 @@ class RecordOperation(comms_operation.CommsOperation):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def recording_access_token(self,) -> Optional[str]:
-        """
-        Gets the recordingAccessToken property value. The access token required to retrieve the recording.
-        Returns: Optional[str]
-        """
-        return self._recording_access_token
-    
-    @recording_access_token.setter
-    def recording_access_token(self,value: Optional[str] = None) -> None:
-        """
-        Sets the recordingAccessToken property value. The access token required to retrieve the recording.
-        Args:
-            value: Value to set for the recording_access_token property.
-        """
-        self._recording_access_token = value
-    
-    @property
-    def recording_location(self,) -> Optional[str]:
-        """
-        Gets the recordingLocation property value. The location where the recording is located.
-        Returns: Optional[str]
-        """
-        return self._recording_location
-    
-    @recording_location.setter
-    def recording_location(self,value: Optional[str] = None) -> None:
-        """
-        Sets the recordingLocation property value. The location where the recording is located.
-        Args:
-            value: Value to set for the recording_location property.
-        """
-        self._recording_location = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

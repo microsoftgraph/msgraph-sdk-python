@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,25 +9,21 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class RemoteAssistancePartner(entity.Entity):
     """
     RemoteAssistPartner resources represent the metadata and status of a given Remote Assistance partner service.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new remoteAssistancePartner and sets the default values.
-        """
-        super().__init__()
-        # Display name of the partner.
-        self._display_name: Optional[str] = None
-        # Timestamp of the last request sent to Intune by the TEM partner.
-        self._last_connection_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The current TeamViewer connector status
-        self._onboarding_status: Optional[remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus] = None
-        # URL of the partner's onboarding portal, where an administrator can configure their Remote Assistance service.
-        self._onboarding_url: Optional[str] = None
+    # Display name of the partner.
+    display_name: Optional[str] = None
+    # Timestamp of the last request sent to Intune by the TEM partner.
+    last_connection_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The current TeamViewer connector status
+    onboarding_status: Optional[remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus] = None
+    # URL of the partner's onboarding portal, where an administrator can configure their Remote Assistance service.
+    onboarding_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RemoteAssistancePartner:
@@ -39,23 +36,6 @@ class RemoteAssistancePartner(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RemoteAssistancePartner()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Display name of the partner.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Display name of the partner.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -73,57 +53,6 @@ class RemoteAssistancePartner(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def last_connection_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastConnectionDateTime property value. Timestamp of the last request sent to Intune by the TEM partner.
-        Returns: Optional[datetime]
-        """
-        return self._last_connection_date_time
-    
-    @last_connection_date_time.setter
-    def last_connection_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastConnectionDateTime property value. Timestamp of the last request sent to Intune by the TEM partner.
-        Args:
-            value: Value to set for the last_connection_date_time property.
-        """
-        self._last_connection_date_time = value
-    
-    @property
-    def onboarding_status(self,) -> Optional[remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus]:
-        """
-        Gets the onboardingStatus property value. The current TeamViewer connector status
-        Returns: Optional[remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus]
-        """
-        return self._onboarding_status
-    
-    @onboarding_status.setter
-    def onboarding_status(self,value: Optional[remote_assistance_onboarding_status.RemoteAssistanceOnboardingStatus] = None) -> None:
-        """
-        Sets the onboardingStatus property value. The current TeamViewer connector status
-        Args:
-            value: Value to set for the onboarding_status property.
-        """
-        self._onboarding_status = value
-    
-    @property
-    def onboarding_url(self,) -> Optional[str]:
-        """
-        Gets the onboardingUrl property value. URL of the partner's onboarding portal, where an administrator can configure their Remote Assistance service.
-        Returns: Optional[str]
-        """
-        return self._onboarding_url
-    
-    @onboarding_url.setter
-    def onboarding_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the onboardingUrl property value. URL of the partner's onboarding portal, where an administrator can configure their Remote Assistance service.
-        Args:
-            value: Value to set for the onboarding_url property.
-        """
-        self._onboarding_url = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

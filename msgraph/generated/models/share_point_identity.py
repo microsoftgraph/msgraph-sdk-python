@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import identity
 
+@dataclass
 class SharePointIdentity(identity.Identity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new SharePointIdentity and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.sharePointIdentity"
-        # The sign in name of the SharePoint identity.
-        self._login_name: Optional[str] = None
+    odata_type = "#microsoft.graph.sharePointIdentity"
+    # The sign in name of the SharePoint identity.
+    login_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SharePointIdentity:
@@ -42,23 +39,6 @@ class SharePointIdentity(identity.Identity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def login_name(self,) -> Optional[str]:
-        """
-        Gets the loginName property value. The sign in name of the SharePoint identity.
-        Returns: Optional[str]
-        """
-        return self._login_name
-    
-    @login_name.setter
-    def login_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the loginName property value. The sign in name of the SharePoint identity.
-        Args:
-            value: Value to set for the login_name property.
-        """
-        self._login_name = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PlannerPreviewType(Enum):
+class PlannerPreviewType(str, Enum):
     Automatic = "automatic",
     NoPreview = "noPreview",
     Checklist = "checklist",

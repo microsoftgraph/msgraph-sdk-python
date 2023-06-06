@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,14 +8,10 @@ if TYPE_CHECKING:
 
 from ....models import base_collection_pagination_count_response
 
+@dataclass
 class GetAttackSimulationSimulationUserCoverageResponse(base_collection_pagination_count_response.BaseCollectionPaginationCountResponse):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new getAttackSimulationSimulationUserCoverageResponse and sets the default values.
-        """
-        super().__init__()
-        # The value property
-        self._value: Optional[List[attack_simulation_simulation_user_coverage.AttackSimulationSimulationUserCoverage]] = None
+    # The value property
+    value: Optional[List[attack_simulation_simulation_user_coverage.AttackSimulationSimulationUserCoverage]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GetAttackSimulationSimulationUserCoverageResponse:
@@ -52,22 +49,5 @@ class GetAttackSimulationSimulationUserCoverageResponse(base_collection_paginati
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("value", self.value)
-    
-    @property
-    def value(self,) -> Optional[List[attack_simulation_simulation_user_coverage.AttackSimulationSimulationUserCoverage]]:
-        """
-        Gets the value property value. The value property
-        Returns: Optional[List[attack_simulation_simulation_user_coverage.AttackSimulationSimulationUserCoverage]]
-        """
-        return self._value
-    
-    @value.setter
-    def value(self,value: Optional[List[attack_simulation_simulation_user_coverage.AttackSimulationSimulationUserCoverage]] = None) -> None:
-        """
-        Sets the value property value. The value property
-        Args:
-            value: Value to set for the value property.
-        """
-        self._value = value
     
 

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,40 +8,19 @@ if TYPE_CHECKING:
 
 from . import apple_device_features_configuration_base
 
+@dataclass
 class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.AppleDeviceFeaturesConfigurationBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IosDeviceFeaturesConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.iosDeviceFeaturesConfiguration"
-        # Asset tag information for the device, displayed on the login window and lock screen.
-        self._asset_tag_template: Optional[str] = None
-        # A list of app and folders to appear on the Home Screen Dock. This collection can contain a maximum of 500 elements.
-        self._home_screen_dock_icons: Optional[List[ios_home_screen_item.IosHomeScreenItem]] = None
-        # A list of pages on the Home Screen. This collection can contain a maximum of 500 elements.
-        self._home_screen_pages: Optional[List[ios_home_screen_page.IosHomeScreenPage]] = None
-        # A footnote displayed on the login window and lock screen. Available in iOS 9.3.1 and later.
-        self._lock_screen_footnote: Optional[str] = None
-        # Notification settings for each bundle id. Applicable to devices in supervised mode only (iOS 9.3 and later). This collection can contain a maximum of 500 elements.
-        self._notification_settings: Optional[List[ios_notification_settings.IosNotificationSettings]] = None
-    
-    @property
-    def asset_tag_template(self,) -> Optional[str]:
-        """
-        Gets the assetTagTemplate property value. Asset tag information for the device, displayed on the login window and lock screen.
-        Returns: Optional[str]
-        """
-        return self._asset_tag_template
-    
-    @asset_tag_template.setter
-    def asset_tag_template(self,value: Optional[str] = None) -> None:
-        """
-        Sets the assetTagTemplate property value. Asset tag information for the device, displayed on the login window and lock screen.
-        Args:
-            value: Value to set for the asset_tag_template property.
-        """
-        self._asset_tag_template = value
+    odata_type = "#microsoft.graph.iosDeviceFeaturesConfiguration"
+    # Asset tag information for the device, displayed on the login window and lock screen.
+    asset_tag_template: Optional[str] = None
+    # A list of app and folders to appear on the Home Screen Dock. This collection can contain a maximum of 500 elements.
+    home_screen_dock_icons: Optional[List[ios_home_screen_item.IosHomeScreenItem]] = None
+    # A list of pages on the Home Screen. This collection can contain a maximum of 500 elements.
+    home_screen_pages: Optional[List[ios_home_screen_page.IosHomeScreenPage]] = None
+    # A footnote displayed on the login window and lock screen. Available in iOS 9.3.1 and later.
+    lock_screen_footnote: Optional[str] = None
+    # Notification settings for each bundle id. Applicable to devices in supervised mode only (iOS 9.3 and later). This collection can contain a maximum of 500 elements.
+    notification_settings: Optional[List[ios_notification_settings.IosNotificationSettings]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosDeviceFeaturesConfiguration:
@@ -71,74 +51,6 @@ class IosDeviceFeaturesConfiguration(apple_device_features_configuration_base.Ap
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def home_screen_dock_icons(self,) -> Optional[List[ios_home_screen_item.IosHomeScreenItem]]:
-        """
-        Gets the homeScreenDockIcons property value. A list of app and folders to appear on the Home Screen Dock. This collection can contain a maximum of 500 elements.
-        Returns: Optional[List[ios_home_screen_item.IosHomeScreenItem]]
-        """
-        return self._home_screen_dock_icons
-    
-    @home_screen_dock_icons.setter
-    def home_screen_dock_icons(self,value: Optional[List[ios_home_screen_item.IosHomeScreenItem]] = None) -> None:
-        """
-        Sets the homeScreenDockIcons property value. A list of app and folders to appear on the Home Screen Dock. This collection can contain a maximum of 500 elements.
-        Args:
-            value: Value to set for the home_screen_dock_icons property.
-        """
-        self._home_screen_dock_icons = value
-    
-    @property
-    def home_screen_pages(self,) -> Optional[List[ios_home_screen_page.IosHomeScreenPage]]:
-        """
-        Gets the homeScreenPages property value. A list of pages on the Home Screen. This collection can contain a maximum of 500 elements.
-        Returns: Optional[List[ios_home_screen_page.IosHomeScreenPage]]
-        """
-        return self._home_screen_pages
-    
-    @home_screen_pages.setter
-    def home_screen_pages(self,value: Optional[List[ios_home_screen_page.IosHomeScreenPage]] = None) -> None:
-        """
-        Sets the homeScreenPages property value. A list of pages on the Home Screen. This collection can contain a maximum of 500 elements.
-        Args:
-            value: Value to set for the home_screen_pages property.
-        """
-        self._home_screen_pages = value
-    
-    @property
-    def lock_screen_footnote(self,) -> Optional[str]:
-        """
-        Gets the lockScreenFootnote property value. A footnote displayed on the login window and lock screen. Available in iOS 9.3.1 and later.
-        Returns: Optional[str]
-        """
-        return self._lock_screen_footnote
-    
-    @lock_screen_footnote.setter
-    def lock_screen_footnote(self,value: Optional[str] = None) -> None:
-        """
-        Sets the lockScreenFootnote property value. A footnote displayed on the login window and lock screen. Available in iOS 9.3.1 and later.
-        Args:
-            value: Value to set for the lock_screen_footnote property.
-        """
-        self._lock_screen_footnote = value
-    
-    @property
-    def notification_settings(self,) -> Optional[List[ios_notification_settings.IosNotificationSettings]]:
-        """
-        Gets the notificationSettings property value. Notification settings for each bundle id. Applicable to devices in supervised mode only (iOS 9.3 and later). This collection can contain a maximum of 500 elements.
-        Returns: Optional[List[ios_notification_settings.IosNotificationSettings]]
-        """
-        return self._notification_settings
-    
-    @notification_settings.setter
-    def notification_settings(self,value: Optional[List[ios_notification_settings.IosNotificationSettings]] = None) -> None:
-        """
-        Sets the notificationSettings property value. Notification settings for each bundle id. Applicable to devices in supervised mode only (iOS 9.3 and later). This collection can contain a maximum of 500 elements.
-        Args:
-            value: Value to set for the notification_settings property.
-        """
-        self._notification_settings = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

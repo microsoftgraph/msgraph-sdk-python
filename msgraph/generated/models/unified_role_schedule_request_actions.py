@@ -1,6 +1,6 @@
 from enum import Enum
 
-class UnifiedRoleScheduleRequestActions(Enum):
+class UnifiedRoleScheduleRequestActions(str, Enum):
     AdminAssign = "adminAssign",
     AdminUpdate = "adminUpdate",
     AdminRemove = "adminRemove",

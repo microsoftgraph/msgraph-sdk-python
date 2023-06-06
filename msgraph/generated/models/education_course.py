@@ -1,61 +1,25 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class EducationCourse(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new educationCourse and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Unique identifier for the course.
-        self._course_number: Optional[str] = None
-        # Description of the course.
-        self._description: Optional[str] = None
-        # Name of the course.
-        self._display_name: Optional[str] = None
-        # ID of the course from the syncing system.
-        self._external_id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Subject of the course.
-        self._subject: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def course_number(self,) -> Optional[str]:
-        """
-        Gets the courseNumber property value. Unique identifier for the course.
-        Returns: Optional[str]
-        """
-        return self._course_number
-    
-    @course_number.setter
-    def course_number(self,value: Optional[str] = None) -> None:
-        """
-        Sets the courseNumber property value. Unique identifier for the course.
-        Args:
-            value: Value to set for the course_number property.
-        """
-        self._course_number = value
+    # Unique identifier for the course.
+    course_number: Optional[str] = None
+    # Description of the course.
+    description: Optional[str] = None
+    # Name of the course.
+    display_name: Optional[str] = None
+    # ID of the course from the syncing system.
+    external_id: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Subject of the course.
+    subject: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationCourse:
@@ -68,57 +32,6 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EducationCourse()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. Description of the course.
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. Description of the course.
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Name of the course.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Name of the course.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
-    @property
-    def external_id(self,) -> Optional[str]:
-        """
-        Gets the externalId property value. ID of the course from the syncing system.
-        Returns: Optional[str]
-        """
-        return self._external_id
-    
-    @external_id.setter
-    def external_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the externalId property value. ID of the course from the syncing system.
-        Args:
-            value: Value to set for the external_id property.
-        """
-        self._external_id = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -135,23 +48,6 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -167,22 +63,5 @@ class EducationCourse(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("subject", self.subject)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def subject(self,) -> Optional[str]:
-        """
-        Gets the subject property value. Subject of the course.
-        Returns: Optional[str]
-        """
-        return self._subject
-    
-    @subject.setter
-    def subject(self,value: Optional[str] = None) -> None:
-        """
-        Sets the subject property value. Subject of the course.
-        Args:
-            value: Value to set for the subject property.
-        """
-        self._subject = value
     
 

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class AppCatalogs(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AppCatalogs and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The teamsApps property
-        self._teams_apps: Optional[List[teams_app.TeamsApp]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The teamsApps property
+    teams_apps: Optional[List[teams_app.TeamsApp]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppCatalogs:
@@ -54,22 +51,5 @@ class AppCatalogs(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_object_values("teamsApps", self.teams_apps)
-    
-    @property
-    def teams_apps(self,) -> Optional[List[teams_app.TeamsApp]]:
-        """
-        Gets the teamsApps property value. The teamsApps property
-        Returns: Optional[List[teams_app.TeamsApp]]
-        """
-        return self._teams_apps
-    
-    @teams_apps.setter
-    def teams_apps(self,value: Optional[List[teams_app.TeamsApp]] = None) -> None:
-        """
-        Sets the teamsApps property value. The teamsApps property
-        Args:
-            value: Value to set for the teams_apps property.
-        """
-        self._teams_apps = value
     
 

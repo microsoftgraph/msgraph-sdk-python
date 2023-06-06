@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import alert_evidence
 
+@dataclass
 class RegistryKeyEvidence(alert_evidence.AlertEvidence):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new RegistryKeyEvidence and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Registry hive of the key that the recorded action was applied to.
-        self._registry_hive: Optional[str] = None
-        # Registry key that the recorded action was applied to.
-        self._registry_key: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Registry hive of the key that the recorded action was applied to.
+    registry_hive: Optional[str] = None
+    # Registry key that the recorded action was applied to.
+    registry_key: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RegistryKeyEvidence:
@@ -46,40 +43,6 @@ class RegistryKeyEvidence(alert_evidence.AlertEvidence):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def registry_hive(self,) -> Optional[str]:
-        """
-        Gets the registryHive property value. Registry hive of the key that the recorded action was applied to.
-        Returns: Optional[str]
-        """
-        return self._registry_hive
-    
-    @registry_hive.setter
-    def registry_hive(self,value: Optional[str] = None) -> None:
-        """
-        Sets the registryHive property value. Registry hive of the key that the recorded action was applied to.
-        Args:
-            value: Value to set for the registry_hive property.
-        """
-        self._registry_hive = value
-    
-    @property
-    def registry_key(self,) -> Optional[str]:
-        """
-        Gets the registryKey property value. Registry key that the recorded action was applied to.
-        Returns: Optional[str]
-        """
-        return self._registry_key
-    
-    @registry_key.setter
-    def registry_key(self,value: Optional[str] = None) -> None:
-        """
-        Sets the registryKey property value. Registry key that the recorded action was applied to.
-        Args:
-            value: Value to set for the registry_key property.
-        """
-        self._registry_key = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

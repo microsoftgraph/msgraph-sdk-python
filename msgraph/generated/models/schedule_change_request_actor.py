@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ScheduleChangeRequestActor(Enum):
+class ScheduleChangeRequestActor(str, Enum):
     Sender = "sender",
     Recipient = "recipient",
     Manager = "manager",

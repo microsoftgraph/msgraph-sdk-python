@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AccessPackageRequestState(Enum):
+class AccessPackageRequestState(str, Enum):
     Submitted = "submitted",
     PendingApproval = "pendingApproval",
     Delivering = "delivering",

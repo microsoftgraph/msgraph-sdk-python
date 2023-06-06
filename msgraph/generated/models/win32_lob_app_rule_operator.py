@@ -1,6 +1,6 @@
 from enum import Enum
 
-class Win32LobAppRuleOperator(Enum):
+class Win32LobAppRuleOperator(str, Enum):
     # Not configured.
     NotConfigured = "notConfigured",
     # Equal operator.

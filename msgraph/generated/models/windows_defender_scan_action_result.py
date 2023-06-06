@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import device_action_result
 
+@dataclass
 class WindowsDefenderScanActionResult(device_action_result.DeviceActionResult):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsDefenderScanActionResult and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Scan type either full scan or quick scan
-        self._scan_type: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Scan type either full scan or quick scan
+    scan_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsDefenderScanActionResult:
@@ -43,23 +40,6 @@ class WindowsDefenderScanActionResult(device_action_result.DeviceActionResult):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def scan_type(self,) -> Optional[str]:
-        """
-        Gets the scanType property value. Scan type either full scan or quick scan
-        Returns: Optional[str]
-        """
-        return self._scan_type
-    
-    @scan_type.setter
-    def scan_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the scanType property value. Scan type either full scan or quick scan
-        Args:
-            value: Value to set for the scan_type property.
-        """
-        self._scan_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class CallRecordingStatus(Enum):
+class CallRecordingStatus(str, Enum):
     Success = "success",
     Failure = "failure",
     Initial = "initial",

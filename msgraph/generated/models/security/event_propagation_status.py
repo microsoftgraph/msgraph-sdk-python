@@ -1,6 +1,6 @@
 from enum import Enum
 
-class EventPropagationStatus(Enum):
+class EventPropagationStatus(str, Enum):
     None_ = "none",
     InProcessing = "inProcessing",
     Failed = "failed",

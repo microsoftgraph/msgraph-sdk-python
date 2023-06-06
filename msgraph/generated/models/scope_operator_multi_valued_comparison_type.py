@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ScopeOperatorMultiValuedComparisonType(Enum):
+class ScopeOperatorMultiValuedComparisonType(str, Enum):
     All = "All",
     Any = "Any",
 

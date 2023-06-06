@@ -1,6 +1,6 @@
 from enum import Enum
 
-class CaseOperationStatus(Enum):
+class CaseOperationStatus(str, Enum):
     NotStarted = "notStarted",
     SubmissionFailed = "submissionFailed",
     Running = "running",

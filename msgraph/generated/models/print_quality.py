@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PrintQuality(Enum):
+class PrintQuality(str, Enum):
     Low = "low",
     Medium = "medium",
     High = "high",

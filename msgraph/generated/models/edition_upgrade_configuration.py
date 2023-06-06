@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,21 +8,17 @@ if TYPE_CHECKING:
 
 from . import device_configuration
 
+@dataclass
 class EditionUpgradeConfiguration(device_configuration.DeviceConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EditionUpgradeConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.editionUpgradeConfiguration"
-        # Edition Upgrade License File Content.
-        self._license: Optional[str] = None
-        # Edition Upgrade License type
-        self._license_type: Optional[edition_upgrade_license_type.EditionUpgradeLicenseType] = None
-        # Edition Upgrade Product Key.
-        self._product_key: Optional[str] = None
-        # Windows 10 Edition type.
-        self._target_edition: Optional[windows10_edition_type.Windows10EditionType] = None
+    odata_type = "#microsoft.graph.editionUpgradeConfiguration"
+    # Edition Upgrade License File Content.
+    license: Optional[str] = None
+    # Edition Upgrade License type
+    license_type: Optional[edition_upgrade_license_type.EditionUpgradeLicenseType] = None
+    # Edition Upgrade Product Key.
+    product_key: Optional[str] = None
+    # Windows 10 Edition type.
+    target_edition: Optional[windows10_edition_type.Windows10EditionType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EditionUpgradeConfiguration:
@@ -52,57 +49,6 @@ class EditionUpgradeConfiguration(device_configuration.DeviceConfiguration):
         fields.update(super_fields)
         return fields
     
-    @property
-    def license(self,) -> Optional[str]:
-        """
-        Gets the license property value. Edition Upgrade License File Content.
-        Returns: Optional[str]
-        """
-        return self._license
-    
-    @license.setter
-    def license(self,value: Optional[str] = None) -> None:
-        """
-        Sets the license property value. Edition Upgrade License File Content.
-        Args:
-            value: Value to set for the license property.
-        """
-        self._license = value
-    
-    @property
-    def license_type(self,) -> Optional[edition_upgrade_license_type.EditionUpgradeLicenseType]:
-        """
-        Gets the licenseType property value. Edition Upgrade License type
-        Returns: Optional[edition_upgrade_license_type.EditionUpgradeLicenseType]
-        """
-        return self._license_type
-    
-    @license_type.setter
-    def license_type(self,value: Optional[edition_upgrade_license_type.EditionUpgradeLicenseType] = None) -> None:
-        """
-        Sets the licenseType property value. Edition Upgrade License type
-        Args:
-            value: Value to set for the license_type property.
-        """
-        self._license_type = value
-    
-    @property
-    def product_key(self,) -> Optional[str]:
-        """
-        Gets the productKey property value. Edition Upgrade Product Key.
-        Returns: Optional[str]
-        """
-        return self._product_key
-    
-    @product_key.setter
-    def product_key(self,value: Optional[str] = None) -> None:
-        """
-        Sets the productKey property value. Edition Upgrade Product Key.
-        Args:
-            value: Value to set for the product_key property.
-        """
-        self._product_key = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -116,22 +62,5 @@ class EditionUpgradeConfiguration(device_configuration.DeviceConfiguration):
         writer.write_enum_value("licenseType", self.license_type)
         writer.write_str_value("productKey", self.product_key)
         writer.write_enum_value("targetEdition", self.target_edition)
-    
-    @property
-    def target_edition(self,) -> Optional[windows10_edition_type.Windows10EditionType]:
-        """
-        Gets the targetEdition property value. Windows 10 Edition type.
-        Returns: Optional[windows10_edition_type.Windows10EditionType]
-        """
-        return self._target_edition
-    
-    @target_edition.setter
-    def target_edition(self,value: Optional[windows10_edition_type.Windows10EditionType] = None) -> None:
-        """
-        Sets the targetEdition property value. Windows 10 Edition type.
-        Args:
-            value: Value to set for the target_edition property.
-        """
-        self._target_edition = value
     
 

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ChatMessageType(Enum):
+class ChatMessageType(str, Enum):
     Message = "message",
     ChatEvent = "chatEvent",
     Typing = "typing",

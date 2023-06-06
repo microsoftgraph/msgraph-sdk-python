@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,74 +9,19 @@ if TYPE_CHECKING:
 
 from . import list_item_version
 
+@dataclass
 class DocumentSetVersion(list_item_version.ListItemVersion):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new DocumentSetVersion and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.documentSetVersion"
-        # Comment about the captured version.
-        self._comment: Optional[str] = None
-        # User who captured the version.
-        self._created_by: Optional[identity_set.IdentitySet] = None
-        # Date and time when this version was created.
-        self._created_date_time: Optional[datetime] = None
-        # Items within the document set that are captured as part of this version.
-        self._items: Optional[List[document_set_version_item.DocumentSetVersionItem]] = None
-        # If true, minor versions of items are also captured; otherwise, only major versions will be captured. Default value is false.
-        self._should_capture_minor_version: Optional[bool] = None
-    
-    @property
-    def comment(self,) -> Optional[str]:
-        """
-        Gets the comment property value. Comment about the captured version.
-        Returns: Optional[str]
-        """
-        return self._comment
-    
-    @comment.setter
-    def comment(self,value: Optional[str] = None) -> None:
-        """
-        Sets the comment property value. Comment about the captured version.
-        Args:
-            value: Value to set for the comment property.
-        """
-        self._comment = value
-    
-    @property
-    def created_by(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the createdBy property value. User who captured the version.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._created_by
-    
-    @created_by.setter
-    def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the createdBy property value. User who captured the version.
-        Args:
-            value: Value to set for the created_by property.
-        """
-        self._created_by = value
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. Date and time when this version was created.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. Date and time when this version was created.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    odata_type = "#microsoft.graph.documentSetVersion"
+    # Comment about the captured version.
+    comment: Optional[str] = None
+    # User who captured the version.
+    created_by: Optional[identity_set.IdentitySet] = None
+    # Date and time when this version was created.
+    created_date_time: Optional[datetime] = None
+    # Items within the document set that are captured as part of this version.
+    items: Optional[List[document_set_version_item.DocumentSetVersionItem]] = None
+    # If true, minor versions of items are also captured; otherwise, only major versions will be captured. Default value is false.
+    should_capture_minor_version: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DocumentSetVersion:
@@ -107,23 +53,6 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         fields.update(super_fields)
         return fields
     
-    @property
-    def items(self,) -> Optional[List[document_set_version_item.DocumentSetVersionItem]]:
-        """
-        Gets the items property value. Items within the document set that are captured as part of this version.
-        Returns: Optional[List[document_set_version_item.DocumentSetVersionItem]]
-        """
-        return self._items
-    
-    @items.setter
-    def items(self,value: Optional[List[document_set_version_item.DocumentSetVersionItem]] = None) -> None:
-        """
-        Sets the items property value. Items within the document set that are captured as part of this version.
-        Args:
-            value: Value to set for the items property.
-        """
-        self._items = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -138,22 +67,5 @@ class DocumentSetVersion(list_item_version.ListItemVersion):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_collection_of_object_values("items", self.items)
         writer.write_bool_value("shouldCaptureMinorVersion", self.should_capture_minor_version)
-    
-    @property
-    def should_capture_minor_version(self,) -> Optional[bool]:
-        """
-        Gets the shouldCaptureMinorVersion property value. If true, minor versions of items are also captured; otherwise, only major versions will be captured. Default value is false.
-        Returns: Optional[bool]
-        """
-        return self._should_capture_minor_version
-    
-    @should_capture_minor_version.setter
-    def should_capture_minor_version(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the shouldCaptureMinorVersion property value. If true, minor versions of items are also captured; otherwise, only major versions will be captured. Default value is false.
-        Args:
-            value: Value to set for the should_capture_minor_version property.
-        """
-        self._should_capture_minor_version = value
     
 

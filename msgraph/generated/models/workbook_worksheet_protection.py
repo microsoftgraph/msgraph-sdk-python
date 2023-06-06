@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class WorkbookWorksheetProtection(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookWorksheetProtection and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Sheet protection options. Read-only.
-        self._options: Optional[workbook_worksheet_protection_options.WorkbookWorksheetProtectionOptions] = None
-        # Indicates if the worksheet is protected.  Read-only.
-        self._protected: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Sheet protection options. Read-only.
+    options: Optional[workbook_worksheet_protection_options.WorkbookWorksheetProtectionOptions] = None
+    # Indicates if the worksheet is protected.  Read-only.
+    protected: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookWorksheetProtection:
@@ -46,40 +43,6 @@ class WorkbookWorksheetProtection(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def options(self,) -> Optional[workbook_worksheet_protection_options.WorkbookWorksheetProtectionOptions]:
-        """
-        Gets the options property value. Sheet protection options. Read-only.
-        Returns: Optional[workbook_worksheet_protection_options.WorkbookWorksheetProtectionOptions]
-        """
-        return self._options
-    
-    @options.setter
-    def options(self,value: Optional[workbook_worksheet_protection_options.WorkbookWorksheetProtectionOptions] = None) -> None:
-        """
-        Sets the options property value. Sheet protection options. Read-only.
-        Args:
-            value: Value to set for the options property.
-        """
-        self._options = value
-    
-    @property
-    def protected(self,) -> Optional[bool]:
-        """
-        Gets the protected property value. Indicates if the worksheet is protected.  Read-only.
-        Returns: Optional[bool]
-        """
-        return self._protected
-    
-    @protected.setter
-    def protected(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the protected property value. Indicates if the worksheet is protected.  Read-only.
-        Args:
-            value: Value to set for the protected property.
-        """
-        self._protected = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

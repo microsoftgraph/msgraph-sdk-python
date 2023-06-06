@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class WorkbookChartAxisTitleFormat(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookChartAxisTitleFormat and sets the default values.
-        """
-        super().__init__()
-        # Represents the font attributes, such as font name, font size, color, etc. of chart axis title object. Read-only.
-        self._font: Optional[workbook_chart_font.WorkbookChartFont] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # Represents the font attributes, such as font name, font size, color, etc. of chart axis title object. Read-only.
+    font: Optional[workbook_chart_font.WorkbookChartFont] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartAxisTitleFormat:
@@ -29,23 +26,6 @@ class WorkbookChartAxisTitleFormat(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookChartAxisTitleFormat()
-    
-    @property
-    def font(self,) -> Optional[workbook_chart_font.WorkbookChartFont]:
-        """
-        Gets the font property value. Represents the font attributes, such as font name, font size, color, etc. of chart axis title object. Read-only.
-        Returns: Optional[workbook_chart_font.WorkbookChartFont]
-        """
-        return self._font
-    
-    @font.setter
-    def font(self,value: Optional[workbook_chart_font.WorkbookChartFont] = None) -> None:
-        """
-        Sets the font property value. Represents the font attributes, such as font name, font size, color, etc. of chart axis title object. Read-only.
-        Args:
-            value: Value to set for the font property.
-        """
-        self._font = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """

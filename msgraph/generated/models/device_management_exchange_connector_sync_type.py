@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DeviceManagementExchangeConnectorSyncType(Enum):
+class DeviceManagementExchangeConnectorSyncType(str, Enum):
     # Discover all the device in Exchange.
     FullSync = "fullSync",
     # Discover only the device in Exchange which have updated during the delta sync window.

@@ -1,77 +1,24 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import calendar_sharing_action, calendar_sharing_action_importance, calendar_sharing_action_type
 
+@dataclass
 class CalendarSharingMessageAction(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new calendarSharingMessageAction and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The action property
-        self._action: Optional[calendar_sharing_action.CalendarSharingAction] = None
-        # The actionType property
-        self._action_type: Optional[calendar_sharing_action_type.CalendarSharingActionType] = None
-        # The importance property
-        self._importance: Optional[calendar_sharing_action_importance.CalendarSharingActionImportance] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
-    @property
-    def action(self,) -> Optional[calendar_sharing_action.CalendarSharingAction]:
-        """
-        Gets the action property value. The action property
-        Returns: Optional[calendar_sharing_action.CalendarSharingAction]
-        """
-        return self._action
-    
-    @action.setter
-    def action(self,value: Optional[calendar_sharing_action.CalendarSharingAction] = None) -> None:
-        """
-        Sets the action property value. The action property
-        Args:
-            value: Value to set for the action property.
-        """
-        self._action = value
-    
-    @property
-    def action_type(self,) -> Optional[calendar_sharing_action_type.CalendarSharingActionType]:
-        """
-        Gets the actionType property value. The actionType property
-        Returns: Optional[calendar_sharing_action_type.CalendarSharingActionType]
-        """
-        return self._action_type
-    
-    @action_type.setter
-    def action_type(self,value: Optional[calendar_sharing_action_type.CalendarSharingActionType] = None) -> None:
-        """
-        Sets the actionType property value. The actionType property
-        Args:
-            value: Value to set for the action_type property.
-        """
-        self._action_type = value
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The action property
+    action: Optional[calendar_sharing_action.CalendarSharingAction] = None
+    # The actionType property
+    action_type: Optional[calendar_sharing_action_type.CalendarSharingActionType] = None
+    # The importance property
+    importance: Optional[calendar_sharing_action_importance.CalendarSharingActionImportance] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CalendarSharingMessageAction:
@@ -99,40 +46,6 @@ class CalendarSharingMessageAction(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def importance(self,) -> Optional[calendar_sharing_action_importance.CalendarSharingActionImportance]:
-        """
-        Gets the importance property value. The importance property
-        Returns: Optional[calendar_sharing_action_importance.CalendarSharingActionImportance]
-        """
-        return self._importance
-    
-    @importance.setter
-    def importance(self,value: Optional[calendar_sharing_action_importance.CalendarSharingActionImportance] = None) -> None:
-        """
-        Sets the importance property value. The importance property
-        Args:
-            value: Value to set for the importance property.
-        """
-        self._importance = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

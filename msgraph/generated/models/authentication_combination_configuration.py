@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,33 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class AuthenticationCombinationConfiguration(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AuthenticationCombinationConfiguration and sets the default values.
-        """
-        super().__init__()
-        # Which authentication method combinations this configuration applies to. Must be an allowedCombinations object that's defined for the authenticationStrengthPolicy. The only possible value for fido2combinationConfigurations is 'fido2'.
-        self._applies_to_combinations: Optional[List[authentication_method_modes.AuthenticationMethodModes]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def applies_to_combinations(self,) -> Optional[List[authentication_method_modes.AuthenticationMethodModes]]:
-        """
-        Gets the appliesToCombinations property value. Which authentication method combinations this configuration applies to. Must be an allowedCombinations object that's defined for the authenticationStrengthPolicy. The only possible value for fido2combinationConfigurations is 'fido2'.
-        Returns: Optional[List[authentication_method_modes.AuthenticationMethodModes]]
-        """
-        return self._applies_to_combinations
-    
-    @applies_to_combinations.setter
-    def applies_to_combinations(self,value: Optional[List[authentication_method_modes.AuthenticationMethodModes]] = None) -> None:
-        """
-        Sets the appliesToCombinations property value. Which authentication method combinations this configuration applies to. Must be an allowedCombinations object that's defined for the authenticationStrengthPolicy. The only possible value for fido2combinationConfigurations is 'fido2'.
-        Args:
-            value: Value to set for the applies_to_combinations property.
-        """
-        self._applies_to_combinations = value
+    # Which authentication method combinations this configuration applies to. Must be an allowedCombinations object that's defined for the authenticationStrengthPolicy. The only possible value for fido2combinationConfigurations is 'fido2'.
+    applies_to_combinations: Optional[List[authentication_method_modes.AuthenticationMethodModes]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationCombinationConfiguration:

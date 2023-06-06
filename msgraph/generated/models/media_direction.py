@@ -1,6 +1,6 @@
 from enum import Enum
 
-class MediaDirection(Enum):
+class MediaDirection(str, Enum):
     Inactive = "inactive",
     SendOnly = "sendOnly",
     ReceiveOnly = "receiveOnly",

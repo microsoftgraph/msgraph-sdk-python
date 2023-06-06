@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DetectionSource(Enum):
+class DetectionSource(str, Enum):
     Unknown = "unknown",
     MicrosoftDefenderForEndpoint = "microsoftDefenderForEndpoint",
     Antivirus = "antivirus",
@@ -19,4 +19,5 @@ class DetectionSource(Enum):
     AppGovernancePolicy = "appGovernancePolicy",
     AppGovernanceDetection = "appGovernanceDetection",
     UnknownFutureValue = "unknownFutureValue",
+    MicrosoftDefenderForCloud = "microsoftDefenderForCloud",
 

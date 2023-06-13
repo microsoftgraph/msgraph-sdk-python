@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AutoRestartNotificationDismissalMethod(Enum):
+class AutoRestartNotificationDismissalMethod(str, Enum):
     # Not configured
     NotConfigured = "notConfigured",
     # Auto dismissal Indicates that the notification is automatically dismissed without user intervention

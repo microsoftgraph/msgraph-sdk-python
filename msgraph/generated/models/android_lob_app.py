@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,21 +8,17 @@ if TYPE_CHECKING:
 
 from . import mobile_lob_app
 
+@dataclass
 class AndroidLobApp(mobile_lob_app.MobileLobApp):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AndroidLobApp and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.androidLobApp"
-        # The value for the minimum applicable operating system.
-        self._minimum_supported_operating_system: Optional[android_minimum_operating_system.AndroidMinimumOperatingSystem] = None
-        # The package identifier.
-        self._package_id: Optional[str] = None
-        # The version code of Android Line of Business (LoB) app.
-        self._version_code: Optional[str] = None
-        # The version name of Android Line of Business (LoB) app.
-        self._version_name: Optional[str] = None
+    odata_type = "#microsoft.graph.androidLobApp"
+    # The value for the minimum applicable operating system.
+    minimum_supported_operating_system: Optional[android_minimum_operating_system.AndroidMinimumOperatingSystem] = None
+    # The package identifier.
+    package_id: Optional[str] = None
+    # The version code of Android Line of Business (LoB) app.
+    version_code: Optional[str] = None
+    # The version name of Android Line of Business (LoB) app.
+    version_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AndroidLobApp:
@@ -52,40 +49,6 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         fields.update(super_fields)
         return fields
     
-    @property
-    def minimum_supported_operating_system(self,) -> Optional[android_minimum_operating_system.AndroidMinimumOperatingSystem]:
-        """
-        Gets the minimumSupportedOperatingSystem property value. The value for the minimum applicable operating system.
-        Returns: Optional[android_minimum_operating_system.AndroidMinimumOperatingSystem]
-        """
-        return self._minimum_supported_operating_system
-    
-    @minimum_supported_operating_system.setter
-    def minimum_supported_operating_system(self,value: Optional[android_minimum_operating_system.AndroidMinimumOperatingSystem] = None) -> None:
-        """
-        Sets the minimumSupportedOperatingSystem property value. The value for the minimum applicable operating system.
-        Args:
-            value: Value to set for the minimum_supported_operating_system property.
-        """
-        self._minimum_supported_operating_system = value
-    
-    @property
-    def package_id(self,) -> Optional[str]:
-        """
-        Gets the packageId property value. The package identifier.
-        Returns: Optional[str]
-        """
-        return self._package_id
-    
-    @package_id.setter
-    def package_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the packageId property value. The package identifier.
-        Args:
-            value: Value to set for the package_id property.
-        """
-        self._package_id = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -99,39 +62,5 @@ class AndroidLobApp(mobile_lob_app.MobileLobApp):
         writer.write_str_value("packageId", self.package_id)
         writer.write_str_value("versionCode", self.version_code)
         writer.write_str_value("versionName", self.version_name)
-    
-    @property
-    def version_code(self,) -> Optional[str]:
-        """
-        Gets the versionCode property value. The version code of Android Line of Business (LoB) app.
-        Returns: Optional[str]
-        """
-        return self._version_code
-    
-    @version_code.setter
-    def version_code(self,value: Optional[str] = None) -> None:
-        """
-        Sets the versionCode property value. The version code of Android Line of Business (LoB) app.
-        Args:
-            value: Value to set for the version_code property.
-        """
-        self._version_code = value
-    
-    @property
-    def version_name(self,) -> Optional[str]:
-        """
-        Gets the versionName property value. The version name of Android Line of Business (LoB) app.
-        Returns: Optional[str]
-        """
-        return self._version_name
-    
-    @version_name.setter
-    def version_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the versionName property value. The version name of Android Line of Business (LoB) app.
-        Args:
-            value: Value to set for the version_name property.
-        """
-        self._version_name = value
     
 

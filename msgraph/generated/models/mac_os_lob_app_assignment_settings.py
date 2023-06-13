@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import mobile_app_assignment_settings
 
+@dataclass
 class MacOsLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new MacOsLobAppAssignmentSettings and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.macOsLobAppAssignmentSettings"
-        # When TRUE, indicates that the app should be uninstalled when the device is removed from Intune. When FALSE, indicates that the app will not be uninstalled when the device is removed from Intune.
-        self._uninstall_on_device_removal: Optional[bool] = None
+    odata_type = "#microsoft.graph.macOsLobAppAssignmentSettings"
+    # When TRUE, indicates that the app should be uninstalled when the device is removed from Intune. When FALSE, indicates that the app will not be uninstalled when the device is removed from Intune.
+    uninstall_on_device_removal: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MacOsLobAppAssignmentSettings:
@@ -53,22 +50,5 @@ class MacOsLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("uninstallOnDeviceRemoval", self.uninstall_on_device_removal)
-    
-    @property
-    def uninstall_on_device_removal(self,) -> Optional[bool]:
-        """
-        Gets the uninstallOnDeviceRemoval property value. When TRUE, indicates that the app should be uninstalled when the device is removed from Intune. When FALSE, indicates that the app will not be uninstalled when the device is removed from Intune.
-        Returns: Optional[bool]
-        """
-        return self._uninstall_on_device_removal
-    
-    @uninstall_on_device_removal.setter
-    def uninstall_on_device_removal(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the uninstallOnDeviceRemoval property value. When TRUE, indicates that the app should be uninstalled when the device is removed from Intune. When FALSE, indicates that the app will not be uninstalled when the device is removed from Intune.
-        Args:
-            value: Value to set for the uninstall_on_device_removal property.
-        """
-        self._uninstall_on_device_removal = value
     
 

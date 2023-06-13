@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class OnenoteEntityBaseModel(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new onenoteEntityBaseModel and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The endpoint where you can get details about the page. Read-only.
-        self._self: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The endpoint where you can get details about the page. Read-only.
+    self: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OnenoteEntityBaseModel:
@@ -74,23 +71,6 @@ class OnenoteEntityBaseModel(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def self(self,) -> Optional[str]:
-        """
-        Gets the self property value. The endpoint where you can get details about the page. Read-only.
-        Returns: Optional[str]
-        """
-        return self._self
-    
-    @self.setter
-    def self(self,value: Optional[str] = None) -> None:
-        """
-        Sets the self property value. The endpoint where you can get details about the page. Read-only.
-        Args:
-            value: Value to set for the self property.
-        """
-        self._self = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

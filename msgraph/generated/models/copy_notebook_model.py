@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -6,114 +7,43 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from . import identity_set, notebook_links, onenote_user_role
 
+@dataclass
 class CopyNotebookModel(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new CopyNotebookModel and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The createdBy property
-        self._created_by: Optional[str] = None
-        # The createdByIdentity property
-        self._created_by_identity: Optional[identity_set.IdentitySet] = None
-        # The createdTime property
-        self._created_time: Optional[datetime] = None
-        # The id property
-        self._id: Optional[str] = None
-        # The isDefault property
-        self._is_default: Optional[bool] = None
-        # The isShared property
-        self._is_shared: Optional[bool] = None
-        # The lastModifiedBy property
-        self._last_modified_by: Optional[str] = None
-        # The lastModifiedByIdentity property
-        self._last_modified_by_identity: Optional[identity_set.IdentitySet] = None
-        # The lastModifiedTime property
-        self._last_modified_time: Optional[datetime] = None
-        # The links property
-        self._links: Optional[notebook_links.NotebookLinks] = None
-        # The name property
-        self._name: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The sectionGroupsUrl property
-        self._section_groups_url: Optional[str] = None
-        # The sectionsUrl property
-        self._sections_url: Optional[str] = None
-        # The self property
-        self._self: Optional[str] = None
-        # The userRole property
-        self._user_role: Optional[onenote_user_role.OnenoteUserRole] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def created_by(self,) -> Optional[str]:
-        """
-        Gets the createdBy property value. The createdBy property
-        Returns: Optional[str]
-        """
-        return self._created_by
-    
-    @created_by.setter
-    def created_by(self,value: Optional[str] = None) -> None:
-        """
-        Sets the createdBy property value. The createdBy property
-        Args:
-            value: Value to set for the created_by property.
-        """
-        self._created_by = value
-    
-    @property
-    def created_by_identity(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the createdByIdentity property value. The createdByIdentity property
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._created_by_identity
-    
-    @created_by_identity.setter
-    def created_by_identity(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the createdByIdentity property value. The createdByIdentity property
-        Args:
-            value: Value to set for the created_by_identity property.
-        """
-        self._created_by_identity = value
-    
-    @property
-    def created_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdTime property value. The createdTime property
-        Returns: Optional[datetime]
-        """
-        return self._created_time
-    
-    @created_time.setter
-    def created_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdTime property value. The createdTime property
-        Args:
-            value: Value to set for the created_time property.
-        """
-        self._created_time = value
+    # The createdBy property
+    created_by: Optional[str] = None
+    # The createdByIdentity property
+    created_by_identity: Optional[identity_set.IdentitySet] = None
+    # The createdTime property
+    created_time: Optional[datetime] = None
+    # The id property
+    id: Optional[str] = None
+    # The isDefault property
+    is_default: Optional[bool] = None
+    # The isShared property
+    is_shared: Optional[bool] = None
+    # The lastModifiedBy property
+    last_modified_by: Optional[str] = None
+    # The lastModifiedByIdentity property
+    last_modified_by_identity: Optional[identity_set.IdentitySet] = None
+    # The lastModifiedTime property
+    last_modified_time: Optional[datetime] = None
+    # The links property
+    links: Optional[notebook_links.NotebookLinks] = None
+    # The name property
+    name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The sectionGroupsUrl property
+    section_groups_url: Optional[str] = None
+    # The sectionsUrl property
+    sections_url: Optional[str] = None
+    # The self property
+    self: Optional[str] = None
+    # The userRole property
+    user_role: Optional[onenote_user_role.OnenoteUserRole] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CopyNotebookModel:
@@ -154,210 +84,6 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def id(self,) -> Optional[str]:
-        """
-        Gets the id property value. The id property
-        Returns: Optional[str]
-        """
-        return self._id
-    
-    @id.setter
-    def id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the id property value. The id property
-        Args:
-            value: Value to set for the id property.
-        """
-        self._id = value
-    
-    @property
-    def is_default(self,) -> Optional[bool]:
-        """
-        Gets the isDefault property value. The isDefault property
-        Returns: Optional[bool]
-        """
-        return self._is_default
-    
-    @is_default.setter
-    def is_default(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isDefault property value. The isDefault property
-        Args:
-            value: Value to set for the is_default property.
-        """
-        self._is_default = value
-    
-    @property
-    def is_shared(self,) -> Optional[bool]:
-        """
-        Gets the isShared property value. The isShared property
-        Returns: Optional[bool]
-        """
-        return self._is_shared
-    
-    @is_shared.setter
-    def is_shared(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isShared property value. The isShared property
-        Args:
-            value: Value to set for the is_shared property.
-        """
-        self._is_shared = value
-    
-    @property
-    def last_modified_by(self,) -> Optional[str]:
-        """
-        Gets the lastModifiedBy property value. The lastModifiedBy property
-        Returns: Optional[str]
-        """
-        return self._last_modified_by
-    
-    @last_modified_by.setter
-    def last_modified_by(self,value: Optional[str] = None) -> None:
-        """
-        Sets the lastModifiedBy property value. The lastModifiedBy property
-        Args:
-            value: Value to set for the last_modified_by property.
-        """
-        self._last_modified_by = value
-    
-    @property
-    def last_modified_by_identity(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the lastModifiedByIdentity property value. The lastModifiedByIdentity property
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._last_modified_by_identity
-    
-    @last_modified_by_identity.setter
-    def last_modified_by_identity(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the lastModifiedByIdentity property value. The lastModifiedByIdentity property
-        Args:
-            value: Value to set for the last_modified_by_identity property.
-        """
-        self._last_modified_by_identity = value
-    
-    @property
-    def last_modified_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastModifiedTime property value. The lastModifiedTime property
-        Returns: Optional[datetime]
-        """
-        return self._last_modified_time
-    
-    @last_modified_time.setter
-    def last_modified_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastModifiedTime property value. The lastModifiedTime property
-        Args:
-            value: Value to set for the last_modified_time property.
-        """
-        self._last_modified_time = value
-    
-    @property
-    def links(self,) -> Optional[notebook_links.NotebookLinks]:
-        """
-        Gets the links property value. The links property
-        Returns: Optional[notebook_links.NotebookLinks]
-        """
-        return self._links
-    
-    @links.setter
-    def links(self,value: Optional[notebook_links.NotebookLinks] = None) -> None:
-        """
-        Sets the links property value. The links property
-        Args:
-            value: Value to set for the links property.
-        """
-        self._links = value
-    
-    @property
-    def name(self,) -> Optional[str]:
-        """
-        Gets the name property value. The name property
-        Returns: Optional[str]
-        """
-        return self._name
-    
-    @name.setter
-    def name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the name property value. The name property
-        Args:
-            value: Value to set for the name property.
-        """
-        self._name = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def section_groups_url(self,) -> Optional[str]:
-        """
-        Gets the sectionGroupsUrl property value. The sectionGroupsUrl property
-        Returns: Optional[str]
-        """
-        return self._section_groups_url
-    
-    @section_groups_url.setter
-    def section_groups_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the sectionGroupsUrl property value. The sectionGroupsUrl property
-        Args:
-            value: Value to set for the section_groups_url property.
-        """
-        self._section_groups_url = value
-    
-    @property
-    def sections_url(self,) -> Optional[str]:
-        """
-        Gets the sectionsUrl property value. The sectionsUrl property
-        Returns: Optional[str]
-        """
-        return self._sections_url
-    
-    @sections_url.setter
-    def sections_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the sectionsUrl property value. The sectionsUrl property
-        Args:
-            value: Value to set for the sections_url property.
-        """
-        self._sections_url = value
-    
-    @property
-    def self(self,) -> Optional[str]:
-        """
-        Gets the self property value. The self property
-        Returns: Optional[str]
-        """
-        return self._self
-    
-    @self.setter
-    def self(self,value: Optional[str] = None) -> None:
-        """
-        Sets the self property value. The self property
-        Args:
-            value: Value to set for the self property.
-        """
-        self._self = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -383,22 +109,5 @@ class CopyNotebookModel(AdditionalDataHolder, Parsable):
         writer.write_str_value("self", self.self)
         writer.write_enum_value("userRole", self.user_role)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def user_role(self,) -> Optional[onenote_user_role.OnenoteUserRole]:
-        """
-        Gets the userRole property value. The userRole property
-        Returns: Optional[onenote_user_role.OnenoteUserRole]
-        """
-        return self._user_role
-    
-    @user_role.setter
-    def user_role(self,value: Optional[onenote_user_role.OnenoteUserRole] = None) -> None:
-        """
-        Sets the userRole property value. The userRole property
-        Args:
-            value: Value to set for the user_role property.
-        """
-        self._user_role = value
     
 

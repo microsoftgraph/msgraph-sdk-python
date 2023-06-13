@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,21 +8,17 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ManagedAppStatus(entity.Entity):
     """
     Represents app protection and configuration status for the organization.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new managedAppStatus and sets the default values.
-        """
-        super().__init__()
-        # Friendly name of the status report.
-        self._display_name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Version of the entity.
-        self._version: Optional[str] = None
+    # Friendly name of the status report.
+    display_name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Version of the entity.
+    version: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedAppStatus:
@@ -41,23 +38,6 @@ class ManagedAppStatus(entity.Entity):
 
                 return managed_app_status_raw.ManagedAppStatusRaw()
         return ManagedAppStatus()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Friendly name of the status report.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Friendly name of the status report.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -85,22 +65,5 @@ class ManagedAppStatus(entity.Entity):
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("version", self.version)
-    
-    @property
-    def version(self,) -> Optional[str]:
-        """
-        Gets the version property value. Version of the entity.
-        Returns: Optional[str]
-        """
-        return self._version
-    
-    @version.setter
-    def version(self,value: Optional[str] = None) -> None:
-        """
-        Sets the version property value. Version of the entity.
-        Args:
-            value: Value to set for the version property.
-        """
-        self._version = value
     
 

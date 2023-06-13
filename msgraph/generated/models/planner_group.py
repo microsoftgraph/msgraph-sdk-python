@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class PlannerGroup(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new plannerGroup and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Read-only. Nullable. Returns the plannerPlans owned by the group.
-        self._plans: Optional[List[planner_plan.PlannerPlan]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Read-only. Nullable. Returns the plannerPlans owned by the group.
+    plans: Optional[List[planner_plan.PlannerPlan]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerGroup:
@@ -43,23 +40,6 @@ class PlannerGroup(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def plans(self,) -> Optional[List[planner_plan.PlannerPlan]]:
-        """
-        Gets the plans property value. Read-only. Nullable. Returns the plannerPlans owned by the group.
-        Returns: Optional[List[planner_plan.PlannerPlan]]
-        """
-        return self._plans
-    
-    @plans.setter
-    def plans(self,value: Optional[List[planner_plan.PlannerPlan]] = None) -> None:
-        """
-        Sets the plans property value. Read-only. Nullable. Returns the plannerPlans owned by the group.
-        Args:
-            value: Value to set for the plans property.
-        """
-        self._plans = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

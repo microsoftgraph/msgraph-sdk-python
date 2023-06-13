@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -8,20 +9,16 @@ if TYPE_CHECKING:
 
 from .. import entity
 
+@dataclass
 class EdiscoveryCaseSettings(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ediscoveryCaseSettings and sets the default values.
-        """
-        super().__init__()
-        # The OCR (Optical Character Recognition) settings for the case.
-        self._ocr: Optional[ocr_settings.OcrSettings] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The redundancy (near duplicate and email threading) detection settings for the case.
-        self._redundancy_detection: Optional[redundancy_detection_settings.RedundancyDetectionSettings] = None
-        # The Topic Modeling (Themes) settings for the case.
-        self._topic_modeling: Optional[topic_modeling_settings.TopicModelingSettings] = None
+    # The OCR (Optical Character Recognition) settings for the case.
+    ocr: Optional[ocr_settings.OcrSettings] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The redundancy (near duplicate and email threading) detection settings for the case.
+    redundancy_detection: Optional[redundancy_detection_settings.RedundancyDetectionSettings] = None
+    # The Topic Modeling (Themes) settings for the case.
+    topic_modeling: Optional[topic_modeling_settings.TopicModelingSettings] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryCaseSettings:
@@ -52,40 +49,6 @@ class EdiscoveryCaseSettings(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def ocr(self,) -> Optional[ocr_settings.OcrSettings]:
-        """
-        Gets the ocr property value. The OCR (Optical Character Recognition) settings for the case.
-        Returns: Optional[ocr_settings.OcrSettings]
-        """
-        return self._ocr
-    
-    @ocr.setter
-    def ocr(self,value: Optional[ocr_settings.OcrSettings] = None) -> None:
-        """
-        Sets the ocr property value. The OCR (Optical Character Recognition) settings for the case.
-        Args:
-            value: Value to set for the ocr property.
-        """
-        self._ocr = value
-    
-    @property
-    def redundancy_detection(self,) -> Optional[redundancy_detection_settings.RedundancyDetectionSettings]:
-        """
-        Gets the redundancyDetection property value. The redundancy (near duplicate and email threading) detection settings for the case.
-        Returns: Optional[redundancy_detection_settings.RedundancyDetectionSettings]
-        """
-        return self._redundancy_detection
-    
-    @redundancy_detection.setter
-    def redundancy_detection(self,value: Optional[redundancy_detection_settings.RedundancyDetectionSettings] = None) -> None:
-        """
-        Sets the redundancyDetection property value. The redundancy (near duplicate and email threading) detection settings for the case.
-        Args:
-            value: Value to set for the redundancy_detection property.
-        """
-        self._redundancy_detection = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -98,22 +61,5 @@ class EdiscoveryCaseSettings(entity.Entity):
         writer.write_object_value("ocr", self.ocr)
         writer.write_object_value("redundancyDetection", self.redundancy_detection)
         writer.write_object_value("topicModeling", self.topic_modeling)
-    
-    @property
-    def topic_modeling(self,) -> Optional[topic_modeling_settings.TopicModelingSettings]:
-        """
-        Gets the topicModeling property value. The Topic Modeling (Themes) settings for the case.
-        Returns: Optional[topic_modeling_settings.TopicModelingSettings]
-        """
-        return self._topic_modeling
-    
-    @topic_modeling.setter
-    def topic_modeling(self,value: Optional[topic_modeling_settings.TopicModelingSettings] = None) -> None:
-        """
-        Sets the topicModeling property value. The Topic Modeling (Themes) settings for the case.
-        Args:
-            value: Value to set for the topic_modeling property.
-        """
-        self._topic_modeling = value
     
 

@@ -1,42 +1,23 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import win32_lob_app_file_system_rule, win32_lob_app_power_shell_script_rule, win32_lob_app_product_code_rule, win32_lob_app_registry_rule, win32_lob_app_rule_type
 
+@dataclass
 class Win32LobAppRule(AdditionalDataHolder, Parsable):
     """
     A base complex type to store the detection or requirement rule data for a Win32 LOB app.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new win32LobAppRule and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Contains rule types for Win32 LOB apps.
-        self._rule_type: Optional[win32_lob_app_rule_type.Win32LobAppRuleType] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Contains rule types for Win32 LOB apps.
+    rule_type: Optional[win32_lob_app_rule_type.Win32LobAppRuleType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Win32LobAppRule:
@@ -81,40 +62,6 @@ class Win32LobAppRule(AdditionalDataHolder, Parsable):
             "ruleType": lambda n : setattr(self, 'rule_type', n.get_enum_value(win32_lob_app_rule_type.Win32LobAppRuleType)),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def rule_type(self,) -> Optional[win32_lob_app_rule_type.Win32LobAppRuleType]:
-        """
-        Gets the ruleType property value. Contains rule types for Win32 LOB apps.
-        Returns: Optional[win32_lob_app_rule_type.Win32LobAppRuleType]
-        """
-        return self._rule_type
-    
-    @rule_type.setter
-    def rule_type(self,value: Optional[win32_lob_app_rule_type.Win32LobAppRuleType] = None) -> None:
-        """
-        Sets the ruleType property value. Contains rule types for Win32 LOB apps.
-        Args:
-            value: Value to set for the rule_type property.
-        """
-        self._rule_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

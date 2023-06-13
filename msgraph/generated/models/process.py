@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -6,108 +7,37 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from . import file_hash, process_integrity_level
 
+@dataclass
 class Process(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new process and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # User account identifier (user account context the process ran under) for example, AccountName, SID, and so on.
-        self._account_name: Optional[str] = None
-        # The full process invocation commandline including all parameters.
-        self._command_line: Optional[str] = None
-        # Time at which the process was started. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._created_date_time: Optional[datetime] = None
-        # Complex type containing file hashes (cryptographic and location-sensitive).
-        self._file_hash: Optional[file_hash.FileHash] = None
-        # The integrity level of the process. Possible values are: unknown, untrusted, low, medium, high, system.
-        self._integrity_level: Optional[process_integrity_level.ProcessIntegrityLevel] = None
-        # True if the process is elevated.
-        self._is_elevated: Optional[bool] = None
-        # The name of the process' Image file.
-        self._name: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # DateTime at which the parent process was started. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._parent_process_created_date_time: Optional[datetime] = None
-        # The Process ID (PID) of the parent process.
-        self._parent_process_id: Optional[int] = None
-        # The name of the image file of the parent process.
-        self._parent_process_name: Optional[str] = None
-        # Full path, including filename.
-        self._path: Optional[str] = None
-        # The Process ID (PID) of the process.
-        self._process_id: Optional[int] = None
-    
-    @property
-    def account_name(self,) -> Optional[str]:
-        """
-        Gets the accountName property value. User account identifier (user account context the process ran under) for example, AccountName, SID, and so on.
-        Returns: Optional[str]
-        """
-        return self._account_name
-    
-    @account_name.setter
-    def account_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the accountName property value. User account identifier (user account context the process ran under) for example, AccountName, SID, and so on.
-        Args:
-            value: Value to set for the account_name property.
-        """
-        self._account_name = value
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def command_line(self,) -> Optional[str]:
-        """
-        Gets the commandLine property value. The full process invocation commandline including all parameters.
-        Returns: Optional[str]
-        """
-        return self._command_line
-    
-    @command_line.setter
-    def command_line(self,value: Optional[str] = None) -> None:
-        """
-        Sets the commandLine property value. The full process invocation commandline including all parameters.
-        Args:
-            value: Value to set for the command_line property.
-        """
-        self._command_line = value
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. Time at which the process was started. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. Time at which the process was started. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    # User account identifier (user account context the process ran under) for example, AccountName, SID, and so on.
+    account_name: Optional[str] = None
+    # The full process invocation commandline including all parameters.
+    command_line: Optional[str] = None
+    # Time at which the process was started. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    created_date_time: Optional[datetime] = None
+    # Complex type containing file hashes (cryptographic and location-sensitive).
+    file_hash: Optional[file_hash.FileHash] = None
+    # The integrity level of the process. Possible values are: unknown, untrusted, low, medium, high, system.
+    integrity_level: Optional[process_integrity_level.ProcessIntegrityLevel] = None
+    # True if the process is elevated.
+    is_elevated: Optional[bool] = None
+    # The name of the process' Image file.
+    name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # DateTime at which the parent process was started. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    parent_process_created_date_time: Optional[datetime] = None
+    # The Process ID (PID) of the parent process.
+    parent_process_id: Optional[int] = None
+    # The name of the image file of the parent process.
+    parent_process_name: Optional[str] = None
+    # Full path, including filename.
+    path: Optional[str] = None
+    # The Process ID (PID) of the process.
+    process_id: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Process:
@@ -120,23 +50,6 @@ class Process(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Process()
-    
-    @property
-    def file_hash(self,) -> Optional[file_hash.FileHash]:
-        """
-        Gets the fileHash property value. Complex type containing file hashes (cryptographic and location-sensitive).
-        Returns: Optional[file_hash.FileHash]
-        """
-        return self._file_hash
-    
-    @file_hash.setter
-    def file_hash(self,value: Optional[file_hash.FileHash] = None) -> None:
-        """
-        Sets the fileHash property value. Complex type containing file hashes (cryptographic and location-sensitive).
-        Args:
-            value: Value to set for the file_hash property.
-        """
-        self._file_hash = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -161,159 +74,6 @@ class Process(AdditionalDataHolder, Parsable):
             "processId": lambda n : setattr(self, 'process_id', n.get_int_value()),
         }
         return fields
-    
-    @property
-    def integrity_level(self,) -> Optional[process_integrity_level.ProcessIntegrityLevel]:
-        """
-        Gets the integrityLevel property value. The integrity level of the process. Possible values are: unknown, untrusted, low, medium, high, system.
-        Returns: Optional[process_integrity_level.ProcessIntegrityLevel]
-        """
-        return self._integrity_level
-    
-    @integrity_level.setter
-    def integrity_level(self,value: Optional[process_integrity_level.ProcessIntegrityLevel] = None) -> None:
-        """
-        Sets the integrityLevel property value. The integrity level of the process. Possible values are: unknown, untrusted, low, medium, high, system.
-        Args:
-            value: Value to set for the integrity_level property.
-        """
-        self._integrity_level = value
-    
-    @property
-    def is_elevated(self,) -> Optional[bool]:
-        """
-        Gets the isElevated property value. True if the process is elevated.
-        Returns: Optional[bool]
-        """
-        return self._is_elevated
-    
-    @is_elevated.setter
-    def is_elevated(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isElevated property value. True if the process is elevated.
-        Args:
-            value: Value to set for the is_elevated property.
-        """
-        self._is_elevated = value
-    
-    @property
-    def name(self,) -> Optional[str]:
-        """
-        Gets the name property value. The name of the process' Image file.
-        Returns: Optional[str]
-        """
-        return self._name
-    
-    @name.setter
-    def name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the name property value. The name of the process' Image file.
-        Args:
-            value: Value to set for the name property.
-        """
-        self._name = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def parent_process_created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the parentProcessCreatedDateTime property value. DateTime at which the parent process was started. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        Returns: Optional[datetime]
-        """
-        return self._parent_process_created_date_time
-    
-    @parent_process_created_date_time.setter
-    def parent_process_created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the parentProcessCreatedDateTime property value. DateTime at which the parent process was started. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        Args:
-            value: Value to set for the parent_process_created_date_time property.
-        """
-        self._parent_process_created_date_time = value
-    
-    @property
-    def parent_process_id(self,) -> Optional[int]:
-        """
-        Gets the parentProcessId property value. The Process ID (PID) of the parent process.
-        Returns: Optional[int]
-        """
-        return self._parent_process_id
-    
-    @parent_process_id.setter
-    def parent_process_id(self,value: Optional[int] = None) -> None:
-        """
-        Sets the parentProcessId property value. The Process ID (PID) of the parent process.
-        Args:
-            value: Value to set for the parent_process_id property.
-        """
-        self._parent_process_id = value
-    
-    @property
-    def parent_process_name(self,) -> Optional[str]:
-        """
-        Gets the parentProcessName property value. The name of the image file of the parent process.
-        Returns: Optional[str]
-        """
-        return self._parent_process_name
-    
-    @parent_process_name.setter
-    def parent_process_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the parentProcessName property value. The name of the image file of the parent process.
-        Args:
-            value: Value to set for the parent_process_name property.
-        """
-        self._parent_process_name = value
-    
-    @property
-    def path(self,) -> Optional[str]:
-        """
-        Gets the path property value. Full path, including filename.
-        Returns: Optional[str]
-        """
-        return self._path
-    
-    @path.setter
-    def path(self,value: Optional[str] = None) -> None:
-        """
-        Sets the path property value. Full path, including filename.
-        Args:
-            value: Value to set for the path property.
-        """
-        self._path = value
-    
-    @property
-    def process_id(self,) -> Optional[int]:
-        """
-        Gets the processId property value. The Process ID (PID) of the process.
-        Returns: Optional[int]
-        """
-        return self._process_id
-    
-    @process_id.setter
-    def process_id(self,value: Optional[int] = None) -> None:
-        """
-        Sets the processId property value. The Process ID (PID) of the process.
-        Args:
-            value: Value to set for the process_id property.
-        """
-        self._process_id = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,39 +9,18 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class AttachmentBase(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new attachmentBase and sets the default values.
-        """
-        super().__init__()
-        # The MIME type.
-        self._content_type: Optional[str] = None
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._last_modified_date_time: Optional[datetime] = None
-        # The display name of the attachment. This does not need to be the actual file name.
-        self._name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The length of the attachment in bytes.
-        self._size: Optional[int] = None
-    
-    @property
-    def content_type(self,) -> Optional[str]:
-        """
-        Gets the contentType property value. The MIME type.
-        Returns: Optional[str]
-        """
-        return self._content_type
-    
-    @content_type.setter
-    def content_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the contentType property value. The MIME type.
-        Args:
-            value: Value to set for the content_type property.
-        """
-        self._content_type = value
+    # The MIME type.
+    content_type: Optional[str] = None
+    # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    last_modified_date_time: Optional[datetime] = None
+    # The display name of the attachment. This does not need to be the actual file name.
+    name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The length of the attachment in bytes.
+    size: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttachmentBase:
@@ -78,40 +58,6 @@ class AttachmentBase(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def last_modified_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        Returns: Optional[datetime]
-        """
-        return self._last_modified_date_time
-    
-    @last_modified_date_time.setter
-    def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastModifiedDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        Args:
-            value: Value to set for the last_modified_date_time property.
-        """
-        self._last_modified_date_time = value
-    
-    @property
-    def name(self,) -> Optional[str]:
-        """
-        Gets the name property value. The display name of the attachment. This does not need to be the actual file name.
-        Returns: Optional[str]
-        """
-        return self._name
-    
-    @name.setter
-    def name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the name property value. The display name of the attachment. This does not need to be the actual file name.
-        Args:
-            value: Value to set for the name property.
-        """
-        self._name = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -125,22 +71,5 @@ class AttachmentBase(entity.Entity):
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("name", self.name)
         writer.write_int_value("size", self.size)
-    
-    @property
-    def size(self,) -> Optional[int]:
-        """
-        Gets the size property value. The length of the attachment in bytes.
-        Returns: Optional[int]
-        """
-        return self._size
-    
-    @size.setter
-    def size(self,value: Optional[int] = None) -> None:
-        """
-        Sets the size property value. The length of the attachment in bytes.
-        Args:
-            value: Value to set for the size property.
-        """
-        self._size = value
     
 

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -9,64 +10,26 @@ if TYPE_CHECKING:
 
 from .. import entity
 
+@dataclass
 class Set(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new set and sets the default values.
-        """
-        super().__init__()
-        # Children terms of set in term [store].
-        self._children: Optional[List[term.Term]] = None
-        # Date and time of set creation. Read-only.
-        self._created_date_time: Optional[datetime] = None
-        # Description that gives details on the term usage.
-        self._description: Optional[str] = None
-        # Name of the set for each languageTag.
-        self._localized_names: Optional[List[localized_name.LocalizedName]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The parentGroup property
-        self._parent_group: Optional[group.Group] = None
-        # Custom properties for the set.
-        self._properties: Optional[List[key_value.KeyValue]] = None
-        # Indicates which terms have been pinned or reused directly under the set.
-        self._relations: Optional[List[relation.Relation]] = None
-        # All the terms under the set.
-        self._terms: Optional[List[term.Term]] = None
-    
-    @property
-    def children(self,) -> Optional[List[term.Term]]:
-        """
-        Gets the children property value. Children terms of set in term [store].
-        Returns: Optional[List[term.Term]]
-        """
-        return self._children
-    
-    @children.setter
-    def children(self,value: Optional[List[term.Term]] = None) -> None:
-        """
-        Sets the children property value. Children terms of set in term [store].
-        Args:
-            value: Value to set for the children property.
-        """
-        self._children = value
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. Date and time of set creation. Read-only.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. Date and time of set creation. Read-only.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    # Children terms of set in term [store].
+    children: Optional[List[term.Term]] = None
+    # Date and time of set creation. Read-only.
+    created_date_time: Optional[datetime] = None
+    # Description that gives details on the term usage.
+    description: Optional[str] = None
+    # Name of the set for each languageTag.
+    localized_names: Optional[List[localized_name.LocalizedName]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The parentGroup property
+    parent_group: Optional[group.Group] = None
+    # Custom properties for the set.
+    properties: Optional[List[key_value.KeyValue]] = None
+    # Indicates which terms have been pinned or reused directly under the set.
+    relations: Optional[List[relation.Relation]] = None
+    # All the terms under the set.
+    terms: Optional[List[term.Term]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Set:
@@ -79,23 +42,6 @@ class Set(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Set()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. Description that gives details on the term usage.
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. Description that gives details on the term usage.
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -119,74 +65,6 @@ class Set(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def localized_names(self,) -> Optional[List[localized_name.LocalizedName]]:
-        """
-        Gets the localizedNames property value. Name of the set for each languageTag.
-        Returns: Optional[List[localized_name.LocalizedName]]
-        """
-        return self._localized_names
-    
-    @localized_names.setter
-    def localized_names(self,value: Optional[List[localized_name.LocalizedName]] = None) -> None:
-        """
-        Sets the localizedNames property value. Name of the set for each languageTag.
-        Args:
-            value: Value to set for the localized_names property.
-        """
-        self._localized_names = value
-    
-    @property
-    def parent_group(self,) -> Optional[group.Group]:
-        """
-        Gets the parentGroup property value. The parentGroup property
-        Returns: Optional[group.Group]
-        """
-        return self._parent_group
-    
-    @parent_group.setter
-    def parent_group(self,value: Optional[group.Group] = None) -> None:
-        """
-        Sets the parentGroup property value. The parentGroup property
-        Args:
-            value: Value to set for the parent_group property.
-        """
-        self._parent_group = value
-    
-    @property
-    def properties(self,) -> Optional[List[key_value.KeyValue]]:
-        """
-        Gets the properties property value. Custom properties for the set.
-        Returns: Optional[List[key_value.KeyValue]]
-        """
-        return self._properties
-    
-    @properties.setter
-    def properties(self,value: Optional[List[key_value.KeyValue]] = None) -> None:
-        """
-        Sets the properties property value. Custom properties for the set.
-        Args:
-            value: Value to set for the properties property.
-        """
-        self._properties = value
-    
-    @property
-    def relations(self,) -> Optional[List[relation.Relation]]:
-        """
-        Gets the relations property value. Indicates which terms have been pinned or reused directly under the set.
-        Returns: Optional[List[relation.Relation]]
-        """
-        return self._relations
-    
-    @relations.setter
-    def relations(self,value: Optional[List[relation.Relation]] = None) -> None:
-        """
-        Sets the relations property value. Indicates which terms have been pinned or reused directly under the set.
-        Args:
-            value: Value to set for the relations property.
-        """
-        self._relations = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -204,22 +82,5 @@ class Set(entity.Entity):
         writer.write_collection_of_object_values("properties", self.properties)
         writer.write_collection_of_object_values("relations", self.relations)
         writer.write_collection_of_object_values("terms", self.terms)
-    
-    @property
-    def terms(self,) -> Optional[List[term.Term]]:
-        """
-        Gets the terms property value. All the terms under the set.
-        Returns: Optional[List[term.Term]]
-        """
-        return self._terms
-    
-    @terms.setter
-    def terms(self,value: Optional[List[term.Term]] = None) -> None:
-        """
-        Sets the terms property value. All the terms under the set.
-        Args:
-            value: Value to set for the terms property.
-        """
-        self._terms = value
     
 

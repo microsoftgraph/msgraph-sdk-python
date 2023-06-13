@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,26 +9,22 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class DirectoryDefinition(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new directoryDefinition and sets the default values.
-        """
-        super().__init__()
-        # The discoverabilities property
-        self._discoverabilities: Optional[directory_definition_discoverabilities.DirectoryDefinitionDiscoverabilities] = None
-        # The discoveryDateTime property
-        self._discovery_date_time: Optional[datetime] = None
-        # The name property
-        self._name: Optional[str] = None
-        # The objects property
-        self._objects: Optional[List[object_definition.ObjectDefinition]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The readOnly property
-        self._read_only: Optional[bool] = None
-        # The version property
-        self._version: Optional[str] = None
+    # The discoverabilities property
+    discoverabilities: Optional[directory_definition_discoverabilities.DirectoryDefinitionDiscoverabilities] = None
+    # The discoveryDateTime property
+    discovery_date_time: Optional[datetime] = None
+    # The name property
+    name: Optional[str] = None
+    # The objects property
+    objects: Optional[List[object_definition.ObjectDefinition]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The readOnly property
+    read_only: Optional[bool] = None
+    # The version property
+    version: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DirectoryDefinition:
@@ -40,40 +37,6 @@ class DirectoryDefinition(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DirectoryDefinition()
-    
-    @property
-    def discoverabilities(self,) -> Optional[directory_definition_discoverabilities.DirectoryDefinitionDiscoverabilities]:
-        """
-        Gets the discoverabilities property value. The discoverabilities property
-        Returns: Optional[directory_definition_discoverabilities.DirectoryDefinitionDiscoverabilities]
-        """
-        return self._discoverabilities
-    
-    @discoverabilities.setter
-    def discoverabilities(self,value: Optional[directory_definition_discoverabilities.DirectoryDefinitionDiscoverabilities] = None) -> None:
-        """
-        Sets the discoverabilities property value. The discoverabilities property
-        Args:
-            value: Value to set for the discoverabilities property.
-        """
-        self._discoverabilities = value
-    
-    @property
-    def discovery_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the discoveryDateTime property value. The discoveryDateTime property
-        Returns: Optional[datetime]
-        """
-        return self._discovery_date_time
-    
-    @discovery_date_time.setter
-    def discovery_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the discoveryDateTime property value. The discoveryDateTime property
-        Args:
-            value: Value to set for the discovery_date_time property.
-        """
-        self._discovery_date_time = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -94,57 +57,6 @@ class DirectoryDefinition(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def name(self,) -> Optional[str]:
-        """
-        Gets the name property value. The name property
-        Returns: Optional[str]
-        """
-        return self._name
-    
-    @name.setter
-    def name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the name property value. The name property
-        Args:
-            value: Value to set for the name property.
-        """
-        self._name = value
-    
-    @property
-    def objects(self,) -> Optional[List[object_definition.ObjectDefinition]]:
-        """
-        Gets the objects property value. The objects property
-        Returns: Optional[List[object_definition.ObjectDefinition]]
-        """
-        return self._objects
-    
-    @objects.setter
-    def objects(self,value: Optional[List[object_definition.ObjectDefinition]] = None) -> None:
-        """
-        Sets the objects property value. The objects property
-        Args:
-            value: Value to set for the objects property.
-        """
-        self._objects = value
-    
-    @property
-    def read_only(self,) -> Optional[bool]:
-        """
-        Gets the readOnly property value. The readOnly property
-        Returns: Optional[bool]
-        """
-        return self._read_only
-    
-    @read_only.setter
-    def read_only(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the readOnly property value. The readOnly property
-        Args:
-            value: Value to set for the read_only property.
-        """
-        self._read_only = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -160,22 +72,5 @@ class DirectoryDefinition(entity.Entity):
         writer.write_collection_of_object_values("objects", self.objects)
         writer.write_bool_value("readOnly", self.read_only)
         writer.write_str_value("version", self.version)
-    
-    @property
-    def version(self,) -> Optional[str]:
-        """
-        Gets the version property value. The version property
-        Returns: Optional[str]
-        """
-        return self._version
-    
-    @version.setter
-    def version(self,value: Optional[str] = None) -> None:
-        """
-        Sets the version property value. The version property
-        Args:
-            value: Value to set for the version property.
-        """
-        self._version = value
     
 

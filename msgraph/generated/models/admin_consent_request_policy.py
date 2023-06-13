@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,26 +8,22 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class AdminConsentRequestPolicy(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new adminConsentRequestPolicy and sets the default values.
-        """
-        super().__init__()
-        # Specifies whether the admin consent request feature is enabled or disabled. Required.
-        self._is_enabled: Optional[bool] = None
-        # Specifies whether reviewers will receive notifications. Required.
-        self._notify_reviewers: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Specifies whether reviewers will receive reminder emails. Required.
-        self._reminders_enabled: Optional[bool] = None
-        # Specifies the duration the request is active before it automatically expires if no decision is applied.
-        self._request_duration_in_days: Optional[int] = None
-        # The list of reviewers for the admin consent. Required.
-        self._reviewers: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None
-        # Specifies the version of this policy. When the policy is updated, this version is updated. Read-only.
-        self._version: Optional[int] = None
+    # Specifies whether the admin consent request feature is enabled or disabled. Required.
+    is_enabled: Optional[bool] = None
+    # Specifies whether reviewers will receive notifications. Required.
+    notify_reviewers: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Specifies whether reviewers will receive reminder emails. Required.
+    reminders_enabled: Optional[bool] = None
+    # Specifies the duration the request is active before it automatically expires if no decision is applied.
+    request_duration_in_days: Optional[int] = None
+    # The list of reviewers for the admin consent. Required.
+    reviewers: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None
+    # Specifies the version of this policy. When the policy is updated, this version is updated. Read-only.
+    version: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AdminConsentRequestPolicy:
@@ -59,91 +56,6 @@ class AdminConsentRequestPolicy(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def is_enabled(self,) -> Optional[bool]:
-        """
-        Gets the isEnabled property value. Specifies whether the admin consent request feature is enabled or disabled. Required.
-        Returns: Optional[bool]
-        """
-        return self._is_enabled
-    
-    @is_enabled.setter
-    def is_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isEnabled property value. Specifies whether the admin consent request feature is enabled or disabled. Required.
-        Args:
-            value: Value to set for the is_enabled property.
-        """
-        self._is_enabled = value
-    
-    @property
-    def notify_reviewers(self,) -> Optional[bool]:
-        """
-        Gets the notifyReviewers property value. Specifies whether reviewers will receive notifications. Required.
-        Returns: Optional[bool]
-        """
-        return self._notify_reviewers
-    
-    @notify_reviewers.setter
-    def notify_reviewers(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the notifyReviewers property value. Specifies whether reviewers will receive notifications. Required.
-        Args:
-            value: Value to set for the notify_reviewers property.
-        """
-        self._notify_reviewers = value
-    
-    @property
-    def reminders_enabled(self,) -> Optional[bool]:
-        """
-        Gets the remindersEnabled property value. Specifies whether reviewers will receive reminder emails. Required.
-        Returns: Optional[bool]
-        """
-        return self._reminders_enabled
-    
-    @reminders_enabled.setter
-    def reminders_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the remindersEnabled property value. Specifies whether reviewers will receive reminder emails. Required.
-        Args:
-            value: Value to set for the reminders_enabled property.
-        """
-        self._reminders_enabled = value
-    
-    @property
-    def request_duration_in_days(self,) -> Optional[int]:
-        """
-        Gets the requestDurationInDays property value. Specifies the duration the request is active before it automatically expires if no decision is applied.
-        Returns: Optional[int]
-        """
-        return self._request_duration_in_days
-    
-    @request_duration_in_days.setter
-    def request_duration_in_days(self,value: Optional[int] = None) -> None:
-        """
-        Sets the requestDurationInDays property value. Specifies the duration the request is active before it automatically expires if no decision is applied.
-        Args:
-            value: Value to set for the request_duration_in_days property.
-        """
-        self._request_duration_in_days = value
-    
-    @property
-    def reviewers(self,) -> Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]]:
-        """
-        Gets the reviewers property value. The list of reviewers for the admin consent. Required.
-        Returns: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]]
-        """
-        return self._reviewers
-    
-    @reviewers.setter
-    def reviewers(self,value: Optional[List[access_review_reviewer_scope.AccessReviewReviewerScope]] = None) -> None:
-        """
-        Sets the reviewers property value. The list of reviewers for the admin consent. Required.
-        Args:
-            value: Value to set for the reviewers property.
-        """
-        self._reviewers = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -159,22 +71,5 @@ class AdminConsentRequestPolicy(entity.Entity):
         writer.write_int_value("requestDurationInDays", self.request_duration_in_days)
         writer.write_collection_of_object_values("reviewers", self.reviewers)
         writer.write_int_value("version", self.version)
-    
-    @property
-    def version(self,) -> Optional[int]:
-        """
-        Gets the version property value. Specifies the version of this policy. When the policy is updated, this version is updated. Read-only.
-        Returns: Optional[int]
-        """
-        return self._version
-    
-    @version.setter
-    def version(self,value: Optional[int] = None) -> None:
-        """
-        Sets the version property value. Specifies the version of this policy. When the policy is updated, this version is updated. Read-only.
-        Args:
-            value: Value to set for the version property.
-        """
-        self._version = value
     
 

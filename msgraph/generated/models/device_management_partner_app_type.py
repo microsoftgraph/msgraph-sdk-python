@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DeviceManagementPartnerAppType(Enum):
+class DeviceManagementPartnerAppType(str, Enum):
     # Partner App type is unknown.
     Unknown = "unknown",
     # Partner App is Single tenant in AAD.

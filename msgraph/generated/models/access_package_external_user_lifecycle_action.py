@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AccessPackageExternalUserLifecycleAction(Enum):
+class AccessPackageExternalUserLifecycleAction(str, Enum):
     None_ = "none",
     BlockSignIn = "blockSignIn",
     BlockSignInAndDelete = "blockSignInAndDelete",

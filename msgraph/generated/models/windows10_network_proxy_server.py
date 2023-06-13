@@ -1,60 +1,24 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class Windows10NetworkProxyServer(AdditionalDataHolder, Parsable):
     """
     Network Proxy Server Policy.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new windows10NetworkProxyServer and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Address to the proxy server. Specify an address in the format [':']
-        self._address: Optional[str] = None
-        # Addresses that should not use the proxy server. The system will not use the proxy server for addresses beginning with what is specified in this node.
-        self._exceptions: Optional[List[str]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Specifies whether the proxy server should be used for local (intranet) addresses.
-        self._use_for_local_addresses: Optional[bool] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def address(self,) -> Optional[str]:
-        """
-        Gets the address property value. Address to the proxy server. Specify an address in the format [':']
-        Returns: Optional[str]
-        """
-        return self._address
-    
-    @address.setter
-    def address(self,value: Optional[str] = None) -> None:
-        """
-        Sets the address property value. Address to the proxy server. Specify an address in the format [':']
-        Args:
-            value: Value to set for the address property.
-        """
-        self._address = value
+    # Address to the proxy server. Specify an address in the format [':']
+    address: Optional[str] = None
+    # Addresses that should not use the proxy server. The system will not use the proxy server for addresses beginning with what is specified in this node.
+    exceptions: Optional[List[str]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Specifies whether the proxy server should be used for local (intranet) addresses.
+    use_for_local_addresses: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10NetworkProxyServer:
@@ -67,23 +31,6 @@ class Windows10NetworkProxyServer(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Windows10NetworkProxyServer()
-    
-    @property
-    def exceptions(self,) -> Optional[List[str]]:
-        """
-        Gets the exceptions property value. Addresses that should not use the proxy server. The system will not use the proxy server for addresses beginning with what is specified in this node.
-        Returns: Optional[List[str]]
-        """
-        return self._exceptions
-    
-    @exceptions.setter
-    def exceptions(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the exceptions property value. Addresses that should not use the proxy server. The system will not use the proxy server for addresses beginning with what is specified in this node.
-        Args:
-            value: Value to set for the exceptions property.
-        """
-        self._exceptions = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -98,23 +45,6 @@ class Windows10NetworkProxyServer(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -128,22 +58,5 @@ class Windows10NetworkProxyServer(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("useForLocalAddresses", self.use_for_local_addresses)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def use_for_local_addresses(self,) -> Optional[bool]:
-        """
-        Gets the useForLocalAddresses property value. Specifies whether the proxy server should be used for local (intranet) addresses.
-        Returns: Optional[bool]
-        """
-        return self._use_for_local_addresses
-    
-    @use_for_local_addresses.setter
-    def use_for_local_addresses(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the useForLocalAddresses property value. Specifies whether the proxy server should be used for local (intranet) addresses.
-        Args:
-            value: Value to set for the use_for_local_addresses property.
-        """
-        self._use_for_local_addresses = value
     
 

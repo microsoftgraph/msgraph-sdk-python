@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import authentication_method
 
+@dataclass
 class EmailAuthenticationMethod(authentication_method.AuthenticationMethod):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EmailAuthenticationMethod and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.emailAuthenticationMethod"
-        # The email address registered to this user.
-        self._email_address: Optional[str] = None
+    odata_type = "#microsoft.graph.emailAuthenticationMethod"
+    # The email address registered to this user.
+    email_address: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EmailAuthenticationMethod:
@@ -28,23 +25,6 @@ class EmailAuthenticationMethod(authentication_method.AuthenticationMethod):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return EmailAuthenticationMethod()
-    
-    @property
-    def email_address(self,) -> Optional[str]:
-        """
-        Gets the emailAddress property value. The email address registered to this user.
-        Returns: Optional[str]
-        """
-        return self._email_address
-    
-    @email_address.setter
-    def email_address(self,value: Optional[str] = None) -> None:
-        """
-        Sets the emailAddress property value. The email address registered to this user.
-        Args:
-            value: Value to set for the email_address property.
-        """
-        self._email_address = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,34 +8,13 @@ if TYPE_CHECKING:
 
 from . import unified_role_management_policy_rule
 
+@dataclass
 class UnifiedRoleManagementPolicyAuthenticationContextRule(unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new UnifiedRoleManagementPolicyAuthenticationContextRule and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.unifiedRoleManagementPolicyAuthenticationContextRule"
-        # The value of the authentication context claim.
-        self._claim_value: Optional[str] = None
-        # Whether this rule is enabled.
-        self._is_enabled: Optional[bool] = None
-    
-    @property
-    def claim_value(self,) -> Optional[str]:
-        """
-        Gets the claimValue property value. The value of the authentication context claim.
-        Returns: Optional[str]
-        """
-        return self._claim_value
-    
-    @claim_value.setter
-    def claim_value(self,value: Optional[str] = None) -> None:
-        """
-        Sets the claimValue property value. The value of the authentication context claim.
-        Args:
-            value: Value to set for the claim_value property.
-        """
-        self._claim_value = value
+    odata_type = "#microsoft.graph.unifiedRoleManagementPolicyAuthenticationContextRule"
+    # The value of the authentication context claim.
+    claim_value: Optional[str] = None
+    # Whether this rule is enabled.
+    is_enabled: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleManagementPolicyAuthenticationContextRule:
@@ -62,23 +42,6 @@ class UnifiedRoleManagementPolicyAuthenticationContextRule(unified_role_manageme
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def is_enabled(self,) -> Optional[bool]:
-        """
-        Gets the isEnabled property value. Whether this rule is enabled.
-        Returns: Optional[bool]
-        """
-        return self._is_enabled
-    
-    @is_enabled.setter
-    def is_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isEnabled property value. Whether this rule is enabled.
-        Args:
-            value: Value to set for the is_enabled property.
-        """
-        self._is_enabled = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

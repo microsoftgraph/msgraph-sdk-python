@@ -1,6 +1,6 @@
 from enum import Enum
 
-class CallTranscriptionState(Enum):
+class CallTranscriptionState(str, Enum):
     NotStarted = "notStarted",
     Active = "active",
     Inactive = "inactive",

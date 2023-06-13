@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,17 +9,13 @@ if TYPE_CHECKING:
 
 from . import event_message_detail
 
+@dataclass
 class MessagePinnedEventMessageDetail(event_message_detail.EventMessageDetail):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new MessagePinnedEventMessageDetail and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.messagePinnedEventMessageDetail"
-        # Date and time when the event occurred.
-        self._event_date_time: Optional[datetime] = None
-        # Initiator of the event.
-        self._initiator: Optional[identity_set.IdentitySet] = None
+    odata_type = "#microsoft.graph.messagePinnedEventMessageDetail"
+    # Date and time when the event occurred.
+    event_date_time: Optional[datetime] = None
+    # Initiator of the event.
+    initiator: Optional[identity_set.IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MessagePinnedEventMessageDetail:
@@ -31,23 +28,6 @@ class MessagePinnedEventMessageDetail(event_message_detail.EventMessageDetail):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return MessagePinnedEventMessageDetail()
-    
-    @property
-    def event_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the eventDateTime property value. Date and time when the event occurred.
-        Returns: Optional[datetime]
-        """
-        return self._event_date_time
-    
-    @event_date_time.setter
-    def event_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the eventDateTime property value. Date and time when the event occurred.
-        Args:
-            value: Value to set for the event_date_time property.
-        """
-        self._event_date_time = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -63,23 +43,6 @@ class MessagePinnedEventMessageDetail(event_message_detail.EventMessageDetail):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def initiator(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the initiator property value. Initiator of the event.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._initiator
-    
-    @initiator.setter
-    def initiator(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the initiator property value. Initiator of the event.
-        Args:
-            value: Value to set for the initiator property.
-        """
-        self._initiator = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

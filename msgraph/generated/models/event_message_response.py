@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import event_message
 
+@dataclass
 class EventMessageResponse(event_message.EventMessage):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EventMessageResponse and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.eventMessageResponse"
-        # The proposedNewTime property
-        self._proposed_new_time: Optional[time_slot.TimeSlot] = None
-        # The responseType property
-        self._response_type: Optional[response_type.ResponseType] = None
+    odata_type = "#microsoft.graph.eventMessageResponse"
+    # The proposedNewTime property
+    proposed_new_time: Optional[time_slot.TimeSlot] = None
+    # The responseType property
+    response_type: Optional[response_type.ResponseType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EventMessageResponse:
@@ -45,40 +42,6 @@ class EventMessageResponse(event_message.EventMessage):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def proposed_new_time(self,) -> Optional[time_slot.TimeSlot]:
-        """
-        Gets the proposedNewTime property value. The proposedNewTime property
-        Returns: Optional[time_slot.TimeSlot]
-        """
-        return self._proposed_new_time
-    
-    @proposed_new_time.setter
-    def proposed_new_time(self,value: Optional[time_slot.TimeSlot] = None) -> None:
-        """
-        Sets the proposedNewTime property value. The proposedNewTime property
-        Args:
-            value: Value to set for the proposed_new_time property.
-        """
-        self._proposed_new_time = value
-    
-    @property
-    def response_type(self,) -> Optional[response_type.ResponseType]:
-        """
-        Gets the responseType property value. The responseType property
-        Returns: Optional[response_type.ResponseType]
-        """
-        return self._response_type
-    
-    @response_type.setter
-    def response_type(self,value: Optional[response_type.ResponseType] = None) -> None:
-        """
-        Sets the responseType property value. The responseType property
-        Args:
-            value: Value to set for the response_type property.
-        """
-        self._response_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

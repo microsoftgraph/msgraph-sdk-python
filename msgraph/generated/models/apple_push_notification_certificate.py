@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,115 +9,26 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ApplePushNotificationCertificate(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new applePushNotificationCertificate and sets the default values.
-        """
-        super().__init__()
-        # Apple Id of the account used to create the MDM push certificate.
-        self._apple_identifier: Optional[str] = None
-        # Not yet documented
-        self._certificate: Optional[str] = None
-        # Certificate serial number. This property is read-only.
-        self._certificate_serial_number: Optional[str] = None
-        # The reason the certificate upload failed.
-        self._certificate_upload_failure_reason: Optional[str] = None
-        # The certificate upload status.
-        self._certificate_upload_status: Optional[str] = None
-        # The expiration date and time for Apple push notification certificate.
-        self._expiration_date_time: Optional[datetime] = None
-        # Last modified date and time for Apple push notification certificate.
-        self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Topic Id.
-        self._topic_identifier: Optional[str] = None
-    
-    @property
-    def apple_identifier(self,) -> Optional[str]:
-        """
-        Gets the appleIdentifier property value. Apple Id of the account used to create the MDM push certificate.
-        Returns: Optional[str]
-        """
-        return self._apple_identifier
-    
-    @apple_identifier.setter
-    def apple_identifier(self,value: Optional[str] = None) -> None:
-        """
-        Sets the appleIdentifier property value. Apple Id of the account used to create the MDM push certificate.
-        Args:
-            value: Value to set for the apple_identifier property.
-        """
-        self._apple_identifier = value
-    
-    @property
-    def certificate(self,) -> Optional[str]:
-        """
-        Gets the certificate property value. Not yet documented
-        Returns: Optional[str]
-        """
-        return self._certificate
-    
-    @certificate.setter
-    def certificate(self,value: Optional[str] = None) -> None:
-        """
-        Sets the certificate property value. Not yet documented
-        Args:
-            value: Value to set for the certificate property.
-        """
-        self._certificate = value
-    
-    @property
-    def certificate_serial_number(self,) -> Optional[str]:
-        """
-        Gets the certificateSerialNumber property value. Certificate serial number. This property is read-only.
-        Returns: Optional[str]
-        """
-        return self._certificate_serial_number
-    
-    @certificate_serial_number.setter
-    def certificate_serial_number(self,value: Optional[str] = None) -> None:
-        """
-        Sets the certificateSerialNumber property value. Certificate serial number. This property is read-only.
-        Args:
-            value: Value to set for the certificate_serial_number property.
-        """
-        self._certificate_serial_number = value
-    
-    @property
-    def certificate_upload_failure_reason(self,) -> Optional[str]:
-        """
-        Gets the certificateUploadFailureReason property value. The reason the certificate upload failed.
-        Returns: Optional[str]
-        """
-        return self._certificate_upload_failure_reason
-    
-    @certificate_upload_failure_reason.setter
-    def certificate_upload_failure_reason(self,value: Optional[str] = None) -> None:
-        """
-        Sets the certificateUploadFailureReason property value. The reason the certificate upload failed.
-        Args:
-            value: Value to set for the certificate_upload_failure_reason property.
-        """
-        self._certificate_upload_failure_reason = value
-    
-    @property
-    def certificate_upload_status(self,) -> Optional[str]:
-        """
-        Gets the certificateUploadStatus property value. The certificate upload status.
-        Returns: Optional[str]
-        """
-        return self._certificate_upload_status
-    
-    @certificate_upload_status.setter
-    def certificate_upload_status(self,value: Optional[str] = None) -> None:
-        """
-        Sets the certificateUploadStatus property value. The certificate upload status.
-        Args:
-            value: Value to set for the certificate_upload_status property.
-        """
-        self._certificate_upload_status = value
+    # Apple Id of the account used to create the MDM push certificate.
+    apple_identifier: Optional[str] = None
+    # Not yet documented
+    certificate: Optional[str] = None
+    # Certificate serial number. This property is read-only.
+    certificate_serial_number: Optional[str] = None
+    # The reason the certificate upload failed.
+    certificate_upload_failure_reason: Optional[str] = None
+    # The certificate upload status.
+    certificate_upload_status: Optional[str] = None
+    # The expiration date and time for Apple push notification certificate.
+    expiration_date_time: Optional[datetime] = None
+    # Last modified date and time for Apple push notification certificate.
+    last_modified_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Topic Id.
+    topic_identifier: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApplePushNotificationCertificate:
@@ -129,23 +41,6 @@ class ApplePushNotificationCertificate(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ApplePushNotificationCertificate()
-    
-    @property
-    def expiration_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the expirationDateTime property value. The expiration date and time for Apple push notification certificate.
-        Returns: Optional[datetime]
-        """
-        return self._expiration_date_time
-    
-    @expiration_date_time.setter
-    def expiration_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the expirationDateTime property value. The expiration date and time for Apple push notification certificate.
-        Args:
-            value: Value to set for the expiration_date_time property.
-        """
-        self._expiration_date_time = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -168,23 +63,6 @@ class ApplePushNotificationCertificate(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def last_modified_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastModifiedDateTime property value. Last modified date and time for Apple push notification certificate.
-        Returns: Optional[datetime]
-        """
-        return self._last_modified_date_time
-    
-    @last_modified_date_time.setter
-    def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastModifiedDateTime property value. Last modified date and time for Apple push notification certificate.
-        Args:
-            value: Value to set for the last_modified_date_time property.
-        """
-        self._last_modified_date_time = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -201,22 +79,5 @@ class ApplePushNotificationCertificate(entity.Entity):
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_str_value("topicIdentifier", self.topic_identifier)
-    
-    @property
-    def topic_identifier(self,) -> Optional[str]:
-        """
-        Gets the topicIdentifier property value. Topic Id.
-        Returns: Optional[str]
-        """
-        return self._topic_identifier
-    
-    @topic_identifier.setter
-    def topic_identifier(self,value: Optional[str] = None) -> None:
-        """
-        Sets the topicIdentifier property value. Topic Id.
-        Args:
-            value: Value to set for the topic_identifier property.
-        """
-        self._topic_identifier = value
     
 

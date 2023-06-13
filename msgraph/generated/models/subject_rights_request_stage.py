@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SubjectRightsRequestStage(Enum):
+class SubjectRightsRequestStage(str, Enum):
     ContentRetrieval = "contentRetrieval",
     ContentReview = "contentReview",
     GenerateReport = "generateReport",

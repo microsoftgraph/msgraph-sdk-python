@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SearchAlterationType(Enum):
+class SearchAlterationType(str, Enum):
     Suggestion = "suggestion",
     Modification = "modification",
     UnknownFutureValue = "unknownFutureValue",

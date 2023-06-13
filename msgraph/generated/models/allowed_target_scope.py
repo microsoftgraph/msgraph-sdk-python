@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AllowedTargetScope(Enum):
+class AllowedTargetScope(str, Enum):
     NotSpecified = "notSpecified",
     SpecificDirectoryUsers = "specificDirectoryUsers",
     SpecificConnectedOrganizationUsers = "specificConnectedOrganizationUsers",

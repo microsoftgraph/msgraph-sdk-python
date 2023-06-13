@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import api_authentication_configuration_base
 
+@dataclass
 class ClientCertificateAuthentication(api_authentication_configuration_base.ApiAuthenticationConfigurationBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ClientCertificateAuthentication and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.clientCertificateAuthentication"
-        # The list of certificates uploaded for this API connector.
-        self._certificate_list: Optional[List[pkcs12_certificate_information.Pkcs12CertificateInformation]] = None
-    
-    @property
-    def certificate_list(self,) -> Optional[List[pkcs12_certificate_information.Pkcs12CertificateInformation]]:
-        """
-        Gets the certificateList property value. The list of certificates uploaded for this API connector.
-        Returns: Optional[List[pkcs12_certificate_information.Pkcs12CertificateInformation]]
-        """
-        return self._certificate_list
-    
-    @certificate_list.setter
-    def certificate_list(self,value: Optional[List[pkcs12_certificate_information.Pkcs12CertificateInformation]] = None) -> None:
-        """
-        Sets the certificateList property value. The list of certificates uploaded for this API connector.
-        Args:
-            value: Value to set for the certificate_list property.
-        """
-        self._certificate_list = value
+    odata_type = "#microsoft.graph.clientCertificateAuthentication"
+    # The list of certificates uploaded for this API connector.
+    certificate_list: Optional[List[pkcs12_certificate_information.Pkcs12CertificateInformation]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ClientCertificateAuthentication:

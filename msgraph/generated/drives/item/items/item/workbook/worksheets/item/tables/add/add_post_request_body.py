@@ -1,53 +1,17 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class AddPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new addPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The address property
-        self._address: Optional[str] = None
-        # The hasHeaders property
-        self._has_headers: Optional[bool] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def address(self,) -> Optional[str]:
-        """
-        Gets the address property value. The address property
-        Returns: Optional[str]
-        """
-        return self._address
-    
-    @address.setter
-    def address(self,value: Optional[str] = None) -> None:
-        """
-        Sets the address property value. The address property
-        Args:
-            value: Value to set for the address property.
-        """
-        self._address = value
+    # The address property
+    address: Optional[str] = None
+    # The hasHeaders property
+    has_headers: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddPostRequestBody:
@@ -71,23 +35,6 @@ class AddPostRequestBody(AdditionalDataHolder, Parsable):
             "hasHeaders": lambda n : setattr(self, 'has_headers', n.get_bool_value()),
         }
         return fields
-    
-    @property
-    def has_headers(self,) -> Optional[bool]:
-        """
-        Gets the hasHeaders property value. The hasHeaders property
-        Returns: Optional[bool]
-        """
-        return self._has_headers
-    
-    @has_headers.setter
-    def has_headers(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the hasHeaders property value. The hasHeaders property
-        Args:
-            value: Value to set for the has_headers property.
-        """
-        self._has_headers = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

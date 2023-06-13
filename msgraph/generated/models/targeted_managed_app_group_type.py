@@ -1,6 +1,6 @@
 from enum import Enum
 
-class TargetedManagedAppGroupType(Enum):
+class TargetedManagedAppGroupType(str, Enum):
     # Target the collection of apps manually selected by the admin.
     SelectedPublicApps = "selectedPublicApps",
     # Target the core set of Microsoft apps (Office, Edge, etc).

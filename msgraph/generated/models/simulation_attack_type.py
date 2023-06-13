@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SimulationAttackType(Enum):
+class SimulationAttackType(str, Enum):
     Unknown = "unknown",
     Social = "social",
     Cloud = "cloud",

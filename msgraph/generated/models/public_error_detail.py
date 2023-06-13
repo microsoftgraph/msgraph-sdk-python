@@ -1,57 +1,21 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class PublicErrorDetail(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new publicErrorDetail and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The error code.
-        self._code: Optional[str] = None
-        # The error message.
-        self._message: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The target of the error.
-        self._target: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def code(self,) -> Optional[str]:
-        """
-        Gets the code property value. The error code.
-        Returns: Optional[str]
-        """
-        return self._code
-    
-    @code.setter
-    def code(self,value: Optional[str] = None) -> None:
-        """
-        Sets the code property value. The error code.
-        Args:
-            value: Value to set for the code property.
-        """
-        self._code = value
+    # The error code.
+    code: Optional[str] = None
+    # The error message.
+    message: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The target of the error.
+    target: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PublicErrorDetail:
@@ -78,40 +42,6 @@ class PublicErrorDetail(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def message(self,) -> Optional[str]:
-        """
-        Gets the message property value. The error message.
-        Returns: Optional[str]
-        """
-        return self._message
-    
-    @message.setter
-    def message(self,value: Optional[str] = None) -> None:
-        """
-        Sets the message property value. The error message.
-        Args:
-            value: Value to set for the message property.
-        """
-        self._message = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -125,22 +55,5 @@ class PublicErrorDetail(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("target", self.target)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def target(self,) -> Optional[str]:
-        """
-        Gets the target property value. The target of the error.
-        Returns: Optional[str]
-        """
-        return self._target
-    
-    @target.setter
-    def target(self,value: Optional[str] = None) -> None:
-        """
-        Sets the target property value. The target of the error.
-        Args:
-            value: Value to set for the target property.
-        """
-        self._target = value
     
 

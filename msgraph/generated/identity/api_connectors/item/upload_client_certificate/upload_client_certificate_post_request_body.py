@@ -1,36 +1,17 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class UploadClientCertificatePostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new uploadClientCertificatePostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The password property
-        self._password: Optional[str] = None
-        # The pkcs12Value property
-        self._pkcs12_value: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The password property
+    password: Optional[str] = None
+    # The pkcs12Value property
+    pkcs12_value: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UploadClientCertificatePostRequestBody:
@@ -54,40 +35,6 @@ class UploadClientCertificatePostRequestBody(AdditionalDataHolder, Parsable):
             "pkcs12Value": lambda n : setattr(self, 'pkcs12_value', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def password(self,) -> Optional[str]:
-        """
-        Gets the password property value. The password property
-        Returns: Optional[str]
-        """
-        return self._password
-    
-    @password.setter
-    def password(self,value: Optional[str] = None) -> None:
-        """
-        Sets the password property value. The password property
-        Args:
-            value: Value to set for the password property.
-        """
-        self._password = value
-    
-    @property
-    def pkcs12_value(self,) -> Optional[str]:
-        """
-        Gets the pkcs12Value property value. The pkcs12Value property
-        Returns: Optional[str]
-        """
-        return self._pkcs12_value
-    
-    @pkcs12_value.setter
-    def pkcs12_value(self,value: Optional[str] = None) -> None:
-        """
-        Sets the pkcs12Value property value. The pkcs12Value property
-        Args:
-            value: Value to set for the pkcs12_value property.
-        """
-        self._pkcs12_value = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

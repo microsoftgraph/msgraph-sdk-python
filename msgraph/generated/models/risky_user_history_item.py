@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,37 +8,16 @@ if TYPE_CHECKING:
 
 from . import risky_user
 
+@dataclass
 class RiskyUserHistoryItem(risky_user.RiskyUser):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new riskyUserHistoryItem and sets the default values.
-        """
-        super().__init__()
-        # The activity related to user risk level change.
-        self._activity: Optional[risk_user_activity.RiskUserActivity] = None
-        # The ID of actor that does the operation.
-        self._initiated_by: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The ID of the user.
-        self._user_id: Optional[str] = None
-    
-    @property
-    def activity(self,) -> Optional[risk_user_activity.RiskUserActivity]:
-        """
-        Gets the activity property value. The activity related to user risk level change.
-        Returns: Optional[risk_user_activity.RiskUserActivity]
-        """
-        return self._activity
-    
-    @activity.setter
-    def activity(self,value: Optional[risk_user_activity.RiskUserActivity] = None) -> None:
-        """
-        Sets the activity property value. The activity related to user risk level change.
-        Args:
-            value: Value to set for the activity property.
-        """
-        self._activity = value
+    # The activity related to user risk level change.
+    activity: Optional[risk_user_activity.RiskUserActivity] = None
+    # The ID of actor that does the operation.
+    initiated_by: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The ID of the user.
+    user_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RiskyUserHistoryItem:
@@ -67,23 +47,6 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         fields.update(super_fields)
         return fields
     
-    @property
-    def initiated_by(self,) -> Optional[str]:
-        """
-        Gets the initiatedBy property value. The ID of actor that does the operation.
-        Returns: Optional[str]
-        """
-        return self._initiated_by
-    
-    @initiated_by.setter
-    def initiated_by(self,value: Optional[str] = None) -> None:
-        """
-        Sets the initiatedBy property value. The ID of actor that does the operation.
-        Args:
-            value: Value to set for the initiated_by property.
-        """
-        self._initiated_by = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -96,22 +59,5 @@ class RiskyUserHistoryItem(risky_user.RiskyUser):
         writer.write_object_value("activity", self.activity)
         writer.write_str_value("initiatedBy", self.initiated_by)
         writer.write_str_value("userId", self.user_id)
-    
-    @property
-    def user_id(self,) -> Optional[str]:
-        """
-        Gets the userId property value. The ID of the user.
-        Returns: Optional[str]
-        """
-        return self._user_id
-    
-    @user_id.setter
-    def user_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userId property value. The ID of the user.
-        Args:
-            value: Value to set for the user_id property.
-        """
-        self._user_id = value
     
 

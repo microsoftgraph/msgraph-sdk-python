@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ColumnTypes(Enum):
+class ColumnTypes(str, Enum):
     Note = "note",
     Text = "text",
     Choice = "choice",

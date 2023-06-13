@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,19 +8,15 @@ if TYPE_CHECKING:
 
 from . import directory_object
 
+@dataclass
 class GroupSettingTemplate(directory_object.DirectoryObject):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new GroupSettingTemplate and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.groupSettingTemplate"
-        # Description of the template.
-        self._description: Optional[str] = None
-        # Display name of the template. The template named Group.Unified can be used to configure tenant-wide Microsoft 365 group settings, while the template named Group.Unified.Guest can be used to configure group-specific settings.
-        self._display_name: Optional[str] = None
-        # Collection of settingTemplateValues that list the set of available settings, defaults and types that make up this template.
-        self._values: Optional[List[setting_template_value.SettingTemplateValue]] = None
+    odata_type = "#microsoft.graph.groupSettingTemplate"
+    # Description of the template.
+    description: Optional[str] = None
+    # Display name of the template. The template named Group.Unified can be used to configure tenant-wide Microsoft 365 group settings, while the template named Group.Unified.Guest can be used to configure group-specific settings.
+    display_name: Optional[str] = None
+    # Collection of settingTemplateValues that list the set of available settings, defaults and types that make up this template.
+    values: Optional[List[setting_template_value.SettingTemplateValue]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GroupSettingTemplate:
@@ -32,40 +29,6 @@ class GroupSettingTemplate(directory_object.DirectoryObject):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GroupSettingTemplate()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. Description of the template.
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. Description of the template.
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Display name of the template. The template named Group.Unified can be used to configure tenant-wide Microsoft 365 group settings, while the template named Group.Unified.Guest can be used to configure group-specific settings.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Display name of the template. The template named Group.Unified can be used to configure tenant-wide Microsoft 365 group settings, while the template named Group.Unified.Guest can be used to configure group-specific settings.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -95,22 +58,5 @@ class GroupSettingTemplate(directory_object.DirectoryObject):
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("values", self.values)
-    
-    @property
-    def values(self,) -> Optional[List[setting_template_value.SettingTemplateValue]]:
-        """
-        Gets the values property value. Collection of settingTemplateValues that list the set of available settings, defaults and types that make up this template.
-        Returns: Optional[List[setting_template_value.SettingTemplateValue]]
-        """
-        return self._values
-    
-    @values.setter
-    def values(self,value: Optional[List[setting_template_value.SettingTemplateValue]] = None) -> None:
-        """
-        Sets the values property value. Collection of settingTemplateValues that list the set of available settings, defaults and types that make up this template.
-        Args:
-            value: Value to set for the values property.
-        """
-        self._values = value
     
 

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DelegateMeetingMessageDeliveryOptions(Enum):
+class DelegateMeetingMessageDeliveryOptions(str, Enum):
     SendToDelegateAndInformationToPrincipal = "sendToDelegateAndInformationToPrincipal",
     SendToDelegateAndPrincipal = "sendToDelegateAndPrincipal",
     SendToDelegateOnly = "sendToDelegateOnly",

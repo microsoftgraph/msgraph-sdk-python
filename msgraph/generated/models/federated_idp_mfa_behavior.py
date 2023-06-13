@@ -1,6 +1,6 @@
 from enum import Enum
 
-class FederatedIdpMfaBehavior(Enum):
+class FederatedIdpMfaBehavior(str, Enum):
     AcceptIfMfaDoneByFederatedIdp = "acceptIfMfaDoneByFederatedIdp",
     EnforceMfaByFederatedIdp = "enforceMfaByFederatedIdp",
     RejectMfaByFederatedIdp = "rejectMfaByFederatedIdp",

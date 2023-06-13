@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SharedPCAccountDeletionPolicyType(Enum):
+class SharedPCAccountDeletionPolicyType(str, Enum):
     # Delete immediately.
     Immediate = "immediate",
     # Delete at disk space threshold.

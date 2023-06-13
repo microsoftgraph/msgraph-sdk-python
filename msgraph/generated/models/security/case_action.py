@@ -1,6 +1,6 @@
 from enum import Enum
 
-class CaseAction(Enum):
+class CaseAction(str, Enum):
     ContentExport = "contentExport",
     ApplyTags = "applyTags",
     ConvertToPdf = "convertToPdf",

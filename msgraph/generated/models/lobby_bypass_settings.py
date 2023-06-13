@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import lobby_bypass_scope
 
+@dataclass
 class LobbyBypassSettings(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new lobbyBypassSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Specifies whether or not to always let dial-in callers bypass the lobby. Optional.
-        self._is_dial_in_bypass_enabled: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Specifies the type of participants that are automatically admitted into a meeting, bypassing the lobby. Optional.
-        self._scope: Optional[lobby_bypass_scope.LobbyBypassScope] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Specifies whether or not to always let dial-in callers bypass the lobby. Optional.
+    is_dial_in_bypass_enabled: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Specifies the type of participants that are automatically admitted into a meeting, bypassing the lobby. Optional.
+    scope: Optional[lobby_bypass_scope.LobbyBypassScope] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LobbyBypassSettings:
@@ -62,57 +43,6 @@ class LobbyBypassSettings(AdditionalDataHolder, Parsable):
             "scope": lambda n : setattr(self, 'scope', n.get_enum_value(lobby_bypass_scope.LobbyBypassScope)),
         }
         return fields
-    
-    @property
-    def is_dial_in_bypass_enabled(self,) -> Optional[bool]:
-        """
-        Gets the isDialInBypassEnabled property value. Specifies whether or not to always let dial-in callers bypass the lobby. Optional.
-        Returns: Optional[bool]
-        """
-        return self._is_dial_in_bypass_enabled
-    
-    @is_dial_in_bypass_enabled.setter
-    def is_dial_in_bypass_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isDialInBypassEnabled property value. Specifies whether or not to always let dial-in callers bypass the lobby. Optional.
-        Args:
-            value: Value to set for the is_dial_in_bypass_enabled property.
-        """
-        self._is_dial_in_bypass_enabled = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def scope(self,) -> Optional[lobby_bypass_scope.LobbyBypassScope]:
-        """
-        Gets the scope property value. Specifies the type of participants that are automatically admitted into a meeting, bypassing the lobby. Optional.
-        Returns: Optional[lobby_bypass_scope.LobbyBypassScope]
-        """
-        return self._scope
-    
-    @scope.setter
-    def scope(self,value: Optional[lobby_bypass_scope.LobbyBypassScope] = None) -> None:
-        """
-        Sets the scope property value. Specifies the type of participants that are automatically admitted into a meeting, bypassing the lobby. Optional.
-        Args:
-            value: Value to set for the scope property.
-        """
-        self._scope = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

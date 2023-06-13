@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import teams_app_installation
 
+@dataclass
 class UserScopeTeamsAppInstallation(teams_app_installation.TeamsAppInstallation):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new UserScopeTeamsAppInstallation and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.userScopeTeamsAppInstallation"
-        # The chat between the user and Teams app.
-        self._chat: Optional[chat.Chat] = None
-    
-    @property
-    def chat(self,) -> Optional[chat.Chat]:
-        """
-        Gets the chat property value. The chat between the user and Teams app.
-        Returns: Optional[chat.Chat]
-        """
-        return self._chat
-    
-    @chat.setter
-    def chat(self,value: Optional[chat.Chat] = None) -> None:
-        """
-        Sets the chat property value. The chat between the user and Teams app.
-        Args:
-            value: Value to set for the chat property.
-        """
-        self._chat = value
+    odata_type = "#microsoft.graph.userScopeTeamsAppInstallation"
+    # The chat between the user and Teams app.
+    chat: Optional[chat.Chat] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserScopeTeamsAppInstallation:

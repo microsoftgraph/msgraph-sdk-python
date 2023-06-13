@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,34 +8,13 @@ if TYPE_CHECKING:
 
 from . import authentication_method_configuration
 
+@dataclass
 class EmailAuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EmailAuthenticationMethodConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.emailAuthenticationMethodConfiguration"
-        # Determines whether email OTP is usable by external users for authentication. Possible values are: default, enabled, disabled, unknownFutureValue. Tenants in the default state who did not use public preview will automatically have email OTP enabled beginning in October 2021.
-        self._allow_external_id_to_use_email_otp: Optional[external_email_otp_state.ExternalEmailOtpState] = None
-        # A collection of groups that are enabled to use the authentication method.
-        self._include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
-    
-    @property
-    def allow_external_id_to_use_email_otp(self,) -> Optional[external_email_otp_state.ExternalEmailOtpState]:
-        """
-        Gets the allowExternalIdToUseEmailOtp property value. Determines whether email OTP is usable by external users for authentication. Possible values are: default, enabled, disabled, unknownFutureValue. Tenants in the default state who did not use public preview will automatically have email OTP enabled beginning in October 2021.
-        Returns: Optional[external_email_otp_state.ExternalEmailOtpState]
-        """
-        return self._allow_external_id_to_use_email_otp
-    
-    @allow_external_id_to_use_email_otp.setter
-    def allow_external_id_to_use_email_otp(self,value: Optional[external_email_otp_state.ExternalEmailOtpState] = None) -> None:
-        """
-        Sets the allowExternalIdToUseEmailOtp property value. Determines whether email OTP is usable by external users for authentication. Possible values are: default, enabled, disabled, unknownFutureValue. Tenants in the default state who did not use public preview will automatically have email OTP enabled beginning in October 2021.
-        Args:
-            value: Value to set for the allow_external_id_to_use_email_otp property.
-        """
-        self._allow_external_id_to_use_email_otp = value
+    odata_type = "#microsoft.graph.emailAuthenticationMethodConfiguration"
+    # Determines whether email OTP is usable by external users for authentication. Possible values are: default, enabled, disabled, unknownFutureValue. Tenants in the default state who did not use public preview will automatically have email OTP enabled beginning in October 2021.
+    allow_external_id_to_use_email_otp: Optional[external_email_otp_state.ExternalEmailOtpState] = None
+    # A collection of groups that are enabled to use the authentication method.
+    include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EmailAuthenticationMethodConfiguration:
@@ -62,23 +42,6 @@ class EmailAuthenticationMethodConfiguration(authentication_method_configuration
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def include_targets(self,) -> Optional[List[authentication_method_target.AuthenticationMethodTarget]]:
-        """
-        Gets the includeTargets property value. A collection of groups that are enabled to use the authentication method.
-        Returns: Optional[List[authentication_method_target.AuthenticationMethodTarget]]
-        """
-        return self._include_targets
-    
-    @include_targets.setter
-    def include_targets(self,value: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None) -> None:
-        """
-        Sets the includeTargets property value. A collection of groups that are enabled to use the authentication method.
-        Args:
-            value: Value to set for the include_targets property.
-        """
-        self._include_targets = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

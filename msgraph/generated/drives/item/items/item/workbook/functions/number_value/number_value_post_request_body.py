@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import json
 
+@dataclass
 class NumberValuePostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new numberValuePostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The decimalSeparator property
-        self._decimal_separator: Optional[json.Json] = None
-        # The groupSeparator property
-        self._group_separator: Optional[json.Json] = None
-        # The text property
-        self._text: Optional[json.Json] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The decimalSeparator property
+    decimal_separator: Optional[json.Json] = None
+    # The groupSeparator property
+    group_separator: Optional[json.Json] = None
+    # The text property
+    text: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> NumberValuePostRequestBody:
@@ -48,23 +29,6 @@ class NumberValuePostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return NumberValuePostRequestBody()
-    
-    @property
-    def decimal_separator(self,) -> Optional[json.Json]:
-        """
-        Gets the decimalSeparator property value. The decimalSeparator property
-        Returns: Optional[json.Json]
-        """
-        return self._decimal_separator
-    
-    @decimal_separator.setter
-    def decimal_separator(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the decimalSeparator property value. The decimalSeparator property
-        Args:
-            value: Value to set for the decimal_separator property.
-        """
-        self._decimal_separator = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -80,23 +44,6 @@ class NumberValuePostRequestBody(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def group_separator(self,) -> Optional[json.Json]:
-        """
-        Gets the groupSeparator property value. The groupSeparator property
-        Returns: Optional[json.Json]
-        """
-        return self._group_separator
-    
-    @group_separator.setter
-    def group_separator(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the groupSeparator property value. The groupSeparator property
-        Args:
-            value: Value to set for the group_separator property.
-        """
-        self._group_separator = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -109,22 +56,5 @@ class NumberValuePostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_object_value("groupSeparator", self.group_separator)
         writer.write_object_value("text", self.text)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def text(self,) -> Optional[json.Json]:
-        """
-        Gets the text property value. The text property
-        Returns: Optional[json.Json]
-        """
-        return self._text
-    
-    @text.setter
-    def text(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the text property value. The text property
-        Args:
-            value: Value to set for the text property.
-        """
-        self._text = value
     
 

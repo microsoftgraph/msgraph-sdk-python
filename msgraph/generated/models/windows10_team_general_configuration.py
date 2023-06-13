@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import time
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,121 +9,49 @@ if TYPE_CHECKING:
 
 from . import device_configuration
 
+@dataclass
 class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Windows10TeamGeneralConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windows10TeamGeneralConfiguration"
-        # Indicates whether or not to Block Azure Operational Insights.
-        self._azure_operational_insights_block_telemetry: Optional[bool] = None
-        # The Azure Operational Insights workspace id.
-        self._azure_operational_insights_workspace_id: Optional[str] = None
-        # The Azure Operational Insights Workspace key.
-        self._azure_operational_insights_workspace_key: Optional[str] = None
-        # Specifies whether to automatically launch the Connect app whenever a projection is initiated.
-        self._connect_app_block_auto_launch: Optional[bool] = None
-        # Indicates whether or not to Block setting a maintenance window for device updates.
-        self._maintenance_window_blocked: Optional[bool] = None
-        # Maintenance window duration for device updates. Valid values 0 to 5
-        self._maintenance_window_duration_in_hours: Optional[int] = None
-        # Maintenance window start time for device updates.
-        self._maintenance_window_start_time: Optional[time] = None
-        # Indicates whether or not to Block wireless projection.
-        self._miracast_blocked: Optional[bool] = None
-        # Possible values for Miracast channel.
-        self._miracast_channel: Optional[miracast_channel.MiracastChannel] = None
-        # Indicates whether or not to require a pin for wireless projection.
-        self._miracast_require_pin: Optional[bool] = None
-        # Specifies whether to disable the 'My meetings and files' feature in the Start menu, which shows the signed-in user's meetings and files from Office 365.
-        self._settings_block_my_meetings_and_files: Optional[bool] = None
-        # Specifies whether to allow the ability to resume a session when the session times out.
-        self._settings_block_session_resume: Optional[bool] = None
-        # Specifies whether to disable auto-populating of the sign-in dialog with invitees from scheduled meetings.
-        self._settings_block_signin_suggestions: Optional[bool] = None
-        # Specifies the default volume value for a new session. Permitted values are 0-100. The default is 45. Valid values 0 to 100
-        self._settings_default_volume: Optional[int] = None
-        # Specifies the number of minutes until the Hub screen turns off.
-        self._settings_screen_timeout_in_minutes: Optional[int] = None
-        # Specifies the number of minutes until the session times out.
-        self._settings_session_timeout_in_minutes: Optional[int] = None
-        # Specifies the number of minutes until the Hub enters sleep mode.
-        self._settings_sleep_timeout_in_minutes: Optional[int] = None
-        # The welcome screen background image URL. The URL must use the HTTPS protocol and return a PNG image.
-        self._welcome_screen_background_image_url: Optional[str] = None
-        # Indicates whether or not to Block the welcome screen from waking up automatically when someone enters the room.
-        self._welcome_screen_block_automatic_wake_up: Optional[bool] = None
-        # Possible values for welcome screen meeting information.
-        self._welcome_screen_meeting_information: Optional[welcome_screen_meeting_information.WelcomeScreenMeetingInformation] = None
-    
-    @property
-    def azure_operational_insights_block_telemetry(self,) -> Optional[bool]:
-        """
-        Gets the azureOperationalInsightsBlockTelemetry property value. Indicates whether or not to Block Azure Operational Insights.
-        Returns: Optional[bool]
-        """
-        return self._azure_operational_insights_block_telemetry
-    
-    @azure_operational_insights_block_telemetry.setter
-    def azure_operational_insights_block_telemetry(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the azureOperationalInsightsBlockTelemetry property value. Indicates whether or not to Block Azure Operational Insights.
-        Args:
-            value: Value to set for the azure_operational_insights_block_telemetry property.
-        """
-        self._azure_operational_insights_block_telemetry = value
-    
-    @property
-    def azure_operational_insights_workspace_id(self,) -> Optional[str]:
-        """
-        Gets the azureOperationalInsightsWorkspaceId property value. The Azure Operational Insights workspace id.
-        Returns: Optional[str]
-        """
-        return self._azure_operational_insights_workspace_id
-    
-    @azure_operational_insights_workspace_id.setter
-    def azure_operational_insights_workspace_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the azureOperationalInsightsWorkspaceId property value. The Azure Operational Insights workspace id.
-        Args:
-            value: Value to set for the azure_operational_insights_workspace_id property.
-        """
-        self._azure_operational_insights_workspace_id = value
-    
-    @property
-    def azure_operational_insights_workspace_key(self,) -> Optional[str]:
-        """
-        Gets the azureOperationalInsightsWorkspaceKey property value. The Azure Operational Insights Workspace key.
-        Returns: Optional[str]
-        """
-        return self._azure_operational_insights_workspace_key
-    
-    @azure_operational_insights_workspace_key.setter
-    def azure_operational_insights_workspace_key(self,value: Optional[str] = None) -> None:
-        """
-        Sets the azureOperationalInsightsWorkspaceKey property value. The Azure Operational Insights Workspace key.
-        Args:
-            value: Value to set for the azure_operational_insights_workspace_key property.
-        """
-        self._azure_operational_insights_workspace_key = value
-    
-    @property
-    def connect_app_block_auto_launch(self,) -> Optional[bool]:
-        """
-        Gets the connectAppBlockAutoLaunch property value. Specifies whether to automatically launch the Connect app whenever a projection is initiated.
-        Returns: Optional[bool]
-        """
-        return self._connect_app_block_auto_launch
-    
-    @connect_app_block_auto_launch.setter
-    def connect_app_block_auto_launch(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the connectAppBlockAutoLaunch property value. Specifies whether to automatically launch the Connect app whenever a projection is initiated.
-        Args:
-            value: Value to set for the connect_app_block_auto_launch property.
-        """
-        self._connect_app_block_auto_launch = value
+    odata_type = "#microsoft.graph.windows10TeamGeneralConfiguration"
+    # Indicates whether or not to Block Azure Operational Insights.
+    azure_operational_insights_block_telemetry: Optional[bool] = None
+    # The Azure Operational Insights workspace id.
+    azure_operational_insights_workspace_id: Optional[str] = None
+    # The Azure Operational Insights Workspace key.
+    azure_operational_insights_workspace_key: Optional[str] = None
+    # Specifies whether to automatically launch the Connect app whenever a projection is initiated.
+    connect_app_block_auto_launch: Optional[bool] = None
+    # Indicates whether or not to Block setting a maintenance window for device updates.
+    maintenance_window_blocked: Optional[bool] = None
+    # Maintenance window duration for device updates. Valid values 0 to 5
+    maintenance_window_duration_in_hours: Optional[int] = None
+    # Maintenance window start time for device updates.
+    maintenance_window_start_time: Optional[time] = None
+    # Indicates whether or not to Block wireless projection.
+    miracast_blocked: Optional[bool] = None
+    # Possible values for Miracast channel.
+    miracast_channel: Optional[miracast_channel.MiracastChannel] = None
+    # Indicates whether or not to require a pin for wireless projection.
+    miracast_require_pin: Optional[bool] = None
+    # Specifies whether to disable the 'My meetings and files' feature in the Start menu, which shows the signed-in user's meetings and files from Office 365.
+    settings_block_my_meetings_and_files: Optional[bool] = None
+    # Specifies whether to allow the ability to resume a session when the session times out.
+    settings_block_session_resume: Optional[bool] = None
+    # Specifies whether to disable auto-populating of the sign-in dialog with invitees from scheduled meetings.
+    settings_block_signin_suggestions: Optional[bool] = None
+    # Specifies the default volume value for a new session. Permitted values are 0-100. The default is 45. Valid values 0 to 100
+    settings_default_volume: Optional[int] = None
+    # Specifies the number of minutes until the Hub screen turns off.
+    settings_screen_timeout_in_minutes: Optional[int] = None
+    # Specifies the number of minutes until the session times out.
+    settings_session_timeout_in_minutes: Optional[int] = None
+    # Specifies the number of minutes until the Hub enters sleep mode.
+    settings_sleep_timeout_in_minutes: Optional[int] = None
+    # The welcome screen background image URL. The URL must use the HTTPS protocol and return a PNG image.
+    welcome_screen_background_image_url: Optional[str] = None
+    # Indicates whether or not to Block the welcome screen from waking up automatically when someone enters the room.
+    welcome_screen_block_automatic_wake_up: Optional[bool] = None
+    # Possible values for welcome screen meeting information.
+    welcome_screen_meeting_information: Optional[welcome_screen_meeting_information.WelcomeScreenMeetingInformation] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Windows10TeamGeneralConfiguration:
@@ -169,108 +98,6 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         fields.update(super_fields)
         return fields
     
-    @property
-    def maintenance_window_blocked(self,) -> Optional[bool]:
-        """
-        Gets the maintenanceWindowBlocked property value. Indicates whether or not to Block setting a maintenance window for device updates.
-        Returns: Optional[bool]
-        """
-        return self._maintenance_window_blocked
-    
-    @maintenance_window_blocked.setter
-    def maintenance_window_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the maintenanceWindowBlocked property value. Indicates whether or not to Block setting a maintenance window for device updates.
-        Args:
-            value: Value to set for the maintenance_window_blocked property.
-        """
-        self._maintenance_window_blocked = value
-    
-    @property
-    def maintenance_window_duration_in_hours(self,) -> Optional[int]:
-        """
-        Gets the maintenanceWindowDurationInHours property value. Maintenance window duration for device updates. Valid values 0 to 5
-        Returns: Optional[int]
-        """
-        return self._maintenance_window_duration_in_hours
-    
-    @maintenance_window_duration_in_hours.setter
-    def maintenance_window_duration_in_hours(self,value: Optional[int] = None) -> None:
-        """
-        Sets the maintenanceWindowDurationInHours property value. Maintenance window duration for device updates. Valid values 0 to 5
-        Args:
-            value: Value to set for the maintenance_window_duration_in_hours property.
-        """
-        self._maintenance_window_duration_in_hours = value
-    
-    @property
-    def maintenance_window_start_time(self,) -> Optional[time]:
-        """
-        Gets the maintenanceWindowStartTime property value. Maintenance window start time for device updates.
-        Returns: Optional[time]
-        """
-        return self._maintenance_window_start_time
-    
-    @maintenance_window_start_time.setter
-    def maintenance_window_start_time(self,value: Optional[time] = None) -> None:
-        """
-        Sets the maintenanceWindowStartTime property value. Maintenance window start time for device updates.
-        Args:
-            value: Value to set for the maintenance_window_start_time property.
-        """
-        self._maintenance_window_start_time = value
-    
-    @property
-    def miracast_blocked(self,) -> Optional[bool]:
-        """
-        Gets the miracastBlocked property value. Indicates whether or not to Block wireless projection.
-        Returns: Optional[bool]
-        """
-        return self._miracast_blocked
-    
-    @miracast_blocked.setter
-    def miracast_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the miracastBlocked property value. Indicates whether or not to Block wireless projection.
-        Args:
-            value: Value to set for the miracast_blocked property.
-        """
-        self._miracast_blocked = value
-    
-    @property
-    def miracast_channel(self,) -> Optional[miracast_channel.MiracastChannel]:
-        """
-        Gets the miracastChannel property value. Possible values for Miracast channel.
-        Returns: Optional[miracast_channel.MiracastChannel]
-        """
-        return self._miracast_channel
-    
-    @miracast_channel.setter
-    def miracast_channel(self,value: Optional[miracast_channel.MiracastChannel] = None) -> None:
-        """
-        Sets the miracastChannel property value. Possible values for Miracast channel.
-        Args:
-            value: Value to set for the miracast_channel property.
-        """
-        self._miracast_channel = value
-    
-    @property
-    def miracast_require_pin(self,) -> Optional[bool]:
-        """
-        Gets the miracastRequirePin property value. Indicates whether or not to require a pin for wireless projection.
-        Returns: Optional[bool]
-        """
-        return self._miracast_require_pin
-    
-    @miracast_require_pin.setter
-    def miracast_require_pin(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the miracastRequirePin property value. Indicates whether or not to require a pin for wireless projection.
-        Args:
-            value: Value to set for the miracast_require_pin property.
-        """
-        self._miracast_require_pin = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -300,175 +127,5 @@ class Windows10TeamGeneralConfiguration(device_configuration.DeviceConfiguration
         writer.write_str_value("welcomeScreenBackgroundImageUrl", self.welcome_screen_background_image_url)
         writer.write_bool_value("welcomeScreenBlockAutomaticWakeUp", self.welcome_screen_block_automatic_wake_up)
         writer.write_enum_value("welcomeScreenMeetingInformation", self.welcome_screen_meeting_information)
-    
-    @property
-    def settings_block_my_meetings_and_files(self,) -> Optional[bool]:
-        """
-        Gets the settingsBlockMyMeetingsAndFiles property value. Specifies whether to disable the 'My meetings and files' feature in the Start menu, which shows the signed-in user's meetings and files from Office 365.
-        Returns: Optional[bool]
-        """
-        return self._settings_block_my_meetings_and_files
-    
-    @settings_block_my_meetings_and_files.setter
-    def settings_block_my_meetings_and_files(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the settingsBlockMyMeetingsAndFiles property value. Specifies whether to disable the 'My meetings and files' feature in the Start menu, which shows the signed-in user's meetings and files from Office 365.
-        Args:
-            value: Value to set for the settings_block_my_meetings_and_files property.
-        """
-        self._settings_block_my_meetings_and_files = value
-    
-    @property
-    def settings_block_session_resume(self,) -> Optional[bool]:
-        """
-        Gets the settingsBlockSessionResume property value. Specifies whether to allow the ability to resume a session when the session times out.
-        Returns: Optional[bool]
-        """
-        return self._settings_block_session_resume
-    
-    @settings_block_session_resume.setter
-    def settings_block_session_resume(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the settingsBlockSessionResume property value. Specifies whether to allow the ability to resume a session when the session times out.
-        Args:
-            value: Value to set for the settings_block_session_resume property.
-        """
-        self._settings_block_session_resume = value
-    
-    @property
-    def settings_block_signin_suggestions(self,) -> Optional[bool]:
-        """
-        Gets the settingsBlockSigninSuggestions property value. Specifies whether to disable auto-populating of the sign-in dialog with invitees from scheduled meetings.
-        Returns: Optional[bool]
-        """
-        return self._settings_block_signin_suggestions
-    
-    @settings_block_signin_suggestions.setter
-    def settings_block_signin_suggestions(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the settingsBlockSigninSuggestions property value. Specifies whether to disable auto-populating of the sign-in dialog with invitees from scheduled meetings.
-        Args:
-            value: Value to set for the settings_block_signin_suggestions property.
-        """
-        self._settings_block_signin_suggestions = value
-    
-    @property
-    def settings_default_volume(self,) -> Optional[int]:
-        """
-        Gets the settingsDefaultVolume property value. Specifies the default volume value for a new session. Permitted values are 0-100. The default is 45. Valid values 0 to 100
-        Returns: Optional[int]
-        """
-        return self._settings_default_volume
-    
-    @settings_default_volume.setter
-    def settings_default_volume(self,value: Optional[int] = None) -> None:
-        """
-        Sets the settingsDefaultVolume property value. Specifies the default volume value for a new session. Permitted values are 0-100. The default is 45. Valid values 0 to 100
-        Args:
-            value: Value to set for the settings_default_volume property.
-        """
-        self._settings_default_volume = value
-    
-    @property
-    def settings_screen_timeout_in_minutes(self,) -> Optional[int]:
-        """
-        Gets the settingsScreenTimeoutInMinutes property value. Specifies the number of minutes until the Hub screen turns off.
-        Returns: Optional[int]
-        """
-        return self._settings_screen_timeout_in_minutes
-    
-    @settings_screen_timeout_in_minutes.setter
-    def settings_screen_timeout_in_minutes(self,value: Optional[int] = None) -> None:
-        """
-        Sets the settingsScreenTimeoutInMinutes property value. Specifies the number of minutes until the Hub screen turns off.
-        Args:
-            value: Value to set for the settings_screen_timeout_in_minutes property.
-        """
-        self._settings_screen_timeout_in_minutes = value
-    
-    @property
-    def settings_session_timeout_in_minutes(self,) -> Optional[int]:
-        """
-        Gets the settingsSessionTimeoutInMinutes property value. Specifies the number of minutes until the session times out.
-        Returns: Optional[int]
-        """
-        return self._settings_session_timeout_in_minutes
-    
-    @settings_session_timeout_in_minutes.setter
-    def settings_session_timeout_in_minutes(self,value: Optional[int] = None) -> None:
-        """
-        Sets the settingsSessionTimeoutInMinutes property value. Specifies the number of minutes until the session times out.
-        Args:
-            value: Value to set for the settings_session_timeout_in_minutes property.
-        """
-        self._settings_session_timeout_in_minutes = value
-    
-    @property
-    def settings_sleep_timeout_in_minutes(self,) -> Optional[int]:
-        """
-        Gets the settingsSleepTimeoutInMinutes property value. Specifies the number of minutes until the Hub enters sleep mode.
-        Returns: Optional[int]
-        """
-        return self._settings_sleep_timeout_in_minutes
-    
-    @settings_sleep_timeout_in_minutes.setter
-    def settings_sleep_timeout_in_minutes(self,value: Optional[int] = None) -> None:
-        """
-        Sets the settingsSleepTimeoutInMinutes property value. Specifies the number of minutes until the Hub enters sleep mode.
-        Args:
-            value: Value to set for the settings_sleep_timeout_in_minutes property.
-        """
-        self._settings_sleep_timeout_in_minutes = value
-    
-    @property
-    def welcome_screen_background_image_url(self,) -> Optional[str]:
-        """
-        Gets the welcomeScreenBackgroundImageUrl property value. The welcome screen background image URL. The URL must use the HTTPS protocol and return a PNG image.
-        Returns: Optional[str]
-        """
-        return self._welcome_screen_background_image_url
-    
-    @welcome_screen_background_image_url.setter
-    def welcome_screen_background_image_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the welcomeScreenBackgroundImageUrl property value. The welcome screen background image URL. The URL must use the HTTPS protocol and return a PNG image.
-        Args:
-            value: Value to set for the welcome_screen_background_image_url property.
-        """
-        self._welcome_screen_background_image_url = value
-    
-    @property
-    def welcome_screen_block_automatic_wake_up(self,) -> Optional[bool]:
-        """
-        Gets the welcomeScreenBlockAutomaticWakeUp property value. Indicates whether or not to Block the welcome screen from waking up automatically when someone enters the room.
-        Returns: Optional[bool]
-        """
-        return self._welcome_screen_block_automatic_wake_up
-    
-    @welcome_screen_block_automatic_wake_up.setter
-    def welcome_screen_block_automatic_wake_up(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the welcomeScreenBlockAutomaticWakeUp property value. Indicates whether or not to Block the welcome screen from waking up automatically when someone enters the room.
-        Args:
-            value: Value to set for the welcome_screen_block_automatic_wake_up property.
-        """
-        self._welcome_screen_block_automatic_wake_up = value
-    
-    @property
-    def welcome_screen_meeting_information(self,) -> Optional[welcome_screen_meeting_information.WelcomeScreenMeetingInformation]:
-        """
-        Gets the welcomeScreenMeetingInformation property value. Possible values for welcome screen meeting information.
-        Returns: Optional[welcome_screen_meeting_information.WelcomeScreenMeetingInformation]
-        """
-        return self._welcome_screen_meeting_information
-    
-    @welcome_screen_meeting_information.setter
-    def welcome_screen_meeting_information(self,value: Optional[welcome_screen_meeting_information.WelcomeScreenMeetingInformation] = None) -> None:
-        """
-        Sets the welcomeScreenMeetingInformation property value. Possible values for welcome screen meeting information.
-        Args:
-            value: Value to set for the welcome_screen_meeting_information property.
-        """
-        self._welcome_screen_meeting_information = value
     
 

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,42 +8,21 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class DeviceComplianceActionItem(entity.Entity):
     """
     Scheduled Action Configuration
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceComplianceActionItem and sets the default values.
-        """
-        super().__init__()
-        # Scheduled Action Type Enum
-        self._action_type: Optional[device_compliance_action_type.DeviceComplianceActionType] = None
-        # Number of hours to wait till the action will be enforced. Valid values 0 to 8760
-        self._grace_period_hours: Optional[int] = None
-        # A list of group IDs to speicify who to CC this notification message to.
-        self._notification_message_c_c_list: Optional[List[str]] = None
-        # What notification Message template to use
-        self._notification_template_id: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def action_type(self,) -> Optional[device_compliance_action_type.DeviceComplianceActionType]:
-        """
-        Gets the actionType property value. Scheduled Action Type Enum
-        Returns: Optional[device_compliance_action_type.DeviceComplianceActionType]
-        """
-        return self._action_type
-    
-    @action_type.setter
-    def action_type(self,value: Optional[device_compliance_action_type.DeviceComplianceActionType] = None) -> None:
-        """
-        Sets the actionType property value. Scheduled Action Type Enum
-        Args:
-            value: Value to set for the action_type property.
-        """
-        self._action_type = value
+    # Scheduled Action Type Enum
+    action_type: Optional[device_compliance_action_type.DeviceComplianceActionType] = None
+    # Number of hours to wait till the action will be enforced. Valid values 0 to 8760
+    grace_period_hours: Optional[int] = None
+    # A list of group IDs to speicify who to CC this notification message to.
+    notification_message_c_c_list: Optional[List[str]] = None
+    # What notification Message template to use
+    notification_template_id: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceComplianceActionItem:
@@ -72,57 +52,6 @@ class DeviceComplianceActionItem(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def grace_period_hours(self,) -> Optional[int]:
-        """
-        Gets the gracePeriodHours property value. Number of hours to wait till the action will be enforced. Valid values 0 to 8760
-        Returns: Optional[int]
-        """
-        return self._grace_period_hours
-    
-    @grace_period_hours.setter
-    def grace_period_hours(self,value: Optional[int] = None) -> None:
-        """
-        Sets the gracePeriodHours property value. Number of hours to wait till the action will be enforced. Valid values 0 to 8760
-        Args:
-            value: Value to set for the grace_period_hours property.
-        """
-        self._grace_period_hours = value
-    
-    @property
-    def notification_message_c_c_list(self,) -> Optional[List[str]]:
-        """
-        Gets the notificationMessageCCList property value. A list of group IDs to speicify who to CC this notification message to.
-        Returns: Optional[List[str]]
-        """
-        return self._notification_message_c_c_list
-    
-    @notification_message_c_c_list.setter
-    def notification_message_c_c_list(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the notificationMessageCCList property value. A list of group IDs to speicify who to CC this notification message to.
-        Args:
-            value: Value to set for the notification_message_c_c_list property.
-        """
-        self._notification_message_c_c_list = value
-    
-    @property
-    def notification_template_id(self,) -> Optional[str]:
-        """
-        Gets the notificationTemplateId property value. What notification Message template to use
-        Returns: Optional[str]
-        """
-        return self._notification_template_id
-    
-    @notification_template_id.setter
-    def notification_template_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the notificationTemplateId property value. What notification Message template to use
-        Args:
-            value: Value to set for the notification_template_id property.
-        """
-        self._notification_template_id = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

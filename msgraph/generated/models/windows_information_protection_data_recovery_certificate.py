@@ -1,63 +1,27 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class WindowsInformationProtectionDataRecoveryCertificate(AdditionalDataHolder, Parsable):
     """
     Windows Information Protection DataRecoveryCertificate
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new windowsInformationProtectionDataRecoveryCertificate and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Data recovery Certificate
-        self._certificate: Optional[bytes] = None
-        # Data recovery Certificate description
-        self._description: Optional[str] = None
-        # Data recovery Certificate expiration datetime
-        self._expiration_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Data recovery Certificate subject name
-        self._subject_name: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def certificate(self,) -> Optional[bytes]:
-        """
-        Gets the certificate property value. Data recovery Certificate
-        Returns: Optional[bytes]
-        """
-        return self._certificate
-    
-    @certificate.setter
-    def certificate(self,value: Optional[bytes] = None) -> None:
-        """
-        Sets the certificate property value. Data recovery Certificate
-        Args:
-            value: Value to set for the certificate property.
-        """
-        self._certificate = value
+    # Data recovery Certificate
+    certificate: Optional[bytes] = None
+    # Data recovery Certificate description
+    description: Optional[str] = None
+    # Data recovery Certificate expiration datetime
+    expiration_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Data recovery Certificate subject name
+    subject_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionDataRecoveryCertificate:
@@ -70,40 +34,6 @@ class WindowsInformationProtectionDataRecoveryCertificate(AdditionalDataHolder, 
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsInformationProtectionDataRecoveryCertificate()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. Data recovery Certificate description
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. Data recovery Certificate description
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
-    
-    @property
-    def expiration_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the expirationDateTime property value. Data recovery Certificate expiration datetime
-        Returns: Optional[datetime]
-        """
-        return self._expiration_date_time
-    
-    @expiration_date_time.setter
-    def expiration_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the expirationDateTime property value. Data recovery Certificate expiration datetime
-        Args:
-            value: Value to set for the expiration_date_time property.
-        """
-        self._expiration_date_time = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -119,23 +49,6 @@ class WindowsInformationProtectionDataRecoveryCertificate(AdditionalDataHolder, 
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -150,22 +63,5 @@ class WindowsInformationProtectionDataRecoveryCertificate(AdditionalDataHolder, 
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("subjectName", self.subject_name)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def subject_name(self,) -> Optional[str]:
-        """
-        Gets the subjectName property value. Data recovery Certificate subject name
-        Returns: Optional[str]
-        """
-        return self._subject_name
-    
-    @subject_name.setter
-    def subject_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the subjectName property value. Data recovery Certificate subject name
-        Args:
-            value: Value to set for the subject_name property.
-        """
-        self._subject_name = value
     
 

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class BrowserSiteMergeType(Enum):
+class BrowserSiteMergeType(str, Enum):
     # No merge type
     NoMerge = "noMerge",
     # Default merge type

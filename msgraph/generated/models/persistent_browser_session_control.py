@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import conditional_access_session_control
 
+@dataclass
 class PersistentBrowserSessionControl(conditional_access_session_control.ConditionalAccessSessionControl):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new PersistentBrowserSessionControl and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.persistentBrowserSessionControl"
-        # Possible values are: always, never.
-        self._mode: Optional[persistent_browser_session_mode.PersistentBrowserSessionMode] = None
+    odata_type = "#microsoft.graph.persistentBrowserSessionControl"
+    # Possible values are: always, never.
+    mode: Optional[persistent_browser_session_mode.PersistentBrowserSessionMode] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PersistentBrowserSessionControl:
@@ -42,23 +39,6 @@ class PersistentBrowserSessionControl(conditional_access_session_control.Conditi
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def mode(self,) -> Optional[persistent_browser_session_mode.PersistentBrowserSessionMode]:
-        """
-        Gets the mode property value. Possible values are: always, never.
-        Returns: Optional[persistent_browser_session_mode.PersistentBrowserSessionMode]
-        """
-        return self._mode
-    
-    @mode.setter
-    def mode(self,value: Optional[persistent_browser_session_mode.PersistentBrowserSessionMode] = None) -> None:
-        """
-        Sets the mode property value. Possible values are: always, never.
-        Args:
-            value: Value to set for the mode property.
-        """
-        self._mode = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

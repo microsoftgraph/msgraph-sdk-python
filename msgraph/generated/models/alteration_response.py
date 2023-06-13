@@ -1,43 +1,24 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import search_alteration, search_alteration_type
 
+@dataclass
 class AlterationResponse(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new alterationResponse and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Defines the original user query string.
-        self._original_query_string: Optional[str] = None
-        # Defines the details of the alteration information for the spelling correction.
-        self._query_alteration: Optional[search_alteration.SearchAlteration] = None
-        # Defines the type of the spelling correction. Possible values are: suggestion, modification.
-        self._query_alteration_type: Optional[search_alteration_type.SearchAlterationType] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Defines the original user query string.
+    original_query_string: Optional[str] = None
+    # Defines the details of the alteration information for the spelling correction.
+    query_alteration: Optional[search_alteration.SearchAlteration] = None
+    # Defines the type of the spelling correction. Possible values are: suggestion, modification.
+    query_alteration_type: Optional[search_alteration_type.SearchAlterationType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AlterationResponse:
@@ -65,74 +46,6 @@ class AlterationResponse(AdditionalDataHolder, Parsable):
             "queryAlterationType": lambda n : setattr(self, 'query_alteration_type', n.get_enum_value(search_alteration_type.SearchAlterationType)),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def original_query_string(self,) -> Optional[str]:
-        """
-        Gets the originalQueryString property value. Defines the original user query string.
-        Returns: Optional[str]
-        """
-        return self._original_query_string
-    
-    @original_query_string.setter
-    def original_query_string(self,value: Optional[str] = None) -> None:
-        """
-        Sets the originalQueryString property value. Defines the original user query string.
-        Args:
-            value: Value to set for the original_query_string property.
-        """
-        self._original_query_string = value
-    
-    @property
-    def query_alteration(self,) -> Optional[search_alteration.SearchAlteration]:
-        """
-        Gets the queryAlteration property value. Defines the details of the alteration information for the spelling correction.
-        Returns: Optional[search_alteration.SearchAlteration]
-        """
-        return self._query_alteration
-    
-    @query_alteration.setter
-    def query_alteration(self,value: Optional[search_alteration.SearchAlteration] = None) -> None:
-        """
-        Sets the queryAlteration property value. Defines the details of the alteration information for the spelling correction.
-        Args:
-            value: Value to set for the query_alteration property.
-        """
-        self._query_alteration = value
-    
-    @property
-    def query_alteration_type(self,) -> Optional[search_alteration_type.SearchAlterationType]:
-        """
-        Gets the queryAlterationType property value. Defines the type of the spelling correction. Possible values are: suggestion, modification.
-        Returns: Optional[search_alteration_type.SearchAlterationType]
-        """
-        return self._query_alteration_type
-    
-    @query_alteration_type.setter
-    def query_alteration_type(self,value: Optional[search_alteration_type.SearchAlterationType] = None) -> None:
-        """
-        Sets the queryAlterationType property value. Defines the type of the spelling correction. Possible values are: suggestion, modification.
-        Args:
-            value: Value to set for the query_alteration_type property.
-        """
-        self._query_alteration_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

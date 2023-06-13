@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,35 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class UserTeamwork(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new UserTeamwork and sets the default values.
-        """
-        super().__init__()
-        # The list of associatedTeamInfo objects that a user is associated with.
-        self._associated_teams: Optional[List[associated_team_info.AssociatedTeamInfo]] = None
-        # The apps installed in the personal scope of this user.
-        self._installed_apps: Optional[List[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def associated_teams(self,) -> Optional[List[associated_team_info.AssociatedTeamInfo]]:
-        """
-        Gets the associatedTeams property value. The list of associatedTeamInfo objects that a user is associated with.
-        Returns: Optional[List[associated_team_info.AssociatedTeamInfo]]
-        """
-        return self._associated_teams
-    
-    @associated_teams.setter
-    def associated_teams(self,value: Optional[List[associated_team_info.AssociatedTeamInfo]] = None) -> None:
-        """
-        Sets the associatedTeams property value. The list of associatedTeamInfo objects that a user is associated with.
-        Args:
-            value: Value to set for the associated_teams property.
-        """
-        self._associated_teams = value
+    # The list of associatedTeamInfo objects that a user is associated with.
+    associated_teams: Optional[List[associated_team_info.AssociatedTeamInfo]] = None
+    # The apps installed in the personal scope of this user.
+    installed_apps: Optional[List[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserTeamwork:
@@ -63,23 +43,6 @@ class UserTeamwork(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def installed_apps(self,) -> Optional[List[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]]:
-        """
-        Gets the installedApps property value. The apps installed in the personal scope of this user.
-        Returns: Optional[List[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]]
-        """
-        return self._installed_apps
-    
-    @installed_apps.setter
-    def installed_apps(self,value: Optional[List[user_scope_teams_app_installation.UserScopeTeamsAppInstallation]] = None) -> None:
-        """
-        Sets the installedApps property value. The apps installed in the personal scope of this user.
-        Args:
-            value: Value to set for the installed_apps property.
-        """
-        self._installed_apps = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

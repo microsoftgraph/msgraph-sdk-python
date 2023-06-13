@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,75 +9,20 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class DelegatedAdminAccessAssignment(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new DelegatedAdminAccessAssignment and sets the default values.
-        """
-        super().__init__()
-        # The accessContainer property
-        self._access_container: Optional[delegated_admin_access_container.DelegatedAdminAccessContainer] = None
-        # The accessDetails property
-        self._access_details: Optional[delegated_admin_access_details.DelegatedAdminAccessDetails] = None
-        # The date and time in ISO 8601 format and in UTC time when the access assignment was created. Read-only.
-        self._created_date_time: Optional[datetime] = None
-        # The date and time in ISO 8601 and in UTC time when this access assignment was last modified. Read-only.
-        self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The status of the access assignment. Read-only. The possible values are: pending, active, deleting, deleted, error, unknownFutureValue.
-        self._status: Optional[delegated_admin_access_assignment_status.DelegatedAdminAccessAssignmentStatus] = None
-    
-    @property
-    def access_container(self,) -> Optional[delegated_admin_access_container.DelegatedAdminAccessContainer]:
-        """
-        Gets the accessContainer property value. The accessContainer property
-        Returns: Optional[delegated_admin_access_container.DelegatedAdminAccessContainer]
-        """
-        return self._access_container
-    
-    @access_container.setter
-    def access_container(self,value: Optional[delegated_admin_access_container.DelegatedAdminAccessContainer] = None) -> None:
-        """
-        Sets the accessContainer property value. The accessContainer property
-        Args:
-            value: Value to set for the access_container property.
-        """
-        self._access_container = value
-    
-    @property
-    def access_details(self,) -> Optional[delegated_admin_access_details.DelegatedAdminAccessDetails]:
-        """
-        Gets the accessDetails property value. The accessDetails property
-        Returns: Optional[delegated_admin_access_details.DelegatedAdminAccessDetails]
-        """
-        return self._access_details
-    
-    @access_details.setter
-    def access_details(self,value: Optional[delegated_admin_access_details.DelegatedAdminAccessDetails] = None) -> None:
-        """
-        Sets the accessDetails property value. The accessDetails property
-        Args:
-            value: Value to set for the access_details property.
-        """
-        self._access_details = value
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. The date and time in ISO 8601 format and in UTC time when the access assignment was created. Read-only.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. The date and time in ISO 8601 format and in UTC time when the access assignment was created. Read-only.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    # The accessContainer property
+    access_container: Optional[delegated_admin_access_container.DelegatedAdminAccessContainer] = None
+    # The accessDetails property
+    access_details: Optional[delegated_admin_access_details.DelegatedAdminAccessDetails] = None
+    # The date and time in ISO 8601 format and in UTC time when the access assignment was created. Read-only.
+    created_date_time: Optional[datetime] = None
+    # The date and time in ISO 8601 and in UTC time when this access assignment was last modified. Read-only.
+    last_modified_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The status of the access assignment. Read-only. The possible values are: pending, active, deleting, deleted, error, unknownFutureValue.
+    status: Optional[delegated_admin_access_assignment_status.DelegatedAdminAccessAssignmentStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DelegatedAdminAccessAssignment:
@@ -108,23 +54,6 @@ class DelegatedAdminAccessAssignment(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def last_modified_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastModifiedDateTime property value. The date and time in ISO 8601 and in UTC time when this access assignment was last modified. Read-only.
-        Returns: Optional[datetime]
-        """
-        return self._last_modified_date_time
-    
-    @last_modified_date_time.setter
-    def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastModifiedDateTime property value. The date and time in ISO 8601 and in UTC time when this access assignment was last modified. Read-only.
-        Args:
-            value: Value to set for the last_modified_date_time property.
-        """
-        self._last_modified_date_time = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -139,22 +68,5 @@ class DelegatedAdminAccessAssignment(entity.Entity):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_datetime_value("lastModifiedDateTime", self.last_modified_date_time)
         writer.write_enum_value("status", self.status)
-    
-    @property
-    def status(self,) -> Optional[delegated_admin_access_assignment_status.DelegatedAdminAccessAssignmentStatus]:
-        """
-        Gets the status property value. The status of the access assignment. Read-only. The possible values are: pending, active, deleting, deleted, error, unknownFutureValue.
-        Returns: Optional[delegated_admin_access_assignment_status.DelegatedAdminAccessAssignmentStatus]
-        """
-        return self._status
-    
-    @status.setter
-    def status(self,value: Optional[delegated_admin_access_assignment_status.DelegatedAdminAccessAssignmentStatus] = None) -> None:
-        """
-        Sets the status property value. The status of the access assignment. Read-only. The possible values are: pending, active, deleting, deleted, error, unknownFutureValue.
-        Args:
-            value: Value to set for the status property.
-        """
-        self._status = value
     
 

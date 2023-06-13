@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,19 +8,15 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class DeviceCompliancePolicyAssignment(entity.Entity):
     """
     Device compliance policy assignment.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceCompliancePolicyAssignment and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Target for the compliance policy assignment.
-        self._target: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Target for the compliance policy assignment.
+    target: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceCompliancePolicyAssignment:
@@ -57,22 +54,5 @@ class DeviceCompliancePolicyAssignment(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_object_value("target", self.target)
-    
-    @property
-    def target(self,) -> Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget]:
-        """
-        Gets the target property value. Target for the compliance policy assignment.
-        Returns: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget]
-        """
-        return self._target
-    
-    @target.setter
-    def target(self,value: Optional[device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget] = None) -> None:
-        """
-        Sets the target property value. Target for the compliance policy assignment.
-        Args:
-            value: Value to set for the target property.
-        """
-        self._target = value
     
 

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class OnlineMeetingProviderType(Enum):
+class OnlineMeetingProviderType(str, Enum):
     Unknown = "unknown",
     SkypeForBusiness = "skypeForBusiness",
     SkypeForConsumer = "skypeForConsumer",

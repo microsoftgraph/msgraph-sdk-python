@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import meeting_info
 
+@dataclass
 class JoinMeetingIdMeetingInfo(meeting_info.MeetingInfo):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new JoinMeetingIdMeetingInfo and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.joinMeetingIdMeetingInfo"
-        # The ID used to join the meeting.
-        self._join_meeting_id: Optional[str] = None
-        # The passcode used to join the meeting. Optional.
-        self._passcode: Optional[str] = None
+    odata_type = "#microsoft.graph.joinMeetingIdMeetingInfo"
+    # The ID used to join the meeting.
+    join_meeting_id: Optional[str] = None
+    # The passcode used to join the meeting. Optional.
+    passcode: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> JoinMeetingIdMeetingInfo:
@@ -45,40 +42,6 @@ class JoinMeetingIdMeetingInfo(meeting_info.MeetingInfo):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def join_meeting_id(self,) -> Optional[str]:
-        """
-        Gets the joinMeetingId property value. The ID used to join the meeting.
-        Returns: Optional[str]
-        """
-        return self._join_meeting_id
-    
-    @join_meeting_id.setter
-    def join_meeting_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the joinMeetingId property value. The ID used to join the meeting.
-        Args:
-            value: Value to set for the join_meeting_id property.
-        """
-        self._join_meeting_id = value
-    
-    @property
-    def passcode(self,) -> Optional[str]:
-        """
-        Gets the passcode property value. The passcode used to join the meeting. Optional.
-        Returns: Optional[str]
-        """
-        return self._passcode
-    
-    @passcode.setter
-    def passcode(self,value: Optional[str] = None) -> None:
-        """
-        Sets the passcode property value. The passcode used to join the meeting. Optional.
-        Args:
-            value: Value to set for the passcode property.
-        """
-        self._passcode = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

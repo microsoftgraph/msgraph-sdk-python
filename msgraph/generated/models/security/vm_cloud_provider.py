@@ -1,6 +1,6 @@
 from enum import Enum
 
-class VmCloudProvider(Enum):
+class VmCloudProvider(str, Enum):
     Unknown = "unknown",
     Azure = "azure",
     UnknownFutureValue = "unknownFutureValue",

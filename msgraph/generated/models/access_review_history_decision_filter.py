@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AccessReviewHistoryDecisionFilter(Enum):
+class AccessReviewHistoryDecisionFilter(str, Enum):
     Approve = "approve",
     Deny = "deny",
     NotReviewed = "notReviewed",

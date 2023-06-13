@@ -1,45 +1,26 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import advanced_config_state, authentication_methods_registration_campaign_include_target, exclude_target
 
+@dataclass
 class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new authenticationMethodsRegistrationCampaign and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Users and groups of users that are excluded from being prompted to set up the authentication method.
-        self._exclude_targets: Optional[List[exclude_target.ExcludeTarget]] = None
-        # Users and groups of users that are prompted to set up the authentication method.
-        self._include_targets: Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Specifies the number of days that the user sees a prompt again if they select 'Not now' and snoozes the prompt. Minimum: 0 days. Maximum: 14 days. If the value is '0', the user is prompted during every MFA attempt.
-        self._snooze_duration_in_days: Optional[int] = None
-        # The state property
-        self._state: Optional[advanced_config_state.AdvancedConfigState] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Users and groups of users that are excluded from being prompted to set up the authentication method.
+    exclude_targets: Optional[List[exclude_target.ExcludeTarget]] = None
+    # Users and groups of users that are prompted to set up the authentication method.
+    include_targets: Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Specifies the number of days that the user sees a prompt again if they select 'Not now' and snoozes the prompt. Minimum: 0 days. Maximum: 14 days. If the value is '0', the user is prompted during every MFA attempt.
+    snooze_duration_in_days: Optional[int] = None
+    # The state property
+    state: Optional[advanced_config_state.AdvancedConfigState] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodsRegistrationCampaign:
@@ -52,23 +33,6 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AuthenticationMethodsRegistrationCampaign()
-    
-    @property
-    def exclude_targets(self,) -> Optional[List[exclude_target.ExcludeTarget]]:
-        """
-        Gets the excludeTargets property value. Users and groups of users that are excluded from being prompted to set up the authentication method.
-        Returns: Optional[List[exclude_target.ExcludeTarget]]
-        """
-        return self._exclude_targets
-    
-    @exclude_targets.setter
-    def exclude_targets(self,value: Optional[List[exclude_target.ExcludeTarget]] = None) -> None:
-        """
-        Sets the excludeTargets property value. Users and groups of users that are excluded from being prompted to set up the authentication method.
-        Args:
-            value: Value to set for the exclude_targets property.
-        """
-        self._exclude_targets = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -86,40 +50,6 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def include_targets(self,) -> Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]]:
-        """
-        Gets the includeTargets property value. Users and groups of users that are prompted to set up the authentication method.
-        Returns: Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]]
-        """
-        return self._include_targets
-    
-    @include_targets.setter
-    def include_targets(self,value: Optional[List[authentication_methods_registration_campaign_include_target.AuthenticationMethodsRegistrationCampaignIncludeTarget]] = None) -> None:
-        """
-        Sets the includeTargets property value. Users and groups of users that are prompted to set up the authentication method.
-        Args:
-            value: Value to set for the include_targets property.
-        """
-        self._include_targets = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -134,39 +64,5 @@ class AuthenticationMethodsRegistrationCampaign(AdditionalDataHolder, Parsable):
         writer.write_int_value("snoozeDurationInDays", self.snooze_duration_in_days)
         writer.write_enum_value("state", self.state)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def snooze_duration_in_days(self,) -> Optional[int]:
-        """
-        Gets the snoozeDurationInDays property value. Specifies the number of days that the user sees a prompt again if they select 'Not now' and snoozes the prompt. Minimum: 0 days. Maximum: 14 days. If the value is '0', the user is prompted during every MFA attempt.
-        Returns: Optional[int]
-        """
-        return self._snooze_duration_in_days
-    
-    @snooze_duration_in_days.setter
-    def snooze_duration_in_days(self,value: Optional[int] = None) -> None:
-        """
-        Sets the snoozeDurationInDays property value. Specifies the number of days that the user sees a prompt again if they select 'Not now' and snoozes the prompt. Minimum: 0 days. Maximum: 14 days. If the value is '0', the user is prompted during every MFA attempt.
-        Args:
-            value: Value to set for the snooze_duration_in_days property.
-        """
-        self._snooze_duration_in_days = value
-    
-    @property
-    def state(self,) -> Optional[advanced_config_state.AdvancedConfigState]:
-        """
-        Gets the state property value. The state property
-        Returns: Optional[advanced_config_state.AdvancedConfigState]
-        """
-        return self._state
-    
-    @state.setter
-    def state(self,value: Optional[advanced_config_state.AdvancedConfigState] = None) -> None:
-        """
-        Sets the state property value. The state property
-        Args:
-            value: Value to set for the state property.
-        """
-        self._state = value
     
 

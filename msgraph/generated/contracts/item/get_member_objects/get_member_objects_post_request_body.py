@@ -1,34 +1,15 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class GetMemberObjectsPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new getMemberObjectsPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The securityEnabledOnly property
-        self._security_enabled_only: Optional[bool] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The securityEnabledOnly property
+    security_enabled_only: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GetMemberObjectsPostRequestBody:
@@ -51,23 +32,6 @@ class GetMemberObjectsPostRequestBody(AdditionalDataHolder, Parsable):
             "securityEnabledOnly": lambda n : setattr(self, 'security_enabled_only', n.get_bool_value()),
         }
         return fields
-    
-    @property
-    def security_enabled_only(self,) -> Optional[bool]:
-        """
-        Gets the securityEnabledOnly property value. The securityEnabledOnly property
-        Returns: Optional[bool]
-        """
-        return self._security_enabled_only
-    
-    @security_enabled_only.setter
-    def security_enabled_only(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the securityEnabledOnly property value. The securityEnabledOnly property
-        Args:
-            value: Value to set for the security_enabled_only property.
-        """
-        self._security_enabled_only = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

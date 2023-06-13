@@ -1,6 +1,6 @@
 from enum import Enum
 
-class EventType(Enum):
+class EventType(str, Enum):
     SingleInstance = "singleInstance",
     Occurrence = "occurrence",
     Exception = "exception",

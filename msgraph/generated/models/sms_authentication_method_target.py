@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import authentication_method_target
 
+@dataclass
 class SmsAuthenticationMethodTarget(authentication_method_target.AuthenticationMethodTarget):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new SmsAuthenticationMethodTarget and sets the default values.
-        """
-        super().__init__()
-        # Determines if users can use this authentication method to sign in to Azure AD. true if users can use this method for primary authentication, otherwise false.
-        self._is_usable_for_sign_in: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # Determines if users can use this authentication method to sign in to Azure AD. true if users can use this method for primary authentication, otherwise false.
+    is_usable_for_sign_in: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SmsAuthenticationMethodTarget:
@@ -43,23 +40,6 @@ class SmsAuthenticationMethodTarget(authentication_method_target.AuthenticationM
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def is_usable_for_sign_in(self,) -> Optional[bool]:
-        """
-        Gets the isUsableForSignIn property value. Determines if users can use this authentication method to sign in to Azure AD. true if users can use this method for primary authentication, otherwise false.
-        Returns: Optional[bool]
-        """
-        return self._is_usable_for_sign_in
-    
-    @is_usable_for_sign_in.setter
-    def is_usable_for_sign_in(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isUsableForSignIn property value. Determines if users can use this authentication method to sign in to Azure AD. true if users can use this method for primary authentication, otherwise false.
-        Args:
-            value: Value to set for the is_usable_for_sign_in property.
-        """
-        self._is_usable_for_sign_in = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

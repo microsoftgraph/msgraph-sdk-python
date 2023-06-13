@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ImportedWindowsAutopilotDeviceIdentityImportStatus(Enum):
+class ImportedWindowsAutopilotDeviceIdentityImportStatus(str, Enum):
     # Unknown status.
     Unknown = "unknown",
     # Pending status.

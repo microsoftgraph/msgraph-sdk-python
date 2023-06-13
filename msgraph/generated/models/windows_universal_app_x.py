@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,82 +8,27 @@ if TYPE_CHECKING:
 
 from . import mobile_lob_app
 
+@dataclass
 class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsUniversalAppX and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsUniversalAppX"
-        # Contains properties for Windows architecture.
-        self._applicable_architectures: Optional[windows_architecture.WindowsArchitecture] = None
-        # Contains properties for Windows device type.
-        self._applicable_device_types: Optional[windows_device_type.WindowsDeviceType] = None
-        # The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
-        self._committed_contained_apps: Optional[List[mobile_contained_app.MobileContainedApp]] = None
-        # The Identity Name.
-        self._identity_name: Optional[str] = None
-        # The Identity Publisher Hash.
-        self._identity_publisher_hash: Optional[str] = None
-        # The Identity Resource Identifier.
-        self._identity_resource_identifier: Optional[str] = None
-        # The identity version.
-        self._identity_version: Optional[str] = None
-        # Whether or not the app is a bundle.
-        self._is_bundle: Optional[bool] = None
-        # The minimum operating system required for a Windows mobile app.
-        self._minimum_supported_operating_system: Optional[windows_minimum_operating_system.WindowsMinimumOperatingSystem] = None
-    
-    @property
-    def applicable_architectures(self,) -> Optional[windows_architecture.WindowsArchitecture]:
-        """
-        Gets the applicableArchitectures property value. Contains properties for Windows architecture.
-        Returns: Optional[windows_architecture.WindowsArchitecture]
-        """
-        return self._applicable_architectures
-    
-    @applicable_architectures.setter
-    def applicable_architectures(self,value: Optional[windows_architecture.WindowsArchitecture] = None) -> None:
-        """
-        Sets the applicableArchitectures property value. Contains properties for Windows architecture.
-        Args:
-            value: Value to set for the applicable_architectures property.
-        """
-        self._applicable_architectures = value
-    
-    @property
-    def applicable_device_types(self,) -> Optional[windows_device_type.WindowsDeviceType]:
-        """
-        Gets the applicableDeviceTypes property value. Contains properties for Windows device type.
-        Returns: Optional[windows_device_type.WindowsDeviceType]
-        """
-        return self._applicable_device_types
-    
-    @applicable_device_types.setter
-    def applicable_device_types(self,value: Optional[windows_device_type.WindowsDeviceType] = None) -> None:
-        """
-        Sets the applicableDeviceTypes property value. Contains properties for Windows device type.
-        Args:
-            value: Value to set for the applicable_device_types property.
-        """
-        self._applicable_device_types = value
-    
-    @property
-    def committed_contained_apps(self,) -> Optional[List[mobile_contained_app.MobileContainedApp]]:
-        """
-        Gets the committedContainedApps property value. The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
-        Returns: Optional[List[mobile_contained_app.MobileContainedApp]]
-        """
-        return self._committed_contained_apps
-    
-    @committed_contained_apps.setter
-    def committed_contained_apps(self,value: Optional[List[mobile_contained_app.MobileContainedApp]] = None) -> None:
-        """
-        Sets the committedContainedApps property value. The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
-        Args:
-            value: Value to set for the committed_contained_apps property.
-        """
-        self._committed_contained_apps = value
+    odata_type = "#microsoft.graph.windowsUniversalAppX"
+    # Contains properties for Windows architecture.
+    applicable_architectures: Optional[windows_architecture.WindowsArchitecture] = None
+    # Contains properties for Windows device type.
+    applicable_device_types: Optional[windows_device_type.WindowsDeviceType] = None
+    # The collection of contained apps in the committed mobileAppContent of a windowsUniversalAppX app.
+    committed_contained_apps: Optional[List[mobile_contained_app.MobileContainedApp]] = None
+    # The Identity Name.
+    identity_name: Optional[str] = None
+    # The Identity Publisher Hash.
+    identity_publisher_hash: Optional[str] = None
+    # The Identity Resource Identifier.
+    identity_resource_identifier: Optional[str] = None
+    # The identity version.
+    identity_version: Optional[str] = None
+    # Whether or not the app is a bundle.
+    is_bundle: Optional[bool] = None
+    # The minimum operating system required for a Windows mobile app.
+    minimum_supported_operating_system: Optional[windows_minimum_operating_system.WindowsMinimumOperatingSystem] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsUniversalAppX:
@@ -117,108 +63,6 @@ class WindowsUniversalAppX(mobile_lob_app.MobileLobApp):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def identity_name(self,) -> Optional[str]:
-        """
-        Gets the identityName property value. The Identity Name.
-        Returns: Optional[str]
-        """
-        return self._identity_name
-    
-    @identity_name.setter
-    def identity_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the identityName property value. The Identity Name.
-        Args:
-            value: Value to set for the identity_name property.
-        """
-        self._identity_name = value
-    
-    @property
-    def identity_publisher_hash(self,) -> Optional[str]:
-        """
-        Gets the identityPublisherHash property value. The Identity Publisher Hash.
-        Returns: Optional[str]
-        """
-        return self._identity_publisher_hash
-    
-    @identity_publisher_hash.setter
-    def identity_publisher_hash(self,value: Optional[str] = None) -> None:
-        """
-        Sets the identityPublisherHash property value. The Identity Publisher Hash.
-        Args:
-            value: Value to set for the identity_publisher_hash property.
-        """
-        self._identity_publisher_hash = value
-    
-    @property
-    def identity_resource_identifier(self,) -> Optional[str]:
-        """
-        Gets the identityResourceIdentifier property value. The Identity Resource Identifier.
-        Returns: Optional[str]
-        """
-        return self._identity_resource_identifier
-    
-    @identity_resource_identifier.setter
-    def identity_resource_identifier(self,value: Optional[str] = None) -> None:
-        """
-        Sets the identityResourceIdentifier property value. The Identity Resource Identifier.
-        Args:
-            value: Value to set for the identity_resource_identifier property.
-        """
-        self._identity_resource_identifier = value
-    
-    @property
-    def identity_version(self,) -> Optional[str]:
-        """
-        Gets the identityVersion property value. The identity version.
-        Returns: Optional[str]
-        """
-        return self._identity_version
-    
-    @identity_version.setter
-    def identity_version(self,value: Optional[str] = None) -> None:
-        """
-        Sets the identityVersion property value. The identity version.
-        Args:
-            value: Value to set for the identity_version property.
-        """
-        self._identity_version = value
-    
-    @property
-    def is_bundle(self,) -> Optional[bool]:
-        """
-        Gets the isBundle property value. Whether or not the app is a bundle.
-        Returns: Optional[bool]
-        """
-        return self._is_bundle
-    
-    @is_bundle.setter
-    def is_bundle(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isBundle property value. Whether or not the app is a bundle.
-        Args:
-            value: Value to set for the is_bundle property.
-        """
-        self._is_bundle = value
-    
-    @property
-    def minimum_supported_operating_system(self,) -> Optional[windows_minimum_operating_system.WindowsMinimumOperatingSystem]:
-        """
-        Gets the minimumSupportedOperatingSystem property value. The minimum operating system required for a Windows mobile app.
-        Returns: Optional[windows_minimum_operating_system.WindowsMinimumOperatingSystem]
-        """
-        return self._minimum_supported_operating_system
-    
-    @minimum_supported_operating_system.setter
-    def minimum_supported_operating_system(self,value: Optional[windows_minimum_operating_system.WindowsMinimumOperatingSystem] = None) -> None:
-        """
-        Sets the minimumSupportedOperatingSystem property value. The minimum operating system required for a Windows mobile app.
-        Args:
-            value: Value to set for the minimum_supported_operating_system property.
-        """
-        self._minimum_supported_operating_system = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

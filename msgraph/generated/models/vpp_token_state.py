@@ -1,6 +1,6 @@
 from enum import Enum
 
-class VppTokenState(Enum):
+class VppTokenState(str, Enum):
     # Default state.
     Unknown = "unknown",
     # Token is valid.

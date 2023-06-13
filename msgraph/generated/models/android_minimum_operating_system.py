@@ -1,69 +1,50 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
     """
     Contains properties for the minimum operating system required for an Android mobile app.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new androidMinimumOperatingSystem and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # When TRUE, only Version 10.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        self._v10_0: Optional[bool] = None
-        # When TRUE, only Version 11.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        self._v11_0: Optional[bool] = None
-        # When TRUE, only Version 4.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        self._v4_0: Optional[bool] = None
-        # When TRUE, only Version 4.0.3 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        self._v4_0_3: Optional[bool] = None
-        # When TRUE, only Version 4.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        self._v4_1: Optional[bool] = None
-        # When TRUE, only Version 4.2 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        self._v4_2: Optional[bool] = None
-        # When TRUE, only Version 4.3 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        self._v4_3: Optional[bool] = None
-        # When TRUE, only Version 4.4 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        self._v4_4: Optional[bool] = None
-        # When TRUE, only Version 5.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        self._v5_0: Optional[bool] = None
-        # When TRUE, only Version 5.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        self._v5_1: Optional[bool] = None
-        # When TRUE, only Version 6.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        self._v6_0: Optional[bool] = None
-        # When TRUE, only Version 7.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        self._v7_0: Optional[bool] = None
-        # When TRUE, only Version 7.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        self._v7_1: Optional[bool] = None
-        # When TRUE, only Version 8.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        self._v8_0: Optional[bool] = None
-        # When TRUE, only Version 8.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        self._v8_1: Optional[bool] = None
-        # When TRUE, only Version 9.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        self._v9_0: Optional[bool] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # When TRUE, only Version 10.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
+    v10_0: Optional[bool] = None
+    # When TRUE, only Version 11.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
+    v11_0: Optional[bool] = None
+    # When TRUE, only Version 4.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
+    v4_0: Optional[bool] = None
+    # When TRUE, only Version 4.0.3 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
+    v4_0_3: Optional[bool] = None
+    # When TRUE, only Version 4.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
+    v4_1: Optional[bool] = None
+    # When TRUE, only Version 4.2 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
+    v4_2: Optional[bool] = None
+    # When TRUE, only Version 4.3 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
+    v4_3: Optional[bool] = None
+    # When TRUE, only Version 4.4 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
+    v4_4: Optional[bool] = None
+    # When TRUE, only Version 5.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
+    v5_0: Optional[bool] = None
+    # When TRUE, only Version 5.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
+    v5_1: Optional[bool] = None
+    # When TRUE, only Version 6.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
+    v6_0: Optional[bool] = None
+    # When TRUE, only Version 7.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
+    v7_0: Optional[bool] = None
+    # When TRUE, only Version 7.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
+    v7_1: Optional[bool] = None
+    # When TRUE, only Version 8.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
+    v8_0: Optional[bool] = None
+    # When TRUE, only Version 8.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
+    v8_1: Optional[bool] = None
+    # When TRUE, only Version 9.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
+    v9_0: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AndroidMinimumOperatingSystem:
@@ -103,23 +84,6 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -146,277 +110,5 @@ class AndroidMinimumOperatingSystem(AdditionalDataHolder, Parsable):
         writer.write_bool_value("v8_1", self.v8_1)
         writer.write_bool_value("v9_0", self.v9_0)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def v10_0(self,) -> Optional[bool]:
-        """
-        Gets the v10_0 property value. When TRUE, only Version 10.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Returns: Optional[bool]
-        """
-        return self._v10_0
-    
-    @v10_0.setter
-    def v10_0(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v10_0 property value. When TRUE, only Version 10.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Args:
-            value: Value to set for the v10_0 property.
-        """
-        self._v10_0 = value
-    
-    @property
-    def v11_0(self,) -> Optional[bool]:
-        """
-        Gets the v11_0 property value. When TRUE, only Version 11.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Returns: Optional[bool]
-        """
-        return self._v11_0
-    
-    @v11_0.setter
-    def v11_0(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v11_0 property value. When TRUE, only Version 11.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Args:
-            value: Value to set for the v11_0 property.
-        """
-        self._v11_0 = value
-    
-    @property
-    def v4_0(self,) -> Optional[bool]:
-        """
-        Gets the v4_0 property value. When TRUE, only Version 4.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Returns: Optional[bool]
-        """
-        return self._v4_0
-    
-    @v4_0.setter
-    def v4_0(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v4_0 property value. When TRUE, only Version 4.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Args:
-            value: Value to set for the v4_0 property.
-        """
-        self._v4_0 = value
-    
-    @property
-    def v4_0_3(self,) -> Optional[bool]:
-        """
-        Gets the v4_0_3 property value. When TRUE, only Version 4.0.3 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Returns: Optional[bool]
-        """
-        return self._v4_0_3
-    
-    @v4_0_3.setter
-    def v4_0_3(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v4_0_3 property value. When TRUE, only Version 4.0.3 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Args:
-            value: Value to set for the v4_0_3 property.
-        """
-        self._v4_0_3 = value
-    
-    @property
-    def v4_1(self,) -> Optional[bool]:
-        """
-        Gets the v4_1 property value. When TRUE, only Version 4.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Returns: Optional[bool]
-        """
-        return self._v4_1
-    
-    @v4_1.setter
-    def v4_1(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v4_1 property value. When TRUE, only Version 4.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Args:
-            value: Value to set for the v4_1 property.
-        """
-        self._v4_1 = value
-    
-    @property
-    def v4_2(self,) -> Optional[bool]:
-        """
-        Gets the v4_2 property value. When TRUE, only Version 4.2 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Returns: Optional[bool]
-        """
-        return self._v4_2
-    
-    @v4_2.setter
-    def v4_2(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v4_2 property value. When TRUE, only Version 4.2 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Args:
-            value: Value to set for the v4_2 property.
-        """
-        self._v4_2 = value
-    
-    @property
-    def v4_3(self,) -> Optional[bool]:
-        """
-        Gets the v4_3 property value. When TRUE, only Version 4.3 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Returns: Optional[bool]
-        """
-        return self._v4_3
-    
-    @v4_3.setter
-    def v4_3(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v4_3 property value. When TRUE, only Version 4.3 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Args:
-            value: Value to set for the v4_3 property.
-        """
-        self._v4_3 = value
-    
-    @property
-    def v4_4(self,) -> Optional[bool]:
-        """
-        Gets the v4_4 property value. When TRUE, only Version 4.4 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Returns: Optional[bool]
-        """
-        return self._v4_4
-    
-    @v4_4.setter
-    def v4_4(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v4_4 property value. When TRUE, only Version 4.4 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Args:
-            value: Value to set for the v4_4 property.
-        """
-        self._v4_4 = value
-    
-    @property
-    def v5_0(self,) -> Optional[bool]:
-        """
-        Gets the v5_0 property value. When TRUE, only Version 5.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Returns: Optional[bool]
-        """
-        return self._v5_0
-    
-    @v5_0.setter
-    def v5_0(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v5_0 property value. When TRUE, only Version 5.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Args:
-            value: Value to set for the v5_0 property.
-        """
-        self._v5_0 = value
-    
-    @property
-    def v5_1(self,) -> Optional[bool]:
-        """
-        Gets the v5_1 property value. When TRUE, only Version 5.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Returns: Optional[bool]
-        """
-        return self._v5_1
-    
-    @v5_1.setter
-    def v5_1(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v5_1 property value. When TRUE, only Version 5.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Args:
-            value: Value to set for the v5_1 property.
-        """
-        self._v5_1 = value
-    
-    @property
-    def v6_0(self,) -> Optional[bool]:
-        """
-        Gets the v6_0 property value. When TRUE, only Version 6.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Returns: Optional[bool]
-        """
-        return self._v6_0
-    
-    @v6_0.setter
-    def v6_0(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v6_0 property value. When TRUE, only Version 6.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Args:
-            value: Value to set for the v6_0 property.
-        """
-        self._v6_0 = value
-    
-    @property
-    def v7_0(self,) -> Optional[bool]:
-        """
-        Gets the v7_0 property value. When TRUE, only Version 7.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Returns: Optional[bool]
-        """
-        return self._v7_0
-    
-    @v7_0.setter
-    def v7_0(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v7_0 property value. When TRUE, only Version 7.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Args:
-            value: Value to set for the v7_0 property.
-        """
-        self._v7_0 = value
-    
-    @property
-    def v7_1(self,) -> Optional[bool]:
-        """
-        Gets the v7_1 property value. When TRUE, only Version 7.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Returns: Optional[bool]
-        """
-        return self._v7_1
-    
-    @v7_1.setter
-    def v7_1(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v7_1 property value. When TRUE, only Version 7.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Args:
-            value: Value to set for the v7_1 property.
-        """
-        self._v7_1 = value
-    
-    @property
-    def v8_0(self,) -> Optional[bool]:
-        """
-        Gets the v8_0 property value. When TRUE, only Version 8.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Returns: Optional[bool]
-        """
-        return self._v8_0
-    
-    @v8_0.setter
-    def v8_0(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v8_0 property value. When TRUE, only Version 8.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Args:
-            value: Value to set for the v8_0 property.
-        """
-        self._v8_0 = value
-    
-    @property
-    def v8_1(self,) -> Optional[bool]:
-        """
-        Gets the v8_1 property value. When TRUE, only Version 8.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Returns: Optional[bool]
-        """
-        return self._v8_1
-    
-    @v8_1.setter
-    def v8_1(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v8_1 property value. When TRUE, only Version 8.1 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Args:
-            value: Value to set for the v8_1 property.
-        """
-        self._v8_1 = value
-    
-    @property
-    def v9_0(self,) -> Optional[bool]:
-        """
-        Gets the v9_0 property value. When TRUE, only Version 9.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Returns: Optional[bool]
-        """
-        return self._v9_0
-    
-    @v9_0.setter
-    def v9_0(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the v9_0 property value. When TRUE, only Version 9.0 or later is supported. Default value is FALSE. Exactly one of the minimum operating system boolean values will be TRUE.
-        Args:
-            value: Value to set for the v9_0 property.
-        """
-        self._v9_0 = value
     
 

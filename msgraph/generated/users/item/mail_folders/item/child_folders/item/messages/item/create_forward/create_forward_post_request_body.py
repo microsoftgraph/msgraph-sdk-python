@@ -1,58 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..........models import message, recipient
 
+@dataclass
 class CreateForwardPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new createForwardPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The Comment property
-        self._comment: Optional[str] = None
-        # The Message property
-        self._message: Optional[message.Message] = None
-        # The ToRecipients property
-        self._to_recipients: Optional[List[recipient.Recipient]] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def comment(self,) -> Optional[str]:
-        """
-        Gets the comment property value. The Comment property
-        Returns: Optional[str]
-        """
-        return self._comment
-    
-    @comment.setter
-    def comment(self,value: Optional[str] = None) -> None:
-        """
-        Sets the comment property value. The Comment property
-        Args:
-            value: Value to set for the Comment property.
-        """
-        self._comment = value
+    # The Comment property
+    comment: Optional[str] = None
+    # The Message property
+    message: Optional[message.Message] = None
+    # The ToRecipients property
+    to_recipients: Optional[List[recipient.Recipient]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CreateForwardPostRequestBody:
@@ -80,23 +44,6 @@ class CreateForwardPostRequestBody(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def message(self,) -> Optional[message.Message]:
-        """
-        Gets the message property value. The Message property
-        Returns: Optional[message.Message]
-        """
-        return self._message
-    
-    @message.setter
-    def message(self,value: Optional[message.Message] = None) -> None:
-        """
-        Sets the message property value. The Message property
-        Args:
-            value: Value to set for the Message property.
-        """
-        self._message = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -109,22 +56,5 @@ class CreateForwardPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_object_value("Message", self.message)
         writer.write_collection_of_object_values("ToRecipients", self.to_recipients)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def to_recipients(self,) -> Optional[List[recipient.Recipient]]:
-        """
-        Gets the toRecipients property value. The ToRecipients property
-        Returns: Optional[List[recipient.Recipient]]
-        """
-        return self._to_recipients
-    
-    @to_recipients.setter
-    def to_recipients(self,value: Optional[List[recipient.Recipient]] = None) -> None:
-        """
-        Sets the toRecipients property value. The ToRecipients property
-        Args:
-            value: Value to set for the to_recipients property.
-        """
-        self._to_recipients = value
     
 

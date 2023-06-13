@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ServiceRole(Enum):
+class ServiceRole(str, Enum):
     Unknown = "unknown",
     CustomBot = "customBot",
     SkypeForBusinessMicrosoftTeamsGateway = "skypeForBusinessMicrosoftTeamsGateway",

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,60 +9,22 @@ if TYPE_CHECKING:
 
 from .. import entity
 
+@dataclass
 class RetentionEventType(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new retentionEventType and sets the default values.
-        """
-        super().__init__()
-        # The user who created the retentionEventType.
-        self._created_by: Optional[identity_set.IdentitySet] = None
-        # The date time when the retentionEventType was created.
-        self._created_date_time: Optional[datetime] = None
-        # Optional information about the event type.
-        self._description: Optional[str] = None
-        # Name of the event type.
-        self._display_name: Optional[str] = None
-        # The user who last modified the retentionEventType.
-        self._last_modified_by: Optional[identity_set.IdentitySet] = None
-        # The latest date time when the retentionEventType was modified.
-        self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def created_by(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the createdBy property value. The user who created the retentionEventType.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._created_by
-    
-    @created_by.setter
-    def created_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the createdBy property value. The user who created the retentionEventType.
-        Args:
-            value: Value to set for the created_by property.
-        """
-        self._created_by = value
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. The date time when the retentionEventType was created.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. The date time when the retentionEventType was created.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    # The user who created the retentionEventType.
+    created_by: Optional[identity_set.IdentitySet] = None
+    # The date time when the retentionEventType was created.
+    created_date_time: Optional[datetime] = None
+    # Optional information about the event type.
+    description: Optional[str] = None
+    # Name of the event type.
+    display_name: Optional[str] = None
+    # The user who last modified the retentionEventType.
+    last_modified_by: Optional[identity_set.IdentitySet] = None
+    # The latest date time when the retentionEventType was modified.
+    last_modified_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RetentionEventType:
@@ -74,40 +37,6 @@ class RetentionEventType(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return RetentionEventType()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. Optional information about the event type.
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. Optional information about the event type.
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Name of the event type.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Name of the event type.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -127,40 +56,6 @@ class RetentionEventType(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def last_modified_by(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the lastModifiedBy property value. The user who last modified the retentionEventType.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._last_modified_by
-    
-    @last_modified_by.setter
-    def last_modified_by(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the lastModifiedBy property value. The user who last modified the retentionEventType.
-        Args:
-            value: Value to set for the last_modified_by property.
-        """
-        self._last_modified_by = value
-    
-    @property
-    def last_modified_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastModifiedDateTime property value. The latest date time when the retentionEventType was modified.
-        Returns: Optional[datetime]
-        """
-        return self._last_modified_date_time
-    
-    @last_modified_date_time.setter
-    def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastModifiedDateTime property value. The latest date time when the retentionEventType was modified.
-        Args:
-            value: Value to set for the last_modified_date_time property.
-        """
-        self._last_modified_date_time = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

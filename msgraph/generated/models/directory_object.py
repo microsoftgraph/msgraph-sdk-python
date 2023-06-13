@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,16 +9,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class DirectoryObject(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new directoryObject and sets the default values.
-        """
-        super().__init__()
-        # Date and time when this object was deleted. Always null when the object hasn't been deleted.
-        self._deleted_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # Date and time when this object was deleted. Always null when the object hasn't been deleted.
+    deleted_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DirectoryObject:
@@ -153,23 +150,6 @@ class DirectoryObject(entity.Entity):
 
                 return user.User()
         return DirectoryObject()
-    
-    @property
-    def deleted_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the deletedDateTime property value. Date and time when this object was deleted. Always null when the object hasn't been deleted.
-        Returns: Optional[datetime]
-        """
-        return self._deleted_date_time
-    
-    @deleted_date_time.setter
-    def deleted_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the deletedDateTime property value. Date and time when this object was deleted. Always null when the object hasn't been deleted.
-        Args:
-            value: Value to set for the deleted_date_time property.
-        """
-        self._deleted_date_time = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """

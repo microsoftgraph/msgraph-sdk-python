@@ -1,6 +1,6 @@
 from enum import Enum
 
-class TemplateScenarios(Enum):
+class TemplateScenarios(str, Enum):
     New = "new",
     SecureFoundation = "secureFoundation",
     ZeroTrust = "zeroTrust",

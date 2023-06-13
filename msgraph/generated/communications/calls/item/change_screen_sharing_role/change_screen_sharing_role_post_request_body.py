@@ -1,37 +1,18 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .....models import screen_sharing_role
 
+@dataclass
 class ChangeScreenSharingRolePostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new changeScreenSharingRolePostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The role property
-        self._role: Optional[screen_sharing_role.ScreenSharingRole] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The role property
+    role: Optional[screen_sharing_role.ScreenSharingRole] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChangeScreenSharingRolePostRequestBody:
@@ -56,23 +37,6 @@ class ChangeScreenSharingRolePostRequestBody(AdditionalDataHolder, Parsable):
             "role": lambda n : setattr(self, 'role', n.get_enum_value(screen_sharing_role.ScreenSharingRole)),
         }
         return fields
-    
-    @property
-    def role(self,) -> Optional[screen_sharing_role.ScreenSharingRole]:
-        """
-        Gets the role property value. The role property
-        Returns: Optional[screen_sharing_role.ScreenSharingRole]
-        """
-        return self._role
-    
-    @role.setter
-    def role(self,value: Optional[screen_sharing_role.ScreenSharingRole] = None) -> None:
-        """
-        Sets the role property value. The role property
-        Args:
-            value: Value to set for the role property.
-        """
-        self._role = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

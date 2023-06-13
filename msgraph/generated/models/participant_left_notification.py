@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,35 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ParticipantLeftNotification(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ParticipantLeftNotification and sets the default values.
-        """
-        super().__init__()
-        # The call property
-        self._call: Optional[call.Call] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # ID of the participant under the policy who has left the meeting.
-        self._participant_id: Optional[str] = None
-    
-    @property
-    def call(self,) -> Optional[call.Call]:
-        """
-        Gets the call property value. The call property
-        Returns: Optional[call.Call]
-        """
-        return self._call
-    
-    @call.setter
-    def call(self,value: Optional[call.Call] = None) -> None:
-        """
-        Sets the call property value. The call property
-        Args:
-            value: Value to set for the call property.
-        """
-        self._call = value
+    # The call property
+    call: Optional[call.Call] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # ID of the participant under the policy who has left the meeting.
+    participant_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ParticipantLeftNotification:
@@ -63,23 +43,6 @@ class ParticipantLeftNotification(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def participant_id(self,) -> Optional[str]:
-        """
-        Gets the participantId property value. ID of the participant under the policy who has left the meeting.
-        Returns: Optional[str]
-        """
-        return self._participant_id
-    
-    @participant_id.setter
-    def participant_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the participantId property value. ID of the participant under the policy who has left the meeting.
-        Args:
-            value: Value to set for the participant_id property.
-        """
-        self._participant_id = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

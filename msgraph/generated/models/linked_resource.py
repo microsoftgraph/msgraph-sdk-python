@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,39 +8,18 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class LinkedResource(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new linkedResource and sets the default values.
-        """
-        super().__init__()
-        # The app name of the source that sends the linkedResource.
-        self._application_name: Optional[str] = None
-        # The title of the linkedResource.
-        self._display_name: Optional[str] = None
-        # ID of the object that is associated with this task on the third-party/partner system.
-        self._external_id: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Deep link to the linkedResource.
-        self._web_url: Optional[str] = None
-    
-    @property
-    def application_name(self,) -> Optional[str]:
-        """
-        Gets the applicationName property value. The app name of the source that sends the linkedResource.
-        Returns: Optional[str]
-        """
-        return self._application_name
-    
-    @application_name.setter
-    def application_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the applicationName property value. The app name of the source that sends the linkedResource.
-        Args:
-            value: Value to set for the application_name property.
-        """
-        self._application_name = value
+    # The app name of the source that sends the linkedResource.
+    application_name: Optional[str] = None
+    # The title of the linkedResource.
+    display_name: Optional[str] = None
+    # ID of the object that is associated with this task on the third-party/partner system.
+    external_id: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Deep link to the linkedResource.
+    web_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LinkedResource:
@@ -52,40 +32,6 @@ class LinkedResource(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return LinkedResource()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The title of the linkedResource.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The title of the linkedResource.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
-    @property
-    def external_id(self,) -> Optional[str]:
-        """
-        Gets the externalId property value. ID of the object that is associated with this task on the third-party/partner system.
-        Returns: Optional[str]
-        """
-        return self._external_id
-    
-    @external_id.setter
-    def external_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the externalId property value. ID of the object that is associated with this task on the third-party/partner system.
-        Args:
-            value: Value to set for the external_id property.
-        """
-        self._external_id = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -117,22 +63,5 @@ class LinkedResource(entity.Entity):
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("externalId", self.external_id)
         writer.write_str_value("webUrl", self.web_url)
-    
-    @property
-    def web_url(self,) -> Optional[str]:
-        """
-        Gets the webUrl property value. Deep link to the linkedResource.
-        Returns: Optional[str]
-        """
-        return self._web_url
-    
-    @web_url.setter
-    def web_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the webUrl property value. Deep link to the linkedResource.
-        Args:
-            value: Value to set for the web_url property.
-        """
-        self._web_url = value
     
 

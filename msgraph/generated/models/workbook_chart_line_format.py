@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,33 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class WorkbookChartLineFormat(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookChartLineFormat and sets the default values.
-        """
-        super().__init__()
-        # HTML color code representing the color of lines in the chart.
-        self._color: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def color(self,) -> Optional[str]:
-        """
-        Gets the color property value. HTML color code representing the color of lines in the chart.
-        Returns: Optional[str]
-        """
-        return self._color
-    
-    @color.setter
-    def color(self,value: Optional[str] = None) -> None:
-        """
-        Sets the color property value. HTML color code representing the color of lines in the chart.
-        Args:
-            value: Value to set for the color property.
-        """
-        self._color = value
+    # HTML color code representing the color of lines in the chart.
+    color: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartLineFormat:

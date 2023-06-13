@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,26 +9,22 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class Conversation(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new conversation and sets the default values.
-        """
-        super().__init__()
-        # Indicates whether any of the posts within this Conversation has at least one attachment. Supports $filter (eq, ne) and $search.
-        self._has_attachments: Optional[bool] = None
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._last_delivered_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # A short summary from the body of the latest post in this conversation. Supports $filter (eq, ne, le, ge).
-        self._preview: Optional[str] = None
-        # A collection of all the conversation threads in the conversation. A navigation property. Read-only. Nullable.
-        self._threads: Optional[List[conversation_thread.ConversationThread]] = None
-        # The topic of the conversation. This property can be set when the conversation is created, but it cannot be updated.
-        self._topic: Optional[str] = None
-        # All the users that sent a message to this Conversation.
-        self._unique_senders: Optional[List[str]] = None
+    # Indicates whether any of the posts within this Conversation has at least one attachment. Supports $filter (eq, ne) and $search.
+    has_attachments: Optional[bool] = None
+    # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    last_delivered_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # A short summary from the body of the latest post in this conversation. Supports $filter (eq, ne, le, ge).
+    preview: Optional[str] = None
+    # A collection of all the conversation threads in the conversation. A navigation property. Read-only. Nullable.
+    threads: Optional[List[conversation_thread.ConversationThread]] = None
+    # The topic of the conversation. This property can be set when the conversation is created, but it cannot be updated.
+    topic: Optional[str] = None
+    # All the users that sent a message to this Conversation.
+    unique_senders: Optional[List[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Conversation:
@@ -60,57 +57,6 @@ class Conversation(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def has_attachments(self,) -> Optional[bool]:
-        """
-        Gets the hasAttachments property value. Indicates whether any of the posts within this Conversation has at least one attachment. Supports $filter (eq, ne) and $search.
-        Returns: Optional[bool]
-        """
-        return self._has_attachments
-    
-    @has_attachments.setter
-    def has_attachments(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the hasAttachments property value. Indicates whether any of the posts within this Conversation has at least one attachment. Supports $filter (eq, ne) and $search.
-        Args:
-            value: Value to set for the has_attachments property.
-        """
-        self._has_attachments = value
-    
-    @property
-    def last_delivered_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastDeliveredDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Returns: Optional[datetime]
-        """
-        return self._last_delivered_date_time
-    
-    @last_delivered_date_time.setter
-    def last_delivered_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastDeliveredDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Args:
-            value: Value to set for the last_delivered_date_time property.
-        """
-        self._last_delivered_date_time = value
-    
-    @property
-    def preview(self,) -> Optional[str]:
-        """
-        Gets the preview property value. A short summary from the body of the latest post in this conversation. Supports $filter (eq, ne, le, ge).
-        Returns: Optional[str]
-        """
-        return self._preview
-    
-    @preview.setter
-    def preview(self,value: Optional[str] = None) -> None:
-        """
-        Sets the preview property value. A short summary from the body of the latest post in this conversation. Supports $filter (eq, ne, le, ge).
-        Args:
-            value: Value to set for the preview property.
-        """
-        self._preview = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -126,56 +72,5 @@ class Conversation(entity.Entity):
         writer.write_collection_of_object_values("threads", self.threads)
         writer.write_str_value("topic", self.topic)
         writer.write_collection_of_primitive_values("uniqueSenders", self.unique_senders)
-    
-    @property
-    def threads(self,) -> Optional[List[conversation_thread.ConversationThread]]:
-        """
-        Gets the threads property value. A collection of all the conversation threads in the conversation. A navigation property. Read-only. Nullable.
-        Returns: Optional[List[conversation_thread.ConversationThread]]
-        """
-        return self._threads
-    
-    @threads.setter
-    def threads(self,value: Optional[List[conversation_thread.ConversationThread]] = None) -> None:
-        """
-        Sets the threads property value. A collection of all the conversation threads in the conversation. A navigation property. Read-only. Nullable.
-        Args:
-            value: Value to set for the threads property.
-        """
-        self._threads = value
-    
-    @property
-    def topic(self,) -> Optional[str]:
-        """
-        Gets the topic property value. The topic of the conversation. This property can be set when the conversation is created, but it cannot be updated.
-        Returns: Optional[str]
-        """
-        return self._topic
-    
-    @topic.setter
-    def topic(self,value: Optional[str] = None) -> None:
-        """
-        Sets the topic property value. The topic of the conversation. This property can be set when the conversation is created, but it cannot be updated.
-        Args:
-            value: Value to set for the topic property.
-        """
-        self._topic = value
-    
-    @property
-    def unique_senders(self,) -> Optional[List[str]]:
-        """
-        Gets the uniqueSenders property value. All the users that sent a message to this Conversation.
-        Returns: Optional[List[str]]
-        """
-        return self._unique_senders
-    
-    @unique_senders.setter
-    def unique_senders(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the uniqueSenders property value. All the users that sent a message to this Conversation.
-        Args:
-            value: Value to set for the unique_senders property.
-        """
-        self._unique_senders = value
     
 

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,53 +8,15 @@ if TYPE_CHECKING:
 
 from . import event_message_detail
 
+@dataclass
 class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new CallTranscriptEventMessageDetail and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.callTranscriptEventMessageDetail"
-        # Unique identifier of the call.
-        self._call_id: Optional[str] = None
-        # Unique identifier for a call transcript.
-        self._call_transcript_i_cal_uid: Optional[str] = None
-        # The organizer of the meeting.
-        self._meeting_organizer: Optional[identity_set.IdentitySet] = None
-    
-    @property
-    def call_id(self,) -> Optional[str]:
-        """
-        Gets the callId property value. Unique identifier of the call.
-        Returns: Optional[str]
-        """
-        return self._call_id
-    
-    @call_id.setter
-    def call_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the callId property value. Unique identifier of the call.
-        Args:
-            value: Value to set for the call_id property.
-        """
-        self._call_id = value
-    
-    @property
-    def call_transcript_i_cal_uid(self,) -> Optional[str]:
-        """
-        Gets the callTranscriptICalUid property value. Unique identifier for a call transcript.
-        Returns: Optional[str]
-        """
-        return self._call_transcript_i_cal_uid
-    
-    @call_transcript_i_cal_uid.setter
-    def call_transcript_i_cal_uid(self,value: Optional[str] = None) -> None:
-        """
-        Sets the callTranscriptICalUid property value. Unique identifier for a call transcript.
-        Args:
-            value: Value to set for the call_transcript_i_cal_uid property.
-        """
-        self._call_transcript_i_cal_uid = value
+    odata_type = "#microsoft.graph.callTranscriptEventMessageDetail"
+    # Unique identifier of the call.
+    call_id: Optional[str] = None
+    # Unique identifier for a call transcript.
+    call_transcript_i_cal_uid: Optional[str] = None
+    # The organizer of the meeting.
+    meeting_organizer: Optional[identity_set.IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallTranscriptEventMessageDetail:
@@ -82,23 +45,6 @@ class CallTranscriptEventMessageDetail(event_message_detail.EventMessageDetail):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def meeting_organizer(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the meetingOrganizer property value. The organizer of the meeting.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._meeting_organizer
-    
-    @meeting_organizer.setter
-    def meeting_organizer(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the meetingOrganizer property value. The organizer of the meeting.
-        Args:
-            value: Value to set for the meeting_organizer property.
-        """
-        self._meeting_organizer = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class Windows10EditionType(Enum):
+class Windows10EditionType(str, Enum):
     # Windows 10 Enterprise
     Windows10Enterprise = "windows10Enterprise",
     # Windows 10 EnterpriseN

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class RemoteAssistanceOnboardingStatus(Enum):
+class RemoteAssistanceOnboardingStatus(str, Enum):
     # The status reported when there is no active TeamViewer connector configured or active
     NotOnboarded = "notOnboarded",
     # The status reported when the system has initiated a TeamViewer connection, but the service has not yet completed the confirmation of a connector

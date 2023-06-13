@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PrintScaling(Enum):
+class PrintScaling(str, Enum):
     Auto = "auto",
     ShrinkToFit = "shrinkToFit",
     Fill = "fill",

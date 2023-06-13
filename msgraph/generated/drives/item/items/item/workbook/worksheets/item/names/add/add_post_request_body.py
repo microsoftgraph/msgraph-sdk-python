@@ -1,58 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..........models import json
 
+@dataclass
 class AddPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new addPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The comment property
-        self._comment: Optional[str] = None
-        # The name property
-        self._name: Optional[str] = None
-        # The reference property
-        self._reference: Optional[json.Json] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def comment(self,) -> Optional[str]:
-        """
-        Gets the comment property value. The comment property
-        Returns: Optional[str]
-        """
-        return self._comment
-    
-    @comment.setter
-    def comment(self,value: Optional[str] = None) -> None:
-        """
-        Sets the comment property value. The comment property
-        Args:
-            value: Value to set for the comment property.
-        """
-        self._comment = value
+    # The comment property
+    comment: Optional[str] = None
+    # The name property
+    name: Optional[str] = None
+    # The reference property
+    reference: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddPostRequestBody:
@@ -79,40 +43,6 @@ class AddPostRequestBody(AdditionalDataHolder, Parsable):
             "reference": lambda n : setattr(self, 'reference', n.get_object_value(json.Json)),
         }
         return fields
-    
-    @property
-    def name(self,) -> Optional[str]:
-        """
-        Gets the name property value. The name property
-        Returns: Optional[str]
-        """
-        return self._name
-    
-    @name.setter
-    def name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the name property value. The name property
-        Args:
-            value: Value to set for the name property.
-        """
-        self._name = value
-    
-    @property
-    def reference(self,) -> Optional[json.Json]:
-        """
-        Gets the reference property value. The reference property
-        Returns: Optional[json.Json]
-        """
-        return self._reference
-    
-    @reference.setter
-    def reference(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the reference property value. The reference property
-        Args:
-            value: Value to set for the reference property.
-        """
-        self._reference = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

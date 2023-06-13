@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import managed_app_policy
 
+@dataclass
 class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ManagedAppConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.managedAppConfiguration"
-        # A set of string key and string value pairs to be sent to apps for users to whom the configuration is scoped, unalterned by this service
-        self._custom_settings: Optional[List[key_value_pair.KeyValuePair]] = None
+    odata_type = "#microsoft.graph.managedAppConfiguration"
+    # A set of string key and string value pairs to be sent to apps for users to whom the configuration is scoped, unalterned by this service
+    custom_settings: Optional[List[key_value_pair.KeyValuePair]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedAppConfiguration:
@@ -35,23 +32,6 @@ class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
 
                 return targeted_managed_app_configuration.TargetedManagedAppConfiguration()
         return ManagedAppConfiguration()
-    
-    @property
-    def custom_settings(self,) -> Optional[List[key_value_pair.KeyValuePair]]:
-        """
-        Gets the customSettings property value. A set of string key and string value pairs to be sent to apps for users to whom the configuration is scoped, unalterned by this service
-        Returns: Optional[List[key_value_pair.KeyValuePair]]
-        """
-        return self._custom_settings
-    
-    @custom_settings.setter
-    def custom_settings(self,value: Optional[List[key_value_pair.KeyValuePair]] = None) -> None:
-        """
-        Sets the customSettings property value. A set of string key and string value pairs to be sent to apps for users to whom the configuration is scoped, unalterned by this service
-        Args:
-            value: Value to set for the custom_settings property.
-        """
-        self._custom_settings = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """

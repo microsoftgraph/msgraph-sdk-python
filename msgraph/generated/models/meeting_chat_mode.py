@@ -1,6 +1,6 @@
 from enum import Enum
 
-class MeetingChatMode(Enum):
+class MeetingChatMode(str, Enum):
     Enabled = "enabled",
     Disabled = "disabled",
     Limited = "limited",

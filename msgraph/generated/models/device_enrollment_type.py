@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DeviceEnrollmentType(Enum):
+class DeviceEnrollmentType(str, Enum):
     # Default value, enrollment type was not collected.
     Unknown = "unknown",
     # User driven enrollment through BYOD channel.

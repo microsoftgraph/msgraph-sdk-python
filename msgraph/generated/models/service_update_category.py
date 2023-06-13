@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ServiceUpdateCategory(Enum):
+class ServiceUpdateCategory(str, Enum):
     PreventOrFixIssue = "preventOrFixIssue",
     PlanForChange = "planForChange",
     StayInformed = "stayInformed",

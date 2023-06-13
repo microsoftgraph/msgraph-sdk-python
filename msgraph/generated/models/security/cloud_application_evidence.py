@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,41 +8,20 @@ if TYPE_CHECKING:
 
 from . import alert_evidence
 
+@dataclass
 class CloudApplicationEvidence(alert_evidence.AlertEvidence):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new CloudApplicationEvidence and sets the default values.
-        """
-        super().__init__()
-        # Unique identifier of the application.
-        self._app_id: Optional[int] = None
-        # Name of the application.
-        self._display_name: Optional[str] = None
-        # Identifier of the instance of the Software as a Service (SaaS) application.
-        self._instance_id: Optional[int] = None
-        # Name of the instance of the SaaS application.
-        self._instance_name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The identifier of the SaaS application.
-        self._saas_app_id: Optional[int] = None
-    
-    @property
-    def app_id(self,) -> Optional[int]:
-        """
-        Gets the appId property value. Unique identifier of the application.
-        Returns: Optional[int]
-        """
-        return self._app_id
-    
-    @app_id.setter
-    def app_id(self,value: Optional[int] = None) -> None:
-        """
-        Sets the appId property value. Unique identifier of the application.
-        Args:
-            value: Value to set for the app_id property.
-        """
-        self._app_id = value
+    # Unique identifier of the application.
+    app_id: Optional[int] = None
+    # Name of the application.
+    display_name: Optional[str] = None
+    # Identifier of the instance of the Software as a Service (SaaS) application.
+    instance_id: Optional[int] = None
+    # Name of the instance of the SaaS application.
+    instance_name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The identifier of the SaaS application.
+    saas_app_id: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CloudApplicationEvidence:
@@ -54,23 +34,6 @@ class CloudApplicationEvidence(alert_evidence.AlertEvidence):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CloudApplicationEvidence()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Name of the application.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Name of the application.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -89,57 +52,6 @@ class CloudApplicationEvidence(alert_evidence.AlertEvidence):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def instance_id(self,) -> Optional[int]:
-        """
-        Gets the instanceId property value. Identifier of the instance of the Software as a Service (SaaS) application.
-        Returns: Optional[int]
-        """
-        return self._instance_id
-    
-    @instance_id.setter
-    def instance_id(self,value: Optional[int] = None) -> None:
-        """
-        Sets the instanceId property value. Identifier of the instance of the Software as a Service (SaaS) application.
-        Args:
-            value: Value to set for the instance_id property.
-        """
-        self._instance_id = value
-    
-    @property
-    def instance_name(self,) -> Optional[str]:
-        """
-        Gets the instanceName property value. Name of the instance of the SaaS application.
-        Returns: Optional[str]
-        """
-        return self._instance_name
-    
-    @instance_name.setter
-    def instance_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the instanceName property value. Name of the instance of the SaaS application.
-        Args:
-            value: Value to set for the instance_name property.
-        """
-        self._instance_name = value
-    
-    @property
-    def saas_app_id(self,) -> Optional[int]:
-        """
-        Gets the saasAppId property value. The identifier of the SaaS application.
-        Returns: Optional[int]
-        """
-        return self._saas_app_id
-    
-    @saas_app_id.setter
-    def saas_app_id(self,value: Optional[int] = None) -> None:
-        """
-        Sets the saasAppId property value. The identifier of the SaaS application.
-        Args:
-            value: Value to set for the saas_app_id property.
-        """
-        self._saas_app_id = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

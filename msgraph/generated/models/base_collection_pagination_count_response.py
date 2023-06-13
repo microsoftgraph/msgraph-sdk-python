@@ -1,36 +1,17 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class BaseCollectionPaginationCountResponse(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new BaseCollectionPaginationCountResponse and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The OdataCount property
-        self._odata_count: Optional[int] = None
-        # The OdataNextLink property
-        self._odata_next_link: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The OdataCount property
+    odata_count: Optional[int] = None
+    # The OdataNextLink property
+    odata_next_link: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BaseCollectionPaginationCountResponse:
@@ -54,40 +35,6 @@ class BaseCollectionPaginationCountResponse(AdditionalDataHolder, Parsable):
             "@odata.nextLink": lambda n : setattr(self, 'odata_next_link', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def odata_count(self,) -> Optional[int]:
-        """
-        Gets the @odata.count property value. The OdataCount property
-        Returns: Optional[int]
-        """
-        return self._odata_count
-    
-    @odata_count.setter
-    def odata_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the @odata.count property value. The OdataCount property
-        Args:
-            value: Value to set for the odata_count property.
-        """
-        self._odata_count = value
-    
-    @property
-    def odata_next_link(self,) -> Optional[str]:
-        """
-        Gets the @odata.nextLink property value. The OdataNextLink property
-        Returns: Optional[str]
-        """
-        return self._odata_next_link
-    
-    @odata_next_link.setter
-    def odata_next_link(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.nextLink property value. The OdataNextLink property
-        Args:
-            value: Value to set for the odata_next_link property.
-        """
-        self._odata_next_link = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

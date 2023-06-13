@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import change_tracked_entity
 
+@dataclass
 class ShiftPreferences(change_tracked_entity.ChangeTrackedEntity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ShiftPreferences and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.shiftPreferences"
-        # Availability of the user to be scheduled for work and its recurrence pattern.
-        self._availability: Optional[List[shift_availability.ShiftAvailability]] = None
-    
-    @property
-    def availability(self,) -> Optional[List[shift_availability.ShiftAvailability]]:
-        """
-        Gets the availability property value. Availability of the user to be scheduled for work and its recurrence pattern.
-        Returns: Optional[List[shift_availability.ShiftAvailability]]
-        """
-        return self._availability
-    
-    @availability.setter
-    def availability(self,value: Optional[List[shift_availability.ShiftAvailability]] = None) -> None:
-        """
-        Sets the availability property value. Availability of the user to be scheduled for work and its recurrence pattern.
-        Args:
-            value: Value to set for the availability property.
-        """
-        self._availability = value
+    odata_type = "#microsoft.graph.shiftPreferences"
+    # Availability of the user to be scheduled for work and its recurrence pattern.
+    availability: Optional[List[shift_availability.ShiftAvailability]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ShiftPreferences:

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import schedule_entity
 
+@dataclass
 class TimeOffItem(schedule_entity.ScheduleEntity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new TimeOffItem and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # ID of the timeOffReason for this timeOffItem. Required.
-        self._time_off_reason_id: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # ID of the timeOffReason for this timeOffItem. Required.
+    time_off_reason_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TimeOffItem:
@@ -54,22 +51,5 @@ class TimeOffItem(schedule_entity.ScheduleEntity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("timeOffReasonId", self.time_off_reason_id)
-    
-    @property
-    def time_off_reason_id(self,) -> Optional[str]:
-        """
-        Gets the timeOffReasonId property value. ID of the timeOffReason for this timeOffItem. Required.
-        Returns: Optional[str]
-        """
-        return self._time_off_reason_id
-    
-    @time_off_reason_id.setter
-    def time_off_reason_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the timeOffReasonId property value. ID of the timeOffReason for this timeOffItem. Required.
-        Args:
-            value: Value to set for the time_off_reason_id property.
-        """
-        self._time_off_reason_id = value
     
 

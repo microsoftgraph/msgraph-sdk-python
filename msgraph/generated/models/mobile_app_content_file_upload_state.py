@@ -1,6 +1,6 @@
 from enum import Enum
 
-class MobileAppContentFileUploadState(Enum):
+class MobileAppContentFileUploadState(str, Enum):
     Success = "success",
     TransientError = "transientError",
     Error = "error",

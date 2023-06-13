@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,71 +9,16 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class AuthoredNote(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AuthoredNote and sets the default values.
-        """
-        super().__init__()
-        # Identity information about the note's author.
-        self._author: Optional[identity.Identity] = None
-        # The content of the note.
-        self._content: Optional[item_body.ItemBody] = None
-        # The date and time when the entity was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._created_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def author(self,) -> Optional[identity.Identity]:
-        """
-        Gets the author property value. Identity information about the note's author.
-        Returns: Optional[identity.Identity]
-        """
-        return self._author
-    
-    @author.setter
-    def author(self,value: Optional[identity.Identity] = None) -> None:
-        """
-        Sets the author property value. Identity information about the note's author.
-        Args:
-            value: Value to set for the author property.
-        """
-        self._author = value
-    
-    @property
-    def content(self,) -> Optional[item_body.ItemBody]:
-        """
-        Gets the content property value. The content of the note.
-        Returns: Optional[item_body.ItemBody]
-        """
-        return self._content
-    
-    @content.setter
-    def content(self,value: Optional[item_body.ItemBody] = None) -> None:
-        """
-        Sets the content property value. The content of the note.
-        Args:
-            value: Value to set for the content property.
-        """
-        self._content = value
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. The date and time when the entity was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. The date and time when the entity was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    # Identity information about the note's author.
+    author: Optional[identity.Identity] = None
+    # The content of the note.
+    content: Optional[item_body.ItemBody] = None
+    # The date and time when the entity was created. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    created_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthoredNote:

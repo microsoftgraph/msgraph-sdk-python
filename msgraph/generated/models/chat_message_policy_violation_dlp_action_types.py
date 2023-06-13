@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ChatMessagePolicyViolationDlpActionTypes(Enum):
+class ChatMessagePolicyViolationDlpActionTypes(str, Enum):
     None_ = "none",
     NotifySender = "notifySender",
     BlockAccess = "blockAccess",

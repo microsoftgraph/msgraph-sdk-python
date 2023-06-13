@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class Edge(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Edge and sets the default values.
-        """
-        super().__init__()
-        # A container for Internet Explorer mode resources.
-        self._internet_explorer_mode: Optional[internet_explorer_mode.InternetExplorerMode] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # A container for Internet Explorer mode resources.
+    internet_explorer_mode: Optional[internet_explorer_mode.InternetExplorerMode] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Edge:
@@ -43,23 +40,6 @@ class Edge(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def internet_explorer_mode(self,) -> Optional[internet_explorer_mode.InternetExplorerMode]:
-        """
-        Gets the internetExplorerMode property value. A container for Internet Explorer mode resources.
-        Returns: Optional[internet_explorer_mode.InternetExplorerMode]
-        """
-        return self._internet_explorer_mode
-    
-    @internet_explorer_mode.setter
-    def internet_explorer_mode(self,value: Optional[internet_explorer_mode.InternetExplorerMode] = None) -> None:
-        """
-        Sets the internetExplorerMode property value. A container for Internet Explorer mode resources.
-        Args:
-            value: Value to set for the internet_explorer_mode property.
-        """
-        self._internet_explorer_mode = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

@@ -1,58 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..........models import time_slot
 
+@dataclass
 class TentativelyAcceptPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new tentativelyAcceptPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The Comment property
-        self._comment: Optional[str] = None
-        # The ProposedNewTime property
-        self._proposed_new_time: Optional[time_slot.TimeSlot] = None
-        # The SendResponse property
-        self._send_response: Optional[bool] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def comment(self,) -> Optional[str]:
-        """
-        Gets the comment property value. The Comment property
-        Returns: Optional[str]
-        """
-        return self._comment
-    
-    @comment.setter
-    def comment(self,value: Optional[str] = None) -> None:
-        """
-        Sets the comment property value. The Comment property
-        Args:
-            value: Value to set for the Comment property.
-        """
-        self._comment = value
+    # The Comment property
+    comment: Optional[str] = None
+    # The ProposedNewTime property
+    proposed_new_time: Optional[time_slot.TimeSlot] = None
+    # The SendResponse property
+    send_response: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TentativelyAcceptPostRequestBody:
@@ -79,40 +43,6 @@ class TentativelyAcceptPostRequestBody(AdditionalDataHolder, Parsable):
             "SendResponse": lambda n : setattr(self, 'send_response', n.get_bool_value()),
         }
         return fields
-    
-    @property
-    def proposed_new_time(self,) -> Optional[time_slot.TimeSlot]:
-        """
-        Gets the proposedNewTime property value. The ProposedNewTime property
-        Returns: Optional[time_slot.TimeSlot]
-        """
-        return self._proposed_new_time
-    
-    @proposed_new_time.setter
-    def proposed_new_time(self,value: Optional[time_slot.TimeSlot] = None) -> None:
-        """
-        Sets the proposedNewTime property value. The ProposedNewTime property
-        Args:
-            value: Value to set for the proposed_new_time property.
-        """
-        self._proposed_new_time = value
-    
-    @property
-    def send_response(self,) -> Optional[bool]:
-        """
-        Gets the sendResponse property value. The SendResponse property
-        Returns: Optional[bool]
-        """
-        return self._send_response
-    
-    @send_response.setter
-    def send_response(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the sendResponse property value. The SendResponse property
-        Args:
-            value: Value to set for the send_response property.
-        """
-        self._send_response = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

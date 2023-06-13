@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -54,7 +54,7 @@ class RetentionEventTypesRequestBuilder():
     
     async def get(self,request_configuration: Optional[RetentionEventTypesRequestBuilderGetRequestConfiguration] = None) -> Optional[retention_event_type_collection_response.RetentionEventTypeCollectionResponse]:
         """
-        Get retentionEventTypes from security
+        Get a list of the retentionEventType objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[retention_event_type_collection_response.RetentionEventTypeCollectionResponse]
@@ -76,7 +76,7 @@ class RetentionEventTypesRequestBuilder():
     
     async def post(self,body: Optional[retention_event_type.RetentionEventType] = None, request_configuration: Optional[RetentionEventTypesRequestBuilderPostRequestConfiguration] = None) -> Optional[retention_event_type.RetentionEventType]:
         """
-        Create new navigation property to retentionEventTypes for security
+        Create a new retentionEventType object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class RetentionEventTypesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[RetentionEventTypesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get retentionEventTypes from security
+        Get a list of the retentionEventType objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class RetentionEventTypesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[retention_event_type.RetentionEventType] = None, request_configuration: Optional[RetentionEventTypesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to retentionEventTypes for security
+        Create a new retentionEventType object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class RetentionEventTypesRequestBuilder():
     @dataclass
     class RetentionEventTypesRequestBuilderGetQueryParameters():
         """
-        Get retentionEventTypes from security
+        Get a list of the retentionEventType objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -1,64 +1,28 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import free_busy_error, schedule_item, working_hours
 
+@dataclass
 class ScheduleInformation(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new scheduleInformation and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Represents a merged view of availability of all the items in scheduleItems. The view consists of time slots. Availability during each time slot is indicated with: 0= free, 1= tentative, 2= busy, 3= out of office, 4= working elsewhere.
-        self._availability_view: Optional[str] = None
-        # Error information from attempting to get the availability of the user, distribution list, or resource.
-        self._error: Optional[free_busy_error.FreeBusyError] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # An SMTP address of the user, distribution list, or resource, identifying an instance of scheduleInformation.
-        self._schedule_id: Optional[str] = None
-        # Contains the items that describe the availability of the user or resource.
-        self._schedule_items: Optional[List[schedule_item.ScheduleItem]] = None
-        # The days of the week and hours in a specific time zone that the user works. These are set as part of the user's mailboxSettings.
-        self._working_hours: Optional[working_hours.WorkingHours] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def availability_view(self,) -> Optional[str]:
-        """
-        Gets the availabilityView property value. Represents a merged view of availability of all the items in scheduleItems. The view consists of time slots. Availability during each time slot is indicated with: 0= free, 1= tentative, 2= busy, 3= out of office, 4= working elsewhere.
-        Returns: Optional[str]
-        """
-        return self._availability_view
-    
-    @availability_view.setter
-    def availability_view(self,value: Optional[str] = None) -> None:
-        """
-        Sets the availabilityView property value. Represents a merged view of availability of all the items in scheduleItems. The view consists of time slots. Availability during each time slot is indicated with: 0= free, 1= tentative, 2= busy, 3= out of office, 4= working elsewhere.
-        Args:
-            value: Value to set for the availability_view property.
-        """
-        self._availability_view = value
+    # Represents a merged view of availability of all the items in scheduleItems. The view consists of time slots. Availability during each time slot is indicated with: 0= free, 1= tentative, 2= busy, 3= out of office, 4= working elsewhere.
+    availability_view: Optional[str] = None
+    # Error information from attempting to get the availability of the user, distribution list, or resource.
+    error: Optional[free_busy_error.FreeBusyError] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # An SMTP address of the user, distribution list, or resource, identifying an instance of scheduleInformation.
+    schedule_id: Optional[str] = None
+    # Contains the items that describe the availability of the user or resource.
+    schedule_items: Optional[List[schedule_item.ScheduleItem]] = None
+    # The days of the week and hours in a specific time zone that the user works. These are set as part of the user's mailboxSettings.
+    working_hours: Optional[working_hours.WorkingHours] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScheduleInformation:
@@ -71,23 +35,6 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ScheduleInformation()
-    
-    @property
-    def error(self,) -> Optional[free_busy_error.FreeBusyError]:
-        """
-        Gets the error property value. Error information from attempting to get the availability of the user, distribution list, or resource.
-        Returns: Optional[free_busy_error.FreeBusyError]
-        """
-        return self._error
-    
-    @error.setter
-    def error(self,value: Optional[free_busy_error.FreeBusyError] = None) -> None:
-        """
-        Sets the error property value. Error information from attempting to get the availability of the user, distribution list, or resource.
-        Args:
-            value: Value to set for the error property.
-        """
-        self._error = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -106,57 +53,6 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def schedule_id(self,) -> Optional[str]:
-        """
-        Gets the scheduleId property value. An SMTP address of the user, distribution list, or resource, identifying an instance of scheduleInformation.
-        Returns: Optional[str]
-        """
-        return self._schedule_id
-    
-    @schedule_id.setter
-    def schedule_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the scheduleId property value. An SMTP address of the user, distribution list, or resource, identifying an instance of scheduleInformation.
-        Args:
-            value: Value to set for the schedule_id property.
-        """
-        self._schedule_id = value
-    
-    @property
-    def schedule_items(self,) -> Optional[List[schedule_item.ScheduleItem]]:
-        """
-        Gets the scheduleItems property value. Contains the items that describe the availability of the user or resource.
-        Returns: Optional[List[schedule_item.ScheduleItem]]
-        """
-        return self._schedule_items
-    
-    @schedule_items.setter
-    def schedule_items(self,value: Optional[List[schedule_item.ScheduleItem]] = None) -> None:
-        """
-        Sets the scheduleItems property value. Contains the items that describe the availability of the user or resource.
-        Args:
-            value: Value to set for the schedule_items property.
-        """
-        self._schedule_items = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -172,22 +68,5 @@ class ScheduleInformation(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("scheduleItems", self.schedule_items)
         writer.write_object_value("workingHours", self.working_hours)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def working_hours(self,) -> Optional[working_hours.WorkingHours]:
-        """
-        Gets the workingHours property value. The days of the week and hours in a specific time zone that the user works. These are set as part of the user's mailboxSettings.
-        Returns: Optional[working_hours.WorkingHours]
-        """
-        return self._working_hours
-    
-    @working_hours.setter
-    def working_hours(self,value: Optional[working_hours.WorkingHours] = None) -> None:
-        """
-        Sets the workingHours property value. The days of the week and hours in a specific time zone that the user works. These are set as part of the user's mailboxSettings.
-        Args:
-            value: Value to set for the working_hours property.
-        """
-        self._working_hours = value
     
 

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PrintMultipageLayout(Enum):
+class PrintMultipageLayout(str, Enum):
     ClockwiseFromTopLeft = "clockwiseFromTopLeft",
     CounterclockwiseFromTopLeft = "counterclockwiseFromTopLeft",
     CounterclockwiseFromTopRight = "counterclockwiseFromTopRight",

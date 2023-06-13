@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SubjectRightsRequestStageStatus(Enum):
+class SubjectRightsRequestStageStatus(str, Enum):
     NotStarted = "notStarted",
     Current = "current",
     Completed = "completed",

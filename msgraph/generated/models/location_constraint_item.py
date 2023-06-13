@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import location
 
+@dataclass
 class LocationConstraintItem(location.Location):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new LocationConstraintItem and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.locationConstraintItem"
-        # If set to true and the specified resource is busy, findMeetingTimes looks for another resource that is free. If set to false and the specified resource is busy, findMeetingTimes returns the resource best ranked in the user's cache without checking if it's free. Default is true.
-        self._resolve_availability: Optional[bool] = None
+    odata_type = "#microsoft.graph.locationConstraintItem"
+    # If set to true and the specified resource is busy, findMeetingTimes looks for another resource that is free. If set to false and the specified resource is busy, findMeetingTimes returns the resource best ranked in the user's cache without checking if it's free. Default is true.
+    resolve_availability: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LocationConstraintItem:
@@ -42,23 +39,6 @@ class LocationConstraintItem(location.Location):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def resolve_availability(self,) -> Optional[bool]:
-        """
-        Gets the resolveAvailability property value. If set to true and the specified resource is busy, findMeetingTimes looks for another resource that is free. If set to false and the specified resource is busy, findMeetingTimes returns the resource best ranked in the user's cache without checking if it's free. Default is true.
-        Returns: Optional[bool]
-        """
-        return self._resolve_availability
-    
-    @resolve_availability.setter
-    def resolve_availability(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the resolveAvailability property value. If set to true and the specified resource is busy, findMeetingTimes looks for another resource that is free. If set to false and the specified resource is busy, findMeetingTimes returns the resource best ranked in the user's cache without checking if it's free. Default is true.
-        Args:
-            value: Value to set for the resolve_availability property.
-        """
-        self._resolve_availability = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

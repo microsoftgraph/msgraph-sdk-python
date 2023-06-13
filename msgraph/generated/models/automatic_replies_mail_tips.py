@@ -1,45 +1,26 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import date_time_time_zone, locale_info
 
+@dataclass
 class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new automaticRepliesMailTips and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The automatic reply message.
-        self._message: Optional[str] = None
-        # The language that the automatic reply message is in.
-        self._message_language: Optional[locale_info.LocaleInfo] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The date and time that automatic replies are set to end.
-        self._scheduled_end_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The date and time that automatic replies are set to begin.
-        self._scheduled_start_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The automatic reply message.
+    message: Optional[str] = None
+    # The language that the automatic reply message is in.
+    message_language: Optional[locale_info.LocaleInfo] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The date and time that automatic replies are set to end.
+    scheduled_end_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    # The date and time that automatic replies are set to begin.
+    scheduled_start_time: Optional[date_time_time_zone.DateTimeTimeZone] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AutomaticRepliesMailTips:
@@ -68,91 +49,6 @@ class AutomaticRepliesMailTips(AdditionalDataHolder, Parsable):
             "scheduledStartTime": lambda n : setattr(self, 'scheduled_start_time', n.get_object_value(date_time_time_zone.DateTimeTimeZone)),
         }
         return fields
-    
-    @property
-    def message(self,) -> Optional[str]:
-        """
-        Gets the message property value. The automatic reply message.
-        Returns: Optional[str]
-        """
-        return self._message
-    
-    @message.setter
-    def message(self,value: Optional[str] = None) -> None:
-        """
-        Sets the message property value. The automatic reply message.
-        Args:
-            value: Value to set for the message property.
-        """
-        self._message = value
-    
-    @property
-    def message_language(self,) -> Optional[locale_info.LocaleInfo]:
-        """
-        Gets the messageLanguage property value. The language that the automatic reply message is in.
-        Returns: Optional[locale_info.LocaleInfo]
-        """
-        return self._message_language
-    
-    @message_language.setter
-    def message_language(self,value: Optional[locale_info.LocaleInfo] = None) -> None:
-        """
-        Sets the messageLanguage property value. The language that the automatic reply message is in.
-        Args:
-            value: Value to set for the message_language property.
-        """
-        self._message_language = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def scheduled_end_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
-        """
-        Gets the scheduledEndTime property value. The date and time that automatic replies are set to end.
-        Returns: Optional[date_time_time_zone.DateTimeTimeZone]
-        """
-        return self._scheduled_end_time
-    
-    @scheduled_end_time.setter
-    def scheduled_end_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
-        """
-        Sets the scheduledEndTime property value. The date and time that automatic replies are set to end.
-        Args:
-            value: Value to set for the scheduled_end_time property.
-        """
-        self._scheduled_end_time = value
-    
-    @property
-    def scheduled_start_time(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
-        """
-        Gets the scheduledStartTime property value. The date and time that automatic replies are set to begin.
-        Returns: Optional[date_time_time_zone.DateTimeTimeZone]
-        """
-        return self._scheduled_start_time
-    
-    @scheduled_start_time.setter
-    def scheduled_start_time(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
-        """
-        Sets the scheduledStartTime property value. The date and time that automatic replies are set to begin.
-        Args:
-            value: Value to set for the scheduled_start_time property.
-        """
-        self._scheduled_start_time = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

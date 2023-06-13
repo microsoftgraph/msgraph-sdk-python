@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,45 +9,24 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class DeviceComplianceDeviceStatus(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceComplianceDeviceStatus and sets the default values.
-        """
-        super().__init__()
-        # The DateTime when device compliance grace period expires
-        self._compliance_grace_period_expiration_date_time: Optional[datetime] = None
-        # Device name of the DevicePolicyStatus.
-        self._device_display_name: Optional[str] = None
-        # The device model that is being reported
-        self._device_model: Optional[str] = None
-        # Last modified date time of the policy report.
-        self._last_reported_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The status property
-        self._status: Optional[compliance_status.ComplianceStatus] = None
-        # The User Name that is being reported
-        self._user_name: Optional[str] = None
-        # UserPrincipalName.
-        self._user_principal_name: Optional[str] = None
-    
-    @property
-    def compliance_grace_period_expiration_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the complianceGracePeriodExpirationDateTime property value. The DateTime when device compliance grace period expires
-        Returns: Optional[datetime]
-        """
-        return self._compliance_grace_period_expiration_date_time
-    
-    @compliance_grace_period_expiration_date_time.setter
-    def compliance_grace_period_expiration_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the complianceGracePeriodExpirationDateTime property value. The DateTime when device compliance grace period expires
-        Args:
-            value: Value to set for the compliance_grace_period_expiration_date_time property.
-        """
-        self._compliance_grace_period_expiration_date_time = value
+    # The DateTime when device compliance grace period expires
+    compliance_grace_period_expiration_date_time: Optional[datetime] = None
+    # Device name of the DevicePolicyStatus.
+    device_display_name: Optional[str] = None
+    # The device model that is being reported
+    device_model: Optional[str] = None
+    # Last modified date time of the policy report.
+    last_reported_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The status property
+    status: Optional[compliance_status.ComplianceStatus] = None
+    # The User Name that is being reported
+    user_name: Optional[str] = None
+    # UserPrincipalName.
+    user_principal_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceComplianceDeviceStatus:
@@ -59,40 +39,6 @@ class DeviceComplianceDeviceStatus(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DeviceComplianceDeviceStatus()
-    
-    @property
-    def device_display_name(self,) -> Optional[str]:
-        """
-        Gets the deviceDisplayName property value. Device name of the DevicePolicyStatus.
-        Returns: Optional[str]
-        """
-        return self._device_display_name
-    
-    @device_display_name.setter
-    def device_display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the deviceDisplayName property value. Device name of the DevicePolicyStatus.
-        Args:
-            value: Value to set for the device_display_name property.
-        """
-        self._device_display_name = value
-    
-    @property
-    def device_model(self,) -> Optional[str]:
-        """
-        Gets the deviceModel property value. The device model that is being reported
-        Returns: Optional[str]
-        """
-        return self._device_model
-    
-    @device_model.setter
-    def device_model(self,value: Optional[str] = None) -> None:
-        """
-        Sets the deviceModel property value. The device model that is being reported
-        Args:
-            value: Value to set for the device_model property.
-        """
-        self._device_model = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -114,23 +60,6 @@ class DeviceComplianceDeviceStatus(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def last_reported_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastReportedDateTime property value. Last modified date time of the policy report.
-        Returns: Optional[datetime]
-        """
-        return self._last_reported_date_time
-    
-    @last_reported_date_time.setter
-    def last_reported_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastReportedDateTime property value. Last modified date time of the policy report.
-        Args:
-            value: Value to set for the last_reported_date_time property.
-        """
-        self._last_reported_date_time = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -147,56 +76,5 @@ class DeviceComplianceDeviceStatus(entity.Entity):
         writer.write_enum_value("status", self.status)
         writer.write_str_value("userName", self.user_name)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
-    
-    @property
-    def status(self,) -> Optional[compliance_status.ComplianceStatus]:
-        """
-        Gets the status property value. The status property
-        Returns: Optional[compliance_status.ComplianceStatus]
-        """
-        return self._status
-    
-    @status.setter
-    def status(self,value: Optional[compliance_status.ComplianceStatus] = None) -> None:
-        """
-        Sets the status property value. The status property
-        Args:
-            value: Value to set for the status property.
-        """
-        self._status = value
-    
-    @property
-    def user_name(self,) -> Optional[str]:
-        """
-        Gets the userName property value. The User Name that is being reported
-        Returns: Optional[str]
-        """
-        return self._user_name
-    
-    @user_name.setter
-    def user_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userName property value. The User Name that is being reported
-        Args:
-            value: Value to set for the user_name property.
-        """
-        self._user_name = value
-    
-    @property
-    def user_principal_name(self,) -> Optional[str]:
-        """
-        Gets the userPrincipalName property value. UserPrincipalName.
-        Returns: Optional[str]
-        """
-        return self._user_principal_name
-    
-    @user_principal_name.setter
-    def user_principal_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userPrincipalName property value. UserPrincipalName.
-        Args:
-            value: Value to set for the user_principal_name property.
-        """
-        self._user_principal_name = value
     
 

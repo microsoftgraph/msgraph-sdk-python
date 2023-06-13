@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,60 +8,22 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ContactFolder(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new contactFolder and sets the default values.
-        """
-        super().__init__()
-        # The collection of child folders in the folder. Navigation property. Read-only. Nullable.
-        self._child_folders: Optional[List[ContactFolder]] = None
-        # The contacts in the folder. Navigation property. Read-only. Nullable.
-        self._contacts: Optional[List[contact.Contact]] = None
-        # The folder's display name.
-        self._display_name: Optional[str] = None
-        # The collection of multi-value extended properties defined for the contactFolder. Read-only. Nullable.
-        self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The ID of the folder's parent folder.
-        self._parent_folder_id: Optional[str] = None
-        # The collection of single-value extended properties defined for the contactFolder. Read-only. Nullable.
-        self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
-    
-    @property
-    def child_folders(self,) -> Optional[List[ContactFolder]]:
-        """
-        Gets the childFolders property value. The collection of child folders in the folder. Navigation property. Read-only. Nullable.
-        Returns: Optional[List[ContactFolder]]
-        """
-        return self._child_folders
-    
-    @child_folders.setter
-    def child_folders(self,value: Optional[List[ContactFolder]] = None) -> None:
-        """
-        Sets the childFolders property value. The collection of child folders in the folder. Navigation property. Read-only. Nullable.
-        Args:
-            value: Value to set for the child_folders property.
-        """
-        self._child_folders = value
-    
-    @property
-    def contacts(self,) -> Optional[List[contact.Contact]]:
-        """
-        Gets the contacts property value. The contacts in the folder. Navigation property. Read-only. Nullable.
-        Returns: Optional[List[contact.Contact]]
-        """
-        return self._contacts
-    
-    @contacts.setter
-    def contacts(self,value: Optional[List[contact.Contact]] = None) -> None:
-        """
-        Sets the contacts property value. The contacts in the folder. Navigation property. Read-only. Nullable.
-        Args:
-            value: Value to set for the contacts property.
-        """
-        self._contacts = value
+    # The collection of child folders in the folder. Navigation property. Read-only. Nullable.
+    child_folders: Optional[List[ContactFolder]] = None
+    # The contacts in the folder. Navigation property. Read-only. Nullable.
+    contacts: Optional[List[contact.Contact]] = None
+    # The folder's display name.
+    display_name: Optional[str] = None
+    # The collection of multi-value extended properties defined for the contactFolder. Read-only. Nullable.
+    multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The ID of the folder's parent folder.
+    parent_folder_id: Optional[str] = None
+    # The collection of single-value extended properties defined for the contactFolder. Read-only. Nullable.
+    single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ContactFolder:
@@ -73,23 +36,6 @@ class ContactFolder(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ContactFolder()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The folder's display name.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The folder's display name.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -110,40 +56,6 @@ class ContactFolder(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def multi_value_extended_properties(self,) -> Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]]:
-        """
-        Gets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the contactFolder. Read-only. Nullable.
-        Returns: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]]
-        """
-        return self._multi_value_extended_properties
-    
-    @multi_value_extended_properties.setter
-    def multi_value_extended_properties(self,value: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None) -> None:
-        """
-        Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the contactFolder. Read-only. Nullable.
-        Args:
-            value: Value to set for the multi_value_extended_properties property.
-        """
-        self._multi_value_extended_properties = value
-    
-    @property
-    def parent_folder_id(self,) -> Optional[str]:
-        """
-        Gets the parentFolderId property value. The ID of the folder's parent folder.
-        Returns: Optional[str]
-        """
-        return self._parent_folder_id
-    
-    @parent_folder_id.setter
-    def parent_folder_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the parentFolderId property value. The ID of the folder's parent folder.
-        Args:
-            value: Value to set for the parent_folder_id property.
-        """
-        self._parent_folder_id = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -159,22 +71,5 @@ class ContactFolder(entity.Entity):
         writer.write_collection_of_object_values("multiValueExtendedProperties", self.multi_value_extended_properties)
         writer.write_str_value("parentFolderId", self.parent_folder_id)
         writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
-    
-    @property
-    def single_value_extended_properties(self,) -> Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]]:
-        """
-        Gets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the contactFolder. Read-only. Nullable.
-        Returns: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]]
-        """
-        return self._single_value_extended_properties
-    
-    @single_value_extended_properties.setter
-    def single_value_extended_properties(self,value: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None) -> None:
-        """
-        Sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the contactFolder. Read-only. Nullable.
-        Args:
-            value: Value to set for the single_value_extended_properties property.
-        """
-        self._single_value_extended_properties = value
     
 

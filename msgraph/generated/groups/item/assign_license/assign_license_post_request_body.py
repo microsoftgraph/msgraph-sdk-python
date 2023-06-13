@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
@@ -6,52 +7,15 @@ from uuid import UUID
 if TYPE_CHECKING:
     from ....models import assigned_license
 
+@dataclass
 class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new assignLicensePostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The addLicenses property
-        self._add_licenses: Optional[List[assigned_license.AssignedLicense]] = None
-        # The removeLicenses property
-        self._remove_licenses: Optional[List[UUID]] = None
-    
-    @property
-    def add_licenses(self,) -> Optional[List[assigned_license.AssignedLicense]]:
-        """
-        Gets the addLicenses property value. The addLicenses property
-        Returns: Optional[List[assigned_license.AssignedLicense]]
-        """
-        return self._add_licenses
-    
-    @add_licenses.setter
-    def add_licenses(self,value: Optional[List[assigned_license.AssignedLicense]] = None) -> None:
-        """
-        Sets the addLicenses property value. The addLicenses property
-        Args:
-            value: Value to set for the add_licenses property.
-        """
-        self._add_licenses = value
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The addLicenses property
+    add_licenses: Optional[List[assigned_license.AssignedLicense]] = None
+    # The removeLicenses property
+    remove_licenses: Optional[List[UUID]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AssignLicensePostRequestBody:
@@ -77,23 +41,6 @@ class AssignLicensePostRequestBody(AdditionalDataHolder, Parsable):
             "removeLicenses": lambda n : setattr(self, 'remove_licenses', n.get_collection_of_primitive_values(UUID)),
         }
         return fields
-    
-    @property
-    def remove_licenses(self,) -> Optional[List[UUID]]:
-        """
-        Gets the removeLicenses property value. The removeLicenses property
-        Returns: Optional[List[UUID]]
-        """
-        return self._remove_licenses
-    
-    @remove_licenses.setter
-    def remove_licenses(self,value: Optional[List[UUID]] = None) -> None:
-        """
-        Sets the removeLicenses property value. The removeLicenses property
-        Args:
-            value: Value to set for the remove_licenses property.
-        """
-        self._remove_licenses = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

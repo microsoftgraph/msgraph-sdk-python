@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,56 +9,18 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ChecklistItem(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new checklistItem and sets the default values.
-        """
-        super().__init__()
-        # The date and time when the checklistItem was finished.
-        self._checked_date_time: Optional[datetime] = None
-        # The date and time when the checklistItem was created.
-        self._created_date_time: Optional[datetime] = None
-        # Field indicating the title of checklistItem.
-        self._display_name: Optional[str] = None
-        # State indicating whether the item is checked off or not.
-        self._is_checked: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def checked_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the checkedDateTime property value. The date and time when the checklistItem was finished.
-        Returns: Optional[datetime]
-        """
-        return self._checked_date_time
-    
-    @checked_date_time.setter
-    def checked_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the checkedDateTime property value. The date and time when the checklistItem was finished.
-        Args:
-            value: Value to set for the checked_date_time property.
-        """
-        self._checked_date_time = value
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. The date and time when the checklistItem was created.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. The date and time when the checklistItem was created.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    # The date and time when the checklistItem was finished.
+    checked_date_time: Optional[datetime] = None
+    # The date and time when the checklistItem was created.
+    created_date_time: Optional[datetime] = None
+    # Field indicating the title of checklistItem.
+    display_name: Optional[str] = None
+    # State indicating whether the item is checked off or not.
+    is_checked: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChecklistItem:
@@ -70,23 +33,6 @@ class ChecklistItem(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ChecklistItem()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Field indicating the title of checklistItem.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Field indicating the title of checklistItem.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -104,23 +50,6 @@ class ChecklistItem(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def is_checked(self,) -> Optional[bool]:
-        """
-        Gets the isChecked property value. State indicating whether the item is checked off or not.
-        Returns: Optional[bool]
-        """
-        return self._is_checked
-    
-    @is_checked.setter
-    def is_checked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isChecked property value. State indicating whether the item is checked off or not.
-        Args:
-            value: Value to set for the is_checked property.
-        """
-        self._is_checked = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

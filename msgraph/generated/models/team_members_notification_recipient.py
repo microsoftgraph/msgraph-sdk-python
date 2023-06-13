@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import teamwork_notification_recipient
 
+@dataclass
 class TeamMembersNotificationRecipient(teamwork_notification_recipient.TeamworkNotificationRecipient):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new TeamMembersNotificationRecipient and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.teamMembersNotificationRecipient"
-        # The unique identifier for the team whose members should receive the notification.
-        self._team_id: Optional[str] = None
+    odata_type = "#microsoft.graph.teamMembersNotificationRecipient"
+    # The unique identifier for the team whose members should receive the notification.
+    team_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamMembersNotificationRecipient:
@@ -53,22 +50,5 @@ class TeamMembersNotificationRecipient(teamwork_notification_recipient.TeamworkN
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("teamId", self.team_id)
-    
-    @property
-    def team_id(self,) -> Optional[str]:
-        """
-        Gets the teamId property value. The unique identifier for the team whose members should receive the notification.
-        Returns: Optional[str]
-        """
-        return self._team_id
-    
-    @team_id.setter
-    def team_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the teamId property value. The unique identifier for the team whose members should receive the notification.
-        Args:
-            value: Value to set for the team_id property.
-        """
-        self._team_id = value
     
 

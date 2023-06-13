@@ -1,6 +1,6 @@
 from enum import Enum
 
-class UnifiedRoleManagementPolicyRuleTargetOperations(Enum):
+class UnifiedRoleManagementPolicyRuleTargetOperations(str, Enum):
     All = "all",
     Activate = "activate",
     Deactivate = "deactivate",

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import subject_set
 
+@dataclass
 class GroupMembers(subject_set.SubjectSet):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new GroupMembers and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.groupMembers"
-        # The name of the group in Azure AD. Read only.
-        self._description: Optional[str] = None
-        # The ID of the group in Azure AD.
-        self._group_id: Optional[str] = None
+    odata_type = "#microsoft.graph.groupMembers"
+    # The name of the group in Azure AD. Read only.
+    description: Optional[str] = None
+    # The ID of the group in Azure AD.
+    group_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GroupMembers:
@@ -30,23 +27,6 @@ class GroupMembers(subject_set.SubjectSet):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return GroupMembers()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. The name of the group in Azure AD. Read only.
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. The name of the group in Azure AD. Read only.
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -62,23 +42,6 @@ class GroupMembers(subject_set.SubjectSet):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def group_id(self,) -> Optional[str]:
-        """
-        Gets the groupId property value. The ID of the group in Azure AD.
-        Returns: Optional[str]
-        """
-        return self._group_id
-    
-    @group_id.setter
-    def group_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the groupId property value. The ID of the group in Azure AD.
-        Args:
-            value: Value to set for the group_id property.
-        """
-        self._group_id = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

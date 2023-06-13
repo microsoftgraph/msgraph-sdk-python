@@ -1,6 +1,6 @@
 from enum import Enum
 
-class TeamVisibilityType(Enum):
+class TeamVisibilityType(str, Enum):
     Private = "private",
     Public = "public",
     HiddenMembership = "hiddenMembership",

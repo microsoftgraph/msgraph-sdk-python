@@ -1,6 +1,6 @@
 from enum import Enum
 
-class EducationAddedStudentAction(Enum):
+class EducationAddedStudentAction(str, Enum):
     None_ = "none",
     AssignIfOpen = "assignIfOpen",
     UnknownFutureValue = "unknownFutureValue",

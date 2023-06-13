@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import case_operation
 
+@dataclass
 class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EdiscoveryAddToReviewSetOperation and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # eDiscovery review set to which items matching source collection query gets added.
-        self._review_set: Optional[ediscovery_review_set.EdiscoveryReviewSet] = None
-        # eDiscovery search that gets added to review set.
-        self._search: Optional[ediscovery_search.EdiscoverySearch] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # eDiscovery review set to which items matching source collection query gets added.
+    review_set: Optional[ediscovery_review_set.EdiscoveryReviewSet] = None
+    # eDiscovery search that gets added to review set.
+    search: Optional[ediscovery_search.EdiscoverySearch] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EdiscoveryAddToReviewSetOperation:
@@ -46,40 +43,6 @@ class EdiscoveryAddToReviewSetOperation(case_operation.CaseOperation):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def review_set(self,) -> Optional[ediscovery_review_set.EdiscoveryReviewSet]:
-        """
-        Gets the reviewSet property value. eDiscovery review set to which items matching source collection query gets added.
-        Returns: Optional[ediscovery_review_set.EdiscoveryReviewSet]
-        """
-        return self._review_set
-    
-    @review_set.setter
-    def review_set(self,value: Optional[ediscovery_review_set.EdiscoveryReviewSet] = None) -> None:
-        """
-        Sets the reviewSet property value. eDiscovery review set to which items matching source collection query gets added.
-        Args:
-            value: Value to set for the review_set property.
-        """
-        self._review_set = value
-    
-    @property
-    def search(self,) -> Optional[ediscovery_search.EdiscoverySearch]:
-        """
-        Gets the search property value. eDiscovery search that gets added to review set.
-        Returns: Optional[ediscovery_search.EdiscoverySearch]
-        """
-        return self._search
-    
-    @search.setter
-    def search(self,value: Optional[ediscovery_search.EdiscoverySearch] = None) -> None:
-        """
-        Sets the search property value. eDiscovery search that gets added to review set.
-        Args:
-            value: Value to set for the search property.
-        """
-        self._search = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

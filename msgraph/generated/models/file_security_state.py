@@ -1,45 +1,26 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import file_hash
 
+@dataclass
 class FileSecurityState(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new fileSecurityState and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Complex type containing file hashes (cryptographic and location-sensitive).
-        self._file_hash: Optional[file_hash.FileHash] = None
-        # File name (without path).
-        self._name: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Full file path of the file/imageFile.
-        self._path: Optional[str] = None
-        # Provider generated/calculated risk score of the alert file. Recommended value range of 0-1, which equates to a percentage.
-        self._risk_score: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Complex type containing file hashes (cryptographic and location-sensitive).
+    file_hash: Optional[file_hash.FileHash] = None
+    # File name (without path).
+    name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Full file path of the file/imageFile.
+    path: Optional[str] = None
+    # Provider generated/calculated risk score of the alert file. Recommended value range of 0-1, which equates to a percentage.
+    risk_score: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FileSecurityState:
@@ -52,23 +33,6 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return FileSecurityState()
-    
-    @property
-    def file_hash(self,) -> Optional[file_hash.FileHash]:
-        """
-        Gets the fileHash property value. Complex type containing file hashes (cryptographic and location-sensitive).
-        Returns: Optional[file_hash.FileHash]
-        """
-        return self._file_hash
-    
-    @file_hash.setter
-    def file_hash(self,value: Optional[file_hash.FileHash] = None) -> None:
-        """
-        Sets the fileHash property value. Complex type containing file hashes (cryptographic and location-sensitive).
-        Args:
-            value: Value to set for the file_hash property.
-        """
-        self._file_hash = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -85,74 +49,6 @@ class FileSecurityState(AdditionalDataHolder, Parsable):
             "riskScore": lambda n : setattr(self, 'risk_score', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def name(self,) -> Optional[str]:
-        """
-        Gets the name property value. File name (without path).
-        Returns: Optional[str]
-        """
-        return self._name
-    
-    @name.setter
-    def name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the name property value. File name (without path).
-        Args:
-            value: Value to set for the name property.
-        """
-        self._name = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def path(self,) -> Optional[str]:
-        """
-        Gets the path property value. Full file path of the file/imageFile.
-        Returns: Optional[str]
-        """
-        return self._path
-    
-    @path.setter
-    def path(self,value: Optional[str] = None) -> None:
-        """
-        Sets the path property value. Full file path of the file/imageFile.
-        Args:
-            value: Value to set for the path property.
-        """
-        self._path = value
-    
-    @property
-    def risk_score(self,) -> Optional[str]:
-        """
-        Gets the riskScore property value. Provider generated/calculated risk score of the alert file. Recommended value range of 0-1, which equates to a percentage.
-        Returns: Optional[str]
-        """
-        return self._risk_score
-    
-    @risk_score.setter
-    def risk_score(self,value: Optional[str] = None) -> None:
-        """
-        Sets the riskScore property value. Provider generated/calculated risk score of the alert file. Recommended value range of 0-1, which equates to a percentage.
-        Args:
-            value: Value to set for the risk_score property.
-        """
-        self._risk_score = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

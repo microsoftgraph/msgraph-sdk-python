@@ -1,6 +1,6 @@
 from enum import Enum
 
-class OnPremisesDirectorySynchronizationDeletionPreventionType(Enum):
+class OnPremisesDirectorySynchronizationDeletionPreventionType(str, Enum):
     Disabled = "disabled",
     EnabledForCount = "enabledForCount",
     EnabledForPercentage = "enabledForPercentage",

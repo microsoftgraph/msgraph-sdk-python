@@ -1,39 +1,20 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .....models import drive_recipient
 
+@dataclass
 class GrantPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new grantPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The recipients property
-        self._recipients: Optional[List[drive_recipient.DriveRecipient]] = None
-        # The roles property
-        self._roles: Optional[List[str]] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The recipients property
+    recipients: Optional[List[drive_recipient.DriveRecipient]] = None
+    # The roles property
+    roles: Optional[List[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GrantPostRequestBody:
@@ -59,40 +40,6 @@ class GrantPostRequestBody(AdditionalDataHolder, Parsable):
             "roles": lambda n : setattr(self, 'roles', n.get_collection_of_primitive_values(str)),
         }
         return fields
-    
-    @property
-    def recipients(self,) -> Optional[List[drive_recipient.DriveRecipient]]:
-        """
-        Gets the recipients property value. The recipients property
-        Returns: Optional[List[drive_recipient.DriveRecipient]]
-        """
-        return self._recipients
-    
-    @recipients.setter
-    def recipients(self,value: Optional[List[drive_recipient.DriveRecipient]] = None) -> None:
-        """
-        Sets the recipients property value. The recipients property
-        Args:
-            value: Value to set for the recipients property.
-        """
-        self._recipients = value
-    
-    @property
-    def roles(self,) -> Optional[List[str]]:
-        """
-        Gets the roles property value. The roles property
-        Returns: Optional[List[str]]
-        """
-        return self._roles
-    
-    @roles.setter
-    def roles(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the roles property value. The roles property
-        Args:
-            value: Value to set for the roles property.
-        """
-        self._roles = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

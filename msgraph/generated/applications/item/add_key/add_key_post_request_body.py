@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models import key_credential, password_credential
 
+@dataclass
 class AddKeyPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new addKeyPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The keyCredential property
-        self._key_credential: Optional[key_credential.KeyCredential] = None
-        # The passwordCredential property
-        self._password_credential: Optional[password_credential.PasswordCredential] = None
-        # The proof property
-        self._proof: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The keyCredential property
+    key_credential: Optional[key_credential.KeyCredential] = None
+    # The passwordCredential property
+    password_credential: Optional[password_credential.PasswordCredential] = None
+    # The proof property
+    proof: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AddKeyPostRequestBody:
@@ -62,57 +43,6 @@ class AddKeyPostRequestBody(AdditionalDataHolder, Parsable):
             "proof": lambda n : setattr(self, 'proof', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def key_credential(self,) -> Optional[key_credential.KeyCredential]:
-        """
-        Gets the keyCredential property value. The keyCredential property
-        Returns: Optional[key_credential.KeyCredential]
-        """
-        return self._key_credential
-    
-    @key_credential.setter
-    def key_credential(self,value: Optional[key_credential.KeyCredential] = None) -> None:
-        """
-        Sets the keyCredential property value. The keyCredential property
-        Args:
-            value: Value to set for the key_credential property.
-        """
-        self._key_credential = value
-    
-    @property
-    def password_credential(self,) -> Optional[password_credential.PasswordCredential]:
-        """
-        Gets the passwordCredential property value. The passwordCredential property
-        Returns: Optional[password_credential.PasswordCredential]
-        """
-        return self._password_credential
-    
-    @password_credential.setter
-    def password_credential(self,value: Optional[password_credential.PasswordCredential] = None) -> None:
-        """
-        Sets the passwordCredential property value. The passwordCredential property
-        Args:
-            value: Value to set for the password_credential property.
-        """
-        self._password_credential = value
-    
-    @property
-    def proof(self,) -> Optional[str]:
-        """
-        Gets the proof property value. The proof property
-        Returns: Optional[str]
-        """
-        return self._proof
-    
-    @proof.setter
-    def proof(self,value: Optional[str] = None) -> None:
-        """
-        Sets the proof property value. The proof property
-        Args:
-            value: Value to set for the proof property.
-        """
-        self._proof = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

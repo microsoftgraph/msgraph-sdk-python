@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,37 +9,16 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class Operation(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new operation and sets the default values.
-        """
-        super().__init__()
-        # The start time of the operation.
-        self._created_date_time: Optional[datetime] = None
-        # The time of the last action of the operation.
-        self._last_action_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The current status of the operation: notStarted, running, completed, failed
-        self._status: Optional[operation_status.OperationStatus] = None
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. The start time of the operation.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. The start time of the operation.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    # The start time of the operation.
+    created_date_time: Optional[datetime] = None
+    # The time of the last action of the operation.
+    last_action_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The current status of the operation: notStarted, running, completed, failed
+    status: Optional[operation_status.OperationStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Operation:
@@ -75,23 +55,6 @@ class Operation(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def last_action_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastActionDateTime property value. The time of the last action of the operation.
-        Returns: Optional[datetime]
-        """
-        return self._last_action_date_time
-    
-    @last_action_date_time.setter
-    def last_action_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastActionDateTime property value. The time of the last action of the operation.
-        Args:
-            value: Value to set for the last_action_date_time property.
-        """
-        self._last_action_date_time = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -104,22 +67,5 @@ class Operation(entity.Entity):
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_datetime_value("lastActionDateTime", self.last_action_date_time)
         writer.write_enum_value("status", self.status)
-    
-    @property
-    def status(self,) -> Optional[operation_status.OperationStatus]:
-        """
-        Gets the status property value. The current status of the operation: notStarted, running, completed, failed
-        Returns: Optional[operation_status.OperationStatus]
-        """
-        return self._status
-    
-    @status.setter
-    def status(self,value: Optional[operation_status.OperationStatus] = None) -> None:
-        """
-        Sets the status property value. The current status of the operation: notStarted, running, completed, failed
-        Args:
-            value: Value to set for the status property.
-        """
-        self._status = value
     
 

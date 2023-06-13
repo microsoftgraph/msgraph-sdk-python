@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import identity
 
+@dataclass
 class ProvisionedIdentity(identity.Identity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ProvisionedIdentity and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.provisionedIdentity"
-        # Details of the identity.
-        self._details: Optional[details_info.DetailsInfo] = None
-        # Type of identity that has been provisioned, such as 'user' or 'group'.
-        self._identity_type: Optional[str] = None
+    odata_type = "#microsoft.graph.provisionedIdentity"
+    # Details of the identity.
+    details: Optional[details_info.DetailsInfo] = None
+    # Type of identity that has been provisioned, such as 'user' or 'group'.
+    identity_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProvisionedIdentity:
@@ -30,23 +27,6 @@ class ProvisionedIdentity(identity.Identity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ProvisionedIdentity()
-    
-    @property
-    def details(self,) -> Optional[details_info.DetailsInfo]:
-        """
-        Gets the details property value. Details of the identity.
-        Returns: Optional[details_info.DetailsInfo]
-        """
-        return self._details
-    
-    @details.setter
-    def details(self,value: Optional[details_info.DetailsInfo] = None) -> None:
-        """
-        Sets the details property value. Details of the identity.
-        Args:
-            value: Value to set for the details property.
-        """
-        self._details = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -62,23 +42,6 @@ class ProvisionedIdentity(identity.Identity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def identity_type(self,) -> Optional[str]:
-        """
-        Gets the identityType property value. Type of identity that has been provisioned, such as 'user' or 'group'.
-        Returns: Optional[str]
-        """
-        return self._identity_type
-    
-    @identity_type.setter
-    def identity_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the identityType property value. Type of identity that has been provisioned, such as 'user' or 'group'.
-        Args:
-            value: Value to set for the identity_type property.
-        """
-        self._identity_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

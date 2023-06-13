@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,37 +9,16 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class AttachmentSession(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new attachmentSession and sets the default values.
-        """
-        super().__init__()
-        # The content streams that are uploaded.
-        self._content: Optional[bytes] = None
-        # The date and time in UTC when the upload session will expire. The complete file must be uploaded before this expiration time is reached.
-        self._expiration_date_time: Optional[datetime] = None
-        # Indicates a single value {start} that represents the location in the file where the next upload should begin.
-        self._next_expected_ranges: Optional[List[str]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def content(self,) -> Optional[bytes]:
-        """
-        Gets the content property value. The content streams that are uploaded.
-        Returns: Optional[bytes]
-        """
-        return self._content
-    
-    @content.setter
-    def content(self,value: Optional[bytes] = None) -> None:
-        """
-        Sets the content property value. The content streams that are uploaded.
-        Args:
-            value: Value to set for the content property.
-        """
-        self._content = value
+    # The content streams that are uploaded.
+    content: Optional[bytes] = None
+    # The date and time in UTC when the upload session will expire. The complete file must be uploaded before this expiration time is reached.
+    expiration_date_time: Optional[datetime] = None
+    # Indicates a single value {start} that represents the location in the file where the next upload should begin.
+    next_expected_ranges: Optional[List[str]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttachmentSession:
@@ -51,23 +31,6 @@ class AttachmentSession(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AttachmentSession()
-    
-    @property
-    def expiration_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the expirationDateTime property value. The date and time in UTC when the upload session will expire. The complete file must be uploaded before this expiration time is reached.
-        Returns: Optional[datetime]
-        """
-        return self._expiration_date_time
-    
-    @expiration_date_time.setter
-    def expiration_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the expirationDateTime property value. The date and time in UTC when the upload session will expire. The complete file must be uploaded before this expiration time is reached.
-        Args:
-            value: Value to set for the expiration_date_time property.
-        """
-        self._expiration_date_time = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -84,23 +47,6 @@ class AttachmentSession(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def next_expected_ranges(self,) -> Optional[List[str]]:
-        """
-        Gets the nextExpectedRanges property value. Indicates a single value {start} that represents the location in the file where the next upload should begin.
-        Returns: Optional[List[str]]
-        """
-        return self._next_expected_ranges
-    
-    @next_expected_ranges.setter
-    def next_expected_ranges(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the nextExpectedRanges property value. Indicates a single value {start} that represents the location in the file where the next upload should begin.
-        Args:
-            value: Value to set for the next_expected_ranges property.
-        """
-        self._next_expected_ranges = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,34 +8,13 @@ if TYPE_CHECKING:
 
 from . import mobile_app
 
+@dataclass
 class ManagedApp(mobile_app.MobileApp):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ManagedApp and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.managedApp"
-        # A managed (MAM) application's availability.
-        self._app_availability: Optional[managed_app_availability.ManagedAppAvailability] = None
-        # The Application's version.
-        self._version: Optional[str] = None
-    
-    @property
-    def app_availability(self,) -> Optional[managed_app_availability.ManagedAppAvailability]:
-        """
-        Gets the appAvailability property value. A managed (MAM) application's availability.
-        Returns: Optional[managed_app_availability.ManagedAppAvailability]
-        """
-        return self._app_availability
-    
-    @app_availability.setter
-    def app_availability(self,value: Optional[managed_app_availability.ManagedAppAvailability] = None) -> None:
-        """
-        Sets the appAvailability property value. A managed (MAM) application's availability.
-        Args:
-            value: Value to set for the app_availability property.
-        """
-        self._app_availability = value
+    odata_type = "#microsoft.graph.managedApp"
+    # A managed (MAM) application's availability.
+    app_availability: Optional[managed_app_availability.ManagedAppAvailability] = None
+    # The Application's version.
+    version: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedApp:
@@ -97,22 +77,5 @@ class ManagedApp(mobile_app.MobileApp):
         super().serialize(writer)
         writer.write_enum_value("appAvailability", self.app_availability)
         writer.write_str_value("version", self.version)
-    
-    @property
-    def version(self,) -> Optional[str]:
-        """
-        Gets the version property value. The Application's version.
-        Returns: Optional[str]
-        """
-        return self._version
-    
-    @version.setter
-    def version(self,value: Optional[str] = None) -> None:
-        """
-        Sets the version property value. The Application's version.
-        Args:
-            value: Value to set for the version property.
-        """
-        self._version = value
     
 

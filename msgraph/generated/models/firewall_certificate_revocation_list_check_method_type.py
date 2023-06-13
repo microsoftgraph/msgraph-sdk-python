@@ -1,6 +1,6 @@
 from enum import Enum
 
-class FirewallCertificateRevocationListCheckMethodType(Enum):
+class FirewallCertificateRevocationListCheckMethodType(str, Enum):
     # No value configured by Intune, do not override the user-configured device default value
     DeviceDefault = "deviceDefault",
     # Do not check certificate revocation list

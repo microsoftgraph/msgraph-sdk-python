@@ -1,6 +1,6 @@
 from enum import Enum
 
-class TeamSpecialization(Enum):
+class TeamSpecialization(str, Enum):
     None_ = "none",
     EducationStandard = "educationStandard",
     EducationClass = "educationClass",

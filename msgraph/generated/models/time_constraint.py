@@ -1,58 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import activity_domain, time_slot
 
+@dataclass
 class TimeConstraint(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new timeConstraint and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The nature of the activity, optional. The possible values are: work, personal, unrestricted, or unknown.
-        self._activity_domain: Optional[activity_domain.ActivityDomain] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The timeSlots property
-        self._time_slots: Optional[List[time_slot.TimeSlot]] = None
-    
-    @property
-    def activity_domain(self,) -> Optional[activity_domain.ActivityDomain]:
-        """
-        Gets the activityDomain property value. The nature of the activity, optional. The possible values are: work, personal, unrestricted, or unknown.
-        Returns: Optional[activity_domain.ActivityDomain]
-        """
-        return self._activity_domain
-    
-    @activity_domain.setter
-    def activity_domain(self,value: Optional[activity_domain.ActivityDomain] = None) -> None:
-        """
-        Sets the activityDomain property value. The nature of the activity, optional. The possible values are: work, personal, unrestricted, or unknown.
-        Args:
-            value: Value to set for the activity_domain property.
-        """
-        self._activity_domain = value
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The nature of the activity, optional. The possible values are: work, personal, unrestricted, or unknown.
+    activity_domain: Optional[activity_domain.ActivityDomain] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The timeSlots property
+    time_slots: Optional[List[time_slot.TimeSlot]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TimeConstraint:
@@ -80,23 +44,6 @@ class TimeConstraint(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -109,22 +56,5 @@ class TimeConstraint(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_collection_of_object_values("timeSlots", self.time_slots)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def time_slots(self,) -> Optional[List[time_slot.TimeSlot]]:
-        """
-        Gets the timeSlots property value. The timeSlots property
-        Returns: Optional[List[time_slot.TimeSlot]]
-        """
-        return self._time_slots
-    
-    @time_slots.setter
-    def time_slots(self,value: Optional[List[time_slot.TimeSlot]] = None) -> None:
-        """
-        Sets the timeSlots property value. The timeSlots property
-        Args:
-            value: Value to set for the time_slots property.
-        """
-        self._time_slots = value
     
 

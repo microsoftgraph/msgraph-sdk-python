@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,20 +8,16 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class WorkbookOperation(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookOperation and sets the default values.
-        """
-        super().__init__()
-        # The error returned by the operation.
-        self._error: Optional[workbook_operation_error.WorkbookOperationError] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The resource URI for the result.
-        self._resource_location: Optional[str] = None
-        # The status property
-        self._status: Optional[workbook_operation_status.WorkbookOperationStatus] = None
+    # The error returned by the operation.
+    error: Optional[workbook_operation_error.WorkbookOperationError] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The resource URI for the result.
+    resource_location: Optional[str] = None
+    # The status property
+    status: Optional[workbook_operation_status.WorkbookOperationStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookOperation:
@@ -33,23 +30,6 @@ class WorkbookOperation(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WorkbookOperation()
-    
-    @property
-    def error(self,) -> Optional[workbook_operation_error.WorkbookOperationError]:
-        """
-        Gets the error property value. The error returned by the operation.
-        Returns: Optional[workbook_operation_error.WorkbookOperationError]
-        """
-        return self._error
-    
-    @error.setter
-    def error(self,value: Optional[workbook_operation_error.WorkbookOperationError] = None) -> None:
-        """
-        Sets the error property value. The error returned by the operation.
-        Args:
-            value: Value to set for the error property.
-        """
-        self._error = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -67,23 +47,6 @@ class WorkbookOperation(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def resource_location(self,) -> Optional[str]:
-        """
-        Gets the resourceLocation property value. The resource URI for the result.
-        Returns: Optional[str]
-        """
-        return self._resource_location
-    
-    @resource_location.setter
-    def resource_location(self,value: Optional[str] = None) -> None:
-        """
-        Sets the resourceLocation property value. The resource URI for the result.
-        Args:
-            value: Value to set for the resource_location property.
-        """
-        self._resource_location = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -96,22 +59,5 @@ class WorkbookOperation(entity.Entity):
         writer.write_object_value("error", self.error)
         writer.write_str_value("resourceLocation", self.resource_location)
         writer.write_enum_value("status", self.status)
-    
-    @property
-    def status(self,) -> Optional[workbook_operation_status.WorkbookOperationStatus]:
-        """
-        Gets the status property value. The status property
-        Returns: Optional[workbook_operation_status.WorkbookOperationStatus]
-        """
-        return self._status
-    
-    @status.setter
-    def status(self,value: Optional[workbook_operation_status.WorkbookOperationStatus] = None) -> None:
-        """
-        Sets the status property value. The status property
-        Args:
-            value: Value to set for the status property.
-        """
-        self._status = value
     
 

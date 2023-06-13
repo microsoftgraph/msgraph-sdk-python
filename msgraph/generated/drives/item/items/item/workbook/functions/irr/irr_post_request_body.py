@@ -1,39 +1,20 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import json
 
+@dataclass
 class IrrPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new irrPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The guess property
-        self._guess: Optional[json.Json] = None
-        # The values property
-        self._values: Optional[json.Json] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The guess property
+    guess: Optional[json.Json] = None
+    # The values property
+    values: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IrrPostRequestBody:
@@ -60,23 +41,6 @@ class IrrPostRequestBody(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def guess(self,) -> Optional[json.Json]:
-        """
-        Gets the guess property value. The guess property
-        Returns: Optional[json.Json]
-        """
-        return self._guess
-    
-    @guess.setter
-    def guess(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the guess property value. The guess property
-        Args:
-            value: Value to set for the guess property.
-        """
-        self._guess = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -88,22 +52,5 @@ class IrrPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_object_value("guess", self.guess)
         writer.write_object_value("values", self.values)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def values(self,) -> Optional[json.Json]:
-        """
-        Gets the values property value. The values property
-        Returns: Optional[json.Json]
-        """
-        return self._values
-    
-    @values.setter
-    def values(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the values property value. The values property
-        Args:
-            value: Value to set for the values property.
-        """
-        self._values = value
     
 

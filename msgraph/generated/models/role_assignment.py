@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,25 +8,21 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class RoleAssignment(entity.Entity):
     """
     The Role Assignment resource. Role assignments tie together a role definition with members and scopes. There can be one or more role assignments per role. This applies to custom and built-in roles.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new roleAssignment and sets the default values.
-        """
-        super().__init__()
-        # Description of the Role Assignment.
-        self._description: Optional[str] = None
-        # The display or friendly name of the role Assignment.
-        self._display_name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # List of ids of role scope member security groups.  These are IDs from Azure Active Directory.
-        self._resource_scopes: Optional[List[str]] = None
-        # Role definition this assignment is part of.
-        self._role_definition: Optional[role_definition.RoleDefinition] = None
+    # Description of the Role Assignment.
+    description: Optional[str] = None
+    # The display or friendly name of the role Assignment.
+    display_name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # List of ids of role scope member security groups.  These are IDs from Azure Active Directory.
+    resource_scopes: Optional[List[str]] = None
+    # Role definition this assignment is part of.
+    role_definition: Optional[role_definition.RoleDefinition] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RoleAssignment:
@@ -46,40 +43,6 @@ class RoleAssignment(entity.Entity):
                 return device_and_app_management_role_assignment.DeviceAndAppManagementRoleAssignment()
         return RoleAssignment()
     
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. Description of the Role Assignment.
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. Description of the Role Assignment.
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The display or friendly name of the role Assignment.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The display or friendly name of the role Assignment.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -96,40 +59,6 @@ class RoleAssignment(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def resource_scopes(self,) -> Optional[List[str]]:
-        """
-        Gets the resourceScopes property value. List of ids of role scope member security groups.  These are IDs from Azure Active Directory.
-        Returns: Optional[List[str]]
-        """
-        return self._resource_scopes
-    
-    @resource_scopes.setter
-    def resource_scopes(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the resourceScopes property value. List of ids of role scope member security groups.  These are IDs from Azure Active Directory.
-        Args:
-            value: Value to set for the resource_scopes property.
-        """
-        self._resource_scopes = value
-    
-    @property
-    def role_definition(self,) -> Optional[role_definition.RoleDefinition]:
-        """
-        Gets the roleDefinition property value. Role definition this assignment is part of.
-        Returns: Optional[role_definition.RoleDefinition]
-        """
-        return self._role_definition
-    
-    @role_definition.setter
-    def role_definition(self,value: Optional[role_definition.RoleDefinition] = None) -> None:
-        """
-        Sets the roleDefinition property value. Role definition this assignment is part of.
-        Args:
-            value: Value to set for the role_definition property.
-        """
-        self._role_definition = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

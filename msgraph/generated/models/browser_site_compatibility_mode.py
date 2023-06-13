@@ -1,6 +1,6 @@
 from enum import Enum
 
-class BrowserSiteCompatibilityMode(Enum):
+class BrowserSiteCompatibilityMode(str, Enum):
     # Loads the site using default compatibility mode.
     Default = "default",
     # Loads the site in internetExplorer8 Enterprise Mode

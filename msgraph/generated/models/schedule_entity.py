@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -6,39 +7,19 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from . import open_shift_item, schedule_entity_theme, shift_item, time_off_item
 
+@dataclass
 class ScheduleEntity(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new scheduleEntity and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The endDateTime property
-        self._end_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The startDateTime property
-        self._start_date_time: Optional[datetime] = None
-        # The theme property
-        self._theme: Optional[schedule_entity_theme.ScheduleEntityTheme] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The endDateTime property
+    end_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The startDateTime property
+    start_date_time: Optional[datetime] = None
+    # The theme property
+    theme: Optional[schedule_entity_theme.ScheduleEntityTheme] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScheduleEntity:
@@ -67,23 +48,6 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
                 return time_off_item.TimeOffItem()
         return ScheduleEntity()
     
-    @property
-    def end_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the endDateTime property value. The endDateTime property
-        Returns: Optional[datetime]
-        """
-        return self._end_date_time
-    
-    @end_date_time.setter
-    def end_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the endDateTime property value. The endDateTime property
-        Args:
-            value: Value to set for the end_date_time property.
-        """
-        self._end_date_time = value
-    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -99,23 +63,6 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -129,39 +76,5 @@ class ScheduleEntity(AdditionalDataHolder, Parsable):
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_enum_value("theme", self.theme)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def start_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the startDateTime property value. The startDateTime property
-        Returns: Optional[datetime]
-        """
-        return self._start_date_time
-    
-    @start_date_time.setter
-    def start_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the startDateTime property value. The startDateTime property
-        Args:
-            value: Value to set for the start_date_time property.
-        """
-        self._start_date_time = value
-    
-    @property
-    def theme(self,) -> Optional[schedule_entity_theme.ScheduleEntityTheme]:
-        """
-        Gets the theme property value. The theme property
-        Returns: Optional[schedule_entity_theme.ScheduleEntityTheme]
-        """
-        return self._theme
-    
-    @theme.setter
-    def theme(self,value: Optional[schedule_entity_theme.ScheduleEntityTheme] = None) -> None:
-        """
-        Sets the theme property value. The theme property
-        Args:
-            value: Value to set for the theme property.
-        """
-        self._theme = value
     
 

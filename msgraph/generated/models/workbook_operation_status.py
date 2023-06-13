@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WorkbookOperationStatus(Enum):
+class WorkbookOperationStatus(str, Enum):
     NotStarted = "notStarted",
     Running = "running",
     Succeeded = "succeeded",

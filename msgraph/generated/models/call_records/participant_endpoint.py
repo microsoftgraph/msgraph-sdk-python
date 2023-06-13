@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -8,17 +9,13 @@ if TYPE_CHECKING:
 
 from . import endpoint
 
+@dataclass
 class ParticipantEndpoint(endpoint.Endpoint):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ParticipantEndpoint and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.callRecords.participantEndpoint"
-        # The feedback provided by the user of this endpoint about the quality of the session.
-        self._feedback: Optional[user_feedback.UserFeedback] = None
-        # Identity associated with the endpoint.
-        self._identity: Optional[identity_set.IdentitySet] = None
+    odata_type = "#microsoft.graph.callRecords.participantEndpoint"
+    # The feedback provided by the user of this endpoint about the quality of the session.
+    feedback: Optional[user_feedback.UserFeedback] = None
+    # Identity associated with the endpoint.
+    identity: Optional[identity_set.IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ParticipantEndpoint:
@@ -31,23 +28,6 @@ class ParticipantEndpoint(endpoint.Endpoint):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ParticipantEndpoint()
-    
-    @property
-    def feedback(self,) -> Optional[user_feedback.UserFeedback]:
-        """
-        Gets the feedback property value. The feedback provided by the user of this endpoint about the quality of the session.
-        Returns: Optional[user_feedback.UserFeedback]
-        """
-        return self._feedback
-    
-    @feedback.setter
-    def feedback(self,value: Optional[user_feedback.UserFeedback] = None) -> None:
-        """
-        Sets the feedback property value. The feedback provided by the user of this endpoint about the quality of the session.
-        Args:
-            value: Value to set for the feedback property.
-        """
-        self._feedback = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -64,23 +44,6 @@ class ParticipantEndpoint(endpoint.Endpoint):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def identity(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the identity property value. Identity associated with the endpoint.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._identity
-    
-    @identity.setter
-    def identity(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the identity property value. Identity associated with the endpoint.
-        Args:
-            value: Value to set for the identity property.
-        """
-        self._identity = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

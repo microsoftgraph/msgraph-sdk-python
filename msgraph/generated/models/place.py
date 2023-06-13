@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,39 +8,18 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class Place(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Place and sets the default values.
-        """
-        super().__init__()
-        # The street address of the place.
-        self._address: Optional[physical_address.PhysicalAddress] = None
-        # The name associated with the place.
-        self._display_name: Optional[str] = None
-        # Specifies the place location in latitude, longitude and (optionally) altitude coordinates.
-        self._geo_coordinates: Optional[outlook_geo_coordinates.OutlookGeoCoordinates] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The phone number of the place.
-        self._phone: Optional[str] = None
-    
-    @property
-    def address(self,) -> Optional[physical_address.PhysicalAddress]:
-        """
-        Gets the address property value. The street address of the place.
-        Returns: Optional[physical_address.PhysicalAddress]
-        """
-        return self._address
-    
-    @address.setter
-    def address(self,value: Optional[physical_address.PhysicalAddress] = None) -> None:
-        """
-        Sets the address property value. The street address of the place.
-        Args:
-            value: Value to set for the address property.
-        """
-        self._address = value
+    # The street address of the place.
+    address: Optional[physical_address.PhysicalAddress] = None
+    # The name associated with the place.
+    display_name: Optional[str] = None
+    # Specifies the place location in latitude, longitude and (optionally) altitude coordinates.
+    geo_coordinates: Optional[outlook_geo_coordinates.OutlookGeoCoordinates] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The phone number of the place.
+    phone: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Place:
@@ -64,40 +44,6 @@ class Place(entity.Entity):
                 return room_list.RoomList()
         return Place()
     
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The name associated with the place.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The name associated with the place.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
-    @property
-    def geo_coordinates(self,) -> Optional[outlook_geo_coordinates.OutlookGeoCoordinates]:
-        """
-        Gets the geoCoordinates property value. Specifies the place location in latitude, longitude and (optionally) altitude coordinates.
-        Returns: Optional[outlook_geo_coordinates.OutlookGeoCoordinates]
-        """
-        return self._geo_coordinates
-    
-    @geo_coordinates.setter
-    def geo_coordinates(self,value: Optional[outlook_geo_coordinates.OutlookGeoCoordinates] = None) -> None:
-        """
-        Sets the geoCoordinates property value. Specifies the place location in latitude, longitude and (optionally) altitude coordinates.
-        Args:
-            value: Value to set for the geo_coordinates property.
-        """
-        self._geo_coordinates = value
-    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -114,23 +60,6 @@ class Place(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def phone(self,) -> Optional[str]:
-        """
-        Gets the phone property value. The phone number of the place.
-        Returns: Optional[str]
-        """
-        return self._phone
-    
-    @phone.setter
-    def phone(self,value: Optional[str] = None) -> None:
-        """
-        Sets the phone property value. The phone number of the place.
-        Args:
-            value: Value to set for the phone property.
-        """
-        self._phone = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

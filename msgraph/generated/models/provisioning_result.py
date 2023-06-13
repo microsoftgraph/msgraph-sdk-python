@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ProvisioningResult(Enum):
+class ProvisioningResult(str, Enum):
     Success = "success",
     Failure = "failure",
     Skipped = "skipped",

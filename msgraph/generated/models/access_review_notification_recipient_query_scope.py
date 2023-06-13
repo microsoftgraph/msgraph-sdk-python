@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,19 +8,15 @@ if TYPE_CHECKING:
 
 from . import access_review_notification_recipient_scope
 
+@dataclass
 class AccessReviewNotificationRecipientQueryScope(access_review_notification_recipient_scope.AccessReviewNotificationRecipientScope):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AccessReviewNotificationRecipientQueryScope and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.accessReviewNotificationRecipientQueryScope"
-        # Represents the query for who the recipients are. For example, /groups/{group id}/members for group members and /users/{user id} for a specific user.
-        self._query: Optional[str] = None
-        # In the scenario where reviewers need to be specified dynamically, indicates the relative source of the query. This property is only required if a relative query (that is, ./manager) is specified.
-        self._query_root: Optional[str] = None
-        # Indicates the type of query. Allowed value is MicrosoftGraph.
-        self._query_type: Optional[str] = None
+    odata_type = "#microsoft.graph.accessReviewNotificationRecipientQueryScope"
+    # Represents the query for who the recipients are. For example, /groups/{group id}/members for group members and /users/{user id} for a specific user.
+    query: Optional[str] = None
+    # In the scenario where reviewers need to be specified dynamically, indicates the relative source of the query. This property is only required if a relative query (that is, ./manager) is specified.
+    query_root: Optional[str] = None
+    # Indicates the type of query. Allowed value is MicrosoftGraph.
+    query_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewNotificationRecipientQueryScope:
@@ -48,57 +45,6 @@ class AccessReviewNotificationRecipientQueryScope(access_review_notification_rec
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def query(self,) -> Optional[str]:
-        """
-        Gets the query property value. Represents the query for who the recipients are. For example, /groups/{group id}/members for group members and /users/{user id} for a specific user.
-        Returns: Optional[str]
-        """
-        return self._query
-    
-    @query.setter
-    def query(self,value: Optional[str] = None) -> None:
-        """
-        Sets the query property value. Represents the query for who the recipients are. For example, /groups/{group id}/members for group members and /users/{user id} for a specific user.
-        Args:
-            value: Value to set for the query property.
-        """
-        self._query = value
-    
-    @property
-    def query_root(self,) -> Optional[str]:
-        """
-        Gets the queryRoot property value. In the scenario where reviewers need to be specified dynamically, indicates the relative source of the query. This property is only required if a relative query (that is, ./manager) is specified.
-        Returns: Optional[str]
-        """
-        return self._query_root
-    
-    @query_root.setter
-    def query_root(self,value: Optional[str] = None) -> None:
-        """
-        Sets the queryRoot property value. In the scenario where reviewers need to be specified dynamically, indicates the relative source of the query. This property is only required if a relative query (that is, ./manager) is specified.
-        Args:
-            value: Value to set for the query_root property.
-        """
-        self._query_root = value
-    
-    @property
-    def query_type(self,) -> Optional[str]:
-        """
-        Gets the queryType property value. Indicates the type of query. Allowed value is MicrosoftGraph.
-        Returns: Optional[str]
-        """
-        return self._query_type
-    
-    @query_type.setter
-    def query_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the queryType property value. Indicates the type of query. Allowed value is MicrosoftGraph.
-        Args:
-            value: Value to set for the query_type property.
-        """
-        self._query_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

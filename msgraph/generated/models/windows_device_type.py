@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WindowsDeviceType(Enum):
+class WindowsDeviceType(str, Enum):
     # No flags set.
     None_ = "none",
     # Whether or not the Desktop Windows device type is supported.

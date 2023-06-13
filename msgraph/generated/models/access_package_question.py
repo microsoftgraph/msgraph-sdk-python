@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,24 +8,20 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class AccessPackageQuestion(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new accessPackageQuestion and sets the default values.
-        """
-        super().__init__()
-        # Specifies whether the requestor is allowed to edit answers to questions for an assignment by posting an update to accessPackageAssignmentRequest.
-        self._is_answer_editable: Optional[bool] = None
-        # Whether the requestor is required to supply an answer or not.
-        self._is_required: Optional[bool] = None
-        # The text of the question represented in a format for a specific locale.
-        self._localizations: Optional[List[access_package_localized_text.AccessPackageLocalizedText]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Relative position of this question when displaying a list of questions to the requestor.
-        self._sequence: Optional[int] = None
-        # The text of the question to show to the requestor.
-        self._text: Optional[str] = None
+    # Specifies whether the requestor is allowed to edit answers to questions for an assignment by posting an update to accessPackageAssignmentRequest.
+    is_answer_editable: Optional[bool] = None
+    # Whether the requestor is required to supply an answer or not.
+    is_required: Optional[bool] = None
+    # The text of the question represented in a format for a specific locale.
+    localizations: Optional[List[access_package_localized_text.AccessPackageLocalizedText]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Relative position of this question when displaying a list of questions to the requestor.
+    sequence: Optional[int] = None
+    # The text of the question to show to the requestor.
+    text: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessPackageQuestion:
@@ -67,74 +64,6 @@ class AccessPackageQuestion(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def is_answer_editable(self,) -> Optional[bool]:
-        """
-        Gets the isAnswerEditable property value. Specifies whether the requestor is allowed to edit answers to questions for an assignment by posting an update to accessPackageAssignmentRequest.
-        Returns: Optional[bool]
-        """
-        return self._is_answer_editable
-    
-    @is_answer_editable.setter
-    def is_answer_editable(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isAnswerEditable property value. Specifies whether the requestor is allowed to edit answers to questions for an assignment by posting an update to accessPackageAssignmentRequest.
-        Args:
-            value: Value to set for the is_answer_editable property.
-        """
-        self._is_answer_editable = value
-    
-    @property
-    def is_required(self,) -> Optional[bool]:
-        """
-        Gets the isRequired property value. Whether the requestor is required to supply an answer or not.
-        Returns: Optional[bool]
-        """
-        return self._is_required
-    
-    @is_required.setter
-    def is_required(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isRequired property value. Whether the requestor is required to supply an answer or not.
-        Args:
-            value: Value to set for the is_required property.
-        """
-        self._is_required = value
-    
-    @property
-    def localizations(self,) -> Optional[List[access_package_localized_text.AccessPackageLocalizedText]]:
-        """
-        Gets the localizations property value. The text of the question represented in a format for a specific locale.
-        Returns: Optional[List[access_package_localized_text.AccessPackageLocalizedText]]
-        """
-        return self._localizations
-    
-    @localizations.setter
-    def localizations(self,value: Optional[List[access_package_localized_text.AccessPackageLocalizedText]] = None) -> None:
-        """
-        Sets the localizations property value. The text of the question represented in a format for a specific locale.
-        Args:
-            value: Value to set for the localizations property.
-        """
-        self._localizations = value
-    
-    @property
-    def sequence(self,) -> Optional[int]:
-        """
-        Gets the sequence property value. Relative position of this question when displaying a list of questions to the requestor.
-        Returns: Optional[int]
-        """
-        return self._sequence
-    
-    @sequence.setter
-    def sequence(self,value: Optional[int] = None) -> None:
-        """
-        Sets the sequence property value. Relative position of this question when displaying a list of questions to the requestor.
-        Args:
-            value: Value to set for the sequence property.
-        """
-        self._sequence = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -149,22 +78,5 @@ class AccessPackageQuestion(entity.Entity):
         writer.write_collection_of_object_values("localizations", self.localizations)
         writer.write_int_value("sequence", self.sequence)
         writer.write_str_value("text", self.text)
-    
-    @property
-    def text(self,) -> Optional[str]:
-        """
-        Gets the text property value. The text of the question to show to the requestor.
-        Returns: Optional[str]
-        """
-        return self._text
-    
-    @text.setter
-    def text(self,value: Optional[str] = None) -> None:
-        """
-        Sets the text property value. The text of the question to show to the requestor.
-        Args:
-            value: Value to set for the text property.
-        """
-        self._text = value
     
 

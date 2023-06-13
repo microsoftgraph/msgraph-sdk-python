@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import domain_dns_record
 
+@dataclass
 class DomainDnsTxtRecord(domain_dns_record.DomainDnsRecord):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new DomainDnsTxtRecord and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Value used when configuring the text property at the DNS host.
-        self._text: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Value used when configuring the text property at the DNS host.
+    text: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DomainDnsTxtRecord:
@@ -54,22 +51,5 @@ class DomainDnsTxtRecord(domain_dns_record.DomainDnsRecord):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("text", self.text)
-    
-    @property
-    def text(self,) -> Optional[str]:
-        """
-        Gets the text property value. Value used when configuring the text property at the DNS host.
-        Returns: Optional[str]
-        """
-        return self._text
-    
-    @text.setter
-    def text(self,value: Optional[str] = None) -> None:
-        """
-        Sets the text property value. Value used when configuring the text property at the DNS host.
-        Args:
-            value: Value to set for the text property.
-        """
-        self._text = value
     
 

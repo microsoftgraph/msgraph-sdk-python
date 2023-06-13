@@ -1,6 +1,6 @@
 from enum import Enum
 
-class RecurrencePatternType(Enum):
+class RecurrencePatternType(str, Enum):
     Daily = "daily",
     Weekly = "weekly",
     AbsoluteMonthly = "absoluteMonthly",

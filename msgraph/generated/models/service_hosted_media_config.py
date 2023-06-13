@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import media_config
 
+@dataclass
 class ServiceHostedMediaConfig(media_config.MediaConfig):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ServiceHostedMediaConfig and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.serviceHostedMediaConfig"
-        # The list of media to pre-fetch.
-        self._pre_fetch_media: Optional[List[media_info.MediaInfo]] = None
+    odata_type = "#microsoft.graph.serviceHostedMediaConfig"
+    # The list of media to pre-fetch.
+    pre_fetch_media: Optional[List[media_info.MediaInfo]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ServiceHostedMediaConfig:
@@ -42,23 +39,6 @@ class ServiceHostedMediaConfig(media_config.MediaConfig):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def pre_fetch_media(self,) -> Optional[List[media_info.MediaInfo]]:
-        """
-        Gets the preFetchMedia property value. The list of media to pre-fetch.
-        Returns: Optional[List[media_info.MediaInfo]]
-        """
-        return self._pre_fetch_media
-    
-    @pre_fetch_media.setter
-    def pre_fetch_media(self,value: Optional[List[media_info.MediaInfo]] = None) -> None:
-        """
-        Sets the preFetchMedia property value. The list of media to pre-fetch.
-        Args:
-            value: Value to set for the pre_fetch_media property.
-        """
-        self._pre_fetch_media = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

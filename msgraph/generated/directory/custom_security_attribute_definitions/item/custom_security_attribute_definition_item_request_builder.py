@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -57,7 +57,7 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[CustomSecurityAttributeDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> Optional[custom_security_attribute_definition.CustomSecurityAttributeDefinition]:
         """
-        Get customSecurityAttributeDefinitions from directory
+        Read the properties and relationships of a customSecurityAttributeDefinition object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[custom_security_attribute_definition.CustomSecurityAttributeDefinition]
@@ -79,7 +79,7 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder():
     
     async def patch(self,body: Optional[custom_security_attribute_definition.CustomSecurityAttributeDefinition] = None, request_configuration: Optional[CustomSecurityAttributeDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> Optional[custom_security_attribute_definition.CustomSecurityAttributeDefinition]:
         """
-        Update the navigation property customSecurityAttributeDefinitions in directory
+        Update the properties of a customSecurityAttributeDefinition object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -120,7 +120,7 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CustomSecurityAttributeDefinitionItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get customSecurityAttributeDefinitions from directory
+        Read the properties and relationships of a customSecurityAttributeDefinition object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -138,7 +138,7 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder():
     
     def to_patch_request_information(self,body: Optional[custom_security_attribute_definition.CustomSecurityAttributeDefinition] = None, request_configuration: Optional[CustomSecurityAttributeDefinitionItemRequestBuilderPatchRequestConfiguration] = None) -> RequestInformation:
         """
-        Update the navigation property customSecurityAttributeDefinitions in directory
+        Update the properties of a customSecurityAttributeDefinition object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -181,7 +181,7 @@ class CustomSecurityAttributeDefinitionItemRequestBuilder():
     @dataclass
     class CustomSecurityAttributeDefinitionItemRequestBuilderGetQueryParameters():
         """
-        Get customSecurityAttributeDefinitions from directory
+        Read the properties and relationships of a customSecurityAttributeDefinition object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

@@ -1,39 +1,20 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ..........models.security import ediscovery_review_tag
 
+@dataclass
 class ApplyTagsPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new applyTagsPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The tagsToAdd property
-        self._tags_to_add: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None
-        # The tagsToRemove property
-        self._tags_to_remove: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The tagsToAdd property
+    tags_to_add: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None
+    # The tagsToRemove property
+    tags_to_remove: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApplyTagsPostRequestBody:
@@ -71,39 +52,5 @@ class ApplyTagsPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_collection_of_object_values("tagsToAdd", self.tags_to_add)
         writer.write_collection_of_object_values("tagsToRemove", self.tags_to_remove)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def tags_to_add(self,) -> Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]]:
-        """
-        Gets the tagsToAdd property value. The tagsToAdd property
-        Returns: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]]
-        """
-        return self._tags_to_add
-    
-    @tags_to_add.setter
-    def tags_to_add(self,value: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None) -> None:
-        """
-        Sets the tagsToAdd property value. The tagsToAdd property
-        Args:
-            value: Value to set for the tags_to_add property.
-        """
-        self._tags_to_add = value
-    
-    @property
-    def tags_to_remove(self,) -> Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]]:
-        """
-        Gets the tagsToRemove property value. The tagsToRemove property
-        Returns: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]]
-        """
-        return self._tags_to_remove
-    
-    @tags_to_remove.setter
-    def tags_to_remove(self,value: Optional[List[ediscovery_review_tag.EdiscoveryReviewTag]] = None) -> None:
-        """
-        Sets the tagsToRemove property value. The tagsToRemove property
-        Args:
-            value: Value to set for the tags_to_remove property.
-        """
-        self._tags_to_remove = value
     
 

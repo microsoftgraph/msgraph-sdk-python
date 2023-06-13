@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import comms_operation
 
+@dataclass
 class InviteParticipantsOperation(comms_operation.CommsOperation):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new InviteParticipantsOperation and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The participants to invite.
-        self._participants: Optional[List[invitation_participant_info.InvitationParticipantInfo]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The participants to invite.
+    participants: Optional[List[invitation_participant_info.InvitationParticipantInfo]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InviteParticipantsOperation:
@@ -43,23 +40,6 @@ class InviteParticipantsOperation(comms_operation.CommsOperation):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def participants(self,) -> Optional[List[invitation_participant_info.InvitationParticipantInfo]]:
-        """
-        Gets the participants property value. The participants to invite.
-        Returns: Optional[List[invitation_participant_info.InvitationParticipantInfo]]
-        """
-        return self._participants
-    
-    @participants.setter
-    def participants(self,value: Optional[List[invitation_participant_info.InvitationParticipantInfo]] = None) -> None:
-        """
-        Sets the participants property value. The participants to invite.
-        Args:
-            value: Value to set for the participants property.
-        """
-        self._participants = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import access_review_scope
 
+@dataclass
 class PrincipalResourceMembershipsScope(access_review_scope.AccessReviewScope):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new PrincipalResourceMembershipsScope and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.principalResourceMembershipsScope"
-        # Defines the scopes of the principals whose access to resources are reviewed in the access review.
-        self._principal_scopes: Optional[List[access_review_scope.AccessReviewScope]] = None
-        # Defines the scopes of the resources for which access is reviewed.
-        self._resource_scopes: Optional[List[access_review_scope.AccessReviewScope]] = None
+    odata_type = "#microsoft.graph.principalResourceMembershipsScope"
+    # Defines the scopes of the principals whose access to resources are reviewed in the access review.
+    principal_scopes: Optional[List[access_review_scope.AccessReviewScope]] = None
+    # Defines the scopes of the resources for which access is reviewed.
+    resource_scopes: Optional[List[access_review_scope.AccessReviewScope]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrincipalResourceMembershipsScope:
@@ -45,40 +42,6 @@ class PrincipalResourceMembershipsScope(access_review_scope.AccessReviewScope):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def principal_scopes(self,) -> Optional[List[access_review_scope.AccessReviewScope]]:
-        """
-        Gets the principalScopes property value. Defines the scopes of the principals whose access to resources are reviewed in the access review.
-        Returns: Optional[List[access_review_scope.AccessReviewScope]]
-        """
-        return self._principal_scopes
-    
-    @principal_scopes.setter
-    def principal_scopes(self,value: Optional[List[access_review_scope.AccessReviewScope]] = None) -> None:
-        """
-        Sets the principalScopes property value. Defines the scopes of the principals whose access to resources are reviewed in the access review.
-        Args:
-            value: Value to set for the principal_scopes property.
-        """
-        self._principal_scopes = value
-    
-    @property
-    def resource_scopes(self,) -> Optional[List[access_review_scope.AccessReviewScope]]:
-        """
-        Gets the resourceScopes property value. Defines the scopes of the resources for which access is reviewed.
-        Returns: Optional[List[access_review_scope.AccessReviewScope]]
-        """
-        return self._resource_scopes
-    
-    @resource_scopes.setter
-    def resource_scopes(self,value: Optional[List[access_review_scope.AccessReviewScope]] = None) -> None:
-        """
-        Sets the resourceScopes property value. Defines the scopes of the resources for which access is reviewed.
-        Args:
-            value: Value to set for the resource_scopes property.
-        """
-        self._resource_scopes = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

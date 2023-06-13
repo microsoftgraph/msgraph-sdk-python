@@ -1,129 +1,25 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class TeamMessagingSettings(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new teamMessagingSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # If set to true, @channel mentions are allowed.
-        self._allow_channel_mentions: Optional[bool] = None
-        # If set to true, owners can delete any message.
-        self._allow_owner_delete_messages: Optional[bool] = None
-        # If set to true, @team mentions are allowed.
-        self._allow_team_mentions: Optional[bool] = None
-        # If set to true, users can delete their messages.
-        self._allow_user_delete_messages: Optional[bool] = None
-        # If set to true, users can edit their messages.
-        self._allow_user_edit_messages: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def allow_channel_mentions(self,) -> Optional[bool]:
-        """
-        Gets the allowChannelMentions property value. If set to true, @channel mentions are allowed.
-        Returns: Optional[bool]
-        """
-        return self._allow_channel_mentions
-    
-    @allow_channel_mentions.setter
-    def allow_channel_mentions(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowChannelMentions property value. If set to true, @channel mentions are allowed.
-        Args:
-            value: Value to set for the allow_channel_mentions property.
-        """
-        self._allow_channel_mentions = value
-    
-    @property
-    def allow_owner_delete_messages(self,) -> Optional[bool]:
-        """
-        Gets the allowOwnerDeleteMessages property value. If set to true, owners can delete any message.
-        Returns: Optional[bool]
-        """
-        return self._allow_owner_delete_messages
-    
-    @allow_owner_delete_messages.setter
-    def allow_owner_delete_messages(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowOwnerDeleteMessages property value. If set to true, owners can delete any message.
-        Args:
-            value: Value to set for the allow_owner_delete_messages property.
-        """
-        self._allow_owner_delete_messages = value
-    
-    @property
-    def allow_team_mentions(self,) -> Optional[bool]:
-        """
-        Gets the allowTeamMentions property value. If set to true, @team mentions are allowed.
-        Returns: Optional[bool]
-        """
-        return self._allow_team_mentions
-    
-    @allow_team_mentions.setter
-    def allow_team_mentions(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowTeamMentions property value. If set to true, @team mentions are allowed.
-        Args:
-            value: Value to set for the allow_team_mentions property.
-        """
-        self._allow_team_mentions = value
-    
-    @property
-    def allow_user_delete_messages(self,) -> Optional[bool]:
-        """
-        Gets the allowUserDeleteMessages property value. If set to true, users can delete their messages.
-        Returns: Optional[bool]
-        """
-        return self._allow_user_delete_messages
-    
-    @allow_user_delete_messages.setter
-    def allow_user_delete_messages(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowUserDeleteMessages property value. If set to true, users can delete their messages.
-        Args:
-            value: Value to set for the allow_user_delete_messages property.
-        """
-        self._allow_user_delete_messages = value
-    
-    @property
-    def allow_user_edit_messages(self,) -> Optional[bool]:
-        """
-        Gets the allowUserEditMessages property value. If set to true, users can edit their messages.
-        Returns: Optional[bool]
-        """
-        return self._allow_user_edit_messages
-    
-    @allow_user_edit_messages.setter
-    def allow_user_edit_messages(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowUserEditMessages property value. If set to true, users can edit their messages.
-        Args:
-            value: Value to set for the allow_user_edit_messages property.
-        """
-        self._allow_user_edit_messages = value
+    # If set to true, @channel mentions are allowed.
+    allow_channel_mentions: Optional[bool] = None
+    # If set to true, owners can delete any message.
+    allow_owner_delete_messages: Optional[bool] = None
+    # If set to true, @team mentions are allowed.
+    allow_team_mentions: Optional[bool] = None
+    # If set to true, users can delete their messages.
+    allow_user_delete_messages: Optional[bool] = None
+    # If set to true, users can edit their messages.
+    allow_user_edit_messages: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamMessagingSettings:
@@ -151,23 +47,6 @@ class TeamMessagingSettings(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import mobile_app
 
+@dataclass
 class WindowsWebApp(mobile_app.MobileApp):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsWebApp and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsWebApp"
-        # Indicates the Windows web app URL. Example: 'https://www.contoso.com'
-        self._app_url: Optional[str] = None
-    
-    @property
-    def app_url(self,) -> Optional[str]:
-        """
-        Gets the appUrl property value. Indicates the Windows web app URL. Example: 'https://www.contoso.com'
-        Returns: Optional[str]
-        """
-        return self._app_url
-    
-    @app_url.setter
-    def app_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the appUrl property value. Indicates the Windows web app URL. Example: 'https://www.contoso.com'
-        Args:
-            value: Value to set for the app_url property.
-        """
-        self._app_url = value
+    odata_type = "#microsoft.graph.windowsWebApp"
+    # Indicates the Windows web app URL. Example: 'https://www.contoso.com'
+    app_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsWebApp:

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DataSubjectType(Enum):
+class DataSubjectType(str, Enum):
     Customer = "customer",
     CurrentEmployee = "currentEmployee",
     FormerEmployee = "formerEmployee",

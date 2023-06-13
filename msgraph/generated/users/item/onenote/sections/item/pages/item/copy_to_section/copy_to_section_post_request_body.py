@@ -1,40 +1,21 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new copyToSectionPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The groupId property
-        self._group_id: Optional[str] = None
-        # The id property
-        self._id: Optional[str] = None
-        # The siteCollectionId property
-        self._site_collection_id: Optional[str] = None
-        # The siteId property
-        self._site_id: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The groupId property
+    group_id: Optional[str] = None
+    # The id property
+    id: Optional[str] = None
+    # The siteCollectionId property
+    site_collection_id: Optional[str] = None
+    # The siteId property
+    site_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CopyToSectionPostRequestBody:
@@ -61,40 +42,6 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def group_id(self,) -> Optional[str]:
-        """
-        Gets the groupId property value. The groupId property
-        Returns: Optional[str]
-        """
-        return self._group_id
-    
-    @group_id.setter
-    def group_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the groupId property value. The groupId property
-        Args:
-            value: Value to set for the group_id property.
-        """
-        self._group_id = value
-    
-    @property
-    def id(self,) -> Optional[str]:
-        """
-        Gets the id property value. The id property
-        Returns: Optional[str]
-        """
-        return self._id
-    
-    @id.setter
-    def id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the id property value. The id property
-        Args:
-            value: Value to set for the id property.
-        """
-        self._id = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -108,39 +55,5 @@ class CopyToSectionPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_str_value("siteCollectionId", self.site_collection_id)
         writer.write_str_value("siteId", self.site_id)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def site_collection_id(self,) -> Optional[str]:
-        """
-        Gets the siteCollectionId property value. The siteCollectionId property
-        Returns: Optional[str]
-        """
-        return self._site_collection_id
-    
-    @site_collection_id.setter
-    def site_collection_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the siteCollectionId property value. The siteCollectionId property
-        Args:
-            value: Value to set for the site_collection_id property.
-        """
-        self._site_collection_id = value
-    
-    @property
-    def site_id(self,) -> Optional[str]:
-        """
-        Gets the siteId property value. The siteId property
-        Returns: Optional[str]
-        """
-        return self._site_id
-    
-    @site_id.setter
-    def site_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the siteId property value. The siteId property
-        Args:
-            value: Value to set for the site_id property.
-        """
-        self._site_id = value
     
 

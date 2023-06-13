@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import simulation_report_overview, user_simulation_details
 
+@dataclass
 class SimulationReport(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new simulationReport and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Overview of an attack simulation and training campaign.
-        self._overview: Optional[simulation_report_overview.SimulationReportOverview] = None
-        # The tenant users and their online actions in an attack simulation and training campaign.
-        self._simulation_users: Optional[List[user_simulation_details.UserSimulationDetails]] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Overview of an attack simulation and training campaign.
+    overview: Optional[simulation_report_overview.SimulationReportOverview] = None
+    # The tenant users and their online actions in an attack simulation and training campaign.
+    simulation_users: Optional[List[user_simulation_details.UserSimulationDetails]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SimulationReport:
@@ -63,40 +44,6 @@ class SimulationReport(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def overview(self,) -> Optional[simulation_report_overview.SimulationReportOverview]:
-        """
-        Gets the overview property value. Overview of an attack simulation and training campaign.
-        Returns: Optional[simulation_report_overview.SimulationReportOverview]
-        """
-        return self._overview
-    
-    @overview.setter
-    def overview(self,value: Optional[simulation_report_overview.SimulationReportOverview] = None) -> None:
-        """
-        Sets the overview property value. Overview of an attack simulation and training campaign.
-        Args:
-            value: Value to set for the overview property.
-        """
-        self._overview = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -109,22 +56,5 @@ class SimulationReport(AdditionalDataHolder, Parsable):
         writer.write_object_value("overview", self.overview)
         writer.write_collection_of_object_values("simulationUsers", self.simulation_users)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def simulation_users(self,) -> Optional[List[user_simulation_details.UserSimulationDetails]]:
-        """
-        Gets the simulationUsers property value. The tenant users and their online actions in an attack simulation and training campaign.
-        Returns: Optional[List[user_simulation_details.UserSimulationDetails]]
-        """
-        return self._simulation_users
-    
-    @simulation_users.setter
-    def simulation_users(self,value: Optional[List[user_simulation_details.UserSimulationDetails]] = None) -> None:
-        """
-        Sets the simulationUsers property value. The tenant users and their online actions in an attack simulation and training campaign.
-        Args:
-            value: Value to set for the simulation_users property.
-        """
-        self._simulation_users = value
     
 

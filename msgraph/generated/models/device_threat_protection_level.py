@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DeviceThreatProtectionLevel(Enum):
+class DeviceThreatProtectionLevel(str, Enum):
     # Default Value. Do not use.
     Unavailable = "unavailable",
     # Device Threat Level requirement: Secured. This is the most secure level, and represents that no threats were found on the device.

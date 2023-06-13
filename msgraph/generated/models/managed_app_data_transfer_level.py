@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ManagedAppDataTransferLevel(Enum):
+class ManagedAppDataTransferLevel(str, Enum):
     # All apps.
     AllApps = "allApps",
     # Managed apps.

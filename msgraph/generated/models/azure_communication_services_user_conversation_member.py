@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import conversation_member
 
+@dataclass
 class AzureCommunicationServicesUserConversationMember(conversation_member.ConversationMember):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AzureCommunicationServicesUserConversationMember and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.azureCommunicationServicesUserConversationMember"
-        # Azure Communication Services ID of the user.
-        self._azure_communication_services_id: Optional[str] = None
-    
-    @property
-    def azure_communication_services_id(self,) -> Optional[str]:
-        """
-        Gets the azureCommunicationServicesId property value. Azure Communication Services ID of the user.
-        Returns: Optional[str]
-        """
-        return self._azure_communication_services_id
-    
-    @azure_communication_services_id.setter
-    def azure_communication_services_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the azureCommunicationServicesId property value. Azure Communication Services ID of the user.
-        Args:
-            value: Value to set for the azure_communication_services_id property.
-        """
-        self._azure_communication_services_id = value
+    odata_type = "#microsoft.graph.azureCommunicationServicesUserConversationMember"
+    # Azure Communication Services ID of the user.
+    azure_communication_services_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AzureCommunicationServicesUserConversationMember:

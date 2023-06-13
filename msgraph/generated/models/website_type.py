@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WebsiteType(Enum):
+class WebsiteType(str, Enum):
     Other = "other",
     Home = "home",
     Work = "work",

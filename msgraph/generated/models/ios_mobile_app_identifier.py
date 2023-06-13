@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import mobile_app_identifier
 
+@dataclass
 class IosMobileAppIdentifier(mobile_app_identifier.MobileAppIdentifier):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IosMobileAppIdentifier and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.iosMobileAppIdentifier"
-        # The identifier for an app, as specified in the app store.
-        self._bundle_id: Optional[str] = None
-    
-    @property
-    def bundle_id(self,) -> Optional[str]:
-        """
-        Gets the bundleId property value. The identifier for an app, as specified in the app store.
-        Returns: Optional[str]
-        """
-        return self._bundle_id
-    
-    @bundle_id.setter
-    def bundle_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the bundleId property value. The identifier for an app, as specified in the app store.
-        Args:
-            value: Value to set for the bundle_id property.
-        """
-        self._bundle_id = value
+    odata_type = "#microsoft.graph.iosMobileAppIdentifier"
+    # The identifier for an app, as specified in the app store.
+    bundle_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosMobileAppIdentifier:

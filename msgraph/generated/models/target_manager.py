@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import subject_set
 
+@dataclass
 class TargetManager(subject_set.SubjectSet):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new TargetManager and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.targetManager"
-        # Manager level, between 1 and 4. The direct manager is 1.
-        self._manager_level: Optional[int] = None
+    odata_type = "#microsoft.graph.targetManager"
+    # Manager level, between 1 and 4. The direct manager is 1.
+    manager_level: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TargetManager:
@@ -42,23 +39,6 @@ class TargetManager(subject_set.SubjectSet):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def manager_level(self,) -> Optional[int]:
-        """
-        Gets the managerLevel property value. Manager level, between 1 and 4. The direct manager is 1.
-        Returns: Optional[int]
-        """
-        return self._manager_level
-    
-    @manager_level.setter
-    def manager_level(self,value: Optional[int] = None) -> None:
-        """
-        Sets the managerLevel property value. Manager level, between 1 and 4. The direct manager is 1.
-        Args:
-            value: Value to set for the manager_level property.
-        """
-        self._manager_level = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

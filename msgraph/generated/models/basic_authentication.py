@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import api_authentication_configuration_base
 
+@dataclass
 class BasicAuthentication(api_authentication_configuration_base.ApiAuthenticationConfigurationBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new BasicAuthentication and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.basicAuthentication"
-        # The password. It is not returned in the responses.
-        self._password: Optional[str] = None
-        # The username.
-        self._username: Optional[str] = None
+    odata_type = "#microsoft.graph.basicAuthentication"
+    # The password. It is not returned in the responses.
+    password: Optional[str] = None
+    # The username.
+    username: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BasicAuthentication:
@@ -46,23 +43,6 @@ class BasicAuthentication(api_authentication_configuration_base.ApiAuthenticatio
         fields.update(super_fields)
         return fields
     
-    @property
-    def password(self,) -> Optional[str]:
-        """
-        Gets the password property value. The password. It is not returned in the responses.
-        Returns: Optional[str]
-        """
-        return self._password
-    
-    @password.setter
-    def password(self,value: Optional[str] = None) -> None:
-        """
-        Sets the password property value. The password. It is not returned in the responses.
-        Args:
-            value: Value to set for the password property.
-        """
-        self._password = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -74,22 +54,5 @@ class BasicAuthentication(api_authentication_configuration_base.ApiAuthenticatio
         super().serialize(writer)
         writer.write_str_value("password", self.password)
         writer.write_str_value("username", self.username)
-    
-    @property
-    def username(self,) -> Optional[str]:
-        """
-        Gets the username property value. The username.
-        Returns: Optional[str]
-        """
-        return self._username
-    
-    @username.setter
-    def username(self,value: Optional[str] = None) -> None:
-        """
-        Sets the username property value. The username.
-        Args:
-            value: Value to set for the username property.
-        """
-        self._username = value
     
 

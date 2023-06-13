@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import json
 
+@dataclass
 class F_Inv_RTPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new f_Inv_RTPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The degFreedom1 property
-        self._deg_freedom1: Optional[json.Json] = None
-        # The degFreedom2 property
-        self._deg_freedom2: Optional[json.Json] = None
-        # The probability property
-        self._probability: Optional[json.Json] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The degFreedom1 property
+    deg_freedom1: Optional[json.Json] = None
+    # The degFreedom2 property
+    deg_freedom2: Optional[json.Json] = None
+    # The probability property
+    probability: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> F_Inv_RTPostRequestBody:
@@ -48,40 +29,6 @@ class F_Inv_RTPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return F_Inv_RTPostRequestBody()
-    
-    @property
-    def deg_freedom1(self,) -> Optional[json.Json]:
-        """
-        Gets the degFreedom1 property value. The degFreedom1 property
-        Returns: Optional[json.Json]
-        """
-        return self._deg_freedom1
-    
-    @deg_freedom1.setter
-    def deg_freedom1(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the degFreedom1 property value. The degFreedom1 property
-        Args:
-            value: Value to set for the deg_freedom1 property.
-        """
-        self._deg_freedom1 = value
-    
-    @property
-    def deg_freedom2(self,) -> Optional[json.Json]:
-        """
-        Gets the degFreedom2 property value. The degFreedom2 property
-        Returns: Optional[json.Json]
-        """
-        return self._deg_freedom2
-    
-    @deg_freedom2.setter
-    def deg_freedom2(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the degFreedom2 property value. The degFreedom2 property
-        Args:
-            value: Value to set for the deg_freedom2 property.
-        """
-        self._deg_freedom2 = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -96,23 +43,6 @@ class F_Inv_RTPostRequestBody(AdditionalDataHolder, Parsable):
             "probability": lambda n : setattr(self, 'probability', n.get_object_value(json.Json)),
         }
         return fields
-    
-    @property
-    def probability(self,) -> Optional[json.Json]:
-        """
-        Gets the probability property value. The probability property
-        Returns: Optional[json.Json]
-        """
-        return self._probability
-    
-    @probability.setter
-    def probability(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the probability property value. The probability property
-        Args:
-            value: Value to set for the probability property.
-        """
-        self._probability = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

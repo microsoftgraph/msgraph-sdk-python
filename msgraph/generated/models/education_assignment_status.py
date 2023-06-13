@@ -1,6 +1,6 @@
 from enum import Enum
 
-class EducationAssignmentStatus(Enum):
+class EducationAssignmentStatus(str, Enum):
     Draft = "draft",
     Published = "published",
     Assigned = "assigned",

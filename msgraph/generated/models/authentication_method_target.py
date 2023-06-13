@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class AuthenticationMethodTarget(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new authenticationMethodTarget and sets the default values.
-        """
-        super().__init__()
-        # Determines if the user is enforced to register the authentication method.
-        self._is_registration_required: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The targetType property
-        self._target_type: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None
+    # Determines if the user is enforced to register the authentication method.
+    is_registration_required: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The targetType property
+    target_type: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodTarget:
@@ -58,23 +55,6 @@ class AuthenticationMethodTarget(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def is_registration_required(self,) -> Optional[bool]:
-        """
-        Gets the isRegistrationRequired property value. Determines if the user is enforced to register the authentication method.
-        Returns: Optional[bool]
-        """
-        return self._is_registration_required
-    
-    @is_registration_required.setter
-    def is_registration_required(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isRegistrationRequired property value. Determines if the user is enforced to register the authentication method.
-        Args:
-            value: Value to set for the is_registration_required property.
-        """
-        self._is_registration_required = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -86,22 +66,5 @@ class AuthenticationMethodTarget(entity.Entity):
         super().serialize(writer)
         writer.write_bool_value("isRegistrationRequired", self.is_registration_required)
         writer.write_enum_value("targetType", self.target_type)
-    
-    @property
-    def target_type(self,) -> Optional[authentication_method_target_type.AuthenticationMethodTargetType]:
-        """
-        Gets the targetType property value. The targetType property
-        Returns: Optional[authentication_method_target_type.AuthenticationMethodTargetType]
-        """
-        return self._target_type
-    
-    @target_type.setter
-    def target_type(self,value: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None) -> None:
-        """
-        Sets the targetType property value. The targetType property
-        Args:
-            value: Value to set for the target_type property.
-        """
-        self._target_type = value
     
 

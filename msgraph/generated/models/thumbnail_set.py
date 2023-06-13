@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,22 +8,18 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ThumbnailSet(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new thumbnailSet and sets the default values.
-        """
-        super().__init__()
-        # A 1920x1920 scaled thumbnail.
-        self._large: Optional[thumbnail.Thumbnail] = None
-        # A 176x176 scaled thumbnail.
-        self._medium: Optional[thumbnail.Thumbnail] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # A 48x48 cropped thumbnail.
-        self._small: Optional[thumbnail.Thumbnail] = None
-        # A custom thumbnail image or the original image used to generate other thumbnails.
-        self._source: Optional[thumbnail.Thumbnail] = None
+    # A 1920x1920 scaled thumbnail.
+    large: Optional[thumbnail.Thumbnail] = None
+    # A 176x176 scaled thumbnail.
+    medium: Optional[thumbnail.Thumbnail] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # A 48x48 cropped thumbnail.
+    small: Optional[thumbnail.Thumbnail] = None
+    # A custom thumbnail image or the original image used to generate other thumbnails.
+    source: Optional[thumbnail.Thumbnail] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ThumbnailSet:
@@ -53,40 +50,6 @@ class ThumbnailSet(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def large(self,) -> Optional[thumbnail.Thumbnail]:
-        """
-        Gets the large property value. A 1920x1920 scaled thumbnail.
-        Returns: Optional[thumbnail.Thumbnail]
-        """
-        return self._large
-    
-    @large.setter
-    def large(self,value: Optional[thumbnail.Thumbnail] = None) -> None:
-        """
-        Sets the large property value. A 1920x1920 scaled thumbnail.
-        Args:
-            value: Value to set for the large property.
-        """
-        self._large = value
-    
-    @property
-    def medium(self,) -> Optional[thumbnail.Thumbnail]:
-        """
-        Gets the medium property value. A 176x176 scaled thumbnail.
-        Returns: Optional[thumbnail.Thumbnail]
-        """
-        return self._medium
-    
-    @medium.setter
-    def medium(self,value: Optional[thumbnail.Thumbnail] = None) -> None:
-        """
-        Sets the medium property value. A 176x176 scaled thumbnail.
-        Args:
-            value: Value to set for the medium property.
-        """
-        self._medium = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -100,39 +63,5 @@ class ThumbnailSet(entity.Entity):
         writer.write_object_value("medium", self.medium)
         writer.write_object_value("small", self.small)
         writer.write_object_value("source", self.source)
-    
-    @property
-    def small(self,) -> Optional[thumbnail.Thumbnail]:
-        """
-        Gets the small property value. A 48x48 cropped thumbnail.
-        Returns: Optional[thumbnail.Thumbnail]
-        """
-        return self._small
-    
-    @small.setter
-    def small(self,value: Optional[thumbnail.Thumbnail] = None) -> None:
-        """
-        Sets the small property value. A 48x48 cropped thumbnail.
-        Args:
-            value: Value to set for the small property.
-        """
-        self._small = value
-    
-    @property
-    def source(self,) -> Optional[thumbnail.Thumbnail]:
-        """
-        Gets the source property value. A custom thumbnail image or the original image used to generate other thumbnails.
-        Returns: Optional[thumbnail.Thumbnail]
-        """
-        return self._source
-    
-    @source.setter
-    def source(self,value: Optional[thumbnail.Thumbnail] = None) -> None:
-        """
-        Sets the source property value. A custom thumbnail image or the original image used to generate other thumbnails.
-        Args:
-            value: Value to set for the source property.
-        """
-        self._source = value
     
 

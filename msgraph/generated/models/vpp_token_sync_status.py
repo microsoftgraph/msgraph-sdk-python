@@ -1,6 +1,6 @@
 from enum import Enum
 
-class VppTokenSyncStatus(Enum):
+class VppTokenSyncStatus(str, Enum):
     # Default status.
     None_ = "none",
     # Last Sync in progress.

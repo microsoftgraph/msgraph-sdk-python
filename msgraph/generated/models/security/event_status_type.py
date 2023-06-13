@@ -1,6 +1,6 @@
 from enum import Enum
 
-class EventStatusType(Enum):
+class EventStatusType(str, Enum):
     Pending = "pending",
     Error = "error",
     Success = "success",

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DeviceRegistrationState(Enum):
+class DeviceRegistrationState(str, Enum):
     # The device is not registered.
     NotRegistered = "notRegistered",
     # The device is registered.

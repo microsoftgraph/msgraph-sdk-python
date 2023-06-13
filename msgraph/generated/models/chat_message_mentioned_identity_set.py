@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import identity_set
 
+@dataclass
 class ChatMessageMentionedIdentitySet(identity_set.IdentitySet):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ChatMessageMentionedIdentitySet and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.chatMessageMentionedIdentitySet"
-        # If present, represents a conversation (for example, team or channel) @mentioned in a message.
-        self._conversation: Optional[teamwork_conversation_identity.TeamworkConversationIdentity] = None
-    
-    @property
-    def conversation(self,) -> Optional[teamwork_conversation_identity.TeamworkConversationIdentity]:
-        """
-        Gets the conversation property value. If present, represents a conversation (for example, team or channel) @mentioned in a message.
-        Returns: Optional[teamwork_conversation_identity.TeamworkConversationIdentity]
-        """
-        return self._conversation
-    
-    @conversation.setter
-    def conversation(self,value: Optional[teamwork_conversation_identity.TeamworkConversationIdentity] = None) -> None:
-        """
-        Sets the conversation property value. If present, represents a conversation (for example, team or channel) @mentioned in a message.
-        Args:
-            value: Value to set for the conversation property.
-        """
-        self._conversation = value
+    odata_type = "#microsoft.graph.chatMessageMentionedIdentitySet"
+    # If present, represents a conversation (for example, team or channel) @mentioned in a message.
+    conversation: Optional[teamwork_conversation_identity.TeamworkConversationIdentity] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessageMentionedIdentitySet:

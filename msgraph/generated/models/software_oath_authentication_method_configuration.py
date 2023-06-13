@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import authentication_method_configuration
 
+@dataclass
 class SoftwareOathAuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new SoftwareOathAuthenticationMethodConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.softwareOathAuthenticationMethodConfiguration"
-        # A collection of groups that are enabled to use the authentication method. Expanded by default.
-        self._include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
+    odata_type = "#microsoft.graph.softwareOathAuthenticationMethodConfiguration"
+    # A collection of groups that are enabled to use the authentication method. Expanded by default.
+    include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SoftwareOathAuthenticationMethodConfiguration:
@@ -42,23 +39,6 @@ class SoftwareOathAuthenticationMethodConfiguration(authentication_method_config
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def include_targets(self,) -> Optional[List[authentication_method_target.AuthenticationMethodTarget]]:
-        """
-        Gets the includeTargets property value. A collection of groups that are enabled to use the authentication method. Expanded by default.
-        Returns: Optional[List[authentication_method_target.AuthenticationMethodTarget]]
-        """
-        return self._include_targets
-    
-    @include_targets.setter
-    def include_targets(self,value: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None) -> None:
-        """
-        Sets the includeTargets property value. A collection of groups that are enabled to use the authentication method. Expanded by default.
-        Args:
-            value: Value to set for the include_targets property.
-        """
-        self._include_targets = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

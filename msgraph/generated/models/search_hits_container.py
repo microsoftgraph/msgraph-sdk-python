@@ -1,62 +1,26 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import search_aggregation, search_hit
 
+@dataclass
 class SearchHitsContainer(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new searchHitsContainer and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The aggregations property
-        self._aggregations: Optional[List[search_aggregation.SearchAggregation]] = None
-        # A collection of the search results.
-        self._hits: Optional[List[search_hit.SearchHit]] = None
-        # Provides information if more results are available. Based on this information, you can adjust the from and size properties of the searchRequest accordingly.
-        self._more_results_available: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The total number of results. Note this is not the number of results on the page, but the total number of results satisfying the query.
-        self._total: Optional[int] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def aggregations(self,) -> Optional[List[search_aggregation.SearchAggregation]]:
-        """
-        Gets the aggregations property value. The aggregations property
-        Returns: Optional[List[search_aggregation.SearchAggregation]]
-        """
-        return self._aggregations
-    
-    @aggregations.setter
-    def aggregations(self,value: Optional[List[search_aggregation.SearchAggregation]] = None) -> None:
-        """
-        Sets the aggregations property value. The aggregations property
-        Args:
-            value: Value to set for the aggregations property.
-        """
-        self._aggregations = value
+    # The aggregations property
+    aggregations: Optional[List[search_aggregation.SearchAggregation]] = None
+    # A collection of the search results.
+    hits: Optional[List[search_hit.SearchHit]] = None
+    # Provides information if more results are available. Based on this information, you can adjust the from and size properties of the searchRequest accordingly.
+    more_results_available: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The total number of results. Note this is not the number of results on the page, but the total number of results satisfying the query.
+    total: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SearchHitsContainer:
@@ -86,57 +50,6 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def hits(self,) -> Optional[List[search_hit.SearchHit]]:
-        """
-        Gets the hits property value. A collection of the search results.
-        Returns: Optional[List[search_hit.SearchHit]]
-        """
-        return self._hits
-    
-    @hits.setter
-    def hits(self,value: Optional[List[search_hit.SearchHit]] = None) -> None:
-        """
-        Sets the hits property value. A collection of the search results.
-        Args:
-            value: Value to set for the hits property.
-        """
-        self._hits = value
-    
-    @property
-    def more_results_available(self,) -> Optional[bool]:
-        """
-        Gets the moreResultsAvailable property value. Provides information if more results are available. Based on this information, you can adjust the from and size properties of the searchRequest accordingly.
-        Returns: Optional[bool]
-        """
-        return self._more_results_available
-    
-    @more_results_available.setter
-    def more_results_available(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the moreResultsAvailable property value. Provides information if more results are available. Based on this information, you can adjust the from and size properties of the searchRequest accordingly.
-        Args:
-            value: Value to set for the more_results_available property.
-        """
-        self._more_results_available = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -151,22 +64,5 @@ class SearchHitsContainer(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("total", self.total)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def total(self,) -> Optional[int]:
-        """
-        Gets the total property value. The total number of results. Note this is not the number of results on the page, but the total number of results satisfying the query.
-        Returns: Optional[int]
-        """
-        return self._total
-    
-    @total.setter
-    def total(self,value: Optional[int] = None) -> None:
-        """
-        Sets the total property value. The total number of results. Note this is not the number of results on the page, but the total number of results satisfying the query.
-        Args:
-            value: Value to set for the total property.
-        """
-        self._total = value
     
 

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,25 +8,21 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class WindowsInformationProtectionAppLockerFile(entity.Entity):
     """
     Windows Information Protection AppLocker File
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new windowsInformationProtectionAppLockerFile and sets the default values.
-        """
-        super().__init__()
-        # The friendly name
-        self._display_name: Optional[str] = None
-        # File as a byte array
-        self._file: Optional[bytes] = None
-        # SHA256 hash of the file
-        self._file_hash: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Version of the entity.
-        self._version: Optional[str] = None
+    # The friendly name
+    display_name: Optional[str] = None
+    # File as a byte array
+    file: Optional[bytes] = None
+    # SHA256 hash of the file
+    file_hash: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Version of the entity.
+    version: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionAppLockerFile:
@@ -38,57 +35,6 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsInformationProtectionAppLockerFile()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The friendly name
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The friendly name
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
-    @property
-    def file(self,) -> Optional[bytes]:
-        """
-        Gets the file property value. File as a byte array
-        Returns: Optional[bytes]
-        """
-        return self._file
-    
-    @file.setter
-    def file(self,value: Optional[bytes] = None) -> None:
-        """
-        Sets the file property value. File as a byte array
-        Args:
-            value: Value to set for the file property.
-        """
-        self._file = value
-    
-    @property
-    def file_hash(self,) -> Optional[str]:
-        """
-        Gets the fileHash property value. SHA256 hash of the file
-        Returns: Optional[str]
-        """
-        return self._file_hash
-    
-    @file_hash.setter
-    def file_hash(self,value: Optional[str] = None) -> None:
-        """
-        Sets the fileHash property value. SHA256 hash of the file
-        Args:
-            value: Value to set for the file_hash property.
-        """
-        self._file_hash = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -120,22 +66,5 @@ class WindowsInformationProtectionAppLockerFile(entity.Entity):
         writer.write_object_value("file", self.file)
         writer.write_str_value("fileHash", self.file_hash)
         writer.write_str_value("version", self.version)
-    
-    @property
-    def version(self,) -> Optional[str]:
-        """
-        Gets the version property value. Version of the entity.
-        Returns: Optional[str]
-        """
-        return self._version
-    
-    @version.setter
-    def version(self,value: Optional[str] = None) -> None:
-        """
-        Sets the version property value. Version of the entity.
-        Args:
-            value: Value to set for the version property.
-        """
-        self._version = value
     
 

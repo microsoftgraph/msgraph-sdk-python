@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AndroidRequiredPasswordType(Enum):
+class AndroidRequiredPasswordType(str, Enum):
     # Device default value, no intent.
     DeviceDefault = "deviceDefault",
     # Alphabetic password required.

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class Status(Enum):
+class Status(str, Enum):
     Active = "active",
     Updated = "updated",
     Deleted = "deleted",

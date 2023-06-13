@@ -1,6 +1,6 @@
 from enum import Enum
 
-class RatingAustraliaTelevisionType(Enum):
+class RatingAustraliaTelevisionType(str, Enum):
     # Default value, allow all TV shows content
     AllAllowed = "allAllowed",
     # Do not allow any TV shows content

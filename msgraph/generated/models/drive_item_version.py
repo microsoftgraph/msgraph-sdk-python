@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,34 +8,13 @@ if TYPE_CHECKING:
 
 from . import base_item_version
 
+@dataclass
 class DriveItemVersion(base_item_version.BaseItemVersion):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new DriveItemVersion and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.driveItemVersion"
-        # The content stream for this version of the item.
-        self._content: Optional[bytes] = None
-        # Indicates the size of the content stream for this version of the item.
-        self._size: Optional[int] = None
-    
-    @property
-    def content(self,) -> Optional[bytes]:
-        """
-        Gets the content property value. The content stream for this version of the item.
-        Returns: Optional[bytes]
-        """
-        return self._content
-    
-    @content.setter
-    def content(self,value: Optional[bytes] = None) -> None:
-        """
-        Sets the content property value. The content stream for this version of the item.
-        Args:
-            value: Value to set for the content property.
-        """
-        self._content = value
+    odata_type = "#microsoft.graph.driveItemVersion"
+    # The content stream for this version of the item.
+    content: Optional[bytes] = None
+    # Indicates the size of the content stream for this version of the item.
+    size: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DriveItemVersion:
@@ -74,22 +54,5 @@ class DriveItemVersion(base_item_version.BaseItemVersion):
         super().serialize(writer)
         writer.write_object_value("content", self.content)
         writer.write_int_value("size", self.size)
-    
-    @property
-    def size(self,) -> Optional[int]:
-        """
-        Gets the size property value. Indicates the size of the content stream for this version of the item.
-        Returns: Optional[int]
-        """
-        return self._size
-    
-    @size.setter
-    def size(self,value: Optional[int] = None) -> None:
-        """
-        Sets the size property value. Indicates the size of the content stream for this version of the item.
-        Args:
-            value: Value to set for the size property.
-        """
-        self._size = value
     
 

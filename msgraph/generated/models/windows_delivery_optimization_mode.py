@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WindowsDeliveryOptimizationMode(Enum):
+class WindowsDeliveryOptimizationMode(str, Enum):
     # Allow the user to set.
     UserDefined = "userDefined",
     # HTTP only, no peering

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import domain_dns_record
 
+@dataclass
 class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new DomainDnsMxRecord and sets the default values.
-        """
-        super().__init__()
-        # Value used when configuring the answer/destination/value of the MX record at the DNS host.
-        self._mail_exchange: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Value used when configuring the Preference/Priority property of the MX record at the DNS host.
-        self._preference: Optional[int] = None
+    # Value used when configuring the answer/destination/value of the MX record at the DNS host.
+    mail_exchange: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Value used when configuring the Preference/Priority property of the MX record at the DNS host.
+    preference: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DomainDnsMxRecord:
@@ -46,40 +43,6 @@ class DomainDnsMxRecord(domain_dns_record.DomainDnsRecord):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def mail_exchange(self,) -> Optional[str]:
-        """
-        Gets the mailExchange property value. Value used when configuring the answer/destination/value of the MX record at the DNS host.
-        Returns: Optional[str]
-        """
-        return self._mail_exchange
-    
-    @mail_exchange.setter
-    def mail_exchange(self,value: Optional[str] = None) -> None:
-        """
-        Sets the mailExchange property value. Value used when configuring the answer/destination/value of the MX record at the DNS host.
-        Args:
-            value: Value to set for the mail_exchange property.
-        """
-        self._mail_exchange = value
-    
-    @property
-    def preference(self,) -> Optional[int]:
-        """
-        Gets the preference property value. Value used when configuring the Preference/Priority property of the MX record at the DNS host.
-        Returns: Optional[int]
-        """
-        return self._preference
-    
-    @preference.setter
-    def preference(self,value: Optional[int] = None) -> None:
-        """
-        Sets the preference property value. Value used when configuring the Preference/Priority property of the MX record at the DNS host.
-        Args:
-            value: Value to set for the preference property.
-        """
-        self._preference = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

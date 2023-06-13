@@ -1,43 +1,24 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import filter_operand
 
+@dataclass
 class FilterClause(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new filterClause and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The operatorName property
-        self._operator_name: Optional[str] = None
-        # The sourceOperandName property
-        self._source_operand_name: Optional[str] = None
-        # The targetOperand property
-        self._target_operand: Optional[filter_operand.FilterOperand] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The operatorName property
+    operator_name: Optional[str] = None
+    # The sourceOperandName property
+    source_operand_name: Optional[str] = None
+    # The targetOperand property
+    target_operand: Optional[filter_operand.FilterOperand] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FilterClause:
@@ -66,40 +47,6 @@ class FilterClause(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def operator_name(self,) -> Optional[str]:
-        """
-        Gets the operatorName property value. The operatorName property
-        Returns: Optional[str]
-        """
-        return self._operator_name
-    
-    @operator_name.setter
-    def operator_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the operatorName property value. The operatorName property
-        Args:
-            value: Value to set for the operator_name property.
-        """
-        self._operator_name = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -113,39 +60,5 @@ class FilterClause(AdditionalDataHolder, Parsable):
         writer.write_str_value("sourceOperandName", self.source_operand_name)
         writer.write_object_value("targetOperand", self.target_operand)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def source_operand_name(self,) -> Optional[str]:
-        """
-        Gets the sourceOperandName property value. The sourceOperandName property
-        Returns: Optional[str]
-        """
-        return self._source_operand_name
-    
-    @source_operand_name.setter
-    def source_operand_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the sourceOperandName property value. The sourceOperandName property
-        Args:
-            value: Value to set for the source_operand_name property.
-        """
-        self._source_operand_name = value
-    
-    @property
-    def target_operand(self,) -> Optional[filter_operand.FilterOperand]:
-        """
-        Gets the targetOperand property value. The targetOperand property
-        Returns: Optional[filter_operand.FilterOperand]
-        """
-        return self._target_operand
-    
-    @target_operand.setter
-    def target_operand(self,value: Optional[filter_operand.FilterOperand] = None) -> None:
-        """
-        Sets the targetOperand property value. The targetOperand property
-        Args:
-            value: Value to set for the target_operand property.
-        """
-        self._target_operand = value
     
 

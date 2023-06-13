@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,33 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class AppConsentApprovalRoute(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AppConsentApprovalRoute and sets the default values.
-        """
-        super().__init__()
-        # A collection of userConsentRequest objects for a specific application.
-        self._app_consent_requests: Optional[List[app_consent_request.AppConsentRequest]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def app_consent_requests(self,) -> Optional[List[app_consent_request.AppConsentRequest]]:
-        """
-        Gets the appConsentRequests property value. A collection of userConsentRequest objects for a specific application.
-        Returns: Optional[List[app_consent_request.AppConsentRequest]]
-        """
-        return self._app_consent_requests
-    
-    @app_consent_requests.setter
-    def app_consent_requests(self,value: Optional[List[app_consent_request.AppConsentRequest]] = None) -> None:
-        """
-        Sets the appConsentRequests property value. A collection of userConsentRequest objects for a specific application.
-        Args:
-            value: Value to set for the app_consent_requests property.
-        """
-        self._app_consent_requests = value
+    # A collection of userConsentRequest objects for a specific application.
+    app_consent_requests: Optional[List[app_consent_request.AppConsentRequest]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppConsentApprovalRoute:

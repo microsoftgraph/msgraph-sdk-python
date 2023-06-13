@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,33 +8,12 @@ if TYPE_CHECKING:
 
 from . import domain_dns_record
 
+@dataclass
 class DomainDnsCnameRecord(domain_dns_record.DomainDnsRecord):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new DomainDnsCnameRecord and sets the default values.
-        """
-        super().__init__()
-        # The canonical name of the CNAME record. Used to configure the CNAME record at the DNS host.
-        self._canonical_name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def canonical_name(self,) -> Optional[str]:
-        """
-        Gets the canonicalName property value. The canonical name of the CNAME record. Used to configure the CNAME record at the DNS host.
-        Returns: Optional[str]
-        """
-        return self._canonical_name
-    
-    @canonical_name.setter
-    def canonical_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the canonicalName property value. The canonical name of the CNAME record. Used to configure the CNAME record at the DNS host.
-        Args:
-            value: Value to set for the canonical_name property.
-        """
-        self._canonical_name = value
+    # The canonical name of the CNAME record. Used to configure the CNAME record at the DNS host.
+    canonical_name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DomainDnsCnameRecord:

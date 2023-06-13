@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,33 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ParticipantJoiningNotification(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ParticipantJoiningNotification and sets the default values.
-        """
-        super().__init__()
-        # The call property
-        self._call: Optional[call.Call] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def call(self,) -> Optional[call.Call]:
-        """
-        Gets the call property value. The call property
-        Returns: Optional[call.Call]
-        """
-        return self._call
-    
-    @call.setter
-    def call(self,value: Optional[call.Call] = None) -> None:
-        """
-        Sets the call property value. The call property
-        Args:
-            value: Value to set for the call property.
-        """
-        self._call = value
+    # The call property
+    call: Optional[call.Call] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ParticipantJoiningNotification:

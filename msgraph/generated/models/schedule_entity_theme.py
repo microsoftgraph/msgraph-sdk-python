@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ScheduleEntityTheme(Enum):
+class ScheduleEntityTheme(str, Enum):
     White = "white",
     Blue = "blue",
     Green = "green",

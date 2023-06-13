@@ -1,39 +1,20 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import json
 
+@dataclass
 class BitrshiftPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new bitrshiftPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The number property
-        self._number: Optional[json.Json] = None
-        # The shiftAmount property
-        self._shift_amount: Optional[json.Json] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The number property
+    number: Optional[json.Json] = None
+    # The shiftAmount property
+    shift_amount: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BitrshiftPostRequestBody:
@@ -60,23 +41,6 @@ class BitrshiftPostRequestBody(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def number(self,) -> Optional[json.Json]:
-        """
-        Gets the number property value. The number property
-        Returns: Optional[json.Json]
-        """
-        return self._number
-    
-    @number.setter
-    def number(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the number property value. The number property
-        Args:
-            value: Value to set for the number property.
-        """
-        self._number = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -88,22 +52,5 @@ class BitrshiftPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_object_value("number", self.number)
         writer.write_object_value("shiftAmount", self.shift_amount)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def shift_amount(self,) -> Optional[json.Json]:
-        """
-        Gets the shiftAmount property value. The shiftAmount property
-        Returns: Optional[json.Json]
-        """
-        return self._shift_amount
-    
-    @shift_amount.setter
-    def shift_amount(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the shiftAmount property value. The shiftAmount property
-        Args:
-            value: Value to set for the shift_amount property.
-        """
-        self._shift_amount = value
     
 

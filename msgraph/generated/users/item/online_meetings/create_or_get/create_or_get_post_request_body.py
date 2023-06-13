@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -6,60 +7,23 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from .....models import chat_info, meeting_participants
 
+@dataclass
 class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new createOrGetPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The chatInfo property
-        self._chat_info: Optional[chat_info.ChatInfo] = None
-        # The endDateTime property
-        self._end_date_time: Optional[datetime] = None
-        # The externalId property
-        self._external_id: Optional[str] = None
-        # The participants property
-        self._participants: Optional[meeting_participants.MeetingParticipants] = None
-        # The startDateTime property
-        self._start_date_time: Optional[datetime] = None
-        # The subject property
-        self._subject: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def chat_info(self,) -> Optional[chat_info.ChatInfo]:
-        """
-        Gets the chatInfo property value. The chatInfo property
-        Returns: Optional[chat_info.ChatInfo]
-        """
-        return self._chat_info
-    
-    @chat_info.setter
-    def chat_info(self,value: Optional[chat_info.ChatInfo] = None) -> None:
-        """
-        Sets the chatInfo property value. The chatInfo property
-        Args:
-            value: Value to set for the chat_info property.
-        """
-        self._chat_info = value
+    # The chatInfo property
+    chat_info: Optional[chat_info.ChatInfo] = None
+    # The endDateTime property
+    end_date_time: Optional[datetime] = None
+    # The externalId property
+    external_id: Optional[str] = None
+    # The participants property
+    participants: Optional[meeting_participants.MeetingParticipants] = None
+    # The startDateTime property
+    start_date_time: Optional[datetime] = None
+    # The subject property
+    subject: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CreateOrGetPostRequestBody:
@@ -72,40 +36,6 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return CreateOrGetPostRequestBody()
-    
-    @property
-    def end_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the endDateTime property value. The endDateTime property
-        Returns: Optional[datetime]
-        """
-        return self._end_date_time
-    
-    @end_date_time.setter
-    def end_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the endDateTime property value. The endDateTime property
-        Args:
-            value: Value to set for the end_date_time property.
-        """
-        self._end_date_time = value
-    
-    @property
-    def external_id(self,) -> Optional[str]:
-        """
-        Gets the externalId property value. The externalId property
-        Returns: Optional[str]
-        """
-        return self._external_id
-    
-    @external_id.setter
-    def external_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the externalId property value. The externalId property
-        Args:
-            value: Value to set for the external_id property.
-        """
-        self._external_id = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -124,23 +54,6 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def participants(self,) -> Optional[meeting_participants.MeetingParticipants]:
-        """
-        Gets the participants property value. The participants property
-        Returns: Optional[meeting_participants.MeetingParticipants]
-        """
-        return self._participants
-    
-    @participants.setter
-    def participants(self,value: Optional[meeting_participants.MeetingParticipants] = None) -> None:
-        """
-        Sets the participants property value. The participants property
-        Args:
-            value: Value to set for the participants property.
-        """
-        self._participants = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -156,39 +69,5 @@ class CreateOrGetPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_str_value("subject", self.subject)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def start_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the startDateTime property value. The startDateTime property
-        Returns: Optional[datetime]
-        """
-        return self._start_date_time
-    
-    @start_date_time.setter
-    def start_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the startDateTime property value. The startDateTime property
-        Args:
-            value: Value to set for the start_date_time property.
-        """
-        self._start_date_time = value
-    
-    @property
-    def subject(self,) -> Optional[str]:
-        """
-        Gets the subject property value. The subject property
-        Returns: Optional[str]
-        """
-        return self._subject
-    
-    @subject.setter
-    def subject(self,value: Optional[str] = None) -> None:
-        """
-        Sets the subject property value. The subject property
-        Args:
-            value: Value to set for the subject property.
-        """
-        self._subject = value
     
 

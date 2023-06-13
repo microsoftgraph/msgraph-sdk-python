@@ -1,60 +1,24 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import recipient
 
+@dataclass
 class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new invitedUserMessageInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Additional recipients the invitation message should be sent to. Currently only 1 additional recipient is supported.
-        self._cc_recipients: Optional[List[recipient.Recipient]] = None
-        # Customized message body you want to send if you don't want the default message.
-        self._customized_message_body: Optional[str] = None
-        # The language you want to send the default message in. If the customizedMessageBody is specified, this property is ignored, and the message is sent using the customizedMessageBody. The language format should be in ISO 639. The default is en-US.
-        self._message_language: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def cc_recipients(self,) -> Optional[List[recipient.Recipient]]:
-        """
-        Gets the ccRecipients property value. Additional recipients the invitation message should be sent to. Currently only 1 additional recipient is supported.
-        Returns: Optional[List[recipient.Recipient]]
-        """
-        return self._cc_recipients
-    
-    @cc_recipients.setter
-    def cc_recipients(self,value: Optional[List[recipient.Recipient]] = None) -> None:
-        """
-        Sets the ccRecipients property value. Additional recipients the invitation message should be sent to. Currently only 1 additional recipient is supported.
-        Args:
-            value: Value to set for the cc_recipients property.
-        """
-        self._cc_recipients = value
+    # Additional recipients the invitation message should be sent to. Currently only 1 additional recipient is supported.
+    cc_recipients: Optional[List[recipient.Recipient]] = None
+    # Customized message body you want to send if you don't want the default message.
+    customized_message_body: Optional[str] = None
+    # The language you want to send the default message in. If the customizedMessageBody is specified, this property is ignored, and the message is sent using the customizedMessageBody. The language format should be in ISO 639. The default is en-US.
+    message_language: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InvitedUserMessageInfo:
@@ -67,23 +31,6 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return InvitedUserMessageInfo()
-    
-    @property
-    def customized_message_body(self,) -> Optional[str]:
-        """
-        Gets the customizedMessageBody property value. Customized message body you want to send if you don't want the default message.
-        Returns: Optional[str]
-        """
-        return self._customized_message_body
-    
-    @customized_message_body.setter
-    def customized_message_body(self,value: Optional[str] = None) -> None:
-        """
-        Sets the customizedMessageBody property value. Customized message body you want to send if you don't want the default message.
-        Args:
-            value: Value to set for the customized_message_body property.
-        """
-        self._customized_message_body = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -99,40 +46,6 @@ class InvitedUserMessageInfo(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def message_language(self,) -> Optional[str]:
-        """
-        Gets the messageLanguage property value. The language you want to send the default message in. If the customizedMessageBody is specified, this property is ignored, and the message is sent using the customizedMessageBody. The language format should be in ISO 639. The default is en-US.
-        Returns: Optional[str]
-        """
-        return self._message_language
-    
-    @message_language.setter
-    def message_language(self,value: Optional[str] = None) -> None:
-        """
-        Sets the messageLanguage property value. The language you want to send the default message in. If the customizedMessageBody is specified, this property is ignored, and the message is sent using the customizedMessageBody. The language format should be in ISO 639. The default is en-US.
-        Args:
-            value: Value to set for the message_language property.
-        """
-        self._message_language = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

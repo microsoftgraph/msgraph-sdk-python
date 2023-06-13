@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -59,7 +59,7 @@ class AgreementItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[AgreementItemRequestBuilderGetRequestConfiguration] = None) -> Optional[agreement.Agreement]:
         """
-        Retrieve all localized files related to an agreement.
+        Retrieve the properties and relationships of an agreement object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[agreement.Agreement]
@@ -122,7 +122,7 @@ class AgreementItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AgreementItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Retrieve all localized files related to an agreement.
+        Retrieve the properties and relationships of an agreement object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -201,7 +201,7 @@ class AgreementItemRequestBuilder():
     @dataclass
     class AgreementItemRequestBuilderGetQueryParameters():
         """
-        Retrieve all localized files related to an agreement.
+        Retrieve the properties and relationships of an agreement object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

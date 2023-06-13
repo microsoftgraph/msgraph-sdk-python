@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PrintOrientation(Enum):
+class PrintOrientation(str, Enum):
     Portrait = "portrait",
     Landscape = "landscape",
     ReverseLandscape = "reverseLandscape",

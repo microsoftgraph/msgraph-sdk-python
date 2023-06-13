@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,57 +8,19 @@ if TYPE_CHECKING:
 
 from . import directory_object
 
+@dataclass
 class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new resourceSpecificPermissionGrant and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.resourceSpecificPermissionGrant"
-        # ID of the service principal of the Azure AD app that has been granted access. Read-only.
-        self._client_app_id: Optional[str] = None
-        # ID of the Azure AD app that has been granted access. Read-only.
-        self._client_id: Optional[str] = None
-        # The name of the resource-specific permission. Read-only.
-        self._permission: Optional[str] = None
-        # The type of permission. Possible values are: Application, Delegated. Read-only.
-        self._permission_type: Optional[str] = None
-        # ID of the Azure AD app that is hosting the resource. Read-only.
-        self._resource_app_id: Optional[str] = None
-    
-    @property
-    def client_app_id(self,) -> Optional[str]:
-        """
-        Gets the clientAppId property value. ID of the service principal of the Azure AD app that has been granted access. Read-only.
-        Returns: Optional[str]
-        """
-        return self._client_app_id
-    
-    @client_app_id.setter
-    def client_app_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the clientAppId property value. ID of the service principal of the Azure AD app that has been granted access. Read-only.
-        Args:
-            value: Value to set for the client_app_id property.
-        """
-        self._client_app_id = value
-    
-    @property
-    def client_id(self,) -> Optional[str]:
-        """
-        Gets the clientId property value. ID of the Azure AD app that has been granted access. Read-only.
-        Returns: Optional[str]
-        """
-        return self._client_id
-    
-    @client_id.setter
-    def client_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the clientId property value. ID of the Azure AD app that has been granted access. Read-only.
-        Args:
-            value: Value to set for the client_id property.
-        """
-        self._client_id = value
+    odata_type = "#microsoft.graph.resourceSpecificPermissionGrant"
+    # ID of the service principal of the Azure AD app that has been granted access. Read-only.
+    client_app_id: Optional[str] = None
+    # ID of the Azure AD app that has been granted access. Read-only.
+    client_id: Optional[str] = None
+    # The name of the resource-specific permission. Read-only.
+    permission: Optional[str] = None
+    # The type of permission. Possible values are: Application, Delegated. Read-only.
+    permission_type: Optional[str] = None
+    # ID of the Azure AD app that is hosting the resource. Read-only.
+    resource_app_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ResourceSpecificPermissionGrant:
@@ -88,57 +51,6 @@ class ResourceSpecificPermissionGrant(directory_object.DirectoryObject):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def permission(self,) -> Optional[str]:
-        """
-        Gets the permission property value. The name of the resource-specific permission. Read-only.
-        Returns: Optional[str]
-        """
-        return self._permission
-    
-    @permission.setter
-    def permission(self,value: Optional[str] = None) -> None:
-        """
-        Sets the permission property value. The name of the resource-specific permission. Read-only.
-        Args:
-            value: Value to set for the permission property.
-        """
-        self._permission = value
-    
-    @property
-    def permission_type(self,) -> Optional[str]:
-        """
-        Gets the permissionType property value. The type of permission. Possible values are: Application, Delegated. Read-only.
-        Returns: Optional[str]
-        """
-        return self._permission_type
-    
-    @permission_type.setter
-    def permission_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the permissionType property value. The type of permission. Possible values are: Application, Delegated. Read-only.
-        Args:
-            value: Value to set for the permission_type property.
-        """
-        self._permission_type = value
-    
-    @property
-    def resource_app_id(self,) -> Optional[str]:
-        """
-        Gets the resourceAppId property value. ID of the Azure AD app that is hosting the resource. Read-only.
-        Returns: Optional[str]
-        """
-        return self._resource_app_id
-    
-    @resource_app_id.setter
-    def resource_app_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the resourceAppId property value. ID of the Azure AD app that is hosting the resource. Read-only.
-        Args:
-            value: Value to set for the resource_app_id property.
-        """
-        self._resource_app_id = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

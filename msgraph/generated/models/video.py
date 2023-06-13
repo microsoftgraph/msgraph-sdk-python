@@ -1,139 +1,35 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class Video(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new video and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Number of audio bits per sample.
-        self._audio_bits_per_sample: Optional[int] = None
-        # Number of audio channels.
-        self._audio_channels: Optional[int] = None
-        # Name of the audio format (AAC, MP3, etc.).
-        self._audio_format: Optional[str] = None
-        # Number of audio samples per second.
-        self._audio_samples_per_second: Optional[int] = None
-        # Bit rate of the video in bits per second.
-        self._bitrate: Optional[int] = None
-        # Duration of the file in milliseconds.
-        self._duration: Optional[int] = None
-        # 'Four character code' name of the video format.
-        self._four_c_c: Optional[str] = None
-        # Frame rate of the video.
-        self._frame_rate: Optional[float] = None
-        # Height of the video, in pixels.
-        self._height: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Width of the video, in pixels.
-        self._width: Optional[int] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def audio_bits_per_sample(self,) -> Optional[int]:
-        """
-        Gets the audioBitsPerSample property value. Number of audio bits per sample.
-        Returns: Optional[int]
-        """
-        return self._audio_bits_per_sample
-    
-    @audio_bits_per_sample.setter
-    def audio_bits_per_sample(self,value: Optional[int] = None) -> None:
-        """
-        Sets the audioBitsPerSample property value. Number of audio bits per sample.
-        Args:
-            value: Value to set for the audio_bits_per_sample property.
-        """
-        self._audio_bits_per_sample = value
-    
-    @property
-    def audio_channels(self,) -> Optional[int]:
-        """
-        Gets the audioChannels property value. Number of audio channels.
-        Returns: Optional[int]
-        """
-        return self._audio_channels
-    
-    @audio_channels.setter
-    def audio_channels(self,value: Optional[int] = None) -> None:
-        """
-        Sets the audioChannels property value. Number of audio channels.
-        Args:
-            value: Value to set for the audio_channels property.
-        """
-        self._audio_channels = value
-    
-    @property
-    def audio_format(self,) -> Optional[str]:
-        """
-        Gets the audioFormat property value. Name of the audio format (AAC, MP3, etc.).
-        Returns: Optional[str]
-        """
-        return self._audio_format
-    
-    @audio_format.setter
-    def audio_format(self,value: Optional[str] = None) -> None:
-        """
-        Sets the audioFormat property value. Name of the audio format (AAC, MP3, etc.).
-        Args:
-            value: Value to set for the audio_format property.
-        """
-        self._audio_format = value
-    
-    @property
-    def audio_samples_per_second(self,) -> Optional[int]:
-        """
-        Gets the audioSamplesPerSecond property value. Number of audio samples per second.
-        Returns: Optional[int]
-        """
-        return self._audio_samples_per_second
-    
-    @audio_samples_per_second.setter
-    def audio_samples_per_second(self,value: Optional[int] = None) -> None:
-        """
-        Sets the audioSamplesPerSecond property value. Number of audio samples per second.
-        Args:
-            value: Value to set for the audio_samples_per_second property.
-        """
-        self._audio_samples_per_second = value
-    
-    @property
-    def bitrate(self,) -> Optional[int]:
-        """
-        Gets the bitrate property value. Bit rate of the video in bits per second.
-        Returns: Optional[int]
-        """
-        return self._bitrate
-    
-    @bitrate.setter
-    def bitrate(self,value: Optional[int] = None) -> None:
-        """
-        Sets the bitrate property value. Bit rate of the video in bits per second.
-        Args:
-            value: Value to set for the bitrate property.
-        """
-        self._bitrate = value
+    # Number of audio bits per sample.
+    audio_bits_per_sample: Optional[int] = None
+    # Number of audio channels.
+    audio_channels: Optional[int] = None
+    # Name of the audio format (AAC, MP3, etc.).
+    audio_format: Optional[str] = None
+    # Number of audio samples per second.
+    audio_samples_per_second: Optional[int] = None
+    # Bit rate of the video in bits per second.
+    bitrate: Optional[int] = None
+    # Duration of the file in milliseconds.
+    duration: Optional[int] = None
+    # 'Four character code' name of the video format.
+    four_c_c: Optional[str] = None
+    # Frame rate of the video.
+    frame_rate: Optional[float] = None
+    # Height of the video, in pixels.
+    height: Optional[int] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Width of the video, in pixels.
+    width: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Video:
@@ -146,57 +42,6 @@ class Video(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Video()
-    
-    @property
-    def duration(self,) -> Optional[int]:
-        """
-        Gets the duration property value. Duration of the file in milliseconds.
-        Returns: Optional[int]
-        """
-        return self._duration
-    
-    @duration.setter
-    def duration(self,value: Optional[int] = None) -> None:
-        """
-        Sets the duration property value. Duration of the file in milliseconds.
-        Args:
-            value: Value to set for the duration property.
-        """
-        self._duration = value
-    
-    @property
-    def four_c_c(self,) -> Optional[str]:
-        """
-        Gets the fourCC property value. 'Four character code' name of the video format.
-        Returns: Optional[str]
-        """
-        return self._four_c_c
-    
-    @four_c_c.setter
-    def four_c_c(self,value: Optional[str] = None) -> None:
-        """
-        Sets the fourCC property value. 'Four character code' name of the video format.
-        Args:
-            value: Value to set for the four_c_c property.
-        """
-        self._four_c_c = value
-    
-    @property
-    def frame_rate(self,) -> Optional[float]:
-        """
-        Gets the frameRate property value. Frame rate of the video.
-        Returns: Optional[float]
-        """
-        return self._frame_rate
-    
-    @frame_rate.setter
-    def frame_rate(self,value: Optional[float] = None) -> None:
-        """
-        Sets the frameRate property value. Frame rate of the video.
-        Args:
-            value: Value to set for the frame_rate property.
-        """
-        self._frame_rate = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -218,40 +63,6 @@ class Video(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def height(self,) -> Optional[int]:
-        """
-        Gets the height property value. Height of the video, in pixels.
-        Returns: Optional[int]
-        """
-        return self._height
-    
-    @height.setter
-    def height(self,value: Optional[int] = None) -> None:
-        """
-        Sets the height property value. Height of the video, in pixels.
-        Args:
-            value: Value to set for the height property.
-        """
-        self._height = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -272,22 +83,5 @@ class Video(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("width", self.width)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def width(self,) -> Optional[int]:
-        """
-        Gets the width property value. Width of the video, in pixels.
-        Returns: Optional[int]
-        """
-        return self._width
-    
-    @width.setter
-    def width(self,value: Optional[int] = None) -> None:
-        """
-        Sets the width property value. Width of the video, in pixels.
-        Args:
-            value: Value to set for the width property.
-        """
-        self._width = value
     
 

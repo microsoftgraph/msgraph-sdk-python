@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WindowsArchitecture(Enum):
+class WindowsArchitecture(str, Enum):
     # No flags set.
     None_ = "none",
     # Whether or not the X86 Windows architecture type is supported.

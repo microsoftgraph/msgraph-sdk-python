@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import identity_set, recording_status
 
+@dataclass
 class RecordingInfo(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new recordingInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The identities of the recording initiator.
-        self._initiator: Optional[identity_set.IdentitySet] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The recordingStatus property
-        self._recording_status: Optional[recording_status.RecordingStatus] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The identities of the recording initiator.
+    initiator: Optional[identity_set.IdentitySet] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The recordingStatus property
+    recording_status: Optional[recording_status.RecordingStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RecordingInfo:
@@ -62,57 +43,6 @@ class RecordingInfo(AdditionalDataHolder, Parsable):
             "recordingStatus": lambda n : setattr(self, 'recording_status', n.get_enum_value(recording_status.RecordingStatus)),
         }
         return fields
-    
-    @property
-    def initiator(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the initiator property value. The identities of the recording initiator.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._initiator
-    
-    @initiator.setter
-    def initiator(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the initiator property value. The identities of the recording initiator.
-        Args:
-            value: Value to set for the initiator property.
-        """
-        self._initiator = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def recording_status(self,) -> Optional[recording_status.RecordingStatus]:
-        """
-        Gets the recordingStatus property value. The recordingStatus property
-        Returns: Optional[recording_status.RecordingStatus]
-        """
-        return self._recording_status
-    
-    @recording_status.setter
-    def recording_status(self,value: Optional[recording_status.RecordingStatus] = None) -> None:
-        """
-        Sets the recordingStatus property value. The recordingStatus property
-        Args:
-            value: Value to set for the recording_status property.
-        """
-        self._recording_status = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

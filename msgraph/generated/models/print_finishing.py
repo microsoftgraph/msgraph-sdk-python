@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PrintFinishing(Enum):
+class PrintFinishing(str, Enum):
     None_ = "none",
     Staple = "staple",
     Punch = "punch",

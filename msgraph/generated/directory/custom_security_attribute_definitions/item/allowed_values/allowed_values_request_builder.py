@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -54,7 +54,7 @@ class AllowedValuesRequestBuilder():
     
     async def get(self,request_configuration: Optional[AllowedValuesRequestBuilderGetRequestConfiguration] = None) -> Optional[allowed_value_collection_response.AllowedValueCollectionResponse]:
         """
-        Get allowedValues from directory
+        Get a list of the allowedValue objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[allowed_value_collection_response.AllowedValueCollectionResponse]
@@ -76,7 +76,7 @@ class AllowedValuesRequestBuilder():
     
     async def post(self,body: Optional[allowed_value.AllowedValue] = None, request_configuration: Optional[AllowedValuesRequestBuilderPostRequestConfiguration] = None) -> Optional[allowed_value.AllowedValue]:
         """
-        Create new navigation property to allowedValues for directory
+        Create a new allowedValue object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -101,7 +101,7 @@ class AllowedValuesRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[AllowedValuesRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get allowedValues from directory
+        Get a list of the allowedValue objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,7 +119,7 @@ class AllowedValuesRequestBuilder():
     
     def to_post_request_information(self,body: Optional[allowed_value.AllowedValue] = None, request_configuration: Optional[AllowedValuesRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to allowedValues for directory
+        Create a new allowedValue object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
@@ -150,7 +150,7 @@ class AllowedValuesRequestBuilder():
     @dataclass
     class AllowedValuesRequestBuilderGetQueryParameters():
         """
-        Get allowedValues from directory
+        Get a list of the allowedValue objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """

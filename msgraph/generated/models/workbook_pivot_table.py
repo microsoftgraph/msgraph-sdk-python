@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class WorkbookPivotTable(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookPivotTable and sets the default values.
-        """
-        super().__init__()
-        # Name of the PivotTable.
-        self._name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The worksheet containing the current PivotTable. Read-only.
-        self._worksheet: Optional[workbook_worksheet.WorkbookWorksheet] = None
+    # Name of the PivotTable.
+    name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The worksheet containing the current PivotTable. Read-only.
+    worksheet: Optional[workbook_worksheet.WorkbookWorksheet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookPivotTable:
@@ -47,23 +44,6 @@ class WorkbookPivotTable(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def name(self,) -> Optional[str]:
-        """
-        Gets the name property value. Name of the PivotTable.
-        Returns: Optional[str]
-        """
-        return self._name
-    
-    @name.setter
-    def name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the name property value. Name of the PivotTable.
-        Args:
-            value: Value to set for the name property.
-        """
-        self._name = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -75,22 +55,5 @@ class WorkbookPivotTable(entity.Entity):
         super().serialize(writer)
         writer.write_str_value("name", self.name)
         writer.write_object_value("worksheet", self.worksheet)
-    
-    @property
-    def worksheet(self,) -> Optional[workbook_worksheet.WorkbookWorksheet]:
-        """
-        Gets the worksheet property value. The worksheet containing the current PivotTable. Read-only.
-        Returns: Optional[workbook_worksheet.WorkbookWorksheet]
-        """
-        return self._worksheet
-    
-    @worksheet.setter
-    def worksheet(self,value: Optional[workbook_worksheet.WorkbookWorksheet] = None) -> None:
-        """
-        Sets the worksheet property value. The worksheet containing the current PivotTable. Read-only.
-        Args:
-            value: Value to set for the worksheet property.
-        """
-        self._worksheet = value
     
 

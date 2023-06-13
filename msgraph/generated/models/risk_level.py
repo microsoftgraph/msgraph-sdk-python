@@ -1,6 +1,6 @@
 from enum import Enum
 
-class RiskLevel(Enum):
+class RiskLevel(str, Enum):
     Low = "low",
     Medium = "medium",
     High = "high",

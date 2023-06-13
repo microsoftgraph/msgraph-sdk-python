@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,35 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class InferenceClassificationOverride(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new inferenceClassificationOverride and sets the default values.
-        """
-        super().__init__()
-        # Specifies how incoming messages from a specific sender should always be classified as. The possible values are: focused, other.
-        self._classify_as: Optional[inference_classification_type.InferenceClassificationType] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The email address information of the sender for whom the override is created.
-        self._sender_email_address: Optional[email_address.EmailAddress] = None
-    
-    @property
-    def classify_as(self,) -> Optional[inference_classification_type.InferenceClassificationType]:
-        """
-        Gets the classifyAs property value. Specifies how incoming messages from a specific sender should always be classified as. The possible values are: focused, other.
-        Returns: Optional[inference_classification_type.InferenceClassificationType]
-        """
-        return self._classify_as
-    
-    @classify_as.setter
-    def classify_as(self,value: Optional[inference_classification_type.InferenceClassificationType] = None) -> None:
-        """
-        Sets the classifyAs property value. Specifies how incoming messages from a specific sender should always be classified as. The possible values are: focused, other.
-        Args:
-            value: Value to set for the classify_as property.
-        """
-        self._classify_as = value
+    # Specifies how incoming messages from a specific sender should always be classified as. The possible values are: focused, other.
+    classify_as: Optional[inference_classification_type.InferenceClassificationType] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The email address information of the sender for whom the override is created.
+    sender_email_address: Optional[email_address.EmailAddress] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InferenceClassificationOverride:
@@ -63,23 +43,6 @@ class InferenceClassificationOverride(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def sender_email_address(self,) -> Optional[email_address.EmailAddress]:
-        """
-        Gets the senderEmailAddress property value. The email address information of the sender for whom the override is created.
-        Returns: Optional[email_address.EmailAddress]
-        """
-        return self._sender_email_address
-    
-    @sender_email_address.setter
-    def sender_email_address(self,value: Optional[email_address.EmailAddress] = None) -> None:
-        """
-        Sets the senderEmailAddress property value. The email address information of the sender for whom the override is created.
-        Args:
-            value: Value to set for the sender_email_address property.
-        """
-        self._sender_email_address = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

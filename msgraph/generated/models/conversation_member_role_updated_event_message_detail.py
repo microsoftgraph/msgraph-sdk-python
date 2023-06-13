@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,53 +8,15 @@ if TYPE_CHECKING:
 
 from . import event_message_detail
 
+@dataclass
 class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.EventMessageDetail):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ConversationMemberRoleUpdatedEventMessageDetail and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.conversationMemberRoleUpdatedEventMessageDetail"
-        # Roles for the coversation member user.
-        self._conversation_member_roles: Optional[List[str]] = None
-        # Identity of the conversation member user.
-        self._conversation_member_user: Optional[teamwork_user_identity.TeamworkUserIdentity] = None
-        # Initiator of the event.
-        self._initiator: Optional[identity_set.IdentitySet] = None
-    
-    @property
-    def conversation_member_roles(self,) -> Optional[List[str]]:
-        """
-        Gets the conversationMemberRoles property value. Roles for the coversation member user.
-        Returns: Optional[List[str]]
-        """
-        return self._conversation_member_roles
-    
-    @conversation_member_roles.setter
-    def conversation_member_roles(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the conversationMemberRoles property value. Roles for the coversation member user.
-        Args:
-            value: Value to set for the conversation_member_roles property.
-        """
-        self._conversation_member_roles = value
-    
-    @property
-    def conversation_member_user(self,) -> Optional[teamwork_user_identity.TeamworkUserIdentity]:
-        """
-        Gets the conversationMemberUser property value. Identity of the conversation member user.
-        Returns: Optional[teamwork_user_identity.TeamworkUserIdentity]
-        """
-        return self._conversation_member_user
-    
-    @conversation_member_user.setter
-    def conversation_member_user(self,value: Optional[teamwork_user_identity.TeamworkUserIdentity] = None) -> None:
-        """
-        Sets the conversationMemberUser property value. Identity of the conversation member user.
-        Args:
-            value: Value to set for the conversation_member_user property.
-        """
-        self._conversation_member_user = value
+    odata_type = "#microsoft.graph.conversationMemberRoleUpdatedEventMessageDetail"
+    # Roles for the coversation member user.
+    conversation_member_roles: Optional[List[str]] = None
+    # Identity of the conversation member user.
+    conversation_member_user: Optional[teamwork_user_identity.TeamworkUserIdentity] = None
+    # Initiator of the event.
+    initiator: Optional[identity_set.IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConversationMemberRoleUpdatedEventMessageDetail:
@@ -82,23 +45,6 @@ class ConversationMemberRoleUpdatedEventMessageDetail(event_message_detail.Event
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def initiator(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the initiator property value. Initiator of the event.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._initiator
-    
-    @initiator.setter
-    def initiator(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the initiator property value. Initiator of the event.
-        Args:
-            value: Value to set for the initiator property.
-        """
-        self._initiator = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

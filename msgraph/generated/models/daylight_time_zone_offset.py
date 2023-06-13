@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import standard_time_zone_offset
 
+@dataclass
 class DaylightTimeZoneOffset(standard_time_zone_offset.StandardTimeZoneOffset):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new DaylightTimeZoneOffset and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.daylightTimeZoneOffset"
-        # The time offset from Coordinated Universal Time (UTC) for daylight saving time. This value is in minutes.
-        self._daylight_bias: Optional[int] = None
+    odata_type = "#microsoft.graph.daylightTimeZoneOffset"
+    # The time offset from Coordinated Universal Time (UTC) for daylight saving time. This value is in minutes.
+    daylight_bias: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DaylightTimeZoneOffset:
@@ -28,23 +25,6 @@ class DaylightTimeZoneOffset(standard_time_zone_offset.StandardTimeZoneOffset):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return DaylightTimeZoneOffset()
-    
-    @property
-    def daylight_bias(self,) -> Optional[int]:
-        """
-        Gets the daylightBias property value. The time offset from Coordinated Universal Time (UTC) for daylight saving time. This value is in minutes.
-        Returns: Optional[int]
-        """
-        return self._daylight_bias
-    
-    @daylight_bias.setter
-    def daylight_bias(self,value: Optional[int] = None) -> None:
-        """
-        Sets the daylightBias property value. The time offset from Coordinated Universal Time (UTC) for daylight saving time. This value is in minutes.
-        Args:
-            value: Value to set for the daylight_bias property.
-        """
-        self._daylight_bias = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """

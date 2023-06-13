@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -37,7 +37,7 @@ class RevokeSignInSessionsRequestBuilder():
     
     async def post(self,request_configuration: Optional[RevokeSignInSessionsRequestBuilderPostRequestConfiguration] = None) -> Optional[revoke_sign_in_sessions_response.RevokeSignInSessionsResponse]:
         """
-        Invoke action revokeSignInSessions
+        Invalidates all the refresh tokens issued to applications for a user (as well as session cookies in a user's browser), by resetting the **signInSessionsValidFromDateTime** user property to the current date-time. Typically, this operation is performed (by the user or an administrator) if the user has a lost or stolen device. This operation prevents access to the organization's data through applications on the device by requiring the user to sign in again to all applications that they have previously consented to, independent of device.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[revoke_sign_in_sessions_response.RevokeSignInSessionsResponse]
@@ -59,7 +59,7 @@ class RevokeSignInSessionsRequestBuilder():
     
     def to_post_request_information(self,request_configuration: Optional[RevokeSignInSessionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Invoke action revokeSignInSessions
+        Invalidates all the refresh tokens issued to applications for a user (as well as session cookies in a user's browser), by resetting the **signInSessionsValidFromDateTime** user property to the current date-time. Typically, this operation is performed (by the user or an administrator) if the user has a lost or stolen device. This operation prevents access to the organization's data through applications on the device by requiring the user to sign in again to all applications that they have previously consented to, independent of device.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation

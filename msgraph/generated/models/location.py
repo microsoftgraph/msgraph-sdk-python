@@ -1,87 +1,34 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import location_constraint_item, location_type, location_unique_id_type, outlook_geo_coordinates, physical_address
 
+@dataclass
 class Location(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new location and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The street address of the location.
-        self._address: Optional[physical_address.PhysicalAddress] = None
-        # The geographic coordinates and elevation of the location.
-        self._coordinates: Optional[outlook_geo_coordinates.OutlookGeoCoordinates] = None
-        # The name associated with the location.
-        self._display_name: Optional[str] = None
-        # Optional email address of the location.
-        self._location_email_address: Optional[str] = None
-        # The type of location. The possible values are: default, conferenceRoom, homeAddress, businessAddress,geoCoordinates, streetAddress, hotel, restaurant, localBusiness, postalAddress. Read-only.
-        self._location_type: Optional[location_type.LocationType] = None
-        # Optional URI representing the location.
-        self._location_uri: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # For internal use only.
-        self._unique_id: Optional[str] = None
-        # For internal use only.
-        self._unique_id_type: Optional[location_unique_id_type.LocationUniqueIdType] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def address(self,) -> Optional[physical_address.PhysicalAddress]:
-        """
-        Gets the address property value. The street address of the location.
-        Returns: Optional[physical_address.PhysicalAddress]
-        """
-        return self._address
-    
-    @address.setter
-    def address(self,value: Optional[physical_address.PhysicalAddress] = None) -> None:
-        """
-        Sets the address property value. The street address of the location.
-        Args:
-            value: Value to set for the address property.
-        """
-        self._address = value
-    
-    @property
-    def coordinates(self,) -> Optional[outlook_geo_coordinates.OutlookGeoCoordinates]:
-        """
-        Gets the coordinates property value. The geographic coordinates and elevation of the location.
-        Returns: Optional[outlook_geo_coordinates.OutlookGeoCoordinates]
-        """
-        return self._coordinates
-    
-    @coordinates.setter
-    def coordinates(self,value: Optional[outlook_geo_coordinates.OutlookGeoCoordinates] = None) -> None:
-        """
-        Sets the coordinates property value. The geographic coordinates and elevation of the location.
-        Args:
-            value: Value to set for the coordinates property.
-        """
-        self._coordinates = value
+    # The street address of the location.
+    address: Optional[physical_address.PhysicalAddress] = None
+    # The geographic coordinates and elevation of the location.
+    coordinates: Optional[outlook_geo_coordinates.OutlookGeoCoordinates] = None
+    # The name associated with the location.
+    display_name: Optional[str] = None
+    # Optional email address of the location.
+    location_email_address: Optional[str] = None
+    # The type of location. The possible values are: default, conferenceRoom, homeAddress, businessAddress,geoCoordinates, streetAddress, hotel, restaurant, localBusiness, postalAddress. Read-only.
+    location_type: Optional[location_type.LocationType] = None
+    # Optional URI representing the location.
+    location_uri: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # For internal use only.
+    unique_id: Optional[str] = None
+    # For internal use only.
+    unique_id_type: Optional[location_unique_id_type.LocationUniqueIdType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Location:
@@ -101,23 +48,6 @@ class Location(AdditionalDataHolder, Parsable):
 
                 return location_constraint_item.LocationConstraintItem()
         return Location()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The name associated with the location.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The name associated with the location.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -139,74 +69,6 @@ class Location(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def location_email_address(self,) -> Optional[str]:
-        """
-        Gets the locationEmailAddress property value. Optional email address of the location.
-        Returns: Optional[str]
-        """
-        return self._location_email_address
-    
-    @location_email_address.setter
-    def location_email_address(self,value: Optional[str] = None) -> None:
-        """
-        Sets the locationEmailAddress property value. Optional email address of the location.
-        Args:
-            value: Value to set for the location_email_address property.
-        """
-        self._location_email_address = value
-    
-    @property
-    def location_type(self,) -> Optional[location_type.LocationType]:
-        """
-        Gets the locationType property value. The type of location. The possible values are: default, conferenceRoom, homeAddress, businessAddress,geoCoordinates, streetAddress, hotel, restaurant, localBusiness, postalAddress. Read-only.
-        Returns: Optional[location_type.LocationType]
-        """
-        return self._location_type
-    
-    @location_type.setter
-    def location_type(self,value: Optional[location_type.LocationType] = None) -> None:
-        """
-        Sets the locationType property value. The type of location. The possible values are: default, conferenceRoom, homeAddress, businessAddress,geoCoordinates, streetAddress, hotel, restaurant, localBusiness, postalAddress. Read-only.
-        Args:
-            value: Value to set for the location_type property.
-        """
-        self._location_type = value
-    
-    @property
-    def location_uri(self,) -> Optional[str]:
-        """
-        Gets the locationUri property value. Optional URI representing the location.
-        Returns: Optional[str]
-        """
-        return self._location_uri
-    
-    @location_uri.setter
-    def location_uri(self,value: Optional[str] = None) -> None:
-        """
-        Sets the locationUri property value. Optional URI representing the location.
-        Args:
-            value: Value to set for the location_uri property.
-        """
-        self._location_uri = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -225,39 +87,5 @@ class Location(AdditionalDataHolder, Parsable):
         writer.write_str_value("uniqueId", self.unique_id)
         writer.write_enum_value("uniqueIdType", self.unique_id_type)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def unique_id(self,) -> Optional[str]:
-        """
-        Gets the uniqueId property value. For internal use only.
-        Returns: Optional[str]
-        """
-        return self._unique_id
-    
-    @unique_id.setter
-    def unique_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the uniqueId property value. For internal use only.
-        Args:
-            value: Value to set for the unique_id property.
-        """
-        self._unique_id = value
-    
-    @property
-    def unique_id_type(self,) -> Optional[location_unique_id_type.LocationUniqueIdType]:
-        """
-        Gets the uniqueIdType property value. For internal use only.
-        Returns: Optional[location_unique_id_type.LocationUniqueIdType]
-        """
-        return self._unique_id_type
-    
-    @unique_id_type.setter
-    def unique_id_type(self,value: Optional[location_unique_id_type.LocationUniqueIdType] = None) -> None:
-        """
-        Sets the uniqueIdType property value. For internal use only.
-        Args:
-            value: Value to set for the unique_id_type property.
-        """
-        self._unique_id_type = value
     
 

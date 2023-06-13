@@ -1,6 +1,6 @@
 from enum import Enum
 
-class RiskDetail(Enum):
+class RiskDetail(str, Enum):
     None_ = "none",
     AdminGeneratedTemporaryPassword = "adminGeneratedTemporaryPassword",
     UserPerformedSecuredPasswordChange = "userPerformedSecuredPasswordChange",

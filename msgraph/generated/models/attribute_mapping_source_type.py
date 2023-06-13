@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AttributeMappingSourceType(Enum):
+class AttributeMappingSourceType(str, Enum):
     Attribute = "Attribute",
     Constant = "Constant",
     Function = "Function",

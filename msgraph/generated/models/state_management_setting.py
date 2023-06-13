@@ -1,6 +1,6 @@
 from enum import Enum
 
-class StateManagementSetting(Enum):
+class StateManagementSetting(str, Enum):
     # Not configured.
     NotConfigured = "notConfigured",
     # Blocked.

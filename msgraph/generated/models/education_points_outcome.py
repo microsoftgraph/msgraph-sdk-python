@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import education_outcome
 
+@dataclass
 class EducationPointsOutcome(education_outcome.EducationOutcome):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EducationPointsOutcome and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.educationPointsOutcome"
-        # The numeric grade the teacher has given the student for this assignment.
-        self._points: Optional[education_assignment_points_grade.EducationAssignmentPointsGrade] = None
-        # A copy of the points property that is made when the grade is released to the student.
-        self._published_points: Optional[education_assignment_points_grade.EducationAssignmentPointsGrade] = None
+    odata_type = "#microsoft.graph.educationPointsOutcome"
+    # The numeric grade the teacher has given the student for this assignment.
+    points: Optional[education_assignment_points_grade.EducationAssignmentPointsGrade] = None
+    # A copy of the points property that is made when the grade is released to the student.
+    published_points: Optional[education_assignment_points_grade.EducationAssignmentPointsGrade] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationPointsOutcome:
@@ -45,40 +42,6 @@ class EducationPointsOutcome(education_outcome.EducationOutcome):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def points(self,) -> Optional[education_assignment_points_grade.EducationAssignmentPointsGrade]:
-        """
-        Gets the points property value. The numeric grade the teacher has given the student for this assignment.
-        Returns: Optional[education_assignment_points_grade.EducationAssignmentPointsGrade]
-        """
-        return self._points
-    
-    @points.setter
-    def points(self,value: Optional[education_assignment_points_grade.EducationAssignmentPointsGrade] = None) -> None:
-        """
-        Sets the points property value. The numeric grade the teacher has given the student for this assignment.
-        Args:
-            value: Value to set for the points property.
-        """
-        self._points = value
-    
-    @property
-    def published_points(self,) -> Optional[education_assignment_points_grade.EducationAssignmentPointsGrade]:
-        """
-        Gets the publishedPoints property value. A copy of the points property that is made when the grade is released to the student.
-        Returns: Optional[education_assignment_points_grade.EducationAssignmentPointsGrade]
-        """
-        return self._published_points
-    
-    @published_points.setter
-    def published_points(self,value: Optional[education_assignment_points_grade.EducationAssignmentPointsGrade] = None) -> None:
-        """
-        Sets the publishedPoints property value. A copy of the points property that is made when the grade is released to the student.
-        Args:
-            value: Value to set for the published_points property.
-        """
-        self._published_points = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

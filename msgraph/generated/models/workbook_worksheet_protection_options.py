@@ -1,243 +1,37 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookWorksheetProtectionOptions and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Represents the worksheet protection option of allowing using auto filter feature.
-        self._allow_auto_filter: Optional[bool] = None
-        # Represents the worksheet protection option of allowing deleting columns.
-        self._allow_delete_columns: Optional[bool] = None
-        # Represents the worksheet protection option of allowing deleting rows.
-        self._allow_delete_rows: Optional[bool] = None
-        # Represents the worksheet protection option of allowing formatting cells.
-        self._allow_format_cells: Optional[bool] = None
-        # Represents the worksheet protection option of allowing formatting columns.
-        self._allow_format_columns: Optional[bool] = None
-        # Represents the worksheet protection option of allowing formatting rows.
-        self._allow_format_rows: Optional[bool] = None
-        # Represents the worksheet protection option of allowing inserting columns.
-        self._allow_insert_columns: Optional[bool] = None
-        # Represents the worksheet protection option of allowing inserting hyperlinks.
-        self._allow_insert_hyperlinks: Optional[bool] = None
-        # Represents the worksheet protection option of allowing inserting rows.
-        self._allow_insert_rows: Optional[bool] = None
-        # Represents the worksheet protection option of allowing using pivot table feature.
-        self._allow_pivot_tables: Optional[bool] = None
-        # Represents the worksheet protection option of allowing using sort feature.
-        self._allow_sort: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def allow_auto_filter(self,) -> Optional[bool]:
-        """
-        Gets the allowAutoFilter property value. Represents the worksheet protection option of allowing using auto filter feature.
-        Returns: Optional[bool]
-        """
-        return self._allow_auto_filter
-    
-    @allow_auto_filter.setter
-    def allow_auto_filter(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowAutoFilter property value. Represents the worksheet protection option of allowing using auto filter feature.
-        Args:
-            value: Value to set for the allow_auto_filter property.
-        """
-        self._allow_auto_filter = value
-    
-    @property
-    def allow_delete_columns(self,) -> Optional[bool]:
-        """
-        Gets the allowDeleteColumns property value. Represents the worksheet protection option of allowing deleting columns.
-        Returns: Optional[bool]
-        """
-        return self._allow_delete_columns
-    
-    @allow_delete_columns.setter
-    def allow_delete_columns(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowDeleteColumns property value. Represents the worksheet protection option of allowing deleting columns.
-        Args:
-            value: Value to set for the allow_delete_columns property.
-        """
-        self._allow_delete_columns = value
-    
-    @property
-    def allow_delete_rows(self,) -> Optional[bool]:
-        """
-        Gets the allowDeleteRows property value. Represents the worksheet protection option of allowing deleting rows.
-        Returns: Optional[bool]
-        """
-        return self._allow_delete_rows
-    
-    @allow_delete_rows.setter
-    def allow_delete_rows(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowDeleteRows property value. Represents the worksheet protection option of allowing deleting rows.
-        Args:
-            value: Value to set for the allow_delete_rows property.
-        """
-        self._allow_delete_rows = value
-    
-    @property
-    def allow_format_cells(self,) -> Optional[bool]:
-        """
-        Gets the allowFormatCells property value. Represents the worksheet protection option of allowing formatting cells.
-        Returns: Optional[bool]
-        """
-        return self._allow_format_cells
-    
-    @allow_format_cells.setter
-    def allow_format_cells(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowFormatCells property value. Represents the worksheet protection option of allowing formatting cells.
-        Args:
-            value: Value to set for the allow_format_cells property.
-        """
-        self._allow_format_cells = value
-    
-    @property
-    def allow_format_columns(self,) -> Optional[bool]:
-        """
-        Gets the allowFormatColumns property value. Represents the worksheet protection option of allowing formatting columns.
-        Returns: Optional[bool]
-        """
-        return self._allow_format_columns
-    
-    @allow_format_columns.setter
-    def allow_format_columns(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowFormatColumns property value. Represents the worksheet protection option of allowing formatting columns.
-        Args:
-            value: Value to set for the allow_format_columns property.
-        """
-        self._allow_format_columns = value
-    
-    @property
-    def allow_format_rows(self,) -> Optional[bool]:
-        """
-        Gets the allowFormatRows property value. Represents the worksheet protection option of allowing formatting rows.
-        Returns: Optional[bool]
-        """
-        return self._allow_format_rows
-    
-    @allow_format_rows.setter
-    def allow_format_rows(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowFormatRows property value. Represents the worksheet protection option of allowing formatting rows.
-        Args:
-            value: Value to set for the allow_format_rows property.
-        """
-        self._allow_format_rows = value
-    
-    @property
-    def allow_insert_columns(self,) -> Optional[bool]:
-        """
-        Gets the allowInsertColumns property value. Represents the worksheet protection option of allowing inserting columns.
-        Returns: Optional[bool]
-        """
-        return self._allow_insert_columns
-    
-    @allow_insert_columns.setter
-    def allow_insert_columns(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowInsertColumns property value. Represents the worksheet protection option of allowing inserting columns.
-        Args:
-            value: Value to set for the allow_insert_columns property.
-        """
-        self._allow_insert_columns = value
-    
-    @property
-    def allow_insert_hyperlinks(self,) -> Optional[bool]:
-        """
-        Gets the allowInsertHyperlinks property value. Represents the worksheet protection option of allowing inserting hyperlinks.
-        Returns: Optional[bool]
-        """
-        return self._allow_insert_hyperlinks
-    
-    @allow_insert_hyperlinks.setter
-    def allow_insert_hyperlinks(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowInsertHyperlinks property value. Represents the worksheet protection option of allowing inserting hyperlinks.
-        Args:
-            value: Value to set for the allow_insert_hyperlinks property.
-        """
-        self._allow_insert_hyperlinks = value
-    
-    @property
-    def allow_insert_rows(self,) -> Optional[bool]:
-        """
-        Gets the allowInsertRows property value. Represents the worksheet protection option of allowing inserting rows.
-        Returns: Optional[bool]
-        """
-        return self._allow_insert_rows
-    
-    @allow_insert_rows.setter
-    def allow_insert_rows(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowInsertRows property value. Represents the worksheet protection option of allowing inserting rows.
-        Args:
-            value: Value to set for the allow_insert_rows property.
-        """
-        self._allow_insert_rows = value
-    
-    @property
-    def allow_pivot_tables(self,) -> Optional[bool]:
-        """
-        Gets the allowPivotTables property value. Represents the worksheet protection option of allowing using pivot table feature.
-        Returns: Optional[bool]
-        """
-        return self._allow_pivot_tables
-    
-    @allow_pivot_tables.setter
-    def allow_pivot_tables(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowPivotTables property value. Represents the worksheet protection option of allowing using pivot table feature.
-        Args:
-            value: Value to set for the allow_pivot_tables property.
-        """
-        self._allow_pivot_tables = value
-    
-    @property
-    def allow_sort(self,) -> Optional[bool]:
-        """
-        Gets the allowSort property value. Represents the worksheet protection option of allowing using sort feature.
-        Returns: Optional[bool]
-        """
-        return self._allow_sort
-    
-    @allow_sort.setter
-    def allow_sort(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowSort property value. Represents the worksheet protection option of allowing using sort feature.
-        Args:
-            value: Value to set for the allow_sort property.
-        """
-        self._allow_sort = value
+    # Represents the worksheet protection option of allowing using auto filter feature.
+    allow_auto_filter: Optional[bool] = None
+    # Represents the worksheet protection option of allowing deleting columns.
+    allow_delete_columns: Optional[bool] = None
+    # Represents the worksheet protection option of allowing deleting rows.
+    allow_delete_rows: Optional[bool] = None
+    # Represents the worksheet protection option of allowing formatting cells.
+    allow_format_cells: Optional[bool] = None
+    # Represents the worksheet protection option of allowing formatting columns.
+    allow_format_columns: Optional[bool] = None
+    # Represents the worksheet protection option of allowing formatting rows.
+    allow_format_rows: Optional[bool] = None
+    # Represents the worksheet protection option of allowing inserting columns.
+    allow_insert_columns: Optional[bool] = None
+    # Represents the worksheet protection option of allowing inserting hyperlinks.
+    allow_insert_hyperlinks: Optional[bool] = None
+    # Represents the worksheet protection option of allowing inserting rows.
+    allow_insert_rows: Optional[bool] = None
+    # Represents the worksheet protection option of allowing using pivot table feature.
+    allow_pivot_tables: Optional[bool] = None
+    # Represents the worksheet protection option of allowing using sort feature.
+    allow_sort: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookWorksheetProtectionOptions:
@@ -271,23 +65,6 @@ class WorkbookWorksheetProtectionOptions(AdditionalDataHolder, Parsable):
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

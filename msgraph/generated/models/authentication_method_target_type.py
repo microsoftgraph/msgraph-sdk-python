@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AuthenticationMethodTargetType(Enum):
+class AuthenticationMethodTargetType(str, Enum):
     User = "user",
     Group = "group",
     UnknownFutureValue = "unknownFutureValue",

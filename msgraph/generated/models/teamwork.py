@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class Teamwork(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Teamwork and sets the default values.
-        """
-        super().__init__()
-        # The deleted team.
-        self._deleted_teams: Optional[List[deleted_team.DeletedTeam]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The workforceIntegrations property
-        self._workforce_integrations: Optional[List[workforce_integration.WorkforceIntegration]] = None
+    # The deleted team.
+    deleted_teams: Optional[List[deleted_team.DeletedTeam]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The workforceIntegrations property
+    workforce_integrations: Optional[List[workforce_integration.WorkforceIntegration]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Teamwork:
@@ -31,23 +28,6 @@ class Teamwork(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return Teamwork()
-    
-    @property
-    def deleted_teams(self,) -> Optional[List[deleted_team.DeletedTeam]]:
-        """
-        Gets the deletedTeams property value. The deleted team.
-        Returns: Optional[List[deleted_team.DeletedTeam]]
-        """
-        return self._deleted_teams
-    
-    @deleted_teams.setter
-    def deleted_teams(self,value: Optional[List[deleted_team.DeletedTeam]] = None) -> None:
-        """
-        Sets the deletedTeams property value. The deleted team.
-        Args:
-            value: Value to set for the deleted_teams property.
-        """
-        self._deleted_teams = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -75,22 +55,5 @@ class Teamwork(entity.Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("deletedTeams", self.deleted_teams)
         writer.write_collection_of_object_values("workforceIntegrations", self.workforce_integrations)
-    
-    @property
-    def workforce_integrations(self,) -> Optional[List[workforce_integration.WorkforceIntegration]]:
-        """
-        Gets the workforceIntegrations property value. The workforceIntegrations property
-        Returns: Optional[List[workforce_integration.WorkforceIntegration]]
-        """
-        return self._workforce_integrations
-    
-    @workforce_integrations.setter
-    def workforce_integrations(self,value: Optional[List[workforce_integration.WorkforceIntegration]] = None) -> None:
-        """
-        Sets the workforceIntegrations property value. The workforceIntegrations property
-        Args:
-            value: Value to set for the workforce_integrations property.
-        """
-        self._workforce_integrations = value
     
 

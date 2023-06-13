@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method

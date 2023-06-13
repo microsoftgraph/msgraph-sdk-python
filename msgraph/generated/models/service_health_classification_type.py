@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ServiceHealthClassificationType(Enum):
+class ServiceHealthClassificationType(str, Enum):
     Advisory = "advisory",
     Incident = "incident",
     UnknownFutureValue = "unknownFutureValue",

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,35 +9,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class PrintOperation(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new PrintOperation and sets the default values.
-        """
-        super().__init__()
-        # The DateTimeOffset when the operation was created. Read-only.
-        self._created_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The status property
-        self._status: Optional[print_operation_status.PrintOperationStatus] = None
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. The DateTimeOffset when the operation was created. Read-only.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. The DateTimeOffset when the operation was created. Read-only.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    # The DateTimeOffset when the operation was created. Read-only.
+    created_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The status property
+    status: Optional[print_operation_status.PrintOperationStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintOperation:
@@ -83,22 +63,5 @@ class PrintOperation(entity.Entity):
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_object_value("status", self.status)
-    
-    @property
-    def status(self,) -> Optional[print_operation_status.PrintOperationStatus]:
-        """
-        Gets the status property value. The status property
-        Returns: Optional[print_operation_status.PrintOperationStatus]
-        """
-        return self._status
-    
-    @status.setter
-    def status(self,value: Optional[print_operation_status.PrintOperationStatus] = None) -> None:
-        """
-        Sets the status property value. The status property
-        Args:
-            value: Value to set for the status property.
-        """
-        self._status = value
     
 

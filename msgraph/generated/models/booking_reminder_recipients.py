@@ -1,6 +1,6 @@
 from enum import Enum
 
-class BookingReminderRecipients(Enum):
+class BookingReminderRecipients(str, Enum):
     AllAttendees = "allAttendees",
     Staff = "staff",
     Customer = "customer",

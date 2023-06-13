@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class MultiValueLegacyExtendedProperty(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new multiValueLegacyExtendedProperty and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # A collection of property values.
-        self._value: Optional[List[str]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # A collection of property values.
+    value: Optional[List[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MultiValueLegacyExtendedProperty:
@@ -54,22 +51,5 @@ class MultiValueLegacyExtendedProperty(entity.Entity):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_collection_of_primitive_values("value", self.value)
-    
-    @property
-    def value(self,) -> Optional[List[str]]:
-        """
-        Gets the value property value. A collection of property values.
-        Returns: Optional[List[str]]
-        """
-        return self._value
-    
-    @value.setter
-    def value(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the value property value. A collection of property values.
-        Args:
-            value: Value to set for the value property.
-        """
-        self._value = value
     
 

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -8,16 +9,12 @@ if TYPE_CHECKING:
 
 from .. import entity
 
+@dataclass
 class TriggerTypesRoot(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new triggerTypesRoot and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The retentionEventTypes property
-        self._retention_event_types: Optional[List[retention_event_type.RetentionEventType]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The retentionEventTypes property
+    retention_event_types: Optional[List[retention_event_type.RetentionEventType]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TriggerTypesRoot:
@@ -45,23 +42,6 @@ class TriggerTypesRoot(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def retention_event_types(self,) -> Optional[List[retention_event_type.RetentionEventType]]:
-        """
-        Gets the retentionEventTypes property value. The retentionEventTypes property
-        Returns: Optional[List[retention_event_type.RetentionEventType]]
-        """
-        return self._retention_event_types
-    
-    @retention_event_types.setter
-    def retention_event_types(self,value: Optional[List[retention_event_type.RetentionEventType]] = None) -> None:
-        """
-        Sets the retentionEventTypes property value. The retentionEventTypes property
-        Args:
-            value: Value to set for the retention_event_types property.
-        """
-        self._retention_event_types = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

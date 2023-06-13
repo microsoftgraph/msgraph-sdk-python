@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import mobile_app_assignment_settings
 
+@dataclass
 class WindowsUniversalAppXAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsUniversalAppXAppAssignmentSettings and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsUniversalAppXAppAssignmentSettings"
-        # If true, uses device execution context for Windows Universal AppX mobile app. Device-context install is not allowed when this type of app is targeted with Available intent. Defaults to false.
-        self._use_device_context: Optional[bool] = None
+    odata_type = "#microsoft.graph.windowsUniversalAppXAppAssignmentSettings"
+    # If true, uses device execution context for Windows Universal AppX mobile app. Device-context install is not allowed when this type of app is targeted with Available intent. Defaults to false.
+    use_device_context: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsUniversalAppXAppAssignmentSettings:
@@ -53,22 +50,5 @@ class WindowsUniversalAppXAppAssignmentSettings(mobile_app_assignment_settings.M
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_bool_value("useDeviceContext", self.use_device_context)
-    
-    @property
-    def use_device_context(self,) -> Optional[bool]:
-        """
-        Gets the useDeviceContext property value. If true, uses device execution context for Windows Universal AppX mobile app. Device-context install is not allowed when this type of app is targeted with Available intent. Defaults to false.
-        Returns: Optional[bool]
-        """
-        return self._use_device_context
-    
-    @use_device_context.setter
-    def use_device_context(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the useDeviceContext property value. If true, uses device execution context for Windows Universal AppX mobile app. Device-context install is not allowed when this type of app is targeted with Available intent. Defaults to false.
-        Args:
-            value: Value to set for the use_device_context property.
-        """
-        self._use_device_context = value
     
 

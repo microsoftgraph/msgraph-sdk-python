@@ -1,58 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class InnerError(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new InnerError and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Client request Id as sent by the client application.
-        self._client_request_id: Optional[str] = None
-        # Date when the error occured.
-        self._date: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Request Id as tracked internally by the service
-        self._request_id: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def client_request_id(self,) -> Optional[str]:
-        """
-        Gets the client-request-id property value. Client request Id as sent by the client application.
-        Returns: Optional[str]
-        """
-        return self._client_request_id
-    
-    @client_request_id.setter
-    def client_request_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the client-request-id property value. Client request Id as sent by the client application.
-        Args:
-            value: Value to set for the client_request_id property.
-        """
-        self._client_request_id = value
+    # Client request Id as sent by the client application.
+    client_request_id: Optional[str] = None
+    # Date when the error occured.
+    date: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Request Id as tracked internally by the service
+    request_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> InnerError:
@@ -66,23 +30,6 @@ class InnerError(AdditionalDataHolder, Parsable):
             raise Exception("parse_node cannot be undefined")
         return InnerError()
     
-    @property
-    def date(self,) -> Optional[datetime]:
-        """
-        Gets the date property value. Date when the error occured.
-        Returns: Optional[datetime]
-        """
-        return self._date
-    
-    @date.setter
-    def date(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the date property value. Date when the error occured.
-        Args:
-            value: Value to set for the Date property.
-        """
-        self._date = value
-    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -95,40 +42,6 @@ class InnerError(AdditionalDataHolder, Parsable):
             "request-id": lambda n : setattr(self, 'request_id', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def request_id(self,) -> Optional[str]:
-        """
-        Gets the request-id property value. Request Id as tracked internally by the service
-        Returns: Optional[str]
-        """
-        return self._request_id
-    
-    @request_id.setter
-    def request_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the request-id property value. Request Id as tracked internally by the service
-        Args:
-            value: Value to set for the request_id property.
-        """
-        self._request_id = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

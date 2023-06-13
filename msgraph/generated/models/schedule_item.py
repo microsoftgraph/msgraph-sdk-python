@@ -1,49 +1,30 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import date_time_time_zone, free_busy_status
 
+@dataclass
 class ScheduleItem(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new scheduleItem and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The date, time, and time zone that the corresponding event ends.
-        self._end: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The sensitivity of the corresponding event. True if the event is marked private, false otherwise. Optional.
-        self._is_private: Optional[bool] = None
-        # The location where the corresponding event is held or attended from. Optional.
-        self._location: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The date, time, and time zone that the corresponding event starts.
-        self._start: Optional[date_time_time_zone.DateTimeTimeZone] = None
-        # The availability status of the user or resource during the corresponding event. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
-        self._status: Optional[free_busy_status.FreeBusyStatus] = None
-        # The corresponding event's subject line. Optional.
-        self._subject: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The date, time, and time zone that the corresponding event ends.
+    end: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    # The sensitivity of the corresponding event. True if the event is marked private, false otherwise. Optional.
+    is_private: Optional[bool] = None
+    # The location where the corresponding event is held or attended from. Optional.
+    location: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The date, time, and time zone that the corresponding event starts.
+    start: Optional[date_time_time_zone.DateTimeTimeZone] = None
+    # The availability status of the user or resource during the corresponding event. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
+    status: Optional[free_busy_status.FreeBusyStatus] = None
+    # The corresponding event's subject line. Optional.
+    subject: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ScheduleItem:
@@ -56,23 +37,6 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return ScheduleItem()
-    
-    @property
-    def end(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
-        """
-        Gets the end property value. The date, time, and time zone that the corresponding event ends.
-        Returns: Optional[date_time_time_zone.DateTimeTimeZone]
-        """
-        return self._end
-    
-    @end.setter
-    def end(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
-        """
-        Sets the end property value. The date, time, and time zone that the corresponding event ends.
-        Args:
-            value: Value to set for the end property.
-        """
-        self._end = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -92,57 +56,6 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def is_private(self,) -> Optional[bool]:
-        """
-        Gets the isPrivate property value. The sensitivity of the corresponding event. True if the event is marked private, false otherwise. Optional.
-        Returns: Optional[bool]
-        """
-        return self._is_private
-    
-    @is_private.setter
-    def is_private(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isPrivate property value. The sensitivity of the corresponding event. True if the event is marked private, false otherwise. Optional.
-        Args:
-            value: Value to set for the is_private property.
-        """
-        self._is_private = value
-    
-    @property
-    def location(self,) -> Optional[str]:
-        """
-        Gets the location property value. The location where the corresponding event is held or attended from. Optional.
-        Returns: Optional[str]
-        """
-        return self._location
-    
-    @location.setter
-    def location(self,value: Optional[str] = None) -> None:
-        """
-        Sets the location property value. The location where the corresponding event is held or attended from. Optional.
-        Args:
-            value: Value to set for the location property.
-        """
-        self._location = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -159,56 +72,5 @@ class ScheduleItem(AdditionalDataHolder, Parsable):
         writer.write_enum_value("status", self.status)
         writer.write_str_value("subject", self.subject)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def start(self,) -> Optional[date_time_time_zone.DateTimeTimeZone]:
-        """
-        Gets the start property value. The date, time, and time zone that the corresponding event starts.
-        Returns: Optional[date_time_time_zone.DateTimeTimeZone]
-        """
-        return self._start
-    
-    @start.setter
-    def start(self,value: Optional[date_time_time_zone.DateTimeTimeZone] = None) -> None:
-        """
-        Sets the start property value. The date, time, and time zone that the corresponding event starts.
-        Args:
-            value: Value to set for the start property.
-        """
-        self._start = value
-    
-    @property
-    def status(self,) -> Optional[free_busy_status.FreeBusyStatus]:
-        """
-        Gets the status property value. The availability status of the user or resource during the corresponding event. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
-        Returns: Optional[free_busy_status.FreeBusyStatus]
-        """
-        return self._status
-    
-    @status.setter
-    def status(self,value: Optional[free_busy_status.FreeBusyStatus] = None) -> None:
-        """
-        Sets the status property value. The availability status of the user or resource during the corresponding event. The possible values are: free, tentative, busy, oof, workingElsewhere, unknown.
-        Args:
-            value: Value to set for the status property.
-        """
-        self._status = value
-    
-    @property
-    def subject(self,) -> Optional[str]:
-        """
-        Gets the subject property value. The corresponding event's subject line. Optional.
-        Returns: Optional[str]
-        """
-        return self._subject
-    
-    @subject.setter
-    def subject(self,value: Optional[str] = None) -> None:
-        """
-        Sets the subject property value. The corresponding event's subject line. Optional.
-        Args:
-            value: Value to set for the subject property.
-        """
-        self._subject = value
     
 

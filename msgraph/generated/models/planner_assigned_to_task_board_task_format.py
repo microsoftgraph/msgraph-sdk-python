@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new plannerAssignedToTaskBoardTaskFormat and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Dictionary of hints used to order tasks on the AssignedTo view of the Task Board. The key of each entry is one of the users the task is assigned to and the value is the order hint. The format of each value is defined as outlined here.
-        self._order_hints_by_assignee: Optional[planner_order_hints_by_assignee.PlannerOrderHintsByAssignee] = None
-        # Hint value used to order the task on the AssignedTo view of the Task Board when the task is not assigned to anyone, or if the orderHintsByAssignee dictionary does not provide an order hint for the user the task is assigned to. The format is defined as outlined here.
-        self._unassigned_order_hint: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Dictionary of hints used to order tasks on the AssignedTo view of the Task Board. The key of each entry is one of the users the task is assigned to and the value is the order hint. The format of each value is defined as outlined here.
+    order_hints_by_assignee: Optional[planner_order_hints_by_assignee.PlannerOrderHintsByAssignee] = None
+    # Hint value used to order the task on the AssignedTo view of the Task Board when the task is not assigned to anyone, or if the orderHintsByAssignee dictionary does not provide an order hint for the user the task is assigned to. The format is defined as outlined here.
+    unassigned_order_hint: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerAssignedToTaskBoardTaskFormat:
@@ -47,23 +44,6 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def order_hints_by_assignee(self,) -> Optional[planner_order_hints_by_assignee.PlannerOrderHintsByAssignee]:
-        """
-        Gets the orderHintsByAssignee property value. Dictionary of hints used to order tasks on the AssignedTo view of the Task Board. The key of each entry is one of the users the task is assigned to and the value is the order hint. The format of each value is defined as outlined here.
-        Returns: Optional[planner_order_hints_by_assignee.PlannerOrderHintsByAssignee]
-        """
-        return self._order_hints_by_assignee
-    
-    @order_hints_by_assignee.setter
-    def order_hints_by_assignee(self,value: Optional[planner_order_hints_by_assignee.PlannerOrderHintsByAssignee] = None) -> None:
-        """
-        Sets the orderHintsByAssignee property value. Dictionary of hints used to order tasks on the AssignedTo view of the Task Board. The key of each entry is one of the users the task is assigned to and the value is the order hint. The format of each value is defined as outlined here.
-        Args:
-            value: Value to set for the order_hints_by_assignee property.
-        """
-        self._order_hints_by_assignee = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -75,22 +55,5 @@ class PlannerAssignedToTaskBoardTaskFormat(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("orderHintsByAssignee", self.order_hints_by_assignee)
         writer.write_str_value("unassignedOrderHint", self.unassigned_order_hint)
-    
-    @property
-    def unassigned_order_hint(self,) -> Optional[str]:
-        """
-        Gets the unassignedOrderHint property value. Hint value used to order the task on the AssignedTo view of the Task Board when the task is not assigned to anyone, or if the orderHintsByAssignee dictionary does not provide an order hint for the user the task is assigned to. The format is defined as outlined here.
-        Returns: Optional[str]
-        """
-        return self._unassigned_order_hint
-    
-    @unassigned_order_hint.setter
-    def unassigned_order_hint(self,value: Optional[str] = None) -> None:
-        """
-        Sets the unassignedOrderHint property value. Hint value used to order the task on the AssignedTo view of the Task Board when the task is not assigned to anyone, or if the orderHintsByAssignee dictionary does not provide an order hint for the user the task is assigned to. The format is defined as outlined here.
-        Args:
-            value: Value to set for the unassigned_order_hint property.
-        """
-        self._unassigned_order_hint = value
     
 

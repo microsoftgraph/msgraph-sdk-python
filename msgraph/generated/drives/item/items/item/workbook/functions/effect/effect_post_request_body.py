@@ -1,39 +1,20 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import json
 
+@dataclass
 class EffectPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new effectPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The nominalRate property
-        self._nominal_rate: Optional[json.Json] = None
-        # The npery property
-        self._npery: Optional[json.Json] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The nominalRate property
+    nominal_rate: Optional[json.Json] = None
+    # The npery property
+    npery: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EffectPostRequestBody:
@@ -59,40 +40,6 @@ class EffectPostRequestBody(AdditionalDataHolder, Parsable):
             "npery": lambda n : setattr(self, 'npery', n.get_object_value(json.Json)),
         }
         return fields
-    
-    @property
-    def nominal_rate(self,) -> Optional[json.Json]:
-        """
-        Gets the nominalRate property value. The nominalRate property
-        Returns: Optional[json.Json]
-        """
-        return self._nominal_rate
-    
-    @nominal_rate.setter
-    def nominal_rate(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the nominalRate property value. The nominalRate property
-        Args:
-            value: Value to set for the nominal_rate property.
-        """
-        self._nominal_rate = value
-    
-    @property
-    def npery(self,) -> Optional[json.Json]:
-        """
-        Gets the npery property value. The npery property
-        Returns: Optional[json.Json]
-        """
-        return self._npery
-    
-    @npery.setter
-    def npery(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the npery property value. The npery property
-        Args:
-            value: Value to set for the npery property.
-        """
-        self._npery = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ConnectionState(Enum):
+class ConnectionState(str, Enum):
     Draft = "draft",
     Ready = "ready",
     Obsolete = "obsolete",

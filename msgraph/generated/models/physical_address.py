@@ -1,78 +1,25 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class PhysicalAddress(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new physicalAddress and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The city.
-        self._city: Optional[str] = None
-        # The country or region. It's a free-format string value, for example, 'United States'.
-        self._country_or_region: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The postal code.
-        self._postal_code: Optional[str] = None
-        # The state.
-        self._state: Optional[str] = None
-        # The street.
-        self._street: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def city(self,) -> Optional[str]:
-        """
-        Gets the city property value. The city.
-        Returns: Optional[str]
-        """
-        return self._city
-    
-    @city.setter
-    def city(self,value: Optional[str] = None) -> None:
-        """
-        Sets the city property value. The city.
-        Args:
-            value: Value to set for the city property.
-        """
-        self._city = value
-    
-    @property
-    def country_or_region(self,) -> Optional[str]:
-        """
-        Gets the countryOrRegion property value. The country or region. It's a free-format string value, for example, 'United States'.
-        Returns: Optional[str]
-        """
-        return self._country_or_region
-    
-    @country_or_region.setter
-    def country_or_region(self,value: Optional[str] = None) -> None:
-        """
-        Sets the countryOrRegion property value. The country or region. It's a free-format string value, for example, 'United States'.
-        Args:
-            value: Value to set for the country_or_region property.
-        """
-        self._country_or_region = value
+    # The city.
+    city: Optional[str] = None
+    # The country or region. It's a free-format string value, for example, 'United States'.
+    country_or_region: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The postal code.
+    postal_code: Optional[str] = None
+    # The state.
+    state: Optional[str] = None
+    # The street.
+    street: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PhysicalAddress:
@@ -101,40 +48,6 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def postal_code(self,) -> Optional[str]:
-        """
-        Gets the postalCode property value. The postal code.
-        Returns: Optional[str]
-        """
-        return self._postal_code
-    
-    @postal_code.setter
-    def postal_code(self,value: Optional[str] = None) -> None:
-        """
-        Sets the postalCode property value. The postal code.
-        Args:
-            value: Value to set for the postal_code property.
-        """
-        self._postal_code = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -150,39 +63,5 @@ class PhysicalAddress(AdditionalDataHolder, Parsable):
         writer.write_str_value("state", self.state)
         writer.write_str_value("street", self.street)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def state(self,) -> Optional[str]:
-        """
-        Gets the state property value. The state.
-        Returns: Optional[str]
-        """
-        return self._state
-    
-    @state.setter
-    def state(self,value: Optional[str] = None) -> None:
-        """
-        Sets the state property value. The state.
-        Args:
-            value: Value to set for the state property.
-        """
-        self._state = value
-    
-    @property
-    def street(self,) -> Optional[str]:
-        """
-        Gets the street property value. The street.
-        Returns: Optional[str]
-        """
-        return self._street
-    
-    @street.setter
-    def street(self,value: Optional[str] = None) -> None:
-        """
-        Sets the street property value. The street.
-        Args:
-            value: Value to set for the street property.
-        """
-        self._street = value
     
 

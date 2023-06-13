@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,37 +8,16 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class DelegatedPermissionClassification(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new delegatedPermissionClassification and sets the default values.
-        """
-        super().__init__()
-        # The classification value being given. Possible value: low. Does not support $filter.
-        self._classification: Optional[permission_classification_type.PermissionClassificationType] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The unique identifier (id) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Required on create. Does not support $filter.
-        self._permission_id: Optional[str] = None
-        # The claim value (value) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Does not support $filter.
-        self._permission_name: Optional[str] = None
-    
-    @property
-    def classification(self,) -> Optional[permission_classification_type.PermissionClassificationType]:
-        """
-        Gets the classification property value. The classification value being given. Possible value: low. Does not support $filter.
-        Returns: Optional[permission_classification_type.PermissionClassificationType]
-        """
-        return self._classification
-    
-    @classification.setter
-    def classification(self,value: Optional[permission_classification_type.PermissionClassificationType] = None) -> None:
-        """
-        Sets the classification property value. The classification value being given. Possible value: low. Does not support $filter.
-        Args:
-            value: Value to set for the classification property.
-        """
-        self._classification = value
+    # The classification value being given. Possible value: low. Does not support $filter.
+    classification: Optional[permission_classification_type.PermissionClassificationType] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The unique identifier (id) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Required on create. Does not support $filter.
+    permission_id: Optional[str] = None
+    # The claim value (value) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Does not support $filter.
+    permission_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DelegatedPermissionClassification:
@@ -66,40 +46,6 @@ class DelegatedPermissionClassification(entity.Entity):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def permission_id(self,) -> Optional[str]:
-        """
-        Gets the permissionId property value. The unique identifier (id) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Required on create. Does not support $filter.
-        Returns: Optional[str]
-        """
-        return self._permission_id
-    
-    @permission_id.setter
-    def permission_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the permissionId property value. The unique identifier (id) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Required on create. Does not support $filter.
-        Args:
-            value: Value to set for the permission_id property.
-        """
-        self._permission_id = value
-    
-    @property
-    def permission_name(self,) -> Optional[str]:
-        """
-        Gets the permissionName property value. The claim value (value) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Does not support $filter.
-        Returns: Optional[str]
-        """
-        return self._permission_name
-    
-    @permission_name.setter
-    def permission_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the permissionName property value. The claim value (value) for the delegated permission listed in the oauth2PermissionScopes collection of the servicePrincipal. Does not support $filter.
-        Args:
-            value: Value to set for the permission_name property.
-        """
-        self._permission_name = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

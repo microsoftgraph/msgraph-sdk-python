@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,156 +8,50 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class UserExperienceAnalyticsDevicePerformance(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new UserExperienceAnalyticsDevicePerformance and sets the default values.
-        """
-        super().__init__()
-        # Average (mean) number of Blue Screens per device in the last 30 days. Valid values 0 to 9999999
-        self._average_blue_screens: Optional[float] = None
-        # Average (mean) number of Restarts per device in the last 30 days. Valid values 0 to 9999999
-        self._average_restarts: Optional[float] = None
-        # Number of Blue Screens in the last 30 days. Valid values 0 to 9999999
-        self._blue_screen_count: Optional[int] = None
-        # The user experience analytics device boot score.
-        self._boot_score: Optional[int] = None
-        # The user experience analytics device core boot time in milliseconds.
-        self._core_boot_time_in_ms: Optional[int] = None
-        # The user experience analytics device core login time in milliseconds.
-        self._core_login_time_in_ms: Optional[int] = None
-        # User experience analytics summarized device count.
-        self._device_count: Optional[int] = None
-        # The user experience analytics device name.
-        self._device_name: Optional[str] = None
-        # The diskType property
-        self._disk_type: Optional[disk_type.DiskType] = None
-        # The user experience analytics device group policy boot time in milliseconds.
-        self._group_policy_boot_time_in_ms: Optional[int] = None
-        # The user experience analytics device group policy login time in milliseconds.
-        self._group_policy_login_time_in_ms: Optional[int] = None
-        # The healthStatus property
-        self._health_status: Optional[user_experience_analytics_health_state.UserExperienceAnalyticsHealthState] = None
-        # The user experience analytics device login score.
-        self._login_score: Optional[int] = None
-        # The user experience analytics device manufacturer.
-        self._manufacturer: Optional[str] = None
-        # The user experience analytics device model.
-        self._model: Optional[str] = None
-        # The user experience analytics model level startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-        self._model_startup_performance_score: Optional[float] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The user experience analytics device Operating System version.
-        self._operating_system_version: Optional[str] = None
-        # The user experience analytics responsive desktop time in milliseconds.
-        self._responsive_desktop_time_in_ms: Optional[int] = None
-        # Number of Restarts in the last 30 days. Valid values 0 to 9999999
-        self._restart_count: Optional[int] = None
-        # The user experience analytics device startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-        self._startup_performance_score: Optional[float] = None
-    
-    @property
-    def average_blue_screens(self,) -> Optional[float]:
-        """
-        Gets the averageBlueScreens property value. Average (mean) number of Blue Screens per device in the last 30 days. Valid values 0 to 9999999
-        Returns: Optional[float]
-        """
-        return self._average_blue_screens
-    
-    @average_blue_screens.setter
-    def average_blue_screens(self,value: Optional[float] = None) -> None:
-        """
-        Sets the averageBlueScreens property value. Average (mean) number of Blue Screens per device in the last 30 days. Valid values 0 to 9999999
-        Args:
-            value: Value to set for the average_blue_screens property.
-        """
-        self._average_blue_screens = value
-    
-    @property
-    def average_restarts(self,) -> Optional[float]:
-        """
-        Gets the averageRestarts property value. Average (mean) number of Restarts per device in the last 30 days. Valid values 0 to 9999999
-        Returns: Optional[float]
-        """
-        return self._average_restarts
-    
-    @average_restarts.setter
-    def average_restarts(self,value: Optional[float] = None) -> None:
-        """
-        Sets the averageRestarts property value. Average (mean) number of Restarts per device in the last 30 days. Valid values 0 to 9999999
-        Args:
-            value: Value to set for the average_restarts property.
-        """
-        self._average_restarts = value
-    
-    @property
-    def blue_screen_count(self,) -> Optional[int]:
-        """
-        Gets the blueScreenCount property value. Number of Blue Screens in the last 30 days. Valid values 0 to 9999999
-        Returns: Optional[int]
-        """
-        return self._blue_screen_count
-    
-    @blue_screen_count.setter
-    def blue_screen_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the blueScreenCount property value. Number of Blue Screens in the last 30 days. Valid values 0 to 9999999
-        Args:
-            value: Value to set for the blue_screen_count property.
-        """
-        self._blue_screen_count = value
-    
-    @property
-    def boot_score(self,) -> Optional[int]:
-        """
-        Gets the bootScore property value. The user experience analytics device boot score.
-        Returns: Optional[int]
-        """
-        return self._boot_score
-    
-    @boot_score.setter
-    def boot_score(self,value: Optional[int] = None) -> None:
-        """
-        Sets the bootScore property value. The user experience analytics device boot score.
-        Args:
-            value: Value to set for the boot_score property.
-        """
-        self._boot_score = value
-    
-    @property
-    def core_boot_time_in_ms(self,) -> Optional[int]:
-        """
-        Gets the coreBootTimeInMs property value. The user experience analytics device core boot time in milliseconds.
-        Returns: Optional[int]
-        """
-        return self._core_boot_time_in_ms
-    
-    @core_boot_time_in_ms.setter
-    def core_boot_time_in_ms(self,value: Optional[int] = None) -> None:
-        """
-        Sets the coreBootTimeInMs property value. The user experience analytics device core boot time in milliseconds.
-        Args:
-            value: Value to set for the core_boot_time_in_ms property.
-        """
-        self._core_boot_time_in_ms = value
-    
-    @property
-    def core_login_time_in_ms(self,) -> Optional[int]:
-        """
-        Gets the coreLoginTimeInMs property value. The user experience analytics device core login time in milliseconds.
-        Returns: Optional[int]
-        """
-        return self._core_login_time_in_ms
-    
-    @core_login_time_in_ms.setter
-    def core_login_time_in_ms(self,value: Optional[int] = None) -> None:
-        """
-        Sets the coreLoginTimeInMs property value. The user experience analytics device core login time in milliseconds.
-        Args:
-            value: Value to set for the core_login_time_in_ms property.
-        """
-        self._core_login_time_in_ms = value
+    # Average (mean) number of Blue Screens per device in the last 30 days. Valid values 0 to 9999999
+    average_blue_screens: Optional[float] = None
+    # Average (mean) number of Restarts per device in the last 30 days. Valid values 0 to 9999999
+    average_restarts: Optional[float] = None
+    # Number of Blue Screens in the last 30 days. Valid values 0 to 9999999
+    blue_screen_count: Optional[int] = None
+    # The user experience analytics device boot score.
+    boot_score: Optional[int] = None
+    # The user experience analytics device core boot time in milliseconds.
+    core_boot_time_in_ms: Optional[int] = None
+    # The user experience analytics device core login time in milliseconds.
+    core_login_time_in_ms: Optional[int] = None
+    # User experience analytics summarized device count.
+    device_count: Optional[int] = None
+    # The user experience analytics device name.
+    device_name: Optional[str] = None
+    # The diskType property
+    disk_type: Optional[disk_type.DiskType] = None
+    # The user experience analytics device group policy boot time in milliseconds.
+    group_policy_boot_time_in_ms: Optional[int] = None
+    # The user experience analytics device group policy login time in milliseconds.
+    group_policy_login_time_in_ms: Optional[int] = None
+    # The healthStatus property
+    health_status: Optional[user_experience_analytics_health_state.UserExperienceAnalyticsHealthState] = None
+    # The user experience analytics device login score.
+    login_score: Optional[int] = None
+    # The user experience analytics device manufacturer.
+    manufacturer: Optional[str] = None
+    # The user experience analytics device model.
+    model: Optional[str] = None
+    # The user experience analytics model level startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
+    model_startup_performance_score: Optional[float] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The user experience analytics device Operating System version.
+    operating_system_version: Optional[str] = None
+    # The user experience analytics responsive desktop time in milliseconds.
+    responsive_desktop_time_in_ms: Optional[int] = None
+    # Number of Restarts in the last 30 days. Valid values 0 to 9999999
+    restart_count: Optional[int] = None
+    # The user experience analytics device startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
+    startup_performance_score: Optional[float] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserExperienceAnalyticsDevicePerformance:
@@ -169,57 +64,6 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UserExperienceAnalyticsDevicePerformance()
-    
-    @property
-    def device_count(self,) -> Optional[int]:
-        """
-        Gets the deviceCount property value. User experience analytics summarized device count.
-        Returns: Optional[int]
-        """
-        return self._device_count
-    
-    @device_count.setter
-    def device_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the deviceCount property value. User experience analytics summarized device count.
-        Args:
-            value: Value to set for the device_count property.
-        """
-        self._device_count = value
-    
-    @property
-    def device_name(self,) -> Optional[str]:
-        """
-        Gets the deviceName property value. The user experience analytics device name.
-        Returns: Optional[str]
-        """
-        return self._device_name
-    
-    @device_name.setter
-    def device_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the deviceName property value. The user experience analytics device name.
-        Args:
-            value: Value to set for the device_name property.
-        """
-        self._device_name = value
-    
-    @property
-    def disk_type(self,) -> Optional[disk_type.DiskType]:
-        """
-        Gets the diskType property value. The diskType property
-        Returns: Optional[disk_type.DiskType]
-        """
-        return self._disk_type
-    
-    @disk_type.setter
-    def disk_type(self,value: Optional[disk_type.DiskType] = None) -> None:
-        """
-        Sets the diskType property value. The diskType property
-        Args:
-            value: Value to set for the disk_type property.
-        """
-        self._disk_type = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -254,176 +98,6 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def group_policy_boot_time_in_ms(self,) -> Optional[int]:
-        """
-        Gets the groupPolicyBootTimeInMs property value. The user experience analytics device group policy boot time in milliseconds.
-        Returns: Optional[int]
-        """
-        return self._group_policy_boot_time_in_ms
-    
-    @group_policy_boot_time_in_ms.setter
-    def group_policy_boot_time_in_ms(self,value: Optional[int] = None) -> None:
-        """
-        Sets the groupPolicyBootTimeInMs property value. The user experience analytics device group policy boot time in milliseconds.
-        Args:
-            value: Value to set for the group_policy_boot_time_in_ms property.
-        """
-        self._group_policy_boot_time_in_ms = value
-    
-    @property
-    def group_policy_login_time_in_ms(self,) -> Optional[int]:
-        """
-        Gets the groupPolicyLoginTimeInMs property value. The user experience analytics device group policy login time in milliseconds.
-        Returns: Optional[int]
-        """
-        return self._group_policy_login_time_in_ms
-    
-    @group_policy_login_time_in_ms.setter
-    def group_policy_login_time_in_ms(self,value: Optional[int] = None) -> None:
-        """
-        Sets the groupPolicyLoginTimeInMs property value. The user experience analytics device group policy login time in milliseconds.
-        Args:
-            value: Value to set for the group_policy_login_time_in_ms property.
-        """
-        self._group_policy_login_time_in_ms = value
-    
-    @property
-    def health_status(self,) -> Optional[user_experience_analytics_health_state.UserExperienceAnalyticsHealthState]:
-        """
-        Gets the healthStatus property value. The healthStatus property
-        Returns: Optional[user_experience_analytics_health_state.UserExperienceAnalyticsHealthState]
-        """
-        return self._health_status
-    
-    @health_status.setter
-    def health_status(self,value: Optional[user_experience_analytics_health_state.UserExperienceAnalyticsHealthState] = None) -> None:
-        """
-        Sets the healthStatus property value. The healthStatus property
-        Args:
-            value: Value to set for the health_status property.
-        """
-        self._health_status = value
-    
-    @property
-    def login_score(self,) -> Optional[int]:
-        """
-        Gets the loginScore property value. The user experience analytics device login score.
-        Returns: Optional[int]
-        """
-        return self._login_score
-    
-    @login_score.setter
-    def login_score(self,value: Optional[int] = None) -> None:
-        """
-        Sets the loginScore property value. The user experience analytics device login score.
-        Args:
-            value: Value to set for the login_score property.
-        """
-        self._login_score = value
-    
-    @property
-    def manufacturer(self,) -> Optional[str]:
-        """
-        Gets the manufacturer property value. The user experience analytics device manufacturer.
-        Returns: Optional[str]
-        """
-        return self._manufacturer
-    
-    @manufacturer.setter
-    def manufacturer(self,value: Optional[str] = None) -> None:
-        """
-        Sets the manufacturer property value. The user experience analytics device manufacturer.
-        Args:
-            value: Value to set for the manufacturer property.
-        """
-        self._manufacturer = value
-    
-    @property
-    def model(self,) -> Optional[str]:
-        """
-        Gets the model property value. The user experience analytics device model.
-        Returns: Optional[str]
-        """
-        return self._model
-    
-    @model.setter
-    def model(self,value: Optional[str] = None) -> None:
-        """
-        Sets the model property value. The user experience analytics device model.
-        Args:
-            value: Value to set for the model property.
-        """
-        self._model = value
-    
-    @property
-    def model_startup_performance_score(self,) -> Optional[float]:
-        """
-        Gets the modelStartupPerformanceScore property value. The user experience analytics model level startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-        Returns: Optional[float]
-        """
-        return self._model_startup_performance_score
-    
-    @model_startup_performance_score.setter
-    def model_startup_performance_score(self,value: Optional[float] = None) -> None:
-        """
-        Sets the modelStartupPerformanceScore property value. The user experience analytics model level startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-        Args:
-            value: Value to set for the model_startup_performance_score property.
-        """
-        self._model_startup_performance_score = value
-    
-    @property
-    def operating_system_version(self,) -> Optional[str]:
-        """
-        Gets the operatingSystemVersion property value. The user experience analytics device Operating System version.
-        Returns: Optional[str]
-        """
-        return self._operating_system_version
-    
-    @operating_system_version.setter
-    def operating_system_version(self,value: Optional[str] = None) -> None:
-        """
-        Sets the operatingSystemVersion property value. The user experience analytics device Operating System version.
-        Args:
-            value: Value to set for the operating_system_version property.
-        """
-        self._operating_system_version = value
-    
-    @property
-    def responsive_desktop_time_in_ms(self,) -> Optional[int]:
-        """
-        Gets the responsiveDesktopTimeInMs property value. The user experience analytics responsive desktop time in milliseconds.
-        Returns: Optional[int]
-        """
-        return self._responsive_desktop_time_in_ms
-    
-    @responsive_desktop_time_in_ms.setter
-    def responsive_desktop_time_in_ms(self,value: Optional[int] = None) -> None:
-        """
-        Sets the responsiveDesktopTimeInMs property value. The user experience analytics responsive desktop time in milliseconds.
-        Args:
-            value: Value to set for the responsive_desktop_time_in_ms property.
-        """
-        self._responsive_desktop_time_in_ms = value
-    
-    @property
-    def restart_count(self,) -> Optional[int]:
-        """
-        Gets the restartCount property value. Number of Restarts in the last 30 days. Valid values 0 to 9999999
-        Returns: Optional[int]
-        """
-        return self._restart_count
-    
-    @restart_count.setter
-    def restart_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the restartCount property value. Number of Restarts in the last 30 days. Valid values 0 to 9999999
-        Args:
-            value: Value to set for the restart_count property.
-        """
-        self._restart_count = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -453,22 +127,5 @@ class UserExperienceAnalyticsDevicePerformance(entity.Entity):
         writer.write_int_value("responsiveDesktopTimeInMs", self.responsive_desktop_time_in_ms)
         writer.write_int_value("restartCount", self.restart_count)
         writer.write_float_value("startupPerformanceScore", self.startup_performance_score)
-    
-    @property
-    def startup_performance_score(self,) -> Optional[float]:
-        """
-        Gets the startupPerformanceScore property value. The user experience analytics device startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-        Returns: Optional[float]
-        """
-        return self._startup_performance_score
-    
-    @startup_performance_score.setter
-    def startup_performance_score(self,value: Optional[float] = None) -> None:
-        """
-        Sets the startupPerformanceScore property value. The user experience analytics device startup performance score. Valid values -1.79769313486232E+308 to 1.79769313486232E+308
-        Args:
-            value: Value to set for the startup_performance_score property.
-        """
-        self._startup_performance_score = value
     
 

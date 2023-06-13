@@ -1,40 +1,21 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class ChatInfo(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new chatInfo and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The unique identifier of a message in a Microsoft Teams channel.
-        self._message_id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The ID of the reply message.
-        self._reply_chain_message_id: Optional[str] = None
-        # The unique identifier for a thread in Microsoft Teams.
-        self._thread_id: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The unique identifier of a message in a Microsoft Teams channel.
+    message_id: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The ID of the reply message.
+    reply_chain_message_id: Optional[str] = None
+    # The unique identifier for a thread in Microsoft Teams.
+    thread_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatInfo:
@@ -61,57 +42,6 @@ class ChatInfo(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def message_id(self,) -> Optional[str]:
-        """
-        Gets the messageId property value. The unique identifier of a message in a Microsoft Teams channel.
-        Returns: Optional[str]
-        """
-        return self._message_id
-    
-    @message_id.setter
-    def message_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the messageId property value. The unique identifier of a message in a Microsoft Teams channel.
-        Args:
-            value: Value to set for the message_id property.
-        """
-        self._message_id = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def reply_chain_message_id(self,) -> Optional[str]:
-        """
-        Gets the replyChainMessageId property value. The ID of the reply message.
-        Returns: Optional[str]
-        """
-        return self._reply_chain_message_id
-    
-    @reply_chain_message_id.setter
-    def reply_chain_message_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the replyChainMessageId property value. The ID of the reply message.
-        Args:
-            value: Value to set for the reply_chain_message_id property.
-        """
-        self._reply_chain_message_id = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -125,22 +55,5 @@ class ChatInfo(AdditionalDataHolder, Parsable):
         writer.write_str_value("replyChainMessageId", self.reply_chain_message_id)
         writer.write_str_value("threadId", self.thread_id)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def thread_id(self,) -> Optional[str]:
-        """
-        Gets the threadId property value. The unique identifier for a thread in Microsoft Teams.
-        Returns: Optional[str]
-        """
-        return self._thread_id
-    
-    @thread_id.setter
-    def thread_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the threadId property value. The unique identifier for a thread in Microsoft Teams.
-        Args:
-            value: Value to set for the thread_id property.
-        """
-        self._thread_id = value
     
 

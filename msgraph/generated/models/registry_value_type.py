@@ -1,6 +1,6 @@
 from enum import Enum
 
-class RegistryValueType(Enum):
+class RegistryValueType(str, Enum):
     Unknown = "unknown",
     Binary = "binary",
     Dword = "dword",

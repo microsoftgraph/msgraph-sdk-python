@@ -1,73 +1,20 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from .....models import managed_mobile_app, targeted_managed_app_group_type
 
+@dataclass
 class TargetAppsPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new targetAppsPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The appGroupType property
-        self._app_group_type: Optional[targeted_managed_app_group_type.TargetedManagedAppGroupType] = None
-        # The apps property
-        self._apps: Optional[List[managed_mobile_app.ManagedMobileApp]] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def app_group_type(self,) -> Optional[targeted_managed_app_group_type.TargetedManagedAppGroupType]:
-        """
-        Gets the appGroupType property value. The appGroupType property
-        Returns: Optional[targeted_managed_app_group_type.TargetedManagedAppGroupType]
-        """
-        return self._app_group_type
-    
-    @app_group_type.setter
-    def app_group_type(self,value: Optional[targeted_managed_app_group_type.TargetedManagedAppGroupType] = None) -> None:
-        """
-        Sets the appGroupType property value. The appGroupType property
-        Args:
-            value: Value to set for the app_group_type property.
-        """
-        self._app_group_type = value
-    
-    @property
-    def apps(self,) -> Optional[List[managed_mobile_app.ManagedMobileApp]]:
-        """
-        Gets the apps property value. The apps property
-        Returns: Optional[List[managed_mobile_app.ManagedMobileApp]]
-        """
-        return self._apps
-    
-    @apps.setter
-    def apps(self,value: Optional[List[managed_mobile_app.ManagedMobileApp]] = None) -> None:
-        """
-        Sets the apps property value. The apps property
-        Args:
-            value: Value to set for the apps property.
-        """
-        self._apps = value
+    # The appGroupType property
+    app_group_type: Optional[targeted_managed_app_group_type.TargetedManagedAppGroupType] = None
+    # The apps property
+    apps: Optional[List[managed_mobile_app.ManagedMobileApp]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TargetAppsPostRequestBody:

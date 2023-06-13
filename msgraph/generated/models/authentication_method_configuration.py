@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class AuthenticationMethodConfiguration(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AuthenticationMethodConfiguration and sets the default values.
-        """
-        super().__init__()
-        # Groups of users that are excluded from a policy.
-        self._exclude_targets: Optional[List[exclude_target.ExcludeTarget]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The state of the policy. Possible values are: enabled, disabled.
-        self._state: Optional[authentication_method_state.AuthenticationMethodState] = None
+    # Groups of users that are excluded from a policy.
+    exclude_targets: Optional[List[exclude_target.ExcludeTarget]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The state of the policy. Possible values are: enabled, disabled.
+    state: Optional[authentication_method_state.AuthenticationMethodState] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodConfiguration:
@@ -67,23 +64,6 @@ class AuthenticationMethodConfiguration(entity.Entity):
                 return x509_certificate_authentication_method_configuration.X509CertificateAuthenticationMethodConfiguration()
         return AuthenticationMethodConfiguration()
     
-    @property
-    def exclude_targets(self,) -> Optional[List[exclude_target.ExcludeTarget]]:
-        """
-        Gets the excludeTargets property value. Groups of users that are excluded from a policy.
-        Returns: Optional[List[exclude_target.ExcludeTarget]]
-        """
-        return self._exclude_targets
-    
-    @exclude_targets.setter
-    def exclude_targets(self,value: Optional[List[exclude_target.ExcludeTarget]] = None) -> None:
-        """
-        Sets the excludeTargets property value. Groups of users that are excluded from a policy.
-        Args:
-            value: Value to set for the exclude_targets property.
-        """
-        self._exclude_targets = value
-    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -110,22 +90,5 @@ class AuthenticationMethodConfiguration(entity.Entity):
         super().serialize(writer)
         writer.write_collection_of_object_values("excludeTargets", self.exclude_targets)
         writer.write_enum_value("state", self.state)
-    
-    @property
-    def state(self,) -> Optional[authentication_method_state.AuthenticationMethodState]:
-        """
-        Gets the state property value. The state of the policy. Possible values are: enabled, disabled.
-        Returns: Optional[authentication_method_state.AuthenticationMethodState]
-        """
-        return self._state
-    
-    @state.setter
-    def state(self,value: Optional[authentication_method_state.AuthenticationMethodState] = None) -> None:
-        """
-        Sets the state property value. The state of the policy. Possible values are: enabled, disabled.
-        Args:
-            value: Value to set for the state property.
-        """
-        self._state = value
     
 

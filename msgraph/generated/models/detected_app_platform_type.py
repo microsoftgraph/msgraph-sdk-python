@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DetectedAppPlatformType(Enum):
+class DetectedAppPlatformType(str, Enum):
     # Default. Set to unknown when platform cannot be determined.
     Unknown = "unknown",
     # Indicates that the platform of the detected application is Windows.

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import managed_device_mobile_app_configuration
 
+@dataclass
 class IosMobileAppConfiguration(managed_device_mobile_app_configuration.ManagedDeviceMobileAppConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IosMobileAppConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.iosMobileAppConfiguration"
-        # mdm app configuration Base64 binary.
-        self._encoded_setting_xml: Optional[bytes] = None
-        # app configuration setting items.
-        self._settings: Optional[List[app_configuration_setting_item.AppConfigurationSettingItem]] = None
+    odata_type = "#microsoft.graph.iosMobileAppConfiguration"
+    # mdm app configuration Base64 binary.
+    encoded_setting_xml: Optional[bytes] = None
+    # app configuration setting items.
+    settings: Optional[List[app_configuration_setting_item.AppConfigurationSettingItem]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosMobileAppConfiguration:
@@ -30,23 +27,6 @@ class IosMobileAppConfiguration(managed_device_mobile_app_configuration.ManagedD
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return IosMobileAppConfiguration()
-    
-    @property
-    def encoded_setting_xml(self,) -> Optional[bytes]:
-        """
-        Gets the encodedSettingXml property value. mdm app configuration Base64 binary.
-        Returns: Optional[bytes]
-        """
-        return self._encoded_setting_xml
-    
-    @encoded_setting_xml.setter
-    def encoded_setting_xml(self,value: Optional[bytes] = None) -> None:
-        """
-        Sets the encodedSettingXml property value. mdm app configuration Base64 binary.
-        Args:
-            value: Value to set for the encoded_setting_xml property.
-        """
-        self._encoded_setting_xml = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -74,22 +54,5 @@ class IosMobileAppConfiguration(managed_device_mobile_app_configuration.ManagedD
         super().serialize(writer)
         writer.write_object_value("encodedSettingXml", self.encoded_setting_xml)
         writer.write_collection_of_object_values("settings", self.settings)
-    
-    @property
-    def settings(self,) -> Optional[List[app_configuration_setting_item.AppConfigurationSettingItem]]:
-        """
-        Gets the settings property value. app configuration setting items.
-        Returns: Optional[List[app_configuration_setting_item.AppConfigurationSettingItem]]
-        """
-        return self._settings
-    
-    @settings.setter
-    def settings(self,value: Optional[List[app_configuration_setting_item.AppConfigurationSettingItem]] = None) -> None:
-        """
-        Sets the settings property value. app configuration setting items.
-        Args:
-            value: Value to set for the settings property.
-        """
-        self._settings = value
     
 

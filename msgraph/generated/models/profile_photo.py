@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ProfilePhoto(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new profilePhoto and sets the default values.
-        """
-        super().__init__()
-        # The height of the photo. Read-only.
-        self._height: Optional[int] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The width of the photo. Read-only.
-        self._width: Optional[int] = None
+    # The height of the photo. Read-only.
+    height: Optional[int] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The width of the photo. Read-only.
+    width: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProfilePhoto:
@@ -47,23 +44,6 @@ class ProfilePhoto(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def height(self,) -> Optional[int]:
-        """
-        Gets the height property value. The height of the photo. Read-only.
-        Returns: Optional[int]
-        """
-        return self._height
-    
-    @height.setter
-    def height(self,value: Optional[int] = None) -> None:
-        """
-        Sets the height property value. The height of the photo. Read-only.
-        Args:
-            value: Value to set for the height property.
-        """
-        self._height = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -75,22 +55,5 @@ class ProfilePhoto(entity.Entity):
         super().serialize(writer)
         writer.write_int_value("height", self.height)
         writer.write_int_value("width", self.width)
-    
-    @property
-    def width(self,) -> Optional[int]:
-        """
-        Gets the width property value. The width of the photo. Read-only.
-        Returns: Optional[int]
-        """
-        return self._width
-    
-    @width.setter
-    def width(self,value: Optional[int] = None) -> None:
-        """
-        Sets the width property value. The width of the photo. Read-only.
-        Args:
-            value: Value to set for the width property.
-        """
-        self._width = value
     
 

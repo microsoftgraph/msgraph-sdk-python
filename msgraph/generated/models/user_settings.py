@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,54 +8,16 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class UserSettings(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new userSettings and sets the default values.
-        """
-        super().__init__()
-        # The contributionToContentDiscoveryAsOrganizationDisabled property
-        self._contribution_to_content_discovery_as_organization_disabled: Optional[bool] = None
-        # The contributionToContentDiscoveryDisabled property
-        self._contribution_to_content_discovery_disabled: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The shiftPreferences property
-        self._shift_preferences: Optional[shift_preferences.ShiftPreferences] = None
-    
-    @property
-    def contribution_to_content_discovery_as_organization_disabled(self,) -> Optional[bool]:
-        """
-        Gets the contributionToContentDiscoveryAsOrganizationDisabled property value. The contributionToContentDiscoveryAsOrganizationDisabled property
-        Returns: Optional[bool]
-        """
-        return self._contribution_to_content_discovery_as_organization_disabled
-    
-    @contribution_to_content_discovery_as_organization_disabled.setter
-    def contribution_to_content_discovery_as_organization_disabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the contributionToContentDiscoveryAsOrganizationDisabled property value. The contributionToContentDiscoveryAsOrganizationDisabled property
-        Args:
-            value: Value to set for the contribution_to_content_discovery_as_organization_disabled property.
-        """
-        self._contribution_to_content_discovery_as_organization_disabled = value
-    
-    @property
-    def contribution_to_content_discovery_disabled(self,) -> Optional[bool]:
-        """
-        Gets the contributionToContentDiscoveryDisabled property value. The contributionToContentDiscoveryDisabled property
-        Returns: Optional[bool]
-        """
-        return self._contribution_to_content_discovery_disabled
-    
-    @contribution_to_content_discovery_disabled.setter
-    def contribution_to_content_discovery_disabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the contributionToContentDiscoveryDisabled property value. The contributionToContentDiscoveryDisabled property
-        Args:
-            value: Value to set for the contribution_to_content_discovery_disabled property.
-        """
-        self._contribution_to_content_discovery_disabled = value
+    # The contributionToContentDiscoveryAsOrganizationDisabled property
+    contribution_to_content_discovery_as_organization_disabled: Optional[bool] = None
+    # The contributionToContentDiscoveryDisabled property
+    contribution_to_content_discovery_disabled: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The shiftPreferences property
+    shift_preferences: Optional[shift_preferences.ShiftPreferences] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UserSettings:
@@ -96,22 +59,5 @@ class UserSettings(entity.Entity):
         writer.write_bool_value("contributionToContentDiscoveryAsOrganizationDisabled", self.contribution_to_content_discovery_as_organization_disabled)
         writer.write_bool_value("contributionToContentDiscoveryDisabled", self.contribution_to_content_discovery_disabled)
         writer.write_object_value("shiftPreferences", self.shift_preferences)
-    
-    @property
-    def shift_preferences(self,) -> Optional[shift_preferences.ShiftPreferences]:
-        """
-        Gets the shiftPreferences property value. The shiftPreferences property
-        Returns: Optional[shift_preferences.ShiftPreferences]
-        """
-        return self._shift_preferences
-    
-    @shift_preferences.setter
-    def shift_preferences(self,value: Optional[shift_preferences.ShiftPreferences] = None) -> None:
-        """
-        Sets the shiftPreferences property value. The shiftPreferences property
-        Args:
-            value: Value to set for the shift_preferences property.
-        """
-        self._shift_preferences = value
     
 

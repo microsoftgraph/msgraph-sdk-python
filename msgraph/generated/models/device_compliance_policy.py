@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,75 +9,37 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class DeviceCompliancePolicy(entity.Entity):
     """
     This is the base class for Compliance policy. Compliance policies are platform specific and individual per-platform compliance policies inherit from here. 
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceCompliancePolicy and sets the default values.
-        """
-        super().__init__()
-        # The collection of assignments for this compliance policy.
-        self._assignments: Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]] = None
-        # DateTime the object was created.
-        self._created_date_time: Optional[datetime] = None
-        # Admin provided description of the Device Configuration.
-        self._description: Optional[str] = None
-        # Compliance Setting State Device Summary
-        self._device_setting_state_summaries: Optional[List[setting_state_device_summary.SettingStateDeviceSummary]] = None
-        # Device compliance devices status overview
-        self._device_status_overview: Optional[device_compliance_device_overview.DeviceComplianceDeviceOverview] = None
-        # List of DeviceComplianceDeviceStatus.
-        self._device_statuses: Optional[List[device_compliance_device_status.DeviceComplianceDeviceStatus]] = None
-        # Admin provided name of the device configuration.
-        self._display_name: Optional[str] = None
-        # DateTime the object was last modified.
-        self._last_modified_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
-        self._scheduled_actions_for_rule: Optional[List[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]] = None
-        # Device compliance users status overview
-        self._user_status_overview: Optional[device_compliance_user_overview.DeviceComplianceUserOverview] = None
-        # List of DeviceComplianceUserStatus.
-        self._user_statuses: Optional[List[device_compliance_user_status.DeviceComplianceUserStatus]] = None
-        # Version of the device configuration.
-        self._version: Optional[int] = None
-    
-    @property
-    def assignments(self,) -> Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]]:
-        """
-        Gets the assignments property value. The collection of assignments for this compliance policy.
-        Returns: Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]]
-        """
-        return self._assignments
-    
-    @assignments.setter
-    def assignments(self,value: Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]] = None) -> None:
-        """
-        Sets the assignments property value. The collection of assignments for this compliance policy.
-        Args:
-            value: Value to set for the assignments property.
-        """
-        self._assignments = value
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. DateTime the object was created.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. DateTime the object was created.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    # The collection of assignments for this compliance policy.
+    assignments: Optional[List[device_compliance_policy_assignment.DeviceCompliancePolicyAssignment]] = None
+    # DateTime the object was created.
+    created_date_time: Optional[datetime] = None
+    # Admin provided description of the Device Configuration.
+    description: Optional[str] = None
+    # Compliance Setting State Device Summary
+    device_setting_state_summaries: Optional[List[setting_state_device_summary.SettingStateDeviceSummary]] = None
+    # Device compliance devices status overview
+    device_status_overview: Optional[device_compliance_device_overview.DeviceComplianceDeviceOverview] = None
+    # List of DeviceComplianceDeviceStatus.
+    device_statuses: Optional[List[device_compliance_device_status.DeviceComplianceDeviceStatus]] = None
+    # Admin provided name of the device configuration.
+    display_name: Optional[str] = None
+    # DateTime the object was last modified.
+    last_modified_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
+    scheduled_actions_for_rule: Optional[List[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]] = None
+    # Device compliance users status overview
+    user_status_overview: Optional[device_compliance_user_overview.DeviceComplianceUserOverview] = None
+    # List of DeviceComplianceUserStatus.
+    user_statuses: Optional[List[device_compliance_user_status.DeviceComplianceUserStatus]] = None
+    # Version of the device configuration.
+    version: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceCompliancePolicy:
@@ -125,91 +88,6 @@ class DeviceCompliancePolicy(entity.Entity):
                 return windows_phone81_compliance_policy.WindowsPhone81CompliancePolicy()
         return DeviceCompliancePolicy()
     
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. Admin provided description of the Device Configuration.
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. Admin provided description of the Device Configuration.
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
-    
-    @property
-    def device_setting_state_summaries(self,) -> Optional[List[setting_state_device_summary.SettingStateDeviceSummary]]:
-        """
-        Gets the deviceSettingStateSummaries property value. Compliance Setting State Device Summary
-        Returns: Optional[List[setting_state_device_summary.SettingStateDeviceSummary]]
-        """
-        return self._device_setting_state_summaries
-    
-    @device_setting_state_summaries.setter
-    def device_setting_state_summaries(self,value: Optional[List[setting_state_device_summary.SettingStateDeviceSummary]] = None) -> None:
-        """
-        Sets the deviceSettingStateSummaries property value. Compliance Setting State Device Summary
-        Args:
-            value: Value to set for the device_setting_state_summaries property.
-        """
-        self._device_setting_state_summaries = value
-    
-    @property
-    def device_status_overview(self,) -> Optional[device_compliance_device_overview.DeviceComplianceDeviceOverview]:
-        """
-        Gets the deviceStatusOverview property value. Device compliance devices status overview
-        Returns: Optional[device_compliance_device_overview.DeviceComplianceDeviceOverview]
-        """
-        return self._device_status_overview
-    
-    @device_status_overview.setter
-    def device_status_overview(self,value: Optional[device_compliance_device_overview.DeviceComplianceDeviceOverview] = None) -> None:
-        """
-        Sets the deviceStatusOverview property value. Device compliance devices status overview
-        Args:
-            value: Value to set for the device_status_overview property.
-        """
-        self._device_status_overview = value
-    
-    @property
-    def device_statuses(self,) -> Optional[List[device_compliance_device_status.DeviceComplianceDeviceStatus]]:
-        """
-        Gets the deviceStatuses property value. List of DeviceComplianceDeviceStatus.
-        Returns: Optional[List[device_compliance_device_status.DeviceComplianceDeviceStatus]]
-        """
-        return self._device_statuses
-    
-    @device_statuses.setter
-    def device_statuses(self,value: Optional[List[device_compliance_device_status.DeviceComplianceDeviceStatus]] = None) -> None:
-        """
-        Sets the deviceStatuses property value. List of DeviceComplianceDeviceStatus.
-        Args:
-            value: Value to set for the device_statuses property.
-        """
-        self._device_statuses = value
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Admin provided name of the device configuration.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Admin provided name of the device configuration.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
@@ -235,40 +113,6 @@ class DeviceCompliancePolicy(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def last_modified_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastModifiedDateTime property value. DateTime the object was last modified.
-        Returns: Optional[datetime]
-        """
-        return self._last_modified_date_time
-    
-    @last_modified_date_time.setter
-    def last_modified_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastModifiedDateTime property value. DateTime the object was last modified.
-        Args:
-            value: Value to set for the last_modified_date_time property.
-        """
-        self._last_modified_date_time = value
-    
-    @property
-    def scheduled_actions_for_rule(self,) -> Optional[List[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]]:
-        """
-        Gets the scheduledActionsForRule property value. The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
-        Returns: Optional[List[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]]
-        """
-        return self._scheduled_actions_for_rule
-    
-    @scheduled_actions_for_rule.setter
-    def scheduled_actions_for_rule(self,value: Optional[List[device_compliance_scheduled_action_for_rule.DeviceComplianceScheduledActionForRule]] = None) -> None:
-        """
-        Sets the scheduledActionsForRule property value. The list of scheduled action per rule for this compliance policy. This is a required property when creating any individual per-platform compliance policies.
-        Args:
-            value: Value to set for the scheduled_actions_for_rule property.
-        """
-        self._scheduled_actions_for_rule = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -290,56 +134,5 @@ class DeviceCompliancePolicy(entity.Entity):
         writer.write_collection_of_object_values("userStatuses", self.user_statuses)
         writer.write_object_value("userStatusOverview", self.user_status_overview)
         writer.write_int_value("version", self.version)
-    
-    @property
-    def user_status_overview(self,) -> Optional[device_compliance_user_overview.DeviceComplianceUserOverview]:
-        """
-        Gets the userStatusOverview property value. Device compliance users status overview
-        Returns: Optional[device_compliance_user_overview.DeviceComplianceUserOverview]
-        """
-        return self._user_status_overview
-    
-    @user_status_overview.setter
-    def user_status_overview(self,value: Optional[device_compliance_user_overview.DeviceComplianceUserOverview] = None) -> None:
-        """
-        Sets the userStatusOverview property value. Device compliance users status overview
-        Args:
-            value: Value to set for the user_status_overview property.
-        """
-        self._user_status_overview = value
-    
-    @property
-    def user_statuses(self,) -> Optional[List[device_compliance_user_status.DeviceComplianceUserStatus]]:
-        """
-        Gets the userStatuses property value. List of DeviceComplianceUserStatus.
-        Returns: Optional[List[device_compliance_user_status.DeviceComplianceUserStatus]]
-        """
-        return self._user_statuses
-    
-    @user_statuses.setter
-    def user_statuses(self,value: Optional[List[device_compliance_user_status.DeviceComplianceUserStatus]] = None) -> None:
-        """
-        Sets the userStatuses property value. List of DeviceComplianceUserStatus.
-        Args:
-            value: Value to set for the user_statuses property.
-        """
-        self._user_statuses = value
-    
-    @property
-    def version(self,) -> Optional[int]:
-        """
-        Gets the version property value. Version of the device configuration.
-        Returns: Optional[int]
-        """
-        return self._version
-    
-    @version.setter
-    def version(self,value: Optional[int] = None) -> None:
-        """
-        Sets the version property value. Version of the device configuration.
-        Args:
-            value: Value to set for the version property.
-        """
-        self._version = value
     
 

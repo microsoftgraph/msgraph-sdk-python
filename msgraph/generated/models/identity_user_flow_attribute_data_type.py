@@ -1,6 +1,6 @@
 from enum import Enum
 
-class IdentityUserFlowAttributeDataType(Enum):
+class IdentityUserFlowAttributeDataType(str, Enum):
     String = "string",
     Boolean = "boolean",
     Int64 = "int64",

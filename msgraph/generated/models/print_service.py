@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class PrintService(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new printService and sets the default values.
-        """
-        super().__init__()
-        # Endpoints that can be used to access the service. Read-only. Nullable.
-        self._endpoints: Optional[List[print_service_endpoint.PrintServiceEndpoint]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # Endpoints that can be used to access the service. Read-only. Nullable.
+    endpoints: Optional[List[print_service_endpoint.PrintServiceEndpoint]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PrintService:
@@ -29,23 +26,6 @@ class PrintService(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return PrintService()
-    
-    @property
-    def endpoints(self,) -> Optional[List[print_service_endpoint.PrintServiceEndpoint]]:
-        """
-        Gets the endpoints property value. Endpoints that can be used to access the service. Read-only. Nullable.
-        Returns: Optional[List[print_service_endpoint.PrintServiceEndpoint]]
-        """
-        return self._endpoints
-    
-    @endpoints.setter
-    def endpoints(self,value: Optional[List[print_service_endpoint.PrintServiceEndpoint]] = None) -> None:
-        """
-        Sets the endpoints property value. Endpoints that can be used to access the service. Read-only. Nullable.
-        Args:
-            value: Value to set for the endpoints property.
-        """
-        self._endpoints = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """

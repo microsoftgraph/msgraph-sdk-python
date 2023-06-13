@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DirectoryDefinitionDiscoverabilities(Enum):
+class DirectoryDefinitionDiscoverabilities(str, Enum):
     None_ = "None",
     AttributeNames = "AttributeNames",
     AttributeDataTypes = "AttributeDataTypes",

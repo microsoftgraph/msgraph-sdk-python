@@ -1,39 +1,20 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class IncompleteData(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new incompleteData and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The service does not have source data before the specified time.
-        self._missing_data_before_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Some data was not recorded due to excessive activity.
-        self._was_throttled: Optional[bool] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The service does not have source data before the specified time.
+    missing_data_before_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Some data was not recorded due to excessive activity.
+    was_throttled: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IncompleteData:
@@ -59,40 +40,6 @@ class IncompleteData(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def missing_data_before_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the missingDataBeforeDateTime property value. The service does not have source data before the specified time.
-        Returns: Optional[datetime]
-        """
-        return self._missing_data_before_date_time
-    
-    @missing_data_before_date_time.setter
-    def missing_data_before_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the missingDataBeforeDateTime property value. The service does not have source data before the specified time.
-        Args:
-            value: Value to set for the missing_data_before_date_time property.
-        """
-        self._missing_data_before_date_time = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -105,22 +52,5 @@ class IncompleteData(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_bool_value("wasThrottled", self.was_throttled)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def was_throttled(self,) -> Optional[bool]:
-        """
-        Gets the wasThrottled property value. Some data was not recorded due to excessive activity.
-        Returns: Optional[bool]
-        """
-        return self._was_throttled
-    
-    @was_throttled.setter
-    def was_throttled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the wasThrottled property value. Some data was not recorded due to excessive activity.
-        Args:
-            value: Value to set for the was_throttled property.
-        """
-        self._was_throttled = value
     
 

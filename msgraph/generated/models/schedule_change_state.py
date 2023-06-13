@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ScheduleChangeState(Enum):
+class ScheduleChangeState(str, Enum):
     Pending = "pending",
     Approved = "approved",
     Declined = "declined",

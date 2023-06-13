@@ -1,6 +1,6 @@
 from enum import Enum
 
-class CallState(Enum):
+class CallState(str, Enum):
     Incoming = "incoming",
     Establishing = "establishing",
     Established = "established",

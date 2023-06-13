@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,34 +9,13 @@ if TYPE_CHECKING:
 
 from . import authentication_method
 
+@dataclass
 class PasswordAuthenticationMethod(authentication_method.AuthenticationMethod):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new PasswordAuthenticationMethod and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.passwordAuthenticationMethod"
-        # The date and time when this password was last updated. This property is currently not populated. Read-only. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._created_date_time: Optional[datetime] = None
-        # For security, the password is always returned as null from a LIST or GET operation.
-        self._password: Optional[str] = None
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. The date and time when this password was last updated. This property is currently not populated. Read-only. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. The date and time when this password was last updated. This property is currently not populated. Read-only. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    odata_type = "#microsoft.graph.passwordAuthenticationMethod"
+    # The date and time when this password was last updated. This property is currently not populated. Read-only. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    created_date_time: Optional[datetime] = None
+    # For security, the password is always returned as null from a LIST or GET operation.
+    password: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PasswordAuthenticationMethod:
@@ -63,23 +43,6 @@ class PasswordAuthenticationMethod(authentication_method.AuthenticationMethod):
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def password(self,) -> Optional[str]:
-        """
-        Gets the password property value. For security, the password is always returned as null from a LIST or GET operation.
-        Returns: Optional[str]
-        """
-        return self._password
-    
-    @password.setter
-    def password(self,value: Optional[str] = None) -> None:
-        """
-        Sets the password property value. For security, the password is always returned as null from a LIST or GET operation.
-        Args:
-            value: Value to set for the password property.
-        """
-        self._password = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

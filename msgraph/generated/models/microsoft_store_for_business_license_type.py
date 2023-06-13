@@ -1,6 +1,6 @@
 from enum import Enum
 
-class MicrosoftStoreForBusinessLicenseType(Enum):
+class MicrosoftStoreForBusinessLicenseType(str, Enum):
     Offline = "offline",
     Online = "online",
 

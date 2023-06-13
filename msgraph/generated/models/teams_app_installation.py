@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class TeamsAppInstallation(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new teamsAppInstallation and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The app that is installed.
-        self._teams_app: Optional[teams_app.TeamsApp] = None
-        # The details of this version of the app.
-        self._teams_app_definition: Optional[teams_app_definition.TeamsAppDefinition] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The app that is installed.
+    teams_app: Optional[teams_app.TeamsApp] = None
+    # The details of this version of the app.
+    teams_app_definition: Optional[teams_app_definition.TeamsAppDefinition] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamsAppInstallation:
@@ -65,39 +62,5 @@ class TeamsAppInstallation(entity.Entity):
         super().serialize(writer)
         writer.write_object_value("teamsApp", self.teams_app)
         writer.write_object_value("teamsAppDefinition", self.teams_app_definition)
-    
-    @property
-    def teams_app(self,) -> Optional[teams_app.TeamsApp]:
-        """
-        Gets the teamsApp property value. The app that is installed.
-        Returns: Optional[teams_app.TeamsApp]
-        """
-        return self._teams_app
-    
-    @teams_app.setter
-    def teams_app(self,value: Optional[teams_app.TeamsApp] = None) -> None:
-        """
-        Sets the teamsApp property value. The app that is installed.
-        Args:
-            value: Value to set for the teams_app property.
-        """
-        self._teams_app = value
-    
-    @property
-    def teams_app_definition(self,) -> Optional[teams_app_definition.TeamsAppDefinition]:
-        """
-        Gets the teamsAppDefinition property value. The details of this version of the app.
-        Returns: Optional[teams_app_definition.TeamsAppDefinition]
-        """
-        return self._teams_app_definition
-    
-    @teams_app_definition.setter
-    def teams_app_definition(self,value: Optional[teams_app_definition.TeamsAppDefinition] = None) -> None:
-        """
-        Sets the teamsAppDefinition property value. The details of this version of the app.
-        Args:
-            value: Value to set for the teams_app_definition property.
-        """
-        self._teams_app_definition = value
     
 

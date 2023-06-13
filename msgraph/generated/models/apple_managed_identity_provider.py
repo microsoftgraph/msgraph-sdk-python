@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,38 +8,17 @@ if TYPE_CHECKING:
 
 from . import identity_provider_base
 
+@dataclass
 class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AppleManagedIdentityProvider and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.appleManagedIdentityProvider"
-        # The certificate data, which is a long string of text from the certificate. Can be null.
-        self._certificate_data: Optional[str] = None
-        # The Apple developer identifier. Required.
-        self._developer_id: Optional[str] = None
-        # The Apple key identifier. Required.
-        self._key_id: Optional[str] = None
-        # The Apple service identifier. Required.
-        self._service_id: Optional[str] = None
-    
-    @property
-    def certificate_data(self,) -> Optional[str]:
-        """
-        Gets the certificateData property value. The certificate data, which is a long string of text from the certificate. Can be null.
-        Returns: Optional[str]
-        """
-        return self._certificate_data
-    
-    @certificate_data.setter
-    def certificate_data(self,value: Optional[str] = None) -> None:
-        """
-        Sets the certificateData property value. The certificate data, which is a long string of text from the certificate. Can be null.
-        Args:
-            value: Value to set for the certificate_data property.
-        """
-        self._certificate_data = value
+    odata_type = "#microsoft.graph.appleManagedIdentityProvider"
+    # The certificate data, which is a long string of text from the certificate. Can be null.
+    certificate_data: Optional[str] = None
+    # The Apple developer identifier. Required.
+    developer_id: Optional[str] = None
+    # The Apple key identifier. Required.
+    key_id: Optional[str] = None
+    # The Apple service identifier. Required.
+    service_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppleManagedIdentityProvider:
@@ -51,23 +31,6 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AppleManagedIdentityProvider()
-    
-    @property
-    def developer_id(self,) -> Optional[str]:
-        """
-        Gets the developerId property value. The Apple developer identifier. Required.
-        Returns: Optional[str]
-        """
-        return self._developer_id
-    
-    @developer_id.setter
-    def developer_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the developerId property value. The Apple developer identifier. Required.
-        Args:
-            value: Value to set for the developer_id property.
-        """
-        self._developer_id = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -86,23 +49,6 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         fields.update(super_fields)
         return fields
     
-    @property
-    def key_id(self,) -> Optional[str]:
-        """
-        Gets the keyId property value. The Apple key identifier. Required.
-        Returns: Optional[str]
-        """
-        return self._key_id
-    
-    @key_id.setter
-    def key_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the keyId property value. The Apple key identifier. Required.
-        Args:
-            value: Value to set for the key_id property.
-        """
-        self._key_id = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -116,22 +62,5 @@ class AppleManagedIdentityProvider(identity_provider_base.IdentityProviderBase):
         writer.write_str_value("developerId", self.developer_id)
         writer.write_str_value("keyId", self.key_id)
         writer.write_str_value("serviceId", self.service_id)
-    
-    @property
-    def service_id(self,) -> Optional[str]:
-        """
-        Gets the serviceId property value. The Apple service identifier. Required.
-        Returns: Optional[str]
-        """
-        return self._service_id
-    
-    @service_id.setter
-    def service_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the serviceId property value. The Apple service identifier. Required.
-        Args:
-            value: Value to set for the service_id property.
-        """
-        self._service_id = value
     
 

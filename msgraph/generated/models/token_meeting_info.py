@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import meeting_info
 
+@dataclass
 class TokenMeetingInfo(meeting_info.MeetingInfo):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new TokenMeetingInfo and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.tokenMeetingInfo"
-        # The token used to join the call.
-        self._token: Optional[str] = None
+    odata_type = "#microsoft.graph.tokenMeetingInfo"
+    # The token used to join the call.
+    token: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TokenMeetingInfo:
@@ -53,22 +50,5 @@ class TokenMeetingInfo(meeting_info.MeetingInfo):
             raise Exception("writer cannot be undefined")
         super().serialize(writer)
         writer.write_str_value("token", self.token)
-    
-    @property
-    def token(self,) -> Optional[str]:
-        """
-        Gets the token property value. The token used to join the call.
-        Returns: Optional[str]
-        """
-        return self._token
-    
-    @token.setter
-    def token(self,value: Optional[str] = None) -> None:
-        """
-        Sets the token property value. The token used to join the call.
-        Args:
-            value: Value to set for the token property.
-        """
-        self._token = value
     
 

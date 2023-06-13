@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,13 +8,9 @@ if TYPE_CHECKING:
 
 from . import identity_set
 
+@dataclass
 class ChatMessageReactionIdentitySet(identity_set.IdentitySet):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ChatMessageReactionIdentitySet and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.chatMessageReactionIdentitySet"
+    odata_type = "#microsoft.graph.chatMessageReactionIdentitySet"
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ChatMessageReactionIdentitySet:

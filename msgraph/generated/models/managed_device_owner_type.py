@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ManagedDeviceOwnerType(Enum):
+class ManagedDeviceOwnerType(str, Enum):
     # Unknown.
     Unknown = "unknown",
     # Owned by company.

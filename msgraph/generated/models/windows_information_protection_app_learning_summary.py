@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,57 +8,19 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class WindowsInformationProtectionAppLearningSummary(entity.Entity):
     """
     Windows Information Protection AppLearning Summary entity.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new windowsInformationProtectionAppLearningSummary and sets the default values.
-        """
-        super().__init__()
-        # Application Name
-        self._application_name: Optional[str] = None
-        # Possible types of Application
-        self._application_type: Optional[application_type.ApplicationType] = None
-        # Device Count
-        self._device_count: Optional[int] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def application_name(self,) -> Optional[str]:
-        """
-        Gets the applicationName property value. Application Name
-        Returns: Optional[str]
-        """
-        return self._application_name
-    
-    @application_name.setter
-    def application_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the applicationName property value. Application Name
-        Args:
-            value: Value to set for the application_name property.
-        """
-        self._application_name = value
-    
-    @property
-    def application_type(self,) -> Optional[application_type.ApplicationType]:
-        """
-        Gets the applicationType property value. Possible types of Application
-        Returns: Optional[application_type.ApplicationType]
-        """
-        return self._application_type
-    
-    @application_type.setter
-    def application_type(self,value: Optional[application_type.ApplicationType] = None) -> None:
-        """
-        Sets the applicationType property value. Possible types of Application
-        Args:
-            value: Value to set for the application_type property.
-        """
-        self._application_type = value
+    # Application Name
+    application_name: Optional[str] = None
+    # Possible types of Application
+    application_type: Optional[application_type.ApplicationType] = None
+    # Device Count
+    device_count: Optional[int] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionAppLearningSummary:
@@ -70,23 +33,6 @@ class WindowsInformationProtectionAppLearningSummary(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return WindowsInformationProtectionAppLearningSummary()
-    
-    @property
-    def device_count(self,) -> Optional[int]:
-        """
-        Gets the deviceCount property value. Device Count
-        Returns: Optional[int]
-        """
-        return self._device_count
-    
-    @device_count.setter
-    def device_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the deviceCount property value. Device Count
-        Args:
-            value: Value to set for the device_count property.
-        """
-        self._device_count = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """

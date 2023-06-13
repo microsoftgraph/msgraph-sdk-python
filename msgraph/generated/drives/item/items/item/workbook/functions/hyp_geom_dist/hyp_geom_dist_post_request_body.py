@@ -1,45 +1,26 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import json
 
+@dataclass
 class HypGeom_DistPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new hypGeom_DistPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The cumulative property
-        self._cumulative: Optional[json.Json] = None
-        # The numberPop property
-        self._number_pop: Optional[json.Json] = None
-        # The numberSample property
-        self._number_sample: Optional[json.Json] = None
-        # The populationS property
-        self._population_s: Optional[json.Json] = None
-        # The sampleS property
-        self._sample_s: Optional[json.Json] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The cumulative property
+    cumulative: Optional[json.Json] = None
+    # The numberPop property
+    number_pop: Optional[json.Json] = None
+    # The numberSample property
+    number_sample: Optional[json.Json] = None
+    # The populationS property
+    population_s: Optional[json.Json] = None
+    # The sampleS property
+    sample_s: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> HypGeom_DistPostRequestBody:
@@ -52,23 +33,6 @@ class HypGeom_DistPostRequestBody(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return HypGeom_DistPostRequestBody()
-    
-    @property
-    def cumulative(self,) -> Optional[json.Json]:
-        """
-        Gets the cumulative property value. The cumulative property
-        Returns: Optional[json.Json]
-        """
-        return self._cumulative
-    
-    @cumulative.setter
-    def cumulative(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the cumulative property value. The cumulative property
-        Args:
-            value: Value to set for the cumulative property.
-        """
-        self._cumulative = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -85,74 +49,6 @@ class HypGeom_DistPostRequestBody(AdditionalDataHolder, Parsable):
             "sampleS": lambda n : setattr(self, 'sample_s', n.get_object_value(json.Json)),
         }
         return fields
-    
-    @property
-    def number_pop(self,) -> Optional[json.Json]:
-        """
-        Gets the numberPop property value. The numberPop property
-        Returns: Optional[json.Json]
-        """
-        return self._number_pop
-    
-    @number_pop.setter
-    def number_pop(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the numberPop property value. The numberPop property
-        Args:
-            value: Value to set for the number_pop property.
-        """
-        self._number_pop = value
-    
-    @property
-    def number_sample(self,) -> Optional[json.Json]:
-        """
-        Gets the numberSample property value. The numberSample property
-        Returns: Optional[json.Json]
-        """
-        return self._number_sample
-    
-    @number_sample.setter
-    def number_sample(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the numberSample property value. The numberSample property
-        Args:
-            value: Value to set for the number_sample property.
-        """
-        self._number_sample = value
-    
-    @property
-    def population_s(self,) -> Optional[json.Json]:
-        """
-        Gets the populationS property value. The populationS property
-        Returns: Optional[json.Json]
-        """
-        return self._population_s
-    
-    @population_s.setter
-    def population_s(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the populationS property value. The populationS property
-        Args:
-            value: Value to set for the population_s property.
-        """
-        self._population_s = value
-    
-    @property
-    def sample_s(self,) -> Optional[json.Json]:
-        """
-        Gets the sampleS property value. The sampleS property
-        Returns: Optional[json.Json]
-        """
-        return self._sample_s
-    
-    @sample_s.setter
-    def sample_s(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the sampleS property value. The sampleS property
-        Args:
-            value: Value to set for the sample_s property.
-        """
-        self._sample_s = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

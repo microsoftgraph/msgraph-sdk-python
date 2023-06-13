@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,22 +9,18 @@ if TYPE_CHECKING:
 
 from . import unified_role_schedule_instance_base
 
+@dataclass
 class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base.UnifiedRoleScheduleInstanceBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new unifiedRoleEligibilityScheduleInstance and sets the default values.
-        """
-        super().__init__()
-        # The end date of the schedule instance.
-        self._end_date_time: Optional[datetime] = None
-        # How the role eligibility is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleEligibilitySchedule can be managed by the caller. Supports $filter (eq, ne).
-        self._member_type: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The identifier of the unifiedRoleEligibilitySchedule object from which this instance was created. Supports $filter (eq, ne).
-        self._role_eligibility_schedule_id: Optional[str] = None
-        # When this instance starts.
-        self._start_date_time: Optional[datetime] = None
+    # The end date of the schedule instance.
+    end_date_time: Optional[datetime] = None
+    # How the role eligibility is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleEligibilitySchedule can be managed by the caller. Supports $filter (eq, ne).
+    member_type: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The identifier of the unifiedRoleEligibilitySchedule object from which this instance was created. Supports $filter (eq, ne).
+    role_eligibility_schedule_id: Optional[str] = None
+    # When this instance starts.
+    start_date_time: Optional[datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleEligibilityScheduleInstance:
@@ -36,23 +33,6 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return UnifiedRoleEligibilityScheduleInstance()
-    
-    @property
-    def end_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the endDateTime property value. The end date of the schedule instance.
-        Returns: Optional[datetime]
-        """
-        return self._end_date_time
-    
-    @end_date_time.setter
-    def end_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the endDateTime property value. The end date of the schedule instance.
-        Args:
-            value: Value to set for the end_date_time property.
-        """
-        self._end_date_time = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -71,40 +51,6 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
         fields.update(super_fields)
         return fields
     
-    @property
-    def member_type(self,) -> Optional[str]:
-        """
-        Gets the memberType property value. How the role eligibility is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleEligibilitySchedule can be managed by the caller. Supports $filter (eq, ne).
-        Returns: Optional[str]
-        """
-        return self._member_type
-    
-    @member_type.setter
-    def member_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the memberType property value. How the role eligibility is inherited. It can either be Inherited, Direct, or Group. It can further imply whether the unifiedRoleEligibilitySchedule can be managed by the caller. Supports $filter (eq, ne).
-        Args:
-            value: Value to set for the member_type property.
-        """
-        self._member_type = value
-    
-    @property
-    def role_eligibility_schedule_id(self,) -> Optional[str]:
-        """
-        Gets the roleEligibilityScheduleId property value. The identifier of the unifiedRoleEligibilitySchedule object from which this instance was created. Supports $filter (eq, ne).
-        Returns: Optional[str]
-        """
-        return self._role_eligibility_schedule_id
-    
-    @role_eligibility_schedule_id.setter
-    def role_eligibility_schedule_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the roleEligibilityScheduleId property value. The identifier of the unifiedRoleEligibilitySchedule object from which this instance was created. Supports $filter (eq, ne).
-        Args:
-            value: Value to set for the role_eligibility_schedule_id property.
-        """
-        self._role_eligibility_schedule_id = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -118,22 +64,5 @@ class UnifiedRoleEligibilityScheduleInstance(unified_role_schedule_instance_base
         writer.write_str_value("memberType", self.member_type)
         writer.write_str_value("roleEligibilityScheduleId", self.role_eligibility_schedule_id)
         writer.write_datetime_value("startDateTime", self.start_date_time)
-    
-    @property
-    def start_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the startDateTime property value. When this instance starts.
-        Returns: Optional[datetime]
-        """
-        return self._start_date_time
-    
-    @start_date_time.setter
-    def start_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the startDateTime property value. When this instance starts.
-        Args:
-            value: Value to set for the start_date_time property.
-        """
-        self._start_date_time = value
     
 

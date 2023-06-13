@@ -1,6 +1,6 @@
 from enum import Enum
 
-class CalendarRoleType(Enum):
+class CalendarRoleType(str, Enum):
     None_ = "none",
     FreeBusyRead = "freeBusyRead",
     LimitedRead = "limitedRead",

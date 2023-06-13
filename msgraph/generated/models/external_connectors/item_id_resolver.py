@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import url_to_item_resolver_base
 
+@dataclass
 class ItemIdResolver(url_to_item_resolver_base.UrlToItemResolverBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ItemIdResolver and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.externalConnectors.itemIdResolver"
-        # Pattern that specifies how to form the ID of the external item that the URL represents. The named groups from the regular expression in urlPattern within the urlMatchInfo can be referenced by inserting the group name inside curly brackets.
-        self._item_id: Optional[str] = None
-        # Configurations to match and resolve URL.
-        self._url_match_info: Optional[url_match_info.UrlMatchInfo] = None
+    odata_type = "#microsoft.graph.externalConnectors.itemIdResolver"
+    # Pattern that specifies how to form the ID of the external item that the URL represents. The named groups from the regular expression in urlPattern within the urlMatchInfo can be referenced by inserting the group name inside curly brackets.
+    item_id: Optional[str] = None
+    # Configurations to match and resolve URL.
+    url_match_info: Optional[url_match_info.UrlMatchInfo] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemIdResolver:
@@ -46,23 +43,6 @@ class ItemIdResolver(url_to_item_resolver_base.UrlToItemResolverBase):
         fields.update(super_fields)
         return fields
     
-    @property
-    def item_id(self,) -> Optional[str]:
-        """
-        Gets the itemId property value. Pattern that specifies how to form the ID of the external item that the URL represents. The named groups from the regular expression in urlPattern within the urlMatchInfo can be referenced by inserting the group name inside curly brackets.
-        Returns: Optional[str]
-        """
-        return self._item_id
-    
-    @item_id.setter
-    def item_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the itemId property value. Pattern that specifies how to form the ID of the external item that the URL represents. The named groups from the regular expression in urlPattern within the urlMatchInfo can be referenced by inserting the group name inside curly brackets.
-        Args:
-            value: Value to set for the item_id property.
-        """
-        self._item_id = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -74,22 +54,5 @@ class ItemIdResolver(url_to_item_resolver_base.UrlToItemResolverBase):
         super().serialize(writer)
         writer.write_str_value("itemId", self.item_id)
         writer.write_object_value("urlMatchInfo", self.url_match_info)
-    
-    @property
-    def url_match_info(self,) -> Optional[url_match_info.UrlMatchInfo]:
-        """
-        Gets the urlMatchInfo property value. Configurations to match and resolve URL.
-        Returns: Optional[url_match_info.UrlMatchInfo]
-        """
-        return self._url_match_info
-    
-    @url_match_info.setter
-    def url_match_info(self,value: Optional[url_match_info.UrlMatchInfo] = None) -> None:
-        """
-        Sets the urlMatchInfo property value. Configurations to match and resolve URL.
-        Args:
-            value: Value to set for the url_match_info property.
-        """
-        self._url_match_info = value
     
 

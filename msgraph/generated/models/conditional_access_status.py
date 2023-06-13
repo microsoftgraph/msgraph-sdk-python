@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ConditionalAccessStatus(Enum):
+class ConditionalAccessStatus(str, Enum):
     Success = "success",
     Failure = "failure",
     NotApplied = "notApplied",

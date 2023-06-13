@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DeviceRiskScore(Enum):
+class DeviceRiskScore(str, Enum):
     None_ = "none",
     Informational = "informational",
     Low = "low",

@@ -1,39 +1,20 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import json
 
+@dataclass
 class FvschedulePostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new fvschedulePostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The principal property
-        self._principal: Optional[json.Json] = None
-        # The schedule property
-        self._schedule: Optional[json.Json] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The principal property
+    principal: Optional[json.Json] = None
+    # The schedule property
+    schedule: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FvschedulePostRequestBody:
@@ -59,40 +40,6 @@ class FvschedulePostRequestBody(AdditionalDataHolder, Parsable):
             "schedule": lambda n : setattr(self, 'schedule', n.get_object_value(json.Json)),
         }
         return fields
-    
-    @property
-    def principal(self,) -> Optional[json.Json]:
-        """
-        Gets the principal property value. The principal property
-        Returns: Optional[json.Json]
-        """
-        return self._principal
-    
-    @principal.setter
-    def principal(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the principal property value. The principal property
-        Args:
-            value: Value to set for the principal property.
-        """
-        self._principal = value
-    
-    @property
-    def schedule(self,) -> Optional[json.Json]:
-        """
-        Gets the schedule property value. The schedule property
-        Returns: Optional[json.Json]
-        """
-        return self._schedule
-    
-    @schedule.setter
-    def schedule(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the schedule property value. The schedule property
-        Args:
-            value: Value to set for the schedule property.
-        """
-        self._schedule = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

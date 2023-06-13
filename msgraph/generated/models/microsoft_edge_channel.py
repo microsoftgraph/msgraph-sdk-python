@@ -1,6 +1,6 @@
 from enum import Enum
 
-class MicrosoftEdgeChannel(Enum):
+class MicrosoftEdgeChannel(str, Enum):
     # The Dev Channel is intended to help you plan and develop with the latest capabilities of Microsoft Edge.
     Dev = "dev",
     # The Beta Channel is intended for production deployment to a representative sample set of users. New features ship about every 4 weeks. Security and quality updates ship as needed.

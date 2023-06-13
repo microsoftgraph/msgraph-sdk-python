@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import authentication_method
 
+@dataclass
 class SoftwareOathAuthenticationMethod(authentication_method.AuthenticationMethod):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new SoftwareOathAuthenticationMethod and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.softwareOathAuthenticationMethod"
-        # The secret key of the method. Always returns null.
-        self._secret_key: Optional[str] = None
+    odata_type = "#microsoft.graph.softwareOathAuthenticationMethod"
+    # The secret key of the method. Always returns null.
+    secret_key: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SoftwareOathAuthenticationMethod:
@@ -42,23 +39,6 @@ class SoftwareOathAuthenticationMethod(authentication_method.AuthenticationMetho
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def secret_key(self,) -> Optional[str]:
-        """
-        Gets the secretKey property value. The secret key of the method. Always returns null.
-        Returns: Optional[str]
-        """
-        return self._secret_key
-    
-    @secret_key.setter
-    def secret_key(self,value: Optional[str] = None) -> None:
-        """
-        Sets the secretKey property value. The secret key of the method. Always returns null.
-        Args:
-            value: Value to set for the secret_key property.
-        """
-        self._secret_key = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

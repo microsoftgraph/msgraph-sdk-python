@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import authentication_method_configuration
 
+@dataclass
 class VoiceAuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new VoiceAuthenticationMethodConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.voiceAuthenticationMethodConfiguration"
-        # A collection of groups that are enabled to use the authentication method. Expanded by default.
-        self._include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
-        # true if users can register office phones, otherwise, false.
-        self._is_office_phone_allowed: Optional[bool] = None
+    odata_type = "#microsoft.graph.voiceAuthenticationMethodConfiguration"
+    # A collection of groups that are enabled to use the authentication method. Expanded by default.
+    include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
+    # true if users can register office phones, otherwise, false.
+    is_office_phone_allowed: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> VoiceAuthenticationMethodConfiguration:
@@ -45,40 +42,6 @@ class VoiceAuthenticationMethodConfiguration(authentication_method_configuration
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def include_targets(self,) -> Optional[List[authentication_method_target.AuthenticationMethodTarget]]:
-        """
-        Gets the includeTargets property value. A collection of groups that are enabled to use the authentication method. Expanded by default.
-        Returns: Optional[List[authentication_method_target.AuthenticationMethodTarget]]
-        """
-        return self._include_targets
-    
-    @include_targets.setter
-    def include_targets(self,value: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None) -> None:
-        """
-        Sets the includeTargets property value. A collection of groups that are enabled to use the authentication method. Expanded by default.
-        Args:
-            value: Value to set for the include_targets property.
-        """
-        self._include_targets = value
-    
-    @property
-    def is_office_phone_allowed(self,) -> Optional[bool]:
-        """
-        Gets the isOfficePhoneAllowed property value. true if users can register office phones, otherwise, false.
-        Returns: Optional[bool]
-        """
-        return self._is_office_phone_allowed
-    
-    @is_office_phone_allowed.setter
-    def is_office_phone_allowed(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isOfficePhoneAllowed property value. true if users can register office phones, otherwise, false.
-        Args:
-            value: Value to set for the is_office_phone_allowed property.
-        """
-        self._is_office_phone_allowed = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

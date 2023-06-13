@@ -1,47 +1,28 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import applied_conditional_access_policy_result
 
+@dataclass
 class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new appliedConditionalAccessPolicy and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Refers to the Name of the conditional access policy (example: 'Require MFA for Salesforce').
-        self._display_name: Optional[str] = None
-        # Refers to the grant controls enforced by the conditional access policy (example: 'Require multi-factor authentication').
-        self._enforced_grant_controls: Optional[List[str]] = None
-        # Refers to the session controls enforced by the conditional access policy (example: 'Require app enforced controls').
-        self._enforced_session_controls: Optional[List[str]] = None
-        # An identifier of the conditional access policy.
-        self._id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Indicates the result of the CA policy that was triggered. Possible values are: success, failure, notApplied (Policy isn't applied because policy conditions were not met),notEnabled (This is due to the policy in disabled state), unknown, unknownFutureValue.
-        self._result: Optional[applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Refers to the Name of the conditional access policy (example: 'Require MFA for Salesforce').
+    display_name: Optional[str] = None
+    # Refers to the grant controls enforced by the conditional access policy (example: 'Require multi-factor authentication').
+    enforced_grant_controls: Optional[List[str]] = None
+    # Refers to the session controls enforced by the conditional access policy (example: 'Require app enforced controls').
+    enforced_session_controls: Optional[List[str]] = None
+    # An identifier of the conditional access policy.
+    id: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Indicates the result of the CA policy that was triggered. Possible values are: success, failure, notApplied (Policy isn't applied because policy conditions were not met),notEnabled (This is due to the policy in disabled state), unknown, unknownFutureValue.
+    result: Optional[applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AppliedConditionalAccessPolicy:
@@ -54,57 +35,6 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return AppliedConditionalAccessPolicy()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Refers to the Name of the conditional access policy (example: 'Require MFA for Salesforce').
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Refers to the Name of the conditional access policy (example: 'Require MFA for Salesforce').
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
-    @property
-    def enforced_grant_controls(self,) -> Optional[List[str]]:
-        """
-        Gets the enforcedGrantControls property value. Refers to the grant controls enforced by the conditional access policy (example: 'Require multi-factor authentication').
-        Returns: Optional[List[str]]
-        """
-        return self._enforced_grant_controls
-    
-    @enforced_grant_controls.setter
-    def enforced_grant_controls(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the enforcedGrantControls property value. Refers to the grant controls enforced by the conditional access policy (example: 'Require multi-factor authentication').
-        Args:
-            value: Value to set for the enforced_grant_controls property.
-        """
-        self._enforced_grant_controls = value
-    
-    @property
-    def enforced_session_controls(self,) -> Optional[List[str]]:
-        """
-        Gets the enforcedSessionControls property value. Refers to the session controls enforced by the conditional access policy (example: 'Require app enforced controls').
-        Returns: Optional[List[str]]
-        """
-        return self._enforced_session_controls
-    
-    @enforced_session_controls.setter
-    def enforced_session_controls(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the enforcedSessionControls property value. Refers to the session controls enforced by the conditional access policy (example: 'Require app enforced controls').
-        Args:
-            value: Value to set for the enforced_session_controls property.
-        """
-        self._enforced_session_controls = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -122,57 +52,6 @@ class AppliedConditionalAccessPolicy(AdditionalDataHolder, Parsable):
             "result": lambda n : setattr(self, 'result', n.get_enum_value(applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult)),
         }
         return fields
-    
-    @property
-    def id(self,) -> Optional[str]:
-        """
-        Gets the id property value. An identifier of the conditional access policy.
-        Returns: Optional[str]
-        """
-        return self._id
-    
-    @id.setter
-    def id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the id property value. An identifier of the conditional access policy.
-        Args:
-            value: Value to set for the id property.
-        """
-        self._id = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def result(self,) -> Optional[applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult]:
-        """
-        Gets the result property value. Indicates the result of the CA policy that was triggered. Possible values are: success, failure, notApplied (Policy isn't applied because policy conditions were not met),notEnabled (This is due to the policy in disabled state), unknown, unknownFutureValue.
-        Returns: Optional[applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult]
-        """
-        return self._result
-    
-    @result.setter
-    def result(self,value: Optional[applied_conditional_access_policy_result.AppliedConditionalAccessPolicyResult] = None) -> None:
-        """
-        Sets the result property value. Indicates the result of the CA policy that was triggered. Possible values are: success, failure, notApplied (Policy isn't applied because policy conditions were not met),notEnabled (This is due to the policy in disabled state), unknown, unknownFutureValue.
-        Args:
-            value: Value to set for the result property.
-        """
-        self._result = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """

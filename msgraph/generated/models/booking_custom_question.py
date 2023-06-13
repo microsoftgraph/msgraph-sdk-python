@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,57 +8,19 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class BookingCustomQuestion(entity.Entity):
     """
     Represents a custom question of the business.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new bookingCustomQuestion and sets the default values.
-        """
-        super().__init__()
-        # The expected answer type. The possible values are: text, radioButton, unknownFutureValue.
-        self._answer_input_type: Optional[answer_input_type.AnswerInputType] = None
-        # List of possible answer values.
-        self._answer_options: Optional[List[str]] = None
-        # The question.
-        self._display_name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def answer_input_type(self,) -> Optional[answer_input_type.AnswerInputType]:
-        """
-        Gets the answerInputType property value. The expected answer type. The possible values are: text, radioButton, unknownFutureValue.
-        Returns: Optional[answer_input_type.AnswerInputType]
-        """
-        return self._answer_input_type
-    
-    @answer_input_type.setter
-    def answer_input_type(self,value: Optional[answer_input_type.AnswerInputType] = None) -> None:
-        """
-        Sets the answerInputType property value. The expected answer type. The possible values are: text, radioButton, unknownFutureValue.
-        Args:
-            value: Value to set for the answer_input_type property.
-        """
-        self._answer_input_type = value
-    
-    @property
-    def answer_options(self,) -> Optional[List[str]]:
-        """
-        Gets the answerOptions property value. List of possible answer values.
-        Returns: Optional[List[str]]
-        """
-        return self._answer_options
-    
-    @answer_options.setter
-    def answer_options(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the answerOptions property value. List of possible answer values.
-        Args:
-            value: Value to set for the answer_options property.
-        """
-        self._answer_options = value
+    # The expected answer type. The possible values are: text, radioButton, unknownFutureValue.
+    answer_input_type: Optional[answer_input_type.AnswerInputType] = None
+    # List of possible answer values.
+    answer_options: Optional[List[str]] = None
+    # The question.
+    display_name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> BookingCustomQuestion:
@@ -70,23 +33,6 @@ class BookingCustomQuestion(entity.Entity):
         if parse_node is None:
             raise Exception("parse_node cannot be undefined")
         return BookingCustomQuestion()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The question.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The question.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """

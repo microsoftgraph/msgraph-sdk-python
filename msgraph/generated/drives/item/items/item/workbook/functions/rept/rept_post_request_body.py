@@ -1,39 +1,20 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import json
 
+@dataclass
 class ReptPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new reptPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The numberTimes property
-        self._number_times: Optional[json.Json] = None
-        # The text property
-        self._text: Optional[json.Json] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The numberTimes property
+    number_times: Optional[json.Json] = None
+    # The text property
+    text: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ReptPostRequestBody:
@@ -60,23 +41,6 @@ class ReptPostRequestBody(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def number_times(self,) -> Optional[json.Json]:
-        """
-        Gets the numberTimes property value. The numberTimes property
-        Returns: Optional[json.Json]
-        """
-        return self._number_times
-    
-    @number_times.setter
-    def number_times(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the numberTimes property value. The numberTimes property
-        Args:
-            value: Value to set for the number_times property.
-        """
-        self._number_times = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -88,22 +52,5 @@ class ReptPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_object_value("numberTimes", self.number_times)
         writer.write_object_value("text", self.text)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def text(self,) -> Optional[json.Json]:
-        """
-        Gets the text property value. The text property
-        Returns: Optional[json.Json]
-        """
-        return self._text
-    
-    @text.setter
-    def text(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the text property value. The text property
-        Args:
-            value: Value to set for the text property.
-        """
-        self._text = value
     
 

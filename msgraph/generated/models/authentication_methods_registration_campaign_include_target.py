@@ -1,43 +1,24 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import authentication_method_target_type
 
+@dataclass
 class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new authenticationMethodsRegistrationCampaignIncludeTarget and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The object identifier of an Azure Active Directory user or group.
-        self._id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The targetType property
-        self._target_type: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None
-        # The authentication method that the user is prompted to register. The value must be microsoftAuthenticator.
-        self._targeted_authentication_method: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The object identifier of an Azure Active Directory user or group.
+    id: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The targetType property
+    target_type: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None
+    # The authentication method that the user is prompted to register. The value must be microsoftAuthenticator.
+    targeted_authentication_method: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AuthenticationMethodsRegistrationCampaignIncludeTarget:
@@ -66,40 +47,6 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         }
         return fields
     
-    @property
-    def id(self,) -> Optional[str]:
-        """
-        Gets the id property value. The object identifier of an Azure Active Directory user or group.
-        Returns: Optional[str]
-        """
-        return self._id
-    
-    @id.setter
-    def id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the id property value. The object identifier of an Azure Active Directory user or group.
-        Args:
-            value: Value to set for the id property.
-        """
-        self._id = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
@@ -113,39 +60,5 @@ class AuthenticationMethodsRegistrationCampaignIncludeTarget(AdditionalDataHolde
         writer.write_str_value("targetedAuthenticationMethod", self.targeted_authentication_method)
         writer.write_enum_value("targetType", self.target_type)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def target_type(self,) -> Optional[authentication_method_target_type.AuthenticationMethodTargetType]:
-        """
-        Gets the targetType property value. The targetType property
-        Returns: Optional[authentication_method_target_type.AuthenticationMethodTargetType]
-        """
-        return self._target_type
-    
-    @target_type.setter
-    def target_type(self,value: Optional[authentication_method_target_type.AuthenticationMethodTargetType] = None) -> None:
-        """
-        Sets the targetType property value. The targetType property
-        Args:
-            value: Value to set for the target_type property.
-        """
-        self._target_type = value
-    
-    @property
-    def targeted_authentication_method(self,) -> Optional[str]:
-        """
-        Gets the targetedAuthenticationMethod property value. The authentication method that the user is prompted to register. The value must be microsoftAuthenticator.
-        Returns: Optional[str]
-        """
-        return self._targeted_authentication_method
-    
-    @targeted_authentication_method.setter
-    def targeted_authentication_method(self,value: Optional[str] = None) -> None:
-        """
-        Sets the targetedAuthenticationMethod property value. The authentication method that the user is prompted to register. The value must be microsoftAuthenticator.
-        Args:
-            value: Value to set for the targeted_authentication_method property.
-        """
-        self._targeted_authentication_method = value
     
 

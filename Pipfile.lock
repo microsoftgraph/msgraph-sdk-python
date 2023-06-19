@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "fa3cda0dd8f18ef9fbce341b37ef907f0449550a5db5e1c434f21bbbbcc77aef"
+            "sha256": "c6bf699de93676d0d6125118661aa5fd148170c3daeb8101b89273c3eb2f6812"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -510,11 +510,11 @@
         },
         "microsoft-kiota-serialization-text": {
             "hashes": [
-                "sha256:3420e0113213e38cd99153c7450320da93962e5a7e46eee42ed7aa9227c07817",
-                "sha256:e9f289d6ce2d186eddc6631b454f81b28355e4191832de8e189315e915b5f99b"
+                "sha256:8be05b391fd3148ba79d020c92d6c79e485474a68b282dca03d844728381665a",
+                "sha256:e69339482c9d9055c323a48de5c4c8df20ebda767ebeed5ca6f7598a570a4885"
             ],
             "index": "pypi",
-            "version": "==0.2.0"
+            "version": "==0.2.1"
         },
         "msal": {
             "hashes": [
@@ -832,11 +832,11 @@
         },
         "importlib-metadata": {
             "hashes": [
-                "sha256:43dd286a2cd8995d5eaef7fee2066340423b818ed3fd70adf0bad5f1fac53fed",
-                "sha256:92501cdf9cc66ebd3e612f1b4f0c0765dfa42f0fa38ffb319b6bd84dd675d705"
+                "sha256:1aaf550d4f73e5d6783e7acb77aec43d49da8017410afae93822cc9cca98c4d4",
+                "sha256:cb52082e659e97afc5dac71e79de97d8681de3aa07ff18578330904a9d18e5b5"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==6.6.0"
+            "version": "==6.7.0"
         },
         "isort": {
             "hashes": [
@@ -969,11 +969,11 @@
         },
         "platformdirs": {
             "hashes": [
-                "sha256:0ade98a4895e87dc51d47151f7d2ec290365a585151d97b4d8d6312ed6132fed",
-                "sha256:e48fabd87db8f3a7df7150a4a5ea22c546ee8bc39bc2473244730d4b56d2cc4e"
+                "sha256:57e28820ca8094678b807ff529196506d7a21e17156cb1cddb3e74cebce54640",
+                "sha256:ffa199e3fbab8365778c4a10e1fbf1b9cd50707de826eb304b50e57ec0cc8d38"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==3.5.3"
+            "version": "==3.6.0"
         },
         "pylint": {
             "hashes": [

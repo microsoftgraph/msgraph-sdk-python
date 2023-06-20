@@ -4,6 +4,7 @@
 # See License in the project root for license information.
 # -----------------------------------
 
+from __future__ import annotations
 from typing import List, Optional, TYPE_CHECKING, Union
 from azure.core.credentials import TokenCredential
 from azure.core.credentials_async import AsyncTokenCredential
@@ -21,8 +22,7 @@ class GraphServiceClient(BaseGraphServiceClient):
         self,
         credentials: Optional[Union[TokenCredential, AsyncTokenCredential]] = None,
         scopes: Optional[List[str]] = None,
-        request_adapter: Optional[GraphRequestAdapter] = None
-        
+        request_adapter: Optional[GraphRequestAdapter] = None,
     ) -> None:
         """Constructs a client instance to use for making requests to the 
         Microsoft Graph v.1.0 API.
@@ -41,7 +41,7 @@ class GraphServiceClient(BaseGraphServiceClient):
                 raise ValueError("Missing request adapter or valid credentials")
             
             if scopes:
-                auth_provider = AzureIdentityAuthenticationProvider(credentials, scopes)
+                auth_provider = AzureIdentityAuthenticationProvider(credentials, scopes=scopes)
             else:
                 auth_provider = AzureIdentityAuthenticationProvider(credentials)
     

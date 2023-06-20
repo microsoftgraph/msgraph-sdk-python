@@ -1,6 +1,6 @@
 from enum import Enum
 
-class MailTipsType(Enum):
+class MailTipsType(str, Enum):
     AutomaticReplies = "automaticReplies",
     MailboxFullStatus = "mailboxFullStatus",
     CustomMailTip = "customMailTip",

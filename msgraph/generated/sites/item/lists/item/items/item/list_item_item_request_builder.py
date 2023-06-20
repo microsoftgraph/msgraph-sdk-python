@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -33,10 +33,10 @@ class ListItemItemRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not path_parameters:
+            raise TypeError("path_parameters cannot be null.")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/sites/{site%2Did}/lists/{list%2Did}/items/{listItem%2Did}{?%24select,%24expand}"
 
@@ -94,12 +94,12 @@ class ListItemItemRequestBuilder():
             startDateTime: Usage: startDateTime='{startDateTime}'
         Returns: get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder
         """
-        if end_date_time is None:
-            raise Exception("end_date_time cannot be undefined")
-        if interval is None:
-            raise Exception("interval cannot be undefined")
-        if start_date_time is None:
-            raise Exception("start_date_time cannot be undefined")
+        if not end_date_time:
+            raise TypeError("end_date_time cannot be null.")
+        if not interval:
+            raise TypeError("interval cannot be null.")
+        if not start_date_time:
+            raise TypeError("start_date_time cannot be null.")
         from .get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval import get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder
 
         return get_activities_by_interval_with_start_date_time_with_end_date_time_with_interval_request_builder.GetActivitiesByIntervalWithStartDateTimeWithEndDateTimeWithIntervalRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, interval, start_date_time)
@@ -112,8 +112,8 @@ class ListItemItemRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[list_item.ListItem]
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
@@ -171,8 +171,8 @@ class ListItemItemRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
@@ -280,8 +280,8 @@ class ListItemItemRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
+            if not original_name:
+                raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"
             if original_name == "select":

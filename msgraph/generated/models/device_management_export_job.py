@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,37 +9,33 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class DeviceManagementExportJob(entity.Entity):
     """
     Entity representing a job to export a report
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new deviceManagementExportJob and sets the default values.
-        """
-        super().__init__()
-        # Time that the exported report expires
-        self._expiration_date_time: Optional[datetime] = None
-        # Filters applied on the report
-        self._filter: Optional[str] = None
-        # Possible values for the file format of a report
-        self._format: Optional[device_management_report_file_format.DeviceManagementReportFileFormat] = None
-        # Configures how the requested export job is localized
-        self._localization_type: Optional[device_management_export_job_localization_type.DeviceManagementExportJobLocalizationType] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Name of the report
-        self._report_name: Optional[str] = None
-        # Time that the exported report was requested
-        self._request_date_time: Optional[datetime] = None
-        # Columns selected from the report
-        self._select: Optional[List[str]] = None
-        # A snapshot is an identifiable subset of the dataset represented by the ReportName. A sessionId or CachedReportConfiguration id can be used here. If a sessionId is specified, Filter, Select, and OrderBy are applied to the data represented by the sessionId. Filter, Select, and OrderBy cannot be specified together with a CachedReportConfiguration id.
-        self._snapshot_id: Optional[str] = None
-        # Possible statuses associated with a generated report
-        self._status: Optional[device_management_report_status.DeviceManagementReportStatus] = None
-        # Temporary location of the exported report
-        self._url: Optional[str] = None
+    # Time that the exported report expires
+    expiration_date_time: Optional[datetime] = None
+    # Filters applied on the report
+    filter: Optional[str] = None
+    # Possible values for the file format of a report
+    format: Optional[device_management_report_file_format.DeviceManagementReportFileFormat] = None
+    # Configures how the requested export job is localized
+    localization_type: Optional[device_management_export_job_localization_type.DeviceManagementExportJobLocalizationType] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Name of the report
+    report_name: Optional[str] = None
+    # Time that the exported report was requested
+    request_date_time: Optional[datetime] = None
+    # Columns selected from the report
+    select: Optional[List[str]] = None
+    # A snapshot is an identifiable subset of the dataset represented by the ReportName. A sessionId or CachedReportConfiguration id can be used here. If a sessionId is specified, Filter, Select, and OrderBy are applied to the data represented by the sessionId. Filter, Select, and OrderBy cannot be specified together with a CachedReportConfiguration id.
+    snapshot_id: Optional[str] = None
+    # Possible statuses associated with a generated report
+    status: Optional[device_management_report_status.DeviceManagementReportStatus] = None
+    # Temporary location of the exported report
+    url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DeviceManagementExportJob:
@@ -48,66 +45,17 @@ class DeviceManagementExportJob(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DeviceManagementExportJob
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return DeviceManagementExportJob()
-    
-    @property
-    def expiration_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the expirationDateTime property value. Time that the exported report expires
-        Returns: Optional[datetime]
-        """
-        return self._expiration_date_time
-    
-    @expiration_date_time.setter
-    def expiration_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the expirationDateTime property value. Time that the exported report expires
-        Args:
-            value: Value to set for the expiration_date_time property.
-        """
-        self._expiration_date_time = value
-    
-    @property
-    def filter(self,) -> Optional[str]:
-        """
-        Gets the filter property value. Filters applied on the report
-        Returns: Optional[str]
-        """
-        return self._filter
-    
-    @filter.setter
-    def filter(self,value: Optional[str] = None) -> None:
-        """
-        Sets the filter property value. Filters applied on the report
-        Args:
-            value: Value to set for the filter property.
-        """
-        self._filter = value
-    
-    @property
-    def format(self,) -> Optional[device_management_report_file_format.DeviceManagementReportFileFormat]:
-        """
-        Gets the format property value. Possible values for the file format of a report
-        Returns: Optional[device_management_report_file_format.DeviceManagementReportFileFormat]
-        """
-        return self._format
-    
-    @format.setter
-    def format(self,value: Optional[device_management_report_file_format.DeviceManagementReportFileFormat] = None) -> None:
-        """
-        Sets the format property value. Possible values for the file format of a report
-        Args:
-            value: Value to set for the format property.
-        """
-        self._format = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import device_management_export_job_localization_type, device_management_report_file_format, device_management_report_status, entity
+
         from . import device_management_export_job_localization_type, device_management_report_file_format, device_management_report_status, entity
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -126,82 +74,14 @@ class DeviceManagementExportJob(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def localization_type(self,) -> Optional[device_management_export_job_localization_type.DeviceManagementExportJobLocalizationType]:
-        """
-        Gets the localizationType property value. Configures how the requested export job is localized
-        Returns: Optional[device_management_export_job_localization_type.DeviceManagementExportJobLocalizationType]
-        """
-        return self._localization_type
-    
-    @localization_type.setter
-    def localization_type(self,value: Optional[device_management_export_job_localization_type.DeviceManagementExportJobLocalizationType] = None) -> None:
-        """
-        Sets the localizationType property value. Configures how the requested export job is localized
-        Args:
-            value: Value to set for the localization_type property.
-        """
-        self._localization_type = value
-    
-    @property
-    def report_name(self,) -> Optional[str]:
-        """
-        Gets the reportName property value. Name of the report
-        Returns: Optional[str]
-        """
-        return self._report_name
-    
-    @report_name.setter
-    def report_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the reportName property value. Name of the report
-        Args:
-            value: Value to set for the report_name property.
-        """
-        self._report_name = value
-    
-    @property
-    def request_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the requestDateTime property value. Time that the exported report was requested
-        Returns: Optional[datetime]
-        """
-        return self._request_date_time
-    
-    @request_date_time.setter
-    def request_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the requestDateTime property value. Time that the exported report was requested
-        Args:
-            value: Value to set for the request_date_time property.
-        """
-        self._request_date_time = value
-    
-    @property
-    def select(self,) -> Optional[List[str]]:
-        """
-        Gets the select property value. Columns selected from the report
-        Returns: Optional[List[str]]
-        """
-        return self._select
-    
-    @select.setter
-    def select(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the select property value. Columns selected from the report
-        Args:
-            value: Value to set for the select property.
-        """
-        self._select = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_str_value("filter", self.filter)
@@ -213,56 +93,5 @@ class DeviceManagementExportJob(entity.Entity):
         writer.write_str_value("snapshotId", self.snapshot_id)
         writer.write_enum_value("status", self.status)
         writer.write_str_value("url", self.url)
-    
-    @property
-    def snapshot_id(self,) -> Optional[str]:
-        """
-        Gets the snapshotId property value. A snapshot is an identifiable subset of the dataset represented by the ReportName. A sessionId or CachedReportConfiguration id can be used here. If a sessionId is specified, Filter, Select, and OrderBy are applied to the data represented by the sessionId. Filter, Select, and OrderBy cannot be specified together with a CachedReportConfiguration id.
-        Returns: Optional[str]
-        """
-        return self._snapshot_id
-    
-    @snapshot_id.setter
-    def snapshot_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the snapshotId property value. A snapshot is an identifiable subset of the dataset represented by the ReportName. A sessionId or CachedReportConfiguration id can be used here. If a sessionId is specified, Filter, Select, and OrderBy are applied to the data represented by the sessionId. Filter, Select, and OrderBy cannot be specified together with a CachedReportConfiguration id.
-        Args:
-            value: Value to set for the snapshot_id property.
-        """
-        self._snapshot_id = value
-    
-    @property
-    def status(self,) -> Optional[device_management_report_status.DeviceManagementReportStatus]:
-        """
-        Gets the status property value. Possible statuses associated with a generated report
-        Returns: Optional[device_management_report_status.DeviceManagementReportStatus]
-        """
-        return self._status
-    
-    @status.setter
-    def status(self,value: Optional[device_management_report_status.DeviceManagementReportStatus] = None) -> None:
-        """
-        Sets the status property value. Possible statuses associated with a generated report
-        Args:
-            value: Value to set for the status property.
-        """
-        self._status = value
-    
-    @property
-    def url(self,) -> Optional[str]:
-        """
-        Gets the url property value. Temporary location of the exported report
-        Returns: Optional[str]
-        """
-        return self._url
-    
-    @url.setter
-    def url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the url property value. Temporary location of the exported report
-        Args:
-            value: Value to set for the url property.
-        """
-        self._url = value
     
 

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DeviceManagementExchangeConnectorType(Enum):
+class DeviceManagementExchangeConnectorType(str, Enum):
     # Connects to on-premises Exchange Environment.
     OnPremises = "onPremises",
     # Connects to O365 multi-tenant Exchange environment

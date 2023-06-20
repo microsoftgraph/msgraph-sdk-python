@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SynchronizationStatusCode(Enum):
+class SynchronizationStatusCode(str, Enum):
     NotConfigured = "NotConfigured",
     NotRun = "NotRun",
     Active = "Active",

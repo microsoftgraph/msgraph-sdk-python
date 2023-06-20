@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SynchronizationMetadata(Enum):
+class SynchronizationMetadata(str, Enum):
     GalleryApplicationIdentifier = "GalleryApplicationIdentifier",
     GalleryApplicationKey = "GalleryApplicationKey",
     IsOAuthEnabled = "IsOAuthEnabled",

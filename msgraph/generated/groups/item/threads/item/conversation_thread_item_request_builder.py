@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,10 +26,10 @@ class ConversationThreadItemRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not path_parameters:
+            raise TypeError("path_parameters cannot be null.")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/groups/{group%2Did}/threads/{conversationThread%2Did}{?%24select}"
 
@@ -58,7 +58,7 @@ class ConversationThreadItemRequestBuilder():
     
     async def get(self,request_configuration: Optional[ConversationThreadItemRequestBuilderGetRequestConfiguration] = None) -> Optional[conversation_thread.ConversationThread]:
         """
-        Get a specific thread that belongs to a group. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. 
+        Get a thread object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conversation_thread.ConversationThread]
@@ -86,8 +86,8 @@ class ConversationThreadItemRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[conversation_thread.ConversationThread]
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
@@ -121,7 +121,7 @@ class ConversationThreadItemRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[ConversationThreadItemRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get a specific thread that belongs to a group. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. 
+        Get a thread object.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -145,8 +145,8 @@ class ConversationThreadItemRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
@@ -191,7 +191,7 @@ class ConversationThreadItemRequestBuilder():
     @dataclass
     class ConversationThreadItemRequestBuilderGetQueryParameters():
         """
-        Get a specific thread that belongs to a group. You can specify both the parent conversation and the thread, or, you can specify the thread without referencing the parent conversation. 
+        Get a thread object.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -200,8 +200,8 @@ class ConversationThreadItemRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
+            if not original_name:
+                raise TypeError("original_name cannot be null.")
             if original_name == "select":
                 return "%24select"
             return original_name

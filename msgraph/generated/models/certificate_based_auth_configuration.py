@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,33 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class CertificateBasedAuthConfiguration(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new certificateBasedAuthConfiguration and sets the default values.
-        """
-        super().__init__()
-        # Collection of certificate authorities which creates a trusted certificate chain.
-        self._certificate_authorities: Optional[List[certificate_authority.CertificateAuthority]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def certificate_authorities(self,) -> Optional[List[certificate_authority.CertificateAuthority]]:
-        """
-        Gets the certificateAuthorities property value. Collection of certificate authorities which creates a trusted certificate chain.
-        Returns: Optional[List[certificate_authority.CertificateAuthority]]
-        """
-        return self._certificate_authorities
-    
-    @certificate_authorities.setter
-    def certificate_authorities(self,value: Optional[List[certificate_authority.CertificateAuthority]] = None) -> None:
-        """
-        Sets the certificateAuthorities property value. Collection of certificate authorities which creates a trusted certificate chain.
-        Args:
-            value: Value to set for the certificate_authorities property.
-        """
-        self._certificate_authorities = value
+    # Collection of certificate authorities which creates a trusted certificate chain.
+    certificate_authorities: Optional[List[certificate_authority.CertificateAuthority]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CertificateBasedAuthConfiguration:
@@ -43,8 +23,8 @@ class CertificateBasedAuthConfiguration(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CertificateBasedAuthConfiguration
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return CertificateBasedAuthConfiguration()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -52,6 +32,8 @@ class CertificateBasedAuthConfiguration(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import certificate_authority, entity
+
         from . import certificate_authority, entity
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -67,8 +49,8 @@ class CertificateBasedAuthConfiguration(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("certificateAuthorities", self.certificate_authorities)
     

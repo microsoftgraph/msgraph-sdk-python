@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,33 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class WorkbookRangeFill(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookRangeFill and sets the default values.
-        """
-        super().__init__()
-        # HTML color code representing the color of the border line, of the form #RRGGBB (e.g. 'FFA500') or as a named HTML color (e.g. 'orange')
-        self._color: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def color(self,) -> Optional[str]:
-        """
-        Gets the color property value. HTML color code representing the color of the border line, of the form #RRGGBB (e.g. 'FFA500') or as a named HTML color (e.g. 'orange')
-        Returns: Optional[str]
-        """
-        return self._color
-    
-    @color.setter
-    def color(self,value: Optional[str] = None) -> None:
-        """
-        Sets the color property value. HTML color code representing the color of the border line, of the form #RRGGBB (e.g. 'FFA500') or as a named HTML color (e.g. 'orange')
-        Args:
-            value: Value to set for the color property.
-        """
-        self._color = value
+    # HTML color code representing the color of the border line, of the form #RRGGBB (e.g. 'FFA500') or as a named HTML color (e.g. 'orange')
+    color: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookRangeFill:
@@ -43,8 +23,8 @@ class WorkbookRangeFill(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookRangeFill
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return WorkbookRangeFill()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -52,6 +32,8 @@ class WorkbookRangeFill(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import entity
+
         from . import entity
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -67,8 +49,8 @@ class WorkbookRangeFill(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("color", self.color)
     

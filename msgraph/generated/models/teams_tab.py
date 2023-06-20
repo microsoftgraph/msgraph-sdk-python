@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,39 +8,18 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class TeamsTab(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new teamsTab and sets the default values.
-        """
-        super().__init__()
-        # Container for custom settings applied to a tab. The tab is considered configured only once this property is set.
-        self._configuration: Optional[teams_tab_configuration.TeamsTabConfiguration] = None
-        # Name of the tab.
-        self._display_name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The application that is linked to the tab. This cannot be changed after tab creation.
-        self._teams_app: Optional[teams_app.TeamsApp] = None
-        # Deep link URL of the tab instance. Read only.
-        self._web_url: Optional[str] = None
-    
-    @property
-    def configuration(self,) -> Optional[teams_tab_configuration.TeamsTabConfiguration]:
-        """
-        Gets the configuration property value. Container for custom settings applied to a tab. The tab is considered configured only once this property is set.
-        Returns: Optional[teams_tab_configuration.TeamsTabConfiguration]
-        """
-        return self._configuration
-    
-    @configuration.setter
-    def configuration(self,value: Optional[teams_tab_configuration.TeamsTabConfiguration] = None) -> None:
-        """
-        Sets the configuration property value. Container for custom settings applied to a tab. The tab is considered configured only once this property is set.
-        Args:
-            value: Value to set for the configuration property.
-        """
-        self._configuration = value
+    # Container for custom settings applied to a tab. The tab is considered configured only once this property is set.
+    configuration: Optional[teams_tab_configuration.TeamsTabConfiguration] = None
+    # Name of the tab.
+    display_name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The application that is linked to the tab. This cannot be changed after tab creation.
+    teams_app: Optional[teams_app.TeamsApp] = None
+    # Deep link URL of the tab instance. Read only.
+    web_url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamsTab:
@@ -49,32 +29,17 @@ class TeamsTab(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TeamsTab
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return TeamsTab()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Name of the tab.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Name of the tab.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import entity, teams_app, teams_tab_configuration
+
         from . import entity, teams_app, teams_tab_configuration
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -93,46 +58,12 @@ class TeamsTab(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("configuration", self.configuration)
         writer.write_str_value("displayName", self.display_name)
         writer.write_object_value("teamsApp", self.teams_app)
         writer.write_str_value("webUrl", self.web_url)
-    
-    @property
-    def teams_app(self,) -> Optional[teams_app.TeamsApp]:
-        """
-        Gets the teamsApp property value. The application that is linked to the tab. This cannot be changed after tab creation.
-        Returns: Optional[teams_app.TeamsApp]
-        """
-        return self._teams_app
-    
-    @teams_app.setter
-    def teams_app(self,value: Optional[teams_app.TeamsApp] = None) -> None:
-        """
-        Sets the teamsApp property value. The application that is linked to the tab. This cannot be changed after tab creation.
-        Args:
-            value: Value to set for the teams_app property.
-        """
-        self._teams_app = value
-    
-    @property
-    def web_url(self,) -> Optional[str]:
-        """
-        Gets the webUrl property value. Deep link URL of the tab instance. Read only.
-        Returns: Optional[str]
-        """
-        return self._web_url
-    
-    @web_url.setter
-    def web_url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the webUrl property value. Deep link URL of the tab instance. Read only.
-        Args:
-            value: Value to set for the web_url property.
-        """
-        self._web_url = value
     
 

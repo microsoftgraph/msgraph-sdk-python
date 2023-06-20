@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import date, datetime
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
@@ -131,10 +131,10 @@ class ReportsRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not path_parameters:
+            raise TypeError("path_parameters cannot be null.")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/reports{?%24select,%24expand}"
 
@@ -171,8 +171,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_email_activity_counts_with_period_request_builder.GetEmailActivityCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_email_activity_counts_with_period import get_email_activity_counts_with_period_request_builder
 
         return get_email_activity_counts_with_period_request_builder.GetEmailActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -184,8 +184,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_email_activity_user_counts_with_period_request_builder.GetEmailActivityUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_email_activity_user_counts_with_period import get_email_activity_user_counts_with_period_request_builder
 
         return get_email_activity_user_counts_with_period_request_builder.GetEmailActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -197,8 +197,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_email_activity_user_detail_with_date_request_builder.GetEmailActivityUserDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_email_activity_user_detail_with_date import get_email_activity_user_detail_with_date_request_builder
 
         return get_email_activity_user_detail_with_date_request_builder.GetEmailActivityUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -210,8 +210,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_email_activity_user_detail_with_period_request_builder.GetEmailActivityUserDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_email_activity_user_detail_with_period import get_email_activity_user_detail_with_period_request_builder
 
         return get_email_activity_user_detail_with_period_request_builder.GetEmailActivityUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -223,8 +223,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_email_app_usage_apps_user_counts_with_period_request_builder.GetEmailAppUsageAppsUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_email_app_usage_apps_user_counts_with_period import get_email_app_usage_apps_user_counts_with_period_request_builder
 
         return get_email_app_usage_apps_user_counts_with_period_request_builder.GetEmailAppUsageAppsUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -236,8 +236,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_email_app_usage_user_counts_with_period_request_builder.GetEmailAppUsageUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_email_app_usage_user_counts_with_period import get_email_app_usage_user_counts_with_period_request_builder
 
         return get_email_app_usage_user_counts_with_period_request_builder.GetEmailAppUsageUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -249,8 +249,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_email_app_usage_user_detail_with_date_request_builder.GetEmailAppUsageUserDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_email_app_usage_user_detail_with_date import get_email_app_usage_user_detail_with_date_request_builder
 
         return get_email_app_usage_user_detail_with_date_request_builder.GetEmailAppUsageUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -262,8 +262,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_email_app_usage_user_detail_with_period_request_builder.GetEmailAppUsageUserDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_email_app_usage_user_detail_with_period import get_email_app_usage_user_detail_with_period_request_builder
 
         return get_email_app_usage_user_detail_with_period_request_builder.GetEmailAppUsageUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -275,8 +275,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_email_app_usage_versions_user_counts_with_period_request_builder.GetEmailAppUsageVersionsUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_email_app_usage_versions_user_counts_with_period import get_email_app_usage_versions_user_counts_with_period_request_builder
 
         return get_email_app_usage_versions_user_counts_with_period_request_builder.GetEmailAppUsageVersionsUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -290,12 +290,12 @@ class ReportsRequestBuilder():
             startDateTime: Usage: startDateTime={startDateTime}
         Returns: get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time_request_builder.GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilder
         """
-        if end_date_time is None:
-            raise Exception("end_date_time cannot be undefined")
-        if group_id is None:
-            raise Exception("group_id cannot be undefined")
-        if start_date_time is None:
-            raise Exception("start_date_time cannot be undefined")
+        if not end_date_time:
+            raise TypeError("end_date_time cannot be null.")
+        if not group_id:
+            raise TypeError("group_id cannot be null.")
+        if not start_date_time:
+            raise TypeError("start_date_time cannot be null.")
         from .get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time import get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time_request_builder
 
         return get_group_archived_print_jobs_with_group_id_with_start_date_time_with_end_date_time_request_builder.GetGroupArchivedPrintJobsWithGroupIdWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, group_id, start_date_time)
@@ -307,8 +307,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_m365_app_platform_user_counts_with_period_request_builder.GetM365AppPlatformUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_m365_app_platform_user_counts_with_period import get_m365_app_platform_user_counts_with_period_request_builder
 
         return get_m365_app_platform_user_counts_with_period_request_builder.GetM365AppPlatformUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -320,8 +320,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_m365_app_user_counts_with_period_request_builder.GetM365AppUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_m365_app_user_counts_with_period import get_m365_app_user_counts_with_period_request_builder
 
         return get_m365_app_user_counts_with_period_request_builder.GetM365AppUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -333,8 +333,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_m365_app_user_detail_with_date_request_builder.GetM365AppUserDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_m365_app_user_detail_with_date import get_m365_app_user_detail_with_date_request_builder
 
         return get_m365_app_user_detail_with_date_request_builder.GetM365AppUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -346,8 +346,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_m365_app_user_detail_with_period_request_builder.GetM365AppUserDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_m365_app_user_detail_with_period import get_m365_app_user_detail_with_period_request_builder
 
         return get_m365_app_user_detail_with_period_request_builder.GetM365AppUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -359,8 +359,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_mailbox_usage_detail_with_period_request_builder.GetMailboxUsageDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_mailbox_usage_detail_with_period import get_mailbox_usage_detail_with_period_request_builder
 
         return get_mailbox_usage_detail_with_period_request_builder.GetMailboxUsageDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -372,8 +372,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_mailbox_usage_mailbox_counts_with_period_request_builder.GetMailboxUsageMailboxCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_mailbox_usage_mailbox_counts_with_period import get_mailbox_usage_mailbox_counts_with_period_request_builder
 
         return get_mailbox_usage_mailbox_counts_with_period_request_builder.GetMailboxUsageMailboxCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -385,8 +385,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_mailbox_usage_quota_status_mailbox_counts_with_period_request_builder.GetMailboxUsageQuotaStatusMailboxCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_mailbox_usage_quota_status_mailbox_counts_with_period import get_mailbox_usage_quota_status_mailbox_counts_with_period_request_builder
 
         return get_mailbox_usage_quota_status_mailbox_counts_with_period_request_builder.GetMailboxUsageQuotaStatusMailboxCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -398,8 +398,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_mailbox_usage_storage_with_period_request_builder.GetMailboxUsageStorageWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_mailbox_usage_storage_with_period import get_mailbox_usage_storage_with_period_request_builder
 
         return get_mailbox_usage_storage_with_period_request_builder.GetMailboxUsageStorageWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -411,8 +411,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_office365_active_user_counts_with_period_request_builder.GetOffice365ActiveUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_office365_active_user_counts_with_period import get_office365_active_user_counts_with_period_request_builder
 
         return get_office365_active_user_counts_with_period_request_builder.GetOffice365ActiveUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -424,8 +424,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_office365_active_user_detail_with_date_request_builder.GetOffice365ActiveUserDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_office365_active_user_detail_with_date import get_office365_active_user_detail_with_date_request_builder
 
         return get_office365_active_user_detail_with_date_request_builder.GetOffice365ActiveUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -437,8 +437,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_office365_active_user_detail_with_period_request_builder.GetOffice365ActiveUserDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_office365_active_user_detail_with_period import get_office365_active_user_detail_with_period_request_builder
 
         return get_office365_active_user_detail_with_period_request_builder.GetOffice365ActiveUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -450,8 +450,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_office365_groups_activity_counts_with_period_request_builder.GetOffice365GroupsActivityCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_office365_groups_activity_counts_with_period import get_office365_groups_activity_counts_with_period_request_builder
 
         return get_office365_groups_activity_counts_with_period_request_builder.GetOffice365GroupsActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -463,8 +463,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_office365_groups_activity_detail_with_date_request_builder.GetOffice365GroupsActivityDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_office365_groups_activity_detail_with_date import get_office365_groups_activity_detail_with_date_request_builder
 
         return get_office365_groups_activity_detail_with_date_request_builder.GetOffice365GroupsActivityDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -476,8 +476,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_office365_groups_activity_detail_with_period_request_builder.GetOffice365GroupsActivityDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_office365_groups_activity_detail_with_period import get_office365_groups_activity_detail_with_period_request_builder
 
         return get_office365_groups_activity_detail_with_period_request_builder.GetOffice365GroupsActivityDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -489,8 +489,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_office365_groups_activity_file_counts_with_period_request_builder.GetOffice365GroupsActivityFileCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_office365_groups_activity_file_counts_with_period import get_office365_groups_activity_file_counts_with_period_request_builder
 
         return get_office365_groups_activity_file_counts_with_period_request_builder.GetOffice365GroupsActivityFileCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -502,8 +502,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_office365_groups_activity_group_counts_with_period_request_builder.GetOffice365GroupsActivityGroupCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_office365_groups_activity_group_counts_with_period import get_office365_groups_activity_group_counts_with_period_request_builder
 
         return get_office365_groups_activity_group_counts_with_period_request_builder.GetOffice365GroupsActivityGroupCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -515,8 +515,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_office365_groups_activity_storage_with_period_request_builder.GetOffice365GroupsActivityStorageWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_office365_groups_activity_storage_with_period import get_office365_groups_activity_storage_with_period_request_builder
 
         return get_office365_groups_activity_storage_with_period_request_builder.GetOffice365GroupsActivityStorageWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -528,8 +528,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_office365_services_user_counts_with_period_request_builder.GetOffice365ServicesUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_office365_services_user_counts_with_period import get_office365_services_user_counts_with_period_request_builder
 
         return get_office365_services_user_counts_with_period_request_builder.GetOffice365ServicesUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -541,8 +541,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_one_drive_activity_file_counts_with_period_request_builder.GetOneDriveActivityFileCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_one_drive_activity_file_counts_with_period import get_one_drive_activity_file_counts_with_period_request_builder
 
         return get_one_drive_activity_file_counts_with_period_request_builder.GetOneDriveActivityFileCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -554,8 +554,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_one_drive_activity_user_counts_with_period_request_builder.GetOneDriveActivityUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_one_drive_activity_user_counts_with_period import get_one_drive_activity_user_counts_with_period_request_builder
 
         return get_one_drive_activity_user_counts_with_period_request_builder.GetOneDriveActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -567,8 +567,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_one_drive_activity_user_detail_with_date_request_builder.GetOneDriveActivityUserDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_one_drive_activity_user_detail_with_date import get_one_drive_activity_user_detail_with_date_request_builder
 
         return get_one_drive_activity_user_detail_with_date_request_builder.GetOneDriveActivityUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -580,8 +580,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_one_drive_activity_user_detail_with_period_request_builder.GetOneDriveActivityUserDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_one_drive_activity_user_detail_with_period import get_one_drive_activity_user_detail_with_period_request_builder
 
         return get_one_drive_activity_user_detail_with_period_request_builder.GetOneDriveActivityUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -593,8 +593,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_one_drive_usage_account_counts_with_period_request_builder.GetOneDriveUsageAccountCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_one_drive_usage_account_counts_with_period import get_one_drive_usage_account_counts_with_period_request_builder
 
         return get_one_drive_usage_account_counts_with_period_request_builder.GetOneDriveUsageAccountCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -606,8 +606,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_one_drive_usage_account_detail_with_date_request_builder.GetOneDriveUsageAccountDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_one_drive_usage_account_detail_with_date import get_one_drive_usage_account_detail_with_date_request_builder
 
         return get_one_drive_usage_account_detail_with_date_request_builder.GetOneDriveUsageAccountDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -619,8 +619,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_one_drive_usage_account_detail_with_period_request_builder.GetOneDriveUsageAccountDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_one_drive_usage_account_detail_with_period import get_one_drive_usage_account_detail_with_period_request_builder
 
         return get_one_drive_usage_account_detail_with_period_request_builder.GetOneDriveUsageAccountDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -632,8 +632,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_one_drive_usage_file_counts_with_period_request_builder.GetOneDriveUsageFileCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_one_drive_usage_file_counts_with_period import get_one_drive_usage_file_counts_with_period_request_builder
 
         return get_one_drive_usage_file_counts_with_period_request_builder.GetOneDriveUsageFileCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -645,8 +645,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_one_drive_usage_storage_with_period_request_builder.GetOneDriveUsageStorageWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_one_drive_usage_storage_with_period import get_one_drive_usage_storage_with_period_request_builder
 
         return get_one_drive_usage_storage_with_period_request_builder.GetOneDriveUsageStorageWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -660,12 +660,12 @@ class ReportsRequestBuilder():
             startDateTime: Usage: startDateTime={startDateTime}
         Returns: get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_request_builder.GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder
         """
-        if end_date_time is None:
-            raise Exception("end_date_time cannot be undefined")
-        if printer_id is None:
-            raise Exception("printer_id cannot be undefined")
-        if start_date_time is None:
-            raise Exception("start_date_time cannot be undefined")
+        if not end_date_time:
+            raise TypeError("end_date_time cannot be null.")
+        if not printer_id:
+            raise TypeError("printer_id cannot be null.")
+        if not start_date_time:
+            raise TypeError("start_date_time cannot be null.")
         from .get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time import get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_request_builder
 
         return get_printer_archived_print_jobs_with_printer_id_with_start_date_time_with_end_date_time_request_builder.GetPrinterArchivedPrintJobsWithPrinterIdWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, printer_id, start_date_time)
@@ -677,8 +677,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_activity_file_counts_with_period_request_builder.GetSharePointActivityFileCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_share_point_activity_file_counts_with_period import get_share_point_activity_file_counts_with_period_request_builder
 
         return get_share_point_activity_file_counts_with_period_request_builder.GetSharePointActivityFileCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -690,8 +690,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_activity_pages_with_period_request_builder.GetSharePointActivityPagesWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_share_point_activity_pages_with_period import get_share_point_activity_pages_with_period_request_builder
 
         return get_share_point_activity_pages_with_period_request_builder.GetSharePointActivityPagesWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -703,8 +703,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_activity_user_counts_with_period_request_builder.GetSharePointActivityUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_share_point_activity_user_counts_with_period import get_share_point_activity_user_counts_with_period_request_builder
 
         return get_share_point_activity_user_counts_with_period_request_builder.GetSharePointActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -716,8 +716,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_share_point_activity_user_detail_with_date_request_builder.GetSharePointActivityUserDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_share_point_activity_user_detail_with_date import get_share_point_activity_user_detail_with_date_request_builder
 
         return get_share_point_activity_user_detail_with_date_request_builder.GetSharePointActivityUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -729,8 +729,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_activity_user_detail_with_period_request_builder.GetSharePointActivityUserDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_share_point_activity_user_detail_with_period import get_share_point_activity_user_detail_with_period_request_builder
 
         return get_share_point_activity_user_detail_with_period_request_builder.GetSharePointActivityUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -742,8 +742,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_share_point_site_usage_detail_with_date_request_builder.GetSharePointSiteUsageDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_share_point_site_usage_detail_with_date import get_share_point_site_usage_detail_with_date_request_builder
 
         return get_share_point_site_usage_detail_with_date_request_builder.GetSharePointSiteUsageDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -755,8 +755,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_site_usage_detail_with_period_request_builder.GetSharePointSiteUsageDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_share_point_site_usage_detail_with_period import get_share_point_site_usage_detail_with_period_request_builder
 
         return get_share_point_site_usage_detail_with_period_request_builder.GetSharePointSiteUsageDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -768,8 +768,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_site_usage_file_counts_with_period_request_builder.GetSharePointSiteUsageFileCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_share_point_site_usage_file_counts_with_period import get_share_point_site_usage_file_counts_with_period_request_builder
 
         return get_share_point_site_usage_file_counts_with_period_request_builder.GetSharePointSiteUsageFileCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -781,8 +781,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_site_usage_pages_with_period_request_builder.GetSharePointSiteUsagePagesWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_share_point_site_usage_pages_with_period import get_share_point_site_usage_pages_with_period_request_builder
 
         return get_share_point_site_usage_pages_with_period_request_builder.GetSharePointSiteUsagePagesWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -794,8 +794,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_site_usage_site_counts_with_period_request_builder.GetSharePointSiteUsageSiteCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_share_point_site_usage_site_counts_with_period import get_share_point_site_usage_site_counts_with_period_request_builder
 
         return get_share_point_site_usage_site_counts_with_period_request_builder.GetSharePointSiteUsageSiteCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -807,8 +807,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_share_point_site_usage_storage_with_period_request_builder.GetSharePointSiteUsageStorageWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_share_point_site_usage_storage_with_period import get_share_point_site_usage_storage_with_period_request_builder
 
         return get_share_point_site_usage_storage_with_period_request_builder.GetSharePointSiteUsageStorageWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -820,8 +820,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_activity_counts_with_period_request_builder.GetSkypeForBusinessActivityCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_skype_for_business_activity_counts_with_period import get_skype_for_business_activity_counts_with_period_request_builder
 
         return get_skype_for_business_activity_counts_with_period_request_builder.GetSkypeForBusinessActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -833,8 +833,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_activity_user_counts_with_period_request_builder.GetSkypeForBusinessActivityUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_skype_for_business_activity_user_counts_with_period import get_skype_for_business_activity_user_counts_with_period_request_builder
 
         return get_skype_for_business_activity_user_counts_with_period_request_builder.GetSkypeForBusinessActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -846,8 +846,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_skype_for_business_activity_user_detail_with_date_request_builder.GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_skype_for_business_activity_user_detail_with_date import get_skype_for_business_activity_user_detail_with_date_request_builder
 
         return get_skype_for_business_activity_user_detail_with_date_request_builder.GetSkypeForBusinessActivityUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -859,8 +859,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_activity_user_detail_with_period_request_builder.GetSkypeForBusinessActivityUserDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_skype_for_business_activity_user_detail_with_period import get_skype_for_business_activity_user_detail_with_period_request_builder
 
         return get_skype_for_business_activity_user_detail_with_period_request_builder.GetSkypeForBusinessActivityUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -872,8 +872,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_device_usage_distribution_user_counts_with_period_request_builder.GetSkypeForBusinessDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_skype_for_business_device_usage_distribution_user_counts_with_period import get_skype_for_business_device_usage_distribution_user_counts_with_period_request_builder
 
         return get_skype_for_business_device_usage_distribution_user_counts_with_period_request_builder.GetSkypeForBusinessDeviceUsageDistributionUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -885,8 +885,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_device_usage_user_counts_with_period_request_builder.GetSkypeForBusinessDeviceUsageUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_skype_for_business_device_usage_user_counts_with_period import get_skype_for_business_device_usage_user_counts_with_period_request_builder
 
         return get_skype_for_business_device_usage_user_counts_with_period_request_builder.GetSkypeForBusinessDeviceUsageUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -898,8 +898,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_skype_for_business_device_usage_user_detail_with_date_request_builder.GetSkypeForBusinessDeviceUsageUserDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_skype_for_business_device_usage_user_detail_with_date import get_skype_for_business_device_usage_user_detail_with_date_request_builder
 
         return get_skype_for_business_device_usage_user_detail_with_date_request_builder.GetSkypeForBusinessDeviceUsageUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -911,8 +911,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_device_usage_user_detail_with_period_request_builder.GetSkypeForBusinessDeviceUsageUserDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_skype_for_business_device_usage_user_detail_with_period import get_skype_for_business_device_usage_user_detail_with_period_request_builder
 
         return get_skype_for_business_device_usage_user_detail_with_period_request_builder.GetSkypeForBusinessDeviceUsageUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -924,8 +924,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_organizer_activity_counts_with_period_request_builder.GetSkypeForBusinessOrganizerActivityCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_skype_for_business_organizer_activity_counts_with_period import get_skype_for_business_organizer_activity_counts_with_period_request_builder
 
         return get_skype_for_business_organizer_activity_counts_with_period_request_builder.GetSkypeForBusinessOrganizerActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -937,8 +937,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_organizer_activity_minute_counts_with_period_request_builder.GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_skype_for_business_organizer_activity_minute_counts_with_period import get_skype_for_business_organizer_activity_minute_counts_with_period_request_builder
 
         return get_skype_for_business_organizer_activity_minute_counts_with_period_request_builder.GetSkypeForBusinessOrganizerActivityMinuteCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -950,8 +950,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_organizer_activity_user_counts_with_period_request_builder.GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_skype_for_business_organizer_activity_user_counts_with_period import get_skype_for_business_organizer_activity_user_counts_with_period_request_builder
 
         return get_skype_for_business_organizer_activity_user_counts_with_period_request_builder.GetSkypeForBusinessOrganizerActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -963,8 +963,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_participant_activity_counts_with_period_request_builder.GetSkypeForBusinessParticipantActivityCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_skype_for_business_participant_activity_counts_with_period import get_skype_for_business_participant_activity_counts_with_period_request_builder
 
         return get_skype_for_business_participant_activity_counts_with_period_request_builder.GetSkypeForBusinessParticipantActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -976,8 +976,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_participant_activity_minute_counts_with_period_request_builder.GetSkypeForBusinessParticipantActivityMinuteCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_skype_for_business_participant_activity_minute_counts_with_period import get_skype_for_business_participant_activity_minute_counts_with_period_request_builder
 
         return get_skype_for_business_participant_activity_minute_counts_with_period_request_builder.GetSkypeForBusinessParticipantActivityMinuteCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -989,8 +989,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_participant_activity_user_counts_with_period_request_builder.GetSkypeForBusinessParticipantActivityUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_skype_for_business_participant_activity_user_counts_with_period import get_skype_for_business_participant_activity_user_counts_with_period_request_builder
 
         return get_skype_for_business_participant_activity_user_counts_with_period_request_builder.GetSkypeForBusinessParticipantActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1002,8 +1002,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_peer_to_peer_activity_counts_with_period_request_builder.GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_skype_for_business_peer_to_peer_activity_counts_with_period import get_skype_for_business_peer_to_peer_activity_counts_with_period_request_builder
 
         return get_skype_for_business_peer_to_peer_activity_counts_with_period_request_builder.GetSkypeForBusinessPeerToPeerActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1015,8 +1015,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_peer_to_peer_activity_minute_counts_with_period_request_builder.GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_skype_for_business_peer_to_peer_activity_minute_counts_with_period import get_skype_for_business_peer_to_peer_activity_minute_counts_with_period_request_builder
 
         return get_skype_for_business_peer_to_peer_activity_minute_counts_with_period_request_builder.GetSkypeForBusinessPeerToPeerActivityMinuteCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1028,8 +1028,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_skype_for_business_peer_to_peer_activity_user_counts_with_period_request_builder.GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_skype_for_business_peer_to_peer_activity_user_counts_with_period import get_skype_for_business_peer_to_peer_activity_user_counts_with_period_request_builder
 
         return get_skype_for_business_peer_to_peer_activity_user_counts_with_period_request_builder.GetSkypeForBusinessPeerToPeerActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1041,8 +1041,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_teams_device_usage_distribution_user_counts_with_period_request_builder.GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_teams_device_usage_distribution_user_counts_with_period import get_teams_device_usage_distribution_user_counts_with_period_request_builder
 
         return get_teams_device_usage_distribution_user_counts_with_period_request_builder.GetTeamsDeviceUsageDistributionUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1054,8 +1054,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_teams_device_usage_user_counts_with_period_request_builder.GetTeamsDeviceUsageUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_teams_device_usage_user_counts_with_period import get_teams_device_usage_user_counts_with_period_request_builder
 
         return get_teams_device_usage_user_counts_with_period_request_builder.GetTeamsDeviceUsageUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1067,8 +1067,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_teams_device_usage_user_detail_with_date_request_builder.GetTeamsDeviceUsageUserDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_teams_device_usage_user_detail_with_date import get_teams_device_usage_user_detail_with_date_request_builder
 
         return get_teams_device_usage_user_detail_with_date_request_builder.GetTeamsDeviceUsageUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -1080,8 +1080,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_teams_device_usage_user_detail_with_period_request_builder.GetTeamsDeviceUsageUserDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_teams_device_usage_user_detail_with_period import get_teams_device_usage_user_detail_with_period_request_builder
 
         return get_teams_device_usage_user_detail_with_period_request_builder.GetTeamsDeviceUsageUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1093,8 +1093,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_teams_team_activity_counts_with_period_request_builder.GetTeamsTeamActivityCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_teams_team_activity_counts_with_period import get_teams_team_activity_counts_with_period_request_builder
 
         return get_teams_team_activity_counts_with_period_request_builder.GetTeamsTeamActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1106,8 +1106,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_teams_team_activity_detail_with_date_request_builder.GetTeamsTeamActivityDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_teams_team_activity_detail_with_date import get_teams_team_activity_detail_with_date_request_builder
 
         return get_teams_team_activity_detail_with_date_request_builder.GetTeamsTeamActivityDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -1119,8 +1119,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_teams_team_activity_detail_with_period_request_builder.GetTeamsTeamActivityDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_teams_team_activity_detail_with_period import get_teams_team_activity_detail_with_period_request_builder
 
         return get_teams_team_activity_detail_with_period_request_builder.GetTeamsTeamActivityDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1132,8 +1132,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_teams_team_activity_distribution_counts_with_period_request_builder.GetTeamsTeamActivityDistributionCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_teams_team_activity_distribution_counts_with_period import get_teams_team_activity_distribution_counts_with_period_request_builder
 
         return get_teams_team_activity_distribution_counts_with_period_request_builder.GetTeamsTeamActivityDistributionCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1145,8 +1145,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_teams_team_counts_with_period_request_builder.GetTeamsTeamCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_teams_team_counts_with_period import get_teams_team_counts_with_period_request_builder
 
         return get_teams_team_counts_with_period_request_builder.GetTeamsTeamCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1158,8 +1158,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_teams_user_activity_counts_with_period_request_builder.GetTeamsUserActivityCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_teams_user_activity_counts_with_period import get_teams_user_activity_counts_with_period_request_builder
 
         return get_teams_user_activity_counts_with_period_request_builder.GetTeamsUserActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1171,8 +1171,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_teams_user_activity_user_counts_with_period_request_builder.GetTeamsUserActivityUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_teams_user_activity_user_counts_with_period import get_teams_user_activity_user_counts_with_period_request_builder
 
         return get_teams_user_activity_user_counts_with_period_request_builder.GetTeamsUserActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1184,8 +1184,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_teams_user_activity_user_detail_with_date_request_builder.GetTeamsUserActivityUserDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_teams_user_activity_user_detail_with_date import get_teams_user_activity_user_detail_with_date_request_builder
 
         return get_teams_user_activity_user_detail_with_date_request_builder.GetTeamsUserActivityUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -1197,8 +1197,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_teams_user_activity_user_detail_with_period_request_builder.GetTeamsUserActivityUserDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_teams_user_activity_user_detail_with_period import get_teams_user_activity_user_detail_with_period_request_builder
 
         return get_teams_user_activity_user_detail_with_period_request_builder.GetTeamsUserActivityUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1212,12 +1212,12 @@ class ReportsRequestBuilder():
             userId: Usage: userId='{userId}'
         Returns: get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_request_builder.GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilder
         """
-        if end_date_time is None:
-            raise Exception("end_date_time cannot be undefined")
-        if start_date_time is None:
-            raise Exception("start_date_time cannot be undefined")
-        if user_id is None:
-            raise Exception("user_id cannot be undefined")
+        if not end_date_time:
+            raise TypeError("end_date_time cannot be null.")
+        if not start_date_time:
+            raise TypeError("start_date_time cannot be null.")
+        if not user_id:
+            raise TypeError("user_id cannot be null.")
         from .get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time import get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_request_builder
 
         return get_user_archived_print_jobs_with_user_id_with_start_date_time_with_end_date_time_request_builder.GetUserArchivedPrintJobsWithUserIdWithStartDateTimeWithEndDateTimeRequestBuilder(self.request_adapter, self.path_parameters, end_date_time, start_date_time, user_id)
@@ -1229,8 +1229,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_activity_counts_with_period_request_builder.GetYammerActivityCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_yammer_activity_counts_with_period import get_yammer_activity_counts_with_period_request_builder
 
         return get_yammer_activity_counts_with_period_request_builder.GetYammerActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1242,8 +1242,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_activity_user_counts_with_period_request_builder.GetYammerActivityUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_yammer_activity_user_counts_with_period import get_yammer_activity_user_counts_with_period_request_builder
 
         return get_yammer_activity_user_counts_with_period_request_builder.GetYammerActivityUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1255,8 +1255,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_yammer_activity_user_detail_with_date_request_builder.GetYammerActivityUserDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_yammer_activity_user_detail_with_date import get_yammer_activity_user_detail_with_date_request_builder
 
         return get_yammer_activity_user_detail_with_date_request_builder.GetYammerActivityUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -1268,8 +1268,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_activity_user_detail_with_period_request_builder.GetYammerActivityUserDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_yammer_activity_user_detail_with_period import get_yammer_activity_user_detail_with_period_request_builder
 
         return get_yammer_activity_user_detail_with_period_request_builder.GetYammerActivityUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1281,8 +1281,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_device_usage_distribution_user_counts_with_period_request_builder.GetYammerDeviceUsageDistributionUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_yammer_device_usage_distribution_user_counts_with_period import get_yammer_device_usage_distribution_user_counts_with_period_request_builder
 
         return get_yammer_device_usage_distribution_user_counts_with_period_request_builder.GetYammerDeviceUsageDistributionUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1294,8 +1294,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_device_usage_user_counts_with_period_request_builder.GetYammerDeviceUsageUserCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_yammer_device_usage_user_counts_with_period import get_yammer_device_usage_user_counts_with_period_request_builder
 
         return get_yammer_device_usage_user_counts_with_period_request_builder.GetYammerDeviceUsageUserCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1307,8 +1307,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_yammer_device_usage_user_detail_with_date_request_builder.GetYammerDeviceUsageUserDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_yammer_device_usage_user_detail_with_date import get_yammer_device_usage_user_detail_with_date_request_builder
 
         return get_yammer_device_usage_user_detail_with_date_request_builder.GetYammerDeviceUsageUserDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -1320,8 +1320,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_device_usage_user_detail_with_period_request_builder.GetYammerDeviceUsageUserDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_yammer_device_usage_user_detail_with_period import get_yammer_device_usage_user_detail_with_period_request_builder
 
         return get_yammer_device_usage_user_detail_with_period_request_builder.GetYammerDeviceUsageUserDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1333,8 +1333,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_groups_activity_counts_with_period_request_builder.GetYammerGroupsActivityCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_yammer_groups_activity_counts_with_period import get_yammer_groups_activity_counts_with_period_request_builder
 
         return get_yammer_groups_activity_counts_with_period_request_builder.GetYammerGroupsActivityCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1346,8 +1346,8 @@ class ReportsRequestBuilder():
             date: Usage: date={date}
         Returns: get_yammer_groups_activity_detail_with_date_request_builder.GetYammerGroupsActivityDetailWithDateRequestBuilder
         """
-        if date is None:
-            raise Exception("date cannot be undefined")
+        if not date:
+            raise TypeError("date cannot be null.")
         from .get_yammer_groups_activity_detail_with_date import get_yammer_groups_activity_detail_with_date_request_builder
 
         return get_yammer_groups_activity_detail_with_date_request_builder.GetYammerGroupsActivityDetailWithDateRequestBuilder(self.request_adapter, self.path_parameters, date)
@@ -1359,8 +1359,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_groups_activity_detail_with_period_request_builder.GetYammerGroupsActivityDetailWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_yammer_groups_activity_detail_with_period import get_yammer_groups_activity_detail_with_period_request_builder
 
         return get_yammer_groups_activity_detail_with_period_request_builder.GetYammerGroupsActivityDetailWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1372,8 +1372,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: get_yammer_groups_activity_group_counts_with_period_request_builder.GetYammerGroupsActivityGroupCountsWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .get_yammer_groups_activity_group_counts_with_period import get_yammer_groups_activity_group_counts_with_period_request_builder
 
         return get_yammer_groups_activity_group_counts_with_period_request_builder.GetYammerGroupsActivityGroupCountsWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1388,14 +1388,14 @@ class ReportsRequestBuilder():
             top: Usage: top={top}
         Returns: managed_device_enrollment_failure_details_with_skip_with_top_with_filter_with_skip_token_request_builder.ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder
         """
-        if filter is None:
-            raise Exception("filter cannot be undefined")
-        if skip is None:
-            raise Exception("skip cannot be undefined")
-        if skip_token is None:
-            raise Exception("skip_token cannot be undefined")
-        if top is None:
-            raise Exception("top cannot be undefined")
+        if not filter:
+            raise TypeError("filter cannot be null.")
+        if not skip:
+            raise TypeError("skip cannot be null.")
+        if not skip_token:
+            raise TypeError("skip_token cannot be null.")
+        if not top:
+            raise TypeError("top cannot be null.")
         from .managed_device_enrollment_failure_details_with_skip_with_top_with_filter_with_skip_token import managed_device_enrollment_failure_details_with_skip_with_top_with_filter_with_skip_token_request_builder
 
         return managed_device_enrollment_failure_details_with_skip_with_top_with_filter_with_skip_token_request_builder.ManagedDeviceEnrollmentFailureDetailsWithSkipWithTopWithFilterWithSkipTokenRequestBuilder(self.request_adapter, self.path_parameters, filter, skip, skip_token, top)
@@ -1407,8 +1407,8 @@ class ReportsRequestBuilder():
             period: Usage: period='{period}'
         Returns: managed_device_enrollment_top_failures_with_period_request_builder.ManagedDeviceEnrollmentTopFailuresWithPeriodRequestBuilder
         """
-        if period is None:
-            raise Exception("period cannot be undefined")
+        if not period:
+            raise TypeError("period cannot be null.")
         from .managed_device_enrollment_top_failures_with_period import managed_device_enrollment_top_failures_with_period_request_builder
 
         return managed_device_enrollment_top_failures_with_period_request_builder.ManagedDeviceEnrollmentTopFailuresWithPeriodRequestBuilder(self.request_adapter, self.path_parameters, period)
@@ -1421,8 +1421,8 @@ class ReportsRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[report_root.ReportRoot]
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
@@ -1464,8 +1464,8 @@ class ReportsRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
@@ -1597,8 +1597,8 @@ class ReportsRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
+            if not original_name:
+                raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"
             if original_name == "select":

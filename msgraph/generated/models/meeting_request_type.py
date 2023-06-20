@@ -1,6 +1,6 @@
 from enum import Enum
 
-class MeetingRequestType(Enum):
+class MeetingRequestType(str, Enum):
     None_ = "none",
     NewMeetingRequest = "newMeetingRequest",
     FullUpdate = "fullUpdate",

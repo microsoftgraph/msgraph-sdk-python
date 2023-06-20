@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import change_tracked_entity
 
+@dataclass
 class ShiftPreferences(change_tracked_entity.ChangeTrackedEntity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ShiftPreferences and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.shiftPreferences"
-        # Availability of the user to be scheduled for work and its recurrence pattern.
-        self._availability: Optional[List[shift_availability.ShiftAvailability]] = None
-    
-    @property
-    def availability(self,) -> Optional[List[shift_availability.ShiftAvailability]]:
-        """
-        Gets the availability property value. Availability of the user to be scheduled for work and its recurrence pattern.
-        Returns: Optional[List[shift_availability.ShiftAvailability]]
-        """
-        return self._availability
-    
-    @availability.setter
-    def availability(self,value: Optional[List[shift_availability.ShiftAvailability]] = None) -> None:
-        """
-        Sets the availability property value. Availability of the user to be scheduled for work and its recurrence pattern.
-        Args:
-            value: Value to set for the availability property.
-        """
-        self._availability = value
+    odata_type = "#microsoft.graph.shiftPreferences"
+    # Availability of the user to be scheduled for work and its recurrence pattern.
+    availability: Optional[List[shift_availability.ShiftAvailability]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ShiftPreferences:
@@ -42,8 +22,8 @@ class ShiftPreferences(change_tracked_entity.ChangeTrackedEntity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ShiftPreferences
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return ShiftPreferences()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -51,6 +31,8 @@ class ShiftPreferences(change_tracked_entity.ChangeTrackedEntity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import change_tracked_entity, shift_availability
+
         from . import change_tracked_entity, shift_availability
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -66,8 +48,8 @@ class ShiftPreferences(change_tracked_entity.ChangeTrackedEntity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("availability", self.availability)
     

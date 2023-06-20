@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ConnectionStatus(Enum):
+class ConnectionStatus(str, Enum):
     Unknown = "unknown",
     Attempted = "attempted",
     Succeeded = "succeeded",

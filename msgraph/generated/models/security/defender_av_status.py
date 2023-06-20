@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DefenderAvStatus(Enum):
+class DefenderAvStatus(str, Enum):
     NotReporting = "notReporting",
     Disabled = "disabled",
     NotUpdated = "notUpdated",

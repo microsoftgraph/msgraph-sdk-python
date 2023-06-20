@@ -1,6 +1,6 @@
 from enum import Enum
 
-class EndpointType(Enum):
+class EndpointType(str, Enum):
     Default = "default",
     Voicemail = "voicemail",
     SkypeForBusiness = "skypeForBusiness",

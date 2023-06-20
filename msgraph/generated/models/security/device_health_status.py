@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DeviceHealthStatus(Enum):
+class DeviceHealthStatus(str, Enum):
     Active = "active",
     Inactive = "inactive",
     ImpairedCommunication = "impairedCommunication",

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ExchangeIdFormat(Enum):
+class ExchangeIdFormat(str, Enum):
     EntryId = "entryId",
     EwsId = "ewsId",
     ImmutableEntryId = "immutableEntryId",

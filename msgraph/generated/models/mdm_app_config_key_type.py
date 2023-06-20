@@ -1,6 +1,6 @@
 from enum import Enum
 
-class MdmAppConfigKeyType(Enum):
+class MdmAppConfigKeyType(str, Enum):
     StringType = "stringType",
     IntegerType = "integerType",
     RealType = "realType",

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ServiceHealthStatus(Enum):
+class ServiceHealthStatus(str, Enum):
     ServiceOperational = "serviceOperational",
     Investigating = "investigating",
     RestoringService = "restoringService",

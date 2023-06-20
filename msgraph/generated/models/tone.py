@@ -1,6 +1,6 @@
 from enum import Enum
 
-class Tone(Enum):
+class Tone(str, Enum):
     Tone0 = "tone0",
     Tone1 = "tone1",
     Tone2 = "tone2",

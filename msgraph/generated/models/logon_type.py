@@ -1,6 +1,6 @@
 from enum import Enum
 
-class LogonType(Enum):
+class LogonType(str, Enum):
     Unknown = "unknown",
     Interactive = "interactive",
     RemoteInteractive = "remoteInteractive",

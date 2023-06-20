@@ -1,6 +1,6 @@
 from enum import Enum
 
-class Enablement(Enum):
+class Enablement(str, Enum):
     # Device default value, no intent.
     NotConfigured = "notConfigured",
     # Enables the setting on the device.

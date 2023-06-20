@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,25 +8,21 @@ if TYPE_CHECKING:
 
 from . import authentication_method_configuration
 
+@dataclass
 class TemporaryAccessPassAuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new TemporaryAccessPassAuthenticationMethodConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.temporaryAccessPassAuthenticationMethodConfiguration"
-        # Default length in characters of a Temporary Access Pass object. Must be between 8 and 48 characters.
-        self._default_length: Optional[int] = None
-        # Default lifetime in minutes for a Temporary Access Pass. Value can be any integer between the minimumLifetimeInMinutes and maximumLifetimeInMinutes.
-        self._default_lifetime_in_minutes: Optional[int] = None
-        # A collection of groups that are enabled to use the authentication method.
-        self._include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
-        # If true, all the passes in the tenant will be restricted to one-time use. If false, passes in the tenant can be created to be either one-time use or reusable.
-        self._is_usable_once: Optional[bool] = None
-        # Maximum lifetime in minutes for any Temporary Access Pass created in the tenant. Value can be between 10 and 43200 minutes (equivalent to 30 days).
-        self._maximum_lifetime_in_minutes: Optional[int] = None
-        # Minimum lifetime in minutes for any Temporary Access Pass created in the tenant. Value can be between 10 and 43200 minutes (equivalent to 30 days).
-        self._minimum_lifetime_in_minutes: Optional[int] = None
+    odata_type = "#microsoft.graph.temporaryAccessPassAuthenticationMethodConfiguration"
+    # Default length in characters of a Temporary Access Pass object. Must be between 8 and 48 characters.
+    default_length: Optional[int] = None
+    # Default lifetime in minutes for a Temporary Access Pass. Value can be any integer between the minimumLifetimeInMinutes and maximumLifetimeInMinutes.
+    default_lifetime_in_minutes: Optional[int] = None
+    # A collection of groups that are enabled to use the authentication method.
+    include_targets: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None
+    # If true, all the passes in the tenant will be restricted to one-time use. If false, passes in the tenant can be created to be either one-time use or reusable.
+    is_usable_once: Optional[bool] = None
+    # Maximum lifetime in minutes for any Temporary Access Pass created in the tenant. Value can be between 10 and 43200 minutes (equivalent to 30 days).
+    maximum_lifetime_in_minutes: Optional[int] = None
+    # Minimum lifetime in minutes for any Temporary Access Pass created in the tenant. Value can be between 10 and 43200 minutes (equivalent to 30 days).
+    minimum_lifetime_in_minutes: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TemporaryAccessPassAuthenticationMethodConfiguration:
@@ -35,49 +32,17 @@ class TemporaryAccessPassAuthenticationMethodConfiguration(authentication_method
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TemporaryAccessPassAuthenticationMethodConfiguration
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return TemporaryAccessPassAuthenticationMethodConfiguration()
-    
-    @property
-    def default_length(self,) -> Optional[int]:
-        """
-        Gets the defaultLength property value. Default length in characters of a Temporary Access Pass object. Must be between 8 and 48 characters.
-        Returns: Optional[int]
-        """
-        return self._default_length
-    
-    @default_length.setter
-    def default_length(self,value: Optional[int] = None) -> None:
-        """
-        Sets the defaultLength property value. Default length in characters of a Temporary Access Pass object. Must be between 8 and 48 characters.
-        Args:
-            value: Value to set for the default_length property.
-        """
-        self._default_length = value
-    
-    @property
-    def default_lifetime_in_minutes(self,) -> Optional[int]:
-        """
-        Gets the defaultLifetimeInMinutes property value. Default lifetime in minutes for a Temporary Access Pass. Value can be any integer between the minimumLifetimeInMinutes and maximumLifetimeInMinutes.
-        Returns: Optional[int]
-        """
-        return self._default_lifetime_in_minutes
-    
-    @default_lifetime_in_minutes.setter
-    def default_lifetime_in_minutes(self,value: Optional[int] = None) -> None:
-        """
-        Sets the defaultLifetimeInMinutes property value. Default lifetime in minutes for a Temporary Access Pass. Value can be any integer between the minimumLifetimeInMinutes and maximumLifetimeInMinutes.
-        Args:
-            value: Value to set for the default_lifetime_in_minutes property.
-        """
-        self._default_lifetime_in_minutes = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import authentication_method_configuration, authentication_method_target
+
         from . import authentication_method_configuration, authentication_method_target
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -92,82 +57,14 @@ class TemporaryAccessPassAuthenticationMethodConfiguration(authentication_method
         fields.update(super_fields)
         return fields
     
-    @property
-    def include_targets(self,) -> Optional[List[authentication_method_target.AuthenticationMethodTarget]]:
-        """
-        Gets the includeTargets property value. A collection of groups that are enabled to use the authentication method.
-        Returns: Optional[List[authentication_method_target.AuthenticationMethodTarget]]
-        """
-        return self._include_targets
-    
-    @include_targets.setter
-    def include_targets(self,value: Optional[List[authentication_method_target.AuthenticationMethodTarget]] = None) -> None:
-        """
-        Sets the includeTargets property value. A collection of groups that are enabled to use the authentication method.
-        Args:
-            value: Value to set for the include_targets property.
-        """
-        self._include_targets = value
-    
-    @property
-    def is_usable_once(self,) -> Optional[bool]:
-        """
-        Gets the isUsableOnce property value. If true, all the passes in the tenant will be restricted to one-time use. If false, passes in the tenant can be created to be either one-time use or reusable.
-        Returns: Optional[bool]
-        """
-        return self._is_usable_once
-    
-    @is_usable_once.setter
-    def is_usable_once(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isUsableOnce property value. If true, all the passes in the tenant will be restricted to one-time use. If false, passes in the tenant can be created to be either one-time use or reusable.
-        Args:
-            value: Value to set for the is_usable_once property.
-        """
-        self._is_usable_once = value
-    
-    @property
-    def maximum_lifetime_in_minutes(self,) -> Optional[int]:
-        """
-        Gets the maximumLifetimeInMinutes property value. Maximum lifetime in minutes for any Temporary Access Pass created in the tenant. Value can be between 10 and 43200 minutes (equivalent to 30 days).
-        Returns: Optional[int]
-        """
-        return self._maximum_lifetime_in_minutes
-    
-    @maximum_lifetime_in_minutes.setter
-    def maximum_lifetime_in_minutes(self,value: Optional[int] = None) -> None:
-        """
-        Sets the maximumLifetimeInMinutes property value. Maximum lifetime in minutes for any Temporary Access Pass created in the tenant. Value can be between 10 and 43200 minutes (equivalent to 30 days).
-        Args:
-            value: Value to set for the maximum_lifetime_in_minutes property.
-        """
-        self._maximum_lifetime_in_minutes = value
-    
-    @property
-    def minimum_lifetime_in_minutes(self,) -> Optional[int]:
-        """
-        Gets the minimumLifetimeInMinutes property value. Minimum lifetime in minutes for any Temporary Access Pass created in the tenant. Value can be between 10 and 43200 minutes (equivalent to 30 days).
-        Returns: Optional[int]
-        """
-        return self._minimum_lifetime_in_minutes
-    
-    @minimum_lifetime_in_minutes.setter
-    def minimum_lifetime_in_minutes(self,value: Optional[int] = None) -> None:
-        """
-        Sets the minimumLifetimeInMinutes property value. Minimum lifetime in minutes for any Temporary Access Pass created in the tenant. Value can be between 10 and 43200 minutes (equivalent to 30 days).
-        Args:
-            value: Value to set for the minimum_lifetime_in_minutes property.
-        """
-        self._minimum_lifetime_in_minutes = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_int_value("defaultLength", self.default_length)
         writer.write_int_value("defaultLifetimeInMinutes", self.default_lifetime_in_minutes)

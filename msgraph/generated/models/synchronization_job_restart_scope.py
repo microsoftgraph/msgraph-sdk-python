@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SynchronizationJobRestartScope(Enum):
+class SynchronizationJobRestartScope(str, Enum):
     None_ = "None",
     ConnectorDataStore = "ConnectorDataStore",
     Escrows = "Escrows",

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import mobile_app_identifier
 
+@dataclass
 class AndroidMobileAppIdentifier(mobile_app_identifier.MobileAppIdentifier):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AndroidMobileAppIdentifier and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.androidMobileAppIdentifier"
-        # The identifier for an app, as specified in the play store.
-        self._package_id: Optional[str] = None
+    odata_type = "#microsoft.graph.androidMobileAppIdentifier"
+    # The identifier for an app, as specified in the play store.
+    package_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AndroidMobileAppIdentifier:
@@ -25,8 +22,8 @@ class AndroidMobileAppIdentifier(mobile_app_identifier.MobileAppIdentifier):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AndroidMobileAppIdentifier
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return AndroidMobileAppIdentifier()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -36,6 +33,8 @@ class AndroidMobileAppIdentifier(mobile_app_identifier.MobileAppIdentifier):
         """
         from . import mobile_app_identifier
 
+        from . import mobile_app_identifier
+
         fields: Dict[str, Callable[[Any], None]] = {
             "packageId": lambda n : setattr(self, 'package_id', n.get_str_value()),
         }
@@ -43,31 +42,14 @@ class AndroidMobileAppIdentifier(mobile_app_identifier.MobileAppIdentifier):
         fields.update(super_fields)
         return fields
     
-    @property
-    def package_id(self,) -> Optional[str]:
-        """
-        Gets the packageId property value. The identifier for an app, as specified in the play store.
-        Returns: Optional[str]
-        """
-        return self._package_id
-    
-    @package_id.setter
-    def package_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the packageId property value. The identifier for an app, as specified in the play store.
-        Args:
-            value: Value to set for the package_id property.
-        """
-        self._package_id = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("packageId", self.package_id)
     

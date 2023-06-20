@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,10 +26,10 @@ class CalendarPermissionsRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not path_parameters:
+            raise TypeError("path_parameters cannot be null.")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/users/{user%2Did}/calendarGroups/{calendarGroup%2Did}/calendars/{calendar%2Did}/calendarPermissions{?%24top,%24skip,%24filter,%24count,%24orderby,%24select}"
 
@@ -44,8 +44,8 @@ class CalendarPermissionsRequestBuilder():
             calendar_permission_id: Unique identifier of the item
         Returns: calendar_permission_item_request_builder.CalendarPermissionItemRequestBuilder
         """
-        if calendar_permission_id is None:
-            raise Exception("calendar_permission_id cannot be undefined")
+        if not calendar_permission_id:
+            raise TypeError("calendar_permission_id cannot be null.")
         from .item import calendar_permission_item_request_builder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
@@ -54,7 +54,7 @@ class CalendarPermissionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[CalendarPermissionsRequestBuilderGetRequestConfiguration] = None) -> Optional[calendar_permission_collection_response.CalendarPermissionCollectionResponse]:
         """
-        Get the specified permissions object of a user or group calendar that has been shared.
+        Get a collection of calendarPermission resources that describe the identity and roles of users with whom the specified calendar has been shared or delegated. Here, the calendar can be a user calendar or group calendar.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[calendar_permission_collection_response.CalendarPermissionCollectionResponse]
@@ -82,8 +82,8 @@ class CalendarPermissionsRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[calendar_permission.CalendarPermission]
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
@@ -101,7 +101,7 @@ class CalendarPermissionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CalendarPermissionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get the specified permissions object of a user or group calendar that has been shared.
+        Get a collection of calendarPermission resources that describe the identity and roles of users with whom the specified calendar has been shared or delegated. Here, the calendar can be a user calendar or group calendar.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -125,8 +125,8 @@ class CalendarPermissionsRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
@@ -150,7 +150,7 @@ class CalendarPermissionsRequestBuilder():
     @dataclass
     class CalendarPermissionsRequestBuilderGetQueryParameters():
         """
-        Get the specified permissions object of a user or group calendar that has been shared.
+        Get a collection of calendarPermission resources that describe the identity and roles of users with whom the specified calendar has been shared or delegated. Here, the calendar can be a user calendar or group calendar.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -159,8 +159,8 @@ class CalendarPermissionsRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
+            if not original_name:
+                raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"
             if original_name == "filter":

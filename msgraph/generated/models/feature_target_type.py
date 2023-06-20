@@ -1,6 +1,6 @@
 from enum import Enum
 
-class FeatureTargetType(Enum):
+class FeatureTargetType(str, Enum):
     Group = "group",
     AdministrativeUnit = "administrativeUnit",
     Role = "role",

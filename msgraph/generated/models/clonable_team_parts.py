@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ClonableTeamParts(Enum):
+class ClonableTeamParts(str, Enum):
     Apps = "apps",
     Tabs = "tabs",
     Settings = "settings",

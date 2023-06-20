@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PhoneType(Enum):
+class PhoneType(str, Enum):
     Home = "home",
     Business = "business",
     Mobile = "mobile",

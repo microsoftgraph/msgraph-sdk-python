@@ -1,6 +1,6 @@
 from enum import Enum
 
-class IdentityType(Enum):
+class IdentityType(str, Enum):
     User = "user",
     Group = "group",
     ExternalGroup = "externalGroup",

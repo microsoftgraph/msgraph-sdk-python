@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ClientPlatform(Enum):
+class ClientPlatform(str, Enum):
     Unknown = "unknown",
     Windows = "windows",
     MacOS = "macOS",

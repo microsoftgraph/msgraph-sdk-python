@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,68 +9,30 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class AccessReviewHistoryDefinition(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AccessReviewHistoryDefinition and sets the default values.
-        """
-        super().__init__()
-        # The createdBy property
-        self._created_by: Optional[user_identity.UserIdentity] = None
-        # Timestamp when the access review definition was created.
-        self._created_date_time: Optional[datetime] = None
-        # Determines which review decisions will be included in the fetched review history data if specified. Optional on create. All decisions will be included by default if no decisions are provided on create. Possible values are: approve, deny, dontKnow, notReviewed, and notNotified.
-        self._decisions: Optional[List[access_review_history_decision_filter.AccessReviewHistoryDecisionFilter]] = None
-        # Name for the access review history data collection. Required.
-        self._display_name: Optional[str] = None
-        # If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that does not recur will have exactly one instance.
-        self._instances: Optional[List[access_review_history_instance.AccessReviewHistoryInstance]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # A timestamp. Reviews ending on or before this date will be included in the fetched history data. Only required if scheduleSettings is not defined.
-        self._review_history_period_end_date_time: Optional[datetime] = None
-        # A timestamp. Reviews starting on or before this date will be included in the fetched history data. Only required if scheduleSettings is not defined.
-        self._review_history_period_start_date_time: Optional[datetime] = None
-        # The settings for a recurring access review history definition series. Only required if reviewHistoryPeriodStartDateTime or reviewHistoryPeriodEndDateTime are not defined. Not supported yet.
-        self._schedule_settings: Optional[access_review_history_schedule_settings.AccessReviewHistoryScheduleSettings] = None
-        # Used to scope what reviews are included in the fetched history data. Fetches reviews whose scope matches with this provided scope. Required.
-        self._scopes: Optional[List[access_review_scope.AccessReviewScope]] = None
-        # Represents the status of the review history data collection. The possible values are: done, inProgress, error, requested, unknownFutureValue.
-        self._status: Optional[access_review_history_status.AccessReviewHistoryStatus] = None
-    
-    @property
-    def created_by(self,) -> Optional[user_identity.UserIdentity]:
-        """
-        Gets the createdBy property value. The createdBy property
-        Returns: Optional[user_identity.UserIdentity]
-        """
-        return self._created_by
-    
-    @created_by.setter
-    def created_by(self,value: Optional[user_identity.UserIdentity] = None) -> None:
-        """
-        Sets the createdBy property value. The createdBy property
-        Args:
-            value: Value to set for the created_by property.
-        """
-        self._created_by = value
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. Timestamp when the access review definition was created.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. Timestamp when the access review definition was created.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    # The createdBy property
+    created_by: Optional[user_identity.UserIdentity] = None
+    # Timestamp when the access review definition was created.
+    created_date_time: Optional[datetime] = None
+    # Determines which review decisions will be included in the fetched review history data if specified. Optional on create. All decisions will be included by default if no decisions are provided on create. Possible values are: approve, deny, dontKnow, notReviewed, and notNotified.
+    decisions: Optional[List[access_review_history_decision_filter.AccessReviewHistoryDecisionFilter]] = None
+    # Name for the access review history data collection. Required.
+    display_name: Optional[str] = None
+    # If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that does not recur will have exactly one instance.
+    instances: Optional[List[access_review_history_instance.AccessReviewHistoryInstance]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # A timestamp. Reviews ending on or before this date will be included in the fetched history data. Only required if scheduleSettings is not defined.
+    review_history_period_end_date_time: Optional[datetime] = None
+    # A timestamp. Reviews starting on or before this date will be included in the fetched history data. Only required if scheduleSettings is not defined.
+    review_history_period_start_date_time: Optional[datetime] = None
+    # The settings for a recurring access review history definition series. Only required if reviewHistoryPeriodStartDateTime or reviewHistoryPeriodEndDateTime are not defined. Not supported yet.
+    schedule_settings: Optional[access_review_history_schedule_settings.AccessReviewHistoryScheduleSettings] = None
+    # Used to scope what reviews are included in the fetched history data. Fetches reviews whose scope matches with this provided scope. Required.
+    scopes: Optional[List[access_review_scope.AccessReviewScope]] = None
+    # Represents the status of the review history data collection. The possible values are: done, inProgress, error, requested, unknownFutureValue.
+    status: Optional[access_review_history_status.AccessReviewHistoryStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewHistoryDefinition:
@@ -79,49 +42,17 @@ class AccessReviewHistoryDefinition(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewHistoryDefinition
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return AccessReviewHistoryDefinition()
-    
-    @property
-    def decisions(self,) -> Optional[List[access_review_history_decision_filter.AccessReviewHistoryDecisionFilter]]:
-        """
-        Gets the decisions property value. Determines which review decisions will be included in the fetched review history data if specified. Optional on create. All decisions will be included by default if no decisions are provided on create. Possible values are: approve, deny, dontKnow, notReviewed, and notNotified.
-        Returns: Optional[List[access_review_history_decision_filter.AccessReviewHistoryDecisionFilter]]
-        """
-        return self._decisions
-    
-    @decisions.setter
-    def decisions(self,value: Optional[List[access_review_history_decision_filter.AccessReviewHistoryDecisionFilter]] = None) -> None:
-        """
-        Sets the decisions property value. Determines which review decisions will be included in the fetched review history data if specified. Optional on create. All decisions will be included by default if no decisions are provided on create. Possible values are: approve, deny, dontKnow, notReviewed, and notNotified.
-        Args:
-            value: Value to set for the decisions property.
-        """
-        self._decisions = value
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Name for the access review history data collection. Required.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Name for the access review history data collection. Required.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import access_review_history_decision_filter, access_review_history_instance, access_review_history_schedule_settings, access_review_history_status, access_review_scope, entity, user_identity
+
         from . import access_review_history_decision_filter, access_review_history_instance, access_review_history_schedule_settings, access_review_history_status, access_review_scope, entity, user_identity
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -140,103 +71,18 @@ class AccessReviewHistoryDefinition(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def instances(self,) -> Optional[List[access_review_history_instance.AccessReviewHistoryInstance]]:
-        """
-        Gets the instances property value. If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that does not recur will have exactly one instance.
-        Returns: Optional[List[access_review_history_instance.AccessReviewHistoryInstance]]
-        """
-        return self._instances
-    
-    @instances.setter
-    def instances(self,value: Optional[List[access_review_history_instance.AccessReviewHistoryInstance]] = None) -> None:
-        """
-        Sets the instances property value. If the accessReviewHistoryDefinition is a recurring definition, instances represent each recurrence. A definition that does not recur will have exactly one instance.
-        Args:
-            value: Value to set for the instances property.
-        """
-        self._instances = value
-    
-    @property
-    def review_history_period_end_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the reviewHistoryPeriodEndDateTime property value. A timestamp. Reviews ending on or before this date will be included in the fetched history data. Only required if scheduleSettings is not defined.
-        Returns: Optional[datetime]
-        """
-        return self._review_history_period_end_date_time
-    
-    @review_history_period_end_date_time.setter
-    def review_history_period_end_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the reviewHistoryPeriodEndDateTime property value. A timestamp. Reviews ending on or before this date will be included in the fetched history data. Only required if scheduleSettings is not defined.
-        Args:
-            value: Value to set for the review_history_period_end_date_time property.
-        """
-        self._review_history_period_end_date_time = value
-    
-    @property
-    def review_history_period_start_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the reviewHistoryPeriodStartDateTime property value. A timestamp. Reviews starting on or before this date will be included in the fetched history data. Only required if scheduleSettings is not defined.
-        Returns: Optional[datetime]
-        """
-        return self._review_history_period_start_date_time
-    
-    @review_history_period_start_date_time.setter
-    def review_history_period_start_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the reviewHistoryPeriodStartDateTime property value. A timestamp. Reviews starting on or before this date will be included in the fetched history data. Only required if scheduleSettings is not defined.
-        Args:
-            value: Value to set for the review_history_period_start_date_time property.
-        """
-        self._review_history_period_start_date_time = value
-    
-    @property
-    def schedule_settings(self,) -> Optional[access_review_history_schedule_settings.AccessReviewHistoryScheduleSettings]:
-        """
-        Gets the scheduleSettings property value. The settings for a recurring access review history definition series. Only required if reviewHistoryPeriodStartDateTime or reviewHistoryPeriodEndDateTime are not defined. Not supported yet.
-        Returns: Optional[access_review_history_schedule_settings.AccessReviewHistoryScheduleSettings]
-        """
-        return self._schedule_settings
-    
-    @schedule_settings.setter
-    def schedule_settings(self,value: Optional[access_review_history_schedule_settings.AccessReviewHistoryScheduleSettings] = None) -> None:
-        """
-        Sets the scheduleSettings property value. The settings for a recurring access review history definition series. Only required if reviewHistoryPeriodStartDateTime or reviewHistoryPeriodEndDateTime are not defined. Not supported yet.
-        Args:
-            value: Value to set for the schedule_settings property.
-        """
-        self._schedule_settings = value
-    
-    @property
-    def scopes(self,) -> Optional[List[access_review_scope.AccessReviewScope]]:
-        """
-        Gets the scopes property value. Used to scope what reviews are included in the fetched history data. Fetches reviews whose scope matches with this provided scope. Required.
-        Returns: Optional[List[access_review_scope.AccessReviewScope]]
-        """
-        return self._scopes
-    
-    @scopes.setter
-    def scopes(self,value: Optional[List[access_review_scope.AccessReviewScope]] = None) -> None:
-        """
-        Sets the scopes property value. Used to scope what reviews are included in the fetched history data. Fetches reviews whose scope matches with this provided scope. Required.
-        Args:
-            value: Value to set for the scopes property.
-        """
-        self._scopes = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("createdBy", self.created_by)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
-        writer.write_enum_value("decisions", self.decisions)
+        writer.write_collection_of_enum_values("decisions", self.decisions)
         writer.write_str_value("displayName", self.display_name)
         writer.write_collection_of_object_values("instances", self.instances)
         writer.write_datetime_value("reviewHistoryPeriodEndDateTime", self.review_history_period_end_date_time)
@@ -244,22 +90,5 @@ class AccessReviewHistoryDefinition(entity.Entity):
         writer.write_object_value("scheduleSettings", self.schedule_settings)
         writer.write_collection_of_object_values("scopes", self.scopes)
         writer.write_enum_value("status", self.status)
-    
-    @property
-    def status(self,) -> Optional[access_review_history_status.AccessReviewHistoryStatus]:
-        """
-        Gets the status property value. Represents the status of the review history data collection. The possible values are: done, inProgress, error, requested, unknownFutureValue.
-        Returns: Optional[access_review_history_status.AccessReviewHistoryStatus]
-        """
-        return self._status
-    
-    @status.setter
-    def status(self,value: Optional[access_review_history_status.AccessReviewHistoryStatus] = None) -> None:
-        """
-        Sets the status property value. Represents the status of the review history data collection. The possible values are: done, inProgress, error, requested, unknownFutureValue.
-        Args:
-            value: Value to set for the status property.
-        """
-        self._status = value
     
 

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ChatMessagePolicyViolationVerdictDetailsTypes(Enum):
+class ChatMessagePolicyViolationVerdictDetailsTypes(str, Enum):
     None_ = "none",
     AllowFalsePositiveOverride = "allowFalsePositiveOverride",
     AllowOverrideWithoutJustification = "allowOverrideWithoutJustification",

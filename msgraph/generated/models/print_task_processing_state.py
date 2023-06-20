@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PrintTaskProcessingState(Enum):
+class PrintTaskProcessingState(str, Enum):
     Pending = "pending",
     Processing = "processing",
     Completed = "completed",

@@ -1,64 +1,28 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import contact_relationship
 
+@dataclass
 class RelatedContact(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new relatedContact and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Indicates whether the user has been consented to access student data.
-        self._access_consent: Optional[bool] = None
-        # Name of the contact. Required.
-        self._display_name: Optional[str] = None
-        # Primary email address of the contact. Required.
-        self._email_address: Optional[str] = None
-        # Mobile phone number of the contact.
-        self._mobile_phone: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The relationship property
-        self._relationship: Optional[contact_relationship.ContactRelationship] = None
-    
-    @property
-    def access_consent(self,) -> Optional[bool]:
-        """
-        Gets the accessConsent property value. Indicates whether the user has been consented to access student data.
-        Returns: Optional[bool]
-        """
-        return self._access_consent
-    
-    @access_consent.setter
-    def access_consent(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the accessConsent property value. Indicates whether the user has been consented to access student data.
-        Args:
-            value: Value to set for the access_consent property.
-        """
-        self._access_consent = value
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Indicates whether the user has been consented to access student data.
+    access_consent: Optional[bool] = None
+    # Name of the contact. Required.
+    display_name: Optional[str] = None
+    # Primary email address of the contact. Required.
+    email_address: Optional[str] = None
+    # Mobile phone number of the contact.
+    mobile_phone: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The relationship property
+    relationship: Optional[contact_relationship.ContactRelationship] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RelatedContact:
@@ -68,49 +32,17 @@ class RelatedContact(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RelatedContact
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return RelatedContact()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Name of the contact. Required.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Name of the contact. Required.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
-    @property
-    def email_address(self,) -> Optional[str]:
-        """
-        Gets the emailAddress property value. Primary email address of the contact. Required.
-        Returns: Optional[str]
-        """
-        return self._email_address
-    
-    @email_address.setter
-    def email_address(self,value: Optional[str] = None) -> None:
-        """
-        Sets the emailAddress property value. Primary email address of the contact. Required.
-        Args:
-            value: Value to set for the email_address property.
-        """
-        self._email_address = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import contact_relationship
+
         from . import contact_relationship
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -123,65 +55,14 @@ class RelatedContact(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def mobile_phone(self,) -> Optional[str]:
-        """
-        Gets the mobilePhone property value. Mobile phone number of the contact.
-        Returns: Optional[str]
-        """
-        return self._mobile_phone
-    
-    @mobile_phone.setter
-    def mobile_phone(self,value: Optional[str] = None) -> None:
-        """
-        Sets the mobilePhone property value. Mobile phone number of the contact.
-        Args:
-            value: Value to set for the mobile_phone property.
-        """
-        self._mobile_phone = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def relationship(self,) -> Optional[contact_relationship.ContactRelationship]:
-        """
-        Gets the relationship property value. The relationship property
-        Returns: Optional[contact_relationship.ContactRelationship]
-        """
-        return self._relationship
-    
-    @relationship.setter
-    def relationship(self,value: Optional[contact_relationship.ContactRelationship] = None) -> None:
-        """
-        Sets the relationship property value. The relationship property
-        Args:
-            value: Value to set for the relationship property.
-        """
-        self._relationship = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_bool_value("accessConsent", self.access_consent)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("emailAddress", self.email_address)

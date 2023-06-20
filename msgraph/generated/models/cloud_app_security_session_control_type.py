@@ -1,6 +1,6 @@
 from enum import Enum
 
-class CloudAppSecuritySessionControlType(Enum):
+class CloudAppSecuritySessionControlType(str, Enum):
     McasConfigured = "mcasConfigured",
     MonitorOnly = "monitorOnly",
     BlockDownloads = "blockDownloads",

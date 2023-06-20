@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AclType(Enum):
+class AclType(str, Enum):
     User = "user",
     Group = "group",
     Everyone = "everyone",

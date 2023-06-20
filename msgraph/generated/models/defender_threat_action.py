@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DefenderThreatAction(Enum):
+class DefenderThreatAction(str, Enum):
     # Apply action based on the update definition.
     DeviceDefault = "deviceDefault",
     # Clean the detected threat.

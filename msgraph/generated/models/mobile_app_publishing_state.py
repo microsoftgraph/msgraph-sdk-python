@@ -1,6 +1,6 @@
 from enum import Enum
 
-class MobileAppPublishingState(Enum):
+class MobileAppPublishingState(str, Enum):
     # The app is not yet published.
     NotPublished = "notPublished",
     # The app is pending service-side processing.

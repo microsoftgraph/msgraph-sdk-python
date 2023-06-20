@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import windows_device_account
 
+@dataclass
 class WindowsDeviceAzureADAccount(windows_device_account.WindowsDeviceAccount):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsDeviceAzureADAccount and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsDeviceAzureADAccount"
-        # Not yet documented
-        self._user_principal_name: Optional[str] = None
+    odata_type = "#microsoft.graph.windowsDeviceAzureADAccount"
+    # Not yet documented
+    user_principal_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsDeviceAzureADAccount:
@@ -25,8 +22,8 @@ class WindowsDeviceAzureADAccount(windows_device_account.WindowsDeviceAccount):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WindowsDeviceAzureADAccount
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return WindowsDeviceAzureADAccount()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -34,6 +31,8 @@ class WindowsDeviceAzureADAccount(windows_device_account.WindowsDeviceAccount):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import windows_device_account
+
         from . import windows_device_account
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -49,26 +48,9 @@ class WindowsDeviceAzureADAccount(windows_device_account.WindowsDeviceAccount):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
-    
-    @property
-    def user_principal_name(self,) -> Optional[str]:
-        """
-        Gets the userPrincipalName property value. Not yet documented
-        Returns: Optional[str]
-        """
-        return self._user_principal_name
-    
-    @user_principal_name.setter
-    def user_principal_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userPrincipalName property value. Not yet documented
-        Args:
-            value: Value to set for the user_principal_name property.
-        """
-        self._user_principal_name = value
     
 

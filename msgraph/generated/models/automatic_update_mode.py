@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AutomaticUpdateMode(Enum):
+class AutomaticUpdateMode(str, Enum):
     # User Defined, default value, no intent.
     UserDefined = "userDefined",
     # Notify on download.

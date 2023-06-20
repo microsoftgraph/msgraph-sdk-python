@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import mobile_app_assignment_settings
 
+@dataclass
 class MacOsLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new MacOsLobAppAssignmentSettings and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.macOsLobAppAssignmentSettings"
-        # When TRUE, indicates that the app should be uninstalled when the device is removed from Intune. When FALSE, indicates that the app will not be uninstalled when the device is removed from Intune.
-        self._uninstall_on_device_removal: Optional[bool] = None
+    odata_type = "#microsoft.graph.macOsLobAppAssignmentSettings"
+    # When TRUE, indicates that the app should be uninstalled when the device is removed from Intune. When FALSE, indicates that the app will not be uninstalled when the device is removed from Intune.
+    uninstall_on_device_removal: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MacOsLobAppAssignmentSettings:
@@ -25,8 +22,8 @@ class MacOsLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MacOsLobAppAssignmentSettings
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return MacOsLobAppAssignmentSettings()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -34,6 +31,8 @@ class MacOsLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import mobile_app_assignment_settings
+
         from . import mobile_app_assignment_settings
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -49,26 +48,9 @@ class MacOsLobAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssi
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("uninstallOnDeviceRemoval", self.uninstall_on_device_removal)
-    
-    @property
-    def uninstall_on_device_removal(self,) -> Optional[bool]:
-        """
-        Gets the uninstallOnDeviceRemoval property value. When TRUE, indicates that the app should be uninstalled when the device is removed from Intune. When FALSE, indicates that the app will not be uninstalled when the device is removed from Intune.
-        Returns: Optional[bool]
-        """
-        return self._uninstall_on_device_removal
-    
-    @uninstall_on_device_removal.setter
-    def uninstall_on_device_removal(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the uninstallOnDeviceRemoval property value. When TRUE, indicates that the app should be uninstalled when the device is removed from Intune. When FALSE, indicates that the app will not be uninstalled when the device is removed from Intune.
-        Args:
-            value: Value to set for the uninstall_on_device_removal property.
-        """
-        self._uninstall_on_device_removal = value
     
 

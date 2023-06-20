@@ -1,6 +1,6 @@
 from enum import Enum
 
-class BookingStaffRole(Enum):
+class BookingStaffRole(str, Enum):
     Guest = "guest",
     Administrator = "administrator",
     Viewer = "viewer",

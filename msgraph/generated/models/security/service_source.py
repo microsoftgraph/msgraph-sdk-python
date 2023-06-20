@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ServiceSource(Enum):
+class ServiceSource(str, Enum):
     Unknown = "unknown",
     MicrosoftDefenderForEndpoint = "microsoftDefenderForEndpoint",
     MicrosoftDefenderForIdentity = "microsoftDefenderForIdentity",
@@ -11,4 +11,5 @@ class ServiceSource(Enum):
     MicrosoftAppGovernance = "microsoftAppGovernance",
     DataLossPrevention = "dataLossPrevention",
     UnknownFutureValue = "unknownFutureValue",
+    MicrosoftDefenderForCloud = "microsoftDefenderForCloud",
 

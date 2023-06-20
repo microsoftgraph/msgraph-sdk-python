@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,23 +8,19 @@ if TYPE_CHECKING:
 
 from . import unified_role_management_policy_rule
 
+@dataclass
 class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy_rule.UnifiedRoleManagementPolicyRule):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new UnifiedRoleManagementPolicyNotificationRule and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.unifiedRoleManagementPolicyNotificationRule"
-        # Indicates whether a default recipient will receive the notification email.
-        self._is_default_recipients_enabled: Optional[bool] = None
-        # The level of notification. The possible values are None, Critical, All.
-        self._notification_level: Optional[str] = None
-        # The list of recipients of the email notifications.
-        self._notification_recipients: Optional[List[str]] = None
-        # The type of notification. Only Email is supported.
-        self._notification_type: Optional[str] = None
-        # The type of recipient of the notification. The possible values are Requestor, Approver, Admin.
-        self._recipient_type: Optional[str] = None
+    odata_type = "#microsoft.graph.unifiedRoleManagementPolicyNotificationRule"
+    # Indicates whether a default recipient will receive the notification email.
+    is_default_recipients_enabled: Optional[bool] = None
+    # The level of notification. The possible values are None, Critical, All.
+    notification_level: Optional[str] = None
+    # The list of recipients of the email notifications.
+    notification_recipients: Optional[List[str]] = None
+    # The type of notification. Only Email is supported.
+    notification_type: Optional[str] = None
+    # The type of recipient of the notification. The possible values are Requestor, Approver, Admin.
+    recipient_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRoleManagementPolicyNotificationRule:
@@ -33,8 +30,8 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRoleManagementPolicyNotificationRule
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return UnifiedRoleManagementPolicyNotificationRule()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -42,6 +39,8 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import unified_role_management_policy_rule
+
         from . import unified_role_management_policy_rule
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -55,99 +54,14 @@ class UnifiedRoleManagementPolicyNotificationRule(unified_role_management_policy
         fields.update(super_fields)
         return fields
     
-    @property
-    def is_default_recipients_enabled(self,) -> Optional[bool]:
-        """
-        Gets the isDefaultRecipientsEnabled property value. Indicates whether a default recipient will receive the notification email.
-        Returns: Optional[bool]
-        """
-        return self._is_default_recipients_enabled
-    
-    @is_default_recipients_enabled.setter
-    def is_default_recipients_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isDefaultRecipientsEnabled property value. Indicates whether a default recipient will receive the notification email.
-        Args:
-            value: Value to set for the is_default_recipients_enabled property.
-        """
-        self._is_default_recipients_enabled = value
-    
-    @property
-    def notification_level(self,) -> Optional[str]:
-        """
-        Gets the notificationLevel property value. The level of notification. The possible values are None, Critical, All.
-        Returns: Optional[str]
-        """
-        return self._notification_level
-    
-    @notification_level.setter
-    def notification_level(self,value: Optional[str] = None) -> None:
-        """
-        Sets the notificationLevel property value. The level of notification. The possible values are None, Critical, All.
-        Args:
-            value: Value to set for the notification_level property.
-        """
-        self._notification_level = value
-    
-    @property
-    def notification_recipients(self,) -> Optional[List[str]]:
-        """
-        Gets the notificationRecipients property value. The list of recipients of the email notifications.
-        Returns: Optional[List[str]]
-        """
-        return self._notification_recipients
-    
-    @notification_recipients.setter
-    def notification_recipients(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the notificationRecipients property value. The list of recipients of the email notifications.
-        Args:
-            value: Value to set for the notification_recipients property.
-        """
-        self._notification_recipients = value
-    
-    @property
-    def notification_type(self,) -> Optional[str]:
-        """
-        Gets the notificationType property value. The type of notification. Only Email is supported.
-        Returns: Optional[str]
-        """
-        return self._notification_type
-    
-    @notification_type.setter
-    def notification_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the notificationType property value. The type of notification. Only Email is supported.
-        Args:
-            value: Value to set for the notification_type property.
-        """
-        self._notification_type = value
-    
-    @property
-    def recipient_type(self,) -> Optional[str]:
-        """
-        Gets the recipientType property value. The type of recipient of the notification. The possible values are Requestor, Approver, Admin.
-        Returns: Optional[str]
-        """
-        return self._recipient_type
-    
-    @recipient_type.setter
-    def recipient_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the recipientType property value. The type of recipient of the notification. The possible values are Requestor, Approver, Admin.
-        Args:
-            value: Value to set for the recipient_type property.
-        """
-        self._recipient_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("isDefaultRecipientsEnabled", self.is_default_recipients_enabled)
         writer.write_str_value("notificationLevel", self.notification_level)

@@ -1,37 +1,18 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import education_assignment_class_recipient, education_assignment_group_recipient, education_assignment_individual_recipient
 
+@dataclass
 class EducationAssignmentRecipient(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new educationAssignmentRecipient and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationAssignmentRecipient:
@@ -41,23 +22,24 @@ class EducationAssignmentRecipient(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationAssignmentRecipient
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.educationAssignmentClassRecipient":
-                from . import education_assignment_class_recipient
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
+        try:
+            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationAssignmentClassRecipient".casefold():
+            from . import education_assignment_class_recipient
 
-                return education_assignment_class_recipient.EducationAssignmentClassRecipient()
-            if mapping_value == "#microsoft.graph.educationAssignmentGroupRecipient":
-                from . import education_assignment_group_recipient
+            return education_assignment_class_recipient.EducationAssignmentClassRecipient()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationAssignmentGroupRecipient".casefold():
+            from . import education_assignment_group_recipient
 
-                return education_assignment_group_recipient.EducationAssignmentGroupRecipient()
-            if mapping_value == "#microsoft.graph.educationAssignmentIndividualRecipient":
-                from . import education_assignment_individual_recipient
+            return education_assignment_group_recipient.EducationAssignmentGroupRecipient()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationAssignmentIndividualRecipient".casefold():
+            from . import education_assignment_individual_recipient
 
-                return education_assignment_individual_recipient.EducationAssignmentIndividualRecipient()
+            return education_assignment_individual_recipient.EducationAssignmentIndividualRecipient()
         return EducationAssignmentRecipient()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -67,27 +49,12 @@ class EducationAssignmentRecipient(AdditionalDataHolder, Parsable):
         """
         from . import education_assignment_class_recipient, education_assignment_group_recipient, education_assignment_individual_recipient
 
+        from . import education_assignment_class_recipient, education_assignment_group_recipient, education_assignment_individual_recipient
+
         fields: Dict[str, Callable[[Any], None]] = {
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """
@@ -95,8 +62,8 @@ class EducationAssignmentRecipient(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_additional_data_value(self.additional_data)
     

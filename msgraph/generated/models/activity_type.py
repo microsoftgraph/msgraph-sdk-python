@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ActivityType(Enum):
+class ActivityType(str, Enum):
     Signin = "signin",
     User = "user",
     UnknownFutureValue = "unknownFutureValue",

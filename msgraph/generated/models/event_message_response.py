@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import event_message
 
+@dataclass
 class EventMessageResponse(event_message.EventMessage):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EventMessageResponse and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.eventMessageResponse"
-        # The proposedNewTime property
-        self._proposed_new_time: Optional[time_slot.TimeSlot] = None
-        # The responseType property
-        self._response_type: Optional[response_type.ResponseType] = None
+    odata_type = "#microsoft.graph.eventMessageResponse"
+    # The proposedNewTime property
+    proposed_new_time: Optional[time_slot.TimeSlot] = None
+    # The responseType property
+    response_type: Optional[response_type.ResponseType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EventMessageResponse:
@@ -27,8 +24,8 @@ class EventMessageResponse(event_message.EventMessage):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EventMessageResponse
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return EventMessageResponse()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -36,6 +33,8 @@ class EventMessageResponse(event_message.EventMessage):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import event_message, response_type, time_slot
+
         from . import event_message, response_type, time_slot
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -46,48 +45,14 @@ class EventMessageResponse(event_message.EventMessage):
         fields.update(super_fields)
         return fields
     
-    @property
-    def proposed_new_time(self,) -> Optional[time_slot.TimeSlot]:
-        """
-        Gets the proposedNewTime property value. The proposedNewTime property
-        Returns: Optional[time_slot.TimeSlot]
-        """
-        return self._proposed_new_time
-    
-    @proposed_new_time.setter
-    def proposed_new_time(self,value: Optional[time_slot.TimeSlot] = None) -> None:
-        """
-        Sets the proposedNewTime property value. The proposedNewTime property
-        Args:
-            value: Value to set for the proposed_new_time property.
-        """
-        self._proposed_new_time = value
-    
-    @property
-    def response_type(self,) -> Optional[response_type.ResponseType]:
-        """
-        Gets the responseType property value. The responseType property
-        Returns: Optional[response_type.ResponseType]
-        """
-        return self._response_type
-    
-    @response_type.setter
-    def response_type(self,value: Optional[response_type.ResponseType] = None) -> None:
-        """
-        Sets the responseType property value. The responseType property
-        Args:
-            value: Value to set for the response_type property.
-        """
-        self._response_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("proposedNewTime", self.proposed_new_time)
         writer.write_enum_value("responseType", self.response_type)

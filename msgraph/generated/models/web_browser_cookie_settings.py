@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WebBrowserCookieSettings(Enum):
+class WebBrowserCookieSettings(str, Enum):
     # Browser default value, no intent.
     BrowserDefault = "browserDefault",
     # Always block cookies.

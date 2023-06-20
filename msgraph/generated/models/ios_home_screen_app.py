@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import ios_home_screen_item
 
+@dataclass
 class IosHomeScreenApp(ios_home_screen_item.IosHomeScreenItem):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IosHomeScreenApp and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.iosHomeScreenApp"
-        # BundleID of the app if isWebClip is false or the URL of a web clip if isWebClip is true.
-        self._bundle_i_d: Optional[str] = None
-    
-    @property
-    def bundle_i_d(self,) -> Optional[str]:
-        """
-        Gets the bundleID property value. BundleID of the app if isWebClip is false or the URL of a web clip if isWebClip is true.
-        Returns: Optional[str]
-        """
-        return self._bundle_i_d
-    
-    @bundle_i_d.setter
-    def bundle_i_d(self,value: Optional[str] = None) -> None:
-        """
-        Sets the bundleID property value. BundleID of the app if isWebClip is false or the URL of a web clip if isWebClip is true.
-        Args:
-            value: Value to set for the bundle_i_d property.
-        """
-        self._bundle_i_d = value
+    odata_type = "#microsoft.graph.iosHomeScreenApp"
+    # BundleID of the app if isWebClip is false or the URL of a web clip if isWebClip is true.
+    bundle_i_d: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosHomeScreenApp:
@@ -42,8 +22,8 @@ class IosHomeScreenApp(ios_home_screen_item.IosHomeScreenItem):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IosHomeScreenApp
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return IosHomeScreenApp()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -51,6 +31,8 @@ class IosHomeScreenApp(ios_home_screen_item.IosHomeScreenItem):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import ios_home_screen_item
+
         from . import ios_home_screen_item
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -66,8 +48,8 @@ class IosHomeScreenApp(ios_home_screen_item.IosHomeScreenItem):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("bundleID", self.bundle_i_d)
     

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,52 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class TeamworkHostedContent(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new teamworkHostedContent and sets the default values.
-        """
-        super().__init__()
-        # Write only. Bytes for the hosted content (such as images).
-        self._content_bytes: Optional[bytes] = None
-        # Write only. Content type. sicj as image/png, image/jpg.
-        self._content_type: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def content_bytes(self,) -> Optional[bytes]:
-        """
-        Gets the contentBytes property value. Write only. Bytes for the hosted content (such as images).
-        Returns: Optional[bytes]
-        """
-        return self._content_bytes
-    
-    @content_bytes.setter
-    def content_bytes(self,value: Optional[bytes] = None) -> None:
-        """
-        Sets the contentBytes property value. Write only. Bytes for the hosted content (such as images).
-        Args:
-            value: Value to set for the content_bytes property.
-        """
-        self._content_bytes = value
-    
-    @property
-    def content_type(self,) -> Optional[str]:
-        """
-        Gets the contentType property value. Write only. Content type. sicj as image/png, image/jpg.
-        Returns: Optional[str]
-        """
-        return self._content_type
-    
-    @content_type.setter
-    def content_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the contentType property value. Write only. Content type. sicj as image/png, image/jpg.
-        Args:
-            value: Value to set for the content_type property.
-        """
-        self._content_type = value
+    # Write only. Bytes for the hosted content (such as images).
+    content_bytes: Optional[bytes] = None
+    # Write only. Content type. sicj as image/png, image/jpg.
+    content_type: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeamworkHostedContent:
@@ -62,15 +25,16 @@ class TeamworkHostedContent(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TeamworkHostedContent
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.chatMessageHostedContent":
-                from . import chat_message_hosted_content
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
+        try:
+            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.chatMessageHostedContent".casefold():
+            from . import chat_message_hosted_content
 
-                return chat_message_hosted_content.ChatMessageHostedContent()
+            return chat_message_hosted_content.ChatMessageHostedContent()
         return TeamworkHostedContent()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -78,6 +42,8 @@ class TeamworkHostedContent(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import chat_message_hosted_content, entity
+
         from . import chat_message_hosted_content, entity
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -94,8 +60,8 @@ class TeamworkHostedContent(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("contentBytes", self.content_bytes)
         writer.write_str_value("contentType", self.content_type)

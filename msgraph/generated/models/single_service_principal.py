@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import subject_set
 
+@dataclass
 class SingleServicePrincipal(subject_set.SubjectSet):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new SingleServicePrincipal and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.singleServicePrincipal"
-        # Description of this service principal.
-        self._description: Optional[str] = None
-        # ID of the servicePrincipal.
-        self._service_principal_id: Optional[str] = None
+    odata_type = "#microsoft.graph.singleServicePrincipal"
+    # Description of this service principal.
+    description: Optional[str] = None
+    # ID of the servicePrincipal.
+    service_principal_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SingleServicePrincipal:
@@ -27,32 +24,17 @@ class SingleServicePrincipal(subject_set.SubjectSet):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SingleServicePrincipal
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return SingleServicePrincipal()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. Description of this service principal.
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. Description of this service principal.
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import subject_set
+
         from . import subject_set
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -69,27 +51,10 @@ class SingleServicePrincipal(subject_set.SubjectSet):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("description", self.description)
         writer.write_str_value("servicePrincipalId", self.service_principal_id)
-    
-    @property
-    def service_principal_id(self,) -> Optional[str]:
-        """
-        Gets the servicePrincipalId property value. ID of the servicePrincipal.
-        Returns: Optional[str]
-        """
-        return self._service_principal_id
-    
-    @service_principal_id.setter
-    def service_principal_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the servicePrincipalId property value. ID of the servicePrincipal.
-        Args:
-            value: Value to set for the service_principal_id property.
-        """
-        self._service_principal_id = value
     
 

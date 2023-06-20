@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SimulationAttackTechnique(Enum):
+class SimulationAttackTechnique(str, Enum):
     Unknown = "unknown",
     CredentialHarvesting = "credentialHarvesting",
     AttachmentMalware = "attachmentMalware",

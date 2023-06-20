@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import education_assignment_grade_type
 
+@dataclass
 class EducationAssignmentPointsGradeType(education_assignment_grade_type.EducationAssignmentGradeType):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EducationAssignmentPointsGradeType and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.educationAssignmentPointsGradeType"
-        # Max points possible for this assignment.
-        self._max_points: Optional[float] = None
+    odata_type = "#microsoft.graph.educationAssignmentPointsGradeType"
+    # Max points possible for this assignment.
+    max_points: Optional[float] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationAssignmentPointsGradeType:
@@ -25,8 +22,8 @@ class EducationAssignmentPointsGradeType(education_assignment_grade_type.Educati
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationAssignmentPointsGradeType
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return EducationAssignmentPointsGradeType()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -36,6 +33,8 @@ class EducationAssignmentPointsGradeType(education_assignment_grade_type.Educati
         """
         from . import education_assignment_grade_type
 
+        from . import education_assignment_grade_type
+
         fields: Dict[str, Callable[[Any], None]] = {
             "maxPoints": lambda n : setattr(self, 'max_points', n.get_float_value()),
         }
@@ -43,31 +42,14 @@ class EducationAssignmentPointsGradeType(education_assignment_grade_type.Educati
         fields.update(super_fields)
         return fields
     
-    @property
-    def max_points(self,) -> Optional[float]:
-        """
-        Gets the maxPoints property value. Max points possible for this assignment.
-        Returns: Optional[float]
-        """
-        return self._max_points
-    
-    @max_points.setter
-    def max_points(self,value: Optional[float] = None) -> None:
-        """
-        Sets the maxPoints property value. Max points possible for this assignment.
-        Args:
-            value: Value to set for the max_points property.
-        """
-        self._max_points = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_float_value("maxPoints", self.max_points)
     

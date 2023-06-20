@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ApplicationGuardBlockFileTransferType(Enum):
+class ApplicationGuardBlockFileTransferType(str, Enum):
     # Not Configured
     NotConfigured = "notConfigured",
     # Block clipboard to transfer Image and Text file

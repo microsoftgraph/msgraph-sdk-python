@@ -1,6 +1,6 @@
 from enum import Enum
 
-class BrowserSharedCookieSourceEnvironment(Enum):
+class BrowserSharedCookieSourceEnvironment(str, Enum):
     # Share session cookies from Microsoft Edge to Internet Explorer.
     MicrosoftEdge = "microsoftEdge",
     # Share session cookies from Internet Explorer to Microsoft Edge.

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DelegatedAdminAccessAssignmentStatus(Enum):
+class DelegatedAdminAccessAssignmentStatus(str, Enum):
     Pending = "pending",
     Active = "active",
     Deleting = "deleting",

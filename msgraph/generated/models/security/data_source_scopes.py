@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DataSourceScopes(Enum):
+class DataSourceScopes(str, Enum):
     None_ = "none",
     AllTenantMailboxes = "allTenantMailboxes",
     AllTenantSites = "allTenantSites",

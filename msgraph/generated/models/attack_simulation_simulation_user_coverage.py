@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -6,94 +7,23 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from . import attack_simulation_user
 
+@dataclass
 class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new attackSimulationSimulationUserCoverage and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # User in an attack simulation and training campaign.
-        self._attack_simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
-        # Number of link clicks in the received payloads by the user in attack simulation and training campaigns.
-        self._click_count: Optional[int] = None
-        # Number of compromising actions by the user in attack simulation and training campaigns.
-        self._compromised_count: Optional[int] = None
-        # Date and time of the latest attack simulation and training campaign that the user was included in.
-        self._latest_simulation_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Number of attack simulation and training campaigns that the user was included in.
-        self._simulation_count: Optional[int] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def attack_simulation_user(self,) -> Optional[attack_simulation_user.AttackSimulationUser]:
-        """
-        Gets the attackSimulationUser property value. User in an attack simulation and training campaign.
-        Returns: Optional[attack_simulation_user.AttackSimulationUser]
-        """
-        return self._attack_simulation_user
-    
-    @attack_simulation_user.setter
-    def attack_simulation_user(self,value: Optional[attack_simulation_user.AttackSimulationUser] = None) -> None:
-        """
-        Sets the attackSimulationUser property value. User in an attack simulation and training campaign.
-        Args:
-            value: Value to set for the attack_simulation_user property.
-        """
-        self._attack_simulation_user = value
-    
-    @property
-    def click_count(self,) -> Optional[int]:
-        """
-        Gets the clickCount property value. Number of link clicks in the received payloads by the user in attack simulation and training campaigns.
-        Returns: Optional[int]
-        """
-        return self._click_count
-    
-    @click_count.setter
-    def click_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the clickCount property value. Number of link clicks in the received payloads by the user in attack simulation and training campaigns.
-        Args:
-            value: Value to set for the click_count property.
-        """
-        self._click_count = value
-    
-    @property
-    def compromised_count(self,) -> Optional[int]:
-        """
-        Gets the compromisedCount property value. Number of compromising actions by the user in attack simulation and training campaigns.
-        Returns: Optional[int]
-        """
-        return self._compromised_count
-    
-    @compromised_count.setter
-    def compromised_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the compromisedCount property value. Number of compromising actions by the user in attack simulation and training campaigns.
-        Args:
-            value: Value to set for the compromised_count property.
-        """
-        self._compromised_count = value
+    # User in an attack simulation and training campaign.
+    attack_simulation_user: Optional[attack_simulation_user.AttackSimulationUser] = None
+    # Number of link clicks in the received payloads by the user in attack simulation and training campaigns.
+    click_count: Optional[int] = None
+    # Number of compromising actions by the user in attack simulation and training campaigns.
+    compromised_count: Optional[int] = None
+    # Date and time of the latest attack simulation and training campaign that the user was included in.
+    latest_simulation_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Number of attack simulation and training campaigns that the user was included in.
+    simulation_count: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AttackSimulationSimulationUserCoverage:
@@ -103,8 +33,8 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AttackSimulationSimulationUserCoverage
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return AttackSimulationSimulationUserCoverage()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -112,6 +42,8 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import attack_simulation_user
+
         from . import attack_simulation_user
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -124,48 +56,14 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def latest_simulation_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the latestSimulationDateTime property value. Date and time of the latest attack simulation and training campaign that the user was included in.
-        Returns: Optional[datetime]
-        """
-        return self._latest_simulation_date_time
-    
-    @latest_simulation_date_time.setter
-    def latest_simulation_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the latestSimulationDateTime property value. Date and time of the latest attack simulation and training campaign that the user was included in.
-        Args:
-            value: Value to set for the latest_simulation_date_time property.
-        """
-        self._latest_simulation_date_time = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_object_value("attackSimulationUser", self.attack_simulation_user)
         writer.write_int_value("clickCount", self.click_count)
         writer.write_int_value("compromisedCount", self.compromised_count)
@@ -173,22 +71,5 @@ class AttackSimulationSimulationUserCoverage(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_int_value("simulationCount", self.simulation_count)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def simulation_count(self,) -> Optional[int]:
-        """
-        Gets the simulationCount property value. Number of attack simulation and training campaigns that the user was included in.
-        Returns: Optional[int]
-        """
-        return self._simulation_count
-    
-    @simulation_count.setter
-    def simulation_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the simulationCount property value. Number of attack simulation and training campaigns that the user was included in.
-        Args:
-            value: Value to set for the simulation_count property.
-        """
-        self._simulation_count = value
     
 

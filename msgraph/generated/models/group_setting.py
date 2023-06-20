@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,20 +8,16 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class GroupSetting(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new groupSetting and sets the default values.
-        """
-        super().__init__()
-        # Display name of this group of settings, which comes from the associated template.
-        self._display_name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Unique identifier for the tenant-level groupSettingTemplates object that's been customized for this group-level settings object. Read-only.
-        self._template_id: Optional[str] = None
-        # Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object.
-        self._values: Optional[List[setting_value.SettingValue]] = None
+    # Display name of this group of settings, which comes from the associated template.
+    display_name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Unique identifier for the tenant-level groupSettingTemplates object that's been customized for this group-level settings object. Read-only.
+    template_id: Optional[str] = None
+    # Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object.
+    values: Optional[List[setting_value.SettingValue]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GroupSetting:
@@ -30,32 +27,17 @@ class GroupSetting(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: GroupSetting
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return GroupSetting()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Display name of this group of settings, which comes from the associated template.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Display name of this group of settings, which comes from the associated template.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import entity, setting_value
+
         from . import entity, setting_value
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -73,45 +55,11 @@ class GroupSetting(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("displayName", self.display_name)
         writer.write_str_value("templateId", self.template_id)
         writer.write_collection_of_object_values("values", self.values)
-    
-    @property
-    def template_id(self,) -> Optional[str]:
-        """
-        Gets the templateId property value. Unique identifier for the tenant-level groupSettingTemplates object that's been customized for this group-level settings object. Read-only.
-        Returns: Optional[str]
-        """
-        return self._template_id
-    
-    @template_id.setter
-    def template_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the templateId property value. Unique identifier for the tenant-level groupSettingTemplates object that's been customized for this group-level settings object. Read-only.
-        Args:
-            value: Value to set for the template_id property.
-        """
-        self._template_id = value
-    
-    @property
-    def values(self,) -> Optional[List[setting_value.SettingValue]]:
-        """
-        Gets the values property value. Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object.
-        Returns: Optional[List[setting_value.SettingValue]]
-        """
-        return self._values
-    
-    @values.setter
-    def values(self,value: Optional[List[setting_value.SettingValue]] = None) -> None:
-        """
-        Sets the values property value. Collection of name-value pairs corresponding to the name and defaultValue properties in the referenced groupSettingTemplates object.
-        Args:
-            value: Value to set for the values property.
-        """
-        self._values = value
     
 

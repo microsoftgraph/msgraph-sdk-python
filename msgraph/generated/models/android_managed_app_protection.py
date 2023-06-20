@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,50 +8,29 @@ if TYPE_CHECKING:
 
 from . import targeted_managed_app_protection
 
+@dataclass
 class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManagedAppProtection):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AndroidManagedAppProtection and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.androidManagedAppProtection"
-        # List of apps to which the policy is deployed.
-        self._apps: Optional[List[managed_mobile_app.ManagedMobileApp]] = None
-        # Friendly name of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
-        self._custom_browser_display_name: Optional[str] = None
-        # Unique identifier of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
-        self._custom_browser_package_id: Optional[str] = None
-        # Count of apps to which the current policy is deployed.
-        self._deployed_app_count: Optional[int] = None
-        # Navigation property to deployment summary of the configuration.
-        self._deployment_summary: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None
-        # When this setting is enabled, app level encryption is disabled if device level encryption is enabled
-        self._disable_app_encryption_if_device_encryption_is_enabled: Optional[bool] = None
-        # Indicates whether application data for managed apps should be encrypted
-        self._encrypt_app_data: Optional[bool] = None
-        # Define the oldest required Android security patch level a user can have to gain secure access to the app.
-        self._minimum_required_patch_version: Optional[str] = None
-        # Define the oldest recommended Android security patch level a user can have for secure access to the app.
-        self._minimum_warning_patch_version: Optional[str] = None
-        # Indicates whether a managed user can take screen captures of managed apps
-        self._screen_capture_blocked: Optional[bool] = None
-    
-    @property
-    def apps(self,) -> Optional[List[managed_mobile_app.ManagedMobileApp]]:
-        """
-        Gets the apps property value. List of apps to which the policy is deployed.
-        Returns: Optional[List[managed_mobile_app.ManagedMobileApp]]
-        """
-        return self._apps
-    
-    @apps.setter
-    def apps(self,value: Optional[List[managed_mobile_app.ManagedMobileApp]] = None) -> None:
-        """
-        Sets the apps property value. List of apps to which the policy is deployed.
-        Args:
-            value: Value to set for the apps property.
-        """
-        self._apps = value
+    odata_type = "#microsoft.graph.androidManagedAppProtection"
+    # List of apps to which the policy is deployed.
+    apps: Optional[List[managed_mobile_app.ManagedMobileApp]] = None
+    # Friendly name of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
+    custom_browser_display_name: Optional[str] = None
+    # Unique identifier of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
+    custom_browser_package_id: Optional[str] = None
+    # Count of apps to which the current policy is deployed.
+    deployed_app_count: Optional[int] = None
+    # Navigation property to deployment summary of the configuration.
+    deployment_summary: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None
+    # When this setting is enabled, app level encryption is disabled if device level encryption is enabled
+    disable_app_encryption_if_device_encryption_is_enabled: Optional[bool] = None
+    # Indicates whether application data for managed apps should be encrypted
+    encrypt_app_data: Optional[bool] = None
+    # Define the oldest required Android security patch level a user can have to gain secure access to the app.
+    minimum_required_patch_version: Optional[str] = None
+    # Define the oldest recommended Android security patch level a user can have for secure access to the app.
+    minimum_warning_patch_version: Optional[str] = None
+    # Indicates whether a managed user can take screen captures of managed apps
+    screen_capture_blocked: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AndroidManagedAppProtection:
@@ -60,117 +40,17 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AndroidManagedAppProtection
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return AndroidManagedAppProtection()
-    
-    @property
-    def custom_browser_display_name(self,) -> Optional[str]:
-        """
-        Gets the customBrowserDisplayName property value. Friendly name of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
-        Returns: Optional[str]
-        """
-        return self._custom_browser_display_name
-    
-    @custom_browser_display_name.setter
-    def custom_browser_display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the customBrowserDisplayName property value. Friendly name of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
-        Args:
-            value: Value to set for the custom_browser_display_name property.
-        """
-        self._custom_browser_display_name = value
-    
-    @property
-    def custom_browser_package_id(self,) -> Optional[str]:
-        """
-        Gets the customBrowserPackageId property value. Unique identifier of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
-        Returns: Optional[str]
-        """
-        return self._custom_browser_package_id
-    
-    @custom_browser_package_id.setter
-    def custom_browser_package_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the customBrowserPackageId property value. Unique identifier of the preferred custom browser to open weblink on Android. When this property is configured, ManagedBrowserToOpenLinksRequired should be true.
-        Args:
-            value: Value to set for the custom_browser_package_id property.
-        """
-        self._custom_browser_package_id = value
-    
-    @property
-    def deployed_app_count(self,) -> Optional[int]:
-        """
-        Gets the deployedAppCount property value. Count of apps to which the current policy is deployed.
-        Returns: Optional[int]
-        """
-        return self._deployed_app_count
-    
-    @deployed_app_count.setter
-    def deployed_app_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the deployedAppCount property value. Count of apps to which the current policy is deployed.
-        Args:
-            value: Value to set for the deployed_app_count property.
-        """
-        self._deployed_app_count = value
-    
-    @property
-    def deployment_summary(self,) -> Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary]:
-        """
-        Gets the deploymentSummary property value. Navigation property to deployment summary of the configuration.
-        Returns: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary]
-        """
-        return self._deployment_summary
-    
-    @deployment_summary.setter
-    def deployment_summary(self,value: Optional[managed_app_policy_deployment_summary.ManagedAppPolicyDeploymentSummary] = None) -> None:
-        """
-        Sets the deploymentSummary property value. Navigation property to deployment summary of the configuration.
-        Args:
-            value: Value to set for the deployment_summary property.
-        """
-        self._deployment_summary = value
-    
-    @property
-    def disable_app_encryption_if_device_encryption_is_enabled(self,) -> Optional[bool]:
-        """
-        Gets the disableAppEncryptionIfDeviceEncryptionIsEnabled property value. When this setting is enabled, app level encryption is disabled if device level encryption is enabled
-        Returns: Optional[bool]
-        """
-        return self._disable_app_encryption_if_device_encryption_is_enabled
-    
-    @disable_app_encryption_if_device_encryption_is_enabled.setter
-    def disable_app_encryption_if_device_encryption_is_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the disableAppEncryptionIfDeviceEncryptionIsEnabled property value. When this setting is enabled, app level encryption is disabled if device level encryption is enabled
-        Args:
-            value: Value to set for the disable_app_encryption_if_device_encryption_is_enabled property.
-        """
-        self._disable_app_encryption_if_device_encryption_is_enabled = value
-    
-    @property
-    def encrypt_app_data(self,) -> Optional[bool]:
-        """
-        Gets the encryptAppData property value. Indicates whether application data for managed apps should be encrypted
-        Returns: Optional[bool]
-        """
-        return self._encrypt_app_data
-    
-    @encrypt_app_data.setter
-    def encrypt_app_data(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the encryptAppData property value. Indicates whether application data for managed apps should be encrypted
-        Args:
-            value: Value to set for the encrypt_app_data property.
-        """
-        self._encrypt_app_data = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import managed_app_policy_deployment_summary, managed_mobile_app, targeted_managed_app_protection
+
         from . import managed_app_policy_deployment_summary, managed_mobile_app, targeted_managed_app_protection
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -189,65 +69,14 @@ class AndroidManagedAppProtection(targeted_managed_app_protection.TargetedManage
         fields.update(super_fields)
         return fields
     
-    @property
-    def minimum_required_patch_version(self,) -> Optional[str]:
-        """
-        Gets the minimumRequiredPatchVersion property value. Define the oldest required Android security patch level a user can have to gain secure access to the app.
-        Returns: Optional[str]
-        """
-        return self._minimum_required_patch_version
-    
-    @minimum_required_patch_version.setter
-    def minimum_required_patch_version(self,value: Optional[str] = None) -> None:
-        """
-        Sets the minimumRequiredPatchVersion property value. Define the oldest required Android security patch level a user can have to gain secure access to the app.
-        Args:
-            value: Value to set for the minimum_required_patch_version property.
-        """
-        self._minimum_required_patch_version = value
-    
-    @property
-    def minimum_warning_patch_version(self,) -> Optional[str]:
-        """
-        Gets the minimumWarningPatchVersion property value. Define the oldest recommended Android security patch level a user can have for secure access to the app.
-        Returns: Optional[str]
-        """
-        return self._minimum_warning_patch_version
-    
-    @minimum_warning_patch_version.setter
-    def minimum_warning_patch_version(self,value: Optional[str] = None) -> None:
-        """
-        Sets the minimumWarningPatchVersion property value. Define the oldest recommended Android security patch level a user can have for secure access to the app.
-        Args:
-            value: Value to set for the minimum_warning_patch_version property.
-        """
-        self._minimum_warning_patch_version = value
-    
-    @property
-    def screen_capture_blocked(self,) -> Optional[bool]:
-        """
-        Gets the screenCaptureBlocked property value. Indicates whether a managed user can take screen captures of managed apps
-        Returns: Optional[bool]
-        """
-        return self._screen_capture_blocked
-    
-    @screen_capture_blocked.setter
-    def screen_capture_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the screenCaptureBlocked property value. Indicates whether a managed user can take screen captures of managed apps
-        Args:
-            value: Value to set for the screen_capture_blocked property.
-        """
-        self._screen_capture_blocked = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("apps", self.apps)
         writer.write_str_value("customBrowserDisplayName", self.custom_browser_display_name)

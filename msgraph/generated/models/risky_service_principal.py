@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,51 +9,30 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class RiskyServicePrincipal(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new RiskyServicePrincipal and sets the default values.
-        """
-        super().__init__()
-        # The globally unique identifier for the associated application (its appId property), if any.
-        self._app_id: Optional[str] = None
-        # The display name for the service principal.
-        self._display_name: Optional[str] = None
-        # Represents the risk history of Azure AD service principals.
-        self._history: Optional[List[risky_service_principal_history_item.RiskyServicePrincipalHistoryItem]] = None
-        # true if the service principal account is enabled; otherwise, false.
-        self._is_enabled: Optional[bool] = None
-        # Indicates whether Azure AD is currently processing the service principal's risky state.
-        self._is_processing: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Details of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: none, hidden,  unknownFutureValue, adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: adminConfirmedServicePrincipalCompromised , adminDismissedAllRiskForServicePrincipal.
-        self._risk_detail: Optional[risk_detail.RiskDetail] = None
-        # The date and time that the risk state was last updated. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2021 is 2021-01-01T00:00:00Z. Supports $filter (eq).
-        self._risk_last_updated_date_time: Optional[datetime] = None
-        # Level of the detected risky workload identity. The possible values are: low, medium, high, hidden, none, unknownFutureValue. Supports $filter (eq).
-        self._risk_level: Optional[risk_level.RiskLevel] = None
-        # State of the service principal's risk. The possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
-        self._risk_state: Optional[risk_state.RiskState] = None
-        # Identifies whether the service principal represents an Application, a ManagedIdentity, or a legacy application (socialIdp). This is set by Azure AD internally and is inherited from servicePrincipal.
-        self._service_principal_type: Optional[str] = None
-    
-    @property
-    def app_id(self,) -> Optional[str]:
-        """
-        Gets the appId property value. The globally unique identifier for the associated application (its appId property), if any.
-        Returns: Optional[str]
-        """
-        return self._app_id
-    
-    @app_id.setter
-    def app_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the appId property value. The globally unique identifier for the associated application (its appId property), if any.
-        Args:
-            value: Value to set for the app_id property.
-        """
-        self._app_id = value
+    # The globally unique identifier for the associated application (its appId property), if any.
+    app_id: Optional[str] = None
+    # The display name for the service principal.
+    display_name: Optional[str] = None
+    # Represents the risk history of Azure AD service principals.
+    history: Optional[List[risky_service_principal_history_item.RiskyServicePrincipalHistoryItem]] = None
+    # true if the service principal account is enabled; otherwise, false.
+    is_enabled: Optional[bool] = None
+    # Indicates whether Azure AD is currently processing the service principal's risky state.
+    is_processing: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Details of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: none, hidden,  unknownFutureValue, adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: adminConfirmedServicePrincipalCompromised , adminDismissedAllRiskForServicePrincipal.
+    risk_detail: Optional[risk_detail.RiskDetail] = None
+    # The date and time that the risk state was last updated. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2021 is 2021-01-01T00:00:00Z. Supports $filter (eq).
+    risk_last_updated_date_time: Optional[datetime] = None
+    # Level of the detected risky workload identity. The possible values are: low, medium, high, hidden, none, unknownFutureValue. Supports $filter (eq).
+    risk_level: Optional[risk_level.RiskLevel] = None
+    # State of the service principal's risk. The possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
+    risk_state: Optional[risk_state.RiskState] = None
+    # Identifies whether the service principal represents an Application, a ManagedIdentity, or a legacy application (socialIdp). This is set by Azure AD internally and is inherited from servicePrincipal.
+    service_principal_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RiskyServicePrincipal:
@@ -62,39 +42,25 @@ class RiskyServicePrincipal(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RiskyServicePrincipal
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.riskyServicePrincipalHistoryItem":
-                from . import risky_service_principal_history_item
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
+        try:
+            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.riskyServicePrincipalHistoryItem".casefold():
+            from . import risky_service_principal_history_item
 
-                return risky_service_principal_history_item.RiskyServicePrincipalHistoryItem()
+            return risky_service_principal_history_item.RiskyServicePrincipalHistoryItem()
         return RiskyServicePrincipal()
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The display name for the service principal.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The display name for the service principal.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import entity, risky_service_principal_history_item, risk_detail, risk_level, risk_state
+
         from . import entity, risky_service_principal_history_item, risk_detail, risk_level, risk_state
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -113,133 +79,14 @@ class RiskyServicePrincipal(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def history(self,) -> Optional[List[risky_service_principal_history_item.RiskyServicePrincipalHistoryItem]]:
-        """
-        Gets the history property value. Represents the risk history of Azure AD service principals.
-        Returns: Optional[List[risky_service_principal_history_item.RiskyServicePrincipalHistoryItem]]
-        """
-        return self._history
-    
-    @history.setter
-    def history(self,value: Optional[List[risky_service_principal_history_item.RiskyServicePrincipalHistoryItem]] = None) -> None:
-        """
-        Sets the history property value. Represents the risk history of Azure AD service principals.
-        Args:
-            value: Value to set for the history property.
-        """
-        self._history = value
-    
-    @property
-    def is_enabled(self,) -> Optional[bool]:
-        """
-        Gets the isEnabled property value. true if the service principal account is enabled; otherwise, false.
-        Returns: Optional[bool]
-        """
-        return self._is_enabled
-    
-    @is_enabled.setter
-    def is_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isEnabled property value. true if the service principal account is enabled; otherwise, false.
-        Args:
-            value: Value to set for the is_enabled property.
-        """
-        self._is_enabled = value
-    
-    @property
-    def is_processing(self,) -> Optional[bool]:
-        """
-        Gets the isProcessing property value. Indicates whether Azure AD is currently processing the service principal's risky state.
-        Returns: Optional[bool]
-        """
-        return self._is_processing
-    
-    @is_processing.setter
-    def is_processing(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isProcessing property value. Indicates whether Azure AD is currently processing the service principal's risky state.
-        Args:
-            value: Value to set for the is_processing property.
-        """
-        self._is_processing = value
-    
-    @property
-    def risk_detail(self,) -> Optional[risk_detail.RiskDetail]:
-        """
-        Gets the riskDetail property value. Details of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: none, hidden,  unknownFutureValue, adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: adminConfirmedServicePrincipalCompromised , adminDismissedAllRiskForServicePrincipal.
-        Returns: Optional[risk_detail.RiskDetail]
-        """
-        return self._risk_detail
-    
-    @risk_detail.setter
-    def risk_detail(self,value: Optional[risk_detail.RiskDetail] = None) -> None:
-        """
-        Sets the riskDetail property value. Details of the detected risk. Note: Details for this property are only available for Workload Identities Premium customers. Events in tenants without this license will be returned hidden. The possible values are: none, hidden,  unknownFutureValue, adminConfirmedServicePrincipalCompromised, adminDismissedAllRiskForServicePrincipal. Note that you must use the Prefer: include-unknown-enum-members request header to get the following value(s) in this evolvable enum: adminConfirmedServicePrincipalCompromised , adminDismissedAllRiskForServicePrincipal.
-        Args:
-            value: Value to set for the risk_detail property.
-        """
-        self._risk_detail = value
-    
-    @property
-    def risk_last_updated_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the riskLastUpdatedDateTime property value. The date and time that the risk state was last updated. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2021 is 2021-01-01T00:00:00Z. Supports $filter (eq).
-        Returns: Optional[datetime]
-        """
-        return self._risk_last_updated_date_time
-    
-    @risk_last_updated_date_time.setter
-    def risk_last_updated_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the riskLastUpdatedDateTime property value. The date and time that the risk state was last updated. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2021 is 2021-01-01T00:00:00Z. Supports $filter (eq).
-        Args:
-            value: Value to set for the risk_last_updated_date_time property.
-        """
-        self._risk_last_updated_date_time = value
-    
-    @property
-    def risk_level(self,) -> Optional[risk_level.RiskLevel]:
-        """
-        Gets the riskLevel property value. Level of the detected risky workload identity. The possible values are: low, medium, high, hidden, none, unknownFutureValue. Supports $filter (eq).
-        Returns: Optional[risk_level.RiskLevel]
-        """
-        return self._risk_level
-    
-    @risk_level.setter
-    def risk_level(self,value: Optional[risk_level.RiskLevel] = None) -> None:
-        """
-        Sets the riskLevel property value. Level of the detected risky workload identity. The possible values are: low, medium, high, hidden, none, unknownFutureValue. Supports $filter (eq).
-        Args:
-            value: Value to set for the risk_level property.
-        """
-        self._risk_level = value
-    
-    @property
-    def risk_state(self,) -> Optional[risk_state.RiskState]:
-        """
-        Gets the riskState property value. State of the service principal's risk. The possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
-        Returns: Optional[risk_state.RiskState]
-        """
-        return self._risk_state
-    
-    @risk_state.setter
-    def risk_state(self,value: Optional[risk_state.RiskState] = None) -> None:
-        """
-        Sets the riskState property value. State of the service principal's risk. The possible values are: none, confirmedSafe, remediated, dismissed, atRisk, confirmedCompromised, unknownFutureValue.
-        Args:
-            value: Value to set for the risk_state property.
-        """
-        self._risk_state = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("appId", self.app_id)
         writer.write_str_value("displayName", self.display_name)
@@ -251,22 +98,5 @@ class RiskyServicePrincipal(entity.Entity):
         writer.write_enum_value("riskLevel", self.risk_level)
         writer.write_enum_value("riskState", self.risk_state)
         writer.write_str_value("servicePrincipalType", self.service_principal_type)
-    
-    @property
-    def service_principal_type(self,) -> Optional[str]:
-        """
-        Gets the servicePrincipalType property value. Identifies whether the service principal represents an Application, a ManagedIdentity, or a legacy application (socialIdp). This is set by Azure AD internally and is inherited from servicePrincipal.
-        Returns: Optional[str]
-        """
-        return self._service_principal_type
-    
-    @service_principal_type.setter
-    def service_principal_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the servicePrincipalType property value. Identifies whether the service principal represents an Application, a ManagedIdentity, or a legacy application (socialIdp). This is set by Azure AD internally and is inherited from servicePrincipal.
-        Args:
-            value: Value to set for the service_principal_type property.
-        """
-        self._service_principal_type = value
     
 

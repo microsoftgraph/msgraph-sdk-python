@@ -1,6 +1,6 @@
 from enum import Enum
 
-class BucketAggregationSortProperty(Enum):
+class BucketAggregationSortProperty(str, Enum):
     Count = "count",
     KeyAsString = "keyAsString",
     KeyAsNumber = "keyAsNumber",

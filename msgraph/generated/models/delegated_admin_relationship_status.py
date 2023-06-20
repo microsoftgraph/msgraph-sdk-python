@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DelegatedAdminRelationshipStatus(Enum):
+class DelegatedAdminRelationshipStatus(str, Enum):
     Activating = "activating",
     Active = "active",
     ApprovalPending = "approvalPending",

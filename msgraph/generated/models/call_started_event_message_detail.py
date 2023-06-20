@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,53 +8,15 @@ if TYPE_CHECKING:
 
 from . import event_message_detail
 
+@dataclass
 class CallStartedEventMessageDetail(event_message_detail.EventMessageDetail):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new CallStartedEventMessageDetail and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.callStartedEventMessageDetail"
-        # Represents the call event type. Possible values are: call, meeting, screenShare, unknownFutureValue.
-        self._call_event_type: Optional[teamwork_call_event_type.TeamworkCallEventType] = None
-        # Unique identifier of the call.
-        self._call_id: Optional[str] = None
-        # Initiator of the event.
-        self._initiator: Optional[identity_set.IdentitySet] = None
-    
-    @property
-    def call_event_type(self,) -> Optional[teamwork_call_event_type.TeamworkCallEventType]:
-        """
-        Gets the callEventType property value. Represents the call event type. Possible values are: call, meeting, screenShare, unknownFutureValue.
-        Returns: Optional[teamwork_call_event_type.TeamworkCallEventType]
-        """
-        return self._call_event_type
-    
-    @call_event_type.setter
-    def call_event_type(self,value: Optional[teamwork_call_event_type.TeamworkCallEventType] = None) -> None:
-        """
-        Sets the callEventType property value. Represents the call event type. Possible values are: call, meeting, screenShare, unknownFutureValue.
-        Args:
-            value: Value to set for the call_event_type property.
-        """
-        self._call_event_type = value
-    
-    @property
-    def call_id(self,) -> Optional[str]:
-        """
-        Gets the callId property value. Unique identifier of the call.
-        Returns: Optional[str]
-        """
-        return self._call_id
-    
-    @call_id.setter
-    def call_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the callId property value. Unique identifier of the call.
-        Args:
-            value: Value to set for the call_id property.
-        """
-        self._call_id = value
+    odata_type = "#microsoft.graph.callStartedEventMessageDetail"
+    # Represents the call event type. Possible values are: call, meeting, screenShare, unknownFutureValue.
+    call_event_type: Optional[teamwork_call_event_type.TeamworkCallEventType] = None
+    # Unique identifier of the call.
+    call_id: Optional[str] = None
+    # Initiator of the event.
+    initiator: Optional[identity_set.IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CallStartedEventMessageDetail:
@@ -63,8 +26,8 @@ class CallStartedEventMessageDetail(event_message_detail.EventMessageDetail):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CallStartedEventMessageDetail
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return CallStartedEventMessageDetail()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -72,6 +35,8 @@ class CallStartedEventMessageDetail(event_message_detail.EventMessageDetail):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import event_message_detail, identity_set, teamwork_call_event_type
+
         from . import event_message_detail, identity_set, teamwork_call_event_type
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -83,31 +48,14 @@ class CallStartedEventMessageDetail(event_message_detail.EventMessageDetail):
         fields.update(super_fields)
         return fields
     
-    @property
-    def initiator(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the initiator property value. Initiator of the event.
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._initiator
-    
-    @initiator.setter
-    def initiator(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the initiator property value. Initiator of the event.
-        Args:
-            value: Value to set for the initiator property.
-        """
-        self._initiator = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_enum_value("callEventType", self.call_event_type)
         writer.write_str_value("callId", self.call_id)

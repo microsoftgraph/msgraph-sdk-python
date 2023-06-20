@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DelegatedAdminRelationshipRequestAction(Enum):
+class DelegatedAdminRelationshipRequestAction(str, Enum):
     LockForApproval = "lockForApproval",
     Approve = "approve",
     Terminate = "terminate",

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class EdgeCookiePolicy(Enum):
+class EdgeCookiePolicy(str, Enum):
     # Allow the user to set.
     UserDefined = "userDefined",
     # Allow.

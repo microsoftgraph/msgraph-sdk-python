@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ManagementAgentType(Enum):
+class ManagementAgentType(str, Enum):
     # The device is managed by Exchange server.
     Eas = "eas",
     # The device is managed by Intune MDM.

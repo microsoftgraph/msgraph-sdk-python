@@ -1,6 +1,6 @@
 from enum import Enum
 
-class CaseStatus(Enum):
+class CaseStatus(str, Enum):
     Unknown = "unknown",
     Active = "active",
     PendingDelete = "pendingDelete",

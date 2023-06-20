@@ -1,0 +1,83 @@
+from __future__ import annotations
+from dataclasses import dataclass, field
+from datetime import timedelta
+from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
+from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
+
+if TYPE_CHECKING:
+    from ...models import attendee_base, location_constraint, time_constraint
+
+@dataclass
+class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
+
+    # The attendees property
+    attendees: Optional[List[attendee_base.AttendeeBase]] = None
+    # The isOrganizerOptional property
+    is_organizer_optional: Optional[bool] = None
+    # The locationConstraint property
+    location_constraint: Optional[location_constraint.LocationConstraint] = None
+    # The maxCandidates property
+    max_candidates: Optional[int] = None
+    # The meetingDuration property
+    meeting_duration: Optional[timedelta] = None
+    # The minimumAttendeePercentage property
+    minimum_attendee_percentage: Optional[float] = None
+    # The returnSuggestionReasons property
+    return_suggestion_reasons: Optional[bool] = None
+    # The timeConstraint property
+    time_constraint: Optional[time_constraint.TimeConstraint] = None
+    
+    @staticmethod
+    def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FindMeetingTimesPostRequestBody:
+        """
+        Creates a new instance of the appropriate class based on discriminator value
+        Args:
+            parseNode: The parse node to use to read the discriminator value and create the object
+        Returns: FindMeetingTimesPostRequestBody
+        """
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
+        return FindMeetingTimesPostRequestBody()
+    
+    def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
+        """
+        The deserialization information for the current model
+        Returns: Dict[str, Callable[[ParseNode], None]]
+        """
+        from ...models import attendee_base, location_constraint, time_constraint
+
+        from ...models import attendee_base, location_constraint, time_constraint
+
+        fields: Dict[str, Callable[[Any], None]] = {
+            "attendees": lambda n : setattr(self, 'attendees', n.get_collection_of_object_values(attendee_base.AttendeeBase)),
+            "isOrganizerOptional": lambda n : setattr(self, 'is_organizer_optional', n.get_bool_value()),
+            "locationConstraint": lambda n : setattr(self, 'location_constraint', n.get_object_value(location_constraint.LocationConstraint)),
+            "maxCandidates": lambda n : setattr(self, 'max_candidates', n.get_int_value()),
+            "meetingDuration": lambda n : setattr(self, 'meeting_duration', n.get_timedelta_value()),
+            "minimumAttendeePercentage": lambda n : setattr(self, 'minimum_attendee_percentage', n.get_float_value()),
+            "returnSuggestionReasons": lambda n : setattr(self, 'return_suggestion_reasons', n.get_bool_value()),
+            "timeConstraint": lambda n : setattr(self, 'time_constraint', n.get_object_value(time_constraint.TimeConstraint)),
+        }
+        return fields
+    
+    def serialize(self,writer: SerializationWriter) -> None:
+        """
+        Serializes information the current object
+        Args:
+            writer: Serialization writer to use to serialize this model
+        """
+        if not writer:
+            raise TypeError("writer cannot be null.")
+        writer.write_collection_of_object_values("attendees", self.attendees)
+        writer.write_bool_value("isOrganizerOptional", self.is_organizer_optional)
+        writer.write_object_value("locationConstraint", self.location_constraint)
+        writer.write_int_value("maxCandidates", self.max_candidates)
+        writer.write_timedelta_value("meetingDuration", self.meeting_duration)
+        writer.write_float_value("minimumAttendeePercentage", self.minimum_attendee_percentage)
+        writer.write_bool_value("returnSuggestionReasons", self.return_suggestion_reasons)
+        writer.write_object_value("timeConstraint", self.time_constraint)
+        writer.write_additional_data_value(self.additional_data)
+    
+

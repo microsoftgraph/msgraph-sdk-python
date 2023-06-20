@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PrintJobStateDetail(Enum):
+class PrintJobStateDetail(str, Enum):
     UploadPending = "uploadPending",
     Transforming = "transforming",
     CompletedSuccessfully = "completedSuccessfully",

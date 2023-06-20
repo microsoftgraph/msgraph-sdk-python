@@ -1,6 +1,6 @@
 from enum import Enum
 
-class IosUpdatesInstallStatus(Enum):
+class IosUpdatesInstallStatus(str, Enum):
     DeviceOsHigherThanDesiredOsVersion = "deviceOsHigherThanDesiredOsVersion",
     SharedDeviceUserLoggedInError = "sharedDeviceUserLoggedInError",
     NotSupportedOperation = "notSupportedOperation",

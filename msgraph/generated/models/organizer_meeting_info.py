@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import meeting_info
 
+@dataclass
 class OrganizerMeetingInfo(meeting_info.MeetingInfo):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new OrganizerMeetingInfo and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.organizerMeetingInfo"
-        # The organizer property
-        self._organizer: Optional[identity_set.IdentitySet] = None
+    odata_type = "#microsoft.graph.organizerMeetingInfo"
+    # The organizer property
+    organizer: Optional[identity_set.IdentitySet] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OrganizerMeetingInfo:
@@ -25,8 +22,8 @@ class OrganizerMeetingInfo(meeting_info.MeetingInfo):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: OrganizerMeetingInfo
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return OrganizerMeetingInfo()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -36,6 +33,8 @@ class OrganizerMeetingInfo(meeting_info.MeetingInfo):
         """
         from . import identity_set, meeting_info
 
+        from . import identity_set, meeting_info
+
         fields: Dict[str, Callable[[Any], None]] = {
             "organizer": lambda n : setattr(self, 'organizer', n.get_object_value(identity_set.IdentitySet)),
         }
@@ -43,31 +42,14 @@ class OrganizerMeetingInfo(meeting_info.MeetingInfo):
         fields.update(super_fields)
         return fields
     
-    @property
-    def organizer(self,) -> Optional[identity_set.IdentitySet]:
-        """
-        Gets the organizer property value. The organizer property
-        Returns: Optional[identity_set.IdentitySet]
-        """
-        return self._organizer
-    
-    @organizer.setter
-    def organizer(self,value: Optional[identity_set.IdentitySet] = None) -> None:
-        """
-        Sets the organizer property value. The organizer property
-        Args:
-            value: Value to set for the organizer property.
-        """
-        self._organizer = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("organizer", self.organizer)
     

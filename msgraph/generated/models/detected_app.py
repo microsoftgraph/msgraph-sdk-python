@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,31 +8,27 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class DetectedApp(entity.Entity):
     """
     A managed or unmanaged app that is installed on a managed device. Unmanaged apps will only appear for devices marked as corporate owned.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new detectedApp and sets the default values.
-        """
-        super().__init__()
-        # The number of devices that have installed this application
-        self._device_count: Optional[int] = None
-        # Name of the discovered application. Read-only
-        self._display_name: Optional[str] = None
-        # The devices that have the discovered application installed
-        self._managed_devices: Optional[List[managed_device.ManagedDevice]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Indicates the operating system / platform of the discovered application.  Some possible values are Windows, iOS, macOS. The default value is unknown (0).
-        self._platform: Optional[detected_app_platform_type.DetectedAppPlatformType] = None
-        # Indicates the publisher of the discovered application. For example: 'Microsoft'.  The default value is an empty string.
-        self._publisher: Optional[str] = None
-        # Discovered application size in bytes. Read-only
-        self._size_in_byte: Optional[int] = None
-        # Version of the discovered application. Read-only
-        self._version: Optional[str] = None
+    # The number of devices that have installed this application
+    device_count: Optional[int] = None
+    # Name of the discovered application. Read-only
+    display_name: Optional[str] = None
+    # The devices that have the discovered application installed
+    managed_devices: Optional[List[managed_device.ManagedDevice]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Indicates the operating system / platform of the discovered application.  Some possible values are Windows, iOS, macOS. The default value is unknown (0).
+    platform: Optional[detected_app_platform_type.DetectedAppPlatformType] = None
+    # Indicates the publisher of the discovered application. For example: 'Microsoft'.  The default value is an empty string.
+    publisher: Optional[str] = None
+    # Discovered application size in bytes. Read-only
+    size_in_byte: Optional[int] = None
+    # Version of the discovered application. Read-only
+    version: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DetectedApp:
@@ -41,49 +38,17 @@ class DetectedApp(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DetectedApp
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return DetectedApp()
-    
-    @property
-    def device_count(self,) -> Optional[int]:
-        """
-        Gets the deviceCount property value. The number of devices that have installed this application
-        Returns: Optional[int]
-        """
-        return self._device_count
-    
-    @device_count.setter
-    def device_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the deviceCount property value. The number of devices that have installed this application
-        Args:
-            value: Value to set for the device_count property.
-        """
-        self._device_count = value
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Name of the discovered application. Read-only
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Name of the discovered application. Read-only
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import detected_app_platform_type, entity, managed_device
+
         from . import detected_app_platform_type, entity, managed_device
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -99,65 +64,14 @@ class DetectedApp(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def managed_devices(self,) -> Optional[List[managed_device.ManagedDevice]]:
-        """
-        Gets the managedDevices property value. The devices that have the discovered application installed
-        Returns: Optional[List[managed_device.ManagedDevice]]
-        """
-        return self._managed_devices
-    
-    @managed_devices.setter
-    def managed_devices(self,value: Optional[List[managed_device.ManagedDevice]] = None) -> None:
-        """
-        Sets the managedDevices property value. The devices that have the discovered application installed
-        Args:
-            value: Value to set for the managed_devices property.
-        """
-        self._managed_devices = value
-    
-    @property
-    def platform(self,) -> Optional[detected_app_platform_type.DetectedAppPlatformType]:
-        """
-        Gets the platform property value. Indicates the operating system / platform of the discovered application.  Some possible values are Windows, iOS, macOS. The default value is unknown (0).
-        Returns: Optional[detected_app_platform_type.DetectedAppPlatformType]
-        """
-        return self._platform
-    
-    @platform.setter
-    def platform(self,value: Optional[detected_app_platform_type.DetectedAppPlatformType] = None) -> None:
-        """
-        Sets the platform property value. Indicates the operating system / platform of the discovered application.  Some possible values are Windows, iOS, macOS. The default value is unknown (0).
-        Args:
-            value: Value to set for the platform property.
-        """
-        self._platform = value
-    
-    @property
-    def publisher(self,) -> Optional[str]:
-        """
-        Gets the publisher property value. Indicates the publisher of the discovered application. For example: 'Microsoft'.  The default value is an empty string.
-        Returns: Optional[str]
-        """
-        return self._publisher
-    
-    @publisher.setter
-    def publisher(self,value: Optional[str] = None) -> None:
-        """
-        Sets the publisher property value. Indicates the publisher of the discovered application. For example: 'Microsoft'.  The default value is an empty string.
-        Args:
-            value: Value to set for the publisher property.
-        """
-        self._publisher = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_int_value("deviceCount", self.device_count)
         writer.write_str_value("displayName", self.display_name)
@@ -166,39 +80,5 @@ class DetectedApp(entity.Entity):
         writer.write_str_value("publisher", self.publisher)
         writer.write_int_value("sizeInByte", self.size_in_byte)
         writer.write_str_value("version", self.version)
-    
-    @property
-    def size_in_byte(self,) -> Optional[int]:
-        """
-        Gets the sizeInByte property value. Discovered application size in bytes. Read-only
-        Returns: Optional[int]
-        """
-        return self._size_in_byte
-    
-    @size_in_byte.setter
-    def size_in_byte(self,value: Optional[int] = None) -> None:
-        """
-        Sets the sizeInByte property value. Discovered application size in bytes. Read-only
-        Args:
-            value: Value to set for the size_in_byte property.
-        """
-        self._size_in_byte = value
-    
-    @property
-    def version(self,) -> Optional[str]:
-        """
-        Gets the version property value. Version of the discovered application. Read-only
-        Returns: Optional[str]
-        """
-        return self._version
-    
-    @version.setter
-    def version(self,value: Optional[str] = None) -> None:
-        """
-        Sets the version property value. Version of the discovered application. Read-only
-        Args:
-            value: Value to set for the version property.
-        """
-        self._version = value
     
 

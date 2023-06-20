@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ThreatAssessmentContentType(Enum):
+class ThreatAssessmentContentType(str, Enum):
     Mail = "mail",
     Url = "url",
     File = "file",

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,60 +8,22 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class UnifiedRbacResourceAction(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new unifiedRbacResourceAction and sets the default values.
-        """
-        super().__init__()
-        # The actionVerb property
-        self._action_verb: Optional[str] = None
-        # The authenticationContextId property
-        self._authentication_context_id: Optional[str] = None
-        # The description property
-        self._description: Optional[str] = None
-        # The isAuthenticationContextSettable property
-        self._is_authentication_context_settable: Optional[bool] = None
-        # The name property
-        self._name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The resourceScopeId property
-        self._resource_scope_id: Optional[str] = None
-    
-    @property
-    def action_verb(self,) -> Optional[str]:
-        """
-        Gets the actionVerb property value. The actionVerb property
-        Returns: Optional[str]
-        """
-        return self._action_verb
-    
-    @action_verb.setter
-    def action_verb(self,value: Optional[str] = None) -> None:
-        """
-        Sets the actionVerb property value. The actionVerb property
-        Args:
-            value: Value to set for the action_verb property.
-        """
-        self._action_verb = value
-    
-    @property
-    def authentication_context_id(self,) -> Optional[str]:
-        """
-        Gets the authenticationContextId property value. The authenticationContextId property
-        Returns: Optional[str]
-        """
-        return self._authentication_context_id
-    
-    @authentication_context_id.setter
-    def authentication_context_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the authenticationContextId property value. The authenticationContextId property
-        Args:
-            value: Value to set for the authentication_context_id property.
-        """
-        self._authentication_context_id = value
+    # The actionVerb property
+    action_verb: Optional[str] = None
+    # The authenticationContextId property
+    authentication_context_id: Optional[str] = None
+    # The description property
+    description: Optional[str] = None
+    # The isAuthenticationContextSettable property
+    is_authentication_context_settable: Optional[bool] = None
+    # The name property
+    name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The resourceScopeId property
+    resource_scope_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> UnifiedRbacResourceAction:
@@ -70,32 +33,17 @@ class UnifiedRbacResourceAction(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: UnifiedRbacResourceAction
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return UnifiedRbacResourceAction()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. The description property
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. The description property
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import entity
+
         from . import entity
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -110,65 +58,14 @@ class UnifiedRbacResourceAction(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def is_authentication_context_settable(self,) -> Optional[bool]:
-        """
-        Gets the isAuthenticationContextSettable property value. The isAuthenticationContextSettable property
-        Returns: Optional[bool]
-        """
-        return self._is_authentication_context_settable
-    
-    @is_authentication_context_settable.setter
-    def is_authentication_context_settable(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isAuthenticationContextSettable property value. The isAuthenticationContextSettable property
-        Args:
-            value: Value to set for the is_authentication_context_settable property.
-        """
-        self._is_authentication_context_settable = value
-    
-    @property
-    def name(self,) -> Optional[str]:
-        """
-        Gets the name property value. The name property
-        Returns: Optional[str]
-        """
-        return self._name
-    
-    @name.setter
-    def name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the name property value. The name property
-        Args:
-            value: Value to set for the name property.
-        """
-        self._name = value
-    
-    @property
-    def resource_scope_id(self,) -> Optional[str]:
-        """
-        Gets the resourceScopeId property value. The resourceScopeId property
-        Returns: Optional[str]
-        """
-        return self._resource_scope_id
-    
-    @resource_scope_id.setter
-    def resource_scope_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the resourceScopeId property value. The resourceScopeId property
-        Args:
-            value: Value to set for the resource_scope_id property.
-        """
-        self._resource_scope_id = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("actionVerb", self.action_verb)
         writer.write_str_value("authenticationContextId", self.authentication_context_id)

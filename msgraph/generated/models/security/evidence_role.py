@@ -1,6 +1,6 @@
 from enum import Enum
 
-class EvidenceRole(Enum):
+class EvidenceRole(str, Enum):
     Unknown = "unknown",
     Contextual = "contextual",
     Scanned = "scanned",

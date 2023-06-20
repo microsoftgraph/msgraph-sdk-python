@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SharedPCAllowedAccountType(Enum):
+class SharedPCAllowedAccountType(str, Enum):
     # Only guest accounts.
     Guest = "guest",
     # Only domain-joined accounts.

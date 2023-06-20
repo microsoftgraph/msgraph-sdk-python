@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,51 +8,13 @@ if TYPE_CHECKING:
 
 from . import access_review_instance_decision_item_resource
 
+@dataclass
 class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(access_review_instance_decision_item_resource.AccessReviewInstanceDecisionItemResource):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.accessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource"
-        # Display name of the access package to which access has been granted.
-        self._access_package_display_name: Optional[str] = None
-        # Identifier of the access package to which access has been granted.
-        self._access_package_id: Optional[str] = None
-    
-    @property
-    def access_package_display_name(self,) -> Optional[str]:
-        """
-        Gets the accessPackageDisplayName property value. Display name of the access package to which access has been granted.
-        Returns: Optional[str]
-        """
-        return self._access_package_display_name
-    
-    @access_package_display_name.setter
-    def access_package_display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the accessPackageDisplayName property value. Display name of the access package to which access has been granted.
-        Args:
-            value: Value to set for the access_package_display_name property.
-        """
-        self._access_package_display_name = value
-    
-    @property
-    def access_package_id(self,) -> Optional[str]:
-        """
-        Gets the accessPackageId property value. Identifier of the access package to which access has been granted.
-        Returns: Optional[str]
-        """
-        return self._access_package_id
-    
-    @access_package_id.setter
-    def access_package_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the accessPackageId property value. Identifier of the access package to which access has been granted.
-        Args:
-            value: Value to set for the access_package_id property.
-        """
-        self._access_package_id = value
+    odata_type = "#microsoft.graph.accessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource"
+    # Display name of the access package to which access has been granted.
+    access_package_display_name: Optional[str] = None
+    # Identifier of the access package to which access has been granted.
+    access_package_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource:
@@ -61,8 +24,8 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -70,6 +33,8 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import access_review_instance_decision_item_resource
+
         from . import access_review_instance_decision_item_resource
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -86,8 +51,8 @@ class AccessReviewInstanceDecisionItemAccessPackageAssignmentPolicyResource(acce
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("accessPackageDisplayName", self.access_package_display_name)
         writer.write_str_value("accessPackageId", self.access_package_id)

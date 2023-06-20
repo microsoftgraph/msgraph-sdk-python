@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,19 +8,15 @@ if TYPE_CHECKING:
 
 from . import authentication_method_configuration
 
+@dataclass
 class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_method_configuration.AuthenticationMethodConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new MicrosoftAuthenticatorAuthenticationMethodConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodConfiguration"
-        # A collection of Microsoft Authenticator settings such as application context and location context, and whether they are enabled for all users or specific users only.
-        self._feature_settings: Optional[microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings] = None
-        # A collection of groups that are enabled to use the authentication method. Expanded by default.
-        self._include_targets: Optional[List[microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget]] = None
-        # The isSoftwareOathEnabled property
-        self._is_software_oath_enabled: Optional[bool] = None
+    odata_type = "#microsoft.graph.microsoftAuthenticatorAuthenticationMethodConfiguration"
+    # A collection of Microsoft Authenticator settings such as application context and location context, and whether they are enabled for all users or specific users only.
+    feature_settings: Optional[microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings] = None
+    # A collection of groups that are enabled to use the authentication method. Expanded by default.
+    include_targets: Optional[List[microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget]] = None
+    # The isSoftwareOathEnabled property
+    is_software_oath_enabled: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MicrosoftAuthenticatorAuthenticationMethodConfiguration:
@@ -29,32 +26,17 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MicrosoftAuthenticatorAuthenticationMethodConfiguration
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return MicrosoftAuthenticatorAuthenticationMethodConfiguration()
-    
-    @property
-    def feature_settings(self,) -> Optional[microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings]:
-        """
-        Gets the featureSettings property value. A collection of Microsoft Authenticator settings such as application context and location context, and whether they are enabled for all users or specific users only.
-        Returns: Optional[microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings]
-        """
-        return self._feature_settings
-    
-    @feature_settings.setter
-    def feature_settings(self,value: Optional[microsoft_authenticator_feature_settings.MicrosoftAuthenticatorFeatureSettings] = None) -> None:
-        """
-        Sets the featureSettings property value. A collection of Microsoft Authenticator settings such as application context and location context, and whether they are enabled for all users or specific users only.
-        Args:
-            value: Value to set for the feature_settings property.
-        """
-        self._feature_settings = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import authentication_method_configuration, microsoft_authenticator_authentication_method_target, microsoft_authenticator_feature_settings
+
         from . import authentication_method_configuration, microsoft_authenticator_authentication_method_target, microsoft_authenticator_feature_settings
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -66,48 +48,14 @@ class MicrosoftAuthenticatorAuthenticationMethodConfiguration(authentication_met
         fields.update(super_fields)
         return fields
     
-    @property
-    def include_targets(self,) -> Optional[List[microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget]]:
-        """
-        Gets the includeTargets property value. A collection of groups that are enabled to use the authentication method. Expanded by default.
-        Returns: Optional[List[microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget]]
-        """
-        return self._include_targets
-    
-    @include_targets.setter
-    def include_targets(self,value: Optional[List[microsoft_authenticator_authentication_method_target.MicrosoftAuthenticatorAuthenticationMethodTarget]] = None) -> None:
-        """
-        Sets the includeTargets property value. A collection of groups that are enabled to use the authentication method. Expanded by default.
-        Args:
-            value: Value to set for the include_targets property.
-        """
-        self._include_targets = value
-    
-    @property
-    def is_software_oath_enabled(self,) -> Optional[bool]:
-        """
-        Gets the isSoftwareOathEnabled property value. The isSoftwareOathEnabled property
-        Returns: Optional[bool]
-        """
-        return self._is_software_oath_enabled
-    
-    @is_software_oath_enabled.setter
-    def is_software_oath_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isSoftwareOathEnabled property value. The isSoftwareOathEnabled property
-        Args:
-            value: Value to set for the is_software_oath_enabled property.
-        """
-        self._is_software_oath_enabled = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("featureSettings", self.feature_settings)
         writer.write_collection_of_object_values("includeTargets", self.include_targets)

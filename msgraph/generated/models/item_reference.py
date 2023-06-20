@@ -1,53 +1,34 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import sharepoint_ids
 
+@dataclass
 class ItemReference(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new itemReference and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Unique identifier of the drive instance that contains the driveItem. Only returned if the item is located in a [drive][]. Read-only.
-        self._drive_id: Optional[str] = None
-        # Identifies the type of drive. Only returned if the item is located in a [drive][]. See [drive][] resource for values.
-        self._drive_type: Optional[str] = None
-        # Unique identifier of the driveItem in the drive or a listItem in a list. Read-only.
-        self._id: Optional[str] = None
-        # The name of the item being referenced. Read-only.
-        self._name: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Path that can be used to navigate to the item. Read-only.
-        self._path: Optional[str] = None
-        # A unique identifier for a shared resource that can be accessed via the [Shares][] API.
-        self._share_id: Optional[str] = None
-        # Returns identifiers useful for SharePoint REST compatibility. Read-only.
-        self._sharepoint_ids: Optional[sharepoint_ids.SharepointIds] = None
-        # For OneDrive for Business and SharePoint, this property represents the ID of the site that contains the parent document library of the driveItem resource or the parent list of the listItem resource. The value is the same as the id property of that [site][] resource. It is an opaque string that consists of three identifiers of the site. For OneDrive, this property is not populated.
-        self._site_id: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Unique identifier of the drive instance that contains the driveItem. Only returned if the item is located in a [drive][]. Read-only.
+    drive_id: Optional[str] = None
+    # Identifies the type of drive. Only returned if the item is located in a [drive][]. See [drive][] resource for values.
+    drive_type: Optional[str] = None
+    # Unique identifier of the driveItem in the drive or a listItem in a list. Read-only.
+    id: Optional[str] = None
+    # The name of the item being referenced. Read-only.
+    name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Path that can be used to navigate to the item. Read-only.
+    path: Optional[str] = None
+    # A unique identifier for a shared resource that can be accessed via the [Shares][] API.
+    share_id: Optional[str] = None
+    # Returns identifiers useful for SharePoint REST compatibility. Read-only.
+    sharepoint_ids: Optional[sharepoint_ids.SharepointIds] = None
+    # For OneDrive for Business and SharePoint, this property represents the ID of the site that contains the parent document library of the driveItem resource or the parent list of the listItem resource. The value is the same as the id property of that [site][] resource. It is an opaque string that consists of three identifiers of the site. For OneDrive, this property is not populated.
+    site_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemReference:
@@ -57,49 +38,17 @@ class ItemReference(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ItemReference
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return ItemReference()
-    
-    @property
-    def drive_id(self,) -> Optional[str]:
-        """
-        Gets the driveId property value. Unique identifier of the drive instance that contains the driveItem. Only returned if the item is located in a [drive][]. Read-only.
-        Returns: Optional[str]
-        """
-        return self._drive_id
-    
-    @drive_id.setter
-    def drive_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the driveId property value. Unique identifier of the drive instance that contains the driveItem. Only returned if the item is located in a [drive][]. Read-only.
-        Args:
-            value: Value to set for the drive_id property.
-        """
-        self._drive_id = value
-    
-    @property
-    def drive_type(self,) -> Optional[str]:
-        """
-        Gets the driveType property value. Identifies the type of drive. Only returned if the item is located in a [drive][]. See [drive][] resource for values.
-        Returns: Optional[str]
-        """
-        return self._drive_type
-    
-    @drive_type.setter
-    def drive_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the driveType property value. Identifies the type of drive. Only returned if the item is located in a [drive][]. See [drive][] resource for values.
-        Args:
-            value: Value to set for the drive_type property.
-        """
-        self._drive_type = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import sharepoint_ids
+
         from . import sharepoint_ids
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -109,79 +58,11 @@ class ItemReference(AdditionalDataHolder, Parsable):
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
             "@odata.type": lambda n : setattr(self, 'odata_type', n.get_str_value()),
             "path": lambda n : setattr(self, 'path', n.get_str_value()),
-            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
             "shareId": lambda n : setattr(self, 'share_id', n.get_str_value()),
+            "sharepointIds": lambda n : setattr(self, 'sharepoint_ids', n.get_object_value(sharepoint_ids.SharepointIds)),
             "siteId": lambda n : setattr(self, 'site_id', n.get_str_value()),
         }
         return fields
-    
-    @property
-    def id(self,) -> Optional[str]:
-        """
-        Gets the id property value. Unique identifier of the driveItem in the drive or a listItem in a list. Read-only.
-        Returns: Optional[str]
-        """
-        return self._id
-    
-    @id.setter
-    def id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the id property value. Unique identifier of the driveItem in the drive or a listItem in a list. Read-only.
-        Args:
-            value: Value to set for the id property.
-        """
-        self._id = value
-    
-    @property
-    def name(self,) -> Optional[str]:
-        """
-        Gets the name property value. The name of the item being referenced. Read-only.
-        Returns: Optional[str]
-        """
-        return self._name
-    
-    @name.setter
-    def name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the name property value. The name of the item being referenced. Read-only.
-        Args:
-            value: Value to set for the name property.
-        """
-        self._name = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def path(self,) -> Optional[str]:
-        """
-        Gets the path property value. Path that can be used to navigate to the item. Read-only.
-        Returns: Optional[str]
-        """
-        return self._path
-    
-    @path.setter
-    def path(self,value: Optional[str] = None) -> None:
-        """
-        Sets the path property value. Path that can be used to navigate to the item. Read-only.
-        Args:
-            value: Value to set for the path property.
-        """
-        self._path = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """
@@ -189,68 +70,17 @@ class ItemReference(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_str_value("driveId", self.drive_id)
         writer.write_str_value("driveType", self.drive_type)
         writer.write_str_value("id", self.id)
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("path", self.path)
-        writer.write_object_value("sharepointIds", self.sharepoint_ids)
         writer.write_str_value("shareId", self.share_id)
+        writer.write_object_value("sharepointIds", self.sharepoint_ids)
         writer.write_str_value("siteId", self.site_id)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def share_id(self,) -> Optional[str]:
-        """
-        Gets the shareId property value. A unique identifier for a shared resource that can be accessed via the [Shares][] API.
-        Returns: Optional[str]
-        """
-        return self._share_id
-    
-    @share_id.setter
-    def share_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the shareId property value. A unique identifier for a shared resource that can be accessed via the [Shares][] API.
-        Args:
-            value: Value to set for the share_id property.
-        """
-        self._share_id = value
-    
-    @property
-    def sharepoint_ids(self,) -> Optional[sharepoint_ids.SharepointIds]:
-        """
-        Gets the sharepointIds property value. Returns identifiers useful for SharePoint REST compatibility. Read-only.
-        Returns: Optional[sharepoint_ids.SharepointIds]
-        """
-        return self._sharepoint_ids
-    
-    @sharepoint_ids.setter
-    def sharepoint_ids(self,value: Optional[sharepoint_ids.SharepointIds] = None) -> None:
-        """
-        Sets the sharepointIds property value. Returns identifiers useful for SharePoint REST compatibility. Read-only.
-        Args:
-            value: Value to set for the sharepoint_ids property.
-        """
-        self._sharepoint_ids = value
-    
-    @property
-    def site_id(self,) -> Optional[str]:
-        """
-        Gets the siteId property value. For OneDrive for Business and SharePoint, this property represents the ID of the site that contains the parent document library of the driveItem resource or the parent list of the listItem resource. The value is the same as the id property of that [site][] resource. It is an opaque string that consists of three identifiers of the site. For OneDrive, this property is not populated.
-        Returns: Optional[str]
-        """
-        return self._site_id
-    
-    @site_id.setter
-    def site_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the siteId property value. For OneDrive for Business and SharePoint, this property represents the ID of the site that contains the parent document library of the driveItem resource or the parent list of the listItem resource. The value is the same as the id property of that [site][] resource. It is an opaque string that consists of three identifiers of the site. For OneDrive, this property is not populated.
-        Args:
-            value: Value to set for the site_id property.
-        """
-        self._site_id = value
     
 

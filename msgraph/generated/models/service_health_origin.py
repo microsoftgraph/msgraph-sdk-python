@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ServiceHealthOrigin(Enum):
+class ServiceHealthOrigin(str, Enum):
     Microsoft = "microsoft",
     ThirdParty = "thirdParty",
     Customer = "customer",

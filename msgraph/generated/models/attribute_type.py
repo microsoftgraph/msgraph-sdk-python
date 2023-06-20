@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AttributeType(Enum):
+class AttributeType(str, Enum):
     String = "String",
     Integer = "Integer",
     Reference = "Reference",

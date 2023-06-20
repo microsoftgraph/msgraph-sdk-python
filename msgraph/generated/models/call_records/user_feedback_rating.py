@@ -1,6 +1,6 @@
 from enum import Enum
 
-class UserFeedbackRating(Enum):
+class UserFeedbackRating(str, Enum):
     NotRated = "notRated",
     Bad = "bad",
     Poor = "poor",

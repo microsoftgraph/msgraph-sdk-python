@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,10 +26,10 @@ class CustomSecurityAttributeDefinitionsRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not path_parameters:
+            raise TypeError("path_parameters cannot be null.")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/directory/customSecurityAttributeDefinitions{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}"
 
@@ -44,8 +44,8 @@ class CustomSecurityAttributeDefinitionsRequestBuilder():
             custom_security_attribute_definition_id: Unique identifier of the item
         Returns: custom_security_attribute_definition_item_request_builder.CustomSecurityAttributeDefinitionItemRequestBuilder
         """
-        if custom_security_attribute_definition_id is None:
-            raise Exception("custom_security_attribute_definition_id cannot be undefined")
+        if not custom_security_attribute_definition_id:
+            raise TypeError("custom_security_attribute_definition_id cannot be null.")
         from .item import custom_security_attribute_definition_item_request_builder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
@@ -54,7 +54,7 @@ class CustomSecurityAttributeDefinitionsRequestBuilder():
     
     async def get(self,request_configuration: Optional[CustomSecurityAttributeDefinitionsRequestBuilderGetRequestConfiguration] = None) -> Optional[custom_security_attribute_definition_collection_response.CustomSecurityAttributeDefinitionCollectionResponse]:
         """
-        Get customSecurityAttributeDefinitions from directory
+        Get a list of the customSecurityAttributeDefinition objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[custom_security_attribute_definition_collection_response.CustomSecurityAttributeDefinitionCollectionResponse]
@@ -76,14 +76,14 @@ class CustomSecurityAttributeDefinitionsRequestBuilder():
     
     async def post(self,body: Optional[custom_security_attribute_definition.CustomSecurityAttributeDefinition] = None, request_configuration: Optional[CustomSecurityAttributeDefinitionsRequestBuilderPostRequestConfiguration] = None) -> Optional[custom_security_attribute_definition.CustomSecurityAttributeDefinition]:
         """
-        Create new navigation property to customSecurityAttributeDefinitions for directory
+        Create a new customSecurityAttributeDefinition object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[custom_security_attribute_definition.CustomSecurityAttributeDefinition]
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
@@ -101,7 +101,7 @@ class CustomSecurityAttributeDefinitionsRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[CustomSecurityAttributeDefinitionsRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Get customSecurityAttributeDefinitions from directory
+        Get a list of the customSecurityAttributeDefinition objects and their properties.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -119,14 +119,14 @@ class CustomSecurityAttributeDefinitionsRequestBuilder():
     
     def to_post_request_information(self,body: Optional[custom_security_attribute_definition.CustomSecurityAttributeDefinition] = None, request_configuration: Optional[CustomSecurityAttributeDefinitionsRequestBuilderPostRequestConfiguration] = None) -> RequestInformation:
         """
-        Create new navigation property to customSecurityAttributeDefinitions for directory
+        Create a new customSecurityAttributeDefinition object.
         Args:
             body: The request body
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
@@ -150,7 +150,7 @@ class CustomSecurityAttributeDefinitionsRequestBuilder():
     @dataclass
     class CustomSecurityAttributeDefinitionsRequestBuilderGetQueryParameters():
         """
-        Get customSecurityAttributeDefinitions from directory
+        Get a list of the customSecurityAttributeDefinition objects and their properties.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -159,8 +159,8 @@ class CustomSecurityAttributeDefinitionsRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
+            if not original_name:
+                raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"
             if original_name == "expand":

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class LobbyBypassScope(Enum):
+class LobbyBypassScope(str, Enum):
     Organizer = "organizer",
     Organization = "organization",
     OrganizationAndFederated = "organizationAndFederated",

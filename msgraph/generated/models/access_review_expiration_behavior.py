@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AccessReviewExpirationBehavior(Enum):
+class AccessReviewExpirationBehavior(str, Enum):
     KeepAccess = "keepAccess",
     RemoveAccess = "removeAccess",
     AcceptAccessRecommendation = "acceptAccessRecommendation",

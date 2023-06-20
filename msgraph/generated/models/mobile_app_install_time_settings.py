@@ -1,44 +1,25 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
     """
     Contains properties used to determine when to offer an app to devices and when to install the app on devices.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new mobileAppInstallTimeSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The time at which the app should be installed.
-        self._deadline_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The time at which the app should be available for installation.
-        self._start_date_time: Optional[datetime] = None
-        # Whether the local device time or UTC time should be used when determining the available and deadline times.
-        self._use_local_time: Optional[bool] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The time at which the app should be installed.
+    deadline_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The time at which the app should be available for installation.
+    start_date_time: Optional[datetime] = None
+    # Whether the local device time or UTC time should be used when determining the available and deadline times.
+    use_local_time: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MobileAppInstallTimeSettings:
@@ -48,26 +29,9 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MobileAppInstallTimeSettings
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return MobileAppInstallTimeSettings()
-    
-    @property
-    def deadline_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the deadlineDateTime property value. The time at which the app should be installed.
-        Returns: Optional[datetime]
-        """
-        return self._deadline_date_time
-    
-    @deadline_date_time.setter
-    def deadline_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the deadlineDateTime property value. The time at which the app should be installed.
-        Args:
-            value: Value to set for the deadline_date_time property.
-        """
-        self._deadline_date_time = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -82,69 +46,18 @@ class MobileAppInstallTimeSettings(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_datetime_value("deadlineDateTime", self.deadline_date_time)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_datetime_value("startDateTime", self.start_date_time)
         writer.write_bool_value("useLocalTime", self.use_local_time)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def start_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the startDateTime property value. The time at which the app should be available for installation.
-        Returns: Optional[datetime]
-        """
-        return self._start_date_time
-    
-    @start_date_time.setter
-    def start_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the startDateTime property value. The time at which the app should be available for installation.
-        Args:
-            value: Value to set for the start_date_time property.
-        """
-        self._start_date_time = value
-    
-    @property
-    def use_local_time(self,) -> Optional[bool]:
-        """
-        Gets the useLocalTime property value. Whether the local device time or UTC time should be used when determining the available and deadline times.
-        Returns: Optional[bool]
-        """
-        return self._use_local_time
-    
-    @use_local_time.setter
-    def use_local_time(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the useLocalTime property value. Whether the local device time or UTC time should be used when determining the available and deadline times.
-        Args:
-            value: Value to set for the use_local_time property.
-        """
-        self._use_local_time = value
     
 

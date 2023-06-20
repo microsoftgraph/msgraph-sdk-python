@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AlertClassification(Enum):
+class AlertClassification(str, Enum):
     Unknown = "unknown",
     FalsePositive = "falsePositive",
     TruePositive = "truePositive",

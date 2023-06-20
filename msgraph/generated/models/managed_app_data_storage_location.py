@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ManagedAppDataStorageLocation(Enum):
+class ManagedAppDataStorageLocation(str, Enum):
     # OneDrive for business
     OneDriveForBusiness = "oneDriveForBusiness",
     # SharePoint

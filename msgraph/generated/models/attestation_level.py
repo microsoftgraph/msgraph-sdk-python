@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AttestationLevel(Enum):
+class AttestationLevel(str, Enum):
     Attested = "attested",
     NotAttested = "notAttested",
     UnknownFutureValue = "unknownFutureValue",

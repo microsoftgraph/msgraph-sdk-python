@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WindowsHelloForBusinessPinUsage(Enum):
+class WindowsHelloForBusinessPinUsage(str, Enum):
     # Allowed the usage of certain pin rule
     Allowed = "allowed",
     # Enforce the usage of certain pin rule

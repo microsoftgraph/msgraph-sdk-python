@@ -1,6 +1,6 @@
 from enum import Enum
 
-class OnenotePatchActionType(Enum):
+class OnenotePatchActionType(str, Enum):
     Replace = "Replace",
     Append = "Append",
     Delete = "Delete",

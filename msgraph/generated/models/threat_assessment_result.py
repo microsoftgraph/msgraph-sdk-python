@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,37 +9,16 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ThreatAssessmentResult(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new threatAssessmentResult and sets the default values.
-        """
-        super().__init__()
-        # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        self._created_date_time: Optional[datetime] = None
-        # The result message for each threat assessment.
-        self._message: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The threat assessment result type. Possible values are: checkPolicy, rescan.
-        self._result_type: Optional[threat_assessment_result_type.ThreatAssessmentResultType] = None
-    
-    @property
-    def created_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        Returns: Optional[datetime]
-        """
-        return self._created_date_time
-    
-    @created_date_time.setter
-    def created_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the createdDateTime property value. The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
-        Args:
-            value: Value to set for the created_date_time property.
-        """
-        self._created_date_time = value
+    # The Timestamp type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z.
+    created_date_time: Optional[datetime] = None
+    # The result message for each threat assessment.
+    message: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The threat assessment result type. Possible values are: checkPolicy, rescan.
+    result_type: Optional[threat_assessment_result_type.ThreatAssessmentResultType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ThreatAssessmentResult:
@@ -48,8 +28,8 @@ class ThreatAssessmentResult(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ThreatAssessmentResult
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return ThreatAssessmentResult()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -57,6 +37,8 @@ class ThreatAssessmentResult(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import entity, threat_assessment_result_type
+
         from . import entity, threat_assessment_result_type
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -68,48 +50,14 @@ class ThreatAssessmentResult(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def message(self,) -> Optional[str]:
-        """
-        Gets the message property value. The result message for each threat assessment.
-        Returns: Optional[str]
-        """
-        return self._message
-    
-    @message.setter
-    def message(self,value: Optional[str] = None) -> None:
-        """
-        Sets the message property value. The result message for each threat assessment.
-        Args:
-            value: Value to set for the message property.
-        """
-        self._message = value
-    
-    @property
-    def result_type(self,) -> Optional[threat_assessment_result_type.ThreatAssessmentResultType]:
-        """
-        Gets the resultType property value. The threat assessment result type. Possible values are: checkPolicy, rescan.
-        Returns: Optional[threat_assessment_result_type.ThreatAssessmentResultType]
-        """
-        return self._result_type
-    
-    @result_type.setter
-    def result_type(self,value: Optional[threat_assessment_result_type.ThreatAssessmentResultType] = None) -> None:
-        """
-        Sets the resultType property value. The threat assessment result type. Possible values are: checkPolicy, rescan.
-        Args:
-            value: Value to set for the result_type property.
-        """
-        self._result_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_datetime_value("createdDateTime", self.created_date_time)
         writer.write_str_value("message", self.message)

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -9,60 +10,22 @@ if TYPE_CHECKING:
 
 from .. import entity
 
+@dataclass
 class Segment(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new segment and sets the default values.
-        """
-        super().__init__()
-        # Endpoint that answered this segment.
-        self._callee: Optional[endpoint.Endpoint] = None
-        # Endpoint that initiated this segment.
-        self._caller: Optional[endpoint.Endpoint] = None
-        # UTC time when the segment ended. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._end_date_time: Optional[datetime] = None
-        # Failure information associated with the segment if it failed.
-        self._failure_info: Optional[failure_info.FailureInfo] = None
-        # Media associated with this segment.
-        self._media: Optional[List[media.Media]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # UTC time when the segment started. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._start_date_time: Optional[datetime] = None
-    
-    @property
-    def callee(self,) -> Optional[endpoint.Endpoint]:
-        """
-        Gets the callee property value. Endpoint that answered this segment.
-        Returns: Optional[endpoint.Endpoint]
-        """
-        return self._callee
-    
-    @callee.setter
-    def callee(self,value: Optional[endpoint.Endpoint] = None) -> None:
-        """
-        Sets the callee property value. Endpoint that answered this segment.
-        Args:
-            value: Value to set for the callee property.
-        """
-        self._callee = value
-    
-    @property
-    def caller(self,) -> Optional[endpoint.Endpoint]:
-        """
-        Gets the caller property value. Endpoint that initiated this segment.
-        Returns: Optional[endpoint.Endpoint]
-        """
-        return self._caller
-    
-    @caller.setter
-    def caller(self,value: Optional[endpoint.Endpoint] = None) -> None:
-        """
-        Sets the caller property value. Endpoint that initiated this segment.
-        Args:
-            value: Value to set for the caller property.
-        """
-        self._caller = value
+    # Endpoint that answered this segment.
+    callee: Optional[endpoint.Endpoint] = None
+    # Endpoint that initiated this segment.
+    caller: Optional[endpoint.Endpoint] = None
+    # UTC time when the segment ended. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    end_date_time: Optional[datetime] = None
+    # Failure information associated with the segment if it failed.
+    failure_info: Optional[failure_info.FailureInfo] = None
+    # Media associated with this segment.
+    media: Optional[List[media.Media]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # UTC time when the segment started. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    start_date_time: Optional[datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Segment:
@@ -72,49 +35,18 @@ class Segment(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Segment
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return Segment()
-    
-    @property
-    def end_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the endDateTime property value. UTC time when the segment ended. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Returns: Optional[datetime]
-        """
-        return self._end_date_time
-    
-    @end_date_time.setter
-    def end_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the endDateTime property value. UTC time when the segment ended. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Args:
-            value: Value to set for the end_date_time property.
-        """
-        self._end_date_time = value
-    
-    @property
-    def failure_info(self,) -> Optional[failure_info.FailureInfo]:
-        """
-        Gets the failureInfo property value. Failure information associated with the segment if it failed.
-        Returns: Optional[failure_info.FailureInfo]
-        """
-        return self._failure_info
-    
-    @failure_info.setter
-    def failure_info(self,value: Optional[failure_info.FailureInfo] = None) -> None:
-        """
-        Sets the failureInfo property value. Failure information associated with the segment if it failed.
-        Args:
-            value: Value to set for the failure_info property.
-        """
-        self._failure_info = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import endpoint, failure_info, media
+        from .. import entity
+
         from . import endpoint, failure_info, media
         from .. import entity
 
@@ -130,31 +62,14 @@ class Segment(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def media(self,) -> Optional[List[media.Media]]:
-        """
-        Gets the media property value. Media associated with this segment.
-        Returns: Optional[List[media.Media]]
-        """
-        return self._media
-    
-    @media.setter
-    def media(self,value: Optional[List[media.Media]] = None) -> None:
-        """
-        Sets the media property value. Media associated with this segment.
-        Args:
-            value: Value to set for the media property.
-        """
-        self._media = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("callee", self.callee)
         writer.write_object_value("caller", self.caller)
@@ -162,22 +77,5 @@ class Segment(entity.Entity):
         writer.write_object_value("failureInfo", self.failure_info)
         writer.write_collection_of_object_values("media", self.media)
         writer.write_datetime_value("startDateTime", self.start_date_time)
-    
-    @property
-    def start_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the startDateTime property value. UTC time when the segment started. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Returns: Optional[datetime]
-        """
-        return self._start_date_time
-    
-    @start_date_time.setter
-    def start_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the startDateTime property value. UTC time when the segment started. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Args:
-            value: Value to set for the start_date_time property.
-        """
-        self._start_date_time = value
     
 

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,54 +8,16 @@ if TYPE_CHECKING:
 
 from . import named_location
 
+@dataclass
 class CountryNamedLocation(named_location.NamedLocation):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new CountryNamedLocation and sets the default values.
-        """
-        super().__init__()
-        # List of countries and/or regions in two-letter format specified by ISO 3166-2. Required.
-        self._countries_and_regions: Optional[List[str]] = None
-        # Determines what method is used to decide which country the user is located in. Possible values are clientIpAddress(default) and authenticatorAppGps. Note: authenticatorAppGps is not yet supported in the Microsoft Cloud for US Government.
-        self._country_lookup_method: Optional[country_lookup_method_type.CountryLookupMethodType] = None
-        # true if IP addresses that don't map to a country or region should be included in the named location. Optional. Default value is false.
-        self._include_unknown_countries_and_regions: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def countries_and_regions(self,) -> Optional[List[str]]:
-        """
-        Gets the countriesAndRegions property value. List of countries and/or regions in two-letter format specified by ISO 3166-2. Required.
-        Returns: Optional[List[str]]
-        """
-        return self._countries_and_regions
-    
-    @countries_and_regions.setter
-    def countries_and_regions(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the countriesAndRegions property value. List of countries and/or regions in two-letter format specified by ISO 3166-2. Required.
-        Args:
-            value: Value to set for the countries_and_regions property.
-        """
-        self._countries_and_regions = value
-    
-    @property
-    def country_lookup_method(self,) -> Optional[country_lookup_method_type.CountryLookupMethodType]:
-        """
-        Gets the countryLookupMethod property value. Determines what method is used to decide which country the user is located in. Possible values are clientIpAddress(default) and authenticatorAppGps. Note: authenticatorAppGps is not yet supported in the Microsoft Cloud for US Government.
-        Returns: Optional[country_lookup_method_type.CountryLookupMethodType]
-        """
-        return self._country_lookup_method
-    
-    @country_lookup_method.setter
-    def country_lookup_method(self,value: Optional[country_lookup_method_type.CountryLookupMethodType] = None) -> None:
-        """
-        Sets the countryLookupMethod property value. Determines what method is used to decide which country the user is located in. Possible values are clientIpAddress(default) and authenticatorAppGps. Note: authenticatorAppGps is not yet supported in the Microsoft Cloud for US Government.
-        Args:
-            value: Value to set for the country_lookup_method property.
-        """
-        self._country_lookup_method = value
+    # List of countries and/or regions in two-letter format specified by ISO 3166-2. Required.
+    countries_and_regions: Optional[List[str]] = None
+    # Determines what method is used to decide which country the user is located in. Possible values are clientIpAddress(default) and authenticatorAppGps. Note: authenticatorAppGps is not yet supported in the Microsoft Cloud for US Government.
+    country_lookup_method: Optional[country_lookup_method_type.CountryLookupMethodType] = None
+    # true if IP addresses that don't map to a country or region should be included in the named location. Optional. Default value is false.
+    include_unknown_countries_and_regions: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CountryNamedLocation:
@@ -64,8 +27,8 @@ class CountryNamedLocation(named_location.NamedLocation):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CountryNamedLocation
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return CountryNamedLocation()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -73,6 +36,8 @@ class CountryNamedLocation(named_location.NamedLocation):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import country_lookup_method_type, named_location
+
         from . import country_lookup_method_type, named_location
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -84,31 +49,14 @@ class CountryNamedLocation(named_location.NamedLocation):
         fields.update(super_fields)
         return fields
     
-    @property
-    def include_unknown_countries_and_regions(self,) -> Optional[bool]:
-        """
-        Gets the includeUnknownCountriesAndRegions property value. true if IP addresses that don't map to a country or region should be included in the named location. Optional. Default value is false.
-        Returns: Optional[bool]
-        """
-        return self._include_unknown_countries_and_regions
-    
-    @include_unknown_countries_and_regions.setter
-    def include_unknown_countries_and_regions(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the includeUnknownCountriesAndRegions property value. true if IP addresses that don't map to a country or region should be included in the named location. Optional. Default value is false.
-        Args:
-            value: Value to set for the include_unknown_countries_and_regions property.
-        """
-        self._include_unknown_countries_and_regions = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_primitive_values("countriesAndRegions", self.countries_and_regions)
         writer.write_enum_value("countryLookupMethod", self.country_lookup_method)

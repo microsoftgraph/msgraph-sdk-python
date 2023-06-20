@@ -1,6 +1,6 @@
 from enum import Enum
 
-class NotificationTemplateBrandingOptions(Enum):
+class NotificationTemplateBrandingOptions(str, Enum):
     # Indicates that no branding options are set in the message template.
     None_ = "none",
     # Indicates to include company logo in the message template.

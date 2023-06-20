@@ -1,6 +1,6 @@
 from enum import Enum
 
-class EvidenceVerdict(Enum):
+class EvidenceVerdict(str, Enum):
     Unknown = "unknown",
     Suspicious = "suspicious",
     Malicious = "malicious",

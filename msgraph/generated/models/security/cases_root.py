@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -8,16 +9,12 @@ if TYPE_CHECKING:
 
 from .. import entity
 
+@dataclass
 class CasesRoot(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new casesRoot and sets the default values.
-        """
-        super().__init__()
-        # The ediscoveryCases property
-        self._ediscovery_cases: Optional[List[ediscovery_case.EdiscoveryCase]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # The ediscoveryCases property
+    ediscovery_cases: Optional[List[ediscovery_case.EdiscoveryCase]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CasesRoot:
@@ -27,32 +24,18 @@ class CasesRoot(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CasesRoot
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return CasesRoot()
-    
-    @property
-    def ediscovery_cases(self,) -> Optional[List[ediscovery_case.EdiscoveryCase]]:
-        """
-        Gets the ediscoveryCases property value. The ediscoveryCases property
-        Returns: Optional[List[ediscovery_case.EdiscoveryCase]]
-        """
-        return self._ediscovery_cases
-    
-    @ediscovery_cases.setter
-    def ediscovery_cases(self,value: Optional[List[ediscovery_case.EdiscoveryCase]] = None) -> None:
-        """
-        Sets the ediscoveryCases property value. The ediscoveryCases property
-        Args:
-            value: Value to set for the ediscovery_cases property.
-        """
-        self._ediscovery_cases = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import ediscovery_case
+        from .. import entity
+
         from . import ediscovery_case
         from .. import entity
 
@@ -69,8 +52,8 @@ class CasesRoot(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("ediscoveryCases", self.ediscovery_cases)
     

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PolicyPlatformType(Enum):
+class PolicyPlatformType(str, Enum):
     # Android.
     Android = "android",
     # AndroidForWork.

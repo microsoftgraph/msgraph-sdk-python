@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WorkforceIntegrationSupportedEntities(Enum):
+class WorkforceIntegrationSupportedEntities(str, Enum):
     None_ = "none",
     Shift = "shift",
     SwapRequest = "swapRequest",

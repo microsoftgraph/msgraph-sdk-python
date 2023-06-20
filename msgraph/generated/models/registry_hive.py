@@ -1,6 +1,6 @@
 from enum import Enum
 
-class RegistryHive(Enum):
+class RegistryHive(str, Enum):
     Unknown = "unknown",
     CurrentConfig = "currentConfig",
     CurrentUser = "currentUser",

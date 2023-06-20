@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -26,10 +26,10 @@ class TrendingRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not path_parameters:
+            raise TypeError("path_parameters cannot be null.")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/users/{user%2Did}/insights/trending{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}"
 
@@ -44,8 +44,8 @@ class TrendingRequestBuilder():
             trending_id: Unique identifier of the item
         Returns: trending_item_request_builder.TrendingItemRequestBuilder
         """
-        if trending_id is None:
-            raise Exception("trending_id cannot be undefined")
+        if not trending_id:
+            raise TypeError("trending_id cannot be null.")
         from .item import trending_item_request_builder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
@@ -54,7 +54,7 @@ class TrendingRequestBuilder():
     
     async def get(self,request_configuration: Optional[TrendingRequestBuilderGetRequestConfiguration] = None) -> Optional[trending_collection_response.TrendingCollectionResponse]:
         """
-        Calculated relationship identifying documents trending around a user. Trending documents are calculated based on activity of the user's closest network of people and include files stored in OneDrive for Business and SharePoint. Trending insights help the user to discover potentially useful content that the user has access to, but has never viewed before.
+        Calculated insight that includes a list of documents trending around the user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[trending_collection_response.TrendingCollectionResponse]
@@ -82,8 +82,8 @@ class TrendingRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[trending.Trending]
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
@@ -101,7 +101,7 @@ class TrendingRequestBuilder():
     
     def to_get_request_information(self,request_configuration: Optional[TrendingRequestBuilderGetRequestConfiguration] = None) -> RequestInformation:
         """
-        Calculated relationship identifying documents trending around a user. Trending documents are calculated based on activity of the user's closest network of people and include files stored in OneDrive for Business and SharePoint. Trending insights help the user to discover potentially useful content that the user has access to, but has never viewed before.
+        Calculated insight that includes a list of documents trending around the user.
         Args:
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
@@ -125,8 +125,8 @@ class TrendingRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
@@ -150,7 +150,7 @@ class TrendingRequestBuilder():
     @dataclass
     class TrendingRequestBuilderGetQueryParameters():
         """
-        Calculated relationship identifying documents trending around a user. Trending documents are calculated based on activity of the user's closest network of people and include files stored in OneDrive for Business and SharePoint. Trending insights help the user to discover potentially useful content that the user has access to, but has never viewed before.
+        Calculated insight that includes a list of documents trending around the user.
         """
         def get_query_parameter(self,original_name: Optional[str] = None) -> str:
             """
@@ -159,8 +159,8 @@ class TrendingRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
+            if not original_name:
+                raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"
             if original_name == "expand":

@@ -1,60 +1,24 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import optional_claim
 
+@dataclass
 class OptionalClaims(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new optionalClaims and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The optional claims returned in the JWT access token.
-        self._access_token: Optional[List[optional_claim.OptionalClaim]] = None
-        # The optional claims returned in the JWT ID token.
-        self._id_token: Optional[List[optional_claim.OptionalClaim]] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The optional claims returned in the SAML token.
-        self._saml2_token: Optional[List[optional_claim.OptionalClaim]] = None
-    
-    @property
-    def access_token(self,) -> Optional[List[optional_claim.OptionalClaim]]:
-        """
-        Gets the accessToken property value. The optional claims returned in the JWT access token.
-        Returns: Optional[List[optional_claim.OptionalClaim]]
-        """
-        return self._access_token
-    
-    @access_token.setter
-    def access_token(self,value: Optional[List[optional_claim.OptionalClaim]] = None) -> None:
-        """
-        Sets the accessToken property value. The optional claims returned in the JWT access token.
-        Args:
-            value: Value to set for the access_token property.
-        """
-        self._access_token = value
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The optional claims returned in the JWT access token.
+    access_token: Optional[List[optional_claim.OptionalClaim]] = None
+    # The optional claims returned in the JWT ID token.
+    id_token: Optional[List[optional_claim.OptionalClaim]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The optional claims returned in the SAML token.
+    saml2_token: Optional[List[optional_claim.OptionalClaim]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> OptionalClaims:
@@ -64,8 +28,8 @@ class OptionalClaims(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: OptionalClaims
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return OptionalClaims()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -73,6 +37,8 @@ class OptionalClaims(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import optional_claim
+
         from . import optional_claim
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -83,65 +49,14 @@ class OptionalClaims(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def id_token(self,) -> Optional[List[optional_claim.OptionalClaim]]:
-        """
-        Gets the idToken property value. The optional claims returned in the JWT ID token.
-        Returns: Optional[List[optional_claim.OptionalClaim]]
-        """
-        return self._id_token
-    
-    @id_token.setter
-    def id_token(self,value: Optional[List[optional_claim.OptionalClaim]] = None) -> None:
-        """
-        Sets the idToken property value. The optional claims returned in the JWT ID token.
-        Args:
-            value: Value to set for the id_token property.
-        """
-        self._id_token = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def saml2_token(self,) -> Optional[List[optional_claim.OptionalClaim]]:
-        """
-        Gets the saml2Token property value. The optional claims returned in the SAML token.
-        Returns: Optional[List[optional_claim.OptionalClaim]]
-        """
-        return self._saml2_token
-    
-    @saml2_token.setter
-    def saml2_token(self,value: Optional[List[optional_claim.OptionalClaim]] = None) -> None:
-        """
-        Sets the saml2Token property value. The optional claims returned in the SAML token.
-        Args:
-            value: Value to set for the saml2_token property.
-        """
-        self._saml2_token = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("accessToken", self.access_token)
         writer.write_collection_of_object_values("idToken", self.id_token)
         writer.write_str_value("@odata.type", self.odata_type)

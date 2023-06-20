@@ -1,6 +1,6 @@
 from enum import Enum
 
-class OnlineMeetingPresenters(Enum):
+class OnlineMeetingPresenters(str, Enum):
     Everyone = "everyone",
     Organization = "organization",
     RoleIsPresenter = "roleIsPresenter",

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SecurityResourceType(Enum):
+class SecurityResourceType(str, Enum):
     Unknown = "unknown",
     Attacked = "attacked",
     Related = "related",

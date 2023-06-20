@@ -1,53 +1,17 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class ValidatePermissionPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new validatePermissionPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The challengeToken property
-        self._challenge_token: Optional[str] = None
-        # The password property
-        self._password: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def challenge_token(self,) -> Optional[str]:
-        """
-        Gets the challengeToken property value. The challengeToken property
-        Returns: Optional[str]
-        """
-        return self._challenge_token
-    
-    @challenge_token.setter
-    def challenge_token(self,value: Optional[str] = None) -> None:
-        """
-        Sets the challengeToken property value. The challengeToken property
-        Args:
-            value: Value to set for the challenge_token property.
-        """
-        self._challenge_token = value
+    # The challengeToken property
+    challenge_token: Optional[str] = None
+    # The password property
+    password: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ValidatePermissionPostRequestBody:
@@ -57,8 +21,8 @@ class ValidatePermissionPostRequestBody(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ValidatePermissionPostRequestBody
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return ValidatePermissionPostRequestBody()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -72,31 +36,14 @@ class ValidatePermissionPostRequestBody(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def password(self,) -> Optional[str]:
-        """
-        Gets the password property value. The password property
-        Returns: Optional[str]
-        """
-        return self._password
-    
-    @password.setter
-    def password(self,value: Optional[str] = None) -> None:
-        """
-        Sets the password property value. The password property
-        Args:
-            value: Value to set for the password property.
-        """
-        self._password = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_str_value("challengeToken", self.challenge_token)
         writer.write_str_value("password", self.password)
         writer.write_additional_data_value(self.additional_data)

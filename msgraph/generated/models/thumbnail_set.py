@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,22 +8,18 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ThumbnailSet(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new thumbnailSet and sets the default values.
-        """
-        super().__init__()
-        # A 1920x1920 scaled thumbnail.
-        self._large: Optional[thumbnail.Thumbnail] = None
-        # A 176x176 scaled thumbnail.
-        self._medium: Optional[thumbnail.Thumbnail] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # A 48x48 cropped thumbnail.
-        self._small: Optional[thumbnail.Thumbnail] = None
-        # A custom thumbnail image or the original image used to generate other thumbnails.
-        self._source: Optional[thumbnail.Thumbnail] = None
+    # A 1920x1920 scaled thumbnail.
+    large: Optional[thumbnail.Thumbnail] = None
+    # A 176x176 scaled thumbnail.
+    medium: Optional[thumbnail.Thumbnail] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # A 48x48 cropped thumbnail.
+    small: Optional[thumbnail.Thumbnail] = None
+    # A custom thumbnail image or the original image used to generate other thumbnails.
+    source: Optional[thumbnail.Thumbnail] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ThumbnailSet:
@@ -32,8 +29,8 @@ class ThumbnailSet(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ThumbnailSet
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return ThumbnailSet()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -41,6 +38,8 @@ class ThumbnailSet(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import entity, thumbnail
+
         from . import entity, thumbnail
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -53,86 +52,18 @@ class ThumbnailSet(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def large(self,) -> Optional[thumbnail.Thumbnail]:
-        """
-        Gets the large property value. A 1920x1920 scaled thumbnail.
-        Returns: Optional[thumbnail.Thumbnail]
-        """
-        return self._large
-    
-    @large.setter
-    def large(self,value: Optional[thumbnail.Thumbnail] = None) -> None:
-        """
-        Sets the large property value. A 1920x1920 scaled thumbnail.
-        Args:
-            value: Value to set for the large property.
-        """
-        self._large = value
-    
-    @property
-    def medium(self,) -> Optional[thumbnail.Thumbnail]:
-        """
-        Gets the medium property value. A 176x176 scaled thumbnail.
-        Returns: Optional[thumbnail.Thumbnail]
-        """
-        return self._medium
-    
-    @medium.setter
-    def medium(self,value: Optional[thumbnail.Thumbnail] = None) -> None:
-        """
-        Sets the medium property value. A 176x176 scaled thumbnail.
-        Args:
-            value: Value to set for the medium property.
-        """
-        self._medium = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("large", self.large)
         writer.write_object_value("medium", self.medium)
         writer.write_object_value("small", self.small)
         writer.write_object_value("source", self.source)
-    
-    @property
-    def small(self,) -> Optional[thumbnail.Thumbnail]:
-        """
-        Gets the small property value. A 48x48 cropped thumbnail.
-        Returns: Optional[thumbnail.Thumbnail]
-        """
-        return self._small
-    
-    @small.setter
-    def small(self,value: Optional[thumbnail.Thumbnail] = None) -> None:
-        """
-        Sets the small property value. A 48x48 cropped thumbnail.
-        Args:
-            value: Value to set for the small property.
-        """
-        self._small = value
-    
-    @property
-    def source(self,) -> Optional[thumbnail.Thumbnail]:
-        """
-        Gets the source property value. A custom thumbnail image or the original image used to generate other thumbnails.
-        Returns: Optional[thumbnail.Thumbnail]
-        """
-        return self._source
-    
-    @source.setter
-    def source(self,value: Optional[thumbnail.Thumbnail] = None) -> None:
-        """
-        Sets the source property value. A custom thumbnail image or the original image used to generate other thumbnails.
-        Args:
-            value: Value to set for the source property.
-        """
-        self._source = value
     
 

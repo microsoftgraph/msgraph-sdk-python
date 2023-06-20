@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AttachmentType(Enum):
+class AttachmentType(str, Enum):
     File = "file",
     Item = "item",
     Reference = "reference",

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ResponseType(Enum):
+class ResponseType(str, Enum):
     None_ = "none",
     Organizer = "organizer",
     TentativelyAccepted = "tentativelyAccepted",

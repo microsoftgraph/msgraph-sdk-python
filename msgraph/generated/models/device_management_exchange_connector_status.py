@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DeviceManagementExchangeConnectorStatus(Enum):
+class DeviceManagementExchangeConnectorStatus(str, Enum):
     # No Connector exists.
     None_ = "none",
     # Pending Connection to the Exchange Environment.

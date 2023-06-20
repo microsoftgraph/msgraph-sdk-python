@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,24 +8,22 @@ if TYPE_CHECKING:
 
 from . import alert_evidence
 
+@dataclass
 class RegistryValueEvidence(alert_evidence.AlertEvidence):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new RegistryValueEvidence and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Registry hive of the key that the recorded action was applied to.
-        self._registry_hive: Optional[str] = None
-        # Registry key that the recorded action was applied to.
-        self._registry_key: Optional[str] = None
-        # Data of the registry value that the recorded action was applied to.
-        self._registry_value: Optional[str] = None
-        # Name of the registry value that the recorded action was applied to.
-        self._registry_value_name: Optional[str] = None
-        # Data type, such as binary or string, of the registry value that the recorded action was applied to.
-        self._registry_value_type: Optional[str] = None
+    # The mdeDeviceId property
+    mde_device_id: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Registry hive of the key that the recorded action was applied to.
+    registry_hive: Optional[str] = None
+    # Registry key that the recorded action was applied to.
+    registry_key: Optional[str] = None
+    # Data of the registry value that the recorded action was applied to.
+    registry_value: Optional[str] = None
+    # Name of the registry value that the recorded action was applied to.
+    registry_value_name: Optional[str] = None
+    # Data type, such as binary or string, of the registry value that the recorded action was applied to.
+    registry_value_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RegistryValueEvidence:
@@ -34,8 +33,8 @@ class RegistryValueEvidence(alert_evidence.AlertEvidence):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RegistryValueEvidence
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return RegistryValueEvidence()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -45,7 +44,10 @@ class RegistryValueEvidence(alert_evidence.AlertEvidence):
         """
         from . import alert_evidence
 
+        from . import alert_evidence
+
         fields: Dict[str, Callable[[Any], None]] = {
+            "mdeDeviceId": lambda n : setattr(self, 'mde_device_id', n.get_str_value()),
             "registryHive": lambda n : setattr(self, 'registry_hive', n.get_str_value()),
             "registryKey": lambda n : setattr(self, 'registry_key', n.get_str_value()),
             "registryValue": lambda n : setattr(self, 'registry_value', n.get_str_value()),
@@ -56,100 +58,16 @@ class RegistryValueEvidence(alert_evidence.AlertEvidence):
         fields.update(super_fields)
         return fields
     
-    @property
-    def registry_hive(self,) -> Optional[str]:
-        """
-        Gets the registryHive property value. Registry hive of the key that the recorded action was applied to.
-        Returns: Optional[str]
-        """
-        return self._registry_hive
-    
-    @registry_hive.setter
-    def registry_hive(self,value: Optional[str] = None) -> None:
-        """
-        Sets the registryHive property value. Registry hive of the key that the recorded action was applied to.
-        Args:
-            value: Value to set for the registry_hive property.
-        """
-        self._registry_hive = value
-    
-    @property
-    def registry_key(self,) -> Optional[str]:
-        """
-        Gets the registryKey property value. Registry key that the recorded action was applied to.
-        Returns: Optional[str]
-        """
-        return self._registry_key
-    
-    @registry_key.setter
-    def registry_key(self,value: Optional[str] = None) -> None:
-        """
-        Sets the registryKey property value. Registry key that the recorded action was applied to.
-        Args:
-            value: Value to set for the registry_key property.
-        """
-        self._registry_key = value
-    
-    @property
-    def registry_value(self,) -> Optional[str]:
-        """
-        Gets the registryValue property value. Data of the registry value that the recorded action was applied to.
-        Returns: Optional[str]
-        """
-        return self._registry_value
-    
-    @registry_value.setter
-    def registry_value(self,value: Optional[str] = None) -> None:
-        """
-        Sets the registryValue property value. Data of the registry value that the recorded action was applied to.
-        Args:
-            value: Value to set for the registry_value property.
-        """
-        self._registry_value = value
-    
-    @property
-    def registry_value_name(self,) -> Optional[str]:
-        """
-        Gets the registryValueName property value. Name of the registry value that the recorded action was applied to.
-        Returns: Optional[str]
-        """
-        return self._registry_value_name
-    
-    @registry_value_name.setter
-    def registry_value_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the registryValueName property value. Name of the registry value that the recorded action was applied to.
-        Args:
-            value: Value to set for the registry_value_name property.
-        """
-        self._registry_value_name = value
-    
-    @property
-    def registry_value_type(self,) -> Optional[str]:
-        """
-        Gets the registryValueType property value. Data type, such as binary or string, of the registry value that the recorded action was applied to.
-        Returns: Optional[str]
-        """
-        return self._registry_value_type
-    
-    @registry_value_type.setter
-    def registry_value_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the registryValueType property value. Data type, such as binary or string, of the registry value that the recorded action was applied to.
-        Args:
-            value: Value to set for the registry_value_type property.
-        """
-        self._registry_value_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
+        writer.write_str_value("mdeDeviceId", self.mde_device_id)
         writer.write_str_value("registryHive", self.registry_hive)
         writer.write_str_value("registryKey", self.registry_key)
         writer.write_str_value("registryValue", self.registry_value)

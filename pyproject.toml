@@ -71,4 +71,4 @@ push = false
 "msgraph/_version.py" = ["{version}"]
 
 [tool.setuptools]
-py-modules = ['msgraph']
+py-modules = ["msgraph"]

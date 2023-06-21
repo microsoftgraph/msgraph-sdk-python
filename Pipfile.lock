@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "46d01f4a1f903185fe2a000b44fedc9558457621e2a8e03598b825b239e20400"
+            "sha256": "67e7aef36865cbcadb1283c26a44a77b5ff398b0281201bd551f58614beea900"
         },
         "pipfile-spec": 6,
         "requires": {},
@@ -494,11 +494,11 @@
         },
         "microsoft-kiota-http": {
             "hashes": [
-                "sha256:7c2f1981f12ca2f0c763a4848ef0a7bef398ef8fc379c4fb7596bce905f257e2",
-                "sha256:ebc1a3288d24c1eb80dc3bea37067810efbec3aed07944c50d96f83db4171a22"
+                "sha256:63c3f387c9e6b4748ca85f25dda3ea3897ed234a5a86cda1edccf897a835a931",
+                "sha256:b2081d25e705df378602916bdb648d4fbc69483c8e8d416c4390e5b19adde7ae"
             ],
             "index": "pypi",
-            "version": "==0.4.3"
+            "version": "==0.4.4"
         },
         "microsoft-kiota-serialization-json": {
             "hashes": [
@@ -969,11 +969,11 @@
         },
         "platformdirs": {
             "hashes": [
-                "sha256:57e28820ca8094678b807ff529196506d7a21e17156cb1cddb3e74cebce54640",
-                "sha256:ffa199e3fbab8365778c4a10e1fbf1b9cd50707de826eb304b50e57ec0cc8d38"
+                "sha256:87fbf6473e87c078d536980ba970a472422e94f17b752cfad17024c18876d481",
+                "sha256:cfd065ba43133ff103ab3bd10aecb095c2a0035fcd1f07217c9376900d94ba07"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==3.6.0"
+            "version": "==3.7.0"
         },
         "pylint": {
             "hashes": [

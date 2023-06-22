@@ -1,70 +1,34 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import json, workbook_icon
 
+@dataclass
 class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookFilterCriteria and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The color property
-        self._color: Optional[str] = None
-        # The criterion1 property
-        self._criterion1: Optional[str] = None
-        # The criterion2 property
-        self._criterion2: Optional[str] = None
-        # The dynamicCriteria property
-        self._dynamic_criteria: Optional[str] = None
-        # The filterOn property
-        self._filter_on: Optional[str] = None
-        # The icon property
-        self._icon: Optional[workbook_icon.WorkbookIcon] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The operator property
-        self._operator: Optional[str] = None
-        # The values property
-        self._values: Optional[json.Json] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def color(self,) -> Optional[str]:
-        """
-        Gets the color property value. The color property
-        Returns: Optional[str]
-        """
-        return self._color
-    
-    @color.setter
-    def color(self,value: Optional[str] = None) -> None:
-        """
-        Sets the color property value. The color property
-        Args:
-            value: Value to set for the color property.
-        """
-        self._color = value
+    # The color property
+    color: Optional[str] = None
+    # The criterion1 property
+    criterion1: Optional[str] = None
+    # The criterion2 property
+    criterion2: Optional[str] = None
+    # The dynamicCriteria property
+    dynamic_criteria: Optional[str] = None
+    # The filterOn property
+    filter_on: Optional[str] = None
+    # The icon property
+    icon: Optional[workbook_icon.WorkbookIcon] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The operator property
+    operator: Optional[str] = None
+    # The values property
+    values: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookFilterCriteria:
@@ -74,83 +38,17 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookFilterCriteria
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return WorkbookFilterCriteria()
-    
-    @property
-    def criterion1(self,) -> Optional[str]:
-        """
-        Gets the criterion1 property value. The criterion1 property
-        Returns: Optional[str]
-        """
-        return self._criterion1
-    
-    @criterion1.setter
-    def criterion1(self,value: Optional[str] = None) -> None:
-        """
-        Sets the criterion1 property value. The criterion1 property
-        Args:
-            value: Value to set for the criterion1 property.
-        """
-        self._criterion1 = value
-    
-    @property
-    def criterion2(self,) -> Optional[str]:
-        """
-        Gets the criterion2 property value. The criterion2 property
-        Returns: Optional[str]
-        """
-        return self._criterion2
-    
-    @criterion2.setter
-    def criterion2(self,value: Optional[str] = None) -> None:
-        """
-        Sets the criterion2 property value. The criterion2 property
-        Args:
-            value: Value to set for the criterion2 property.
-        """
-        self._criterion2 = value
-    
-    @property
-    def dynamic_criteria(self,) -> Optional[str]:
-        """
-        Gets the dynamicCriteria property value. The dynamicCriteria property
-        Returns: Optional[str]
-        """
-        return self._dynamic_criteria
-    
-    @dynamic_criteria.setter
-    def dynamic_criteria(self,value: Optional[str] = None) -> None:
-        """
-        Sets the dynamicCriteria property value. The dynamicCriteria property
-        Args:
-            value: Value to set for the dynamic_criteria property.
-        """
-        self._dynamic_criteria = value
-    
-    @property
-    def filter_on(self,) -> Optional[str]:
-        """
-        Gets the filterOn property value. The filterOn property
-        Returns: Optional[str]
-        """
-        return self._filter_on
-    
-    @filter_on.setter
-    def filter_on(self,value: Optional[str] = None) -> None:
-        """
-        Sets the filterOn property value. The filterOn property
-        Args:
-            value: Value to set for the filter_on property.
-        """
-        self._filter_on = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import json, workbook_icon
+
         from . import json, workbook_icon
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -166,65 +64,14 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def icon(self,) -> Optional[workbook_icon.WorkbookIcon]:
-        """
-        Gets the icon property value. The icon property
-        Returns: Optional[workbook_icon.WorkbookIcon]
-        """
-        return self._icon
-    
-    @icon.setter
-    def icon(self,value: Optional[workbook_icon.WorkbookIcon] = None) -> None:
-        """
-        Sets the icon property value. The icon property
-        Args:
-            value: Value to set for the icon property.
-        """
-        self._icon = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def operator(self,) -> Optional[str]:
-        """
-        Gets the operator property value. The operator property
-        Returns: Optional[str]
-        """
-        return self._operator
-    
-    @operator.setter
-    def operator(self,value: Optional[str] = None) -> None:
-        """
-        Sets the operator property value. The operator property
-        Args:
-            value: Value to set for the operator property.
-        """
-        self._operator = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_str_value("color", self.color)
         writer.write_str_value("criterion1", self.criterion1)
         writer.write_str_value("criterion2", self.criterion2)
@@ -235,22 +82,5 @@ class WorkbookFilterCriteria(AdditionalDataHolder, Parsable):
         writer.write_str_value("operator", self.operator)
         writer.write_object_value("values", self.values)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def values(self,) -> Optional[json.Json]:
-        """
-        Gets the values property value. The values property
-        Returns: Optional[json.Json]
-        """
-        return self._values
-    
-    @values.setter
-    def values(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the values property value. The values property
-        Args:
-            value: Value to set for the values property.
-        """
-        self._values = value
     
 

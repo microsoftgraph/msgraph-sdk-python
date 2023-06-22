@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ApplicationGuardBlockClipboardSharingType(Enum):
+class ApplicationGuardBlockClipboardSharingType(str, Enum):
     # Not Configured
     NotConfigured = "notConfigured",
     # Block clipboard to share data both from Host to Container and from Container to Host

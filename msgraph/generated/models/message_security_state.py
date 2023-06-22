@@ -1,70 +1,34 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class MessageSecurityState(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new messageSecurityState and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The connectingIP property
-        self._connecting_i_p: Optional[str] = None
-        # The deliveryAction property
-        self._delivery_action: Optional[str] = None
-        # The deliveryLocation property
-        self._delivery_location: Optional[str] = None
-        # The directionality property
-        self._directionality: Optional[str] = None
-        # The internetMessageId property
-        self._internet_message_id: Optional[str] = None
-        # The messageFingerprint property
-        self._message_fingerprint: Optional[str] = None
-        # The messageReceivedDateTime property
-        self._message_received_date_time: Optional[datetime] = None
-        # The messageSubject property
-        self._message_subject: Optional[str] = None
-        # The networkMessageId property
-        self._network_message_id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def connecting_i_p(self,) -> Optional[str]:
-        """
-        Gets the connectingIP property value. The connectingIP property
-        Returns: Optional[str]
-        """
-        return self._connecting_i_p
-    
-    @connecting_i_p.setter
-    def connecting_i_p(self,value: Optional[str] = None) -> None:
-        """
-        Sets the connectingIP property value. The connectingIP property
-        Args:
-            value: Value to set for the connecting_i_p property.
-        """
-        self._connecting_i_p = value
+    # The connectingIP property
+    connecting_i_p: Optional[str] = None
+    # The deliveryAction property
+    delivery_action: Optional[str] = None
+    # The deliveryLocation property
+    delivery_location: Optional[str] = None
+    # The directionality property
+    directionality: Optional[str] = None
+    # The internetMessageId property
+    internet_message_id: Optional[str] = None
+    # The messageFingerprint property
+    message_fingerprint: Optional[str] = None
+    # The messageReceivedDateTime property
+    message_received_date_time: Optional[datetime] = None
+    # The messageSubject property
+    message_subject: Optional[str] = None
+    # The networkMessageId property
+    network_message_id: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MessageSecurityState:
@@ -74,60 +38,9 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MessageSecurityState
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return MessageSecurityState()
-    
-    @property
-    def delivery_action(self,) -> Optional[str]:
-        """
-        Gets the deliveryAction property value. The deliveryAction property
-        Returns: Optional[str]
-        """
-        return self._delivery_action
-    
-    @delivery_action.setter
-    def delivery_action(self,value: Optional[str] = None) -> None:
-        """
-        Sets the deliveryAction property value. The deliveryAction property
-        Args:
-            value: Value to set for the delivery_action property.
-        """
-        self._delivery_action = value
-    
-    @property
-    def delivery_location(self,) -> Optional[str]:
-        """
-        Gets the deliveryLocation property value. The deliveryLocation property
-        Returns: Optional[str]
-        """
-        return self._delivery_location
-    
-    @delivery_location.setter
-    def delivery_location(self,value: Optional[str] = None) -> None:
-        """
-        Sets the deliveryLocation property value. The deliveryLocation property
-        Args:
-            value: Value to set for the delivery_location property.
-        """
-        self._delivery_location = value
-    
-    @property
-    def directionality(self,) -> Optional[str]:
-        """
-        Gets the directionality property value. The directionality property
-        Returns: Optional[str]
-        """
-        return self._directionality
-    
-    @directionality.setter
-    def directionality(self,value: Optional[str] = None) -> None:
-        """
-        Sets the directionality property value. The directionality property
-        Args:
-            value: Value to set for the directionality property.
-        """
-        self._directionality = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -148,116 +61,14 @@ class MessageSecurityState(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def internet_message_id(self,) -> Optional[str]:
-        """
-        Gets the internetMessageId property value. The internetMessageId property
-        Returns: Optional[str]
-        """
-        return self._internet_message_id
-    
-    @internet_message_id.setter
-    def internet_message_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the internetMessageId property value. The internetMessageId property
-        Args:
-            value: Value to set for the internet_message_id property.
-        """
-        self._internet_message_id = value
-    
-    @property
-    def message_fingerprint(self,) -> Optional[str]:
-        """
-        Gets the messageFingerprint property value. The messageFingerprint property
-        Returns: Optional[str]
-        """
-        return self._message_fingerprint
-    
-    @message_fingerprint.setter
-    def message_fingerprint(self,value: Optional[str] = None) -> None:
-        """
-        Sets the messageFingerprint property value. The messageFingerprint property
-        Args:
-            value: Value to set for the message_fingerprint property.
-        """
-        self._message_fingerprint = value
-    
-    @property
-    def message_received_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the messageReceivedDateTime property value. The messageReceivedDateTime property
-        Returns: Optional[datetime]
-        """
-        return self._message_received_date_time
-    
-    @message_received_date_time.setter
-    def message_received_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the messageReceivedDateTime property value. The messageReceivedDateTime property
-        Args:
-            value: Value to set for the message_received_date_time property.
-        """
-        self._message_received_date_time = value
-    
-    @property
-    def message_subject(self,) -> Optional[str]:
-        """
-        Gets the messageSubject property value. The messageSubject property
-        Returns: Optional[str]
-        """
-        return self._message_subject
-    
-    @message_subject.setter
-    def message_subject(self,value: Optional[str] = None) -> None:
-        """
-        Sets the messageSubject property value. The messageSubject property
-        Args:
-            value: Value to set for the message_subject property.
-        """
-        self._message_subject = value
-    
-    @property
-    def network_message_id(self,) -> Optional[str]:
-        """
-        Gets the networkMessageId property value. The networkMessageId property
-        Returns: Optional[str]
-        """
-        return self._network_message_id
-    
-    @network_message_id.setter
-    def network_message_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the networkMessageId property value. The networkMessageId property
-        Args:
-            value: Value to set for the network_message_id property.
-        """
-        self._network_message_id = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_str_value("connectingIP", self.connecting_i_p)
         writer.write_str_value("deliveryAction", self.delivery_action)
         writer.write_str_value("deliveryLocation", self.delivery_location)

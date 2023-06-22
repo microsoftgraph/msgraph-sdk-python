@@ -1,6 +1,6 @@
 from enum import Enum
 
-class VideoCodec(Enum):
+class VideoCodec(str, Enum):
     Unknown = "unknown",
     Invalid = "invalid",
     Av1 = "av1",

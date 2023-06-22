@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,26 +8,22 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class Onenote(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new onenote and sets the default values.
-        """
-        super().__init__()
-        # The collection of OneNote notebooks that are owned by the user or group. Read-only. Nullable.
-        self._notebooks: Optional[List[notebook.Notebook]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The status of OneNote operations. Getting an operations collection is not supported, but you can get the status of long-running operations if the Operation-Location header is returned in the response. Read-only. Nullable.
-        self._operations: Optional[List[onenote_operation.OnenoteOperation]] = None
-        # The pages in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
-        self._pages: Optional[List[onenote_page.OnenotePage]] = None
-        # The image and other file resources in OneNote pages. Getting a resources collection is not supported, but you can get the binary content of a specific resource. Read-only. Nullable.
-        self._resources: Optional[List[onenote_resource.OnenoteResource]] = None
-        # The section groups in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
-        self._section_groups: Optional[List[section_group.SectionGroup]] = None
-        # The sections in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
-        self._sections: Optional[List[onenote_section.OnenoteSection]] = None
+    # The collection of OneNote notebooks that are owned by the user or group. Read-only. Nullable.
+    notebooks: Optional[List[notebook.Notebook]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The status of OneNote operations. Getting an operations collection is not supported, but you can get the status of long-running operations if the Operation-Location header is returned in the response. Read-only. Nullable.
+    operations: Optional[List[onenote_operation.OnenoteOperation]] = None
+    # The pages in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
+    pages: Optional[List[onenote_page.OnenotePage]] = None
+    # The image and other file resources in OneNote pages. Getting a resources collection is not supported, but you can get the binary content of a specific resource. Read-only. Nullable.
+    resources: Optional[List[onenote_resource.OnenoteResource]] = None
+    # The section groups in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
+    section_groups: Optional[List[section_group.SectionGroup]] = None
+    # The sections in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
+    sections: Optional[List[onenote_section.OnenoteSection]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Onenote:
@@ -36,8 +33,8 @@ class Onenote(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Onenote
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return Onenote()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -47,119 +44,19 @@ class Onenote(entity.Entity):
         """
         from . import entity, notebook, onenote_operation, onenote_page, onenote_resource, onenote_section, section_group
 
+        from . import entity, notebook, onenote_operation, onenote_page, onenote_resource, onenote_section, section_group
+
         fields: Dict[str, Callable[[Any], None]] = {
             "notebooks": lambda n : setattr(self, 'notebooks', n.get_collection_of_object_values(notebook.Notebook)),
             "operations": lambda n : setattr(self, 'operations', n.get_collection_of_object_values(onenote_operation.OnenoteOperation)),
             "pages": lambda n : setattr(self, 'pages', n.get_collection_of_object_values(onenote_page.OnenotePage)),
             "resources": lambda n : setattr(self, 'resources', n.get_collection_of_object_values(onenote_resource.OnenoteResource)),
-            "sections": lambda n : setattr(self, 'sections', n.get_collection_of_object_values(onenote_section.OnenoteSection)),
             "sectionGroups": lambda n : setattr(self, 'section_groups', n.get_collection_of_object_values(section_group.SectionGroup)),
+            "sections": lambda n : setattr(self, 'sections', n.get_collection_of_object_values(onenote_section.OnenoteSection)),
         }
         super_fields = super().get_field_deserializers()
         fields.update(super_fields)
         return fields
-    
-    @property
-    def notebooks(self,) -> Optional[List[notebook.Notebook]]:
-        """
-        Gets the notebooks property value. The collection of OneNote notebooks that are owned by the user or group. Read-only. Nullable.
-        Returns: Optional[List[notebook.Notebook]]
-        """
-        return self._notebooks
-    
-    @notebooks.setter
-    def notebooks(self,value: Optional[List[notebook.Notebook]] = None) -> None:
-        """
-        Sets the notebooks property value. The collection of OneNote notebooks that are owned by the user or group. Read-only. Nullable.
-        Args:
-            value: Value to set for the notebooks property.
-        """
-        self._notebooks = value
-    
-    @property
-    def operations(self,) -> Optional[List[onenote_operation.OnenoteOperation]]:
-        """
-        Gets the operations property value. The status of OneNote operations. Getting an operations collection is not supported, but you can get the status of long-running operations if the Operation-Location header is returned in the response. Read-only. Nullable.
-        Returns: Optional[List[onenote_operation.OnenoteOperation]]
-        """
-        return self._operations
-    
-    @operations.setter
-    def operations(self,value: Optional[List[onenote_operation.OnenoteOperation]] = None) -> None:
-        """
-        Sets the operations property value. The status of OneNote operations. Getting an operations collection is not supported, but you can get the status of long-running operations if the Operation-Location header is returned in the response. Read-only. Nullable.
-        Args:
-            value: Value to set for the operations property.
-        """
-        self._operations = value
-    
-    @property
-    def pages(self,) -> Optional[List[onenote_page.OnenotePage]]:
-        """
-        Gets the pages property value. The pages in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
-        Returns: Optional[List[onenote_page.OnenotePage]]
-        """
-        return self._pages
-    
-    @pages.setter
-    def pages(self,value: Optional[List[onenote_page.OnenotePage]] = None) -> None:
-        """
-        Sets the pages property value. The pages in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
-        Args:
-            value: Value to set for the pages property.
-        """
-        self._pages = value
-    
-    @property
-    def resources(self,) -> Optional[List[onenote_resource.OnenoteResource]]:
-        """
-        Gets the resources property value. The image and other file resources in OneNote pages. Getting a resources collection is not supported, but you can get the binary content of a specific resource. Read-only. Nullable.
-        Returns: Optional[List[onenote_resource.OnenoteResource]]
-        """
-        return self._resources
-    
-    @resources.setter
-    def resources(self,value: Optional[List[onenote_resource.OnenoteResource]] = None) -> None:
-        """
-        Sets the resources property value. The image and other file resources in OneNote pages. Getting a resources collection is not supported, but you can get the binary content of a specific resource. Read-only. Nullable.
-        Args:
-            value: Value to set for the resources property.
-        """
-        self._resources = value
-    
-    @property
-    def section_groups(self,) -> Optional[List[section_group.SectionGroup]]:
-        """
-        Gets the sectionGroups property value. The section groups in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
-        Returns: Optional[List[section_group.SectionGroup]]
-        """
-        return self._section_groups
-    
-    @section_groups.setter
-    def section_groups(self,value: Optional[List[section_group.SectionGroup]] = None) -> None:
-        """
-        Sets the sectionGroups property value. The section groups in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
-        Args:
-            value: Value to set for the section_groups property.
-        """
-        self._section_groups = value
-    
-    @property
-    def sections(self,) -> Optional[List[onenote_section.OnenoteSection]]:
-        """
-        Gets the sections property value. The sections in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
-        Returns: Optional[List[onenote_section.OnenoteSection]]
-        """
-        return self._sections
-    
-    @sections.setter
-    def sections(self,value: Optional[List[onenote_section.OnenoteSection]] = None) -> None:
-        """
-        Sets the sections property value. The sections in all OneNote notebooks that are owned by the user or group.  Read-only. Nullable.
-        Args:
-            value: Value to set for the sections property.
-        """
-        self._sections = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """
@@ -167,14 +64,14 @@ class Onenote(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("notebooks", self.notebooks)
         writer.write_collection_of_object_values("operations", self.operations)
         writer.write_collection_of_object_values("pages", self.pages)
         writer.write_collection_of_object_values("resources", self.resources)
-        writer.write_collection_of_object_values("sections", self.sections)
         writer.write_collection_of_object_values("sectionGroups", self.section_groups)
+        writer.write_collection_of_object_values("sections", self.sections)
     
 

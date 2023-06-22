@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DiskType(Enum):
+class DiskType(str, Enum):
     # Enum member for unknown or default diskType
     Unknown = "unknown",
     # Enum member for HDD devices

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -6,194 +7,55 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from . import teleconference_device_audio_quality, teleconference_device_screen_sharing_quality, teleconference_device_video_quality
 
+@dataclass
 class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new teleconferenceDeviceMediaQuality and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The average inbound stream network jitter.
-        self._average_inbound_jitter: Optional[timedelta] = None
-        # The average inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-        self._average_inbound_packet_loss_rate_in_percentage: Optional[float] = None
-        # The average inbound stream network round trip delay.
-        self._average_inbound_round_trip_delay: Optional[timedelta] = None
-        # The average outbound stream network jitter.
-        self._average_outbound_jitter: Optional[timedelta] = None
-        # The average outbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-        self._average_outbound_packet_loss_rate_in_percentage: Optional[float] = None
-        # The average outbound stream network round trip delay.
-        self._average_outbound_round_trip_delay: Optional[timedelta] = None
-        # The channel index of media. Indexing begins with 1.  If a media session contains 3 video modalities, channel indexes will be 1, 2, and 3.
-        self._channel_index: Optional[int] = None
-        # The total number of the inbound packets.
-        self._inbound_packets: Optional[int] = None
-        # the local IP address for the media session.
-        self._local_i_p_address: Optional[str] = None
-        # The local media port.
-        self._local_port: Optional[int] = None
-        # The maximum inbound stream network jitter.
-        self._maximum_inbound_jitter: Optional[timedelta] = None
-        # The maximum inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-        self._maximum_inbound_packet_loss_rate_in_percentage: Optional[float] = None
-        # The maximum inbound stream network round trip delay.
-        self._maximum_inbound_round_trip_delay: Optional[timedelta] = None
-        # The maximum outbound stream network jitter.
-        self._maximum_outbound_jitter: Optional[timedelta] = None
-        # The maximum outbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-        self._maximum_outbound_packet_loss_rate_in_percentage: Optional[float] = None
-        # The maximum outbound stream network round trip delay.
-        self._maximum_outbound_round_trip_delay: Optional[timedelta] = None
-        # The total modality duration. If the media enabled and disabled multiple times, MediaDuration will the summation of all of the durations.
-        self._media_duration: Optional[timedelta] = None
-        # The network link speed in bytes
-        self._network_link_speed_in_bytes: Optional[int] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The total number of the outbound packets.
-        self._outbound_packets: Optional[int] = None
-        # The remote IP address for the media session.
-        self._remote_i_p_address: Optional[str] = None
-        # The remote media port.
-        self._remote_port: Optional[int] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def average_inbound_jitter(self,) -> Optional[timedelta]:
-        """
-        Gets the averageInboundJitter property value. The average inbound stream network jitter.
-        Returns: Optional[timedelta]
-        """
-        return self._average_inbound_jitter
-    
-    @average_inbound_jitter.setter
-    def average_inbound_jitter(self,value: Optional[timedelta] = None) -> None:
-        """
-        Sets the averageInboundJitter property value. The average inbound stream network jitter.
-        Args:
-            value: Value to set for the average_inbound_jitter property.
-        """
-        self._average_inbound_jitter = value
-    
-    @property
-    def average_inbound_packet_loss_rate_in_percentage(self,) -> Optional[float]:
-        """
-        Gets the averageInboundPacketLossRateInPercentage property value. The average inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-        Returns: Optional[float]
-        """
-        return self._average_inbound_packet_loss_rate_in_percentage
-    
-    @average_inbound_packet_loss_rate_in_percentage.setter
-    def average_inbound_packet_loss_rate_in_percentage(self,value: Optional[float] = None) -> None:
-        """
-        Sets the averageInboundPacketLossRateInPercentage property value. The average inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-        Args:
-            value: Value to set for the average_inbound_packet_loss_rate_in_percentage property.
-        """
-        self._average_inbound_packet_loss_rate_in_percentage = value
-    
-    @property
-    def average_inbound_round_trip_delay(self,) -> Optional[timedelta]:
-        """
-        Gets the averageInboundRoundTripDelay property value. The average inbound stream network round trip delay.
-        Returns: Optional[timedelta]
-        """
-        return self._average_inbound_round_trip_delay
-    
-    @average_inbound_round_trip_delay.setter
-    def average_inbound_round_trip_delay(self,value: Optional[timedelta] = None) -> None:
-        """
-        Sets the averageInboundRoundTripDelay property value. The average inbound stream network round trip delay.
-        Args:
-            value: Value to set for the average_inbound_round_trip_delay property.
-        """
-        self._average_inbound_round_trip_delay = value
-    
-    @property
-    def average_outbound_jitter(self,) -> Optional[timedelta]:
-        """
-        Gets the averageOutboundJitter property value. The average outbound stream network jitter.
-        Returns: Optional[timedelta]
-        """
-        return self._average_outbound_jitter
-    
-    @average_outbound_jitter.setter
-    def average_outbound_jitter(self,value: Optional[timedelta] = None) -> None:
-        """
-        Sets the averageOutboundJitter property value. The average outbound stream network jitter.
-        Args:
-            value: Value to set for the average_outbound_jitter property.
-        """
-        self._average_outbound_jitter = value
-    
-    @property
-    def average_outbound_packet_loss_rate_in_percentage(self,) -> Optional[float]:
-        """
-        Gets the averageOutboundPacketLossRateInPercentage property value. The average outbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-        Returns: Optional[float]
-        """
-        return self._average_outbound_packet_loss_rate_in_percentage
-    
-    @average_outbound_packet_loss_rate_in_percentage.setter
-    def average_outbound_packet_loss_rate_in_percentage(self,value: Optional[float] = None) -> None:
-        """
-        Sets the averageOutboundPacketLossRateInPercentage property value. The average outbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-        Args:
-            value: Value to set for the average_outbound_packet_loss_rate_in_percentage property.
-        """
-        self._average_outbound_packet_loss_rate_in_percentage = value
-    
-    @property
-    def average_outbound_round_trip_delay(self,) -> Optional[timedelta]:
-        """
-        Gets the averageOutboundRoundTripDelay property value. The average outbound stream network round trip delay.
-        Returns: Optional[timedelta]
-        """
-        return self._average_outbound_round_trip_delay
-    
-    @average_outbound_round_trip_delay.setter
-    def average_outbound_round_trip_delay(self,value: Optional[timedelta] = None) -> None:
-        """
-        Sets the averageOutboundRoundTripDelay property value. The average outbound stream network round trip delay.
-        Args:
-            value: Value to set for the average_outbound_round_trip_delay property.
-        """
-        self._average_outbound_round_trip_delay = value
-    
-    @property
-    def channel_index(self,) -> Optional[int]:
-        """
-        Gets the channelIndex property value. The channel index of media. Indexing begins with 1.  If a media session contains 3 video modalities, channel indexes will be 1, 2, and 3.
-        Returns: Optional[int]
-        """
-        return self._channel_index
-    
-    @channel_index.setter
-    def channel_index(self,value: Optional[int] = None) -> None:
-        """
-        Sets the channelIndex property value. The channel index of media. Indexing begins with 1.  If a media session contains 3 video modalities, channel indexes will be 1, 2, and 3.
-        Args:
-            value: Value to set for the channel_index property.
-        """
-        self._channel_index = value
+    # The average inbound stream network jitter.
+    average_inbound_jitter: Optional[timedelta] = None
+    # The average inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
+    average_inbound_packet_loss_rate_in_percentage: Optional[float] = None
+    # The average inbound stream network round trip delay.
+    average_inbound_round_trip_delay: Optional[timedelta] = None
+    # The average outbound stream network jitter.
+    average_outbound_jitter: Optional[timedelta] = None
+    # The average outbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
+    average_outbound_packet_loss_rate_in_percentage: Optional[float] = None
+    # The average outbound stream network round trip delay.
+    average_outbound_round_trip_delay: Optional[timedelta] = None
+    # The channel index of media. Indexing begins with 1.  If a media session contains 3 video modalities, channel indexes will be 1, 2, and 3.
+    channel_index: Optional[int] = None
+    # The total number of the inbound packets.
+    inbound_packets: Optional[int] = None
+    # the local IP address for the media session.
+    local_i_p_address: Optional[str] = None
+    # The local media port.
+    local_port: Optional[int] = None
+    # The maximum inbound stream network jitter.
+    maximum_inbound_jitter: Optional[timedelta] = None
+    # The maximum inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
+    maximum_inbound_packet_loss_rate_in_percentage: Optional[float] = None
+    # The maximum inbound stream network round trip delay.
+    maximum_inbound_round_trip_delay: Optional[timedelta] = None
+    # The maximum outbound stream network jitter.
+    maximum_outbound_jitter: Optional[timedelta] = None
+    # The maximum outbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
+    maximum_outbound_packet_loss_rate_in_percentage: Optional[float] = None
+    # The maximum outbound stream network round trip delay.
+    maximum_outbound_round_trip_delay: Optional[timedelta] = None
+    # The total modality duration. If the media enabled and disabled multiple times, MediaDuration will the summation of all of the durations.
+    media_duration: Optional[timedelta] = None
+    # The network link speed in bytes
+    network_link_speed_in_bytes: Optional[int] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The total number of the outbound packets.
+    outbound_packets: Optional[int] = None
+    # The remote IP address for the media session.
+    remote_i_p_address: Optional[str] = None
+    # The remote media port.
+    remote_port: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TeleconferenceDeviceMediaQuality:
@@ -203,23 +65,24 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TeleconferenceDeviceMediaQuality
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.teleconferenceDeviceAudioQuality":
-                from . import teleconference_device_audio_quality
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
+        try:
+            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teleconferenceDeviceAudioQuality".casefold():
+            from . import teleconference_device_audio_quality
 
-                return teleconference_device_audio_quality.TeleconferenceDeviceAudioQuality()
-            if mapping_value == "#microsoft.graph.teleconferenceDeviceScreenSharingQuality":
-                from . import teleconference_device_screen_sharing_quality
+            return teleconference_device_audio_quality.TeleconferenceDeviceAudioQuality()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teleconferenceDeviceScreenSharingQuality".casefold():
+            from . import teleconference_device_screen_sharing_quality
 
-                return teleconference_device_screen_sharing_quality.TeleconferenceDeviceScreenSharingQuality()
-            if mapping_value == "#microsoft.graph.teleconferenceDeviceVideoQuality":
-                from . import teleconference_device_video_quality
+            return teleconference_device_screen_sharing_quality.TeleconferenceDeviceScreenSharingQuality()
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.teleconferenceDeviceVideoQuality".casefold():
+            from . import teleconference_device_video_quality
 
-                return teleconference_device_video_quality.TeleconferenceDeviceVideoQuality()
+            return teleconference_device_video_quality.TeleconferenceDeviceVideoQuality()
         return TeleconferenceDeviceMediaQuality()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -227,6 +90,8 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import teleconference_device_audio_quality, teleconference_device_screen_sharing_quality, teleconference_device_video_quality
+
         from . import teleconference_device_audio_quality, teleconference_device_screen_sharing_quality, teleconference_device_video_quality
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -255,269 +120,14 @@ class TeleconferenceDeviceMediaQuality(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def inbound_packets(self,) -> Optional[int]:
-        """
-        Gets the inboundPackets property value. The total number of the inbound packets.
-        Returns: Optional[int]
-        """
-        return self._inbound_packets
-    
-    @inbound_packets.setter
-    def inbound_packets(self,value: Optional[int] = None) -> None:
-        """
-        Sets the inboundPackets property value. The total number of the inbound packets.
-        Args:
-            value: Value to set for the inbound_packets property.
-        """
-        self._inbound_packets = value
-    
-    @property
-    def local_i_p_address(self,) -> Optional[str]:
-        """
-        Gets the localIPAddress property value. the local IP address for the media session.
-        Returns: Optional[str]
-        """
-        return self._local_i_p_address
-    
-    @local_i_p_address.setter
-    def local_i_p_address(self,value: Optional[str] = None) -> None:
-        """
-        Sets the localIPAddress property value. the local IP address for the media session.
-        Args:
-            value: Value to set for the local_i_p_address property.
-        """
-        self._local_i_p_address = value
-    
-    @property
-    def local_port(self,) -> Optional[int]:
-        """
-        Gets the localPort property value. The local media port.
-        Returns: Optional[int]
-        """
-        return self._local_port
-    
-    @local_port.setter
-    def local_port(self,value: Optional[int] = None) -> None:
-        """
-        Sets the localPort property value. The local media port.
-        Args:
-            value: Value to set for the local_port property.
-        """
-        self._local_port = value
-    
-    @property
-    def maximum_inbound_jitter(self,) -> Optional[timedelta]:
-        """
-        Gets the maximumInboundJitter property value. The maximum inbound stream network jitter.
-        Returns: Optional[timedelta]
-        """
-        return self._maximum_inbound_jitter
-    
-    @maximum_inbound_jitter.setter
-    def maximum_inbound_jitter(self,value: Optional[timedelta] = None) -> None:
-        """
-        Sets the maximumInboundJitter property value. The maximum inbound stream network jitter.
-        Args:
-            value: Value to set for the maximum_inbound_jitter property.
-        """
-        self._maximum_inbound_jitter = value
-    
-    @property
-    def maximum_inbound_packet_loss_rate_in_percentage(self,) -> Optional[float]:
-        """
-        Gets the maximumInboundPacketLossRateInPercentage property value. The maximum inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-        Returns: Optional[float]
-        """
-        return self._maximum_inbound_packet_loss_rate_in_percentage
-    
-    @maximum_inbound_packet_loss_rate_in_percentage.setter
-    def maximum_inbound_packet_loss_rate_in_percentage(self,value: Optional[float] = None) -> None:
-        """
-        Sets the maximumInboundPacketLossRateInPercentage property value. The maximum inbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-        Args:
-            value: Value to set for the maximum_inbound_packet_loss_rate_in_percentage property.
-        """
-        self._maximum_inbound_packet_loss_rate_in_percentage = value
-    
-    @property
-    def maximum_inbound_round_trip_delay(self,) -> Optional[timedelta]:
-        """
-        Gets the maximumInboundRoundTripDelay property value. The maximum inbound stream network round trip delay.
-        Returns: Optional[timedelta]
-        """
-        return self._maximum_inbound_round_trip_delay
-    
-    @maximum_inbound_round_trip_delay.setter
-    def maximum_inbound_round_trip_delay(self,value: Optional[timedelta] = None) -> None:
-        """
-        Sets the maximumInboundRoundTripDelay property value. The maximum inbound stream network round trip delay.
-        Args:
-            value: Value to set for the maximum_inbound_round_trip_delay property.
-        """
-        self._maximum_inbound_round_trip_delay = value
-    
-    @property
-    def maximum_outbound_jitter(self,) -> Optional[timedelta]:
-        """
-        Gets the maximumOutboundJitter property value. The maximum outbound stream network jitter.
-        Returns: Optional[timedelta]
-        """
-        return self._maximum_outbound_jitter
-    
-    @maximum_outbound_jitter.setter
-    def maximum_outbound_jitter(self,value: Optional[timedelta] = None) -> None:
-        """
-        Sets the maximumOutboundJitter property value. The maximum outbound stream network jitter.
-        Args:
-            value: Value to set for the maximum_outbound_jitter property.
-        """
-        self._maximum_outbound_jitter = value
-    
-    @property
-    def maximum_outbound_packet_loss_rate_in_percentage(self,) -> Optional[float]:
-        """
-        Gets the maximumOutboundPacketLossRateInPercentage property value. The maximum outbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-        Returns: Optional[float]
-        """
-        return self._maximum_outbound_packet_loss_rate_in_percentage
-    
-    @maximum_outbound_packet_loss_rate_in_percentage.setter
-    def maximum_outbound_packet_loss_rate_in_percentage(self,value: Optional[float] = None) -> None:
-        """
-        Sets the maximumOutboundPacketLossRateInPercentage property value. The maximum outbound stream packet loss rate in percentage (0-100). For example, 0.01 means 0.01%.
-        Args:
-            value: Value to set for the maximum_outbound_packet_loss_rate_in_percentage property.
-        """
-        self._maximum_outbound_packet_loss_rate_in_percentage = value
-    
-    @property
-    def maximum_outbound_round_trip_delay(self,) -> Optional[timedelta]:
-        """
-        Gets the maximumOutboundRoundTripDelay property value. The maximum outbound stream network round trip delay.
-        Returns: Optional[timedelta]
-        """
-        return self._maximum_outbound_round_trip_delay
-    
-    @maximum_outbound_round_trip_delay.setter
-    def maximum_outbound_round_trip_delay(self,value: Optional[timedelta] = None) -> None:
-        """
-        Sets the maximumOutboundRoundTripDelay property value. The maximum outbound stream network round trip delay.
-        Args:
-            value: Value to set for the maximum_outbound_round_trip_delay property.
-        """
-        self._maximum_outbound_round_trip_delay = value
-    
-    @property
-    def media_duration(self,) -> Optional[timedelta]:
-        """
-        Gets the mediaDuration property value. The total modality duration. If the media enabled and disabled multiple times, MediaDuration will the summation of all of the durations.
-        Returns: Optional[timedelta]
-        """
-        return self._media_duration
-    
-    @media_duration.setter
-    def media_duration(self,value: Optional[timedelta] = None) -> None:
-        """
-        Sets the mediaDuration property value. The total modality duration. If the media enabled and disabled multiple times, MediaDuration will the summation of all of the durations.
-        Args:
-            value: Value to set for the media_duration property.
-        """
-        self._media_duration = value
-    
-    @property
-    def network_link_speed_in_bytes(self,) -> Optional[int]:
-        """
-        Gets the networkLinkSpeedInBytes property value. The network link speed in bytes
-        Returns: Optional[int]
-        """
-        return self._network_link_speed_in_bytes
-    
-    @network_link_speed_in_bytes.setter
-    def network_link_speed_in_bytes(self,value: Optional[int] = None) -> None:
-        """
-        Sets the networkLinkSpeedInBytes property value. The network link speed in bytes
-        Args:
-            value: Value to set for the network_link_speed_in_bytes property.
-        """
-        self._network_link_speed_in_bytes = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def outbound_packets(self,) -> Optional[int]:
-        """
-        Gets the outboundPackets property value. The total number of the outbound packets.
-        Returns: Optional[int]
-        """
-        return self._outbound_packets
-    
-    @outbound_packets.setter
-    def outbound_packets(self,value: Optional[int] = None) -> None:
-        """
-        Sets the outboundPackets property value. The total number of the outbound packets.
-        Args:
-            value: Value to set for the outbound_packets property.
-        """
-        self._outbound_packets = value
-    
-    @property
-    def remote_i_p_address(self,) -> Optional[str]:
-        """
-        Gets the remoteIPAddress property value. The remote IP address for the media session.
-        Returns: Optional[str]
-        """
-        return self._remote_i_p_address
-    
-    @remote_i_p_address.setter
-    def remote_i_p_address(self,value: Optional[str] = None) -> None:
-        """
-        Sets the remoteIPAddress property value. The remote IP address for the media session.
-        Args:
-            value: Value to set for the remote_i_p_address property.
-        """
-        self._remote_i_p_address = value
-    
-    @property
-    def remote_port(self,) -> Optional[int]:
-        """
-        Gets the remotePort property value. The remote media port.
-        Returns: Optional[int]
-        """
-        return self._remote_port
-    
-    @remote_port.setter
-    def remote_port(self,value: Optional[int] = None) -> None:
-        """
-        Sets the remotePort property value. The remote media port.
-        Args:
-            value: Value to set for the remote_port property.
-        """
-        self._remote_port = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_timedelta_value("averageInboundJitter", self.average_inbound_jitter)
         writer.write_float_value("averageInboundPacketLossRateInPercentage", self.average_inbound_packet_loss_rate_in_percentage)
         writer.write_timedelta_value("averageInboundRoundTripDelay", self.average_inbound_round_trip_delay)

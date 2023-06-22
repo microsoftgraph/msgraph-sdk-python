@@ -1,6 +1,6 @@
 from enum import Enum
 
-class Win32LobAppPowerShellScriptRuleOperationType(Enum):
+class Win32LobAppPowerShellScriptRuleOperationType(str, Enum):
     # Not configured.
     NotConfigured = "notConfigured",
     # Output data type is string.

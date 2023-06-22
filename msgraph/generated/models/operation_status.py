@@ -1,6 +1,6 @@
 from enum import Enum
 
-class OperationStatus(Enum):
+class OperationStatus(str, Enum):
     NotStarted = "NotStarted",
     Running = "Running",
     Completed = "Completed",

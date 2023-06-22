@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,107 +9,35 @@ if TYPE_CHECKING:
 
 from . import outlook_item
 
+@dataclass
 class Post(outlook_item.OutlookItem):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Post and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.post"
-        # Read-only. Nullable. Supports $expand.
-        self._attachments: Optional[List[attachment.Attachment]] = None
-        # The contents of the post. This is a default property. This property can be null.
-        self._body: Optional[item_body.ItemBody] = None
-        # Unique ID of the conversation. Read-only.
-        self._conversation_id: Optional[str] = None
-        # Unique ID of the conversation thread. Read-only.
-        self._conversation_thread_id: Optional[str] = None
-        # The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
-        self._extensions: Optional[List[extension.Extension]] = None
-        # The from property
-        self._from_: Optional[recipient.Recipient] = None
-        # Indicates whether the post has at least one attachment. This is a default property.
-        self._has_attachments: Optional[bool] = None
-        # Read-only. Supports $expand.
-        self._in_reply_to: Optional[post.Post] = None
-        # The collection of multi-value extended properties defined for the post. Read-only. Nullable.
-        self._multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
-        # Conversation participants that were added to the thread as part of this post.
-        self._new_participants: Optional[List[recipient.Recipient]] = None
-        # Specifies when the post was received. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        self._received_date_time: Optional[datetime] = None
-        # Contains the address of the sender. The value of Sender is assumed to be the address of the authenticated user in the case when Sender is not specified. This is a default property.
-        self._sender: Optional[recipient.Recipient] = None
-        # The collection of single-value extended properties defined for the post. Read-only. Nullable.
-        self._single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
-    
-    @property
-    def attachments(self,) -> Optional[List[attachment.Attachment]]:
-        """
-        Gets the attachments property value. Read-only. Nullable. Supports $expand.
-        Returns: Optional[List[attachment.Attachment]]
-        """
-        return self._attachments
-    
-    @attachments.setter
-    def attachments(self,value: Optional[List[attachment.Attachment]] = None) -> None:
-        """
-        Sets the attachments property value. Read-only. Nullable. Supports $expand.
-        Args:
-            value: Value to set for the attachments property.
-        """
-        self._attachments = value
-    
-    @property
-    def body(self,) -> Optional[item_body.ItemBody]:
-        """
-        Gets the body property value. The contents of the post. This is a default property. This property can be null.
-        Returns: Optional[item_body.ItemBody]
-        """
-        return self._body
-    
-    @body.setter
-    def body(self,value: Optional[item_body.ItemBody] = None) -> None:
-        """
-        Sets the body property value. The contents of the post. This is a default property. This property can be null.
-        Args:
-            value: Value to set for the body property.
-        """
-        self._body = value
-    
-    @property
-    def conversation_id(self,) -> Optional[str]:
-        """
-        Gets the conversationId property value. Unique ID of the conversation. Read-only.
-        Returns: Optional[str]
-        """
-        return self._conversation_id
-    
-    @conversation_id.setter
-    def conversation_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the conversationId property value. Unique ID of the conversation. Read-only.
-        Args:
-            value: Value to set for the conversation_id property.
-        """
-        self._conversation_id = value
-    
-    @property
-    def conversation_thread_id(self,) -> Optional[str]:
-        """
-        Gets the conversationThreadId property value. Unique ID of the conversation thread. Read-only.
-        Returns: Optional[str]
-        """
-        return self._conversation_thread_id
-    
-    @conversation_thread_id.setter
-    def conversation_thread_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the conversationThreadId property value. Unique ID of the conversation thread. Read-only.
-        Args:
-            value: Value to set for the conversation_thread_id property.
-        """
-        self._conversation_thread_id = value
+    odata_type = "#microsoft.graph.post"
+    # Read-only. Nullable. Supports $expand.
+    attachments: Optional[List[attachment.Attachment]] = None
+    # The contents of the post. This is a default property. This property can be null.
+    body: Optional[item_body.ItemBody] = None
+    # Unique ID of the conversation. Read-only.
+    conversation_id: Optional[str] = None
+    # Unique ID of the conversation thread. Read-only.
+    conversation_thread_id: Optional[str] = None
+    # The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
+    extensions: Optional[List[extension.Extension]] = None
+    # The from property
+    from_: Optional[recipient.Recipient] = None
+    # Indicates whether the post has at least one attachment. This is a default property.
+    has_attachments: Optional[bool] = None
+    # Read-only. Supports $expand.
+    in_reply_to: Optional[post.Post] = None
+    # The collection of multi-value extended properties defined for the post. Read-only. Nullable.
+    multi_value_extended_properties: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None
+    # Conversation participants that were added to the thread as part of this post.
+    new_participants: Optional[List[recipient.Recipient]] = None
+    # Specifies when the post was received. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
+    received_date_time: Optional[datetime] = None
+    # Contains the address of the sender. The value of Sender is assumed to be the address of the authenticated user in the case when Sender is not specified. This is a default property.
+    sender: Optional[recipient.Recipient] = None
+    # The collection of single-value extended properties defined for the post. Read-only. Nullable.
+    single_value_extended_properties: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Post:
@@ -118,49 +47,17 @@ class Post(outlook_item.OutlookItem):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Post
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return Post()
-    
-    @property
-    def extensions(self,) -> Optional[List[extension.Extension]]:
-        """
-        Gets the extensions property value. The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
-        Returns: Optional[List[extension.Extension]]
-        """
-        return self._extensions
-    
-    @extensions.setter
-    def extensions(self,value: Optional[List[extension.Extension]] = None) -> None:
-        """
-        Sets the extensions property value. The collection of open extensions defined for the post. Read-only. Nullable. Supports $expand.
-        Args:
-            value: Value to set for the extensions property.
-        """
-        self._extensions = value
-    
-    @property
-    def from_(self,) -> Optional[recipient.Recipient]:
-        """
-        Gets the from property value. The from property
-        Returns: Optional[recipient.Recipient]
-        """
-        return self._from_
-    
-    @from_.setter
-    def from_(self,value: Optional[recipient.Recipient] = None) -> None:
-        """
-        Sets the from property value. The from property
-        Args:
-            value: Value to set for the from_ property.
-        """
-        self._from_ = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import attachment, extension, item_body, multi_value_legacy_extended_property, outlook_item, recipient, single_value_legacy_extended_property
+
         from . import attachment, extension, item_body, multi_value_legacy_extended_property, outlook_item, recipient, single_value_legacy_extended_property
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -182,116 +79,14 @@ class Post(outlook_item.OutlookItem):
         fields.update(super_fields)
         return fields
     
-    @property
-    def has_attachments(self,) -> Optional[bool]:
-        """
-        Gets the hasAttachments property value. Indicates whether the post has at least one attachment. This is a default property.
-        Returns: Optional[bool]
-        """
-        return self._has_attachments
-    
-    @has_attachments.setter
-    def has_attachments(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the hasAttachments property value. Indicates whether the post has at least one attachment. This is a default property.
-        Args:
-            value: Value to set for the has_attachments property.
-        """
-        self._has_attachments = value
-    
-    @property
-    def in_reply_to(self,) -> Optional[post.Post]:
-        """
-        Gets the inReplyTo property value. Read-only. Supports $expand.
-        Returns: Optional[post.Post]
-        """
-        return self._in_reply_to
-    
-    @in_reply_to.setter
-    def in_reply_to(self,value: Optional[post.Post] = None) -> None:
-        """
-        Sets the inReplyTo property value. Read-only. Supports $expand.
-        Args:
-            value: Value to set for the in_reply_to property.
-        """
-        self._in_reply_to = value
-    
-    @property
-    def multi_value_extended_properties(self,) -> Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]]:
-        """
-        Gets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the post. Read-only. Nullable.
-        Returns: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]]
-        """
-        return self._multi_value_extended_properties
-    
-    @multi_value_extended_properties.setter
-    def multi_value_extended_properties(self,value: Optional[List[multi_value_legacy_extended_property.MultiValueLegacyExtendedProperty]] = None) -> None:
-        """
-        Sets the multiValueExtendedProperties property value. The collection of multi-value extended properties defined for the post. Read-only. Nullable.
-        Args:
-            value: Value to set for the multi_value_extended_properties property.
-        """
-        self._multi_value_extended_properties = value
-    
-    @property
-    def new_participants(self,) -> Optional[List[recipient.Recipient]]:
-        """
-        Gets the newParticipants property value. Conversation participants that were added to the thread as part of this post.
-        Returns: Optional[List[recipient.Recipient]]
-        """
-        return self._new_participants
-    
-    @new_participants.setter
-    def new_participants(self,value: Optional[List[recipient.Recipient]] = None) -> None:
-        """
-        Sets the newParticipants property value. Conversation participants that were added to the thread as part of this post.
-        Args:
-            value: Value to set for the new_participants property.
-        """
-        self._new_participants = value
-    
-    @property
-    def received_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the receivedDateTime property value. Specifies when the post was received. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Returns: Optional[datetime]
-        """
-        return self._received_date_time
-    
-    @received_date_time.setter
-    def received_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the receivedDateTime property value. Specifies when the post was received. The DateTimeOffset type represents date and time information using ISO 8601 format and is always in UTC time. For example, midnight UTC on Jan 1, 2014 is 2014-01-01T00:00:00Z
-        Args:
-            value: Value to set for the received_date_time property.
-        """
-        self._received_date_time = value
-    
-    @property
-    def sender(self,) -> Optional[recipient.Recipient]:
-        """
-        Gets the sender property value. Contains the address of the sender. The value of Sender is assumed to be the address of the authenticated user in the case when Sender is not specified. This is a default property.
-        Returns: Optional[recipient.Recipient]
-        """
-        return self._sender
-    
-    @sender.setter
-    def sender(self,value: Optional[recipient.Recipient] = None) -> None:
-        """
-        Sets the sender property value. Contains the address of the sender. The value of Sender is assumed to be the address of the authenticated user in the case when Sender is not specified. This is a default property.
-        Args:
-            value: Value to set for the sender property.
-        """
-        self._sender = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("attachments", self.attachments)
         writer.write_object_value("body", self.body)
@@ -306,22 +101,5 @@ class Post(outlook_item.OutlookItem):
         writer.write_datetime_value("receivedDateTime", self.received_date_time)
         writer.write_object_value("sender", self.sender)
         writer.write_collection_of_object_values("singleValueExtendedProperties", self.single_value_extended_properties)
-    
-    @property
-    def single_value_extended_properties(self,) -> Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]]:
-        """
-        Gets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the post. Read-only. Nullable.
-        Returns: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]]
-        """
-        return self._single_value_extended_properties
-    
-    @single_value_extended_properties.setter
-    def single_value_extended_properties(self,value: Optional[List[single_value_legacy_extended_property.SingleValueLegacyExtendedProperty]] = None) -> None:
-        """
-        Sets the singleValueExtendedProperties property value. The collection of single-value extended properties defined for the post. Read-only. Nullable.
-        Args:
-            value: Value to set for the single_value_extended_properties property.
-        """
-        self._single_value_extended_properties = value
     
 

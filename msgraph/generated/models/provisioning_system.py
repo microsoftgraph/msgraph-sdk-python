@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import identity
 
+@dataclass
 class ProvisioningSystem(identity.Identity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ProvisioningSystem and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.provisioningSystem"
-        # Details of the system.
-        self._details: Optional[details_info.DetailsInfo] = None
+    odata_type = "#microsoft.graph.provisioningSystem"
+    # Details of the system.
+    details: Optional[details_info.DetailsInfo] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ProvisioningSystem:
@@ -25,32 +22,17 @@ class ProvisioningSystem(identity.Identity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ProvisioningSystem
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return ProvisioningSystem()
-    
-    @property
-    def details(self,) -> Optional[details_info.DetailsInfo]:
-        """
-        Gets the details property value. Details of the system.
-        Returns: Optional[details_info.DetailsInfo]
-        """
-        return self._details
-    
-    @details.setter
-    def details(self,value: Optional[details_info.DetailsInfo] = None) -> None:
-        """
-        Sets the details property value. Details of the system.
-        Args:
-            value: Value to set for the details property.
-        """
-        self._details = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import details_info, identity
+
         from . import details_info, identity
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -66,8 +48,8 @@ class ProvisioningSystem(identity.Identity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("details", self.details)
     

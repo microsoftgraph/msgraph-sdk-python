@@ -1,6 +1,6 @@
 from enum import Enum
 
-class VolumeType(Enum):
+class VolumeType(str, Enum):
     OperatingSystemVolume = "operatingSystemVolume",
     FixedDataVolume = "fixedDataVolume",
     RemovableDataVolume = "removableDataVolume",

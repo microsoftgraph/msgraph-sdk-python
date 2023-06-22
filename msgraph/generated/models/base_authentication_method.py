@@ -1,6 +1,6 @@
 from enum import Enum
 
-class BaseAuthenticationMethod(Enum):
+class BaseAuthenticationMethod(str, Enum):
     Password = "password",
     Voice = "voice",
     HardwareOath = "hardwareOath",

@@ -1,34 +1,15 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class GetMemberGroupsPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new getMemberGroupsPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The securityEnabledOnly property
-        self._security_enabled_only: Optional[bool] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The securityEnabledOnly property
+    security_enabled_only: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> GetMemberGroupsPostRequestBody:
@@ -38,8 +19,8 @@ class GetMemberGroupsPostRequestBody(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: GetMemberGroupsPostRequestBody
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return GetMemberGroupsPostRequestBody()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -52,31 +33,14 @@ class GetMemberGroupsPostRequestBody(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def security_enabled_only(self,) -> Optional[bool]:
-        """
-        Gets the securityEnabledOnly property value. The securityEnabledOnly property
-        Returns: Optional[bool]
-        """
-        return self._security_enabled_only
-    
-    @security_enabled_only.setter
-    def security_enabled_only(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the securityEnabledOnly property value. The securityEnabledOnly property
-        Args:
-            value: Value to set for the security_enabled_only property.
-        """
-        self._security_enabled_only = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_bool_value("securityEnabledOnly", self.security_enabled_only)
         writer.write_additional_data_value(self.additional_data)
     

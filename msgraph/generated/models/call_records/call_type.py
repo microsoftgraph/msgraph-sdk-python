@@ -1,6 +1,6 @@
 from enum import Enum
 
-class CallType(Enum):
+class CallType(str, Enum):
     Unknown = "unknown",
     GroupCall = "groupCall",
     PeerToPeer = "peerToPeer",

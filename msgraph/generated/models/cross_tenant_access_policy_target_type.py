@@ -1,6 +1,6 @@
 from enum import Enum
 
-class CrossTenantAccessPolicyTargetType(Enum):
+class CrossTenantAccessPolicyTargetType(str, Enum):
     User = "user",
     Group = "group",
     Application = "application",

@@ -1,81 +1,28 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import unified_approval_stage
 
+@dataclass
 class ApprovalSettings(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new approvalSettings and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # One of SingleStage, Serial, Parallel, NoApproval (default). NoApproval is used when isApprovalRequired is false.
-        self._approval_mode: Optional[str] = None
-        # If approval is required, the one or two elements of this collection define each of the stages of approval. An empty array if no approval is required.
-        self._approval_stages: Optional[List[unified_approval_stage.UnifiedApprovalStage]] = None
-        # Indicates whether approval is required for requests in this policy.
-        self._is_approval_required: Optional[bool] = None
-        # Indicates whether approval is required for a user to extend their assignment.
-        self._is_approval_required_for_extension: Optional[bool] = None
-        # Indicates whether the requestor is required to supply a justification in their request.
-        self._is_requestor_justification_required: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def approval_mode(self,) -> Optional[str]:
-        """
-        Gets the approvalMode property value. One of SingleStage, Serial, Parallel, NoApproval (default). NoApproval is used when isApprovalRequired is false.
-        Returns: Optional[str]
-        """
-        return self._approval_mode
-    
-    @approval_mode.setter
-    def approval_mode(self,value: Optional[str] = None) -> None:
-        """
-        Sets the approvalMode property value. One of SingleStage, Serial, Parallel, NoApproval (default). NoApproval is used when isApprovalRequired is false.
-        Args:
-            value: Value to set for the approval_mode property.
-        """
-        self._approval_mode = value
-    
-    @property
-    def approval_stages(self,) -> Optional[List[unified_approval_stage.UnifiedApprovalStage]]:
-        """
-        Gets the approvalStages property value. If approval is required, the one or two elements of this collection define each of the stages of approval. An empty array if no approval is required.
-        Returns: Optional[List[unified_approval_stage.UnifiedApprovalStage]]
-        """
-        return self._approval_stages
-    
-    @approval_stages.setter
-    def approval_stages(self,value: Optional[List[unified_approval_stage.UnifiedApprovalStage]] = None) -> None:
-        """
-        Sets the approvalStages property value. If approval is required, the one or two elements of this collection define each of the stages of approval. An empty array if no approval is required.
-        Args:
-            value: Value to set for the approval_stages property.
-        """
-        self._approval_stages = value
+    # One of SingleStage, Serial, Parallel, NoApproval (default). NoApproval is used when isApprovalRequired is false.
+    approval_mode: Optional[str] = None
+    # If approval is required, the one or two elements of this collection define each of the stages of approval. An empty array if no approval is required.
+    approval_stages: Optional[List[unified_approval_stage.UnifiedApprovalStage]] = None
+    # Indicates whether approval is required for requests in this policy.
+    is_approval_required: Optional[bool] = None
+    # Indicates whether approval is required for a user to extend their assignment.
+    is_approval_required_for_extension: Optional[bool] = None
+    # Indicates whether the requestor is required to supply a justification in their request.
+    is_requestor_justification_required: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ApprovalSettings:
@@ -85,8 +32,8 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ApprovalSettings
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return ApprovalSettings()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -94,6 +41,8 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import unified_approval_stage
+
         from . import unified_approval_stage
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -106,82 +55,14 @@ class ApprovalSettings(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def is_approval_required(self,) -> Optional[bool]:
-        """
-        Gets the isApprovalRequired property value. Indicates whether approval is required for requests in this policy.
-        Returns: Optional[bool]
-        """
-        return self._is_approval_required
-    
-    @is_approval_required.setter
-    def is_approval_required(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isApprovalRequired property value. Indicates whether approval is required for requests in this policy.
-        Args:
-            value: Value to set for the is_approval_required property.
-        """
-        self._is_approval_required = value
-    
-    @property
-    def is_approval_required_for_extension(self,) -> Optional[bool]:
-        """
-        Gets the isApprovalRequiredForExtension property value. Indicates whether approval is required for a user to extend their assignment.
-        Returns: Optional[bool]
-        """
-        return self._is_approval_required_for_extension
-    
-    @is_approval_required_for_extension.setter
-    def is_approval_required_for_extension(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isApprovalRequiredForExtension property value. Indicates whether approval is required for a user to extend their assignment.
-        Args:
-            value: Value to set for the is_approval_required_for_extension property.
-        """
-        self._is_approval_required_for_extension = value
-    
-    @property
-    def is_requestor_justification_required(self,) -> Optional[bool]:
-        """
-        Gets the isRequestorJustificationRequired property value. Indicates whether the requestor is required to supply a justification in their request.
-        Returns: Optional[bool]
-        """
-        return self._is_requestor_justification_required
-    
-    @is_requestor_justification_required.setter
-    def is_requestor_justification_required(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isRequestorJustificationRequired property value. Indicates whether the requestor is required to supply a justification in their request.
-        Args:
-            value: Value to set for the is_requestor_justification_required property.
-        """
-        self._is_requestor_justification_required = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_str_value("approvalMode", self.approval_mode)
         writer.write_collection_of_object_values("approvalStages", self.approval_stages)
         writer.write_bool_value("isApprovalRequired", self.is_approval_required)

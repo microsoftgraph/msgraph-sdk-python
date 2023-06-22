@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DefenderScanType(Enum):
+class DefenderScanType(str, Enum):
     # User Defined, default value, no intent.
     UserDefined = "userDefined",
     # System scan disabled.

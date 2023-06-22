@@ -1,6 +1,6 @@
 from enum import Enum
 
-class BookingPriceType(Enum):
+class BookingPriceType(str, Enum):
     # The price of the service is not defined.
     Undefined = "undefined",
     # The price of the service is fixed.

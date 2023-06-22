@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DeviceManagementReportStatus(Enum):
+class DeviceManagementReportStatus(str, Enum):
     # Report generation status is unknown
     Unknown = "unknown",
     # Report generation has not started

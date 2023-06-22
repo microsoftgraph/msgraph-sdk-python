@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ManagedDevicePartnerReportedHealthState(Enum):
+class ManagedDevicePartnerReportedHealthState(str, Enum):
     # Device health state is not yet reported
     Unknown = "unknown",
     # Device has been activated by a mobile threat defense partner, but has not yet reported health.

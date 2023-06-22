@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ManagedAppDataEncryptionType(Enum):
+class ManagedAppDataEncryptionType(str, Enum):
     # App data is encrypted based on the default settings on the device.
     UseDeviceSettings = "useDeviceSettings",
     # App data is encrypted when the device is restarted.

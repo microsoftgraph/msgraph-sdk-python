@@ -1,162 +1,58 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new directRoutingLogRow and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # In addition to the SIP codes, Microsoft has own subcodes that indicate the specific issue.
-        self._call_end_sub_reason: Optional[int] = None
-        # Call type and direction.
-        self._call_type: Optional[str] = None
-        # Number of the user or bot who received the call. E.164 format, but may include additional data.
-        self._callee_number: Optional[str] = None
-        # Number of the user or bot who made the call. E.164 format, but may include additional data.
-        self._caller_number: Optional[str] = None
-        # Identifier for the call that you can use when calling Microsoft Support. GUID.
-        self._correlation_id: Optional[str] = None
-        # Duration of the call in seconds.
-        self._duration: Optional[int] = None
-        # Only exists for successful (fully established) calls. Time when call ended.
-        self._end_date_time: Optional[datetime] = None
-        # Only exists for failed (not fully established) calls.
-        self._failure_date_time: Optional[datetime] = None
-        # The code with which the call ended, RFC 3261.
-        self._final_sip_code: Optional[int] = None
-        # Description of the SIP code and Microsoft subcode.
-        self._final_sip_code_phrase: Optional[str] = None
-        # Unique call identifier. GUID.
-        self._id: Optional[str] = None
-        # When the initial invite was sent.
-        self._invite_date_time: Optional[datetime] = None
-        # Indicates if the trunk was enabled for media bypass or not.
-        self._media_bypass_enabled: Optional[bool] = None
-        # The datacenter used for media path in non-bypass call.
-        self._media_path_location: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The datacenter used for signaling for both bypass and non-bypass calls.
-        self._signaling_location: Optional[str] = None
-        # Call start time.For failed and unanswered calls, this can be equal to invite or failure time.
-        self._start_date_time: Optional[datetime] = None
-        # Success or attempt.
-        self._successful_call: Optional[bool] = None
-        # Fully qualified domain name of the session border controller.
-        self._trunk_fully_qualified_domain_name: Optional[str] = None
-        # Display name of the user.
-        self._user_display_name: Optional[str] = None
-        # Calling user's ID in Graph. This and other user info will be null/empty for bot call types. GUID.
-        self._user_id: Optional[str] = None
-        # UserPrincipalName (sign-in name) in Azure Active Directory. This is usually the same as user's SIP Address, and can be same as user's e-mail address.
-        self._user_principal_name: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def call_end_sub_reason(self,) -> Optional[int]:
-        """
-        Gets the callEndSubReason property value. In addition to the SIP codes, Microsoft has own subcodes that indicate the specific issue.
-        Returns: Optional[int]
-        """
-        return self._call_end_sub_reason
-    
-    @call_end_sub_reason.setter
-    def call_end_sub_reason(self,value: Optional[int] = None) -> None:
-        """
-        Sets the callEndSubReason property value. In addition to the SIP codes, Microsoft has own subcodes that indicate the specific issue.
-        Args:
-            value: Value to set for the call_end_sub_reason property.
-        """
-        self._call_end_sub_reason = value
-    
-    @property
-    def call_type(self,) -> Optional[str]:
-        """
-        Gets the callType property value. Call type and direction.
-        Returns: Optional[str]
-        """
-        return self._call_type
-    
-    @call_type.setter
-    def call_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the callType property value. Call type and direction.
-        Args:
-            value: Value to set for the call_type property.
-        """
-        self._call_type = value
-    
-    @property
-    def callee_number(self,) -> Optional[str]:
-        """
-        Gets the calleeNumber property value. Number of the user or bot who received the call. E.164 format, but may include additional data.
-        Returns: Optional[str]
-        """
-        return self._callee_number
-    
-    @callee_number.setter
-    def callee_number(self,value: Optional[str] = None) -> None:
-        """
-        Sets the calleeNumber property value. Number of the user or bot who received the call. E.164 format, but may include additional data.
-        Args:
-            value: Value to set for the callee_number property.
-        """
-        self._callee_number = value
-    
-    @property
-    def caller_number(self,) -> Optional[str]:
-        """
-        Gets the callerNumber property value. Number of the user or bot who made the call. E.164 format, but may include additional data.
-        Returns: Optional[str]
-        """
-        return self._caller_number
-    
-    @caller_number.setter
-    def caller_number(self,value: Optional[str] = None) -> None:
-        """
-        Sets the callerNumber property value. Number of the user or bot who made the call. E.164 format, but may include additional data.
-        Args:
-            value: Value to set for the caller_number property.
-        """
-        self._caller_number = value
-    
-    @property
-    def correlation_id(self,) -> Optional[str]:
-        """
-        Gets the correlationId property value. Identifier for the call that you can use when calling Microsoft Support. GUID.
-        Returns: Optional[str]
-        """
-        return self._correlation_id
-    
-    @correlation_id.setter
-    def correlation_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the correlationId property value. Identifier for the call that you can use when calling Microsoft Support. GUID.
-        Args:
-            value: Value to set for the correlation_id property.
-        """
-        self._correlation_id = value
+    # In addition to the SIP codes, Microsoft has own subcodes that indicate the specific issue.
+    call_end_sub_reason: Optional[int] = None
+    # Call type and direction.
+    call_type: Optional[str] = None
+    # Number of the user or bot who received the call. E.164 format, but may include additional data.
+    callee_number: Optional[str] = None
+    # Number of the user or bot who made the call. E.164 format, but may include additional data.
+    caller_number: Optional[str] = None
+    # Identifier for the call that you can use when calling Microsoft Support. GUID.
+    correlation_id: Optional[str] = None
+    # Duration of the call in seconds.
+    duration: Optional[int] = None
+    # Only exists for successful (fully established) calls. Time when call ended.
+    end_date_time: Optional[datetime] = None
+    # Only exists for failed (not fully established) calls.
+    failure_date_time: Optional[datetime] = None
+    # The code with which the call ended, RFC 3261.
+    final_sip_code: Optional[int] = None
+    # Description of the SIP code and Microsoft subcode.
+    final_sip_code_phrase: Optional[str] = None
+    # Unique call identifier. GUID.
+    id: Optional[str] = None
+    # When the initial invite was sent.
+    invite_date_time: Optional[datetime] = None
+    # Indicates if the trunk was enabled for media bypass or not.
+    media_bypass_enabled: Optional[bool] = None
+    # The datacenter used for media path in non-bypass call.
+    media_path_location: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The datacenter used for signaling for both bypass and non-bypass calls.
+    signaling_location: Optional[str] = None
+    # Call start time.For failed and unanswered calls, this can be equal to invite or failure time.
+    start_date_time: Optional[datetime] = None
+    # Success or attempt.
+    successful_call: Optional[bool] = None
+    # Fully qualified domain name of the session border controller.
+    trunk_fully_qualified_domain_name: Optional[str] = None
+    # Display name of the user.
+    user_display_name: Optional[str] = None
+    # Calling user's ID in Graph. This and other user info will be null/empty for bot call types. GUID.
+    user_id: Optional[str] = None
+    # UserPrincipalName (sign-in name) in Azure Active Directory. This is usually the same as user's SIP Address, and can be same as user's e-mail address.
+    user_principal_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> DirectRoutingLogRow:
@@ -166,94 +62,9 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: DirectRoutingLogRow
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return DirectRoutingLogRow()
-    
-    @property
-    def duration(self,) -> Optional[int]:
-        """
-        Gets the duration property value. Duration of the call in seconds.
-        Returns: Optional[int]
-        """
-        return self._duration
-    
-    @duration.setter
-    def duration(self,value: Optional[int] = None) -> None:
-        """
-        Sets the duration property value. Duration of the call in seconds.
-        Args:
-            value: Value to set for the duration property.
-        """
-        self._duration = value
-    
-    @property
-    def end_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the endDateTime property value. Only exists for successful (fully established) calls. Time when call ended.
-        Returns: Optional[datetime]
-        """
-        return self._end_date_time
-    
-    @end_date_time.setter
-    def end_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the endDateTime property value. Only exists for successful (fully established) calls. Time when call ended.
-        Args:
-            value: Value to set for the end_date_time property.
-        """
-        self._end_date_time = value
-    
-    @property
-    def failure_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the failureDateTime property value. Only exists for failed (not fully established) calls.
-        Returns: Optional[datetime]
-        """
-        return self._failure_date_time
-    
-    @failure_date_time.setter
-    def failure_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the failureDateTime property value. Only exists for failed (not fully established) calls.
-        Args:
-            value: Value to set for the failure_date_time property.
-        """
-        self._failure_date_time = value
-    
-    @property
-    def final_sip_code(self,) -> Optional[int]:
-        """
-        Gets the finalSipCode property value. The code with which the call ended, RFC 3261.
-        Returns: Optional[int]
-        """
-        return self._final_sip_code
-    
-    @final_sip_code.setter
-    def final_sip_code(self,value: Optional[int] = None) -> None:
-        """
-        Sets the finalSipCode property value. The code with which the call ended, RFC 3261.
-        Args:
-            value: Value to set for the final_sip_code property.
-        """
-        self._final_sip_code = value
-    
-    @property
-    def final_sip_code_phrase(self,) -> Optional[str]:
-        """
-        Gets the finalSipCodePhrase property value. Description of the SIP code and Microsoft subcode.
-        Returns: Optional[str]
-        """
-        return self._final_sip_code_phrase
-    
-    @final_sip_code_phrase.setter
-    def final_sip_code_phrase(self,value: Optional[str] = None) -> None:
-        """
-        Sets the finalSipCodePhrase property value. Description of the SIP code and Microsoft subcode.
-        Args:
-            value: Value to set for the final_sip_code_phrase property.
-        """
-        self._final_sip_code_phrase = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -261,10 +72,10 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
         fields: Dict[str, Callable[[Any], None]] = {
-            "calleeNumber": lambda n : setattr(self, 'callee_number', n.get_str_value()),
-            "callerNumber": lambda n : setattr(self, 'caller_number', n.get_str_value()),
             "callEndSubReason": lambda n : setattr(self, 'call_end_sub_reason', n.get_int_value()),
             "callType": lambda n : setattr(self, 'call_type', n.get_str_value()),
+            "calleeNumber": lambda n : setattr(self, 'callee_number', n.get_str_value()),
+            "callerNumber": lambda n : setattr(self, 'caller_number', n.get_str_value()),
             "correlationId": lambda n : setattr(self, 'correlation_id', n.get_str_value()),
             "duration": lambda n : setattr(self, 'duration', n.get_int_value()),
             "endDateTime": lambda n : setattr(self, 'end_date_time', n.get_datetime_value()),
@@ -286,103 +97,18 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def id(self,) -> Optional[str]:
-        """
-        Gets the id property value. Unique call identifier. GUID.
-        Returns: Optional[str]
-        """
-        return self._id
-    
-    @id.setter
-    def id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the id property value. Unique call identifier. GUID.
-        Args:
-            value: Value to set for the id property.
-        """
-        self._id = value
-    
-    @property
-    def invite_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the inviteDateTime property value. When the initial invite was sent.
-        Returns: Optional[datetime]
-        """
-        return self._invite_date_time
-    
-    @invite_date_time.setter
-    def invite_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the inviteDateTime property value. When the initial invite was sent.
-        Args:
-            value: Value to set for the invite_date_time property.
-        """
-        self._invite_date_time = value
-    
-    @property
-    def media_bypass_enabled(self,) -> Optional[bool]:
-        """
-        Gets the mediaBypassEnabled property value. Indicates if the trunk was enabled for media bypass or not.
-        Returns: Optional[bool]
-        """
-        return self._media_bypass_enabled
-    
-    @media_bypass_enabled.setter
-    def media_bypass_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the mediaBypassEnabled property value. Indicates if the trunk was enabled for media bypass or not.
-        Args:
-            value: Value to set for the media_bypass_enabled property.
-        """
-        self._media_bypass_enabled = value
-    
-    @property
-    def media_path_location(self,) -> Optional[str]:
-        """
-        Gets the mediaPathLocation property value. The datacenter used for media path in non-bypass call.
-        Returns: Optional[str]
-        """
-        return self._media_path_location
-    
-    @media_path_location.setter
-    def media_path_location(self,value: Optional[str] = None) -> None:
-        """
-        Sets the mediaPathLocation property value. The datacenter used for media path in non-bypass call.
-        Args:
-            value: Value to set for the media_path_location property.
-        """
-        self._media_path_location = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
-        writer.write_str_value("calleeNumber", self.callee_number)
-        writer.write_str_value("callerNumber", self.caller_number)
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_int_value("callEndSubReason", self.call_end_sub_reason)
         writer.write_str_value("callType", self.call_type)
+        writer.write_str_value("calleeNumber", self.callee_number)
+        writer.write_str_value("callerNumber", self.caller_number)
         writer.write_str_value("correlationId", self.correlation_id)
         writer.write_int_value("duration", self.duration)
         writer.write_datetime_value("endDateTime", self.end_date_time)
@@ -402,124 +128,5 @@ class DirectRoutingLogRow(AdditionalDataHolder, Parsable):
         writer.write_str_value("userId", self.user_id)
         writer.write_str_value("userPrincipalName", self.user_principal_name)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def signaling_location(self,) -> Optional[str]:
-        """
-        Gets the signalingLocation property value. The datacenter used for signaling for both bypass and non-bypass calls.
-        Returns: Optional[str]
-        """
-        return self._signaling_location
-    
-    @signaling_location.setter
-    def signaling_location(self,value: Optional[str] = None) -> None:
-        """
-        Sets the signalingLocation property value. The datacenter used for signaling for both bypass and non-bypass calls.
-        Args:
-            value: Value to set for the signaling_location property.
-        """
-        self._signaling_location = value
-    
-    @property
-    def start_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the startDateTime property value. Call start time.For failed and unanswered calls, this can be equal to invite or failure time.
-        Returns: Optional[datetime]
-        """
-        return self._start_date_time
-    
-    @start_date_time.setter
-    def start_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the startDateTime property value. Call start time.For failed and unanswered calls, this can be equal to invite or failure time.
-        Args:
-            value: Value to set for the start_date_time property.
-        """
-        self._start_date_time = value
-    
-    @property
-    def successful_call(self,) -> Optional[bool]:
-        """
-        Gets the successfulCall property value. Success or attempt.
-        Returns: Optional[bool]
-        """
-        return self._successful_call
-    
-    @successful_call.setter
-    def successful_call(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the successfulCall property value. Success or attempt.
-        Args:
-            value: Value to set for the successful_call property.
-        """
-        self._successful_call = value
-    
-    @property
-    def trunk_fully_qualified_domain_name(self,) -> Optional[str]:
-        """
-        Gets the trunkFullyQualifiedDomainName property value. Fully qualified domain name of the session border controller.
-        Returns: Optional[str]
-        """
-        return self._trunk_fully_qualified_domain_name
-    
-    @trunk_fully_qualified_domain_name.setter
-    def trunk_fully_qualified_domain_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the trunkFullyQualifiedDomainName property value. Fully qualified domain name of the session border controller.
-        Args:
-            value: Value to set for the trunk_fully_qualified_domain_name property.
-        """
-        self._trunk_fully_qualified_domain_name = value
-    
-    @property
-    def user_display_name(self,) -> Optional[str]:
-        """
-        Gets the userDisplayName property value. Display name of the user.
-        Returns: Optional[str]
-        """
-        return self._user_display_name
-    
-    @user_display_name.setter
-    def user_display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userDisplayName property value. Display name of the user.
-        Args:
-            value: Value to set for the user_display_name property.
-        """
-        self._user_display_name = value
-    
-    @property
-    def user_id(self,) -> Optional[str]:
-        """
-        Gets the userId property value. Calling user's ID in Graph. This and other user info will be null/empty for bot call types. GUID.
-        Returns: Optional[str]
-        """
-        return self._user_id
-    
-    @user_id.setter
-    def user_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userId property value. Calling user's ID in Graph. This and other user info will be null/empty for bot call types. GUID.
-        Args:
-            value: Value to set for the user_id property.
-        """
-        self._user_id = value
-    
-    @property
-    def user_principal_name(self,) -> Optional[str]:
-        """
-        Gets the userPrincipalName property value. UserPrincipalName (sign-in name) in Azure Active Directory. This is usually the same as user's SIP Address, and can be same as user's e-mail address.
-        Returns: Optional[str]
-        """
-        return self._user_principal_name
-    
-    @user_principal_name.setter
-    def user_principal_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userPrincipalName property value. UserPrincipalName (sign-in name) in Azure Active Directory. This is usually the same as user's SIP Address, and can be same as user's e-mail address.
-        Args:
-            value: Value to set for the user_principal_name property.
-        """
-        self._user_principal_name = value
     
 

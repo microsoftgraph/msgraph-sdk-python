@@ -1,6 +1,6 @@
 from enum import Enum
 
-class TeamworkActivityTopicSource(Enum):
+class TeamworkActivityTopicSource(str, Enum):
     EntityUrl = "entityUrl",
     Text = "text",
 

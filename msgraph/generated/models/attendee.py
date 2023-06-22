@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,17 +8,13 @@ if TYPE_CHECKING:
 
 from . import attendee_base
 
+@dataclass
 class Attendee(attendee_base.AttendeeBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new Attendee and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.attendee"
-        # An alternate date/time proposed by the attendee for a meeting request to start and end. If the attendee hasn't proposed another time, then this property is not included in a response of a GET event.
-        self._proposed_new_time: Optional[time_slot.TimeSlot] = None
-        # The attendee's response (none, accepted, declined, etc.) for the event and date-time that the response was sent.
-        self._status: Optional[response_status.ResponseStatus] = None
+    odata_type = "#microsoft.graph.attendee"
+    # An alternate date/time proposed by the attendee for a meeting request to start and end. If the attendee hasn't proposed another time, then this property is not included in a response of a GET event.
+    proposed_new_time: Optional[time_slot.TimeSlot] = None
+    # The attendee's response (none, accepted, declined, etc.) for the event and date-time that the response was sent.
+    status: Optional[response_status.ResponseStatus] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Attendee:
@@ -27,8 +24,8 @@ class Attendee(attendee_base.AttendeeBase):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Attendee
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return Attendee()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -36,6 +33,8 @@ class Attendee(attendee_base.AttendeeBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import attendee_base, response_status, time_slot
+
         from . import attendee_base, response_status, time_slot
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -46,50 +45,16 @@ class Attendee(attendee_base.AttendeeBase):
         fields.update(super_fields)
         return fields
     
-    @property
-    def proposed_new_time(self,) -> Optional[time_slot.TimeSlot]:
-        """
-        Gets the proposedNewTime property value. An alternate date/time proposed by the attendee for a meeting request to start and end. If the attendee hasn't proposed another time, then this property is not included in a response of a GET event.
-        Returns: Optional[time_slot.TimeSlot]
-        """
-        return self._proposed_new_time
-    
-    @proposed_new_time.setter
-    def proposed_new_time(self,value: Optional[time_slot.TimeSlot] = None) -> None:
-        """
-        Sets the proposedNewTime property value. An alternate date/time proposed by the attendee for a meeting request to start and end. If the attendee hasn't proposed another time, then this property is not included in a response of a GET event.
-        Args:
-            value: Value to set for the proposed_new_time property.
-        """
-        self._proposed_new_time = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("proposedNewTime", self.proposed_new_time)
         writer.write_object_value("status", self.status)
-    
-    @property
-    def status(self,) -> Optional[response_status.ResponseStatus]:
-        """
-        Gets the status property value. The attendee's response (none, accepted, declined, etc.) for the event and date-time that the response was sent.
-        Returns: Optional[response_status.ResponseStatus]
-        """
-        return self._status
-    
-    @status.setter
-    def status(self,value: Optional[response_status.ResponseStatus] = None) -> None:
-        """
-        Sets the status property value. The attendee's response (none, accepted, declined, etc.) for the event and date-time that the response was sent.
-        Args:
-            value: Value to set for the status property.
-        """
-        self._status = value
     
 

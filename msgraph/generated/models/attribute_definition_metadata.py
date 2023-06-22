@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AttributeDefinitionMetadata(Enum):
+class AttributeDefinitionMetadata(str, Enum):
     BaseAttributeName = "BaseAttributeName",
     ComplexObjectDefinition = "ComplexObjectDefinition",
     IsContainer = "IsContainer",

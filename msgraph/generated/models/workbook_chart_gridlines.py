@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,18 +8,14 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class WorkbookChartGridlines(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookChartGridlines and sets the default values.
-        """
-        super().__init__()
-        # Represents the formatting of chart gridlines. Read-only.
-        self._format: Optional[workbook_chart_gridlines_format.WorkbookChartGridlinesFormat] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Boolean value representing if the axis gridlines are visible or not.
-        self._visible: Optional[bool] = None
+    # Represents the formatting of chart gridlines. Read-only.
+    format: Optional[workbook_chart_gridlines_format.WorkbookChartGridlinesFormat] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Boolean value representing if the axis gridlines are visible or not.
+    visible: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookChartGridlines:
@@ -28,32 +25,17 @@ class WorkbookChartGridlines(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookChartGridlines
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return WorkbookChartGridlines()
-    
-    @property
-    def format(self,) -> Optional[workbook_chart_gridlines_format.WorkbookChartGridlinesFormat]:
-        """
-        Gets the format property value. Represents the formatting of chart gridlines. Read-only.
-        Returns: Optional[workbook_chart_gridlines_format.WorkbookChartGridlinesFormat]
-        """
-        return self._format
-    
-    @format.setter
-    def format(self,value: Optional[workbook_chart_gridlines_format.WorkbookChartGridlinesFormat] = None) -> None:
-        """
-        Sets the format property value. Represents the formatting of chart gridlines. Read-only.
-        Args:
-            value: Value to set for the format property.
-        """
-        self._format = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import entity, workbook_chart_gridlines_format
+
         from . import entity, workbook_chart_gridlines_format
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -70,27 +52,10 @@ class WorkbookChartGridlines(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("format", self.format)
         writer.write_bool_value("visible", self.visible)
-    
-    @property
-    def visible(self,) -> Optional[bool]:
-        """
-        Gets the visible property value. Boolean value representing if the axis gridlines are visible or not.
-        Returns: Optional[bool]
-        """
-        return self._visible
-    
-    @visible.setter
-    def visible(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the visible property value. Boolean value representing if the axis gridlines are visible or not.
-        Args:
-            value: Value to set for the visible property.
-        """
-        self._visible = value
     
 

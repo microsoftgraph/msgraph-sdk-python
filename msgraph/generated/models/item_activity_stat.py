@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,85 +9,30 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ItemActivityStat(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new itemActivityStat and sets the default values.
-        """
-        super().__init__()
-        # Statistics about the access actions in this interval. Read-only.
-        self._access: Optional[item_action_stat.ItemActionStat] = None
-        # Exposes the itemActivities represented in this itemActivityStat resource.
-        self._activities: Optional[List[item_activity.ItemActivity]] = None
-        # Statistics about the create actions in this interval. Read-only.
-        self._create: Optional[item_action_stat.ItemActionStat] = None
-        # Statistics about the delete actions in this interval. Read-only.
-        self._delete: Optional[item_action_stat.ItemActionStat] = None
-        # Statistics about the edit actions in this interval. Read-only.
-        self._edit: Optional[item_action_stat.ItemActionStat] = None
-        # When the interval ends. Read-only.
-        self._end_date_time: Optional[datetime] = None
-        # Indicates that the statistics in this interval are based on incomplete data. Read-only.
-        self._incomplete_data: Optional[incomplete_data.IncompleteData] = None
-        # Indicates whether the item is 'trending.' Read-only.
-        self._is_trending: Optional[bool] = None
-        # Statistics about the move actions in this interval. Read-only.
-        self._move: Optional[item_action_stat.ItemActionStat] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # When the interval starts. Read-only.
-        self._start_date_time: Optional[datetime] = None
-    
-    @property
-    def access(self,) -> Optional[item_action_stat.ItemActionStat]:
-        """
-        Gets the access property value. Statistics about the access actions in this interval. Read-only.
-        Returns: Optional[item_action_stat.ItemActionStat]
-        """
-        return self._access
-    
-    @access.setter
-    def access(self,value: Optional[item_action_stat.ItemActionStat] = None) -> None:
-        """
-        Sets the access property value. Statistics about the access actions in this interval. Read-only.
-        Args:
-            value: Value to set for the access property.
-        """
-        self._access = value
-    
-    @property
-    def activities(self,) -> Optional[List[item_activity.ItemActivity]]:
-        """
-        Gets the activities property value. Exposes the itemActivities represented in this itemActivityStat resource.
-        Returns: Optional[List[item_activity.ItemActivity]]
-        """
-        return self._activities
-    
-    @activities.setter
-    def activities(self,value: Optional[List[item_activity.ItemActivity]] = None) -> None:
-        """
-        Sets the activities property value. Exposes the itemActivities represented in this itemActivityStat resource.
-        Args:
-            value: Value to set for the activities property.
-        """
-        self._activities = value
-    
-    @property
-    def create(self,) -> Optional[item_action_stat.ItemActionStat]:
-        """
-        Gets the create property value. Statistics about the create actions in this interval. Read-only.
-        Returns: Optional[item_action_stat.ItemActionStat]
-        """
-        return self._create
-    
-    @create.setter
-    def create(self,value: Optional[item_action_stat.ItemActionStat] = None) -> None:
-        """
-        Sets the create property value. Statistics about the create actions in this interval. Read-only.
-        Args:
-            value: Value to set for the create property.
-        """
-        self._create = value
+    # Statistics about the access actions in this interval. Read-only.
+    access: Optional[item_action_stat.ItemActionStat] = None
+    # Exposes the itemActivities represented in this itemActivityStat resource.
+    activities: Optional[List[item_activity.ItemActivity]] = None
+    # Statistics about the create actions in this interval. Read-only.
+    create: Optional[item_action_stat.ItemActionStat] = None
+    # Statistics about the delete actions in this interval. Read-only.
+    delete: Optional[item_action_stat.ItemActionStat] = None
+    # Statistics about the edit actions in this interval. Read-only.
+    edit: Optional[item_action_stat.ItemActionStat] = None
+    # When the interval ends. Read-only.
+    end_date_time: Optional[datetime] = None
+    # Indicates that the statistics in this interval are based on incomplete data. Read-only.
+    incomplete_data: Optional[incomplete_data.IncompleteData] = None
+    # Indicates whether the item is 'trending.' Read-only.
+    is_trending: Optional[bool] = None
+    # Statistics about the move actions in this interval. Read-only.
+    move: Optional[item_action_stat.ItemActionStat] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # When the interval starts. Read-only.
+    start_date_time: Optional[datetime] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ItemActivityStat:
@@ -96,66 +42,17 @@ class ItemActivityStat(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ItemActivityStat
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return ItemActivityStat()
-    
-    @property
-    def delete(self,) -> Optional[item_action_stat.ItemActionStat]:
-        """
-        Gets the delete property value. Statistics about the delete actions in this interval. Read-only.
-        Returns: Optional[item_action_stat.ItemActionStat]
-        """
-        return self._delete
-    
-    @delete.setter
-    def delete(self,value: Optional[item_action_stat.ItemActionStat] = None) -> None:
-        """
-        Sets the delete property value. Statistics about the delete actions in this interval. Read-only.
-        Args:
-            value: Value to set for the delete property.
-        """
-        self._delete = value
-    
-    @property
-    def edit(self,) -> Optional[item_action_stat.ItemActionStat]:
-        """
-        Gets the edit property value. Statistics about the edit actions in this interval. Read-only.
-        Returns: Optional[item_action_stat.ItemActionStat]
-        """
-        return self._edit
-    
-    @edit.setter
-    def edit(self,value: Optional[item_action_stat.ItemActionStat] = None) -> None:
-        """
-        Sets the edit property value. Statistics about the edit actions in this interval. Read-only.
-        Args:
-            value: Value to set for the edit property.
-        """
-        self._edit = value
-    
-    @property
-    def end_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the endDateTime property value. When the interval ends. Read-only.
-        Returns: Optional[datetime]
-        """
-        return self._end_date_time
-    
-    @end_date_time.setter
-    def end_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the endDateTime property value. When the interval ends. Read-only.
-        Args:
-            value: Value to set for the end_date_time property.
-        """
-        self._end_date_time = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import entity, incomplete_data, item_action_stat, item_activity
+
         from . import entity, incomplete_data, item_action_stat, item_activity
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -174,65 +71,14 @@ class ItemActivityStat(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def incomplete_data(self,) -> Optional[incomplete_data.IncompleteData]:
-        """
-        Gets the incompleteData property value. Indicates that the statistics in this interval are based on incomplete data. Read-only.
-        Returns: Optional[incomplete_data.IncompleteData]
-        """
-        return self._incomplete_data
-    
-    @incomplete_data.setter
-    def incomplete_data(self,value: Optional[incomplete_data.IncompleteData] = None) -> None:
-        """
-        Sets the incompleteData property value. Indicates that the statistics in this interval are based on incomplete data. Read-only.
-        Args:
-            value: Value to set for the incomplete_data property.
-        """
-        self._incomplete_data = value
-    
-    @property
-    def is_trending(self,) -> Optional[bool]:
-        """
-        Gets the isTrending property value. Indicates whether the item is 'trending.' Read-only.
-        Returns: Optional[bool]
-        """
-        return self._is_trending
-    
-    @is_trending.setter
-    def is_trending(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isTrending property value. Indicates whether the item is 'trending.' Read-only.
-        Args:
-            value: Value to set for the is_trending property.
-        """
-        self._is_trending = value
-    
-    @property
-    def move(self,) -> Optional[item_action_stat.ItemActionStat]:
-        """
-        Gets the move property value. Statistics about the move actions in this interval. Read-only.
-        Returns: Optional[item_action_stat.ItemActionStat]
-        """
-        return self._move
-    
-    @move.setter
-    def move(self,value: Optional[item_action_stat.ItemActionStat] = None) -> None:
-        """
-        Sets the move property value. Statistics about the move actions in this interval. Read-only.
-        Args:
-            value: Value to set for the move property.
-        """
-        self._move = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("access", self.access)
         writer.write_collection_of_object_values("activities", self.activities)
@@ -244,22 +90,5 @@ class ItemActivityStat(entity.Entity):
         writer.write_bool_value("isTrending", self.is_trending)
         writer.write_object_value("move", self.move)
         writer.write_datetime_value("startDateTime", self.start_date_time)
-    
-    @property
-    def start_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the startDateTime property value. When the interval starts. Read-only.
-        Returns: Optional[datetime]
-        """
-        return self._start_date_time
-    
-    @start_date_time.setter
-    def start_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the startDateTime property value. When the interval starts. Read-only.
-        Args:
-            value: Value to set for the start_date_time property.
-        """
-        self._start_date_time = value
     
 

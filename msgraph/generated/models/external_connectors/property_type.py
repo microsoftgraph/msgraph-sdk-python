@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PropertyType(Enum):
+class PropertyType(str, Enum):
     String = "string",
     Int64 = "int64",
     Double = "double",

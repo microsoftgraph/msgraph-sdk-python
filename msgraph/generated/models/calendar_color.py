@@ -1,6 +1,6 @@
 from enum import Enum
 
-class CalendarColor(Enum):
+class CalendarColor(str, Enum):
     Auto = "auto",
     LightBlue = "lightBlue",
     LightGreen = "lightGreen",

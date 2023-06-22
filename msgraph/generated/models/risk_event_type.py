@@ -1,6 +1,6 @@
 from enum import Enum
 
-class RiskEventType(Enum):
+class RiskEventType(str, Enum):
     UnlikelyTravel = "unlikelyTravel",
     AnonymizedIPAddress = "anonymizedIPAddress",
     MaliciousIPAddress = "maliciousIPAddress",

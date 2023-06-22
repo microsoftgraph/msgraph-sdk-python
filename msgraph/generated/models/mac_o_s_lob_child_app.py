@@ -1,77 +1,24 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class MacOSLobChildApp(AdditionalDataHolder, Parsable):
     """
     Contains properties of a macOS .app in the package
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new macOSLobChildApp and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The build number of the app.
-        self._build_number: Optional[str] = None
-        # The bundleId of the app.
-        self._bundle_id: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The version number of the app.
-        self._version_number: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def build_number(self,) -> Optional[str]:
-        """
-        Gets the buildNumber property value. The build number of the app.
-        Returns: Optional[str]
-        """
-        return self._build_number
-    
-    @build_number.setter
-    def build_number(self,value: Optional[str] = None) -> None:
-        """
-        Sets the buildNumber property value. The build number of the app.
-        Args:
-            value: Value to set for the build_number property.
-        """
-        self._build_number = value
-    
-    @property
-    def bundle_id(self,) -> Optional[str]:
-        """
-        Gets the bundleId property value. The bundleId of the app.
-        Returns: Optional[str]
-        """
-        return self._bundle_id
-    
-    @bundle_id.setter
-    def bundle_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the bundleId property value. The bundleId of the app.
-        Args:
-            value: Value to set for the bundle_id property.
-        """
-        self._bundle_id = value
+    # The build number of the app.
+    build_number: Optional[str] = None
+    # The bundleId of the app.
+    bundle_id: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The version number of the app.
+    version_number: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MacOSLobChildApp:
@@ -81,8 +28,8 @@ class MacOSLobChildApp(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MacOSLobChildApp
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return MacOSLobChildApp()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -98,52 +45,18 @@ class MacOSLobChildApp(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_str_value("buildNumber", self.build_number)
         writer.write_str_value("bundleId", self.bundle_id)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("versionNumber", self.version_number)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def version_number(self,) -> Optional[str]:
-        """
-        Gets the versionNumber property value. The version number of the app.
-        Returns: Optional[str]
-        """
-        return self._version_number
-    
-    @version_number.setter
-    def version_number(self,value: Optional[str] = None) -> None:
-        """
-        Sets the versionNumber property value. The version number of the app.
-        Args:
-            value: Value to set for the version_number property.
-        """
-        self._version_number = value
     
 

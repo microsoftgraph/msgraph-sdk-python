@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ImageTaggingChoice(Enum):
+class ImageTaggingChoice(str, Enum):
     Disabled = "disabled",
     Basic = "basic",
     Enhanced = "enhanced",

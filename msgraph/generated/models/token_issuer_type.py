@@ -1,6 +1,6 @@
 from enum import Enum
 
-class TokenIssuerType(Enum):
+class TokenIssuerType(str, Enum):
     AzureAD = "AzureAD",
     ADFederationServices = "ADFederationServices",
     UnknownFutureValue = "UnknownFutureValue",

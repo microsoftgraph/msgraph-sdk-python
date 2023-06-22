@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ConnectionDirection(Enum):
+class ConnectionDirection(str, Enum):
     Unknown = "unknown",
     Inbound = "inbound",
     Outbound = "outbound",

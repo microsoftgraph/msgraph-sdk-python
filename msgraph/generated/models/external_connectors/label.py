@@ -1,6 +1,6 @@
 from enum import Enum
 
-class Label(Enum):
+class Label(str, Enum):
     Title = "title",
     Url = "url",
     CreatedBy = "createdBy",

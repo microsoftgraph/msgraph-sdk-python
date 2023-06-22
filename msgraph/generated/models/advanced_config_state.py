@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AdvancedConfigState(Enum):
+class AdvancedConfigState(str, Enum):
     Default = "default",
     Enabled = "enabled",
     Disabled = "disabled",

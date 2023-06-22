@@ -1,6 +1,6 @@
 from enum import Enum
 
-class InstallState(Enum):
+class InstallState(str, Enum):
     # Not Applicable.
     NotApplicable = "notApplicable",
     # Installed.

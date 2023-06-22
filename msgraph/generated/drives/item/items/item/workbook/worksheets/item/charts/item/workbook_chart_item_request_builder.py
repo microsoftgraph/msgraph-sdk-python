@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -37,10 +37,10 @@ class WorkbookChartItemRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not path_parameters:
+            raise TypeError("path_parameters cannot be null.")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/charts/{workbookChart%2Did}{?%24select,%24expand}"
 
@@ -96,8 +96,8 @@ class WorkbookChartItemRequestBuilder():
             width: Usage: width={width}
         Returns: image_with_width_request_builder.ImageWithWidthRequestBuilder
         """
-        if width is None:
-            raise Exception("width cannot be undefined")
+        if not width:
+            raise TypeError("width cannot be null.")
         from .image_with_width import image_with_width_request_builder
 
         return image_with_width_request_builder.ImageWithWidthRequestBuilder(self.request_adapter, self.path_parameters, width)
@@ -110,10 +110,10 @@ class WorkbookChartItemRequestBuilder():
             width: Usage: width={width}
         Returns: image_with_width_with_height_request_builder.ImageWithWidthWithHeightRequestBuilder
         """
-        if height is None:
-            raise Exception("height cannot be undefined")
-        if width is None:
-            raise Exception("width cannot be undefined")
+        if not height:
+            raise TypeError("height cannot be null.")
+        if not width:
+            raise TypeError("width cannot be null.")
         from .image_with_width_with_height import image_with_width_with_height_request_builder
 
         return image_with_width_with_height_request_builder.ImageWithWidthWithHeightRequestBuilder(self.request_adapter, self.path_parameters, height, width)
@@ -127,12 +127,12 @@ class WorkbookChartItemRequestBuilder():
             width: Usage: width={width}
         Returns: image_with_width_with_height_with_fitting_mode_request_builder.ImageWithWidthWithHeightWithFittingModeRequestBuilder
         """
-        if fitting_mode is None:
-            raise Exception("fitting_mode cannot be undefined")
-        if height is None:
-            raise Exception("height cannot be undefined")
-        if width is None:
-            raise Exception("width cannot be undefined")
+        if not fitting_mode:
+            raise TypeError("fitting_mode cannot be null.")
+        if not height:
+            raise TypeError("height cannot be null.")
+        if not width:
+            raise TypeError("width cannot be null.")
         from .image_with_width_with_height_with_fitting_mode import image_with_width_with_height_with_fitting_mode_request_builder
 
         return image_with_width_with_height_with_fitting_mode_request_builder.ImageWithWidthWithHeightWithFittingModeRequestBuilder(self.request_adapter, self.path_parameters, fitting_mode, height, width)
@@ -145,8 +145,8 @@ class WorkbookChartItemRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_chart.WorkbookChart]
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
@@ -204,8 +204,8 @@ class WorkbookChartItemRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
@@ -331,8 +331,8 @@ class WorkbookChartItemRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
+            if not original_name:
+                raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"
             if original_name == "select":

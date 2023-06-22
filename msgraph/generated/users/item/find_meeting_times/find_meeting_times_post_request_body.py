@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import timedelta
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -6,64 +7,27 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from ....models import attendee_base, location_constraint, time_constraint
 
+@dataclass
 class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new findMeetingTimesPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The attendees property
-        self._attendees: Optional[List[attendee_base.AttendeeBase]] = None
-        # The isOrganizerOptional property
-        self._is_organizer_optional: Optional[bool] = None
-        # The locationConstraint property
-        self._location_constraint: Optional[location_constraint.LocationConstraint] = None
-        # The maxCandidates property
-        self._max_candidates: Optional[int] = None
-        # The meetingDuration property
-        self._meeting_duration: Optional[timedelta] = None
-        # The minimumAttendeePercentage property
-        self._minimum_attendee_percentage: Optional[float] = None
-        # The returnSuggestionReasons property
-        self._return_suggestion_reasons: Optional[bool] = None
-        # The timeConstraint property
-        self._time_constraint: Optional[time_constraint.TimeConstraint] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def attendees(self,) -> Optional[List[attendee_base.AttendeeBase]]:
-        """
-        Gets the attendees property value. The attendees property
-        Returns: Optional[List[attendee_base.AttendeeBase]]
-        """
-        return self._attendees
-    
-    @attendees.setter
-    def attendees(self,value: Optional[List[attendee_base.AttendeeBase]] = None) -> None:
-        """
-        Sets the attendees property value. The attendees property
-        Args:
-            value: Value to set for the attendees property.
-        """
-        self._attendees = value
+    # The attendees property
+    attendees: Optional[List[attendee_base.AttendeeBase]] = None
+    # The isOrganizerOptional property
+    is_organizer_optional: Optional[bool] = None
+    # The locationConstraint property
+    location_constraint: Optional[location_constraint.LocationConstraint] = None
+    # The maxCandidates property
+    max_candidates: Optional[int] = None
+    # The meetingDuration property
+    meeting_duration: Optional[timedelta] = None
+    # The minimumAttendeePercentage property
+    minimum_attendee_percentage: Optional[float] = None
+    # The returnSuggestionReasons property
+    return_suggestion_reasons: Optional[bool] = None
+    # The timeConstraint property
+    time_constraint: Optional[time_constraint.TimeConstraint] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FindMeetingTimesPostRequestBody:
@@ -73,8 +37,8 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: FindMeetingTimesPostRequestBody
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return FindMeetingTimesPostRequestBody()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -82,6 +46,8 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from ....models import attendee_base, location_constraint, time_constraint
+
         from ....models import attendee_base, location_constraint, time_constraint
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -96,116 +62,14 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def is_organizer_optional(self,) -> Optional[bool]:
-        """
-        Gets the isOrganizerOptional property value. The isOrganizerOptional property
-        Returns: Optional[bool]
-        """
-        return self._is_organizer_optional
-    
-    @is_organizer_optional.setter
-    def is_organizer_optional(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isOrganizerOptional property value. The isOrganizerOptional property
-        Args:
-            value: Value to set for the is_organizer_optional property.
-        """
-        self._is_organizer_optional = value
-    
-    @property
-    def location_constraint(self,) -> Optional[location_constraint.LocationConstraint]:
-        """
-        Gets the locationConstraint property value. The locationConstraint property
-        Returns: Optional[location_constraint.LocationConstraint]
-        """
-        return self._location_constraint
-    
-    @location_constraint.setter
-    def location_constraint(self,value: Optional[location_constraint.LocationConstraint] = None) -> None:
-        """
-        Sets the locationConstraint property value. The locationConstraint property
-        Args:
-            value: Value to set for the location_constraint property.
-        """
-        self._location_constraint = value
-    
-    @property
-    def max_candidates(self,) -> Optional[int]:
-        """
-        Gets the maxCandidates property value. The maxCandidates property
-        Returns: Optional[int]
-        """
-        return self._max_candidates
-    
-    @max_candidates.setter
-    def max_candidates(self,value: Optional[int] = None) -> None:
-        """
-        Sets the maxCandidates property value. The maxCandidates property
-        Args:
-            value: Value to set for the max_candidates property.
-        """
-        self._max_candidates = value
-    
-    @property
-    def meeting_duration(self,) -> Optional[timedelta]:
-        """
-        Gets the meetingDuration property value. The meetingDuration property
-        Returns: Optional[timedelta]
-        """
-        return self._meeting_duration
-    
-    @meeting_duration.setter
-    def meeting_duration(self,value: Optional[timedelta] = None) -> None:
-        """
-        Sets the meetingDuration property value. The meetingDuration property
-        Args:
-            value: Value to set for the meeting_duration property.
-        """
-        self._meeting_duration = value
-    
-    @property
-    def minimum_attendee_percentage(self,) -> Optional[float]:
-        """
-        Gets the minimumAttendeePercentage property value. The minimumAttendeePercentage property
-        Returns: Optional[float]
-        """
-        return self._minimum_attendee_percentage
-    
-    @minimum_attendee_percentage.setter
-    def minimum_attendee_percentage(self,value: Optional[float] = None) -> None:
-        """
-        Sets the minimumAttendeePercentage property value. The minimumAttendeePercentage property
-        Args:
-            value: Value to set for the minimum_attendee_percentage property.
-        """
-        self._minimum_attendee_percentage = value
-    
-    @property
-    def return_suggestion_reasons(self,) -> Optional[bool]:
-        """
-        Gets the returnSuggestionReasons property value. The returnSuggestionReasons property
-        Returns: Optional[bool]
-        """
-        return self._return_suggestion_reasons
-    
-    @return_suggestion_reasons.setter
-    def return_suggestion_reasons(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the returnSuggestionReasons property value. The returnSuggestionReasons property
-        Args:
-            value: Value to set for the return_suggestion_reasons property.
-        """
-        self._return_suggestion_reasons = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_collection_of_object_values("attendees", self.attendees)
         writer.write_bool_value("isOrganizerOptional", self.is_organizer_optional)
         writer.write_object_value("locationConstraint", self.location_constraint)
@@ -215,22 +79,5 @@ class FindMeetingTimesPostRequestBody(AdditionalDataHolder, Parsable):
         writer.write_bool_value("returnSuggestionReasons", self.return_suggestion_reasons)
         writer.write_object_value("timeConstraint", self.time_constraint)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def time_constraint(self,) -> Optional[time_constraint.TimeConstraint]:
-        """
-        Gets the timeConstraint property value. The timeConstraint property
-        Returns: Optional[time_constraint.TimeConstraint]
-        """
-        return self._time_constraint
-    
-    @time_constraint.setter
-    def time_constraint(self,value: Optional[time_constraint.TimeConstraint] = None) -> None:
-        """
-        Sets the timeConstraint property value. The timeConstraint property
-        Args:
-            value: Value to set for the time_constraint property.
-        """
-        self._time_constraint = value
     
 

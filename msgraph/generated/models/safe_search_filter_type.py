@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SafeSearchFilterType(Enum):
+class SafeSearchFilterType(str, Enum):
     # User Defined, default value, no intent.
     UserDefined = "userDefined",
     # Strict, highest filtering against adult content.

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class TeamworkUserIdentityType(Enum):
+class TeamworkUserIdentityType(str, Enum):
     AadUser = "aadUser",
     OnPremiseAadUser = "onPremiseAadUser",
     AnonymousGuest = "anonymousGuest",

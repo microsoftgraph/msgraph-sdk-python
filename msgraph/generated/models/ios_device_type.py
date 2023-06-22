@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
+@dataclass
 class IosDeviceType(AdditionalDataHolder, Parsable):
     """
     Contains properties of the possible iOS device types the mobile app can run on.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new iosDeviceType and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Whether the app should run on iPads.
-        self._i_pad: Optional[bool] = None
-        # Whether the app should run on iPhones and iPods.
-        self._i_phone_and_i_pod: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Whether the app should run on iPads.
+    i_pad: Optional[bool] = None
+    # Whether the app should run on iPhones and iPods.
+    i_phone_and_i_pod: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosDeviceType:
@@ -45,8 +26,8 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IosDeviceType
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return IosDeviceType()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -61,65 +42,14 @@ class IosDeviceType(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def i_pad(self,) -> Optional[bool]:
-        """
-        Gets the iPad property value. Whether the app should run on iPads.
-        Returns: Optional[bool]
-        """
-        return self._i_pad
-    
-    @i_pad.setter
-    def i_pad(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the iPad property value. Whether the app should run on iPads.
-        Args:
-            value: Value to set for the i_pad property.
-        """
-        self._i_pad = value
-    
-    @property
-    def i_phone_and_i_pod(self,) -> Optional[bool]:
-        """
-        Gets the iPhoneAndIPod property value. Whether the app should run on iPhones and iPods.
-        Returns: Optional[bool]
-        """
-        return self._i_phone_and_i_pod
-    
-    @i_phone_and_i_pod.setter
-    def i_phone_and_i_pod(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the iPhoneAndIPod property value. Whether the app should run on iPhones and iPods.
-        Args:
-            value: Value to set for the i_phone_and_i_pod property.
-        """
-        self._i_phone_and_i_pod = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_bool_value("iPad", self.i_pad)
         writer.write_bool_value("iPhoneAndIPod", self.i_phone_and_i_pod)
         writer.write_str_value("@odata.type", self.odata_type)

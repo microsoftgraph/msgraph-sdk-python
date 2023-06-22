@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,21 +8,17 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
     """
     Windows Information Protection Network learning Summary entity.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new windowsInformationProtectionNetworkLearningSummary and sets the default values.
-        """
-        super().__init__()
-        # Device Count
-        self._device_count: Optional[int] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Website url
-        self._url: Optional[str] = None
+    # Device Count
+    device_count: Optional[int] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Website url
+    url: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsInformationProtectionNetworkLearningSummary:
@@ -31,32 +28,17 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WindowsInformationProtectionNetworkLearningSummary
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return WindowsInformationProtectionNetworkLearningSummary()
-    
-    @property
-    def device_count(self,) -> Optional[int]:
-        """
-        Gets the deviceCount property value. Device Count
-        Returns: Optional[int]
-        """
-        return self._device_count
-    
-    @device_count.setter
-    def device_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the deviceCount property value. Device Count
-        Args:
-            value: Value to set for the device_count property.
-        """
-        self._device_count = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import entity
+
         from . import entity
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -73,27 +55,10 @@ class WindowsInformationProtectionNetworkLearningSummary(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_int_value("deviceCount", self.device_count)
         writer.write_str_value("url", self.url)
-    
-    @property
-    def url(self,) -> Optional[str]:
-        """
-        Gets the url property value. Website url
-        Returns: Optional[str]
-        """
-        return self._url
-    
-    @url.setter
-    def url(self,value: Optional[str] = None) -> None:
-        """
-        Sets the url property value. Website url
-        Args:
-            value: Value to set for the url property.
-        """
-        self._url = value
     
 

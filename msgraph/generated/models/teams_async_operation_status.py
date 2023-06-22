@@ -1,6 +1,6 @@
 from enum import Enum
 
-class TeamsAsyncOperationStatus(Enum):
+class TeamsAsyncOperationStatus(str, Enum):
     Invalid = "invalid",
     NotStarted = "notStarted",
     InProgress = "inProgress",

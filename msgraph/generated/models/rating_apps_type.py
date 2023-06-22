@@ -1,6 +1,6 @@
 from enum import Enum
 
-class RatingAppsType(Enum):
+class RatingAppsType(str, Enum):
     # Default value, allow all apps content
     AllAllowed = "allAllowed",
     # Do not allow any apps content

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,53 +8,15 @@ if TYPE_CHECKING:
 
 from . import identity_provider_base
 
+@dataclass
 class SocialIdentityProvider(identity_provider_base.IdentityProviderBase):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new SocialIdentityProvider and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.socialIdentityProvider"
-        # The identifier for the client application obtained when registering the application with the identity provider. Required.
-        self._client_id: Optional[str] = None
-        # The client secret for the application that is obtained when the application is registered with the identity provider. This is write-only. A read operation returns ****. Required.
-        self._client_secret: Optional[str] = None
-        # For a B2B scenario, possible values: Google, Facebook. For a B2C scenario, possible values: Microsoft, Google, Amazon, LinkedIn, Facebook, GitHub, Twitter, Weibo, QQ, WeChat. Required.
-        self._identity_provider_type: Optional[str] = None
-    
-    @property
-    def client_id(self,) -> Optional[str]:
-        """
-        Gets the clientId property value. The identifier for the client application obtained when registering the application with the identity provider. Required.
-        Returns: Optional[str]
-        """
-        return self._client_id
-    
-    @client_id.setter
-    def client_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the clientId property value. The identifier for the client application obtained when registering the application with the identity provider. Required.
-        Args:
-            value: Value to set for the client_id property.
-        """
-        self._client_id = value
-    
-    @property
-    def client_secret(self,) -> Optional[str]:
-        """
-        Gets the clientSecret property value. The client secret for the application that is obtained when the application is registered with the identity provider. This is write-only. A read operation returns ****. Required.
-        Returns: Optional[str]
-        """
-        return self._client_secret
-    
-    @client_secret.setter
-    def client_secret(self,value: Optional[str] = None) -> None:
-        """
-        Sets the clientSecret property value. The client secret for the application that is obtained when the application is registered with the identity provider. This is write-only. A read operation returns ****. Required.
-        Args:
-            value: Value to set for the client_secret property.
-        """
-        self._client_secret = value
+    odata_type = "#microsoft.graph.socialIdentityProvider"
+    # The identifier for the client application obtained when registering the application with the identity provider. Required.
+    client_id: Optional[str] = None
+    # The client secret for the application that is obtained when the application is registered with the identity provider. This is write-only. A read operation returns ****. Required.
+    client_secret: Optional[str] = None
+    # For a B2B scenario, possible values: Google, Facebook. For a B2C scenario, possible values: Microsoft, Google, Amazon, LinkedIn, Facebook, GitHub, Twitter, Weibo, QQ, WeChat. Required.
+    identity_provider_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> SocialIdentityProvider:
@@ -63,8 +26,8 @@ class SocialIdentityProvider(identity_provider_base.IdentityProviderBase):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: SocialIdentityProvider
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return SocialIdentityProvider()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -72,6 +35,8 @@ class SocialIdentityProvider(identity_provider_base.IdentityProviderBase):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import identity_provider_base
+
         from . import identity_provider_base
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -83,31 +48,14 @@ class SocialIdentityProvider(identity_provider_base.IdentityProviderBase):
         fields.update(super_fields)
         return fields
     
-    @property
-    def identity_provider_type(self,) -> Optional[str]:
-        """
-        Gets the identityProviderType property value. For a B2B scenario, possible values: Google, Facebook. For a B2C scenario, possible values: Microsoft, Google, Amazon, LinkedIn, Facebook, GitHub, Twitter, Weibo, QQ, WeChat. Required.
-        Returns: Optional[str]
-        """
-        return self._identity_provider_type
-    
-    @identity_provider_type.setter
-    def identity_provider_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the identityProviderType property value. For a B2B scenario, possible values: Google, Facebook. For a B2C scenario, possible values: Microsoft, Google, Amazon, LinkedIn, Facebook, GitHub, Twitter, Weibo, QQ, WeChat. Required.
-        Args:
-            value: Value to set for the identity_provider_type property.
-        """
-        self._identity_provider_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("clientId", self.client_id)
         writer.write_str_value("clientSecret", self.client_secret)

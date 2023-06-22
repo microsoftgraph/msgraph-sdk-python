@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AppCredentialRestrictionType(Enum):
+class AppCredentialRestrictionType(str, Enum):
     PasswordAddition = "passwordAddition",
     PasswordLifetime = "passwordLifetime",
     SymmetricKeyAddition = "symmetricKeyAddition",

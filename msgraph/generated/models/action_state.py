@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ActionState(Enum):
+class ActionState(str, Enum):
     # Not a valid action state
     None_ = "none",
     # Action is pending

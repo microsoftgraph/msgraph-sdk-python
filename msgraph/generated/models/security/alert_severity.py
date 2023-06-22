@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AlertSeverity(Enum):
+class AlertSeverity(str, Enum):
     Unknown = "unknown",
     Informational = "informational",
     Low = "low",

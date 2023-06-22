@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
@@ -8,20 +9,16 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class LicenseDetails(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new licenseDetails and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Information about the service plans assigned with the license. Read-only, Not nullable
-        self._service_plans: Optional[List[service_plan_info.ServicePlanInfo]] = None
-        # Unique identifier (GUID) for the service SKU. Equal to the skuId property on the related SubscribedSku object. Read-only
-        self._sku_id: Optional[UUID] = None
-        # Unique SKU display name. Equal to the skuPartNumber on the related SubscribedSku object; for example: 'AAD_Premium'. Read-only
-        self._sku_part_number: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Information about the service plans assigned with the license. Read-only, Not nullable
+    service_plans: Optional[List[service_plan_info.ServicePlanInfo]] = None
+    # Unique identifier (GUID) for the service SKU. Equal to the skuId property on the related SubscribedSku object. Read-only
+    sku_id: Optional[UUID] = None
+    # Unique SKU display name. Equal to the skuPartNumber on the related SubscribedSku object; for example: 'AAD_Premium'. Read-only
+    sku_part_number: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LicenseDetails:
@@ -31,8 +28,8 @@ class LicenseDetails(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: LicenseDetails
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return LicenseDetails()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -40,6 +37,8 @@ class LicenseDetails(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import entity, service_plan_info
+
         from . import entity, service_plan_info
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -57,62 +56,11 @@ class LicenseDetails(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("servicePlans", self.service_plans)
         writer.write_uuid_value("skuId", self.sku_id)
         writer.write_str_value("skuPartNumber", self.sku_part_number)
-    
-    @property
-    def service_plans(self,) -> Optional[List[service_plan_info.ServicePlanInfo]]:
-        """
-        Gets the servicePlans property value. Information about the service plans assigned with the license. Read-only, Not nullable
-        Returns: Optional[List[service_plan_info.ServicePlanInfo]]
-        """
-        return self._service_plans
-    
-    @service_plans.setter
-    def service_plans(self,value: Optional[List[service_plan_info.ServicePlanInfo]] = None) -> None:
-        """
-        Sets the servicePlans property value. Information about the service plans assigned with the license. Read-only, Not nullable
-        Args:
-            value: Value to set for the service_plans property.
-        """
-        self._service_plans = value
-    
-    @property
-    def sku_id(self,) -> Optional[UUID]:
-        """
-        Gets the skuId property value. Unique identifier (GUID) for the service SKU. Equal to the skuId property on the related SubscribedSku object. Read-only
-        Returns: Optional[UUID]
-        """
-        return self._sku_id
-    
-    @sku_id.setter
-    def sku_id(self,value: Optional[UUID] = None) -> None:
-        """
-        Sets the skuId property value. Unique identifier (GUID) for the service SKU. Equal to the skuId property on the related SubscribedSku object. Read-only
-        Args:
-            value: Value to set for the sku_id property.
-        """
-        self._sku_id = value
-    
-    @property
-    def sku_part_number(self,) -> Optional[str]:
-        """
-        Gets the skuPartNumber property value. Unique SKU display name. Equal to the skuPartNumber on the related SubscribedSku object; for example: 'AAD_Premium'. Read-only
-        Returns: Optional[str]
-        """
-        return self._sku_part_number
-    
-    @sku_part_number.setter
-    def sku_part_number(self,value: Optional[str] = None) -> None:
-        """
-        Sets the skuPartNumber property value. Unique SKU display name. Equal to the skuPartNumber on the related SubscribedSku object; for example: 'AAD_Premium'. Read-only
-        Args:
-            value: Value to set for the sku_part_number property.
-        """
-        self._sku_part_number = value
     
 

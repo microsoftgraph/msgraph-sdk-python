@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class PinnedChatMessageInfo(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new pinnedChatMessageInfo and sets the default values.
-        """
-        super().__init__()
-        # Represents details about the chat message that is pinned.
-        self._message: Optional[chat_message.ChatMessage] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # Represents details about the chat message that is pinned.
+    message: Optional[chat_message.ChatMessage] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PinnedChatMessageInfo:
@@ -26,8 +23,8 @@ class PinnedChatMessageInfo(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PinnedChatMessageInfo
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return PinnedChatMessageInfo()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -37,6 +34,8 @@ class PinnedChatMessageInfo(entity.Entity):
         """
         from . import chat_message, entity
 
+        from . import chat_message, entity
+
         fields: Dict[str, Callable[[Any], None]] = {
             "message": lambda n : setattr(self, 'message', n.get_object_value(chat_message.ChatMessage)),
         }
@@ -44,31 +43,14 @@ class PinnedChatMessageInfo(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def message(self,) -> Optional[chat_message.ChatMessage]:
-        """
-        Gets the message property value. Represents details about the chat message that is pinned.
-        Returns: Optional[chat_message.ChatMessage]
-        """
-        return self._message
-    
-    @message.setter
-    def message(self,value: Optional[chat_message.ChatMessage] = None) -> None:
-        """
-        Sets the message property value. Represents details about the chat message that is pinned.
-        Args:
-            value: Value to set for the message property.
-        """
-        self._message = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("message", self.message)
     

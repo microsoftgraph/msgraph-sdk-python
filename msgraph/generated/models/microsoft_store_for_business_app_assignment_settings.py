@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import mobile_app_assignment_settings
 
+@dataclass
 class MicrosoftStoreForBusinessAppAssignmentSettings(mobile_app_assignment_settings.MobileAppAssignmentSettings):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new MicrosoftStoreForBusinessAppAssignmentSettings and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.microsoftStoreForBusinessAppAssignmentSettings"
-        # Whether or not to use device execution context for Microsoft Store for Business mobile app.
-        self._use_device_context: Optional[bool] = None
+    odata_type = "#microsoft.graph.microsoftStoreForBusinessAppAssignmentSettings"
+    # Whether or not to use device execution context for Microsoft Store for Business mobile app.
+    use_device_context: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MicrosoftStoreForBusinessAppAssignmentSettings:
@@ -25,8 +22,8 @@ class MicrosoftStoreForBusinessAppAssignmentSettings(mobile_app_assignment_setti
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MicrosoftStoreForBusinessAppAssignmentSettings
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return MicrosoftStoreForBusinessAppAssignmentSettings()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -34,6 +31,8 @@ class MicrosoftStoreForBusinessAppAssignmentSettings(mobile_app_assignment_setti
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import mobile_app_assignment_settings
+
         from . import mobile_app_assignment_settings
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -49,26 +48,9 @@ class MicrosoftStoreForBusinessAppAssignmentSettings(mobile_app_assignment_setti
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("useDeviceContext", self.use_device_context)
-    
-    @property
-    def use_device_context(self,) -> Optional[bool]:
-        """
-        Gets the useDeviceContext property value. Whether or not to use device execution context for Microsoft Store for Business mobile app.
-        Returns: Optional[bool]
-        """
-        return self._use_device_context
-    
-    @use_device_context.setter
-    def use_device_context(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the useDeviceContext property value. Whether or not to use device execution context for Microsoft Store for Business mobile app.
-        Args:
-            value: Value to set for the use_device_context property.
-        """
-        self._use_device_context = value
     
 

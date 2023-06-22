@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ObjectDefinitionMetadata(Enum):
+class ObjectDefinitionMetadata(str, Enum):
     PropertyNameAccountEnabled = "PropertyNameAccountEnabled",
     PropertyNameSoftDeleted = "PropertyNameSoftDeleted",
     IsSoftDeletionSupported = "IsSoftDeletionSupported",

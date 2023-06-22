@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,30 +8,26 @@ if TYPE_CHECKING:
 
 from . import device_management_troubleshooting_event
 
+@dataclass
 class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.DeviceManagementTroubleshootingEvent):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EnrollmentTroubleshootingEvent and sets the default values.
-        """
-        super().__init__()
-        # Azure AD device identifier.
-        self._device_id: Optional[str] = None
-        # Possible ways of adding a mobile device to management.
-        self._enrollment_type: Optional[device_enrollment_type.DeviceEnrollmentType] = None
-        # Top level failure categories for enrollment.
-        self._failure_category: Optional[device_enrollment_failure_reason.DeviceEnrollmentFailureReason] = None
-        # Detailed failure reason.
-        self._failure_reason: Optional[str] = None
-        # Device identifier created or collected by Intune.
-        self._managed_device_identifier: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Operating System.
-        self._operating_system: Optional[str] = None
-        # OS Version.
-        self._os_version: Optional[str] = None
-        # Identifier for the user that tried to enroll the device.
-        self._user_id: Optional[str] = None
+    # Azure AD device identifier.
+    device_id: Optional[str] = None
+    # Possible ways of adding a mobile device to management.
+    enrollment_type: Optional[device_enrollment_type.DeviceEnrollmentType] = None
+    # Top level failure categories for enrollment.
+    failure_category: Optional[device_enrollment_failure_reason.DeviceEnrollmentFailureReason] = None
+    # Detailed failure reason.
+    failure_reason: Optional[str] = None
+    # Device identifier created or collected by Intune.
+    managed_device_identifier: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Operating System.
+    operating_system: Optional[str] = None
+    # OS Version.
+    os_version: Optional[str] = None
+    # Identifier for the user that tried to enroll the device.
+    user_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EnrollmentTroubleshootingEvent:
@@ -40,83 +37,17 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EnrollmentTroubleshootingEvent
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return EnrollmentTroubleshootingEvent()
-    
-    @property
-    def device_id(self,) -> Optional[str]:
-        """
-        Gets the deviceId property value. Azure AD device identifier.
-        Returns: Optional[str]
-        """
-        return self._device_id
-    
-    @device_id.setter
-    def device_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the deviceId property value. Azure AD device identifier.
-        Args:
-            value: Value to set for the device_id property.
-        """
-        self._device_id = value
-    
-    @property
-    def enrollment_type(self,) -> Optional[device_enrollment_type.DeviceEnrollmentType]:
-        """
-        Gets the enrollmentType property value. Possible ways of adding a mobile device to management.
-        Returns: Optional[device_enrollment_type.DeviceEnrollmentType]
-        """
-        return self._enrollment_type
-    
-    @enrollment_type.setter
-    def enrollment_type(self,value: Optional[device_enrollment_type.DeviceEnrollmentType] = None) -> None:
-        """
-        Sets the enrollmentType property value. Possible ways of adding a mobile device to management.
-        Args:
-            value: Value to set for the enrollment_type property.
-        """
-        self._enrollment_type = value
-    
-    @property
-    def failure_category(self,) -> Optional[device_enrollment_failure_reason.DeviceEnrollmentFailureReason]:
-        """
-        Gets the failureCategory property value. Top level failure categories for enrollment.
-        Returns: Optional[device_enrollment_failure_reason.DeviceEnrollmentFailureReason]
-        """
-        return self._failure_category
-    
-    @failure_category.setter
-    def failure_category(self,value: Optional[device_enrollment_failure_reason.DeviceEnrollmentFailureReason] = None) -> None:
-        """
-        Sets the failureCategory property value. Top level failure categories for enrollment.
-        Args:
-            value: Value to set for the failure_category property.
-        """
-        self._failure_category = value
-    
-    @property
-    def failure_reason(self,) -> Optional[str]:
-        """
-        Gets the failureReason property value. Detailed failure reason.
-        Returns: Optional[str]
-        """
-        return self._failure_reason
-    
-    @failure_reason.setter
-    def failure_reason(self,value: Optional[str] = None) -> None:
-        """
-        Sets the failureReason property value. Detailed failure reason.
-        Args:
-            value: Value to set for the failure_reason property.
-        """
-        self._failure_reason = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import device_enrollment_failure_reason, device_enrollment_type, device_management_troubleshooting_event
+
         from . import device_enrollment_failure_reason, device_enrollment_type, device_management_troubleshooting_event
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -133,65 +64,14 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         fields.update(super_fields)
         return fields
     
-    @property
-    def managed_device_identifier(self,) -> Optional[str]:
-        """
-        Gets the managedDeviceIdentifier property value. Device identifier created or collected by Intune.
-        Returns: Optional[str]
-        """
-        return self._managed_device_identifier
-    
-    @managed_device_identifier.setter
-    def managed_device_identifier(self,value: Optional[str] = None) -> None:
-        """
-        Sets the managedDeviceIdentifier property value. Device identifier created or collected by Intune.
-        Args:
-            value: Value to set for the managed_device_identifier property.
-        """
-        self._managed_device_identifier = value
-    
-    @property
-    def operating_system(self,) -> Optional[str]:
-        """
-        Gets the operatingSystem property value. Operating System.
-        Returns: Optional[str]
-        """
-        return self._operating_system
-    
-    @operating_system.setter
-    def operating_system(self,value: Optional[str] = None) -> None:
-        """
-        Sets the operatingSystem property value. Operating System.
-        Args:
-            value: Value to set for the operating_system property.
-        """
-        self._operating_system = value
-    
-    @property
-    def os_version(self,) -> Optional[str]:
-        """
-        Gets the osVersion property value. OS Version.
-        Returns: Optional[str]
-        """
-        return self._os_version
-    
-    @os_version.setter
-    def os_version(self,value: Optional[str] = None) -> None:
-        """
-        Sets the osVersion property value. OS Version.
-        Args:
-            value: Value to set for the os_version property.
-        """
-        self._os_version = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("deviceId", self.device_id)
         writer.write_enum_value("enrollmentType", self.enrollment_type)
@@ -201,22 +81,5 @@ class EnrollmentTroubleshootingEvent(device_management_troubleshooting_event.Dev
         writer.write_str_value("operatingSystem", self.operating_system)
         writer.write_str_value("osVersion", self.os_version)
         writer.write_str_value("userId", self.user_id)
-    
-    @property
-    def user_id(self,) -> Optional[str]:
-        """
-        Gets the userId property value. Identifier for the user that tried to enroll the device.
-        Returns: Optional[str]
-        """
-        return self._user_id
-    
-    @user_id.setter
-    def user_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the userId property value. Identifier for the user that tried to enroll the device.
-        Args:
-            value: Value to set for the user_id property.
-        """
-        self._user_id = value
     
 

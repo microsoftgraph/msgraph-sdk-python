@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DataPolicyOperationStatus(Enum):
+class DataPolicyOperationStatus(str, Enum):
     NotStarted = "notStarted",
     Running = "running",
     Complete = "complete",

@@ -1,58 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models import json
 
+@dataclass
 class Z_TestPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new z_TestPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The array property
-        self._array: Optional[json.Json] = None
-        # The sigma property
-        self._sigma: Optional[json.Json] = None
-        # The x property
-        self._x: Optional[json.Json] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def array(self,) -> Optional[json.Json]:
-        """
-        Gets the array property value. The array property
-        Returns: Optional[json.Json]
-        """
-        return self._array
-    
-    @array.setter
-    def array(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the array property value. The array property
-        Args:
-            value: Value to set for the array property.
-        """
-        self._array = value
+    # The array property
+    array: Optional[json.Json] = None
+    # The sigma property
+    sigma: Optional[json.Json] = None
+    # The x property
+    x: Optional[json.Json] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Z_TestPostRequestBody:
@@ -62,8 +26,8 @@ class Z_TestPostRequestBody(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Z_TestPostRequestBody
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return Z_TestPostRequestBody()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -71,6 +35,8 @@ class Z_TestPostRequestBody(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from ........models import json
+
         from ........models import json
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -86,45 +52,11 @@ class Z_TestPostRequestBody(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_object_value("array", self.array)
         writer.write_object_value("sigma", self.sigma)
         writer.write_object_value("x", self.x)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def sigma(self,) -> Optional[json.Json]:
-        """
-        Gets the sigma property value. The sigma property
-        Returns: Optional[json.Json]
-        """
-        return self._sigma
-    
-    @sigma.setter
-    def sigma(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the sigma property value. The sigma property
-        Args:
-            value: Value to set for the sigma property.
-        """
-        self._sigma = value
-    
-    @property
-    def x(self,) -> Optional[json.Json]:
-        """
-        Gets the x property value. The x property
-        Returns: Optional[json.Json]
-        """
-        return self._x
-    
-    @x.setter
-    def x(self,value: Optional[json.Json] = None) -> None:
-        """
-        Sets the x property value. The x property
-        Args:
-            value: Value to set for the x property.
-        """
-        self._x = value
     
 

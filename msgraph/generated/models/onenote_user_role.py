@@ -1,6 +1,6 @@
 from enum import Enum
 
-class OnenoteUserRole(Enum):
+class OnenoteUserRole(str, Enum):
     None_ = "None",
     Owner = "Owner",
     Contributor = "Contributor",

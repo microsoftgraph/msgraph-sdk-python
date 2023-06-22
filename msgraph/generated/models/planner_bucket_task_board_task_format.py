@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class PlannerBucketTaskBoardTaskFormat(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new plannerBucketTaskBoardTaskFormat and sets the default values.
-        """
-        super().__init__()
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Hint used to order tasks in the bucket view of the task board. For details about the supported format, see Using order hints in Planner.
-        self._order_hint: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Hint used to order tasks in the bucket view of the task board. For details about the supported format, see Using order hints in Planner.
+    order_hint: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PlannerBucketTaskBoardTaskFormat:
@@ -26,8 +23,8 @@ class PlannerBucketTaskBoardTaskFormat(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PlannerBucketTaskBoardTaskFormat
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return PlannerBucketTaskBoardTaskFormat()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -37,6 +34,8 @@ class PlannerBucketTaskBoardTaskFormat(entity.Entity):
         """
         from . import entity
 
+        from . import entity
+
         fields: Dict[str, Callable[[Any], None]] = {
             "orderHint": lambda n : setattr(self, 'order_hint', n.get_str_value()),
         }
@@ -44,31 +43,14 @@ class PlannerBucketTaskBoardTaskFormat(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def order_hint(self,) -> Optional[str]:
-        """
-        Gets the orderHint property value. Hint used to order tasks in the bucket view of the task board. For details about the supported format, see Using order hints in Planner.
-        Returns: Optional[str]
-        """
-        return self._order_hint
-    
-    @order_hint.setter
-    def order_hint(self,value: Optional[str] = None) -> None:
-        """
-        Sets the orderHint property value. Hint used to order tasks in the bucket view of the task board. For details about the supported format, see Using order hints in Planner.
-        Args:
-            value: Value to set for the order_hint property.
-        """
-        self._order_hint = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("orderHint", self.order_hint)
     

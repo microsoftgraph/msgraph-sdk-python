@@ -1,6 +1,6 @@
 from enum import Enum
 
-class RiskState(Enum):
+class RiskState(str, Enum):
     None_ = "none",
     ConfirmedSafe = "confirmedSafe",
     Remediated = "remediated",

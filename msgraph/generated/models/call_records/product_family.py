@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ProductFamily(Enum):
+class ProductFamily(str, Enum):
     Unknown = "unknown",
     Teams = "teams",
     SkypeForBusiness = "skypeForBusiness",

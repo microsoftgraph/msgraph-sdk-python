@@ -1,6 +1,6 @@
 from enum import Enum
 
-class EnrollmentState(Enum):
+class EnrollmentState(str, Enum):
     # Device enrollment state is unknown
     Unknown = "unknown",
     # Device is Enrolled.

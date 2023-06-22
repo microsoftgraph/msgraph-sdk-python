@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AudioCodec(Enum):
+class AudioCodec(str, Enum):
     Unknown = "unknown",
     Invalid = "invalid",
     Cn = "cn",

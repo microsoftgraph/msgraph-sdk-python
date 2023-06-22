@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import agreement_file_properties
 
+@dataclass
 class AgreementFile(agreement_file_properties.AgreementFileProperties):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new AgreementFile and sets the default values.
-        """
-        super().__init__()
-        # The localized version of the terms of use agreement files attached to the agreement.
-        self._localizations: Optional[List[agreement_file_localization.AgreementFileLocalization]] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # The localized version of the terms of use agreement files attached to the agreement.
+    localizations: Optional[List[agreement_file_localization.AgreementFileLocalization]] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> AgreementFile:
@@ -26,8 +23,8 @@ class AgreementFile(agreement_file_properties.AgreementFileProperties):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: AgreementFile
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return AgreementFile()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -37,6 +34,8 @@ class AgreementFile(agreement_file_properties.AgreementFileProperties):
         """
         from . import agreement_file_localization, agreement_file_properties
 
+        from . import agreement_file_localization, agreement_file_properties
+
         fields: Dict[str, Callable[[Any], None]] = {
             "localizations": lambda n : setattr(self, 'localizations', n.get_collection_of_object_values(agreement_file_localization.AgreementFileLocalization)),
         }
@@ -44,31 +43,14 @@ class AgreementFile(agreement_file_properties.AgreementFileProperties):
         fields.update(super_fields)
         return fields
     
-    @property
-    def localizations(self,) -> Optional[List[agreement_file_localization.AgreementFileLocalization]]:
-        """
-        Gets the localizations property value. The localized version of the terms of use agreement files attached to the agreement.
-        Returns: Optional[List[agreement_file_localization.AgreementFileLocalization]]
-        """
-        return self._localizations
-    
-    @localizations.setter
-    def localizations(self,value: Optional[List[agreement_file_localization.AgreementFileLocalization]] = None) -> None:
-        """
-        Sets the localizations property value. The localized version of the terms of use agreement files attached to the agreement.
-        Args:
-            value: Value to set for the localizations property.
-        """
-        self._localizations = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("localizations", self.localizations)
     

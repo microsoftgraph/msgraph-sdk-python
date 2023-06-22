@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ConnectedOrganizationState(Enum):
+class ConnectedOrganizationState(str, Enum):
     Configured = "configured",
     Proposed = "proposed",
     UnknownFutureValue = "unknownFutureValue",

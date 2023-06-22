@@ -1,6 +1,6 @@
 from enum import Enum
 
-class UserPurpose(Enum):
+class UserPurpose(str, Enum):
     User = "user",
     Linked = "linked",
     Shared = "shared",

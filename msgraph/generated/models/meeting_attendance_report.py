@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,39 +9,18 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class MeetingAttendanceReport(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new meetingAttendanceReport and sets the default values.
-        """
-        super().__init__()
-        # List of attendance records of an attendance report. Read-only.
-        self._attendance_records: Optional[List[attendance_record.AttendanceRecord]] = None
-        # UTC time when the meeting ended. Read-only.
-        self._meeting_end_date_time: Optional[datetime] = None
-        # UTC time when the meeting started. Read-only.
-        self._meeting_start_date_time: Optional[datetime] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # Total number of participants. Read-only.
-        self._total_participant_count: Optional[int] = None
-    
-    @property
-    def attendance_records(self,) -> Optional[List[attendance_record.AttendanceRecord]]:
-        """
-        Gets the attendanceRecords property value. List of attendance records of an attendance report. Read-only.
-        Returns: Optional[List[attendance_record.AttendanceRecord]]
-        """
-        return self._attendance_records
-    
-    @attendance_records.setter
-    def attendance_records(self,value: Optional[List[attendance_record.AttendanceRecord]] = None) -> None:
-        """
-        Sets the attendanceRecords property value. List of attendance records of an attendance report. Read-only.
-        Args:
-            value: Value to set for the attendance_records property.
-        """
-        self._attendance_records = value
+    # List of attendance records of an attendance report. Read-only.
+    attendance_records: Optional[List[attendance_record.AttendanceRecord]] = None
+    # UTC time when the meeting ended. Read-only.
+    meeting_end_date_time: Optional[datetime] = None
+    # UTC time when the meeting started. Read-only.
+    meeting_start_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Total number of participants. Read-only.
+    total_participant_count: Optional[int] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> MeetingAttendanceReport:
@@ -50,8 +30,8 @@ class MeetingAttendanceReport(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: MeetingAttendanceReport
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return MeetingAttendanceReport()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -59,6 +39,8 @@ class MeetingAttendanceReport(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import attendance_record, entity
+
         from . import attendance_record, entity
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -71,69 +53,18 @@ class MeetingAttendanceReport(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def meeting_end_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the meetingEndDateTime property value. UTC time when the meeting ended. Read-only.
-        Returns: Optional[datetime]
-        """
-        return self._meeting_end_date_time
-    
-    @meeting_end_date_time.setter
-    def meeting_end_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the meetingEndDateTime property value. UTC time when the meeting ended. Read-only.
-        Args:
-            value: Value to set for the meeting_end_date_time property.
-        """
-        self._meeting_end_date_time = value
-    
-    @property
-    def meeting_start_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the meetingStartDateTime property value. UTC time when the meeting started. Read-only.
-        Returns: Optional[datetime]
-        """
-        return self._meeting_start_date_time
-    
-    @meeting_start_date_time.setter
-    def meeting_start_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the meetingStartDateTime property value. UTC time when the meeting started. Read-only.
-        Args:
-            value: Value to set for the meeting_start_date_time property.
-        """
-        self._meeting_start_date_time = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("attendanceRecords", self.attendance_records)
         writer.write_datetime_value("meetingEndDateTime", self.meeting_end_date_time)
         writer.write_datetime_value("meetingStartDateTime", self.meeting_start_date_time)
         writer.write_int_value("totalParticipantCount", self.total_participant_count)
-    
-    @property
-    def total_participant_count(self,) -> Optional[int]:
-        """
-        Gets the totalParticipantCount property value. Total number of participants. Read-only.
-        Returns: Optional[int]
-        """
-        return self._total_participant_count
-    
-    @total_participant_count.setter
-    def total_participant_count(self,value: Optional[int] = None) -> None:
-        """
-        Sets the totalParticipantCount property value. Total number of participants. Read-only.
-        Args:
-            value: Value to set for the total_participant_count property.
-        """
-        self._total_participant_count = value
     
 

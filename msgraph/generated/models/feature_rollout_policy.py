@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,43 +8,22 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class FeatureRolloutPolicy(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new featureRolloutPolicy and sets the default values.
-        """
-        super().__init__()
-        # Nullable. Specifies a list of directoryObjects that feature is enabled for.
-        self._applies_to: Optional[List[directory_object.DirectoryObject]] = None
-        # A description for this feature rollout policy.
-        self._description: Optional[str] = None
-        # The display name for this  feature rollout policy.
-        self._display_name: Optional[str] = None
-        # The feature property
-        self._feature: Optional[staged_feature_name.StagedFeatureName] = None
-        # Indicates whether this feature rollout policy should be applied to the entire organization.
-        self._is_applied_to_organization: Optional[bool] = None
-        # Indicates whether the feature rollout is enabled.
-        self._is_enabled: Optional[bool] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-    
-    @property
-    def applies_to(self,) -> Optional[List[directory_object.DirectoryObject]]:
-        """
-        Gets the appliesTo property value. Nullable. Specifies a list of directoryObjects that feature is enabled for.
-        Returns: Optional[List[directory_object.DirectoryObject]]
-        """
-        return self._applies_to
-    
-    @applies_to.setter
-    def applies_to(self,value: Optional[List[directory_object.DirectoryObject]] = None) -> None:
-        """
-        Sets the appliesTo property value. Nullable. Specifies a list of directoryObjects that feature is enabled for.
-        Args:
-            value: Value to set for the applies_to property.
-        """
-        self._applies_to = value
+    # Nullable. Specifies a list of directoryObjects that feature is enabled for.
+    applies_to: Optional[List[directory_object.DirectoryObject]] = None
+    # A description for this feature rollout policy.
+    description: Optional[str] = None
+    # The display name for this  feature rollout policy.
+    display_name: Optional[str] = None
+    # The feature property
+    feature: Optional[staged_feature_name.StagedFeatureName] = None
+    # Indicates whether this feature rollout policy should be applied to the entire organization.
+    is_applied_to_organization: Optional[bool] = None
+    # Indicates whether the feature rollout is enabled.
+    is_enabled: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> FeatureRolloutPolicy:
@@ -53,66 +33,17 @@ class FeatureRolloutPolicy(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: FeatureRolloutPolicy
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return FeatureRolloutPolicy()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. A description for this feature rollout policy.
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. A description for this feature rollout policy.
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. The display name for this  feature rollout policy.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. The display name for this  feature rollout policy.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
-    @property
-    def feature(self,) -> Optional[staged_feature_name.StagedFeatureName]:
-        """
-        Gets the feature property value. The feature property
-        Returns: Optional[staged_feature_name.StagedFeatureName]
-        """
-        return self._feature
-    
-    @feature.setter
-    def feature(self,value: Optional[staged_feature_name.StagedFeatureName] = None) -> None:
-        """
-        Sets the feature property value. The feature property
-        Args:
-            value: Value to set for the feature property.
-        """
-        self._feature = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import directory_object, entity, staged_feature_name
+
         from . import directory_object, entity, staged_feature_name
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -127,48 +58,14 @@ class FeatureRolloutPolicy(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def is_applied_to_organization(self,) -> Optional[bool]:
-        """
-        Gets the isAppliedToOrganization property value. Indicates whether this feature rollout policy should be applied to the entire organization.
-        Returns: Optional[bool]
-        """
-        return self._is_applied_to_organization
-    
-    @is_applied_to_organization.setter
-    def is_applied_to_organization(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isAppliedToOrganization property value. Indicates whether this feature rollout policy should be applied to the entire organization.
-        Args:
-            value: Value to set for the is_applied_to_organization property.
-        """
-        self._is_applied_to_organization = value
-    
-    @property
-    def is_enabled(self,) -> Optional[bool]:
-        """
-        Gets the isEnabled property value. Indicates whether the feature rollout is enabled.
-        Returns: Optional[bool]
-        """
-        return self._is_enabled
-    
-    @is_enabled.setter
-    def is_enabled(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isEnabled property value. Indicates whether the feature rollout is enabled.
-        Args:
-            value: Value to set for the is_enabled property.
-        """
-        self._is_enabled = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("appliesTo", self.applies_to)
         writer.write_str_value("description", self.description)

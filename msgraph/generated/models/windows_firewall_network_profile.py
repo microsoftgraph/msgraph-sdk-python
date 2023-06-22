@@ -1,98 +1,45 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import state_management_setting
 
+@dataclass
 class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
     """
     Windows Firewall Profile Policies.
     """
-    def __init__(self,) -> None:
-        """
-        Instantiates a new windowsFirewallNetworkProfile and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Configures the firewall to merge authorized application rules from group policy with those from local store instead of ignoring the local store rules. When AuthorizedApplicationRulesFromGroupPolicyNotMerged and AuthorizedApplicationRulesFromGroupPolicyMerged are both true, AuthorizedApplicationRulesFromGroupPolicyMerged takes priority.
-        self._authorized_application_rules_from_group_policy_merged: Optional[bool] = None
-        # Configures the firewall to merge connection security rules from group policy with those from local store instead of ignoring the local store rules. When ConnectionSecurityRulesFromGroupPolicyNotMerged and ConnectionSecurityRulesFromGroupPolicyMerged are both true, ConnectionSecurityRulesFromGroupPolicyMerged takes priority.
-        self._connection_security_rules_from_group_policy_merged: Optional[bool] = None
-        # State Management Setting.
-        self._firewall_enabled: Optional[state_management_setting.StateManagementSetting] = None
-        # Configures the firewall to merge global port rules from group policy with those from local store instead of ignoring the local store rules. When GlobalPortRulesFromGroupPolicyNotMerged and GlobalPortRulesFromGroupPolicyMerged are both true, GlobalPortRulesFromGroupPolicyMerged takes priority.
-        self._global_port_rules_from_group_policy_merged: Optional[bool] = None
-        # Configures the firewall to block all incoming connections by default. When InboundConnectionsRequired and InboundConnectionsBlocked are both true, InboundConnectionsBlocked takes priority.
-        self._inbound_connections_blocked: Optional[bool] = None
-        # Prevents the firewall from displaying notifications when an application is blocked from listening on a port. When InboundNotificationsRequired and InboundNotificationsBlocked are both true, InboundNotificationsBlocked takes priority.
-        self._inbound_notifications_blocked: Optional[bool] = None
-        # Configures the firewall to block all incoming traffic regardless of other policy settings. When IncomingTrafficRequired and IncomingTrafficBlocked are both true, IncomingTrafficBlocked takes priority.
-        self._incoming_traffic_blocked: Optional[bool] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Configures the firewall to block all outgoing connections by default. When OutboundConnectionsRequired and OutboundConnectionsBlocked are both true, OutboundConnectionsBlocked takes priority. This setting will get applied to Windows releases version 1809 and above.
-        self._outbound_connections_blocked: Optional[bool] = None
-        # Configures the firewall to merge Firewall Rule policies from group policy with those from local store instead of ignoring the local store rules. When PolicyRulesFromGroupPolicyNotMerged and PolicyRulesFromGroupPolicyMerged are both true, PolicyRulesFromGroupPolicyMerged takes priority.
-        self._policy_rules_from_group_policy_merged: Optional[bool] = None
-        # Configures the firewall to allow the host computer to respond to unsolicited network traffic of that traffic is secured by IPSec even when stealthModeBlocked is set to true. When SecuredPacketExemptionBlocked and SecuredPacketExemptionAllowed are both true, SecuredPacketExemptionAllowed takes priority.
-        self._secured_packet_exemption_allowed: Optional[bool] = None
-        # Prevent the server from operating in stealth mode. When StealthModeRequired and StealthModeBlocked are both true, StealthModeBlocked takes priority.
-        self._stealth_mode_blocked: Optional[bool] = None
-        # Configures the firewall to block unicast responses to multicast broadcast traffic. When UnicastResponsesToMulticastBroadcastsRequired and UnicastResponsesToMulticastBroadcastsBlocked are both true, UnicastResponsesToMulticastBroadcastsBlocked takes priority.
-        self._unicast_responses_to_multicast_broadcasts_blocked: Optional[bool] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def authorized_application_rules_from_group_policy_merged(self,) -> Optional[bool]:
-        """
-        Gets the authorizedApplicationRulesFromGroupPolicyMerged property value. Configures the firewall to merge authorized application rules from group policy with those from local store instead of ignoring the local store rules. When AuthorizedApplicationRulesFromGroupPolicyNotMerged and AuthorizedApplicationRulesFromGroupPolicyMerged are both true, AuthorizedApplicationRulesFromGroupPolicyMerged takes priority.
-        Returns: Optional[bool]
-        """
-        return self._authorized_application_rules_from_group_policy_merged
-    
-    @authorized_application_rules_from_group_policy_merged.setter
-    def authorized_application_rules_from_group_policy_merged(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the authorizedApplicationRulesFromGroupPolicyMerged property value. Configures the firewall to merge authorized application rules from group policy with those from local store instead of ignoring the local store rules. When AuthorizedApplicationRulesFromGroupPolicyNotMerged and AuthorizedApplicationRulesFromGroupPolicyMerged are both true, AuthorizedApplicationRulesFromGroupPolicyMerged takes priority.
-        Args:
-            value: Value to set for the authorized_application_rules_from_group_policy_merged property.
-        """
-        self._authorized_application_rules_from_group_policy_merged = value
-    
-    @property
-    def connection_security_rules_from_group_policy_merged(self,) -> Optional[bool]:
-        """
-        Gets the connectionSecurityRulesFromGroupPolicyMerged property value. Configures the firewall to merge connection security rules from group policy with those from local store instead of ignoring the local store rules. When ConnectionSecurityRulesFromGroupPolicyNotMerged and ConnectionSecurityRulesFromGroupPolicyMerged are both true, ConnectionSecurityRulesFromGroupPolicyMerged takes priority.
-        Returns: Optional[bool]
-        """
-        return self._connection_security_rules_from_group_policy_merged
-    
-    @connection_security_rules_from_group_policy_merged.setter
-    def connection_security_rules_from_group_policy_merged(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the connectionSecurityRulesFromGroupPolicyMerged property value. Configures the firewall to merge connection security rules from group policy with those from local store instead of ignoring the local store rules. When ConnectionSecurityRulesFromGroupPolicyNotMerged and ConnectionSecurityRulesFromGroupPolicyMerged are both true, ConnectionSecurityRulesFromGroupPolicyMerged takes priority.
-        Args:
-            value: Value to set for the connection_security_rules_from_group_policy_merged property.
-        """
-        self._connection_security_rules_from_group_policy_merged = value
+    # Configures the firewall to merge authorized application rules from group policy with those from local store instead of ignoring the local store rules. When AuthorizedApplicationRulesFromGroupPolicyNotMerged and AuthorizedApplicationRulesFromGroupPolicyMerged are both true, AuthorizedApplicationRulesFromGroupPolicyMerged takes priority.
+    authorized_application_rules_from_group_policy_merged: Optional[bool] = None
+    # Configures the firewall to merge connection security rules from group policy with those from local store instead of ignoring the local store rules. When ConnectionSecurityRulesFromGroupPolicyNotMerged and ConnectionSecurityRulesFromGroupPolicyMerged are both true, ConnectionSecurityRulesFromGroupPolicyMerged takes priority.
+    connection_security_rules_from_group_policy_merged: Optional[bool] = None
+    # State Management Setting.
+    firewall_enabled: Optional[state_management_setting.StateManagementSetting] = None
+    # Configures the firewall to merge global port rules from group policy with those from local store instead of ignoring the local store rules. When GlobalPortRulesFromGroupPolicyNotMerged and GlobalPortRulesFromGroupPolicyMerged are both true, GlobalPortRulesFromGroupPolicyMerged takes priority.
+    global_port_rules_from_group_policy_merged: Optional[bool] = None
+    # Configures the firewall to block all incoming connections by default. When InboundConnectionsRequired and InboundConnectionsBlocked are both true, InboundConnectionsBlocked takes priority.
+    inbound_connections_blocked: Optional[bool] = None
+    # Prevents the firewall from displaying notifications when an application is blocked from listening on a port. When InboundNotificationsRequired and InboundNotificationsBlocked are both true, InboundNotificationsBlocked takes priority.
+    inbound_notifications_blocked: Optional[bool] = None
+    # Configures the firewall to block all incoming traffic regardless of other policy settings. When IncomingTrafficRequired and IncomingTrafficBlocked are both true, IncomingTrafficBlocked takes priority.
+    incoming_traffic_blocked: Optional[bool] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Configures the firewall to block all outgoing connections by default. When OutboundConnectionsRequired and OutboundConnectionsBlocked are both true, OutboundConnectionsBlocked takes priority. This setting will get applied to Windows releases version 1809 and above.
+    outbound_connections_blocked: Optional[bool] = None
+    # Configures the firewall to merge Firewall Rule policies from group policy with those from local store instead of ignoring the local store rules. When PolicyRulesFromGroupPolicyNotMerged and PolicyRulesFromGroupPolicyMerged are both true, PolicyRulesFromGroupPolicyMerged takes priority.
+    policy_rules_from_group_policy_merged: Optional[bool] = None
+    # Configures the firewall to allow the host computer to respond to unsolicited network traffic of that traffic is secured by IPSec even when stealthModeBlocked is set to true. When SecuredPacketExemptionBlocked and SecuredPacketExemptionAllowed are both true, SecuredPacketExemptionAllowed takes priority.
+    secured_packet_exemption_allowed: Optional[bool] = None
+    # Prevent the server from operating in stealth mode. When StealthModeRequired and StealthModeBlocked are both true, StealthModeBlocked takes priority.
+    stealth_mode_blocked: Optional[bool] = None
+    # Configures the firewall to block unicast responses to multicast broadcast traffic. When UnicastResponsesToMulticastBroadcastsRequired and UnicastResponsesToMulticastBroadcastsBlocked are both true, UnicastResponsesToMulticastBroadcastsBlocked takes priority.
+    unicast_responses_to_multicast_broadcasts_blocked: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsFirewallNetworkProfile:
@@ -102,32 +49,17 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WindowsFirewallNetworkProfile
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return WindowsFirewallNetworkProfile()
-    
-    @property
-    def firewall_enabled(self,) -> Optional[state_management_setting.StateManagementSetting]:
-        """
-        Gets the firewallEnabled property value. State Management Setting.
-        Returns: Optional[state_management_setting.StateManagementSetting]
-        """
-        return self._firewall_enabled
-    
-    @firewall_enabled.setter
-    def firewall_enabled(self,value: Optional[state_management_setting.StateManagementSetting] = None) -> None:
-        """
-        Sets the firewallEnabled property value. State Management Setting.
-        Args:
-            value: Value to set for the firewall_enabled property.
-        """
-        self._firewall_enabled = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import state_management_setting
+
         from . import state_management_setting
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -147,150 +79,14 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def global_port_rules_from_group_policy_merged(self,) -> Optional[bool]:
-        """
-        Gets the globalPortRulesFromGroupPolicyMerged property value. Configures the firewall to merge global port rules from group policy with those from local store instead of ignoring the local store rules. When GlobalPortRulesFromGroupPolicyNotMerged and GlobalPortRulesFromGroupPolicyMerged are both true, GlobalPortRulesFromGroupPolicyMerged takes priority.
-        Returns: Optional[bool]
-        """
-        return self._global_port_rules_from_group_policy_merged
-    
-    @global_port_rules_from_group_policy_merged.setter
-    def global_port_rules_from_group_policy_merged(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the globalPortRulesFromGroupPolicyMerged property value. Configures the firewall to merge global port rules from group policy with those from local store instead of ignoring the local store rules. When GlobalPortRulesFromGroupPolicyNotMerged and GlobalPortRulesFromGroupPolicyMerged are both true, GlobalPortRulesFromGroupPolicyMerged takes priority.
-        Args:
-            value: Value to set for the global_port_rules_from_group_policy_merged property.
-        """
-        self._global_port_rules_from_group_policy_merged = value
-    
-    @property
-    def inbound_connections_blocked(self,) -> Optional[bool]:
-        """
-        Gets the inboundConnectionsBlocked property value. Configures the firewall to block all incoming connections by default. When InboundConnectionsRequired and InboundConnectionsBlocked are both true, InboundConnectionsBlocked takes priority.
-        Returns: Optional[bool]
-        """
-        return self._inbound_connections_blocked
-    
-    @inbound_connections_blocked.setter
-    def inbound_connections_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the inboundConnectionsBlocked property value. Configures the firewall to block all incoming connections by default. When InboundConnectionsRequired and InboundConnectionsBlocked are both true, InboundConnectionsBlocked takes priority.
-        Args:
-            value: Value to set for the inbound_connections_blocked property.
-        """
-        self._inbound_connections_blocked = value
-    
-    @property
-    def inbound_notifications_blocked(self,) -> Optional[bool]:
-        """
-        Gets the inboundNotificationsBlocked property value. Prevents the firewall from displaying notifications when an application is blocked from listening on a port. When InboundNotificationsRequired and InboundNotificationsBlocked are both true, InboundNotificationsBlocked takes priority.
-        Returns: Optional[bool]
-        """
-        return self._inbound_notifications_blocked
-    
-    @inbound_notifications_blocked.setter
-    def inbound_notifications_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the inboundNotificationsBlocked property value. Prevents the firewall from displaying notifications when an application is blocked from listening on a port. When InboundNotificationsRequired and InboundNotificationsBlocked are both true, InboundNotificationsBlocked takes priority.
-        Args:
-            value: Value to set for the inbound_notifications_blocked property.
-        """
-        self._inbound_notifications_blocked = value
-    
-    @property
-    def incoming_traffic_blocked(self,) -> Optional[bool]:
-        """
-        Gets the incomingTrafficBlocked property value. Configures the firewall to block all incoming traffic regardless of other policy settings. When IncomingTrafficRequired and IncomingTrafficBlocked are both true, IncomingTrafficBlocked takes priority.
-        Returns: Optional[bool]
-        """
-        return self._incoming_traffic_blocked
-    
-    @incoming_traffic_blocked.setter
-    def incoming_traffic_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the incomingTrafficBlocked property value. Configures the firewall to block all incoming traffic regardless of other policy settings. When IncomingTrafficRequired and IncomingTrafficBlocked are both true, IncomingTrafficBlocked takes priority.
-        Args:
-            value: Value to set for the incoming_traffic_blocked property.
-        """
-        self._incoming_traffic_blocked = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def outbound_connections_blocked(self,) -> Optional[bool]:
-        """
-        Gets the outboundConnectionsBlocked property value. Configures the firewall to block all outgoing connections by default. When OutboundConnectionsRequired and OutboundConnectionsBlocked are both true, OutboundConnectionsBlocked takes priority. This setting will get applied to Windows releases version 1809 and above.
-        Returns: Optional[bool]
-        """
-        return self._outbound_connections_blocked
-    
-    @outbound_connections_blocked.setter
-    def outbound_connections_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the outboundConnectionsBlocked property value. Configures the firewall to block all outgoing connections by default. When OutboundConnectionsRequired and OutboundConnectionsBlocked are both true, OutboundConnectionsBlocked takes priority. This setting will get applied to Windows releases version 1809 and above.
-        Args:
-            value: Value to set for the outbound_connections_blocked property.
-        """
-        self._outbound_connections_blocked = value
-    
-    @property
-    def policy_rules_from_group_policy_merged(self,) -> Optional[bool]:
-        """
-        Gets the policyRulesFromGroupPolicyMerged property value. Configures the firewall to merge Firewall Rule policies from group policy with those from local store instead of ignoring the local store rules. When PolicyRulesFromGroupPolicyNotMerged and PolicyRulesFromGroupPolicyMerged are both true, PolicyRulesFromGroupPolicyMerged takes priority.
-        Returns: Optional[bool]
-        """
-        return self._policy_rules_from_group_policy_merged
-    
-    @policy_rules_from_group_policy_merged.setter
-    def policy_rules_from_group_policy_merged(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the policyRulesFromGroupPolicyMerged property value. Configures the firewall to merge Firewall Rule policies from group policy with those from local store instead of ignoring the local store rules. When PolicyRulesFromGroupPolicyNotMerged and PolicyRulesFromGroupPolicyMerged are both true, PolicyRulesFromGroupPolicyMerged takes priority.
-        Args:
-            value: Value to set for the policy_rules_from_group_policy_merged property.
-        """
-        self._policy_rules_from_group_policy_merged = value
-    
-    @property
-    def secured_packet_exemption_allowed(self,) -> Optional[bool]:
-        """
-        Gets the securedPacketExemptionAllowed property value. Configures the firewall to allow the host computer to respond to unsolicited network traffic of that traffic is secured by IPSec even when stealthModeBlocked is set to true. When SecuredPacketExemptionBlocked and SecuredPacketExemptionAllowed are both true, SecuredPacketExemptionAllowed takes priority.
-        Returns: Optional[bool]
-        """
-        return self._secured_packet_exemption_allowed
-    
-    @secured_packet_exemption_allowed.setter
-    def secured_packet_exemption_allowed(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the securedPacketExemptionAllowed property value. Configures the firewall to allow the host computer to respond to unsolicited network traffic of that traffic is secured by IPSec even when stealthModeBlocked is set to true. When SecuredPacketExemptionBlocked and SecuredPacketExemptionAllowed are both true, SecuredPacketExemptionAllowed takes priority.
-        Args:
-            value: Value to set for the secured_packet_exemption_allowed property.
-        """
-        self._secured_packet_exemption_allowed = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_bool_value("authorizedApplicationRulesFromGroupPolicyMerged", self.authorized_application_rules_from_group_policy_merged)
         writer.write_bool_value("connectionSecurityRulesFromGroupPolicyMerged", self.connection_security_rules_from_group_policy_merged)
         writer.write_enum_value("firewallEnabled", self.firewall_enabled)
@@ -305,39 +101,5 @@ class WindowsFirewallNetworkProfile(AdditionalDataHolder, Parsable):
         writer.write_bool_value("stealthModeBlocked", self.stealth_mode_blocked)
         writer.write_bool_value("unicastResponsesToMulticastBroadcastsBlocked", self.unicast_responses_to_multicast_broadcasts_blocked)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def stealth_mode_blocked(self,) -> Optional[bool]:
-        """
-        Gets the stealthModeBlocked property value. Prevent the server from operating in stealth mode. When StealthModeRequired and StealthModeBlocked are both true, StealthModeBlocked takes priority.
-        Returns: Optional[bool]
-        """
-        return self._stealth_mode_blocked
-    
-    @stealth_mode_blocked.setter
-    def stealth_mode_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the stealthModeBlocked property value. Prevent the server from operating in stealth mode. When StealthModeRequired and StealthModeBlocked are both true, StealthModeBlocked takes priority.
-        Args:
-            value: Value to set for the stealth_mode_blocked property.
-        """
-        self._stealth_mode_blocked = value
-    
-    @property
-    def unicast_responses_to_multicast_broadcasts_blocked(self,) -> Optional[bool]:
-        """
-        Gets the unicastResponsesToMulticastBroadcastsBlocked property value. Configures the firewall to block unicast responses to multicast broadcast traffic. When UnicastResponsesToMulticastBroadcastsRequired and UnicastResponsesToMulticastBroadcastsBlocked are both true, UnicastResponsesToMulticastBroadcastsBlocked takes priority.
-        Returns: Optional[bool]
-        """
-        return self._unicast_responses_to_multicast_broadcasts_blocked
-    
-    @unicast_responses_to_multicast_broadcasts_blocked.setter
-    def unicast_responses_to_multicast_broadcasts_blocked(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the unicastResponsesToMulticastBroadcastsBlocked property value. Configures the firewall to block unicast responses to multicast broadcast traffic. When UnicastResponsesToMulticastBroadcastsRequired and UnicastResponsesToMulticastBroadcastsBlocked are both true, UnicastResponsesToMulticastBroadcastsBlocked takes priority.
-        Args:
-            value: Value to set for the unicast_responses_to_multicast_broadcasts_blocked property.
-        """
-        self._unicast_responses_to_multicast_broadcasts_blocked = value
     
 

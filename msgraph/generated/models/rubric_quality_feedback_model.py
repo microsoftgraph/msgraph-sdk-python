@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import education_item_body
 
+@dataclass
 class RubricQualityFeedbackModel(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new rubricQualityFeedbackModel and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Specific feedback for one quality of this rubric.
-        self._feedback: Optional[education_item_body.EducationItemBody] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The ID of the rubricQuality that this feedback is related to.
-        self._quality_id: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # Specific feedback for one quality of this rubric.
+    feedback: Optional[education_item_body.EducationItemBody] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The ID of the rubricQuality that this feedback is related to.
+    quality_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> RubricQualityFeedbackModel:
@@ -45,32 +26,17 @@ class RubricQualityFeedbackModel(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: RubricQualityFeedbackModel
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return RubricQualityFeedbackModel()
-    
-    @property
-    def feedback(self,) -> Optional[education_item_body.EducationItemBody]:
-        """
-        Gets the feedback property value. Specific feedback for one quality of this rubric.
-        Returns: Optional[education_item_body.EducationItemBody]
-        """
-        return self._feedback
-    
-    @feedback.setter
-    def feedback(self,value: Optional[education_item_body.EducationItemBody] = None) -> None:
-        """
-        Sets the feedback property value. Specific feedback for one quality of this rubric.
-        Args:
-            value: Value to set for the feedback property.
-        """
-        self._feedback = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import education_item_body
+
         from . import education_item_body
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -80,48 +46,14 @@ class RubricQualityFeedbackModel(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
-    @property
-    def quality_id(self,) -> Optional[str]:
-        """
-        Gets the qualityId property value. The ID of the rubricQuality that this feedback is related to.
-        Returns: Optional[str]
-        """
-        return self._quality_id
-    
-    @quality_id.setter
-    def quality_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the qualityId property value. The ID of the rubricQuality that this feedback is related to.
-        Args:
-            value: Value to set for the quality_id property.
-        """
-        self._quality_id = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_object_value("feedback", self.feedback)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("qualityId", self.quality_id)

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ExternalActivityType(Enum):
+class ExternalActivityType(str, Enum):
     Viewed = "viewed",
     Modified = "modified",
     Created = "created",

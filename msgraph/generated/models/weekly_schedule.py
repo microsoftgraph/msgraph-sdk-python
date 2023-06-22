@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WeeklySchedule(Enum):
+class WeeklySchedule(str, Enum):
     # User Defined, default value, no intent.
     UserDefined = "userDefined",
     # Everyday.

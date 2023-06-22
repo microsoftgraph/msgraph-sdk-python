@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AndroidWorkProfileCrossProfileDataSharingType(Enum):
+class AndroidWorkProfileCrossProfileDataSharingType(str, Enum):
     # Device default value, no intent.
     DeviceDefault = "deviceDefault",
     # Prevent any sharing.

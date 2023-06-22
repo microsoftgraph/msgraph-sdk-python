@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,32 +8,11 @@ if TYPE_CHECKING:
 
 from . import device_and_app_management_assignment_target
 
+@dataclass
 class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_assignment_target.DeviceAndAppManagementAssignmentTarget):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ConfigurationManagerCollectionAssignmentTarget and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.configurationManagerCollectionAssignmentTarget"
-        # The collection Id that is the target of the assignment.
-        self._collection_id: Optional[str] = None
-    
-    @property
-    def collection_id(self,) -> Optional[str]:
-        """
-        Gets the collectionId property value. The collection Id that is the target of the assignment.
-        Returns: Optional[str]
-        """
-        return self._collection_id
-    
-    @collection_id.setter
-    def collection_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the collectionId property value. The collection Id that is the target of the assignment.
-        Args:
-            value: Value to set for the collection_id property.
-        """
-        self._collection_id = value
+    odata_type = "#microsoft.graph.configurationManagerCollectionAssignmentTarget"
+    # The collection Id that is the target of the assignment.
+    collection_id: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ConfigurationManagerCollectionAssignmentTarget:
@@ -42,8 +22,8 @@ class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_a
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ConfigurationManagerCollectionAssignmentTarget
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return ConfigurationManagerCollectionAssignmentTarget()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -51,6 +31,8 @@ class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_a
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import device_and_app_management_assignment_target
+
         from . import device_and_app_management_assignment_target
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -66,8 +48,8 @@ class ConfigurationManagerCollectionAssignmentTarget(device_and_app_management_a
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("collectionId", self.collection_id)
     

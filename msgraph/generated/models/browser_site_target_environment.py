@@ -1,6 +1,6 @@
 from enum import Enum
 
-class BrowserSiteTargetEnvironment(Enum):
+class BrowserSiteTargetEnvironment(str, Enum):
     # Open in Internet Explorer Mode
     InternetExplorerMode = "internetExplorerMode",
     # Open in standalone Internet Explorer 11

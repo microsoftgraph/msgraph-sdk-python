@@ -1,6 +1,6 @@
 from enum import Enum
 
-class RecordingStatus(Enum):
+class RecordingStatus(str, Enum):
     Unknown = "unknown",
     NotRecording = "notRecording",
     Recording = "recording",

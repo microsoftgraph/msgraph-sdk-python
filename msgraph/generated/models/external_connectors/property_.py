@@ -1,70 +1,34 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from . import label, property_type
 
+@dataclass
 class Property_(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new property_ and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # A set of aliases or a friendly names for the property. Maximum 32 characters. Only alphanumeric characters allowed. For example, each string may not contain control characters, whitespace, or any of the following: :, ;, ,, (, ), [, ], {, }, %, $, +, !, *, =, &, ?, @, #, /, ~, ', ', <, >, `, ^. Optional.
-        self._aliases: Optional[List[str]] = None
-        # Specifies if the property is queryable. Queryable properties can be used in Keyword Query Language (KQL) queries. Optional.
-        self._is_queryable: Optional[bool] = None
-        # Specifies if the property is refinable.  Refinable properties can be used to filter search results in the Search API and add a refiner control in the Microsoft Search user experience. Optional.
-        self._is_refinable: Optional[bool] = None
-        # Specifies if the property is retrievable. Retrievable properties are returned in the result set when items are returned by the search API. Retrievable properties are also available to add to the display template used to render search results. Optional.
-        self._is_retrievable: Optional[bool] = None
-        # Specifies if the property is searchable. Only properties of type String or StringCollection can be searchable. Non-searchable properties are not added to the search index. Optional.
-        self._is_searchable: Optional[bool] = None
-        # Specifies one or more well-known tags added against a property. Labels help Microsoft Search understand the semantics of the data in the connection. Adding appropriate labels would result in an enhanced search experience (e.g. better relevance). The possible values are: title, url, createdBy, lastModifiedBy, authors, createdDateTime, lastModifiedDateTime, fileName, fileExtension, unknownFutureValue. Optional.
-        self._labels: Optional[List[label.Label]] = None
-        # The name of the property. Maximum 32 characters. Only alphanumeric characters allowed. For example, each string may not contain control characters, whitespace, or any of the following: :, ;, ,, (, ), [, ], {, }, %, $, +, !, *, =, &, ?, @, #, /, ~, ', ', <, >, `, ^.  Required.
-        self._name: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The type property
-        self._type: Optional[property_type.PropertyType] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def aliases(self,) -> Optional[List[str]]:
-        """
-        Gets the aliases property value. A set of aliases or a friendly names for the property. Maximum 32 characters. Only alphanumeric characters allowed. For example, each string may not contain control characters, whitespace, or any of the following: :, ;, ,, (, ), [, ], {, }, %, $, +, !, *, =, &, ?, @, #, /, ~, ', ', <, >, `, ^. Optional.
-        Returns: Optional[List[str]]
-        """
-        return self._aliases
-    
-    @aliases.setter
-    def aliases(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the aliases property value. A set of aliases or a friendly names for the property. Maximum 32 characters. Only alphanumeric characters allowed. For example, each string may not contain control characters, whitespace, or any of the following: :, ;, ,, (, ), [, ], {, }, %, $, +, !, *, =, &, ?, @, #, /, ~, ', ', <, >, `, ^. Optional.
-        Args:
-            value: Value to set for the aliases property.
-        """
-        self._aliases = value
+    # A set of aliases or a friendly names for the property. Maximum 32 characters. Only alphanumeric characters allowed. For example, each string may not contain control characters, whitespace, or any of the following: :, ;, ,, (, ), [, ], {, }, %, $, +, !, *, =, &, ?, @, #, /, ~, ', ', <, >, `, ^. Optional.
+    aliases: Optional[List[str]] = None
+    # Specifies if the property is queryable. Queryable properties can be used in Keyword Query Language (KQL) queries. Optional.
+    is_queryable: Optional[bool] = None
+    # Specifies if the property is refinable.  Refinable properties can be used to filter search results in the Search API and add a refiner control in the Microsoft Search user experience. Optional.
+    is_refinable: Optional[bool] = None
+    # Specifies if the property is retrievable. Retrievable properties are returned in the result set when items are returned by the search API. Retrievable properties are also available to add to the display template used to render search results. Optional.
+    is_retrievable: Optional[bool] = None
+    # Specifies if the property is searchable. Only properties of type String or StringCollection can be searchable. Non-searchable properties are not added to the search index. Optional.
+    is_searchable: Optional[bool] = None
+    # Specifies one or more well-known tags added against a property. Labels help Microsoft Search understand the semantics of the data in the connection. Adding appropriate labels would result in an enhanced search experience (e.g. better relevance). The possible values are: title, url, createdBy, lastModifiedBy, authors, createdDateTime, lastModifiedDateTime, fileName, fileExtension, unknownFutureValue. Optional.
+    labels: Optional[List[label.Label]] = None
+    # The name of the property. Maximum 32 characters. Only alphanumeric characters allowed. For example, each string may not contain control characters, whitespace, or any of the following: :, ;, ,, (, ), [, ], {, }, %, $, +, !, *, =, &, ?, @, #, /, ~, ', ', <, >, `, ^.  Required.
+    name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The type property
+    type: Optional[property_type.PropertyType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> Property_:
@@ -74,8 +38,8 @@ class Property_(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: Property_
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return Property_()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -83,6 +47,8 @@ class Property_(AdditionalDataHolder, Parsable):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import label, property_type
+
         from . import label, property_type
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -98,159 +64,23 @@ class Property_(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def is_queryable(self,) -> Optional[bool]:
-        """
-        Gets the isQueryable property value. Specifies if the property is queryable. Queryable properties can be used in Keyword Query Language (KQL) queries. Optional.
-        Returns: Optional[bool]
-        """
-        return self._is_queryable
-    
-    @is_queryable.setter
-    def is_queryable(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isQueryable property value. Specifies if the property is queryable. Queryable properties can be used in Keyword Query Language (KQL) queries. Optional.
-        Args:
-            value: Value to set for the is_queryable property.
-        """
-        self._is_queryable = value
-    
-    @property
-    def is_refinable(self,) -> Optional[bool]:
-        """
-        Gets the isRefinable property value. Specifies if the property is refinable.  Refinable properties can be used to filter search results in the Search API and add a refiner control in the Microsoft Search user experience. Optional.
-        Returns: Optional[bool]
-        """
-        return self._is_refinable
-    
-    @is_refinable.setter
-    def is_refinable(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isRefinable property value. Specifies if the property is refinable.  Refinable properties can be used to filter search results in the Search API and add a refiner control in the Microsoft Search user experience. Optional.
-        Args:
-            value: Value to set for the is_refinable property.
-        """
-        self._is_refinable = value
-    
-    @property
-    def is_retrievable(self,) -> Optional[bool]:
-        """
-        Gets the isRetrievable property value. Specifies if the property is retrievable. Retrievable properties are returned in the result set when items are returned by the search API. Retrievable properties are also available to add to the display template used to render search results. Optional.
-        Returns: Optional[bool]
-        """
-        return self._is_retrievable
-    
-    @is_retrievable.setter
-    def is_retrievable(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isRetrievable property value. Specifies if the property is retrievable. Retrievable properties are returned in the result set when items are returned by the search API. Retrievable properties are also available to add to the display template used to render search results. Optional.
-        Args:
-            value: Value to set for the is_retrievable property.
-        """
-        self._is_retrievable = value
-    
-    @property
-    def is_searchable(self,) -> Optional[bool]:
-        """
-        Gets the isSearchable property value. Specifies if the property is searchable. Only properties of type String or StringCollection can be searchable. Non-searchable properties are not added to the search index. Optional.
-        Returns: Optional[bool]
-        """
-        return self._is_searchable
-    
-    @is_searchable.setter
-    def is_searchable(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the isSearchable property value. Specifies if the property is searchable. Only properties of type String or StringCollection can be searchable. Non-searchable properties are not added to the search index. Optional.
-        Args:
-            value: Value to set for the is_searchable property.
-        """
-        self._is_searchable = value
-    
-    @property
-    def labels(self,) -> Optional[List[label.Label]]:
-        """
-        Gets the labels property value. Specifies one or more well-known tags added against a property. Labels help Microsoft Search understand the semantics of the data in the connection. Adding appropriate labels would result in an enhanced search experience (e.g. better relevance). The possible values are: title, url, createdBy, lastModifiedBy, authors, createdDateTime, lastModifiedDateTime, fileName, fileExtension, unknownFutureValue. Optional.
-        Returns: Optional[List[label.Label]]
-        """
-        return self._labels
-    
-    @labels.setter
-    def labels(self,value: Optional[List[label.Label]] = None) -> None:
-        """
-        Sets the labels property value. Specifies one or more well-known tags added against a property. Labels help Microsoft Search understand the semantics of the data in the connection. Adding appropriate labels would result in an enhanced search experience (e.g. better relevance). The possible values are: title, url, createdBy, lastModifiedBy, authors, createdDateTime, lastModifiedDateTime, fileName, fileExtension, unknownFutureValue. Optional.
-        Args:
-            value: Value to set for the labels property.
-        """
-        self._labels = value
-    
-    @property
-    def name(self,) -> Optional[str]:
-        """
-        Gets the name property value. The name of the property. Maximum 32 characters. Only alphanumeric characters allowed. For example, each string may not contain control characters, whitespace, or any of the following: :, ;, ,, (, ), [, ], {, }, %, $, +, !, *, =, &, ?, @, #, /, ~, ', ', <, >, `, ^.  Required.
-        Returns: Optional[str]
-        """
-        return self._name
-    
-    @name.setter
-    def name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the name property value. The name of the property. Maximum 32 characters. Only alphanumeric characters allowed. For example, each string may not contain control characters, whitespace, or any of the following: :, ;, ,, (, ), [, ], {, }, %, $, +, !, *, =, &, ?, @, #, /, ~, ', ', <, >, `, ^.  Required.
-        Args:
-            value: Value to set for the name property.
-        """
-        self._name = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_collection_of_primitive_values("aliases", self.aliases)
         writer.write_bool_value("isQueryable", self.is_queryable)
         writer.write_bool_value("isRefinable", self.is_refinable)
         writer.write_bool_value("isRetrievable", self.is_retrievable)
         writer.write_bool_value("isSearchable", self.is_searchable)
-        writer.write_enum_value("labels", self.labels)
+        writer.write_collection_of_enum_values("labels", self.labels)
         writer.write_str_value("name", self.name)
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_enum_value("type", self.type)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def type(self,) -> Optional[property_type.PropertyType]:
-        """
-        Gets the type property value. The type property
-        Returns: Optional[property_type.PropertyType]
-        """
-        return self._type
-    
-    @type.setter
-    def type(self,value: Optional[property_type.PropertyType] = None) -> None:
-        """
-        Sets the type property value. The type property
-        Args:
-            value: Value to set for the type property.
-        """
-        self._type = value
     
 

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,38 +8,17 @@ if TYPE_CHECKING:
 
 from . import message
 
+@dataclass
 class CalendarSharingMessage(message.Message):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new CalendarSharingMessage and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.calendarSharingMessage"
-        # The canAccept property
-        self._can_accept: Optional[bool] = None
-        # The sharingMessageAction property
-        self._sharing_message_action: Optional[calendar_sharing_message_action.CalendarSharingMessageAction] = None
-        # The sharingMessageActions property
-        self._sharing_message_actions: Optional[List[calendar_sharing_message_action.CalendarSharingMessageAction]] = None
-        # The suggestedCalendarName property
-        self._suggested_calendar_name: Optional[str] = None
-    
-    @property
-    def can_accept(self,) -> Optional[bool]:
-        """
-        Gets the canAccept property value. The canAccept property
-        Returns: Optional[bool]
-        """
-        return self._can_accept
-    
-    @can_accept.setter
-    def can_accept(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the canAccept property value. The canAccept property
-        Args:
-            value: Value to set for the can_accept property.
-        """
-        self._can_accept = value
+    odata_type = "#microsoft.graph.calendarSharingMessage"
+    # The canAccept property
+    can_accept: Optional[bool] = None
+    # The sharingMessageAction property
+    sharing_message_action: Optional[calendar_sharing_message_action.CalendarSharingMessageAction] = None
+    # The sharingMessageActions property
+    sharing_message_actions: Optional[List[calendar_sharing_message_action.CalendarSharingMessageAction]] = None
+    # The suggestedCalendarName property
+    suggested_calendar_name: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> CalendarSharingMessage:
@@ -48,8 +28,8 @@ class CalendarSharingMessage(message.Message):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: CalendarSharingMessage
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return CalendarSharingMessage()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -57,6 +37,8 @@ class CalendarSharingMessage(message.Message):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import calendar_sharing_message_action, message
+
         from . import calendar_sharing_message_action, message
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -75,63 +57,12 @@ class CalendarSharingMessage(message.Message):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("canAccept", self.can_accept)
         writer.write_object_value("sharingMessageAction", self.sharing_message_action)
         writer.write_collection_of_object_values("sharingMessageActions", self.sharing_message_actions)
         writer.write_str_value("suggestedCalendarName", self.suggested_calendar_name)
-    
-    @property
-    def sharing_message_action(self,) -> Optional[calendar_sharing_message_action.CalendarSharingMessageAction]:
-        """
-        Gets the sharingMessageAction property value. The sharingMessageAction property
-        Returns: Optional[calendar_sharing_message_action.CalendarSharingMessageAction]
-        """
-        return self._sharing_message_action
-    
-    @sharing_message_action.setter
-    def sharing_message_action(self,value: Optional[calendar_sharing_message_action.CalendarSharingMessageAction] = None) -> None:
-        """
-        Sets the sharingMessageAction property value. The sharingMessageAction property
-        Args:
-            value: Value to set for the sharing_message_action property.
-        """
-        self._sharing_message_action = value
-    
-    @property
-    def sharing_message_actions(self,) -> Optional[List[calendar_sharing_message_action.CalendarSharingMessageAction]]:
-        """
-        Gets the sharingMessageActions property value. The sharingMessageActions property
-        Returns: Optional[List[calendar_sharing_message_action.CalendarSharingMessageAction]]
-        """
-        return self._sharing_message_actions
-    
-    @sharing_message_actions.setter
-    def sharing_message_actions(self,value: Optional[List[calendar_sharing_message_action.CalendarSharingMessageAction]] = None) -> None:
-        """
-        Sets the sharingMessageActions property value. The sharingMessageActions property
-        Args:
-            value: Value to set for the sharing_message_actions property.
-        """
-        self._sharing_message_actions = value
-    
-    @property
-    def suggested_calendar_name(self,) -> Optional[str]:
-        """
-        Gets the suggestedCalendarName property value. The suggestedCalendarName property
-        Returns: Optional[str]
-        """
-        return self._suggested_calendar_name
-    
-    @suggested_calendar_name.setter
-    def suggested_calendar_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the suggestedCalendarName property value. The suggestedCalendarName property
-        Args:
-            value: Value to set for the suggested_calendar_name property.
-        """
-        self._suggested_calendar_name = value
     
 

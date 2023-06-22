@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AlertFeedback(Enum):
+class AlertFeedback(str, Enum):
     Unknown = "unknown",
     TruePositive = "truePositive",
     FalsePositive = "falsePositive",

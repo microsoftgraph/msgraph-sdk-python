@@ -1,5 +1,5 @@
 from enum import Enum
 
-class CalendarSharingActionType(Enum):
+class CalendarSharingActionType(str, Enum):
     Accept = "accept",
 

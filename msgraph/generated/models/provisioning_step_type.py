@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ProvisioningStepType(Enum):
+class ProvisioningStepType(str, Enum):
     Import_ = "import",
     Scoping = "scoping",
     Matching = "matching",

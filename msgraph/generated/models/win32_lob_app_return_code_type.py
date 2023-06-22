@@ -1,6 +1,6 @@
 from enum import Enum
 
-class Win32LobAppReturnCodeType(Enum):
+class Win32LobAppReturnCodeType(str, Enum):
     # Failed.
     Failed = "failed",
     # Success.

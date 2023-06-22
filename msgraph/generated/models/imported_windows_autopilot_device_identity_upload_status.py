@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ImportedWindowsAutopilotDeviceIdentityUploadStatus(Enum):
+class ImportedWindowsAutopilotDeviceIdentityUploadStatus(str, Enum):
     # No upload status.
     NoUpload = "noUpload",
     # Pending status.

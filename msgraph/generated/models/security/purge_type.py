@@ -1,6 +1,6 @@
 from enum import Enum
 
-class PurgeType(Enum):
+class PurgeType(str, Enum):
     Recoverable = "recoverable",
     PermanentlyDeleted = "permanentlyDeleted",
     UnknownFutureValue = "unknownFutureValue",

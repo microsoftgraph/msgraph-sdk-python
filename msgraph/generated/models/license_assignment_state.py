@@ -1,65 +1,29 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 from uuid import UUID
 
+@dataclass
 class LicenseAssignmentState(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new licenseAssignmentState and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The assignedByGroup property
-        self._assigned_by_group: Optional[str] = None
-        # The disabledPlans property
-        self._disabled_plans: Optional[List[UUID]] = None
-        # The error property
-        self._error: Optional[str] = None
-        # The lastUpdatedDateTime property
-        self._last_updated_date_time: Optional[datetime] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # The skuId property
-        self._sku_id: Optional[UUID] = None
-        # The state property
-        self._state: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def assigned_by_group(self,) -> Optional[str]:
-        """
-        Gets the assignedByGroup property value. The assignedByGroup property
-        Returns: Optional[str]
-        """
-        return self._assigned_by_group
-    
-    @assigned_by_group.setter
-    def assigned_by_group(self,value: Optional[str] = None) -> None:
-        """
-        Sets the assignedByGroup property value. The assignedByGroup property
-        Args:
-            value: Value to set for the assigned_by_group property.
-        """
-        self._assigned_by_group = value
+    # The assignedByGroup property
+    assigned_by_group: Optional[str] = None
+    # The disabledPlans property
+    disabled_plans: Optional[List[UUID]] = None
+    # The error property
+    error: Optional[str] = None
+    # The lastUpdatedDateTime property
+    last_updated_date_time: Optional[datetime] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The skuId property
+    sku_id: Optional[UUID] = None
+    # The state property
+    state: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> LicenseAssignmentState:
@@ -69,43 +33,9 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: LicenseAssignmentState
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return LicenseAssignmentState()
-    
-    @property
-    def disabled_plans(self,) -> Optional[List[UUID]]:
-        """
-        Gets the disabledPlans property value. The disabledPlans property
-        Returns: Optional[List[UUID]]
-        """
-        return self._disabled_plans
-    
-    @disabled_plans.setter
-    def disabled_plans(self,value: Optional[List[UUID]] = None) -> None:
-        """
-        Sets the disabledPlans property value. The disabledPlans property
-        Args:
-            value: Value to set for the disabled_plans property.
-        """
-        self._disabled_plans = value
-    
-    @property
-    def error(self,) -> Optional[str]:
-        """
-        Gets the error property value. The error property
-        Returns: Optional[str]
-        """
-        return self._error
-    
-    @error.setter
-    def error(self,value: Optional[str] = None) -> None:
-        """
-        Sets the error property value. The error property
-        Args:
-            value: Value to set for the error property.
-        """
-        self._error = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
@@ -123,48 +53,14 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def last_updated_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the lastUpdatedDateTime property value. The lastUpdatedDateTime property
-        Returns: Optional[datetime]
-        """
-        return self._last_updated_date_time
-    
-    @last_updated_date_time.setter
-    def last_updated_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the lastUpdatedDateTime property value. The lastUpdatedDateTime property
-        Args:
-            value: Value to set for the last_updated_date_time property.
-        """
-        self._last_updated_date_time = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_str_value("assignedByGroup", self.assigned_by_group)
         writer.write_collection_of_primitive_values("disabledPlans", self.disabled_plans)
         writer.write_str_value("error", self.error)
@@ -173,39 +69,5 @@ class LicenseAssignmentState(AdditionalDataHolder, Parsable):
         writer.write_uuid_value("skuId", self.sku_id)
         writer.write_str_value("state", self.state)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def sku_id(self,) -> Optional[UUID]:
-        """
-        Gets the skuId property value. The skuId property
-        Returns: Optional[UUID]
-        """
-        return self._sku_id
-    
-    @sku_id.setter
-    def sku_id(self,value: Optional[UUID] = None) -> None:
-        """
-        Sets the skuId property value. The skuId property
-        Args:
-            value: Value to set for the sku_id property.
-        """
-        self._sku_id = value
-    
-    @property
-    def state(self,) -> Optional[str]:
-        """
-        Gets the state property value. The state property
-        Returns: Optional[str]
-        """
-        return self._state
-    
-    @state.setter
-    def state(self,value: Optional[str] = None) -> None:
-        """
-        Sets the state property value. The state property
-        Args:
-            value: Value to set for the state property.
-        """
-        self._state = value
     
 

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,22 +8,18 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class EducationOrganization(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new educationOrganization and sets the default values.
-        """
-        super().__init__()
-        # Organization description.
-        self._description: Optional[str] = None
-        # Organization display name.
-        self._display_name: Optional[str] = None
-        # Source where this organization was created from. Possible values are: sis, manual.
-        self._external_source: Optional[education_external_source.EducationExternalSource] = None
-        # The name of the external source this resources was generated from.
-        self._external_source_detail: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # Organization description.
+    description: Optional[str] = None
+    # Organization display name.
+    display_name: Optional[str] = None
+    # Source where this organization was created from. Possible values are: sis, manual.
+    external_source: Optional[education_external_source.EducationExternalSource] = None
+    # The name of the external source this resources was generated from.
+    external_source_detail: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationOrganization:
@@ -32,90 +29,25 @@ class EducationOrganization(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationOrganization
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.educationSchool":
-                from . import education_school
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
+        try:
+            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.educationSchool".casefold():
+            from . import education_school
 
-                return education_school.EducationSchool()
+            return education_school.EducationSchool()
         return EducationOrganization()
-    
-    @property
-    def description(self,) -> Optional[str]:
-        """
-        Gets the description property value. Organization description.
-        Returns: Optional[str]
-        """
-        return self._description
-    
-    @description.setter
-    def description(self,value: Optional[str] = None) -> None:
-        """
-        Sets the description property value. Organization description.
-        Args:
-            value: Value to set for the description property.
-        """
-        self._description = value
-    
-    @property
-    def display_name(self,) -> Optional[str]:
-        """
-        Gets the displayName property value. Organization display name.
-        Returns: Optional[str]
-        """
-        return self._display_name
-    
-    @display_name.setter
-    def display_name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the displayName property value. Organization display name.
-        Args:
-            value: Value to set for the display_name property.
-        """
-        self._display_name = value
-    
-    @property
-    def external_source(self,) -> Optional[education_external_source.EducationExternalSource]:
-        """
-        Gets the externalSource property value. Source where this organization was created from. Possible values are: sis, manual.
-        Returns: Optional[education_external_source.EducationExternalSource]
-        """
-        return self._external_source
-    
-    @external_source.setter
-    def external_source(self,value: Optional[education_external_source.EducationExternalSource] = None) -> None:
-        """
-        Sets the externalSource property value. Source where this organization was created from. Possible values are: sis, manual.
-        Args:
-            value: Value to set for the external_source property.
-        """
-        self._external_source = value
-    
-    @property
-    def external_source_detail(self,) -> Optional[str]:
-        """
-        Gets the externalSourceDetail property value. The name of the external source this resources was generated from.
-        Returns: Optional[str]
-        """
-        return self._external_source_detail
-    
-    @external_source_detail.setter
-    def external_source_detail(self,value: Optional[str] = None) -> None:
-        """
-        Sets the externalSourceDetail property value. The name of the external source this resources was generated from.
-        Args:
-            value: Value to set for the external_source_detail property.
-        """
-        self._external_source_detail = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import education_external_source, education_school, entity
+
         from . import education_external_source, education_school, entity
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -134,8 +66,8 @@ class EducationOrganization(entity.Entity):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("description", self.description)
         writer.write_str_value("displayName", self.display_name)

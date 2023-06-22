@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import date
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -6,62 +7,25 @@ from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 if TYPE_CHECKING:
     from . import education_gender
 
+@dataclass
 class EducationStudent(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new educationStudent and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # Birth date of the student.
-        self._birth_date: Optional[date] = None
-        # ID of the student in the source system.
-        self._external_id: Optional[str] = None
-        # The possible values are: female, male, other, unknownFutureValue.
-        self._gender: Optional[education_gender.EducationGender] = None
-        # Current grade level of the student.
-        self._grade: Optional[str] = None
-        # Year the student is graduating from the school.
-        self._graduation_year: Optional[str] = None
-        # The OdataType property
-        self._odata_type: Optional[str] = None
-        # Student Number.
-        self._student_number: Optional[str] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
-    
-    @property
-    def birth_date(self,) -> Optional[date]:
-        """
-        Gets the birthDate property value. Birth date of the student.
-        Returns: Optional[date]
-        """
-        return self._birth_date
-    
-    @birth_date.setter
-    def birth_date(self,value: Optional[date] = None) -> None:
-        """
-        Sets the birthDate property value. Birth date of the student.
-        Args:
-            value: Value to set for the birth_date property.
-        """
-        self._birth_date = value
+    # Birth date of the student.
+    birth_date: Optional[date] = None
+    # ID of the student in the source system.
+    external_id: Optional[str] = None
+    # The possible values are: female, male, other, unknownFutureValue.
+    gender: Optional[education_gender.EducationGender] = None
+    # Current grade level of the student.
+    grade: Optional[str] = None
+    # Year the student is graduating from the school.
+    graduation_year: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # Student Number.
+    student_number: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationStudent:
@@ -71,49 +35,17 @@ class EducationStudent(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationStudent
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return EducationStudent()
-    
-    @property
-    def external_id(self,) -> Optional[str]:
-        """
-        Gets the externalId property value. ID of the student in the source system.
-        Returns: Optional[str]
-        """
-        return self._external_id
-    
-    @external_id.setter
-    def external_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the externalId property value. ID of the student in the source system.
-        Args:
-            value: Value to set for the external_id property.
-        """
-        self._external_id = value
-    
-    @property
-    def gender(self,) -> Optional[education_gender.EducationGender]:
-        """
-        Gets the gender property value. The possible values are: female, male, other, unknownFutureValue.
-        Returns: Optional[education_gender.EducationGender]
-        """
-        return self._gender
-    
-    @gender.setter
-    def gender(self,value: Optional[education_gender.EducationGender] = None) -> None:
-        """
-        Sets the gender property value. The possible values are: female, male, other, unknownFutureValue.
-        Args:
-            value: Value to set for the gender property.
-        """
-        self._gender = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import education_gender
+
         from . import education_gender
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -127,65 +59,14 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def grade(self,) -> Optional[str]:
-        """
-        Gets the grade property value. Current grade level of the student.
-        Returns: Optional[str]
-        """
-        return self._grade
-    
-    @grade.setter
-    def grade(self,value: Optional[str] = None) -> None:
-        """
-        Sets the grade property value. Current grade level of the student.
-        Args:
-            value: Value to set for the grade property.
-        """
-        self._grade = value
-    
-    @property
-    def graduation_year(self,) -> Optional[str]:
-        """
-        Gets the graduationYear property value. Year the student is graduating from the school.
-        Returns: Optional[str]
-        """
-        return self._graduation_year
-    
-    @graduation_year.setter
-    def graduation_year(self,value: Optional[str] = None) -> None:
-        """
-        Sets the graduationYear property value. Year the student is graduating from the school.
-        Args:
-            value: Value to set for the graduation_year property.
-        """
-        self._graduation_year = value
-    
-    @property
-    def odata_type(self,) -> Optional[str]:
-        """
-        Gets the @odata.type property value. The OdataType property
-        Returns: Optional[str]
-        """
-        return self._odata_type
-    
-    @odata_type.setter
-    def odata_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the @odata.type property value. The OdataType property
-        Args:
-            value: Value to set for the odata_type property.
-        """
-        self._odata_type = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_date_value("birthDate", self.birth_date)
         writer.write_str_value("externalId", self.external_id)
         writer.write_enum_value("gender", self.gender)
@@ -194,22 +75,5 @@ class EducationStudent(AdditionalDataHolder, Parsable):
         writer.write_str_value("@odata.type", self.odata_type)
         writer.write_str_value("studentNumber", self.student_number)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def student_number(self,) -> Optional[str]:
-        """
-        Gets the studentNumber property value. Student Number.
-        Returns: Optional[str]
-        """
-        return self._student_number
-    
-    @student_number.setter
-    def student_number(self,value: Optional[str] = None) -> None:
-        """
-        Sets the studentNumber property value. Student Number.
-        Args:
-            value: Value to set for the student_number property.
-        """
-        self._student_number = value
     
 

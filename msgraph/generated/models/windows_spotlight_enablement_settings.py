@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WindowsSpotlightEnablementSettings(Enum):
+class WindowsSpotlightEnablementSettings(str, Enum):
     # Spotlight on lock screen is not configured
     NotConfigured = "notConfigured",
     # Disable Windows Spotlight on lock screen

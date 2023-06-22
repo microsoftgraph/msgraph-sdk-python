@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WifiRadioType(Enum):
+class WifiRadioType(str, Enum):
     Unknown = "unknown",
     Wifi80211a = "wifi80211a",
     Wifi80211b = "wifi80211b",

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import managed_app_policy
 
+@dataclass
 class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new ManagedAppConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.managedAppConfiguration"
-        # A set of string key and string value pairs to be sent to apps for users to whom the configuration is scoped, unalterned by this service
-        self._custom_settings: Optional[List[key_value_pair.KeyValuePair]] = None
+    odata_type = "#microsoft.graph.managedAppConfiguration"
+    # A set of string key and string value pairs to be sent to apps for users to whom the configuration is scoped, unalterned by this service
+    custom_settings: Optional[List[key_value_pair.KeyValuePair]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ManagedAppConfiguration:
@@ -25,39 +22,25 @@ class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ManagedAppConfiguration
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
-        mapping_value_node = parse_node.get_child_node("@odata.type")
-        if mapping_value_node:
-            mapping_value = mapping_value_node.get_str_value()
-            if mapping_value == "#microsoft.graph.targetedManagedAppConfiguration":
-                from . import targeted_managed_app_configuration
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
+        try:
+            mapping_value = parse_node.get_child_node("@odata.type").get_str_value()
+        except AttributeError:
+            mapping_value = None
+        if mapping_value and mapping_value.casefold() == "#microsoft.graph.targetedManagedAppConfiguration".casefold():
+            from . import targeted_managed_app_configuration
 
-                return targeted_managed_app_configuration.TargetedManagedAppConfiguration()
+            return targeted_managed_app_configuration.TargetedManagedAppConfiguration()
         return ManagedAppConfiguration()
-    
-    @property
-    def custom_settings(self,) -> Optional[List[key_value_pair.KeyValuePair]]:
-        """
-        Gets the customSettings property value. A set of string key and string value pairs to be sent to apps for users to whom the configuration is scoped, unalterned by this service
-        Returns: Optional[List[key_value_pair.KeyValuePair]]
-        """
-        return self._custom_settings
-    
-    @custom_settings.setter
-    def custom_settings(self,value: Optional[List[key_value_pair.KeyValuePair]] = None) -> None:
-        """
-        Sets the customSettings property value. A set of string key and string value pairs to be sent to apps for users to whom the configuration is scoped, unalterned by this service
-        Args:
-            value: Value to set for the custom_settings property.
-        """
-        self._custom_settings = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import key_value_pair, managed_app_policy, targeted_managed_app_configuration
+
         from . import key_value_pair, managed_app_policy, targeted_managed_app_configuration
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -73,8 +56,8 @@ class ManagedAppConfiguration(managed_app_policy.ManagedAppPolicy):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_object_values("customSettings", self.custom_settings)
     

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class StagedFeatureName(Enum):
+class StagedFeatureName(str, Enum):
     PassthroughAuthentication = "passthroughAuthentication",
     SeamlessSso = "seamlessSso",
     PasswordHashSync = "passwordHashSync",

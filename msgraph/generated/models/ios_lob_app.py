@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from datetime import datetime
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
@@ -8,76 +9,21 @@ if TYPE_CHECKING:
 
 from . import mobile_lob_app
 
+@dataclass
 class IosLobApp(mobile_lob_app.MobileLobApp):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new IosLobApp and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.iosLobApp"
-        # Contains properties of the possible iOS device types the mobile app can run on.
-        self._applicable_device_type: Optional[ios_device_type.IosDeviceType] = None
-        # The build number of iOS Line of Business (LoB) app.
-        self._build_number: Optional[str] = None
-        # The Identity Name.
-        self._bundle_id: Optional[str] = None
-        # The expiration time.
-        self._expiration_date_time: Optional[datetime] = None
-        # The value for the minimum applicable operating system.
-        self._minimum_supported_operating_system: Optional[ios_minimum_operating_system.IosMinimumOperatingSystem] = None
-        # The version number of iOS Line of Business (LoB) app.
-        self._version_number: Optional[str] = None
-    
-    @property
-    def applicable_device_type(self,) -> Optional[ios_device_type.IosDeviceType]:
-        """
-        Gets the applicableDeviceType property value. Contains properties of the possible iOS device types the mobile app can run on.
-        Returns: Optional[ios_device_type.IosDeviceType]
-        """
-        return self._applicable_device_type
-    
-    @applicable_device_type.setter
-    def applicable_device_type(self,value: Optional[ios_device_type.IosDeviceType] = None) -> None:
-        """
-        Sets the applicableDeviceType property value. Contains properties of the possible iOS device types the mobile app can run on.
-        Args:
-            value: Value to set for the applicable_device_type property.
-        """
-        self._applicable_device_type = value
-    
-    @property
-    def build_number(self,) -> Optional[str]:
-        """
-        Gets the buildNumber property value. The build number of iOS Line of Business (LoB) app.
-        Returns: Optional[str]
-        """
-        return self._build_number
-    
-    @build_number.setter
-    def build_number(self,value: Optional[str] = None) -> None:
-        """
-        Sets the buildNumber property value. The build number of iOS Line of Business (LoB) app.
-        Args:
-            value: Value to set for the build_number property.
-        """
-        self._build_number = value
-    
-    @property
-    def bundle_id(self,) -> Optional[str]:
-        """
-        Gets the bundleId property value. The Identity Name.
-        Returns: Optional[str]
-        """
-        return self._bundle_id
-    
-    @bundle_id.setter
-    def bundle_id(self,value: Optional[str] = None) -> None:
-        """
-        Sets the bundleId property value. The Identity Name.
-        Args:
-            value: Value to set for the bundle_id property.
-        """
-        self._bundle_id = value
+    odata_type = "#microsoft.graph.iosLobApp"
+    # Contains properties of the possible iOS device types the mobile app can run on.
+    applicable_device_type: Optional[ios_device_type.IosDeviceType] = None
+    # The build number of iOS Line of Business (LoB) app.
+    build_number: Optional[str] = None
+    # The Identity Name.
+    bundle_id: Optional[str] = None
+    # The expiration time.
+    expiration_date_time: Optional[datetime] = None
+    # The value for the minimum applicable operating system.
+    minimum_supported_operating_system: Optional[ios_minimum_operating_system.IosMinimumOperatingSystem] = None
+    # The version number of iOS Line of Business (LoB) app.
+    version_number: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> IosLobApp:
@@ -87,32 +33,17 @@ class IosLobApp(mobile_lob_app.MobileLobApp):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: IosLobApp
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return IosLobApp()
-    
-    @property
-    def expiration_date_time(self,) -> Optional[datetime]:
-        """
-        Gets the expirationDateTime property value. The expiration time.
-        Returns: Optional[datetime]
-        """
-        return self._expiration_date_time
-    
-    @expiration_date_time.setter
-    def expiration_date_time(self,value: Optional[datetime] = None) -> None:
-        """
-        Sets the expirationDateTime property value. The expiration time.
-        Args:
-            value: Value to set for the expiration_date_time property.
-        """
-        self._expiration_date_time = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import ios_device_type, ios_minimum_operating_system, mobile_lob_app
+
         from . import ios_device_type, ios_minimum_operating_system, mobile_lob_app
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -127,31 +58,14 @@ class IosLobApp(mobile_lob_app.MobileLobApp):
         fields.update(super_fields)
         return fields
     
-    @property
-    def minimum_supported_operating_system(self,) -> Optional[ios_minimum_operating_system.IosMinimumOperatingSystem]:
-        """
-        Gets the minimumSupportedOperatingSystem property value. The value for the minimum applicable operating system.
-        Returns: Optional[ios_minimum_operating_system.IosMinimumOperatingSystem]
-        """
-        return self._minimum_supported_operating_system
-    
-    @minimum_supported_operating_system.setter
-    def minimum_supported_operating_system(self,value: Optional[ios_minimum_operating_system.IosMinimumOperatingSystem] = None) -> None:
-        """
-        Sets the minimumSupportedOperatingSystem property value. The value for the minimum applicable operating system.
-        Args:
-            value: Value to set for the minimum_supported_operating_system property.
-        """
-        self._minimum_supported_operating_system = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_object_value("applicableDeviceType", self.applicable_device_type)
         writer.write_str_value("buildNumber", self.build_number)
@@ -159,22 +73,5 @@ class IosLobApp(mobile_lob_app.MobileLobApp):
         writer.write_datetime_value("expirationDateTime", self.expiration_date_time)
         writer.write_object_value("minimumSupportedOperatingSystem", self.minimum_supported_operating_system)
         writer.write_str_value("versionNumber", self.version_number)
-    
-    @property
-    def version_number(self,) -> Optional[str]:
-        """
-        Gets the versionNumber property value. The version number of iOS Line of Business (LoB) app.
-        Returns: Optional[str]
-        """
-        return self._version_number
-    
-    @version_number.setter
-    def version_number(self,value: Optional[str] = None) -> None:
-        """
-        Sets the versionNumber property value. The version number of iOS Line of Business (LoB) app.
-        Args:
-            value: Value to set for the version_number property.
-        """
-        self._version_number = value
     
 

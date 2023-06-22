@@ -1,39 +1,20 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ........models.security import purge_areas, purge_type
 
+@dataclass
 class PurgeDataPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new purgeDataPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The purgeAreas property
-        self._purge_areas: Optional[purge_areas.PurgeAreas] = None
-        # The purgeType property
-        self._purge_type: Optional[purge_type.PurgeType] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The purgeAreas property
+    purge_areas: Optional[purge_areas.PurgeAreas] = None
+    # The purgeType property
+    purge_type: Optional[purge_type.PurgeType] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> PurgeDataPostRequestBody:
@@ -43,8 +24,8 @@ class PurgeDataPostRequestBody(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: PurgeDataPostRequestBody
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return PurgeDataPostRequestBody()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -54,45 +35,13 @@ class PurgeDataPostRequestBody(AdditionalDataHolder, Parsable):
         """
         from ........models.security import purge_areas, purge_type
 
+        from ........models.security import purge_areas, purge_type
+
         fields: Dict[str, Callable[[Any], None]] = {
             "purgeAreas": lambda n : setattr(self, 'purge_areas', n.get_enum_value(purge_areas.PurgeAreas)),
             "purgeType": lambda n : setattr(self, 'purge_type', n.get_enum_value(purge_type.PurgeType)),
         }
         return fields
-    
-    @property
-    def purge_areas(self,) -> Optional[purge_areas.PurgeAreas]:
-        """
-        Gets the purgeAreas property value. The purgeAreas property
-        Returns: Optional[purge_areas.PurgeAreas]
-        """
-        return self._purge_areas
-    
-    @purge_areas.setter
-    def purge_areas(self,value: Optional[purge_areas.PurgeAreas] = None) -> None:
-        """
-        Sets the purgeAreas property value. The purgeAreas property
-        Args:
-            value: Value to set for the purge_areas property.
-        """
-        self._purge_areas = value
-    
-    @property
-    def purge_type(self,) -> Optional[purge_type.PurgeType]:
-        """
-        Gets the purgeType property value. The purgeType property
-        Returns: Optional[purge_type.PurgeType]
-        """
-        return self._purge_type
-    
-    @purge_type.setter
-    def purge_type(self,value: Optional[purge_type.PurgeType] = None) -> None:
-        """
-        Sets the purgeType property value. The purgeType property
-        Args:
-            value: Value to set for the purge_type property.
-        """
-        self._purge_type = value
     
     def serialize(self,writer: SerializationWriter) -> None:
         """
@@ -100,8 +49,8 @@ class PurgeDataPostRequestBody(AdditionalDataHolder, Parsable):
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_enum_value("purgeAreas", self.purge_areas)
         writer.write_enum_value("purgeType", self.purge_type)
         writer.write_additional_data_value(self.additional_data)

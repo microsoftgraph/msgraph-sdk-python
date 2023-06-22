@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DeviceEnrollmentFailureReason(Enum):
+class DeviceEnrollmentFailureReason(str, Enum):
     # Default value, failure reason is unknown.
     Unknown = "unknown",
     # Authentication failed

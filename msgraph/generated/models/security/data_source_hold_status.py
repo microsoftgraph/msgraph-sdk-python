@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DataSourceHoldStatus(Enum):
+class DataSourceHoldStatus(str, Enum):
     NotApplied = "notApplied",
     Applied = "applied",
     Applying = "applying",

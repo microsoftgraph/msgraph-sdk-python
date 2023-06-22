@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WelcomeScreenMeetingInformation(Enum):
+class WelcomeScreenMeetingInformation(str, Enum):
     # User Defined, default value, no intent.
     UserDefined = "userDefined",
     # Show organizer and time only.

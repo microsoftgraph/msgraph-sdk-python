@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,15 +8,11 @@ if TYPE_CHECKING:
 
 from . import education_assignment_recipient
 
+@dataclass
 class EducationAssignmentIndividualRecipient(education_assignment_recipient.EducationAssignmentRecipient):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new EducationAssignmentIndividualRecipient and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.educationAssignmentIndividualRecipient"
-        # A collection of IDs of the recipients.
-        self._recipients: Optional[List[str]] = None
+    odata_type = "#microsoft.graph.educationAssignmentIndividualRecipient"
+    # A collection of IDs of the recipients.
+    recipients: Optional[List[str]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> EducationAssignmentIndividualRecipient:
@@ -25,8 +22,8 @@ class EducationAssignmentIndividualRecipient(education_assignment_recipient.Educ
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: EducationAssignmentIndividualRecipient
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return EducationAssignmentIndividualRecipient()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -36,6 +33,8 @@ class EducationAssignmentIndividualRecipient(education_assignment_recipient.Educ
         """
         from . import education_assignment_recipient
 
+        from . import education_assignment_recipient
+
         fields: Dict[str, Callable[[Any], None]] = {
             "recipients": lambda n : setattr(self, 'recipients', n.get_collection_of_primitive_values(str)),
         }
@@ -43,31 +42,14 @@ class EducationAssignmentIndividualRecipient(education_assignment_recipient.Educ
         fields.update(super_fields)
         return fields
     
-    @property
-    def recipients(self,) -> Optional[List[str]]:
-        """
-        Gets the recipients property value. A collection of IDs of the recipients.
-        Returns: Optional[List[str]]
-        """
-        return self._recipients
-    
-    @recipients.setter
-    def recipients(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the recipients property value. A collection of IDs of the recipients.
-        Args:
-            value: Value to set for the recipients property.
-        """
-        self._recipients = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_collection_of_primitive_values("recipients", self.recipients)
     

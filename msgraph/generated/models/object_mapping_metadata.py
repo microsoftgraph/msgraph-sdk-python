@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ObjectMappingMetadata(Enum):
+class ObjectMappingMetadata(str, Enum):
     EscrowBehavior = "EscrowBehavior",
     DisableMonitoringForChanges = "DisableMonitoringForChanges",
     OriginalJoiningProperty = "OriginalJoiningProperty",

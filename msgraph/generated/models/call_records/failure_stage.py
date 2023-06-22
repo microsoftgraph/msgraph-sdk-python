@@ -1,6 +1,6 @@
 from enum import Enum
 
-class FailureStage(Enum):
+class FailureStage(str, Enum):
     Unknown = "unknown",
     CallSetup = "callSetup",
     Midcall = "midcall",

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AccessPackageAssignmentState(Enum):
+class AccessPackageAssignmentState(str, Enum):
     Delivering = "delivering",
     PartiallyDelivered = "partiallyDelivered",
     Delivered = "delivered",

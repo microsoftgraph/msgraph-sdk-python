@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -28,10 +28,10 @@ class RowsRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not path_parameters:
+            raise TypeError("path_parameters cannot be null.")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}/tables/{workbookTable%2Did}/rows{?%24top,%24skip,%24search,%24filter,%24count,%24orderby,%24select,%24expand}"
 
@@ -46,8 +46,8 @@ class RowsRequestBuilder():
             workbook_table_row_id: Unique identifier of the item
         Returns: workbook_table_row_item_request_builder.WorkbookTableRowItemRequestBuilder
         """
-        if workbook_table_row_id is None:
-            raise Exception("workbook_table_row_id cannot be undefined")
+        if not workbook_table_row_id:
+            raise TypeError("workbook_table_row_id cannot be null.")
         from .item import workbook_table_row_item_request_builder
 
         url_tpl_params = get_path_parameters(self.path_parameters)
@@ -83,8 +83,8 @@ class RowsRequestBuilder():
             index: Usage: index={index}
         Returns: item_at_with_index_request_builder.ItemAtWithIndexRequestBuilder
         """
-        if index is None:
-            raise Exception("index cannot be undefined")
+        if not index:
+            raise TypeError("index cannot be null.")
         from .item_at_with_index import item_at_with_index_request_builder
 
         return item_at_with_index_request_builder.ItemAtWithIndexRequestBuilder(self.request_adapter, self.path_parameters, index)
@@ -97,8 +97,8 @@ class RowsRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_table_row.WorkbookTableRow]
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = self.to_post_request_information(
             body, request_configuration
         )
@@ -140,8 +140,8 @@ class RowsRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
@@ -183,8 +183,8 @@ class RowsRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
+            if not original_name:
+                raise TypeError("original_name cannot be null.")
             if original_name == "count":
                 return "%24count"
             if original_name == "expand":

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class BitLockerEncryptionMethod(Enum):
+class BitLockerEncryptionMethod(str, Enum):
     # AES-CBC 128-bit.
     AesCbc128 = "aesCbc128",
     # AES-CBC 256-bit.

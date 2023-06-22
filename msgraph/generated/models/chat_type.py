@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ChatType(Enum):
+class ChatType(str, Enum):
     OneOnOne = "oneOnOne",
     Group = "group",
     Meeting = "meeting",

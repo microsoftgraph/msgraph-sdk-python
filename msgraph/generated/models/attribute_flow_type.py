@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AttributeFlowType(Enum):
+class AttributeFlowType(str, Enum):
     Always = "Always",
     ObjectAddOnly = "ObjectAddOnly",
     MultiValueAddOnly = "MultiValueAddOnly",

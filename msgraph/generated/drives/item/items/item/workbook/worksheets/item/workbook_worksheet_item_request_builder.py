@@ -1,5 +1,5 @@
 from __future__ import annotations
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from kiota_abstractions.get_path_parameters import get_path_parameters
 from kiota_abstractions.method import Method
 from kiota_abstractions.request_adapter import RequestAdapter
@@ -34,10 +34,10 @@ class WorkbookWorksheetItemRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not path_parameters:
+            raise TypeError("path_parameters cannot be null.")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/drives/{drive%2Did}/items/{driveItem%2Did}/workbook/worksheets/{workbookWorksheet%2Did}{?%24select,%24expand}"
 
@@ -53,10 +53,10 @@ class WorkbookWorksheetItemRequestBuilder():
             row: Usage: row={row}
         Returns: cell_with_row_with_column_request_builder.CellWithRowWithColumnRequestBuilder
         """
-        if column is None:
-            raise Exception("column cannot be undefined")
-        if row is None:
-            raise Exception("row cannot be undefined")
+        if not column:
+            raise TypeError("column cannot be null.")
+        if not row:
+            raise TypeError("row cannot be null.")
         from .cell_with_row_with_column import cell_with_row_with_column_request_builder
 
         return cell_with_row_with_column_request_builder.CellWithRowWithColumnRequestBuilder(self.request_adapter, self.path_parameters, column, row)
@@ -110,8 +110,8 @@ class WorkbookWorksheetItemRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: Optional[workbook_worksheet.WorkbookWorksheet]
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = self.to_patch_request_information(
             body, request_configuration
         )
@@ -134,8 +134,8 @@ class WorkbookWorksheetItemRequestBuilder():
             address: Usage: address='{address}'
         Returns: range_with_address_request_builder.RangeWithAddressRequestBuilder
         """
-        if address is None:
-            raise Exception("address cannot be undefined")
+        if not address:
+            raise TypeError("address cannot be null.")
         from .range_with_address import range_with_address_request_builder
 
         return range_with_address_request_builder.RangeWithAddressRequestBuilder(self.request_adapter, self.path_parameters, address)
@@ -182,8 +182,8 @@ class WorkbookWorksheetItemRequestBuilder():
             requestConfiguration: Configuration for the request such as headers, query parameters, and middleware options.
         Returns: RequestInformation
         """
-        if body is None:
-            raise Exception("body cannot be undefined")
+        if not body:
+            raise TypeError("body cannot be null.")
         request_info = RequestInformation()
         request_info.url_template = self.url_template
         request_info.path_parameters = self.path_parameters
@@ -202,8 +202,8 @@ class WorkbookWorksheetItemRequestBuilder():
             valuesOnly: Usage: valuesOnly={valuesOnly}
         Returns: used_range_with_values_only_request_builder.UsedRangeWithValuesOnlyRequestBuilder
         """
-        if values_only is None:
-            raise Exception("values_only cannot be undefined")
+        if not values_only:
+            raise TypeError("values_only cannot be null.")
         from .used_range_with_values_only import used_range_with_values_only_request_builder
 
         return used_range_with_values_only_request_builder.UsedRangeWithValuesOnlyRequestBuilder(self.request_adapter, self.path_parameters, values_only)
@@ -295,8 +295,8 @@ class WorkbookWorksheetItemRequestBuilder():
                 originalName: The original query parameter name in the class.
             Returns: str
             """
-            if original_name is None:
-                raise Exception("original_name cannot be undefined")
+            if not original_name:
+                raise TypeError("original_name cannot be null.")
             if original_name == "expand":
                 return "%24expand"
             if original_name == "select":

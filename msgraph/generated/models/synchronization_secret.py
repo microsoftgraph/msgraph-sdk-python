@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SynchronizationSecret(Enum):
+class SynchronizationSecret(str, Enum):
     None_ = "None",
     UserName = "UserName",
     Password = "Password",

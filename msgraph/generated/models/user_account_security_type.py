@@ -1,6 +1,6 @@
 from enum import Enum
 
-class UserAccountSecurityType(Enum):
+class UserAccountSecurityType(str, Enum):
     Unknown = "unknown",
     Standard = "standard",
     Power = "power",

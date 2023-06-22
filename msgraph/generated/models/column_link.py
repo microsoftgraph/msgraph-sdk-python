@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,16 +8,12 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class ColumnLink(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new columnLink and sets the default values.
-        """
-        super().__init__()
-        # The name of the column  in this content type.
-        self._name: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
+    # The name of the column  in this content type.
+    name: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> ColumnLink:
@@ -26,8 +23,8 @@ class ColumnLink(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: ColumnLink
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return ColumnLink()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -37,6 +34,8 @@ class ColumnLink(entity.Entity):
         """
         from . import entity
 
+        from . import entity
+
         fields: Dict[str, Callable[[Any], None]] = {
             "name": lambda n : setattr(self, 'name', n.get_str_value()),
         }
@@ -44,31 +43,14 @@ class ColumnLink(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def name(self,) -> Optional[str]:
-        """
-        Gets the name property value. The name of the column  in this content type.
-        Returns: Optional[str]
-        """
-        return self._name
-    
-    @name.setter
-    def name(self,value: Optional[str] = None) -> None:
-        """
-        Sets the name property value. The name of the column  in this content type.
-        Args:
-            value: Value to set for the name property.
-        """
-        self._name = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("name", self.name)
     

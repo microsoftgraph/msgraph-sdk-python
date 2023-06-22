@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ComplianceState(Enum):
+class ComplianceState(str, Enum):
     # Unknown.
     Unknown = "unknown",
     # Compliant.

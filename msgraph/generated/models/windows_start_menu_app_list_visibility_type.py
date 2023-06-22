@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WindowsStartMenuAppListVisibilityType(Enum):
+class WindowsStartMenuAppListVisibilityType(str, Enum):
     # User defined. Default value.
     UserDefined = "userDefined",
     # Collapse the app list on the start menu.

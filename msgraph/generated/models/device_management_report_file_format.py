@@ -1,6 +1,6 @@
 from enum import Enum
 
-class DeviceManagementReportFileFormat(Enum):
+class DeviceManagementReportFileFormat(str, Enum):
     # CSV Format
     Csv = "csv",
     # PDF Format

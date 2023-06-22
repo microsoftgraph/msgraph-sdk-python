@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,54 +8,16 @@ if TYPE_CHECKING:
 
 from . import entity
 
+@dataclass
 class WorkbookComment(entity.Entity):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new workbookComment and sets the default values.
-        """
-        super().__init__()
-        # The content of comment.
-        self._content: Optional[str] = None
-        # Indicates the type for the comment.
-        self._content_type: Optional[str] = None
-        # The OdataType property
-        self.odata_type: Optional[str] = None
-        # The replies property
-        self._replies: Optional[List[workbook_comment_reply.WorkbookCommentReply]] = None
-    
-    @property
-    def content(self,) -> Optional[str]:
-        """
-        Gets the content property value. The content of comment.
-        Returns: Optional[str]
-        """
-        return self._content
-    
-    @content.setter
-    def content(self,value: Optional[str] = None) -> None:
-        """
-        Sets the content property value. The content of comment.
-        Args:
-            value: Value to set for the content property.
-        """
-        self._content = value
-    
-    @property
-    def content_type(self,) -> Optional[str]:
-        """
-        Gets the contentType property value. Indicates the type for the comment.
-        Returns: Optional[str]
-        """
-        return self._content_type
-    
-    @content_type.setter
-    def content_type(self,value: Optional[str] = None) -> None:
-        """
-        Sets the contentType property value. Indicates the type for the comment.
-        Args:
-            value: Value to set for the content_type property.
-        """
-        self._content_type = value
+    # The content of comment.
+    content: Optional[str] = None
+    # Indicates the type for the comment.
+    content_type: Optional[str] = None
+    # The OdataType property
+    odata_type: Optional[str] = None
+    # The replies property
+    replies: Optional[List[workbook_comment_reply.WorkbookCommentReply]] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WorkbookComment:
@@ -64,8 +27,8 @@ class WorkbookComment(entity.Entity):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WorkbookComment
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return WorkbookComment()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -73,6 +36,8 @@ class WorkbookComment(entity.Entity):
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import entity, workbook_comment_reply
+
         from . import entity, workbook_comment_reply
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -84,31 +49,14 @@ class WorkbookComment(entity.Entity):
         fields.update(super_fields)
         return fields
     
-    @property
-    def replies(self,) -> Optional[List[workbook_comment_reply.WorkbookCommentReply]]:
-        """
-        Gets the replies property value. The replies property
-        Returns: Optional[List[workbook_comment_reply.WorkbookCommentReply]]
-        """
-        return self._replies
-    
-    @replies.setter
-    def replies(self,value: Optional[List[workbook_comment_reply.WorkbookCommentReply]] = None) -> None:
-        """
-        Sets the replies property value. The replies property
-        Args:
-            value: Value to set for the replies property.
-        """
-        self._replies = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_str_value("content", self.content)
         writer.write_str_value("contentType", self.content_type)

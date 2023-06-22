@@ -1,41 +1,22 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import AdditionalDataHolder, Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
 if TYPE_CHECKING:
     from ....models import exchange_id_format
 
+@dataclass
 class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new translateExchangeIdsPostRequestBody and sets the default values.
-        """
-        # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        self._additional_data: Dict[str, Any] = {}
+    # Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
+    additional_data: Dict[str, Any] = field(default_factory=dict)
 
-        # The InputIds property
-        self._input_ids: Optional[List[str]] = None
-        # The SourceIdType property
-        self._source_id_type: Optional[exchange_id_format.ExchangeIdFormat] = None
-        # The TargetIdType property
-        self._target_id_type: Optional[exchange_id_format.ExchangeIdFormat] = None
-    
-    @property
-    def additional_data(self,) -> Dict[str, Any]:
-        """
-        Gets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Returns: Dict[str, Any]
-        """
-        return self._additional_data
-    
-    @additional_data.setter
-    def additional_data(self,value: Dict[str, Any]) -> None:
-        """
-        Sets the additionalData property value. Stores additional data not described in the OpenAPI description found when deserializing. Can be used for serialization as well.
-        Args:
-            value: Value to set for the AdditionalData property.
-        """
-        self._additional_data = value
+    # The InputIds property
+    input_ids: Optional[List[str]] = None
+    # The SourceIdType property
+    source_id_type: Optional[exchange_id_format.ExchangeIdFormat] = None
+    # The TargetIdType property
+    target_id_type: Optional[exchange_id_format.ExchangeIdFormat] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> TranslateExchangeIdsPostRequestBody:
@@ -45,8 +26,8 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: TranslateExchangeIdsPostRequestBody
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return TranslateExchangeIdsPostRequestBody()
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
@@ -56,6 +37,8 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
         """
         from ....models import exchange_id_format
 
+        from ....models import exchange_id_format
+
         fields: Dict[str, Callable[[Any], None]] = {
             "InputIds": lambda n : setattr(self, 'input_ids', n.get_collection_of_primitive_values(str)),
             "SourceIdType": lambda n : setattr(self, 'source_id_type', n.get_enum_value(exchange_id_format.ExchangeIdFormat)),
@@ -63,68 +46,17 @@ class TranslateExchangeIdsPostRequestBody(AdditionalDataHolder, Parsable):
         }
         return fields
     
-    @property
-    def input_ids(self,) -> Optional[List[str]]:
-        """
-        Gets the inputIds property value. The InputIds property
-        Returns: Optional[List[str]]
-        """
-        return self._input_ids
-    
-    @input_ids.setter
-    def input_ids(self,value: Optional[List[str]] = None) -> None:
-        """
-        Sets the inputIds property value. The InputIds property
-        Args:
-            value: Value to set for the input_ids property.
-        """
-        self._input_ids = value
-    
     def serialize(self,writer: SerializationWriter) -> None:
         """
         Serializes information the current object
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         writer.write_collection_of_primitive_values("InputIds", self.input_ids)
         writer.write_enum_value("SourceIdType", self.source_id_type)
         writer.write_enum_value("TargetIdType", self.target_id_type)
         writer.write_additional_data_value(self.additional_data)
-    
-    @property
-    def source_id_type(self,) -> Optional[exchange_id_format.ExchangeIdFormat]:
-        """
-        Gets the sourceIdType property value. The SourceIdType property
-        Returns: Optional[exchange_id_format.ExchangeIdFormat]
-        """
-        return self._source_id_type
-    
-    @source_id_type.setter
-    def source_id_type(self,value: Optional[exchange_id_format.ExchangeIdFormat] = None) -> None:
-        """
-        Sets the sourceIdType property value. The SourceIdType property
-        Args:
-            value: Value to set for the source_id_type property.
-        """
-        self._source_id_type = value
-    
-    @property
-    def target_id_type(self,) -> Optional[exchange_id_format.ExchangeIdFormat]:
-        """
-        Gets the targetIdType property value. The TargetIdType property
-        Returns: Optional[exchange_id_format.ExchangeIdFormat]
-        """
-        return self._target_id_type
-    
-    @target_id_type.setter
-    def target_id_type(self,value: Optional[exchange_id_format.ExchangeIdFormat] = None) -> None:
-        """
-        Sets the targetIdType property value. The TargetIdType property
-        Args:
-            value: Value to set for the target_id_type property.
-        """
-        self._target_id_type = value
     
 

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class RiskDetectionTimingType(Enum):
+class RiskDetectionTimingType(str, Enum):
     NotDefined = "notDefined",
     Realtime = "realtime",
     NearRealtime = "nearRealtime",

@@ -1,4 +1,5 @@
 from __future__ import annotations
+from dataclasses import dataclass, field
 from kiota_abstractions.serialization import Parsable, ParseNode, SerializationWriter
 from typing import Any, Callable, Dict, List, Optional, TYPE_CHECKING, Union
 
@@ -7,34 +8,13 @@ if TYPE_CHECKING:
 
 from . import device_configuration
 
+@dataclass
 class WindowsDefenderAdvancedThreatProtectionConfiguration(device_configuration.DeviceConfiguration):
-    def __init__(self,) -> None:
-        """
-        Instantiates a new WindowsDefenderAdvancedThreatProtectionConfiguration and sets the default values.
-        """
-        super().__init__()
-        self.odata_type = "#microsoft.graph.windowsDefenderAdvancedThreatProtectionConfiguration"
-        # Windows Defender AdvancedThreatProtection 'Allow Sample Sharing' Rule
-        self._allow_sample_sharing: Optional[bool] = None
-        # Expedite Windows Defender Advanced Threat Protection telemetry reporting frequency.
-        self._enable_expedited_telemetry_reporting: Optional[bool] = None
-    
-    @property
-    def allow_sample_sharing(self,) -> Optional[bool]:
-        """
-        Gets the allowSampleSharing property value. Windows Defender AdvancedThreatProtection 'Allow Sample Sharing' Rule
-        Returns: Optional[bool]
-        """
-        return self._allow_sample_sharing
-    
-    @allow_sample_sharing.setter
-    def allow_sample_sharing(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the allowSampleSharing property value. Windows Defender AdvancedThreatProtection 'Allow Sample Sharing' Rule
-        Args:
-            value: Value to set for the allow_sample_sharing property.
-        """
-        self._allow_sample_sharing = value
+    odata_type = "#microsoft.graph.windowsDefenderAdvancedThreatProtectionConfiguration"
+    # Windows Defender AdvancedThreatProtection 'Allow Sample Sharing' Rule
+    allow_sample_sharing: Optional[bool] = None
+    # Expedite Windows Defender Advanced Threat Protection telemetry reporting frequency.
+    enable_expedited_telemetry_reporting: Optional[bool] = None
     
     @staticmethod
     def create_from_discriminator_value(parse_node: Optional[ParseNode] = None) -> WindowsDefenderAdvancedThreatProtectionConfiguration:
@@ -44,32 +24,17 @@ class WindowsDefenderAdvancedThreatProtectionConfiguration(device_configuration.
             parseNode: The parse node to use to read the discriminator value and create the object
         Returns: WindowsDefenderAdvancedThreatProtectionConfiguration
         """
-        if parse_node is None:
-            raise Exception("parse_node cannot be undefined")
+        if not parse_node:
+            raise TypeError("parse_node cannot be null.")
         return WindowsDefenderAdvancedThreatProtectionConfiguration()
-    
-    @property
-    def enable_expedited_telemetry_reporting(self,) -> Optional[bool]:
-        """
-        Gets the enableExpeditedTelemetryReporting property value. Expedite Windows Defender Advanced Threat Protection telemetry reporting frequency.
-        Returns: Optional[bool]
-        """
-        return self._enable_expedited_telemetry_reporting
-    
-    @enable_expedited_telemetry_reporting.setter
-    def enable_expedited_telemetry_reporting(self,value: Optional[bool] = None) -> None:
-        """
-        Sets the enableExpeditedTelemetryReporting property value. Expedite Windows Defender Advanced Threat Protection telemetry reporting frequency.
-        Args:
-            value: Value to set for the enable_expedited_telemetry_reporting property.
-        """
-        self._enable_expedited_telemetry_reporting = value
     
     def get_field_deserializers(self,) -> Dict[str, Callable[[ParseNode], None]]:
         """
         The deserialization information for the current model
         Returns: Dict[str, Callable[[ParseNode], None]]
         """
+        from . import device_configuration
+
         from . import device_configuration
 
         fields: Dict[str, Callable[[Any], None]] = {
@@ -86,8 +51,8 @@ class WindowsDefenderAdvancedThreatProtectionConfiguration(device_configuration.
         Args:
             writer: Serialization writer to use to serialize this model
         """
-        if writer is None:
-            raise Exception("writer cannot be undefined")
+        if not writer:
+            raise TypeError("writer cannot be null.")
         super().serialize(writer)
         writer.write_bool_value("allowSampleSharing", self.allow_sample_sharing)
         writer.write_bool_value("enableExpeditedTelemetryReporting", self.enable_expedited_telemetry_reporting)

@@ -1,6 +1,6 @@
 from enum import Enum
 
-class SigninFrequencyType(Enum):
+class SigninFrequencyType(str, Enum):
     Days = "days",
     Hours = "hours",
 

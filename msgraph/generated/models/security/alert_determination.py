@@ -1,6 +1,6 @@
 from enum import Enum
 
-class AlertDetermination(Enum):
+class AlertDetermination(str, Enum):
     Unknown = "unknown",
     Apt = "apt",
     Malware = "malware",

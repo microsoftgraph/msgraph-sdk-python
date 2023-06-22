@@ -1,6 +1,6 @@
 from enum import Enum
 
-class RuleOperation(Enum):
+class RuleOperation(str, Enum):
     Equals = "equals",
     NotEquals = "notEquals",
     Contains = "contains",

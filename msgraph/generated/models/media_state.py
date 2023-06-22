@@ -1,6 +1,6 @@
 from enum import Enum
 
-class MediaState(Enum):
+class MediaState(str, Enum):
     Active = "active",
     Inactive = "inactive",
     UnknownFutureValue = "unknownFutureValue",

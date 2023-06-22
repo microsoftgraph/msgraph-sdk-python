@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ThreatCategory(Enum):
+class ThreatCategory(str, Enum):
     Undefined = "undefined",
     Spam = "spam",
     Phishing = "phishing",

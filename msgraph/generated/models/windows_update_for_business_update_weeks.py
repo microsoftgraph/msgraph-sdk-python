@@ -1,6 +1,6 @@
 from enum import Enum
 
-class WindowsUpdateForBusinessUpdateWeeks(Enum):
+class WindowsUpdateForBusinessUpdateWeeks(str, Enum):
     # Allow the user to set.
     UserDefined = "userDefined",
     # Scheduled the update installation on the first week of the month

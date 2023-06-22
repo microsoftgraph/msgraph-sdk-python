@@ -1,6 +1,6 @@
 from enum import Enum
 
-class ProvisioningAction(Enum):
+class ProvisioningAction(str, Enum):
     Other = "other",
     Create = "create",
     Delete = "delete",

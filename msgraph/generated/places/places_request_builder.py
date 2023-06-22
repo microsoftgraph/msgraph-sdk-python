@@ -19,10 +19,10 @@ class PlacesRequestBuilder():
             pathParameters: The raw url or the Url template parameters for the request.
             requestAdapter: The request adapter to use to execute the requests.
         """
-        if path_parameters is None:
-            raise Exception("path_parameters cannot be undefined")
-        if request_adapter is None:
-            raise Exception("request_adapter cannot be undefined")
+        if not path_parameters:
+            raise TypeError("path_parameters cannot be null.")
+        if not request_adapter:
+            raise TypeError("request_adapter cannot be null.")
         # Url template to use to build the URL for the current request builder
         self.url_template: str = "{+baseurl}/places"
 
@@ -37,8 +37,8 @@ class PlacesRequestBuilder():
             place_id: Unique identifier of the item
         Returns: place_item_request_builder.PlaceItemRequestBuilder
         """
-        if place_id is None:
-            raise Exception("place_id cannot be undefined")
+        if not place_id:
+            raise TypeError("place_id cannot be null.")
         from .item import place_item_request_builder
 
         url_tpl_params = get_path_parameters(self.path_parameters)

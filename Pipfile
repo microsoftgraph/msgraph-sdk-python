@@ -5,7 +5,7 @@ name = "pypi"
 
 [packages]
 azure-identity = "1.13.0"
-microsoft-kiota-abstractions = "0.5.3"
+microsoft-kiota-abstractions = "0.5.4"
 microsoft-kiota-authentication-azure = "0.2.0"
 microsoft-kiota-http = "0.4.4"
 microsoft-kiota-serialization-json = "0.3.5"
